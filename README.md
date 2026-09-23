@@ -1,8 +1,6 @@
 # N:SIDE
 
-<p align="center">
-  <img src="./docs/images/hero.png" alt="N:SIDE hero image" width="100%" />
-</p>
+![N:SIDE hero image](./docs/images/hero.png)
 
 > 一款设定在雨夜与霓虹交织的都市迷宫——“空之城”（Null City）的潮酷动作游戏。
 
