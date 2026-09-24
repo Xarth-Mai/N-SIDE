@@ -1,39 +1,48 @@
 # N:SIDE
 
-![N:SIDE hero image](./docs/images/hero.png)
+![N:SIDE hero image](docs/public/images/hero.webp)
 
-> 一款设定在雨夜与霓虹交织的都市迷宫——“空之城”（Null City）的潮酷动作游戏。
+在 Null City，兄妹与家庭 Agent 共同经营一家生活杂货店，在都市日常中调查异常、潜入梦境，帮助当事人重新回到生活。
 
-## 概述
+核心体验是“我真的在 Null City 生活过一段时间”。项目采用清爽、通透的日系现代都市表达
 
-**N:SIDE** 是一款以 PC 为首发平台的动作游戏项目。故事发生在**空之城（Null City）**——一个充斥着霓虹灯火、错综街区以及潜藏异象的现代化巨型都市。
+首发支持 PC，系统为 Linux 和 Windows，输入支持手柄和键鼠，图形接口采用 Vulkan
 
-我们的目标是打造一款融合以下特色的作品：
+## 入口
 
-- 爽快利落的高速动作战斗
-- 现代都市动漫美学风格
-- 极具沉浸氛围的故事叙述
-- 鲜活生动且值得探索的城市空间
+[Wiki 源文档](docs/index.md) · [项目愿景](docs/vision.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
 
-## 核心方向
+## 本地 Wiki
 
-- **项目名称：** N:SIDE
-- **背景设定：** 空之城 (Null City)
-- **目标平台：** PC 首发
-- **平台优先级：** 将 Linux 视为一等支持平台 (First-class)
-- **输入方式：** 手柄优先 (Controller-first)
-- **视觉基调：** 现代都市动漫风、雨夜、霓虹倒影
-- **数值与体量：** 非重度数值养成驱动
-- **当前目标：** 风格化的 2D / 2.5D 动作游戏体验
+```sh
+bun install
+bun run docs:dev
+```
 
-## 相关文档
+构建与预览：
 
-- [项目愿景](./docs/00_VISION.md)
-- [核心支柱](./docs/01_PILLARS.md)
-- [世界观](./docs/02_WORLD.md)
-- [故事剧情](./docs/03_STORY.md)
-- [美术风格](./docs/04_ART_DIRECTION.md)
+```sh
+bun run docs:build
+bun run docs:preview
+```
 
-## 当前状态
+部署设置见 [Wiki 制作说明](docs/production/wiki.md)，检查命令见[工具](tools/README.md)。
 
-处于早期概念构想与前期制作阶段。
+## 仓库
+
+`docs/` 维护长期项目知识；`todo/` 记录当前开发任务；`.agents/skills/` 保存工作流程；`source-assets/` 保存可编辑源资产；`tools/` 保存自动化工具；`game/` 保存游戏实现。
+
+## 游戏开发
+
+当前工程使用 Rust 2024 与 Bevy 0.19.1，从 `game/` 启动：
+
+```sh
+cd game
+cargo run --locked
+```
+
+格式、编译、测试与构建命令见[游戏工程](game/README.md)
+
+## 许可证
+
+[Mozilla Public License 2.0](LICENSE)

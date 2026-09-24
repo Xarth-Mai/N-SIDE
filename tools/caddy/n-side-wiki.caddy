@@ -1,0 +1,6 @@
+https://ms.lzzz.ink:7777 {
+	tls /etc/caddy/certs/lzzz.ink.crt /etc/caddy/certs/lzzz.ink.key
+	root * /srv/n-side-wiki
+	try_files {path} {path}.html {path}/index.html
+	file_server
+}

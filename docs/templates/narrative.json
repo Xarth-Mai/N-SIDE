@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "quest_id": "QST-000",
+  "entry_beat": "QST-000-B001",
+  "terminal_beats": [
+    "QST-000-B002"
+  ],
+  "information": [
+    {
+      "id": "QST-000-I001",
+      "proposition": "{{玩家需要理解的关键命题}}",
+      "world_truth": "{{实际因果与资料位置}}",
+      "importance": "critical",
+      "initial_state": "hidden"
+    }
+  ],
+  "beats": [
+    {
+      "id": "QST-000-B001",
+      "dramatic_change": "{{观察结果改变玩家的解释}}",
+      "player_goal": "{{调查目标}}",
+      "player_action": "{{检查物件并观察反馈}}",
+      "requires": {},
+      "delivers": {
+        "QST-000-I001": "confirmed"
+      },
+      "state_changes": {
+        "objective": "{{下一步目标}}"
+      },
+      "next": [
+        "QST-000-B002"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-000-B002",
+      "dramatic_change": "{{新的理解产生行动结果}}",
+      "player_goal": "{{完成处理}}",
+      "player_action": "{{根据已知信息操作并观察结果}}",
+      "requires": {
+        "QST-000-I001": [
+          "confirmed"
+        ]
+      },
+      "delivers": {},
+      "state_changes": {
+        "quest_status": "completed"
+      },
+      "next": [],
+      "target_seconds": null
+    }
+  ],
+  "choices": [],
+  "scenes": []
+}
