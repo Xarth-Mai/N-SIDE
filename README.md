@@ -2,7 +2,7 @@
 
 ![N:SIDE hero image](docs/public/images/hero.webp)
 
-在 Null City，兄妹与家庭 Agent 共同经营一家生活杂货店，在都市日常中调查异常、潜入梦境，帮助当事人重新回到生活。
+在 Null City，兄妹与家庭 Agent 共同经营一家生活杂货店，在都市日常中调查异常、潜入梦境，帮助当事人重新回到生活
 
 核心体验是“我真的在 Null City 生活过一段时间”。项目采用清爽、通透的日系现代都市表达
 
@@ -19,18 +19,7 @@ bun install
 bun run docs:dev
 ```
 
-构建与预览：
-
-```sh
-bun run docs:build
-bun run docs:preview
-```
-
-部署设置见 [Wiki 制作说明](docs/production/wiki.md)，检查命令见[工具](tools/README.md)。
-
-## 仓库
-
-`docs/` 维护长期项目知识；`todo/` 记录当前开发任务；`.agents/skills/` 保存工作流程；`source-assets/` 保存可编辑源资产；`tools/` 保存自动化工具；`game/` 保存游戏实现。
+[Wiki 构建与预览](docs/production/wiki.md) · [检查工具](tools/README.md) · [目录约定](docs/conventions.md)
 
 ## 游戏开发
 

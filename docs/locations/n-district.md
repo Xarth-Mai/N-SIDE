@@ -30,10 +30,10 @@ id: LOC-002
 
 ## 视觉参考
 
-![坡地生活街区参考](/images/hillside-reference.webp)
+![坡地生活街区参考](../public/images/hillside-reference.webp)
 
 图示呈现生活街区的高低差、树影与远眺水面的空间感。N街区采用更缓的坡度，以维持日常通行与客流
 
-![街区自下而上概念图](/images/hillside-layout-concept.webp)
+![街区自下而上概念图](../public/images/hillside-layout-concept.webp)
 
 图示呈现车站、生活区与山顶之间的空间层次，用于说明构图和氛围；具体尺度与路线由地点规格及关卡灰盒确定
