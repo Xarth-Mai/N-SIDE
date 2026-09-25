@@ -41,5 +41,5 @@ N:SIDE 发生在 Null City。一对年轻兄妹经营着一家全天亮灯的生
 | 项目 | [项目约定](conventions.md) |
 | 叙事 | [创作流程](narrative/workflow.md)、[数据格式](narrative/data.md)、[示例](narrative/examples/last-toy.md)、[试玩](narrative/playtest.md) |
 | 任务 | [游戏任务](quests/index.md) |
-| 制作 | [制作流程](production/workflow.md)、[玩法制作](production/gameplay.md)、[美术](production/art.md)、[声音](production/audio.md)、[资产管理](production/assets.md)、[工程](production/engineering.md)、[Wiki](production/wiki.md) |
+| 制作 | [制作流程](production/workflow.md)、[玩法制作](production/gameplay.md)、[街区空间制作](production/district-space.md)、[美术](production/art.md)、[声音](production/audio.md)、[资产管理](production/assets.md)、[工程](production/engineering.md)、[Wiki](production/wiki.md) |
 | 模板 | [内容与开发模板](templates/index.md) |
