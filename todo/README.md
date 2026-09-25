@@ -2,6 +2,7 @@
 
 新增任务使用[模板](../docs/templates/task.md)
 
+- [项目总路线图：至可玩 Demo](demo-roadmap.md)：M0—M7 的范围、决策、交付与验收总入口，围绕生活、调查、潜梦、行动与现实后续推进
 - [白天视觉样板](daylight-visual.md)：当前视觉工作入口，固定玩家高度镜头，联调材质、光照、阴影与抗锯齿
 - [城市框架与 Viewer 收口](n-district-closeout.md)：保留空间一致性记录，小店路口接面和影院平台承托待收口
 - [N街区扩容与轻近未来都市设计](n-district-modern-city.md)：城市外部框架已确认，继续完成 P4 空间接合与视线、P7 整合归档

@@ -14,7 +14,7 @@
 
 ## 入口
 
-[Wiki 与项目愿景](docs/index.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
+[Wiki 与项目愿景](docs/index.md) · [Roadmap：至可玩 Demo](todo/demo-roadmap.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
 
 ## 本地 Wiki
 
