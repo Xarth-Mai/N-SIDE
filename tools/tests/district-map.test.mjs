@@ -147,6 +147,14 @@ test('geometry handles concave boundaries, shared walls, road width and local el
   assert.ok(!roadHitsBuilding([-1,3,-1],[5,3,5],.5,{polygon:courtyard,elevation:1.5,height:1}),'altitude overlap in a concave gap is clear')
 })
 
+test('tree positions stay outside building footprints', () => {
+  const conflicts=[]
+  data.trees.forEach((tree,i)=>{
+    for(const building of data.buildings)if(pointInside(tree,building.polygon))conflicts.push(`trees[${i}] at ${tree}: ${building.id}`)
+  })
+  assert.deepEqual(conflicts,[])
+})
+
 test('all streets clear building volumes at their actual widths and elevations', () => {
   const conflicts=[]
   for(const b of data.buildings)for(const r of data.roads)for(let i=1;i<r.nodes.length;i++){
