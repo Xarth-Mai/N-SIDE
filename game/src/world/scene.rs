@@ -42,12 +42,12 @@ impl PreparedScene {
         let map = Map::load(&map_path).map_err(|e| e.to_string())?;
         let appearance_path = project_root.join("source-assets/district-scene/appearance.json");
         let appearance = Appearance::load(&appearance_path)?;
-        for (id, role) in &appearance.shopfronts {
+        for (id, role) in appearance.shopfronts.iter().chain(&appearance.displays) {
             if !map.buildings.iter().any(|b| &b.id == id)
                 || !appearance.materials.contains_key(role)
             {
                 return Err(format!(
-                    "[appearance/binding] {}:/shopfronts/{id}: building or material {role:?} does not exist",
+                    "[appearance/binding] {}: building={id} material={role:?} does not exist",
                     appearance_path.display()
                 ));
             }
@@ -493,6 +493,7 @@ fn add_sign(
     role: &str,
     center: Vec3,
     width: f32,
+    height: f32,
     normal: [f64; 2],
 ) -> Result<(), String> {
     use bevy::{
@@ -502,10 +503,10 @@ fn add_sign(
     let normal = map_to_world([normal[0], normal[1], 0.0]);
     let right = Vec3::Y.cross(normal);
     let vertices = [
-        center - right * width / 2.0 - Vec3::Y * 0.45,
-        center + right * width / 2.0 - Vec3::Y * 0.45,
-        center + right * width / 2.0 + Vec3::Y * 0.45,
-        center - right * width / 2.0 + Vec3::Y * 0.45,
+        center - right * width / 2.0 - Vec3::Y * height / 2.0,
+        center + right * width / 2.0 - Vec3::Y * height / 2.0,
+        center + right * width / 2.0 + Vec3::Y * height / 2.0,
+        center - right * width / 2.0 + Vec3::Y * height / 2.0,
     ];
     let mesh = Mesh::new(
         PrimitiveTopology::TriangleList,
@@ -556,6 +557,13 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
             let length = dx.hypot(dy);
             let normal = [side * dy / length, -side * dx / length];
             let rotation = Quat::from_rotation_y(dy.atan2(dx) as f32);
+            let display = appearance.displays.get(&building.id).filter(|_| {
+                design.front.is_some_and(|[u, v]| {
+                    [u, v]
+                        .iter()
+                        .all(|p| ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length < 0.02)
+                })
+            });
             for (floor_index, floor) in design.floors.iter().enumerate() {
                 let ceiling = design
                     .floors
@@ -601,6 +609,22 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         Vec3::new(width, 1.67, 0.025),
                         rotation,
                     )?;
+                    if floor_index == 0
+                        && let Some(material) = display
+                    {
+                        add_sign(
+                            &mut batches,
+                            material,
+                            map_to_world([
+                                p[0] + normal[0] * 0.025,
+                                p[1] + normal[1] * 0.025,
+                                p[2],
+                            ]),
+                            width,
+                            1.67,
+                            normal,
+                        )?;
+                    }
                 }
                 if floor_index > 0 {
                     let p = [
@@ -693,6 +717,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                     role,
                     map_to_world(p),
                     (len * 0.65).min(9.0) as f32,
+                    0.9,
                     normal,
                 )?;
                 // Original small street-life details stay alongside, clear of the source doorway
@@ -850,4 +875,39 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
         }
     }
     Ok(props)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn displays_stay_on_ground_floor_front_windows() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let parts = facades(&map, &appearance).unwrap();
+        for (id, material) in &appearance.displays {
+            let building = map.buildings.iter().find(|b| &b.id == id).unwrap();
+            let [a, b] = building.design.as_ref().unwrap().front.unwrap();
+            let dx = b[0] - a[0];
+            let dy = b[1] - a[1];
+            let mesh = &parts.iter().find(|p| &p.material == material).unwrap().mesh;
+            for p in mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap()
+            {
+                let x = f64::from(p[0]);
+                let y = -f64::from(p[2]);
+                let z = f64::from(p[1]);
+                assert!(
+                    (((x - a[0]) * dy - (y - a[1]) * dx).abs() / dx.hypot(dy) - 0.15).abs() < 0.001
+                );
+                assert!((building.elevation + 0.8..building.elevation + 2.5).contains(&z));
+            }
+        }
+    }
 }

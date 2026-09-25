@@ -13,6 +13,7 @@
     "check:map": "bun test tools/tests/district-map.test.mjs"
   },
   "devDependencies": {
+    "delaunator": "5.0.1",
     "vitepress": "^1.6.4"
   },
   "packageManager": "bun@1.4.2"

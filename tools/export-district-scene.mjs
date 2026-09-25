@@ -8,7 +8,8 @@ const temporary = await mkdtemp(join(tmpdir(), 'nside-signs-'))
 try {
   const output = join(root, 'game/assets/environment/signs')
   if (!check) await mkdir(output, { recursive: true })
-  for (const name of ['shop', 'grocer', 'cafe', 'bakery', 'drygoods']) {
+  const names = ['shop', 'grocer', 'cafe', 'bakery', 'drygoods'].flatMap(name => [name, `${name}-display`])
+  for (const name of names) {
     const generated = join(temporary, `${name}.png`)
     const process = Bun.spawn(['magick', '-background', 'none', join(root, `source-assets/district-scene/${name}.svg`), '-define', 'png:exclude-chunks=date,time', generated], { stdout: 'inherit', stderr: 'inherit' })
     if (await process.exited !== 0) throw new Error(`Sign export failed: ${name}`)
@@ -18,5 +19,5 @@ try {
       if (!bytes.equals(await readFile(destination))) throw new Error(`Stale sign: ${destination}`)
     } else await Bun.write(destination, bytes)
   }
-  console.log(`${check ? 'Verified' : 'Exported'} 5 original signs`)
+  console.log(`${check ? 'Verified' : 'Exported'} ${names.length} original storefront graphics`)
 } finally { await rm(temporary, { recursive: true, force: true }) }

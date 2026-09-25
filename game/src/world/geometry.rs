@@ -5,7 +5,7 @@ use bevy::{asset::RenderAssetUsages, mesh::PrimitiveTopology, prelude::*};
 use geo::{Area, BooleanOps, BoundingRect, Contains, LineString, MultiPolygon, Point, Polygon};
 use spade::{DelaunayTriangulation, FloatTriangulation, HasPosition, Point2, Triangulation};
 
-use super::map::{Map, map_to_world};
+use super::map::{Map, Surface, map_to_world};
 
 pub struct GeometryPart {
     pub source: String,
@@ -477,6 +477,91 @@ fn box_geometry(
     Ok(())
 }
 
+fn platform_supports(map: &Map, ground: &Ground, surface: &Surface) -> Vec<([f64; 2], f64)> {
+    let width = 0.55;
+    let top = surface.elevation - 0.4;
+    let mut obstacles: Vec<_> = map
+        .buildings
+        .iter()
+        .map(|b| (polygon(&b.polygon), [b.elevation, b.elevation + b.height]))
+        .collect();
+    for road in &map.roads {
+        if road.building.is_some() || road.kind == "interior" {
+            continue;
+        }
+        let points: Vec<_> = road.nodes.iter().map(|id| map.nodes[id]).collect();
+        let offsets = if road.kind == "lift" {
+            vec![[road.width / 2.0, 0.0]; points.len()]
+        } else {
+            road_offsets(&points, road.width)
+        };
+        for (i, pair) in points.windows(2).enumerate() {
+            let [a, b] = [pair[0], pair[1]];
+            let footprint = if road.kind == "lift" {
+                let w = road.width / 2.0;
+                polygon(&[
+                    [a[0] - w, a[1] - w],
+                    [a[0] + w, a[1] - w],
+                    [a[0] + w, a[1] + w],
+                    [a[0] - w, a[1] + w],
+                ])
+            } else {
+                ribbon(a, b, offsets[i], offsets[i + 1])
+            };
+            obstacles.push((footprint, [a[2].min(b[2]), a[2].max(b[2]) + 0.05]));
+        }
+    }
+    let mut supports = Vec::new();
+    for edge in polygon(&surface.polygon).exterior().0.windows(2) {
+        let a = [edge[0].x, edge[0].y];
+        let b = [edge[1].x, edge[1].y];
+        let length = distance2(a, b).sqrt();
+        let count = (length / 12.0).ceil().max(1.0) as usize;
+        for i in 0..count {
+            let center = (i as f64 + 0.5) / count as f64;
+            let mut found = false;
+            // ponytail: search this edge bay in column-width steps; author supports for constrained spans
+            for shift in std::iter::once(0).chain((1..=22).flat_map(|n| [-n, n])) {
+                let t = center + f64::from(shift) * width / length;
+                if t < i as f64 / count as f64 || t > (i + 1) as f64 / count as f64 {
+                    continue;
+                }
+                let p = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+                let bottom = surface.base_elevation.unwrap_or_else(|| ground.height(p));
+                if bottom >= top {
+                    found = true;
+                    break;
+                }
+                let w = width / 2.0;
+                let footprint = polygon(&[
+                    [p[0] - w, p[1] - w],
+                    [p[0] + w, p[1] - w],
+                    [p[0] + w, p[1] + w],
+                    [p[0] - w, p[1] + w],
+                ]);
+                if obstacles.iter().any(|(area, heights)| {
+                    bottom < heights[1]
+                        && top > heights[0]
+                        && overlap(&footprint, area)
+                        && footprint.intersection(area).unsigned_area() > 1e-8
+                }) {
+                    continue;
+                }
+                supports.push((p, bottom));
+                found = true;
+                break;
+            }
+            if !found {
+                eprintln!(
+                    "WARNING [geometry/support] surface={} edge={a:?}->{b:?} bay={i}: no clear column position; support layout requires spatial review",
+                    surface.id.as_deref().unwrap_or("unnamed")
+                );
+            }
+        }
+    }
+    supports
+}
+
 fn bridge_rail(mesh: &mut MeshData, a: [f64; 3], b: [f64; 3], source: &str) -> Result<(), String> {
     let offsets = road_offsets(&[a, b], 0.16);
     let bar = ribbon(a, b, offsets[0], offsets[1]);
@@ -647,19 +732,8 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
             for piece in subtract(&poly, &masks) {
                 base.underside(&piece, |_| surface.elevation - 0.4, &source)?;
             }
-            // Columns are derived exterior structure, at most 12 m between supports
-            for edge in poly.exterior().0.windows(2) {
-                let a = [edge[0].x, edge[0].y];
-                let b = [edge[1].x, edge[1].y];
-                let count = (distance2(a, b).sqrt() / 12.0).ceil().max(1.0) as usize;
-                for i in 0..count {
-                    let t = (i as f64 + 0.5) / count as f64;
-                    let p = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
-                    let bottom = surface.base_elevation.unwrap_or_else(|| ground.height(p));
-                    if bottom < surface.elevation - 0.4 {
-                        box_geometry(&mut base, p, 0.55, bottom, surface.elevation - 0.4, &source)?;
-                    }
-                }
+            for (p, bottom) in platform_supports(map, &ground, surface) {
+                box_geometry(&mut base, p, 0.55, bottom, surface.elevation - 0.4, &source)?;
             }
         } else {
             base.retaining_walls(&poly, &ground, |_| surface.elevation);
@@ -873,6 +947,38 @@ mod tests {
         let mut underside = MeshData::default();
         underside.underside(&road, |_| 4.0, "bridge").unwrap();
         assert!(underside.normals.iter().all(|n| n[1] < -0.99));
+    }
+
+    #[test]
+    fn platform_columns_leave_the_campus_public_approach_clear() {
+        let map = Map::load(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../source-assets/district-map/district.json"
+        ))
+        .unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let surface = map
+            .surfaces
+            .iter()
+            .find(|s| s.id.as_deref() == Some("fw-e-campus-upper-walk"))
+            .unwrap();
+        let columns = platform_supports(&map, &ground, surface);
+        let south: Vec<_> = columns.iter().filter(|(p, _)| p[1] == 327.0).collect();
+        assert!(
+            !south.is_empty(),
+            "retain support on the south platform edge"
+        );
+        // The 3 m public approach is centred on x=530; columns are 0.55 m wide
+        assert!(
+            south
+                .iter()
+                .all(|(p, bottom)| { (p[0] - 530.0).abs() >= 1.775 && *bottom == 18.0 })
+        );
+        assert!(
+            columns.iter().all(|(p, _)| {
+                (526.0..=534.0).contains(&p[0]) && (327.0..=358.0).contains(&p[1])
+            })
+        );
     }
 
     #[test]

@@ -2,7 +2,7 @@
 id: TASK-003
 status: in_progress
 depends_on: ["TASK-002", "DOC-ART", "DOC-ASSETS", "DOC-TECHNICAL"]
-evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/map-viewer-assets.md"]
+evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/map-viewer-assets.md", "todo/n-district-closeout.md"]
 ---
 
 # 3D Map Viewer 与最小世界运行时
@@ -12,6 +12,8 @@ evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/m
 从地图主数据生成可自由飞行观察的 N街区，全图具备基础外观，小店—采购街完成重点视觉样板。地图读取、坐标、几何与场景生成由正式游戏和 Viewer 共享，使用现有 Rust / Bevy 工程
 
 本任务以 2026-09-25 的需求访谈为准，替代附件《N:SIDE Map Viewer 开发方案》中的较大工具范围。2026-09-25 作者确认城市框架设计完成，授权开始 Viewer 工程与素材导入；美术规范和候选素材研究已在阶段 A 完成
+
+当前执行入口为[城市框架与 Viewer 收口](n-district-closeout.md)：基于 `bf641896ba4d` 对齐空间生成、推进白天样板，TASK-003 保持 `in_progress`。作者授权本轮跳过人工连续飞行、鼠标捕获及失焦恢复，记录为 SKIPPED，继续空间修复和样板交付
 
 | 资料 | 用途 |
 | --- | --- |
@@ -39,11 +41,11 @@ evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/m
 
 ## 地图交接条件
 
-启动检查时，HEAD 为 `46d6f78`，工作区地图已为 v5，含 324 节点、257 道路记录、88 建筑与 38 surface；这些是读取时的工作区统计，不是锁定的 Viewer 输入或永久测试断言
+初次启动检查时，HEAD 为 `46d6f78`，工作区地图为 v5，含 324 节点、257 道路记录、88 建筑与 38 surface；这是准备阶段的历史快照
 
-TASK-002 记录 P3-A1 建筑方案已交付、作者设计验收仍待完成，后续代表段与全区展开继续进行。Viewer 不修改这批空间工作，也不把已存在 v5 字段等同于稳定交付
+正式交接采用作者确认的 v7 全区外部框架，对应 `3374e7f`；当前基线为树点修正版 `bf641896ba4d`，源哈希、对象数量与覆盖复算见[收口记录](n-district-closeout.md#当前基线)
 
-进入工程阶段前，地图方交付可供 Viewer 消费的稳定快照，记录提交或文件哈希及对应阶段，重新清点对象并运行地图检查。逐项确认实际 schema、建筑天井/屋顶/入口、平台归属、道路宽度及上下层语义；后续空间变更通过新的基线接入
+后续空间变更通过新的基线接入，记录提交、文件哈希及阶段，重新清点对象并运行受影响检查；核对实际 schema、建筑天井／屋顶／入口、平台归属、道路宽度及上下层语义
 
 ## 运行时与数据边界
 
@@ -183,7 +185,7 @@ cargo run --manifest-path game/Cargo.toml --features viewer --bin map_viewer -- 
 
 错误诊断覆盖地图字段与源对象、表现绑定、模型材质槽、递归图片依赖和模型实例化。异步窄测已实际验证父资产 Loaded 而子 PNG 尚未完成时仍为 Loading，坏 PNG 和缺失 PNG 转为 Failed，正常 PNG 才 Ready，重复失败保留多个受影响源对象
 
-当前源空间警告：`trees[32] = [650,380]` 位于 `V-EF29` 内，`trees[39] = [230,205]` 位于 `V-54` 内；记录 Warning 并保留源点，交空间设计后续修正
+该交接快照的源空间警告：`trees[32] = [650,380]` 位于 `V-EF29` 内，`trees[39] = [230,205]` 位于 `V-54` 内；运行时记录 Warning 并保留源点。两处及另一处贴墙树点已由 `bf641896ba4d` 修正，最新复查见[树点修订与检查](n-district-closeout.md#树点修订与检查)
 
 #### 实际验证记录
 
@@ -220,3 +222,9 @@ cargo run --manifest-path game/Cargo.toml --features viewer --bin map_viewer -- 
 作者指出山体起伏不易辨认，核对源地形控制点为 +6 至 +81 m、摘星台 +80 m、南北跨度约 1 km；40 个原地形样点插值逐点校验，未夸大高程。当前地面也纳入河岸低处道路控制点，生成顶点最低约 +1.84 m。补充按真实坡度和高度连续变化的地表颜色、侧光与低角度山坡镜头，截图显示的是连贯缓坡；更陡的山势属于空间设计修改
 
 B 的地图交接已完成，C–D 的工程与自动检查已完成，人工自由飞行仍待检查。E 已实现首轮店面外观、图形和道具，F 已取得窗口性能与全图渲染证据；店面生活细节密度与植物造型仍需结合作者对实际画面的反馈继续打磨，任务保持 `in_progress`
+
+### 2026-09-25｜空间一致性与橱窗样板
+
+输入为 `bf64189` 后的空间修订，哈希及检查维护于[共同收口记录](n-district-closeout.md)。平台支柱按建筑体量、实际路宽和高程避让，校园公共通路已补回归；影院平台贴墙边无独立柱位，明确保留承托设计 Warning
+
+五个原创橱窗 SVG 通过 `displays` 绑定首层临街窗格，经营内容分别为生活杂货、面包、蔬果、早餐及干货，保留住宅窗与既有门口。固定渲染新增校园道路低视点，其余六个镜头与前一版一致。人工连续操作按作者授权记录为 SKIPPED，白天样板继续交付画面供作者判断，未冻结 TASK-002 或结项 TASK-003

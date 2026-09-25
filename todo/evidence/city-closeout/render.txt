@@ -1,0 +1,13 @@
+mode=offscreen profile=release resolution=2560x1440 exit_code=0
+fov_degrees=55 warmup_seconds=3 sample_seconds=5
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[map/validated] schema=7 nodes=995 roads=564 buildings=231 surfaces=74 trees=51 meshes=2591 elapsed_seconds=0.330
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.040
+[verify/view] view=overview frames=3574 mean_ms=1.40 p95_ms=1.78 fps=714.7 profile=release mode=offscreen
+[verify/view] view=shop frames=2216 mean_ms=2.26 p95_ms=3.67 fps=442.9 profile=release mode=offscreen
+[verify/view] view=street frames=2183 mean_ms=2.29 p95_ms=3.76 fps=436.5 profile=release mode=offscreen
+[verify/view] view=cinema frames=2221 mean_ms=2.25 p95_ms=3.91 fps=443.9 profile=release mode=offscreen
+[verify/view] view=bridge frames=3272 mean_ms=1.53 p95_ms=1.93 fps=654.3 profile=release mode=offscreen
+[verify/view] view=hillside frames=2960 mean_ms=1.69 p95_ms=2.39 fps=591.6 profile=release mode=offscreen
+[verify/view] view=campus frames=2757 mean_ms=1.81 p95_ms=3.03 fps=551.2 profile=release mode=offscreen

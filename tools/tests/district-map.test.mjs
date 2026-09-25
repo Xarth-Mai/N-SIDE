@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import data from '../../source-assets/district-map/district.json' with { type: 'json' }
-import { terrainHeight, heightColor } from '../district-map.mjs'
+import { buildGround, buildScene, project, heightColor } from '../district-map.mjs'
 import { architectureStats, sectionRoads } from '../district-architecture.mjs'
 import { frameworkCoverage, reachableNodes } from '../district-plan.mjs'
 import {polygonArea,pointInside,onBoundary,segmentInside,polygonInside,intersectionArea,roadWidth,roadAllowed,roadHitsBuilding} from '../district-geometry.mjs'
@@ -29,15 +29,44 @@ test('map places and roads have valid shared references', () => {
   }
 })
 
-test('terrain colors follow interpolated ground elevation', () => {
-  const points=[[0,0,0],[10,0,80]]
-  assert.equal(terrainHeight(points,0,0),0)
-  assert.equal(terrainHeight(points,5,0),40)
-  assert.equal(terrainHeight(points,10,0),80)
+test('terrain colors follow ground elevation', () => {
   assert.equal(heightColor(0),'rgb(223,213,175)')
   assert.equal(heightColor(80),'rgb(103,139,112)')
   assert.equal(heightColor(-10),heightColor(0))
   assert.equal(heightColor(100),heightColor(80))
+})
+
+test('overview terrain retains source controls and excludes elevated connections', () => {
+  const ground=buildGround(data),scene=buildScene(data)
+  const vertices=new Set(scene.terrain.flatMap(t=>t.d.match(/-?\d+\.\d+,-?\d+\.\d+/g)))
+  for(const point of [...data.terrain.samples,...['fw_e_school_edge_low','slope_upper_landing','hill_bend','bridge_n'].map(id=>data.nodes[id])]) {
+    assert.ok(Math.abs(ground.height(point[0],point[1])-point[2])<1e-8,`ground control ${point}`)
+    assert.ok(vertices.has(project(point).map(v=>v.toFixed(2)).join(',')),`rendered ground control ${point}`)
+  }
+  for(const id of ['cinema_lift_low','slope_lift_low','fw_e_school_edge_low']) {
+    const [x,y,z]=data.nodes[id]
+    assert.equal(ground.height(x,y),z,`roof must not raise ground at ${id}`)
+  }
+  for(const triangle of ground.triangles) {
+    const center=[0,1,2].map(i=>triangle.reduce((sum,p)=>sum+p[i],0)/3)
+    assert.ok(Math.abs(ground.height(center[0],center[1])-center[2])<1e-6,'height agrees with the rendered triangle')
+  }
+  const conflicting=structuredClone(data)
+  conflicting.terrain.samples.push([530,330,29])
+  assert.throws(()=>buildGround(conflicting),/Conflicting ground heights/)
+})
+
+test('authored exterior sightlines clear intervening building volumes', () => {
+  for(const architecture of data.architectures)for(const scene of architecture.scenes.filter(s=>s.towards)) {
+    const target=data.buildings.find(b=>b.id===scene.targetBuilding)
+    if(scene.targetBuilding) {
+      assert.ok(target,`${scene.id}: target building exists`)
+      assert.ok(onBoundary(scene.towards,target.polygon),`${scene.id}: target lies on its facade`)
+      assert.ok(scene.towards[2]>=target.elevation&&scene.towards[2]<=target.elevation+target.height)
+    }
+    const blocked=data.buildings.filter(b=>b!==target&&roadHitsBuilding(scene.position,scene.towards,0,b))
+    assert.deepEqual(blocked.map(b=>b.id),[],`${architecture.id}/${scene.id}: view is obstructed`)
+  }
 })
 
 test('shopping stays local and public hillside routes remain connected', () => {

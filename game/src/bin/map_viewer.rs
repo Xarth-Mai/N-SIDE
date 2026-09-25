@@ -70,7 +70,7 @@ fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--validate           Check map, geometry and asset bindings without a GPU\n--verify DIRECTORY   Automated six-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
+                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--validate           Check map, geometry and asset bindings without a GPU\n--verify DIRECTORY   Automated fixed-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
                 );
                 return Ok(AppExit::Success);
             }
@@ -215,6 +215,17 @@ fn run() -> Result<AppExit, String> {
                 (foothill[1] + summit[1]) / 2.0,
                 (foothill[2] + summit[2]) / 2.0,
             ],
+        ),
+    ));
+    let campus = *map
+        .nodes
+        .get("fw_e_school_edge_low")
+        .ok_or("[viewer/view] /nodes/fw_e_school_edge_low missing")?;
+    views.push((
+        "campus",
+        view(
+            [campus[0], campus[1] - 18.0, campus[2] + 2.0],
+            [campus[0], campus[1], campus[2] + 6.0],
         ),
     ));
     let initial = views[0].1;

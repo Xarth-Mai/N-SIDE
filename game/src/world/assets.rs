@@ -19,6 +19,8 @@ pub struct Appearance {
     pub models: BTreeMap<String, ModelSpec>,
     #[serde(deserialize_with = "unique_bindings")]
     pub shopfronts: BTreeMap<String, String>,
+    #[serde(default, deserialize_with = "unique_bindings")]
+    pub displays: BTreeMap<String, String>,
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -120,12 +122,17 @@ impl Appearance {
                 )
             })?;
         }
-        for (building, material) in &result.shopfronts {
-            if !result.materials.contains_key(material) {
-                return Err(format!(
-                    "[appearance/binding] {}:/shopfronts/{building}: material {material:?} does not exist",
-                    path.display()
-                ));
+        for (field, bindings) in [
+            ("shopfronts", &result.shopfronts),
+            ("displays", &result.displays),
+        ] {
+            for (building, material) in bindings {
+                if !result.materials.contains_key(material) {
+                    return Err(format!(
+                        "[appearance/binding] {}:/{field}/{building}: material {material:?} does not exist",
+                        path.display()
+                    ));
+                }
             }
         }
         Ok(result)
@@ -406,7 +413,8 @@ mod tests {
             "version":1,
             "materials":{"wall":{"color":[1,1,1,1],"roughness":0.8,"tile_meters":[1,1],"color_texture":"wall.png"}},
             "models":{"tree":{"file":"tree.glb","scene":0,"scale":1}},
-            "shopfronts":{"V-04":"wall"}
+            "shopfronts":{"V-04":"wall"},
+            "displays":{"V-04":"wall"}
         });
         std::fs::write(&path, original.to_string()).unwrap();
         Appearance::load(&path).unwrap();
@@ -421,6 +429,7 @@ mod tests {
             ("/models/tree/file", serde_json::json!("")),
             ("/models/tree/scale", serde_json::json!(0)),
             ("/shopfronts/V-04", serde_json::json!("missing_material")),
+            ("/displays/V-04", serde_json::json!("missing_material")),
         ] {
             let mut value_json = original.clone();
             *value_json.pointer_mut(pointer).unwrap() = value;

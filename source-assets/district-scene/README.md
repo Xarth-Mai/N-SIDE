@@ -3,8 +3,8 @@
 | 项目 | 内容 |
 | --- | --- |
 | 资产 ID | `AST-004` |
-| 主文件 | [appearance.json](appearance.json)、本目录五个招牌 SVG |
-| 作者与来源 | N:SIDE 原创外观绑定和招牌图形；公开环境素材来源见[环境素材包](../environment-kit/README.md) |
+| 主文件 | [appearance.json](appearance.json)、本目录五个招牌与五个橱窗 SVG |
+| 作者与来源 | N:SIDE 原创外观绑定、招牌和橱窗图形；公开环境素材来源见[环境素材包](../environment-kit/README.md) |
 | 使用位置 | `world::scene` 生成的外墙、道路、店面和绿植 |
 | 派生文件 | `game/assets/environment/signs/*.png` |
 | 状态 | `exported`，真实镜头检查记录于 Viewer 任务 |
@@ -13,6 +13,8 @@
 
 `shopfronts` 对应小店、烘焙、生鲜、早餐和干货店，建筑用途来自地图；新招牌只修改 SVG 主文件。字形使用系统 DejaVu Sans 栅格化，源 SVG 保持可编辑，项目不分发字体文件
 
+`displays` 将同五栋建筑绑定到原创橱窗图形：杯子与文具、面包托盘、蔬果、早餐与茶、干货罐和纸袋。图形作为首层临街窗格的浅景，沿既有立面与窗框生成，保留门口和楼上住宅窗；侧后立面继续使用普通窗及独立入口
+
 导出和核对：
 
 ```sh
@@ -20,7 +22,7 @@ bun tools/export-district-scene.mjs
 bun tools/export-district-scene.mjs --check
 ```
 
-导出依赖 Bun、ImageMagick 与 DejaVu Sans，运行 Viewer 只使用已导出的 PNG。脚本以固定画布栅格化并排除 PNG 时间元数据，`--check` 在临时目录重算并比较字节，五个招牌均为 1024 × 128
+导出依赖 Bun、ImageMagick 与 DejaVu Sans，运行 Viewer 只使用已导出的 PNG。脚本以固定画布栅格化并排除 PNG 时间元数据，`--check` 在临时目录重算并比较字节；招牌为 1024 × 128，橱窗为 640 × 448
 
 ## 规则生成的构件
 

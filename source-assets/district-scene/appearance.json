@@ -320,6 +320,86 @@
       ],
       "color_texture": "environment/signs/drygoods.png",
       "normal_texture": null
+    },
+    "display_shop": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.7,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/shop-display.png",
+      "normal_texture": null
+    },
+    "display_bakery": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.7,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/bakery-display.png",
+      "normal_texture": null
+    },
+    "display_grocer": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.7,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/grocer-display.png",
+      "normal_texture": null
+    },
+    "display_cafe": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.7,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/cafe-display.png",
+      "normal_texture": null
+    },
+    "display_drygoods": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.7,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/drygoods-display.png",
+      "normal_texture": null
     }
   },
   "models": {
@@ -350,5 +430,12 @@
     "V-08": "sign_grocer",
     "V-51": "sign_cafe",
     "V-52": "sign_drygoods"
+  },
+  "displays": {
+    "V-04": "display_shop",
+    "V-07": "display_bakery",
+    "V-08": "display_grocer",
+    "V-51": "display_cafe",
+    "V-52": "display_drygoods"
   }
 }

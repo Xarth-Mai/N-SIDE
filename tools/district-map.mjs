@@ -1,3 +1,5 @@
+import Delaunator from 'delaunator'
+
 const tilt = 55 * Math.PI / 180, turn = 18 * Math.PI / 180
 const c = Math.cos(turn), s = Math.sin(turn)
 // A fixed river-side orthographic camera; coordinates and road lengths stay unchanged
@@ -6,15 +8,48 @@ export const depth = ([x,y]) => x*s-y*c
 export const svgPath = points => points.map((p,i)=>`${i?'L':'M'}${project(p).map(v=>v.toFixed(2)).join(',')}`).join(' ')
 export const heightColor = h => `rgb(${[223,213,175].map((v,i)=>Math.round(v+([103,139,112][i]-v)*Math.max(0,Math.min(1,h/80)))).join(',')})`
 
-export function terrainHeight(points,x,y) {
-  let sum=0, weight=0
-  for(const [px,py,z] of points) {
-    const d=(px-x)**2+(py-y)**2
-    if(d===0)return z
-    const w=1/d**1.5
-    sum+=z*w;weight+=w
+export function buildGround(data) {
+  // Match the Viewer ground controls; roofs and elevated connections remain separate
+  const elevated=new Set(data.elevatedNodes),nodes=new Set()
+  for(const road of data.roads) {
+    const upper=road.surface&&data.surfaces.some(s=>s.id===road.surface&&s.elevated)
+    if(!road.building&&!upper&&!['bridge','deck','lift','interior'].includes(road.kind))
+      for(const id of road.nodes)if(!elevated.has(id))nodes.add(id)
   }
-  return sum/weight
+  const controls=[...data.terrain.samples,...[...nodes].sort().map(id=>data.nodes[id])],unique=new Map()
+  for(const p of controls) {
+    const key=p.slice(0,2).join(','),existing=unique.get(key)
+    if(existing&&Math.abs(existing[2]-p[2])>1e-6)throw new Error(`Conflicting ground heights at [${key}]: ${existing[2]} and ${p[2]}`)
+    unique.set(key,p)
+  }
+  const points=[...unique.values()]
+  if(points.length<3)throw new Error('Terrain requires at least three ground controls')
+  const distance=(a,b)=>(a[0]-b[0])**2+(a[1]-b[1])**2
+  const nearest=p=>points.reduce((a,b)=>distance(a,p)<=distance(b,p)?a:b)
+  const xs=points.map(p=>p[0]),ys=points.map(p=>p[1])
+  const bounds=[Math.min(...xs)-120,Math.min(...ys)-120,Math.max(...xs)+120,Math.max(...ys)+120]
+  // Match the Viewer 120 m skirt without inventing new authored elevations
+  const skirt=[[bounds[0],bounds[1]],[bounds[2],bounds[1]],[bounds[2],bounds[3]],[bounds[0],bounds[3]]]
+    .map(p=>[...p,nearest(p)[2]])
+  points.push(...skirt)
+  const indices=Delaunator.from(points).triangles,triangles=[]
+  for(let i=0;i<indices.length;i+=3) {
+    const [a,b,c]=Array.from(indices.slice(i,i+3),j=>points[j])
+    triangles.push((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])>0?[a,b,c]:[a,c,b])
+  }
+  const height=(x,y)=> {
+    const control=unique.get(`${x},${y}`)
+    if(control)return control[2]
+    // ponytail: linear lookup suits this overview; index triangles if point queries grow
+    for(const [a,b,c] of triangles) {
+      const determinant=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1])
+      const u=((b[1]-c[1])*(x-c[0])+(c[0]-b[0])*(y-c[1]))/determinant
+      const v=((c[1]-a[1])*(x-c[0])+(a[0]-c[0])*(y-c[1]))/determinant,w=1-u-v
+      if(u>=-1e-9&&v>=-1e-9&&w>=-1e-9)return u*a[2]+v*b[2]+w*c[2]
+    }
+    return nearest([x,y])[2]
+  }
+  return {triangles,height}
 }
 const lerp = (a,b,t) => a.map((v,i)=>v+(b[i]-v)*t)
 const tint = (rgb,factor) => `rgb(${rgb.map(v=>Math.round(Math.max(0,Math.min(255,v*factor)))).join(',')})`
@@ -32,32 +67,27 @@ const contains = (polygon,x,y) => {
 }
 
 export function buildScene(data) {
-  const samples=[...Object.entries(data.nodes).filter(([id])=>!id.startsWith('bridge') && !data.elevatedNodes?.includes(id)).map(([,p])=>p),...data.terrain.samples]
+  const mesh=buildGround(data)
   const ground=(x,y)=> {
-    if(y < -140 && y > -390)return 0
-    if(y <= -390)return 8
     const platform=data.surfaces.find(a=>!a.elevated && contains(a.polygon,x,y))
-    return platform?.elevation ?? terrainHeight(samples,x,y)
+    return platform?.elevation ?? mesh.height(x,y)
   }
   const terrain=[],objects=[]
   let serial=0
   const add=(position,kind,shapes,place)=>objects.push({key:serial++,depth:depth(position),kind,shapes,place})
   const light=[-.45,-.35,.82]
-  for(let y=-800;y<1600;y+=50) for(let x=-1200;x<1700;x+=50) {
-    const vertices=[[x,y],[x+50,y],[x+50,y+50],[x,y+50]].map(([a,b])=>[a,b,ground(a,b)])
-    for(const ids of [[0,1,2],[0,2,3]]) {
-      const p=ids.map(i=>vertices[i]),u=p[1].map((v,i)=>v-p[0][i]),v=p[2].map((v,i)=>v-p[0][i])
-      const normal=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]]
-      normal[0]*=3;normal[1]*=3
-      const brightness=.7+.36*normal.reduce((n,v,i)=>n+v*light[i],0)/Math.hypot(...normal)
-      const h=p.reduce((sum,p)=>sum+p[2],0)/3
-      const hill=Math.max(0,Math.min(1,(h-22)/45))
-      const base=[228,225,207].map((v,i)=>v+([153,174,135][i]-v)*hill)
-      terrain.push({...face(p,tint(base,brightness)),height:h})
-    }
+  for(const p of mesh.triangles) {
+    const u=p[1].map((v,i)=>v-p[0][i]),v=p[2].map((v,i)=>v-p[0][i])
+    const normal=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]]
+    normal[0]*=3;normal[1]*=3
+    const brightness=.7+.36*normal.reduce((n,v,i)=>n+v*light[i],0)/Math.hypot(...normal)
+    const h=p.reduce((sum,p)=>sum+p[2],0)/3
+    const hill=Math.max(0,Math.min(1,(h-22)/45))
+    const base=[228,225,207].map((v,i)=>v+([153,174,135][i]-v)*hill)
+    terrain.push({...face(p,tint(base,brightness)),height:h})
   }
   // Water and quay share one shoreline; only the engineered bank has a vertical face
-  const shore=data.terrain.water.slice(2).reverse().map(([x,y])=>[x,y,6])
+  const shore=data.terrain.water.slice(2).reverse().map(([x,y])=>[x,y,mesh.height(x,y)])
   const bank=[]
   for(let i=1;i<shore.length;i++)bank.push(face([shore[i-1],shore[i],...[shore[i],shore[i-1]].map(([x,y])=>[x,y,0])],'#a5ac9b'))
   add([300,-133],'bank',bank)

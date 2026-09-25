@@ -31,7 +31,7 @@ cargo build --manifest-path game/Cargo.toml --features viewer --locked
 cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --validate
 ```
 
-`--validate` 校验地图、几何和绑定，不启动 GPU，也不替代异步图像解码和视觉验收。渲染验收命令按全图、小店、街景、影院、桥下、山坡六个固定镜头运行，输出 PNG 和帧时间日志后退出；PNG 为测试产物，发布 Wiki 时另导出质量 80 的 WebP
+`--validate` 校验地图、几何和绑定，不启动 GPU，也不替代异步图像解码和视觉验收。渲染验收命令按全图、小店、街景、影院、桥下、山坡、校园高差七个固定镜头运行，输出 PNG 和帧时间日志后退出；PNG 为测试产物，发布 Wiki 时另导出质量 80 的 WebP
 
 ```sh
 cargo run --release --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --verify /tmp/n-side-viewer-check
