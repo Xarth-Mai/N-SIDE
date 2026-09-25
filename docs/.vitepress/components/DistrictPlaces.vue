@@ -1,8 +1,10 @@
 <script setup>
 import data from '../../../source-assets/district-map/district.json'
+import { routeProfile } from '../../../tools/district-plan.mjs'
 const blocks=data.blocks??[]
 const places=block=>data.places.filter(p=>p.block===block && p.featured)
 const parcel=id=>data.parcels.find(p=>p.id===id)
+const arrivalSummary=arrival=>`${arrival.label} · ${arrival.level} · 高程 ${data.nodes[arrival.nodes.at(-1)][2]} m · 接入后 ${Math.round(routeProfile(data.nodes,arrival.nodes).at(-1).distance)} m`
 </script>
 
 <template>
@@ -16,6 +18,8 @@ const parcel=id=>data.parcels.find(p=>p.id===id)
           <p>{{ p.use }} · {{ p.users }}</p>
           <dl>
             <dt>到达</dt><dd>{{ p.entry }}</dd>
+            <template v-if="p.arrivals?.public"><dt>主入口</dt><dd>{{ arrivalSummary(p.arrivals.public) }}</dd></template>
+            <template v-if="p.arrivals?.service"><dt>服务口</dt><dd>{{ arrivalSummary(p.arrivals.service) }}</dd></template>
             <dt>活动</dt><dd>{{ p.activity }}</dd>
             <dt>时段</dt><dd>{{ p.time }}</dd>
             <dt>运营</dt><dd>{{ p.operations }}</dd>
@@ -31,5 +35,5 @@ const parcel=id=>data.parcels.find(p=>p.id===id)
 </template>
 
 <style scoped>
-.place-program section{margin:28px 0}.place-list{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}.place-list article{padding:16px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}.place-list h4{margin:0 0 8px;font-size:16px}.place-list h4 span{font-weight:400;color:var(--vp-c-text-2)}.place-list small{font-size:11px;font-weight:400;color:var(--vp-c-brand-1)}.place-list p{font-size:13px;line-height:1.6;margin:8px 0}.place-list dl{display:grid;grid-template-columns:2.5em 1fr;gap:6px 8px;font-size:12px;line-height:1.7}.place-list dt{color:var(--vp-c-text-2)}.place-list dd{margin:0;overflow-wrap:anywhere}.place-list summary{cursor:pointer;font-size:13px;padding:10px 0;min-height:44px}@media(max-width:700px){.place-list{grid-template-columns:1fr}}
+.place-program section{margin:28px 0}.place-list{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}.place-list article{padding:16px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}.place-list h4{margin:0 0 8px;font-size:16px}.place-list h4 span{font-weight:400;color:var(--vp-c-text-2)}.place-list small{font-size:11px;font-weight:400;color:var(--vp-c-brand-1)}.place-list p{font-size:13px;line-height:1.6;margin:8px 0}.place-list dl{display:grid;grid-template-columns:3em 1fr;gap:6px 8px;font-size:12px;line-height:1.7}.place-list dt{color:var(--vp-c-text-2);white-space:nowrap}.place-list dd{margin:0;overflow-wrap:anywhere}.place-list summary{cursor:pointer;font-size:13px;padding:10px 0;min-height:44px}@media(max-width:700px){.place-list{grid-template-columns:1fr}}
 </style>

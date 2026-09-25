@@ -62,6 +62,7 @@ export function buildScene(data) {
   for(let i=1;i<shore.length;i++)bank.push(face([shore[i-1],shore[i],...[shore[i],shore[i-1]].map(([x,y])=>[x,y,0])],'#a5ac9b'))
   add([300,-133],'bank',bank)
   for(const area of data.surfaces) {
+    if(area.building)continue
     const top=area.polygon.map(([x,y])=>[x,y,area.elevation])
     const colors={private:'#d8d4be',school:'#dfdcc6',service:'#cecbb9',park:'#b4c796',platform:'#e2d9bd',court:'#ded9bf'}
     const shapes=[]
@@ -70,7 +71,7 @@ export function buildScene(data) {
       if(i<2)shapes.push(face([a,b,[...b.slice(0,2),b[2]-2],[...a.slice(0,2),a[2]-2]],'#b0b09e'))
     }
     shapes.push(face(top,colors[area.kind]))
-    add(top[0],'surface',shapes,area.place)
+    add(top[0],area.elevated?'platform':'surface',shapes,area.place)
     if(area.boundary) for(let i=1;i<area.boundary.length;i++) {
       const a=[...area.boundary[i-1],area.elevation],b=[...area.boundary[i],area.elevation]
       add(lerp(a,b,.5),'wall',[face([a,b,[b[0],b[1],b[2]+2.5],[a[0],a[1],a[2]+2.5]],'#9aab99')],area.place)
@@ -86,7 +87,7 @@ export function buildScene(data) {
     const length=Math.hypot(b[0]-a[0],b[1]-a[1])
     if(road.kind==='lift'){add(a,'lift',[line([a,b],'#8a9e93',5)]);continue}
     if(length===0)continue
-    const width=({main:10,avenue:15,shore:7,bridge:16,deck:5,steps:6,trail:4,service:5,landing:9}[road.kind]??7)
+    const width=road.width??({main:10,avenue:15,shore:7,bridge:16,deck:5,steps:6,trail:4,service:5,landing:9}[road.kind]??7)
     const n=Math.ceil(length/(road.kind==='steps'?3:20))
     const offset=[-(b[1]-a[1])/length*width/2,(b[0]-a[0])/length*width/2]
     for(let j=0;j<n;j++) {
@@ -131,6 +132,7 @@ export function buildScene(data) {
       // Civic roofs are flat; the shared cinema roof carries its public garden
       shapes.splice(3,2,face(rectangle(x,y,w,l,top),b.place==='15'?'#a9bf91':'#b3bdb7',{stroke:'#75837e',width:.6}))
     }
+    for(const area of data.surfaces.filter(a=>a.building===b.id))shapes.push(face(area.polygon.map(([x,y])=>[x,y,area.elevation]),'#a9bf91',{stroke:'#75837e',width:.6}))
     add([right,y],'building',shapes,b.place)
   }
   for(const [x,y] of data.trees) {

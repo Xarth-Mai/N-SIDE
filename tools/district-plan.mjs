@@ -25,13 +25,22 @@ export function routeProfile(nodes, ids) {
   })
 }
 
+export function parcelStats(data) {
+  return data.parcels.map(parcel=>{
+    const drawn=data.buildings.filter(b=>b.bank==='district'&&b.parcel===parcel.id).length
+    return {...parcel,drawn,remaining:parcel.capacity-drawn}
+  })
+}
+
 export function planStats(data) {
+  const parcels=parcelStats(data)
   return {
     blocks:data.blocks.length,
     parcelArea:data.parcels.reduce((sum,p)=>sum+polygonArea(p.polygon),0),
     urbanArea:data.blocks.reduce((sum,b)=>sum+polygonArea(b.urbanPolygon??b.polygon),0),
     blockArea:data.blocks.reduce((sum,b)=>sum+polygonArea(b.polygon),0),
     capacity:data.parcels.reduce((sum,p)=>sum+p.capacity,0),
+    remaining:parcels.reduce((sum,p)=>sum+p.remaining,0),
     places:data.places.filter(p=>p.featured).length,
     detailed:data.places.filter(p=>p.detail).length,
     buildings:data.buildings.filter(b=>b.bank==='district').length,

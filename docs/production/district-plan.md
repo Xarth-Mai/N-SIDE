@@ -7,9 +7,10 @@ depends_on: ["DOC-DISTRICT-SPACE", "DOC-DISTRICT-PLACES", "LOC-002"]
 <script setup>
 import DistrictPlan from '../.vitepress/components/DistrictPlan.vue'
 import data from '../../source-assets/district-map/district.json'
-import { planStats, polygonArea, routeProfile, housingEstimate } from '../../tools/district-plan.mjs'
-const stats=planStats(data),housing=housingEstimate(data)
-const blockParcels=id=>data.parcels.filter(p=>p.block===id)
+import { planStats, parcelStats, polygonArea, routeProfile, housingEstimate } from '../../tools/district-plan.mjs'
+const stats=planStats(data),housing=housingEstimate(data),parcels=parcelStats(data)
+const blockParcels=id=>parcels.filter(p=>p.block===id)
+const blockTotal=(id,field)=>blockParcels(id).reduce((sum,p)=>sum+p[field],0)
 const profile=id=>routeProfile(data.nodes,data.routes.find(r=>r.id===id).nodes)
 </script>
 
@@ -32,13 +33,21 @@ N站及其西侧兴趣街承担到达、工作与兴趣消费，东侧影院和�
 ## 十二街坊与地块容量
 
 <table>
-<thead><tr><th>街坊</th><th>地块面积 / ha</th><th>建筑容量</th><th>目的地</th></tr></thead>
-<tbody><tr v-for="b in data.blocks" :key="b.id"><td>{{ b.id }} · {{ b.name }}</td><td>{{ (blockParcels(b.id).reduce((n,p)=>n+polygonArea(p.polygon),0)/10000).toFixed(2) }}</td><td>{{ b.targetBuildings }}</td><td>{{ data.places.filter(p=>p.block===b.id&&p.featured).length }}</td></tr></tbody>
+<thead><tr><th>街坊</th><th>地块面积 / ha</th><th>规划容量</th><th>已落图</th><th>剩余容量</th><th>目的地</th></tr></thead>
+<tbody><tr v-for="b in data.blocks" :key="b.id"><td>{{ b.id }} · {{ b.name }}</td><td>{{ (blockParcels(b.id).reduce((n,p)=>n+polygonArea(p.polygon),0)/10000).toFixed(2) }}</td><td>{{ blockTotal(b.id,'capacity') }}</td><td>{{ blockTotal(b.id,'drawn') }}</td><td>{{ blockTotal(b.id,'remaining') }}</td><td>{{ data.places.filter(p=>p.block===b.id&&p.featured).length }}</td></tr></tbody>
 </table>
+
+<details>
+<summary>逐地块容量</summary>
+<table>
+<thead><tr><th>地块</th><th>用途</th><th>规划容量</th><th>已落图</th><th>剩余容量</th></tr></thead>
+<tbody><tr v-for="p in parcels" :key="p.id"><td>{{ p.id }}</td><td>{{ p.use }}</td><td>{{ p.capacity }}</td><td>{{ p.drawn }}</td><td>{{ p.remaining }}</td></tr></tbody>
+</table>
+</details>
 
 本岸街坊的城镇部分规划范围约 {{ (stats.urbanArea/10000).toFixed(2) }} ha，加入山脚街坊关联的山林游憩范围后约 {{ (stats.blockArea/10000).toFixed(2) }} ha。已经划定的 {{ data.parcels.length }} 个地块合计 {{ (stats.parcelArea/10000).toFixed(2) }} ha，其余包含街道、林地与尚待细分的用地，不能全部计作可建面积
 
-地块容量合计 {{ stats.capacity }} 个建筑体量；图面已表达 {{ stats.buildings }} 个本岸初设体量，对岸另有 {{ stats.background }} 个背景体量。目的地 {{ stats.places }} 处，其中 {{ stats.detailed }} 处具有空间简报，附属通路、住宅与后勤节点单列
+地块容量合计 {{ stats.capacity }} 个建筑体量；图面已表达 {{ stats.buildings }} 个本岸初设体量，剩余容量 {{ stats.remaining }} 个，对岸另有 {{ stats.background }} 个背景体量。容量包含滨水广场的渡运旧物展屋，随实际布局在 220—350 范围内校准。目的地 {{ stats.places }} 处，其中 {{ stats.detailed }} 处具有空间简报，附属通路、住宅与后勤节点单列
 
 ### 住房与服务人口假设
 
@@ -50,11 +59,19 @@ N站及其西侧兴趣街承担到达、工作与兴趣消费，东侧影院和�
 
 ### 校园、影院与住宅的高差
 
-校园台地取 18 m，南门与校园同高；北侧校外道路取 29 m。11 m 差值由校园北侧挡墙、绿化坡面和边界处理，校外步行沿东西道路绕行。公共球场在北侧放学街独立使用，校内操场保留校园边界
+校园台地取 18 m，南门与校园同高；文具、外带饮品轻食与等候庭沿南门外的同高步行带排列。北侧 29 m 上街服务球场、体育用品店和住宅，校内操场保留校园边界。校园北缘 11 m 高差由挡墙、绿化坡面和边界处理，校外步行沿东西道路绕行
 
-影院地面取 17 m，公共屋顶取 29 m，电梯与上街连接分别提供到达。屋顶公共通路与票务区分开，影院闭馆后地面道路继续通行；电梯井、屋面结构和开放管理在建筑阶段落实
+影院地面取 17 m，公共屋顶取 29 m，屋顶入口位于 V-15 东侧屋面边界。屋面外的同高公共平台独立绘出范围，沿建筑东侧转折接上街；公共电梯从低街到屋面，公共通路与票务区分开。影院闭馆后地面道路继续通行，电梯井、平台支撑、屋面结构和开放管理在建筑阶段落实
 
 坡地公共到达节点连接 30 m 与 36 m 两层，地面住宅路仍相通。普通住宅院内道路与跨街坊通路分别组织，公众穿行沿院外支路进行
+
+### 从街坊接入到场所入口
+
+场所记录街坊接入点，重点场所继续记录公众与服务到达路径、入口和楼层。学校的到访通路进入受管理的校园，后勤通路进入服务门；跨街坊的日常路线沿公共道路组织
+
+入口标高与建筑、屋面或场地对应。影院共楼场所经内部公共交通到达餐饮层与屋顶，屋外平台单独归属；Live House 的观众从会合前场到前厅，器材由独立装卸方向接后台
+
+场所卡中的接入后距离按完整路径累计，生活路线按所列场所逐一经过对应入口。宽度、转弯、入口平台和开放管理在代表街段平面中继续校核
 
 ## 距离与坡度
 

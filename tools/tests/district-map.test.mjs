@@ -64,7 +64,7 @@ test('scene keeps platforms below volumes and geometry is finite', async () => {
 })
 
 test('expanded plan counts destinations separately and keeps parcel attachments valid', async () => {
-  const {inside,planStats}=await import('../district-plan.mjs')
+  const {inside,planStats,parcelStats}=await import('../district-plan.mjs')
   const parcels=new Map(data.parcels.map(p=>[p.id,p])),blocks=new Map(data.blocks.map(b=>[b.id,b]))
   const buildings=new Map(data.buildings.map(b=>[b.id,b])),places=new Map(data.places.map(p=>[p.id,p]))
   assert.equal(parcels.size,data.parcels.length)
@@ -75,6 +75,8 @@ test('expanded plan counts destinations separately and keeps parcel attachments 
   assert.ok(stats.capacity>=220&&stats.capacity<=350)
   assert.ok(stats.places>=70&&stats.places<=100)
   assert.equal(stats.detailed,24)
+  assert.equal(stats.capacity-stats.buildings,stats.remaining)
+  for(const p of parcelStats(data))assert.ok(Number.isInteger(p.capacity)&&p.remaining>=0,`${p.id}: ${p.drawn} volumes exceed capacity ${p.capacity}`)
   for(const b of data.blocks){
     assert.equal(data.places.filter(p=>p.block===b.id&&p.featured).length,b.targetPlaces)
     assert.equal(data.parcels.filter(p=>p.block===b.id).reduce((n,p)=>n+p.capacity,0),b.targetBuildings)
@@ -107,11 +109,11 @@ test('sections follow connected routes and distinguish a lift from a slope', asy
   assert.equal(lift[1].length,0);assert.equal(lift[1].grade,null);assert.equal(lift[1].rise,12)
   // The ground network remains usable when decks, steps and lifts are unavailable
   const seen=new Set(['station']);let previous=-1
-  while(previous!==seen.size){previous=seen.size;for(const r of data.roads.filter(r=>!['steps','lift','deck'].includes(r.kind)))if(r.nodes.some(id=>seen.has(id)))r.nodes.forEach(id=>seen.add(id))}
+  while(previous!==seen.size){previous=seen.size;for(const r of data.roads.filter(r=>!['steps','lift','deck','interior'].includes(r.kind)&&!['service','controlled'].includes(r.access)))if(r.nodes.some(id=>seen.has(id)))r.nodes.forEach(id=>seen.add(id))}
   for(const id of ['home','library_gate','school_gate','interest_mid','music_west','river_w','east_clinic','upper'])assert.ok(seen.has(id),id)
 })
 
-test('street centerlines avoid the interiors of building footprints', () => {
+test('street centerlines avoid building interiors at the same elevation', () => {
   const crosses=(a,b,polygon)=> {
     const [[x,y],,[u,v]]=polygon
     let lo=0,hi=1
@@ -123,7 +125,75 @@ test('street centerlines avoid the interiors of building footprints', () => {
   }
   assert.ok(crosses([-1,1],[3,1],[[0,0],[2,0],[2,2],[0,2]]))
   assert.ok(!crosses([-1,0],[3,0],[[0,0],[2,0],[2,2],[0,2]]))
-  for(const b of data.buildings)for(const r of data.roads.filter(r=>!['lift','deck'].includes(r.kind)))for(let i=1;i<r.nodes.length;i++)assert.ok(!crosses(data.nodes[r.nodes[i-1]],data.nodes[r.nodes[i]],b.polygon),`${b.id}: ${r.nodes.join(' → ')}`)
+  for(const b of data.buildings)for(const r of data.roads)for(let i=1;i<r.nodes.length;i++) {
+    const a=data.nodes[r.nodes[i-1]],c=data.nodes[r.nodes[i]]
+    if(r.building===b.id&&['interior','lift'].includes(r.kind))continue
+    if(Math.min(a[2],c[2])>=b.elevation+b.height||Math.max(a[2],c[2])<b.elevation)continue
+    assert.ok(!crosses(a,c,b.polygon),`${b.id}: ${r.nodes.join(' → ')}`)
+  }
+})
+
+test('detailed places connect street access to separate public and service entrances', async () => {
+  const {inside}=await import('../district-plan.mjs')
+  const linked=(a,b,role)=>data.roads.some(r=>(role==='service'||r.access!=='service')&&r.nodes.some((id,i)=>i>0&&((id===a&&r.nodes[i-1]===b)||(id===b&&r.nodes[i-1]===a))))
+  const reached=new Set(['station']);let previous=-1
+  while(previous!==reached.size){previous=reached.size;for(const r of data.roads.filter(r=>r.access!=='service'))if(r.nodes.some(n=>reached.has(n)))r.nodes.forEach(n=>reached.add(n))}
+  for(const p of data.places) {
+    assert.ok(data.nodes[p.access],`${p.id}: unknown street access`)
+    if(p.featured)assert.ok(reached.has(p.access),`${p.id}: street access disconnected from public network`)
+    if(p.detail)assert.ok(p.arrivals?.public&&p.arrivals?.service,`${p.id}: missing entrance paths`)
+    for(const [role,arrival] of Object.entries(p.arrivals??{})) {
+      assert.ok(arrival.label&&arrival.level&&arrival.nodes.length>=2,p.id)
+      assert.equal(arrival.nodes[0],p.access,`${p.id}: entrance path must start at street access`)
+      for(let i=1;i<arrival.nodes.length;i++)assert.ok(linked(arrival.nodes[i-1],arrival.nodes[i],role),`${p.id} ${role}: broken or restricted approach`)
+      const end=data.nodes[arrival.nodes.at(-1)]
+      const building=data.buildings.find(b=>b.id===p.building)
+      const parcel=data.parcels.find(q=>q.id===p.parcel)
+      if(role==='service'&&building)for(let i=1;i<arrival.nodes.length;i++)assert.ok(data.roads.some(r=>!['steps','trail','deck'].includes(r.kind)&&(r.kind!=='lift'||r.access==='service')&&r.nodes.some((id,j)=>j>0&&((id===arrival.nodes[i]&&r.nodes[j-1]===arrival.nodes[i-1])||(id===arrival.nodes[i-1]&&r.nodes[j-1]===arrival.nodes[i])))),`${p.id}: deliveries depend on steps or a public lift`)
+      assert.ok(inside(end,building?.polygon??parcel.polygon),`${p.id} ${role}: entrance outside its destination`)
+      if(!building){
+        const surfaces=data.surfaces.filter(s=>s.place===p.id&&s.elevation===end[2])
+        assert.ok(surfaces.some(s=>inside(end,s.polygon)),`${p.id} ${role}: entrance outside its same-level public space`)
+      }
+      if(role==='public')assert.equal(end[2],p.position[2],`${p.id}: arrival at wrong level`)
+      if(building&&!p.parent){
+        const [[x,y],,[u,v]]=building.polygon
+        assert.ok(end[0]===x||end[0]===u||end[1]===y||end[1]===v,`${p.id} ${role}: missing facade entrance`)
+      }
+    }
+  }
+})
+
+test('cinema roof and exterior platform have distinct footprints and supported paths', async () => {
+  const {inside}=await import('../district-plan.mjs')
+  const roof=data.surfaces.find(s=>s.building==='V-15'),building=data.buildings.find(b=>b.id==='V-15')
+  assert.ok(roof?.elevated)
+  assert.equal(roof.elevation,building.elevation+building.height)
+  assert.ok(roof.polygon.every(p=>inside(p,building.polygon)))
+  assert.ok(inside(data.nodes.cinema_roof,roof.polygon))
+  assert.equal(data.nodes.cinema_roof[2],roof.elevation)
+  for(const r of data.roads.filter(r=>r.surface)) {
+    const surface=data.surfaces.find(s=>s.id===r.surface)
+    assert.ok(surface,r.surface)
+    for(const id of r.nodes){assert.ok(inside(data.nodes[id],surface.polygon),`${id}: outside ${r.surface}`);assert.equal(data.nodes[id][2],surface.elevation)}
+  }
+  assert.ok(data.roads.some(r=>r.surface&&data.surfaces.some(s=>s.id===r.surface&&s.elevated&&!s.building)))
+  const reached=new Set(['upper']);let previous=-1
+  while(previous!==reached.size){previous=reached.size;for(const r of data.roads.filter(r=>r.kind!=='lift'&&r.access!=='service'))if(r.nodes.some(n=>reached.has(n)))r.nodes.forEach(n=>reached.add(n))}
+  assert.ok(reached.has('slope_platform_entry'),'upper street must connect to the platform without its lift')
+})
+
+test('lifestyle routes visit actual arrival endpoints in the stated order', () => {
+  for(const route of data.routes.filter(r=>r.places)) {
+    let cursor=0
+    for(const id of route.places) {
+      const place=data.places.find(p=>p.id===id),destination=place.arrivals?.public.nodes.at(-1)??place.access
+      const index=route.nodes.indexOf(destination,cursor)
+      assert.ok(index>=cursor,`${route.id}: missing or out-of-order destination ${id} ${destination}`)
+      cursor=index+1
+    }
+    for(let i=1;i<route.nodes.length;i++)assert.ok(data.roads.some(r=>r.access!=='service'&&r.nodes.some((id,j)=>j>0&&((id===route.nodes[i]&&r.nodes[j-1]===route.nodes[i-1])||(id===route.nodes[i-1]&&r.nodes[j-1]===route.nodes[i])))),`${route.id}: service-only shortcut`)
+  }
 })
 
 test('housing estimates use residential floor area rather than the volume count', async () => {

@@ -9,6 +9,8 @@ const width=Math.max(...positions.map(p=>p[0]))-x0+100,height=-Math.min(...posit
 const points=polygon=>polygon.map(([x,y])=>`${x},${-y}`).join(' ')
 const roadStyle={avenue:[18,'#c3aa80'],main:[13,'#c3aa80'],bridge:[18,'#8b9b9d'],lane:[8,'#c1b9a7'],service:[6,'#ad9a8b'],shore:[9,'#9bb8ae'],steps:[5,'#a58468'],trail:[5,'#a8b39a'],crossing:[9,'#c3aa80'],landing:[8,'#a8b39a']}
 const landmarks=data.places.filter(p=>['01','04','15','19','23','26'].includes(p.id))
+const elevated=data.surfaces.filter(s=>s.elevated)
+const entrances=data.places.filter(p=>p.detail).flatMap(p=>Object.entries(p.arrivals??{}).map(([role,a])=>({id:`${p.id}-${role}`,role,point:data.nodes[a.nodes.at(-1)],label:`${p.name} · ${a.label} · ${a.level}`})))
 const profiles=(data.sections??[]).map(section=>{
   const samples=routeProfile(data.nodes,section.nodes).map(p=>({...p,height:p.point[2],label:section.labels?.[p.id]}))
   const distance=samples.at(-1)?.distance??0
@@ -32,12 +34,14 @@ const profiles=(data.sections??[]).map(section=>{
         <g class="blocks"><polygon v-for="(block,i) in blocks" :key="block.id" :points="points(block.polygon)" :fill="['#e7e4d1','#e1e8d7','#e8ddd0'][i%3]" stroke="#adb69e" stroke-width="2"><title>{{ block.id }} {{ block.name }}：{{ block.role }}</title></polygon></g>
         <g class="parcels"><polygon v-for="parcel in parcels" :key="parcel.id" :points="points(parcel.polygon)" fill="#fffdf5" fill-opacity=".55" stroke="#bcb7a8" stroke-width="1.5"><title>{{ parcel.id }} · {{ parcel.use }}</title></polygon></g>
         <g class="buildings"><polygon v-for="(building,i) in data.buildings" :key="i" :points="points(building.polygon)" fill="#c9c8c0" stroke="#8c938c" stroke-width="1"/></g>
+        <g class="elevated-platforms"><polygon v-for="(surface,i) in elevated" :key="i" :points="points(surface.polygon)" :fill="surface.building?'#acc698':'#d8cbb1'" stroke="#6e8a72" stroke-width="2"><title>{{ surface.id??data.places.find(p=>p.id===surface.place)?.name }} · {{ surface.elevation }} m{{ surface.building?' · '+surface.building+' 屋面':' · 外部公共平台' }}</title></polygon></g>
         <g class="roads" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <g v-for="(road,i) in data.roads" :key="i">
-            <polyline :points="points(road.nodes.map(id=>data.nodes[id]))" stroke="#f8f6ed" :stroke-width="(roadStyle[road.kind]?.[0]??6)+4"/>
-            <polyline :points="points(road.nodes.map(id=>data.nodes[id]))" :stroke="roadStyle[road.kind]?.[1]??'#c1b9a7'" :stroke-width="roadStyle[road.kind]?.[0]??6" :stroke-dasharray="['steps','trail'].includes(road.kind)?'3 5':undefined"/>
+            <polyline :points="points(road.nodes.map(id=>data.nodes[id]))" stroke="#f8f6ed" :stroke-width="(road.width??roadStyle[road.kind]?.[0]??6)+4"/>
+            <polyline :points="points(road.nodes.map(id=>data.nodes[id]))" :stroke="roadStyle[road.kind]?.[1]??'#c1b9a7'" :stroke-width="road.width??roadStyle[road.kind]?.[0]??6" :stroke-dasharray="['steps','trail'].includes(road.kind)?'3 5':undefined"/>
           </g>
         </g>
+        <g class="entrances"><g v-for="entrance in entrances" :key="entrance.id" :transform="`translate(${entrance.point[0]} ${-entrance.point[1]})`"><circle v-if="entrance.role==='public'" r="5" fill="#397b85" stroke="#fffdf5" stroke-width="1.5"/><rect v-else x="-4" y="-4" width="8" height="8" fill="#a06e50" stroke="#fffdf5" stroke-width="1.5"/><title>{{ entrance.label }} · {{ entrance.point[2] }} m</title></g></g>
         <g class="connections">
           <g v-for="connection in connections" :key="connection.id">
             <line :x1="data.nodes[connection.from][0]" :y1="-data.nodes[connection.from][1]" :x2="connection.to[0]" :y2="-connection.to[1]" stroke="#557d82" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#district-plan-arrow)"/>
@@ -54,7 +58,7 @@ const profiles=(data.sections??[]).map(section=>{
         <g :transform="`translate(${x0+35} ${y0+height-45})`" class="scale-bar"><path d="M 0 -8 V 0 H 100 V -8" fill="none" stroke="#53645c" stroke-width="2"/><text x="50" y="27" text-anchor="middle">100 m</text></g>
       </svg>
     </div>
-    <ul class="plan-legend" aria-label="总平面图例"><li><i class="legend-block"/>街坊范围</li><li><i class="legend-parcel"/>规划地块</li><li><i class="legend-building"/>初设建筑体量</li><li><i class="legend-road"/>城市道路与生活街</li><li><i class="legend-shore"/>滨水通道</li><li><i class="legend-trail"/>台阶与步道</li><li><i class="legend-link"/>图外城市联系</li></ul>
+    <ul class="plan-legend" aria-label="总平面图例"><li><i class="legend-block"/>街坊范围</li><li><i class="legend-parcel"/>规划地块</li><li><i class="legend-building"/>初设建筑体量</li><li><i class="legend-road"/>城市道路与生活街</li><li><i class="legend-shore"/>滨水通道</li><li><i class="legend-trail"/>台阶与步道</li><li><i class="legend-link"/>图外城市联系</li><li><span style="color:#397b85">●</span> 重点场所主入口</li><li><span style="color:#a06e50">■</span> 服务入口</li></ul>
     <div v-for="profile in profiles" :key="profile.id" class="plan-section">
       <h4>{{ profile.id }} · {{ profile.name }}</h4>
       <p>{{ profile.note }}</p>
