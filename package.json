@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "docs:dev": "bun --bun vitepress dev docs",
-    "docs:build": "bun install --frozen-lockfile && bun --bun vitepress build docs",
-    "docs:preview": "bun --bun vitepress preview docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "bun install --frozen-lockfile && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "check:docs": "python3 -B tools/validate_docs.py --root .",
     "check:narrative": "python3 -B tools/validate_narrative.py --root .",
     "check:templates": "python3 -B tools/validate_narrative.py --file docs/templates/narrative.json",

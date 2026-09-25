@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="N:">
+  <defs>
+    <path id="n-shape" d="M288 241 428 250 495 402 519 286 581 226 706 203 629 747 578 804 449 786 365 572 344 718 295 772 151 777 240 315Z"/>
+    <g id="colon-block">
+      <path id="colon-shape" d="M-4-8H120V114L80 160H-44V40Z"/>
+      <g id="colon-sides">
+        <path id="colon-left" d="M0 0-36 42v110L0 110Z"/>
+        <path id="colon-bottom" d="M0 110l-36 42H76l36-42Z"/>
+      </g>
+      <use id="colon-outline" href="#colon-shape" fill="none" stroke="#fff" stroke-width="6" vector-effect="non-scaling-stroke"/>
+      <g id="colon-edges" fill="none" stroke="#fff" stroke-width="2.5" vector-effect="non-scaling-stroke">
+        <path d="M-36 42 0 0M-36 152 0 110M76 152 112 110"/>
+      </g>
+      <rect id="colon-front" width="112" height="110" fill="#fff"/>
+    </g>
+  </defs>
+  <rect id="background" width="1024" height="1024" fill="#000"/>
+  <g id="logo" fill="#000" stroke-linejoin="miter" stroke-miterlimit="4" transform="translate(-26 0) scale(1.06 1)">
+    <g id="n">
+      <use id="n-body" href="#n-shape"/>
+      <path id="n-front" fill="#fff" d="M292 252 424 258 531 522 582 237 694 214 620 744 503 729 375 461 335 718H223Z"/>
+      <g id="n-sides">
+        <path id="n-left" d="M292 252 248 316 161 768 223 718Z"/>
+        <path id="n-left-foot" d="M223 718 161 768 289 764 335 718Z"/>
+        <path id="n-inner-upper" d="M582 237 527 288 495 402 531 522Z"/>
+        <path id="n-inner-lower" d="M375 461 365 572 453 779 503 729Z"/>
+        <path id="n-right-foot" d="M503 729 453 779 575 796 620 744Z"/>
+      </g>
+      <use id="n-outline" href="#n-shape" fill="none" stroke="#fff" stroke-width="6" vector-effect="non-scaling-stroke"/>
+      <g id="n-edges" fill="none" stroke="#fff" stroke-width="2.5" vector-effect="non-scaling-stroke">
+        <path d="M248 316 292 252M527 288 582 237M161 768 223 718M289 764 335 718M453 779 503 729M575 796 620 744"/>
+      </g>
+    </g>
+    <g id="colon-upper" transform="translate(744 355) rotate(-10) skewX(-14) scale(1.05 1)">
+      <use href="#colon-block"/>
+    </g>
+    <g id="colon-lower" transform="translate(727 553) rotate(6) skewX(-5) scale(1.06 .96)">
+      <use href="#colon-block"/>
+    </g>
+  </g>
+</svg>

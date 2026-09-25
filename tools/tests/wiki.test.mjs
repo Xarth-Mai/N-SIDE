@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSyn
 import { tmpdir } from 'node:os'
 import { dirname, join, relative } from 'node:path'
 import { buildSidebar } from '../../docs/.vitepress/sidebar.mjs'
-import { copyWikiData, listWikiData, wikiDataPlugin } from '../wiki-data.mjs'
+import { copyProjectAssets, copyWikiData, listWikiData, projectAssetsPlugin, wikiDataPlugin } from '../wiki-data.mjs'
 
 function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'n-side-wiki-'))
@@ -33,12 +33,23 @@ function request(root, url, method = 'GET') {
   return result
 }
 
-test('sidebar uses the four selected groups', t => {
+function requestProjectAsset(root, url, method = 'GET') {
+  let handler
+  projectAssetsPlugin(root).configureServer({ middlewares: { use(_route, fn) { handler = fn } } })
+  const result = { next: false, headers: {}, body: undefined }
+  handler({ url, method }, {
+    setHeader(key, value) { result.headers[key] = value },
+    end(body) { result.body = body?.toString() },
+  }, error => { result.next = true; result.error = error })
+  return result
+}
+
+test('sidebar separates player and developer worlds', t => {
   const { root, put } = fixture(t)
-  put('vision.md', '# 项目愿景\n'); put('conventions.md', '# 项目约定\n')
+  put('conventions.md', '# 项目约定\n')
   const sidebar = buildSidebar(root)
-  assert.deepEqual(sidebar.map(item => item.text), ['Overview', 'Universe', 'Game', 'Development'])
-  assert.deepEqual(links(sidebar), ['/vision', '/conventions'])
+  assert.deepEqual(sidebar.map(item => item.text), ['Overview', '游戏指南', '开发'])
+  assert.deepEqual(links(sidebar), ['/', '/conventions'])
 })
 
 test('new content pages appear in the sidebar', t => {
@@ -47,19 +58,29 @@ test('new content pages appear in the sidebar', t => {
   assert.ok(links(buildSidebar(root)).includes('/characters/example'))
 })
 
+test('reading order precedes unlisted pages without hiding them', t => {
+  const { root, put } = fixture(t)
+  for (const name of ['agent', 'brother', 'family', 'sister', 'newcomer']) put(`characters/${name}.md`)
+  put('world/history.md'); put('world/null-city.md')
+  assert.deepEqual(links(buildSidebar(root)), [
+    '/', '/world/null-city', '/world/history',
+    '/characters/family', '/characters/brother', '/characters/sister', '/characters/agent', '/characters/newcomer',
+  ])
+})
+
 test('section index and object README retain distinct routes', t => {
   const { root, put } = fixture(t)
   put('quests/index.md', '# 游戏任务\n')
   put('quests/QST-001/README.md', '# 委托一\n')
   put('quests/QST-001/development.md', '# 开发稿\n')
   const routes = links(buildSidebar(root))
-  assert.deepEqual(routes, ['/quests/', '/quests/QST-001/README', '/quests/QST-001/development'])
+  assert.deepEqual(routes, ['/', '/quests/', '/quests/QST-001/README', '/quests/QST-001/development'])
 })
 
 test('navigation scans knowledge categories', t => {
   const { root, put } = fixture(t)
   put('todo/work.md'); put('.vitepress/cache.md'); put('public/example.md')
-  assert.deepEqual(links(buildSidebar(root)), [])
+  assert.deepEqual(links(buildSidebar(root)), ['/'])
 })
 
 test('data export preserves source paths and bytes', t => {
@@ -79,6 +100,26 @@ test('data export scans original content rather than build output', t => {
   put('public/images/meta.json', '{}'); put('.vitepress/cache/data.json', '{}')
   put('node_modules/pkg/package.json', '{}')
   assert.deepEqual(listWikiData(root).map(file => relative(root, file)), ['templates/data.json'])
+})
+
+test('project assets are copied and served without a docs duplicate', t => {
+  const { root, put } = fixture(t)
+  const logo = put('source-assets/branding/logo.svg', '<svg/>')
+  const assets = [{ source: logo, path: 'branding/logo.svg' }]
+  const output = join(root, 'dist')
+  copyProjectAssets(assets, output)
+  assert.equal(readFileSync(join(output, 'project-assets/branding/logo.svg'), 'utf8'), '<svg/>')
+  const response = requestProjectAsset(assets, '/branding/logo.svg')
+  assert.equal(response.body, '<svg/>')
+  assert.equal(response.headers['Content-Type'], 'image/svg+xml')
+})
+
+test('project asset handler only serves explicitly published files', t => {
+  const { root, put } = fixture(t)
+  const external = put('external.svg', '<svg/>')
+  const assets = [{ source: external, path: 'published.svg' }]
+  assert.equal(requestProjectAsset(assets, '/external.svg').next, true)
+  assert.equal(requestProjectAsset(assets, '/../external.svg').next, true)
 })
 
 test('dev server provides raw JSON and CSV', t => {

@@ -1,6 +1,6 @@
 # 模板
 
-[委托](quest.md) · [日常片段](daily-scene.md) · [角色](character.md) · [敌人](enemy.md) · [地点](location.md) · [开发稿](case-development.md) · [试玩](narrative-playtest.md) · [连续性检查](continuity-review.md) · [开发任务](task.md)
+[角色](character.md) · [地点](location.md) · [敌人](enemy.md) · [日常片段](daily-scene.md) · [委托](quest.md) · [开发稿](case-development.md) · [试玩](narrative-playtest.md) · [连续性检查](continuity-review.md) · [开发任务](task.md)
 
 结构数据使用 [narrative.json](narrative.json)，正式对白使用 [dialogue.csv](dialogue.csv)。占位符替换为实际内容，辅助文件随制作阶段建立
 

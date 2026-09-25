@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, statSync } from 'node:fs'
+import { chmodSync, copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, statSync } from 'node:fs'
 import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 
 const TYPES = { '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8' }
@@ -53,6 +53,43 @@ export function wikiDataPlugin(sourceRoot) {
           if (!type || !within(root, file) || !existsSync(file) || !statSync(file).isFile()) return next()
           if (!within(root, realpathSync(file))) return next()
           res.setHeader('Content-Type', type)
+          res.end(req.method === 'HEAD' ? undefined : readFileSync(file))
+        } catch (error) {
+          next(error)
+        }
+      })
+    },
+  }
+}
+
+/** Export project-level assets under a stable Wiki URL. */
+export function copyProjectAssets(sourceRoot, output) {
+  const publicRoot = join(output, 'project-assets')
+  mkdirSync(publicRoot, { recursive: true })
+  chmodSync(publicRoot, 0o755)
+  for (const asset of sourceRoot) {
+    const target = join(publicRoot, asset.path)
+    mkdirSync(dirname(target), { recursive: true })
+    chmodSync(dirname(target), 0o755)
+    copyFileSync(asset.source, target)
+    chmodSync(target, 0o644)
+  }
+  return sourceRoot.length
+}
+
+/** Serve project-level assets without keeping a second copy under docs/. */
+export function projectAssetsPlugin(sourceRoot) {
+  const assets = new Map(sourceRoot.map(asset => [`/${asset.path}`, realpathSync(asset.source)]))
+  return {
+    name: 'n-side-project-assets',
+    configureServer(server) {
+      server.middlewares.use('/project-assets', (req, res, next) => {
+        if (!['GET', 'HEAD'].includes(req.method)) return next()
+        try {
+          const name = decodeURIComponent(new URL(req.url ?? '/', 'http://localhost').pathname)
+          const file = assets.get(name)
+          if (!file || !statSync(file).isFile()) return next()
+          if (extname(file) === '.svg') res.setHeader('Content-Type', 'image/svg+xml')
           res.end(req.method === 'HEAD' ? undefined : readFileSync(file))
         } catch (error) {
           next(error)

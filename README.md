@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="source-assets/branding/n-logo.svg" alt="N:SIDE Logo" width="180">
+</p>
+
 # N:SIDE
 
 ![N:SIDE hero image](docs/public/images/hero.webp)
@@ -10,7 +14,7 @@
 
 ## 入口
 
-[Wiki 源文档](docs/index.md) · [项目愿景](docs/vision.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
+[Wiki 与项目愿景](docs/index.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
 
 ## 本地 Wiki
 

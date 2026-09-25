@@ -7,7 +7,7 @@
 | `docs/` | 长期项目知识、完整设定集与 Wiki 页面 |
 | `todo/` | 当前开发任务与交付记录 |
 | `.agents/skills/` | Agent 工作流程 |
-| `source-assets/` | Blender、Krita、音频工程等可编辑源资产 |
+| `source-assets/` | 项目级共享资产与 Blender、Krita、音频工程等唯一源文件 |
 | `docs/public/images/` | Wiki 使用的导出图片 |
 | `tools/` | 检查、转换与测试工具 |
 | `game/` | 游戏源码、运行资产、工程配置与依赖锁文件 |
@@ -24,7 +24,7 @@
 
 正文使用中文，技术名词、标识符与命令使用英文。文本采用 UTF-8、LF，普通文件名采用 ASCII `kebab-case`。正文以项目自身的设定与设计原则直接表述，将创作理念融入相应主题。开发任务记录当前目标与实际结果；素材来源与许可信息按实际情况保留
 
-Wiki 分类入口使用 `index.md`。正文采用标准 Markdown，页面链接使用相对 `.md` 路径。仓库内文档图片统一使用以质量参数 `80` 编码的 WebP，图片保存在 `docs/public/images/`，使用相对当前 Markdown 文件的路径引用。模板占位符使用行内代码或代码块
+Wiki 分类入口使用 `index.md`。正文采用标准 Markdown，页面链接使用相对 `.md` 路径。Wiki 专用图片使用以质量参数 `80` 编码的 WebP，保存在 `docs/public/images/`。项目级共享资产遵循[资产管理](production/assets.md)，Wiki 通过 `/project-assets/` 引用。模板占位符使用行内代码或代码块
 
 Wiki 构建流程见[Wiki](production/wiki.md)
 

@@ -4,4 +4,4 @@
 
 资产包说明记录作者、来源、许可、导出设置与目标文件。关联进入内容的 `asset-manifest.json`。
 
-Wiki 图片导出到 `docs/public/images/`；游戏运行资产导出到 `game/assets/`。
+可直接使用的开放格式也保存在这里。Wiki 专用图片导出到 `docs/public/images/`，游戏运行资产导出到 `game/assets/`；Wiki 需要直接使用源资产时，通过显式发布清单映射，不复制文件。

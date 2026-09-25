@@ -6,5 +6,6 @@
 
 ## 资源与工具链
 
-- 文档图片使用质量 `80` 的 WebP，转换后更新引用
+- Wiki 编辑遵循[内容规则](docs/production/wiki.md#内容规则)，按阅读视角分工，玩家正文采用发布态表述
+- 资产遵循[资产管理](docs/production/assets.md)，唯一源保存在 `source-assets/`，Logo 保留 SVG；文档位图使用质量 `80` 的 WebP
 - JavaScript 依赖、脚本、测试与 Wiki 统一使用 Bun，维护 `bun.lock`

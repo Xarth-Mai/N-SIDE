@@ -1,6 +1,16 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { basename, join, relative, sep } from 'node:path'
 
+const readingOrder = {
+  world: ['null-city.md', 'nightmares.md', 'history.md'],
+  characters: ['family.md', 'brother.md', 'sister.md', 'agent.md'],
+  locations: ['n-district.md', 'shop.md', 'stargazing-terrace.md'],
+  gameplay: ['controls.md', 'daily-life.md', 'levels.md', 'dream-diving.md', 'combat.md'],
+  narrative: ['workflow.md', 'data.md', 'examples', 'playtest.md'],
+  production: ['workflow.md', 'gameplay.md', 'art.md', 'audio.md', 'assets.md', 'engineering.md', 'wiki.md'],
+  templates: ['character.md', 'location.md', 'enemy.md', 'daily-scene.md', 'quest.md', 'case-development.md', 'narrative-playtest.md', 'continuity-review.md', 'task.md'],
+}
+
 /** Read the visible heading used by the Wiki navigation. */
 function title(file) {
   const text = readFileSync(file, 'utf8')
@@ -18,9 +28,11 @@ function page(root, file) {
 
 function section(root, directory, label) {
   if (!existsSync(directory)) return null
+  const order = readingOrder[relative(root, directory)] ?? []
+  const rank = name => order.includes(name) ? order.indexOf(name) : order.length
   const entries = readdirSync(directory, { withFileTypes: true })
     .filter(entry => !entry.name.startsWith('.'))
-    .sort((a, b) => a.name.localeCompare(b.name, 'en'))
+    .sort((a, b) => rank(a.name) - rank(b.name) || a.name.localeCompare(b.name, 'en'))
   const landing = ['index.md', 'README.md']
     .map(name => join(directory, name)).find(file => existsSync(file))
   const items = []
@@ -41,23 +53,23 @@ function section(root, directory, label) {
   return result
 }
 
-/** Build the four approved navigation groups from the current source files. */
+/** Build the player-facing and developer-facing navigation groups. */
 export function buildSidebar(root) {
   const groups = [
-    ['Universe', [['World', 'world'], ['Characters', 'characters'], ['Locations', 'locations'], ['Enemies', 'enemies']]],
-    ['Game', [['Gameplay', 'gameplay'], ['Narrative', 'narrative'], ['Quests', 'quests']]],
-    ['Development', [['Production', 'production'], ['Templates', 'templates']]],
+    ['游戏指南', [['世界', 'world'], ['人物', 'characters'], ['地点', 'locations'], ['敌人', 'enemies'], ['玩法', 'gameplay']]],
+    ['开发', [['叙事', 'narrative'], ['任务', 'quests'], ['制作', 'production'], ['模板', 'templates']]],
   ]
   return [
     {
       text: 'Overview',
-      items: [['Vision', 'vision.md'], ['Conventions', 'conventions.md']]
-        .filter(([, file]) => existsSync(join(root, file)))
-        .map(([text, file]) => ({ ...page(root, join(root, file)), text })),
+      link: '/',
     },
-    ...groups.map(([text, sections]) => ({
-      text,
-      items: sections.map(([label, directory]) => section(root, join(root, directory), label)).filter(Boolean),
-    })),
+    ...groups.map(([text, sections]) => {
+      const items = sections.map(([label, directory]) => section(root, join(root, directory), label)).filter(Boolean)
+      if (text === '开发' && existsSync(join(root, 'conventions.md'))) {
+        items.unshift({ ...page(root, join(root, 'conventions.md')), text: '项目约定' })
+      }
+      return { text, items }
+    }),
   ]
 }

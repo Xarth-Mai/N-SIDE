@@ -1,15 +1,20 @@
 import { defineConfig } from 'vitepress'
 import { fileURLToPath } from 'node:url'
 import { buildSidebar } from './sidebar.mjs'
-import { copyWikiData, wikiDataPlugin } from '../../tools/wiki-data.mjs'
+import { copyProjectAssets, copyWikiData, projectAssetsPlugin, wikiDataPlugin } from '../../tools/wiki-data.mjs'
 
 const docsRoot = fileURLToPath(new URL('../', import.meta.url))
+const projectAssets = [{
+  source: fileURLToPath(new URL('../../source-assets/branding/n-logo.svg', import.meta.url)),
+  path: 'branding/n-logo.svg',
+}]
 
 export default defineConfig({
   lang: 'zh-CN',
   title: 'N:SIDE',
   description: 'Null City 的世界、人物、日常与制作知识。',
   base: '/',
+  head: [['link', { rel: 'icon', href: '/project-assets/branding/n-logo.svg', type: 'image/svg+xml' }]],
   markdown: {
     config(md) {
       const renderCode = md.renderer.rules.code_inline
@@ -21,12 +26,15 @@ export default defineConfig({
   },
   cleanUrls: true,
   themeConfig: {
+    logo: '/project-assets/branding/n-logo.svg',
     siteTitle: 'N:SIDE Wiki',
     nav: [
-      { text: 'Overview', link: '/vision' },
-      { text: 'Universe', link: '/world/null-city' },
-      { text: 'Game', link: '/gameplay/daily-life' },
-      { text: 'Development', link: '/production/workflow' },
+      { text: 'Overview', link: '/' },
+      { text: '世界', link: '/world/null-city' },
+      { text: '人物', link: '/characters/family' },
+      { text: '地点', link: '/locations/n-district' },
+      { text: '玩法', link: '/gameplay/controls' },
+      { text: '开发', link: '/conventions' },
     ],
     sidebar: buildSidebar(docsRoot),
     search: { provider: 'local' },
@@ -36,8 +44,12 @@ export default defineConfig({
     sidebarMenuLabel: '目录',
     darkModeSwitchLabel: '外观',
   },
-  vite: { plugins: [wikiDataPlugin(docsRoot)] },
+  vite: {
+    build: { emptyOutDir: true },
+    plugins: [wikiDataPlugin(docsRoot), projectAssetsPlugin(projectAssets)],
+  },
   buildEnd(config) {
     copyWikiData(docsRoot, config.outDir)
+    copyProjectAssets(projectAssets, config.outDir)
   },
 })
