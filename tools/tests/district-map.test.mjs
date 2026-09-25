@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import data from '../../source-assets/district-map/district.json' with { type: 'json' }
 import { terrainHeight, heightColor } from '../district-map.mjs'
 import { architectureStats, sectionRoads } from '../district-architecture.mjs'
+import { frameworkCoverage, reachableNodes } from '../district-plan.mjs'
 import {polygonArea,pointInside,onBoundary,segmentInside,polygonInside,intersectionArea,roadWidth,roadAllowed,roadHitsBuilding} from '../district-geometry.mjs'
 
 const linked=(a,b,user='public')=>data.roads.some(r=>roadAllowed(r,user)&&r.nodes.some((id,i)=>i>0&&((id===a&&r.nodes[i-1]===b)||(id===b&&r.nodes[i-1]===a))))
@@ -146,18 +147,18 @@ test('geometry handles concave boundaries, shared walls, road width and local el
   assert.ok(!roadHitsBuilding([-1,3,-1],[5,3,5],.5,{polygon:courtyard,elevation:1.5,height:1}),'altitude overlap in a concave gap is clear')
 })
 
-test('streets clear building interiors and representative segments also clear road widths', () => {
-  const detailed=new Set(data.architectures.flatMap(a=>a.buildings)),conflicts=[]
+test('all streets clear building volumes at their actual widths and elevations', () => {
+  const conflicts=[]
   for(const b of data.buildings)for(const r of data.roads)for(let i=1;i<r.nodes.length;i++){
     if(r.building===b.id&&['interior','lift'].includes(r.kind))continue
     const a=data.nodes[r.nodes[i-1]],c=data.nodes[r.nodes[i]]
-    if(roadHitsBuilding(a,c,detailed.has(b.id)?roadWidth(r):0,b))conflicts.push(`${b.id}: ${r.nodes[i-1]} → ${r.nodes[i]} (${detailed.has(b.id)?'road width':'centerline'})`)
+    if(roadHitsBuilding(a,c,roadWidth(r),b))conflicts.push(`${b.id}: ${r.nodes[i-1]} → ${r.nodes[i]} (${roadWidth(r)} m)`)
   }
   assert.deepEqual(conflicts,[])
 })
 
-test('station sample ground-road crossings share a junction and its elevation', () => {
-  const boundary=data.architectures.find(a=>a.id==='P3-A2').boundary,issues=[]
+test('district ground-road crossings share a junction and its elevation', () => {
+  const issues=[]
   const cross=(a,b)=>a[0]*b[1]-a[1]*b[0],subtract=(a,b)=>a.map((n,i)=>n-b[i])
   const segments=data.roads.filter(r=>!['interior','lift','deck','bridge'].includes(r.kind)).flatMap(r=>r.nodes.slice(1).map((id,i)=>({ids:[r.nodes[i],id],a:data.nodes[r.nodes[i]],b:data.nodes[id]})))
   for(let i=0;i<segments.length;i++)for(const b of segments.slice(i+1)){
@@ -168,10 +169,56 @@ test('station sample ground-road crossings share a junction and its elevation', 
     const t=cross(subtract(b.a,a.a),v)/den,s=cross(subtract(b.a,a.a),u)/den
     if(t<-1e-7||t>1+1e-7||s<-1e-7||s>1+1e-7)continue
     const point=a.a.map((n,j)=>n+u[j]*t),otherZ=b.a[2]+v[2]*s
-    if(!pointInside(point,boundary))continue
     const label=`${a.ids.join(' → ')} / ${b.ids.join(' → ')}`
-    if(Math.abs(point[2]-otherZ)>1e-7)issues.push(`${label}: crossing elevations ${point[2].toFixed(3)} / ${otherZ.toFixed(3)}`)
+    if(Math.abs(point[2]-otherZ)>1e-5)issues.push(`${label}: crossing elevations ${point[2].toFixed(3)} / ${otherZ.toFixed(3)}`)
     else issues.push(`${label}: same-level crossing lacks a shared node`)
+  }
+  assert.deepEqual(issues,[])
+})
+
+test('city framework records every building and reaches its same-level facade entrances', () => {
+  const coverage=frameworkCoverage(data)
+  assert.equal(coverage.length,12)
+  for(const block of coverage){
+    assert.ok(block.buildings>0,block.id)
+    assert.equal(block.described,block.buildings,`${block.id}: missing building use or entrances`)
+    assert.equal(block.arrived,block.buildings,`${block.id}: entrance is disconnected or not on its level/facade`)
+    assert.equal(block.connected,block.entries,`${block.id}: disconnected entry`)
+    assert.equal(block.widths,block.roads,`${block.id}: road width not recorded`)
+    assert.equal(block.linked,block.roads,`${block.id}: disconnected road`)
+  }
+  for(const b of data.buildings.filter(b=>b.bank==='district')){
+    let previous=b.elevation-1
+    for(const f of b.design.floors){
+      assert.ok(f.z>=b.elevation&&f.z<=b.elevation+b.height&&f.z>previous,`${b.id}: invalid level ${f.name}`)
+      previous=f.z
+    }
+    if(b.design.status==='framework')assert.ok(b.design.floors.every(f=>!f.rooms&&!f.openings),`${b.id}: framework unexpectedly includes interiors`)
+  }
+  for(const r of data.roads)assert.ok(Number.isFinite(r.width)&&r.width>0,'all roads need design widths')
+  // A student-only gateway cannot become a public shortcut in coverage counts
+  const gate={nodes:{station:[0,0,0],gate:[1,0,0]},roads:[{nodes:['station','gate'],access:'controlled',users:['student']}]}
+  assert.ok(!reachableNodes(gate).has('gate'))
+  assert.ok(reachableNodes(gate,'student').has('gate'))
+})
+
+test('ordinary streets keep their design grade and deliveries avoid stair-only approaches', async () => {
+  const {routeProfile}=await import('../district-plan.mjs')
+  for(const r of data.roads.filter(r=>!['interior','lift','steps','trail','bridge','deck'].includes(r.kind)))for(const p of routeProfile(data.nodes,r.nodes).slice(1)){
+    assert.ok(p.grade!==null?Math.abs(p.grade)<=10:!p.rise,`${p.id}: ordinary street exceeds 10 percent design grade`)
+  }
+  const service=reachableNodes({...data,roads:data.roads.filter(r=>!['steps','trail','deck'].includes(r.kind)&&(r.kind!=='lift'||r.access==='service'))},'service')
+  // The small shrine is maintained on foot via its mountain path
+  for(const b of data.buildings.filter(b=>b.kind!=='shrine'))for(const e of b.design?.entries??[])if(e.role==='service')assert.ok(service.has(e.node),`${b.id}: deliveries depend on stairs or a foot trail`)
+  const breakfast=reachableNodes({...data,roads:data.roads.filter(r=>r.kind!=='steps')})
+  assert.ok(breakfast.has('v_51_door'),'short entrance stairs have a level shopfront alternative')
+})
+
+test('public streets stay outside same-level resident and service courts', () => {
+  const issues=[]
+  for(const s of data.surfaces.filter(s=>['resident','service'].includes(s.access)))for(const r of data.roads.filter(r=>roadAllowed(r,'public')&&!['bridge','deck','lift','interior'].includes(r.kind)))for(let i=1;i<r.nodes.length;i++){
+    const a=data.nodes[r.nodes[i-1]],b=data.nodes[r.nodes[i]]
+    if(roadHitsBuilding(a,b,roadWidth(r),{polygon:s.polygon,elevation:s.elevation-.1,height:.2}))issues.push(`${s.id}: ${r.nodes[i-1]} → ${r.nodes[i]}`)
   }
   assert.deepEqual(issues,[])
 })
@@ -254,6 +301,9 @@ test('housing estimates use residential floor area rather than the volume count'
   assert.equal(estimate.gross,300)
   assert.equal(estimate.units,4)
   assert.deepEqual(estimate.residents,[6,12])
+  const drawn=housingEstimate({parcels:[{id:'P',housing:{share:.5}}],buildings:[{bank:'district',parcel:'P',polygon:[[0,0],[10,0],[10,10],[0,10]],elevation:0,height:6,design:{floors:[{z:0},{z:3},{z:6}]}}],housingAssumptions:{netRatio:.8,unitArea:40,occupancy:[1,1],household:[2,2]}},true)
+  assert.equal(drawn.gross,100,'use drawn footprint and two occupied levels, exclude the roof')
+  assert.equal(drawn.units,2)
 })
 
 

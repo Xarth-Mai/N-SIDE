@@ -68,7 +68,9 @@ export function buildScene(data) {
     const shapes=[]
     for(let i=0;i<top.length;i++) {
       const a=top[i],b=top[(i+1)%top.length]
-      if(i<2)shapes.push(face([a,b,[...b.slice(0,2),b[2]-2],[...a.slice(0,2),a[2]-2]],'#b0b09e'))
+      const bottom=area.elevated?area.elevation-.6:(area.baseElevation??area.elevation-2)
+      if(i<2)shapes.push(face([a,b,[...b.slice(0,2),bottom],[...a.slice(0,2),bottom]],'#b0b09e'))
+      if(area.elevated&&area.baseElevation!==undefined)shapes.push(face([a,[a[0]+.7,a[1],a[2]],[a[0]+.7,a[1],area.baseElevation],[a[0],a[1],area.baseElevation]],'#96a294'))
     }
     shapes.push(face(top,colors[area.kind]))
     add(top[0],area.elevated?'platform':'surface',shapes,area.place)
@@ -119,7 +121,7 @@ export function buildScene(data) {
         if(dx*c+dy*s<=0)continue
         shapes.push(face([[...a,z],[...v,z],[...v,top],[...a,top]],dx>=0?'#eee6d2':'#c4cbbb'))
         const length=Math.hypot(dx,dy),count=Math.max(1,Math.floor(length/5))
-        for(const floor of b.design.floors)for(let j=0;j<count;j++) {
+        for(const floor of b.design.floors.filter(f=>f.z+2.5<=top))for(let j=0;j<count;j++) {
           const p=lerp(a,v,(j+.25)/count),q=lerp(a,v,(j+.65)/count)
           shapes.push(face([[...p,floor.z+.8],[...q,floor.z+.8],[...q,floor.z+2.5],[...p,floor.z+2.5]],'#779395'))
         }
@@ -129,12 +131,13 @@ export function buildScene(data) {
         const a=b.design.lightwell[i],v=b.design.lightwell[(i+1)%b.design.lightwell.length]
         shapes.push(face([[...a,z],[...v,z],[...v,top],[...a,top]],'#c8c6b6'))
       }
-      const [a,v]=b.design.front,dx=v[0]-a[0],dy=v[1]-a[1],length=Math.hypot(dx,dy),offset=b.design.canopy??0
-      if(offset) {
+      if(b.design.front&&b.design.canopy) {
+        const [a,v]=b.design.front,dx=v[0]-a[0],dy=v[1]-a[1],length=Math.hypot(dx,dy),offset=b.design.canopy
         const sign=contains(b.polygon,(a[0]+v[0])/2-dy/length,(a[1]+v[1])/2+dx/length)?-1:1
         const move=p=>[p[0]-dy/length*offset*sign,p[1]+dx/length*offset*sign,z+3]
         shapes.push(face([[...a,z+3.2],[...v,z+3.2],move(v),move(a)],'#c39a72'))
       }
+      for(const area of data.surfaces.filter(a=>a.building===b.id))shapes.push(face(area.polygon.map(([x,y])=>[x,y,area.elevation]),'#a9bf91',{stroke:'#75837e',width:.6}))
       const nearest=b.polygon.reduce((a,p)=>depth(p)>depth(a)?p:a)
       add(nearest,'building',shapes,b.place)
       continue

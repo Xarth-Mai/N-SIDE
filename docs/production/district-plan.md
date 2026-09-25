@@ -7,8 +7,8 @@ depends_on: ["DOC-DISTRICT-SPACE", "DOC-DISTRICT-PLACES", "LOC-002"]
 <script setup>
 import DistrictPlan from '../.vitepress/components/DistrictPlan.vue'
 import data from '../../source-assets/district-map/district.json'
-import { planStats, parcelStats, polygonArea, routeProfile, housingEstimate } from '../../tools/district-plan.mjs'
-const stats=planStats(data),housing=housingEstimate(data),parcels=parcelStats(data)
+import { planStats, parcelStats, polygonArea, routeProfile, housingEstimate, frameworkCoverage } from '../../tools/district-plan.mjs'
+const stats=planStats(data),housing=housingEstimate(data),parcels=parcelStats(data),coverage=frameworkCoverage(data),drawnHousing=housingEstimate(data,true)
 const blockParcels=id=>parcels.filter(p=>p.block===id)
 const blockTotal=(id,field)=>blockParcels(id).reduce((sum,p)=>sum+p[field],0)
 const profile=id=>routeProfile(data.nodes,data.routes.find(r=>r.id===id).nodes)
@@ -24,11 +24,30 @@ N站及其西侧兴趣街承担到达、工作与兴趣消费，东侧影院和�
 
 西侧道路接城市通勤街坊，东侧联络路接住宅与就业区；桥梁与渡口通向对岸办公和居住城区。中学、诊所与兴趣商业的服务范围延伸到图外，山脚道路继续联系低丘另一侧街坊
 
-## 总图与三条关键剖面
+## 城市总平面、到达图与关键剖面
 
-平面使用设计米坐标，北为坡地、南为大河，水面暂取相对高程 0。街坊界线表示活动与规划范围，白色地块表示用地；[小店—采购街—坡地住宅](district-architecture.md)与[站前—兴趣街](district-station.md)各有 24 个单元的建筑方案图纸，其余体量按对应阶段继续深化，未展开的容量单独统计
+平面使用设计米坐标，北为坡地、南为大河，水面暂取相对高程 0。第一张图隐藏编号，表达街面、住宅组、校园和开放空间；第二张图区分公共、住户、校园与后勤到达，门口与道路共用坐标和标高
+
+[小店—采购街—坡地住宅](district-architecture.md)、[站前—兴趣街](district-station.md)和[影院—音乐—滨水](district-waterfront.md)分别提供日常商住、现代兴趣商业与立体公共空间的类型基准。全区建筑沿街坊展开，普通体量记录用途层与外部入口，内部细排由后续场所设计承接
 
 <DistrictPlan />
+
+## 街坊覆盖与建筑到达
+
+覆盖表从主数据计算：建筑信息包含轮廓、落地标高、高度、用途与入口；门口核对包含建筑边界、对应楼层标高及该使用者的道路连通。跨街坊道路会在相关街坊分别列入，覆盖数据与设计验收分开记录
+
+<table>
+<thead><tr><th>街坊</th><th>建筑信息 / 落图</th><th>入口核对 / 落图</th><th>连通门口 / 全部门口</th><th>明确路宽 / 道路</th><th>连通道路 / 道路</th></tr></thead>
+<tbody><tr v-for="b in coverage" :key="b.id"><td>{{ b.id }} · {{ b.name }}</td><td>{{ b.described }} / {{ b.buildings }}</td><td>{{ b.arrived }} / {{ b.buildings }}</td><td>{{ b.connected }} / {{ b.entries }}</td><td>{{ b.widths }} / {{ b.roads }}</td><td>{{ b.linked }} / {{ b.roads }}</td></tr></tbody>
+</table>
+
+<details>
+<summary>建筑与外部入口总表</summary>
+<table>
+<thead><tr><th>建筑 / 地块</th><th>用途</th><th>基底 / 高度</th><th>入口层与使用者</th></tr></thead>
+<tbody><tr v-for="b in data.buildings.filter(b=>b.bank==='district')" :key="b.id"><td>{{ b.id }} · {{ b.parcel }}</td><td>{{ [...new Set(b.design?.floors.map(f=>f.use)??[])].join(' / ') }}</td><td>{{ b.elevation }} / {{ b.height }} m</td><td>{{ b.design?.entries.map(e=>`${e.level} ${({public:'公众',resident:'住户',student:'学生',service:'后勤'})[e.role]??e.role}`).join('、') }}</td></tr></tbody>
+</table>
+</details>
 
 ## 十二街坊与地块容量
 
@@ -53,7 +72,14 @@ N站及其西侧兴趣街承担到达、工作与兴趣消费，东侧影院和�
 
 住宅容量由各地块的覆盖率、楼层数和住宅用途占比估算，而非由图面房子数量直接推断。当前住宅地块覆盖率取 25%—40%、楼层取 3—6 层、住宅面积占比取 60%—90%，逐块参数保存在主数据
 
-按住宅楼面面积 × 80% 使用效率 ÷ 每套 75 m²，约有 {{ Math.round(housing.units) }} 套住房。入住率取 85%—95%、每户 2.2—2.6 人时，居民量级约为 {{ housing.residents[0] }}—{{ housing.residents[1] }} 人。参数均为设计假设，建筑类型、套型和内部平面完成后复算
+两种口径使用相同的住宅用途占比、80% 使用效率与每套 75 m² 假设。规划口径由地块覆盖率和规划层数估算；落图口径改用实际建筑占地和已记录楼层，屋顶公共平台不计作住宅楼层
+
+| 口径 | 假设住宅楼面 | 住房量级 | 常住人口量级 |
+| --- | ---: | ---: | ---: |
+| 地块规划 | {{ Math.round(housing.gross).toLocaleString() }} m² | {{ Math.round(housing.units) }} 套 | {{ housing.residents[0] }}—{{ housing.residents[1] }} 人 |
+| 已落图建筑 | {{ Math.round(drawnHousing.gross).toLocaleString() }} m² | {{ Math.round(drawnHousing.units) }} 套 | {{ drawnHousing.residents[0] }}—{{ drawnHousing.residents[1] }} 人 |
+
+入住率取 85%—95%、每户 2.2—2.6 人。住宅比例仍采用地块级假设，混合楼中办公、商业和住宅的实际分配将继续校准；本表用于核对城市规模，套型由后续室内任务处理
 
 中学以 12 个教学班、每班 30 人、约 360 个学位起排，属于项目假设。校园服务本片与周边街坊，学生年龄结构、招生范围和实际需求留待校园专项核对。站前工作人口与文娱来访者单独研究，不加进常住居民数
 
@@ -79,7 +105,7 @@ N站及其西侧兴趣街承担到达、工作与兴趣消费，东侧影院和�
 
 树下至店前原直达段局部较陡，增加一条约 {{ Math.round(profile('home-ramp').at(-1).distance) }} m 的缓行支路，设计分段坡度控制在 5% 以内；这只是路线设计目标，入口净宽、铺装、转弯平台与实际无障碍条件仍需一并核对
 
-三条剖面均沿图中节点累计水平距离，电梯以垂直线表示，其坡度记为不适用。水面参照与滨水平台高程是设计假设；桥下净空、行洪与极端天气边界由专项设计核验
+剖面沿图中节点累计水平距离，电梯以垂直线表示，其坡度记为不适用。水面参照与滨水平台高程是设计假设；桥下净空、行洪与极端天气边界由专项设计核验
 
 ## 地理与发展层次
 
