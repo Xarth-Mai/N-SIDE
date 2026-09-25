@@ -1,0 +1,302 @@
+{
+  "id": "AST-003",
+  "status": "exported",
+  "retrieved": "2026-09-25",
+  "license": "CC0-1.0",
+  "author": [
+    "Kenney",
+    "ambientCG"
+  ],
+  "license_sources": [
+    "https://kenney.nl/assets/nature-kit",
+    "https://kenney.nl/assets/city-kit-roads",
+    "https://docs.ambientcg.com/license/"
+  ],
+  "source_archives": "Selected members fetched by HTTP Range and verified by ZIP CRC; complete archive hashes are not available",
+  "units": "meter",
+  "up_axis": "+Y",
+  "export_command": "bun tools/export-environment.mjs",
+  "files": [
+    {
+      "source": "licenses/kenney-nature.txt",
+      "output": "licenses/kenney-nature.txt",
+      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
+      "bytes": 611,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "License.txt"
+    },
+    {
+      "source": "nature/tree_detailed.glb",
+      "output": "nature/tree_detailed.glb",
+      "sha256": "c041daf2f0fb1d49e4325227cbcd58667adbe51e9b55e8c1f0a94b74cc521b3b",
+      "bytes": 31412,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/tree_detailed.glb",
+      "triangles": 402,
+      "transform": {
+        "source_height": 1.332417,
+        "height_m": 6,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "leafsGreen": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.12,
+              0.28,
+              0.1,
+              1
+            ]
+          },
+          "woodBark": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.22,
+              0.12,
+              0.065,
+              1
+            ]
+          },
+          "_defaultMat": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.18,
+              0.16,
+              0.1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "nature/tree_oak.glb",
+      "output": "nature/tree_oak.glb",
+      "sha256": "d7fd8773674928c50c11b66d12c636d49bdcc15a8b1c7fbb98e6f63a3439a3f3",
+      "bytes": 14644,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/tree_oak.glb",
+      "triangles": 196,
+      "transform": {
+        "source_height": 1.22623992,
+        "height_m": 5.5,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "leafsGreen": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.12,
+              0.28,
+              0.1,
+              1
+            ]
+          },
+          "woodBark": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.22,
+              0.12,
+              0.065,
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "nature/plant_bushDetailed.glb",
+      "output": "nature/plant_bushDetailed.glb",
+      "sha256": "2e0487020d68ccf664435db9d829c78ae00e6d2785ee3ec10b9f89cc70a10406",
+      "bytes": 10172,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/plant_bushDetailed.glb",
+      "triangles": 104,
+      "transform": {
+        "source_height": 0.360410929,
+        "height_m": 0.8,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "grass": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.16,
+              0.32,
+              0.12,
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "licenses/kenney-roads.txt",
+      "output": "licenses/kenney-roads.txt",
+      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498",
+      "bytes": 703,
+      "archive": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "archive_member": "License.txt"
+    },
+    {
+      "source": "roads/light-curved.glb",
+      "output": "roads/light-curved.glb",
+      "sha256": "154dcce9d58ec2cd165e26c91a89c97bdd2838cf06d255099b3570df84f82ec6",
+      "bytes": 9492,
+      "archive": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "archive_member": "Models/GLB format/light-curved.glb",
+      "triangles": 92,
+      "transform": {
+        "source_height": 0.6749999523162842,
+        "height_m": 4.5,
+        "ground_pivot": true,
+        "axis": "Y-up"
+      }
+    },
+    {
+      "source": "roads/road-sign-empty.glb",
+      "output": "roads/road-sign-empty.glb",
+      "sha256": "7681ee84c5363e2c95a37593fc3bdd0afb81b23fa46ae6be1c0939a112a4306a",
+      "bytes": 5968,
+      "archive": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "archive_member": "Models/GLB format/road-sign-empty.glb",
+      "triangles": 42,
+      "transform": {
+        "source_height": 0.4750000238418579,
+        "height_m": 2.3,
+        "ground_pivot": true,
+        "axis": "Y-up"
+      }
+    },
+    {
+      "source": "roads/Textures/colormap.png",
+      "output": "roads/Textures/colormap.png",
+      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185",
+      "bytes": 11428,
+      "archive": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "archive_member": "Models/GLB format/Textures/colormap.png"
+    },
+    {
+      "source": "materials/Concrete034_1K-JPG_Color.jpg",
+      "output": "materials/concrete-color.dds",
+      "sha256": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+      "bytes": 269501,
+      "archive": "https://ambientcg.com/get?file=Concrete034_1K-JPG.zip",
+      "archive_member": "Concrete034_1K-JPG_Color.jpg",
+      "image": {
+        "dimensions": [
+          1024,
+          512
+        ],
+        "color_space": "sRGB",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      }
+    },
+    {
+      "source": "materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "output": "materials/concrete-normal.dds",
+      "sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "bytes": 821681,
+      "archive": "https://ambientcg.com/get?file=Concrete034_1K-JPG.zip",
+      "archive_member": "Concrete034_1K-JPG_NormalGL.jpg",
+      "image": {
+        "dimensions": [
+          1024,
+          512
+        ],
+        "color_space": "linear",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      }
+    },
+    {
+      "source": "materials/PavingStones092_1K-JPG_Color.jpg",
+      "output": "materials/paving-color.dds",
+      "sha256": "922d80f2b301e31afab4e726d6c6d6cdc72b0e59b25e4a5f700bbf2fe5e0c9ad",
+      "bytes": 1619683,
+      "archive": "https://ambientcg.com/get?file=PavingStones092_1K-JPG.zip",
+      "archive_member": "PavingStones092_1K-JPG_Color.jpg",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      }
+    },
+    {
+      "source": "materials/PavingStones092_1K-JPG_NormalGL.jpg",
+      "output": "materials/paving-normal.dds",
+      "sha256": "abab01644e5e9f555f40cd7021e61ec4832bdf41c80318ae2989abab3cb1cb40",
+      "bytes": 2284016,
+      "archive": "https://ambientcg.com/get?file=PavingStones092_1K-JPG.zip",
+      "archive_member": "PavingStones092_1K-JPG_NormalGL.jpg",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "linear",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      }
+    },
+    {
+      "source": "materials/Asphalt012_1K-JPG_Color.jpg",
+      "output": "materials/asphalt-color.dds",
+      "sha256": "c7a142a1c12f517024d1b4c92472c700af86cfe3bfc12263c4260e414d4c2c59",
+      "bytes": 1009615,
+      "archive": "https://ambientcg.com/get?file=Asphalt012_1K-JPG.zip",
+      "archive_member": "Asphalt012_1K-JPG_Color.jpg",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      }
+    },
+    {
+      "source": "materials/Asphalt012_1K-JPG_NormalGL.jpg",
+      "output": "materials/asphalt-normal.dds",
+      "sha256": "4e1d22a2216769d575d3481c548555ab955f7e6d7cb06f0c5eda99835612deb1",
+      "bytes": 2149012,
+      "archive": "https://ambientcg.com/get?file=Asphalt012_1K-JPG.zip",
+      "archive_member": "Asphalt012_1K-JPG_NormalGL.jpg",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "linear",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      }
+    },
+    {
+      "source": "licenses/CC0-1.0.txt",
+      "output": "licenses/CC0-1.0.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
+    }
+  ],
+  "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"
+}

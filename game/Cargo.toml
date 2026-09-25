@@ -2,9 +2,25 @@
 name = "n-side"
 version = "0.1.0"
 edition = "2024"
+default-run = "n-side"
+
+[features]
+viewer = ["bevy/free_camera"]
+
+[[bin]]
+name = "map_viewer"
+path = "src/bin/map_viewer.rs"
+required-features = ["viewer"]
 
 [dependencies]
-bevy = "0.19.1"
+bevy = { version = "0.19.1", features = ["jpeg", "dds"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_path_to_error = "0.1"
+geo = { version = "0.33", default-features = false }
+earcutr = "0.4"
+spade = "2"
+gltf = { version = "1.4", default-features = false, features = ["utils", "names"] }
 
 [profile.dev]
 opt-level = 1

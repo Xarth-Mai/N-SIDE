@@ -1,0 +1,354 @@
+{
+  "version": 1,
+  "materials": {
+    "concrete": {
+      "color": [
+        0.7,
+        0.71,
+        0.67,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1.1,
+        0.55
+      ],
+      "color_texture": "environment/materials/concrete-color.dds",
+      "normal_texture": "environment/materials/concrete-normal.dds"
+    },
+    "wall_cream": {
+      "color": [
+        0.94,
+        0.87,
+        0.69,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1.1,
+        0.55
+      ],
+      "color_texture": "environment/materials/concrete-color.dds",
+      "normal_texture": "environment/materials/concrete-normal.dds"
+    },
+    "wall_sand": {
+      "color": [
+        0.78,
+        0.69,
+        0.52,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1.1,
+        0.55
+      ],
+      "color_texture": "environment/materials/concrete-color.dds",
+      "normal_texture": "environment/materials/concrete-normal.dds"
+    },
+    "wall_teal": {
+      "color": [
+        0.42,
+        0.62,
+        0.59,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1.1,
+        0.55
+      ],
+      "color_texture": "environment/materials/concrete-color.dds",
+      "normal_texture": "environment/materials/concrete-normal.dds"
+    },
+    "wall_brick": {
+      "color": [
+        0.74,
+        0.67,
+        0.59,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1.1,
+        0.55
+      ],
+      "color_texture": "environment/materials/concrete-color.dds",
+      "normal_texture": "environment/materials/concrete-normal.dds"
+    },
+    "terrain": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.85,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "water": {
+      "color": [
+        0.15,
+        0.41,
+        0.49,
+        1
+      ],
+      "roughness": 0.26,
+      "metallic": 0.1,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "paving": {
+      "color": [
+        0.81,
+        0.77,
+        0.66,
+        1
+      ],
+      "roughness": 0.94,
+      "metallic": 0,
+      "tile_meters": [
+        1.55,
+        1.55
+      ],
+      "color_texture": "environment/materials/paving-color.dds",
+      "normal_texture": "environment/materials/paving-normal.dds"
+    },
+    "asphalt": {
+      "color": [
+        0.62,
+        0.67,
+        0.7,
+        1
+      ],
+      "roughness": 0.91,
+      "metallic": 0,
+      "tile_meters": [
+        4,
+        4
+      ],
+      "color_texture": "environment/materials/asphalt-color.dds",
+      "normal_texture": "environment/materials/asphalt-normal.dds"
+    },
+    "roof": {
+      "color": [
+        0.31,
+        0.4,
+        0.4,
+        1
+      ],
+      "roughness": 0.82,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "trim": {
+      "color": [
+        0.3,
+        0.34,
+        0.33,
+        1
+      ],
+      "roughness": 0.75,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "glass": {
+      "color": [
+        0.12,
+        0.25,
+        0.28,
+        1
+      ],
+      "roughness": 0.23,
+      "metallic": 0.35,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "metal": {
+      "color": [
+        0.59,
+        0.61,
+        0.57,
+        1
+      ],
+      "roughness": 0.58,
+      "metallic": 0.3,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "awning": {
+      "color": [
+        0.24,
+        0.48,
+        0.42,
+        1
+      ],
+      "roughness": 0.82,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "terracotta": {
+      "color": [
+        0.59,
+        0.32,
+        0.21,
+        1
+      ],
+      "roughness": 0.85,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "sign_shop": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/shop.png",
+      "normal_texture": null
+    },
+    "sign_grocer": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/grocer.png",
+      "normal_texture": null
+    },
+    "sign_cafe": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/cafe.png",
+      "normal_texture": null
+    },
+    "sign_bakery": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/bakery.png",
+      "normal_texture": null
+    },
+    "sign_drygoods": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": "environment/signs/drygoods.png",
+      "normal_texture": null
+    }
+  },
+  "models": {
+    "tree_a": {
+      "file": "environment/nature/tree_detailed.glb",
+      "scene": 0,
+      "scale": 1
+    },
+    "tree_b": {
+      "file": "environment/nature/tree_oak.glb",
+      "scene": 0,
+      "scale": 1
+    },
+    "streetlight": {
+      "file": "environment/roads/light-curved.glb",
+      "scene": 0,
+      "scale": 1
+    },
+    "shrub": {
+      "file": "environment/nature/plant_bushDetailed.glb",
+      "scene": 0,
+      "scale": 1
+    }
+  },
+  "shopfronts": {
+    "V-04": "sign_shop",
+    "V-07": "sign_bakery",
+    "V-08": "sign_grocer",
+    "V-51": "sign_cafe",
+    "V-52": "sign_drygoods"
+  }
+}

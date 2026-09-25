@@ -1,0 +1,81 @@
+{
+  "source": "source-assets/environment-kit/asset-manifest.json",
+  "license": "CC0-1.0",
+  "files": [
+    {
+      "file": "licenses/kenney-nature.txt",
+      "bytes": 611,
+      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d"
+    },
+    {
+      "file": "nature/tree_detailed.glb",
+      "bytes": 31428,
+      "sha256": "e6446c35f85620872bee3afefb23336626095882d00155b3437b5b0eb60e7655"
+    },
+    {
+      "file": "nature/tree_oak.glb",
+      "bytes": 14676,
+      "sha256": "62faa0d2545f4e43c394378083fb26fb39da0236ad9bcc48eac3a6fbb9eab273"
+    },
+    {
+      "file": "nature/plant_bushDetailed.glb",
+      "bytes": 10200,
+      "sha256": "5f95e15962a3e9d1b8ec73946bae5526f3e8fa91e1e0293d3b745c48cbdd11b7"
+    },
+    {
+      "file": "licenses/kenney-roads.txt",
+      "bytes": 703,
+      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498"
+    },
+    {
+      "file": "roads/light-curved.glb",
+      "bytes": 9544,
+      "sha256": "dce22a3390585e4a2a0467a7394dad07c713f261f65b2ceacda6fe768e5527f8"
+    },
+    {
+      "file": "roads/road-sign-empty.glb",
+      "bytes": 6024,
+      "sha256": "38aaaee70b238f9490528f477b9b2447c69be10a1d67867cecc6ff28ab546587"
+    },
+    {
+      "file": "roads/Textures/colormap.png",
+      "bytes": 11428,
+      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185"
+    },
+    {
+      "file": "materials/concrete-color.dds",
+      "bytes": 2796332,
+      "sha256": "046654965c18f1553a0b0bc62afaea86916e9850cd07a2f436346403457c55e3"
+    },
+    {
+      "file": "materials/concrete-normal.dds",
+      "bytes": 2796332,
+      "sha256": "7269b4e8210ea3667dcb40daf4a771ec919d24ae7e2ef801fdac949e34b34bb8"
+    },
+    {
+      "file": "materials/paving-color.dds",
+      "bytes": 5592532,
+      "sha256": "8adc3c2350bc14b33a8d9715afb7577f891936e422e98cbd00364d78a9df2244"
+    },
+    {
+      "file": "materials/paving-normal.dds",
+      "bytes": 5592532,
+      "sha256": "f68e5fab9ab37b54ff1b2c634d7dd8334cc53f22740701ea3dc0f8a753718153"
+    },
+    {
+      "file": "materials/asphalt-color.dds",
+      "bytes": 5592532,
+      "sha256": "ca1fcba5b41cadbbe739af1cd8f8c11482ef831e6b25ba6083083754c120363c"
+    },
+    {
+      "file": "materials/asphalt-normal.dds",
+      "bytes": 5592532,
+      "sha256": "aa2fe7f2c41a6e480294d6ac3d6cecb06d72644893f5bf71c4e20dc6856696c1"
+    },
+    {
+      "file": "licenses/CC0-1.0.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    }
+  ]
+}
