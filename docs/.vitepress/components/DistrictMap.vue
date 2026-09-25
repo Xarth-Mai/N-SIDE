@@ -6,7 +6,7 @@ import { buildScene, heightColor, project } from '../../../tools/district-map.mj
 
 const scene=buildScene(data)
 const svg=ref(null),mode=ref('scape'),frame=ref('all'),selected=ref(null),names=ref(true),expanded=ref(false)
-const size=ref([700,700]),camera=ref({x:260,y:-140,width:1250})
+const size=ref([700,700]),camera=ref({x:260,y:-140,width:1700})
 const place=computed(()=>data.places.find(p=>p.id===selected.value))
 const view=computed(()=>{const c=camera.value,h=c.width*size.value[1]/size.value[0];return `${c.x-c.width/2} ${c.y-h/2} ${c.width} ${h}`})
 const scale=computed(()=>size.value[0]/camera.value.width)
@@ -19,7 +19,7 @@ watch(svg,element=>{
 },{flush:'post'})
 function fit(which){
   frame.value=which
-  camera.value=which==='home'?{x:130,y:-215,width:360}:{x:260,y:-140,width:Math.max(1250,1450*size.value[0]/size.value[1])}
+  camera.value=which==='home'?{x:130,y:-215,width:360}:{x:260,y:-140,width:Math.max(1750,1500*size.value[0]/size.value[1])}
 }
 function choose(id){
   selected.value=id
@@ -42,7 +42,7 @@ watch(expanded,on=>{
   else document.body.style.overflow=previousOverflow
 })
 onBeforeUnmount(()=>{observer?.disconnect();if(expanded.value)document.body.style.overflow=previousOverflow})
-const landmarks=['01','04','19','23','26']
+const landmarks=['01','04','15','19','23','26','35','79']
 const visiblePlaces=computed(()=>{
   const c=camera.value,h=c.width*size.value[1]/size.value[0],near=c.width<620
   const candidates=data.places.filter(p=>near||landmarks.includes(p.id)).map(p=>({...p,point:project(p.position)})).filter(p=>Math.abs(p.point[0]-c.x)<c.width/2-24/scale.value&&Math.abs(p.point[1]-c.y)<h/2-24/scale.value)
@@ -83,7 +83,6 @@ const structure=computed(()=>mode.value==='roads')
           <path v-for="(shape,j) in object.shapes" :key="j" :d="shape.d" :fill="shape.fill" :stroke="selected===object.place&&object.kind==='building'?'#c2763b':shape.stroke" :stroke-width="selected===object.place&&object.kind==='building'?1.7:shape.width" :opacity="shape.opacity" stroke-linejoin="round"/>
         </g>
         <g v-if="names" class="map-labels">
-          <g v-if="camera.width>620"><text v-for="l in data.labels" :key="l.text" :x="project([...l.position,20])[0]" :y="project([...l.position,20])[1]" :font-size="12/scale" class="area-label">{{ l.text }}</text></g>
           <g v-for="p in visiblePlaces" :key="p.id" :transform="`translate(${p.point}) scale(${1/scale})`" :data-place="p.id" role="button" tabindex="0" :aria-label="`${p.id} ${p.name}`" :aria-pressed="selected===p.id" @click.stop="choose(p.id)" @keydown.enter.stop.prevent="choose(p.id)" @keydown.space.stop.prevent="choose(p.id)">
             <rect x="-22" y="-22" width="44" height="44" rx="22" fill="transparent"/>
             <circle r="5" :fill="selected===p.id?'#be794b':'#f8f4e7'" stroke="#637c73" stroke-width="1.5"/>
@@ -106,7 +105,7 @@ const structure=computed(()=>mode.value==='roads')
 .map-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px 12px}.map-kicker{font-size:10px;letter-spacing:1.5px;color:#667e73}.map-header h3{margin:4px 0!important;padding:0!important;font-size:20px!important;letter-spacing:1px}
 button{font:inherit;cursor:pointer;min-height:44px;border-radius:6px;font-size:12px;padding:8px 12px;color:inherit}button:focus-visible,[role=button]:focus-visible{outline:2px solid #b57643;outline-offset:-2px}.map-header button{border:1px solid #c9cfbf;white-space:nowrap}
 .map-toolbar{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 12px;align-items:center}.map-tabs{display:flex;background:#eaece1;border-radius:7px;padding:3px}.map-tabs button[aria-pressed=true]{background:#fdfcf4;box-shadow:0 1px 4px #495b4420}.map-label-toggle{margin-left:auto;font-size:12px;display:flex;gap:5px;align-items:center;min-height:44px}
-.map-stage{position:relative;isolation:isolate}.map-canvas{display:block;width:100%;height:730px;touch-action:pan-y;cursor:grab}.map-canvas:active{cursor:grabbing}.map-canvas [role=button]{cursor:pointer}.place-label,.area-label{fill:#354f47;stroke:#f8f5e7;stroke-width:3px;paint-order:stroke;stroke-linejoin:round;font-weight:600}.area-label{opacity:.8;font-weight:400}
+.map-stage{position:relative;isolation:isolate}.map-canvas{display:block;width:100%;height:730px;touch-action:pan-y;cursor:grab}.map-canvas:active{cursor:grabbing}.map-canvas [role=button]{cursor:pointer}.place-label{fill:#354f47;stroke:#f8f5e7;stroke-width:3px;paint-order:stroke;stroke-linejoin:round;font-weight:600}
 .map-zoom{position:absolute;right:12px;bottom:40px;display:flex;flex-direction:column;gap:4px}.map-zoom button{width:44px;background:#fffdf0ec;border:1px solid #c8ceba;font-size:20px}.map-credit{position:absolute;bottom:14px;left:18px;font-size:11px;letter-spacing:2px;pointer-events:none}.map-credit span{padding:0 8px;color:#81917d}
 .map-detail{position:relative;padding:16px 45px 16px 20px;background:#fffdf5;border-top:1px solid #d1d5c8}.map-detail h4{margin:5px 0 8px;font-size:19px}.map-detail p{margin:4px 0;font-size:13px;line-height:1.6}.map-detail .entry{color:#718073}.map-detail a{font-size:13px;color:#8e633e}.detail-close{position:absolute;right:6px;top:6px;font-size:22px}
 footer{padding:12px 18px;font-size:11px;color:#718073;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}.height-legend{display:flex;gap:8px;align-items:center}.height-legend i{display:block;width:70px;height:8px}.height-legend span{margin-left:8px}

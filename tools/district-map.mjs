@@ -32,11 +32,11 @@ const contains = (polygon,x,y) => {
 }
 
 export function buildScene(data) {
-  const samples=[...Object.entries(data.nodes).filter(([id])=>!id.startsWith('bridge')).map(([,p])=>p),...data.terrain.samples]
+  const samples=[...Object.entries(data.nodes).filter(([id])=>!id.startsWith('bridge') && !data.elevatedNodes?.includes(id)).map(([,p])=>p),...data.terrain.samples]
   const ground=(x,y)=> {
     if(y < -140 && y > -390)return 0
     if(y <= -390)return 8
-    const platform=data.surfaces.find(a=>contains(a.polygon,x,y))
+    const platform=data.surfaces.find(a=>!a.elevated && contains(a.polygon,x,y))
     return platform?.elevation ?? terrainHeight(samples,x,y)
   }
   const terrain=[],objects=[]
@@ -76,14 +76,17 @@ export function buildScene(data) {
       add(lerp(a,b,.5),'wall',[face([a,b,[b[0],b[1],b[2]+2.5],[a[0],a[1],a[2]+2.5]],'#9aab99')],area.place)
     }
     if(area.kind==='school') {
-      const track=rectangle(405,210,80,40,area.elevation+.2)
-      add([450,240],'detail',[face(track,'#caab91'),line([...track,track[0]],'#f5eee0',1),line([[445,210,18.3],[445,250,18.3]],'#f5eee0',1)])
+      const [x,y]=area.polygon[0],z=area.elevation+.2
+      const track=rectangle(x+25,y+19,80,40,z)
+      add([x+65,y+39],'detail',[face(track,'#caab91'),line([...track,track[0]],'#f5eee0',1),line([[x+65,y+19,z],[x+65,y+59,z]],'#f5eee0',1)])
     }
   }
   for(const road of data.roads) for(let i=1;i<road.nodes.length;i++) {
     const a=data.nodes[road.nodes[i-1]],b=data.nodes[road.nodes[i]]
     const length=Math.hypot(b[0]-a[0],b[1]-a[1])
-    const width=({main:10,avenue:15,shore:7,bridge:16,steps:6,trail:4,service:5,landing:9}[road.kind]??7)
+    if(road.kind==='lift'){add(a,'lift',[line([a,b],'#8a9e93',5)]);continue}
+    if(length===0)continue
+    const width=({main:10,avenue:15,shore:7,bridge:16,deck:5,steps:6,trail:4,service:5,landing:9}[road.kind]??7)
     const n=Math.ceil(length/(road.kind==='steps'?3:20))
     const offset=[-(b[1]-a[1])/length*width/2,(b[0]-a[0])/length*width/2]
     for(let j=0;j<n;j++) {
@@ -117,10 +120,16 @@ export function buildScene(data) {
     for(let row=4;row<h-2;row+=6)for(let col=5;col<w-4;col+=9) shapes.push(face([[x+col,y-.1,z+row],[x+col+4,y-.1,z+row],[x+col+4,y-.1,z+row+3],[x+col,y-.1,z+row+3]],'#779395'))
     if(b.kind==='shop')shapes.push(face([[x,y-4,z+5],[right,y-4,z+5],[right,y,z+6],[x,y,z+6]],'#dbb88a'))
     if(b.kind==='home') {
-      for(const yy of [244,263,275]) shapes.push(face([[right+.1,yy,z+2],[right+.1,yy+6,z+2],[right+.1,yy+6,z+6],[right+.1,yy,z+6]],'#83aaa7'))
-      shapes.push(face([[right,240,z+7],[right+7,240,z+6],[right+7,281,z+6],[right,281,z+7]],'#d89460'))
-      shapes.push(face([[right+.2,252,z],[right+.2,258,z],[right+.2,258,z+5],[right+.2,252,z+5]],'#526e6a'))
-      shapes.push(line([[right+1,256,z+9],[right+1,271,z+9]],'#f8edce',2))
+      for(const t of [.15,.65]) {
+        const yy=y+l*t
+        shapes.push(face([[right+.1,yy,z+2],[right+.1,yy+l*.15,z+2],[right+.1,yy+l*.15,z+5],[right+.1,yy,z+5]],'#83aaa7'))
+      }
+      shapes.push(face([[right,y,z+6],[right+3,y,z+5],[right+3,back,z+5],[right,back,z+6]],'#d89460'))
+      shapes.push(face([[right+.2,y+l*.4,z],[right+.2,y+l*.55,z],[right+.2,y+l*.55,z+4],[right+.2,y+l*.4,z+4]],'#526e6a'))
+    }
+    if(b.kind==='civic') {
+      // Civic roofs are flat; the shared cinema roof carries its public garden
+      shapes.splice(3,2,face(rectangle(x,y,w,l,top),b.place==='15'?'#a9bf91':'#b3bdb7',{stroke:'#75837e',width:.6}))
     }
     add([right,y],'building',shapes,b.place)
   }
