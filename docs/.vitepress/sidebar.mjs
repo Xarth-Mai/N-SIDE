@@ -7,7 +7,7 @@ const readingOrder = {
   locations: ['n-district.md', 'shop.md', 'stargazing-terrace.md'],
   gameplay: ['controls.md', 'daily-life.md', 'levels.md', 'dream-diving.md', 'combat.md'],
   narrative: ['workflow.md', 'data.md', 'examples', 'playtest.md'],
-  production: ['workflow.md', 'gameplay.md', 'district-space.md', 'district-plan.md', 'district-places.md', 'world-research.md', 'art.md', 'audio.md', 'assets.md', 'engineering.md', 'wiki.md'],
+  production: ['workflow.md', 'gameplay.md', 'district-space.md', 'district-plan.md', 'district-architecture.md', 'district-station.md', 'district-places.md', 'world-research.md', 'art.md', 'audio.md', 'assets.md', 'engineering.md', 'wiki.md'],
   templates: ['character.md', 'location.md', 'enemy.md', 'daily-scene.md', 'quest.md', 'case-development.md', 'narrative-playtest.md', 'continuity-review.md', 'task.md'],
 }
 

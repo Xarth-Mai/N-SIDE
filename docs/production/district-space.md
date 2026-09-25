@@ -12,6 +12,7 @@ depends_on: ["DOC-NULL-CITY", "LOC-002", "LOC-001", "LOC-003"]
 | 内容 | 页面 |
 | --- | --- |
 | 双中心、十二街坊、地块、道路、关键剖面与规模校核 | [街区总图与剖面](district-plan.md) |
+| 代表街段、建筑层平面、连续立面、横剖面与面积 | [小店与坡地住宅](district-architecture.md)、[站前与兴趣街](district-station.md) |
 | 场所配置、重点空间简报、小店动线、日常状态与回访 | [街区场所与日常](district-places.md) |
 | 现实依据、适用条件与项目设计选择 | [城市空间研究](world-research.md) |
 

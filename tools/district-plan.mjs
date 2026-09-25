@@ -1,19 +1,6 @@
-// Areas and section distances use the plan's metre coordinates, independently of camera projection
-export const polygonArea = points => Math.abs(points.reduce((sum, [x,y], i) => {
-  const [u,v] = points[(i+1)%points.length]
-  return sum+x*v-u*y
-}, 0))/2
-
-export function inside(point, polygon) {
-  const [x,y]=point
-  let result=false
-  for(let i=0,j=polygon.length-1;i<polygon.length;j=i++) {
-    const [a,b]=polygon[i],[u,v]=polygon[j]
-    if(Math.abs((x-a)*(v-b)-(y-b)*(u-a))<1e-7 && x>=Math.min(a,u) && x<=Math.max(a,u) && y>=Math.min(b,v) && y<=Math.max(b,v))return true
-    if((b>y)!==(v>y) && x<(u-a)*(y-b)/(v-b)+a)result=!result
-  }
-  return result
-}
+// Areas and section distances use design metres, independently of camera projection
+import { polygonArea } from './district-geometry.mjs'
+export { polygonArea, pointInside as inside } from './district-geometry.mjs'
 
 export function routeProfile(nodes, ids) {
   let distance=0

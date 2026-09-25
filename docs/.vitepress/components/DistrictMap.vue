@@ -80,7 +80,7 @@ const structure=computed(()=>mode.value==='roads')
         <g stroke="#c0d9d3" stroke-width="1" opacity=".65"><path v-for="i in 12" :key="i" :d="`M ${project([-280+i*90,-220-i%3*40,0]).join(',')} l 35 9 m 10 3 l 12 3`"/></g>
         <g v-for="surface in scene.surfaces" :key="surface.key" :data-surface-place="surface.place"><path v-for="(shape,j) in surface.shapes" :key="j" :d="shape.d" :fill="shape.fill" :stroke="selected===surface.place?'#c2763b':shape.stroke" :stroke-width="selected===surface.place?1.7:shape.width"/></g>
         <g v-for="object in scene.objects" :key="object.key" :data-kind="object.kind" :data-object-place="object.place" :opacity="structure&&['building','tree'].includes(object.kind)?.18:1">
-          <path v-for="(shape,j) in object.shapes" :key="j" :d="shape.d" :fill="shape.fill" :stroke="selected===object.place&&object.kind==='building'?'#c2763b':shape.stroke" :stroke-width="selected===object.place&&object.kind==='building'?1.7:shape.width" :opacity="shape.opacity" stroke-linejoin="round"/>
+          <path v-for="(shape,j) in object.shapes" :key="j" :d="shape.d" :fill="shape.fill" :fill-rule="shape.fillRule" :stroke="selected===object.place&&object.kind==='building'?'#c2763b':shape.stroke" :stroke-width="selected===object.place&&object.kind==='building'?1.7:shape.width" :opacity="shape.opacity" stroke-linejoin="round"/>
         </g>
         <g v-if="names" class="map-labels">
           <g v-for="p in visiblePlaces" :key="p.id" :transform="`translate(${p.point}) scale(${1/scale})`" :data-place="p.id" role="button" tabindex="0" :aria-label="`${p.id} ${p.name}`" :aria-pressed="selected===p.id" @click.stop="choose(p.id)" @keydown.enter.stop.prevent="choose(p.id)" @keydown.space.stop.prevent="choose(p.id)">

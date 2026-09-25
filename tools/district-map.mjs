@@ -110,6 +110,35 @@ export function buildScene(data) {
     }
   }
   for(const b of data.buildings) {
+    if(b.design) {
+      const z=b.elevation,top=z+b.height,shapes=[]
+      const roofPath=svgPath(b.polygon.map(p=>[...p,top]))+' Z'+(b.design.lightwell?' '+svgPath(b.design.lightwell.map(p=>[...p,top]))+' Z':'')
+      shapes.push(face(b.polygon.map(([x,y])=>[x+4,y-5,z]),'#5b6b5d',{opacity:.14}))
+      for(let i=0;i<b.polygon.length;i++) {
+        const a=b.polygon[i],v=b.polygon[(i+1)%b.polygon.length],dx=v[0]-a[0],dy=v[1]-a[1]
+        if(dx*c+dy*s<=0)continue
+        shapes.push(face([[...a,z],[...v,z],[...v,top],[...a,top]],dx>=0?'#eee6d2':'#c4cbbb'))
+        const length=Math.hypot(dx,dy),count=Math.max(1,Math.floor(length/5))
+        for(const floor of b.design.floors)for(let j=0;j<count;j++) {
+          const p=lerp(a,v,(j+.25)/count),q=lerp(a,v,(j+.65)/count)
+          shapes.push(face([[...p,floor.z+.8],[...q,floor.z+.8],[...q,floor.z+2.5],[...p,floor.z+2.5]],'#779395'))
+        }
+      }
+      shapes.push({d:roofPath,fill:b.place==='04'?'#b98e6b':b.design.type==='slope'?'#aab8ad':'#b9bcb2',stroke:'#75837e',width:.5,fillRule:'evenodd'})
+      if(b.design.lightwell)for(let i=0;i<b.design.lightwell.length;i++) {
+        const a=b.design.lightwell[i],v=b.design.lightwell[(i+1)%b.design.lightwell.length]
+        shapes.push(face([[...a,z],[...v,z],[...v,top],[...a,top]],'#c8c6b6'))
+      }
+      const [a,v]=b.design.front,dx=v[0]-a[0],dy=v[1]-a[1],length=Math.hypot(dx,dy),offset=b.design.canopy??0
+      if(offset) {
+        const sign=contains(b.polygon,(a[0]+v[0])/2-dy/length,(a[1]+v[1])/2+dx/length)?-1:1
+        const move=p=>[p[0]-dy/length*offset*sign,p[1]+dx/length*offset*sign,z+3]
+        shapes.push(face([[...a,z+3.2],[...v,z+3.2],move(v),move(a)],'#c39a72'))
+      }
+      const nearest=b.polygon.reduce((a,p)=>depth(p)>depth(a)?p:a)
+      add(nearest,'building',shapes,b.place)
+      continue
+    }
     const [[x,y],,[right,back]]=b.polygon,z=b.elevation,h=b.height,w=right-x,l=back-y
     const south=[[x,y,z],[right,y,z],[right,y,z+h],[x,y,z+h]]
     const east=[[right,y,z],[right,back,z],[right,back,z+h],[right,y,z+h]]

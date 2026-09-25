@@ -54,13 +54,13 @@
 
 ## R5｜连续店屋与内部空间
 
-来源：[Singapore URA：Understanding the Shophouse](https://www.ura.gov.sg/conservation/conservation-resources/understanding-the-shophouse/)，页面内容更新于 2026-06-17，Shophouse Typology、Airwells、Rear Court 与 Adaptive Reuse 章节
+来源：[Singapore URA：Understanding the Shophouse](https://www.ura.gov.sg/conservation/conservation-resources/understanding-the-shophouse/)，页面内容更新于 2026-06-17，Shophouse Typology、Airwells、Rear Court 与 Adaptive Reuse 章节；[Figure 2：Key Elements of a Typical Shophouse](https://isomer-user-content.by.gov.sg/467/2f9c6791-9ba9-4767-879e-039c53c141d3/overviewFig2.pdf)与[Figure 3：Variations of Shophouse](https://isomer-user-content.by.gov.sg/467/aa84091e-d9f2-4591-95a5-d135e21f179d/overviewFig3.pdf)，均为 2023 年 12 月版单页剖切轴测图
 
-事实：历史店屋以共墙方式连续排列，天井与后院帮助内部采光通风，传统用途包含底层经营和上层居住
+事实：历史店屋以共墙方式连续排列，天井与后院帮助内部采光通风，传统用途包含底层经营和上层居住。Figure 3 将主楼、内部楼梯、天井、后楼和后院放在同一张剖切图中，展示有无前院及一进、两进建筑的差别
 
 适用条件：这是特定历史建筑的类型与保护介绍，借鉴对象是街面、进深和后场的关系；Null City 的材料、结构与时代风貌独立设计
 
-项目选择：商住街先排地块进深、院落、私人楼梯和服务巷，再形成连续店面。小店的共用前门、独立货门与后场私人楼梯延续既定关系
+项目选择：商住街先排地块进深、院落、私人楼梯和服务巷，再形成连续店面。普通店屋保留内部采光口和后场，现代雨棚、玻璃店面与金属设备柜负责当代日常表达；小店的共用前门、独立货门与后场私人楼梯延续既定关系
 
 后续取证：在三个代表街段中核对内部采光、后院使用与相邻建筑边界
 
@@ -99,3 +99,63 @@
 项目选择：社区中学保留完整校园地块，校舍与体育设施分别计建筑体量，校园计一个场所。南门附近承接主要放学等候、文具与外带餐饮，北侧服务社区球场和上街住宅；学生主要到达与服务车辆分别接入，社区球场与校内操场分别管理
 
 后续取证：按选定办学规模建立教学、体育及服务面积表，再确定校门、道路和邻近住宅的关系
+
+## R9｜街角烘焙与门前停留
+
+来源：[atelier tao+c：Over Bakery，设计方供稿与图纸](https://www.archdaily.com/1003557/over-bakery-atelier-tao-plus-c)，ArchDaily 于 2023-07-10 发布；[Floor Plan 原图](https://www.archdaily.com/1003557/over-bakery-atelier-tao-plus-c/64a639435921182c48f61829-over-bakery-atelier-tao-plus-c-floor-plan)，项目年份 2022
+
+事实：平面将厨房置于后半部，售卖与坐食位于临街前半部，转折玻璃界面退入原外墙，形成入口与窗边停步空间。街道两侧的既有建筑轮廓一同入图，能够核对弯口、顾客入口与门前余地的关系
+
+适用条件：这是约 80 平方米的既有底层店铺改造，图纸支持制作、售卖、坐食与街道相接的研究；楼上住宅、独立后勤到达和完整建筑剖面由本项目补齐
+
+项目选择：采购弯口的烘焙店和外带店分别设置制作后场、临街展示和凹入的取餐位置。转角两面可见商品，顾客停步留在门前范围，连续步行线沿外侧经过；住宅楼梯与厨房服务入口各自接入，金属雨棚和手写菜单延续年轻的日常街面
+
+## R10｜小型公寓的采光与入口
+
+来源：[Wittman Estes：Broadway Hill Apartments](https://www.wittman-estes.com/projects/broadway-hill-apartments)，设计方公布方案；图纸为 `20201120_Broadway Hill_Plan 1 (C)`、`20201120_Broadway Hill_Plan 2` 与 `20201123_Broadway Hill_Section`，分别标注 GROUND LEVEL、UPPER LEVEL 和建筑纵剖面
+
+事实：两段住宅体量之间设置露天花园楼梯，上层平面从中间的楼梯分别进入两侧住户。地面层区分上层住户、地面住户和花园住户的入口，纵剖面将街道、较低花园、层层平台和屋顶联系在一起，上层住户的卫生间靠近中间交通空间
+
+适用条件：公开图纸可核对入口、采光间隙与楼层关系，页面没有提供建成运营证据。案例的地面停车与露天楼梯按当地场地设计，N街区根据步行生活、营业界面和雨天使用重新安排
+
+项目选择：小型公寓采用明确住宅门厅、共用交通与采光院，普通店面朝向采购街，住户沿独立入口回家。住宅门厅连接内梯与分户走廊，临街商业与安静住宅分别安排出入口和楼层用途
+
+## R11｜坡地住宅的上下街入口
+
+来源：[Wittman Estes：Tsuga Townhomes](https://www.wittman-estes.com/projects/tsugatownhomes)，设计方项目页；图纸为标出 Highland Park Way SW、8th Ave SW 的总平面，以及标出 Main House、Duplex South 的场地建筑剖面
+
+事实：总平面中三户住宅分成主屋与双户体量，中间留出内院；剖面中双户住宅的下层门厅接较低内院，较高一侧接厨房层外的平台与上街，卧室、厨房和屋顶平台由室内楼梯联系。开窗与两栋之间的空隙共同组织看树与远处的视线
+
+适用条件：这是私人住宅组团的上下到达，院内联系由住户使用。可借鉴错层入口、落地平台与视线开口，公共穿行需要独立于住户内部交通
+
+项目选择：坡地双入口住宅沿上下街分别进入相应楼层，同一建筑保持统一楼层编号和水平楼板。公共台阶从建筑侧面经过，住宅入口在平台处分开；低街与后街分别接住宅门厅，上街门前保留树荫与短暂停留，建筑之间留下朝向河与屋顶的视线间隙
+
+## R12｜站前混合楼与公共穿行
+
+来源：[日本设计：SHIBUYA CAST.](https://www.nihonsekkei.co.jp/projects/6510/)及设计方广报志 [NIHON SEKKEI 12](https://www.nihonsekkei.co.jp/wp-content/uploads/2020/10/NIHONSEKKEI_12.pdf)，PDF 第 12 页的 1F Plan 与 Section；项目于 2017 年 4 月竣工
+
+事实：一层平面将广场、贯通步行通道、商店、共享办公和电梯厅放在同一街区关系中，通道连接广场与背侧住宅区域。剖面将低层商业与会客、中部办公、上部住宅分开，车辆坡道位于较低层级；公共经过与进入楼上用途拥有各自的位置
+
+适用条件：这是地上 16 层的都市综合体，图纸支持混合用途、公共通道和垂直分区的研究。N站周边采用适合街坊规模的楼高、进深与核心交通，货梯尺寸、疏散和各层运营边界由项目另行核对
+
+项目选择：站前建筑以连续商业底座承接通勤与会合，上层组合办公或住宅。街道至广场的公共经过线保持连续，楼上用户从明确的独立门厅进入；设备交接与收货接后场，楼宇导向标出用途、入口和营业层，建筑体量通过基座、上层退让与街角开口形成差别
+
+## R13｜模型兴趣店的展示、活动与会合
+
+来源：[TORAFU ARCHITECTS：TAMIYA PLAMODEL FACTORY TOKYO，设计方发布的平面及说明](https://www.tecture.jp/projects/5820)，项目于 2024 年 5 月竣工；[运营方开业资料](https://www.tamiya.com/english/newstopics/e_news_14)，2024-04-23；[2025 年 7 月活动安排](https://www.tamiya.com/mini4wd/tamiya_tokyo/mini4wd_event_202507)
+
+事实：平面中商品陈列居中，活动区与咖啡、实物展示分居两端，活动区另有临街开口，后侧建筑走廊与店内陈列分开。运营资料将模型展示、制作讲习、赛事和咖啡会合组合；2025 年 7 月活动记录显示，同一活动场地在上午比赛、下午工作坊之间换场
+
+适用条件：这是办公楼底层约 481 平方米的店铺设计，支持陈列、制作参与、会合与时段变化。公开平面没有确认顾客喷涂间、专用收货通道或机器维修工位，相关房间由 N街区按实际活动补齐
+
+项目选择：模型店把橱窗、挑选、拼装工作台与作品暂存连成可见过程，活动桌保留换场和收拢位置。咖啡与等候靠街，设备维修设独立交接和后场工作区；商品箱、未完成作品与借用工具分别存放，让日常整理与制作成为可观察的街景
+
+## R14｜制作工作区与工具、作品储存
+
+来源：[Harvey Mudd College：Makerspace Floor Plan](https://www.hmc.edu/makerspace/wp-content/uploads/sites/63/2021/08/makerspace-floorplan.pdf)，2021 年发布路径的单页分区图；[校方 Explore the Makerspace](https://www.hmc.edu/makerspace/explore/)，场所分区、工具培训与作品储存说明
+
+事实：平面分别标出开放制作、电子工位、独立喷涂间、工具设备管理、作品储存和讨论休息位置，并标出通向相邻机械与木工空间的联系。校方运营说明提供工具借用、使用培训和作品寄存，部分工具的使用需要额外培训
+
+适用条件：这是面向校园成员的共享制作设施。2021 年图纸与当前网页的个别房间用途已有调整，引用范围为图中明确的功能分区；图纸未给出通风量、设备净距或商业对公众开放条件
+
+项目选择：兴趣街的模型与设备楼把公众展示、轻量拼装和工作人员检修分区，工具领还、材料与待修件、完成品交接各有位置。有粉尘或气味的作业放入独立房间，排风与维护接口随建筑安排；声学、抽排和设备搬运净距进入工程专项，以使用者与工作人员各自的通路检验平面
