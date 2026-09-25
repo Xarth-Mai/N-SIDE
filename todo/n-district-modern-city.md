@@ -53,7 +53,7 @@ evidence: ["docs/production/world-research.md", "docs/production/district-plan.m
 - [摘星台](../docs/locations/stargazing-terrace.md)
 - [家庭 Agent](../docs/characters/agent.md)
 - [街区空间制作](../docs/production/district-space.md)
-- [TASK-001](n-district-space.md)
+- [TASK-001](archive/n-district-space.md)
 - [空间设计决策](n-district-questionnaire.md)
 - [地图资产包](../source-assets/district-map/README.md)
 - [地图主数据](../source-assets/district-map/district.json)
