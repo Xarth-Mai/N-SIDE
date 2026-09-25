@@ -1,5 +1,15 @@
 # 城市框架与 Viewer 收口
 
+## 结项记录
+
+2026-09-25：作者确认按已交付范围结项归档，状态为 `done`。归档前仓库基线为 `8506c39`，城市框架、空间修订和白天样板成果分别对应 `3374e7f`、`3503563` 与 `1628677`
+
+已交付基线与树点核对、Wiki 与 Viewer 关键地形对应、校园通路支柱修复、视线修订和固定视点证据
+
+剩余工作统一由 [Demo 路线图的归档承接](../demo-roadmap.md#城市与-viewer-归档承接)维护。历史 `PASS`、`NOT RUN`、`SKIPPED` 与未勾选项保留实际含义，本次结项采用作者确认的交付范围，完整空间与视觉验收继续按承接阶段开展
+
+以下原阶段计划与交付记录保留当时的版本、状态和证据；其中未完成项已转入后续，当前执行入口以路线图为准
+
 [TASK-002](n-district-modern-city.md)与[TASK-003](map-viewer.md)的共同工作记录，推进顺序为：基线同步 → 空间一致性与连续观察 → 小店—采购街白天样板 → P7 归档
 
 作者已确认城市外部框架并授权 Viewer，范围包含建筑外壳、道路、公共空间、高差与必要到达。A1／A2 室内图保留参考，室内深化另行安排。城市框架冻结与 Viewer 最终验收分别依据实际完成项判断
@@ -10,7 +20,7 @@
 
 地图源为 `source-assets/district-map/district.json`，schema v7，输入 SHA-256 为 `64d82eeb2a4ddffb58abec0b99eb512e81dad34ce2ed003ed0b2ca6f841a1fb2`
 
-本轮工作区在该提交之上修正视线与树冠位置，地图 SHA-256 为 `2a5ec2d7c936d7b5ea1ab14abab472a4d2f11b0dd7fc86d0b81a9e2a10f0e52d`；Viewer 源文件及外观输入记录在[输入校验和](evidence/city-closeout/inputs.sha256)，作为本轮图像的版本依据
+本轮工作区在该提交之上修正视线与树冠位置，地图 SHA-256 为 `2a5ec2d7c936d7b5ea1ab14abab472a4d2f11b0dd7fc86d0b81a9e2a10f0e52d`；Viewer 源文件及外观输入记录在[输入校验和](../evidence/city-closeout/inputs.sha256)，作为本轮图像的版本依据
 
 以下数量由当前源数据、`planStats` 与 `frameworkCoverage` 重新计算，覆盖表示已记录的空间信息及角色连通关系
 
@@ -98,24 +108,24 @@
 
 路口修复应合并 roads[1]、[37]、[68]、[233] 与 [18] 台阶落脚的局部接面，保留源节点与截面高程，并同步去掉内部基座墙。简单改成水平路口会把相邻缓路推至约 5.91%，超过其 5% 目标，因此不以加大裁切容差或压平地面处理
 
-雨水总体去向按山脚上街、小店、校园、影院及滨水五类分区进入[街区总图说明](../docs/production/district-plan.md#排水与公共设施)，管径、流量和结构计算继续留工程专项。主要视线的树木及地形全程遮挡与摘星台两面镜头仍待后续实际观察
+雨水总体去向按山脚上街、小店、校园、影院及滨水五类分区进入[街区总图说明](../../docs/production/district-plan.md#排水与公共设施)，管径、流量和结构计算继续留工程专项。主要视线的树木及地形全程遮挡与摘星台两面镜头仍待后续实际观察
 
 ## 白天样板与归档出口
 
 本轮为小店、烘焙、生鲜、早餐及干货五种店面新增原创橱窗图形，分别呈现杯具文具、面包托盘、果蔬、早餐茶饮和罐装袋装商品。图形只用于一层临街橱窗，沿用实际门口避让；入口、侧后立面与楼上窗户继续遵循现有建筑规则
 
-对照图采用相同观察位置、55° 视场与白天光照；旧图对应 `bf64189`，新图对应该提交加本轮工作区补丁，输入文件见[校验和](evidence/city-closeout/inputs.sha256)。截图统一转换为质量 80 的 WebP
+对照图采用相同观察位置、55° 视场与白天光照；旧图对应 `bf64189`，新图对应该提交加本轮工作区补丁，输入文件见[校验和](../evidence/city-closeout/inputs.sha256)。截图统一转换为质量 80 的 WebP
 
 | 样板 | 修改前 | 本轮结果 |
 | --- | --- | --- |
-| 小店 | [原橱窗](evidence/city-closeout/before-shop.webp) | [商品陈列与入口](evidence/city-closeout/shop.webp) |
-| 采购街 | [原街景](evidence/city-closeout/before-street.webp) | [不同店面的经营图形](evidence/city-closeout/street.webp) |
+| 小店 | [原橱窗](../evidence/city-closeout/before-shop.webp) | [商品陈列与入口](../evidence/city-closeout/shop.webp) |
+| 采购街 | [原街景](../evidence/city-closeout/before-street.webp) | [不同店面的经营图形](../evidence/city-closeout/street.webp) |
 
-其余固定视点：[全图](evidence/city-closeout/overview.webp)、[影院上下层](evidence/city-closeout/cinema.webp)、[桥下](evidence/city-closeout/bridge.webp)、[山坡](evidence/city-closeout/hillside.webp)、[校园高差](evidence/city-closeout/campus.webp)。校园视点为本轮新增，其余六个沿用已有机位
+其余固定视点：[全图](../evidence/city-closeout/overview.webp)、[影院上下层](../evidence/city-closeout/cinema.webp)、[桥下](../evidence/city-closeout/bridge.webp)、[山坡](../evidence/city-closeout/hillside.webp)、[校园高差](../evidence/city-closeout/campus.webp)。校园视点为本轮新增，其余六个沿用已有机位
 
-七个镜头均完成实际 GPU 离屏渲染，每镜头预热 3 秒、采样 5 秒，P95 帧时为 1.78—3.91 ms，资源失败与降级均为 0，进程正常退出，见[渲染摘要](evidence/city-closeout/render.txt)。该结果覆盖固定视点生成、加载与离屏性能；窗口操作按本轮授权保留 SKIPPED，完整样板美术判断仍待作者确认
+七个镜头均完成实际 GPU 离屏渲染，每镜头预热 3 秒、采样 5 秒，P95 帧时为 1.78—3.91 ms，资源失败与降级均为 0，进程正常退出，见[渲染摘要](../evidence/city-closeout/render.txt)。该结果覆盖固定视点生成、加载与离屏性能；窗口操作按本轮授权保留 SKIPPED，完整样板美术判断仍待作者确认
 
-当前下一步先完成小店路口共用接面与影院平台承托，再结合这些固定机位核对侧后立面、材料尺度与公共通行。城市框架尚未冻结
+本记录按已有修订与证据结项。小店路口共用接面与影院平台承托转入 M1，侧后立面、材料尺度与完整样板判断转入 M4；城市外部框架作为后续制作基线，完整空间验收仍按承接阶段开展
 
-- TASK-002：P4 接合、雨水方向与主要视线完成，P7 地图、研究、正式正文和检查一致后冻结当前外部框架
-- TASK-003：白天样板及受影响的实际验证完成后按确认范围交付，本轮获准跳过的连续操作保留 SKIPPED，作者样板判断保留待验
+- TASK-002：已按外部框架交付范围结项，P4／P7 剩余空间、视线与设计核对转入后续
+- TASK-003：已按 Viewer 与静态样板交付范围结项，连续操作保留 SKIPPED，作者样板判断由 M4 承接

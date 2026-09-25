@@ -1,11 +1,21 @@
 ---
 id: TASK-002
-status: in_progress
+status: done
 depends_on: ["DOC-NULL-CITY", "DOC-DISTRICT-SPACE", "LOC-001", "LOC-002", "LOC-003", "CHR-003"]
-evidence: ["docs/production/world-research.md", "docs/production/district-plan.md", "docs/production/district-places.md", "source-assets/district-map/district.json", "tools/tests/district-map.test.mjs", "todo/n-district-closeout.md"]
+evidence: ["docs/production/world-research.md", "docs/production/district-plan.md", "docs/production/district-places.md", "source-assets/district-map/district.json", "tools/tests/district-map.test.mjs", "todo/archive/n-district-closeout.md"]
 ---
 
 # N街区扩容与轻近未来都市设计
+
+## 结项记录
+
+2026-09-25：作者确认按已交付范围结项归档，状态为 `done`。归档前仓库基线为 `8506c39`，城市框架、空间修订和白天样板成果分别对应 `3374e7f`、`3503563` 与 `1628677`
+
+已交付十二街坊的城市外部框架、224 栋本岸建筑、道路与入口关系、特色场所策划及总图剖面，作者确认的外部框架作为后续游戏制作基础
+
+剩余工作统一由 [Demo 路线图的归档承接](../demo-roadmap.md#城市与-viewer-归档承接)维护。历史 `PASS`、`NOT RUN`、`SKIPPED` 与未勾选项保留实际含义，本次结项采用作者确认的交付范围，完整空间与视觉验收继续按承接阶段开展
+
+以下原阶段计划与交付记录保留当时的版本、状态和证据；其中未完成项已转入后续，当前执行入口以路线图为准
 
 ## 1. 目标与已确认方向
 
@@ -19,7 +29,7 @@ evidence: ["docs/production/world-research.md", "docs/production/district-plan.m
 
 完成标准是：隐藏地点编号后仍能辨认街坊与主要建筑，沿道路能连续抵达公共目的地，建筑、坡地、台阶、屋顶及河岸的上下关系成立。完成框架后再按实际需要选择可进入室内，分题开展细化
 
-作者于 2026-09-25 确认城市外部框架并授权 Viewer 工程，确认内容对应 `3374e7f` 的全区框架；`bf641896ba4d` 接续修正树点。当前进入 P4 场地接合与视线、P7 整合归档，实际三维观察及白天样板与 TASK-003 协同推进，[当前基线与检查记录](n-district-closeout.md)为后续入口
+作者于 2026-09-25 确认城市外部框架并授权 Viewer 工程，确认内容对应 `3374e7f` 的全区框架；`bf641896ba4d` 接续修正树点。TASK-002 已按城市外部框架交付范围结项，P4／P7 未完成项由 [Demo 路线图](../demo-roadmap.md#城市与-viewer-归档承接)承接，历史依据见[基线与检查记录](n-district-closeout.md)
 
 ### 作者已选组合
 
@@ -45,19 +55,19 @@ evidence: ["docs/production/world-research.md", "docs/production/district-plan.m
 
 ### 工作入口
 
-- [AGENTS.md](../AGENTS.md)
-- [项目约定](../docs/conventions.md)
-- [Null City](../docs/world/null-city.md)
-- [N街区](../docs/locations/n-district.md)
-- [小店与住家](../docs/locations/shop.md)
-- [摘星台](../docs/locations/stargazing-terrace.md)
-- [家庭 Agent](../docs/characters/agent.md)
-- [街区空间制作](../docs/production/district-space.md)
-- [TASK-001](archive/n-district-space.md)
-- [空间设计决策](n-district-questionnaire.md)
-- [地图资产包](../source-assets/district-map/README.md)
-- [地图主数据](../source-assets/district-map/district.json)
-- [资产管理](../docs/production/assets.md)
+- [AGENTS.md](../../AGENTS.md)
+- [项目约定](../../docs/conventions.md)
+- [Null City](../../docs/world/null-city.md)
+- [N街区](../../docs/locations/n-district.md)
+- [小店与住家](../../docs/locations/shop.md)
+- [摘星台](../../docs/locations/stargazing-terrace.md)
+- [家庭 Agent](../../docs/characters/agent.md)
+- [街区空间制作](../../docs/production/district-space.md)
+- [TASK-001](n-district-space.md)
+- [空间设计决策](../n-district-questionnaire.md)
+- [地图资产包](../../source-assets/district-map/README.md)
+- [地图主数据](../../source-assets/district-map/district.json)
+- [资产管理](../../docs/production/assets.md)
 
 ### 承接关系
 
@@ -354,6 +364,8 @@ P0—P2 五项收口已由作者针对 `46d6f78` 实际文件验收通过并关�
 
 ### P4：道路、高差与公共空间收口
 
+归档时未完成的接面与承托转入 M1，主要视线和边缘核对转入 M4，详见 [Demo 承接](../demo-roadmap.md#城市与-viewer-归档承接)
+
 **主 Agent：`URBAN-DESIGNER`**
 
 专家：`CIVIL-ENGINEER`、`TRANSPORT-PLANNER`、`LANDSCAPE-DESIGNER`、`CARTOGRAPHER`
@@ -385,6 +397,8 @@ P0—P2 五项收口已由作者针对 `46d6f78` 实际文件验收通过并关�
 
 ### P7：地图整合与研究复核
 
+下列原验收清单保留未勾选，设计复核及阅读检查转入 M1／M4；本次完成归档路径、任务状态与证据引用整理
+
 **主 Agent：`RESEARCH-EDITOR`**
 
 专家：`WORLD-DIRECTOR`、`CARTOGRAPHER`、`URBAN-DESIGNER`、`PLACE-CURATOR`。
@@ -407,7 +421,7 @@ P0—P2 五项收口已由作者针对 `46d6f78` 实际文件验收通过并关�
 
 人口、面积、楼层、客群和场所数量分别注明现实参照与项目假设。消费场所同时记录本地需求和外来客流；公共空间记录开放、管理和维护安排。
 
-参考卡的唯一正文见[城市空间研究](../docs/production/world-research.md)，保留 R1—R5 编号，并补充 R6 音游、R7 排练及 R8 中学校园资料
+参考卡的唯一正文见[城市空间研究](../../docs/production/world-research.md)，保留 R1—R5 编号，并补充 R6 音游、R7 排练及 R8 中学校园资料
 
 后续按设计问题补充模型与桌游店、影院后勤、演出声环境及屋顶绿化构造，具体缺口见参考卡
 
@@ -424,6 +438,8 @@ P0—P2 五项收口已由作者针对 `46d6f78` 实际文件验收通过并关�
 每阶段交接记录：输入版本、主Agent、实际参与专家、使用资料、设计选择、改动文件、图面数量、验证结果、待定项和后续依赖。
 
 ## 10. 验收与交付
+
+以下为原完整验收清单，未勾选项转入 Demo 对应阶段；已交付成果按文首结项范围归档，历史阶段证据见第 11 节
 
 - [ ] A4、B2、C2＋C1及D1/D2/D3/D6在地图和正式设定中明确落实。
 - [ ] E1a、E2a、E3b＋E3c各有具体空间方案。
@@ -448,7 +464,7 @@ bun run docs:build
 
 涉及工具或模板时，执行对应测试并记录实际结果。
 
-阶段交付与实际验证见下文，未完成阶段保持待办状态
+阶段交付与实际验证见下文，未完成的原验收项保留未勾选，并转入 Demo 路线图；本次范围结项记录见文首
 
 
 ## 11. 阶段交付
@@ -517,7 +533,7 @@ P0 验收通过；参考卡覆盖全部已选方向，八项来源均读取原�
 
 ### P1／P2｜总图、地块与场所
 
-输入为 P0 工作区；本阶段由主 Agent 整合，场所策划、空间起案与独立复核、Wiki 图表及阅读分工分别并行处理。总图与场所卡的唯一数据为 `district.json`，正式产物见[总图与剖面](../docs/production/district-plan.md)及[场所与日常](../docs/production/district-places.md)
+输入为 P0 工作区；本阶段由主 Agent 整合，场所策划、空间起案与独立复核、Wiki 图表及阅读分工分别并行处理。总图与场所卡的唯一数据为 `district.json`，正式产物见[总图与剖面](../../docs/production/district-plan.md)及[场所与日常](../../docs/production/district-places.md)
 
 - 12 街坊、47 个地块，地块建筑容量合计 280；本岸表达 64 个初设体量，对岸 7 个，剩余体量在 P3 按地块与类型展开
 - 84 处目的地、24 份重点简报，原 01—29 保留，新增 30—91；03、12、13、18、21、28、29 为辅助通路、住宅或后勤节点，单独统计
@@ -574,7 +590,7 @@ P1／P2 的数据、Wiki 呈现与路线几何检查通过；280 为地块容量
 
 主 Agent 承担 ARCHITECT 与统一地图写入；实际并行参与类型原图研究、街坊与高差及运营核对、图纸渲染三个工作，另由独立审查核对整合后的功能与视线。专家结论通过对象 ID 与坐标整合，现行 JSON 保持唯一源
 
-正式产物见[街区建筑与街段](../docs/production/district-architecture.md)，四类型依据见[城市空间研究 R5、R9—R11](../docs/production/world-research.md)，地图主数据升级为 v5
+正式产物见[街区建筑与街段](../../docs/production/district-architecture.md)，四类型依据见[城市空间研究 R5、R9—R11](../../docs/production/world-research.md)，地图主数据升级为 v5
 
 | 交付 | 实际结果 |
 | --- | --- |
@@ -609,7 +625,7 @@ P3-A0 完成，P3-A1 建筑方案进入作者验收。下一批为 P3-A2 站前�
 
 输入为 P3-A1 工作区，作者要求继续分阶段推进；本批完成第二代表段建筑方案，两个样段的作者设计验收单独保留，TASK-002 继续 `in_progress`
 
-主 Agent 承担 ARCHITECT 与唯一地图写入；实际并行参与原始建筑图纸研究、图纸组件复用与测试、空间和运营独立审查。研究、几何与功能意见按实际对象 ID 整合，新增知识页为[站前与兴趣街建筑](../docs/production/district-station.md)
+主 Agent 承担 ARCHITECT 与唯一地图写入；实际并行参与原始建筑图纸研究、图纸组件复用与测试、空间和运营独立审查。研究、几何与功能意见按实际对象 ID 整合，新增知识页为[站前与兴趣街建筑](../../docs/production/district-station.md)
 
 | 交付 | 实际结果 |
 | --- | --- |
@@ -695,7 +711,7 @@ P3-A2 建筑方案交付，下一批为 P3-A3 影院—音乐—滨水联系。�
 - 早餐铺保留短阶并补平层店前到达；两栋小店邻楼货门由对应高程的街面绕侧进入，消除原 29%／14% 补货短接；新增小店北侧横向公共步行联系
 - 住户院落边界退出公共地址街及其实际路宽，影院书店的共用内街与服务门分别记录；公共通路不穿住户或后勤专用场地
 
-总图展示无编号城市平面和道路到达图，另有 9 条高差剖面。[影院与滨水建筑](../docs/production/district-waterfront.md)复用相同数据裁取第二中心，周边建筑作为上下文保留；既有两组样段图纸继续提供建筑参考
+总图展示无编号城市平面和道路到达图，另有 9 条高差剖面。[影院与滨水建筑](../../docs/production/district-waterfront.md)复用相同数据裁取第二中心，周边建筑作为上下文保留；既有两组样段图纸继续提供建筑参考
 
 已落图建筑按占地、实际用途层数和地块住宅比例估算约 142271 m² 住宅楼面、1518 套、2838—3748 人。地块住宅占比仍是假设，结果用于规模核对，内部套型另行设计
 
