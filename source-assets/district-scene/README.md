@@ -3,7 +3,7 @@
 | 项目 | 内容 |
 | --- | --- |
 | 资产 ID | `AST-004` |
-| 主文件 | [appearance.json](appearance.json)、本目录五个招牌与五个橱窗 SVG |
+| 主文件 | [appearance.json](appearance.json)、[daylight.json](daylight.json)、本目录五个招牌与五个橱窗 SVG |
 | 作者与来源 | N:SIDE 原创外观绑定、招牌和橱窗图形；公开环境素材来源见[环境素材包](../environment-kit/README.md) |
 | 使用位置 | `world::scene` 生成的外墙、道路、店面和绿植 |
 | 派生文件 | `game/assets/environment/signs/*.png` |
@@ -30,4 +30,14 @@ bun tools/export-district-scene.mjs --check
 
 小店样板的花盆搭配已归一为 0.8 m 的公开灌木模型
 
+五种样板店面的首层前窗采用分离窗框、窗台和浅搁板，商品图形位于框后；入口采用三边门框与门把，窗格按实际宽度避让入口。原建筑轮廓与楼层标高继续控制外壳
+
 植树点采用地图原值，树底优先对应所在地面平台，其余使用地形插值。灯具沿足够长的主路、街道和岸边路段推导，并排除建筑和水面；表现规则与相机控制相互独立
+
+## 白天成像
+
+`daylight.json` 是 N:SIDE 原创的固定白天配置，由 `world::visual` 直接读取，负责太阳、三色天空与环境光、曝光、距离雾、阴影和局部 Bloom 开关。颜色为 sRGB，距离为米，`sun_position` 使用 Bevy 世界轴 `[x,h,-y]` 表示指向原点的光照方向，不表示一处地图设施
+
+环境贴图由 Bevy 的 `EnvironmentMapLight::hemispherical_gradient` 从配置颜色生成，天空与环境照明使用同一贴图，无外部天空素材或派生文件。它是简化的方向照明基线，后续精细天空和局部反射按实际样板需求替换；普通建筑与街面材质继续使用标准 PBR
+
+自然地形在原有控制网及高程上插值连续法线和坡度颜色，道路裁切不改变坡面受光；平台、挡墙和建筑保留硬边

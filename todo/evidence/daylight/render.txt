@@ -1,0 +1,49 @@
+baseline=3503563+working_tree
+profile=release resolution=2560x1440 fov_degrees=55
+warmup_seconds=3 sample_seconds=5 metric=cpu_frame_interval
+binary_sha256=48ead208f5316bbbae66e459b9e19d8e7ac611bcde65ed42a5155f992d542ca1
+case=msaa4-all exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.041
+[verify/view] view=overview frames=2556 mean_ms=1.96 p95_ms=3.44 fps=510.9 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=shop frames=1659 mean_ms=3.02 p95_ms=5.66 fps=331.5 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=street frames=1674 mean_ms=2.99 p95_ms=5.86 fps=334.6 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=cinema frames=1582 mean_ms=3.16 p95_ms=6.08 fps=316.2 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=bridge frames=2674 mean_ms=1.87 p95_ms=3.07 fps=534.7 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=hillside frames=2054 mean_ms=2.43 p95_ms=4.09 fps=410.7 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=campus frames=1974 mean_ms=2.54 p95_ms=4.22 fps=394.5 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=eye-shop frames=1515 mean_ms=3.30 p95_ms=6.23 fps=302.7 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=eye-corner frames=1694 mean_ms=2.95 p95_ms=5.55 fps=338.5 profile=release mode=offscreen metric=cpu_frame_interval
+[verify/view] view=eye-shade frames=1548 mean_ms=3.23 p95_ms=6.43 fps=309.4 profile=release mode=offscreen metric=cpu_frame_interval
+case=taa-shop exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.037
+[verify/view] view=shop frames=1499 mean_ms=3.34 p95_ms=6.21 fps=299.2 profile=release mode=offscreen metric=cpu_frame_interval
+case=taa-eye-shop exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.039
+[verify/view] view=eye-shop frames=1449 mean_ms=3.45 p95_ms=6.03 fps=289.7 profile=release mode=offscreen metric=cpu_frame_interval
+case=taa-eye-shade exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.037
+[verify/view] view=eye-shade frames=1429 mean_ms=3.50 p95_ms=6.51 fps=285.5 profile=release mode=offscreen metric=cpu_frame_interval
+case=taa-ssao-shop exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.042
+[verify/view] view=shop frames=1156 mean_ms=4.33 p95_ms=7.28 fps=230.9 profile=release mode=offscreen metric=cpu_frame_interval
+case=taa-ssao-eye-shop exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.039
+[verify/view] view=eye-shop frames=1108 mean_ms=4.52 p95_ms=7.42 fps=221.4 profile=release mode=offscreen metric=cpu_frame_interval
+case=taa-ssao-eye-shade exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.039
+[verify/view] view=eye-shade frames=1109 mean_ms=4.51 p95_ms=7.41 fps=221.6 profile=release mode=offscreen metric=cpu_frame_interval
+case=window-vsync exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.039
+[verify/view] view=eye-shop frames=897 mean_ms=5.58 p95_ms=5.61 fps=179.2 profile=release mode=window metric=cpu_frame_interval
+case=window-uncapped exit_code=0
+[geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review
+[world/ready] meshes=2591 model_instances=94 dependencies=20 failed=0 degraded=0 startup_seconds=0.041
+[verify/view] view=eye-shop frames=1599 mean_ms=3.13 p95_ms=3.27 fps=319.5 profile=release mode=window metric=cpu_frame_interval

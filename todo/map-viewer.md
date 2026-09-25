@@ -2,7 +2,7 @@
 id: TASK-003
 status: in_progress
 depends_on: ["TASK-002", "DOC-ART", "DOC-ASSETS", "DOC-TECHNICAL"]
-evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/map-viewer-assets.md", "todo/n-district-closeout.md"]
+evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/map-viewer-assets.md", "todo/n-district-closeout.md", "todo/daylight-visual.md"]
 ---
 
 # 3D Map Viewer 与最小世界运行时
@@ -13,7 +13,7 @@ evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/m
 
 本任务以 2026-09-25 的需求访谈为准，替代附件《N:SIDE Map Viewer 开发方案》中的较大工具范围。2026-09-25 作者确认城市框架设计完成，授权开始 Viewer 工程与素材导入；美术规范和候选素材研究已在阶段 A 完成
 
-当前执行入口为[城市框架与 Viewer 收口](n-district-closeout.md)：基于 `bf641896ba4d` 对齐空间生成、推进白天样板，TASK-003 保持 `in_progress`。作者授权本轮跳过人工连续飞行、鼠标捕获及失焦恢复，记录为 SKIPPED，继续空间修复和样板交付
+当前视觉执行入口为[白天视觉样板](daylight-visual.md)，基线为 `3503563`，先联调静态材质、光照、阴影与抗锯齿。空间接合待办继续由[城市框架与 Viewer 收口](n-district-closeout.md)维护，TASK-003 保持 `in_progress`。上一轮获准跳过的人工连续飞行、鼠标捕获及失焦恢复保留 SKIPPED；新增视觉组合的运动稳定性按本轮实际检查记录
 
 | 资料 | 用途 |
 | --- | --- |
@@ -43,7 +43,7 @@ evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/m
 
 初次启动检查时，HEAD 为 `46d6f78`，工作区地图为 v5，含 324 节点、257 道路记录、88 建筑与 38 surface；这是准备阶段的历史快照
 
-正式交接采用作者确认的 v7 全区外部框架，对应 `3374e7f`；当前基线为树点修正版 `bf641896ba4d`，源哈希、对象数量与覆盖复算见[收口记录](n-district-closeout.md#当前基线)
+正式交接采用作者确认的 v7 全区外部框架，对应 `3374e7f`；后续 `bf641896ba4d` 修正树点，`3503563` 完成空间一致性与橱窗样板。源哈希、对象数量与覆盖复算见[收口记录](n-district-closeout.md#当前基线)，白天调校以 `3503563` 为起点
 
 后续空间变更通过新的基线接入，记录提交、文件哈希及阶段，重新清点对象并运行受影响检查；核对实际 schema、建筑天井／屋顶／入口、平台归属、道路宽度及上下层语义
 
@@ -70,9 +70,9 @@ source-assets/
 game/assets/environment/
 ```
 
-结构已实施，资产诊断独立为 `world/assets.rs`，保持单 crate 与相机独立入口
+结构已实施，资产诊断独立为 `world/assets.rs`，共享白天配置由 `world/visual.rs` 提供，保持单 crate 与相机独立入口
 
-`map.rs` 负责有类型的地图解析、引用校验和坐标转换；`geometry.rs` 负责地形、道路、平台与建筑几何；`scene.rs` 负责素材绑定、场景生成及源对象关联。Viewer 入口负责窗口、启动加载、白天环境与飞行相机，共享世界模块不依赖 Viewer 的相机或输入
+`map.rs` 负责有类型的地图解析、引用校验和坐标转换；`geometry.rs` 负责地形、道路、平台与建筑几何；`scene.rs` 负责素材绑定、场景生成及源对象关联；`visual.rs` 负责固定曝光、白天天空、环境光、太阳与可选效果组合。Viewer 入口负责窗口、启动加载、飞行相机及验证镜头，共享世界模块不依赖 Viewer 的输入
 
 启动流程为 `JSON → 解析与校验 → Rust 地图数据 → 几何与 Bevy 场景`，运行中使用解析后的数据和实体。地图保持唯一编辑源，模型与贴图作为独立运行资产加载；JSON 不承载 Bevy 组件或 Viewer 配置
 
@@ -228,3 +228,7 @@ B 的地图交接已完成，C–D 的工程与自动检查已完成，人工自
 输入为 `bf64189` 后的空间修订，哈希及检查维护于[共同收口记录](n-district-closeout.md)。平台支柱按建筑体量、实际路宽和高程避让，校园公共通路已补回归；影院平台贴墙边无独立柱位，明确保留承托设计 Warning
 
 五个原创橱窗 SVG 通过 `displays` 绑定首层临街窗格，经营内容分别为生活杂货、面包、蔬果、早餐及干货，保留住宅窗与既有门口。固定渲染新增校园道路低视点，其余六个镜头与前一版一致。人工连续操作按作者授权记录为 SKIPPED，白天样板继续交付画面供作者判断，未冻结 TASK-002 或结项 TASK-003
+
+### 2026-09-25｜白天视觉联调
+
+作者确认以标准 PBR 推进可反复调校的白天样板，按固定基线、基础表现、光照、后处理对比、环境动态五阶段实施。当前实现和验收统一记录于[白天视觉样板](daylight-visual.md)，历史约 179 FPS 与 P95 ≤ 25 ms 的固定窗口结果保留其原测试条件；本轮采用 1440p、P95 ≤ 16.67 ms，并明确帧间隔与 GPU 耗时的区别

@@ -532,6 +532,41 @@ fn add_sign(
     Ok(())
 }
 
+fn add_frame(
+    batches: &mut BTreeMap<String, Mesh>,
+    center: Vec3,
+    opening: Vec2,
+    rotation: Quat,
+    sill: bool,
+) -> Result<(), String> {
+    for x in [-1.0, 1.0] {
+        add_box(
+            batches,
+            "trim",
+            center + rotation * Vec3::new(x * (opening.x + 0.1) / 2.0, 0.0, 0.0),
+            Vec3::new(0.1, opening.y, 0.28),
+            rotation,
+        )?;
+    }
+    add_box(
+        batches,
+        "trim",
+        center + Vec3::Y * (opening.y + 0.1) / 2.0,
+        Vec3::new(opening.x + 0.2, 0.1, 0.28),
+        rotation,
+    )?;
+    if sill {
+        add_box(
+            batches,
+            "metal",
+            center - Vec3::Y * (opening.y + 0.1) / 2.0,
+            Vec3::new(opening.x + 0.28, 0.1, 0.4),
+            rotation,
+        )?;
+    }
+    Ok(())
+}
+
 fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, String> {
     let mut parts = Vec::new();
     for building in &map.buildings {
@@ -580,20 +615,48 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         a[1] + dy * t + normal[1] * 0.055,
                         floor.z + 1.65,
                     ];
+                    let width =
+                        if floor_index == 0 && matches!(building.kind.as_str(), "shop" | "home") {
+                            2.35_f32
+                        } else {
+                            1.45_f32
+                        };
                     // Door nodes own their facade bays
                     if design.entries.iter().any(|e| {
                         let door = map.nodes[&e.node];
-                        (door[0] - p[0]).hypot(door[1] - p[1]) < 1.8
+                        (door[0] - p[0]).hypot(door[1] - p[1])
+                            < (f64::from(width) / 2.0 + 0.95).max(1.8)
                             && (door[2] - floor.z).abs() < 0.3
                     }) {
                         continue;
                     }
-                    let width =
-                        if floor_index == 0 && matches!(building.kind.as_str(), "shop" | "home") {
-                            2.35
-                        } else {
-                            1.45
-                        };
+                    if floor_index == 0
+                        && let Some(material) = display
+                    {
+                        let center = map_to_world([
+                            p[0] + normal[0] * 0.105,
+                            p[1] + normal[1] * 0.105,
+                            p[2],
+                        ]);
+                        add_frame(&mut batches, center, Vec2::new(width, 1.67), rotation, true)?;
+                        // Shallow display boxes keep the original building envelope intact
+                        add_sign(&mut batches, material, map_to_world(p), width, 1.67, normal)?;
+                        add_box(
+                            &mut batches,
+                            "trim",
+                            center,
+                            Vec3::new(0.045, 1.67, 0.12),
+                            rotation,
+                        )?;
+                        add_box(
+                            &mut batches,
+                            "metal",
+                            center - Vec3::Y * 0.12,
+                            Vec3::new(width * 0.89, 0.045, 0.18),
+                            rotation,
+                        )?;
+                        continue;
+                    }
                     add_box(
                         &mut batches,
                         "trim",
@@ -609,22 +672,6 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         Vec3::new(width, 1.67, 0.025),
                         rotation,
                     )?;
-                    if floor_index == 0
-                        && let Some(material) = display
-                    {
-                        add_sign(
-                            &mut batches,
-                            material,
-                            map_to_world([
-                                p[0] + normal[0] * 0.025,
-                                p[1] + normal[1] * 0.025,
-                                p[2],
-                            ]),
-                            width,
-                            1.67,
-                            normal,
-                        )?;
-                    }
                 }
                 if floor_index > 0 {
                     let p = [
@@ -646,6 +693,41 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                 let t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (length * length);
                 let distance = ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length;
                 if !(-0.001..=1.001).contains(&t) || distance > 0.02 {
+                    continue;
+                }
+                if display.is_some() && (p[2] - building.elevation).abs() < 0.3 {
+                    let center = map_to_world([
+                        p[0] + normal[0] * 0.16,
+                        p[1] + normal[1] * 0.16,
+                        p[2] + 1.175,
+                    ]);
+                    add_frame(&mut batches, center, Vec2::new(1.3, 2.35), rotation, false)?;
+                    add_box(
+                        &mut batches,
+                        if entry.role == "public" {
+                            "glass"
+                        } else {
+                            "metal"
+                        },
+                        map_to_world([
+                            p[0] + normal[0] * 0.04,
+                            p[1] + normal[1] * 0.04,
+                            p[2] + 1.175,
+                        ]),
+                        Vec3::new(1.3, 2.35, 0.03),
+                        rotation,
+                    )?;
+                    add_box(
+                        &mut batches,
+                        "metal",
+                        map_to_world([
+                            p[0] + normal[0] * 0.1 + dx / length * 0.45,
+                            p[1] + normal[1] * 0.1 + dy / length * 0.45,
+                            p[2] + 1.1,
+                        ]),
+                        Vec3::new(0.04, 0.34, 0.08),
+                        rotation,
+                    )?;
                     continue;
                 }
                 let center = [
@@ -904,9 +986,108 @@ mod tests {
                 let y = -f64::from(p[2]);
                 let z = f64::from(p[1]);
                 assert!(
-                    (((x - a[0]) * dy - (y - a[1]) * dx).abs() / dx.hypot(dy) - 0.15).abs() < 0.001
+                    (((x - a[0]) * dy - (y - a[1]) * dx).abs() / dx.hypot(dy) - 0.055).abs()
+                        < 0.001
                 );
                 assert!((building.elevation + 0.8..building.elevation + 2.5).contains(&z));
+            }
+        }
+    }
+
+    #[test]
+    fn sample_frames_leave_recessed_displays_and_doorways_clear() {
+        fn hits(mesh: &Mesh, origin: Vec3, direction: Vec3) -> bool {
+            let vertices = mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            mesh.indices()
+                .unwrap()
+                .iter()
+                .collect::<Vec<_>>()
+                .as_chunks::<3>()
+                .0
+                .iter()
+                .any(|ids| {
+                    let [a, b, c] = [ids[0], ids[1], ids[2]].map(|i| Vec3::from(vertices[i]));
+                    let normal = (b - a).cross(c - a);
+                    let denominator = normal.dot(direction);
+                    if denominator.abs() < 1e-6 {
+                        return false;
+                    }
+                    let t = normal.dot(a - origin) / denominator;
+                    if !(0.0..0.45).contains(&t) {
+                        return false;
+                    }
+                    let p = origin + direction * t;
+                    [(a, b), (b, c), (c, a)]
+                        .iter()
+                        .all(|(u, v)| (*v - *u).cross(p - *u).dot(normal) >= -1e-6)
+                })
+        }
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let parts = facades(&map, &appearance).unwrap();
+        for (id, material) in &appearance.displays {
+            let source = format!("buildings[{id}]/derived-facade");
+            let trim = &parts
+                .iter()
+                .find(|p| p.source == source && p.material == "trim")
+                .unwrap()
+                .mesh;
+            let display = &parts.iter().find(|p| &p.material == material).unwrap().mesh;
+            let normal = Vec3::from(
+                display
+                    .attribute(Mesh::ATTRIBUTE_NORMAL)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap()[0],
+            );
+            let right = Vec3::Y.cross(normal);
+            for pane in display
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap()
+                .as_chunks::<4>()
+                .0
+            {
+                let center = pane.iter().map(|p| Vec3::from(*p)).sum::<Vec3>() / 4.0;
+                let half_width = (Vec3::from(pane[1]) - Vec3::from(pane[0])).length() / 2.0;
+                assert!(
+                    !hits(
+                        trim,
+                        center + normal * 0.4 + right * half_width * 0.5 + Vec3::Y * 0.3,
+                        -normal
+                    ),
+                    "{id}: display hidden behind a solid frame panel"
+                );
+                assert!(
+                    hits(
+                        trim,
+                        center + normal * 0.4 + right * (half_width + 0.05),
+                        -normal
+                    ),
+                    "{id}: missing projecting jamb"
+                );
+            }
+            let building = map.buildings.iter().find(|b| &b.id == id).unwrap();
+            for entry in building
+                .design
+                .as_ref()
+                .unwrap()
+                .entries
+                .iter()
+                .filter(|e| e.role == "public")
+            {
+                let p = map_to_world(map.nodes[&entry.node]) + Vec3::Y * 1.1;
+                assert!(
+                    !hits(trim, p + normal * 0.4, -normal),
+                    "{id}: door center obstructed by trim"
+                );
             }
         }
     }

@@ -1,7 +1,11 @@
 //! Metre-based exterior geometry; every mesh keeps its authoritative source path
 use std::collections::BTreeSet;
 
-use bevy::{asset::RenderAssetUsages, mesh::PrimitiveTopology, prelude::*};
+use bevy::{
+    asset::RenderAssetUsages,
+    mesh::{Indices, PrimitiveTopology},
+    prelude::*,
+};
 use geo::{Area, BooleanOps, BoundingRect, Contains, LineString, MultiPolygon, Point, Polygon};
 use spade::{DelaunayTriangulation, FloatTriangulation, HasPosition, Point2, Triangulation};
 
@@ -48,7 +52,8 @@ fn color_ground(part: &mut GeometryPart, height_range: [f32; 2]) -> Result<(), S
                 .clamp(0.0, 1.0);
             let height = height * height * (3.0 - 2.0 * height);
             let slope = (1.0 - normal[1] * normal[1]).max(0.0).sqrt();
-            let soil = ((slope - 0.12) / 0.5).clamp(0.0, 1.0) * 0.72;
+            let soil = ((slope - 0.12) / 0.5).clamp(0.0, 1.0);
+            let soil = soil * soil * (3.0 - 2.0 * soil) * 0.72;
             // Continuous vegetation and exposed-earth tones, with physical heights unchanged
             let low_grass = [0.56, 0.63, 0.44];
             let high_grass = [0.39, 0.50, 0.36];
@@ -158,6 +163,49 @@ impl Ground {
             .barycentric()
             .interpolate(|v| v.data().0[2], point)
             .unwrap_or_else(|| self.0.nearest_neighbor(point).unwrap().data().0[2])
+    }
+
+    fn smooth_normals(&self, terrain: &mut MeshData) {
+        // Average the uncut surface so roads and foundations do not bias nearby terrain normals
+        let controls = Mesh::new(
+            PrimitiveTopology::TriangleList,
+            RenderAssetUsages::default(),
+        )
+        .with_inserted_attribute(
+            Mesh::ATTRIBUTE_POSITION,
+            self.0
+                .vertices()
+                .map(|v| map_to_world(v.data().0).to_array())
+                .collect::<Vec<_>>(),
+        )
+        .with_inserted_indices(Indices::U32(
+            self.0
+                .inner_faces()
+                .flat_map(|f| f.vertices().map(|v| v.index() as u32))
+                .collect(),
+        ))
+        .with_computed_smooth_normals();
+        let normals = controls
+            .attribute(Mesh::ATTRIBUTE_NORMAL)
+            .unwrap()
+            .as_float3()
+            .unwrap();
+        let interpolation = self.0.barycentric();
+        let mut weights = Vec::with_capacity(3);
+        for (p, normal) in terrain.positions.iter().zip(&mut terrain.normals) {
+            let point = Point2::new(f64::from(p[0]), -f64::from(p[2]));
+            interpolation.get_weights(point, &mut weights);
+            // Float mesh coordinates can round just beyond the convex hull
+            if weights.is_empty() {
+                weights.push((self.0.nearest_neighbor(point).unwrap().fix(), 1.0));
+            }
+            *normal = weights
+                .iter()
+                .map(|(v, weight)| Vec3::from(normals[v.index()]) * *weight as f32)
+                .sum::<Vec3>()
+                .normalize()
+                .to_array();
+        }
     }
 
     fn edge_points(&self, a: [f64; 2], b: [f64; 2]) -> Vec<[f64; 2]> {
@@ -622,6 +670,7 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
             terrain.polygon(&piece, |p| ground.height(p), "/terrain")?;
         }
     }
+    ground.smooth_normals(&mut terrain);
     terrain.finish("/terrain".into(), "terrain", &mut result);
     let mut water = MeshData::default();
     water.polygon(&polygon(&map.terrain.water), |_| 0.0, "/terrain/water")?;
@@ -900,6 +949,11 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         });
     for part in result.iter_mut().filter(|part| part.material == "terrain") {
         color_ground(part, height_range)?;
+        if part.source == "/terrain" {
+            part.mesh
+                .merge_duplicate_vertices()
+                .map_err(|error| format!("/terrain: shared vertices failed: {error}"))?;
+        }
     }
     Ok(result)
 }
@@ -907,6 +961,57 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn clipped_terrain_keeps_continuous_normals_without_moving_the_surface() {
+        let mut triangulation = DelaunayTriangulation::new();
+        for p in [[0., 0., 0.], [10., 0., 0.], [10., 10., 4.], [0., 10., 0.]] {
+            triangulation.insert(GroundPoint(p)).unwrap();
+        }
+        let ground = Ground(triangulation);
+        let mask = polygon(&[[-1., -1.], [5., -1.], [5., 11.], [-1., 11.]]);
+        let mut terrain = MeshData::default();
+        for face in ground.0.inner_faces() {
+            let triangle = polygon(&face.vertices().map(|v| [v.data().0[0], v.data().0[1]]));
+            for piece in subtract(&triangle, std::slice::from_ref(&mask)) {
+                terrain
+                    .polygon(&piece, |p| ground.height(p), "test")
+                    .unwrap();
+            }
+        }
+        let positions = terrain.positions.clone();
+        let flat_normals = terrain.normals.clone();
+        ground.smooth_normals(&mut terrain);
+        assert_eq!(terrain.positions, positions);
+        assert_ne!(terrain.normals, flat_normals);
+        let mut shared = 0;
+        for (i, p) in positions.iter().enumerate() {
+            let normal = Vec3::from(terrain.normals[i]);
+            assert!(normal.y > 0.0 && (normal.length() - 1.0).abs() < 1e-6);
+            for (j, other) in positions[..i].iter().enumerate() {
+                if other == p {
+                    assert_eq!(terrain.normals[j], terrain.normals[i]);
+                    shared += 1;
+                }
+            }
+        }
+        assert!(shared > 0, "exercise shared vertices on clipped faces");
+        let mut parts = Vec::new();
+        terrain.finish("/terrain".into(), "terrain", &mut parts);
+        color_ground(&mut parts[0], [0.0, 4.0]).unwrap();
+        let bevy::mesh::VertexAttributeValues::Float32x4(colors) =
+            parts[0].mesh.attribute(Mesh::ATTRIBUTE_COLOR).unwrap()
+        else {
+            panic!("terrain colors format")
+        };
+        for (i, p) in positions.iter().enumerate() {
+            for (j, other) in positions[..i].iter().enumerate() {
+                if other == p {
+                    assert_eq!(colors[j], colors[i]);
+                }
+            }
+        }
+    }
 
     #[test]
     fn concave_roofs_keep_holes_and_face_up() {
@@ -1001,6 +1106,10 @@ mod tests {
         assert!(ground.height([roof[0], roof[1]]) < roof[2] - 1.0);
         let parts = generate(&map).unwrap();
         let terrain = parts.iter().find(|p| p.source == "/terrain").unwrap();
+        assert!(
+            terrain.mesh.indices().is_some(),
+            "terrain shares identical vertices"
+        );
         let positions = terrain
             .mesh
             .attribute(Mesh::ATTRIBUTE_POSITION)

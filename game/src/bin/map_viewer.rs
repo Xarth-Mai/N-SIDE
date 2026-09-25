@@ -1,11 +1,11 @@
 use bevy::{
+    anti_alias::taa::TemporalAntiAliasing,
     app::ScheduleRunnerPlugin,
     audio::AudioPlugin,
     camera::RenderTarget,
     camera_controller::free_camera::{
         FreeCamera, FreeCameraPlugin, FreeCameraState, run_freecamera_controller,
     },
-    light::{CascadeShadowConfigBuilder, DirectionalLightShadowMap},
     prelude::*,
     render::render_resource::TextureFormat,
     render::{
@@ -22,6 +22,7 @@ use bevy::{
 use n_side::world::{
     map::map_to_world,
     scene::{PreparedScene, SceneLoading, WorldScenePlugin},
+    visual::{Antialiasing, DaylightSettings},
 };
 use std::{path::PathBuf, time::Instant};
 
@@ -55,6 +56,10 @@ fn run() -> Result<AppExit, String> {
     let mut validate = false;
     let mut verify = None;
     let mut headless = false;
+    let mut visual_path = None;
+    let mut aa = Antialiasing::Msaa4;
+    let mut selected_view = None;
+    let mut uncapped = false;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         match arg.as_str() {
@@ -62,6 +67,19 @@ fn run() -> Result<AppExit, String> {
                 root = PathBuf::from(args.next().ok_or("--project-root requires a directory")?)
             }
             "--validate" => validate = true,
+            "--visual" => {
+                visual_path = Some(PathBuf::from(
+                    args.next().ok_or("--visual requires a JSON path")?,
+                ))
+            }
+            "--aa" => {
+                aa = args
+                    .next()
+                    .ok_or("--aa requires msaa4, taa or taa-ssao")?
+                    .parse()?
+            }
+            "--view" => selected_view = Some(args.next().ok_or("--view requires a camera name")?),
+            "--uncapped" => uncapped = true,
             "--verify" | "--verify-headless" => {
                 headless = arg == "--verify-headless";
                 verify = Some(PathBuf::from(
@@ -70,7 +88,7 @@ fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--validate           Check map, geometry and asset bindings without a GPU\n--verify DIRECTORY   Automated fixed-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
+                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--validate           Check map, geometry, appearance and daylight without a GPU\n--verify DIRECTORY   Automated fixed-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n--visual PATH        Daylight JSON (default source-assets/district-scene/daylight.json)\n--aa MODE            msaa4 (default), taa, taa-ssao\n--view NAME          Start at or verify one fixed view\n--uncapped           Disable window VSync for measurement\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
                 );
                 return Ok(AppExit::Success);
             }
@@ -81,6 +99,18 @@ fn run() -> Result<AppExit, String> {
         .canonicalize()
         .map_err(|e| format!("[startup/root] {}: {e}", root.display()))?;
     let start = Instant::now();
+    let visual_path =
+        visual_path.unwrap_or_else(|| root.join("source-assets/district-scene/daylight.json"));
+    let visual = DaylightSettings::load(&visual_path)?;
+    println!(
+        "[visual/config] file={} aa={aa:?} frame_metric=cpu_frame_interval pacing={}",
+        visual_path.display(),
+        if headless || uncapped {
+            "uncapped"
+        } else {
+            "vsync"
+        }
+    );
     let prepared = PreparedScene::load(&root)?;
     println!(
         "[map/validated] schema={} nodes={} roads={} buildings={} surfaces={} trees={} meshes={} elapsed_seconds={:.3}",
@@ -228,6 +258,36 @@ fn run() -> Result<AppExit, String> {
             [campus[0], campus[1], campus[2] + 6.0],
         ),
     ));
+    // Eye heights follow real road nodes rather than the distant shop datum
+    for (name, anchor, target) in [
+        ("eye-shop", "home", "shop_front_door"),
+        ("eye-corner", "market_turn", "bakery_entry"),
+        ("eye-shade", "service_shared", "shop_rear_door"),
+    ] {
+        let mut eye = *map
+            .nodes
+            .get(anchor)
+            .ok_or_else(|| format!("[viewer/view] missing {anchor}"))?;
+        let mut target = *map
+            .nodes
+            .get(target)
+            .ok_or_else(|| format!("[viewer/view] missing {target}"))?;
+        eye[2] += 1.7;
+        target[2] += 1.7;
+        println!("[visual/view] name={name} anchor={anchor} eye={eye:?} target={target:?} fov=55");
+        views.push((name, view(eye, target)));
+    }
+    if let Some(name) = selected_view {
+        let selected = views
+            .iter()
+            .position(|(id, _)| *id == name)
+            .ok_or_else(|| format!("[viewer/view] unknown view {name:?}"))?;
+        if verify.is_some() {
+            views = vec![views[selected]];
+        } else {
+            views.swap(0, selected);
+        }
+    }
     let initial = views[0].1;
     let mut app = App::new();
     let mut plugins = DefaultPlugins
@@ -242,7 +302,11 @@ fn run() -> Result<AppExit, String> {
             primary_window: (!headless).then_some(Window {
                 title: "N:SIDE · Map Viewer".into(),
                 resolution: (2560, 1440).into(),
-                present_mode: PresentMode::AutoVsync,
+                present_mode: if uncapped {
+                    PresentMode::AutoNoVsync
+                } else {
+                    PresentMode::AutoVsync
+                },
                 mode: if verify.is_some() {
                     WindowMode::BorderlessFullscreen(MonitorSelection::Primary)
                 } else {
@@ -267,15 +331,9 @@ fn run() -> Result<AppExit, String> {
     if headless {
         plugins = plugins.disable::<WinitPlugin>();
     }
-    app.add_plugins(plugins)
-        .insert_resource(CaptureTarget(None))
-        .insert_resource(ClearColor(Color::srgb(0.63, 0.77, 0.85)))
-        .insert_resource(GlobalAmbientLight {
-            color: Color::srgb(0.76, 0.84, 1.0),
-            brightness: 600.0,
-            ..default()
-        })
-        .insert_resource(DirectionalLightShadowMap { size: 4096 })
+    app.add_plugins(plugins);
+    visual.install(&mut app);
+    app.insert_resource(CaptureTarget(None))
         .insert_resource(SceneLoading::new(prepared))
         .insert_resource(CameraViews(views))
         .add_plugins((WorldScenePlugin, FreeCameraPlugin))
@@ -294,47 +352,28 @@ fn run() -> Result<AppExit, String> {
                 } else {
                     RenderTarget::default()
                 };
-                commands.spawn((
-                    Camera3d::default(),
-                    render_target,
-                    Projection::Perspective(PerspectiveProjection {
-                        fov: 55.0_f32.to_radians(),
-                        near: 0.1,
-                        far: 7000.0,
-                        ..default()
-                    }),
-                    initial,
-                    FreeCamera {
-                        walk_speed: 12.0,
-                        run_speed: 55.0,
-                        friction: 18.0,
-                        sensitivity: 0.18,
-                        ..default()
-                    },
-                    DistanceFog {
-                        color: Color::srgb(0.63, 0.77, 0.85),
-                        falloff: FogFalloff::Linear {
-                            start: 1700.0,
-                            end: 5000.0,
+                let camera = commands
+                    .spawn((
+                        Camera3d::default(),
+                        render_target,
+                        Projection::Perspective(PerspectiveProjection {
+                            fov: 55.0_f32.to_radians(),
+                            near: 0.1,
+                            far: 7000.0,
+                            ..default()
+                        }),
+                        initial,
+                        FreeCamera {
+                            walk_speed: 12.0,
+                            run_speed: 55.0,
+                            friction: 18.0,
+                            sensitivity: 0.18,
+                            ..default()
                         },
-                        ..default()
-                    },
-                    Msaa::Sample4,
-                ));
-                commands.spawn((
-                    DirectionalLight {
-                        illuminance: 18000.0,
-                        shadow_maps_enabled: true,
-                        ..default()
-                    },
-                    Transform::from_xyz(650.0, 480.0, 380.0).looking_at(Vec3::ZERO, Vec3::Y),
-                    CascadeShadowConfigBuilder {
-                        maximum_distance: 550.0,
-                        first_cascade_far_bound: 40.0,
-                        ..default()
-                    }
-                    .build(),
-                ));
+                    ))
+                    .id();
+                visual.configure_camera(&mut commands, camera, &mut images, aa);
+                visual.spawn_lighting(&mut commands);
             },
         )
         .add_systems(
@@ -342,9 +381,7 @@ fn run() -> Result<AppExit, String> {
             camera_focus.before(run_freecamera_controller),
         );
     if headless {
-        app.add_plugins(ScheduleRunnerPlugin::run_loop(
-            std::time::Duration::from_millis(1),
-        ));
+        app.add_plugins(ScheduleRunnerPlugin::run_loop(std::time::Duration::ZERO));
     }
     if let Some(output) = verify {
         std::fs::create_dir_all(&output)
@@ -403,7 +440,7 @@ fn verify_frames(
     loading: Res<SceneLoading>,
     time: Res<Time<Real>>,
     target: Res<CaptureTarget>,
-    mut camera: Query<&mut Transform, With<Camera3d>>,
+    mut camera: Query<(&mut Transform, Option<&mut TemporalAntiAliasing>), With<Camera3d>>,
     mut exit: MessageWriter<AppExit>,
 ) {
     if !loading.ready {
@@ -455,7 +492,7 @@ fn verify_frames(
         let mean = verify.frames.iter().sum::<f64>() / n.max(1) as f64;
         let p95 = verify.frames[((n as f64 * 0.95).floor() as usize).min(n.saturating_sub(1))];
         info!(
-            "[verify/view] view={} frames={n} mean_ms={mean:.2} p95_ms={p95:.2} fps={:.1} profile={} mode={}",
+            "[verify/view] view={} frames={n} mean_ms={mean:.2} p95_ms={p95:.2} fps={:.1} profile={} mode={} metric=cpu_frame_interval",
             views.0[verify.view].0,
             1000.0 / mean,
             if cfg!(debug_assertions) {
@@ -469,7 +506,7 @@ fn verify_frames(
                 "window"
             }
         );
-        if n < 120 || p95 > 25.0 {
+        if n < 120 || mean > 1000.0 / 60.0 || p95 > 1000.0 / 60.0 {
             verify.failed = true;
             warn!("[verify/performance] target not met or insufficient samples");
         }
@@ -482,8 +519,11 @@ fn verify_frames(
             });
             return;
         }
-        if let Ok(mut camera) = camera.single_mut() {
+        if let Ok((mut camera, taa)) = camera.single_mut() {
             *camera = views.0[verify.view].1;
+            if let Some(mut taa) = taa {
+                taa.reset = true;
+            }
         }
         verify.started = Some(Instant::now());
         verify.frames.clear();

@@ -1,0 +1,22 @@
+{
+  "exposure_ev100": 9.7,
+  "sun_illuminance": 18000,
+  "sun_color": [1.0, 0.97, 0.91],
+  "sun_position": [650, 780, -380],
+  "sky_top": [0.43, 0.65, 0.85],
+  "sky_horizon": [0.63, 0.77, 0.85],
+  "sky_ground": [0.4, 0.38, 0.34],
+  "sky_brightness": 1300,
+  "environment_intensity": 1100,
+  "ambient_color": [0.76, 0.84, 1.0],
+  "ambient_brightness": 80,
+  "fog_start": 1700,
+  "fog_end": 5000,
+  "shadow_map_size": 4096,
+  "shadow_first_cascade": 40,
+  "shadow_maximum_distance": 2400,
+  "contact_shadows": false,
+  "contact_length": 0.3,
+  "contact_thickness": 0.1,
+  "bloom": false
+}
