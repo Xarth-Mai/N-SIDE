@@ -31,3 +31,28 @@ test('simplified map retains the shopping short loop and public hillside connect
     ['home','steps_mid','upper_homes','north','forest','summit'],
   ]) for(let i=1;i<nodes.length;i++)assert.ok(linked(nodes[i-1],nodes[i]))
 })
+
+test('orthographic projection preserves parallel edges and separates elevation from depth', async () => {
+  const {project,depth}=await import('../district-map.mjs')
+  const a=project([10,20,0]),b=project([10,20,10])
+  assert.equal(a[0],b[0])
+  assert.ok(b[1]<a[1])
+  const delta=(a,b)=>a.map((v,i)=>v-b[i])
+  const u=delta(project([30,40,5]),project([20,40,5]))
+  const v=delta(project([130,140,50]),project([120,140,50]))
+  u.forEach((n,i)=>assert.ok(Math.abs(n-v[i])<1e-10))
+  assert.ok(depth([0,0])>depth([0,100]))
+  for(const building of data.buildings){assert.ok(building.height>0);assert.ok(Number.isFinite(building.elevation))}
+})
+
+test('scene keeps platforms below volumes and geometry is finite', async () => {
+  const {buildScene}=await import('../district-map.mjs'),scene=buildScene(data)
+  assert.ok(scene.surfaces.some(s=>s.place==='04'))
+  assert.ok(scene.objects.some(o=>o.place==='04'&&o.kind==='building'))
+  assert.ok(scene.objects.every(o=>o.kind!=='surface'))
+  assert.ok(scene.objects.every((o,i)=>!i||o.depth>=scene.objects[i-1].depth))
+  for(const shape of [...scene.terrain,scene.water,...scene.surfaces.flatMap(s=>s.shapes),...scene.objects.flatMap(o=>o.shapes)]){
+    assert.ok(!/NaN|Infinity|undefined/.test(shape.d))
+  }
+  assert.ok(data.places.every(p=>p.use&&p.entry))
+})
