@@ -4,6 +4,7 @@
 
 ```sh
 bun run check:docs
+bun run check:map
 bun run check:narrative
 bun run check:templates
 bun run test:tools

@@ -180,3 +180,11 @@ test('inline template placeholders remain literal Vue text', async () => {
   const md = await createMarkdownRenderer(process.cwd(), config.markdown)
   assert.match(md.render('`{{交付目标、相关设计}}`'), /<code v-pre[^>]*>\{\{交付目标、相关设计\}\}<\/code>/)
 })
+
+test('published map JSON is served with its JSON content type', t => {
+  const { root, put } = fixture(t)
+  const source = put('district.json', '{"version":1}')
+  const result = requestProjectAsset([{ source, path: 'district-map/district.json' }], '/district-map/district.json')
+  assert.equal(result.headers['Content-Type'], 'application/json; charset=utf-8')
+  assert.equal(result.body, '{"version":1}')
+})

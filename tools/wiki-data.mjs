@@ -89,7 +89,8 @@ export function projectAssetsPlugin(sourceRoot) {
           const name = decodeURIComponent(new URL(req.url ?? '/', 'http://localhost').pathname)
           const file = assets.get(name)
           if (!file || !statSync(file).isFile()) return next()
-          if (extname(file) === '.svg') res.setHeader('Content-Type', 'image/svg+xml')
+          const type = TYPES[extname(file)] ?? (extname(file) === '.svg' ? 'image/svg+xml' : undefined)
+          if (type) res.setHeader('Content-Type', type)
           res.end(req.method === 'HEAD' ? undefined : readFileSync(file))
         } catch (error) {
           next(error)

@@ -7,6 +7,9 @@ const docsRoot = fileURLToPath(new URL('../', import.meta.url))
 const projectAssets = [{
   source: fileURLToPath(new URL('../../source-assets/branding/n-logo.svg', import.meta.url)),
   path: 'branding/n-logo.svg',
+}, {
+  source: fileURLToPath(new URL('../../source-assets/district-map/district.json', import.meta.url)),
+  path: 'district-map/district.json',
 }]
 
 export default defineConfig({

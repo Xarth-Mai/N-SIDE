@@ -2,6 +2,10 @@
 id: LOC-002
 ---
 
+<script setup>
+import DistrictMap from '../.vitepress/components/DistrictMap.vue'
+</script>
+
 # N街区
 
 ## 河边的生活街区
@@ -11,6 +15,10 @@ N街区位于 [Null City](../world/null-city.md) 内部，是一片沿河低丘�
 这里保留清爽的初秋气质，绿意未退，昼夜、天气与居民的生活仍在变化。走到街区中段，便能从建筑与树木之间望见河流和对岸
 
 兄妹的[小店](shop.md)是回家的地方，街区里也有各自忙碌的店主、通勤者、学生和住户。学校、诊所和车站服务着周围多个街坊；有人在附近工作，也有人每天乘车去城市另一侧
+
+## 街区地图
+
+<DistrictMap />
 
 ## 街区的来路
 
