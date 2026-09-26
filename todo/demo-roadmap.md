@@ -59,22 +59,22 @@ evidence: []
 
 ## 工作与验收
 
-### 阶段总览与状态
+### 阶段总览
 
 阶段对应既有 Concept、Prototype、Vertical Slice、Production、Alpha、Beta、Release Candidate 流程，是成果门槛，可按依赖交叠推进
 
-| 阶段 | 对应制作阶段 | 核心成果 | 状态 |
-| --- | --- | --- | --- |
-| M0 产品与 Demo 定义 | Concept | 可执行的范围、体验与决策基线 | backlog |
-| M1 基础可玩原型 | Prototype | 能走、能看、能进入、能交互、能暂停 | backlog |
-| M2 日常与调查原型 | Prototype | 能生活、获取线索、推进调查、恢复进度 | backlog |
-| M3 潜梦与动作原型 | Prototype | 能入梦、理解规则、行动、重试、退出 | backlog |
-| M4 完整代表性样板 | Vertical Slice | 完整委托、目标品质、制作成本基线 | backlog |
-| M5 Demo 内容制作／Alpha | Production／Alpha | 首尾完整、承诺内容齐备 | backlog |
-| M6 外部试玩／Beta | Beta | 陌生玩家能够独立完成 | backlog |
-| M7 发布候选／Demo 发布 | Release Candidate | 双平台独立发布包与实际验收证据 | backlog |
+| 阶段 | 对应制作阶段 | 核心成果 |
+| --- | --- | --- |
+| M0 产品与 Demo 定义 | Concept | 可执行的范围、体验与决策基线 |
+| M1 基础可玩原型 | Prototype | 能走、能看、能进入、能交互、能暂停 |
+| M2 日常与调查原型 | Prototype | 能生活、获取线索、推进调查、恢复进度 |
+| M3 潜梦与动作原型 | Prototype | 能入梦、理解规则、行动、重试、退出 |
+| M4 完整代表性样板 | Vertical Slice | 完整委托、目标品质、制作成本基线 |
+| M5 Demo 内容制作／Alpha | Production／Alpha | 首尾完整、承诺内容齐备 |
+| M6 外部试玩／Beta | Beta | 陌生玩家能够独立完成 |
+| M7 发布候选／Demo 发布 | Release Candidate | 双平台独立发布包与实际验收证据 |
 
-M2 与 M3 可以部分并行，美术、UI、声音与测试从前期参与，M4 是各工作线的合流点。状态按真实交付更新，当前仅记录路线图
+M2 与 M3 可以部分并行，美术、UI、声音与测试从前期参与，M4 是各工作线的合流点。工作包状态与计数见[61 项进度看板](demo-progress.md)，只编辑 `demo-progress.json`；决定、反馈与验证见[工作日志](demo-worklog.md)
 
 ### M0：产品与 Demo 定义
 

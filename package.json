@@ -10,7 +10,10 @@
     "check:narrative": "python3 -B tools/validate_narrative.py --root .",
     "check:templates": "python3 -B tools/validate_narrative.py --file docs/templates/narrative.json",
     "test:tools": "python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests/wiki.test.mjs tools/tests/district-map.test.mjs",
-    "check:map": "bun test tools/tests/district-map.test.mjs"
+    "check:map": "bun test tools/tests/district-map.test.mjs",
+    "roadmap": "python3 -B tools/roadmap.py --root .",
+    "roadmap:sync": "python3 -B tools/roadmap.py --root . --write",
+    "check:roadmap": "python3 -B tools/roadmap.py --root . --check"
   },
   "devDependencies": {
     "delaunator": "5.0.1",

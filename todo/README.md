@@ -2,6 +2,8 @@
 
 新增任务使用[模板](../docs/templates/task.md)
 
+[61 项工作包看板](demo-progress.md) · [工作与证据记录](demo-worklog.md) · [工作循环与验收](../docs/production/solo-workflow.md)
+
 ## Todo
 
 复选框在确认的交付范围完成后勾选，任务文件移入 `archive/`；按范围调整结项时记录已交付成果与剩余工作的承接位置，验收结果保留实际状态
