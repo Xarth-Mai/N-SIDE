@@ -4,7 +4,7 @@
 
 # N:SIDE
 
-![N:SIDE hero image](docs/public/images/hero.webp)
+![月台杂货与采购街概念预览](docs/public/images/shop-street.webp)
 
 在 Null City，兄妹与家庭 Agent 共同经营一家生活杂货店，在都市日常中调查异常、潜入梦境，帮助当事人重新回到生活
 

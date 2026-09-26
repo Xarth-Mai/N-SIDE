@@ -88,12 +88,16 @@ document_id: DOC-ART
 
 ## Null Site空间参考
 
-![坡地生活街区参考](../../public/images/hillside-reference.webp)
+以下四张概念预览采用动漫化人物、可信建筑比例与冷暖光照，分别表现白天、黄昏、夜间和日落的区域氛围；建筑布局与装饰招牌仍由空间设计校准，图片不代表游戏实机画面
 
-参考高低差、树影与远眺水面的空间感，Null Site采用更缓的坡度，以维持日常通行与客流
+![月台杂货与采购街概念预览](../../public/images/shop-street.webp)
 
-![街区自下而上概念图](../../public/images/hillside-layout-concept.webp)
+![N站与兴趣街概念预览](../../public/images/station-street.webp)
 
-概念图说明车站、生活区与山顶的构图和氛围，街面、服务通道、滨水分层、声音与取景要求见[街区空间制作](../design/locations/district-space.md)，具体尺度、入口和路线由同源空间数据与实际镜头共同核对
+![镜厅与音乐街概念预览](../../public/images/cinema-music-street.webp)
+
+![白沙河与流光公园概念预览](../../public/images/riverside.webp)
+
+原图、来源与导出记录见[区域预览资产包](../../../source-assets/area-previews/README.md)。街面、服务通道、滨水分层、声音与取景要求见[街区空间制作](../design/locations/district-space.md)，具体尺度、入口和路线由同源空间数据与实际镜头共同核对
 
 制作步骤与米制导出契约见[资产管线](asset-pipeline.md)，本页维护视觉判断基准

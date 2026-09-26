@@ -5,7 +5,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { WikiProfile } from '../wiki-data.ts'
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync, cpSync } from 'node:fs'
+import { chmodSync, statSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync, cpSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, relative } from 'node:path'
 import { buildSidebar } from '../../docs/.vitepress/sidebar.ts'
@@ -239,4 +239,14 @@ test('real home includes the overview and audience navigation, with root-safe li
   assert.match(devHome,/## 玩家入口/)
   assert.match(devHome,/## 开发入口/)
   assert.match(devHome,/\]\(\/dev\/design\/spec.md\)/)
+})
+
+
+test('published logo is readable even when the source is private', t => {
+  const { root } = wikiFixture(t)
+  const logo = join(root, 'source-assets/branding/n-logo.svg')
+  chmodSync(logo, 0o600)
+  const { source } = prepareWiki(root, 'dev')
+  assert.equal(statSync(join(source, 'public/project-assets/branding/n-logo.svg')).mode & 0o777, 0o644)
+  assert.equal(statSync(logo).mode & 0o777, 0o600)
 })

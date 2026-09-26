@@ -2,7 +2,7 @@ import { loadQuests, projectStories, validateStories, auditMarkdown } from './st
 import type { District, PlayerMap } from './district-types.ts'
 import type { WikiProfile } from './wiki-data.ts'
 export type WikiManifest = { profile: WikiProfile; pages: string[]; data: string[]; public: string[]; aliases: {old: string; to: string}[] }
-import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { chmodSync, copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, extname, join, relative, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { buildScene } from './district-map.ts'
@@ -41,12 +41,13 @@ const SUPPORT = ['district-map.ts', 'district-plan.ts', 'district-architecture.t
 const COMPONENTS = ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue', 'StoryGraph.vue', 'StoryCondition.vue']
 const IMAGE = new Set(['.svg', '.webp', '.png', '.jpg', '.jpeg'])
 const PUBLIC_ASSETS: Record<string, WikiProfile[]> = {
-  'images/hero.webp': ['player', 'dev'],
-  'images/hillside-reference.webp': ['dev'],
-  'images/hillside-layout-concept.webp': ['dev'],
+  'images/shop-street.webp': ['dev'],
+  'images/station-street.webp': ['dev'],
+  'images/cinema-music-street.webp': ['dev'],
+  'images/riverside.webp': ['dev'],
 }
 const put = (path: string, text: string) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, text) }
-const copy = (source: string, target: string) => { mkdirSync(dirname(target), { recursive: true }); copyFileSync(source, target) }
+const copy = (source: string, target: string) => { mkdirSync(dirname(target), { recursive: true }); copyFileSync(source, target); chmodSync(target, 0o644) }
 const route = (path: string) => `/${path.replace(/\.md$/, '').replace(/(^|\/)index$/, '$1')}`
 
 /** Allow only the map's already visible labels and generated drawing primitives */
