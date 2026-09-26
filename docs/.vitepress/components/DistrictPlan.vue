@@ -45,7 +45,7 @@ const profiles=(data.sections??[]).filter(s=>!props.sectionIds||props.sectionIds
 </script>
 
 <template>
-  <section class="district-plan" aria-label="N街区城市框架与关键剖面">
+  <section class="district-plan" aria-label="Null Site城市框架与关键剖面">
     <figure v-for="mode in modes" :key="mode.id" class="framework-plan">
       <figcaption class="plan-caption">{{ mode.name }}<span>北向上 · 设计米 · 道路按实际宽度绘制</span></figcaption>
       <div class="plan-scroll" tabindex="0" role="region" :aria-label="`${mode.name}，窄屏可横向滚动`">

@@ -4,7 +4,7 @@ status: accepted
 depends_on: []
 ---
 
-# 楚青
+# 罗宾
 
 ## 身份与经历
 
@@ -16,9 +16,11 @@ depends_on: []
 
 从局部解释走向承认跨区域资料不足，与街坊记录者合作
 
+地图里的待测区域不是工作失败，而是下一步应去的地方。他把测量、材料接触与居民实际遭遇放在一起比较，也允许新事实改变原来的路线
+
 ## 关系与活动
 
-与[季闻](../shared-dreams/ji-wen.md)有后来建立的研究联系；与[邱宁](qiu-ning.md)、[温苒](wen-ran.md)是现场伙伴
+与[维恩](../shared-dreams/wien.md)有后来建立的研究联系；与[邱立](qiu-li.md)、[艾玛](emma.md)是现场伙伴
 
 居住在[东侧住宅院](../../locations/places/b08.md#place-18)的一户
 

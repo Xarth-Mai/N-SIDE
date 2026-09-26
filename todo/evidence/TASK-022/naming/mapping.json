@@ -1,0 +1,702 @@
+{
+  "note": "旧名称仅用于历史迁移追溯，不构成正式别名",
+  "characters": [
+    {
+      "id": "CHR-001",
+      "old": "林屿",
+      "name": "月城曜",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-002",
+      "old": "林澄",
+      "name": "月城玲",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-003",
+      "old": "粒粒",
+      "name": "巧克力",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-004",
+      "old": "林启明",
+      "name": "月城修",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-005",
+      "old": "陈静禾",
+      "name": "陈美惠",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-006",
+      "old": "季闻",
+      "name": "维恩",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-007",
+      "old": "许遥",
+      "name": "遥",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-008",
+      "old": "陆衡",
+      "name": "陆成",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-009",
+      "old": "米娜 / Mina",
+      "name": "米娜 / Mina",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-010",
+      "old": "苏禾",
+      "name": "苏弥",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-011",
+      "old": "赵晏",
+      "name": "阿杰",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-012",
+      "old": "何昕",
+      "name": "凯文",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-013",
+      "old": "周然",
+      "name": "周然",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-014",
+      "old": "宋岚",
+      "name": "宋美香",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-015",
+      "old": "唐钰",
+      "name": "唐惠",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-016",
+      "old": "何芸",
+      "name": "何芸",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-017",
+      "old": "梁素",
+      "name": "梁素",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-018",
+      "old": "郑泊",
+      "name": "郑文良",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-019",
+      "old": "温苒",
+      "name": "艾玛",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-020",
+      "old": "陈知夏",
+      "name": "陈知夏",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-021",
+      "old": "魏航",
+      "name": "魏航",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-022",
+      "old": "程嘉",
+      "name": "程嘉",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-023",
+      "old": "叶初",
+      "name": "叶真",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-024",
+      "old": "乔音",
+      "name": "乔伊",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-025",
+      "old": "沈聆",
+      "name": "诺拉",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-026",
+      "old": "宁朗",
+      "name": "悠真",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-027",
+      "old": "贺秋",
+      "name": "贺佳",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-028",
+      "old": "邱宁",
+      "name": "邱立",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-029",
+      "old": "钟帆",
+      "name": "老钟",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-030",
+      "old": "顾竹",
+      "name": "顾文珍",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-031",
+      "old": "郑澈",
+      "name": "郑拓",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-032",
+      "old": "姜棠",
+      "name": "小满",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-033",
+      "old": "楚青",
+      "name": "罗宾",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-034",
+      "old": "邵敏",
+      "name": "邵敏",
+      "mode": "retained"
+    },
+    {
+      "id": "CHR-035",
+      "old": "姚安",
+      "name": "阿东",
+      "mode": "renamed"
+    },
+    {
+      "id": "CHR-036",
+      "old": "夏桃",
+      "name": "安可",
+      "mode": "new-from-input"
+    },
+    {
+      "id": "CHR-037",
+      "old": "秦照",
+      "name": "塞拉",
+      "mode": "new-from-input"
+    }
+  ],
+  "places": [
+    {
+      "place_id": "01",
+      "old": "N站",
+      "name": "Null Station"
+    },
+    {
+      "place_id": "02",
+      "old": "站前广场",
+      "name": "站前广场"
+    },
+    {
+      "place_id": "03",
+      "old": "社区商店街",
+      "name": "社区商店街"
+    },
+    {
+      "place_id": "04",
+      "old": "小店与住家",
+      "name": "月台杂货与住家"
+    },
+    {
+      "place_id": "05",
+      "old": "树下小空地",
+      "name": "树下小空地"
+    },
+    {
+      "place_id": "06",
+      "old": "街口饭馆",
+      "name": "街口饭馆"
+    },
+    {
+      "place_id": "07",
+      "old": "烘焙店",
+      "name": "烘焙店"
+    },
+    {
+      "place_id": "08",
+      "old": "生鲜小超市",
+      "name": "生鲜小超市"
+    },
+    {
+      "place_id": "09",
+      "old": "自助洗衣店",
+      "name": "自助洗衣店"
+    },
+    {
+      "place_id": "10",
+      "old": "街坊共用院",
+      "name": "街坊共用院"
+    },
+    {
+      "place_id": "11",
+      "old": "小修理铺",
+      "name": "小修理铺"
+    },
+    {
+      "place_id": "12",
+      "old": "临街公寓",
+      "name": "临街公寓"
+    },
+    {
+      "place_id": "13",
+      "old": "坡上住宅",
+      "name": "坡上住宅"
+    },
+    {
+      "place_id": "14",
+      "old": "转角观河点",
+      "name": "转角观河点"
+    },
+    {
+      "place_id": "15",
+      "old": "小型影院与城市会客厅",
+      "name": "镜厅"
+    },
+    {
+      "place_id": "16",
+      "old": "社区诊所",
+      "name": "社区诊所"
+    },
+    {
+      "place_id": "17",
+      "old": "城市花园与活动草坪",
+      "name": "城市花园与活动草坪"
+    },
+    {
+      "place_id": "18",
+      "old": "东侧住宅院",
+      "name": "东侧住宅院"
+    },
+    {
+      "place_id": "19",
+      "old": "社区中学",
+      "name": "星见学园"
+    },
+    {
+      "place_id": "20",
+      "old": "山脚休息台",
+      "name": "山脚休息台"
+    },
+    {
+      "place_id": "21",
+      "old": "林间缓坡",
+      "name": "林间缓坡"
+    },
+    {
+      "place_id": "22",
+      "old": "小神龛",
+      "name": "小神龛"
+    },
+    {
+      "place_id": "23",
+      "old": "摘星台",
+      "name": "摘星台"
+    },
+    {
+      "place_id": "24",
+      "old": "河岸安静露台",
+      "name": "河岸安静露台"
+    },
+    {
+      "place_id": "25",
+      "old": "河岸小广场",
+      "name": "河岸小广场"
+    },
+    {
+      "place_id": "26",
+      "old": "渡口入口与候船处",
+      "name": "西环渡口入口与候船处"
+    },
+    {
+      "place_id": "27",
+      "old": "河岸小摊",
+      "name": "河岸小摊"
+    },
+    {
+      "place_id": "28",
+      "old": "小店货运侧院",
+      "name": "小店货运侧院"
+    },
+    {
+      "place_id": "29",
+      "old": "店侧台阶",
+      "name": "店侧台阶"
+    },
+    {
+      "place_id": "30",
+      "old": "站前咖啡铺",
+      "name": "站前咖啡铺"
+    },
+    {
+      "place_id": "31",
+      "old": "旅行用品与寄存店",
+      "name": "旅行用品与寄存店"
+    },
+    {
+      "place_id": "32",
+      "old": "城市交通服务厅",
+      "name": "城市交通服务厅"
+    },
+    {
+      "place_id": "33",
+      "old": "站前午间食堂",
+      "name": "站前午间食堂"
+    },
+    {
+      "place_id": "34",
+      "old": "站前书店",
+      "name": "白页书店"
+    },
+    {
+      "place_id": "35",
+      "old": "音游店",
+      "name": "BYTE BEAT"
+    },
+    {
+      "place_id": "36",
+      "old": "模型店",
+      "name": "FRAME"
+    },
+    {
+      "place_id": "37",
+      "old": "桌游卡牌店",
+      "name": "桌游卡牌店"
+    },
+    {
+      "place_id": "38",
+      "old": "游戏设备维修店",
+      "name": "游戏设备维修店"
+    },
+    {
+      "place_id": "39",
+      "old": "独立游戏体验店",
+      "name": "PLAYROOM"
+    },
+    {
+      "place_id": "40",
+      "old": "兴趣旧物交换店",
+      "name": "兴趣旧物交换店"
+    },
+    {
+      "place_id": "41",
+      "old": "手作材料店",
+      "name": "手作材料店"
+    },
+    {
+      "place_id": "42",
+      "old": "兴趣街会合庭",
+      "name": "兴趣街会合庭"
+    },
+    {
+      "place_id": "43",
+      "old": "共享木作工坊",
+      "name": "共享木作工坊"
+    },
+    {
+      "place_id": "44",
+      "old": "衣物修改店",
+      "name": "衣物修改店"
+    },
+    {
+      "place_id": "45",
+      "old": "小型印制工作室",
+      "name": "小型印制工作室"
+    },
+    {
+      "place_id": "46",
+      "old": "旧书交换屋",
+      "name": "旧书交换屋"
+    },
+    {
+      "place_id": "47",
+      "old": "夜食转角",
+      "name": "夜食转角"
+    },
+    {
+      "place_id": "48",
+      "old": "甜品店",
+      "name": "甜品店"
+    },
+    {
+      "place_id": "49",
+      "old": "家常面馆",
+      "name": "家常面馆"
+    },
+    {
+      "place_id": "50",
+      "old": "家常熟食店",
+      "name": "家常熟食店"
+    },
+    {
+      "place_id": "51",
+      "old": "豆制品与早餐铺",
+      "name": "豆制品与早餐铺"
+    },
+    {
+      "place_id": "52",
+      "old": "干货香料铺",
+      "name": "干货香料铺"
+    },
+    {
+      "place_id": "53",
+      "old": "晚班汤饭店",
+      "name": "晚班汤饭店"
+    },
+    {
+      "place_id": "54",
+      "old": "花草店",
+      "name": "花草店"
+    },
+    {
+      "place_id": "55",
+      "old": "包装修补工作室",
+      "name": "包装修补工作室"
+    },
+    {
+      "place_id": "56",
+      "old": "邻里茶桌庭",
+      "name": "邻里茶桌庭"
+    },
+    {
+      "place_id": "57",
+      "old": "照片冲印店",
+      "name": "FLASHBACK"
+    },
+    {
+      "place_id": "58",
+      "old": "坡地公共到达节点",
+      "name": "坡地公共到达节点"
+    },
+    {
+      "place_id": "59",
+      "old": "平台阅读角",
+      "name": "平台阅读角"
+    },
+    {
+      "place_id": "60",
+      "old": "社区园艺温室",
+      "name": "四季温室"
+    },
+    {
+      "place_id": "61",
+      "old": "坡地小食堂",
+      "name": "坡地小食堂"
+    },
+    {
+      "place_id": "62",
+      "old": "校外文具与日常用品店",
+      "name": "校外文具与日常用品店"
+    },
+    {
+      "place_id": "63",
+      "old": "体育用品店",
+      "name": "体育用品店"
+    },
+    {
+      "place_id": "64",
+      "old": "社区公共球场",
+      "name": "社区公共球场"
+    },
+    {
+      "place_id": "65",
+      "old": "放学饮品与外带铺",
+      "name": "放学饮品与外带铺"
+    },
+    {
+      "place_id": "66",
+      "old": "校外等候庭",
+      "name": "校外等候庭"
+    },
+    {
+      "place_id": "67",
+      "old": "居民服务中心",
+      "name": "Null Site 服务中心"
+    },
+    {
+      "place_id": "68",
+      "old": "住宅家常菜店",
+      "name": "住宅家常菜店"
+    },
+    {
+      "place_id": "69",
+      "old": "居家用品店",
+      "name": "居家用品店"
+    },
+    {
+      "place_id": "70",
+      "old": "社区亲子活动室",
+      "name": "社区亲子活动室"
+    },
+    {
+      "place_id": "71",
+      "old": "餐饮共享空间",
+      "name": "餐饮共享空间"
+    },
+    {
+      "place_id": "72",
+      "old": "屋顶公园",
+      "name": "屋顶公园"
+    },
+    {
+      "place_id": "73",
+      "old": "影像书店",
+      "name": "MONO"
+    },
+    {
+      "place_id": "74",
+      "old": "社区摄影工作室",
+      "name": "社区摄影工作室"
+    },
+    {
+      "place_id": "75",
+      "old": "共享工作室",
+      "name": "共享工作室"
+    },
+    {
+      "place_id": "76",
+      "old": "街坊作品小展厅",
+      "name": "街坊作品小展厅"
+    },
+    {
+      "place_id": "77",
+      "old": "乐器音频店",
+      "name": "乐器音频店"
+    },
+    {
+      "place_id": "78",
+      "old": "排练录音楼",
+      "name": "排练录音楼"
+    },
+    {
+      "place_id": "79",
+      "old": "Live House",
+      "name": "AFTER 9"
+    },
+    {
+      "place_id": "80",
+      "old": "唱片聆听店",
+      "name": "唱片聆听店"
+    },
+    {
+      "place_id": "81",
+      "old": "小型乐器工坊",
+      "name": "小型乐器工坊"
+    },
+    {
+      "place_id": "82",
+      "old": "夜间茶食店",
+      "name": "LATE BITE"
+    },
+    {
+      "place_id": "83",
+      "old": "演出会合广场",
+      "name": "演出会合广场"
+    },
+    {
+      "place_id": "84",
+      "old": "滨水咖啡屋",
+      "name": "滨水咖啡屋"
+    },
+    {
+      "place_id": "85",
+      "old": "渡运旧物展屋",
+      "name": "旧帆展屋"
+    },
+    {
+      "place_id": "86",
+      "old": "河岸运动补给店",
+      "name": "河岸运动补给店"
+    },
+    {
+      "place_id": "87",
+      "old": "桥畔轻食屋",
+      "name": "桥畔轻食屋"
+    },
+    {
+      "place_id": "88",
+      "old": "河岸共作亭",
+      "name": "河岸共作亭"
+    },
+    {
+      "place_id": "89",
+      "old": "山脚茶屋",
+      "name": "山脚茶屋"
+    },
+    {
+      "place_id": "90",
+      "old": "林缘自然观察庭",
+      "name": "林缘自然观察庭"
+    },
+    {
+      "place_id": "91",
+      "old": "登高用品租修店",
+      "name": "登高用品租修店"
+    }
+  ],
+  "regions": {
+    "city": "Null City",
+    "district": "Null Site",
+    "river": "白沙河",
+    "riverside": "流光公园",
+    "hills": "北坡"
+  },
+  "institution": {
+    "name": "Null Response Bureau",
+    "short": "NRB"
+  },
+  "project": "N:SIDE",
+  "new_quests": {
+    "QST-019": "把我的名字写大一点",
+    "QST-020": "还没写完的第二首",
+    "QST-021": "借你一把伞",
+    "QST-022": "巧克力今天不值班"
+  }
+}

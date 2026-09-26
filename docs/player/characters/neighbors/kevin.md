@@ -4,11 +4,11 @@ status: accepted
 depends_on: []
 ---
 
-# 何昕
+# 凯文
 
 ## 身份与经历
 
-26 岁，模型店制作者与课程组织者
+26 岁，FRAME 制作者与课程组织者
 
 ## 生活与变化
 
@@ -16,13 +16,15 @@ depends_on: []
 
 学会保留作品的过程，而不是只留下无瑕疵成品
 
+他把试做过程与完成的实体展示一起摆出来，让初学者看见失败和改动，也敢于碰第一件材料
+
 ## 关系与活动
 
-和[林澄](../sister.md)一起选纸材；为[苏禾](su-he.md)做展件；给[郑澈](zheng-che.md)提供拍摄对象
+和[月城玲](../sister.md)一起选纸材；为[苏弥](su-mi.md)做展件；给[郑拓](zheng-tuo.md)提供拍摄对象
 
 居住在[临街公寓](../../locations/places/b03.md#place-12)的一户
 
-日常联系的场所：[模型店](../../locations/places/b02.md#place-36)
+日常联系的场所：[FRAME](../../locations/places/b02.md#place-36)
 
 ## 表达与习惯
 

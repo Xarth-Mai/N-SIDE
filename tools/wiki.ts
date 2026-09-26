@@ -8,6 +8,34 @@ import { pathToFileURL } from 'node:url'
 import { buildScene } from './district-map.ts'
 import { assertProfile, filesIn, listWikiData, within, wikiOutput } from './wiki-data.ts'
 
+// Superseded page URLs remain redirects; names in current content have one canonical form
+const RENAMED_PAGES: Record<string, string> = {
+  'player/locations/n-district.md': 'player/locations/null-site.md',
+  'player/characters/family-members/chen-jing-he.md': 'player/characters/family-members/chen-mei-hui.md',
+  'player/characters/family-members/lin-qi-ming.md': 'player/characters/family-members/tsukishiro-shu.md',
+  'player/characters/neighbors/chu-qing.md': 'player/characters/neighbors/robin.md',
+  'player/characters/neighbors/gu-zhu.md': 'player/characters/neighbors/gu-wen-zhen.md',
+  'player/characters/neighbors/he-qiu.md': 'player/characters/neighbors/he-jia.md',
+  'player/characters/neighbors/he-xin.md': 'player/characters/neighbors/kevin.md',
+  'player/characters/neighbors/jiang-tang.md': 'player/characters/neighbors/xiao-man.md',
+  'player/characters/neighbors/lu-heng.md': 'player/characters/neighbors/lu-cheng.md',
+  'player/characters/neighbors/ning-lang.md': 'player/characters/neighbors/yuma.md',
+  'player/characters/neighbors/qiao-yin.md': 'player/characters/neighbors/joey.md',
+  'player/characters/neighbors/qiu-ning.md': 'player/characters/neighbors/qiu-li.md',
+  'player/characters/neighbors/shen-ling.md': 'player/characters/neighbors/nora.md',
+  'player/characters/neighbors/song-lan.md': 'player/characters/neighbors/song-mei-xiang.md',
+  'player/characters/neighbors/su-he.md': 'player/characters/neighbors/su-mi.md',
+  'player/characters/neighbors/tang-yu.md': 'player/characters/neighbors/tang-hui.md',
+  'player/characters/neighbors/wen-ran.md': 'player/characters/neighbors/emma.md',
+  'player/characters/neighbors/yao-an.md': 'player/characters/neighbors/a-dong.md',
+  'player/characters/neighbors/ye-chu.md': 'player/characters/neighbors/ye-zhen.md',
+  'player/characters/neighbors/zhao-yan.md': 'player/characters/neighbors/a-jie.md',
+  'player/characters/neighbors/zheng-bo.md': 'player/characters/neighbors/zheng-wen-liang.md',
+  'player/characters/neighbors/zheng-che.md': 'player/characters/neighbors/zheng-tuo.md',
+  'player/characters/neighbors/zhong-fan.md': 'player/characters/neighbors/lao-zhong.md',
+  'player/characters/shared-dreams/ji-wen.md': 'player/characters/shared-dreams/wien.md',
+  'player/characters/shared-dreams/xu-yao.md': 'player/characters/shared-dreams/haruka.md',
+}
 const REPOSITORY = 'https://github.com/Xarth-Mai/N-SIDE/blob/main/'
 const SUPPORT = ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts', 'story-graph.ts']
 const COMPONENTS = ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue', 'StoryGraph.vue', 'StoryCondition.vue']
@@ -141,10 +169,20 @@ export function prepareWiki(root: string, profile: string) {
   const aliases = []
   if (existsSync(mapping)) for (const entry of JSON.parse(readFileSync(mapping, 'utf8')).files) {
     if (entry.source === 'docs/index.md' || !entry.source.startsWith('docs/') || !entry.source.endsWith('.md')) continue
-    const target = entry.targets.map((t: string) => t.replace('docs/player/encyclopedia/', 'docs/player/')).find((t: string) => t.startsWith('docs/player/') || (profile === 'dev' && t.startsWith('docs/dev/')))
+    const target = entry.targets.map((t: string) => {
+      const page = t.replace(/^docs\//, '').replace('player/encyclopedia/', 'player/')
+      return 'docs/' + (RENAMED_PAGES[page] ?? page)
+    }).find((t: string) => t.startsWith('docs/player/') || (profile === 'dev' && t.startsWith('docs/dev/')))
     if (!target || target === entry.source || !pageSet.has(resolve(root, target))) continue
     const old = entry.source.slice(5).replace(/\.md$/, '.html'), to = route(target.slice(5))
     put(join(source, 'public', old), redirect(to)); aliases.push({ old, to })
+  }
+  for (const [previous, current] of Object.entries(RENAMED_PAGES)) {
+    if (!pageSet.has(resolve(docs, current))) continue
+    for (const path of [previous, previous.replace('player/', 'player/encyclopedia/')]) {
+      const old = path.replace(/\.md$/, '.html'), to = route(current)
+      put(join(source, 'public', old), redirect(to)); aliases.push({ old, to })
+    }
   }
   for (const page of pages) {
     const name = relative(docs, page)

@@ -16,13 +16,15 @@ depends_on: []
 
 从反复检查行李到按自己的方式完成打包；出城并不意味着切断关系
 
+她真正离城，开始新的学校与住处生活。想家时可以联系熟悉的人，也会认识玩家没有参与的新朋友；离开不是等待主角挽回的错误
+
 ## 关系与活动
 
-与[林澄](../sister.md)、[苏禾](su-he.md)是朋友；向[陆衡](lu-heng.md)送修玩具；认识旧物店的[周然](zhou-ran.md)
+与[月城玲](../sister.md)、[苏弥](su-mi.md)是朋友；向[陆成](lu-cheng.md)送修玩具；认识旧物店的[周然](zhou-ran.md)
 
 居住在[坡上住宅](../../locations/places/b06.md#place-13)的一户
 
-日常联系的场所：[模型店](../../locations/places/b02.md#place-36)、[兴趣旧物交换店](../../locations/places/b02.md#place-40)
+日常联系的场所：[FRAME](../../locations/places/b02.md#place-36)、[兴趣旧物交换店](../../locations/places/b02.md#place-40)
 
 ## 表达与习惯
 

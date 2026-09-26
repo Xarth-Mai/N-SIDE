@@ -7,7 +7,7 @@ const readingOrder: Record<string, string[]> = {
   story: ['index.md', 'main', 'daily'],
   world: ['null-city.md', 'nightmares.md', 'great-shared-dream.md', 'history.md'],
   characters: ['family.md', 'brother.md', 'sister.md', 'agent.md'],
-  locations: ['n-district.md', 'shop.md', 'stargazing-terrace.md', 'place-network.md', 'places'],
+  locations: ['null-site.md', 'shop.md', 'stargazing-terrace.md', 'place-network.md', 'places'],
   gameplay: ['controls.md', 'daily-life.md', 'levels.md', 'dream-diving.md', 'combat.md'],
   narrative: ['workflow.md', 'data.md', 'examples', 'playtest.md'],
   production: ['workflow.md', 'gameplay.md', 'district-space.md', 'district-plan.md', 'district-architecture.md', 'district-station.md', 'district-waterfront.md', 'district-places.md', 'world-research.md', 'art.md', 'audio.md', 'assets.md', 'engineering.md', 'wiki.md'],

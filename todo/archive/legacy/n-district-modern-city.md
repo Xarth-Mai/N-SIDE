@@ -58,7 +58,7 @@ evidence: ["docs/production/world-research.md", "docs/production/district-plan.m
 - [AGENTS.md](../../../AGENTS.md)
 - [项目约定](../../../docs/dev/handbook/documentation.md)
 - [Null City](../../../docs/player/world/null-city.md)
-- [N街区](../../../docs/player/locations/n-district.md)
+- [N街区](../../../docs/player/locations/null-site.md)
 - [小店与住家](../../../docs/player/locations/shop.md)
 - [摘星台](../../../docs/player/locations/stargazing-terrace.md)
 - [家庭 Agent](../../../docs/player/characters/agent.md)

@@ -2,7 +2,7 @@
   "characters": [
     {
       "id": "CHR-001",
-      "name": "林屿",
+      "name": "月城曜",
       "age": 20,
       "tier": "核心",
       "role": "哥哥；小店共同经营者、潜梦设备技术人员",
@@ -12,16 +12,16 @@
         "11",
         "38"
       ],
-      "personal_goal": "想让小店和家人都能放心依靠自己，也想保留亲手制作的乐趣。",
-      "arc": "从习惯先把问题独自弄清楚，发展为主动说出未知、分工验证并接受帮助。",
-      "relationships": "林澄是共同决策者；陆衡是技术前辈；赵晏会带设备来请教。",
-      "voice": "说话具体，常先复述现场情况；会把关心藏进帮人收好工具的小动作。",
+      "personal_goal": "为月台杂货建立稳定承接维修与异常支持的安排，同时保留亲手制作的时间",
+      "arc": "从熟悉的两人配合走向无法亲自掌握全部细节的协作；公开未知、承担普通交付失败、收缩接单，在终章依据各方当轮确认行动",
+      "relationships": "月城玲是共同决策者；陆成是技术前辈；阿杰会带设备来请教。塞拉要求明确证据范围；父母与陆成按约定承担部分店务和维修",
+      "voice": "说话具体，常先复述现场情况；会把关心藏进收好工具的小动作。他喜欢把不顺手的零件改到刚好，会记住熟客设备上的贴纸，把线卷好再递回去",
       "status": "accepted",
       "source_file": "docs/player/characters/brother.md"
     },
     {
       "id": "CHR-002",
-      "name": "林澄",
+      "name": "月城玲",
       "age": 19,
       "tier": "核心",
       "role": "妹妹；小店共同经营者、插画与商品设计者",
@@ -32,16 +32,16 @@
         "55",
         "75"
       ],
-      "personal_goal": "想让作品进入人们真正使用的生活，同时把异常工作做得可靠。",
-      "arc": "从善于发现叙述差异，走向承担证据判断和潜梦行动；尊重本人选择而不替人写好结局。",
-      "relationships": "林屿与她轮换潜梦；乔音邀请她制作街坊册；米娜和苏禾是日常朋友。",
-      "voice": "表达温柔但判断明确，会问一件物品是怎样被使用的，而不只问它象征什么。",
+      "personal_goal": "完成第一份有报酬与署名的音乐视觉委托，同时承担《今天的街坊》的主要插图",
+      "arc": "从过早替经历写好圆满结尾，到撤回遗漏交班者的作品、承担重画成本，终章以当下证据拒绝虚假的完成信号",
+      "relationships": "月城曜与她轮换潜梦；乔伊邀请她制作街坊册；米娜和苏弥是日常朋友。安可是创作伙伴；遥的批注让她重新询问当事人今天要说什么",
+      "voice": "表达温柔但判断明确，会问一件物品是怎样被使用的，而不只问它象征什么",
       "status": "accepted",
       "source_file": "docs/player/characters/sister.md"
     },
     {
       "id": "CHR-003",
-      "name": "粒粒",
+      "name": "巧克力",
       "age": null,
       "tier": "核心",
       "role": "家庭 Agent；统一身份、多机体",
@@ -50,15 +50,15 @@
         "04"
       ],
       "personal_goal": "让熟悉的小店运转顺畅，参与家人的生活和创作。",
-      "arc": "逐渐积累共同经历，学会区分自己的记录、外部输入与尚待核对的信息。",
-      "relationships": "与兄妹是家人；夜班熟客可能先认识它；送货员姚安熟悉它的交接习惯。",
+      "arc": "区分旧状态与新确认；主动申请作为观众完整参与普通活动，家人据此重新安排店务",
+      "relationships": "与兄妹是家人；夜班熟客可能先认识它；送货员阿东熟悉它的交接习惯。",
       "voice": "以拟声、动作和表情为主；复杂信息在屏幕上显示，不突然变成无所不知的旁白。",
       "status": "accepted",
       "source_file": "docs/player/characters/agent.md"
     },
     {
       "id": "CHR-004",
-      "name": "林启明",
+      "name": "月城修",
       "age": 48,
       "tier": "常驻",
       "role": "父亲；小店前经营者",
@@ -68,16 +68,16 @@
         "08",
         "11"
       ],
-      "personal_goal": "与陈静禾过新的生活，也希望孩子真心享受接店后的日子。",
-      "arc": "从听孩子只报平安，逐渐参与实际的家庭支持；不接管他们的决定。",
-      "relationships": "与陆衡、郑泊是旧街坊；与陈静禾共同维护家庭联系。",
-      "voice": "讲话朴实，记得进货和修门一类小事；不藏实验室身份。",
+      "personal_goal": "与陈美惠过新的生活，也希望孩子真心享受接店后的日子",
+      "arc": "从听孩子只报平安，逐渐参与实际的家庭支持；不接管他们的决定；他认真安排接店之后的出门生活。愿意帮忙时，会先问清具体负责哪一段，与孩子约好时间，不随时回来接管小店",
+      "relationships": "与陆成、郑文良是旧街坊；与陈美惠共同维护家庭联系。",
+      "voice": "讲话朴实，记得进货和修门一类小事",
       "status": "accepted",
-      "source_file": "docs/player/characters/family-members/lin-qi-ming.md"
+      "source_file": "docs/player/characters/family-members/tsukishiro-shu.md"
     },
     {
       "id": "CHR-005",
-      "name": "陈静禾",
+      "name": "陈美惠",
       "age": 47,
       "tier": "常驻",
       "role": "母亲；小店前经营者",
@@ -87,16 +87,16 @@
         "44",
         "56"
       ],
-      "personal_goal": "延续家人之间的亲近，也认真安排自己的兴趣和出门计划。",
-      "arc": "看见孩子遇到困难后，愿意听完整经过，而不只听“都解决了”。",
-      "relationships": "与梁素交换修补方法；熟悉顾竹和街坊茶桌庭。",
-      "voice": "关心常落在吃饭、休息和有没有把话说完，不用唠叨代替人物。",
+      "personal_goal": "延续家人之间的亲近，也认真安排自己的兴趣和出门计划",
+      "arc": "看见孩子遇到困难后，愿意听完整经过，而不只听“都解决了”；旅行前，她想把旧外套改成方便拿票的样子。玲首先想保留旧绣线，她却更需要一个好用的新口袋；最终她自己决定怎样改，也真的穿它出门",
+      "relationships": "与梁素交换修补方法；熟悉顾文珍和街坊茶桌庭。",
+      "voice": "关心常落在吃饭、休息和有没有把话说完",
       "status": "accepted",
-      "source_file": "docs/player/characters/family-members/chen-jing-he.md"
+      "source_file": "docs/player/characters/family-members/chen-mei-hui.md"
     },
     {
       "id": "CHR-006",
-      "name": "季闻",
+      "name": "维恩",
       "age": 43,
       "tier": "核心",
       "role": "早期潜梦研究者；重大事件实验发起者",
@@ -104,16 +104,16 @@
       "associated_place_ids": [
         "75"
       ],
-      "personal_goal": "与许遥继续生活，完成有用的研究，并面对实验造成的实际后果。",
-      "arc": "已走过无法确信真实共梦的阶段；正篇中提供记录、承认局限，支持新一代处理不同的问题。",
-      "relationships": "许遥是伴侣；与楚青有专业联系；通过会谈认识兄妹。",
-      "voice": "对证据精确，对日常偶有迟钝；会明确区分记得、推测和测到。",
+      "personal_goal": "与遥继续生活，完成有用的研究，并面对实验造成的实际后果",
+      "arc": "已经走过无法确信真实共梦的阶段；向兄妹提供记录、承认局限，支持他们处理今天不同的问题；旧资料能说明当年的处置范围，空白区域却不能被当成从未存在活动。他承认这些局限，把需要现场重建的问题交还今天的调查，自己仍有研究与共同生活要继续",
+      "relationships": "遥是伴侣；与罗宾有专业联系；通过会谈认识兄妹。",
+      "voice": "对证据精确，对日常偶有迟钝；会明确区分记得、推测和测到",
       "status": "accepted",
-      "source_file": "docs/player/characters/shared-dreams/ji-wen.md"
+      "source_file": "docs/player/characters/shared-dreams/wien.md"
     },
     {
       "id": "CHR-007",
-      "name": "许遥",
+      "name": "遥",
       "age": 42,
       "tier": "核心",
       "role": "图书编辑；真实联合梦境参与者",
@@ -122,16 +122,16 @@
         "73",
         "75"
       ],
-      "personal_goal": "继续阅读、编辑和参与新作品，自己决定何时见客以及想怎样生活。",
-      "arc": "从历史中被描述的患者，成为今天主动补充和纠正记录的人；不是等玩家来证明其存在。",
-      "relationships": "季闻是伴侣；沈聆协助新书交流；参与林澄的街坊册。",
-      "voice": "对文字和生活都敏锐，有喜好、有不耐烦和幽默；会把话题拉回今天。",
+      "personal_goal": "她继续阅读、编辑和参与新作品，自己决定何时见客以及想怎样生活。一个人今天想说的话，不必总从十二年前的事故讲起",
+      "arc": "前期小册样稿里，她把玲写的“旧日不再的温柔角落”划掉，改成“每天有人用它等朋友”。人们先认识这位有点难说服的编辑，再了解她完整的经历；第五章的来访包含工作、家务、历史讨论与明确的结束时间。玲受邀进入授权联合梦境，帮她挪一排书；维恩觉得旧摆法方便，她最近却坐在另一边。这个家仍在变化，不是等人解谜的纪念馆；她能纠正维恩的回忆，也可以不继续某个私人话题。能够从现场重建获得的技术信息，由调查者在现场取得，不以交出全部私人交流换取正常生活；尾声的新样书仍有待改的句子。她不满意一处断句，接着做今天的工作",
+      "relationships": "维恩是伴侣；诺拉协助新书交流；参与月城玲的街坊册。",
+      "voice": "成熟、锋利，也有生活趣味；会为含糊的词追问三次，也会因为今晚有稿子要看，或不想被剧透的新书，结束会谈。她有幽默与不耐烦，会把话题拉回今天",
       "status": "accepted",
-      "source_file": "docs/player/characters/shared-dreams/xu-yao.md"
+      "source_file": "docs/player/characters/shared-dreams/haruka.md"
     },
     {
       "id": "CHR-008",
-      "name": "陆衡",
+      "name": "陆成",
       "age": 35,
       "tier": "核心",
       "role": "小修理铺主理；设备维护前辈",
@@ -141,12 +141,12 @@
         "38",
         "43"
       ],
-      "personal_goal": "把送修的东西真正修好，维持一间能教年轻人动手的小铺。",
-      "arc": "在支持兄妹时逐渐把责任交给他们，继续承担自己擅长的现实维护。",
-      "relationships": "林屿向他学习；与赵晏、何昕互通维修与制作需求；认识父母。",
-      "voice": "会先问“它什么时候开始这样”；专业边界清楚，不是万能科学家。",
+      "personal_goal": "他想把送修的东西真正修好，维持一间能教年轻人动手的小铺，也保住自己的维修节奏",
+      "arc": "遇到曜同时承诺两份工作，他会把到期的维修单摆在桌上，问“这张谁做？”具体交接替代空泛的劝说，兄妹仍承担自己的决定；他能接下一部分工作，也能坦率说这次没空。帮助需要约定时间、范围和交付，不是前辈永远待机；设备维护以外的问题仍由不同专长的人处理",
+      "relationships": "月城曜向他学习；与阿杰、凯文互通维修与制作需求；认识父母。",
+      "voice": "会先问“它什么时候开始这样”；专业边界清楚，需要不同专长时会与相应人员协作",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/lu-heng.md"
+      "source_file": "docs/player/characters/neighbors/lu-cheng.md"
     },
     {
       "id": "CHR-009",
@@ -159,16 +159,16 @@
         "36",
         "40"
       ],
-      "personal_goal": "决定哪些物件随自己出发，哪些留在家里，保有与朋友的联系。",
-      "arc": "从反复检查行李到按自己的方式完成打包；出城并不意味着切断关系。",
-      "relationships": "与林澄、苏禾是朋友；向陆衡送修玩具；认识旧物店的周然。",
-      "voice": "直率、偶尔自嘲；会对别人替她决定丢什么提出异议。",
+      "personal_goal": "决定哪些物件随自己出发，哪些留在家里，保有与朋友的联系",
+      "arc": "从反复检查行李到按自己的方式完成打包；出城并不意味着切断关系；她真正离城，开始新的学校与住处生活。想家时可以联系熟悉的人，也会认识玩家没有参与的新朋友；离开不是等待主角挽回的错误",
+      "relationships": "与月城玲、苏弥是朋友；向陆成送修玩具；认识旧物店的周然。",
+      "voice": "直率、偶尔自嘲；会对别人替她决定丢什么提出异议",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/mina.md"
     },
     {
       "id": "CHR-010",
-      "name": "苏禾",
+      "name": "苏弥",
       "age": 19,
       "tier": "常驻",
       "role": "独立游戏创作者；体验店兼职",
@@ -176,46 +176,46 @@
       "associated_place_ids": [
         "39"
       ],
-      "personal_goal": "把自己的小作品做完并让陌生人真正玩懂。",
-      "arc": "学习接受实际反馈，而不是只用精美展示证明作品完成。",
-      "relationships": "与米娜、林澄交往；赵晏帮试玩；何昕帮制作实体小物。",
-      "voice": "聊作品兴奋，讲自己的困难反而简短；有普通收入与工期烦恼。",
+      "personal_goal": "她想完成一个陌生人能玩懂、自己也愿意署名的短游戏，同时面对普通收入与工期问题",
+      "arc": "她的屋顶放风筝游戏在演示里很好看，真实试玩者却停在起飞处等风。安可夸画面适合宣传，让她高兴过，也让她看清玩家还走不到那个画面；她必须缩小范围或推迟展示，两种办法都有实际成本。更漂亮的视频无法替代真正的操作反馈，作品也不会只因承载梦想就自动好玩；她曾问玲：“你画的是他看起来会选的路。你问过他想去哪儿吗？”后来也必须把这句话用在自己的作品上；她不承担城市机制研究，能贡献的是观察与预期的日常经验、真实场所使用记录，以及作为朋友直截了当的反馈",
+      "relationships": "与米娜、月城玲交往；阿杰帮试玩；凯文帮制作实体小物。安可擅长吸引观众，两人以未完成稿和真实试玩互相反馈",
+      "voice": "外表略显散漫，吐槽精准；谈到机制时突然兴奋，讲自己的困难却简短。不好意思直接求夸奖，却会认真追问哪里不好玩",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/su-he.md"
+      "source_file": "docs/player/characters/neighbors/su-mi.md"
     },
     {
       "id": "CHR-011",
-      "name": "赵晏",
+      "name": "阿杰",
       "age": 27,
       "tier": "常驻",
-      "role": "音游店值班负责人",
+      "role": "BYTE BEAT值班负责人",
       "home_place_id": "12",
       "associated_place_ids": [
         "35"
       ],
-      "personal_goal": "让玩家玩得舒服、设备维护及时，保住小型社群的好气氛。",
-      "arc": "从把声音异常当普通故障，到接受交叉验证，同时继续关心玩家日常。",
-      "relationships": "与陆衡、游戏设备维修店合作；认识宁朗与苏禾。",
-      "voice": "记得熟客偏好，解释排队和设备问题直接清楚。",
+      "personal_goal": "让玩家玩得舒服、设备维护及时，保住小型社群的好气氛",
+      "arc": "从把声音异常当普通故障，到接受交叉验证，同时继续关心玩家日常；异常调查期间，他仍惦记一台普通按键故障和店里的排队规则。危机没有吞掉他的全部工作，普通维修仍然需要按时完成",
+      "relationships": "与陆成、游戏设备维修店合作；认识悠真与苏弥。",
+      "voice": "记得熟客偏好，解释排队和设备问题直接清楚",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/zhao-yan.md"
+      "source_file": "docs/player/characters/neighbors/a-jie.md"
     },
     {
       "id": "CHR-012",
-      "name": "何昕",
+      "name": "凯文",
       "age": 26,
       "tier": "常驻",
-      "role": "模型店制作者与课程组织者",
+      "role": "FRAME制作者与课程组织者",
       "home_place_id": "12",
       "associated_place_ids": [
         "36"
       ],
-      "personal_goal": "把共同制作的作品送进橱窗，也让初学者敢碰第一件模型。",
-      "arc": "学会保留作品的过程，而不是只留下无瑕疵成品。",
-      "relationships": "和林澄一起选纸材；为苏禾做展件；给郑澈提供拍摄对象。",
-      "voice": "用材料和手感解释问题，有耐心但不包办。",
+      "personal_goal": "把共同制作的作品送进橱窗，也让初学者敢碰第一件模型",
+      "arc": "学会保留作品的过程，而不是只留下无瑕疵成品；他把试做过程与完成的实体展示一起摆出来，让初学者看见失败和改动，也敢于碰第一件材料",
+      "relationships": "和月城玲一起选纸材；为苏弥做展件；给郑拓提供拍摄对象。",
+      "voice": "用材料和手感解释问题，有耐心但不包办",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/he-xin.md"
+      "source_file": "docs/player/characters/neighbors/kevin.md"
     },
     {
       "id": "CHR-013",
@@ -227,16 +227,16 @@
       "associated_place_ids": [
         "37"
       ],
-      "personal_goal": "维持每周能自然聚在一起的一桌人。",
-      "arc": "接纳熟客离开、新人加入后活动形式的变化。",
-      "relationships": "协助旧物交换店40举办交流；给米娜解释寄售选择；与姚安是牌友。",
-      "voice": "善于把规则讲成例子；工作之外也会输得不服气。",
+      "personal_goal": "维持每周能自然聚在一起的一桌人",
+      "arc": "接纳熟客离开、新人加入后活动形式的变化；熟客离开后，他调整人数与规则，让新人找到自己的位置。新加入的人不必成为旧成员的替身",
+      "relationships": "协助旧物交换店40举办交流；给米娜解释寄售选择；与阿东是牌友。",
+      "voice": "善于把规则讲成例子；工作之外也会输得不服气",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/zhou-ran.md"
     },
     {
       "id": "CHR-014",
-      "name": "宋岚",
+      "name": "宋美香",
       "age": 32,
       "tier": "常驻",
       "role": "烘焙店店主",
@@ -244,16 +244,16 @@
       "associated_place_ids": [
         "07"
       ],
-      "personal_goal": "把当天面包做好，尝试新菜单而不是一直重复最受欢迎的那一款。",
-      "arc": "参与街坊册时愿意展示试做和失败，承认日常也会变化。",
-      "relationships": "给唐钰和站前咖啡铺供货；与甜品店48交换季节菜单。",
-      "voice": "说话干脆，忙时先递夹子；关心别人时会多留一份。",
+      "personal_goal": "把当天面包做好，尝试新菜单而不是一直重复最受欢迎的那一款",
+      "arc": "参与街坊册时愿意展示试做和失败，承认日常也会变化；有时顾客还是只买旧款，她试做的新口味并不好卖。她会调整下一批的份量，也继续尝试，而不把一次菜单失败当作停止的理由",
+      "relationships": "给唐惠和站前咖啡铺供货；与甜品店48交换季节菜单。",
+      "voice": "说话干脆，忙时先递夹子；关心别人时会多留一份",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/song-lan.md"
+      "source_file": "docs/player/characters/neighbors/song-mei-xiang.md"
     },
     {
       "id": "CHR-015",
-      "name": "唐钰",
+      "name": "唐惠",
       "age": 31,
       "tier": "常驻",
       "role": "晚班汤饭店经营者；夜食协调者",
@@ -262,12 +262,12 @@
         "53",
         "47"
       ],
-      "personal_goal": "让晚班和散场的人也能吃到一顿安心热饭，自己也能按时收工。",
-      "arc": "在现场异常时学会分清帮忙和逞强，接受别人接手最后的清理。",
-      "relationships": "认识贺秋、宁朗、邵敏和姚安；与宋岚相互照应。",
-      "voice": "热情但有边界；知道谁是刚开工、谁是终于下班。",
+      "personal_goal": "让晚班和散场的人也能吃到一顿安心热饭，自己也能按时收工",
+      "arc": "在现场异常时学会分清帮忙和逞强，接受别人接手最后的清理；她会把最后一段收桌与清理明确交给别人，自己也按约定结束一天。下一次有人主动收桌，才让共同吃饭成为彼此分担的关系",
+      "relationships": "认识贺佳、悠真、邵敏和阿东；与宋美香相互照应。",
+      "voice": "热情但有边界；知道谁是刚开工、谁是终于下班",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/tang-yu.md"
+      "source_file": "docs/player/characters/neighbors/tang-hui.md"
     },
     {
       "id": "CHR-016",
@@ -279,10 +279,10 @@
       "associated_place_ids": [
         "09"
       ],
-      "personal_goal": "经营稳定，也为自己留出不必总守着机器的晚上。",
-      "arc": "把普通失物问题按普通方法解决，不把每个巧合都归为异常。",
-      "relationships": "是邻里茶桌庭熟人；与梁素和居民服务中心联系。",
-      "voice": "观察细，维护顾客隐私，不随口泄露谁洗了什么。",
+      "personal_goal": "经营稳定，也为自己留出不必总守着机器的晚上",
+      "arc": "把普通失物问题按普通方法解决，不把每个巧合都归为异常；她把取件说明和联络安排写得更清楚。日程与交接误会靠普通调整解决，她也因此拥有不必一直守着机器的晚上",
+      "relationships": "是邻里茶桌庭熟人；与梁素和Null Site 服务中心联系。",
+      "voice": "观察细，维护顾客隐私，不随口泄露谁洗了什么",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/he-yun.md"
     },
@@ -297,61 +297,61 @@
         "44",
         "55"
       ],
-      "personal_goal": "让有使用痕迹的东西继续好用，也尊重物主想彻底换新的选择。",
-      "arc": "在自己的手艺与年轻人的设计之间建立合作，不替别人决定何为珍贵。",
-      "relationships": "与陈静禾熟悉；与林澄、何昕合作；在共用院带手作活动。",
-      "voice": "先问穿着习惯，再问喜欢什么图案。",
+      "personal_goal": "让有使用痕迹的东西继续好用，也尊重物主想彻底换新的选择",
+      "arc": "在自己的手艺与年轻人的设计之间建立合作，不替别人决定何为珍贵；她珍惜旧工艺，却愿意按物主今天的使用方式拆改自己喜欢的一块布。陈美惠的外套最后怎样改，由穿它出门的人决定",
+      "relationships": "与陈美惠熟悉；与月城玲、凯文合作；在共用院带手作活动。",
+      "voice": "先问穿着习惯，再问喜欢什么图案",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/liang-su.md"
     },
     {
       "id": "CHR-018",
-      "name": "郑泊",
+      "name": "郑文良",
       "age": 58,
       "tier": "核心",
-      "role": "照片冲印店经营者；地方照片提供者",
+      "role": "FLASHBACK经营者；地方照片提供者",
       "home_place_id": null,
       "associated_place_ids": [
         "57"
       ],
-      "personal_goal": "把普通家庭的照片交付好，整理自己的旧底片。",
-      "arc": "从认为“照片已经说明一切”，到把拍摄背景、授权和不确定一并交代。",
-      "relationships": "郑澈是其女儿；顾竹与钟帆提供授权照片；认识兄妹父母。",
-      "voice": "慢条斯理，对看不清的细节不会硬认。",
+      "personal_goal": "把普通家庭的照片交付好，整理自己的旧底片",
+      "arc": "从认为“照片已经说明一切”，到把拍摄背景、授权和不确定一并交代；整理底片时，他同时说明取景范围与拍摄背景，把“不在镜头里”说清楚。提供旧照片不使他成为全城历史的见证者",
+      "relationships": "郑拓是其女儿；顾文珍与老钟提供授权照片；认识兄妹父母。",
+      "voice": "慢条斯理，对看不清的细节不会硬认",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/zheng-bo.md"
+      "source_file": "docs/player/characters/neighbors/zheng-wen-liang.md"
     },
     {
       "id": "CHR-019",
-      "name": "温苒",
+      "name": "艾玛",
       "age": 34,
       "tier": "核心",
-      "role": "社区园艺温室维护者",
+      "role": "四季温室维护者",
       "home_place_id": "13",
       "associated_place_ids": [
         "60"
       ],
-      "personal_goal": "让育苗、交换和观察持续下去，找到适合本地环境的新种植方式。",
-      "arc": "从只关注熟悉的局部养护，发展为与其他记录者共同识别区域变化。",
-      "relationships": "与花草店54、楚青、顾竹、陈知夏合作。",
-      "voice": "给植物和人都留生长时间；解释问题常从眼前一片叶子开始。",
+      "personal_goal": "让育苗、交换和观察持续下去，找到适合本地环境的新种植方式",
+      "arc": "从只关注熟悉的局部养护，发展为与其他记录者共同识别区域变化；育苗与交换活动恢复以后，她继续照顾还能生长的苗，也承认这一轮已经失去的部分。苗架留下空位，不会因危险解除就立刻填满",
+      "relationships": "与花草店54、罗宾、顾文珍、陈知夏合作。",
+      "voice": "给植物和人都留生长时间；解释问题常从眼前一片叶子开始",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/wen-ran.md"
+      "source_file": "docs/player/characters/neighbors/emma.md"
     },
     {
       "id": "CHR-020",
       "name": "陈知夏",
       "age": 17,
       "tier": "核心",
-      "role": "社区中学学生；街坊记录项目参与者",
+      "role": "星见学园学生；街坊记录项目参与者",
       "home_place_id": "18",
       "associated_place_ids": [
         "19"
       ],
-      "personal_goal": "把身边普通人的故事做成一份自己的作品，而不是复制大人讲过的历史。",
-      "arc": "学会区分亲历、转述和推测，保留自己当下的观察。",
-      "relationships": "魏航组织球场活动；郑澈指导拍摄；顾竹提供过去的经历。",
-      "voice": "好奇且会追问，面对长辈也能指出记录中的矛盾。",
+      "personal_goal": "把身边普通人的故事做成一份自己的作品，而不是复制大人讲过的历史",
+      "arc": "学会区分亲历、转述和推测，保留自己当下的观察；她曾想追逐容易得到成人赞赏的“大故事”，后来更愿意准确记录同龄人的现在。看见玲仍想保留英雄式构图时，她指出交接后继续工作的人也需要出现在画面里",
+      "relationships": "魏航组织球场活动；郑拓指导拍摄；顾文珍提供过去的经历。",
+      "voice": "好奇且会追问，面对长辈也能指出记录中的矛盾",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/chen-zhi-xia.md"
     },
@@ -366,10 +366,10 @@
         "63",
         "64"
       ],
-      "personal_goal": "维持能让不同水平的人参与的场地，也经营好店。",
-      "arc": "从习惯用统一安排解决冲突，到给不同使用者留下合适空间。",
-      "relationships": "陈知夏常来；与亲子活动室70、居民服务中心67合作。",
-      "voice": "爽快，谈正事也会边给球打气边讲。",
+      "personal_goal": "维持能让不同水平的人参与的场地，也经营好店",
+      "arc": "从习惯用统一安排解决冲突，到给不同使用者留下合适空间；他不只组织球局，自己也真心想参加。给新手留出可用时段意味着他让出一部分方便，有限场地没有让所有人同时获得最佳安排的办法",
+      "relationships": "陈知夏常来；与亲子活动室70、Null Site 服务中心67合作。",
+      "voice": "爽快，谈正事也会边给球打气边讲",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/wei-hang.md"
     },
@@ -383,33 +383,33 @@
       "associated_place_ids": [
         "16"
       ],
-      "personal_goal": "认真处理居民的现实健康需要，保持诊疗隐私与转介边界。",
-      "arc": "在异常事件中提供独立现实观察，与潜梦调查相互补充。",
-      "relationships": "与叶初协作；了解正规转介渠道；不擅自公开任何人的病历。",
-      "voice": "用清楚的日常语言说明能确认什么，避免神秘化患者。",
+      "personal_goal": "认真处理居民的现实健康需要，保持诊疗隐私与转介边界",
+      "arc": "在异常事件中提供独立现实观察，与潜梦调查相互补充；主线调查中，他提供经过本人允许的现实观察和必要转介。居民的健康需要各自处理，诊所不会因此变成解释所有梦境的机构",
+      "relationships": "与叶真协作；了解正规转介渠道；不擅自公开任何人的病历。",
+      "voice": "用清楚的日常语言说明能确认什么，避免神秘化患者",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/cheng-jia.md"
     },
     {
       "id": "CHR-023",
-      "name": "叶初",
+      "name": "叶真",
       "age": 33,
       "tier": "核心",
-      "role": "居民服务中心协调人员",
+      "role": "Null Site 服务中心协调人员",
       "home_place_id": "18",
       "associated_place_ids": [
         "67"
       ],
-      "personal_goal": "把分散求助接到真正能处理的人手上，维持公共服务和日常活动。",
-      "arc": "逐渐建立跨个案核对方法，让小问题不因分散而永远无人理解。",
-      "relationships": "与程嘉、乔音、邱宁及兄妹协作。",
-      "voice": "重视具体记录，也愿意走到现场听一遍。",
+      "personal_goal": "把分散求助接到真正能处理的人手上，维持公共服务和日常活动",
+      "arc": "逐渐建立跨个案核对方法，让小问题不因分散而永远无人理解；跨个案核对让相关事件找到彼此，也给不相关的小事保留按普通方法解决的空间。多一份正确转介，比把所有问题归为同一种异常更有用",
+      "relationships": "与程嘉、乔伊、邱立及兄妹协作。",
+      "voice": "重视具体记录，也愿意走到现场听一遍",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/ye-chu.md"
+      "source_file": "docs/player/characters/neighbors/ye-zhen.md"
     },
     {
       "id": "CHR-024",
-      "name": "乔音",
+      "name": "乔伊",
       "age": 31,
       "tier": "核心",
       "role": "影院会客厅策展与活动组织者",
@@ -418,33 +418,33 @@
         "15",
         "76"
       ],
-      "personal_goal": "做一份让街坊愿意翻看的当代生活记录，而不是只有灾难史的展览。",
-      "arc": "从追求整齐完整的展陈，转向允许不同讲述并列、注明来源。",
-      "relationships": "邀请林澄；与郑泊郑澈、陈知夏、沈聆和贺秋合作。",
-      "voice": "有组织力，常记得谁的作品还没得到本人同意。",
+      "personal_goal": "做一份让街坊愿意翻看的当代生活记录，而不是只有灾难史的展览",
+      "arc": "从追求整齐完整的展陈，转向允许不同讲述并列、注明来源；小册和展览必须真的交付，她接受首版、后续修订与不同参与方式。玲重画版面时，需要一起调整印期，不能只用“更完整了”省略实际工作",
+      "relationships": "邀请月城玲；与郑文良郑拓、陈知夏、诺拉和贺佳合作。",
+      "voice": "有组织力，常记得谁的作品还没得到本人同意",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/qiao-yin.md"
+      "source_file": "docs/player/characters/neighbors/joey.md"
     },
     {
       "id": "CHR-025",
-      "name": "沈聆",
+      "name": "诺拉",
       "age": 27,
       "tier": "常驻",
-      "role": "影像书店经营者",
+      "role": "MONO经营者",
       "home_place_id": null,
       "associated_place_ids": [
         "73"
       ],
-      "personal_goal": "让电影和阅读成为朋友见面的理由，尝试小型出版。",
-      "arc": "学会把参与者自己的声音放在策划意图之前。",
-      "relationships": "与姜棠交换书单；通过后来建立的工作联系认识许遥；与乔音合作。",
-      "voice": "爱推荐，但接受对方说不喜欢；不会把作品当心理诊断。",
+      "personal_goal": "让电影和阅读成为朋友见面的理由，尝试小型出版",
+      "arc": "学会把参与者自己的声音放在策划意图之前；她希望阅读与小出版活动值得反复参加，也接受对方这次只想读一本很薄的书。推荐没有被采纳，不妨碍下一次一起谈书",
+      "relationships": "与小满交换书单；通过后来建立的工作联系认识遥；与乔伊合作。",
+      "voice": "爱推荐，但接受对方说不喜欢；不会把作品当心理诊断",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/shen-ling.md"
+      "source_file": "docs/player/characters/neighbors/nora.md"
     },
     {
       "id": "CHR-026",
-      "name": "宁朗",
+      "name": "悠真",
       "age": 24,
       "tier": "核心",
       "role": "排练录音楼音频工程人员；乐队成员",
@@ -452,33 +452,33 @@
       "associated_place_ids": [
         "78"
       ],
-      "personal_goal": "完成一场属于现在的演出，证明自己的工作可靠，也享受音乐。",
-      "arc": "通过事实摆脱“所有错误都是自己造成的”判断，愿意求助与分担。",
-      "relationships": "贺秋是合作场地主理；赵晏是朋友；常在唐钰店里吃饭。",
-      "voice": "对细微声响敏感，生活里反而会忘带钥匙。",
+      "personal_goal": "他想完成属于当前合作团队的新音乐，享受演出，也让自己的工作真正可靠",
+      "arc": "第二章的调查使他通过事实摆脱“所有错误都是自己造成的”判断；他同时开始提出具体、有限的协作需求，不再用无限加班承担别人没有定下来的选择；安可反复调整新歌时，他把工作表放在她面前，要求她明确自己这一周究竟是在等她，还是可以做别的工作。两人确认范围与交付后，仍可以不喜欢同一段编曲；散场以后，他明确请别人接手最后一件器材的归还，终于坐下来吃热饭。关系变好没有让他的工作边界消失",
+      "relationships": "贺佳是合作场地主理；阿杰是朋友；常在唐惠店里吃饭。安可是有明确交付范围的音乐合作伙伴，双方仍能对编曲持不同意见",
+      "voice": "能听出录音里的细微问题，生活里反而会忘带钥匙，把买好的晚饭放在器材箱旁忘记拿",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/ning-lang.md"
+      "source_file": "docs/player/characters/neighbors/yuma.md"
     },
     {
       "id": "CHR-027",
-      "name": "贺秋",
+      "name": "贺佳",
       "age": 36,
       "tier": "常驻",
-      "role": "Live House 运营负责人",
+      "role": "AFTER 9 运营负责人",
       "home_place_id": null,
       "associated_place_ids": [
         "79"
       ],
-      "personal_goal": "维持安全、可持续的演出空间，让工作人员和观众都能好好回家。",
-      "arc": "在主线中能及时停演与协作，事后也认真恢复正常演出。",
-      "relationships": "与宁朗、乐器音频店77、乐器工坊81和唐钰往来。",
-      "voice": "行动快，不把硬撑开演当勇敢。",
+      "personal_goal": "维持安全、可持续的演出空间，让工作人员和观众都能好好回家",
+      "arc": "面对异常能够及时停演并参与协作，事后也认真恢复正常演出；她认识安可成名前的工作，会支持她争取报酬，也明确说场地何时必须关闭。改期、退还与新排期都有实际成本，她不会因支持新歌就答应不现实的安排",
+      "relationships": "与悠真、乐器音频店77、乐器工坊81和唐惠往来。",
+      "voice": "行动快，不把硬撑开演当勇敢",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/he-qiu.md"
+      "source_file": "docs/player/characters/neighbors/he-jia.md"
     },
     {
       "id": "CHR-028",
-      "name": "邱宁",
+      "name": "邱立",
       "age": 41,
       "tier": "核心",
       "role": "岸线维护人员；河岸共作活动协作者",
@@ -486,34 +486,34 @@
       "associated_place_ids": [
         "88"
       ],
-      "personal_goal": "把日常维护做到位，让河边能持续被使用。",
-      "arc": "把分散的巡查记录带入联合调查，不只留下“已处理”结论。",
-      "relationships": "与钟帆、楚青、温苒和叶初合作。",
-      "voice": "熟悉水位、地面和群众怎么走；不把经验冒充完整科学解释。",
+      "personal_goal": "把日常维护做到位，让河边能持续被使用",
+      "arc": "把分散的巡查记录带入联合调查，不只留下“已处理”结论；每次维护记录都说明做过什么、还没做什么，并留下可比较的水位与构件情况。“已处理”不是省略经过的万能结论",
+      "relationships": "与老钟、罗宾、艾玛和叶真合作。",
+      "voice": "熟悉水位、地面和群众怎么走；不把经验冒充完整科学解释",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/qiu-ning.md"
+      "source_file": "docs/player/characters/neighbors/qiu-li.md"
     },
     {
       "id": "CHR-029",
-      "name": "钟帆",
+      "name": "老钟",
       "age": 46,
       "tier": "核心",
-      "role": "原渡运工作人员；渡运旧物展屋讲解维护者",
+      "role": "原渡运工作人员；旧帆展屋讲解维护者",
       "home_place_id": "18",
       "associated_place_ids": [
         "85",
         "26"
       ],
-      "personal_goal": "把渡口普通工作的经历保存下来，也让新一代形成自己的记忆。",
-      "arc": "愿意纠正讲述中混入的传闻，并交出可核对的原始记录。",
-      "relationships": "与邱宁、顾竹、郑泊认识多年；给陈知夏提供访谈。",
-      "voice": "记得当年怎么候船，不会假装知道所有人当时在想什么。",
+      "personal_goal": "把渡口普通工作的经历保存下来，也让新一代形成自己的记忆",
+      "arc": "愿意纠正讲述中混入的传闻，并交出可核对的原始记录；他接受为安全使用重做部分旧外观，但仍然可以舍不得。留恋不阻止施工，旧票据与当年的工作记录也不必随着构件调整被丢掉",
+      "relationships": "与邱立、顾文珍、郑文良认识多年；给陈知夏提供访谈。",
+      "voice": "记得当年怎么候船，不会假装知道所有人当时在想什么",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/zhong-fan.md"
+      "source_file": "docs/player/characters/neighbors/lao-zhong.md"
     },
     {
       "id": "CHR-030",
-      "name": "顾竹",
+      "name": "顾文珍",
       "age": 67,
       "tier": "核心",
       "role": "退休教师；山脚茶屋轮值与自然观察志愿者",
@@ -522,16 +522,16 @@
         "89",
         "90"
       ],
-      "personal_goal": "继续看见学生和街坊的变化，也照料自己的生活。",
-      "arc": "把当年的缺憾放回真实背景，不再把重复的异常当成应当完成的责任。",
-      "relationships": "曾在大事件时参与学生与家长联络；与陈静禾、郑泊、温苒往来。",
-      "voice": "不急着说教，会先陪人把茶喝完。",
+      "personal_goal": "她继续看见学生和街坊的变化，在茶屋轮值、照料植物，也保留处理自己生活的时间",
+      "arc": "十二年前，她确实帮助了许多人，也在某个时段把联络工作交给另一名值班教师，回家处理急事。交接有记录，没有失职隐情；后来反复使用的照片裁去了画面边缘，说明从“参与联络”渐渐变成“最后一个离开的老师”。她纠正过几次，却常被听成谦虚，也不是每次都愿意重讲；完整底片与交接记录纠正英雄化叙述，不使她当年做过的事变成假的。她不必完成某种自我原谅，才能结束重复的有害点名；今天仍能作为普通人继续与学生交流",
+      "relationships": "曾在大事件时参与学生与家长联络；与陈美惠、郑文良、艾玛往来。",
+      "voice": "不急着说教，会先陪人把茶喝完",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/gu-zhu.md"
+      "source_file": "docs/player/characters/neighbors/gu-wen-zhen.md"
     },
     {
       "id": "CHR-031",
-      "name": "郑澈",
+      "name": "郑拓",
       "age": 28,
       "tier": "常驻",
       "role": "社区摄影工作室摄影师",
@@ -539,34 +539,34 @@
       "associated_place_ids": [
         "74"
       ],
-      "personal_goal": "拍出普通人愿意留下的照片，而不只追求有故事感的画面。",
-      "arc": "接受当事人拒绝展示，学习与父亲一起说明照片的背景。",
-      "relationships": "郑泊是父亲；指导陈知夏；与何昕和乔音合作。",
-      "voice": "询问细致，拍照前会确认谁愿意入镜。",
+      "personal_goal": "拍出普通人愿意留下的照片，而不只追求有故事感的画面",
+      "arc": "接受当事人拒绝展示，学习与父亲一起说明照片的背景；她逐渐分清记录空间使用的照片、认真构图的肖像和作品表达各自的任务。漂亮或摆姿势并不等于虚假；她先观察场所怎样被使用，再决定站在哪里拍",
+      "relationships": "郑文良是父亲；指导陈知夏；与凯文和乔伊合作。",
+      "voice": "询问细致，拍照前会确认谁愿意入镜",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/zheng-che.md"
+      "source_file": "docs/player/characters/neighbors/zheng-tuo.md"
     },
     {
       "id": "CHR-032",
-      "name": "姜棠",
+      "name": "小满",
       "age": 24,
       "tier": "次要",
-      "role": "站前书店店员；旧书交换屋轮值者",
+      "role": "白页书店店员；旧书交换屋轮值者",
       "home_place_id": "12",
       "associated_place_ids": [
         "34",
         "46"
       ],
-      "personal_goal": "维持一条能让书被真正读到的流通路线。",
-      "arc": "认识到留下不同读者的理解，比收集统一好评更有意思。",
-      "relationships": "与沈聆交换书单；认识顾竹与许遥的新作品。",
-      "voice": "记得读者说过不喜欢哪种书，也愿意推荐薄一点的。",
+      "personal_goal": "维持一条能让书被真正读到的流通路线",
+      "arc": "认识到留下不同读者的理解，比收集统一好评更有意思；讨论《沿河慢车》时，她先核对不同版本，再留下读者对结局的不同感受。版本事实得到纠正，不要求所有人从此喜欢同一个结尾",
+      "relationships": "与诺拉交换书单；认识顾文珍与遥的新作品。",
+      "voice": "记得读者说过不喜欢哪种书，也愿意推荐薄一点的",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/jiang-tang.md"
+      "source_file": "docs/player/characters/neighbors/xiao-man.md"
     },
     {
       "id": "CHR-033",
-      "name": "楚青",
+      "name": "罗宾",
       "age": 30,
       "tier": "核心",
       "role": "环境调查技术人员；共享工作室使用者",
@@ -574,12 +574,12 @@
       "associated_place_ids": [
         "75"
       ],
-      "personal_goal": "把现场测量与人的实际遭遇对上，而不是只交一张漂亮图。",
-      "arc": "从局部解释走向承认跨区域资料不足，与街坊记录者合作。",
-      "relationships": "与季闻有后来建立的研究联系；与邱宁、温苒是现场伙伴。",
-      "voice": "擅长标出不确定区域，遇到新证据会直接改图。",
+      "personal_goal": "把现场测量与人的实际遭遇对上，而不是只交一张漂亮图",
+      "arc": "从局部解释走向承认跨区域资料不足，与街坊记录者合作；地图里的待测区域不是工作失败，而是下一步应去的地方。他把测量、材料接触与居民实际遭遇放在一起比较，也允许新事实改变原来的路线",
+      "relationships": "与维恩有后来建立的研究联系；与邱立、艾玛是现场伙伴。",
+      "voice": "擅长标出不确定区域，遇到新证据会直接改图",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/chu-qing.md"
+      "source_file": "docs/player/characters/neighbors/robin.md"
     },
     {
       "id": "CHR-034",
@@ -592,16 +592,16 @@
         "01",
         "32"
       ],
-      "personal_goal": "让不同作息的人能够安全换乘，照顾不熟悉路线的来访者。",
-      "arc": "在旧提示造成错认时优先恢复清楚的人工信息，与渡运端协作。",
-      "relationships": "认识唐钰与钟帆；对姚安的日常路线很熟悉。",
-      "voice": "报信息简短准确，闲下来也会聊午饭。",
+      "personal_goal": "让不同作息的人能够安全换乘，照顾不熟悉路线的来访者",
+      "arc": "在旧提示造成错认时优先恢复清楚的人工信息，与渡运端协作；班次与换乘说明恢复可靠以后，她仍愿意多解释一次路线。下班后的她也想按自己的时间吃饭，而不是一直作为交通信息的来源待命",
+      "relationships": "认识唐惠与老钟；对阿东的日常路线很熟悉。",
+      "voice": "报信息简短准确，闲下来也会聊午饭",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/shao-min.md"
     },
     {
       "id": "CHR-035",
-      "name": "姚安",
+      "name": "阿东",
       "age": 23,
       "tier": "次要",
       "role": "街区配送员",
@@ -610,12 +610,52 @@
         "28",
         "31"
       ],
-      "personal_goal": "把一天的配送完成，留时间和朋友玩桌游、去河边坐坐。",
-      "arc": "愿意反馈实际道路变化，而不是把每次绕路都自己扛下。",
-      "relationships": "与粒粒形成交接习惯；周然是牌友；认识唐钰和乐器街工作人员。",
-      "voice": "说话轻快，熟悉服务门但不会随意进入私人住家。",
+      "personal_goal": "把一天的配送完成，留时间和朋友玩桌游、去河边坐坐",
+      "arc": "愿意反馈实际道路变化，而不是把每次绕路都自己扛下；配送之外，他有自己的桌游和休息安排。临时交通变化需要反馈给相关的人，也需要重新约定交付，不以默默绕路证明自己可靠",
+      "relationships": "与巧克力形成交接习惯；周然是牌友；认识唐惠和乐器街工作人员。",
+      "voice": "说话轻快，熟悉服务门但不会随意进入私人住家",
       "status": "accepted",
-      "source_file": "docs/player/characters/neighbors/yao-an.md"
+      "source_file": "docs/player/characters/neighbors/a-dong.md"
+    },
+    {
+      "id": "CHR-036",
+      "name": "安可",
+      "age": 19,
+      "tier": "核心",
+      "role": "城市歌手；词曲创作者；本地音乐节目偶尔主持",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "04",
+        "01",
+        "78",
+        "79",
+        "82"
+      ],
+      "personal_goal": "完成《晚点见》的合作首演，再把新作品带到城外",
+      "arc": "从把档期冲突交给别人兜底，到停止无法确认的成功宣传、明确交付并承担错过宣传档期的成本；仍想被更多人看见",
+      "relationships": "玲是视觉合作伙伴；悠真负责专业音乐协作；与苏弥互相反馈；贺佳支持报酬也坚持场地边界；巧克力照样要求排队",
+      "voice": "明亮主动，有小心思，爱挑照片和刷新评论；真正面对删改时愿意反复试",
+      "status": "accepted",
+      "source_file": "docs/player/characters/neighbors/anke.md"
+    },
+    {
+      "id": "CHR-037",
+      "name": "塞拉",
+      "age": 27,
+      "tier": "核心",
+      "role": "Null Response Bureau 现场负责人之一；受训潜梦者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "04",
+        "26",
+        "67"
+      ],
+      "personal_goal": "在可验证范围内让工作真正结束，保护居民与现场同事",
+      "arc": "从优先可控休眠，发展为把居民的当前场所使用纳入判断；接受有证据和停止条件的更细处置，下班后也能交回值班工作",
+      "relationships": "与曜以局部观察和专业协作互补；通过叶真参与联络，与邱立等现场人员分别确认",
+      "voice": "说话短、行动稳，先看出口与接应位置；下班后认真算买伞是否划算，喜欢最简单的甜点",
+      "status": "accepted",
+      "source_file": "docs/player/characters/neighbors/sera.md"
     }
   ]
 }

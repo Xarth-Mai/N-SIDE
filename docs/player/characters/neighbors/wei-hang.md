@@ -16,9 +16,11 @@ depends_on: []
 
 从习惯用统一安排解决冲突，到给不同使用者留下合适空间
 
+他不只组织球局，自己也真心想参加。给新手留出可用时段意味着他让出一部分方便，有限场地没有让所有人同时获得最佳安排的办法
+
 ## 关系与活动
 
-[陈知夏](chen-zhi-xia.md)常来；与[社区亲子活动室](../../locations/places/b08.md#place-70)、[居民服务中心](../../locations/places/b08.md#place-67)合作
+[陈知夏](chen-zhi-xia.md)常来；与[社区亲子活动室](../../locations/places/b08.md#place-70)、[Null Site 服务中心](../../locations/places/b08.md#place-67)合作
 
 居住在[东侧住宅院](../../locations/places/b08.md#place-18)的一户
 

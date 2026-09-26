@@ -16,9 +16,11 @@ depends_on: []
 
 接纳熟客离开、新人加入后活动形式的变化
 
+熟客离开后，他调整人数与规则，让新人找到自己的位置。新加入的人不必成为旧成员的替身
+
 ## 关系与活动
 
-协助[兴趣旧物交换店](../../locations/places/b02.md#place-40)举办交流；给[米娜](mina.md)解释寄售选择；与[姚安](yao-an.md)是牌友
+协助[兴趣旧物交换店](../../locations/places/b02.md#place-40)举办交流；给[米娜](mina.md)解释寄售选择；与[阿东](a-dong.md)是牌友
 
 居住在[临街公寓](../../locations/places/b03.md#place-12)的一户
 

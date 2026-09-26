@@ -1,0 +1,1407 @@
+{
+  "baseline": "bbee921b284d30dedf20a4c62e9f2f160a61800e",
+  "characters": {
+    "林屿": "月城曜",
+    "林澄": "月城玲",
+    "粒粒": "巧克力",
+    "夏桃": "安可",
+    "秦照": "塞拉",
+    "季闻": "维恩",
+    "许遥": "遥",
+    "宁朗": "悠真",
+    "苏禾": "苏弥",
+    "林启明": "月城修",
+    "陈静禾": "陈美惠",
+    "陆衡": "陆成",
+    "赵晏": "阿杰",
+    "何昕": "凯文",
+    "宋岚": "宋美香",
+    "唐钰": "唐惠",
+    "郑泊": "郑文良",
+    "温苒": "艾玛",
+    "叶初": "叶真",
+    "乔音": "乔伊",
+    "沈聆": "诺拉",
+    "贺秋": "贺佳",
+    "邱宁": "邱立",
+    "钟帆": "老钟",
+    "顾竹": "顾文珍",
+    "郑澈": "郑拓",
+    "姜棠": "小满",
+    "楚青": "罗宾",
+    "姚安": "阿东"
+  },
+  "places": {
+    "N街区": "Null Site",
+    "N 街区": "Null Site",
+    "南汀": "Null Site",
+    "白帆渡口": "西环渡口",
+    "半阶杂货": "月台杂货",
+    "林家小店": "月台杂货",
+    "蓝门 Live House": "AFTER 9",
+    "蓝门Live House": "AFTER 9",
+    "小型影院与城市会客厅": "镜厅",
+    "社区中学": "星见学园",
+    "站前书店": "白页书店",
+    "社区园艺温室": "四季温室",
+    "居民服务中心": "Null Site 服务中心",
+    "独立游戏体验店": "PLAYROOM",
+    "照片冲印店": "FLASHBACK",
+    "影像书店": "MONO",
+    "夜间茶食店": "LATE BITE",
+    "Live House": "AFTER 9",
+    "音游店": "BYTE BEAT",
+    "模型店": "FRAME",
+    "小店与住家": "月台杂货与住家",
+    "渡口入口与候船处": "西环渡口入口与候船处"
+  },
+  "files": [
+    {
+      "path": "docs/.vitepress/components/DistrictMap.vue",
+      "input_sha256": "6d02573e58bda72566b29b343f183badb481ac40d365d183b18cf3b9f6f8c447",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/.vitepress/components/DistrictPlan.vue",
+      "input_sha256": "d7dc495169184e1c7b62fc278d0ebe9b60be2b6967f554b66085fc0b39430ecf",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/.vitepress/sidebar.ts",
+      "input_sha256": "f2a6da1ea3c7c80edcd6801dc6592f4beafc5893a39a2877cbec527dd18027bd",
+      "old_names": []
+    },
+    {
+      "path": "docs/dev/decisions/district-baseline.md",
+      "input_sha256": "cf78d3b8a0501b376cd8a043a0d6f698fc0219079a2ed42559de199b94211ef4",
+      "old_names": [
+        "N街区",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/dev/design/catalogs/characters.json",
+      "input_sha256": "e63b729edbd60ef94163dd5bee64e6be31543dbd4a112738c5c3ae396f9d6cd5",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "季闻",
+        "许遥",
+        "宁朗",
+        "苏禾",
+        "林启明",
+        "陈静禾",
+        "陆衡",
+        "赵晏",
+        "何昕",
+        "宋岚",
+        "唐钰",
+        "郑泊",
+        "温苒",
+        "叶初",
+        "乔音",
+        "沈聆",
+        "贺秋",
+        "邱宁",
+        "钟帆",
+        "顾竹",
+        "郑澈",
+        "姜棠",
+        "楚青",
+        "姚安",
+        "社区中学",
+        "站前书店",
+        "社区园艺温室",
+        "居民服务中心",
+        "照片冲印店",
+        "影像书店",
+        "Live House",
+        "音游店",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/dev/design/catalogs/city-story-map.json",
+      "input_sha256": "7604bfbb646e0186a8d20f248ae3322a8a0fd207ea6c9dba4c38702e7e4eb4be",
+      "old_names": [
+        "许遥",
+        "宁朗",
+        "陈静禾",
+        "宋岚",
+        "顾竹",
+        "姚安",
+        "小型影院与城市会客厅",
+        "社区中学",
+        "站前书店",
+        "社区园艺温室",
+        "居民服务中心",
+        "独立游戏体验店",
+        "照片冲印店",
+        "影像书店",
+        "夜间茶食店",
+        "Live House",
+        "音游店",
+        "模型店",
+        "小店与住家",
+        "渡口入口与候船处"
+      ]
+    },
+    {
+      "path": "docs/dev/design/catalogs/place-catalog.json",
+      "input_sha256": "2df004bf5d459c15db984e115f7ab84c2d0ab316318f2bf01679c937767a9b9d",
+      "old_names": [
+        "小型影院与城市会客厅",
+        "社区中学",
+        "站前书店",
+        "社区园艺温室",
+        "居民服务中心",
+        "独立游戏体验店",
+        "照片冲印店",
+        "影像书店",
+        "夜间茶食店",
+        "Live House",
+        "音游店",
+        "模型店",
+        "小店与住家",
+        "渡口入口与候船处"
+      ]
+    },
+    {
+      "path": "docs/dev/design/catalogs/quests.json",
+      "input_sha256": "cfac1392cc6ea4e64b0bebc4b4310becbb11a1d95eea747901c3e4166a9404b8",
+      "old_names": [
+        "林澄",
+        "季闻",
+        "许遥",
+        "宁朗",
+        "何昕",
+        "唐钰",
+        "沈聆",
+        "楚青"
+      ]
+    },
+    {
+      "path": "docs/dev/design/characters/narrative.md",
+      "input_sha256": "463235e1936a41c04066064bf8c5da85ebca7798a5be25079560935a8fd552fe",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "季闻",
+        "许遥",
+        "宁朗",
+        "苏禾",
+        "林启明",
+        "陈静禾",
+        "陆衡",
+        "赵晏",
+        "何昕",
+        "唐钰",
+        "郑泊",
+        "温苒",
+        "叶初",
+        "乔音",
+        "沈聆",
+        "贺秋",
+        "邱宁",
+        "钟帆",
+        "顾竹",
+        "郑澈",
+        "姜棠",
+        "楚青",
+        "姚安",
+        "影像书店"
+      ]
+    },
+    {
+      "path": "docs/dev/design/locations/district-architecture.md",
+      "input_sha256": "234dae5ed61ef7e2c2f45d668fd35513788099e033ef3c140600286fbb132999",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/dev/design/locations/district-places.md",
+      "input_sha256": "3dc3075b07c6f74eade4b42c3fb5a5c7a315801ff5411ee0de4cbf915b5d6a9b",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/dev/design/locations/district-plan.md",
+      "input_sha256": "952ec19db14ddd006f5409949b6b5a788990a266d54d40d44b182936dc45e87d",
+      "old_names": [
+        "Live House"
+      ]
+    },
+    {
+      "path": "docs/dev/design/locations/district-space.md",
+      "input_sha256": "f2f04d03008633902e98fb6d38d479003168763df820ad71165a93bc8ee21969",
+      "old_names": [
+        "N街区",
+        "社区中学"
+      ]
+    },
+    {
+      "path": "docs/dev/design/locations/district-station.md",
+      "input_sha256": "9ab326ad3b7f75fbd08a2cf0ff3bb6127be7953c2de209eaf15e2698c0134ac3",
+      "old_names": [
+        "N街区",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/dev/design/locations/level-specification.md",
+      "input_sha256": "45df08485db3c0c6dbb4ea43ce8a4571eb9e99374acf8449a547c3731307590b",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/dev/design/locations/world-research.md",
+      "input_sha256": "9c90b7784d22235f88acffd543972743f7e94df4d85eaf25f30081dce6ec6542",
+      "old_names": [
+        "N街区",
+        "社区中学",
+        "音游店",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/demo-scope.md",
+      "input_sha256": "d63ba3060bc17346f3d666a7b6bf40c712529d5551302fd43ba9a160887fdb70",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/development.md",
+      "input_sha256": "d474ca356fba108dd6ab0cef7ea95fe9803bbacd8aa6dc22ea469fe229fade25",
+      "old_names": [
+        "林屿",
+        "粒粒"
+      ]
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/narrative.json",
+      "input_sha256": "088107e76eb608800e0f6f7199480b83375c0a20135fd3bd8b47cb2d1467a23c",
+      "old_names": [
+        "林澄",
+        "粒粒"
+      ]
+    },
+    {
+      "path": "docs/dev/design/story-graph.md",
+      "input_sha256": "a448d0996f366f16f7b6d94619db168d2d248df1a1e1679d261b4d464e4e7079",
+      "old_names": [
+        "许遥"
+      ]
+    },
+    {
+      "path": "docs/dev/design/systems/daily-life.md",
+      "input_sha256": "d1c2c64c74260611041efb3f07933e186817d5cbf235cc49219177d67d1e750e",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/dev/direction/demo-scope.md",
+      "input_sha256": "67f8ce199d56c82b487746d75484ce3315ad8457d96e1d131f99c61204e5d700",
+      "old_names": [
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/dev/production/art-direction.md",
+      "input_sha256": "d7e23266667200b88acd400492b7d024c205298490ef626f700ee31ddfb06c9f",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/player/characters/agent.md",
+      "input_sha256": "ba34a85488f8ce9c23e98478d189d1cc47e483ee0fe6d258a4806362e9d06381",
+      "old_names": [
+        "粒粒",
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/characters/brother.md",
+      "input_sha256": "6b7db92d1c5a413430ebace0ebb9ccf3a09a02917004f16ba9c0fd14b6727f6c",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "陆衡",
+        "赵晏"
+      ]
+    },
+    {
+      "path": "docs/player/characters/family-members/chen-jing-he.md",
+      "input_sha256": "93b452825bf3a8af82d3cd7dd39c88638ee2bcd79d09eafc3c9b9b6241417701",
+      "old_names": [
+        "林启明",
+        "陈静禾",
+        "顾竹",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/characters/family-members/index.md",
+      "input_sha256": "a8e2504c838702acb9868c1466e79ea06ac80d9f42840ba0458d3a6f532273bb",
+      "old_names": [
+        "粒粒",
+        "林启明",
+        "陈静禾"
+      ]
+    },
+    {
+      "path": "docs/player/characters/family-members/lin-qi-ming.md",
+      "input_sha256": "ec1229f963e1f8bf80c402fcf106e268145f5344849b94413522af3d8ba8ce65",
+      "old_names": [
+        "林启明",
+        "陈静禾",
+        "陆衡",
+        "郑泊",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/characters/family.md",
+      "input_sha256": "811b61d9a0c017eaf49f86c44a83c6dd54b643dbad8183bca4669c013e6154b7",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "林启明",
+        "陈静禾",
+        "郑泊",
+        "顾竹"
+      ]
+    },
+    {
+      "path": "docs/player/characters/index.md",
+      "input_sha256": "87869e3f6a9548d0805b2891e023fcbbd2ec211da2675921c872a241a5c0136a",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "季闻",
+        "许遥",
+        "宁朗",
+        "苏禾",
+        "林启明",
+        "陈静禾",
+        "陆衡",
+        "赵晏",
+        "何昕",
+        "宋岚",
+        "唐钰",
+        "郑泊",
+        "温苒",
+        "叶初",
+        "乔音",
+        "沈聆",
+        "贺秋",
+        "邱宁",
+        "钟帆",
+        "顾竹",
+        "郑澈",
+        "姜棠",
+        "楚青",
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/chen-zhi-xia.md",
+      "input_sha256": "2a388dcc2cdf1f2e221e4255e28c1e543070880434c67ab850053d7f466bb9f3",
+      "old_names": [
+        "顾竹",
+        "郑澈",
+        "社区中学"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/cheng-jia.md",
+      "input_sha256": "de4448f63b4e363b39943858498935174f21e91cec073698239ede15b406eaa1",
+      "old_names": [
+        "叶初"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/chu-qing.md",
+      "input_sha256": "acb6c6c067d976b7b514379fcadd690d3602f9a4ff5fc2e6ab1d095a9ecde84d",
+      "old_names": [
+        "季闻",
+        "温苒",
+        "邱宁",
+        "楚青"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/gu-zhu.md",
+      "input_sha256": "8b267e8b3355f12de20c7f1337a30dde0c5b846fec88c19463fc3c0d92f228ea",
+      "old_names": [
+        "陈静禾",
+        "郑泊",
+        "温苒",
+        "顾竹"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/he-qiu.md",
+      "input_sha256": "8d6b301144ad46070bbdda70b3f61224ec2ff615fc562807ecb5f4afde7c9d67",
+      "old_names": [
+        "宁朗",
+        "唐钰",
+        "贺秋",
+        "Live House"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/he-xin.md",
+      "input_sha256": "93fa623b1afe79572a7c033a4025b999d417723c7f86799c0b9b71d8a16b3c2f",
+      "old_names": [
+        "林澄",
+        "苏禾",
+        "何昕",
+        "郑澈",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/he-yun.md",
+      "input_sha256": "8a25f91e673021c953963c54d654a0ad87db2fb3233f34488436b7700cf4bc95",
+      "old_names": [
+        "居民服务中心"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/index.md",
+      "input_sha256": "62dbf695799d9ef973ee885f7c54893335389891d21664e27fb00cf6d3436ae7",
+      "old_names": [
+        "宁朗",
+        "苏禾",
+        "陆衡",
+        "赵晏",
+        "何昕",
+        "宋岚",
+        "唐钰",
+        "郑泊",
+        "温苒",
+        "叶初",
+        "乔音",
+        "沈聆",
+        "贺秋",
+        "邱宁",
+        "钟帆",
+        "顾竹",
+        "郑澈",
+        "姜棠",
+        "楚青",
+        "姚安",
+        "社区中学",
+        "站前书店",
+        "社区园艺温室",
+        "居民服务中心",
+        "照片冲印店",
+        "影像书店",
+        "Live House",
+        "音游店",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/jiang-tang.md",
+      "input_sha256": "69791f47574a815929809a8d7782867717ddade7091e6fd4b74e514d757c9258",
+      "old_names": [
+        "许遥",
+        "沈聆",
+        "顾竹",
+        "姜棠",
+        "站前书店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/liang-su.md",
+      "input_sha256": "6e891c7fd3389c761280039679ddceabad7a93e6d4e46d8216d34dc4d4180238",
+      "old_names": [
+        "林澄",
+        "陈静禾",
+        "何昕"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/lu-heng.md",
+      "input_sha256": "db1e0acf6030860c6ee4db7639de59a21bddb46daae4741267e761a8549eefcd",
+      "old_names": [
+        "林屿",
+        "陆衡",
+        "赵晏",
+        "何昕"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/mina.md",
+      "input_sha256": "cc2f28f11b124d32c3d76fda27862002a8a3a4d65c332f1eaad846c34ac4c912",
+      "old_names": [
+        "林澄",
+        "苏禾",
+        "陆衡",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/ning-lang.md",
+      "input_sha256": "e79963b7bc3716444f44a5a518b5076fa80a76cb24af0657c259f3b6eac89fad",
+      "old_names": [
+        "宁朗",
+        "赵晏",
+        "唐钰",
+        "贺秋"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/qiao-yin.md",
+      "input_sha256": "37e7663a59432780c79c98d95c4158363c7b98c0bd4c6252fbcbd29440d986f7",
+      "old_names": [
+        "林澄",
+        "郑泊",
+        "乔音",
+        "沈聆",
+        "贺秋",
+        "郑澈",
+        "小型影院与城市会客厅"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/qiu-ning.md",
+      "input_sha256": "7195d851ae3d1a4789ada92391c17c9c99aea2bf29f179719b53d5a49327ec06",
+      "old_names": [
+        "温苒",
+        "叶初",
+        "邱宁",
+        "钟帆",
+        "楚青"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/shao-min.md",
+      "input_sha256": "8408747073f6af6fc6b862a4acdd18a839680875291cab337c426cc74783ebc1",
+      "old_names": [
+        "唐钰",
+        "钟帆",
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/shen-ling.md",
+      "input_sha256": "de64c2dd62c54b243f2475fbbeedeebb34e2214533500f0254bf4c3efdb3d1fe",
+      "old_names": [
+        "许遥",
+        "乔音",
+        "沈聆",
+        "姜棠",
+        "影像书店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/song-lan.md",
+      "input_sha256": "170dcaedcf2927943086b8064221ad11aab8615f8e07cf18ae448fde1c3140cb",
+      "old_names": [
+        "宋岚",
+        "唐钰"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/su-he.md",
+      "input_sha256": "86eff48581c3bab6d60b2d85ac4589e4d189c6f984bf31a4bd94d22ebb6906c7",
+      "old_names": [
+        "林澄",
+        "苏禾",
+        "赵晏",
+        "何昕",
+        "独立游戏体验店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/tang-yu.md",
+      "input_sha256": "5db485ed9ebe0755d491efab73216570eae2384607c619d01d0e2803264420bb",
+      "old_names": [
+        "宁朗",
+        "宋岚",
+        "唐钰",
+        "贺秋",
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/wei-hang.md",
+      "input_sha256": "f2d1d4c98051d8b463e44d20b603539e3e78f0ca2e887830af27417d5ecbdd92",
+      "old_names": [
+        "居民服务中心"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/wen-ran.md",
+      "input_sha256": "2ae46974feb9d80f110609adc878298b3f8c90bc1773ef9f562ea840db76e6e4",
+      "old_names": [
+        "温苒",
+        "顾竹",
+        "楚青",
+        "社区园艺温室"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/yao-an.md",
+      "input_sha256": "c6db77f2b70b4088cd8857256228a0e451f95a1fc28ec57dab67cd0678571885",
+      "old_names": [
+        "粒粒",
+        "唐钰",
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/ye-chu.md",
+      "input_sha256": "57c64353e28b7f2f981fd2ee5ee070d78f4b9bb4e0a51f59eafd009d7d142d16",
+      "old_names": [
+        "叶初",
+        "乔音",
+        "邱宁",
+        "居民服务中心"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/zhao-yan.md",
+      "input_sha256": "9b77337afccdf8e13c52d2952f014013762f0b9bdd5b0e028c048c43f0c4ea19",
+      "old_names": [
+        "宁朗",
+        "苏禾",
+        "陆衡",
+        "赵晏",
+        "音游店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/zheng-bo.md",
+      "input_sha256": "518376f923f7c27ca8ffaf299b20ac6377ce72e6f831ea75b355386eba2aa677",
+      "old_names": [
+        "郑泊",
+        "钟帆",
+        "顾竹",
+        "郑澈",
+        "照片冲印店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/zheng-che.md",
+      "input_sha256": "ab73e88086a6222e4a3ddb515109b53eee7eae8d31a7af71205b6981daccb42b",
+      "old_names": [
+        "何昕",
+        "郑泊",
+        "乔音",
+        "郑澈"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/zhong-fan.md",
+      "input_sha256": "cc9762e4d0e068d77737105b54a01697cf079142764d6d88f3709cb01a447e7a",
+      "old_names": [
+        "郑泊",
+        "邱宁",
+        "钟帆",
+        "顾竹",
+        "渡口入口与候船处"
+      ]
+    },
+    {
+      "path": "docs/player/characters/neighbors/zhou-ran.md",
+      "input_sha256": "d9af3500ec78a7c0095122f490c01cbbc7c86b34170145be255da72d800e64c3",
+      "old_names": [
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/characters/shared-dreams/index.md",
+      "input_sha256": "7859706f969f8bc2b0df06b847d4fabd3692ecc5a38b7753502790b105b9b06e",
+      "old_names": [
+        "季闻",
+        "许遥"
+      ]
+    },
+    {
+      "path": "docs/player/characters/shared-dreams/ji-wen.md",
+      "input_sha256": "691d6d9aac98c67276fb0c9008dda2e95d32f4339b3a769b91b78093c4fcff78",
+      "old_names": [
+        "季闻",
+        "许遥",
+        "楚青"
+      ]
+    },
+    {
+      "path": "docs/player/characters/shared-dreams/xu-yao.md",
+      "input_sha256": "f5303626e3a3a052089a0be92bfa8ffbb92866cc3662bfc60077318b1a0ce250",
+      "old_names": [
+        "林澄",
+        "季闻",
+        "许遥",
+        "沈聆",
+        "N 街区",
+        "影像书店"
+      ]
+    },
+    {
+      "path": "docs/player/characters/sister.md",
+      "input_sha256": "9617d912c4be7770fb89af4cae1b4d12fa67c27e5f9ea779d6d5adbc4711b506",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "苏禾",
+        "何昕",
+        "乔音"
+      ]
+    },
+    {
+      "path": "docs/player/gameplay/daily-life.md",
+      "input_sha256": "e916c997f1a8ec74aa2c072bf8f942f0efb2637d4727c8727defa633127a8414",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/player/locations/n-district.md",
+      "input_sha256": "b6e14d02fa9e4ad739c5f2efd0e5783631096835a28910b3b49cfb45b251663e",
+      "old_names": [
+        "N街区",
+        "小型影院与城市会客厅",
+        "社区中学",
+        "Live House",
+        "音游店",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/player/locations/place-network.md",
+      "input_sha256": "b173e13077887154d15dbe39591a24b5a433ff88f33a03feaa75dbeb79e7b8f4",
+      "old_names": [
+        "N 街区",
+        "小型影院与城市会客厅",
+        "社区中学",
+        "站前书店",
+        "社区园艺温室",
+        "居民服务中心",
+        "独立游戏体验店",
+        "照片冲印店",
+        "影像书店",
+        "夜间茶食店",
+        "Live House",
+        "音游店",
+        "模型店",
+        "小店与住家",
+        "渡口入口与候船处"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b01.md",
+      "input_sha256": "dae6994274d80fc6e3ade9d6172b92990051219b08e209950eafb23bd68635d8",
+      "old_names": [
+        "许遥",
+        "宋岚",
+        "唐钰",
+        "沈聆",
+        "钟帆",
+        "姜棠",
+        "姚安",
+        "站前书店",
+        "影像书店",
+        "音游店",
+        "小店与住家",
+        "渡口入口与候船处"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b02.md",
+      "input_sha256": "c047bc110e707cf0ca59e8a78586183cf864a0a66f206abc88e8982286b60ddb",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "宁朗",
+        "苏禾",
+        "陆衡",
+        "赵晏",
+        "何昕",
+        "姚安",
+        "独立游戏体验店",
+        "音游店",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b03.md",
+      "input_sha256": "a7d88b9178b73b0be66c9aa29622edf21fdd711e4d99b9e0b1086d703a0fdd4d",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "许遥",
+        "宁朗",
+        "苏禾",
+        "林启明",
+        "陈静禾",
+        "陆衡",
+        "赵晏",
+        "何昕",
+        "乔音",
+        "顾竹",
+        "姜棠",
+        "姚安",
+        "小型影院与城市会客厅",
+        "站前书店",
+        "独立游戏体验店",
+        "影像书店",
+        "音游店"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b04.md",
+      "input_sha256": "a3f2e73b0400c09f0ff81a33e2caf96675bd19974212691eddfcb685ddabc25b",
+      "old_names": [
+        "林澄",
+        "宁朗",
+        "林启明",
+        "宋岚",
+        "唐钰",
+        "贺秋",
+        "姚安",
+        "夜间茶食店",
+        "Live House",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b05.md",
+      "input_sha256": "e555d5bfba2f6cabbdd47a2394e35668b4f2dc3354d51ad366218f711023bcd8",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "林启明",
+        "陈静禾",
+        "何昕",
+        "郑泊",
+        "温苒",
+        "顾竹",
+        "郑澈",
+        "姚安",
+        "社区园艺温室",
+        "照片冲印店",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b06.md",
+      "input_sha256": "63be34b43b71ed5bc5259de252c73d6b666b33c1a3e2b743cac8c61892c8f410",
+      "old_names": [
+        "林澄",
+        "温苒",
+        "叶初",
+        "顾竹",
+        "郑澈",
+        "姜棠",
+        "楚青",
+        "姚安",
+        "社区园艺温室"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b07.md",
+      "input_sha256": "2f04cf498040646ad5f4ae2c9e3f8f393883ada148940ea7a16d7470912cb78e",
+      "old_names": [
+        "林澄",
+        "叶初",
+        "顾竹",
+        "郑澈",
+        "社区中学",
+        "居民服务中心"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b08.md",
+      "input_sha256": "0a75b25221133a6fa6edb1b52915382890f0215707b8e792a5e276b81aa118f4",
+      "old_names": [
+        "叶初",
+        "乔音",
+        "邱宁",
+        "钟帆",
+        "郑澈",
+        "楚青",
+        "小型影院与城市会客厅",
+        "居民服务中心"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b09.md",
+      "input_sha256": "586e64faabcb905618f0d4c825c6845e14df20f819a56ed4a9f78cd59e6576d1",
+      "old_names": [
+        "林澄",
+        "季闻",
+        "许遥",
+        "宁朗",
+        "何昕",
+        "郑泊",
+        "温苒",
+        "叶初",
+        "乔音",
+        "沈聆",
+        "郑澈",
+        "姜棠",
+        "楚青",
+        "小型影院与城市会客厅",
+        "社区中学",
+        "站前书店",
+        "社区园艺温室",
+        "居民服务中心",
+        "照片冲印店",
+        "影像书店"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b10.md",
+      "input_sha256": "301409de1c25b307e8c06269e5c23931e748a92fad64a99cfadc2a257e5dc4c3",
+      "old_names": [
+        "宁朗",
+        "陆衡",
+        "赵晏",
+        "唐钰",
+        "乔音",
+        "沈聆",
+        "贺秋",
+        "郑澈",
+        "夜间茶食店",
+        "Live House"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b11.md",
+      "input_sha256": "1d4abaa86272581c493aa353ea8c92035772a155f91b5802aa5d6454781446e5",
+      "old_names": [
+        "季闻",
+        "许遥",
+        "唐钰",
+        "郑泊",
+        "温苒",
+        "沈聆",
+        "邱宁",
+        "钟帆",
+        "郑澈",
+        "楚青",
+        "姚安",
+        "社区园艺温室",
+        "照片冲印店",
+        "影像书店",
+        "渡口入口与候船处"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/b12.md",
+      "input_sha256": "c8daa48daa55f2e0855baf88a8f08ef3552b2ff8e0b6cc469dc855ac32bccbb0",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "林启明",
+        "陈静禾",
+        "温苒",
+        "顾竹",
+        "郑澈",
+        "姜棠",
+        "姚安",
+        "社区园艺温室",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/locations/places/index.md",
+      "input_sha256": "2406b67f46e83923edb0079b7af823759291b274cb5d32e3f364a4fc0fe3a4a7",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/player/locations/shop.md",
+      "input_sha256": "112765e96236538f18e6458a1ee1668ef1a7f8aea5db00bc97e3fc9ac2a3e6ff",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/player/locations/stargazing-terrace.md",
+      "input_sha256": "63cfe75595206380cee4603e927b77c36d63ad1e54fd6fb9dac4bf333d73ab64",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/after-the-late-show.md",
+      "input_sha256": "69479a8505185f28abdadb6213a84b96db8de877622855b21f6ac9d3ce2721b4",
+      "old_names": [
+        "宁朗",
+        "唐钰",
+        "贺秋",
+        "姚安",
+        "夜间茶食店",
+        "Live House"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/collect-after-rain.md",
+      "input_sha256": "03b0f998523bb014e488f8f6d719823b68a0b1e0b0cb4dfd0c55c3a8651f4b3f",
+      "old_names": [
+        "叶初",
+        "居民服务中心"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/courtside-chair.md",
+      "input_sha256": "960fdb4b333ed6e912cbd52643e9521ba838c719487223f2a26a002adf3d0513",
+      "old_names": [
+        "叶初",
+        "郑澈",
+        "社区中学",
+        "居民服务中心"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/different-dinners.md",
+      "input_sha256": "395c2fb59023320da046e14917732dd7328412ad2b184f20d18acbf4c78b192b",
+      "old_names": [
+        "宁朗",
+        "宋岚",
+        "唐钰",
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/index.md",
+      "input_sha256": "8132e1ae087651f36d0b91b5617d6f6cf5588edcfdaaf987ed5efd971e25bb3c",
+      "old_names": [
+        "粒粒",
+        "许遥",
+        "宁朗",
+        "苏禾",
+        "陆衡",
+        "何昕",
+        "宋岚",
+        "唐钰",
+        "温苒",
+        "叶初",
+        "沈聆",
+        "贺秋",
+        "郑澈",
+        "楚青",
+        "姚安"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/new-pocket.md",
+      "input_sha256": "abc5981116e1f2af72daef4a8a9ae2bce3e55816321caab01c0c1bf5dcc5c8ec",
+      "old_names": [
+        "林澄",
+        "陈静禾",
+        "何昕",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/photograph-today.md",
+      "input_sha256": "ebba2ebaf08c78eebe62ae9625a3358aebb0a21e09ea4ce517c55df4e3b2323c",
+      "old_names": [
+        "郑泊",
+        "温苒",
+        "顾竹",
+        "郑澈",
+        "社区园艺温室",
+        "照片冲印店"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/unfinished-window.md",
+      "input_sha256": "76aded6844bbf91dc3cdc59cbb2331918a51f02b49a8081bf18fbf63d0f8f608",
+      "old_names": [
+        "林澄",
+        "苏禾",
+        "赵晏",
+        "何昕",
+        "乔音",
+        "独立游戏体验店",
+        "音游店",
+        "模型店"
+      ]
+    },
+    {
+      "path": "docs/player/story/daily/ways-to-read.md",
+      "input_sha256": "ee76d6f7a18b660384e5335bbc4c759b3e98090f2e421f3ebe1b6b6f45d4767b",
+      "old_names": [
+        "许遥",
+        "沈聆",
+        "顾竹",
+        "姜棠",
+        "站前书店",
+        "影像书店"
+      ]
+    },
+    {
+      "path": "docs/player/story/index.md",
+      "input_sha256": "515b52b231171ce7508f5eff1630a1d2823f7f41018865207b2ece34d162b7c1",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/after-echoes.md",
+      "input_sha256": "e148690d96c77ef8d0154132528fe13c5c413ff6f9c62b9e82b4e155c0dcb80b",
+      "old_names": [
+        "粒粒",
+        "季闻",
+        "许遥",
+        "N 街区"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/beyond-autumn.md",
+      "input_sha256": "82bee6330ebcca0cc3017501ea481eef04c6513e20bab82bf4c54b4337ca255a",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "许遥",
+        "温苒",
+        "沈聆",
+        "邱宁",
+        "楚青",
+        "N 街区",
+        "社区园艺温室"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/bring-today-back.md",
+      "input_sha256": "8d61dfaf0aeada47600b4a94ba1fb539ea44a11645e25fbceca1db04fce02c50",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "季闻",
+        "许遥",
+        "宁朗",
+        "郑泊",
+        "温苒",
+        "叶初",
+        "邱宁",
+        "郑澈",
+        "小型影院与城市会客厅",
+        "居民服务中心",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/epilogue.md",
+      "input_sha256": "c8e9207697850985d11f006a516370cd6874bcd6d8f0a1609ee34eea095e00f8",
+      "old_names": [
+        "林澄",
+        "粒粒",
+        "许遥",
+        "宁朗",
+        "何昕",
+        "宋岚",
+        "小型影院与城市会客厅",
+        "站前书店",
+        "影像书店",
+        "Live House",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/extra-applause.md",
+      "input_sha256": "3ed521d3362b435633ad75e81dfccc0465b8cabdfef523c84ff0c85aa8ff9269",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "宁朗",
+        "赵晏",
+        "贺秋",
+        "独立游戏体验店",
+        "夜间茶食店",
+        "Live House",
+        "音游店"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/index.md",
+      "input_sha256": "6ee24ce8fa5190e68eecbee1b801cfc0ecd4dab0f7ddb3ab5785721438e6d5b5",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "季闻",
+        "许遥",
+        "乔音"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/last-toy.md",
+      "input_sha256": "634d14438595f5f4d53ad9cce1865991837b82ec7f655d72b706aa029b1060d2",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "模型店",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/no-school-bell.md",
+      "input_sha256": "684b4bf14f7ba0bb904b5fb322fda7d52215122712b0b77737a1f0b973fa6be8",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "郑泊",
+        "顾竹",
+        "郑澈",
+        "楚青",
+        "社区中学",
+        "居民服务中心",
+        "照片冲印店"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/prologue.md",
+      "input_sha256": "6e360b3cb4d82bc26404909bb6ada9bfd9d788866a70f2e5200371ca1108c064",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "陆衡",
+        "乔音",
+        "姚安",
+        "小店与住家"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/river-did-not-reverse.md",
+      "input_sha256": "9dd09dda404c5464131397a182ed63ebe25fc5bb65043c58dc7b569ed93bd4ea",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "季闻",
+        "叶初",
+        "邱宁",
+        "钟帆",
+        "楚青",
+        "渡口入口与候船处"
+      ]
+    },
+    {
+      "path": "docs/player/story/main/still-together.md",
+      "input_sha256": "9144376a3726cb03a823a0943ee943116a4c7fde8fd5525ccafbada3ff0d5e4a",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "季闻",
+        "许遥",
+        "沈聆",
+        "站前书店",
+        "影像书店"
+      ]
+    },
+    {
+      "path": "docs/player/world/great-shared-dream.md",
+      "input_sha256": "413b990fc5a3f3fcbfd873021cc358be8402b5f1608522363555e62fc6de865f",
+      "old_names": [
+        "季闻",
+        "许遥",
+        "N街区"
+      ]
+    },
+    {
+      "path": "docs/player/world/history.md",
+      "input_sha256": "49af162db8ac453d5109e960bea33247066474a3e1e127f304c0da3525d27933",
+      "old_names": [
+        "林屿",
+        "林澄",
+        "粒粒",
+        "季闻",
+        "许遥",
+        "林启明",
+        "陈静禾",
+        "陆衡",
+        "顾竹"
+      ]
+    },
+    {
+      "path": "docs/player/world/null-city.md",
+      "input_sha256": "1ccd39aab65b71664b98d83554147da6a2801668dfe87ac88ab30398ba4cf625",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "source-assets/district-map/README.md",
+      "input_sha256": "1cdfdf04982742248e8888fa4258dbccc59153410dceee44189e5998b4b0305c",
+      "old_names": [
+        "N街区"
+      ]
+    },
+    {
+      "path": "source-assets/district-map/district.json",
+      "input_sha256": "2a5ec2d7c936d7b5ea1ab14abab472a4d2f11b0dd7fc86d0b81a9e2a10f0e52d",
+      "old_names": [
+        "小型影院与城市会客厅",
+        "社区中学",
+        "站前书店",
+        "社区园艺温室",
+        "居民服务中心",
+        "独立游戏体验店",
+        "照片冲印店",
+        "影像书店",
+        "夜间茶食店",
+        "Live House",
+        "音游店",
+        "模型店",
+        "小店与住家",
+        "渡口入口与候船处"
+      ]
+    }
+  ],
+  "paths": {
+    "docs/player/locations/n-district.md": "docs/player/locations/null-site.md",
+    "docs/player/characters/family-members/chen-jing-he.md": "docs/player/characters/family-members/chen-mei-hui.md",
+    "docs/player/characters/family-members/lin-qi-ming.md": "docs/player/characters/family-members/tsukishiro-shu.md",
+    "docs/player/characters/neighbors/chu-qing.md": "docs/player/characters/neighbors/robin.md",
+    "docs/player/characters/neighbors/gu-zhu.md": "docs/player/characters/neighbors/gu-wen-zhen.md",
+    "docs/player/characters/neighbors/he-qiu.md": "docs/player/characters/neighbors/he-jia.md",
+    "docs/player/characters/neighbors/he-xin.md": "docs/player/characters/neighbors/kevin.md",
+    "docs/player/characters/neighbors/jiang-tang.md": "docs/player/characters/neighbors/xiao-man.md",
+    "docs/player/characters/neighbors/lu-heng.md": "docs/player/characters/neighbors/lu-cheng.md",
+    "docs/player/characters/neighbors/ning-lang.md": "docs/player/characters/neighbors/yuma.md",
+    "docs/player/characters/neighbors/qiao-yin.md": "docs/player/characters/neighbors/joey.md",
+    "docs/player/characters/neighbors/qiu-ning.md": "docs/player/characters/neighbors/qiu-li.md",
+    "docs/player/characters/neighbors/shen-ling.md": "docs/player/characters/neighbors/nora.md",
+    "docs/player/characters/neighbors/song-lan.md": "docs/player/characters/neighbors/song-mei-xiang.md",
+    "docs/player/characters/neighbors/su-he.md": "docs/player/characters/neighbors/su-mi.md",
+    "docs/player/characters/neighbors/tang-yu.md": "docs/player/characters/neighbors/tang-hui.md",
+    "docs/player/characters/neighbors/wen-ran.md": "docs/player/characters/neighbors/emma.md",
+    "docs/player/characters/neighbors/yao-an.md": "docs/player/characters/neighbors/a-dong.md",
+    "docs/player/characters/neighbors/ye-chu.md": "docs/player/characters/neighbors/ye-zhen.md",
+    "docs/player/characters/neighbors/zhao-yan.md": "docs/player/characters/neighbors/a-jie.md",
+    "docs/player/characters/neighbors/zheng-bo.md": "docs/player/characters/neighbors/zheng-wen-liang.md",
+    "docs/player/characters/neighbors/zheng-che.md": "docs/player/characters/neighbors/zheng-tuo.md",
+    "docs/player/characters/neighbors/zhong-fan.md": "docs/player/characters/neighbors/lao-zhong.md",
+    "docs/player/characters/shared-dreams/ji-wen.md": "docs/player/characters/shared-dreams/wien.md",
+    "docs/player/characters/shared-dreams/xu-yao.md": "docs/player/characters/shared-dreams/haruka.md"
+  }
+}

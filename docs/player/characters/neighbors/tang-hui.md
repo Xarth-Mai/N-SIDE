@@ -4,7 +4,7 @@ status: accepted
 depends_on: []
 ---
 
-# 唐钰
+# 唐惠
 
 ## 身份与经历
 
@@ -16,9 +16,11 @@ depends_on: []
 
 在现场异常时学会分清帮忙和逞强，接受别人接手最后的清理
 
+她会把最后一段收桌与清理明确交给别人，自己也按约定结束一天。下一次有人主动收桌，才让共同吃饭成为彼此分担的关系
+
 ## 关系与活动
 
-认识[贺秋](he-qiu.md)、[宁朗](ning-lang.md)、[邵敏](shao-min.md)和[姚安](yao-an.md)；与[宋岚](song-lan.md)相互照应
+认识[贺佳](he-jia.md)、[悠真](yuma.md)、[邵敏](shao-min.md)和[阿东](a-dong.md)；与[宋美香](song-mei-xiang.md)相互照应
 
 日常联系的场所：[晚班汤饭店](../../locations/places/b04.md#place-53)、[夜食转角](../../locations/places/b04.md#place-47)
 

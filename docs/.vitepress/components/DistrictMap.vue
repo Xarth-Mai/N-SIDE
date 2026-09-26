@@ -81,7 +81,7 @@ const structure=computed(()=>mode.value==='roads')
 </script>
 
 <template>
-  <section class="district-map" :class="{expanded}" aria-label="N街区导览图" @keydown.esc="expanded=false">
+  <section class="district-map" :class="{expanded}" aria-label="Null Site导览图" @keydown.esc="expanded=false">
     <header class="map-header"><div><span class="map-kicker">NULL CITY · N DISTRICT</span><h3>沿着坡道，回到家</h3></div><button type="button" @click="expanded=!expanded">{{ expanded?'退出全屏':'全屏查看' }}</button></header>
     <div class="map-toolbar">
       <div class="map-tabs" aria-label="地图样式"><button type="button" :aria-pressed="mode==='scape'" @click="mode='scape'">街区风貌</button><button type="button" :aria-pressed="structure" @click="mode='roads'">道路结构</button></div>
@@ -92,7 +92,7 @@ const structure=computed(()=>mode.value==='roads')
       <p v-if="error" class="map-placeholder" role="alert">{{ error }} <button type="button" @click="loadScene">重试</button></p>
       <p v-else-if="!scene" class="map-placeholder" role="status">正在加载地图…</p>
       <svg v-if="scene" ref="svg" class="map-canvas" :viewBox="view" tabindex="0" role="group" aria-label="街区斜俯视导览，方向键移动，加减键缩放；地点也可从下方列表选择" @keydown="key" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up" @lostpointercapture="pointer=null">
-        <title>N街区 · 河岸、街坊与山坡</title>
+        <title>Null Site · 河岸、街坊与山坡</title>
         <rect x="-3000" y="-3000" width="6000" height="6000" fill="#e5e4d5"/>
         <g class="terrain"><path v-for="(face,i) in scene.terrain" :key="i" :d="face.d" :fill="structure?heightColor(face.height):face.fill" :stroke="structure?heightColor(face.height):face.fill" stroke-width=".8"/></g>
         <path :d="scene.water.d" :fill="scene.water.fill"/>
@@ -111,7 +111,7 @@ const structure=computed(()=>mode.value==='roads')
         </g>
       </svg>
       <div class="map-zoom"><button type="button" aria-label="放大地图" @click="zoom(.75)">＋</button><button type="button" aria-label="缩小地图" @click="zoom(1.333)">−</button></div>
-      <div class="map-credit">N街区 <span>／</span> {{ structure?'道路与公共边界':'街区风貌' }}</div>
+      <div class="map-credit">Null Site <span>／</span> {{ structure?'道路与公共边界':'街区风貌' }}</div>
     </div>
     <div v-if="place" class="map-detail" aria-live="polite"><button class="detail-close" type="button" aria-label="关闭地点详情" @click="selected=null">×</button><span class="map-kicker">{{ data.groups[place.group] }} · {{ place.id }}</span><h4>{{ place.name }}</h4><p>{{ place.use }}</p><p class="entry">{{ place.entry }}</p><a v-if="place.page" :href="withBase(place.page)">地点介绍 →</a></div>
     <footer><span v-if="structure" class="height-legend">低 <i :style="{background:`linear-gradient(to right,${heightColor(0)},${heightColor(80)})`}"/> 高 <span>细墙线 · 地块边界</span></span><span v-else>从河岸到山林 · 沿路认识街坊</span><span>细看地点可放大，或使用地点索引</span></footer>

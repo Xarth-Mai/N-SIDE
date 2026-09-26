@@ -1,6 +1,6 @@
-# N街区空间设计决策
+# Null Site空间设计决策
 
-关联任务：[N街区扩容与轻近未来都市设计](../../../todo/archive/legacy/n-district-modern-city.md)，原地图记录见 [TASK-001](../../../todo/archive/legacy/n-district-space.md)
+关联任务：[Null Site扩容与轻近未来都市设计](../../../todo/archive/legacy/n-district-modern-city.md)，原地图记录见 [TASK-001](../../../todo/archive/legacy/n-district-space.md)
 
 ## 街区布局
 
@@ -12,7 +12,7 @@
 
 设计范围覆盖本岸街区，对岸作为背景。桥梁与渡口保留城市联系，当前可达范围止于桥头和渡口入口
 
-## 小店与住家
+## 月台杂货与住家
 
 兄妹和顾客日常共用店门，回家经过营业空间，再从后场门进入私人内楼梯。收货另设受控服务门，连接侧院与储物区。公共店侧台阶保持建筑外的街区通路
 

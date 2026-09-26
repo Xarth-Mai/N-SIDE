@@ -4,7 +4,7 @@ status: accepted
 depends_on: []
 ---
 
-# 郑澈
+# 郑拓
 
 ## 身份与经历
 
@@ -16,9 +16,11 @@ depends_on: []
 
 接受当事人拒绝展示，学习与父亲一起说明照片的背景
 
+她逐渐分清记录空间使用的照片、认真构图的肖像和作品表达各自的任务。漂亮或摆姿势并不等于虚假；她先观察场所怎样被使用，再决定站在哪里拍
+
 ## 关系与活动
 
-[郑泊](zheng-bo.md)是父亲；指导[陈知夏](chen-zhi-xia.md)；与[何昕](he-xin.md)和[乔音](qiao-yin.md)合作
+[郑文良](zheng-wen-liang.md)是父亲；指导[陈知夏](chen-zhi-xia.md)；与[凯文](kevin.md)和[乔伊](joey.md)合作
 
 日常联系的场所：[社区摄影工作室](../../locations/places/b09.md#place-74)
 

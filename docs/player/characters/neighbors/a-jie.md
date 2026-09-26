@@ -4,11 +4,11 @@ status: accepted
 depends_on: []
 ---
 
-# 赵晏
+# 阿杰
 
 ## 身份与经历
 
-27 岁，音游店值班负责人
+27 岁，BYTE BEAT 值班负责人
 
 ## 生活与变化
 
@@ -16,13 +16,15 @@ depends_on: []
 
 从把声音异常当普通故障，到接受交叉验证，同时继续关心玩家日常
 
+异常调查期间，他仍惦记一台普通按键故障和店里的排队规则。危机没有吞掉他的全部工作，普通维修仍然需要按时完成
+
 ## 关系与活动
 
-与[陆衡](lu-heng.md)、游戏设备维修店合作；认识[宁朗](ning-lang.md)与[苏禾](su-he.md)
+与[陆成](lu-cheng.md)、游戏设备维修店合作；认识[悠真](yuma.md)与[苏弥](su-mi.md)
 
 居住在[临街公寓](../../locations/places/b03.md#place-12)的一户
 
-日常联系的场所：[音游店](../../locations/places/b02.md#place-35)
+日常联系的场所：[BYTE BEAT](../../locations/places/b02.md#place-35)
 
 ## 表达与习惯
 

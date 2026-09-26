@@ -5,7 +5,7 @@
   "places": [
     {
       "place_id": "01",
-      "name": "N站",
+      "name": "Null Station",
       "block_id": "B01",
       "building_id": "V-01",
       "kind": "building",
@@ -55,7 +55,7 @@
         "25"
       ],
       "connection_reason": "车站、兴趣街与河岸的分向",
-      "aftermath": "姚安与熟客会提起不同的回家路线",
+      "aftermath": "阿东与熟客会提起不同的回家路线",
       "access": "全天公共通路"
     },
     {
@@ -86,7 +86,7 @@
     },
     {
       "place_id": "04",
-      "name": "小店与住家",
+      "name": "月台杂货与住家",
       "block_id": "B05",
       "building_id": "V-04",
       "kind": "building",
@@ -392,7 +392,7 @@
     },
     {
       "place_id": "15",
-      "name": "小型影院与城市会客厅",
+      "name": "镜厅",
       "block_id": "B09",
       "building_id": "V-15",
       "kind": "building",
@@ -510,7 +510,7 @@
     },
     {
       "place_id": "19",
-      "name": "社区中学",
+      "name": "星见学园",
       "block_id": "B07",
       "building_id": "V-19",
       "kind": "building",
@@ -693,7 +693,7 @@
     },
     {
       "place_id": "26",
-      "name": "渡口入口与候船处",
+      "name": "西环渡口入口与候船处",
       "block_id": "B11",
       "building_id": null,
       "kind": "outdoor",
@@ -822,7 +822,7 @@
         "32"
       ],
       "connection_reason": "通勤供给与交通",
-      "aftermath": "宋岚新点心进入菜单，夜班人谈交接",
+      "aftermath": "宋美香新点心进入菜单，夜班人谈交接",
       "access": "随营业时间开放"
     },
     {
@@ -903,7 +903,7 @@
     },
     {
       "place_id": "34",
-      "name": "站前书店",
+      "name": "白页书店",
       "block_id": "B01",
       "building_id": "V-34",
       "kind": "building",
@@ -930,7 +930,7 @@
     },
     {
       "place_id": "35",
-      "name": "音游店",
+      "name": "BYTE BEAT",
       "block_id": "B02",
       "building_id": "V-35",
       "kind": "building",
@@ -951,12 +951,12 @@
         "42"
       ],
       "connection_reason": "维修、试玩和会合",
-      "aftermath": "新活动与维护安排，宁朗普通来访",
+      "aftermath": "新活动与维护安排，悠真普通来访",
       "access": "玩家与维护区域分开"
     },
     {
       "place_id": "36",
-      "name": "模型店",
+      "name": "FRAME",
       "block_id": "B02",
       "building_id": "V-36",
       "kind": "building",
@@ -1035,7 +1035,7 @@
     },
     {
       "place_id": "39",
-      "name": "独立游戏体验店",
+      "name": "PLAYROOM",
       "block_id": "B02",
       "building_id": "V-39",
       "kind": "building",
@@ -1187,7 +1187,7 @@
         "10"
       ],
       "connection_reason": "包装、洗衣和受邀手作",
-      "aftermath": "陈静禾的新口袋、清楚的交件约定",
+      "aftermath": "陈美惠的新口袋、清楚的交件约定",
       "access": "个人衣物受控保存"
     },
     {
@@ -1506,7 +1506,7 @@
     },
     {
       "place_id": "57",
-      "name": "照片冲印店",
+      "name": "FLASHBACK",
       "block_id": "B05",
       "building_id": "V-57",
       "kind": "building",
@@ -1586,7 +1586,7 @@
     },
     {
       "place_id": "60",
-      "name": "社区园艺温室",
+      "name": "四季温室",
       "block_id": "B06",
       "building_id": "V-60",
       "kind": "building",
@@ -1765,7 +1765,7 @@
     },
     {
       "place_id": "67",
-      "name": "居民服务中心",
+      "name": "Null Site 服务中心",
       "block_id": "B08",
       "building_id": "V-67",
       "kind": "building",
@@ -1926,7 +1926,7 @@
     },
     {
       "place_id": "73",
-      "name": "影像书店",
+      "name": "MONO",
       "block_id": "B09",
       "building_id": "V-73",
       "kind": "building",
@@ -1949,7 +1949,7 @@
         "76"
       ],
       "connection_reason": "编辑与读者联系",
-      "aftermath": "许遥的新编辑意见、小册与普通新书并列",
+      "aftermath": "遥的新编辑意见、小册与普通新书并列",
       "access": "公开活动与预约会谈分开"
     },
     {
@@ -2093,7 +2093,7 @@
     },
     {
       "place_id": "79",
-      "name": "Live House",
+      "name": "AFTER 9",
       "block_id": "B10",
       "building_id": "V-79",
       "kind": "building",
@@ -2173,7 +2173,7 @@
     },
     {
       "place_id": "82",
-      "name": "夜间茶食店",
+      "name": "LATE BITE",
       "block_id": "B10",
       "building_id": "V-82",
       "kind": "building",
@@ -2195,7 +2195,7 @@
         "53"
       ],
       "connection_reason": "不同收工选择",
-      "aftermath": "宁朗开始谈下一次作品而不只旧事件",
+      "aftermath": "悠真开始谈下一次作品而不只旧事件",
       "access": "深夜外摆收拢，照顾邻近住宅"
     },
     {
@@ -2251,11 +2251,11 @@
       ],
       "connection_reason": "创作与散步",
       "aftermath": "由本人选择远程参与或实地会面，保留普通聊天",
-      "access": "许遥非实地出现；私人讨论需预约"
+      "access": "遥非实地出现；私人讨论需预约"
     },
     {
       "place_id": "85",
-      "name": "渡运旧物展屋",
+      "name": "旧帆展屋",
       "block_id": "B11",
       "building_id": "V-85",
       "kind": "building",
@@ -2389,7 +2389,7 @@
         "91"
       ],
       "connection_reason": "观察、登高与补给",
-      "aftermath": "顾竹谈学生的新作，也谈自己的计划",
+      "aftermath": "顾文珍谈学生的新作，也谈自己的计划",
       "access": "轮值营业，公共路不依赖店门开放"
     },
     {

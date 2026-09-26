@@ -4,7 +4,7 @@ status: accepted
 depends_on: []
 ---
 
-# 宋岚
+# 宋美香
 
 ## 身份与经历
 
@@ -16,9 +16,11 @@ depends_on: []
 
 参与街坊册时愿意展示试做和失败，承认日常也会变化
 
+有时顾客还是只买旧款，她试做的新口味并不好卖。她会调整下一批的份量，也继续尝试，而不把一次菜单失败当作停止的理由
+
 ## 关系与活动
 
-给[唐钰](tang-yu.md)和站前咖啡铺供货；与[甜品店](../../locations/places/b04.md#place-48)交换季节菜单
+给[唐惠](tang-hui.md)和站前咖啡铺供货；与[甜品店](../../locations/places/b04.md#place-48)交换季节菜单
 
 日常联系的场所：[烘焙店](../../locations/places/b04.md#place-07)
 

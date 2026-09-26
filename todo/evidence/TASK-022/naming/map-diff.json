@@ -1,0 +1,116 @@
+{
+  "result": "PASS",
+  "scope": "only display strings changed; object keys, IDs, numeric data, geometry and topology unchanged",
+  "changes": [
+    {
+      "path": "/groups/B07",
+      "old": "社区中学与放学街",
+      "new": "星见学园与放学街"
+    },
+    {
+      "path": "/buildings/40/design/floors/0/use",
+      "old": "社区园艺温室",
+      "new": "四季温室"
+    },
+    {
+      "path": "/buildings/45/design/floors/0/use",
+      "old": "居民服务中心",
+      "new": "Null Site 服务中心"
+    },
+    {
+      "path": "/buildings/49/design/floors/0/use",
+      "old": "影像书店",
+      "new": "MONO"
+    },
+    {
+      "path": "/places/0/name",
+      "old": "N站",
+      "new": "Null Station"
+    },
+    {
+      "path": "/places/3/name",
+      "old": "小店与住家",
+      "new": "月台杂货与住家"
+    },
+    {
+      "path": "/places/14/name",
+      "old": "小型影院与城市会客厅",
+      "new": "镜厅"
+    },
+    {
+      "path": "/places/18/name",
+      "old": "社区中学",
+      "new": "星见学园"
+    },
+    {
+      "path": "/places/25/name",
+      "old": "渡口入口与候船处",
+      "new": "西环渡口入口与候船处"
+    },
+    {
+      "path": "/places/33/name",
+      "old": "站前书店",
+      "new": "白页书店"
+    },
+    {
+      "path": "/places/34/name",
+      "old": "音游店",
+      "new": "BYTE BEAT"
+    },
+    {
+      "path": "/places/35/name",
+      "old": "模型店",
+      "new": "FRAME"
+    },
+    {
+      "path": "/places/38/name",
+      "old": "独立游戏体验店",
+      "new": "PLAYROOM"
+    },
+    {
+      "path": "/places/56/name",
+      "old": "照片冲印店",
+      "new": "FLASHBACK"
+    },
+    {
+      "path": "/places/59/name",
+      "old": "社区园艺温室",
+      "new": "四季温室"
+    },
+    {
+      "path": "/places/66/name",
+      "old": "居民服务中心",
+      "new": "Null Site 服务中心"
+    },
+    {
+      "path": "/places/72/name",
+      "old": "影像书店",
+      "new": "MONO"
+    },
+    {
+      "path": "/places/78/name",
+      "old": "Live House",
+      "new": "AFTER 9"
+    },
+    {
+      "path": "/places/81/name",
+      "old": "夜间茶食店",
+      "new": "LATE BITE"
+    },
+    {
+      "path": "/places/84/name",
+      "old": "渡运旧物展屋",
+      "new": "旧帆展屋"
+    },
+    {
+      "path": "/surfaces/4/name",
+      "old": "社区中学",
+      "new": "星见学园"
+    },
+    {
+      "path": "/blocks/6/name",
+      "old": "社区中学与放学街",
+      "new": "星见学园与放学街"
+    }
+  ]
+}

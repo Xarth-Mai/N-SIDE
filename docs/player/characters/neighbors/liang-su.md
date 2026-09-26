@@ -16,9 +16,11 @@ depends_on: []
 
 在自己的手艺与年轻人的设计之间建立合作，不替别人决定何为珍贵
 
+她珍惜旧工艺，却愿意按物主今天的使用方式拆改自己喜欢的一块布。陈美惠的外套最后怎样改，由穿它出门的人决定
+
 ## 关系与活动
 
-与[陈静禾](../family-members/chen-jing-he.md)熟悉；与[林澄](../sister.md)、[何昕](he-xin.md)合作；在共用院带手作活动
+与[陈美惠](../family-members/chen-mei-hui.md)熟悉；与[月城玲](../sister.md)、[凯文](kevin.md)合作；在共用院带手作活动
 
 居住在[临街公寓](../../locations/places/b03.md#place-12)的一户
 

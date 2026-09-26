@@ -4,11 +4,11 @@ status: accepted
 depends_on: []
 ---
 
-# 叶初
+# 叶真
 
 ## 身份与经历
 
-33 岁，居民服务中心协调人员
+33 岁，Null Site 服务中心协调人员
 
 ## 生活与变化
 
@@ -16,13 +16,15 @@ depends_on: []
 
 逐渐建立跨个案核对方法，让小问题不因分散而永远无人理解
 
+跨个案核对让相关事件找到彼此，也给不相关的小事保留按普通方法解决的空间。多一份正确转介，比把所有问题归为同一种异常更有用
+
 ## 关系与活动
 
-与[程嘉](cheng-jia.md)、[乔音](qiao-yin.md)、[邱宁](qiu-ning.md)及兄妹协作
+与[程嘉](cheng-jia.md)、[乔伊](joey.md)、[邱立](qiu-li.md)及兄妹协作
 
 居住在[东侧住宅院](../../locations/places/b08.md#place-18)的一户
 
-日常联系的场所：[居民服务中心](../../locations/places/b08.md#place-67)
+日常联系的场所：[Null Site 服务中心](../../locations/places/b08.md#place-67)
 
 ## 表达与习惯
 

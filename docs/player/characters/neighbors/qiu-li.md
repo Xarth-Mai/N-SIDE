@@ -4,7 +4,7 @@ status: accepted
 depends_on: []
 ---
 
-# 邱宁
+# 邱立
 
 ## 身份与经历
 
@@ -16,9 +16,11 @@ depends_on: []
 
 把分散的巡查记录带入联合调查，不只留下“已处理”结论
 
+每次维护记录都说明做过什么、还没做什么，并留下可比较的水位与构件情况。“已处理”不是省略经过的万能结论
+
 ## 关系与活动
 
-与[钟帆](zhong-fan.md)、[楚青](chu-qing.md)、[温苒](wen-ran.md)和[叶初](ye-chu.md)合作
+与[老钟](lao-zhong.md)、[罗宾](robin.md)、[艾玛](emma.md)和[叶真](ye-zhen.md)合作
 
 居住在[东侧住宅院](../../locations/places/b08.md#place-18)的一户
 

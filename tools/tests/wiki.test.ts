@@ -107,6 +107,26 @@ test('isolated player tree excludes developer pages/data/public and uses redirec
   assert.throws(() => prepareWiki(root, 'player'), /unpublished local reference/)
 })
 
+test('renamed pages resolve current, encyclopedia and original URLs directly with fragments', t => {
+  const { root, put } = wikiFixture(t)
+  put('docs/player/characters/shared-dreams/wien.md', '# 维恩\n')
+  put('todo/evidence/TASK-007/r1/migration-map.json', JSON.stringify({ files: [
+    { source: 'docs/characters/researcher.md', targets: ['docs/player/encyclopedia/characters/shared-dreams/ji-wen.md'] },
+  ] }))
+  for (const profile of ['player', 'dev']) {
+    const { source, manifest } = prepareWiki(root, profile)
+    for (const old of ['characters/researcher.html', 'player/characters/shared-dreams/ji-wen.html', 'player/encyclopedia/characters/shared-dreams/ji-wen.html']) {
+      assert.ok(manifest.aliases.some(a => a.old === old && a.to === '/player/characters/shared-dreams/wien'))
+      const html = readFileSync(join(source, 'public', old), 'utf8')
+      assert.ok(html.includes('location.replace("/player/characters/shared-dreams/wien" + location.hash)'))
+      assert.doesNotMatch(html, /季闻|# 维恩/)
+    }
+    assert.ok(manifest.pages.includes('player/characters/shared-dreams/wien.md'))
+    assert.ok(!manifest.pages.includes('player/characters/shared-dreams/ji-wen.md'))
+    assert.ok(!manifest.aliases.some(a => a.old === 'player/characters/neighbors/su-he.html'))
+  }
+})
+
 test('player imports and public data cannot bypass the publication boundary', t => {
   const { root, put } = wikiFixture(t)
   put('docs/player/leak.md', '# 泄漏\n\n<script setup>\nimport x from "../../dev/design/data.json"\n</script>\n')
@@ -133,6 +153,22 @@ test('map projection retains actual drawing/interaction and drops author fields'
   assert.ok(projection.scene.objects.length > 0 && projection.scene.terrain.length > 0)
   assert.doesNotMatch(JSON.stringify(projection), /DEV_ONLY_SENTINEL|"architectures"|"operations"|"brief"/)
   assert.equal(projection.places.find(p => p.id === '04')!.page, '/player/locations/shop')
+})
+
+test('map display renaming preserves rendered geometry and stable place identity', () => {
+  const data = JSON.parse(readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url), 'utf8'))
+  const before = playerMap(data)
+  data.groups.B01 = 'DISPLAY_RENAME'
+  data.places[0].name = 'DISPLAY_RENAME'
+  data.places[0].use = 'DISPLAY_USE'
+  data.places[0].entry = 'DISPLAY_ENTRY'
+  const after = playerMap(data)
+  assert.equal(after.groups.B01, 'DISPLAY_RENAME')
+  assert.equal(after.places[0].name, 'DISPLAY_RENAME')
+  assert.equal(after.places[0].use, 'DISPLAY_USE')
+  assert.equal(after.places[0].entry, 'DISPLAY_ENTRY')
+  assert.deepEqual(after.scene, before.scene)
+  assert.deepEqual(after.places.map(({id, group, position, page}) => ({id, group, position, page})), before.places.map(({id, group, position, page}) => ({id, group, position, page})))
 })
 
 test('artifact check detects injected developer raw data and search content', t => {

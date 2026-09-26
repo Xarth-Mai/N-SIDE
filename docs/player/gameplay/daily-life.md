@@ -28,4 +28,4 @@ document_id: DOC-DAILY-LIFE
 
 ## 区域状态
 
-不同区域保持各自的季节，昼夜、天气和日期仍会变化。[N街区](../locations/n-district.md)保持初秋的气质，居民继续长大、变老，植物与商品随生活更替。其他地方也可能受到[局部气候异常](../world/null-city.md)的影响
+不同区域保持各自的季节，昼夜、天气和日期仍会变化。[Null Site](../locations/null-site.md)保持初秋的气质，居民继续长大、变老，植物与商品随生活更替。其他地方也可能受到[局部气候异常](../world/null-city.md)的影响

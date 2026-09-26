@@ -9,7 +9,7 @@
     "B04": "食品采购与夜食街",
     "B05": "小店生活街坊",
     "B06": "坡地平台住宅",
-    "B07": "社区中学与放学街",
+    "B07": "星见学园与放学街",
     "B08": "东侧中层住宅",
     "B09": "影院会客厅街坊",
     "B10": "音乐演出街坊",
@@ -19,7 +19,7 @@
   "places": [
     {
       "place_id": "01",
-      "name": "N站",
+      "name": "Null Station",
       "block_id": "B01",
       "building_id": "V-01",
       "kind": "building"
@@ -40,7 +40,7 @@
     },
     {
       "place_id": "04",
-      "name": "小店与住家",
+      "name": "月台杂货与住家",
       "block_id": "B05",
       "building_id": "V-04",
       "kind": "building"
@@ -117,7 +117,7 @@
     },
     {
       "place_id": "15",
-      "name": "小型影院与城市会客厅",
+      "name": "镜厅",
       "block_id": "B09",
       "building_id": "V-15",
       "kind": "building"
@@ -145,7 +145,7 @@
     },
     {
       "place_id": "19",
-      "name": "社区中学",
+      "name": "星见学园",
       "block_id": "B07",
       "building_id": "V-19",
       "kind": "building"
@@ -194,7 +194,7 @@
     },
     {
       "place_id": "26",
-      "name": "渡口入口与候船处",
+      "name": "西环渡口入口与候船处",
       "block_id": "B11",
       "building_id": null,
       "kind": "outdoor"
@@ -250,21 +250,21 @@
     },
     {
       "place_id": "34",
-      "name": "站前书店",
+      "name": "白页书店",
       "block_id": "B01",
       "building_id": "V-34",
       "kind": "building"
     },
     {
       "place_id": "35",
-      "name": "音游店",
+      "name": "BYTE BEAT",
       "block_id": "B02",
       "building_id": "V-35",
       "kind": "building"
     },
     {
       "place_id": "36",
-      "name": "模型店",
+      "name": "FRAME",
       "block_id": "B02",
       "building_id": "V-36",
       "kind": "building"
@@ -285,7 +285,7 @@
     },
     {
       "place_id": "39",
-      "name": "独立游戏体验店",
+      "name": "PLAYROOM",
       "block_id": "B02",
       "building_id": "V-39",
       "kind": "building"
@@ -411,7 +411,7 @@
     },
     {
       "place_id": "57",
-      "name": "照片冲印店",
+      "name": "FLASHBACK",
       "block_id": "B05",
       "building_id": "V-57",
       "kind": "building"
@@ -432,7 +432,7 @@
     },
     {
       "place_id": "60",
-      "name": "社区园艺温室",
+      "name": "四季温室",
       "block_id": "B06",
       "building_id": "V-60",
       "kind": "building"
@@ -481,7 +481,7 @@
     },
     {
       "place_id": "67",
-      "name": "居民服务中心",
+      "name": "Null Site 服务中心",
       "block_id": "B08",
       "building_id": "V-67",
       "kind": "building"
@@ -523,7 +523,7 @@
     },
     {
       "place_id": "73",
-      "name": "影像书店",
+      "name": "MONO",
       "block_id": "B09",
       "building_id": "V-73",
       "kind": "building"
@@ -565,7 +565,7 @@
     },
     {
       "place_id": "79",
-      "name": "Live House",
+      "name": "AFTER 9",
       "block_id": "B10",
       "building_id": "V-79",
       "kind": "building"
@@ -586,7 +586,7 @@
     },
     {
       "place_id": "82",
-      "name": "夜间茶食店",
+      "name": "LATE BITE",
       "block_id": "B10",
       "building_id": "V-82",
       "kind": "building"
@@ -607,7 +607,7 @@
     },
     {
       "place_id": "85",
-      "name": "渡运旧物展屋",
+      "name": "旧帆展屋",
       "block_id": "B11",
       "building_id": "V-85",
       "kind": "building"

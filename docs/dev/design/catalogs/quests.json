@@ -323,7 +323,7 @@
           {
             "quest_id": "QST-005",
             "type": "clue_setup",
-            "description": "多地点变化不同步引向楚青的环境记录",
+            "description": "多地点变化不同步引向罗宾的环境记录",
             "source": "player/story/main/beyond-autumn.md#"
           },
           {
@@ -412,7 +412,7 @@
         "recommended": [
           {
             "quest_id": "QST-004",
-            "reason": "第三章记录中的不同步变化引向楚青的环境比较",
+            "reason": "第三章记录中的不同步变化引向罗宾的环境比较",
             "source": "player/story/main/no-school-bell.md#"
           }
         ],
@@ -420,7 +420,7 @@
           {
             "quest_id": "QST-006",
             "type": "clue_setup",
-            "description": "终止资料与沈聆引荐把问题带向研究者会面",
+            "description": "终止资料与诺拉引荐把问题带向研究者会面",
             "source": "player/story/main/still-together.md#"
           }
         ],
@@ -493,12 +493,12 @@
         "act": 2,
         "display_order": 6,
         "placement": "第二幕中段",
-        "summary": "与季闻、许遥会面，分清真实共梦、独立验证与源头终止",
+        "summary": "与维恩、遥会面，分清真实共梦、独立验证与源头终止",
         "required": [],
         "recommended": [
           {
             "quest_id": "QST-005",
-            "reason": "沈聆的引荐和终止资料问题铺垫会面动机",
+            "reason": "诺拉的引荐和终止资料问题铺垫会面动机",
             "source": "player/story/main/beyond-autumn.md#"
           }
         ],
@@ -506,7 +506,7 @@
           {
             "quest_id": "QST-106",
             "type": "character_continuation",
-            "description": "许遥以编辑身份提供意见；阅读支线不公开病程",
+            "description": "遥以编辑身份提供意见；阅读支线不公开病程",
             "source": "player/story/daily/ways-to-read.md#"
           }
         ],
@@ -530,7 +530,7 @@
           "basis": "player/story/main/still-together.md#",
           "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
           "pending": [
-            "若先玩阅读支线见过许遥，第五章介绍需承认此前的编辑往来，不能提前透露病程"
+            "若先玩阅读支线见过遥，第五章介绍需承认此前的编辑往来，不能提前透露病程"
           ]
         }
       }
@@ -586,7 +586,7 @@
         "required": [
           {
             "scope": "主线判断",
-            "label": "核对岸线资料与季闻记录",
+            "label": "核对岸线资料与维恩记录",
             "condition": {
               "all": [
                 {
@@ -604,7 +604,7 @@
         "recommended": [
           {
             "quest_id": "QST-006",
-            "reason": "先了解季闻记录缺失了什么，再展开渡运调查",
+            "reason": "先了解维恩记录缺失了什么，再展开渡运调查",
             "source": "player/story/main/still-together.md#"
           }
         ],
@@ -1114,7 +1114,7 @@
           {
             "quest_id": "QST-103",
             "type": "character_continuation",
-            "description": "林澄与何昕参与不同制作合作，未规定合作先后",
+            "description": "月城玲与凯文参与不同制作合作，未规定合作先后",
             "source": "player/story/daily/unfinished-window.md#"
           }
         ],
@@ -1197,7 +1197,7 @@
           {
             "quest_id": "QST-107",
             "type": "character_continuation",
-            "description": "唐钰、宁朗的用餐与收场体现不同作息",
+            "description": "唐惠、悠真的用餐与收场体现不同作息",
             "source": "player/story/daily/after-the-late-show.md#"
           }
         ],
@@ -1455,12 +1455,12 @@
         "act": 2,
         "display_order": 5.5,
         "placement": "第四至第五章附近",
-        "summary": "把经过授权的不同读法放在同一页，许遥以编辑身份参与",
+        "summary": "把经过授权的不同读法放在同一页，遥以编辑身份参与",
         "required": [],
         "recommended": [
           {
             "quest_id": "QST-005",
-            "reason": "沈聆引荐编辑的铺垫有助于自然认识许遥",
+            "reason": "诺拉引荐编辑的铺垫有助于自然认识遥",
             "source": "player/story/main/beyond-autumn.md#"
           }
         ],
@@ -1477,7 +1477,7 @@
           "basis": "player/story/daily/ways-to-read.md#",
           "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
           "pending": [
-            "许遥提供的是当前编辑意见，主线前版本应避免病程和源头终止信息"
+            "遥提供的是当前编辑意见，主线前版本应避免病程和源头终止信息"
           ]
         }
       }
@@ -1540,7 +1540,7 @@
         "recommended": [
           {
             "quest_id": "QST-003",
-            "reason": "先了解宁朗受误解与恢复演出的经历",
+            "reason": "先了解悠真受误解与恢复演出的经历",
             "source": "player/story/main/extra-applause.md#"
           }
         ],
@@ -1548,7 +1548,7 @@
           {
             "quest_id": "QST-003",
             "type": "character_continuation",
-            "description": "宁朗有新的演出与普通下班生活",
+            "description": "悠真有新的演出与普通下班生活",
             "source": "player/story/main/extra-applause.md#"
           }
         ],
