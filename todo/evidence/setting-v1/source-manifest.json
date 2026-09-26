@@ -1,0 +1,86 @@
+{
+  "edition": "v1.0",
+  "repo_modified": false,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2560,
+      "sha256": "8c0e4f65dc9df26c418a081445ffbf50f246fdbaa0b23260cfd50687d6d628d2"
+    },
+    {
+      "path": "chapters/01-world.md",
+      "bytes": 10699,
+      "sha256": "be01bfb44cdf0d22ee481111821b90bfcea204ea1c49b23fa94406af3e5a64bb"
+    },
+    {
+      "path": "chapters/02-history.md",
+      "bytes": 10531,
+      "sha256": "a0b35fd27a5446f98ae6b979164bb84de0ab5f961f13418c6a907367c2ef925b"
+    },
+    {
+      "path": "chapters/03-characters.md",
+      "bytes": 19904,
+      "sha256": "9b75c5820b7f38135b36bc2a1c642675a6fa6a19195ee31be283ef83d162bafe"
+    },
+    {
+      "path": "chapters/04-main-story.md",
+      "bytes": 29373,
+      "sha256": "4f9c8e0c1be6a66963ce8762fe607ffcad8fffe55b2c06537c9a2766545519b5"
+    },
+    {
+      "path": "chapters/05-city-life.md",
+      "bytes": 13839,
+      "sha256": "86d72a01604d39f16702a68109afef6f25f93b79e6e13d74ec831e0c4d45f7bd"
+    },
+    {
+      "path": "chapters/06-place-network.md",
+      "bytes": 45597,
+      "sha256": "10d8cf0d8721a6b78199f315d11c2dbf8ac249725e6aaeb38bc4bd4a60b60ad8"
+    },
+    {
+      "path": "data/characters.json",
+      "bytes": 23861,
+      "sha256": "36421b78d2b284f9752267d096ab4980c690139d8861733df96a360a621bed3e"
+    },
+    {
+      "path": "data/city-story-map.json",
+      "bytes": 66295,
+      "sha256": "29ff1114595c730894079d0711f9619e46e911ec55feb8ba5bc162bbd731e2f1"
+    },
+    {
+      "path": "data/place-catalog.json",
+      "bytes": 14378,
+      "sha256": "79c42f69b352e1a2c1ae7ff61433e496531d8033a8837089af750651471e7b71"
+    },
+    {
+      "path": "data/quests.json",
+      "bytes": 17544,
+      "sha256": "a670658167de76109ddf12577e5e6c77790abc4bede977f2b0ba05cb67dc2635"
+    },
+    {
+      "path": "review/continuity.md",
+      "bytes": 7183,
+      "sha256": "a73c9a92538635fc7e7fb7d9dc5c98b4ecf400022ed60d8177e81ac6238b9997"
+    },
+    {
+      "path": "review/sources.md",
+      "bytes": 5344,
+      "sha256": "5b35eccff98e9dab85bc655f4efd06c7ce43c7ae80e99b1770437520fb55dbf5"
+    },
+    {
+      "path": "review/validation.json",
+      "bytes": 4861,
+      "sha256": "8bfd434928ad060cf5f54945325bc332551a7e7ec65c7e205ea94eda2a983c70"
+    },
+    {
+      "path": "完整稿.md",
+      "bytes": 145276,
+      "sha256": "ab70cd5df7f1929ab24e1ad9308b3f112de7376a50046ef7c5070d03162efde4"
+    },
+    {
+      "path": "阅读版.html",
+      "bytes": 170177,
+      "sha256": "485715eef101f793a056ba081693f625d924431827213aeec535b84988a29a59"
+    }
+  ]
+}

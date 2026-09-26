@@ -3,8 +3,8 @@
   "plan_revision": 1,
   "baseline_commit": "8bc6e7c6cd8497dda8ba8c23a2694ffea876ac8c",
   "source_roadmap": "todo/demo-roadmap.md",
-  "focus": "M0-01",
-  "note": "沿用 M0—M7，细化为 61 个可验收工作包。工作流接入不计入游戏阶段完成；建议范围保持待确认，M0-01 可开始但尚未开工。城市与 Viewer 已按交付范围归档，剩余工作按总路线图承接",
+  "focus": "M0-02",
+  "note": "M0-01 已获作者验收；整批设定正式融入游戏百科，完整故事与 Demo 制作范围分别维护。M0-02 沿已选《最后的玩具》精简闭环细化，站前送行留给完整版",
   "related_tasks": [
     "todo/archive/daylight-visual.md",
     "todo/archive/n-district-closeout.md",
@@ -21,25 +21,56 @@
           "id": "M0-01",
           "title": "现状、已有约束与体验支柱",
           "kind": "decision",
-          "status": "ready",
+          "status": "done",
           "depends_on": [],
           "decide": "哪些已被作者确认，哪些仍是建议？生活、调查、动作各要让玩家感受到什么？",
           "deliver": "核对最新提交、路线图与活动任务，整理一页现状／约束／未知清单和体验支柱；沿用离线 Agent 等已定内容",
           "verify": "作者确认新增解释；每项既有结论有仓库出处。区分城市已有成果与尚未验收的游戏能力，不重问已有决定",
-          "reviewer": "author"
+          "reviewer": "author",
+          "work": {
+            "round": 1,
+            "step": "record",
+            "record": "todo/demo-worklog.md#m0-01-r01",
+            "next_action": "已获作者认可，沿《最后的玩具》精简方向推进 M0-02"
+          },
+          "evidence": [
+            "docs/production/demo-scope.md",
+            "todo/evidence/setting-v1/integration.md",
+            "todo/demo-worklog.md#m0-01-r01",
+            "todo/demo-worklog.md#m0-01-accepted"
+          ],
+          "accepted": {
+            "role": "author",
+            "by": "项目作者",
+            "revision": "895348c7594cafc15af963ce628ecf00694b5a052410a6f242fc8df25e7f369c",
+            "record": "todo/demo-worklog.md#m0-01-accepted",
+            "result": "pass"
+          }
         },
         {
           "id": "M0-02",
           "title": "首委托与玩家因果链",
           "kind": "loop",
-          "status": "backlog",
+          "status": "in_progress",
           "depends_on": [
             "M0-01"
           ],
           "decide": "采用《最后的玩具》还是另选？谁求助、谁是梦主，哪次观察改变判断，结尾留下什么后果？",
           "deliver": "一个委托 Pitch、因果图与玩家行动序列，标出现实／梦境往返、必要信息和可见后续；调用 create-case",
           "verify": "作者选定提案，能复述从日常到回家的闭环；关键变化由玩家观察或行动获得，不仅靠对白告知",
-          "reviewer": "author"
+          "reviewer": "author",
+          "work": {
+            "round": 1,
+            "step": "review",
+            "record": "todo/demo-worklog.md#m0-02-r01",
+            "next_action": "走查《最后的玩具》16个节点的运输循环、固定夹、现实确认和恢复规则，按反馈确认或修订后进入 M0-03"
+          },
+          "evidence": [
+            "docs/quests/QST-002/README.md",
+            "docs/quests/QST-002/development.md",
+            "docs/quests/QST-002/narrative.json",
+            "todo/demo-worklog.md#m0-02-r01"
+          ]
         },
         {
           "id": "M0-03",

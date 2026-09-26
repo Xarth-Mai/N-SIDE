@@ -1,0 +1,201 @@
+{
+  "scope": "Design data and document structural validation only; no repository build, engine playtest, clinical or physical validation.",
+  "source_commit": "9a56ec7e1f541db2b5f0fe6fa74b795fdd9039f5",
+  "counts": {
+    "places": 91,
+    "blocks": 12,
+    "referenced_building_ids": 64,
+    "characters": 35,
+    "main_segments": 10,
+    "daily_side_stories": 8,
+    "markdown_characters": 55696,
+    "chinese_characters": 38846
+  },
+  "checks": [
+    {
+      "check": "place_count_and_unique",
+      "passed": true,
+      "detail": "91 named source places"
+    },
+    {
+      "check": "place_range_complete",
+      "passed": true,
+      "detail": "01–91"
+    },
+    {
+      "check": "blocks_complete",
+      "passed": true,
+      "detail": "12 blocks B01–B12"
+    },
+    {
+      "check": "source_fields_preserved",
+      "passed": true,
+      "detail": "narrative overlay does not alter source catalogue fields"
+    },
+    {
+      "check": "named_building_ids",
+      "passed": true,
+      "detail": "64 referenced building IDs, not full city volume census"
+    },
+    {
+      "check": "cinema_shared_volume",
+      "passed": true,
+      "detail": "one physical volume for four named functions"
+    },
+    {
+      "check": "characters_unique",
+      "passed": true,
+      "detail": "35 working character entries"
+    },
+    {
+      "check": "quests_unique",
+      "passed": true,
+      "detail": "10 main sequence segments, 8 daily side stories"
+    },
+    {
+      "check": "character_references",
+      "passed": true,
+      "detail": "all narrative place character refs resolve"
+    },
+    {
+      "check": "quest_references",
+      "passed": true,
+      "detail": "all narrative place quest refs resolve"
+    },
+    {
+      "check": "place_connections",
+      "passed": true,
+      "detail": "all linked places exist"
+    },
+    {
+      "check": "character_place_references",
+      "passed": true,
+      "detail": "known associated and residential place IDs"
+    },
+    {
+      "check": "one_sibling_diver",
+      "passed": true,
+      "detail": "proposal consistently retains one awake sibling receiver"
+    },
+    {
+      "check": "all_places_have_content",
+      "passed": true,
+      "detail": "no empty narrative, daily use, aftermath or access records"
+    },
+    {
+      "check": "atomic_markdown_links",
+      "passed": true,
+      "detail": [
+        [
+          "README.md",
+          "chapters/01-world.md",
+          true
+        ],
+        [
+          "README.md",
+          "chapters/02-history.md",
+          true
+        ],
+        [
+          "README.md",
+          "chapters/03-characters.md",
+          true
+        ],
+        [
+          "README.md",
+          "chapters/04-main-story.md",
+          true
+        ],
+        [
+          "README.md",
+          "chapters/05-city-life.md",
+          true
+        ],
+        [
+          "README.md",
+          "chapters/06-place-network.md",
+          true
+        ],
+        [
+          "README.md",
+          "review/continuity.md",
+          true
+        ],
+        [
+          "README.md",
+          "review/sources.md",
+          true
+        ]
+      ]
+    },
+    {
+      "check": "html_ids_unique",
+      "passed": true,
+      "detail": 277
+    },
+    {
+      "check": "html_anchors_resolve",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "offline_html",
+      "passed": true,
+      "detail": "no external scripts, images, stylesheets or embedded frames"
+    },
+    {
+      "check": "chinese_language",
+      "passed": true,
+      "detail": "zh-CN"
+    },
+    {
+      "check": "no_unfilled_template_tokens",
+      "passed": true,
+      "detail": "no placeholder template syntax"
+    },
+    {
+      "check": "all_place_headings_rendered",
+      "passed": true,
+      "detail": "all 91 place profiles rendered"
+    },
+    {
+      "check": "all_character_profiles_rendered",
+      "passed": true,
+      "detail": "all 35 character profiles rendered"
+    },
+    {
+      "check": "all_main_and_side_ids_rendered",
+      "passed": true,
+      "detail": "all 18 task IDs represented in reader"
+    },
+    {
+      "check": "desktop_no_page_horizontal_overflow",
+      "passed": true,
+      "detail": {
+        "vw": 1365,
+        "sw": 1365
+      }
+    },
+    {
+      "check": "mobile_no_page_horizontal_overflow",
+      "passed": true,
+      "detail": {
+        "vw": 390,
+        "sw": 390
+      }
+    },
+    {
+      "check": "browser_page_errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "all_passed": true,
+  "not_performed": [
+    "GitHub writes",
+    "VitePress build",
+    "game build or playtest",
+    "real route or collision verification"
+  ],
+  "reader_rendering": "Chromium set_content preview at 1365×900 and 390×844; desktop story and mobile overview screenshots visually inspected. No page-level horizontal overflow or page errors."
+}

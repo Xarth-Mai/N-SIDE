@@ -1,8 +1,8 @@
 ---
 id: TASK-004
-status: backlog
+status: in_progress
 depends_on: []
-evidence: []
+evidence: ["todo/demo-worklog.md#m0-01-r01"]
 ---
 
 # N:SIDE 项目总路线图：至可玩 Demo
@@ -75,6 +75,8 @@ evidence: []
 | M7 发布候选／Demo 发布 | Release Candidate | 双平台独立发布包与实际验收证据 |
 
 M2 与 M3 可以部分并行，美术、UI、声音与测试从前期参与，M4 是各工作线的合流点。工作包状态与计数见[61 项进度看板](demo-progress.md)，只编辑 `demo-progress.json`；决定、反馈与验证见[工作日志](demo-worklog.md)
+
+完整设定已融入[游戏百科与故事](../docs/story/index.md)，M0-01 体验基线已通过作者确认；M0-02 正在细化已选的[《最后的玩具》](../docs/quests/QST-002/README.md)，具体范围见[Demo 定义](../docs/production/demo-scope.md)。完整游戏的章节、人物与场所分别维护，Demo 的交互制作范围仍按工作包收口
 
 ### M0：产品与 Demo 定义
 

@@ -2,6 +2,10 @@
 
 完整章节与生活故事见[故事百科](../story/index.md)，本页组织任务的制作规格与运行数据
 
+| 任务 | 制作资料 |
+| --- | --- |
+| QST-002 最后的玩具 | [任务说明](QST-002/README.md)、[Demo 范围](QST-002/demo-scope.md)、[行动与恢复](QST-002/development.md)、[信息与节点](QST-002/narrative.json) |
+
 [故事索引](quests.json)维护章节与角色、场所关联；具体任务按下列目录维护可执行结构，索引与引擎实现分别验证
 
 任务使用 `QST-*` ID，包含日常片段与异常委托。从[日常模板](../templates/daily-scene.md)或[委托模板](../templates/quest.md)建立具体内容

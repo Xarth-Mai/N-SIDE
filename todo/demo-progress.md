@@ -5,19 +5,19 @@
 
 计划修订：1；初始化核对基线：`8bc6e7c6cd8497dda8ba8c23a2694ffea876ac8c`
 
-沿用 M0—M7，细化为 61 个可验收工作包。工作流接入不计入游戏阶段完成；建议范围保持待确认，M0-01 可开始但尚未开工。城市与 Viewer 已按交付范围归档，剩余工作按总路线图承接
+M0-01 已获作者验收；整批设定正式融入游戏百科，完整故事与 Demo 制作范围分别维护。M0-02 沿已选《最后的玩具》精简闭环细化，站前送行留给完整版
 
 **阶段放行：0/8。** 工作包数量不是工时或整体完成百分比
 
-关注项：**M0-01 现状、已有约束与体验支柱**，清单位置 1/8；这是位置，不是已完成数量
+关注项：**M0-02 首委托与玩家因果链**，清单位置 2/8；这是位置，不是已完成数量
 
-下一可推进项：**M0-01**
+下一可推进项：**M0-02**
 
 已有城市／Viewer 成果见归档；剩余工作按总路线图承接，不折算为 M0—M7 已完成数量：[todo/archive/daylight-visual.md](archive/daylight-visual.md)、[todo/archive/n-district-closeout.md](archive/n-district-closeout.md)、[todo/archive/n-district-modern-city.md](archive/n-district-modern-city.md)、[todo/archive/map-viewer.md](archive/map-viewer.md)
 
 | 阶段 | 已验收 | 进行中 | 受阻 | 批准移出 | 阶段放行 |
 | --- | --- | --- | --- | --- | --- |
-| [M0 产品与 Demo 定义](#m0) | 0/8 | — | — | 0 | 未通过 |
+| [M0 产品与 Demo 定义](#m0) | 1/8 | M0-02 | — | 0 | 未通过 |
 | [M1 基础可玩原型](#m1) | 0/8 | — | — | 0 | 未通过 |
 | [M2 日常与调查原型](#m2) | 0/8 | — | — | 0 | 未通过 |
 | [M3 潜梦与动作原型](#m3) | 0/8 | — | — | 0 | 未通过 |
@@ -29,14 +29,14 @@
 计数以通过验收的稳定工作包为单位。`in_progress`、等待作者确认和仅写完文档均不计为完成。Loop 的轮数开放，只显示“第几轮、当前步骤 1/6—6/6”；取消项仍留在原分母，单列范围变化
 
 <a id="m0"></a>
-## M0 产品与 Demo 定义｜已验收 0/8
+## M0 产品与 Demo 定义｜已验收 1/8
 
 先理解：先理解核心体验、Scope、原型假设与里程碑；这一阶段决定做什么，不把候选方案当成已批准设计
 
 <a id="m0-01"></a>
 ### M0-01 现状、已有约束与体验支柱（清单第 1/8 项）
 
-状态：**可开始**；类型：决策；验收：作者
+状态：**已验收**；类型：决策；验收：作者
 前置：无
 
 **需要决定／设计：** 哪些已被作者确认，哪些仍是建议？生活、调查、动作各要让玩家感受到什么？
@@ -45,10 +45,18 @@
 
 **完成条件：** 作者确认新增解释；每项既有结论有仓库出处。区分城市已有成果与尚未验收的游戏能力，不重问已有决定
 
+本轮：第 1 轮，步骤 6/6「记录与下一步」
+下一动作：已获作者认可，沿《最后的玩具》精简方向推进 M0-02
+轮次记录：[todo/demo-worklog.md#m0-01-r01](demo-worklog.md#m0-01-r01)
+
+证据：[docs/production/demo-scope.md](../docs/production/demo-scope.md)；[todo/evidence/setting-v1/integration.md](evidence/setting-v1/integration.md)；[todo/demo-worklog.md#m0-01-r01](demo-worklog.md#m0-01-r01)；[todo/demo-worklog.md#m0-01-accepted](demo-worklog.md#m0-01-accepted)
+
+记录：项目作者（作者），输入 `895348c7594cafc15af963ce628ecf00694b5a052410a6f242fc8df25e7f369c`；[todo/demo-worklog.md#m0-01-accepted](demo-worklog.md#m0-01-accepted)
+
 <a id="m0-02"></a>
 ### M0-02 首委托与玩家因果链（清单第 2/8 项）
 
-状态：**待安排**；类型：迭代；验收：作者
+状态：**进行中**；类型：迭代；验收：作者
 前置：M0-01
 
 **需要决定／设计：** 采用《最后的玩具》还是另选？谁求助、谁是梦主，哪次观察改变判断，结尾留下什么后果？
@@ -56,6 +64,12 @@
 **Codex 交付：** 一个委托 Pitch、因果图与玩家行动序列，标出现实／梦境往返、必要信息和可见后续；调用 create-case
 
 **完成条件：** 作者选定提案，能复述从日常到回家的闭环；关键变化由玩家观察或行动获得，不仅靠对白告知
+
+本轮：第 1 轮，步骤 5/6「体验／作者验收」
+下一动作：走查《最后的玩具》16个节点的运输循环、固定夹、现实确认和恢复规则，按反馈确认或修订后进入 M0-03
+轮次记录：[todo/demo-worklog.md#m0-02-r01](demo-worklog.md#m0-02-r01)
+
+证据：[docs/quests/QST-002/README.md](../docs/quests/QST-002/README.md)；[docs/quests/QST-002/development.md](../docs/quests/QST-002/development.md)；[docs/quests/QST-002/narrative.json](../docs/quests/QST-002/narrative.json)；[todo/demo-worklog.md#m0-02-r01](demo-worklog.md#m0-02-r01)
 
 <a id="m0-03"></a>
 ### M0-03 可操作角色、动作词表与镜头假设（清单第 3/8 项）

@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "quest_id": "QST-002",
+  "entry_beat": "QST-002-B001",
+  "terminal_beats": [
+    "QST-002-B016"
+  ],
+  "information": [
+    {
+      "id": "QST-002-I001",
+      "proposition": "米娜希望在离城前处理玩具反复移位",
+      "world_truth": "米娜是求助者、受影响者和梦主；目标是继续自己的生活",
+      "importance": "critical",
+      "initial_state": "hidden"
+    },
+    {
+      "id": "QST-002-I002",
+      "proposition": "玩具在现实中被抹除或凭空消失",
+      "world_truth": "错误解释；物件仍在附近周转箱或柜底夹层，数量与路径可核对",
+      "importance": "supporting",
+      "initial_state": "hidden"
+    },
+    {
+      "id": "QST-002-I003",
+      "proposition": "实物沿柜内既有路径移动，数量没有增加或减少",
+      "world_truth": "异常介质导致局部机械扰动，梦中复制不等于现实复制",
+      "importance": "critical",
+      "initial_state": "hidden"
+    },
+    {
+      "id": "QST-002-I004",
+      "proposition": "收集者只会偷走玩具",
+      "world_truth": "错误解释；归还与送出属于同一运输过程，它不是必须清除的目标",
+      "importance": "critical",
+      "initial_state": "hidden"
+    },
+    {
+      "id": "QST-002-I005",
+      "proposition": "运输被退回或阻断时，保留室副本持续堆积",
+      "world_truth": "出口翻板将箱子退回保留室，隔离收集者进一步降低送出能力",
+      "importance": "critical",
+      "initial_state": "hidden"
+    },
+    {
+      "id": "QST-002-I006",
+      "proposition": "现实新位移来自柜体局部输出点",
+      "world_truth": "有限供能与柜体输出联系支持扰动；需先创造低扰动窗口再由清醒接应隔离",
+      "importance": "critical",
+      "initial_state": "hidden"
+    },
+    {
+      "id": "QST-002-I007",
+      "proposition": "有害输出联系已经隔离",
+      "world_truth": "只有梦中一轮运输完成且现实接应确认隔离，才提交处理结果",
+      "importance": "critical",
+      "initial_state": "hidden"
+    },
+    {
+      "id": "QST-002-I008",
+      "proposition": "米娜决定哪些物件随身、留存或寄售",
+      "world_truth": "异常处理不以强迫米娜丢弃物件或改变感情为条件",
+      "importance": "critical",
+      "initial_state": "hidden"
+    }
+  ],
+  "beats": [
+    {
+      "id": "QST-002-B001",
+      "dramatic_change": "普通交接变为熟客请求",
+      "player_goal": "了解米娜遇到什么",
+      "player_action": "完成陈列交接，倾听并分清亲眼观察与推测",
+      "requires": {},
+      "delivers": {
+        "QST-002-I001": "confirmed",
+        "QST-002-I008": "confirmed"
+      },
+      "state_changes": {
+        "qst002.phase": "request"
+      },
+      "next": [
+        "QST-002-B002"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B002",
+      "dramatic_change": "“丢失”开始有可检查的现实痕迹",
+      "player_goal": "建立物品基准",
+      "player_action": "受邀检查清单、箱封与柜底磨痕，选择先检查缝隙或先准备潜梦",
+      "requires": {
+        "QST-002-I001": [
+          "confirmed"
+        ]
+      },
+      "delivers": {
+        "QST-002-I002": "suspected"
+      },
+      "state_changes": {
+        "qst002.inventory_baseline_recorded": true
+      },
+      "next": [
+        "QST-002-B003",
+        "QST-002-B004"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B003",
+      "dramatic_change": "提前找到实物，问题转为再次移位",
+      "player_goal": "清点并记录去向",
+      "player_action": "检查低位周转箱与柜底夹层，核对原物品唯一ID",
+      "requires": {},
+      "delivers": {
+        "QST-002-I002": "disproved",
+        "QST-002-I003": "confirmed"
+      },
+      "state_changes": {
+        "qst002.found_early": true
+      },
+      "next": [
+        "QST-002-B004"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B004",
+      "dramatic_change": "现实调查转入有接应的梦境观察",
+      "player_goal": "安全进入并保留退出方式",
+      "player_action": "核对接应与设备，林澄先入梦，粒粒随后接入",
+      "requires": {},
+      "delivers": {},
+      "state_changes": {
+        "qst002.phase": "first_dream"
+      },
+      "next": [
+        "QST-002-B005"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B005",
+      "dramatic_change": "归还动作反驳单纯偷窃解释",
+      "player_goal": "看清收集者在做什么",
+      "player_action": "在安全观察位看到归还；错过时重看同一动作",
+      "requires": {},
+      "delivers": {
+        "QST-002-I004": "disproved"
+      },
+      "state_changes": {},
+      "next": [
+        "QST-002-B006"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B006",
+      "dramatic_change": "玩家用行动检验运输假设",
+      "player_goal": "判断怎样观察运输",
+      "player_action": "选择短暂隔离收集者或直接跟随运输线",
+      "requires": {
+        "QST-002-I004": [
+          "disproved"
+        ]
+      },
+      "delivers": {},
+      "state_changes": {},
+      "next": [
+        "QST-002-B007",
+        "QST-002-B008"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B007",
+      "dramatic_change": "停运使堆积加剧，解除后减缓",
+      "player_goal": "检查隔离的后果并恢复通路",
+      "player_action": "关上现有闸门看货架变化，再打开闸门",
+      "requires": {},
+      "delivers": {
+        "QST-002-I005": "confirmed"
+      },
+      "state_changes": {
+        "qst002.observation_route": "isolate"
+      },
+      "next": [
+        "QST-002-B009"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B008",
+      "dramatic_change": "退回动作揭示循环，正确判断直接推进",
+      "player_goal": "找出箱子没有离开的原因",
+      "player_action": "跟随一箱物件，观察出口翻板将它退回",
+      "requires": {},
+      "delivers": {
+        "QST-002-I005": "confirmed"
+      },
+      "state_changes": {
+        "qst002.observation_route": "follow"
+      },
+      "next": [
+        "QST-002-B009"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B009",
+      "dramatic_change": "梦中观察与现实物件去向对应",
+      "player_goal": "找回或复核同一批实物",
+      "player_action": "退出梦境检查周转箱、夹层和新痕迹，承认提前发现",
+      "requires": {},
+      "delivers": {
+        "QST-002-I002": "disproved",
+        "QST-002-I003": "confirmed"
+      },
+      "state_changes": {
+        "qst002.phase": "reality_check"
+      },
+      "next": [
+        "QST-002-B010"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B010",
+      "dramatic_change": "从形成经历转向当前输出条件",
+      "player_goal": "确认处置对象与验证方法",
+      "player_action": "对照位置标记、柜体开合与接应记录，标明局部输出点",
+      "requires": {
+        "QST-002-I003": [
+          "confirmed"
+        ]
+      },
+      "delivers": {
+        "QST-002-I006": "confirmed"
+      },
+      "state_changes": {
+        "qst002.output_point_identified": true
+      },
+      "next": [
+        "QST-002-B011"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B011",
+      "dramatic_change": "追逐收集者转为让运输真正完成",
+      "player_goal": "辨认翻板与摆臂预警",
+      "player_action": "再次潜梦，在安全位观察出口和一次完整摆臂动作",
+      "requires": {
+        "QST-002-I002": [
+          "disproved"
+        ],
+        "QST-002-I003": [
+          "confirmed"
+        ],
+        "QST-002-I005": [
+          "confirmed"
+        ],
+        "QST-002-I006": [
+          "confirmed"
+        ]
+      },
+      "delivers": {},
+      "state_changes": {
+        "qst002.phase": "resolution",
+        "qst002.checkpoint": "before_tool"
+      },
+      "next": [
+        "QST-002-B012"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B012",
+      "dramatic_change": "玩家把理解变成工具操作",
+      "player_goal": "保持出口开启",
+      "player_action": "等候或回避摆臂，在空当放置固定夹；可请求粒粒护线，打断后重试",
+      "requires": {},
+      "delivers": {},
+      "state_changes": {
+        "qst002.attempt.clamp_placed": true
+      },
+      "next": [
+        "QST-002-B013"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B013",
+      "dramatic_change": "梦中运输和现实隔离共同产生结果",
+      "player_goal": "观察箱子送出并确认现实处理",
+      "player_action": "箱子通过出口不再退回；接应者核对窗口并确认局部输出接点隔离",
+      "requires": {},
+      "delivers": {
+        "QST-002-I007": "confirmed"
+      },
+      "state_changes": {
+        "qst002.resolution_committed": true,
+        "qst002.output_isolated": true,
+        "qst002.phase": "aftermath"
+      },
+      "next": [
+        "QST-002-B014"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B014",
+      "dramatic_change": "停止危害通过实物验证",
+      "player_goal": "确认没有新增扰动",
+      "player_action": "返回现实重复同条件开合和位置检查，再核对总数",
+      "requires": {
+        "QST-002-I007": [
+          "confirmed"
+        ]
+      },
+      "delivers": {},
+      "state_changes": {
+        "qst002.reality_verified": true
+      },
+      "next": [
+        "QST-002-B015"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B015",
+      "dramatic_change": "处置后的选择回到米娜手中",
+      "player_goal": "按她的决定帮忙打包",
+      "player_action": "听取随身、留存与寄售决定，分类、封箱并一次性交付",
+      "requires": {
+        "QST-002-I007": [
+          "confirmed"
+        ],
+        "QST-002-I008": [
+          "confirmed"
+        ]
+      },
+      "delivers": {},
+      "state_changes": {
+        "qst002.delivery_committed": true
+      },
+      "next": [
+        "QST-002-B016"
+      ],
+      "target_seconds": null
+    },
+    {
+      "id": "QST-002-B016",
+      "dramatic_change": "帮助别人继续生活，也回到自己的家",
+      "player_goal": "回家并看见后续",
+      "player_action": "回小店与家人相处，明确时段推进后查看米娜离城后的消息",
+      "requires": {
+        "QST-002-I007": [
+          "confirmed"
+        ],
+        "QST-002-I008": [
+          "confirmed"
+        ]
+      },
+      "delivers": {},
+      "state_changes": {
+        "qst002.phase": "completed",
+        "qst002.aftermath_available": true
+      },
+      "next": [],
+      "target_seconds": null
+    }
+  ],
+  "choices": [
+    {
+      "id": "QST-002-C001",
+      "beat_id": "QST-002-B002",
+      "options": [
+        {
+          "id": "inspect",
+          "to": "QST-002-B003",
+          "acknowledgement": "米娜同意检查附近容器",
+          "consequence": "可提前找到实物，后续承认发现"
+        },
+        {
+          "id": "prepare",
+          "to": "QST-002-B004",
+          "acknowledgement": "先保留清单与位置标记再潜梦",
+          "consequence": "回现实后仍可找到并核对同一批物件"
+        }
+      ]
+    },
+    {
+      "id": "QST-002-C002",
+      "beat_id": "QST-002-B006",
+      "options": [
+        {
+          "id": "isolate",
+          "to": "QST-002-B007",
+          "acknowledgement": "闸门关闭，收集者等待，货架堆积",
+          "consequence": "观察后恢复通路，取得运输关系"
+        },
+        {
+          "id": "follow",
+          "to": "QST-002-B008",
+          "acknowledgement": "收集者继续搬运，玩家可看到退回动作",
+          "consequence": "直接取得同一因果，不强制错误判断"
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "id": "QST-002-S001",
+      "beat_id": "QST-002-B001",
+      "intent": "普通日常与离城处境",
+      "entry_state": "小店营业",
+      "exit_state": "接受请求",
+      "cast": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-003",
+        "CHR-009"
+      ],
+      "line_ids": []
+    },
+    {
+      "id": "QST-002-S002",
+      "beat_id": "QST-002-B002",
+      "intent": "有限实物与检查依据",
+      "entry_state": "受邀住宅",
+      "exit_state": "登记实物基准",
+      "cast": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-009"
+      ],
+      "line_ids": []
+    },
+    {
+      "id": "QST-002-S003",
+      "beat_id": "QST-002-B005",
+      "intent": "用归还行为推翻表面解释",
+      "entry_state": "首次梦境",
+      "exit_state": "收集者单纯偷窃解释被否定",
+      "cast": [
+        "CHR-002",
+        "CHR-003"
+      ],
+      "line_ids": []
+    },
+    {
+      "id": "QST-002-S004",
+      "beat_id": "QST-002-B013",
+      "intent": "双侧确认处置结果",
+      "entry_state": "工具动作完成待确认",
+      "exit_state": "处理一次性提交",
+      "cast": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-003"
+      ],
+      "line_ids": []
+    },
+    {
+      "id": "QST-002-S005",
+      "beat_id": "QST-002-B016",
+      "intent": "离城后的联系与共同生活继续",
+      "entry_state": "处理与交付完成",
+      "exit_state": "回店回家，后续可重访",
+      "cast": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-003"
+      ],
+      "line_ids": []
+    }
+  ]
+}
