@@ -5,6 +5,8 @@ black_cases: ["BC-001"]
 
 # 第一章 · 最后的玩具
 
+本章包含事件真相与结局
+
 [主线总览](index.md) · [人物](../../characters/index.md) · [场所](../../locations/place-network.md)
 
 <a id="qst-002"></a>

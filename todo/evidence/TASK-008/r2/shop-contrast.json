@@ -1,0 +1,32 @@
+{
+  "path": "game/assets/environment/signs/shop.png",
+  "format": "PNG",
+  "mode": "RGBA",
+  "width": 1024,
+  "height": 128,
+  "bytes": 15233,
+  "color_count": 251,
+  "has_alpha": true,
+  "alpha_min": 6,
+  "alpha_max": 255,
+  "transparent_pixels": 0,
+  "content_bounds": [
+    0,
+    0,
+    1024,
+    128
+  ],
+  "ok": true,
+  "source_sha256": "644bac9879bb03e9a706e6b1a213835d20d029fe511c1c81ceb5e071a796dbe6",
+  "preview": "output/assets/restructure/shop-contrast.png",
+  "display_box": [
+    512,
+    64
+  ],
+  "fitted_size": [
+    512,
+    64
+  ],
+  "filter": "lanczos",
+  "visual_review": "NOT RUN: inspect the preview and the actual game separately"
+}

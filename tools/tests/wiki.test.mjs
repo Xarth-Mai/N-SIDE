@@ -1,203 +1,125 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync, cpSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, relative } from 'node:path'
 import { buildSidebar } from '../../docs/.vitepress/sidebar.mjs'
-import { copyProjectAssets, copyWikiData, listWikiData, projectAssetsPlugin, wikiDataPlugin } from '../wiki-data.mjs'
+import { copyWikiData, listWikiData, wikiDataPlugin } from '../wiki-data.mjs'
+import { prepareWiki, checkWikiBuild, playerMap } from '../wiki.mjs'
 
 function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'n-side-wiki-'))
   t.after(() => rmSync(root, { recursive: true, force: true }))
   function put(file, content = '# Page\n') {
-    const path = join(root, file)
-    mkdirSync(dirname(path), { recursive: true })
-    writeFileSync(path, content)
-    return path
+    const path = join(root, file); mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, content); return path
   }
   return { root, put }
 }
-
-function links(items) {
-  return items.flatMap(item => [...(item.link ? [item.link] : []), ...links(item.items ?? [])])
-}
-
-function request(root, url, method = 'GET') {
-  let handler
-  wikiDataPlugin(root).configureServer({ middlewares: { use(fn) { handler = fn } } })
-  const result = { next: false, headers: {}, body: undefined }
-  handler({ url, method }, {
-    setHeader(key, value) { result.headers[key] = value },
-    end(body) { result.body = body?.toString() },
-  }, error => { result.next = true; result.error = error })
+const links = items => items.flatMap(item => [...(item.link ? [item.link] : []), ...links(item.items ?? [])])
+function request(root, profile, url, method = 'GET') {
+  let handler; wikiDataPlugin(root, profile).configureServer({ middlewares: { use(fn) { handler = fn } } })
+  const result = { next: false, headers: {} }
+  handler({ url, method }, { setHeader(k, v) { result.headers[k] = v }, end(body) { result.body = body?.toString() } }, error => { result.next = true; result.error = error })
   return result
 }
-
-function requestProjectAsset(root, url, method = 'GET') {
-  let handler
-  projectAssetsPlugin(root).configureServer({ middlewares: { use(_route, fn) { handler = fn } } })
-  const result = { next: false, headers: {}, body: undefined }
-  handler({ url, method }, {
-    setHeader(key, value) { result.headers[key] = value },
-    end(body) { result.body = body?.toString() },
-  }, error => { result.next = true; result.error = error })
-  return result
+function wikiFixture(t) {
+  const f = fixture(t)
+  f.put('docs/player/index.md', '# 玩家入口\n\n[故事](encyclopedia/story/main/last-toy.md)\n')
+  f.put('docs/player/encyclopedia/story/main/last-toy.md', '# 最后的玩具\n\n米娜自己决定打包\n')
+  f.put('docs/dev/index.md', '# 开发入口\n\n[私有规格](design/spec.md)\n')
+  f.put('docs/dev/design/spec.md', '# DEV_ONLY_SENTINEL\n\n内部规格 [数据](data.json)\n')
+  f.put('docs/dev/design/data.json', '{"DEV_ONLY_SENTINEL":true}')
+  f.put('docs/public/private.json', '{"DEV_ONLY_SENTINEL":true}')
+  f.put('docs/public/private.webp', 'DEV_ONLY_SENTINEL')
+  f.put('source-assets/branding/n-logo.svg', '<svg/>')
+  for (const name of ['district-map.mjs', 'district-plan.mjs', 'district-architecture.mjs', 'district-geometry.mjs']) f.put(`tools/${name}`, readFileSync(new URL(`../${name}`, import.meta.url)))
+  for (const name of ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue']) f.put(`docs/.vitepress/components/${name}`, readFileSync(new URL(`../../docs/.vitepress/components/${name}`, import.meta.url)))
+  f.put('source-assets/district-map/district.json', readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url)))
+  f.put('todo/evidence/TASK-007/r1/migration-map.json', JSON.stringify({ files: [
+    { source: 'docs/story/main/last-toy.md', targets: ['docs/player/encyclopedia/story/main/last-toy.md'] },
+    { source: 'docs/production/private.md', targets: ['docs/dev/design/spec.md'] },
+  ] }))
+  return f
 }
 
-test('sidebar separates encyclopedia and production documents', t => {
+test('sidebar follows audience and preserves story reading order', t => {
   const { root, put } = fixture(t)
-  put('conventions.md', '# 项目约定\n')
-  const sidebar = buildSidebar(root)
-  assert.deepEqual(sidebar.map(item => item.text), ['Overview', '游戏百科', '开发'])
-  assert.deepEqual(links(sidebar), ['/', '/conventions'])
+  put('player/index.md'); put('dev/index.md'); put('dev/design/spec.md')
+  for (const name of ['last-toy', 'prologue']) put(`player/encyclopedia/story/main/${name}.md`)
+  assert.deepEqual(links(buildSidebar(root, 'player')), ['/', '/player/', '/player/encyclopedia/story/main/prologue', '/player/encyclopedia/story/main/last-toy'])
+  assert.ok(links(buildSidebar(root, 'dev')).includes('/dev/design/spec'))
 })
 
-test('new content pages appear in the sidebar', t => {
+test('data export is fail-closed and dev-only, ignoring hidden files and symlinks', t => {
   const { root, put } = fixture(t)
-  put('characters/example.md', '# 新角色\n')
-  assert.ok(links(buildSidebar(root)).includes('/characters/example'))
+  put('dev/design/data.json', '{"a":1}\n'); put('player/leak.json', '{}'); put('dev/.cache/cache.json', '{}')
+  symlinkSync(put('external.json', '{}'), join(root, 'dev/linked.json'))
+  assert.throws(() => listWikiData(root), /profile/)
+  assert.deepEqual(listWikiData(root, 'player'), [])
+  assert.deepEqual(listWikiData(root, 'dev').map(p => relative(root, p)), ['dev/design/data.json'])
+  assert.equal(copyWikiData(root, join(root, 'out'), 'dev'), 1)
+  assert.equal(readFileSync(join(root, 'out/dev/design/data.json'), 'utf8'), '{"a":1}\n')
+  assert.equal(request(root, 'player', '/dev/design/data.json').next, true)
+  assert.equal(request(root, 'dev', '/dev/design/data.json').body, '{"a":1}\n')
+  assert.equal(request(root, 'dev', '/dev/design/data.json', 'HEAD').body, undefined)
 })
 
-test('reading order precedes unlisted pages without hiding them', t => {
-  const { root, put } = fixture(t)
-  for (const name of ['agent', 'brother', 'family', 'sister', 'newcomer']) put(`characters/${name}.md`)
-  put('world/history.md'); put('world/null-city.md')
-  assert.deepEqual(links(buildSidebar(root)), [
-    '/', '/world/null-city', '/world/history',
-    '/characters/family', '/characters/brother', '/characters/sister', '/characters/agent', '/characters/newcomer',
-  ])
+test('publication requires a known profile and an actual entry page', t => {
+  const { root } = fixture(t)
+  assert.throws(() => prepareWiki(root, 'unknown'), /profile/)
+  assert.throws(() => prepareWiki(root, 'player'), /missing entry/)
 })
 
-test('section index and object README retain distinct routes', t => {
-  const { root, put } = fixture(t)
-  put('quests/index.md', '# 游戏任务\n')
-  put('quests/QST-001/README.md', '# 委托一\n')
-  put('quests/QST-001/development.md', '# 开发稿\n')
-  const routes = links(buildSidebar(root))
-  assert.deepEqual(routes, ['/', '/quests/', '/quests/QST-001/README', '/quests/QST-001/development'])
-  assert.equal(buildSidebar(root)[2].items[0].items[0].text, '委托一')
+test('isolated player tree excludes developer pages/data/public and uses redirects', t => {
+  const { root, put } = wikiFixture(t)
+  const player = prepareWiki(root, 'player'), dev = prepareWiki(root, 'dev')
+  assert.deepEqual(player.manifest.data, [])
+  assert.ok(!player.manifest.pages.some(p => p.startsWith('dev/')))
+  assert.ok(!player.manifest.public.some(p => p.includes('private')))
+  assert.deepEqual(player.manifest.aliases.map(a => a.old), ['story/main/last-toy.html'])
+  const redirect = readFileSync(join(player.source, 'public/story/main/last-toy.html'), 'utf8')
+  assert.match(redirect, /location\.hash/); assert.doesNotMatch(redirect, /米娜/)
+  assert.ok(dev.manifest.data.includes('dev/design/data.json'))
+  assert.ok(dev.manifest.aliases.some(a => a.old === 'production/private.html'))
+  put('docs/player/leak.md', '# 泄漏\n\n[内部](../dev/design/data.json)\n')
+  assert.throws(() => prepareWiki(root, 'player'), /unpublished local reference/)
 })
 
-test('stories appear in the encyclopedia with chapter order and readable group titles', t => {
-  const { root, put } = fixture(t)
-  put('story/index.md', '# 故事\n')
-  put('story/main/index.md', '# 主线：回声之后\n')
-  put('story/main/last-toy.md', '# 第一章 · 最后的玩具\n')
-  put('story/main/prologue.md', '# 序章 · 门还开着\n')
-  const encyclopedia = buildSidebar(root)[1]
-  assert.equal(encyclopedia.text, '游戏百科')
-  assert.equal(encyclopedia.items[0].items[0].text, '主线：回声之后')
-  assert.deepEqual(links(encyclopedia.items), ['/story/', '/story/main/', '/story/main/prologue', '/story/main/last-toy'])
+test('player imports and public data cannot bypass the publication boundary', t => {
+  const { root, put } = wikiFixture(t)
+  put('docs/player/leak.md', '# 泄漏\n\n<script setup>\nimport x from "../../dev/design/data.json"\n</script>\n')
+  assert.throws(() => prepareWiki(root, 'player'), /unpublished import/)
+  put('docs/player/leak.md', '# 泄漏\n\n[附件](../public/private.json)\n')
+  assert.throws(() => prepareWiki(root, 'player'), /Unsupported public/)
+  put('docs/player/leak.md', '# 泄漏\n\n![内部图片](../public/private.webp)\n')
+  assert.throws(() => prepareWiki(root, 'player'), /Unsupported public/)
 })
 
-test('navigation scans knowledge categories', t => {
-  const { root, put } = fixture(t)
-  put('todo/work.md'); put('.vitepress/cache.md'); put('public/example.md')
-  assert.deepEqual(links(buildSidebar(root)), ['/'])
+test('map projection retains actual drawing/interaction and drops author fields', () => {
+  const original = JSON.parse(readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url)))
+  original.author_notes = 'DEV_ONLY_SENTINEL'; original.places[0].brief.secret = 'DEV_ONLY_SENTINEL'
+  const projection = playerMap(original)
+  assert.equal(projection.places.length, 91)
+  assert.ok(projection.scene.objects.length > 0 && projection.scene.terrain.length > 0)
+  assert.doesNotMatch(JSON.stringify(projection), /DEV_ONLY_SENTINEL|"architectures"|"operations"|"brief"/)
+  assert.equal(projection.places.find(p => p.id === '04').page, '/player/encyclopedia/locations/shop')
 })
 
-test('data export preserves source paths and bytes', t => {
-  const { root, put } = fixture(t)
-  const json = '{"label":"中文"}\n'
-  const csv = 'line_id,text\n1,你好\n'
-  put('templates/narrative.json', json); put('quests/QST-001/dialogue.csv', csv)
-  const output = join(root, '.vitepress/dist')
-  assert.equal(copyWikiData(root, output), 2)
-  assert.equal(readFileSync(join(output, 'templates/narrative.json'), 'utf8'), json)
-  assert.equal(readFileSync(join(output, 'quests/QST-001/dialogue.csv'), 'utf8'), csv)
+test('artifact check detects injected developer raw data and search content', t => {
+  const { root, put } = wikiFixture(t), { source, output, manifest } = prepareWiki(root, 'player')
+  cpSync(join(source, 'public'), output, { recursive: true })
+  for (const page of manifest.pages) put(relative(root, join(output, page.replace(/\.md$/, '.html'))), '<html>玩家</html>')
+  assert.equal(checkWikiBuild(root, 'player').result, 'PASS')
+  put(relative(root, join(output, 'dev/secret.json')), '{}')
+  assert.throws(() => checkWikiBuild(root, 'player'), /Unexpected published data/)
+  rmSync(join(output, 'dev'), { recursive: true })
+  put(relative(root, join(output, 'assets/search.js')), 'DOCS-PIPELINE')
+  assert.throws(() => checkWikiBuild(root, 'player'), /Developer content/)
 })
-
-test('data export scans original content rather than build output', t => {
-  const { root, put } = fixture(t)
-  put('templates/data.json', '{}')
-  put('public/images/meta.json', '{}'); put('.vitepress/cache/data.json', '{}')
-  put('node_modules/pkg/package.json', '{}')
-  assert.deepEqual(listWikiData(root).map(file => relative(root, file)), ['templates/data.json'])
-})
-
-test('project assets are copied and served without a docs duplicate', t => {
-  const { root, put } = fixture(t)
-  const logo = put('source-assets/branding/logo.svg', '<svg/>')
-  const assets = [{ source: logo, path: 'branding/logo.svg' }]
-  const output = join(root, 'dist')
-  copyProjectAssets(assets, output)
-  assert.equal(readFileSync(join(output, 'project-assets/branding/logo.svg'), 'utf8'), '<svg/>')
-  const response = requestProjectAsset(assets, '/branding/logo.svg')
-  assert.equal(response.body, '<svg/>')
-  assert.equal(response.headers['Content-Type'], 'image/svg+xml')
-})
-
-test('project asset handler only serves explicitly published files', t => {
-  const { root, put } = fixture(t)
-  const external = put('external.svg', '<svg/>')
-  const assets = [{ source: external, path: 'published.svg' }]
-  assert.equal(requestProjectAsset(assets, '/external.svg').next, true)
-  assert.equal(requestProjectAsset(assets, '/../external.svg').next, true)
-})
-
-test('dev server provides raw JSON and CSV', t => {
-  const { root, put } = fixture(t)
-  put('templates/data.json', '{"a":1}')
-  put('templates/dialogue.csv', 'id,text\n1,你好\n')
-  const json = request(root, '/templates/data.json')
-  assert.equal(json.body, '{"a":1}')
-  assert.equal(json.headers['Content-Type'], 'application/json; charset=utf-8')
-  assert.equal(json.next, false)
-  const csv = request(root, '/templates/dialogue.csv')
-  assert.equal(csv.body, 'id,text\n1,你好\n')
-})
-
-test('HEAD sends data headers with an empty body', t => {
-  const { root, put } = fixture(t)
-  put('templates/data.json', '{}')
-  const result = request(root, '/templates/data.json', 'HEAD')
-  assert.equal(result.next, false); assert.equal(result.body, undefined)
-  assert.equal(result.headers['Content-Type'], 'application/json; charset=utf-8')
-})
-
-test('other requests continue through Vite', t => {
-  const { root, put } = fixture(t)
-  put('templates/data.json', '{}')
-  for (const [url, method] of [['/vision', 'GET'], ['/missing.json', 'GET'], ['/templates/data.json?import', 'GET'], ['/templates/data.json', 'POST']]) {
-    assert.equal(request(root, url, method).next, true)
-  }
-})
-
-test('public and configuration paths use their own handlers', t => {
-  const { root, put } = fixture(t)
-  put('.vitepress/config.json', '{}'); put('public/images/data.json', '{}')
-  for (const url of ['/.vitepress/config.json', '/public/images/data.json']) {
-    assert.equal(request(root, url).next, true)
-  }
-})
-
-test('encoded data paths are served', t => {
-  const { root, put } = fixture(t)
-  put('templates/a b.csv', 'x,y\n')
-  assert.equal(request(root, '/templates/a%20b.csv').body, 'x,y\n')
-})
-
-test('data handler keeps file resolution inside the source root', t => {
-  const { root, put } = fixture(t)
-  const source = join(root, 'docs'); mkdirSync(source)
-  const external = put('external.json', '{}')
-  symlinkSync(external, join(source, 'linked.json'))
-  assert.equal(request(source, '/linked.json').next, true)
-  assert.deepEqual(listWikiData(source), [])
-})
-
 
 test('inline template placeholders remain literal Vue text', async () => {
   const { createMarkdownRenderer } = await import('vitepress')
-  const { default: config } = await import('../../docs/.vitepress/config.mjs')
-  const md = await createMarkdownRenderer(process.cwd(), config.markdown)
-  assert.match(md.render('`{{交付目标、相关设计}}`'), /<code v-pre[^>]*>\{\{交付目标、相关设计\}\}<\/code>/)
-})
-
-test('published map JSON is served with its JSON content type', t => {
-  const { root, put } = fixture(t)
-  const source = put('district.json', '{"version":1}')
-  const result = requestProjectAsset([{ source, path: 'district-map/district.json' }], '/district-map/district.json')
-  assert.equal(result.headers['Content-Type'], 'application/json; charset=utf-8')
-  assert.equal(result.body, '{"version":1}')
+  const { markdown } = await import('../../docs/.vitepress/config.mjs')
+  const md = await createMarkdownRenderer(process.cwd(), markdown)
+  assert.match(md.render('`{{交付目标}}`'), /<code v-pre[^>]*>\{\{交付目标\}\}<\/code>/)
 })

@@ -1,10 +1,10 @@
 <script setup>
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { withBase } from 'vitepress'
-import data from '../../../source-assets/district-map/district.json'
-import { buildScene, heightColor, project } from '../../../tools/district-map.mjs'
+import data from '@wiki-data/map.json'
+import { heightColor, project } from '../../../tools/district-map.mjs'
 
-const scene=buildScene(data)
+const scene=data.scene
 const svg=ref(null),mode=ref('scape'),frame=ref('all'),selected=ref(null),names=ref(true),expanded=ref(false)
 const size=ref([700,700]),camera=ref({x:260,y:-140,width:1700})
 const place=computed(()=>data.places.find(p=>p.id===selected.value))

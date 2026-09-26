@@ -1,32 +1,31 @@
-import { chmodSync, copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, statSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync } from 'node:fs'
 import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 
 const TYPES = { '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8' }
-const EXCLUDED = new Set(['public', 'node_modules'])
-
-function within(root, path) {
+export const PROFILES = ['player', 'dev']
+export function assertProfile(profile) {
+  if (!PROFILES.includes(profile)) throw new Error(`Unknown Wiki profile: ${profile}`)
+}
+export function within(root, path) {
   const name = relative(root, path)
-  return !isAbsolute(name) && name !== '..' && !name.startsWith(`..${sep}`) && !name.startsWith(sep)
+  return !isAbsolute(name) && name !== '..' && !name.startsWith(`..${sep}`)
+}
+export function filesIn(root) {
+  if (!existsSync(root)) return []
+  return readdirSync(root, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name, 'en')).flatMap(entry => {
+    if (entry.name.startsWith('.') || entry.isSymbolicLink()) return []
+    const file = join(root, entry.name)
+    return entry.isDirectory() ? filesIn(file) : entry.isFile() ? [file] : []
+  })
 }
 
-/** List source data that accompanies the Wiki's Markdown pages. */
-export function listWikiData(root) {
-  const files = []
-  function walk(directory) {
-    for (const entry of readdirSync(directory, { withFileTypes: true })) {
-      if (entry.name.startsWith('.') || EXCLUDED.has(entry.name)) continue
-      const file = join(directory, entry.name)
-      if (entry.isDirectory()) walk(file)
-      else if (entry.isFile() && TYPES[extname(file)]) files.push(file)
-    }
-  }
-  walk(root)
-  return files.sort()
+// Raw design data is dev-only; player data is an explicit generated map projection
+export function listWikiData(root, profile) {
+  assertProfile(profile)
+  return profile === 'dev' ? filesIn(join(root, 'dev')).filter(file => TYPES[extname(file)]) : []
 }
-
-/** Export data with its existing relative URL after the VitePress build. */
-export function copyWikiData(root, output) {
-  const files = listWikiData(root)
+export function copyWikiData(root, output, profile) {
+  const files = listWikiData(root, profile)
   for (const file of files) {
     const target = join(output, relative(root, file))
     mkdirSync(dirname(target), { recursive: true })
@@ -34,10 +33,9 @@ export function copyWikiData(root, output) {
   }
   return files.length
 }
-
-/** Serve the same source data when browsing the local VitePress dev server. */
-export function wikiDataPlugin(sourceRoot) {
+export function wikiDataPlugin(sourceRoot, profile) {
   const root = realpathSync(sourceRoot)
+  const allowed = new Set(listWikiData(root, profile).map(file => resolve(file)))
   return {
     name: 'n-side-wiki-data',
     configureServer(server) {
@@ -46,55 +44,11 @@ export function wikiDataPlugin(sourceRoot) {
         try {
           const url = new URL(req.url ?? '/', 'http://localhost')
           if (url.searchParams.has('import')) return next()
-          const name = decodeURIComponent(url.pathname).replace(/^\/+/, '')
-          if (name.split('/').some(part => part.startsWith('.') || EXCLUDED.has(part))) return next()
-          const type = TYPES[extname(name)]
-          const file = resolve(root, name)
-          if (!type || !within(root, file) || !existsSync(file) || !statSync(file).isFile()) return next()
-          if (!within(root, realpathSync(file))) return next()
-          res.setHeader('Content-Type', type)
+          const file = resolve(root, decodeURIComponent(url.pathname).replace(/^\/+/, ''))
+          if (!allowed.has(file) || !within(root, realpathSync(file))) return next()
+          res.setHeader('Content-Type', TYPES[extname(file)])
           res.end(req.method === 'HEAD' ? undefined : readFileSync(file))
-        } catch (error) {
-          next(error)
-        }
-      })
-    },
-  }
-}
-
-/** Export project-level assets under a stable Wiki URL. */
-export function copyProjectAssets(sourceRoot, output) {
-  const publicRoot = join(output, 'project-assets')
-  mkdirSync(publicRoot, { recursive: true })
-  chmodSync(publicRoot, 0o755)
-  for (const asset of sourceRoot) {
-    const target = join(publicRoot, asset.path)
-    mkdirSync(dirname(target), { recursive: true })
-    chmodSync(dirname(target), 0o755)
-    copyFileSync(asset.source, target)
-    chmodSync(target, 0o644)
-  }
-  return sourceRoot.length
-}
-
-/** Serve project-level assets without keeping a second copy under docs/. */
-export function projectAssetsPlugin(sourceRoot) {
-  const assets = new Map(sourceRoot.map(asset => [`/${asset.path}`, realpathSync(asset.source)]))
-  return {
-    name: 'n-side-project-assets',
-    configureServer(server) {
-      server.middlewares.use('/project-assets', (req, res, next) => {
-        if (!['GET', 'HEAD'].includes(req.method)) return next()
-        try {
-          const name = decodeURIComponent(new URL(req.url ?? '/', 'http://localhost').pathname)
-          const file = assets.get(name)
-          if (!file || !statSync(file).isFile()) return next()
-          const type = TYPES[extname(file)] ?? (extname(file) === '.svg' ? 'image/svg+xml' : undefined)
-          if (type) res.setHeader('Content-Type', type)
-          res.end(req.method === 'HEAD' ? undefined : readFileSync(file))
-        } catch (error) {
-          next(error)
-        }
+        } catch (error) { next(error) }
       })
     },
   }

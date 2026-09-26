@@ -31,7 +31,7 @@ function page(root, file) {
 
 function section(root, directory, label) {
   if (!existsSync(directory)) return null
-  const order = readingOrder[relative(root, directory)] ?? []
+  const order = readingOrder[relative(root, directory).replace(/^player\/encyclopedia\//, '')] ?? []
   const rank = name => order.includes(name) ? order.indexOf(name) : order.length
   const entries = readdirSync(directory, { withFileTypes: true })
     .filter(entry => !entry.name.startsWith('.'))
@@ -57,22 +57,20 @@ function section(root, directory, label) {
 }
 
 /** Build encyclopedia and production navigation groups. */
-export function buildSidebar(root) {
+export function buildSidebar(root, profile = 'dev') {
+  const encyclopedia = ['world', 'characters', 'locations', 'story', 'enemies', 'gameplay']
+  const labels = ['世界', '人物', '地点', '故事', '敌人', '玩法']
   const groups = [
-    ['游戏百科', [['世界', 'world'], ['人物', 'characters'], ['地点', 'locations'], ['故事', 'story'], ['敌人', 'enemies'], ['玩法', 'gameplay']]],
-    ['开发', [['叙事', 'narrative'], ['任务', 'quests'], ['制作', 'production'], ['模板', 'templates']]],
+    { text: '玩家资料', items: [
+      page(root, join(root, 'player/index.md')),
+      section(root, join(root, 'player/guide'), '操作指南'),
+      ...encyclopedia.map((name, index) => section(root, join(root, 'player/encyclopedia', name), labels[index])),
+    ].filter(Boolean) },
   ]
-  return [
-    {
-      text: 'Overview',
-      link: '/',
-    },
-    ...groups.map(([text, sections]) => {
-      const items = sections.map(([label, directory]) => section(root, join(root, directory), label)).filter(Boolean)
-      if (text === '开发' && existsSync(join(root, 'conventions.md'))) {
-        items.unshift({ ...page(root, join(root, 'conventions.md')), text: '项目约定' })
-      }
-      return { text, items }
-    }),
-  ]
+  if (profile === 'dev') groups.push({ text: '开发资料', items: [
+    page(root, join(root, 'dev/index.md')),
+    ...['direction', 'design', 'engineering', 'production', 'validation', 'handbook', 'decisions'].map((name, index) =>
+      section(root, join(root, 'dev', name), ['方向', '设计', '工程', '制作', '验收', '开发手册', '决策'][index])),
+  ].filter(Boolean) })
+  return [{ text: 'N:SIDE', link: '/' }, ...groups]
 }
