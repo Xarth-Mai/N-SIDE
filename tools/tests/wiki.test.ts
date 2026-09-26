@@ -37,6 +37,7 @@ function wikiFixture(t: TestContext) {
   f.put('docs/public/private.json', '{"DEV_ONLY_SENTINEL":true}')
   f.put('docs/public/private.webp', 'DEV_ONLY_SENTINEL')
   f.put('source-assets/branding/n-logo.svg', '<svg/>')
+  for (const name of ['favicon.ico', 'apple-touch-icon.png']) f.put(`docs/public/${name}`, readFileSync(new URL(`../../docs/public/${name}`, import.meta.url)))
   for (const name of ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts', 'story-graph.ts']) f.put(`tools/${name}`, readFileSync(new URL(`../${name}`, import.meta.url)))
   for (const name of ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue', 'StoryGraph.vue', 'StoryCondition.vue']) f.put(`docs/.vitepress/components/${name}`, readFileSync(new URL(`../../docs/.vitepress/components/${name}`, import.meta.url)))
   const quest = JSON.parse(readFileSync(new URL('../../docs/dev/design/catalogs/quests.json', import.meta.url),'utf8')).quests.find((q: {id:string})=>q.id==='QST-002')
@@ -85,6 +86,11 @@ test('isolated player tree excludes developer pages/data/public and uses redirec
   const player = prepareWiki(root, 'player'), dev = prepareWiki(root, 'dev')
   assert.equal(dev.output, join(root, 'docs/.vitepress/dist'))
   assert.equal(player.output, join(root, 'docs/.vitepress/dist-player'))
+  for (const name of ['favicon.ico', 'apple-touch-icon.png']) {
+    assert.ok(player.manifest.public.includes(name))
+    assert.ok(dev.manifest.public.includes(name))
+    assert.deepEqual(readFileSync(join(player.source, 'public', name)), readFileSync(join(root, 'docs/public', name)))
+  }
   assert.deepEqual(player.manifest.data, [])
   assert.doesNotMatch(readFileSync(join(player.source, 'player/story/main/last-toy.md'), 'utf8'), /design_state|subject_id/)
   assert.ok(!player.manifest.pages.some(p => p.startsWith('dev/')))

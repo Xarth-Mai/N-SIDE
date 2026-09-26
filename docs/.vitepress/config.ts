@@ -26,7 +26,11 @@ export function wikiConfig({ root, source, profile }: { root: string; source: st
     base: '/', cleanUrls: true, markdown,
     outDir: wikiOutput(root, profile), cacheDir: resolve(source, '../cache'),
     srcExclude: ['_components/**', '_tools/**', '_data/**'],
-    head: [['link', { rel: 'icon', href: '/project-assets/branding/n-logo.svg', type: 'image/svg+xml' }]],
+    head: [
+      ['link', { rel: 'icon', href: '/favicon.ico', sizes: '16x16 32x32 48x48' }],
+      ['link', { rel: 'icon', href: '/project-assets/branding/n-logo.svg', type: 'image/svg+xml' }],
+      ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
+    ],
     themeConfig: {
       logo: '/project-assets/branding/n-logo.svg', siteTitle: `N:SIDE ${profile === 'player' ? '百科' : '开发'}`,
       nav: [

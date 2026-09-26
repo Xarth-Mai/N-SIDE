@@ -117,6 +117,7 @@ export function prepareWiki(root: string, profile: string) {
   }
   for (const file of listWikiData(docs, profile)) copy(file, join(source, relative(docs, file)))
   for (const file of publicFiles) copy(file, join(source, 'public', relative(join(docs, 'public'), file)))
+  for (const name of ['favicon.ico', 'apple-touch-icon.png']) copy(join(docs, 'public', name), join(source, 'public', name))
   copy(join(root, 'source-assets/branding/n-logo.svg'), join(source, 'public/project-assets/branding/n-logo.svg'))
   const district = JSON.parse(readFileSync(join(root, 'source-assets/district-map/district.json'), 'utf8'))
   const map = playerMap(district)

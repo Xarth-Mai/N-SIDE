@@ -20,3 +20,9 @@
 使用 `asset_report.py --expect-size 512x512 --require-alpha --json` 检查运行 PNG；`--require-alpha` 仅要求存在 alpha 通道。Logo 保留源 SVG 中的不透明黑底，不使用 `--require-cutout`，也不因通道存在判断图片透明
 
 使用 `tools/asset_preview.py` 以 Lanczos 生成白、深灰、洋红三底色预览；显示尺寸按实际使用处缩放计算，当前启动画面 `512 × 0.4` 取近似 `205×205`，实现变化后重新核对。预览进入 `output/`，逐图观察轮廓、细线、裁切和边缘，将机器结果与视觉自查分开记录；实际窗口表现按[运行验证](../../docs/dev/validation/runtime.md)另验
+
+## Wiki 图标派生
+
+`docs/public/favicon.ico` 包含 16、32、48 像素图层，`docs/public/apple-touch-icon.png` 为 180 像素。两者由现有 `game/assets/branding/n-logo.png` 使用 Pillow 导出，Apple 图标采用 Lanczos 缩放；保留黑底、构图与 SVG 唯一源，更新 Logo 时同步重新导出
+
+Wiki 显式发布根路径 favicon 和 Apple 图标，同时保留 SVG 图标，供不同浏览器与收藏入口选择
