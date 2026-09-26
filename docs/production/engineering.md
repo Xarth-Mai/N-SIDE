@@ -26,4 +26,14 @@ id: DOC-TECHNICAL
 
 代码变更执行项目的格式、编译与测试命令。图形验证记录场景、设备、分辨率、输入方式、帧时间、内存与加载时间
 
+连续输入、离屏 capture 与状态断言采用[运行验证](runtime-validation.md)，命令入口为仓库 `game/README.md` 与 `tools/capture.py`。开发证据、参考帧和缓存放在忽略的 `output/`，运行资产保持独立
+
 按项目的平台定位，在 Linux 和 Windows 上验证 Vulkan 渲染与手柄、键鼠输入。性能目标依据原型和完整样板的实际测量制定
+
+## 已有排错入口
+
+当前 `Cargo.lock` 锁定 Bevy 0.19.1，`jpeg` 和 `dds` 特性已开启，分别服务 glTF 图像与现有环境贴图。新增格式先核对资产实际编码及加载日志，不仅看文件扩展名。新增插件先用 `cargo tree --manifest-path game/Cargo.toml -d` 核对重复的 Bevy 小版本，再决定兼容方案
+
+模型空白时先看递归依赖加载与材质槽诊断；程序几何不可见时看三角形绕序、法线与背面剔除，层级不可见时看祖先的 `Visibility` 和变换。相应校验集中在 `world::assets`、`world::geometry` 与 `world::scene`，具体问题通过相关测试复现
+
+场景启动就绪沿用 `[world/ready]`，未来增加场景切换时再落实退出清理与重复进入测试，不因参考指南预先重排整个应用。现有 dev profile 已对依赖启用优化，capture 的固定步长与逐帧落盘不能当成正常游玩性能成绩

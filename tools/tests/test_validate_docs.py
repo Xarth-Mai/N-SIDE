@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -98,6 +99,15 @@ class DocumentTests(unittest.TestCase):
         self.write('.agents/skills/create/SKILL.md', '---\nname: other\n---\n# Create\n')
         self.assertIn('目录名对应', self.messages())
         self.assertIn('description 缺失', self.messages())
+
+    def test_upstream_style_is_checked_by_skill_validator(self):
+        self.write('.agents/skills/original/SKILL.md', '---\nname: original\ndescription: >-\n  Original description\n---\nOriginal text  \n')
+        self.write('third_party/skills/manifest.json', json.dumps({'skills': [{
+            'local_path': '.agents/skills/original', 'mode': 'verbatim',
+            'files': [{'path': 'SKILL.md'}]}]}))
+        self.assertTrue(self.result()['ok'])
+        self.write('.agents/skills/original/UPSTREAM.md', '# Source\n[Missing](absent.md)\n')
+        self.assertIn('链接目标缺失', self.messages())
 
     def test_state_value(self):
         self.write('todo/a.md', '---\nid: TASK-001\nstatus: approved\n---\n# Task\n')

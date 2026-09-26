@@ -1,0 +1,32 @@
+{
+  "scene": "district",
+  "view": "shop",
+  "width": 640,
+  "height": 360,
+  "fps": 30,
+  "frames": 540,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [0, 60, 149, 239, 329, 419, 539],
+  "events": [
+    {"start": 0, "end": 1, "keys": ["M"]},
+    {"start": 30, "end": 60, "keys": ["A"]},
+    {"start": 90, "end": 150, "look": [5.0, 0.0]},
+    {"start": 180, "end": 225, "keys": ["D"]},
+    {"start": 240, "end": 241, "keys": ["Escape", "W"]},
+    {"start": 241, "end": 300, "keys": ["W"], "look": [8.0, 0.0]},
+    {"start": 300, "end": 301, "keys": ["M"]},
+    {"start": 301, "end": 330, "keys": ["A"]},
+    {"start": 360, "end": 420, "look": [-5.0, 0.0]},
+    {"start": 450, "end": 480, "keys": ["E"]},
+    {"start": 510, "end": 511, "keys": ["Escape"]}
+  ],
+  "assertions": [
+    {"name": "strafe_uses_real_controller", "from": 29, "to": 59, "min_distance": 11.9},
+    {"name": "look_changes_orientation", "from": 89, "to": 149, "min_rotation": 0.29},
+    {"name": "escape_blocks_held_input", "from": 240, "to": 299, "max_distance": 0.0001, "enabled": false},
+    {"name": "toggle_restores_movement", "from": 300, "to": 329, "min_distance": 11.5, "enabled": true},
+    {"name": "release_friction_settles", "from": 505, "to": 509, "max_distance": 0.0001},
+    {"name": "final_release_is_stable", "from": 510, "to": 539, "max_distance": 0.0001, "enabled": false}
+  ]
+}

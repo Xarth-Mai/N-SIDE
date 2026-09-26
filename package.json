@@ -6,15 +6,17 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "bun install --frozen-lockfile && bun run check:map && vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "check:docs": "python3 -B tools/validate_docs.py --root .",
+    "check:docs": "python3 -B tools/validate_docs.py --root . && bun run check:skills",
     "check:narrative": "python3 -B tools/validate_narrative.py --root .",
     "check:story-design": "python3 -B tools/validate_story_design.py --root .",
     "check:templates": "python3 -B tools/validate_narrative.py --file docs/templates/narrative.json",
-    "test:tools": "python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests/wiki.test.mjs tools/tests/district-map.test.mjs",
+    "test:tools": "python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests",
     "check:map": "bun test tools/tests/district-map.test.mjs",
     "roadmap": "python3 -B tools/roadmap.py --root .",
     "roadmap:sync": "python3 -B tools/roadmap.py --root . --write",
-    "check:roadmap": "python3 -B tools/roadmap.py --root . --check"
+    "check:roadmap": "python3 -B tools/roadmap.py --root . --check",
+    "check:skills": "bun tools/validate-skills.mjs",
+    "capture": "python3 tools/capture.py"
   },
   "devDependencies": {
     "delaunator": "5.0.1",

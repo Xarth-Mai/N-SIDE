@@ -56,3 +56,32 @@ game/target/release/map_viewer --view eye-shop
 game/target/release/map_viewer --aa taa-ssao --view eye-shop --verify-headless /tmp/n-side-ao-check
 game/target/release/map_viewer --uncapped --view eye-corner --verify /tmp/n-side-window-check
 ```
+
+## 连续操作 capture
+
+`map_viewer --capture` 使用上面的世界、材质、相机与控制器，通过输入资源驱动已有的 WASD、鼠标观察、M 捕获和 Esc 释放。当前首个场景是小店外的自由相机操作，不包含尚未实现的人物碰撞、任务或动画验收
+
+脚本使用 Python 3.10+ 与资产流程共享的 Pillow 依赖，安装声明见 [create-game-assets requirements](../.agents/skills/create-game-assets/scripts/requirements.txt)。以下命令可直接在 fish 中执行；输出目录必须是新的，默认先构建 debug Viewer，已有构建可加 `--binary game/target/debug/map_viewer`
+
+```fish
+python3 tools/capture.py --output output/capture/viewer-tour
+python3 tools/capture.py --script game/capture/assertion-failure.json --output output/capture/assertion-failure --binary game/target/debug/map_viewer
+test $status -ne 0
+```
+
+第一条录制 18 秒、640 × 360、30 fps 的真实输入过程，检查横移、转向、释放后停稳和恢复控制。第二条故意要求相机在短时间内移动 1000 m，必须产生 `FAIL` 及非零退出码；它用于验证断言没有失效
+
+`game/capture/viewer-tour.json` 是输入与预期的唯一源：`scene` 当前支持 `district`，`view` 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/Shift/M/Escape，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角或结束时控制器启用状态
+
+资源依赖和场景实例就绪后预热 30 个渲染帧，再按 `1 / fps` 推进模拟；每张截图收到异步回调并成功落盘后才推进下一帧，等待期间模拟时间为零。固定输入与时间步改善同环境复现，不能保证跨平台、跨 GPU 的像素一致性；当前场景没有随机行为，`seed` 只作为证据记录，尚无随机系统消费它
+
+输出包含 `frames/` 连续 PNG、`keyframes/` 选定帧、`script.json`、`state.json` 断言与每帧状态、`runtime.log`，以及 `run.json` 中的提交、工作树状态、二进制与 Cargo.lock 哈希、命令和耗时。检测到 ffmpeg 时生成 `video.mp4`，缺少时明确记录 `NOT RUN` 并保留完整图片序列；墙钟时间不作为游戏帧率指标
+
+机器检查覆盖资产就绪、每帧有限 Transform、完整截图与脚本断言。读取、写入、超时和断言错误均返回非零退出码，原始诊断留在日志。交付前实际打开关键帧和连续帧，或播放视频，分别记录构图、遮挡、材质和动作观察；生成成功不自动等于视觉通过。`output/` 属于忽略的验收产物，不能进入 `game/assets/`
+
+```fish
+python3 -B -m unittest discover -s tools/tests -p test_capture.py
+cargo test --manifest-path game/Cargo.toml --features viewer --locked
+```
+
+这些测试不依赖 GPU，检查输入脚本、证据序列和进程超时；实际渲染仍需 Vulkan 设备。无设备时保留失败诊断并在具备 GPU 的环境运行录制命令，不将跳过计为通过

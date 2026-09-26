@@ -15,7 +15,7 @@ description: Execute or resume a N:SIDE work package through explain, decide, bu
 
 将当前工作包设为 `in_progress`，维护 `work.round`、`step`、`record`、`next_action`。轮次使用明确记录锚点，例如 `todo/demo-worklog.md#m1-03-r02`；持续记录输入提交／校验和、实际结果、未测项和反馈。简单客观交付可省略空 work，保留真实证据即可
 
-复用 `create-case`、`create-content`、`review-narrative` 以及所属设计与资产规范。代码、数据和源资产按既有单一来源维护。执行适用检查；无法执行的图形、Windows、手柄、Codex 或人工测试明确记 NOT RUN
+专业方法先读 `nside` 项目适配入口，再按需复用原版 Skill 与既有 `create-case`、`create-content`、`review-narrative`。代码、数据和源资产按既有单一来源维护。检查与真实运行采用 `docs/production/runtime-validation.md`，获取画面及状态证据、实际观察、修复后复验；无法执行的图形、Windows、手柄、Codex 或人工测试明确记 NOT RUN
 
 交给作者试玩时提供确切启动方法、短路线和最多三个观察问题。需要作者或玩家体验判断的项，在缺少真实反馈时停在 `review`，不能用截图、自动测试或模拟“作者满意”代替操作和品质判断；纯技术交付按 `reviewer: codex` 的实际检查结果验收。客观检查失败时在授权范围内依据新证据继续修复；重复失败且无法取得新证据时，报告具体阻碍和所需输入
 

@@ -1,3 +1,6 @@
+#[path = "map_viewer/capture.rs"]
+mod capture;
+
 use bevy::{
     anti_alias::taa::TemporalAntiAliasing,
     app::ScheduleRunnerPlugin,
@@ -60,6 +63,8 @@ fn run() -> Result<AppExit, String> {
     let mut aa = Antialiasing::Msaa4;
     let mut selected_view = None;
     let mut uncapped = false;
+    let mut capture_script = None;
+    let mut capture_output = None;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         match arg.as_str() {
@@ -67,6 +72,16 @@ fn run() -> Result<AppExit, String> {
                 root = PathBuf::from(args.next().ok_or("--project-root requires a directory")?)
             }
             "--validate" => validate = true,
+            "--capture" => {
+                capture_script = Some(PathBuf::from(
+                    args.next().ok_or("--capture requires a script")?,
+                ))
+            }
+            "--output" => {
+                capture_output = Some(PathBuf::from(
+                    args.next().ok_or("--output requires a directory")?,
+                ))
+            }
             "--visual" => {
                 visual_path = Some(PathBuf::from(
                     args.next().ok_or("--visual requires a JSON path")?,
@@ -88,13 +103,29 @@ fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--validate           Check map, geometry, appearance and daylight without a GPU\n--verify DIRECTORY   Automated fixed-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n--visual PATH        Daylight JSON (default source-assets/district-scene/daylight.json)\n--aa MODE            msaa4 (default), taa, taa-ssao\n--view NAME          Start at or verify one fixed view\n--uncapped           Disable window VSync for measurement\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
+                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--validate           Check map, geometry, appearance and daylight without a GPU\n--capture SCRIPT --output DIRECTORY  Scripted offscreen interaction evidence\n--verify DIRECTORY   Automated fixed-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n--visual PATH        Daylight JSON (default source-assets/district-scene/daylight.json)\n--aa MODE            msaa4 (default), taa, taa-ssao\n--view NAME          Start at or verify one fixed view\n--uncapped           Disable window VSync for measurement\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
                 );
                 return Ok(AppExit::Success);
             }
             _ => return Err(format!("unknown option {arg:?}; use --help")),
         }
     }
+    if capture_script.is_some() != capture_output.is_some() {
+        return Err("--capture and --output must be used together".into());
+    }
+    if capture_script.is_some() && (verify.is_some() || selected_view.is_some() || validate) {
+        return Err("--capture selects its own scene/view; cannot combine with --verify, --view or --validate".into());
+    }
+    let capture = capture_script
+        .map(|path| capture::Recording::load(&path, capture_output.unwrap()))
+        .transpose()?;
+    if let Some(recording) = &capture {
+        headless = true;
+        selected_view = Some(recording.script.view.clone());
+    }
+    let (width, height) = capture.as_ref().map_or((2560, 1440), |recording| {
+        (recording.script.width, recording.script.height)
+    });
     let root = root
         .canonicalize()
         .map_err(|e| format!("[startup/root] {}: {e}", root.display()))?;
@@ -322,6 +353,7 @@ fn run() -> Result<AppExit, String> {
             ..default()
         })
         .set(RenderPlugin {
+            synchronous_pipeline_compilation: capture.is_some(),
             render_creation: RenderCreation::Automatic(Box::new(WgpuSettings {
                 backends: Some(Backends::VULKAN),
                 ..default()
@@ -342,8 +374,8 @@ fn run() -> Result<AppExit, String> {
             move |mut commands: Commands, mut images: ResMut<Assets<Image>>| {
                 let render_target = if headless {
                     let handle = images.add(Image::new_target_texture(
-                        2560,
-                        1440,
+                        width,
+                        height,
                         TextureFormat::Rgba8UnormSrgb,
                         None,
                     ));
@@ -383,6 +415,9 @@ fn run() -> Result<AppExit, String> {
     if headless {
         app.add_plugins(ScheduleRunnerPlugin::run_loop(std::time::Duration::ZERO));
     }
+    if let Some(recording) = capture {
+        capture::install(&mut app, recording);
+    }
     if let Some(output) = verify {
         std::fs::create_dir_all(&output)
             .map_err(|e| format!("[verify/output] {}: {e}", output.display()))?;
@@ -409,11 +444,11 @@ fn camera_focus(
     mut windows: Query<(&Window, &mut CursorOptions), With<PrimaryWindow>>,
     mut cameras: Query<&mut FreeCameraState>,
 ) {
-    let Ok((window, mut cursor)) = windows.single_mut() else {
-        return;
-    };
+    // Offscreen capture uses the same focus policy without a physical window
+    let mut window = windows.single_mut().ok();
+    let focused = window.as_ref().is_none_or(|(window, _)| window.focused);
     for mut state in &mut cameras {
-        if !window.focused
+        if !focused
             || keys.just_pressed(KeyCode::Escape)
             || !loading.ready
             || verification.is_some()
@@ -421,8 +456,10 @@ fn camera_focus(
             state.enabled = false;
             state.velocity = Vec3::ZERO;
             state.rotation_curve = None;
-            cursor.grab_mode = CursorGrabMode::None;
-            cursor.visible = true;
+            if let Some((_, cursor)) = &mut window {
+                cursor.grab_mode = CursorGrabMode::None;
+                cursor.visible = true;
+            }
         } else if mouse.just_pressed(MouseButton::Right) || keys.just_pressed(KeyCode::KeyM) {
             state.enabled = true;
         }

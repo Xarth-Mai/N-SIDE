@@ -10,7 +10,7 @@ from typing import Any
 from urllib.parse import unquote, urlsplit
 
 SCOPES = ('docs', 'todo', '.agents/skills', 'source-assets')
-TOP_FILES = ('README.md', 'AGENTS.md', 'tools/README.md', 'game/README.md')
+TOP_FILES = ('README.md', 'AGENTS.md', 'THIRD_PARTY_NOTICES.md', 'tools/README.md', 'game/README.md')
 ID_PATTERN = re.compile(r'(?:DOC-[A-Z0-9-]+|(?:QST|ENM|CHR|LOC|WORLD|EVT|TASK|ADR)-\d{3,})\Z')
 DESIGN_STATES = {'draft', 'approved', 'superseded'}
 TASK_STATES = {'backlog', 'ready', 'in_progress', 'blocked', 'done', 'cancelled'}
@@ -70,19 +70,31 @@ def prose(text: str) -> str:
 
 
 def markdown_files(root: Path) -> list[Path]:
+    # 上游原版遵守其自身 Markdown / YAML 格式，由 validate-skills.mjs 单独校验
+    manifest = root / 'third_party/skills/manifest.json'
+    originals = set()
+    if manifest.is_file():
+        imports = json.loads(manifest.read_text(encoding='utf-8'))
+        originals = {root / skill['local_path'] / file['path']
+                     for skill in imports['skills'] if skill['mode'] == 'verbatim'
+                     for file in skill['files']}
     files = {root / name for name in TOP_FILES if (root / name).is_file()}
     for scope in SCOPES:
         files.update(path for path in (root / scope).rglob('*.md')
                      if not any(part in {'.vitepress', 'node_modules', 'public'}
                                 for part in path.relative_to(root / scope).parts))
-    return sorted(files)
+    return sorted(files - originals)
 
 
 def validate(root: Path) -> dict[str, Any]:
     root = root.resolve()
     issues: list[dict[str, Any]] = []
     records: dict[str, tuple[Path, dict[str, Any]]] = {}
-    documents = markdown_files(root)
+    try:
+        documents = markdown_files(root)
+    except (OSError, UnicodeError, ValueError, KeyError, TypeError) as exc:
+        return {'files': 0, 'records': 0, 'ok': False, 'issues': [
+            {'file': 'third_party/skills/manifest.json', 'line': 1, 'message': str(exc)}]}
 
     def issue(path: Path, message: str, line: int = 1) -> None:
         issues.append({'file': path.relative_to(root).as_posix(), 'line': line, 'message': message})

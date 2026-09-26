@@ -1,0 +1,65 @@
+name: Project checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      render:
+        description: Run the real Viewer capture on the configured Vulkan runner
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  documents-and-tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install -r .agents/skills/create-game-assets/scripts/requirements.txt
+      - run: bun install --frozen-lockfile
+      - run: bun run check:docs
+      - run: bun run check:roadmap
+      - run: bun run check:narrative
+      - run: bun run check:story-design
+      - run: bun run check:templates
+      - run: bun run test:tools
+      - run: bun run docs:build
+
+  game-cpu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.98.1
+          components: rustfmt, clippy
+      - run: sudo apt-get update && sudo apt-get install -y pkg-config libasound2-dev libudev-dev libx11-dev libxkbcommon-dev libwayland-dev
+      - run: cargo fmt --manifest-path game/Cargo.toml --check
+      - run: cargo clippy --manifest-path game/Cargo.toml --locked --all-targets --features viewer -- -D warnings
+      - run: cargo test --manifest-path game/Cargo.toml --locked --features viewer
+      - run: cargo build --manifest-path game/Cargo.toml --locked --features viewer
+      - run: game/target/debug/map_viewer --project-root . --validate
+
+  render:
+    name: Vulkan capture (manual; separate from CPU checks)
+    if: github.event_name == 'workflow_dispatch' && inputs.render
+    runs-on: [self-hosted, linux, x64, nside-vulkan]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/capture.py --script game/capture/viewer-tour.json --output output/capture/ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: viewer-capture
+          path: output/capture/ci/
+          if-no-files-found: error

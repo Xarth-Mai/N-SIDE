@@ -26,3 +26,6 @@ docs/.vitepress/dist/
 game/target/
 __pycache__/
 *.py[cod]
+
+# Runtime captures, asset previews, reference frames and validation caches
+/output/

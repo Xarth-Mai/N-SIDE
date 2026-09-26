@@ -1,0 +1,16 @@
+should_fire:
+  - 'design an adaptive, interactive music system that scales intensity with combat'
+  - 'set up an FMOD or Wwise project structure with event parameters and buses'
+  - 'create visceral sound effects for weapon impacts, footsteps, and spells'
+  - 'implement audio occlusion, environmental reverb zones, and spatial sound'
+  - 'manage audio memory budgets, voice limiting, and sound ducking priorities'
+  - 'design diegetic audio cues that alert players to off-screen enemy threats'
+  - 'integrate dynamic footstep audio that changes based on ground surface types'
+  - 'mix game audio levels to maintain clean dialogue clarity amidst loud explosions'
+should_not_fire:
+  - prompt: 'build voice transcription pipelines using Whisper'
+    expect: 'speech-pipelines'
+  - prompt: 'produce audio voiceovers for marketing video ads'
+    expect: 'video-production'
+  - prompt: 'implement gameplay code in Unreal Engine C++'
+    expect: 'unreal-systems'
