@@ -5,7 +5,7 @@ import { defineConfig } from 'vitepress'
 import { isAbsolute, join, resolve } from 'node:path'
 import { existsSync, realpathSync } from 'node:fs'
 import { buildSidebar } from './sidebar.ts'
-import { copyWikiData, wikiDataPlugin, within } from '../../tools/wiki-data.ts'
+import { copyWikiData, wikiDataPlugin, within, wikiOutput } from '../../tools/wiki-data.ts'
 
 export const markdown: MarkdownOptions = {
   config(md) {
@@ -24,7 +24,7 @@ export function wikiConfig({ root, source, profile }: { root: string; source: st
     lang: 'zh-CN', title: 'N:SIDE',
     description: profile === 'player' ? 'Null City 的世界、人物与故事' : 'N:SIDE 项目设计与开发手册',
     base: '/', cleanUrls: true, markdown,
-    outDir: resolve(source, '../dist'), cacheDir: resolve(source, '../cache'),
+    outDir: wikiOutput(root, profile), cacheDir: resolve(source, '../cache'),
     srcExclude: ['_components/**', '_tools/**', '_data/**'],
     head: [['link', { rel: 'icon', href: '/project-assets/branding/n-logo.svg', type: 'image/svg+xml' }]],
     themeConfig: {

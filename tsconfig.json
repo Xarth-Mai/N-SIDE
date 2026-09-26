@@ -18,5 +18,5 @@
     }
   },
   "include": ["tools/**/*.ts", "docs/.vitepress/**/*.ts"],
-  "exclude": ["node_modules", "output", "todo", ".agents", "third_party"]
+  "exclude": ["docs/.vitepress/cache", "docs/.vitepress/dist", "docs/.vitepress/dist-player", "node_modules", "output", "todo", ".agents", "third_party"]
 }

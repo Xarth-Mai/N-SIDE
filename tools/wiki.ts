@@ -6,7 +6,7 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSyn
 import { dirname, extname, join, relative, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { buildScene } from './district-map.ts'
-import { assertProfile, filesIn, listWikiData, within } from './wiki-data.ts'
+import { assertProfile, filesIn, listWikiData, within, wikiOutput } from './wiki-data.ts'
 
 const REPOSITORY = 'https://github.com/Xarth-Mai/N-SIDE/blob/main/'
 const SUPPORT = ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts', 'story-graph.ts']
@@ -41,7 +41,7 @@ export function prepareWiki(root: string, profile: string) {
   assertProfile(profile)
   const audience = profile
   root = resolve(root)
-  const docs = join(root, 'docs'), base = join(root, 'output/wiki', profile), source = join(base, 'source')
+  const docs = join(root, 'docs'), base = join(root, 'docs/.vitepress/cache/wiki', profile), source = join(base, 'source')
   const selected = ['player', ...(profile === 'dev' ? ['dev'] : [])]
   const pages = selected.flatMap(name => filesIn(join(docs, name)).filter(file => extname(file) === '.md'))
   if (!pages.length || !existsSync(join(docs, profile, 'index.md'))) throw new Error(`${profile}: missing entry or pages`)
@@ -161,13 +161,13 @@ export function prepareWiki(root: string, profile: string) {
   put(join(source, '.vitepress/config.ts'), `import { wikiConfig } from ${JSON.stringify(pathToFileURL(join(docs, '.vitepress/config.ts')).href)}\nexport default wikiConfig(${JSON.stringify({ root, source, profile })})\n`)
   const manifest = { profile, pages: pages.map(p => relative(docs, p)), data: listWikiData(docs, profile).map(p => relative(docs, p)), public: filesIn(join(source, 'public')).map(p => relative(join(source, 'public'), p)), aliases }
   put(join(base, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
-  return { source, output: join(base, 'dist'), manifest }
+  return { source, output: wikiOutput(root, profile), manifest }
 }
 
 /** Check actual emitted pages and all raw data, not just sidebar configuration */
 export function checkWikiBuild(root: string, profile: string) {
   assertProfile(profile)
-  const base = join(resolve(root), 'output/wiki', profile), output = join(base, 'dist')
+  const base = join(resolve(root), 'docs/.vitepress/cache/wiki', profile), output = wikiOutput(root, profile)
   const manifest: WikiManifest = JSON.parse(readFileSync(join(base, 'manifest.json'), 'utf8'))
   if (manifest.profile !== profile) throw new Error('Build manifest profile mismatch')
   const files = filesIn(output), names = files.map(p => relative(output, p))
@@ -205,7 +205,7 @@ if (import.meta.main) {
     if (command === 'check') console.log(JSON.stringify(checkWikiBuild(root, profile)))
     else if (['build', 'dev', 'prepare', 'preview'].includes(command)) {
       if (command === 'preview') checkWikiBuild(root, profile)
-      const prepared = command === 'preview' ? { source: join(root, 'output/wiki', profile, 'source') } : prepareWiki(root, profile)
+      const prepared = command === 'preview' ? { source: join(root, 'docs/.vitepress/cache/wiki', profile, 'source') } : prepareWiki(root, profile)
       if (command === 'prepare') console.log(JSON.stringify('manifest' in prepared ? prepared.manifest : undefined))
       else {
         // Use the installed VitePress CLI: its esbuild service fails under this Bun runtime

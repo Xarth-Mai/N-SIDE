@@ -78,7 +78,7 @@ bun tools/export-environment.ts --check
 
 ## CI
 
-[checks.yml](../.github/workflows/checks.yml)分别执行无 GPU 的工具／Wiki 检查和 Rust 格式／编译／测试；真实渲染只在手动启用后调度带 `nside-vulkan` 标签的自托管 Linux runner，要求预装 Rust、Python、Pillow、Vulkan 驱动与 FFmpeg。未配置 runner 或未调度的渲染任务为 NOT RUN，本地可用上面的同一入口复验
+仓库当前未配置 GitHub Actions 工作流；Wiki 自动发布使用 [Wiki 发布手册](../docs/dev/handbook/wiki.md)中的构建与部署命令。工具、Rust 与渲染检查按上面的入口运行，未实际调度的检查记录为 NOT RUN
 
 ## Skills 来源与补丁复验
 

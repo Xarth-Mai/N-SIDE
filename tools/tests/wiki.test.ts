@@ -83,6 +83,8 @@ test('publication requires a known profile and an actual entry page', t => {
 test('isolated player tree excludes developer pages/data/public and uses redirects', t => {
   const { root, put } = wikiFixture(t)
   const player = prepareWiki(root, 'player'), dev = prepareWiki(root, 'dev')
+  assert.equal(dev.output, join(root, 'docs/.vitepress/dist'))
+  assert.equal(player.output, join(root, 'docs/.vitepress/dist-player'))
   assert.deepEqual(player.manifest.data, [])
   assert.doesNotMatch(readFileSync(join(player.source, 'player/encyclopedia/story/main/last-toy.md'), 'utf8'), /design_state|subject_id/)
   assert.ok(!player.manifest.pages.some(p => p.startsWith('dev/')))

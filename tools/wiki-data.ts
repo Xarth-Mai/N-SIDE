@@ -4,6 +4,10 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpat
 import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 
 const TYPES: Record<string, string> = { '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8' }
+export function wikiOutput(root: string, profile: WikiProfile) {
+  return resolve(root, 'docs/.vitepress', profile === 'dev' ? 'dist' : 'dist-player')
+}
+
 export const PROFILES = ['player', 'dev']
 export function assertProfile(profile: unknown): asserts profile is WikiProfile {
   if (typeof profile !== 'string' || !PROFILES.includes(profile)) throw new Error(`Unknown Wiki profile: ${profile}`)

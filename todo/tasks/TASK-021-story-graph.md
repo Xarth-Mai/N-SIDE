@@ -30,3 +30,5 @@ specs:
 第 2 轮[实际发布与清理记录](../evidence/TASK-021/r2/result.md)：47 项真实 HTTPS 检查通过，线上接入已生效
 
 第 3 轮[完整站点恢复与事件拆分](../evidence/TASK-021/r3/result.md)：修正第 2 轮的发布受众选择，完整保留百科和开发资料
+
+第 4 轮[Cloudflare 发布目录修复](../evidence/TASK-021/r4/result.md)：按用户要求恢复完整站的原有构建路径，显式维护部署配置，远端重试待执行

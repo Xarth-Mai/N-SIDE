@@ -6,7 +6,7 @@
 
 输入是所属受众下的 Markdown、开发数据和明确允许公开的图片，目录职责与身份字段遵循[文档规范](documentation.md)。先判断内容的权威位置：玩家百科负责世界事实、人物和故事，开发资料引用百科并补充规格，某轮结果和排障记录保存在 `todo/`
 
-使用 `package.json` 和 `bun.lock` 中的工具版本，在仓库根目录执行命令。Bun 负责依赖安装、脚本与测试，安装和构建分开执行；CI 从 package.json 读取 Bun 版本，以 frozen lockfile 安装一次后运行检查与双站构建。开发原始 JSON、CSV 不因正文没有链接就视为公开，页面中也不通过直接导入、包含文件或静态附件绕过受众边界
+使用 `package.json` 和 `bun.lock` 中的工具版本，在仓库根目录执行命令。Bun 负责依赖安装、脚本与测试，安装和构建分开执行；自动构建从 package.json 读取 Bun 版本，以 frozen lockfile 安装一次后运行检查与双站构建。开发原始 JSON、CSV 不因正文没有链接就视为公开，页面中也不通过直接导入、包含文件或静态附件绕过受众边界
 
 ## 编辑与检查
 
@@ -23,7 +23,7 @@ bun run docs:build
 bun run docs:preview:player
 ```
 
-只检查某一站时可运行 `bun run docs:build:player` 或 `bun run docs:build:dev`，产物分别位于 `output/wiki/player/dist` 与 `output/wiki/dev/dist`。`bun tools/wiki.ts check player` 和 `bun tools/wiki.ts check dev` 只读检查已有产物，不重新构建
+只检查某一站时可运行 `bun run docs:build:player` 或 `bun run docs:build:dev`，产物分别位于 `docs/.vitepress/dist-player` 与 `docs/.vitepress/dist`。`bun tools/wiki.ts check player` 和 `bun tools/wiki.ts check dev` 只读检查已有产物，不重新构建
 
 ## 类型检查与版本
 
@@ -66,9 +66,15 @@ bun run docs:dev:dev
 
 先确认站点现有内容范围：同时承载百科和开发文档的完整 Wiki 使用 `dev` 构建，只有明确需要独立玩家站时才使用 `player`。主页自动复用对应资料入口的项目介绍和导航，完整站同时包含两类内容
 
-从 `output/wiki/<profile>/dist` 复制已验证产物到独立发布快照，再将静态服务的 document root 指向发布快照或原子切换的发布软链接；构建期间继续提供上一份快照。旧的 `docs/.vitepress/dist` 不会被新构建更新。以服务运行用户检查父目录可遍历、公开产物可读取，不把原始资料目录作为服务根
+静态服务的 document root 使用完整站产物 `docs/.vitepress/dist`，独立玩家站使用 `docs/.vitepress/dist-player`。以服务运行用户检查父目录可遍历、公开产物可读取，干净构建后重新检查访问权限
 
-切换前保留原配置，校验后平滑重载。核对主页项目介绍、百科与开发导航、全部受众页面、用户原有入口、兼容页的实际目标、页面引用的脚本和样式，确认原有内容和新功能同时可用；旧入口返回 200 本身不能证明新版已发布。发布记录保存在任务证据中
+切换路径前保留原配置，校验后平滑重载。核对主页项目介绍、百科与开发导航、原有入口及其实际目标、脚本和样式；发布记录保存在任务证据中
+
+## Cloudflare Workers 发布
+
+仓库根目录的 `wrangler.jsonc` 指定完整 Wiki 产物 `docs/.vitepress/dist`。Workers Builds 的构建命令使用 `bun run docs:build`，部署命令使用 `bun run docs:deploy`，根目录保持仓库根；部署脚本用 Bun 按固定的 Wrangler 4.141.0 版本运行，Wrangler 只发布已有产物，不再重复构建。404 使用生成的错误页，正常页面保留无扩展名与目录入口
+
+本地先构建，再运行 `bun run docs:deploy --dry-run` 检查部署配置；去掉 `--dry-run` 才会发布，需要对应账号权限
 
 ## 输出与失败处理
 
@@ -76,4 +82,4 @@ bun run docs:dev:dev
 
 发现 unpublished reference/import 时，先核对内容应属于哪个受众并修正来源或引用；需要公开的新资料要明确登记允许范围。发现死链时修正文档目标，不关闭 VitePress 的死链检查。产物出现开发内容时停止交付，修复相应入口后重新构建并检查输出
 
-开发快照、构建包、缓存和临时预览均在已忽略的 `output/`，一次性命令结果与验收证据归 `todo/`。构建成功证明文档发布路径可用，不代表游戏功能完成，也不代替画面检查或玩家体验验收
+构建包位于已忽略的 `docs/.vitepress/dist` 与 `docs/.vitepress/dist-player`，开发快照与缓存继续隔离在 `docs/.vitepress/cache/wiki/`，一次性命令结果与验收证据归 `todo/`。构建成功证明文档发布路径可用，不代表游戏功能完成，也不代替画面检查或玩家体验验收

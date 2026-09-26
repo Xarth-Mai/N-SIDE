@@ -25,7 +25,8 @@
     "tasks:sync": "bun tools/tasks.ts sync",
     "tasks:check": "bun tools/tasks.ts check",
     "check:types": "bun node_modules/typescript/bin/tsc -p tsconfig.json && bun tools/check-vue.ts -p tsconfig.vue.json",
-    "check:story-graph": "bun tools/story-data.ts"
+    "check:story-graph": "bun tools/story-data.ts",
+    "docs:deploy": "bun tools/wiki.ts check dev && bunx wrangler@4.141.0 deploy"
   },
   "devDependencies": {
     "@types/bun": "1.4.2",
