@@ -11,6 +11,9 @@ metadata:
 
 # Bevy 0.19 — Core concepts (App, Plugin, Schedule, World)
 
+> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
+
+
 ## When to use this skill
 
 - Setting up a new Bevy app or library plugin.
@@ -102,9 +105,9 @@ struct EntityCount(u32);
   ordering, and ambiguity diagnostics.
 - [`bevy-ecs-components`](../bevy-ecs-components/SKILL.md) — entity data.
 - [`bevy-rendering`](../bevy-rendering/SKILL.md) — render schedules and systems.
-- [`bevy-physics`](../bevy-physics/SKILL.md) — Rapier schedule placement and
+- [`bevy-physics`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md) — Rapier schedule placement and
   `PhysicsSet` ordering.
-- [`bevy-input-actions`](../bevy-input-actions/SKILL.md) — frame input transfer into fixed ticks.
+- [`bevy-input-actions`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-input-actions/SKILL.md) — frame input transfer into fixed ticks.
 - [`bevy-testing`](../bevy-testing/SKILL.md) — controlled `App` stepping and manual time.
-- [`bevy-migration-0-18-to-0-19`](../bevy-migration-0-18-to-0-19/SKILL.md) — executor
+- [`bevy-migration-0-18-to-0-19`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-migration-0-18-to-0-19/SKILL.md) — executor
   instances and resources-as-components.

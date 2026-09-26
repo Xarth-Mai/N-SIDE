@@ -1,0 +1,24 @@
+--- a/scripts/asset_report.py
++++ b/scripts/asset_report.py
+@@ -1,5 +1,10 @@
+ #!/usr/bin/env python3
+ """Inspect raster game assets and enforce simple production constraints.
++
++Modified for N:SIDE (2026-09-26): reject exact color counts above the budget.
++Based on awesome-gamedev-agent-skills at 44888f28ff918357ad82c4473352c60a1c5bde5b.
++Copyright 2026 Abhishek Barali and the awesome-gamedev-agent-skills contributors.
++Apache-2.0; retained LICENSE and NOTICE: third_party/skills/awesome-gamedev-agent-skills/.
+ 
+ Requires Pillow 10+. The command exits 1 when an explicit constraint fails and
+ otherwise prints either a compact table or JSON suitable for build tooling.
+@@ -100,7 +105,9 @@
+             )
+         if args.require_alpha and not report["has_alpha"]:
+             problems.append("image has no alpha channel")
+-        if args.max_colors is not None and isinstance(report["color_count"], str):
++        if args.max_colors is not None and (
++            isinstance(report["color_count"], str) or report["color_count"] > args.max_colors
++        ):
+             problems.append(f"image has more than {args.max_colors} colors")
+         report["problems"] = problems
+         reports.append(report)

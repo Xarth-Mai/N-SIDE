@@ -17,6 +17,24 @@ class AssetPreviewTests(unittest.TestCase):
     def run_tool(self, path, *args):
         return subprocess.run([sys.executable, "-B", str(path), *map(str, args)], capture_output=True, text=True)
 
+    def test_color_budget_boundaries(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "colors.png"
+            # N=3 exercises exact N+1 as well as Pillow's over-limit sentinel
+            for count in (2, 3, 4, 5):
+                with self.subTest(count=count):
+                    fixture = Image.new("RGBA", (count, 1))
+                    fixture.putdata([(value, 0, 0, 255) for value in range(count)])
+                    fixture.save(source)
+                    before = source.read_bytes()
+                    result = self.run_tool(SCRIPTS / "asset_report.py", source,
+                                           "--max-colors", "3", "--json")
+                    report = json.loads(result.stdout)
+                    self.assertEqual(result.returncode, int(count > 3), result.stderr)
+                    self.assertEqual(report["ok"], count <= 3)
+                    self.assertEqual(bool(report["assets"][0]["problems"]), count > 3)
+                    self.assertEqual(source.read_bytes(), before)
+
     def test_real_logo_report_and_wrong_size_exit(self):
         logo = ROOT / "game/assets/branding/n-logo.png"
         passed = self.run_tool(SCRIPTS / "asset_report.py", logo, "--expect-size", "512x512", "--require-alpha", "--json")

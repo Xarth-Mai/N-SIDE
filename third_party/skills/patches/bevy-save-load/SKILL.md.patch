@@ -1,0 +1,21 @@
+--- a/SKILL.md
++++ b/SKILL.md
+@@ -10,6 +10,9 @@
+ ---
+ 
+ # Bevy 0.19 — save and load
++
++> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
++
+ 
+ ## When to use this skill
+ 
+@@ -138,7 +141,7 @@
+ 
+ ## See also
+ 
+-- [`bevy-voxel-data`](../bevy-voxel-data/SKILL.md) — stable block IDs versus dense runtime palettes.
++- [`bevy-voxel-data`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-voxel-data/SKILL.md) — stable block IDs versus dense runtime palettes.
+ - [`bevy-testing`](../bevy-testing/SKILL.md) — deterministic migration and failure-path tests.
+ - [`bevy-assets`](../bevy-assets/SKILL.md) — stable asset paths/labels and asset readiness.
+ - [Bevy world serialization](https://docs.rs/bevy/0.19.0/bevy/world_serialization/index.html)

@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "sources": [
     {
       "id": "bevy-skills",
@@ -116,27 +116,29 @@
       "source": "bevy-skills",
       "upstream_path": "skills/bevy-core-concepts",
       "local_path": ".agents/skills/bevy-core-concepts",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "8a21257cf90b8307e901d36f5aee5e555ba046b0b452d7ed6c9b62e3bc6d9b1c"
+          "sha256": "22bd0575cf378732b20bb497f43712343fa74425b119f59b7669c01db3f9e21e",
+          "patch": {
+            "upstream_sha256": "8a21257cf90b8307e901d36f5aee5e555ba046b0b452d7ed6c9b62e3bc6d9b1c",
+            "file": "third_party/skills/patches/bevy-core-concepts/SKILL.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         }
       ],
-      "optional_upstream_links": [
+      "pinned_links": [
         {
           "from": "SKILL.md",
-          "target": "../bevy-physics/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-input-actions/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-input-actions/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-migration-0-18-to-0-19/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-migration-0-18-to-0-19/SKILL.md"
         }
       ]
@@ -152,8 +154,7 @@
           "path": "SKILL.md",
           "sha256": "ca5e2fd94179a2038f386a571ab8fdfbf8b3559763d43fae3fc4663552bb96ba"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "bevy-ecs-queries",
@@ -166,8 +167,7 @@
           "path": "SKILL.md",
           "sha256": "f21c4e0c9cb985acceaa4087795455fe832976478fb79827e79561d068853b00"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "bevy-ecs-systems",
@@ -204,8 +204,7 @@
           "path": "references/system-sets.md",
           "sha256": "b953a8fea61eadf3536e8048f80f046c8c59f118aa0f72f36a51a92bf853dfe4"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "bevy-assets",
@@ -222,8 +221,7 @@
           "path": "references/gltf-scenes.md",
           "sha256": "2a1e64d61ab79a6639c06625414fcc092f68a2aaf5e08fd26e11e23bf28c0d2c"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "bevy-custom-assets",
@@ -236,19 +234,23 @@
           "path": "SKILL.md",
           "sha256": "401ae9267bcd9caed0625c73c268b3d29d3257aba9a4e4da5e4d9b0382a19c5f"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "bevy-save-load",
       "source": "bevy-skills",
       "upstream_path": "skills/bevy-save-load",
       "local_path": ".agents/skills/bevy-save-load",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "1807dc8072d9454c8fa7295ef0e3fcf954181231d7b7e3e2d4258d79d5361f30"
+          "sha256": "c5aa4031e9433149150d100eedd21f18fd3f78f366815e70908fdf91bbad3279",
+          "patch": {
+            "upstream_sha256": "1807dc8072d9454c8fa7295ef0e3fcf954181231d7b7e3e2d4258d79d5361f30",
+            "file": "third_party/skills/patches/bevy-save-load/SKILL.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/native-and-browser-io.md",
@@ -263,10 +265,9 @@
           "sha256": "02f2542a8bec195402b86025ecbeb455002c9fe0567300d0787b188772aae05d"
         }
       ],
-      "optional_upstream_links": [
+      "pinned_links": [
         {
           "from": "SKILL.md",
-          "target": "../bevy-voxel-data/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-voxel-data/SKILL.md"
         }
       ]
@@ -276,36 +277,37 @@
       "source": "bevy-skills",
       "upstream_path": "skills/bevy-cameras",
       "local_path": ".agents/skills/bevy-cameras",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "4f9f4c120a52d0a535fc50527476bab60bc4612a21bf2f05aeb71f1ba0fd5b56"
+          "sha256": "57c9682a6d1bc58c85cfbf02d08269f9a0c80f85aabdd437bb6d29f9fc958875",
+          "patch": {
+            "upstream_sha256": "4f9f4c120a52d0a535fc50527476bab60bc4612a21bf2f05aeb71f1ba0fd5b56",
+            "file": "third_party/skills/patches/bevy-cameras/SKILL.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/third-person-orbit.md",
           "sha256": "73d9342e5af681190276835007deb3c88de8f942c699f361417b7a4c04632620"
         }
       ],
-      "optional_upstream_links": [
+      "pinned_links": [
         {
           "from": "SKILL.md",
-          "target": "../bevy-input-actions/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-input-actions/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-physics/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-pbr-materials/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-pbr-materials/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-a11y/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-a11y/SKILL.md"
         }
       ]
@@ -315,15 +317,25 @@
       "source": "bevy-skills",
       "upstream_path": "skills/bevy-rendering",
       "local_path": ".agents/skills/bevy-rendering",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "7aa43959b0b1804cff3d656e0e6af71fa72ab642fc38533f720ef7af4e54db27"
+          "sha256": "824be380e443db6ea68b3e1c8186a1bdcd923ca2c29f5d19b98a7174e1801e77",
+          "patch": {
+            "upstream_sha256": "7aa43959b0b1804cff3d656e0e6af71fa72ab642fc38533f720ef7af4e54db27",
+            "file": "third_party/skills/patches/bevy-rendering/SKILL.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/physics-boundary.md",
-          "sha256": "299cad950cc5b35fe08858818d808e6f336307f8b2ba68725405e0f5fecf1613"
+          "sha256": "2ee7c3f0a797dadc57f3097a8f687f9b3f8507e00e021508165b3272e50dd64b",
+          "patch": {
+            "upstream_sha256": "299cad950cc5b35fe08858818d808e6f336307f8b2ba68725405e0f5fecf1613",
+            "file": "third_party/skills/patches/bevy-rendering/references/physics-boundary.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/render-systems.md",
@@ -342,36 +354,40 @@
           "sha256": "91cca4ed03983663d41a9228ac2197b83cc62a6abde4cfe2d035a0de3fd4dea5"
         }
       ],
-      "optional_upstream_links": [
+      "pinned_links": [
         {
           "from": "SKILL.md",
-          "target": "../bevy-physics/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-cargo-features/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-cargo-features/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-pbr-materials/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-pbr-materials/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-vfx/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-vfx/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-wasm-webgpu/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-wasm-webgpu/SKILL.md"
         },
         {
           "from": "references/physics-boundary.md",
-          "target": "../../bevy-physics/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "from": "SKILL.md",
+          "path": "scripts/audit_renderer_features.py",
+          "executable": "python3",
+          "python_modules": [
+            "tomllib"
+          ]
         }
       ]
     },
@@ -430,23 +446,32 @@
           "path": "references/state-machines.md",
           "sha256": "f42d136bc91416441042211e3dbb306f9b4e375e588bc27c059463377b2a0ec0"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "bevy-ui",
       "source": "bevy-skills",
       "upstream_path": "skills/bevy-ui",
       "local_path": ".agents/skills/bevy-ui",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "f292b61ba93d22079c5ead14acbe134895bb1fb7de8af8b2944d1652f9d09d84"
+          "sha256": "b7f12fb5d746e50b0ceefcd65a16751107b5e1471aedb07f6ff8d7d923063837",
+          "patch": {
+            "upstream_sha256": "f292b61ba93d22079c5ead14acbe134895bb1fb7de8af8b2944d1652f9d09d84",
+            "file": "third_party/skills/patches/bevy-ui/SKILL.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/accessibility.md",
-          "sha256": "f7f04f295e9b571f4751af33204ea70989b130fb226b67cff7234e1429136826"
+          "sha256": "3237a42347da609898378964652562acadd713e35b918735e838a81a636e48ba",
+          "patch": {
+            "upstream_sha256": "f7f04f295e9b571f4751af33204ea70989b130fb226b67cff7234e1429136826",
+            "file": "third_party/skills/patches/bevy-ui/references/accessibility.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/children-macro.md",
@@ -477,20 +502,17 @@
           "sha256": "ee69a1d8a8cace16cae943fc802d9e546051131e392eb3d0bccc8dc3bd90c063"
         }
       ],
-      "optional_upstream_links": [
+      "pinned_links": [
         {
           "from": "SKILL.md",
-          "target": "../bevy-a11y/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-a11y/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-fluent/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-fluent/SKILL.md"
         },
         {
           "from": "references/accessibility.md",
-          "target": "../../bevy-a11y/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-a11y/SKILL.md"
         }
       ]
@@ -500,11 +522,16 @@
       "source": "bevy-skills",
       "upstream_path": "skills/bevy-testing",
       "local_path": ".agents/skills/bevy-testing",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "4b4091d66b1bd5baf6a2dfc9b05a4ab0ccfb0f0f32ecbe5cc00377f54a1e0c17"
+          "sha256": "37c81c333c7b3734e8e9042f5e405834da1f9c665c4e92ac8a36e45b740da39b",
+          "patch": {
+            "upstream_sha256": "4b4091d66b1bd5baf6a2dfc9b05a4ab0ccfb0f0f32ecbe5cc00377f54a1e0c17",
+            "file": "third_party/skills/patches/bevy-testing/SKILL.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/app-and-time.md",
@@ -519,15 +546,13 @@
           "sha256": "838fcf1cdf6bfa4c8ae3c8f30f89beced9b009462202e0014745ceb3d72caddb"
         }
       ],
-      "optional_upstream_links": [
+      "pinned_links": [
         {
           "from": "SKILL.md",
-          "target": "../bevy-input-actions/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-input-actions/SKILL.md"
         },
         {
           "from": "SKILL.md",
-          "target": "../bevy-physics/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md"
         }
       ]
@@ -537,11 +562,16 @@
       "source": "bevy-skills",
       "upstream_path": "skills/bevy-diagnostics-profiling",
       "local_path": ".agents/skills/bevy-diagnostics-profiling",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "abef857206f3980e6578a5cb943f4573195978c5ba9286a238ac2b10d1159b3c"
+          "sha256": "92ae13f383ba69d70a6da815b7a06289f5c41811598e2c20e05a2dbf77934c74",
+          "patch": {
+            "upstream_sha256": "abef857206f3980e6578a5cb943f4573195978c5ba9286a238ac2b10d1159b3c",
+            "file": "third_party/skills/patches/bevy-diagnostics-profiling/SKILL.md.patch",
+            "reason": "Resolve optional sibling links to exact upstream commit (F02)"
+          }
         },
         {
           "path": "references/budgets-and-telemetry.md",
@@ -556,10 +586,9 @@
           "sha256": "f1ffda6036be9204b2bb9363c63a1f48ad4d0854996f5dccec4ccddf58630260"
         }
       ],
-      "optional_upstream_links": [
+      "pinned_links": [
         {
           "from": "SKILL.md",
-          "target": "../bevy-voxel-runtime/SKILL.md",
           "url": "https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-voxel-runtime/SKILL.md"
         }
       ]
@@ -615,8 +644,7 @@
           "path": "references/system-relations.md",
           "sha256": "c84990d3e4c3b9d835c9a2221580c62e9ae413445c09fd303b45286782748734"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "game-design-reality-check",
@@ -649,8 +677,7 @@
           "path": "references/review-output.md",
           "sha256": "48aeed67518713009d9a55d698fd8fa0d47e47e43f2439ac1c97ea607c9e8403"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "stress-testing-game-concepts",
@@ -679,15 +706,14 @@
           "path": "references/report-contract.md",
           "sha256": "2e706342208b1598d569b6dbe701838572c5303c9146539e73a50b462adf659b"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "create-game-assets",
       "source": "awesome-gamedev-agent-skills",
       "upstream_path": "skills/disciplines/create-game-assets",
       "local_path": ".agents/skills/create-game-assets",
-      "mode": "verbatim",
+      "mode": "patched",
       "files": [
         {
           "path": "SKILL.md",
@@ -723,7 +749,12 @@
         },
         {
           "path": "scripts/asset_report.py",
-          "sha256": "93e364f095261b44f6fd0345f7132019af1af93e81ebd84d91fe2a5049918203"
+          "sha256": "aebb936ecd9b384f7f01fbf26c90690b912ee6e05ce7e954050f103fd4dccf2c",
+          "patch": {
+            "upstream_sha256": "93e364f095261b44f6fd0345f7132019af1af93e81ebd84d91fe2a5049918203",
+            "file": "third_party/skills/patches/create-game-assets/scripts/asset_report.py.patch",
+            "reason": "Reject exact color counts above --max-colors (F03)"
+          }
         },
         {
           "path": "scripts/build_preview_sheet.py",
@@ -734,7 +765,24 @@
           "sha256": "1954ca940740c612a12e7abf0a307b7394715964d66dc8037d503fdd5c1b6424"
         }
       ],
-      "optional_upstream_links": []
+      "commands": [
+        {
+          "from": "SKILL.md",
+          "path": "scripts/asset_report.py",
+          "executable": "python3",
+          "python_modules": [
+            "PIL"
+          ]
+        },
+        {
+          "from": "SKILL.md",
+          "path": "scripts/build_preview_sheet.py",
+          "executable": "python3",
+          "python_modules": [
+            "PIL"
+          ]
+        }
+      ]
     },
     {
       "name": "game-ui-ux",
@@ -751,8 +799,7 @@
           "path": "references/layout-and-flow.md",
           "sha256": "000d944db77155ebf97fde035a3d4fbe69ef0ae348e9dbcaff48c5ea134d7d69"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "dialogue-systems",
@@ -773,8 +820,7 @@
           "path": "references/runner.md",
           "sha256": "e03929dcab2ab514f29ed97847334360edd795ea0387d6bf2597a3a6c502744d"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "audio-design",
@@ -791,8 +837,7 @@
           "path": "references/adaptive-music.md",
           "sha256": "ca6fd287054294004acd85d9acd773d7b52c327911116c9c02344bab5e61df13"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "level-design",
@@ -809,8 +854,7 @@
           "path": "references/pacing-and-flow.md",
           "sha256": "e8e3940f585e376f353aefea009befe8199a1871f99d34d7b2340cb35cb61872"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "game-ai",
@@ -831,8 +875,7 @@
           "path": "references/pathfinding.md",
           "sha256": "3f1ce44462b4d1789245758b72d0b20e8053df458df1f743455dcd5d7319bba3"
         }
-      ],
-      "optional_upstream_links": []
+      ]
     },
     {
       "name": "nside",
@@ -850,7 +893,6 @@
           "sha256": "d95ec4170b633cb75ebf9636d68f7d2ddef86c4dca4c82038c3e5a6f634633d6"
         }
       ],
-      "optional_upstream_links": [],
       "upstream_paths": [
         "skills/disciplines/create-game-assets",
         "skills/disciplines/game-ui-ux",
@@ -872,7 +914,6 @@
           "sha256": "bd255a3217755152e65ab53bde051e743606f0d524b362a58d8e12979b76cca9"
         }
       ],
-      "optional_upstream_links": [],
       "upstream_paths": [
         "skills/blender-modeling",
         "skills/blender-animation",
@@ -891,7 +932,6 @@
           "sha256": "e7066cbb38716549fb1166f36da6d51e52ac8f783acba878ae880f403be00f95"
         }
       ],
-      "optional_upstream_links": [],
       "upstream_paths": [
         "agent-skills/codex/video-to-superprompt",
         "agent-skills/game-development/build-hybrid-game-assets"
@@ -1494,6 +1534,69 @@
         "docs/production/assets.md"
       ],
       "reason": "No scaffold, destructive publisher, external agent framework or paid-provider defaults"
+    }
+  ],
+  "policy": {
+    "required_skills": [
+      "create-case",
+      "create-content",
+      "review-narrative",
+      "n-side-guide",
+      "n-side-work-loop",
+      "n-side-review",
+      "nside",
+      "nside-blender-pipeline",
+      "nside-reference-analysis"
+    ]
+  },
+  "local_skills": [
+    {
+      "name": "create-case",
+      "local_path": ".agents/skills/create-case",
+      "purpose": "N:SIDE native narrative or task workflow",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "create-content",
+      "local_path": ".agents/skills/create-content",
+      "purpose": "N:SIDE native narrative or task workflow",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "review-narrative",
+      "local_path": ".agents/skills/review-narrative",
+      "purpose": "N:SIDE native narrative or task workflow",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "n-side-guide",
+      "local_path": ".agents/skills/n-side-guide",
+      "purpose": "N:SIDE native narrative or task workflow",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "n-side-work-loop",
+      "local_path": ".agents/skills/n-side-work-loop",
+      "purpose": "N:SIDE native narrative or task workflow",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "n-side-review",
+      "local_path": ".agents/skills/n-side-review",
+      "purpose": "N:SIDE native narrative or task workflow",
+      "files": [
+        "SKILL.md"
+      ]
     }
   ]
 }

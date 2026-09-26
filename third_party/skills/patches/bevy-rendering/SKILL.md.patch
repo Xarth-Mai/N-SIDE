@@ -1,0 +1,45 @@
+--- a/SKILL.md
++++ b/SKILL.md
+@@ -10,6 +10,9 @@
+ ---
+ 
+ # Bevy 0.19 — rendering choices
++
++> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
++
+ 
+ Start with Bevy's built-in wgpu renderer unless a measured constraint requires a
+ custom path. Renderer replacement changes asset preparation, visibility, cameras,
+@@ -24,7 +27,7 @@
+ | Many dynamic lights on desktop-class GPUs | Consider deferred opaque rendering |
+ | Server simulation with no pixels | Headless `MinimalPlugins` profile |
+ | Existing proprietary/embedded renderer | `2d_api` / `3d_api` plus an explicit bridge |
+-| Physics, collision, character motion | [`bevy-physics`](../bevy-physics/SKILL.md); this does not select a renderer |
++| Physics, collision, character motion | [`bevy-physics`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md); this does not select a renderer |
+ 
+ Do not replace the renderer because a physics crate is present.
+ `bevy_rapier3d` computes rigid-body simulation and queries. Its optional debug drawing
+@@ -140,7 +143,7 @@
+ `PostUpdate` with a variable timestep; tick-coupled games may explicitly move it to
+ `FixedUpdate`. Drive a visible entity and collider from one authoritative transform
+ policy, and keep display-only smoothing separate. See
+-[`bevy-physics`](../bevy-physics/SKILL.md) and
++[`bevy-physics`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md) and
+ [the physics boundary](references/physics-boundary.md).
+ 
+ ## Audit and references
+@@ -151,9 +154,9 @@
+ - [Renderer decision guide](references/renderer-choice.md)
+ - [Bevy 0.19 render systems](references/render-systems.md)
+ - [Physics versus rendering](references/physics-boundary.md)
+-- [`bevy-cargo-features`](../bevy-cargo-features/SKILL.md)
+-- [`bevy-pbr-materials`](../bevy-pbr-materials/SKILL.md)
+-- [`bevy-physics`](../bevy-physics/SKILL.md)
++- [`bevy-cargo-features`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-cargo-features/SKILL.md)
++- [`bevy-pbr-materials`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-pbr-materials/SKILL.md)
++- [`bevy-physics`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md)
+ - [`bevy-diagnostics-profiling`](../bevy-diagnostics-profiling/SKILL.md)
+-- [`bevy-vfx`](../bevy-vfx/SKILL.md)
+-- [`bevy-wasm-webgpu`](../bevy-wasm-webgpu/SKILL.md)
++- [`bevy-vfx`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-vfx/SKILL.md)
++- [`bevy-wasm-webgpu`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-wasm-webgpu/SKILL.md)

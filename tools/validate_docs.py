@@ -76,7 +76,7 @@ def markdown_files(root: Path) -> list[Path]:
     if manifest.is_file():
         imports = json.loads(manifest.read_text(encoding='utf-8'))
         originals = {root / skill['local_path'] / file['path']
-                     for skill in imports['skills'] if skill['mode'] == 'verbatim'
+                     for skill in imports['skills'] if skill['mode'] in {'verbatim', 'patched'}
                      for file in skill['files']}
     files = {root / name for name in TOP_FILES if (root / name).is_file()}
     for scope in SCOPES:

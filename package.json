@@ -16,7 +16,8 @@
     "roadmap:sync": "python3 -B tools/roadmap.py --root . --write",
     "check:roadmap": "python3 -B tools/roadmap.py --root . --check",
     "check:skills": "bun tools/validate-skills.mjs",
-    "capture": "python3 tools/capture.py"
+    "capture": "python3 tools/capture.py",
+    "check:skills:upstream": "python3 tools/check_skill_upstream.py --output output/skills/upstream.json"
   },
   "devDependencies": {
     "delaunator": "5.0.1",

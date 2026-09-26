@@ -6,7 +6,7 @@
 
 | 上游文件或能力 | 采用方式与价值 | 本地入口与验收 |
 | --- | --- | --- |
-| awesome-gamedev `create-game-assets/` | 原样保留完整 Skill、references、模板、agents 与脚本；先锁视觉参照，再做家族资产、规范化和实际尺寸检查 | `.agents/skills/create-game-assets/`，图片报告与预览成功路径及错误尺寸失败路径由 `test_asset_preview.py` 运行 |
+| awesome-gamedev `create-game-assets/` | 保留完整 Skill、references、模板、agents 与脚本；asset_report 的颜色预算边界使用署名补丁；先锁视觉参照，再做家族资产、规范化和实际尺寸检查 | `.agents/skills/create-game-assets/`，图片报告与预览成功路径及错误尺寸失败路径由 `test_asset_preview.py` 运行 |
 | Godogen `asset-gen/SKILL.md` 的统一参考、先看源图、游戏内尺度登记 | 方法改编；参考复用与实际尺寸接入既有资产包，不引入另一份 README 总台账 | [资产管理](assets.md#codex-资产生产)、现有 `asset-manifest.json` 与环境导出器 |
 | Godogen `asset-gen/rembg.md` 的对比背景 QA | 方法改编；保留源图，以浅、深、洋红三种底色检查真实 alpha，增加实际显示尺寸与可选 cutout 约束 | `tools/asset_preview.py`，只生成检查图，不执行去背景；自动验证合成像素与失败退出，看图单独记录 |
 | Godogen `asset-gen/motion.md` 的数值 QA | 方法提炼；区分绑定姿态、动作、过渡与真实运行，使用接触、相对速度与播放游标判断动作 | [GLB、骨骼与动画](assets.md#glb骨骼与动画)，首个真实角色接入时落实动作条件；当前静态模型已有尺度与材质预检 |
@@ -31,6 +31,6 @@
 
 此页及资产流程中的对比底图、尺度登记、动作接触与连续帧 QA 方法，基于 [htdt/godogen](https://github.com/htdt/godogen/tree/0b725bca053769a4727f76c332bf1f7b42e146ab/asset-gen) 改编，原作者 Alex Ermolov，版本 `0b725bca053769a4727f76c332bf1f7b42e146ab`，MIT，[上游许可](https://github.com/htdt/godogen/blob/0b725bca053769a4727f76c332bf1f7b42e146ab/LICENSE.md) 完整保留在 `third_party/skills/godogen/LICENSE.md`。本地修改是使用 Codex 图片入口、项目唯一资产清单和 Bevy 运行证据，去背景工具与生成服务未复制
 
-原版资产 Skill 来自 [gamedev-skills/awesome-gamedev-agent-skills](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/tree/44888f28ff918357ad82c4473352c60a1c5bde5b/skills/disciplines/create-game-assets)，版本 `44888f28ff918357ad82c4473352c60a1c5bde5b`，Abhishek Barali and the awesome-gamedev-agent-skills contributors，Apache-2.0，[LICENSE](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/44888f28ff918357ad82c4473352c60a1c5bde5b/LICENSE) 与 [NOTICE](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/44888f28ff918357ad82c4473352c60a1c5bde5b/NOTICE) 保留在 `third_party/skills/awesome-gamedev-agent-skills/`；本项目适配未修改上游 Skill 或脚本正文
+原版资产 Skill 来自 [gamedev-skills/awesome-gamedev-agent-skills](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/tree/44888f28ff918357ad82c4473352c60a1c5bde5b/skills/disciplines/create-game-assets)，版本 `44888f28ff918357ad82c4473352c60a1c5bde5b`，Abhishek Barali and the awesome-gamedev-agent-skills contributors，Apache-2.0，[LICENSE](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/44888f28ff918357ad82c4473352c60a1c5bde5b/LICENSE) 与 [NOTICE](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/44888f28ff918357ad82c4473352c60a1c5bde5b/NOTICE) 保留在 `third_party/skills/awesome-gamedev-agent-skills/`；asset_report 的颜色预算边界修复已在文件中显著标注，其他未修改文件继续按原样核对；具体补丁与来源比较见 third_party/skills/manifest.json
 
 Blender 约束比较基于 [poorvith-mp/skills-gamedev](https://github.com/poorvith-mp/skills-gamedev/tree/e8b87e9086fbf2322b1c216c2d2de85954bf4015/skills)，原作者 Poorvith M P，版本 `e8b87e9086fbf2322b1c216c2d2de85954bf4015`，MIT；参照 `blender-modeling`、`blender-animation` 与 `blender-tooling`，具体保留文件和许可见根来源清单

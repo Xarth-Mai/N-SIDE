@@ -11,9 +11,58 @@ import shutil
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def expected_skills(root: Path) -> set[str]:
+    manifest = json.loads((root / 'third_party/skills/manifest.json').read_text())
+    if not isinstance(manifest, dict) or manifest.get('schema_version') != 2:
+        raise ValueError('Skill manifest schema_version must be 2')
+    policy = manifest.get('policy')
+    if not isinstance(policy, dict):
+        raise ValueError('Skill manifest policy must be an object')
+    required = policy.get('required_skills')
+    if not isinstance(required, list) or not required or any(not isinstance(name, str) or not name for name in required):
+        raise ValueError('policy.required_skills must be a nonempty list of names')
+    if len(required) != len(set(required)):
+        raise ValueError('policy.required_skills must be unique')
+    declarations = manifest.get('local_skills', []) + manifest.get('skills', [])
+    names = [item['name'] for item in declarations]
+    if len(names) != len(set(names)) or not set(required) <= set(names):
+        raise ValueError('Skill declarations must be unique and include every required Skill')
+    expected = {str((root / item['local_path'] / 'SKILL.md').resolve()) for item in declarations}
+    if not expected or len(expected) != len(declarations):
+        raise ValueError('Expected Skill paths must be nonempty and unique')
+    missing = sorted(path for path in expected if not Path(path).is_file())
+    if missing:
+        raise ValueError(f'Declared Skill files missing: {missing}')
+    return expected
+
+
+def check_discovery(response: dict, expected: set[str], cwds: list[str]) -> list[dict]:
+    if not expected:
+        raise ValueError('Expected Skill set must not be empty')
+    requested = [str(Path(cwd).resolve()) for cwd in cwds]
+    if not requested or len(requested) != len(set(requested)):
+        raise ValueError('Requested cwds must be nonempty and unique')
+    data = response['data']
+    returned = [str(Path(entry['cwd']).resolve()) for entry in data]
+    if len(returned) != len(set(returned)) or set(returned) != set(requested):
+        raise ValueError(f'Returned cwds must match requested cwds exactly: expected={requested}, actual={returned}')
+    entries = []
+    for entry, cwd in zip(data, returned):
+        skills = [skill for skill in entry['skills'] if str(Path(skill['path']).resolve()) in expected]
+        paths = [str(Path(skill['path']).resolve()) for skill in skills]
+        if len(paths) != len(set(paths)):
+            raise ValueError(f'Duplicate Skill results for cwd {cwd}')
+        missing = expected - {str(Path(skill['path']).resolve()) for skill in skills if skill['enabled'] is True}
+        entries.append({'cwd': cwd, 'skills': [{key: skill[key] for key in ('name', 'path', 'enabled')} for skill in skills],
+                        'missing': sorted(missing), 'errors': entry['errors']})
+    return entries
+
+
 async def probe(log) -> dict:
     if not shutil.which('codex'):
         return {'status': 'NOT RUN', 'error': 'Codex CLI unavailable; install or use the configured host'}
+    expected = expected_skills(ROOT)
+    cwds = [str(ROOT), str(ROOT / 'game')]
     process = await asyncio.create_subprocess_exec(
         'codex', 'app-server', '--stdio', cwd=ROOT,
         stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
@@ -38,17 +87,9 @@ async def probe(log) -> dict:
         await process.stdin.drain()
         response = await asyncio.wait_for(request({
             'id': 2, 'method': 'skills/list',
-            'params': {'cwds': [str(ROOT), str(ROOT / 'game')], 'forceReload': True}}), 30)
-        expected = {str(path.resolve()) for path in (ROOT / '.agents/skills').glob('*/SKILL.md')}
-        entries = []
-        for entry in response['data']:
-            skills = [s for s in entry['skills'] if str(s['path']) in expected]
-            missing = expected - {str(s['path']) for s in skills if s['enabled']}
-            errors = [e for e in entry['errors'] if str(ROOT) in str(e['path'])]
-            entries.append({'cwd': str(Path(entry['cwd']).relative_to(ROOT)) or '.',
-                            'skills': [{'name': s['name'], 'path': str(Path(s['path']).relative_to(ROOT)), 'enabled': s['enabled']} for s in skills],
-                            'missing': [str(Path(path).relative_to(ROOT)) for path in sorted(missing)], 'errors': errors})
-        return {'status': 'PASS' if len(entries) == 2 and all(not e['missing'] and not e['errors'] for e in entries) else 'FAIL',
+            'params': {'cwds': cwds, 'forceReload': True}}), 30)
+        entries = check_discovery(response, expected, cwds)
+        return {'status': 'PASS' if all(not e['missing'] and not e['errors'] for e in entries) else 'FAIL',
                 'codex': initialize.get('userAgent', 'see installed codex --version'),
                 'scope': 'Host discovery only; no AI turn or implicit routing claim', 'entries': entries}
     finally:
@@ -69,7 +110,7 @@ def main() -> int:
     try:
         with args.output.with_suffix('.log').open('w', encoding='utf-8') as log:
             result = asyncio.run(probe(log))
-    except (OSError, ValueError, KeyError, RuntimeError, asyncio.TimeoutError) as error:
+    except (OSError, ValueError, KeyError, TypeError, RuntimeError, asyncio.TimeoutError) as error:
         result = {'status': 'FAIL', 'error': str(error) or 'Codex app-server timed out'}
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'{result["status"]}: {args.output}')

@@ -1,0 +1,75 @@
+{
+  "codex_version": "0.156.1",
+  "base_revision": "a0deb64e1447d84ab7161e494ee1748de279090c",
+  "scope": "Actual codex exec model turns in read-only tool sandbox; no game execution or acceptance",
+  "cases": [
+    {
+      "case": "explicit-root",
+      "cwd": ".",
+      "cli_exit_code": 0,
+      "turn_completed": true,
+      "thread_id": "01a0dceb-5b88-7ef3-bd67-328b23d5e32c",
+      "events_sha256": "a73dbbf4e9df32a6b3942285cbc1e9974cc5784ffa56e200c847d297a4b04071",
+      "command_count": 3,
+      "usage": {
+        "input_tokens": 152653,
+        "cached_input_tokens": 116224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 822,
+        "reasoning_output_tokens": 0
+      },
+      "prompt": "$nside $bevy-testing\n这是一次真实宿主 Skill 接入验收，工作目录为 N:SIDE 根目录。请只读核对当前 map_viewer capture 如何复用 FreeCamera，以及 assertion-failure.json 为什么应失败。必须实际读取适用 Skill 和相关实现，给出两条有文件依据的判断，指出本次没有验证什么。只输出简短结论，不运行游戏，不写文件，不改项目进度，不另起制作任务。\n"
+    },
+    {
+      "case": "implicit-game",
+      "cwd": "game",
+      "cli_exit_code": 143,
+      "turn_completed": true,
+      "thread_id": "01a0dceb-eb41-71a3-a496-8352cd97a6ef",
+      "events_sha256": "2ed2995670162c51a18d8712b0dff1ae64a2d19c73e36a8934faee56335b2516",
+      "command_count": 5,
+      "usage": {
+        "input_tokens": 175096,
+        "cached_input_tokens": 151680,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 980,
+        "reasoning_output_tokens": 7
+      },
+      "prompt": "请只读审查当前仓库 map_viewer 的离屏 capture 测试方法：Esc 禁用 FreeCamera 时应如何通过状态检查证明输入已被阻断，哪一份脚本覆盖了它？按当前项目已有专业方法选择适用流程，实际读文件后给出简短答案。不要修改任何文件或进度，不运行游戏。\n"
+    },
+    {
+      "case": "negative-encyclopedia",
+      "cwd": ".",
+      "cli_exit_code": 0,
+      "turn_completed": true,
+      "thread_id": "01a0dceb-f846-7860-b577-5b90415d960f",
+      "events_sha256": "173f6ce6856a78ccc0e3616999b08ab457bd621197b5c9d3c3b116cda56aead0",
+      "command_count": 0,
+      "usage": {
+        "input_tokens": 23720,
+        "cached_input_tokens": 13056,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 128,
+        "reasoning_output_tokens": 105
+      },
+      "prompt": "只做一处玩家百科文字润色，不制作内容或启动项目任务：把「兄妹帮助人们继续生活，而不是替人决定生活」改为自然、正向、适合玩家百科的同义表述。保留原有设定，不扩写剧情。只给一句可替换正文，不查开发进度、不改文件。\n"
+    },
+    {
+      "case": "explicit-guide-game",
+      "cwd": "game",
+      "cli_exit_code": 0,
+      "turn_completed": true,
+      "thread_id": "01a0dcec-727b-7d93-b7e1-3612e1d23ef7",
+      "events_sha256": "6fb4d9157d438b7ab7a3bf2ce4e342913a10e0c0f9737719c6e44e9f72f78f77",
+      "command_count": 10,
+      "usage": {
+        "input_tokens": 231437,
+        "cached_input_tokens": 200064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1027,
+        "reasoning_output_tokens": 0
+      },
+      "prompt": "$n-side-guide\n只读回答 N:SIDE 当前做到哪里、最近工作是什么、下一项游戏工作是什么；区分当前技术迁移与游戏进度。用实际文件恢复状态，简短回答，不开始任务、不改文件、不推进验收。\n"
+    }
+  ]
+}

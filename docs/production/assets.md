@@ -56,7 +56,7 @@ Wiki 通过配置中的显式发布清单，将允许公开的源资产映射为
 
 ## 图片检查入口
 
-以下命令在仓库根目录执行，fish 可直接使用。两个上游脚本保留原版，依赖 Python 3.10+ 与 Pillow；缺少 Pillow 时按 Skill 中的 `scripts/requirements.txt` 安装到项目使用的 Python 环境
+以下命令在仓库根目录执行，fish 可直接使用。contact sheet 脚本保留原版，asset_report 的颜色预算边界按本地补丁修复；两者依赖 Python 3.10+ 与 Pillow；缺少 Pillow 时按 Skill 中的 `scripts/requirements.txt` 安装到项目使用的 Python 环境
 
 ```fish
 mkdir -p output/assets

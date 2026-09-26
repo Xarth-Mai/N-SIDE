@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Preview a raster at display size over contrasting backgrounds, without changing it.
 
-Uses the unmodified create-game-assets inspection helper; see
+Uses the retained create-game-assets inspection helper (color-budget patch documented upstream); see
 third_party/skills/awesome-gamedev-agent-skills/LICENSE and NOTICE.
 Contrast-background review is adapted from Godogen asset-gen/rembg.md;
 source revision and retained license are listed in docs/production/asset-tool-review.md.

@@ -1,5 +1,8 @@
 # Bevy 0.19 UI accessibility
 
+> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
+
+
 ## Focus setup
 
 `DefaultPlugins` includes `InputFocusPlugin` in Bevy 0.19, so do not initialize
@@ -47,6 +50,6 @@ Keyboard tab order and spatial gamepad navigation are separate concerns. Add
 
 ## Boundary
 
-This reference covers Bevy UI primitives. Use [`bevy-a11y`](../../bevy-a11y/SKILL.md)
+This reference covers Bevy UI primitives. Use [`bevy-a11y`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-a11y/SKILL.md)
 for captions, contrast, remapping, adaptive controllers, non-visual gameplay,
 testing with disabled players, and release gates.

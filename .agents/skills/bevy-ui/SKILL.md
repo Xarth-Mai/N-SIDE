@@ -11,6 +11,9 @@ metadata:
 
 # Bevy 0.19 — UI
 
+> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
+
+
 ## When to use this skill
 
 - Spawn `Node`-based panels, buttons, labels, overlays, or menus.
@@ -121,7 +124,7 @@ fn style_button(
 
 ## See also
 
-- [`bevy-a11y`](../bevy-a11y/SKILL.md) — full game accessibility implementation.
-- [`bevy-fluent`](../bevy-fluent/SKILL.md) — localized UI text.
+- [`bevy-a11y`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-a11y/SKILL.md) — full game accessibility implementation.
+- [`bevy-fluent`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-fluent/SKILL.md) — localized UI text.
 - [`bevy-cameras`](../bevy-cameras/SKILL.md) — UI cameras and render targets.
 - [`bevy-ecs-queries`](../bevy-ecs-queries/SKILL.md) — change detection.

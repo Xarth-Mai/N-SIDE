@@ -11,6 +11,9 @@ metadata:
 
 # Bevy 0.19 — deterministic testing
 
+> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
+
+
 ## When to use this skill
 
 - Systems/plugins need a minimal `App` harness and direct world assertions.
@@ -119,8 +122,8 @@ against a versioned baseline with documented tolerance.
 
 ## See also
 
-- [`bevy-input-actions`](../bevy-input-actions/SKILL.md) — frame-to-fixed input invariants.
-- [`bevy-physics`](../bevy-physics/SKILL.md) — Rapier headless and determinism boundaries.
+- [`bevy-input-actions`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-input-actions/SKILL.md) — frame-to-fixed input invariants.
+- [`bevy-physics`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md) — Rapier headless and determinism boundaries.
 - [`bevy-diagnostics-profiling`](../bevy-diagnostics-profiling/SKILL.md) — acceptance replays and performance evidence.
 - [Bevy `TimeUpdateStrategy`](https://docs.rs/bevy/0.19.0/bevy/time/enum.TimeUpdateStrategy.html)
 - [Bevy `Task`](https://docs.rs/bevy/0.19.0/bevy/tasks/struct.Task.html)

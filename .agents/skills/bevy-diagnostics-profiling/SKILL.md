@@ -11,6 +11,9 @@ metadata:
 
 # Bevy 0.19 — diagnostics and profiling
 
+> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
+
+
 ## When to use this skill
 
 - A frame, render pass, worker pipeline, or upload path needs causal evidence.
@@ -135,7 +138,7 @@ Desktop results do not establish Steam Deck or browser budgets.
 
 ## See also
 
-- [`bevy-voxel-runtime`](../bevy-voxel-runtime/SKILL.md) — concrete queue, stale-result, and upload metrics.
+- [`bevy-voxel-runtime`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-voxel-runtime/SKILL.md) — concrete queue, stale-result, and upload metrics.
 - [`bevy-rendering`](../bevy-rendering/SKILL.md) — renderer architecture and custom render systems.
 - [`bevy-testing`](../bevy-testing/SKILL.md) — deterministic benchmark replays and visual captures.
 - [Bevy diagnostics](https://docs.rs/bevy/0.19.0/bevy/diagnostic/index.html)

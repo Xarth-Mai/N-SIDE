@@ -1,0 +1,19 @@
+--- a/references/physics-boundary.md
++++ b/references/physics-boundary.md
+@@ -1,4 +1,7 @@
+ # Physics is not rendering
++
++> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
++
+ 
+ `bevy_rapier3d` owns collision detection, rigid-body integration, joints, queries, and
+ optional debug visualization. It does not shade meshes or replace Bevy's renderer.
+@@ -25,7 +28,7 @@
+ 
+ For rigid bodies, colliders, collision groups/messages, scene queries, character
+ controllers, joints, timestep configuration, and tests, load
+-[`bevy-physics`](../../bevy-physics/SKILL.md). This reference only defines the
++[`bevy-physics`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md). This reference only defines the
+ renderer boundary.
+ 
+ ## Transform authority

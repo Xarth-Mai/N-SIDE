@@ -12,21 +12,21 @@
 
 | Upstream | Local | Mode |
 | --- | --- | --- |
-| `skills/bevy-core-concepts` | [`.agents/skills/bevy-core-concepts`](.agents/skills/bevy-core-concepts/SKILL.md) | 原样 Skill |
+| `skills/bevy-core-concepts` | [`.agents/skills/bevy-core-concepts`](.agents/skills/bevy-core-concepts/SKILL.md) | 原版加已登记补丁 |
 | `skills/bevy-ecs-components` | [`.agents/skills/bevy-ecs-components`](.agents/skills/bevy-ecs-components/SKILL.md) | 原样 Skill |
 | `skills/bevy-ecs-queries` | [`.agents/skills/bevy-ecs-queries`](.agents/skills/bevy-ecs-queries/SKILL.md) | 原样 Skill |
 | `skills/bevy-ecs-systems` | [`.agents/skills/bevy-ecs-systems`](.agents/skills/bevy-ecs-systems/SKILL.md) | 原样 Skill |
 | `skills/bevy-assets` | [`.agents/skills/bevy-assets`](.agents/skills/bevy-assets/SKILL.md) | 原样 Skill |
 | `skills/bevy-custom-assets` | [`.agents/skills/bevy-custom-assets`](.agents/skills/bevy-custom-assets/SKILL.md) | 原样 Skill |
-| `skills/bevy-save-load` | [`.agents/skills/bevy-save-load`](.agents/skills/bevy-save-load/SKILL.md) | 原样 Skill |
-| `skills/bevy-cameras` | [`.agents/skills/bevy-cameras`](.agents/skills/bevy-cameras/SKILL.md) | 原样 Skill |
-| `skills/bevy-rendering` | [`.agents/skills/bevy-rendering`](.agents/skills/bevy-rendering/SKILL.md) | 原样 Skill |
+| `skills/bevy-save-load` | [`.agents/skills/bevy-save-load`](.agents/skills/bevy-save-load/SKILL.md) | 原版加已登记补丁 |
+| `skills/bevy-cameras` | [`.agents/skills/bevy-cameras`](.agents/skills/bevy-cameras/SKILL.md) | 原版加已登记补丁 |
+| `skills/bevy-rendering` | [`.agents/skills/bevy-rendering`](.agents/skills/bevy-rendering/SKILL.md) | 原版加已登记补丁 |
 | `skills/bevy-animation` | [`.agents/skills/bevy-animation`](.agents/skills/bevy-animation/SKILL.md) | 原样 Skill |
-| `skills/bevy-ui` | [`.agents/skills/bevy-ui`](.agents/skills/bevy-ui/SKILL.md) | 原样 Skill |
-| `skills/bevy-testing` | [`.agents/skills/bevy-testing`](.agents/skills/bevy-testing/SKILL.md) | 原样 Skill |
-| `skills/bevy-diagnostics-profiling` | [`.agents/skills/bevy-diagnostics-profiling`](.agents/skills/bevy-diagnostics-profiling/SKILL.md) | 原样 Skill |
+| `skills/bevy-ui` | [`.agents/skills/bevy-ui`](.agents/skills/bevy-ui/SKILL.md) | 原版加已登记补丁 |
+| `skills/bevy-testing` | [`.agents/skills/bevy-testing`](.agents/skills/bevy-testing/SKILL.md) | 原版加已登记补丁 |
+| `skills/bevy-diagnostics-profiling` | [`.agents/skills/bevy-diagnostics-profiling`](.agents/skills/bevy-diagnostics-profiling/SKILL.md) | 原版加已登记补丁 |
 
-保留 13 个 Bevy 0.19 基础参考及其完整资源；实际 API 以本地锁文件、源码和测试为准。原 `compatibility` 字段提及其他宿主，不安装 Claude 配置。未采用的可选兄弟引用由各 `UPSTREAM.md` 提供固定版本线上链接
+保留 13 个 Bevy 0.19 基础参考及其完整资源；实际 API 以本地锁文件、源码和测试为准。原 `compatibility` 字段提及其他宿主，不安装 Claude 配置。未采用的可选兄弟引用已直接修为固定版本线上链接，9 个改动文件保留显著修改说明及逐文件补丁，其余原文件保持原样
 
 ## qiuaoru-coder/game-design-agent-skills
 
@@ -64,7 +64,7 @@
 
 | Upstream | Local | Mode |
 | --- | --- | --- |
-| `skills/disciplines/create-game-assets` | [`.agents/skills/create-game-assets`](.agents/skills/create-game-assets/SKILL.md) | 原样 Skill |
+| `skills/disciplines/create-game-assets` | [`.agents/skills/create-game-assets`](.agents/skills/create-game-assets/SKILL.md) | 原版加已登记补丁 |
 | `skills/disciplines/game-ui-ux` | [`.agents/skills/game-ui-ux`](.agents/skills/game-ui-ux/SKILL.md) | 原样 Skill |
 | `skills/disciplines/dialogue-systems` | [`.agents/skills/dialogue-systems`](.agents/skills/dialogue-systems/SKILL.md) | 原样 Skill |
 | `skills/disciplines/audio-design` | [`.agents/skills/audio-design`](.agents/skills/audio-design/SKILL.md) | 原样 Skill |
@@ -72,7 +72,7 @@
 | `skills/disciplines/game-ai` | [`.agents/skills/game-ai`](.agents/skills/game-ai/SKILL.md) | 原样 Skill |
 | `skills/disciplines/` | [`.agents/skills/nside`](.agents/skills/nside/SKILL.md) | 基于上游改编 |
 
-保留完整 Apache-2.0 LICENSE 与 NOTICE，六个原版 Skill 文件均未修改。项目适配只在独立的 N:SIDE 文件中维护；若以后修改上游文件，在被修改文件中标明修改，并保留适用原始声明
+保留完整 Apache-2.0 LICENSE 与 NOTICE；`create-game-assets/scripts/asset_report.py` 有已登记补丁，修复精确颜色数量为上限加一时漏报的问题，文件内保留原作者、版本、许可及修改说明。其余五个专业目录及该目录的未改文件保持原样；项目适配在独立的 N:SIDE 文件中维护
 
 ## poorvith-mp/skills-gamedev
 
@@ -135,4 +135,6 @@
 
 ## 更新与独立分发
 
-更新选中目录时固定新的完整 commit，比较原文件与项目适配的差异，再刷新 manifest 校验值及本清单。不要将上游示例占位符写成项目配置；本地必需引用和可选上游引用分别校验。独立打包任何 Skill 时一并携带对应 LICENSE、NOTICE、方法归属说明和 UPSTREAM 信息
+本地完整性由 `bun tools/validate-skills.mjs` 检查；固定上游内容由 `python3 tools/check_skill_upstream.py --output output/skills/upstream.json` 独立比较，检查完整目录、原文件、补丁基线与精确差异、许可及固定链接目标。后者读取 GitHub 固定 Git 对象，或 `--checkouts` 提供的独立 Git checkout，不以本地 hash 自洽替代上游证据
+
+更新选中目录时固定新的完整 commit，比较原文件与项目适配的差异，再刷新 manifest 校验值及本清单。不要将上游示例占位符写成项目配置；本地文件、锚点、宿主 metadata、工具依赖与固定上游引用分别校验，不保留断链豁免。独立打包任何 Skill 时一并携带对应 LICENSE、NOTICE、方法归属说明和 UPSTREAM 信息

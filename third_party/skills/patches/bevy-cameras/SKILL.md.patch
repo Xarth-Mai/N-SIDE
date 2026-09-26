@@ -1,0 +1,26 @@
+--- a/SKILL.md
++++ b/SKILL.md
+@@ -10,6 +10,9 @@
+ ---
+ 
+ # Bevy 0.19 — Cameras
++
++> Modified for N:SIDE: optional sibling links resolve to the pinned upstream revision; other guidance is unchanged. Original author: Chris Gliddon; license and revision are retained in UPSTREAM.md.
++
+ 
+ ## When to use this skill
+ 
+@@ -138,9 +141,9 @@
+   pitch limits, smoothing, fixed interpolation, sphere casts, hysteresis, and actor fade.
+ - [`bevy-rendering`](../bevy-rendering/SKILL.md) — renderer choice, forward/deferred,
+   and render systems.
+-- [`bevy-input-actions`](../bevy-input-actions/SKILL.md) — rebindable camera/aim input
++- [`bevy-input-actions`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-input-actions/SKILL.md) — rebindable camera/aim input
+   and correct mouse-delta transfer.
+-- [`bevy-physics`](../bevy-physics/SKILL.md) — Rapier scene-query setup and filtering.
+-- [`bevy-pbr-materials`](../bevy-pbr-materials/SKILL.md) — lighting and camera-visible
++- [`bevy-physics`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-physics/SKILL.md) — Rapier scene-query setup and filtering.
++- [`bevy-pbr-materials`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-pbr-materials/SKILL.md) — lighting and camera-visible
+   materials.
+-- [`bevy-a11y`](../bevy-a11y/SKILL.md) — FOV, shake, motion, and viewport accessibility.
++- [`bevy-a11y`](https://github.com/chrisgliddon/bevy-skills/blob/b1b4da5744ebbd5c526342b2351967411cd5ca61/skills/bevy-a11y/SKILL.md) — FOV, shake, motion, and viewport accessibility.

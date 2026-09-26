@@ -80,3 +80,9 @@ bun tools/export-environment.mjs --check
 ## CI
 
 [checks.yml](../.github/workflows/checks.yml)分别执行无 GPU 的工具／Wiki 检查和 Rust 格式／编译／测试；真实渲染只在手动启用后调度带 `nside-vulkan` 标签的自托管 Linux runner，要求预装 Rust、Python、Pillow、Vulkan 驱动与 FFmpeg。未配置 runner 或未调度的渲染任务为 NOT RUN，本地可用上面的同一入口复验
+
+## Skills 来源与补丁复验
+
+`bun run check:skills` 检查本地清单、必需入口、双向文件覆盖、引用、metadata 与命令依赖；来源更新时另运行 `bun run check:skills:upstream` 从固定上游 Git 对象核对原件、完整目录和补丁。后者需要网络；离线或上游不可达记录 NOT RUN，不能用本地 hash 自洽代替来源证明
+
+已缓存独立 Git checkout 时可向 `tools/check_skill_upstream.py` 传入 `--checkouts` JSON（来源 ID 到 checkout 路径）；工具仍以清单中完整 commit 读取 Git 对象，不信工作区文件。Codex 发现命令 `python3 tools/probe_skills.py --output output/skills/discovery.json` 只证明发现；真实显式/隐式模型行为单独保存会话记录
