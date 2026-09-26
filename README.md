@@ -38,6 +38,10 @@ cargo run --locked
 
 格式、编译、测试与构建命令见[游戏工程](game/README.md)
 
+[开发与运行验收](docs/production/runtime-validation.md) · [资产生产](docs/production/assets.md) · [Skills 与验证工具](tools/README.md#skills-与来源检查)
+
 ## 许可证
 
 [Mozilla Public License 2.0](LICENSE)
+
+迁入的开发 Skills 和方法分别遵守[第三方来源与许可](THIRD_PARTY_NOTICES.md)中保留的条款

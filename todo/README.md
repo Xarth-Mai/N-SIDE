@@ -14,6 +14,8 @@
 
 ## 归档
 
+- [x] `done` [开发能力吸收与运行验收](archive/godogen-adoption.md)：原版 Skills、项目适配、真实 capture、资产检查与来源许可已交付，环境限制见记录
+
 - [x] `done` [白天视觉样板](archive/daylight-visual.md)：按已交付范围结项，剩余工作见 [Demo 承接](demo-roadmap.md#城市与-viewer-归档承接)
 - [x] `done` [城市框架与 Viewer 收口](archive/n-district-closeout.md)：按已交付范围结项，剩余工作见 [Demo 承接](demo-roadmap.md#城市与-viewer-归档承接)
 - [x] `done` [N街区扩容与轻近未来都市设计](archive/n-district-modern-city.md)：按已交付范围结项，剩余工作见 [Demo 承接](demo-roadmap.md#城市与-viewer-归档承接)

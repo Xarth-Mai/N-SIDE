@@ -3,7 +3,7 @@
 Rust 2024 / Bevy 0.19.1，所有命令从仓库根执行
 
 ```sh
-(cd game && cargo run --locked)
+cargo run --manifest-path game/Cargo.toml --locked
 cargo run --manifest-path game/Cargo.toml --locked --features viewer --bin map_viewer -- --project-root .
 ```
 
