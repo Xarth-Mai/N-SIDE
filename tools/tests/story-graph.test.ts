@@ -21,16 +21,35 @@ test('nested ALL/ANY keeps alternatives after partial satisfaction, never unlock
  expect(remaining(tree,new Set(['A','C']))).toBeNull()
 })
 
-test('all 18 stories validate; projection excludes narrative internals and design metadata',()=>{
+test('all 22 stories validate; projection excludes narrative internals and design metadata',()=>{
  expect(validateStories(root)).toEqual([])
  const nodes=projectStories(root)
  expect(nodes.filter(n=>n.role==='main')).toHaveLength(10)
- expect(nodes.filter(n=>n.role==='side')).toHaveLength(8)
+ expect(nodes.filter(n=>n.role==='side')).toHaveLength(12)
  expect(JSON.stringify(nodes)).not.toMatch(/QST-002-B016|state_changes|resolution_committed|accepted|narrative.json|review|dev\/design/)
  const aftermath=effects(nodes,'QST-002')
  expect(aftermath).toHaveLength(1)
  expect(aftermath[0].gate.scope).toBe('米娜来信重访')
  expect(effects(nodes,'QST-108')).toEqual([])
+})
+
+test('current story separates early history, later proof and optional life outcomes',()=>{
+ const qs=fresh(), nodes=projectStories(root)
+ expect(q(qs,'QST-003').story.outcomes.some(o=>o.id==='source-ended')).toBe(true)
+ expect(q(qs,'QST-006').story.outcomes.some(o=>o.id==='source-ended')).toBe(false)
+ const proof=q(qs,'QST-006').story.outcomes.find(o=>o.id==='old-method-limits')!
+ expect(q(qs,'QST-006').story.required.some(g=>g.scope===proof.gate)).toBe(true)
+ expect(effects(nodes,'QST-005').some(e=>e.node.id==='QST-006')).toBe(true)
+ const final=qs.find(q=>q.id==='QST-009') as Quest & {diver:string;reality_receiver:string}
+ expect([final.diver,final.reality_receiver]).toEqual(['CHR-002','CHR-001'])
+ const late=q(qs,'QST-107')
+ expect(late.story.optional).toBe(true)
+ expect(effects(nodes,'QST-003').some(e=>e.node.id===late.id&&e.gate.scope==='start')).toBe(true)
+ for(const id of ['QST-019','QST-020','QST-021','QST-022']) {
+  expect(q(qs,id).story.optional).toBe(true)
+  expect(q(qs,id).story.required).toEqual([])
+  expect(effects(nodes,id)).toEqual([])
+ }
 })
 
 test('unknown quests, self locks and invalid typed narrative targets fail explicitly',()=>{
@@ -59,7 +78,7 @@ test('optional side cannot be unavoidable, including a mandatory main stage; ANY
 })
 
 test('outcomes cannot escape their required production stage in a cycle',()=>{
- const qs=fresh();q(qs,'QST-006').story.required=[gate({type:'information',quest_id:'QST-007',target:'current-risk',value:'confirmed',reason:'cycle'})]
+ const qs=fresh();q(qs,'QST-006').story.required.push(gate({type:'information',quest_id:'QST-007',target:'current-risk',value:'confirmed',reason:'cycle'}))
  expect(validateStories(root,qs).join()).toMatch(/unreachable/)
 })
 

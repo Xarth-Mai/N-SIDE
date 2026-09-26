@@ -1,0 +1,58 @@
+$ bun run check:map && bun run docs:build:player && bun run docs:build:dev
+$ bun test tools/tests/district-map.test.ts
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [2.04ms]
+(pass) terrain colors follow ground elevation [0.08ms]
+(pass) overview terrain retains source controls and excludes elevated connections [100.32ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.14ms]
+(pass) shopping stays local and public hillside routes remain connected [1.13ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.26ms]
+(pass) scene keeps platforms below volumes and geometry is finite [31.25ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [7.17ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [4.32ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [0.97ms]
+(pass) tree positions stay outside building footprints [4.01ms]
+(pass) all streets clear building volumes at their actual widths and elevations [410.15ms]
+(pass) district ground-road crossings share a junction and its elevation [103.20ms]
+(pass) city framework records every building and reaches its same-level facade entrances [8.19ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.45ms]
+(pass) public streets stay outside same-level resident and service courts [3.42ms]
+(pass) building volumes share boundaries without occupying the same space [39.18ms]
+(pass) detailed places connect street access to separate public and service entrances [10.57ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.30ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [1.62ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.29ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.01ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [25.52ms]
+(pass) public, residents, students and service users have separate access rights [2.74ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.32ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.67ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.76ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.44ms]
+(pass) shared stairs and separate apartments connect through shared circulation [0.90ms]
+
+ 29 pass
+ 0 fail
+Ran 29 tests across 1 file. [792.00ms]
+$ bun tools/wiki.ts build player
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+build complete in 2.77s.
+{"profile":"player","pages":95,"files":547,"result":"PASS"}
+$ bun tools/wiki.ts build dev
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+build complete in 4.49s.
+{"profile":"dev","pages":152,"files":770,"result":"PASS"}
