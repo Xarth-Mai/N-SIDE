@@ -16,8 +16,8 @@ FILES = {
     'quests': DOCS / 'dev/design/catalogs/quests.json',
 }
 DISTRICT = Path('source-assets/district-map/district.json')
-CHARACTERS = DOCS / 'player/encyclopedia/characters'
-STORY = DOCS / 'player/encyclopedia/story'
+CHARACTERS = DOCS / 'player/characters'
+STORY = DOCS / 'player/story'
 
 
 def character_subject(content: str) -> str | None:
@@ -148,7 +148,7 @@ def validate(root: Path) -> dict:
             continue
         path = (root / source).resolve()
         if not path.is_relative_to((root / CHARACTERS).resolve()) or path.suffix != '.md':
-            add('source', cid, '人物权威档案位于 docs/player/encyclopedia/characters/ 内')
+            add('source', cid, '人物权威档案位于 docs/player/characters/ 内')
             continue
         try:
             if character_subject(path.read_text(encoding='utf-8')) != cid:
@@ -193,7 +193,7 @@ def validate(root: Path) -> dict:
             continue
         path = (docs / source).resolve()
         if not path.is_relative_to((root / STORY).resolve()) or path.suffix != '.md':
-            add('source', qid, f'故事正文路径超出 docs/player/encyclopedia/story/ 或不是 Markdown：{source}')
+            add('source', qid, f'故事正文路径超出 docs/player/story/ 或不是 Markdown：{source}')
             continue
         try:
             if source not in sources:

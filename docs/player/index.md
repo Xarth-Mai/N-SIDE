@@ -16,6 +16,6 @@ N:SIDE 发生在 Null City。一对年轻兄妹经营着一家全天亮灯的生
 
 ## 阅读入口
 
-[游玩指南](guide/index.md) · [世界](encyclopedia/world/null-city.md) · [大共梦事件](encyclopedia/world/great-shared-dream.md) · [人物](encyclopedia/characters/index.md) · [场所](encyclopedia/locations/place-network.md) · [故事](encyclopedia/story/index.md) · [敌人](encyclopedia/enemies/index.md) · [生活与潜梦](encyclopedia/gameplay/dream-diving.md)
+[游玩指南](guide/index.md) · [世界](world/null-city.md) · [大共梦事件](world/great-shared-dream.md) · [人物](characters/index.md) · [场所](locations/place-network.md) · [故事](story/index.md) · [敌人](enemies/index.md) · [生活与潜梦](gameplay/dream-diving.md)
 
 故事与相关人物经历收录完整背景、事件真相和结局，可按章节选择阅读

@@ -14,7 +14,7 @@ import data from '../../../../source-assets/district-map/district.json'
 
 ## 场所配置
 
-人物使用、关联故事与事件后续见[场所百科](../../../player/encyclopedia/locations/place-network.md)，按十二街坊分别展开。设计关联保存在[场所叙事索引](../catalogs/city-story-map.json)，名称、街坊与建筑归属由地图主数据核对；[目录](../catalogs/place-catalog.json)的 `kind` 为用途分类，与地图的 `space` 保留各自含义
+人物使用、关联故事与事件后续见[场所百科](../../../player/locations/place-network.md)，按十二街坊分别展开。设计关联保存在[场所叙事索引](../catalogs/city-story-map.json)，名称、街坊与建筑归属由地图主数据核对；[目录](../catalogs/place-catalog.json)的 `kind` 为用途分类，与地图的 `space` 保留各自含义
 
 每处场所具有可辨认的用途、使用者、活动与空间特征。场所卡与重点简报直接引用地图主数据，主入口和服务口同时显示楼层、标高与街坊接入后的路径距离。内部功能按所属场所组织，货运侧院与公共台阶作为空间节点记录
 
@@ -73,7 +73,7 @@ import data from '../../../../source-assets/district-map/district.json'
 
 这些场所序列同时保存按访问顺序连接入口的道路路径，放学后的采购和会合沿南门外步行带展开；安静日常先把采购带回家，再出门散步。屋顶关闭时从影院回到地面花园，夜间散场根据轨道运营选择城市夜间交通
 
-路线走法以 [N街区](../../../player/encyclopedia/locations/n-district.md#几条熟悉的路)为准，地图检查各条路线的不同用途
+路线走法以 [N街区](../../../player/locations/n-district.md#几条熟悉的路)为准，地图检查各条路线的不同用途
 
 - 直接回家线最容易理解，普通日常不强迫绕进额外巷道
 - 采购短环联系食品店与社区横街，站前、饭馆和修理铺作为可选延伸

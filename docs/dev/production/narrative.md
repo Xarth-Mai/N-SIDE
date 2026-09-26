@@ -50,7 +50,7 @@ Pitch、Synopsis、Treatment 与场景规格放在任务的 `development.md`；�
 
 入口使用 `create-case`、`create-content` 和 `review-narrative`。先读相关百科、已确认的世界规则、人物知情范围、场所开放边界、当前委托规格与任务，不从空白重新设计已定设定。完整故事归玩家百科；开发稿引用故事后只补玩家行动、信息顺序、状态、资源和恢复，不复制另一份故事正文
 
-本项目样板为[《最后的玩具》](../design/quests/QST-002/README.md)，其中[完整故事](../../player/encyclopedia/story/main/last-toy.md)、[行动与恢复规格](../design/quests/QST-002/development.md)和[Demo 范围](../design/quests/QST-002/demo-scope.md)分工明确。候选优先细化与玩法已经接入是不同状态，静态 `narrative.json` 检查不证明游戏能执行这些条件
+本项目样板为[《最后的玩具》](../design/quests/QST-002/README.md)，其中[完整故事](../../player/story/main/last-toy.md)、[行动与恢复规格](../design/quests/QST-002/development.md)和[Demo 范围](../design/quests/QST-002/demo-scope.md)分工明确。候选优先细化与玩法已经接入是不同状态，静态 `narrative.json` 检查不证明游戏能执行这些条件
 
 ## 从行动与信息到实现
 
@@ -81,7 +81,7 @@ bun run check:docs
 
 ## 《最后的玩具》制作样板
 
-完整故事见[主线第一章](../../player/encyclopedia/story/main/last-toy.md)，已选择的 Demo 范围见[制作范围](../design/quests/QST-002/demo-scope.md)，具体节点与恢复规则见[委托开发稿](../design/quests/QST-002/development.md)；本示例说明调查与行动共同构成转折的制作方法
+完整故事见[主线第一章](../../player/story/main/last-toy.md)，已选择的 Demo 范围见[制作范围](../design/quests/QST-002/demo-scope.md)，具体节点与恢复规则见[委托开发稿](../design/quests/QST-002/development.md)；本示例说明调查与行动共同构成转折的制作方法
 
 ## 可玩结构
 

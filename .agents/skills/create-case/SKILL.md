@@ -5,7 +5,7 @@ description: Develop a N:SIDE narrative case from pitch through playable beats a
 
 # 制作叙事委托
 
-读取[潜梦工作](../../../docs/player/encyclopedia/gameplay/dream-diving.md)、[梦魇](../../../docs/player/encyclopedia/world/nightmares.md)、相关人物与地点，以及[叙事流程](../../../docs/dev/production/narrative.md)。
+读取[潜梦工作](../../../docs/player/gameplay/dream-diving.md)、[梦魇](../../../docs/player/world/nightmares.md)、相关人物与地点，以及[叙事流程](../../../docs/dev/production/narrative.md)。
 
 用委托模板建立事件，分别确定委托人、受影响者、梦主、潜梦者、接应者与 Agent 协作。
 

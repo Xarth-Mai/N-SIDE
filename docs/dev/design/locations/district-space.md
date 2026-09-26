@@ -5,7 +5,7 @@ depends_on: ["DOC-NULL-CITY", "LOC-002", "LOC-001", "LOC-003"]
 
 # 街区空间制作
 
-城市与地点正文见 [Null City](../../../player/encyclopedia/world/null-city.md)、[N街区](../../../player/encyclopedia/locations/n-district.md)、[小店](../../../player/encyclopedia/locations/shop.md)与[摘星台](../../../player/encyclopedia/locations/stargazing-terrace.md)。空间制作按街区结构、场所活动和城市运行组织，同一份地图数据连接总图与地点
+城市与地点正文见 [Null City](../../../player/world/null-city.md)、[N街区](../../../player/locations/n-district.md)、[小店](../../../player/locations/shop.md)与[摘星台](../../../player/locations/stargazing-terrace.md)。空间制作按街区结构、场所活动和城市运行组织，同一份地图数据连接总图与地点
 
 ## 阅读入口
 

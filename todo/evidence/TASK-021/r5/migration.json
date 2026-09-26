@@ -1,0 +1,524 @@
+[
+  {
+    "source": "docs/player/encyclopedia/characters/agent.md",
+    "target": "docs/player/characters/agent.md",
+    "before_sha256": "ba34a85488f8ce9c23e98478d189d1cc47e483ee0fe6d258a4806362e9d06381",
+    "after_sha256": "ba34a85488f8ce9c23e98478d189d1cc47e483ee0fe6d258a4806362e9d06381"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/brother.md",
+    "target": "docs/player/characters/brother.md",
+    "before_sha256": "6b7db92d1c5a413430ebace0ebb9ccf3a09a02917004f16ba9c0fd14b6727f6c",
+    "after_sha256": "6b7db92d1c5a413430ebace0ebb9ccf3a09a02917004f16ba9c0fd14b6727f6c"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/family-members/chen-jing-he.md",
+    "target": "docs/player/characters/family-members/chen-jing-he.md",
+    "before_sha256": "93b452825bf3a8af82d3cd7dd39c88638ee2bcd79d09eafc3c9b9b6241417701",
+    "after_sha256": "93b452825bf3a8af82d3cd7dd39c88638ee2bcd79d09eafc3c9b9b6241417701"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/family-members/index.md",
+    "target": "docs/player/characters/family-members/index.md",
+    "before_sha256": "a8e2504c838702acb9868c1466e79ea06ac80d9f42840ba0458d3a6f532273bb",
+    "after_sha256": "a8e2504c838702acb9868c1466e79ea06ac80d9f42840ba0458d3a6f532273bb"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/family-members/lin-qi-ming.md",
+    "target": "docs/player/characters/family-members/lin-qi-ming.md",
+    "before_sha256": "ec1229f963e1f8bf80c402fcf106e268145f5344849b94413522af3d8ba8ce65",
+    "after_sha256": "ec1229f963e1f8bf80c402fcf106e268145f5344849b94413522af3d8ba8ce65"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/family.md",
+    "target": "docs/player/characters/family.md",
+    "before_sha256": "811b61d9a0c017eaf49f86c44a83c6dd54b643dbad8183bca4669c013e6154b7",
+    "after_sha256": "811b61d9a0c017eaf49f86c44a83c6dd54b643dbad8183bca4669c013e6154b7"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/index.md",
+    "target": "docs/player/characters/index.md",
+    "before_sha256": "87869e3f6a9548d0805b2891e023fcbbd2ec211da2675921c872a241a5c0136a",
+    "after_sha256": "87869e3f6a9548d0805b2891e023fcbbd2ec211da2675921c872a241a5c0136a"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/chen-zhi-xia.md",
+    "target": "docs/player/characters/neighbors/chen-zhi-xia.md",
+    "before_sha256": "2a388dcc2cdf1f2e221e4255e28c1e543070880434c67ab850053d7f466bb9f3",
+    "after_sha256": "2a388dcc2cdf1f2e221e4255e28c1e543070880434c67ab850053d7f466bb9f3"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/cheng-jia.md",
+    "target": "docs/player/characters/neighbors/cheng-jia.md",
+    "before_sha256": "de4448f63b4e363b39943858498935174f21e91cec073698239ede15b406eaa1",
+    "after_sha256": "de4448f63b4e363b39943858498935174f21e91cec073698239ede15b406eaa1"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/chu-qing.md",
+    "target": "docs/player/characters/neighbors/chu-qing.md",
+    "before_sha256": "acb6c6c067d976b7b514379fcadd690d3602f9a4ff5fc2e6ab1d095a9ecde84d",
+    "after_sha256": "acb6c6c067d976b7b514379fcadd690d3602f9a4ff5fc2e6ab1d095a9ecde84d"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/gu-zhu.md",
+    "target": "docs/player/characters/neighbors/gu-zhu.md",
+    "before_sha256": "8b267e8b3355f12de20c7f1337a30dde0c5b846fec88c19463fc3c0d92f228ea",
+    "after_sha256": "8b267e8b3355f12de20c7f1337a30dde0c5b846fec88c19463fc3c0d92f228ea"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/he-qiu.md",
+    "target": "docs/player/characters/neighbors/he-qiu.md",
+    "before_sha256": "8d6b301144ad46070bbdda70b3f61224ec2ff615fc562807ecb5f4afde7c9d67",
+    "after_sha256": "8d6b301144ad46070bbdda70b3f61224ec2ff615fc562807ecb5f4afde7c9d67"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/he-xin.md",
+    "target": "docs/player/characters/neighbors/he-xin.md",
+    "before_sha256": "93fa623b1afe79572a7c033a4025b999d417723c7f86799c0b9b71d8a16b3c2f",
+    "after_sha256": "93fa623b1afe79572a7c033a4025b999d417723c7f86799c0b9b71d8a16b3c2f"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/he-yun.md",
+    "target": "docs/player/characters/neighbors/he-yun.md",
+    "before_sha256": "8a25f91e673021c953963c54d654a0ad87db2fb3233f34488436b7700cf4bc95",
+    "after_sha256": "8a25f91e673021c953963c54d654a0ad87db2fb3233f34488436b7700cf4bc95"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/index.md",
+    "target": "docs/player/characters/neighbors/index.md",
+    "before_sha256": "62dbf695799d9ef973ee885f7c54893335389891d21664e27fb00cf6d3436ae7",
+    "after_sha256": "62dbf695799d9ef973ee885f7c54893335389891d21664e27fb00cf6d3436ae7"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/jiang-tang.md",
+    "target": "docs/player/characters/neighbors/jiang-tang.md",
+    "before_sha256": "69791f47574a815929809a8d7782867717ddade7091e6fd4b74e514d757c9258",
+    "after_sha256": "69791f47574a815929809a8d7782867717ddade7091e6fd4b74e514d757c9258"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/liang-su.md",
+    "target": "docs/player/characters/neighbors/liang-su.md",
+    "before_sha256": "6e891c7fd3389c761280039679ddceabad7a93e6d4e46d8216d34dc4d4180238",
+    "after_sha256": "6e891c7fd3389c761280039679ddceabad7a93e6d4e46d8216d34dc4d4180238"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/lu-heng.md",
+    "target": "docs/player/characters/neighbors/lu-heng.md",
+    "before_sha256": "db1e0acf6030860c6ee4db7639de59a21bddb46daae4741267e761a8549eefcd",
+    "after_sha256": "db1e0acf6030860c6ee4db7639de59a21bddb46daae4741267e761a8549eefcd"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/mina.md",
+    "target": "docs/player/characters/neighbors/mina.md",
+    "before_sha256": "cc2f28f11b124d32c3d76fda27862002a8a3a4d65c332f1eaad846c34ac4c912",
+    "after_sha256": "cc2f28f11b124d32c3d76fda27862002a8a3a4d65c332f1eaad846c34ac4c912"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/ning-lang.md",
+    "target": "docs/player/characters/neighbors/ning-lang.md",
+    "before_sha256": "e79963b7bc3716444f44a5a518b5076fa80a76cb24af0657c259f3b6eac89fad",
+    "after_sha256": "e79963b7bc3716444f44a5a518b5076fa80a76cb24af0657c259f3b6eac89fad"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/qiao-yin.md",
+    "target": "docs/player/characters/neighbors/qiao-yin.md",
+    "before_sha256": "37e7663a59432780c79c98d95c4158363c7b98c0bd4c6252fbcbd29440d986f7",
+    "after_sha256": "37e7663a59432780c79c98d95c4158363c7b98c0bd4c6252fbcbd29440d986f7"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/qiu-ning.md",
+    "target": "docs/player/characters/neighbors/qiu-ning.md",
+    "before_sha256": "7195d851ae3d1a4789ada92391c17c9c99aea2bf29f179719b53d5a49327ec06",
+    "after_sha256": "7195d851ae3d1a4789ada92391c17c9c99aea2bf29f179719b53d5a49327ec06"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/shao-min.md",
+    "target": "docs/player/characters/neighbors/shao-min.md",
+    "before_sha256": "8408747073f6af6fc6b862a4acdd18a839680875291cab337c426cc74783ebc1",
+    "after_sha256": "8408747073f6af6fc6b862a4acdd18a839680875291cab337c426cc74783ebc1"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/shen-ling.md",
+    "target": "docs/player/characters/neighbors/shen-ling.md",
+    "before_sha256": "de64c2dd62c54b243f2475fbbeedeebb34e2214533500f0254bf4c3efdb3d1fe",
+    "after_sha256": "de64c2dd62c54b243f2475fbbeedeebb34e2214533500f0254bf4c3efdb3d1fe"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/song-lan.md",
+    "target": "docs/player/characters/neighbors/song-lan.md",
+    "before_sha256": "170dcaedcf2927943086b8064221ad11aab8615f8e07cf18ae448fde1c3140cb",
+    "after_sha256": "170dcaedcf2927943086b8064221ad11aab8615f8e07cf18ae448fde1c3140cb"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/su-he.md",
+    "target": "docs/player/characters/neighbors/su-he.md",
+    "before_sha256": "86eff48581c3bab6d60b2d85ac4589e4d189c6f984bf31a4bd94d22ebb6906c7",
+    "after_sha256": "86eff48581c3bab6d60b2d85ac4589e4d189c6f984bf31a4bd94d22ebb6906c7"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/tang-yu.md",
+    "target": "docs/player/characters/neighbors/tang-yu.md",
+    "before_sha256": "5db485ed9ebe0755d491efab73216570eae2384607c619d01d0e2803264420bb",
+    "after_sha256": "5db485ed9ebe0755d491efab73216570eae2384607c619d01d0e2803264420bb"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/wei-hang.md",
+    "target": "docs/player/characters/neighbors/wei-hang.md",
+    "before_sha256": "f2d1d4c98051d8b463e44d20b603539e3e78f0ca2e887830af27417d5ecbdd92",
+    "after_sha256": "f2d1d4c98051d8b463e44d20b603539e3e78f0ca2e887830af27417d5ecbdd92"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/wen-ran.md",
+    "target": "docs/player/characters/neighbors/wen-ran.md",
+    "before_sha256": "2ae46974feb9d80f110609adc878298b3f8c90bc1773ef9f562ea840db76e6e4",
+    "after_sha256": "2ae46974feb9d80f110609adc878298b3f8c90bc1773ef9f562ea840db76e6e4"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/yao-an.md",
+    "target": "docs/player/characters/neighbors/yao-an.md",
+    "before_sha256": "c6db77f2b70b4088cd8857256228a0e451f95a1fc28ec57dab67cd0678571885",
+    "after_sha256": "c6db77f2b70b4088cd8857256228a0e451f95a1fc28ec57dab67cd0678571885"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/ye-chu.md",
+    "target": "docs/player/characters/neighbors/ye-chu.md",
+    "before_sha256": "57c64353e28b7f2f981fd2ee5ee070d78f4b9bb4e0a51f59eafd009d7d142d16",
+    "after_sha256": "57c64353e28b7f2f981fd2ee5ee070d78f4b9bb4e0a51f59eafd009d7d142d16"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/zhao-yan.md",
+    "target": "docs/player/characters/neighbors/zhao-yan.md",
+    "before_sha256": "9b77337afccdf8e13c52d2952f014013762f0b9bdd5b0e028c048c43f0c4ea19",
+    "after_sha256": "9b77337afccdf8e13c52d2952f014013762f0b9bdd5b0e028c048c43f0c4ea19"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/zheng-bo.md",
+    "target": "docs/player/characters/neighbors/zheng-bo.md",
+    "before_sha256": "518376f923f7c27ca8ffaf299b20ac6377ce72e6f831ea75b355386eba2aa677",
+    "after_sha256": "518376f923f7c27ca8ffaf299b20ac6377ce72e6f831ea75b355386eba2aa677"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/zheng-che.md",
+    "target": "docs/player/characters/neighbors/zheng-che.md",
+    "before_sha256": "ab73e88086a6222e4a3ddb515109b53eee7eae8d31a7af71205b6981daccb42b",
+    "after_sha256": "ab73e88086a6222e4a3ddb515109b53eee7eae8d31a7af71205b6981daccb42b"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/zhong-fan.md",
+    "target": "docs/player/characters/neighbors/zhong-fan.md",
+    "before_sha256": "cc9762e4d0e068d77737105b54a01697cf079142764d6d88f3709cb01a447e7a",
+    "after_sha256": "cc9762e4d0e068d77737105b54a01697cf079142764d6d88f3709cb01a447e7a"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/neighbors/zhou-ran.md",
+    "target": "docs/player/characters/neighbors/zhou-ran.md",
+    "before_sha256": "d9af3500ec78a7c0095122f490c01cbbc7c86b34170145be255da72d800e64c3",
+    "after_sha256": "d9af3500ec78a7c0095122f490c01cbbc7c86b34170145be255da72d800e64c3"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/shared-dreams/index.md",
+    "target": "docs/player/characters/shared-dreams/index.md",
+    "before_sha256": "7859706f969f8bc2b0df06b847d4fabd3692ecc5a38b7753502790b105b9b06e",
+    "after_sha256": "7859706f969f8bc2b0df06b847d4fabd3692ecc5a38b7753502790b105b9b06e"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/shared-dreams/ji-wen.md",
+    "target": "docs/player/characters/shared-dreams/ji-wen.md",
+    "before_sha256": "691d6d9aac98c67276fb0c9008dda2e95d32f4339b3a769b91b78093c4fcff78",
+    "after_sha256": "691d6d9aac98c67276fb0c9008dda2e95d32f4339b3a769b91b78093c4fcff78"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/shared-dreams/xu-yao.md",
+    "target": "docs/player/characters/shared-dreams/xu-yao.md",
+    "before_sha256": "f5303626e3a3a052089a0be92bfa8ffbb92866cc3662bfc60077318b1a0ce250",
+    "after_sha256": "f5303626e3a3a052089a0be92bfa8ffbb92866cc3662bfc60077318b1a0ce250"
+  },
+  {
+    "source": "docs/player/encyclopedia/characters/sister.md",
+    "target": "docs/player/characters/sister.md",
+    "before_sha256": "9617d912c4be7770fb89af4cae1b4d12fa67c27e5f9ea779d6d5adbc4711b506",
+    "after_sha256": "9617d912c4be7770fb89af4cae1b4d12fa67c27e5f9ea779d6d5adbc4711b506"
+  },
+  {
+    "source": "docs/player/encyclopedia/enemies/index.md",
+    "target": "docs/player/enemies/index.md",
+    "before_sha256": "82a627810c3a829dab052596ed8d99cddcaaecee8dca1786cfab92ccac53e113",
+    "after_sha256": "82a627810c3a829dab052596ed8d99cddcaaecee8dca1786cfab92ccac53e113"
+  },
+  {
+    "source": "docs/player/encyclopedia/gameplay/combat.md",
+    "target": "docs/player/gameplay/combat.md",
+    "before_sha256": "4b4fffeb6edd447df0511d7ed2101aff0f7d5cc5df03769592bd4b7b0c909fba",
+    "after_sha256": "4b4fffeb6edd447df0511d7ed2101aff0f7d5cc5df03769592bd4b7b0c909fba"
+  },
+  {
+    "source": "docs/player/encyclopedia/gameplay/daily-life.md",
+    "target": "docs/player/gameplay/daily-life.md",
+    "before_sha256": "e916c997f1a8ec74aa2c072bf8f942f0efb2637d4727c8727defa633127a8414",
+    "after_sha256": "e916c997f1a8ec74aa2c072bf8f942f0efb2637d4727c8727defa633127a8414"
+  },
+  {
+    "source": "docs/player/encyclopedia/gameplay/dream-diving.md",
+    "target": "docs/player/gameplay/dream-diving.md",
+    "before_sha256": "d75b4edab54a6a58fd8d601a1208eeb1bd3e9f07242f537b7376c95e368ca523",
+    "after_sha256": "d75b4edab54a6a58fd8d601a1208eeb1bd3e9f07242f537b7376c95e368ca523"
+  },
+  {
+    "source": "docs/player/encyclopedia/gameplay/levels.md",
+    "target": "docs/player/gameplay/levels.md",
+    "before_sha256": "31abbc68a96b2a4ec8d5f7b80862e4177ee0b19f3c22a1a10a405f4f361cd70d",
+    "after_sha256": "31abbc68a96b2a4ec8d5f7b80862e4177ee0b19f3c22a1a10a405f4f361cd70d"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/n-district.md",
+    "target": "docs/player/locations/n-district.md",
+    "before_sha256": "b6e14d02fa9e4ad739c5f2efd0e5783631096835a28910b3b49cfb45b251663e",
+    "after_sha256": "b6e14d02fa9e4ad739c5f2efd0e5783631096835a28910b3b49cfb45b251663e"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/place-network.md",
+    "target": "docs/player/locations/place-network.md",
+    "before_sha256": "b173e13077887154d15dbe39591a24b5a433ff88f33a03feaa75dbeb79e7b8f4",
+    "after_sha256": "b173e13077887154d15dbe39591a24b5a433ff88f33a03feaa75dbeb79e7b8f4"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b01.md",
+    "target": "docs/player/locations/places/b01.md",
+    "before_sha256": "dae6994274d80fc6e3ade9d6172b92990051219b08e209950eafb23bd68635d8",
+    "after_sha256": "dae6994274d80fc6e3ade9d6172b92990051219b08e209950eafb23bd68635d8"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b02.md",
+    "target": "docs/player/locations/places/b02.md",
+    "before_sha256": "c047bc110e707cf0ca59e8a78586183cf864a0a66f206abc88e8982286b60ddb",
+    "after_sha256": "c047bc110e707cf0ca59e8a78586183cf864a0a66f206abc88e8982286b60ddb"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b03.md",
+    "target": "docs/player/locations/places/b03.md",
+    "before_sha256": "a7d88b9178b73b0be66c9aa29622edf21fdd711e4d99b9e0b1086d703a0fdd4d",
+    "after_sha256": "a7d88b9178b73b0be66c9aa29622edf21fdd711e4d99b9e0b1086d703a0fdd4d"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b04.md",
+    "target": "docs/player/locations/places/b04.md",
+    "before_sha256": "a3f2e73b0400c09f0ff81a33e2caf96675bd19974212691eddfcb685ddabc25b",
+    "after_sha256": "a3f2e73b0400c09f0ff81a33e2caf96675bd19974212691eddfcb685ddabc25b"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b05.md",
+    "target": "docs/player/locations/places/b05.md",
+    "before_sha256": "e555d5bfba2f6cabbdd47a2394e35668b4f2dc3354d51ad366218f711023bcd8",
+    "after_sha256": "e555d5bfba2f6cabbdd47a2394e35668b4f2dc3354d51ad366218f711023bcd8"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b06.md",
+    "target": "docs/player/locations/places/b06.md",
+    "before_sha256": "63be34b43b71ed5bc5259de252c73d6b666b33c1a3e2b743cac8c61892c8f410",
+    "after_sha256": "63be34b43b71ed5bc5259de252c73d6b666b33c1a3e2b743cac8c61892c8f410"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b07.md",
+    "target": "docs/player/locations/places/b07.md",
+    "before_sha256": "2f04cf498040646ad5f4ae2c9e3f8f393883ada148940ea7a16d7470912cb78e",
+    "after_sha256": "2f04cf498040646ad5f4ae2c9e3f8f393883ada148940ea7a16d7470912cb78e"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b08.md",
+    "target": "docs/player/locations/places/b08.md",
+    "before_sha256": "0a75b25221133a6fa6edb1b52915382890f0215707b8e792a5e276b81aa118f4",
+    "after_sha256": "0a75b25221133a6fa6edb1b52915382890f0215707b8e792a5e276b81aa118f4"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b09.md",
+    "target": "docs/player/locations/places/b09.md",
+    "before_sha256": "586e64faabcb905618f0d4c825c6845e14df20f819a56ed4a9f78cd59e6576d1",
+    "after_sha256": "586e64faabcb905618f0d4c825c6845e14df20f819a56ed4a9f78cd59e6576d1"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b10.md",
+    "target": "docs/player/locations/places/b10.md",
+    "before_sha256": "301409de1c25b307e8c06269e5c23931e748a92fad64a99cfadc2a257e5dc4c3",
+    "after_sha256": "301409de1c25b307e8c06269e5c23931e748a92fad64a99cfadc2a257e5dc4c3"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b11.md",
+    "target": "docs/player/locations/places/b11.md",
+    "before_sha256": "1d4abaa86272581c493aa353ea8c92035772a155f91b5802aa5d6454781446e5",
+    "after_sha256": "1d4abaa86272581c493aa353ea8c92035772a155f91b5802aa5d6454781446e5"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/b12.md",
+    "target": "docs/player/locations/places/b12.md",
+    "before_sha256": "c8daa48daa55f2e0855baf88a8f08ef3552b2ff8e0b6cc469dc855ac32bccbb0",
+    "after_sha256": "c8daa48daa55f2e0855baf88a8f08ef3552b2ff8e0b6cc469dc855ac32bccbb0"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/places/index.md",
+    "target": "docs/player/locations/places/index.md",
+    "before_sha256": "2406b67f46e83923edb0079b7af823759291b274cb5d32e3f364a4fc0fe3a4a7",
+    "after_sha256": "2406b67f46e83923edb0079b7af823759291b274cb5d32e3f364a4fc0fe3a4a7"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/shop.md",
+    "target": "docs/player/locations/shop.md",
+    "before_sha256": "112765e96236538f18e6458a1ee1668ef1a7f8aea5db00bc97e3fc9ac2a3e6ff",
+    "after_sha256": "112765e96236538f18e6458a1ee1668ef1a7f8aea5db00bc97e3fc9ac2a3e6ff"
+  },
+  {
+    "source": "docs/player/encyclopedia/locations/stargazing-terrace.md",
+    "target": "docs/player/locations/stargazing-terrace.md",
+    "before_sha256": "63cfe75595206380cee4603e927b77c36d63ad1e54fd6fb9dac4bf333d73ab64",
+    "after_sha256": "63cfe75595206380cee4603e927b77c36d63ad1e54fd6fb9dac4bf333d73ab64"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/after-the-late-show.md",
+    "target": "docs/player/story/daily/after-the-late-show.md",
+    "before_sha256": "69479a8505185f28abdadb6213a84b96db8de877622855b21f6ac9d3ce2721b4",
+    "after_sha256": "69479a8505185f28abdadb6213a84b96db8de877622855b21f6ac9d3ce2721b4"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/collect-after-rain.md",
+    "target": "docs/player/story/daily/collect-after-rain.md",
+    "before_sha256": "03b0f998523bb014e488f8f6d719823b68a0b1e0b0cb4dfd0c55c3a8651f4b3f",
+    "after_sha256": "03b0f998523bb014e488f8f6d719823b68a0b1e0b0cb4dfd0c55c3a8651f4b3f"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/courtside-chair.md",
+    "target": "docs/player/story/daily/courtside-chair.md",
+    "before_sha256": "960fdb4b333ed6e912cbd52643e9521ba838c719487223f2a26a002adf3d0513",
+    "after_sha256": "960fdb4b333ed6e912cbd52643e9521ba838c719487223f2a26a002adf3d0513"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/different-dinners.md",
+    "target": "docs/player/story/daily/different-dinners.md",
+    "before_sha256": "395c2fb59023320da046e14917732dd7328412ad2b184f20d18acbf4c78b192b",
+    "after_sha256": "395c2fb59023320da046e14917732dd7328412ad2b184f20d18acbf4c78b192b"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/index.md",
+    "target": "docs/player/story/daily/index.md",
+    "before_sha256": "8132e1ae087651f36d0b91b5617d6f6cf5588edcfdaaf987ed5efd971e25bb3c",
+    "after_sha256": "8132e1ae087651f36d0b91b5617d6f6cf5588edcfdaaf987ed5efd971e25bb3c"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/new-pocket.md",
+    "target": "docs/player/story/daily/new-pocket.md",
+    "before_sha256": "abc5981116e1f2af72daef4a8a9ae2bce3e55816321caab01c0c1bf5dcc5c8ec",
+    "after_sha256": "abc5981116e1f2af72daef4a8a9ae2bce3e55816321caab01c0c1bf5dcc5c8ec"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/photograph-today.md",
+    "target": "docs/player/story/daily/photograph-today.md",
+    "before_sha256": "ebba2ebaf08c78eebe62ae9625a3358aebb0a21e09ea4ce517c55df4e3b2323c",
+    "after_sha256": "ebba2ebaf08c78eebe62ae9625a3358aebb0a21e09ea4ce517c55df4e3b2323c"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/unfinished-window.md",
+    "target": "docs/player/story/daily/unfinished-window.md",
+    "before_sha256": "76aded6844bbf91dc3cdc59cbb2331918a51f02b49a8081bf18fbf63d0f8f608",
+    "after_sha256": "76aded6844bbf91dc3cdc59cbb2331918a51f02b49a8081bf18fbf63d0f8f608"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/daily/ways-to-read.md",
+    "target": "docs/player/story/daily/ways-to-read.md",
+    "before_sha256": "ee76d6f7a18b660384e5335bbc4c759b3e98090f2e421f3ebe1b6b6f45d4767b",
+    "after_sha256": "ee76d6f7a18b660384e5335bbc4c759b3e98090f2e421f3ebe1b6b6f45d4767b"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/index.md",
+    "target": "docs/player/story/index.md",
+    "before_sha256": "515b52b231171ce7508f5eff1630a1d2823f7f41018865207b2ece34d162b7c1",
+    "after_sha256": "515b52b231171ce7508f5eff1630a1d2823f7f41018865207b2ece34d162b7c1"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/after-echoes.md",
+    "target": "docs/player/story/main/after-echoes.md",
+    "before_sha256": "e148690d96c77ef8d0154132528fe13c5c413ff6f9c62b9e82b4e155c0dcb80b",
+    "after_sha256": "e148690d96c77ef8d0154132528fe13c5c413ff6f9c62b9e82b4e155c0dcb80b"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/beyond-autumn.md",
+    "target": "docs/player/story/main/beyond-autumn.md",
+    "before_sha256": "82bee6330ebcca0cc3017501ea481eef04c6513e20bab82bf4c54b4337ca255a",
+    "after_sha256": "82bee6330ebcca0cc3017501ea481eef04c6513e20bab82bf4c54b4337ca255a"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/bring-today-back.md",
+    "target": "docs/player/story/main/bring-today-back.md",
+    "before_sha256": "8d61dfaf0aeada47600b4a94ba1fb539ea44a11645e25fbceca1db04fce02c50",
+    "after_sha256": "8d61dfaf0aeada47600b4a94ba1fb539ea44a11645e25fbceca1db04fce02c50"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/epilogue.md",
+    "target": "docs/player/story/main/epilogue.md",
+    "before_sha256": "c8e9207697850985d11f006a516370cd6874bcd6d8f0a1609ee34eea095e00f8",
+    "after_sha256": "c8e9207697850985d11f006a516370cd6874bcd6d8f0a1609ee34eea095e00f8"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/extra-applause.md",
+    "target": "docs/player/story/main/extra-applause.md",
+    "before_sha256": "3ed521d3362b435633ad75e81dfccc0465b8cabdfef523c84ff0c85aa8ff9269",
+    "after_sha256": "3ed521d3362b435633ad75e81dfccc0465b8cabdfef523c84ff0c85aa8ff9269"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/index.md",
+    "target": "docs/player/story/main/index.md",
+    "before_sha256": "6ee24ce8fa5190e68eecbee1b801cfc0ecd4dab0f7ddb3ab5785721438e6d5b5",
+    "after_sha256": "6ee24ce8fa5190e68eecbee1b801cfc0ecd4dab0f7ddb3ab5785721438e6d5b5"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/last-toy.md",
+    "target": "docs/player/story/main/last-toy.md",
+    "before_sha256": "634d14438595f5f4d53ad9cce1865991837b82ec7f655d72b706aa029b1060d2",
+    "after_sha256": "634d14438595f5f4d53ad9cce1865991837b82ec7f655d72b706aa029b1060d2"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/no-school-bell.md",
+    "target": "docs/player/story/main/no-school-bell.md",
+    "before_sha256": "684b4bf14f7ba0bb904b5fb322fda7d52215122712b0b77737a1f0b973fa6be8",
+    "after_sha256": "684b4bf14f7ba0bb904b5fb322fda7d52215122712b0b77737a1f0b973fa6be8"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/prologue.md",
+    "target": "docs/player/story/main/prologue.md",
+    "before_sha256": "6e360b3cb4d82bc26404909bb6ada9bfd9d788866a70f2e5200371ca1108c064",
+    "after_sha256": "6e360b3cb4d82bc26404909bb6ada9bfd9d788866a70f2e5200371ca1108c064"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/river-did-not-reverse.md",
+    "target": "docs/player/story/main/river-did-not-reverse.md",
+    "before_sha256": "9dd09dda404c5464131397a182ed63ebe25fc5bb65043c58dc7b569ed93bd4ea",
+    "after_sha256": "9dd09dda404c5464131397a182ed63ebe25fc5bb65043c58dc7b569ed93bd4ea"
+  },
+  {
+    "source": "docs/player/encyclopedia/story/main/still-together.md",
+    "target": "docs/player/story/main/still-together.md",
+    "before_sha256": "9144376a3726cb03a823a0943ee943116a4c7fde8fd5525ccafbada3ff0d5e4a",
+    "after_sha256": "9144376a3726cb03a823a0943ee943116a4c7fde8fd5525ccafbada3ff0d5e4a"
+  },
+  {
+    "source": "docs/player/encyclopedia/world/great-shared-dream.md",
+    "target": "docs/player/world/great-shared-dream.md",
+    "before_sha256": "413b990fc5a3f3fcbfd873021cc358be8402b5f1608522363555e62fc6de865f",
+    "after_sha256": "413b990fc5a3f3fcbfd873021cc358be8402b5f1608522363555e62fc6de865f"
+  },
+  {
+    "source": "docs/player/encyclopedia/world/history.md",
+    "target": "docs/player/world/history.md",
+    "before_sha256": "49af162db8ac453d5109e960bea33247066474a3e1e127f304c0da3525d27933",
+    "after_sha256": "49af162db8ac453d5109e960bea33247066474a3e1e127f304c0da3525d27933"
+  },
+  {
+    "source": "docs/player/encyclopedia/world/nightmares.md",
+    "target": "docs/player/world/nightmares.md",
+    "before_sha256": "952f35120088286dc5f9a315e0a6ec11660d5b1ac99aec83741a8705f8a505ae",
+    "after_sha256": "952f35120088286dc5f9a315e0a6ec11660d5b1ac99aec83741a8705f8a505ae"
+  },
+  {
+    "source": "docs/player/encyclopedia/world/null-city.md",
+    "target": "docs/player/world/null-city.md",
+    "before_sha256": "1ccd39aab65b71664b98d83554147da6a2801668dfe87ac88ab30398ba4cf625",
+    "after_sha256": "1ccd39aab65b71664b98d83554147da6a2801668dfe87ac88ab30398ba4cf625"
+  }
+]

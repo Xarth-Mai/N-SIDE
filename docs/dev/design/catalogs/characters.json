@@ -17,7 +17,7 @@
       "relationships": "林澄是共同决策者；陆衡是技术前辈；赵晏会带设备来请教。",
       "voice": "说话具体，常先复述现场情况；会把关心藏进帮人收好工具的小动作。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/brother.md"
+      "source_file": "docs/player/characters/brother.md"
     },
     {
       "id": "CHR-002",
@@ -37,7 +37,7 @@
       "relationships": "林屿与她轮换潜梦；乔音邀请她制作街坊册；米娜和苏禾是日常朋友。",
       "voice": "表达温柔但判断明确，会问一件物品是怎样被使用的，而不只问它象征什么。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/sister.md"
+      "source_file": "docs/player/characters/sister.md"
     },
     {
       "id": "CHR-003",
@@ -54,7 +54,7 @@
       "relationships": "与兄妹是家人；夜班熟客可能先认识它；送货员姚安熟悉它的交接习惯。",
       "voice": "以拟声、动作和表情为主；复杂信息在屏幕上显示，不突然变成无所不知的旁白。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/agent.md"
+      "source_file": "docs/player/characters/agent.md"
     },
     {
       "id": "CHR-004",
@@ -73,7 +73,7 @@
       "relationships": "与陆衡、郑泊是旧街坊；与陈静禾共同维护家庭联系。",
       "voice": "讲话朴实，记得进货和修门一类小事；不藏实验室身份。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/family-members/lin-qi-ming.md"
+      "source_file": "docs/player/characters/family-members/lin-qi-ming.md"
     },
     {
       "id": "CHR-005",
@@ -92,7 +92,7 @@
       "relationships": "与梁素交换修补方法；熟悉顾竹和街坊茶桌庭。",
       "voice": "关心常落在吃饭、休息和有没有把话说完，不用唠叨代替人物。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/family-members/chen-jing-he.md"
+      "source_file": "docs/player/characters/family-members/chen-jing-he.md"
     },
     {
       "id": "CHR-006",
@@ -109,7 +109,7 @@
       "relationships": "许遥是伴侣；与楚青有专业联系；通过会谈认识兄妹。",
       "voice": "对证据精确，对日常偶有迟钝；会明确区分记得、推测和测到。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/shared-dreams/ji-wen.md"
+      "source_file": "docs/player/characters/shared-dreams/ji-wen.md"
     },
     {
       "id": "CHR-007",
@@ -127,7 +127,7 @@
       "relationships": "季闻是伴侣；沈聆协助新书交流；参与林澄的街坊册。",
       "voice": "对文字和生活都敏锐，有喜好、有不耐烦和幽默；会把话题拉回今天。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/shared-dreams/xu-yao.md"
+      "source_file": "docs/player/characters/shared-dreams/xu-yao.md"
     },
     {
       "id": "CHR-008",
@@ -146,7 +146,7 @@
       "relationships": "林屿向他学习；与赵晏、何昕互通维修与制作需求；认识父母。",
       "voice": "会先问“它什么时候开始这样”；专业边界清楚，不是万能科学家。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/lu-heng.md"
+      "source_file": "docs/player/characters/neighbors/lu-heng.md"
     },
     {
       "id": "CHR-009",
@@ -164,7 +164,7 @@
       "relationships": "与林澄、苏禾是朋友；向陆衡送修玩具；认识旧物店的周然。",
       "voice": "直率、偶尔自嘲；会对别人替她决定丢什么提出异议。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/mina.md"
+      "source_file": "docs/player/characters/neighbors/mina.md"
     },
     {
       "id": "CHR-010",
@@ -181,7 +181,7 @@
       "relationships": "与米娜、林澄交往；赵晏帮试玩；何昕帮制作实体小物。",
       "voice": "聊作品兴奋，讲自己的困难反而简短；有普通收入与工期烦恼。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/su-he.md"
+      "source_file": "docs/player/characters/neighbors/su-he.md"
     },
     {
       "id": "CHR-011",
@@ -198,7 +198,7 @@
       "relationships": "与陆衡、游戏设备维修店合作；认识宁朗与苏禾。",
       "voice": "记得熟客偏好，解释排队和设备问题直接清楚。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/zhao-yan.md"
+      "source_file": "docs/player/characters/neighbors/zhao-yan.md"
     },
     {
       "id": "CHR-012",
@@ -215,7 +215,7 @@
       "relationships": "和林澄一起选纸材；为苏禾做展件；给郑澈提供拍摄对象。",
       "voice": "用材料和手感解释问题，有耐心但不包办。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/he-xin.md"
+      "source_file": "docs/player/characters/neighbors/he-xin.md"
     },
     {
       "id": "CHR-013",
@@ -232,7 +232,7 @@
       "relationships": "协助旧物交换店40举办交流；给米娜解释寄售选择；与姚安是牌友。",
       "voice": "善于把规则讲成例子；工作之外也会输得不服气。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/zhou-ran.md"
+      "source_file": "docs/player/characters/neighbors/zhou-ran.md"
     },
     {
       "id": "CHR-014",
@@ -249,7 +249,7 @@
       "relationships": "给唐钰和站前咖啡铺供货；与甜品店48交换季节菜单。",
       "voice": "说话干脆，忙时先递夹子；关心别人时会多留一份。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/song-lan.md"
+      "source_file": "docs/player/characters/neighbors/song-lan.md"
     },
     {
       "id": "CHR-015",
@@ -267,7 +267,7 @@
       "relationships": "认识贺秋、宁朗、邵敏和姚安；与宋岚相互照应。",
       "voice": "热情但有边界；知道谁是刚开工、谁是终于下班。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/tang-yu.md"
+      "source_file": "docs/player/characters/neighbors/tang-yu.md"
     },
     {
       "id": "CHR-016",
@@ -284,7 +284,7 @@
       "relationships": "是邻里茶桌庭熟人；与梁素和居民服务中心联系。",
       "voice": "观察细，维护顾客隐私，不随口泄露谁洗了什么。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/he-yun.md"
+      "source_file": "docs/player/characters/neighbors/he-yun.md"
     },
     {
       "id": "CHR-017",
@@ -302,7 +302,7 @@
       "relationships": "与陈静禾熟悉；与林澄、何昕合作；在共用院带手作活动。",
       "voice": "先问穿着习惯，再问喜欢什么图案。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/liang-su.md"
+      "source_file": "docs/player/characters/neighbors/liang-su.md"
     },
     {
       "id": "CHR-018",
@@ -319,7 +319,7 @@
       "relationships": "郑澈是其女儿；顾竹与钟帆提供授权照片；认识兄妹父母。",
       "voice": "慢条斯理，对看不清的细节不会硬认。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/zheng-bo.md"
+      "source_file": "docs/player/characters/neighbors/zheng-bo.md"
     },
     {
       "id": "CHR-019",
@@ -336,7 +336,7 @@
       "relationships": "与花草店54、楚青、顾竹、陈知夏合作。",
       "voice": "给植物和人都留生长时间；解释问题常从眼前一片叶子开始。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/wen-ran.md"
+      "source_file": "docs/player/characters/neighbors/wen-ran.md"
     },
     {
       "id": "CHR-020",
@@ -353,7 +353,7 @@
       "relationships": "魏航组织球场活动；郑澈指导拍摄；顾竹提供过去的经历。",
       "voice": "好奇且会追问，面对长辈也能指出记录中的矛盾。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/chen-zhi-xia.md"
+      "source_file": "docs/player/characters/neighbors/chen-zhi-xia.md"
     },
     {
       "id": "CHR-021",
@@ -371,7 +371,7 @@
       "relationships": "陈知夏常来；与亲子活动室70、居民服务中心67合作。",
       "voice": "爽快，谈正事也会边给球打气边讲。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/wei-hang.md"
+      "source_file": "docs/player/characters/neighbors/wei-hang.md"
     },
     {
       "id": "CHR-022",
@@ -388,7 +388,7 @@
       "relationships": "与叶初协作；了解正规转介渠道；不擅自公开任何人的病历。",
       "voice": "用清楚的日常语言说明能确认什么，避免神秘化患者。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/cheng-jia.md"
+      "source_file": "docs/player/characters/neighbors/cheng-jia.md"
     },
     {
       "id": "CHR-023",
@@ -405,7 +405,7 @@
       "relationships": "与程嘉、乔音、邱宁及兄妹协作。",
       "voice": "重视具体记录，也愿意走到现场听一遍。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/ye-chu.md"
+      "source_file": "docs/player/characters/neighbors/ye-chu.md"
     },
     {
       "id": "CHR-024",
@@ -423,7 +423,7 @@
       "relationships": "邀请林澄；与郑泊郑澈、陈知夏、沈聆和贺秋合作。",
       "voice": "有组织力，常记得谁的作品还没得到本人同意。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/qiao-yin.md"
+      "source_file": "docs/player/characters/neighbors/qiao-yin.md"
     },
     {
       "id": "CHR-025",
@@ -440,7 +440,7 @@
       "relationships": "与姜棠交换书单；通过后来建立的工作联系认识许遥；与乔音合作。",
       "voice": "爱推荐，但接受对方说不喜欢；不会把作品当心理诊断。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/shen-ling.md"
+      "source_file": "docs/player/characters/neighbors/shen-ling.md"
     },
     {
       "id": "CHR-026",
@@ -457,7 +457,7 @@
       "relationships": "贺秋是合作场地主理；赵晏是朋友；常在唐钰店里吃饭。",
       "voice": "对细微声响敏感，生活里反而会忘带钥匙。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/ning-lang.md"
+      "source_file": "docs/player/characters/neighbors/ning-lang.md"
     },
     {
       "id": "CHR-027",
@@ -474,7 +474,7 @@
       "relationships": "与宁朗、乐器音频店77、乐器工坊81和唐钰往来。",
       "voice": "行动快，不把硬撑开演当勇敢。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/he-qiu.md"
+      "source_file": "docs/player/characters/neighbors/he-qiu.md"
     },
     {
       "id": "CHR-028",
@@ -491,7 +491,7 @@
       "relationships": "与钟帆、楚青、温苒和叶初合作。",
       "voice": "熟悉水位、地面和群众怎么走；不把经验冒充完整科学解释。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/qiu-ning.md"
+      "source_file": "docs/player/characters/neighbors/qiu-ning.md"
     },
     {
       "id": "CHR-029",
@@ -509,7 +509,7 @@
       "relationships": "与邱宁、顾竹、郑泊认识多年；给陈知夏提供访谈。",
       "voice": "记得当年怎么候船，不会假装知道所有人当时在想什么。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/zhong-fan.md"
+      "source_file": "docs/player/characters/neighbors/zhong-fan.md"
     },
     {
       "id": "CHR-030",
@@ -527,7 +527,7 @@
       "relationships": "曾在大事件时参与学生与家长联络；与陈静禾、郑泊、温苒往来。",
       "voice": "不急着说教，会先陪人把茶喝完。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/gu-zhu.md"
+      "source_file": "docs/player/characters/neighbors/gu-zhu.md"
     },
     {
       "id": "CHR-031",
@@ -544,7 +544,7 @@
       "relationships": "郑泊是父亲；指导陈知夏；与何昕和乔音合作。",
       "voice": "询问细致，拍照前会确认谁愿意入镜。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/zheng-che.md"
+      "source_file": "docs/player/characters/neighbors/zheng-che.md"
     },
     {
       "id": "CHR-032",
@@ -562,7 +562,7 @@
       "relationships": "与沈聆交换书单；认识顾竹与许遥的新作品。",
       "voice": "记得读者说过不喜欢哪种书，也愿意推荐薄一点的。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/jiang-tang.md"
+      "source_file": "docs/player/characters/neighbors/jiang-tang.md"
     },
     {
       "id": "CHR-033",
@@ -579,7 +579,7 @@
       "relationships": "与季闻有后来建立的研究联系；与邱宁、温苒是现场伙伴。",
       "voice": "擅长标出不确定区域，遇到新证据会直接改图。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/chu-qing.md"
+      "source_file": "docs/player/characters/neighbors/chu-qing.md"
     },
     {
       "id": "CHR-034",
@@ -597,7 +597,7 @@
       "relationships": "认识唐钰与钟帆；对姚安的日常路线很熟悉。",
       "voice": "报信息简短准确，闲下来也会聊午饭。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/shao-min.md"
+      "source_file": "docs/player/characters/neighbors/shao-min.md"
     },
     {
       "id": "CHR-035",
@@ -615,7 +615,7 @@
       "relationships": "与粒粒形成交接习惯；周然是牌友；认识唐钰和乐器街工作人员。",
       "voice": "说话轻快，熟悉服务门但不会随意进入私人住家。",
       "status": "accepted",
-      "source_file": "docs/player/encyclopedia/characters/neighbors/yao-an.md"
+      "source_file": "docs/player/characters/neighbors/yao-an.md"
     }
   ]
 }

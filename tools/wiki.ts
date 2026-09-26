@@ -27,7 +27,7 @@ export function playerMap(data: District): PlayerMap {
   return {
     groups: Object.fromEntries(Object.entries(data.groups).map(([id, name]) => [id, String(name)])),
     places: data.places.map(p => ({ id: p.id, name: p.name, group: p.group, position: p.position,
-      use: p.use, entry: p.entry, ...(p.page ? { page: p.page.replace('/locations/', '/player/encyclopedia/locations/') } : {}) })),
+      use: p.use, entry: p.entry, ...(p.page ? { page: p.page.replace('/locations/', '/player/locations/') } : {}) })),
     scene,
   }
 }
@@ -106,7 +106,7 @@ export function prepareWiki(root: string, profile: string) {
       if (!imports.has(match[2])) throw new Error(`${relative(root, file)}: unpublished import ${match[2]}`)
     }
     const story = stories.find(n => n.url === '/' + relative(docs, file).replace(/\.md$/, ''))
-    const directory = 'player/encyclopedia/story/'
+    const directory = 'player/story/'
     const rel = relative(docs, file)
     if (story || [directory+'index.md', directory+'main/index.md', directory+'daily/index.md'].includes(rel)) {
       const attr = story ? `quest-id="${story.id}"` : rel === directory+'main/index.md' ? 'track="main"' : rel === directory+'daily/index.md' ? 'track="side"' : ''
@@ -140,9 +140,15 @@ export function prepareWiki(root: string, profile: string) {
   const aliases = []
   if (existsSync(mapping)) for (const entry of JSON.parse(readFileSync(mapping, 'utf8')).files) {
     if (entry.source === 'docs/index.md' || !entry.source.startsWith('docs/') || !entry.source.endsWith('.md')) continue
-    const target = entry.targets.find((t: string) => t.startsWith('docs/player/') || (profile === 'dev' && t.startsWith('docs/dev/')))
+    const target = entry.targets.map((t: string) => t.replace('docs/player/encyclopedia/', 'docs/player/')).find((t: string) => t.startsWith('docs/player/') || (profile === 'dev' && t.startsWith('docs/dev/')))
     if (!target || target === entry.source || !pageSet.has(resolve(root, target))) continue
     const old = entry.source.slice(5).replace(/\.md$/, '.html'), to = route(target.slice(5))
+    put(join(source, 'public', old), redirect(to)); aliases.push({ old, to })
+  }
+  for (const page of pages) {
+    const name = relative(docs, page)
+    if (!/^player\/(world|characters|locations|story|enemies|gameplay)\//.test(name)) continue
+    const old = name.replace('player/', 'player/encyclopedia/').replace(/\.md$/, '.html'), to = route(name)
     put(join(source, 'public', old), redirect(to)); aliases.push({ old, to })
   }
   // Reuse audience landing content so the real homepage retains the overview and navigation

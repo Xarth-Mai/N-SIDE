@@ -54,7 +54,7 @@ bun run docs:dev:dev
 
 页面脚本只使用已列出的 Vue、VitePress、地图数据和项目组件入口；Vite 最终模块加载再次核对隔离目录。跨受众 Markdown 引用、任意源文件导入、glob 导入以及 VitePress 的外部 include/snippet 指令会明确失败
 
-源文档身份与设计 metadata 保留在仓库，玩家页面快照去除 frontmatter。旧玩家 URL 由迁移索引生成无正文重定向，保留锚点；旧开发 URL 仅进入开发站。它们是兼容入口，不复制旧正文或加入第二套内容维护
+源文档身份与设计 metadata 保留在仓库，玩家页面快照去除 frontmatter。百科直接位于 `docs/player/` 下的 world、characters、locations、story、enemies、gameplay；guide 保留游玩指南。旧 `player/encyclopedia/` URL 根据当前百科页面自动生成保留锚点的跳转，更早的玩家 URL 由迁移索引生成无正文重定向，保留锚点；旧开发 URL 仅进入开发站。它们是兼容入口，不复制旧正文或加入第二套内容维护
 
 ## 搜索资源
 

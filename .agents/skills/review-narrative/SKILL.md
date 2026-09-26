@@ -5,7 +5,7 @@ description: Review N:SIDE continuity, player causation, information order, and 
 
 # 检查叙事与连续性
 
-读取当前任务、相关世界与人物档案、[时间线](../../../docs/player/encyclopedia/world/history.md)和[试玩方法](../../../docs/dev/validation/playtesting.md)。
+读取当前任务、相关世界与人物档案、[时间线](../../../docs/player/world/history.md)和[试玩方法](../../../docs/dev/validation/playtesting.md)。
 
 先核对事件因果、时间顺序、人物动机与认知、梦魇形成和维持、潜梦分工、Agent 接入及后果。
 

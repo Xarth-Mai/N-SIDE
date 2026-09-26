@@ -21,7 +21,7 @@ Wiki 构建与发布见 [Wiki](../docs/dev/handbook/wiki.md)
 
 ## 人物、故事与场所索引
 
-`bun run check:story-design` 对照地图主数据核对[故事](../docs/player/encyclopedia/story/index.md)、[人物](../docs/player/encyclopedia/characters/index.md)和[场所](../docs/player/encyclopedia/locations/place-network.md)的目录、引用、正文路径、潜梦分工及共楼关系；`--json` 输出机器可读结果
+`bun run check:story-design` 对照地图主数据核对[故事](../docs/player/story/index.md)、[人物](../docs/player/characters/index.md)和[场所](../docs/player/locations/place-network.md)的目录、引用、正文路径、潜梦分工及共楼关系；`--json` 输出机器可读结果
 
 索引分别位于 `docs/dev/design/catalogs/characters.json`、`docs/dev/design/catalogs/quests.json`、`docs/dev/design/catalogs/place-catalog.json` 与 `docs/dev/design/catalogs/city-story-map.json`。人物 `source_file` 相对仓库根，故事 `source_file` 相对 `docs/`，角色正文与故事章节使用各自稳定 ID
 

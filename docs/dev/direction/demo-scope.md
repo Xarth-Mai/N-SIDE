@@ -26,16 +26,16 @@ depends_on: ["DOC-NARRATIVE", "DOC-FAMILY"]
 
 | 领域 | 既有或本次明确收录的基础 | 维护入口 |
 | --- | --- | --- |
-| 家庭 | 兄妹温柔亲近、共同经营；父母在世并有联系；小店全天营业 | [家庭](../../player/encyclopedia/characters/family.md)、[小店](../../player/encyclopedia/locations/shop.md) |
-| 潜梦 | 同一次行动只有一名兄妹入梦，另一名清醒接应；Agent 依托人类连接，重在探索、操作与保护 | [潜梦工作](../../player/encyclopedia/gameplay/dream-diving.md)、[Agent](../../player/encyclopedia/characters/agent.md) |
-| 世界 | 梦中受击不直接损伤现实肉体；非生物介质可产生有限物理输出；现实空间稳定、实物去向可追查 | [噩梦与梦魇](../../player/encyclopedia/world/nightmares.md) |
-| 历史与结局 | 原始梦魇已终止，今天的风险来自局部结构的新联动；伴侣继续共同生活，处理有害影响与保留安全生活可以并行 | [大共梦事件](../../player/encyclopedia/world/great-shared-dream.md)、[完整故事](../../player/encyclopedia/story/index.md) |
-| 城市 | 复用地图主数据，区分可见、可走、可进、可互动；91 个命名场所不等于 91 栋楼，也不等于 Demo 必做清单 | [场所设计](../design/locations/district-places.md)、[场所与故事](../../player/encyclopedia/locations/place-network.md) |
+| 家庭 | 兄妹温柔亲近、共同经营；父母在世并有联系；小店全天营业 | [家庭](../../player/characters/family.md)、[小店](../../player/locations/shop.md) |
+| 潜梦 | 同一次行动只有一名兄妹入梦，另一名清醒接应；Agent 依托人类连接，重在探索、操作与保护 | [潜梦工作](../../player/gameplay/dream-diving.md)、[Agent](../../player/characters/agent.md) |
+| 世界 | 梦中受击不直接损伤现实肉体；非生物介质可产生有限物理输出；现实空间稳定、实物去向可追查 | [噩梦与梦魇](../../player/world/nightmares.md) |
+| 历史与结局 | 原始梦魇已终止，今天的风险来自局部结构的新联动；伴侣继续共同生活，处理有害影响与保留安全生活可以并行 | [大共梦事件](../../player/world/great-shared-dream.md)、[完整故事](../../player/story/index.md) |
+| 城市 | 复用地图主数据，区分可见、可走、可进、可互动；91 个命名场所不等于 91 栋楼，也不等于 Demo 必做清单 | [场所设计](../design/locations/district-places.md)、[场所与故事](../../player/locations/place-network.md) |
 | 实现与交付 | Rust／Bevy，Linux／Windows，键鼠／手柄，离线独立完成；云端 Agent 是虚构设定，其表现由游戏逻辑驱动 | [工程](../engineering/index.md)、[玩法制作](../design/systems/index.md) |
 
 ## 完整游戏与本次范围
 
-《回声之后》的序章、八章、尾声、人物关系与生活故事纳入正式项目设定，分别在[故事百科](../../player/encyclopedia/story/index.md)、[人物](../../player/encyclopedia/characters/index.md)和[场所](../../player/encyclopedia/locations/place-network.md)维护。完整游戏的设定与本次 Demo 制作范围分别管理
+《回声之后》的序章、八章、尾声、人物关系与生活故事纳入正式项目设定，分别在[故事百科](../../player/story/index.md)、[人物](../../player/characters/index.md)和[场所](../../player/locations/place-network.md)维护。完整游戏的设定与本次 Demo 制作范围分别管理
 
 首个委托已选择优先细化[《最后的玩具》精简闭环](../design/quests/QST-002/README.md)，保留现实／梦境往返与回家，站前送行留给完整版。原路线建议的 25—40 分钟、小店与住家加一处现实室内、一名可操作兄妹、2—3 名相关 NPC、一种工具与一种有效支援，都保留为待确认预算；试玩后校准时长
 

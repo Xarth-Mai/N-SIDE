@@ -239,7 +239,7 @@ def validate(root: Path) -> dict[str, Any]:
                         issue(path, f'锚点读取失败：{target}：{exc}')
 
     for subject_id, paths in subjects.items():
-        authority = [path for path in paths if path.relative_to(root).parts[:3] == ('docs', 'player', 'encyclopedia')]
+        authority = [path for path in paths if path.relative_to(root).parts[:2] == ('docs', 'player') and path.relative_to(root).parts[2] != 'guide']
         if len(authority) > 1:
             issue(authority[-1], f'对象权威页重复：{subject_id}')
     known = records.keys() | subjects.keys()

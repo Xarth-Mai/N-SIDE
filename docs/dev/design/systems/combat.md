@@ -4,7 +4,7 @@
 
 兄妹在梦中保持日常衣着加工作装备，使用功能相对稳定的专门设备与工具。基本操作跨梦境沿用
 
-战斗服务于[异常处理](../../../player/encyclopedia/gameplay/dream-diving.md)，Agent 按[协作优先级](../../../player/encyclopedia/characters/agent.md)提供辅助
+战斗服务于[异常处理](../../../player/gameplay/dream-diving.md)，Agent 按[协作优先级](../../../player/characters/agent.md)提供辅助
 
 ### 动作与反馈
 
@@ -16,7 +16,7 @@
 
 普通战败从检查点重试，正式剧情沿成功推进的路线记录。检查点恢复任务状态、场景与角色状态，具体保存点随任务设计
 
-剧情中的受困、救援和永久影响由对应事件安排。梦境与现实伤害的关系见[梦魇](../../../player/encyclopedia/world/nightmares.md)
+剧情中的受困、救援和永久影响由对应事件安排。梦境与现实伤害的关系见[梦魇](../../../player/world/nightmares.md)
 
 ### 检查
 

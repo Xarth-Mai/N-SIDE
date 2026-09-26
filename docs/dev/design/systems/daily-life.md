@@ -14,4 +14,4 @@
 
 ### 区域状态
 
-区域以自己的季节状态制作昼夜变化。主据点季节见[N街区](../../../player/encyclopedia/locations/n-district.md)，局部气候规则见[Null City](../../../player/encyclopedia/world/null-city.md)
+区域以自己的季节状态制作昼夜变化。主据点季节见[N街区](../../../player/locations/n-district.md)，局部气候规则见[Null City](../../../player/world/null-city.md)

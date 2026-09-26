@@ -1,6 +1,6 @@
 # 故事关系与连续性审查
 
-[故事时间轴](../../player/encyclopedia/story/index.md)收录全部十条主线与八条可选街坊故事。[quests catalog](catalogs/quests.json)是身份、阅读顺序、故事归属和跨任务关系的维护源；正文仍由各故事页面保存，人物与空间继续使用原有目录
+[故事时间轴](../../player/story/index.md)收录全部十条主线与八条可选街坊故事。[quests catalog](catalogs/quests.json)是身份、阅读顺序、故事归属和跨任务关系的维护源；正文仍由各故事页面保存，人物与空间继续使用原有目录
 
 ## 数据职责
 

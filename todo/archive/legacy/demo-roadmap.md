@@ -13,7 +13,7 @@ evidence: ["todo/demo-worklog.md#m0-01-r01"]
 
 本路线图于 2026-09-25 根据用户提供的完整方案整理。方案中的现状核对基线为 `main@bf64189`，已有测试结论来自仓库记录；本次整理时工作区 HEAD 为 `3503563`，未重新编译或运行图形程序，以下历史数字与实现现状按方案来源保留，不作为本次运行验证结果
 
-相关资料：[制作流程](../../../docs/dev/production/pipeline.md)、[项目约定](../../../docs/dev/handbook/documentation.md)、[家庭 Agent](../../../docs/player/encyclopedia/characters/agent.md)、[小店与住家](../../../docs/player/encyclopedia/locations/shop.md)、[潜梦工作](../../../docs/player/encyclopedia/gameplay/dream-diving.md)、[战斗](../../../docs/player/encyclopedia/gameplay/combat.md)、[叙事数据](../../../docs/dev/engineering/content-contracts.md)、[叙事试玩](../../../docs/dev/validation/playtesting.md)、[《最后的玩具》示例](../../../docs/dev/production/narrative.md)
+相关资料：[制作流程](../../../docs/dev/production/pipeline.md)、[项目约定](../../../docs/dev/handbook/documentation.md)、[家庭 Agent](../../../docs/player/characters/agent.md)、[小店与住家](../../../docs/player/locations/shop.md)、[潜梦工作](../../../docs/player/gameplay/dream-diving.md)、[战斗](../../../docs/player/gameplay/combat.md)、[叙事数据](../../../docs/dev/engineering/content-contracts.md)、[叙事试玩](../../../docs/dev/validation/playtesting.md)、[《最后的玩具》示例](../../../docs/dev/production/narrative.md)
 
 ### 已明确的 Agent 设定与实现边界
 
@@ -76,7 +76,7 @@ evidence: ["todo/demo-worklog.md#m0-01-r01"]
 
 M2 与 M3 可以部分并行，美术、UI、声音与测试从前期参与，M4 是各工作线的合流点。工作包状态与计数见[61 项进度看板](demo-progress.md)，只编辑 `demo-progress.json`；决定、反馈与验证见[工作日志](demo-worklog.md)
 
-完整设定已融入[游戏百科与故事](../../../docs/player/encyclopedia/story/index.md)，M0-01 体验基线已通过作者确认；M0-02 正在细化已选的[《最后的玩具》](../../../docs/dev/design/quests/QST-002/README.md)，具体范围见[Demo 定义](../../../docs/dev/direction/demo-scope.md)。完整游戏的章节、人物与场所分别维护，Demo 的交互制作范围仍按工作包收口
+完整设定已融入[游戏百科与故事](../../../docs/player/story/index.md)，M0-01 体验基线已通过作者确认；M0-02 正在细化已选的[《最后的玩具》](../../../docs/dev/design/quests/QST-002/README.md)，具体范围见[Demo 定义](../../../docs/dev/direction/demo-scope.md)。完整游戏的章节、人物与场所分别维护，Demo 的交互制作范围仍按工作包收口
 
 ### M0：产品与 Demo 定义
 

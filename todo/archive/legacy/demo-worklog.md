@@ -64,7 +64,7 @@
 
 授权：作者要求全力推进；沿用既定规则，新增工作名、章名和具体情节继续作为草案；原指令明确首章候选不自动等于 Demo 内容，未取得阶段或范围放行
 
-交付：[完整作者稿与索引](../../../docs/player/encyclopedia/story/index.md)、[Demo 定义与体验支柱](../../../docs/dev/direction/demo-scope.md)、[首委托候选](../../../docs/dev/design/quests/QST-002/demo-scope.md)、正式世界／历史／潜梦兼容修订，以及可复跑设计索引检查
+交付：[完整作者稿与索引](../../../docs/player/story/index.md)、[Demo 定义与体验支柱](../../../docs/dev/direction/demo-scope.md)、[首委托候选](../../../docs/dev/design/quests/QST-002/demo-scope.md)、正式世界／历史／潜梦兼容修订，以及可复跑设计索引检查
 
 首次提交走查时完成定位、设计、制作与客观检查，处于第 1 轮第 5/6 步 `review`。当时 108 项 Python、46 项 Bun 测试及文档、设计索引、进度检查和 Wiki 构建通过，正式叙事运行资产检查为 EMPTY；游戏编译与实机操作 NOT RUN，最终整合结果另见接入证据
 

@@ -31,7 +31,7 @@ export function wikiConfig({ root, source, profile }: { root: string; source: st
       logo: '/project-assets/branding/n-logo.svg', siteTitle: `N:SIDE ${profile === 'player' ? '百科' : '开发'}`,
       nav: [
         { text: '游戏百科', link: '/player/' },
-        { text: '故事', link: '/player/encyclopedia/story/' },
+        { text: '故事', link: '/player/story/' },
         ...(profile === 'dev' ? [{ text: '开发手册', link: '/dev/handbook/' }, { text: '开发资料', link: '/dev/' }] : []),
       ],
       sidebar: buildSidebar(source, profile), search: { provider: 'local' },

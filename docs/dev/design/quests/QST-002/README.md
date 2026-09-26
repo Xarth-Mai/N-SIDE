@@ -6,7 +6,7 @@ depends_on: ["DOC-WORLD-RULES", "DOC-DREAM-DIVING", "DOC-DEMO-SCOPE"]
 
 # 最后的玩具：任务制作
 
-完整故事见[主线第一章](../../../../player/encyclopedia/story/main/last-toy.md)，Demo 沿已选的[精简范围](demo-scope.md)制作。这里维护可玩流程与实现规格，设计与实际运行接入分别验收
+完整故事见[主线第一章](../../../../player/story/main/last-toy.md)，Demo 沿已选的[精简范围](demo-scope.md)制作。这里维护可玩流程与实现规格，设计与实际运行接入分别验收
 
 ## 制作入口
 

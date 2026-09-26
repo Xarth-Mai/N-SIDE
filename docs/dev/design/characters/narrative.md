@@ -1,6 +1,6 @@
 # 人物叙事与出场组织
 
-人物事实与关系在[人物档案](../../../player/encyclopedia/characters/index.md)维护，年龄、关联场所和叙事职责索引见[人物数据](../catalogs/characters.json)。主线与日常事件见[《回声之后》](../../../player/encyclopedia/story/main/index.md)及[城市日常故事](../../../player/encyclopedia/story/daily/index.md)
+人物事实与关系在[人物档案](../../../player/characters/index.md)维护，年龄、关联场所和叙事职责索引见[人物数据](../catalogs/characters.json)。主线与日常事件见[《回声之后》](../../../player/story/main/index.md)及[城市日常故事](../../../player/story/daily/index.md)
 
 ## 出场节奏
 

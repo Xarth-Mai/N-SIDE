@@ -4,7 +4,7 @@
 
 ### QST-001 · 门还开着
 
-[正文](../../../../docs/player/encyclopedia/story/main/prologue.md) · 主线 · 第 1 幕 · 序章起点
+[正文](../../../../docs/player/story/main/prologue.md) · 主线 · 第 1 幕 · 序章起点
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -16,7 +16,7 @@
 
 ### QST-002 · 最后的玩具
 
-[正文](../../../../docs/player/encyclopedia/story/main/last-toy.md) · 主线 · 第 1 幕 · 序章之后，首次完整委托
+[正文](../../../../docs/player/story/main/last-toy.md) · 主线 · 第 1 幕 · 序章之后，首次完整委托
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -28,7 +28,7 @@
 
 ### QST-003 · 多出来的掌声
 
-[正文](../../../../docs/player/encyclopedia/story/main/extra-applause.md) · 主线 · 第 1 幕 · 第一幕后段
+[正文](../../../../docs/player/story/main/extra-applause.md) · 主线 · 第 1 幕 · 第一幕后段
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -40,7 +40,7 @@
 
 ### QST-004 · 没有放学的那一天
 
-[正文](../../../../docs/player/encyclopedia/story/main/no-school-bell.md) · 主线 · 第 1 幕 · 第一幕末段
+[正文](../../../../docs/player/story/main/no-school-bell.md) · 主线 · 第 1 幕 · 第一幕末段
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -52,7 +52,7 @@
 
 ### QST-005 · 初秋以外
 
-[正文](../../../../docs/player/encyclopedia/story/main/beyond-autumn.md) · 主线 · 第 2 幕 · 第二幕开端
+[正文](../../../../docs/player/story/main/beyond-autumn.md) · 主线 · 第 2 幕 · 第二幕开端
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -64,7 +64,7 @@
 
 ### QST-006 · 仍在一起
 
-[正文](../../../../docs/player/encyclopedia/story/main/still-together.md) · 主线 · 第 2 幕 · 第二幕中段
+[正文](../../../../docs/player/story/main/still-together.md) · 主线 · 第 2 幕 · 第二幕中段
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -76,7 +76,7 @@
 
 ### QST-007 · 河没有倒流
 
-[正文](../../../../docs/player/encyclopedia/story/main/river-did-not-reverse.md) · 主线 · 第 2 幕 · 第二幕末段
+[正文](../../../../docs/player/story/main/river-did-not-reverse.md) · 主线 · 第 2 幕 · 第二幕末段
 
 仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成
 
@@ -88,7 +88,7 @@
 
 ### QST-008 · 把今天带回来
 
-[正文](../../../../docs/player/encyclopedia/story/main/bring-today-back.md) · 主线 · 第 3 幕 · 第三幕准备
+[正文](../../../../docs/player/story/main/bring-today-back.md) · 主线 · 第 3 幕 · 第三幕准备
 
 仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成
 
@@ -100,7 +100,7 @@
 
 ### QST-009 · 回声之后
 
-[正文](../../../../docs/player/encyclopedia/story/main/after-echoes.md) · 主线 · 第 3 幕 · 第三幕行动
+[正文](../../../../docs/player/story/main/after-echoes.md) · 主线 · 第 3 幕 · 第三幕行动
 
 仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成
 
@@ -112,7 +112,7 @@
 
 ### QST-010 · 明天照常营业
 
-[正文](../../../../docs/player/encyclopedia/story/main/epilogue.md) · 主线 · 第 3 幕 · 行动之后
+[正文](../../../../docs/player/story/main/epilogue.md) · 主线 · 第 3 幕 · 行动之后
 
 仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成
 
@@ -124,7 +124,7 @@
 
 ### QST-101 · 旧外套的新口袋
 
-[正文](../../../../docs/player/encyclopedia/story/daily/new-pocket.md) · 可选支线 · 第 1 幕 · 第一章附近，也可在平日穿插
+[正文](../../../../docs/player/story/daily/new-pocket.md) · 可选支线 · 第 1 幕 · 第一章附近，也可在平日穿插
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -136,7 +136,7 @@
 
 ### QST-102 · 一桌不同的晚饭
 
-[正文](../../../../docs/player/encyclopedia/story/daily/different-dinners.md) · 可选支线 · 第 1 幕 · 第一幕起，可跨章节安排
+[正文](../../../../docs/player/story/daily/different-dinners.md) · 可选支线 · 第 1 幕 · 第一幕起，可跨章节安排
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -148,7 +148,7 @@
 
 ### QST-103 · 橱窗还差一点
 
-[正文](../../../../docs/player/encyclopedia/story/daily/unfinished-window.md) · 可选支线 · 第 1 幕 · 第二章附近，可独立穿插
+[正文](../../../../docs/player/story/daily/unfinished-window.md) · 可选支线 · 第 1 幕 · 第二章附近，可独立穿插
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -160,7 +160,7 @@
 
 ### QST-104 · 雨停之后取衣服
 
-[正文](../../../../docs/player/encyclopedia/story/daily/collect-after-rain.md) · 可选支线 · 第 1 幕 · 第三章附近，也可在其他雨后
+[正文](../../../../docs/player/story/daily/collect-after-rain.md) · 可选支线 · 第 1 幕 · 第三章附近，也可在其他雨后
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -172,7 +172,7 @@
 
 ### QST-105 · 球场边的一张椅子
 
-[正文](../../../../docs/player/encyclopedia/story/daily/courtside-chair.md) · 可选支线 · 第 1 幕 · 第三章前后均可
+[正文](../../../../docs/player/story/daily/courtside-chair.md) · 可选支线 · 第 1 幕 · 第三章前后均可
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -184,7 +184,7 @@
 
 ### QST-106 · 一本书的几种读法
 
-[正文](../../../../docs/player/encyclopedia/story/daily/ways-to-read.md) · 可选支线 · 第 2 幕 · 第四至第五章附近
+[正文](../../../../docs/player/story/daily/ways-to-read.md) · 可选支线 · 第 2 幕 · 第四至第五章附近
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -196,7 +196,7 @@
 
 ### QST-107 · 晚场以后
 
-[正文](../../../../docs/player/encyclopedia/story/daily/after-the-late-show.md) · 可选支线 · 第 1 幕 · 第二章附近的正常演出夜晚
+[正文](../../../../docs/player/story/daily/after-the-late-show.md) · 可选支线 · 第 1 幕 · 第二章附近的正常演出夜晚
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 
@@ -208,7 +208,7 @@
 
 ### QST-108 · 把今天拍进去
 
-[正文](../../../../docs/player/encyclopedia/story/daily/photograph-today.md) · 可选支线 · 第 3 幕 · 第七章至尾声附近，可在平日取景
+[正文](../../../../docs/player/story/daily/photograph-today.md) · 可选支线 · 第 3 幕 · 第七章至尾声附近，可在平日取景
 
 正文未规定跨任务开始锁；显示位置只用于阅读建议
 

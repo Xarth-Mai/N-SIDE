@@ -115,11 +115,11 @@ class DocumentTests(unittest.TestCase):
         self.assertIn('状态值', self.messages())
 
     def test_subject_references_do_not_duplicate_document_identity(self):
-        self.write('docs/player/encyclopedia/characters/a.md', '---\nsubject_id: CHR-001\n---\n# A\n')
+        self.write('docs/player/characters/a.md', '---\nsubject_id: CHR-001\n---\n# A\n')
         self.write('docs/dev/design/characters/a.md', '---\ndocument_id: DOC-A-SPEC\nsubject_id: CHR-001\ndepends_on: ["CHR-001"]\n---\n# A spec\n')
         self.assertTrue(self.result()['ok'])
         self.assertEqual(self.result()['records'], 2)
-        self.write('docs/player/encyclopedia/characters/b.md', '---\nsubject_id: CHR-001\n---\n# Duplicate\n')
+        self.write('docs/player/characters/b.md', '---\nsubject_id: CHR-001\n---\n# Duplicate\n')
         self.assertIn('对象权威页重复', self.messages())
 
     def test_object_references_use_the_existing_catalogue(self):

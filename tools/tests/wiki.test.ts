@@ -29,8 +29,8 @@ function request(root: string, profile: WikiProfile, url: string, method = 'GET'
 }
 function wikiFixture(t: TestContext) {
   const f = fixture(t)
-  f.put('docs/player/index.md', '# 玩家入口\n\n[故事](encyclopedia/story/main/last-toy.md)\n')
-  f.put('docs/player/encyclopedia/story/main/last-toy.md', '---\nsubject_id: QST-002\ndesign_state: accepted\n---\n# 最后的玩具\n\n米娜自己决定打包\n')
+  f.put('docs/player/index.md', '# 玩家入口\n\n[故事](story/main/last-toy.md)\n')
+  f.put('docs/player/story/main/last-toy.md', '---\nsubject_id: QST-002\ndesign_state: accepted\n---\n# 最后的玩具\n\n米娜自己决定打包\n')
   f.put('docs/dev/index.md', '# 开发入口\n\n[私有规格](design/spec.md)\n')
   f.put('docs/dev/design/spec.md', '# DEV_ONLY_SENTINEL\n\n内部规格 [数据](data.json)\n')
   f.put('docs/dev/design/data.json', '{"DEV_ONLY_SENTINEL":true}')
@@ -54,9 +54,9 @@ function wikiFixture(t: TestContext) {
 test('sidebar follows audience and preserves story reading order', t => {
   const { root, put } = fixture(t)
   put('player/index.md'); put('dev/index.md'); put('dev/design/spec.md')
-  put('_data/stories.json',JSON.stringify([{role:'main',order:1,url:'/player/encyclopedia/story/main/prologue'},{role:'main',order:2,url:'/player/encyclopedia/story/main/last-toy'}]))
-  for (const name of ['last-toy', 'prologue']) put(`player/encyclopedia/story/main/${name}.md`)
-  assert.deepEqual(links(buildSidebar(root, 'player')), ['/', '/player/', '/player/encyclopedia/story/main/prologue', '/player/encyclopedia/story/main/last-toy'])
+  put('_data/stories.json',JSON.stringify([{role:'main',order:1,url:'/player/story/main/prologue'},{role:'main',order:2,url:'/player/story/main/last-toy'}]))
+  for (const name of ['last-toy', 'prologue']) put(`player/story/main/${name}.md`)
+  assert.deepEqual(links(buildSidebar(root, 'player')), ['/', '/player/', '/player/story/main/prologue', '/player/story/main/last-toy'])
   assert.ok(links(buildSidebar(root, 'dev')).includes('/dev/design/spec'))
 })
 
@@ -86,11 +86,14 @@ test('isolated player tree excludes developer pages/data/public and uses redirec
   assert.equal(dev.output, join(root, 'docs/.vitepress/dist'))
   assert.equal(player.output, join(root, 'docs/.vitepress/dist-player'))
   assert.deepEqual(player.manifest.data, [])
-  assert.doesNotMatch(readFileSync(join(player.source, 'player/encyclopedia/story/main/last-toy.md'), 'utf8'), /design_state|subject_id/)
+  assert.doesNotMatch(readFileSync(join(player.source, 'player/story/main/last-toy.md'), 'utf8'), /design_state|subject_id/)
   assert.ok(!player.manifest.pages.some(p => p.startsWith('dev/')))
   assert.ok(!player.manifest.public.some(p => p.includes('private')))
-  assert.deepEqual(player.manifest.aliases.map(a => a.old), ['story/main/last-toy.html'])
+  assert.deepEqual(player.manifest.aliases.map(a => a.old), ['story/main/last-toy.html', 'player/encyclopedia/story/main/last-toy.html'])
   const redirect = readFileSync(join(player.source, 'public/story/main/last-toy.html'), 'utf8')
+  const previous = readFileSync(join(player.source, 'public/player/encyclopedia/story/main/last-toy.html'), 'utf8')
+  assert.match(previous, /\/player\/story\/main\/last-toy/)
+  assert.match(previous, /location\.hash/)
   assert.match(redirect, /location\.hash/); assert.doesNotMatch(redirect, /米娜/)
   assert.ok(dev.manifest.data.includes('dev/design/data.json'))
   assert.ok(dev.manifest.aliases.some(a => a.old === 'production/private.html'))
@@ -123,7 +126,7 @@ test('map projection retains actual drawing/interaction and drops author fields'
   assert.equal(projection.places.length, 91)
   assert.ok(projection.scene.objects.length > 0 && projection.scene.terrain.length > 0)
   assert.doesNotMatch(JSON.stringify(projection), /DEV_ONLY_SENTINEL|"architectures"|"operations"|"brief"/)
-  assert.equal(projection.places.find(p => p.id === '04')!.page, '/player/encyclopedia/locations/shop')
+  assert.equal(projection.places.find(p => p.id === '04')!.page, '/player/locations/shop')
 })
 
 test('artifact check detects injected developer raw data and search content', t => {
@@ -183,7 +186,7 @@ test('real home includes the overview and audience navigation, with root-safe li
   const playerHome=readFileSync(join(player.source,'index.md'),'utf8')
   const devHome=readFileSync(join(dev.source,'index.md'),'utf8')
   assert.match(playerHome,/## 玩家入口/)
-  assert.match(playerHome,/\]\(\/player\/encyclopedia\/story\/main\/last-toy.md\)/)
+  assert.match(playerHome,/\]\(\/player\/story\/main\/last-toy.md\)/)
   assert.doesNotMatch(playerHome,/开发入口|DEV_ONLY_SENTINEL/)
   assert.match(devHome,/## 玩家入口/)
   assert.match(devHome,/## 开发入口/)

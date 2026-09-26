@@ -61,7 +61,7 @@ export function validateStories(root: string, input: unknown = loadQuests(root))
   function source(v: unknown, where: string) {
     if (!text(v)) return add(where, 'missing source')
     const [file, anchor] = (v as string).split('#'), path = resolve(root,'docs',file)
-    if (!path.startsWith(resolve(root,'docs/player/encyclopedia/story')+'/') || !existsSync(path)) return add(where,'invalid story source')
+    if (!path.startsWith(resolve(root,'docs/player/story')+'/') || !existsSync(path)) return add(where,'invalid story source')
     if (anchor && !readFileSync(path,'utf8').includes(`## ${anchor}`)) add(where,'missing source heading')
   }
   function condition(v: unknown, where: string, owner: string, depth = 0) {
@@ -113,7 +113,7 @@ export function validateStories(root: string, input: unknown = loadQuests(root))
   })
   if(errors.length) return errors
   const quests=input as Quest[]
-  for(const file of filesIn(join(root,'docs/player/encyclopedia/story')).filter(f=>f.endsWith('.md'))) {
+  for(const file of filesIn(join(root,'docs/player/story')).filter(f=>f.endsWith('.md'))) {
     const id=readFileSync(file,'utf8').match(/^(?:quest_id|subject_id):\s*(QST-\d+)\s*$/m)?.[1]
     if(id && !quests.some(q=>q.id===id && resolve(root,'docs',q.source_file)===file)) add(id,'story page missing from authoritative catalog or mismatched identity')
   }

@@ -31,7 +31,7 @@ function page(root: string, file: string) {
 
 function section(root: string, directory: string, label?: string): DefaultTheme.SidebarItem | null {
   if (!existsSync(directory)) return null
-  const key = relative(root, directory).replace(/^player\/encyclopedia\//, '')
+  const key = relative(root, directory).replace(/^player\//, '')
   const storyData = join(root, '_data/stories.json')
   const stories: StoryNode[] = ['story/main', 'story/daily'].includes(key) && existsSync(storyData) ? JSON.parse(readFileSync(storyData, 'utf8')) : []
   const order = key === 'story/main' || key === 'story/daily'
@@ -69,7 +69,7 @@ export function buildSidebar(root: string, profile = 'dev') {
     { text: '玩家资料', items: [
       page(root, join(root, 'player/index.md')),
       section(root, join(root, 'player/guide'), '操作指南'),
-      ...encyclopedia.map((name, index) => section(root, join(root, 'player/encyclopedia', name), labels[index])),
+      ...encyclopedia.map((name, index) => section(root, join(root, 'player', name), labels[index])),
     ].filter(item => item !== null) },
   ]
   if (profile === 'dev') groups.push({ text: '开发资料', items: [
