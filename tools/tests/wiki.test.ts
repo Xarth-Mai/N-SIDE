@@ -173,3 +173,17 @@ test('external search data remains inside the selected audience', t => {
   assert.equal(labels.scene,undefined)
   assert.equal(labels.places.length,91)
 })
+
+
+test('real home includes the overview and audience navigation, with root-safe links', t => {
+  const {root}=wikiFixture(t)
+  const player=prepareWiki(root,'player'),dev=prepareWiki(root,'dev')
+  const playerHome=readFileSync(join(player.source,'index.md'),'utf8')
+  const devHome=readFileSync(join(dev.source,'index.md'),'utf8')
+  assert.match(playerHome,/## 玩家入口/)
+  assert.match(playerHome,/\]\(\/player\/encyclopedia\/story\/main\/last-toy.md\)/)
+  assert.doesNotMatch(playerHome,/开发入口|DEV_ONLY_SENTINEL/)
+  assert.match(devHome,/## 玩家入口/)
+  assert.match(devHome,/## 开发入口/)
+  assert.match(devHome,/\]\(\/dev\/design\/spec.md\)/)
+})

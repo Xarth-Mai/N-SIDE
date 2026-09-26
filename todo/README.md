@@ -24,7 +24,7 @@
 ## 受阻
 
 - [ ] [TASK-020 TypeScript 工具链与 Wiki 数据加载优化](tasks/TASK-020-typescript-toolchain.md) · `blocked` · DOCS-PIPELINE：当前 CUA 环境无可用浏览器，真实地图交互、搜索界面与画面验收尚未运行
-- [ ] [TASK-021 故事时间轴与任务关系](tasks/TASK-021-story-graph.md) · `blocked` · DOCS-PIPELINE：实际站点已接入并通过 HTTPS 检查，CUA 无可用浏览器，桌面与手机交互验收仍未运行
+- [ ] [TASK-021 故事时间轴与任务关系](tasks/TASK-021-story-graph.md) · `blocked` · DOCS-PIPELINE：完整站点及独立事件页已发布，浏览器桌面与手机交互验收仍未运行
 
 ## 近期可开始
 

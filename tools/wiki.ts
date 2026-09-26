@@ -145,7 +145,19 @@ export function prepareWiki(root: string, profile: string) {
     const old = entry.source.slice(5).replace(/\.md$/, '.html'), to = route(target.slice(5))
     put(join(source, 'public', old), redirect(to)); aliases.push({ old, to })
   }
-  put(join(source, 'index.md'), `# N:SIDE ${profile === 'player' ? '游戏百科' : '开发资料'}\n\n[进入${profile === 'player' ? '游戏百科' : '开发资料'}](${profile}/index.md)\n`)
+  // Reuse audience landing content so the real homepage retains the overview and navigation
+  const homeSections = selected.map(name => {
+    const file = join(docs, name, 'index.md')
+    return readFileSync(join(source, name, 'index.md'), 'utf8')
+      .replace(/^(#{1,5}) /gm, '$1# ')
+      .replace(/(!?\[[^\]\n]*\]\()([^\s)]+)(\))/g, (_all, prefix, url, end) => {
+        const checked = link(url, file)
+        if (/^(?:https?:|mailto:|#|data:|\/)/.test(checked)) return `${prefix}${checked}${end}`
+        const [path, fragment] = checked.split('#', 2)
+        return `${prefix}/${relative(docs, resolve(dirname(file), path))}${fragment ? '#'+fragment : ''}${end}`
+      })
+  })
+  put(join(source, 'index.md'), '# N:SIDE Wiki\n\n<img src="/project-assets/branding/n-logo.svg" alt="N:SIDE Logo" width="160">\n\n' + homeSections.join('\n\n'))
   put(join(source, '.vitepress/config.ts'), `import { wikiConfig } from ${JSON.stringify(pathToFileURL(join(docs, '.vitepress/config.ts')).href)}\nexport default wikiConfig(${JSON.stringify({ root, source, profile })})\n`)
   const manifest = { profile, pages: pages.map(p => relative(docs, p)), data: listWikiData(docs, profile).map(p => relative(docs, p)), public: filesIn(join(source, 'public')).map(p => relative(join(source, 'public'), p)), aliases }
   put(join(base, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')

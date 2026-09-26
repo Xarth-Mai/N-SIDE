@@ -23,3 +23,5 @@
 发布入口修复 PASS，旧产物清理 PASS。浏览器画面与交互仍为 NOT RUN；HTTP 内容和资源校验不替代客户端水合或手机布局观察，TASK-021 保留原验收缺口
 
 文档与任务检查 PASS，开发站 144 页构建 PASS，玩家站现有产物检查 PASS，`git diff --check` PASS。ponytail-review：Lean already. Ship.
+
+后续作者反馈确认原站点需要同时保留开发资料，本轮选择 player 构建不符合原站点范围；该发布选择与只验证玩家边界的结论由[第 3 轮纠正](../r3/result.md)替代，原始 HTTP 记录保留用于追溯

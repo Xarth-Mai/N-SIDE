@@ -2,7 +2,7 @@
 id: TASK-021
 type: feature
 status: blocked
-blocked_reason: 实际站点已接入并通过 HTTPS 检查，CUA 无可用浏览器，桌面与手机交互验收仍未运行
+blocked_reason: 完整站点及独立事件页已发布，浏览器桌面与手机交互验收仍未运行
 milestone: DOCS-PIPELINE
 depends_on: []
 specs:
@@ -21,10 +21,12 @@ specs:
 
 ## 当前工作与下一步
 
-第 2 轮已修复本机静态服务的旧产物指向和读取权限，旧故事入口可进入新时间轴；按作者要求清理旧构建与缓存。下一步仍是在可用浏览器中完成桌面、手机和键盘交互验收
+第 3 轮已恢复完整主页与开发文档，改为独立发布快照，并发布大共梦事件独立页；432 项线上检查覆盖所有当前页面、旧 URL 与资源。下一步仍是在可用浏览器中补齐桌面、手机与键盘交互验收
 
 ## 结果与证据
 
 见[本轮结果](../evidence/TASK-021/r1/result.md)与[十八篇审查快照](../evidence/TASK-021/r1/audit.md)。技术检查 PASS，真实浏览器验收 NOT RUN；不登记完成验收，不增加游戏能力计数
 
 第 2 轮[实际发布与清理记录](../evidence/TASK-021/r2/result.md)：47 项真实 HTTPS 检查通过，线上接入已生效
+
+第 3 轮[完整站点恢复与事件拆分](../evidence/TASK-021/r3/result.md)：修正第 2 轮的发布受众选择，完整保留百科和开发资料

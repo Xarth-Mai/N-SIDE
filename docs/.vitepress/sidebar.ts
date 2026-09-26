@@ -5,7 +5,7 @@ import { basename, join, relative, sep } from 'node:path'
 
 const readingOrder: Record<string, string[]> = {
   story: ['index.md', 'main', 'daily'],
-  world: ['null-city.md', 'nightmares.md', 'history.md'],
+  world: ['null-city.md', 'nightmares.md', 'great-shared-dream.md', 'history.md'],
   characters: ['family.md', 'brother.md', 'sister.md', 'agent.md'],
   locations: ['n-district.md', 'shop.md', 'stargazing-terrace.md', 'place-network.md', 'places'],
   gameplay: ['controls.md', 'daily-life.md', 'levels.md', 'dream-diving.md', 'combat.md'],

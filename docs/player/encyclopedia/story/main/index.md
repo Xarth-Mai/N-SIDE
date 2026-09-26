@@ -1,7 +1,7 @@
 ---
 document_id: DOC-MAIN-STORY
 status: accepted
-depends_on: ["DOC-HISTORY", "DOC-WORLD-RULES"]
+depends_on: ["DOC-HISTORY", "DOC-GREAT-SHARED-DREAM", "DOC-WORLD-RULES"]
 ---
 
 # 主线：回声之后
