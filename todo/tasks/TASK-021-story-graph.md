@@ -2,7 +2,7 @@
 id: TASK-021
 type: feature
 status: blocked
-blocked_reason: CUA 无可用浏览器，桌面与手机画面、真实点击与键盘验收尚未运行
+blocked_reason: 实际站点已接入并通过 HTTPS 检查，CUA 无可用浏览器，桌面与手机交互验收仍未运行
 milestone: DOCS-PIPELINE
 depends_on: []
 specs:
@@ -21,8 +21,10 @@ specs:
 
 ## 当前工作与下一步
 
-第 1 轮实现、逐篇审查和自动检查完成；下一步在可用浏览器中检查桌面、手机、选卡、条件推演和键盘路径。剧情未定项已明确登记，不阻止数据维护，也不擅自修改正文
+第 2 轮已修复本机静态服务的旧产物指向和读取权限，旧故事入口可进入新时间轴；按作者要求清理旧构建与缓存。下一步仍是在可用浏览器中完成桌面、手机和键盘交互验收
 
 ## 结果与证据
 
 见[本轮结果](../evidence/TASK-021/r1/result.md)与[十八篇审查快照](../evidence/TASK-021/r1/audit.md)。技术检查 PASS，真实浏览器验收 NOT RUN；不登记完成验收，不增加游戏能力计数
+
+第 2 轮[实际发布与清理记录](../evidence/TASK-021/r2/result.md)：47 项真实 HTTPS 检查通过，线上接入已生效
