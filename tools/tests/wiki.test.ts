@@ -150,12 +150,18 @@ test('artifact check detects injected developer raw data and search content', t 
   assert.throws(() => checkWikiBuild(root, 'player'), /Developer content/)
 })
 
-test('inline template placeholders remain literal Vue text', async () => {
-  const { createMarkdownRenderer } = await import('vitepress')
-  const { markdown, default: directConfig } = await import('../../docs/.vitepress/config.ts')
-  assert.throws(directConfig, /Choose a Wiki audience/)
-  const md = await createMarkdownRenderer(process.cwd(), markdown)
-  assert.match(md.render('`{{交付目标}}`'), /<code v-pre[^>]*>\{\{交付目标\}\}<\/code>/)
+test('inline template placeholders remain literal Vue text', () => {
+  // VitePress caches its first renderer globally, so test this configuration in a fresh process
+  const result = Bun.spawnSync([process.execPath, '-e', `
+    import assert from 'node:assert/strict'
+    import { createMarkdownRenderer } from 'vitepress'
+    import directConfig, { markdown } from './docs/.vitepress/config.ts'
+    assert.throws(directConfig, /Choose a Wiki audience/)
+    const md = await createMarkdownRenderer(process.cwd(), markdown)
+    console.log(md.render(${JSON.stringify('`{{交付目标}}`')}))
+  `], { cwd: process.cwd() })
+  assert.equal(result.exitCode, 0, result.stderr.toString())
+  assert.match(result.stdout.toString(), /<code v-pre[^>]*>\{\{交付目标\}\}<\/code>/)
 })
 
 test('Vite module loading rejects source files outside the isolated tree', async t => {
