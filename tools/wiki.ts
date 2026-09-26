@@ -1,24 +1,27 @@
+import type { District, PlayerMap } from './district-types.ts'
+import type { WikiProfile } from './wiki-data.ts'
+export type WikiManifest = { profile: WikiProfile; pages: string[]; data: string[]; public: string[]; aliases: {old: string; to: string}[] }
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, extname, join, relative, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { buildScene } from './district-map.mjs'
-import { assertProfile, filesIn, listWikiData, within } from './wiki-data.mjs'
+import { buildScene } from './district-map.ts'
+import { assertProfile, filesIn, listWikiData, within } from './wiki-data.ts'
 
 const REPOSITORY = 'https://github.com/Xarth-Mai/N-SIDE/blob/main/'
-const SUPPORT = ['district-map.mjs', 'district-plan.mjs', 'district-architecture.mjs', 'district-geometry.mjs']
+const SUPPORT = ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts']
 const COMPONENTS = ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue']
 const IMAGE = new Set(['.svg', '.webp', '.png', '.jpg', '.jpeg'])
-const PUBLIC_ASSETS = {
+const PUBLIC_ASSETS: Record<string, WikiProfile[]> = {
   'images/hero.webp': ['player', 'dev'],
   'images/hillside-reference.webp': ['dev'],
   'images/hillside-layout-concept.webp': ['dev'],
 }
-const put = (path, text) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, text) }
-const copy = (source, target) => { mkdirSync(dirname(target), { recursive: true }); copyFileSync(source, target) }
-const route = path => `/${path.replace(/\.md$/, '').replace(/(^|\/)index$/, '$1')}`
+const put = (path: string, text: string) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, text) }
+const copy = (source: string, target: string) => { mkdirSync(dirname(target), { recursive: true }); copyFileSync(source, target) }
+const route = (path: string) => `/${path.replace(/\.md$/, '').replace(/(^|\/)index$/, '$1')}`
 
 /** Allow only the map's already visible labels and generated drawing primitives */
-export function playerMap(data) {
+export function playerMap(data: District): PlayerMap {
   const scene = buildScene(data)
   return {
     groups: Object.fromEntries(Object.entries(data.groups).map(([id, name]) => [id, String(name)])),
@@ -28,13 +31,14 @@ export function playerMap(data) {
   }
 }
 
-function redirect(to) {
+function redirect(to: string) {
   return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="${to}"></head><body><a href="${to}">页面已迁移</a><script>location.replace(${JSON.stringify(to)} + location.hash)</script></body></html>\n`
 }
 
 /** Prepare an isolated document tree shared by production builds and the dev server */
-export function prepareWiki(root, profile) {
+export function prepareWiki(root: string, profile: string) {
   assertProfile(profile)
+  const audience = profile
   root = resolve(root)
   const docs = join(root, 'docs'), base = join(root, 'output/wiki', profile), source = join(base, 'source')
   const selected = ['player', ...(profile === 'dev' ? ['dev'] : [])]
@@ -42,8 +46,8 @@ export function prepareWiki(root, profile) {
   if (!pages.length || !existsSync(join(docs, profile, 'index.md'))) throw new Error(`${profile}: missing entry or pages`)
   rmSync(source, { recursive: true, force: true })
   mkdirSync(source, { recursive: true })
-  const publicFiles = new Set(), pageSet = new Set(pages.map(file => resolve(file)))
-  function link(url, file) {
+  const publicFiles = new Set<string>(), pageSet = new Set(pages.map(file => resolve(file)))
+  function link(url: string, file: string) {
     if (/^(?:https?:|mailto:|#|data:)/.test(url)) return url
     const [name, fragment = ''] = url.split('#', 2)
     if (!name) return url
@@ -55,7 +59,7 @@ export function prepareWiki(root, profile) {
     const target = resolve(name.startsWith('/') ? docs : dirname(file), name.replace(/^\//, ''))
     const rel = relative(docs, target)
     if (within(join(docs, 'public'), target)) {
-      if (!IMAGE.has(extname(target)) || !existsSync(target) || !PUBLIC_ASSETS[relative(join(docs, 'public'), target)]?.includes(profile)) throw new Error(`Unsupported public attachment: ${url}`)
+      if (!IMAGE.has(extname(target)) || !existsSync(target) || !PUBLIC_ASSETS[relative(join(docs, 'public'), target)]?.includes(audience)) throw new Error(`Unsupported public attachment: ${url}`)
       publicFiles.add(target)
       return `/${relative(join(docs, 'public'), target)}${suffix}`
     }
@@ -85,7 +89,7 @@ export function prepareWiki(root, profile) {
         if (profile === 'player') throw new Error('Player Markdown cannot import the full district source')
         return "'@wiki-data/district.json'"
       })
-      .replace(/(['"])[^'"\n]*tools\/(district-[^/'"]+\.mjs)\1/g, (_all, quote, name) => {
+      .replace(/(['"])[^'"\n]*tools\/(district-[^/'"]+\.ts)\1/g, (_all, quote, name) => {
         if (!SUPPORT.includes(name) || profile === 'player') throw new Error(`Unpublished tool import ${name}`)
         return `${quote}@wiki-tools/${name}${quote}`
       })
@@ -102,14 +106,16 @@ export function prepareWiki(root, profile) {
   for (const file of publicFiles) copy(file, join(source, 'public', relative(join(docs, 'public'), file)))
   copy(join(root, 'source-assets/branding/n-logo.svg'), join(source, 'public/project-assets/branding/n-logo.svg'))
   const district = JSON.parse(readFileSync(join(root, 'source-assets/district-map/district.json'), 'utf8'))
-  const projected = JSON.stringify(playerMap(district)) + '\n'
-  put(join(source, '_data/map.json'), projected)
+  const map = playerMap(district)
+  const projected = JSON.stringify(map) + '\n'
+  const { scene: _scene, ...labels } = map
+  put(join(source, '_data/map.json'), JSON.stringify(labels) + '\n')
   put(join(source, 'public/project-assets/district-map/map.json'), projected)
   if (profile === 'dev') {
     copy(join(root, 'source-assets/district-map/district.json'), join(source, '_data/district.json'))
     copy(join(root, 'source-assets/district-map/district.json'), join(source, 'public/project-assets/district-map/district.json'))
   }
-  for (const name of SUPPORT.filter(name => profile === 'dev' || name === 'district-map.mjs')) copy(join(root, 'tools', name), join(source, '_tools', name))
+  for (const name of SUPPORT.filter(name => profile === 'dev' || ['district-map.ts', 'district-types.ts'].includes(name))) copy(join(root, 'tools', name), join(source, '_tools', name))
   for (const name of COMPONENTS.filter(name => profile === 'dev' || name === 'DistrictMap.vue')) {
     const text = readFileSync(join(docs, '.vitepress/components', name), 'utf8')
       .replaceAll('../../../source-assets/district-map/district.json', '@wiki-data/district.json')
@@ -120,31 +126,36 @@ export function prepareWiki(root, profile) {
   const aliases = []
   if (existsSync(mapping)) for (const entry of JSON.parse(readFileSync(mapping, 'utf8')).files) {
     if (entry.source === 'docs/index.md' || !entry.source.startsWith('docs/') || !entry.source.endsWith('.md')) continue
-    const target = entry.targets.find(t => t.startsWith('docs/player/') || (profile === 'dev' && t.startsWith('docs/dev/')))
+    const target = entry.targets.find((t: string) => t.startsWith('docs/player/') || (profile === 'dev' && t.startsWith('docs/dev/')))
     if (!target || target === entry.source || !pageSet.has(resolve(root, target))) continue
     const old = entry.source.slice(5).replace(/\.md$/, '.html'), to = route(target.slice(5))
     put(join(source, 'public', old), redirect(to)); aliases.push({ old, to })
   }
   put(join(source, 'index.md'), `# N:SIDE ${profile === 'player' ? '游戏百科' : '开发资料'}\n\n[进入${profile === 'player' ? '游戏百科' : '开发资料'}](${profile}/index.md)\n`)
-  put(join(source, '.vitepress/config.mjs'), `import { wikiConfig } from ${JSON.stringify(pathToFileURL(join(docs, '.vitepress/config.mjs')).href)}\nexport default wikiConfig(${JSON.stringify({ root, source, profile })})\n`)
+  put(join(source, '.vitepress/config.ts'), `import { wikiConfig } from ${JSON.stringify(pathToFileURL(join(docs, '.vitepress/config.ts')).href)}\nexport default wikiConfig(${JSON.stringify({ root, source, profile })})\n`)
   const manifest = { profile, pages: pages.map(p => relative(docs, p)), data: listWikiData(docs, profile).map(p => relative(docs, p)), public: filesIn(join(source, 'public')).map(p => relative(join(source, 'public'), p)), aliases }
   put(join(base, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
   return { source, output: join(base, 'dist'), manifest }
 }
 
 /** Check actual emitted pages and all raw data, not just sidebar configuration */
-export function checkWikiBuild(root, profile) {
+export function checkWikiBuild(root: string, profile: string) {
   assertProfile(profile)
   const base = join(resolve(root), 'output/wiki', profile), output = join(base, 'dist')
-  const manifest = JSON.parse(readFileSync(join(base, 'manifest.json'), 'utf8'))
+  const manifest: WikiManifest = JSON.parse(readFileSync(join(base, 'manifest.json'), 'utf8'))
   if (manifest.profile !== profile) throw new Error('Build manifest profile mismatch')
   const files = filesIn(output), names = files.map(p => relative(output, p))
   for (const name of manifest.pages.map(p => p.replace(/\.md$/, '.html'))) if (!names.includes(name)) throw new Error(`Missing built page ${name}`)
   const raw = new Set([...manifest.data, ...manifest.public, 'hashmap.json'])
   const html = new Set(['index.html', '404.html', ...manifest.pages.map(p => p.replace(/\.md$/, '.html')), ...manifest.public.filter(p => p.endsWith('.html'))])
   for (const name of names) {
+    if (/^assets\/search-index\.[\w-]+\.json$/.test(name)) {
+      const index: {documentCount: number; documentIds: Record<string, unknown>} = JSON.parse(readFileSync(join(output, name), 'utf8'))
+      const routes = new Set(['/', ...manifest.pages.map(route)])
+      if (!index.documentIds || Object.keys(index.documentIds).length !== index.documentCount || Object.values(index.documentIds).some(id => typeof id !== 'string' || !routes.has(id.split('#')[0]))) throw new Error(`Unpublished search document: ${name}`)
+    }
     if (name.endsWith('.html') && !html.has(name)) throw new Error(`Unexpected published page: ${name}`)
-    if (['.json', '.csv'].includes(extname(name)) && !raw.has(name)) throw new Error(`Unexpected published data: ${name}`)
+    if (['.json', '.csv'].includes(extname(name)) && !raw.has(name) && !/^assets\/search-index\.[\w-]+\.json$/.test(name)) throw new Error(`Unexpected published data: ${name}`)
     if (profile === 'player' && name.startsWith('dev/')) throw new Error(`Developer file in player output: ${name}`)
   }
   if (profile === 'player') {
@@ -169,7 +180,7 @@ if (import.meta.main) {
     else if (['build', 'dev', 'prepare', 'preview'].includes(command)) {
       if (command === 'preview') checkWikiBuild(root, profile)
       const prepared = command === 'preview' ? { source: join(root, 'output/wiki', profile, 'source') } : prepareWiki(root, profile)
-      if (command === 'prepare') console.log(JSON.stringify(prepared.manifest))
+      if (command === 'prepare') console.log(JSON.stringify('manifest' in prepared ? prepared.manifest : undefined))
       else {
         // Use the installed VitePress CLI: its esbuild service fails under this Bun runtime
         const args = ['bun', 'run', 'vitepress', command, prepared.source]
@@ -182,6 +193,6 @@ if (import.meta.main) {
         if (code !== 0) throw new Error(`VitePress ${command} failed (${code})`)
         if (command === 'build') console.log(JSON.stringify(checkWikiBuild(root, profile)))
       }
-    } else throw new Error('Usage: bun tools/wiki.mjs build|dev|prepare|preview|check player|dev [port]')
-  } catch (error) { console.error(error.message); process.exitCode = 1 }
+    } else throw new Error('Usage: bun tools/wiki.ts build|dev|prepare|preview|check player|dev [port]')
+  } catch (error) { console.error(error instanceof Error ? error.message : String(error)); process.exitCode = 1 }
 }

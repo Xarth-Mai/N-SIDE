@@ -1,20 +1,27 @@
+export type Task = {
+  id: string; type: string; status: string; milestone: string; depends_on: string[]; specs: string[]
+  migrated_from?: string[]; blocked_reason?: string; resolution?: string
+  acceptance?: {role: string; revision: string; record: string}
+  title: string; path: string; next: string
+  [field: string]: unknown
+}
 import { existsSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { join, relative, resolve } from 'node:path'
-import { anchors } from './validate-skills.mjs'
+import { anchors } from './validate-skills.ts'
 
 const statuses = ['backlog', 'ready', 'active', 'review', 'blocked', 'done', 'cancelled']
 const types = ['design', 'experiment', 'feature', 'asset', 'fix', 'document']
 const fields = ['id', 'type', 'status', 'milestone', 'depends_on', 'specs', 'migrated_from', 'blocked_reason', 'resolution', 'acceptance']
-const text = value => typeof value === 'string' && value.trim().length > 0
-const object = value => value && typeof value === 'object' && !Array.isArray(value)
-const taskId = value => typeof value === 'string' && /^TASK-\d{3,}$/.test(value)
-const strings = value => Array.isArray(value) && value.every(text) && new Set(value).size === value.length
-const withoutCode = body => body.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1\s*$/gm, '')
+const text = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
+const object = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value)
+const taskId = (value: unknown) => typeof value === 'string' && /^TASK-\d{3,}$/.test(value)
+const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every(text) && new Set(value).size === value.length
+const withoutCode = (body: string) => body.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1\s*$/gm, '')
 
-export function readTasks(root) {
+export function readTasks(root: string) {
   root = resolve(root)
-  const issues = [], tasks = [], milestones = []
-  const issue = (path, message) => issues.push({ path, message })
+  const issues: {path: string; message: string}[] = [], tasks: Task[] = [], milestones: {id: string; title: string}[] = []
+  const issue = (path: string, message: string) => issues.push({ path, message })
   const roadmap = 'todo/roadmap.md'
   if (!existsSync(join(root, roadmap))) issue(roadmap, 'missing roadmap')
   else {
@@ -24,7 +31,7 @@ export function readTasks(root) {
     }
     if (!milestones.length) issue(roadmap, 'no milestone headings')
   }
-  function reference(path, source, evidenceId) {
+  function reference(path: unknown, source: string, evidenceId?: string) {
     if (!text(path)) { issue(source, 'reference must be a nonempty repository path'); return }
     const [file, fragment, extra] = path.split('#')
     const destination = resolve(root, file)
@@ -48,12 +55,12 @@ export function readTasks(root) {
     const path = `todo/tasks/${file}`
     const source = readFileSync(join(root, path), 'utf8')
     const frontmatter = source.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
-    let task
+    let task: Task
     try {
       if (!frontmatter) throw new Error('missing YAML frontmatter')
-      task = Bun.YAML.parse(frontmatter[1])
+      task = Bun.YAML.parse(frontmatter[1]) as Task
       if (!object(task)) throw new Error('frontmatter must be an object')
-    } catch (error) { issue(path, error.message); continue }
+    } catch (error) { issue(path, (error instanceof Error ? error.message : String(error))); continue }
     for (const key of Object.keys(task)) if (!fields.includes(key)) issue(path, `unknown field ${key}`)
     if (!taskId(task.id)) issue(path, 'id must match TASK-000')
     else if (!file.startsWith(`${task.id}-`)) issue(path, 'filename must start with its task ID and remain stable')
@@ -80,7 +87,7 @@ export function readTasks(root) {
       }
     } else if ('acceptance' in task) issue(path, 'only done retains current acceptance; preserve old evidence in the body when reopening')
     if (strings(task.specs)) for (const spec of task.specs) reference(spec, path)
-    const body = withoutCode(frontmatter[2])
+    const body = withoutCode(frontmatter![2])
     const titles = [...body.matchAll(/^# (.+)$/gm)]
     if (titles.length !== 1) issue(path, 'task requires one level-one title')
     for (const section of ['目标与范围', '验收条件', '当前工作与下一步', '结果与证据']) {
@@ -89,7 +96,7 @@ export function readTasks(root) {
     const next = body.match(/^## 当前工作与下一步\n+([^\n#][^\n]*)/m)?.[1] ?? '见任务卡'
     tasks.push({ ...task, title: titles[0]?.[1] ?? file, path, next })
   }
-  const byId = new Map()
+  const byId = new Map<string, Task>()
   for (const task of tasks) {
     if (byId.has(task.id)) issue(task.path, `duplicate task ID ${task.id}`)
     byId.set(task.id, task)
@@ -101,40 +108,40 @@ export function readTasks(root) {
     else if (['active', 'review', 'done'].includes(task.status) && dependency.status !== 'done') issue(task.path, `dependency ${id} must be done before ${task.status}`)
   }
   const visited = new Set(), visiting = new Set()
-  function visit(task) {
+  function visit(task: Task) {
     if (visiting.has(task.id)) { issue(task.path, `dependency cycle at ${task.id}`); return }
     if (visited.has(task.id)) return
     visiting.add(task.id)
-    for (const id of Array.isArray(task.depends_on) ? task.depends_on : []) if (byId.has(id)) visit(byId.get(id))
+    for (const id of Array.isArray(task.depends_on) ? task.depends_on : []) if (byId.has(id)) visit(byId.get(id)!)
     visiting.delete(task.id); visited.add(task.id)
   }
   tasks.forEach(visit)
   return { ok: !issues.length, issues, tasks, milestones }
 }
 
-const boardText = value => value.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\s+/g, ' ').replace(/[\[\]|]/g, '\\$&')
+const boardText = (value: string) => value.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\s+/g, ' ').replace(/[\[\]|]/g, '\\$&')
 
-export function renderBoard({ tasks, milestones }) {
+export function renderBoard({ tasks, milestones }: {tasks: Task[]; milestones: {id: string; title: string}[]}) {
   const byId = new Map(tasks.map(task => [task.id, task]))
   const rows = ['# 当前任务', '', '<!-- Generated by bun run tasks:sync; edit todo/tasks/*.md -->', '',
     '任务卡是唯一编辑源；[路线图](roadmap.md)记录成果门槛，[任务规则](../docs/dev/handbook/tasks.md)说明状态与证据。以下计数不表示工时或游戏完成比例', '',
     '| 里程碑 | 已完成 | 当前工作 | 待评审 | 受阻 | 可开始 | 待前置 | 待办 | 已取消 |', '| --- | --- | --- | --- | --- | --- | --- | --- | --- |']
   for (const milestone of milestones) {
     const group = tasks.filter(task => task.milestone === milestone.id)
-    const count = status => group.filter(task => task.status === status).length
+    const count = (status: string) => group.filter(task => task.status === status).length
     rows.push(`| ${milestone.id} ${boardText(milestone.title)} | ${count('done')} | ${count('active')} | ${count('review')} | ${count('blocked')} | ${group.filter(task => task.status === 'ready' && task.depends_on.every(id => byId.get(id)?.status === 'done')).length} | ${group.filter(task => task.status === 'ready' && !task.depends_on.every(id => byId.get(id)?.status === 'done')).length} | ${count('backlog')} | ${count('cancelled')} |`)
   }
   for (const [status, title] of [['active', '进行中'], ['review', '等待评审'], ['blocked', '受阻'], ['ready', '近期可开始']]) {
     const group = tasks.filter(task => task.status === status && (status !== 'ready' || task.depends_on.every(id => byId.get(id)?.status === 'done')))
     rows.push('', `## ${title}`, '')
     if (!group.length) rows.push('当前无此类任务')
-    for (const task of group) rows.push(`- [ ] [${task.id} ${boardText(task.title)}](${task.path.replace(/^todo\//, '')}) · \`${task.status}\` · ${task.milestone}：${boardText(task.status === 'blocked' ? task.blocked_reason : task.next)}`)
+    for (const task of group) rows.push(`- [ ] [${task.id} ${boardText(task.title)}](${task.path.replace(/^todo\//, '')}) · \`${task.status}\` · ${task.milestone}：${boardText(task.status === 'blocked' ? task.blocked_reason ?? task.next : task.next)}`)
   }
   rows.push('', '全部任务与已结束记录保留在 [tasks/](tasks/)，证据保留在 [evidence/](evidence/)，历史输入见 [archive/legacy/](archive/legacy/)', '')
   return rows.join('\n')
 }
 
-export function run(root, command, log = console.log) {
+export function run(root: string, command: string, log = console.log) {
   if (!['list', 'sync', 'check'].includes(command)) { log('Use list, sync or check'); return 1 }
   const result = readTasks(root)
   if (!result.ok) { for (const issue of result.issues) log(`${issue.path}: ${issue.message}`); return 1 }
@@ -153,5 +160,5 @@ if (import.meta.main) {
   const rootIndex = args.indexOf('--root')
   const root = rootIndex >= 0 ? args[rootIndex + 1] : process.cwd()
   try { process.exitCode = run(root, command) }
-  catch (error) { console.error(`FAIL: ${error.message}`); process.exitCode = 1 }
+  catch (error) { console.error(`FAIL: ${(error instanceof Error ? error.message : String(error))}`); process.exitCode = 1 }
 }

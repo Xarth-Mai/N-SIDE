@@ -3,34 +3,34 @@ import { createHash } from 'node:crypto'
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
-import { validate } from '../validate-skills.mjs'
+import { validate } from '../validate-skills.ts'
 
-const roots = []
+const roots: string[] = []
 afterEach(() => { for (const root of roots.splice(0)) rmSync(root, { recursive: true, force: true }) })
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'nside-skills-')); roots.push(root)
-  const write = (file, body) => { mkdirSync(dirname(join(root, file)), { recursive: true }); writeFileSync(join(root, file), body) }
+  const write = (file: string, body: string) => { mkdirSync(dirname(join(root, file)), { recursive: true }); writeFileSync(join(root, file), body) }
   const base = '.agents/skills/example'
   write(`${base}/SKILL.md`, '---\nname: example\ndescription: >-\n  Read a source.\n  Check its evidence.\nmetadata:\n  version: "1"\n---\n# Example\n[More](references/more.md#detail)\n')
   write(`${base}/references/more.md`, '# More\n## Detail\nOriginal text\n')
   write(`${base}/UPSTREAM.md`, '# Upstream\nOriginal author\n')
   write('third_party/skills/source/LICENSE', 'Original author and license\n')
   write('.agents/skills/project/SKILL.md', '---\nname: project\ndescription: Project work\n---\n# Project\n')
-  const hash = file => createHash('sha256').update(readFileSync(join(root, file))).digest('hex')
-  const manifest = {
+  const hash = (file: string) => createHash('sha256').update(readFileSync(join(root, file))).digest('hex')
+  const manifest: Record<string, any> = {
     schema_version: 2, policy: { required_skills: ['project', 'example'] },
     local_skills: [{ name: 'project', local_path: '.agents/skills/project', purpose: 'Project entrypoint', files: ['SKILL.md'] }],
     sources: [{ id: 'source', repo: 'https://github.com/author/repo', commit: 'a'.repeat(40), author: 'Original Author', license: 'MIT', license_files: [{ upstream_path: 'LICENSE', local_path: 'third_party/skills/source/LICENSE', sha256: hash('third_party/skills/source/LICENSE') }] }],
     skills: [{ name: 'example', source: 'source', upstream_path: 'skills/example', local_path: base, mode: 'verbatim', files: ['SKILL.md', 'references/more.md'].map(path => ({ path, sha256: hash(`${base}/${path}`) })) }], references: [],
   }
   const save = () => write('third_party/skills/manifest.json', JSON.stringify(manifest))
-  const add = (path, body) => { write(`${base}/${path}`, body); manifest.skills[0].files.push({ path, sha256: hash(`${base}/${path}`) }); save() }
-  const alter = (path, body) => { write(`${base}/${path}`, body); manifest.skills[0].files.find(f => f.path === path).sha256 = hash(`${base}/${path}`); save() }
+  const add = (path: string, body: string) => { write(`${base}/${path}`, body); manifest.skills[0].files.push({ path, sha256: hash(`${base}/${path}`) }); save() }
+  const alter = (path: string, body: string) => { write(`${base}/${path}`, body); manifest.skills[0].files.find((f: {path: string; sha256: string}) => f.path === path).sha256 = hash(`${base}/${path}`); save() }
   save(); return { root, write, manifest, save, add, alter, base }
 }
-const failure = (f, message) => { const result = validate(f.root); expect(result.ok).toBe(false); expect(result.issues.some(x => x.message.includes(message))).toBe(true) }
+const failure = (f: ReturnType<typeof fixture>, message: string) => { const result = validate(f.root); expect(result.ok).toBe(false); expect(result.issues.some(x => x.message.includes(message))).toBe(true) }
 test('real Bun YAML, complete coverage and anchors pass', () => expect(validate(fixture().root).ok).toBe(true))
-for (const [name, mutate, message] of [
+const cases: [string, (f: ReturnType<typeof fixture>) => unknown, string][] = [
   ['missing manifest', f => rmSync(join(f.root, 'third_party/skills/manifest.json')), 'cannot be read'],
   ['empty object', f => f.write('third_party/skills/manifest.json', '{}'), 'schema_version'],
   ['null manifest', f => f.write('third_party/skills/manifest.json', 'null'), 'schema_version'],
@@ -62,7 +62,8 @@ for (const [name, mutate, message] of [
   ['optional links cannot exempt missing files', f => { rmSync(join(f.root, f.base, 'references/more.md')); f.manifest.skills[0].optional_upstream_links = [{ from: 'SKILL.md', target: 'references/more.md#detail', url: `https://github.com/author/repo/blob/${'a'.repeat(40)}/references/more.md` }]; f.save() }, 'no longer exempts'],
   ['invalid nested fields', f => { f.manifest.skills[0].commands = {}; f.manifest.skills[0].mode = 1; f.save() }, 'invalid mode'],
   ['unavailable command', f => { f.add('scripts/run.py', 'pass\n'); f.manifest.skills[0].commands = [{ from: 'SKILL.md', path: 'scripts/run.py', executable: 'nside-no-such-executable' }]; f.save() }, 'required executable unavailable'],
-]) test(name, () => { const f = fixture(); mutate(f); failure(f, message) })
+]
+for (const [name, mutate, message] of cases) test(name, () => { const f = fixture(); mutate(f); failure(f, message) })
 
 test('inactive upstream reference links are checked', () => {
   const f = fixture(); const base = 'third_party/skills/source/references/review'
@@ -78,7 +79,7 @@ test('local hashes alone explicitly do not prove upstream equality', () => {
 
 test('Wiki anchors match the installed VitePress renderer while upstream keeps GitHub slugs', async () => {
   const { createMarkdownRenderer } = await import('vitepress')
-  const { anchors } = await import('../validate-skills.mjs')
+  const { anchors } = await import('../validate-skills.ts')
   const body = '# 1. Échelle / 尺度（m）\n## 动作 `start_stop`\n## 标题\n## 标题\n## 指定 {#specific}\n'
   const renderer = await createMarkdownRenderer(process.cwd())
   const actual = new Set([...renderer.render(body).matchAll(/<h[1-6] id="([^"]+)"/g)].map(match => match[1]))

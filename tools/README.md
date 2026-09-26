@@ -3,6 +3,7 @@
 在仓库根目录执行：
 
 ```fish
+bun run check:types
 bun run check:docs
 bun run tasks:check
 bun run check:map
@@ -32,7 +33,7 @@ Wiki 构建与发布见 [Wiki](../docs/dev/handbook/wiki.md)
 
 `bun run tasks:list` 只读显示里程碑计数与可执行任务；编辑 `todo/tasks/TASK-xxx-title.md` 后运行 `bun run tasks:sync`，再运行 `bun run tasks:check` 校验结构、引用、依赖、证据和看板一致性。check 不写文件，sync 对相同输入稳定
 
-任务卡的状态含义和完成依据见[任务手册](../docs/dev/handbook/tasks.md)。Bun 原生 YAML 解析，无额外依赖；窄测 `bun test tools/tests/tasks.test.mjs`，纳入 test:tools。旧进度 JSON 与 Python 生成器退出活动入口，历史记录只供追溯
+任务卡的状态含义和完成依据见[任务手册](../docs/dev/handbook/tasks.md)。Bun 原生 YAML 解析，无额外解析依赖；窄测 `bun test tools/tests/tasks.test.ts`，纳入 test:tools。旧进度 JSON 与 Python 生成器退出活动入口，历史记录只供追溯
 
 ## Skills 与来源检查
 
@@ -69,8 +70,8 @@ python3 -m pip install -r .agents/skills/create-game-assets/scripts/requirements
 python3 .agents/skills/create-game-assets/scripts/asset_report.py game/assets/environment/signs/shop.png --expect-size 1024x128 --json
 python3 tools/asset_preview.py game/assets/environment/signs/shop.png --display-size 512x64 --out output/assets/shop-preview.png
 python3 .agents/skills/create-game-assets/scripts/build_preview_sheet.py game/assets/environment/signs/*-display.png --out output/assets/displays.png --columns 5 --cell-size 192
-bun tools/export-district-scene.mjs --check
-bun tools/export-environment.mjs --check
+bun tools/export-district-scene.ts --check
+bun tools/export-environment.ts --check
 ```
 
 预览保留原件，用三种对比底色检查边缘；`--require-cutout` 只用于需要透明区域的素材，招牌实底和 Logo 不必抠图。资产检查、预览、capture 均写入忽略的 `output/`，不混入运行资产。工具取舍与后续采用条件见[资产工具审查](../docs/dev/decisions/asset-tools.md)

@@ -1,10 +1,12 @@
-<script setup>
-import data from '../../../source-assets/district-map/district.json'
-import { routeProfile } from '../../../tools/district-plan.mjs'
-import { roadWidth, segmentIntervals } from '../../../tools/district-geometry.mjs'
-import { sectionRoads } from '../../../tools/district-architecture.mjs'
+<script setup lang="ts">
+import source from '../../../source-assets/district-map/district.json'
+import type { District, Point, Building, Road, Surface } from '../../../tools/district-types.ts'
+import { routeProfile } from '../../../tools/district-plan.ts'
+import { roadWidth, segmentIntervals } from '../../../tools/district-geometry.ts'
+import { sectionRoads } from '../../../tools/district-architecture.ts'
+const data: District = source
 
-const props=defineProps({blockIds:Array,sectionIds:Array})
+const props=defineProps<{blockIds?: string[]; sectionIds?: string[]}>()
 const blocks=data.blocks.filter(b=>!props.blockIds||props.blockIds.includes(b.id))
 const parcels=data.parcels.filter(p=>blocks.some(b=>b.id===p.block))
 const buildings=data.buildings.filter(b=>parcels.some(p=>p.id===b.parcel))
@@ -13,23 +15,23 @@ const connections=props.blockIds?[]:data.connections
 const positions=[...blocks.flatMap(b=>b.polygon),...connections.map(c=>c.to)]
 const x0=Math.min(...positions.map(p=>p[0]))-40,y0=-Math.max(...positions.map(p=>p[1]))-40
 const width=Math.max(...positions.map(p=>p[0]))-x0+40,height=-Math.min(...positions.map(p=>p[1]))-y0+60
-const points=polygon=>polygon.map(([x,y])=>`${x},${-y}`).join(' ')
+const points=(polygon: Point[])=>polygon.map(([x,y])=>`${x},${-y}`).join(' ')
 const modes=[{id:'plain',name:'城市总平面 · 无编号'},{id:'access',name:'道路与公共到达 · 入口和使用边界'}]
 const landmarks=data.places.filter(p=>['01','04','15','19','23','26','79'].includes(p.id)&&blocks.some(b=>b.id===p.block))
 const roads=data.roads.filter(r=>r.kind!=='interior')
 const ground=data.surfaces.filter(s=>!s.elevated),elevated=data.surfaces.filter(s=>s.elevated)
 const entrances=buildings.flatMap(b=>(b.design?.entries??[]).map(e=>({...e,id:`${b.id}-${e.role}-${e.node}`,point:data.nodes[e.node],label:`${b.id} · ${e.level}`})))
-const roleColor={public:'#397b85',resident:'#638657',student:'#7777a0',service:'#a06e50'}
-const roleName={public:'公共入口',resident:'住宅入口',student:'校园入口',service:'服务入口'}
-const roadColor=r=>r.access==='service'?'#b38a72':r.access==='resident'?'#97ac80':r.access==='controlled'?'#a89ab8':['bridge','deck'].includes(r.kind)?'#849d9d':['shore','trail'].includes(r.kind)?'#9bb8ae':'#c3aa80'
-const surfaceColor=s=>({park:'#d8e2c7',garden:'#d8e2c7',private:'#e7dfcb',service:'#ded3c9',court:'#e6e4d8',platform:'#dfd8c7'}[s.kind]??'#e4e5d3')
-const buildingColor=b=>b.place==='04'?'#c9a987':b.kind==='school'?'#b3c6cd':b.kind==='home'?'#c1ccc2':b.kind==='civic'?'#c0b8c9':'#d6c9b6'
+const roleColor: Record<string,string>={public:'#397b85',resident:'#638657',student:'#7777a0',service:'#a06e50'}
+const roleName: Record<string,string>={public:'公共入口',resident:'住宅入口',student:'校园入口',service:'服务入口'}
+const roadColor=(r: Road)=>r.access==='service'?'#b38a72':r.access==='resident'?'#97ac80':r.access==='controlled'?'#a89ab8':['bridge','deck'].includes(r.kind)?'#849d9d':['shore','trail'].includes(r.kind)?'#9bb8ae':'#c3aa80'
+const surfaceColor=(s: Surface)=>(({park:'#d8e2c7',garden:'#d8e2c7',private:'#e7dfcb',service:'#ded3c9',court:'#e6e4d8',platform:'#dfd8c7'} as Record<string,string>)[s.kind]??'#e4e5d3')
+const buildingColor=(b: Pick<Building, "place" | "design" | "kind">)=>b.place==='04'?'#c9a987':b.kind==='school'?'#b3c6cd':b.kind==='home'?'#c1ccc2':b.kind==='civic'?'#c0b8c9':'#d6c9b6'
 const profiles=(data.sections??[]).filter(s=>!props.sectionIds||props.sectionIds.includes(s.id)).map(section=>{
   const samples=routeProfile(data.nodes,section.nodes).map(p=>({...p,height:p.point[2],label:section.labels?.[p.id]}))
   const distance=samples.at(-1)?.distance??0
   const volumes=data.buildings.filter(b=>b.bank==='district').flatMap(building=>samples.slice(1).flatMap((p,i)=>segmentIntervals(samples[i].point,p.point,building.polygon,true).map(([lo,hi])=>({building,start:samples[i].distance+p.length*lo,end:samples[i].distance+p.length*hi}))).filter(v=>v.end-v.start>.01))
   const crossingParts=samples.slice(1).flatMap((p,i)=>p.length?sectionRoads(data,{line:[samples[i].point,p.point]}).filter(r=>['bridge','deck'].includes(r.kind)).map(r=>({...r,start:samples[i].distance+r.span[0],end:samples[i].distance+r.span[1]})):[]).sort((a,b)=>a.start-b.start)
-  const crossings=[]
+  const crossings: typeof crossingParts=[]
   for(const part of crossingParts){
     const previous=crossings.find(r=>r.kind===part.kind&&Math.abs(r.elevation-part.elevation)<.01&&r.end>=part.start-.01)
     if(previous)previous.end=Math.max(previous.end,part.end)
@@ -38,7 +40,7 @@ const profiles=(data.sections??[]).filter(s=>!props.sectionIds||props.sectionIds
   const floor=Math.floor(Math.min(...samples.map(p=>p.height))/5)*5
   const ceiling=Math.max(floor+5,Math.ceil(Math.max(...samples.map(p=>p.height),...volumes.map(v=>v.building.elevation+v.building.height),...crossings.map(r=>r.elevation+2))/5)*5)
   const sx=870/Math.max(distance,1),sy=180/(ceiling-floor)
-  return {...section,samples,volumes,crossings,distance,floor,ceiling,exaggeration:sy/sx,x:p=>65+p.distance*sx,y:p=>220-(p.height-floor)*sy}
+  return {...section,samples,volumes,crossings,distance,floor,ceiling,exaggeration:sy/sx,x:(p: {distance: number})=>65+p.distance*sx,y:(p: {height: number})=>220-(p.height-floor)*sy}
 }).filter(section=>section.samples.length>1)
 </script>
 

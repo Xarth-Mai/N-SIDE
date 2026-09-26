@@ -135,7 +135,7 @@
 
 ## 更新与独立分发
 
-本地完整性由 `bun tools/validate-skills.mjs` 检查；固定上游内容由 `python3 tools/check_skill_upstream.py --output output/skills/upstream.json` 独立比较，检查完整目录、原文件、补丁基线与精确差异、许可及固定链接目标。后者读取 GitHub 固定 Git 对象，或 `--checkouts` 提供的独立 Git checkout，不以本地 hash 自洽替代上游证据
+本地完整性由 `bun tools/validate-skills.ts` 检查；固定上游内容由 `python3 tools/check_skill_upstream.py --output output/skills/upstream.json` 独立比较，检查完整目录、原文件、补丁基线与精确差异、许可及固定链接目标。后者读取 GitHub 固定 Git 对象，或 `--checkouts` 提供的独立 Git checkout，不以本地 hash 自洽替代上游证据
 
 更新选中目录时固定新的完整 commit，比较原文件与项目适配的差异，再刷新 manifest 校验值及本清单。不要将上游示例占位符写成项目配置；本地文件、锚点、宿主 metadata、工具依赖与固定上游引用分别校验，不保留断链豁免。独立打包任何 Skill 时一并携带对应 LICENSE、NOTICE、方法归属说明和 UPSTREAM 信息
 

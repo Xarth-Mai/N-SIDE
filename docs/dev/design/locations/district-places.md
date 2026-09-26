@@ -3,7 +3,7 @@ document_id: DOC-DISTRICT-PLACES
 depends_on: ["DOC-DISTRICT-SPACE", "LOC-002", "LOC-001", "LOC-003"]
 ---
 
-<script setup>
+<script setup lang="ts">
 import DistrictPlaces from '../../../.vitepress/components/DistrictPlaces.vue'
 import data from '../../../../source-assets/district-map/district.json'
 </script>

@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["docs/.vitepress/**/*.vue", "tools/wiki-map.d.ts"]
+}

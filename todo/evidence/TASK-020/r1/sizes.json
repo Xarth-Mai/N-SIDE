@@ -1,0 +1,214 @@
+{
+  "player": {
+    "before": {
+      "js_bytes": 3545169,
+      "json_bytes": 1406301,
+      "js_gzip": 951765,
+      "json_gzip": 301331,
+      "largest_js": [
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.js",
+          "bytes": 1333387,
+          "gzip": 307276
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.lean.js",
+          "bytes": 1322396,
+          "gzip": 302319
+        },
+        {
+          "file": "assets/chunks/@localSearchIndexroot.CzQBLlDa.js",
+          "bytes": 288484,
+          "gzip": 80771
+        },
+        {
+          "file": "assets/chunks/framework.40eyAX-b.js",
+          "bytes": 114406,
+          "gzip": 45117
+        },
+        {
+          "file": "assets/chunks/VPLocalSearchBox.C4ggRct3.js",
+          "bytes": 64029,
+          "gzip": 22167
+        }
+      ],
+      "map_page": [
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.js",
+          "bytes": 1333387,
+          "gzip": 307276
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.lean.js",
+          "bytes": 1322396,
+          "gzip": 302319
+        }
+      ],
+      "search": [
+        {
+          "file": "assets/chunks/@localSearchIndexroot.CzQBLlDa.js",
+          "bytes": 288484,
+          "gzip": 80771
+        }
+      ]
+    },
+    "after": {
+      "js_bytes": 664416,
+      "json_bytes": 1694752,
+      "js_gzip": 287597,
+      "json_gzip": 382044,
+      "largest_js": [
+        {
+          "file": "assets/chunks/framework.40eyAX-b.js",
+          "bytes": 114406,
+          "gzip": 45117
+        },
+        {
+          "file": "assets/chunks/VPLocalSearchBox.HMWT40bH.js",
+          "bytes": 64152,
+          "gzip": 22223
+        },
+        {
+          "file": "assets/chunks/theme.DZ2yzidb.js",
+          "bytes": 53733,
+          "gzip": 15723
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.zBIJHt4g.js",
+          "bytes": 37191,
+          "gzip": 15310
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.zBIJHt4g.lean.js",
+          "bytes": 26200,
+          "gzip": 10831
+        }
+      ],
+      "map_page": [
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.zBIJHt4g.js",
+          "bytes": 37191,
+          "gzip": 15310
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.zBIJHt4g.lean.js",
+          "bytes": 26200,
+          "gzip": 10831
+        }
+      ],
+      "search": [
+        {
+          "file": "assets/search-index.CLsiTdMR.json",
+          "bytes": 288451,
+          "gzip": 80713
+        }
+      ]
+    }
+  },
+  "dev": {
+    "before": {
+      "js_bytes": 4651337,
+      "json_bytes": 1896411,
+      "js_gzip": 1330946,
+      "json_gzip": 395504,
+      "largest_js": [
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.js",
+          "bytes": 1333387,
+          "gzip": 307276
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.lean.js",
+          "bytes": 1322396,
+          "gzip": 302319
+        },
+        {
+          "file": "assets/chunks/@localSearchIndexroot.DcuYR13m.js",
+          "bytes": 657882,
+          "gzip": 193318
+        },
+        {
+          "file": "assets/chunks/district-plan.rpNn17jA.js",
+          "bytes": 317145,
+          "gzip": 65826
+        },
+        {
+          "file": "assets/chunks/framework.40eyAX-b.js",
+          "bytes": 114406,
+          "gzip": 45117
+        }
+      ],
+      "map_page": [
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.js",
+          "bytes": 1333387,
+          "gzip": 307276
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.tpAG0cAi.lean.js",
+          "bytes": 1322396,
+          "gzip": 302319
+        }
+      ],
+      "search": [
+        {
+          "file": "assets/chunks/@localSearchIndexroot.DcuYR13m.js",
+          "bytes": 657882,
+          "gzip": 193318
+        }
+      ]
+    },
+    "after": {
+      "js_bytes": 1403942,
+      "json_bytes": 2557844,
+      "js_gzip": 555343,
+      "json_gzip": 589802,
+      "largest_js": [
+        {
+          "file": "assets/chunks/district-plan.DfCxfdA6.js",
+          "bytes": 317161,
+          "gzip": 65837
+        },
+        {
+          "file": "assets/chunks/framework.40eyAX-b.js",
+          "bytes": 114406,
+          "gzip": 45117
+        },
+        {
+          "file": "assets/chunks/VPLocalSearchBox.Fll1u12j.js",
+          "bytes": 64152,
+          "gzip": 22224
+        },
+        {
+          "file": "assets/chunks/theme.B9MYhNjr.js",
+          "bytes": 53733,
+          "gzip": 15720
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.zBIJHt4g.js",
+          "bytes": 37191,
+          "gzip": 15310
+        }
+      ],
+      "map_page": [
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.zBIJHt4g.js",
+          "bytes": 37191,
+          "gzip": 15310
+        },
+        {
+          "file": "assets/player_encyclopedia_locations_n-district.md.zBIJHt4g.lean.js",
+          "bytes": 26200,
+          "gzip": 10831
+        }
+      ],
+      "search": [
+        {
+          "file": "assets/search-index.CgxkoXV-.json",
+          "bytes": 661433,
+          "gzip": 194297
+        }
+      ]
+    }
+  }
+}

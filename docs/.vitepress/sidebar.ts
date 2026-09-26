@@ -1,7 +1,8 @@
+import type { DefaultTheme } from 'vitepress'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { basename, join, relative, sep } from 'node:path'
 
-const readingOrder = {
+const readingOrder: Record<string, string[]> = {
   story: ['index.md', 'main', 'daily'],
   'story/main': ['index.md', 'prologue.md', 'last-toy.md', 'extra-applause.md', 'no-school-bell.md', 'beyond-autumn.md', 'still-together.md', 'river-did-not-reverse.md', 'bring-today-back.md', 'after-echoes.md', 'epilogue.md'],
   'story/daily': ['index.md', 'new-pocket.md', 'different-dinners.md', 'unfinished-window.md', 'collect-after-rain.md', 'courtside-chair.md', 'ways-to-read.md', 'after-the-late-show.md', 'photograph-today.md'],
@@ -15,7 +16,7 @@ const readingOrder = {
 }
 
 /** Read the visible heading used by the Wiki navigation. */
-function title(file) {
+function title(file: string) {
   const text = readFileSync(file, 'utf8')
   return (text.match(/^#\s+(.+)$/m)?.[1] ?? basename(file, '.md'))
     .replace(/`([^`]+)`/g, '$1')
@@ -23,16 +24,16 @@ function title(file) {
     .replace(/\s+\{#[^}]+\}\s*$/, '')
 }
 
-function page(root, file) {
+function page(root: string, file: string) {
   let route = relative(root, file).split(sep).join('/').replace(/\.md$/, '')
   route = route === 'index' ? '' : route.replace(/\/index$/, '/')
   return { text: title(file), link: `/${route}` }
 }
 
-function section(root, directory, label) {
+function section(root: string, directory: string, label?: string): DefaultTheme.SidebarItem | null {
   if (!existsSync(directory)) return null
   const order = readingOrder[relative(root, directory).replace(/^player\/encyclopedia\//, '')] ?? []
-  const rank = name => order.includes(name) ? order.indexOf(name) : order.length
+  const rank = (name: string) => order.includes(name) ? order.indexOf(name) : order.length
   const entries = readdirSync(directory, { withFileTypes: true })
     .filter(entry => !entry.name.startsWith('.'))
     .sort((a, b) => rank(a.name) - rank(b.name) || a.name.localeCompare(b.name, 'en'))
@@ -50,14 +51,14 @@ function section(root, directory, label) {
     }
   }
   if (!landing && !items.length) return null
-  const result = { text: label ?? (landing ? title(landing) : basename(directory)) }
+  const result: DefaultTheme.SidebarItem = { text: label ?? (landing ? title(landing) : basename(directory)) }
   if (landing) result.link = page(root, landing).link
   if (items.length) Object.assign(result, { collapsed: true, items })
   return result
 }
 
 /** Build encyclopedia and production navigation groups. */
-export function buildSidebar(root, profile = 'dev') {
+export function buildSidebar(root: string, profile = 'dev') {
   const encyclopedia = ['world', 'characters', 'locations', 'story', 'enemies', 'gameplay']
   const labels = ['世界', '人物', '地点', '故事', '敌人', '玩法']
   const groups = [
@@ -65,12 +66,12 @@ export function buildSidebar(root, profile = 'dev') {
       page(root, join(root, 'player/index.md')),
       section(root, join(root, 'player/guide'), '操作指南'),
       ...encyclopedia.map((name, index) => section(root, join(root, 'player/encyclopedia', name), labels[index])),
-    ].filter(Boolean) },
+    ].filter(item => item !== null) },
   ]
   if (profile === 'dev') groups.push({ text: '开发资料', items: [
     page(root, join(root, 'dev/index.md')),
     ...['direction', 'design', 'engineering', 'production', 'validation', 'handbook', 'decisions'].map((name, index) =>
       section(root, join(root, 'dev', name), ['方向', '设计', '工程', '制作', '验收', '开发手册', '决策'][index])),
-  ].filter(Boolean) })
+  ].filter(item => item !== null) })
   return [{ text: 'N:SIDE', link: '/' }, ...groups]
 }

@@ -1,22 +1,23 @@
+import type { District, Point, Shape, Scene, SceneObject } from './district-types.ts'
 import Delaunator from 'delaunator'
 
 const tilt = 55 * Math.PI / 180, turn = 18 * Math.PI / 180
 const c = Math.cos(turn), s = Math.sin(turn)
 // A fixed river-side orthographic camera; coordinates and road lengths stay unchanged
-export const project = ([x,y,z=0]) => [x*c+y*s, (x*s-y*c)*Math.sin(tilt)-z*Math.cos(tilt)]
-export const depth = ([x,y]) => x*s-y*c
-export const svgPath = points => points.map((p,i)=>`${i?'L':'M'}${project(p).map(v=>v.toFixed(2)).join(',')}`).join(' ')
-export const heightColor = h => `rgb(${[223,213,175].map((v,i)=>Math.round(v+([103,139,112][i]-v)*Math.max(0,Math.min(1,h/80)))).join(',')})`
+export const project = ([x,y,z=0]: Point) => [x*c+y*s, (x*s-y*c)*Math.sin(tilt)-z*Math.cos(tilt)]
+export const depth = ([x,y]: Point) => x*s-y*c
+export const svgPath = (points: Point[]) => points.map((p,i)=>`${i?'L':'M'}${project(p).map(v=>v.toFixed(2)).join(',')}`).join(' ')
+export const heightColor = (h: number) => `rgb(${[223,213,175].map((v,i)=>Math.round(v+([103,139,112][i]-v)*Math.max(0,Math.min(1,h/80)))).join(',')})`
 
-export function buildGround(data) {
+export function buildGround(data: District) {
   // Match the Viewer ground controls; roofs and elevated connections remain separate
-  const elevated=new Set(data.elevatedNodes),nodes=new Set()
+  const elevated=new Set(data.elevatedNodes),nodes=new Set<string>()
   for(const road of data.roads) {
     const upper=road.surface&&data.surfaces.some(s=>s.id===road.surface&&s.elevated)
     if(!road.building&&!upper&&!['bridge','deck','lift','interior'].includes(road.kind))
       for(const id of road.nodes)if(!elevated.has(id))nodes.add(id)
   }
-  const controls=[...data.terrain.samples,...[...nodes].sort().map(id=>data.nodes[id])],unique=new Map()
+  const controls=[...data.terrain.samples,...[...nodes].sort().map(id=>data.nodes[id])],unique=new Map<string, Point>()
   for(const p of controls) {
     const key=p.slice(0,2).join(','),existing=unique.get(key)
     if(existing&&Math.abs(existing[2]-p[2])>1e-6)throw new Error(`Conflicting ground heights at [${key}]: ${existing[2]} and ${p[2]}`)
@@ -24,20 +25,20 @@ export function buildGround(data) {
   }
   const points=[...unique.values()]
   if(points.length<3)throw new Error('Terrain requires at least three ground controls')
-  const distance=(a,b)=>(a[0]-b[0])**2+(a[1]-b[1])**2
-  const nearest=p=>points.reduce((a,b)=>distance(a,p)<=distance(b,p)?a:b)
+  const distance=(a: Point,b: Point)=>(a[0]-b[0])**2+(a[1]-b[1])**2
+  const nearest=(p: Point)=>points.reduce((a,b)=>distance(a,p)<=distance(b,p)?a:b)
   const xs=points.map(p=>p[0]),ys=points.map(p=>p[1])
   const bounds=[Math.min(...xs)-120,Math.min(...ys)-120,Math.max(...xs)+120,Math.max(...ys)+120]
   // Match the Viewer 120 m skirt without inventing new authored elevations
   const skirt=[[bounds[0],bounds[1]],[bounds[2],bounds[1]],[bounds[2],bounds[3]],[bounds[0],bounds[3]]]
     .map(p=>[...p,nearest(p)[2]])
   points.push(...skirt)
-  const indices=Delaunator.from(points).triangles,triangles=[]
+  const indices=Delaunator.from(points).triangles,triangles: Point[][]=[]
   for(let i=0;i<indices.length;i+=3) {
     const [a,b,c]=Array.from(indices.slice(i,i+3),j=>points[j])
     triangles.push((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])>0?[a,b,c]:[a,c,b])
   }
-  const height=(x,y)=> {
+  const height=(x: number,y: number)=> {
     const control=unique.get(`${x},${y}`)
     if(control)return control[2]
     // ponytail: linear lookup suits this overview; index triangles if point queries grow
@@ -51,13 +52,13 @@ export function buildGround(data) {
   }
   return {triangles,height}
 }
-const lerp = (a,b,t) => a.map((v,i)=>v+(b[i]-v)*t)
-const tint = (rgb,factor) => `rgb(${rgb.map(v=>Math.round(Math.max(0,Math.min(255,v*factor)))).join(',')})`
-const face = (points,fill,extra={}) => ({d:svgPath(points)+' Z',fill,...extra})
-const line = (points,stroke,width=1,extra={}) => ({d:svgPath(points),fill:'none',stroke,width,...extra})
-const rectangle = (x,y,w,h,z) => [[x,y,z],[x+w,y,z],[x+w,y+h,z],[x,y+h,z]]
-const circle = (x,y,z,r) => Array.from({length:12},(_,i)=>[x+Math.cos(i*Math.PI/6)*r,y+Math.sin(i*Math.PI/6)*r,z])
-const contains = (polygon,x,y) => {
+const lerp = (a: Point,b: Point,t: number) => a.map((v,i)=>v+(b[i]-v)*t)
+const tint = (rgb: number[],factor: number) => `rgb(${rgb.map(v=>Math.round(Math.max(0,Math.min(255,v*factor)))).join(',')})`
+const face = (points: Point[],fill: string,extra: Partial<Shape>={}): Shape => ({d:svgPath(points)+' Z',fill,...extra})
+const line = (points: Point[],stroke: string,width=1,extra: Partial<Shape>={}): Shape => ({d:svgPath(points),fill:'none',stroke,width,...extra})
+const rectangle = (x: number,y: number,w: number,h: number,z: number) => [[x,y,z],[x+w,y,z],[x+w,y+h,z],[x,y+h,z]]
+const circle = (x: number,y: number,z: number,r: number) => Array.from({length:12},(_,i)=>[x+Math.cos(i*Math.PI/6)*r,y+Math.sin(i*Math.PI/6)*r,z])
+const contains = (polygon: Point[],x: number,y: number) => {
   let inside=false
   for(let i=0,j=polygon.length-1;i<polygon.length;j=i++) {
     const [a,b]=polygon[i],[u,v]=polygon[j]
@@ -66,15 +67,15 @@ const contains = (polygon,x,y) => {
   return inside
 }
 
-export function buildScene(data) {
+export function buildScene(data: District): Scene {
   const mesh=buildGround(data)
-  const ground=(x,y)=> {
+  const ground=(x: number,y: number)=> {
     const platform=data.surfaces.find(a=>!a.elevated && contains(a.polygon,x,y))
     return platform?.elevation ?? mesh.height(x,y)
   }
-  const terrain=[],objects=[]
+  const terrain: Scene["terrain"]=[],objects: SceneObject[]=[]
   let serial=0
-  const add=(position,kind,shapes,place)=>objects.push({key:serial++,depth:depth(position),kind,shapes,place})
+  const add=(position: Point,kind: string,shapes: Shape[],place?: string)=>objects.push({key:serial++,depth:depth(position),kind,shapes,place})
   const light=[-.45,-.35,.82]
   for(const p of mesh.triangles) {
     const u=p[1].map((v,i)=>v-p[0][i]),v=p[2].map((v,i)=>v-p[0][i])
@@ -94,7 +95,7 @@ export function buildScene(data) {
   for(const area of data.surfaces) {
     if(area.building)continue
     const top=area.polygon.map(([x,y])=>[x,y,area.elevation])
-    const colors={private:'#d8d4be',school:'#dfdcc6',service:'#cecbb9',park:'#b4c796',platform:'#e2d9bd',court:'#ded9bf'}
+    const colors: Record<string,string>={private:'#d8d4be',school:'#dfdcc6',service:'#cecbb9',park:'#b4c796',platform:'#e2d9bd',court:'#ded9bf'}
     const shapes=[]
     for(let i=0;i<top.length;i++) {
       const a=top[i],b=top[(i+1)%top.length]
@@ -124,7 +125,7 @@ export function buildScene(data) {
     const offset=[-(b[1]-a[1])/length*width/2,(b[0]-a[0])/length*width/2]
     for(let j=0;j<n;j++) {
       let u=lerp(a,b,j/n),v=lerp(a,b,(j+1)/n)
-      const sides=p=>[-1,1].map(k=>[p[0]+offset[0]*k,p[1]+offset[1]*k,p[2]+.2])
+      const sides=(p: Point)=>[-1,1].map(k=>[p[0]+offset[0]*k,p[1]+offset[1]*k,p[2]+.2])
       const [ul,ur]=sides(u),[vl,vr]=sides(v),shapes=[]
       if(road.kind==='bridge') {
         shapes.push(face([[ul[0]+6,ul[1]-7,0],[ur[0]+6,ur[1]-7,0],[vr[0]+6,vr[1]-7,0],[vl[0]+6,vl[1]-7,0]],'#416e70',{opacity:.22}))
@@ -156,7 +157,7 @@ export function buildScene(data) {
           shapes.push(face([[...p,floor.z+.8],[...q,floor.z+.8],[...q,floor.z+2.5],[...p,floor.z+2.5]],'#779395'))
         }
       }
-      shapes.push({d:roofPath,fill:b.place==='04'?'#b98e6b':b.design.type==='slope'?'#aab8ad':'#b9bcb2',stroke:'#75837e',width:.5,fillRule:'evenodd'})
+      shapes.push({d:roofPath,fill:b.place==='04'?'#b98e6b':b.design.type==='slope'?'#aab8ad':'#b9bcb2',stroke:'#75837e',width:.5,fillRule:'evenodd' as const})
       if(b.design.lightwell)for(let i=0;i<b.design.lightwell.length;i++) {
         const a=b.design.lightwell[i],v=b.design.lightwell[(i+1)%b.design.lightwell.length]
         shapes.push(face([[...a,z],[...v,z],[...v,top],[...a,top]],'#c8c6b6'))
@@ -164,7 +165,7 @@ export function buildScene(data) {
       if(b.design.front&&b.design.canopy) {
         const [a,v]=b.design.front,dx=v[0]-a[0],dy=v[1]-a[1],length=Math.hypot(dx,dy),offset=b.design.canopy
         const sign=contains(b.polygon,(a[0]+v[0])/2-dy/length,(a[1]+v[1])/2+dx/length)?-1:1
-        const move=p=>[p[0]-dy/length*offset*sign,p[1]+dx/length*offset*sign,z+3]
+        const move=(p: Point)=>[p[0]-dy/length*offset*sign,p[1]+dx/length*offset*sign,z+3]
         shapes.push(face([[...a,z+3.2],[...v,z+3.2],move(v),move(a)],'#c39a72'))
       }
       for(const area of data.surfaces.filter(a=>a.building===b.id))shapes.push(face(area.polygon.map(([x,y])=>[x,y,area.elevation]),'#a9bf91',{stroke:'#75837e',width:.6}))
@@ -175,7 +176,7 @@ export function buildScene(data) {
     const [[x,y],,[right,back]]=b.polygon,z=b.elevation,h=b.height,w=right-x,l=back-y
     const south=[[x,y,z],[right,y,z],[right,y,z+h],[x,y,z+h]]
     const east=[[right,y,z],[right,back,z],[right,back,z+h],[right,y,z+h]]
-    const roof=({home:'#b67752',shop:'#9daea8',school:'#7e999e',station:'#91a6ac',shrine:'#8a7568'}[b.kind]??'#94a2a1')
+    const roof=(({home:'#b67752',shop:'#9daea8',school:'#7e999e',station:'#91a6ac',shrine:'#8a7568'} as Record<string,string>)[b.kind]??'#94a2a1')
     const shapes=[face(b.polygon.map(([x,y])=>[x+5,y-7,z]),'#5b6b5d',{opacity:.16}),face(south,'#eee6d2'),face(east,'#c4cbbb')]
     const top=z+h,ridge=top+3
     shapes.push(face([[x-1,y-1,top],[right+1,y-1,top],[right+1,y+l/2,ridge],[x-1,y+l/2,ridge]],roof,{stroke:'#75837e',width:.6}))
@@ -199,7 +200,7 @@ export function buildScene(data) {
   }
   for(const [x,y] of data.trees) {
     const z=ground(x,y),shapes=[face(circle(x+4,y-5,z,8),'#4e6959',{opacity:.18}),line([[x,y,z],[x,y,z+12]],'#8c8c6d',2)]
-    for(const [dx,dy,dz,r,color] of [[2,0,12,8,'#6e9274'],[-2,1,15,7,'#8aaa7d'],[-3,2,18,4,'#b0c399']])shapes.push(face(circle(x+dx,y+dy,z+dz,r),color))
+    for(const [dx,dy,dz,r,color] of ([[2,0,12,8,'#6e9274'],[-2,1,15,7,'#8aaa7d'],[-3,2,18,4,'#b0c399']] as [number,number,number,number,string][]))shapes.push(face(circle(x+dx,y+dy,z+dz,r),color))
     add([x,y],'tree',shapes)
   }
   // Benches and delivery crates give the shop's public and service spaces different uses

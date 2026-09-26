@@ -1,0 +1,104 @@
+$ python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests
+.......................................................................................................
+----------------------------------------------------------------------
+Ran 103 tests in 1.616s
+
+OK
+bun test v1.4.2 (744846f84)
+
+tools/tests/wiki.test.ts:
+(pass) sidebar follows audience and preserves story reading order [2.43ms]
+(pass) data export is fail-closed and dev-only, ignoring hidden files and symlinks [1.36ms]
+(pass) publication requires a known profile and an actual entry page [0.43ms]
+(pass) isolated player tree excludes developer pages/data/public and uses redirects [105.79ms]
+(pass) player imports and public data cannot bypass the publication boundary [2.57ms]
+(pass) map projection retains actual drawing/interaction and drops author fields [37.43ms]
+(pass) artifact check detects injected developer raw data and search content [51.52ms]
+(pass) inline template placeholders remain literal Vue text [130.63ms]
+(pass) Vite module loading rejects source files outside the isolated tree [39.37ms]
+(pass) external search data remains inside the selected audience [43.54ms]
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [0.99ms]
+(pass) terrain colors follow ground elevation [0.12ms]
+(pass) overview terrain retains source controls and excludes elevated connections [82.98ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.30ms]
+(pass) shopping stays local and public hillside routes remain connected [1.08ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.27ms]
+(pass) scene keeps platforms below volumes and geometry is finite [29.67ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [6.59ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [3.63ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [0.93ms]
+(pass) tree positions stay outside building footprints [3.76ms]
+(pass) all streets clear building volumes at their actual widths and elevations [335.68ms]
+(pass) district ground-road crossings share a junction and its elevation [109.66ms]
+(pass) city framework records every building and reaches its same-level facade entrances [8.85ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.54ms]
+(pass) public streets stay outside same-level resident and service courts [3.06ms]
+(pass) building volumes share boundaries without occupying the same space [35.22ms]
+(pass) detailed places connect street access to separate public and service entrances [10.43ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [0.96ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [1.73ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.27ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [0.96ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [26.09ms]
+(pass) public, residents, students and service users have separate access rights [3.08ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.37ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.80ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.88ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.51ms]
+(pass) shared stairs and separate apartments connect through shared circulation [0.97ms]
+
+tools/tests/validate-skills.test.ts:
+(pass) real Bun YAML, complete coverage and anchors pass [2.41ms]
+(pass) missing manifest [1.36ms]
+(pass) empty object [0.27ms]
+(pass) null manifest [0.27ms]
+(pass) bad JSON [0.25ms]
+(pass) unknown version [0.26ms]
+(pass) bad adoption schema [0.25ms]
+(pass) missing adoption target [0.52ms]
+(pass) empty sources [0.25ms]
+(pass) empty imports [0.28ms]
+(pass) empty policy [0.26ms]
+(pass) null skill [0.45ms]
+(pass) bad files type [0.42ms]
+(pass) null file record [0.44ms]
+(pass) bad source [0.43ms]
+(pass) bad fields [0.25ms]
+(pass) missing project entrypoint [0.45ms]
+(pass) empty skills directory [0.38ms]
+(pass) duplicate source [0.45ms]
+(pass) duplicate path [0.43ms]
+(pass) missing reference [0.38ms]
+(pass) altered source [0.39ms]
+(pass) unregistered script [0.45ms]
+(pass) missing command path [0.48ms]
+(pass) bad anchor [0.40ms]
+(pass) bad YAML metadata [0.48ms]
+(pass) bad metadata type [0.50ms]
+(pass) missing icon [0.50ms]
+(pass) missing license [0.37ms]
+(pass) optional links cannot exempt missing files [0.42ms]
+(pass) invalid nested fields [0.41ms]
+(pass) unavailable command [0.53ms]
+(pass) inactive upstream reference links are checked [0.50ms]
+(pass) local hashes alone explicitly do not prove upstream equality [0.42ms]
+(pass) Wiki anchors match the installed VitePress renderer while upstream keeps GitHub slugs [7.76ms]
+
+tools/tests/tasks.test.ts:
+(pass) real YAML supports a completed negative experiment and exact evidence anchors [1.70ms]
+(pass) schema, paths and state guardrails reject corrupt cards [4.69ms]
+(pass) dependencies are unique, real, acyclic, and cancellation does not satisfy a result [1.34ms]
+(pass) reopening removes current acceptance while old evidence stays in the body [0.38ms]
+(pass) check is read-only, sync deterministic, list read-only and stale output fails [0.90ms]
+(pass) empty task source or missing roadmap cannot pass [0.30ms]
+
+tools/tests/toolchain.test.ts:
+(pass) search adapter emits the original index and preserves the lazy loader contract [0.45ms]
+(pass) Vue checker reports errors inside a real SFC instead of silently skipping it [419.51ms]
+
+ 82 pass
+ 0 fail
+ 144 expect() calls
+Ran 82 tests across 5 files. [1.58s]

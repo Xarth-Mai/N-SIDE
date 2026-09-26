@@ -1,66 +1,72 @@
-<script setup>
-import data from '../../../source-assets/district-map/district.json'
-import { inside, polygonArea, routeProfile } from '../../../tools/district-plan.mjs'
-import { roadWidth } from '../../../tools/district-geometry.mjs'
-import { architectureStats, sectionIntervals, sectionRoads, streetPosition } from '../../../tools/district-architecture.mjs'
+<script setup lang="ts">
+import source from '../../../source-assets/district-map/district.json'
+import type { District, Point, Building, Surface } from '../../../tools/district-types.ts'
+import { inside, polygonArea, routeProfile } from '../../../tools/district-plan.ts'
+import { roadWidth } from '../../../tools/district-geometry.ts'
+import { architectureStats, sectionIntervals, sectionRoads, streetPosition } from '../../../tools/district-architecture.ts'
+const data: District = source
 
+type Floor = NonNullable<Building['design']>['floors'][number]
+type Room = NonNullable<Floor['rooms']>[number]
 const props=defineProps({section:{type:String,default:'P3-A1'}})
 const architecture=data.architectures.find(a=>a.id===props.section)
-const buildings=data.buildings.filter(b=>architecture?.buildings.includes(b.id)),byId=Object.fromEntries(data.buildings.map(b=>[b.id,b]))
-const points=polygon=>polygon.map(([x,y])=>`${x},${-y}`).join(' ')
-const path=polygon=>polygon.map(([x,y],i)=>`${i?'L':'M'} ${x} ${-y}`).join(' ')+' Z'
-const footprint=b=>path(b.polygon)+(b.design?.lightwell?' '+path(b.design.lightwell):'')
-const center=polygon=>polygon.reduce((sum,p)=>[sum[0]+p[0]/polygon.length,sum[1]+p[1]/polygon.length],[0,0])
-const box=(polygon,pad=0)=> {
+const buildings=data.buildings.filter((b): b is Building & {design: NonNullable<Building['design']>}=>Boolean(b.design && architecture?.buildings.includes(b.id))),byId=Object.fromEntries(data.buildings.map(b=>[b.id,b]))
+type DrawingBuilding = Pick<Building, 'id' | 'polygon' | 'elevation' | 'height'> & Partial<Building>
+const baselineBuildings: DrawingBuilding[]=architecture?.baseline.buildings??[]
+const points=(polygon: Point[])=>polygon.map(([x,y])=>`${x},${-y}`).join(' ')
+const path=(polygon: Point[])=>polygon.map(([x,y],i)=>`${i?'L':'M'} ${x} ${-y}`).join(' ')+' Z'
+const footprint=(b: Pick<Building, "polygon" | "design">)=>path(b.polygon)+(b.design?.lightwell?' '+path(b.design.lightwell):'')
+const center=(polygon: Point[])=>polygon.reduce((sum,p)=>[sum[0]+p[0]/polygon.length,sum[1]+p[1]/polygon.length],[0,0])
+const box=(polygon: Point[],pad=0)=> {
   const x=Math.min(...polygon.map(p=>p[0]))-pad,y=-Math.max(...polygon.map(p=>p[1]))-pad
   return {x,y,width:Math.max(...polygon.map(p=>p[0]))-x+pad,height:-Math.min(...polygon.map(p=>p[1]))-y+pad}
 }
-const viewBox=b=>`${b.x} ${b.y} ${b.width} ${b.height}`
+const viewBox=(b: {x: number; y: number; width: number; height: number})=>`${b.x} ${b.y} ${b.width} ${b.height}`
 const frame=architecture?box(architecture.boundary,18):{x:0,y:0,width:100,height:100}
-const onMap=polygon=>polygon.some(p=>inside(p,architecture.boundary))||architecture.boundary.some(p=>inside(p,polygon))
+const onMap=(polygon: Point[])=>architecture && (polygon.some(p=>inside(p,architecture.boundary))||architecture.boundary.some(p=>inside(p,polygon)))
 const roads=architecture?data.roads.filter(r=>r.kind!=='interior'&&r.nodes.some(id=>inside(data.nodes[id],architecture.boundary))):[]
 const fixtures=architecture?.fixtures??[]
-const fixtureColor={bench:'#a88863',locker:'#738f96',screen:'#647c6d',drain:'#8d938a'}
+const fixtureColor: Record<string,string>={bench:'#a88863',locker:'#738f96',screen:'#647c6d',drain:'#8d938a'}
 const surfaces=architecture?data.surfaces.filter(s=>onMap(s.polygon)):[]
 const parcels=architecture?data.parcels.filter(p=>onMap(p.polygon)):[]
 const trees=architecture?data.trees.filter(p=>inside(p,architecture.boundary)):[]
 const contextBuildings=architecture?data.buildings.filter(b=>!architecture.buildings.includes(b.id)&&onMap(b.polygon)):[]
 const width=roadWidth
-const doorLeaf=([a,b])=>{const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);return `M ${a[0]} ${-a[1]} l ${-dy} ${-dx} M ${b[0]} ${-b[1]} A ${length} ${length} 0 0 0 ${a[0]-dy} ${-a[1]-dx}`}
-const doorLine=(b,p)=>{
+const doorLeaf=([a,b]: Point[])=>{const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);return `M ${a[0]} ${-a[1]} l ${-dy} ${-dx} M ${b[0]} ${-b[1]} A ${length} ${length} 0 0 0 ${a[0]-dy} ${-a[1]-dx}`}
+const doorLine=(b: DrawingBuilding,p: Point)=>{
   const edges=b.polygon.map((a,i)=>{const c=b.polygon[(i+1)%b.polygon.length],dx=c[0]-a[0],dy=c[1]-a[1],length=Math.hypot(dx,dy),t=Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dy)/length**2));return {dx,dy,length,distance:Math.hypot(p[0]-a[0]-dx*t,p[1]-a[1]-dy*t)}}).sort((a,b)=>a.distance-b.distance)
   const edge=edges[0];return [[p[0]-.6*edge.dx/edge.length,p[1]-.6*edge.dy/edge.length],[p[0]+.6*edge.dx/edge.length,p[1]+.6*edge.dy/edge.length]]
 }
-const colors={shop:'#e5cfad',home:'#c5d2ca',service:'#d5cbd7',core:'#bac9d2',court:'#e8efda'}
-const buildingColor=b=>b.place==='04'?'#cba883':({slope:'#bacfc0',mixed:'#c3cdd0',interest:'#dfcaaa',maker:'#c0cbbc'}[b.design?.type]??'#dad5c4')
-const roleName={public:'客',resident:'住',service:'货'}
-const roleLabel={public:'顾客入口',resident:'住户入口',service:'服务入口'}
-const roleColor={public:'#276f81',resident:'#627a4a',service:'#a3694e'}
-const surfaceColor=s=>({park:'#d8e2c7',private:'#e7dfcb',service:'#ded3c9',court:'#e6e4d8',platform:'#e1dac5'}[s.kind]??'#e6e4d8')
-const entrances=b=>(b.design?.entries??[]).map(e=>({...e,point:data.nodes[e.node]})).filter(e=>e.point)
-function canopy(b) {
+const colors: Record<string,string>={shop:'#e5cfad',home:'#c5d2ca',service:'#d5cbd7',core:'#bac9d2',court:'#e8efda'}
+const buildingColor=(b: Partial<Pick<Building, "place" | "design" | "kind">>)=>b.place==='04'?'#cba883':(({slope:'#bacfc0',mixed:'#c3cdd0',interest:'#dfcaaa',maker:'#c0cbbc'} as Record<string,string>)[b.design?.type ?? '']??'#dad5c4')
+const roleName: Record<string,string>={public:'客',resident:'住',service:'货'}
+const roleLabel: Record<string,string>={public:'顾客入口',resident:'住户入口',service:'服务入口'}
+const roleColor: Record<string,string>={public:'#276f81',resident:'#627a4a',service:'#a3694e'}
+const surfaceColor=(s: Surface)=>(({park:'#d8e2c7',private:'#e7dfcb',service:'#ded3c9',court:'#e6e4d8',platform:'#e1dac5'} as Record<string,string>)[s.kind]??'#e6e4d8')
+const entrances=(b: DrawingBuilding)=>(b.design?.entries??[]).map(e=>({...e,point:data.nodes[e.node]})).filter(e=>e.point)
+function canopy(b: DrawingBuilding) {
   const front=b.design?.front
-  if(!front||!b.design.canopy)return []
-  const [a,c]=front,dx=c[0]-a[0],dy=c[1]-a[1],length=Math.hypot(dx,dy),mid=center(front),step=[-dy/length*b.design.canopy,dx/length*b.design.canopy]
+  if(!front||!b.design!.canopy)return []
+  const [a,c]=front,dx=c[0]-a[0],dy=c[1]-a[1],length=Math.hypot(dx,dy),mid=center(front),step=[-dy/length*b.design!.canopy,dx/length*b.design!.canopy]
   const sign=inside([mid[0]+step[0],mid[1]+step[1]],b.polygon)?-1:1
   return [a,c,[c[0]+step[0]*sign,c[1]+step[1]*sign],[a[0]+step[0]*sign,a[1]+step[1]*sign]]
 }
 const modes=[{id:'before',name:'深化前 · 建筑体量'},{id:'after',name:'深化后 · 建筑与入口'},{id:'plain',name:'完整平面 · 无编号'},{id:'scenes',name:'生活场景与视线'}]
-const samples=buildings.filter(b=>b.design.floors.some(f=>f.rooms)).sort((a,b)=>Number(b.id==='V-04')-Number(a.id==='V-04')).map(b=>{const type=architecture.types.find(t=>t.id===b.design.type);return {...type,id:b.id,name:b.id==='V-04'?'小店与楼上住家':type.name,building:b,frame:box(b.polygon,3)}})
+const samples=buildings.filter(b=>b.design!.floors.some(f=>f.rooms)).sort((a,b)=>Number(b.id==='V-04')-Number(a.id==='V-04')).map(b=>{const type=architecture!.types.find(t=>t.id===b.design.type);return {...type,reference:type?.reference??[],id:b.id,name:b.id==='V-04'?'小店与楼上住家':type?.name ?? b.id,building:b,frame:box(b.polygon,3)}})
 const street=architecture?.street.nodes.map(id=>data.nodes[id])??[]
 const profile=architecture?routeProfile(data.nodes,architecture.street.nodes):[]
 const streetLength=profile.at(-1)?.distance??0
 const stairRuns=profile.slice(1).flatMap((b,i)=>data.roads.some(r=>r.kind==='steps'&&r.nodes.some((id,j)=>j&&((id===b.id&&r.nodes[j-1]===profile[i].id)||(id===profile[i].id&&r.nodes[j-1]===b.id))))?[{a:profile[i],b}]:[])
-const stairHatch=room=>{const b=box(room.polygon),w=Math.min(1.5,b.width-.6),h=Math.min(3,b.height-.6);return Array.from({length:7},(_,i)=>`M ${b.x+.3} ${b.y+.3+i*h/6} h ${w}`).join(' ')}
-const roadName={main:'生活主街',avenue:'城市道路',lane:'公共支路',service:'服务通道',steps:'公共台阶',deck:'公共平台',trail:'步道',landing:'平台路',shore:'滨水路',crossing:'过街'}
+const stairHatch=(room: Room)=>{const b=box(room.polygon),w=Math.min(1.5,b.width-.6),h=Math.min(3,b.height-.6);return Array.from({length:7},(_,i)=>`M ${b.x+.3} ${b.y+.3+i*h/6} h ${w}`).join(' ')}
+const roadName: Record<string,string>={main:'生活主街',avenue:'城市道路',lane:'公共支路',service:'服务通道',steps:'公共台阶',deck:'公共平台',trail:'步道',landing:'平台路',shore:'滨水路',crossing:'过街'}
 const frontages=(architecture?.street.facades??[]).map(facade=>{
   const route=facade.line.map(p=>[...p,0]),length=Math.hypot(facade.line[1][0]-facade.line[0][0],facade.line[1][1]-facade.line[0][1])
   const items=facade.buildings.map(id=>{const b=byId[id],stations=b.polygon.map(p=>streetPosition(p,route).station);return {...b,start:Math.min(...stations),end:Math.max(...stations)}})
   const floor=Math.floor(Math.min(...items.map(b=>b.elevation))/5)*5,ceiling=Math.ceil(Math.max(...items.map(b=>b.elevation+b.height))/5)*5
-  const ground=items.toSorted((a,b)=>a.start-b.start).flatMap(b=>[[b.start,facade.upper?b.design.floors[1].z:b.elevation],[b.end,facade.upper?b.design.floors[1].z:b.elevation]])
+  const ground=items.toSorted((a,b)=>a.start-b.start).flatMap(b=>[[b.start,facade.upper?b.design!.floors[1].z:b.elevation],[b.end,facade.upper?b.design!.floors[1].z:b.elevation]])
   return {...facade,route,length,buildings:items,ground,floor,frame:{x:-4,y:-ceiling-5,width:length+8,height:ceiling-floor+12}}
 })
-function facadeEntries(b,facade){
+function facadeEntries(b: DrawingBuilding,facade: typeof frontages[number]){
   return entrances(b).filter(e=>{
     const edge=doorLine(b,e.point),dx=edge[1][0]-edge[0][0],dy=edge[1][1]-edge[0][1],normal=[-dy,dx],mid=e.point
     const sign=inside([mid[0]+normal[0]*.1,mid[1]+normal[1]*.1],b.polygon)?-1:1
@@ -78,10 +84,10 @@ const sections=architecture?.sections.map(section=> {
   return {...section,length,cuts,roads:sectionRoads(data,section),ground:section.ground.map(p=>[streetPosition(p,route).station,p[2]]),frame:{x:-3,y:-ceiling,width:length+6,height:ceiling-floor+10}}
 })??[]
 const stats=architecture?architectureStats(data,architecture):[]
-const roomLabel=room=>room.label??center(room.polygon)
-const roomLines=room=>{const letters=[...room.name],width=box(room.polygon).width,count=Math.max(2,Math.floor((width-.5)/.8));return Array.from({length:Math.ceil(letters.length/count)},(_,i)=>letters.slice(i*count,(i+1)*count).join(''))}
-const roomCuts=(section,b,floor)=>(floor.rooms??[]).flatMap(room=>sectionIntervals(section.line,room.polygon).map(([start,end])=>({...room,start,end})))
-const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.design.floors[i].z
+const roomLabel=(room: Room)=>room.label??center(room.polygon)
+const roomLines=(room: Room)=>{const letters=[...room.name],width=box(room.polygon).width,count=Math.max(2,Math.floor((width-.5)/.8));return Array.from({length:Math.ceil(letters.length/count)},(_,i)=>letters.slice(i*count,(i+1)*count).join(''))}
+const roomCuts=(section: {line: Point[]},b: DrawingBuilding,floor: Floor)=>(floor.rooms??[]).flatMap(room=>sectionIntervals(section.line,room.polygon).map(([start,end])=>({...room,start,end})))
+const floorHeight=(b: DrawingBuilding,i: number)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.design!.floors[i].z
 </script>
 
 <template>
@@ -101,7 +107,7 @@ const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.
             <polyline :points="points(road.nodes.map(id=>data.nodes[id]))" :stroke="road.access==='service'?'#dfcdbc':road.access==='resident'?'#dce5ce':'#fffdf7'" :stroke-width="width(road)" :stroke-dasharray="road.kind==='steps'?'1 1':undefined"/>
           </g>
           <path v-for="building in contextBuildings" :key="building.id" :d="footprint(building)" fill="#e3e0d5" stroke="#aaa99a" stroke-width=".4"/>
-          <g v-for="building in (mode.id==='before'?architecture.baseline.buildings:buildings)" :key="building.id">
+          <g v-for="building in (mode.id==='before'?baselineBuildings:buildings)" :key="building.id">
             <path :d="footprint(building)" fill-rule="evenodd" :fill="mode.id==='before'?'#d6d3c6':buildingColor(building)" stroke="#655f51" stroke-width=".55"/>
             <template v-if="mode.id!=='before'">
               <polygon v-if="canopy(building).length" :points="points(canopy(building))" fill="#c08b62" fill-opacity=".65" stroke="#876b4f" stroke-width=".3"/>
@@ -110,7 +116,7 @@ const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.
                 <circle r="1.8" :fill="roleColor[entry.role]" stroke="#fffdf7" stroke-width=".4"/>
               </g>
             </template>
-            <text v-if="mode.id==='before'||mode.id==='after'" :x="center(building.polygon)[0]" :y="-center(building.polygon)[1]" text-anchor="middle" font-size="4" class="halo">{{ building.id }}<tspan v-if="building.design" :x="center(building.polygon)[0]" dy="5">{{ building.design.floors.length }} 层 · +{{ building.elevation }}</tspan></text>
+            <text v-if="mode.id==='before'||mode.id==='after'" :x="center(building.polygon)[0]" :y="-center(building.polygon)[1]" text-anchor="middle" font-size="4" class="halo">{{ building.id }}<tspan v-if="building.design" :x="center(building.polygon)[0]" dy="5">{{ building.design!.floors.length }} 层 · +{{ building.elevation }}</tspan></text>
           </g>
           <polygon v-for="(fixture,i) in fixtures" :key="`fixture-${i}`" :points="points(fixture.polygon)" :fill="fixtureColor[fixture.kind]" stroke="#555e4d" stroke-width=".2"><title>{{ fixture.name }} · +{{ fixture.elevation }} m</title></polygon>
           <g v-for="(tree,i) in trees" :key="`t-${i}`"><circle :cx="tree[0]" :cy="-tree[1]" r="4" fill="#b4c995" fill-opacity=".85" stroke="#73906e" stroke-width=".5"/><circle :cx="tree[0]" :cy="-tree[1]" r=".6" fill="#827054"/></g>
@@ -136,14 +142,14 @@ const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.
     <section v-for="sample in samples" :key="sample.id" class="sample">
       <h4>{{ sample.name }} · {{ sample.building.id }}</h4><p>{{ sample.notes }}</p>
       <div class="floor-strip">
-        <figure v-for="floor in sample.building.design.floors.filter(f=>f.rooms)" :key="floor.name">
+        <figure v-for="floor in sample.building.design!.floors.filter(f=>f.rooms)" :key="floor.name">
           <figcaption>{{ floor.name }} · +{{ floor.z }} m<span>{{ floor.use }}</span></figcaption>
           <div class="drawing-scroll" tabindex="0" role="region" :aria-label="`${sample.name}${floor.name}平面`">
             <svg :viewBox="viewBox(sample.frame)" :style="{width:`${Math.max(330,sample.frame.width*12)}px`}" role="img" :aria-label="`${sample.name}${floor.name}平面`">
               <rect :x="sample.frame.x" :y="sample.frame.y" :width="sample.frame.width" :height="sample.frame.height" fill="#faf8f0"/>
               <path :d="footprint(sample.building)" fill="#fffef9" fill-rule="evenodd" stroke="#514f46" stroke-width=".22"/>
               <g v-for="room in floor.rooms" :key="room.name"><polygon :points="points(room.polygon)" :fill="room.kind==='court'?'#faf8f0':colors[room.kind]" :stroke-dasharray="room.kind==='court'?'.3 .2':undefined" stroke="#726e61" stroke-width=".12"/><path v-if="room.kind==='core'&amp;&amp;room.name.includes('梯')" :d="stairHatch(room)" stroke="#526979" stroke-width=".1" fill="none" opacity=".45"/><text :x="roomLabel(room)[0]" :y="-roomLabel(room)[1]-.4*(roomLines(room).length-1)" text-anchor="middle" font-size=".8"><tspan v-for="(part,i) in roomLines(room)" :key="i" :x="roomLabel(room)[0]" :dy="i?1.1:0">{{ part }}</tspan><tspan v-if="room.kind==='court'" :x="roomLabel(room)[0]" dy="1.1" font-size=".65">透空</tspan></text></g>
-              <g v-for="(opening,i) in floor.openings??[]" :key="`opening-${i}`"><polyline :points="points(opening.line)" fill="none" stroke="#faf8f0" stroke-width=".35"/><path v-if="opening.kind==='door'" :d="doorLeaf(opening.line)" fill="none" stroke="#8d8572" stroke-width=".07"/></g><polyline :points="points(sample.building.design.front)" fill="none" stroke="#598d95" stroke-width=".3"/>
+              <g v-for="(opening,i) in floor.openings??[]" :key="`opening-${i}`"><polyline :points="points(opening.line)" fill="none" stroke="#faf8f0" stroke-width=".35"/><path v-if="opening.kind==='door'" :d="doorLeaf(opening.line)" fill="none" stroke="#8d8572" stroke-width=".07"/></g><polyline :points="points(sample.building.design.front??[])" fill="none" stroke="#598d95" stroke-width=".3"/>
               <polygon v-if="canopy(sample.building).length" :points="points(canopy(sample.building))" fill="#c89f74" fill-opacity=".5" stroke="#ab845e" stroke-width=".1"/>
               <polyline v-for="entry in entrances(sample.building).filter(e=>e.level===floor.name)" :key="`gap-${entry.node}`" :points="points(doorLine(sample.building,entry.point))" fill="none" stroke="#faf8f0" stroke-width=".5"/><g v-for="entry in entrances(sample.building).filter(e=>e.level===floor.name)" :key="entry.node" :transform="`translate(${entry.point[0]} ${-entry.point[1]})`"><circle r=".55" :fill="roleColor[entry.role]" stroke="#fff" stroke-width=".1"/><text y=".3" text-anchor="middle" fill="white" font-size=".75">{{ roleName[entry.role] }}</text></g>
               <g :transform="`translate(${sample.frame.x+1} ${sample.frame.y+sample.frame.height-1.2})`"><path d="M 0 -.3 V 0 H 5 V -.3" fill="none" stroke="#506452" stroke-width=".1"/><text x="2.5" y=".9" text-anchor="middle" font-size=".7">5 m · 北 ↑</text></g>
@@ -151,7 +157,7 @@ const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.
           </div>
         </figure>
       </div>
-      <p class="drawing-note">{{ entrances(sample.building).map(e=>`${roleLabel[e.role]} ${e.level} / +${e.point[2]} m`).join(' · ') }}</p><p class="drawing-note">{{ sample.building.design.floors.map(f=>`${f.name} ${f.use}`).join('；') }}</p>
+      <p class="drawing-note">{{ entrances(sample.building).map(e=>`${roleLabel[e.role]} ${e.level} / +${e.point[2]} m`).join(' · ') }}</p><p class="drawing-note">{{ sample.building.design!.floors.map(f=>`${f.name} ${f.use}`).join('；') }}</p>
       <p class="drawing-note">占地 {{ Math.round(polygonArea(sample.building.polygon)-(sample.building.design.lightwell?polygonArea(sample.building.design.lightwell):0)) }} m² · {{ sample.reference.join('、') }}</p>
     </section>
 
@@ -164,15 +170,15 @@ const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.
           <rect :x="facade.frame.x" :y="facade.frame.y" :width="facade.frame.width" :height="facade.frame.height" fill="#faf8f0"/>
           <g v-for="building in facade.buildings" :key="building.id">
             <rect :x="building.start" :y="-building.elevation-building.height" :width="building.end-building.start" :height="building.height" :fill="buildingColor(building)" stroke="#605f53" stroke-width=".3"/>
-            <g v-for="(floor,i) in building.design.floors" :key="floor.name">
+            <g v-for="(floor,i) in building.design!.floors" :key="floor.name">
               <line :x1="building.start" :y1="-floor.z" :x2="building.end" :y2="-floor.z" stroke="#746b58" stroke-width=".2"/>
               <rect v-for="j in Math.max(1,Math.floor((building.end-building.start)/4))" :key="j" :x="building.start+(j-.5)*(building.end-building.start)/Math.max(1,Math.floor((building.end-building.start)/4))-1" :y="-floor.z-Math.min(floorHeight(building,i)-.8,2.6)" width="2" :height="Math.min(1.8,floorHeight(building,i)-1.2)" fill="#7f9fa2" stroke="#eff2e8" stroke-width=".15"/>
             </g>
-            <rect v-if="building.design.canopy" :x="building.start" :y="-building.elevation-3.2" :width="building.end-building.start" height=".45" fill="#b98960"/>
+            <rect v-if="building.design?.canopy" :x="building.start" :y="-building.elevation-3.2" :width="building.end-building.start" height=".45" fill="#b98960"/>
             <g v-for="entry in facadeEntries(building,facade)" :key="entry.node"><rect :x="streetPosition(entry.point,facade.route).station-.6" :y="-entry.point[2]-2.3" width="1.2" height="2.3" :fill="roleColor[entry.role]"/><text :x="streetPosition(entry.point,facade.route).station" :y="-entry.point[2]-3.1" text-anchor="middle" font-size="2" class="door-label">{{ roleName[entry.role] }}</text></g>
             <text :x="(building.start+building.end)/2" :y="-building.elevation-building.height-2" text-anchor="middle" font-size="2.5">{{ building.id }}</text>
           </g>
-          <polygon :points="`${facade.ground.map(([x,z])=>`${x},${-z}`).join(' ')} ${facade.ground.at(-1)[0]},${-facade.floor+1} ${facade.ground[0][0]},${-facade.floor+1}`" fill="#e1e5d3"/><polyline :points="facade.ground.map(([x,z])=>`${x},${-z}`).join(' ')" fill="none" stroke="#6c775d" stroke-width=".25"/>
+          <polygon :points="`${facade.ground.map(([x,z])=>`${x},${-z}`).join(' ')} ${facade.ground.at(-1)![0]},${-facade.floor+1} ${facade.ground[0][0]},${-facade.floor+1}`" fill="#e1e5d3"/><polyline :points="facade.ground.map(([x,z])=>`${x},${-z}`).join(' ')" fill="none" stroke="#6c775d" stroke-width=".25"/>
           <g v-for="mark in Math.floor(facade.length/10)+1" :key="mark"><line :x1="(mark-1)*10" :y1="-facade.floor+2" :x2="(mark-1)*10" :y2="-facade.floor+3" stroke="#737565" stroke-width=".2"/><text :x="(mark-1)*10" :y="-facade.floor+5.5" text-anchor="middle" font-size="2">{{ (mark-1)*10 }} m</text></g>
         </svg>
       </div>
@@ -201,7 +207,7 @@ const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.
           <polyline :points="section.ground.map(([x,z])=>`${x},${-z}`).join(' ')" fill="none" stroke="#788064" stroke-width=".25"/>
           <g v-for="(building,j) in section.cuts" :key="`${building.id}-${j}`">
             <rect :x="building.start" :y="-building.elevation-building.height" :width="building.end-building.start" :height="building.height" fill="#f5eee0" stroke="#58594d" stroke-width=".18"/>
-            <g v-for="(floor,i) in building.design.floors" :key="floor.name">
+            <g v-for="(floor,i) in building.design!.floors" :key="floor.name">
               <rect v-for="room in roomCuts(section,building,floor)" :key="room.name" :x="room.start" :y="-floor.z-floorHeight(building,i)" :width="room.end-room.start" :height="floorHeight(building,i)" :fill="colors[room.kind]" stroke="#a3a38f" stroke-width=".08"/>
               <line :x1="building.start" :y1="-floor.z" :x2="building.end" :y2="-floor.z" stroke="#5f6154" stroke-width=".22"/>
               <text :x="building.start+.4" :y="-floor.z-.5" font-size=".9">{{ floor.name }} +{{ floor.z }}</text>
@@ -220,7 +226,7 @@ const floorHeight=(b,i)=>((b.design?.floors[i+1]?.z)??(b.elevation+b.height))-b.
     <h3>类型与面积</h3>
     <div class="drawing-scroll" tabindex="0" role="region" aria-label="建筑类型与面积统计"><table><thead><tr><th>类型</th><th>数量</th><th>占地 / m²</th><th>楼面 / m²</th><th>图纸样本</th><th>依据</th></tr></thead><tbody><tr v-for="type in stats" :key="type.id"><th>{{ type.name }}</th><td>{{ type.count }}</td><td>{{ Math.round(type.footprint) }}</td><td>{{ Math.round(type.floorArea) }}</td><td>{{ type.sample }}</td><td>{{ type.reference.join('、') }}</td></tr></tbody></table></div>
     <p class="drawing-note">占地与楼面扣除天井，楼面按各层轮廓初算 · 具体墙厚、退台和结构进一步核对</p>
-    <details><summary>逐栋建筑与楼层用途</summary><div class="drawing-scroll" tabindex="0" role="region" aria-label="样段建筑表"><table><thead><tr><th>建筑 / 地块</th><th>类型</th><th>各层用途</th><th>状态</th></tr></thead><tbody><tr v-for="building in buildings" :key="building.id"><th>{{ building.id }}<small>{{ building.parcel }}</small></th><td>{{ architecture.types.find(t=>t.id===building.design.type).name }}</td><td><div v-for="floor in building.design.floors" :key="floor.name">{{ floor.name }} · +{{ floor.z }} m · {{ floor.use }}</div></td><td>建筑方案</td></tr></tbody></table></div></details>
+    <details><summary>逐栋建筑与楼层用途</summary><div class="drawing-scroll" tabindex="0" role="region" aria-label="样段建筑表"><table><thead><tr><th>建筑 / 地块</th><th>类型</th><th>各层用途</th><th>状态</th></tr></thead><tbody><tr v-for="building in buildings" :key="building.id"><th>{{ building.id }}<small>{{ building.parcel }}</small></th><td>{{ architecture!.types.find(t=>t.id===building.design.type)?.name }}</td><td><div v-for="floor in building.design!.floors" :key="floor.name">{{ floor.name }} · +{{ floor.z }} m · {{ floor.use }}</div></td><td>建筑方案</td></tr></tbody></table></div></details>
   </section>
 </template>
 

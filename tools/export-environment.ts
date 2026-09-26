@@ -1,3 +1,12 @@
+type Transform = { source_height: number; height_m: number; materials?: Record<string, Record<string, unknown>> }
+type Image = { mip_levels: number; dimensions: number[] }
+type Gltf = {
+  scene?: number; scenes: {nodes: number[]}[]
+  nodes: {children?: number[]; matrix?: number[]; rotation?: number[]; scale?: number[]; translation?: number[]; mesh: number}[]
+  meshes: {primitives: {attributes: {POSITION: number}}[]}[]
+  accessors: {min: number[]; max: number[]}[]
+  materials: {name: string; pbrMetallicRoughness: Record<string, unknown>}[]
+}
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
@@ -7,18 +16,18 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../', import.meta.url))
 const source = resolve(root, 'source-assets/environment-kit')
 const destination = resolve(root, 'game/assets/environment')
-const manifest = JSON.parse(await readFile(resolve(source, 'asset-manifest.json'), 'utf8'))
+const manifest: { files: {source: string; output: string; sha256: string; transform?: Transform; image?: Image}[] } = JSON.parse(await readFile(resolve(source, 'asset-manifest.json'), 'utf8'))
 const check = process.argv.includes('--check')
-assert(process.argv.slice(2).every(arg => arg === '--check'), 'Usage: bun tools/export-environment.mjs [--check]')
-const sha256 = data => createHash('sha256').update(data).digest('hex')
+assert(process.argv.slice(2).every(arg => arg === '--check'), 'Usage: bun tools/export-environment.ts [--check]')
+const sha256 = (data: Uint8Array) => createHash('sha256').update(data).digest('hex')
 
-function exportGlb(input, settings) {
+function exportGlb(input: Buffer, settings: Transform) {
   assert.equal(input.toString('ascii', 0, 4), 'glTF')
   assert.equal(input.readUInt32LE(4), 2)
   assert.equal(input.readUInt32LE(8), input.length)
   assert.equal(input.readUInt32LE(16), 0x4e4f534a)
   const jsonLength = input.readUInt32LE(12)
-  const gltf = JSON.parse(input.toString('utf8', 20, 20 + jsonLength))
+  const gltf: Gltf = JSON.parse(input.toString('utf8', 20, 20 + jsonLength))
   const scene = gltf.scenes[gltf.scene ?? 0]
   assert.equal(scene.nodes.length, 1, 'Selected models must have one scene root')
   const node = gltf.nodes[scene.nodes[0]]
@@ -50,7 +59,7 @@ function exportGlb(input, settings) {
   return Buffer.concat([header, padded, remaining])
 }
 
-function exportDds(path, image) {
+function exportDds(path: string, image: Image) {
   // Explicit opaque alpha selects BGRA8; Bevy can load it without RGB24 transcoding
   assert.equal(image.mip_levels, 1 + Math.floor(Math.log2(Math.max(...image.dimensions))))
   const result = Bun.spawnSync(['magick', path, '-alpha', 'on', '-define', 'dds:compression=none', 'dds:-'])

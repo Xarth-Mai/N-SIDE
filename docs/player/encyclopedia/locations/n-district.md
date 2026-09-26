@@ -2,7 +2,7 @@
 subject_id: LOC-002
 ---
 
-<script setup>
+<script setup lang="ts">
 import DistrictMap from '../../../.vitepress/components/DistrictMap.vue'
 </script>
 

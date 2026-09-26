@@ -4,10 +4,10 @@ status: draft
 depends_on: ["DOC-DISTRICT-SPACE", "DOC-DISTRICT-PLACES", "LOC-002"]
 ---
 
-<script setup>
+<script setup lang="ts">
 import DistrictPlan from '../../../.vitepress/components/DistrictPlan.vue'
 import data from '../../../../source-assets/district-map/district.json'
-import { planStats, parcelStats, polygonArea, routeProfile, housingEstimate, frameworkCoverage } from '../../../../tools/district-plan.mjs'
+import { planStats, parcelStats, polygonArea, routeProfile, housingEstimate, frameworkCoverage } from '../../../../tools/district-plan.ts'
 const stats=planStats(data),housing=housingEstimate(data),parcels=parcelStats(data),coverage=frameworkCoverage(data),drawnHousing=housingEstimate(data,true)
 const blockParcels=id=>parcels.filter(p=>p.block===id)
 const blockTotal=(id,field)=>blockParcels(id).reduce((sum,p)=>sum+p[field],0)

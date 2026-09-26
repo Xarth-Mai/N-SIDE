@@ -1,0 +1,184 @@
+[
+  {
+    "mode": "preview",
+    "profile": "player",
+    "path": "/",
+    "status": 200,
+    "bytes": 56397
+  },
+  {
+    "mode": "preview",
+    "profile": "player",
+    "path": "/player/encyclopedia/locations/n-district",
+    "status": 200,
+    "bytes": 77767
+  },
+  {
+    "mode": "preview",
+    "profile": "player",
+    "path": "/project-assets/district-map/map.json",
+    "status": 200,
+    "bytes": 1400946
+  },
+  {
+    "mode": "preview",
+    "profile": "player",
+    "path": "/dev/handbook/wiki",
+    "status": 404,
+    "bytes": 16004
+  },
+  {
+    "mode": "preview",
+    "profile": "player",
+    "path": "/project-assets/district-map/district.json",
+    "status": 404,
+    "bytes": 16004
+  },
+  {
+    "mode": "preview",
+    "profile": "player",
+    "path": "/assets/search-index.CLsiTdMR.json",
+    "status": 200,
+    "bytes": 288451
+  },
+  {
+    "mode": "preview",
+    "profile": "dev",
+    "path": "/",
+    "status": 200,
+    "bytes": 87267
+  },
+  {
+    "mode": "preview",
+    "profile": "dev",
+    "path": "/player/encyclopedia/locations/n-district",
+    "status": 200,
+    "bytes": 108640
+  },
+  {
+    "mode": "preview",
+    "profile": "dev",
+    "path": "/project-assets/district-map/map.json",
+    "status": 200,
+    "bytes": 1400946
+  },
+  {
+    "mode": "preview",
+    "profile": "dev",
+    "path": "/dev/handbook/wiki",
+    "status": 200,
+    "bytes": 97596
+  },
+  {
+    "mode": "preview",
+    "profile": "dev",
+    "path": "/project-assets/district-map/district.json",
+    "status": 200,
+    "bytes": 352447
+  },
+  {
+    "mode": "preview",
+    "profile": "dev",
+    "path": "/assets/search-index.CgxkoXV-.json",
+    "status": 200,
+    "bytes": 661433
+  },
+  {
+    "mode": "dev",
+    "profile": "player",
+    "path": "/",
+    "status": 200,
+    "bytes": 433
+  },
+  {
+    "mode": "dev",
+    "profile": "player",
+    "path": "/player/encyclopedia/locations/n-district",
+    "status": 200,
+    "bytes": 433
+  },
+  {
+    "mode": "dev",
+    "profile": "player",
+    "path": "/project-assets/district-map/map.json",
+    "status": 200,
+    "bytes": 1400946
+  },
+  {
+    "mode": "dev",
+    "profile": "player",
+    "path": "/dev/handbook/wiki",
+    "status": 404,
+    "bytes": 13
+  },
+  {
+    "mode": "dev",
+    "profile": "player",
+    "path": "/project-assets/district-map/district.json",
+    "status": 404,
+    "bytes": 13
+  },
+  {
+    "mode": "dev",
+    "profile": "player",
+    "path": "/@localSearchIndex",
+    "status": 200,
+    "bytes": 494
+  },
+  {
+    "mode": "dev",
+    "profile": "player",
+    "path": "/@fs/home/lzzz/MyProjects/N-SIDE/docs/dev/handbook/wiki.md",
+    "status": 403,
+    "bytes": 507
+  },
+  {
+    "mode": "dev",
+    "profile": "dev",
+    "path": "/",
+    "status": 200,
+    "bytes": 433
+  },
+  {
+    "mode": "dev",
+    "profile": "dev",
+    "path": "/player/encyclopedia/locations/n-district",
+    "status": 200,
+    "bytes": 433
+  },
+  {
+    "mode": "dev",
+    "profile": "dev",
+    "path": "/project-assets/district-map/map.json",
+    "status": 200,
+    "bytes": 1400946
+  },
+  {
+    "mode": "dev",
+    "profile": "dev",
+    "path": "/dev/handbook/wiki",
+    "status": 200,
+    "bytes": 433
+  },
+  {
+    "mode": "dev",
+    "profile": "dev",
+    "path": "/project-assets/district-map/district.json",
+    "status": 200,
+    "bytes": 352447
+  },
+  {
+    "mode": "dev",
+    "profile": "dev",
+    "path": "/@localSearchIndex",
+    "status": 200,
+    "bytes": 494
+  },
+  {
+    "mode": "dev",
+    "profile": "dev",
+    "path": "/@fs/home/lzzz/MyProjects/N-SIDE/docs/dev/handbook/wiki.md",
+    "status": 403,
+    "bytes": 504
+  }
+]

@@ -1,28 +1,33 @@
+import type { TestContext } from 'node:test'
+import type { DefaultTheme } from 'vitepress'
+import type { Connect, ViteDevServer } from 'vite'
+import type { IncomingMessage, ServerResponse } from 'node:http'
+import type { WikiProfile } from '../wiki-data.ts'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync, cpSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, relative } from 'node:path'
-import { buildSidebar } from '../../docs/.vitepress/sidebar.mjs'
-import { copyWikiData, listWikiData, wikiDataPlugin } from '../wiki-data.mjs'
-import { prepareWiki, checkWikiBuild, playerMap } from '../wiki.mjs'
+import { buildSidebar } from '../../docs/.vitepress/sidebar.ts'
+import { copyWikiData, listWikiData, wikiDataPlugin } from '../wiki-data.ts'
+import { prepareWiki, checkWikiBuild, playerMap } from '../wiki.ts'
 
-function fixture(t) {
+function fixture(t: TestContext) {
   const root = mkdtempSync(join(tmpdir(), 'n-side-wiki-'))
   t.after(() => rmSync(root, { recursive: true, force: true }))
-  function put(file, content = '# Page\n') {
+  function put(file: string, content: string | Uint8Array = '# Page\n') {
     const path = join(root, file); mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, content); return path
   }
   return { root, put }
 }
-const links = items => items.flatMap(item => [...(item.link ? [item.link] : []), ...links(item.items ?? [])])
-function request(root, profile, url, method = 'GET') {
-  let handler; wikiDataPlugin(root, profile).configureServer({ middlewares: { use(fn) { handler = fn } } })
-  const result = { next: false, headers: {} }
-  handler({ url, method }, { setHeader(k, v) { result.headers[k] = v }, end(body) { result.body = body?.toString() } }, error => { result.next = true; result.error = error })
+const links = (items: DefaultTheme.SidebarItem[]): string[] => items.flatMap(item => [...(item.link ? [item.link] : []), ...links(item.items ?? [])])
+function request(root: string, profile: WikiProfile, url: string, method = 'GET') {
+  let handler!: Connect.NextHandleFunction; wikiDataPlugin(root, profile).configureServer({ middlewares: { use(fn: Connect.NextHandleFunction) { handler = fn } } } as unknown as ViteDevServer)
+  const result: {next: boolean; headers: Record<string,string | number | readonly string[]>; body?: string; error?: unknown} = { next: false, headers: {} }
+  handler({ url, method } as IncomingMessage, { setHeader(k: string, v: string | number | readonly string[]) { result.headers[k] = v }, end(body?: Buffer) { result.body = body?.toString() } } as ServerResponse, error => { result.next = true; result.error = error })
   return result
 }
-function wikiFixture(t) {
+function wikiFixture(t: TestContext) {
   const f = fixture(t)
   f.put('docs/player/index.md', '# 玩家入口\n\n[故事](encyclopedia/story/main/last-toy.md)\n')
   f.put('docs/player/encyclopedia/story/main/last-toy.md', '---\nsubject_id: QST-002\ndesign_state: accepted\n---\n# 最后的玩具\n\n米娜自己决定打包\n')
@@ -32,9 +37,9 @@ function wikiFixture(t) {
   f.put('docs/public/private.json', '{"DEV_ONLY_SENTINEL":true}')
   f.put('docs/public/private.webp', 'DEV_ONLY_SENTINEL')
   f.put('source-assets/branding/n-logo.svg', '<svg/>')
-  for (const name of ['district-map.mjs', 'district-plan.mjs', 'district-architecture.mjs', 'district-geometry.mjs']) f.put(`tools/${name}`, readFileSync(new URL(`../${name}`, import.meta.url)))
+  for (const name of ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts']) f.put(`tools/${name}`, readFileSync(new URL(`../${name}`, import.meta.url)))
   for (const name of ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue']) f.put(`docs/.vitepress/components/${name}`, readFileSync(new URL(`../../docs/.vitepress/components/${name}`, import.meta.url)))
-  f.put('source-assets/district-map/district.json', readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url)))
+  f.put('source-assets/district-map/district.json', readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url), 'utf8'))
   f.put('todo/evidence/TASK-007/r1/migration-map.json', JSON.stringify({ files: [
     { source: 'docs/story/main/last-toy.md', targets: ['docs/player/encyclopedia/story/main/last-toy.md'] },
     { source: 'docs/production/private.md', targets: ['docs/dev/design/spec.md'] },
@@ -105,13 +110,13 @@ test('player imports and public data cannot bypass the publication boundary', t 
 })
 
 test('map projection retains actual drawing/interaction and drops author fields', () => {
-  const original = JSON.parse(readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url)))
+  const original = JSON.parse(readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url), 'utf8'))
   original.author_notes = 'DEV_ONLY_SENTINEL'; original.places[0].brief.secret = 'DEV_ONLY_SENTINEL'
   const projection = playerMap(original)
   assert.equal(projection.places.length, 91)
   assert.ok(projection.scene.objects.length > 0 && projection.scene.terrain.length > 0)
   assert.doesNotMatch(JSON.stringify(projection), /DEV_ONLY_SENTINEL|"architectures"|"operations"|"brief"/)
-  assert.equal(projection.places.find(p => p.id === '04').page, '/player/encyclopedia/locations/shop')
+  assert.equal(projection.places.find(p => p.id === '04')!.page, '/player/encyclopedia/locations/shop')
 })
 
 test('artifact check detects injected developer raw data and search content', t => {
@@ -131,7 +136,7 @@ test('artifact check detects injected developer raw data and search content', t 
 
 test('inline template placeholders remain literal Vue text', async () => {
   const { createMarkdownRenderer } = await import('vitepress')
-  const { markdown, default: directConfig } = await import('../../docs/.vitepress/config.mjs')
+  const { markdown, default: directConfig } = await import('../../docs/.vitepress/config.ts')
   assert.throws(directConfig, /Choose a Wiki audience/)
   const md = await createMarkdownRenderer(process.cwd(), markdown)
   assert.match(md.render('`{{交付目标}}`'), /<code v-pre[^>]*>\{\{交付目标\}\}<\/code>/)
@@ -140,11 +145,26 @@ test('inline template placeholders remain literal Vue text', async () => {
 test('Vite module loading rejects source files outside the isolated tree', async t => {
   const { root } = wikiFixture(t)
   const { source } = prepareWiki(root, 'player')
-  const { wikiConfig } = await import('../../docs/.vitepress/config.mjs')
+  const { wikiConfig } = await import('../../docs/.vitepress/config.ts')
   const config = wikiConfig({ root: process.cwd(), source, profile: 'player' })
-  const boundary = config.vite.plugins.find(p => p.name === 'n-side-wiki-boundary')
+  const boundary = (config.vite!.plugins! as {name: string; load: (id: string) => undefined}[]).find(p => p.name === 'n-side-wiki-boundary')!
   assert.throws(() => boundary.load(join(root, 'docs/dev/design/data.json')), /Unpublished Wiki module/)
   assert.equal(boundary.load(join(source, '_data/map.json')), undefined)
   for (const id of ['/@siteData', '/@localSearchIndex', '/@localSearchIndexroot', '/player/', '/player/index', '/project-assets/branding/n-logo.svg']) assert.equal(boundary.load(id), undefined)
   assert.throws(() => boundary.load('/@localSearchIndex/../../docs/dev/design/data.json'), /Unpublished Wiki module/)
+})
+
+
+test('external search data remains inside the selected audience', t => {
+  const { root, put } = wikiFixture(t), { source, output, manifest } = prepareWiki(root, 'player')
+  cpSync(join(source, 'public'), output, { recursive: true })
+  for (const page of manifest.pages) put(relative(root, join(output, page.replace(/\.md$/, '.html'))), '<html>玩家</html>')
+  const search=relative(root, join(output,'assets/search-index.test.json'))
+  put(search,JSON.stringify({documentCount:1,documentIds:{0:'/player/#入口'}}))
+  assert.equal(checkWikiBuild(root,'player').result,'PASS')
+  put(search,JSON.stringify({documentCount:1,documentIds:{0:'/dev/design/spec#内部'}}))
+  assert.throws(()=>checkWikiBuild(root,'player'),/Unpublished search document/)
+  const labels=JSON.parse(readFileSync(join(source,'_data/map.json'),'utf8'))
+  assert.equal(labels.scene,undefined)
+  assert.equal(labels.places.length,91)
 })

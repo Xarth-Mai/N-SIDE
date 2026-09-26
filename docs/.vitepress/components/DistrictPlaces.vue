@@ -1,10 +1,12 @@
-<script setup>
-import data from '../../../source-assets/district-map/district.json'
-import { routeProfile } from '../../../tools/district-plan.mjs'
+<script setup lang="ts">
+import source from '../../../source-assets/district-map/district.json'
+import type { District } from '../../../tools/district-types.ts'
+import { routeProfile } from '../../../tools/district-plan.ts'
+const data: District = source
 const blocks=data.blocks??[]
-const places=block=>data.places.filter(p=>p.block===block && p.featured)
-const parcel=id=>data.parcels.find(p=>p.id===id)
-const arrivalSummary=arrival=>`${arrival.label} · ${arrival.level} · 高程 ${data.nodes[arrival.nodes.at(-1)][2]} m · 接入后 ${Math.round(routeProfile(data.nodes,arrival.nodes).at(-1).distance)} m`
+const places=(block: string)=>data.places.filter(p=>p.block===block && p.featured)
+const parcel=(id?: string)=>data.parcels.find(p=>p.id===id)
+const arrivalSummary=(arrival: {label: string; level: string; nodes: string[]})=>`${arrival.label} · ${arrival.level} · 高程 ${data.nodes[arrival.nodes.at(-1)!][2]} m · 接入后 ${Math.round(routeProfile(data.nodes,arrival.nodes).at(-1)!.distance)} m`
 </script>
 
 <template>

@@ -38,7 +38,7 @@
 
 ```fish
 command -v blender
-bun tools/export-environment.mjs --check
+bun tools/export-environment.ts --check
 python3 -B -m unittest discover -s tools/tests -p test_asset_environment.py
 cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --validate
 ```

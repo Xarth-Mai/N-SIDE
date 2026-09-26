@@ -1,8 +1,9 @@
+import type { District } from './district-types.ts'
 // Areas and section distances use design metres, independently of camera projection
-import { polygonArea, pointInside, onBoundary, roadAllowed } from './district-geometry.mjs'
-export { polygonArea, pointInside as inside } from './district-geometry.mjs'
+import { polygonArea, pointInside, onBoundary, roadAllowed } from './district-geometry.ts'
+export { polygonArea, pointInside as inside } from './district-geometry.ts'
 
-export function routeProfile(nodes, ids) {
+export function routeProfile(nodes: District["nodes"], ids: string[]) {
   let distance=0
   return ids.map((id,i)=> {
     const point=nodes[id],previous=i?nodes[ids[i-1]]:point
@@ -12,14 +13,14 @@ export function routeProfile(nodes, ids) {
   })
 }
 
-export function parcelStats(data) {
+export function parcelStats(data: District) {
   return data.parcels.map(parcel=>{
     const drawn=data.buildings.filter(b=>b.bank==='district'&&b.parcel===parcel.id).length
     return {...parcel,drawn,remaining:parcel.capacity-drawn}
   })
 }
 
-export function planStats(data) {
+export function planStats(data: District) {
   const parcels=parcelStats(data)
   return {
     blocks:data.blocks.length,
@@ -35,7 +36,7 @@ export function planStats(data) {
   }
 }
 
-export function housingEstimate(data,drawn=false) {
+export function housingEstimate(data: District,drawn=false) {
   const gross=drawn?data.buildings.filter(b=>b.bank==='district').reduce((sum,b)=>{
     const share=data.parcels.find(p=>p.id===b.parcel)?.housing?.share??0
     const area=polygonArea(b.polygon)-(b.design?.lightwell?polygonArea(b.design.lightwell):0)
@@ -46,7 +47,7 @@ export function housingEstimate(data,drawn=false) {
   return {gross,units,residents:model.occupancy.map((value,i)=>Math.round(units*value*model.household[i]))}
 }
 
-export function reachableNodes(data,user='public',start='station') {
+export function reachableNodes(data: {roads: (Pick<District["roads"][number], "nodes"> & Partial<District["roads"][number]>)[]},user='public',start='station') {
   const reached=new Set([start])
   let previous=-1
   while(previous!==reached.size){
@@ -57,19 +58,20 @@ export function reachableNodes(data,user='public',start='station') {
 }
 
 // Coverage measures recorded geometry and connectivity, not design approval
-export function frameworkCoverage(data) {
-  const reached=new Map()
-  const connected=entry=>{
-    if(!reached.has(entry.role))reached.set(entry.role,reachableNodes(data,entry.role))
-    return reached.get(entry.role).has(entry.node)
+export function frameworkCoverage(data: District) {
+  const reached=new Map<string, Set<string>>()
+  const connected=(entry: {role?: string; node: string})=>{
+    const role=entry.role??'public'
+    if(!reached.has(role))reached.set(role,reachableNodes(data,role))
+    return reached.get(role)!.has(entry.node)
   }
   return data.blocks.map(block=>{
     const parcels=data.parcels.filter(p=>p.block===block.id)
     const buildings=data.buildings.filter(b=>b.bank==='district'&&parcels.some(p=>p.id===b.parcel))
     const entries=buildings.flatMap(b=>b.design?.entries??[])
     const complete=buildings.filter(b=>b.design?.floors?.length&&b.design.floors.every(f=>f.use)&&b.design.entries?.length&&Number.isFinite(b.elevation)&&b.height>0)
-    const arrived=complete.filter(b=>b.design.entries.every(e=>{
-      const p=data.nodes[e.node],floor=b.design.floors.find(f=>f.name===e.level)
+    const arrived=complete.filter(b=>b.design!.entries.every(e=>{
+      const p=data.nodes[e.node],floor=b.design!.floors.find(f=>f.name===e.level)
       return p&&floor&&Math.abs(p[2]-floor.z)<1e-6&&onBoundary(p,b.polygon)&&connected(e)
     }))
     const roads=data.roads.filter(r=>r.kind!=='interior'&&r.nodes.some(id=>pointInside(data.nodes[id],block.polygon)))

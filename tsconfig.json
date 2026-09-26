@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["bun"],
+    "paths": {
+      "@wiki-data/map.json": ["./tools/wiki-map.d.ts"],
+      "@wiki-tools/*": ["./tools/*"]
+    }
+  },
+  "include": ["tools/**/*.ts", "docs/.vitepress/**/*.ts"],
+  "exclude": ["node_modules", "output", "todo", ".agents", "third_party"]
+}

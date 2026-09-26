@@ -4,7 +4,7 @@ status: draft
 depends_on: ["DOC-DISTRICT-SPACE", "DOC-DISTRICT-PLAN", "DOC-DISTRICT-PLACES"]
 ---
 
-<script setup>
+<script setup lang="ts">
 import DistrictPlan from '../../../.vitepress/components/DistrictPlan.vue'
 </script>
 

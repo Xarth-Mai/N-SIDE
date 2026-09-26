@@ -1,0 +1,11 @@
+Preview uses an isolated snapshot; restart this command after editing source documents
+
+  vitepress v1.6.4
+
+  ➜  Local:   http://127.0.0.1:5187/
+The request url "/home/lzzz/MyProjects/N-SIDE/docs/dev/handbook/wiki.md" is outside of Vite serving allow list.
+
+- /home/lzzz/MyProjects/N-SIDE/output/wiki/player/source
+- /home/lzzz/MyProjects/N-SIDE/node_modules
+
+Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.

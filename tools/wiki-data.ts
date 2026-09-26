@@ -1,16 +1,18 @@
+import type { ViteDevServer } from 'vite'
+export type WikiProfile = 'player' | 'dev'
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync } from 'node:fs'
 import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 
-const TYPES = { '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8' }
+const TYPES: Record<string, string> = { '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8' }
 export const PROFILES = ['player', 'dev']
-export function assertProfile(profile) {
-  if (!PROFILES.includes(profile)) throw new Error(`Unknown Wiki profile: ${profile}`)
+export function assertProfile(profile: unknown): asserts profile is WikiProfile {
+  if (typeof profile !== 'string' || !PROFILES.includes(profile)) throw new Error(`Unknown Wiki profile: ${profile}`)
 }
-export function within(root, path) {
+export function within(root: string, path: string) {
   const name = relative(root, path)
   return !isAbsolute(name) && name !== '..' && !name.startsWith(`..${sep}`)
 }
-export function filesIn(root) {
+export function filesIn(root: string): string[] {
   if (!existsSync(root)) return []
   return readdirSync(root, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name, 'en')).flatMap(entry => {
     if (entry.name.startsWith('.') || entry.isSymbolicLink()) return []
@@ -20,11 +22,11 @@ export function filesIn(root) {
 }
 
 // Raw design data is dev-only; player data is an explicit generated map projection
-export function listWikiData(root, profile) {
+export function listWikiData(root: string, profile?: unknown) {
   assertProfile(profile)
   return profile === 'dev' ? filesIn(join(root, 'dev')).filter(file => TYPES[extname(file)]) : []
 }
-export function copyWikiData(root, output, profile) {
+export function copyWikiData(root: string, output: string, profile: WikiProfile) {
   const files = listWikiData(root, profile)
   for (const file of files) {
     const target = join(output, relative(root, file))
@@ -33,14 +35,14 @@ export function copyWikiData(root, output, profile) {
   }
   return files.length
 }
-export function wikiDataPlugin(sourceRoot, profile) {
+export function wikiDataPlugin(sourceRoot: string, profile: WikiProfile) {
   const root = realpathSync(sourceRoot)
   const allowed = new Set(listWikiData(root, profile).map(file => resolve(file)))
   return {
     name: 'n-side-wiki-data',
-    configureServer(server) {
+    configureServer(server: ViteDevServer) {
       server.middlewares.use((req, res, next) => {
-        if (!['GET', 'HEAD'].includes(req.method)) return next()
+        if (!['GET', 'HEAD'].includes(req.method ?? '')) return next()
         try {
           const url = new URL(req.url ?? '/', 'http://localhost')
           if (url.searchParams.has('import')) return next()

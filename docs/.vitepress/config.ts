@@ -1,21 +1,24 @@
+import { searchIndexAsset } from '../../tools/wiki-search.ts'
+import type { MarkdownOptions } from 'vitepress'
+import type { WikiProfile } from '../../tools/wiki-data.ts'
 import { defineConfig } from 'vitepress'
 import { isAbsolute, join, resolve } from 'node:path'
 import { existsSync, realpathSync } from 'node:fs'
-import { buildSidebar } from './sidebar.mjs'
-import { copyWikiData, wikiDataPlugin, within } from '../../tools/wiki-data.mjs'
+import { buildSidebar } from './sidebar.ts'
+import { copyWikiData, wikiDataPlugin, within } from '../../tools/wiki-data.ts'
 
-export const markdown = {
+export const markdown: MarkdownOptions = {
   config(md) {
     const renderCode = md.renderer.rules.code_inline
     md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
       tokens[idx].attrSet('v-pre', '')
-      return renderCode(tokens, idx, options, env, self)
+      return renderCode!(tokens, idx, options, env, self)
     }
   },
 }
 
 // Both build and dev use a prepared audience tree; invoking VitePress on docs is unsupported
-export function wikiConfig({ root, source, profile }) {
+export function wikiConfig({ root, source, profile }: { root: string; source: string; profile: WikiProfile }) {
   const allowed = [source, realpathSync(join(root, 'node_modules'))]
   return defineConfig({
     lang: 'zh-CN', title: 'N:SIDE',
@@ -38,7 +41,7 @@ export function wikiConfig({ root, source, profile }) {
     vite: {
       build: { emptyOutDir: true },
       resolve: { alias: { '@wiki-components': join(source, '_components'), '@wiki-tools': join(source, '_tools'), '@wiki-data': join(source, '_data') } },
-      plugins: [wikiDataPlugin(source, profile), {
+      plugins: [searchIndexAsset(), wikiDataPlugin(source, profile), {
         name: 'n-side-wiki-boundary',
         enforce: 'pre',
         load(id) {
@@ -73,4 +76,4 @@ export function wikiConfig({ root, source, profile }) {
   })
 }
 
-export default () => { throw new Error('Choose a Wiki audience: bun tools/wiki.mjs build|dev player|dev') }
+export default () => { throw new Error('Choose a Wiki audience: bun tools/wiki.ts build|dev player|dev') }

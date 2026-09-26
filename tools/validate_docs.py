@@ -109,7 +109,7 @@ def anchors(text: str, *, vitepress: bool = False) -> set[str]:
 
 
 def markdown_files(root: Path) -> list[Path]:
-    # 上游原版遵守其自身 Markdown / YAML 格式，由 validate-skills.mjs 单独校验
+    # 上游原版遵守其自身 Markdown / YAML 格式，由 validate-skills.ts 单独校验
     manifest = root / 'third_party/skills/manifest.json'
     originals = set()
     if manifest.is_file():

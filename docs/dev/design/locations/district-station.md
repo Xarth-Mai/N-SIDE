@@ -4,11 +4,11 @@ status: draft
 depends_on: ["DOC-DISTRICT-PLAN", "DOC-DISTRICT-ARCHITECTURE", "DOC-DISTRICT-PLACES"]
 ---
 
-<script setup>
+<script setup lang="ts">
 import DistrictArchitecture from '../../../.vitepress/components/DistrictArchitecture.vue'
 import data from '../../../../source-assets/district-map/district.json'
-import { architectureStats } from '../../../../tools/district-architecture.mjs'
-import { routeProfile } from '../../../../tools/district-plan.mjs'
+import { architectureStats } from '../../../../tools/district-architecture.ts'
+import { routeProfile } from '../../../../tools/district-plan.ts'
 const segment=data.architectures.find(a=>a.id==='P3-A2')
 const stats=architectureStats(data,segment)
 const supply=data.logistics.find(l=>l.id==='interest-equipment')

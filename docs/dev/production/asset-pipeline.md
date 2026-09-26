@@ -73,7 +73,7 @@ Logo 的 `205×205` 预览来自当前 `512×512` 图与启动画面 `0.4` 缩�
 
 ## GLB、骨骼与动画
 
-当前环境模型复用 `bun tools/export-environment.mjs --check` 与 `world::assets` 的 Bevy 加载预检，保留 `Scene0`、材质槽及外部色板依赖。`test_asset_environment.py` 对现有静态环境模型核对实际二进制 accessor 的有限数值与声明边界，以及节点变换、米制高度和底部枢轴。源 GLB 的节点缩放与运行 GLB 的米制归一分开记录；当前导出器有意保留根节点缩放，放入场景时实体缩放为 `1`，无需为满足通用“应用全部变换”规则破坏现有数据
+当前环境模型复用 `bun tools/export-environment.ts --check` 与 `world::assets` 的 Bevy 加载预检，保留 `Scene0`、材质槽及外部色板依赖。`test_asset_environment.py` 对现有静态环境模型核对实际二进制 accessor 的有限数值与声明边界，以及节点变换、米制高度和底部枢轴。源 GLB 的节点缩放与运行 GLB 的米制归一分开记录；当前导出器有意保留根节点缩放，放入场景时实体缩放为 `1`，无需为满足通用“应用全部变换”规则破坏现有数据
 
 Blender 源工程进入 `source-assets/`，运行交付仍使用项目已支持的 GLB。面数、贴图密度、碰撞代理和 LOD 依据[美术](art-direction.md)及实际镜头预算确定。绑定后的角色调整变换时，应同时核对 bind pose、inverse bind matrices、动画和附着点，不能沿用静态道具的批量清理方法
 

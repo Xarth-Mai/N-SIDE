@@ -1,0 +1,17 @@
+{
+  "checked_date": "2026-09-26",
+  "source": "https://registry.npmjs.org/<package>/latest",
+  "bun": "1.4.2",
+  "dependencies": {
+    "@types/bun": "1.4.2",
+    "@types/delaunator": "5.0.3",
+    "@typescript/typescript6": "6.0.2",
+    "delaunator": "5.1.0",
+    "typescript": "7.0.2",
+    "vitepress": "1.6.4",
+    "vue": "3.5.43",
+    "vue-tsc": "3.3.11"
+  },
+  "typescript_vue_backend": "6.0.3",
+  "policy": "Direct packages match registry latest stable tags; transitive dependencies follow upstream semver ranges"
+}

@@ -1,0 +1,4 @@
+$ python3 -B tools/validate_docs.py --root . && bun run check:skills
+PASS: 241 Markdown files, 83 IDs
+$ bun tools/validate-skills.ts
+PASS: 31 Skills; 25 recorded imports

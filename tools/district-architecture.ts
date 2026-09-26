@@ -1,13 +1,14 @@
-import { polygonArea } from './district-plan.mjs'
-import { roadWidth, segmentIntervals } from './district-geometry.mjs'
+import type { District, Architecture, Point } from './district-types.ts'
+import { polygonArea } from './district-plan.ts'
+import { roadWidth, segmentIntervals } from './district-geometry.ts'
 
 // Keep section distances in metres while sharing the map's polygon clipping
-export function sectionIntervals([a,b], polygon) {
+export function sectionIntervals([a,b]: Point[], polygon: Point[]) {
   const length=Math.hypot(b[0]-a[0],b[1]-a[1])
   return length?segmentIntervals(a,b,polygon,true).map(([start,end])=>[start*length,end*length]):[]
 }
 
-export function streetPosition(point, route) {
+export function streetPosition(point: Point, route: Point[]) {
   let station=0,best={distance:Infinity,station:0}
   for(let i=1;i<route.length;i++) {
     const a=route[i-1],b=route[i],dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
@@ -19,16 +20,16 @@ export function streetPosition(point, route) {
   return best
 }
 
-export function architectureStats(data, architecture) {
+export function architectureStats(data: District, architecture: Architecture) {
   const buildings=data.buildings.filter(b=>architecture.buildings.includes(b.id))
   return architecture.types.map(type=> {
     const items=buildings.filter(b=>b.design?.type===type.id)
-    return {...type,count:items.length,footprint:items.reduce((sum,b)=>sum+polygonArea(b.polygon)-(b.design.lightwell?polygonArea(b.design.lightwell):0),0),floorArea:items.reduce((sum,b)=>sum+b.design.floors.reduce((area,floor)=>area+polygonArea(b.polygon)-(floor.rooms?.filter(room=>room.kind==='court').reduce((voids,room)=>voids+polygonArea(room.polygon),0)||(b.design.lightwell?polygonArea(b.design.lightwell):0)),0),0)}
+    return {...type,count:items.length,footprint:items.reduce((sum,b)=>sum+polygonArea(b.polygon)-(b.design!.lightwell?polygonArea(b.design!.lightwell):0),0),floorArea:items.reduce((sum,b)=>sum+b.design!.floors.reduce((area,floor)=>area+polygonArea(b.polygon)-(floor.rooms?.filter(room=>room.kind==='court').reduce((voids,room)=>voids+polygonArea(room.polygon),0)||(b.design!.lightwell?polygonArea(b.design!.lightwell):0)),0),0)}
   })
 }
 
-export function sectionRoads(data, section) {
-  const hits=[],[p,q]=section.line,sx=q[0]-p[0],sy=q[1]-p[1],cutLength=Math.hypot(sx,sy)
+export function sectionRoads(data: District, section: {line: Point[]}) {
+  const hits: {kind: string; width: number; span: number[]; station: number; elevation: number; access?: string}[]= [],[p,q]=section.line,sx=q[0]-p[0],sy=q[1]-p[1],cutLength=Math.hypot(sx,sy)
   for(const road of data.roads) {
     if(['interior','lift'].includes(road.kind))continue
     const width=roadWidth(road)

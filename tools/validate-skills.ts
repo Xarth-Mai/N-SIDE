@@ -1,16 +1,18 @@
+// These JSON/YAML records are deliberately untrusted; each consumed field is checked below
+type RawRecord = Record<string, any>
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { basename, dirname, join, relative, resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
 
-const digest = file => createHash('sha256').update(readFileSync(file)).digest('hex')
-const text = value => typeof value === 'string' && value.trim().length > 0
-const object = value => value !== null && typeof value === 'object' && !Array.isArray(value)
-const safePath = value => text(value) && !value.startsWith('/') && !value.split('/').some(p => p === '..' || p === '')
-const sha = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value)
+const digest = (file: string) => createHash('sha256').update(readFileSync(file)).digest('hex')
+const text = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
+const object = (value: unknown): value is RawRecord => value !== null && typeof value === 'object' && !Array.isArray(value)
+const safePath = (value: unknown): value is string => text(value) && !value.startsWith('/') && !value.split('/').some(p => p === '..' || p === '')
+const sha = (value: unknown) => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value)
 const links = /!?\[[^\]\n]*\]\(\s*(?:<([^>\n]+)>|([^\s)]+))[^\n)]*\)/g
-const clean = value => value.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1\s*$/gm, '').replace(/(`+).*?\1/g, '')
-export function walk(directory) {
+const clean = (value: string) => value.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1\s*$/gm, '').replace(/(`+).*?\1/g, '')
+export function walk(directory: string): string[] {
   if (!existsSync(directory)) return []
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
     if (['__pycache__', '.DS_Store'].includes(entry.name)) return []
@@ -18,7 +20,7 @@ export function walk(directory) {
     return entry.isDirectory() ? walk(path) : [path]
   })
 }
-export function anchors(body, vitepress = false) {
+export function anchors(body: string, vitepress = false) {
   const result = new Set()
   const counts = new Map()
   for (const match of body.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1\s*$/gm, '').matchAll(/^#{1,6}\s+(.+?)\s*#*$/gm)) {
@@ -39,16 +41,16 @@ export function anchors(body, vitepress = false) {
   return result
 }
 
-export function validate(root) {
+export function validate(root: string) {
   root = resolve(root)
-  const issues = []
-  const issue = (path, message) => issues.push({ path: relative(root, path), message })
+  const issues: {path: string; message: string}[] = []
+  const issue = (path: string, message: string) => issues.push({ path: relative(root, path), message })
   const manifestPath = join(root, 'third_party/skills/manifest.json')
   const result = () => ({ ok: !issues.length, skills: names.size, imported: manifest?.skills?.length ?? 0, issues })
   const names = new Set()
-  let manifest
+  let manifest: RawRecord
   try { manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) }
-  catch (error) { issue(manifestPath, `manifest cannot be read: ${error.message}`); return result() }
+  catch (error) { issue(manifestPath, `manifest cannot be read: ${(error instanceof Error ? error.message : String(error))}`); return result() }
   if (!object(manifest) || manifest.schema_version !== 2) issue(manifestPath, 'schema_version must be 2')
   for (const key of ['sources', 'skills', 'local_skills', 'references']) {
     if (!Array.isArray(manifest?.[key]) || (key !== 'references' && !manifest[key].length)) issue(manifestPath, `${key} must be a nonempty array${key === 'references' ? ' (references may be empty)' : ''}`)
@@ -58,10 +60,10 @@ export function validate(root) {
   if (issues.length) return result()
 
   const registered = new Set(['third_party/skills/manifest.json'])
-  const sources = new Map()
-  const imports = new Map()
+  const sources = new Map<string, RawRecord>()
+  const imports = new Map<string, RawRecord>()
   const units = [...manifest.skills, ...manifest.references, ...manifest.local_skills]
-  function register(path, expected) {
+  function register(path: unknown, expected?: unknown) {
     if (!safePath(path)) { issue(manifestPath, `invalid file path ${path}`); return }
     if (registered.has(path)) issue(manifestPath, `duplicate file ${path}`)
     registered.add(path)
@@ -69,7 +71,7 @@ export function validate(root) {
     if (!existsSync(file) || !statSync(file).isFile()) issue(file, 'missing required file')
     else if (expected && (!sha(expected) || digest(file) !== expected)) issue(file, 'content differs from recorded source hash')
   }
-  function paths(files, owner, prefix = '') {
+  function paths(files: unknown, owner: string, prefix = '') {
     if (!Array.isArray(files) || !files.length) { issue(manifestPath, `files must be nonempty for ${owner}`); return }
     for (const file of files) {
       if (!object(file) || !safePath(file.path) || !sha(file.sha256)) { issue(manifestPath, `invalid file record for ${owner}`); continue }
@@ -106,7 +108,7 @@ export function validate(root) {
       paths(unit.files, unit.name, unit.local_path)
       if (unit.mode !== 'adapted' && unit.local_path.startsWith('.agents/')) register(join(unit.local_path, 'UPSTREAM.md'))
       if (unit.optional_upstream_links?.length) issue(manifestPath, `optional_upstream_links no longer exempts references: ${unit.name}; patch links to pinned URLs`)
-      const patches = unit.files?.filter?.(file => object(file) && file.patch) ?? []
+      const patches = unit.files?.filter?.((file: unknown) => object(file) && file.patch) ?? []
       if ((String(unit.mode).startsWith('patched')) !== (patches.length > 0)) issue(manifestPath, `patch mode does not match file patches: ${unit.name}`)
       if (unit.pinned_links !== undefined && !Array.isArray(unit.pinned_links)) issue(manifestPath, `pinned_links must be an array for ${unit.name}`)
       for (const link of Array.isArray(unit.pinned_links) ? unit.pinned_links : []) {
@@ -148,12 +150,12 @@ export function validate(root) {
           for (const [key, value] of Object.entries(metadata.interface)) {
             if (!['display_name', 'short_description', 'icon_small', 'icon_large', 'brand_color', 'default_prompt'].includes(key)) throw new Error(`unsupported interface.${key}`)
             if (!text(value)) throw new Error(`interface.${key} must be text`)
-            if (key.startsWith('icon_') && !existsSync(resolve(root, unit.local_path, value))) throw new Error(`missing icon ${value}`)
+            if (key.startsWith('icon_') && !existsSync(resolve(root, unit?.local_path ?? '', value))) throw new Error(`missing icon ${value}`)
           }
         }
         if (metadata.policy !== undefined && (!object(metadata.policy) || typeof metadata.policy.allow_implicit_invocation !== 'boolean')) throw new Error('policy.allow_implicit_invocation must be boolean')
-        if (metadata.dependencies !== undefined && (!object(metadata.dependencies) || !Array.isArray(metadata.dependencies.tools) || metadata.dependencies.tools.some(tool => !object(tool) || tool.type !== 'mcp' || !text(tool.value)))) throw new Error('invalid host tool dependencies')
-      } catch (error) { issue(file, `host metadata: ${error.message}`) }
+        if (metadata.dependencies !== undefined && (!object(metadata.dependencies) || !Array.isArray(metadata.dependencies.tools) || metadata.dependencies.tools.some((tool: unknown) => !object(tool) || tool.type !== 'mcp' || !text(tool.value)))) throw new Error('invalid host tool dependencies')
+      } catch (error) { issue(file, `host metadata: ${(error instanceof Error ? error.message : String(error))}`) }
     }
     if (!file.endsWith('.md')) continue
     let body = readFileSync(file, 'utf8')
@@ -170,7 +172,7 @@ export function validate(root) {
           names.add(metadata.name)
         }
         body = body.slice(match[0].length)
-      } catch (error) { issue(file, error.message) }
+      } catch (error) { issue(file, (error instanceof Error ? error.message : String(error))) }
     }
     if (/\$\{(?:ENGINE_NAME|ASSET_SKILL_COMMAND|ENGINE_GUIDE_FILE|AGENT_NAME|RUNTIME_ASSET_DIR|ASSET_GEN_SKILL_DIR)\}/.test(body)) issue(file, 'unrendered Godogen runtime token')
     for (const match of clean(body).matchAll(links)) {
@@ -181,10 +183,10 @@ export function validate(root) {
         const destination = link ? resolve(dirname(file), decodeURIComponent(link.split('?')[0])) : file
         if (!existsSync(destination)) issue(file, `missing local reference ${target}`)
         else if (anchor && destination.endsWith('.md') && !anchors(readFileSync(destination, 'utf8'), relative(root, destination).startsWith('docs/')).has(decodeURIComponent(anchor))) issue(file, `missing anchor ${target}`)
-      } catch (error) { issue(file, `invalid local reference ${target}: ${error.message}`) }
+      } catch (error) { issue(file, `invalid local reference ${target}: ${(error instanceof Error ? error.message : String(error))}`) }
     }
     // Only concrete interpreter script invocations, not arbitrary prose or asset examples
-    for (const match of body.matchAll(/\b(?:python3?|bun|node|bash|sh)\s+([.\w/-]+\.(?:py|mjs|js|sh))\b/g)) {
+    for (const match of body.matchAll(/\b(?:python3?|bun|node|bash|sh)\s+([.\w/-]+\.(?:py|ts|mjs|js|sh))\b/g)) {
       const path = match[1]
       const base = /^(?:tools|game|\.agents)\//.test(path) ? root : join(root, unit?.local_path ?? '')
       if (!existsSync(resolve(base, path))) issue(file, `missing command path ${path}`)

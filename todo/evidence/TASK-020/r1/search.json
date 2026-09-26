@@ -1,0 +1,40 @@
+[
+  {
+    "profile": "player",
+    "documents": 435,
+    "hitCount": 15,
+    "hits": [
+      {
+        "id": "/player/encyclopedia/story/main/last-toy#第一章-·-最后的玩具",
+        "title": "第一章 · 最后的玩具"
+      },
+      {
+        "id": "/player/encyclopedia/story/main/last-toy#求助与真实因果",
+        "title": "求助与真实因果"
+      },
+      {
+        "id": "/player/encyclopedia/story/main/last-toy#玩家行动与信息变化",
+        "title": "玩家行动与信息变化"
+      }
+    ]
+  },
+  {
+    "profile": "dev",
+    "documents": 764,
+    "hitCount": 40,
+    "hits": [
+      {
+        "id": "/dev/design/quests/QST-002/README#最后的玩具-任务制作",
+        "title": "最后的玩具：任务制作"
+      },
+      {
+        "id": "/player/encyclopedia/story/main/last-toy#第一章-·-最后的玩具",
+        "title": "第一章 · 最后的玩具"
+      },
+      {
+        "id": "/player/encyclopedia/story/main/#章节",
+        "title": "章节"
+      }
+    ]
+  }
+]
