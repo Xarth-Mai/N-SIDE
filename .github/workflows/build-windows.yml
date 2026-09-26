@@ -1,0 +1,79 @@
+name: Build Windows
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - uses: actions/checkout@v7
+      - name: Update Rust stable
+        run: rustup toolchain install stable --profile minimal --target x86_64-pc-windows-msvc
+      - name: Toolchain version
+        id: rust
+        run: |
+          $version = rustc +stable --version
+          $version
+          "version=$version" >> $env:GITHUB_OUTPUT
+      - uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            game/target
+          key: windows-x86_64-msvc-${{ steps.rust.outputs.version }}-${{ hashFiles('game/Cargo.lock') }}-${{ github.sha }}
+          restore-keys: |
+            windows-x86_64-msvc-${{ steps.rust.outputs.version }}-${{ hashFiles('game/Cargo.lock') }}-
+      - name: Build release binaries
+        run: cargo +stable build --manifest-path game/Cargo.toml --locked --release --target x86_64-pc-windows-msvc --features viewer --bins
+      - name: Package standalone directory
+        run: |
+          $package = Join-Path $env:RUNNER_TEMP 'n-side-windows-x86_64-msvc'
+          New-Item -ItemType Directory -Force "$package/game", "$package/source-assets/district-map", "$package/source-assets/district-scene", "$package/licenses" | Out-Null
+          Copy-Item game/target/x86_64-pc-windows-msvc/release/n-side.exe "$package/game/"
+          Copy-Item game/target/x86_64-pc-windows-msvc/release/map_viewer.exe "$package/game/"
+          Copy-Item game/assets "$package/game/" -Recurse
+          Copy-Item source-assets/district-map/district.json "$package/source-assets/district-map/"
+          Copy-Item source-assets/district-scene/appearance.json, source-assets/district-scene/daylight.json "$package/source-assets/district-scene/"
+          Copy-Item source-assets/environment-kit/licenses/* "$package/licenses/"
+          Copy-Item source-assets/environment-kit/asset-manifest.json "$package/licenses/environment-assets.json"
+          @('@echo off', 'cd /d "%~dp0game"', 'n-side.exe', 'exit /b %errorlevel%') | Set-Content "$package/run-game.cmd" -Encoding ascii
+          @('@echo off', 'cd /d "%~dp0"', 'game\map_viewer.exe --project-root "%CD%"', 'exit /b %errorlevel%') | Set-Content "$package/run-viewer.cmd" -Encoding ascii
+          @(
+            'N:SIDE - Windows x86_64 MSVC',
+            'Extract the entire archive before starting either program.',
+            'run-game.cmd: launch the current Logo game entry.',
+            'run-viewer.cmd: launch the district viewer.',
+            'Viewer controls: right mouse to look, WASD to move, Q/E down/up, Shift faster, wheel speed, M capture mouse, Esc release.',
+            'Requires Windows and a graphics driver supporting Vulkan.',
+            'Environment assets: Kenney and ambientCG, CC0; license texts and source manifest are in licenses/.',
+            "Commit: $env:GITHUB_SHA"
+          ) | Set-Content "$package/README.txt" -Encoding utf8
+          foreach ($file in @('game/n-side.exe', 'game/map_viewer.exe', 'game/assets/branding/n-logo.png', 'source-assets/district-map/district.json', 'source-assets/district-scene/appearance.json', 'source-assets/district-scene/daylight.json')) {
+            if (!(Test-Path "$package/$file" -PathType Leaf)) { throw "Missing package file: $file" }
+          }
+          Push-Location $package
+          try {
+            & ./game/map_viewer.exe --project-root . --validate
+            if ($LASTEXITCODE -ne 0) { throw "Packaged viewer validation failed: $LASTEXITCODE" }
+          } finally {
+            Pop-Location
+          }
+      - uses: actions/upload-artifact@v7
+        id: artifact
+        with:
+          name: n-side-windows-x86_64-msvc
+          path: ${{ runner.temp }}/n-side-windows-x86_64-msvc/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Download link
+        env:
+          ARTIFACT_URL: ${{ steps.artifact.outputs.artifact-url }}
+        run: '"[Download Windows package]($env:ARTIFACT_URL) — extract all files, then run run-game.cmd or run-viewer.cmd" >> $env:GITHUB_STEP_SUMMARY'

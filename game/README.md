@@ -9,6 +9,18 @@ cargo run --manifest-path game/Cargo.toml --locked --features viewer --bin map_v
 
 默认游戏入口展示现有 Logo。Map Viewer 启动时读取 `source-assets/district-map/district.json`、`source-assets/district-scene/appearance.json` 与 `source-assets/district-scene/daylight.json`，运行素材来自 `game/assets/`；模型和材质随仓库提供，启动无需下载。地图、外观及光照配置修改后重启，Rust 修改由 Cargo 增量编译
 
+## GitHub Actions
+
+`CI` 在推送 main 和 Pull Request 时执行 Rust 格式、类型、文档、任务、叙事与工具测试，地图测试包含在工具测试中；自动检查不编译 Bevy、不构建 Wiki、不运行 GPU 验收
+
+Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完成后从运行摘要链接或 Artifacts 下载 `n-side-windows-x86_64-msvc`，保存期为 14 天。手动入口需要 workflow 已存在于默认分支
+
+完整解压后双击 `run-game.cmd` 启动 Logo 游戏入口，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
+
+构建使用 `x86_64-pc-windows-msvc`、现有 release 配置和 Cargo.lock，上传前从打包目录执行 Viewer `--validate`；该检查验证地图、几何、素材绑定与光照数据，不证明 Windows 图形启动或视觉验收通过
+
+两个 workflow 使用最新稳定系列的 Actions、`ubuntu-latest` / `windows-latest` runner 和最新稳定 Rust；CI 显式选择 Bun `latest`、Python `3.x` 并查询最新稳定版本。Action 跨主版本需要更新 workflow 引用，项目库依赖仍按锁文件安装，日志记录实际工具链版本
+
 右键按住观察，M 切换鼠标捕获，WASD 移动，Q/E 下降或上升，Shift 加速，滚轮调整速度，Esc 释放鼠标；失焦时停止运动，重新按右键或 M 恢复控制。自由相机可以穿过实体
 
 ## 世界运行时

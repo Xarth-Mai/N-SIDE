@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+          check-latest: true
+          allow-prereleases: false
+      - name: Update Rust stable
+        run: rustup toolchain install stable --profile minimal --component rustfmt
+      - name: Toolchain versions
+        run: |
+          bun --version
+          python --version
+          rustc +stable --version
+      - name: Install dependencies
+        run: |
+          bun install --frozen-lockfile
+          python -m pip install -r .agents/skills/create-game-assets/scripts/requirements.txt
+      - name: Rust formatting
+        run: cargo +stable fmt --manifest-path game/Cargo.toml --check
+      - run: bun run check:types
+      - run: bun run check:docs
+      - run: bun run tasks:check
+      - run: bun run check:narrative
+      - run: bun run check:story-design
+      - run: bun run check:templates
+      - run: bun run test:tools
