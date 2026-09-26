@@ -1,9 +1,10 @@
 ---
 id: "TASK-011"
 type: "document"
-status: "ready"
+status: "done"
 milestone: "DOCS-PIPELINE"
 depends_on: ["TASK-010"]
+acceptance: {"role": "codex", "revision": "4bf16d9accf715866de5ae40356af5bbbc702577bd0a7d606cae43442eb64ab9", "record": "todo/evidence/TASK-011/r5/result.md"}
 specs: ["docs/dev/handbook/documentation.md", "docs/dev/handbook/tasks.md"]
 ---
 
@@ -19,8 +20,8 @@ specs: ["docs/dev/handbook/documentation.md", "docs/dev/handbook/tasks.md"]
 
 ## 当前工作与下一步
 
-完成对应实现与实际验证后记录结果
+R5回归与实际Logo工具工作完成；本轮在此交付，不继续推进游戏任务
 
 ## 结果与证据
 
-尚未形成最终验收记录
+最终结果：todo/evidence/TASK-011/r5/result.md；包含实际模型调用、同请求复验、完整构建、来源核对与NOT RUN边界

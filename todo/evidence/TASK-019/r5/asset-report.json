@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "assets": [
+    {
+      "path": "game/assets/branding/n-logo.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 512,
+      "height": 512,
+      "bytes": 50938,
+      "color_count": 256,
+      "has_alpha": true,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_pixels": 0,
+      "content_bounds": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "problems": []
+    }
+  ]
+}

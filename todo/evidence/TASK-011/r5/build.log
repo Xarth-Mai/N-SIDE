@@ -1,0 +1,71 @@
+$ bun install --frozen-lockfile && bun run check:map && bun run docs:build:player && bun run docs:build:dev
+bun install v1.4.2 (744846f84)
+
+Checked 129 installs across 176 packages (no changes) [8.00ms]
+$ bun test tools/tests/district-map.test.mjs
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.mjs:
+(pass) map places and roads have valid shared references [2.33ms]
+(pass) terrain colors follow ground elevation [0.08ms]
+(pass) overview terrain retains source controls and excludes elevated connections [98.25ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.18ms]
+(pass) shopping stays local and public hillside routes remain connected [1.14ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.26ms]
+(pass) scene keeps platforms below volumes and geometry is finite [33.53ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [6.77ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [4.21ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [0.96ms]
+(pass) tree positions stay outside building footprints [4.66ms]
+(pass) all streets clear building volumes at their actual widths and elevations [427.07ms]
+(pass) district ground-road crossings share a junction and its elevation [116.71ms]
+(pass) city framework records every building and reaches its same-level facade entrances [8.66ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.44ms]
+(pass) public streets stay outside same-level resident and service courts [3.48ms]
+(pass) building volumes share boundaries without occupying the same space [40.06ms]
+(pass) detailed places connect street access to separate public and service entrances [10.45ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.28ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [1.60ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.29ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.03ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [26.07ms]
+(pass) public, residents, students and service users have separate access rights [3.20ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.36ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.74ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.82ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.44ms]
+(pass) shared stairs and separate apartments connect through shared circulation [0.90ms]
+
+ 29 pass
+ 0 fail
+Ran 29 tests across 1 file. [836.00ms]
+$ bun tools/wiki.mjs build player
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+build complete in 3.23s.
+{"profile":"player","pages":88,"files":380,"result":"PASS"}
+$ bun tools/wiki.mjs build dev
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+build complete in 4.77s.
+{"profile":"dev","pages":143,"files":597,"result":"PASS"}

@@ -11,7 +11,7 @@
 | G2 完整体验与生产样板 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | G3 内容齐备的 Alpha | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | G4 真实试玩与独立 Demo 交付 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| DOCS-PIPELINE 文档、Skills 与任务管线修复 | 5 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+| DOCS-PIPELINE 文档、Skills 与任务管线修复 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## 进行中
 
@@ -27,6 +27,6 @@
 
 ## 近期可开始
 
-- [ ] [TASK-011 R5 回归与新流程实际试运行](tasks/TASK-011-handoff-regression.md) · `ready` · DOCS-PIPELINE：完成对应实现与实际验证后记录结果
+当前无此类任务
 
 全部任务与已结束记录保留在 [tasks/](tasks/)，证据保留在 [evidence/](evidence/)，历史输入见 [archive/legacy/](archive/legacy/)

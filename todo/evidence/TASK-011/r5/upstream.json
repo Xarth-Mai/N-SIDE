@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "sources": [
+    {
+      "source": "bevy-skills",
+      "commit": "b1b4da5744ebbd5c526342b2351967411cd5ca61",
+      "status": "PASS",
+      "files": 55,
+      "patches": 9,
+      "pinned_links": 20,
+      "issues": [],
+      "method": "git-object"
+    },
+    {
+      "source": "game-design-agent-skills",
+      "commit": "29e8c759ca26c6bd4f337744b647dc728bf322b6",
+      "status": "PASS",
+      "files": 19,
+      "patches": 0,
+      "pinned_links": 0,
+      "issues": [],
+      "method": "git-object"
+    },
+    {
+      "source": "agentic-gamedev-skills",
+      "commit": "24a4cdce3b629f123162c0bdcf61647eeb85f8db",
+      "status": "PASS",
+      "files": 24,
+      "patches": 0,
+      "pinned_links": 0,
+      "issues": [],
+      "method": "git-object"
+    },
+    {
+      "source": "awesome-gamedev-agent-skills",
+      "commit": "44888f28ff918357ad82c4473352c60a1c5bde5b",
+      "status": "PASS",
+      "files": 25,
+      "patches": 1,
+      "pinned_links": 0,
+      "issues": [],
+      "method": "git-object"
+    },
+    {
+      "source": "skills-gamedev",
+      "commit": "e8b87e9086fbf2322b1c216c2d2de85954bf4015",
+      "status": "PASS",
+      "files": 25,
+      "patches": 0,
+      "pinned_links": 0,
+      "issues": [],
+      "method": "git-object"
+    },
+    {
+      "source": "godogen",
+      "commit": "0b725bca053769a4727f76c332bf1f7b42e146ab",
+      "status": "PASS",
+      "files": 1,
+      "patches": 0,
+      "pinned_links": 0,
+      "issues": [],
+      "method": "git-object"
+    },
+    {
+      "source": "mengto-skills",
+      "commit": "a965851e27dc179e693fde1bee94457a64e1a7a5",
+      "status": "PASS",
+      "files": 19,
+      "patches": 0,
+      "pinned_links": 0,
+      "issues": [],
+      "method": "github-tree-and-blob"
+    }
+  ],
+  "scope": "Independent pinned source bytes, directory coverage, patch bases/diffs and pinned sibling targets; adapted prose is not claimed verbatim"
+}

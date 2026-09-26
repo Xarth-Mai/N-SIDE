@@ -1,0 +1,34 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-B",
+      ".agents/skills/create-game-assets/scripts/asset_report.py",
+      "game/assets/branding/n-logo.png",
+      "--expect-size",
+      "512x512",
+      "--require-alpha",
+      "--json"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "asset-report.json"
+  },
+  {
+    "argv": [
+      "python3",
+      "-B",
+      "tools/asset_preview.py",
+      "game/assets/branding/n-logo.png",
+      "--display-size",
+      "205x205",
+      "--filter",
+      "lanczos",
+      "--out",
+      "output/skills/r5-host/asset/logo-contrast.png"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "logo-contrast.json"
+  }
+]

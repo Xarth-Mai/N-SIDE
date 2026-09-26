@@ -1,0 +1,14 @@
+{
+  "baseline": "a0deb64e1447d84ab7161e494ee1748de279090c",
+  "files_with_reachable_targets": 198,
+  "old_work_items_with_disposition": 61,
+  "missing_targets": [],
+  "archived_progress_byte_identical": true,
+  "game_and_asset_changes": [
+    "game/README.md",
+    "source-assets/branding/README.md",
+    "source-assets/district-scene/README.md"
+  ],
+  "game_source_and_asset_bytes": "UNCHANGED",
+  "scope": "Target existence + original structured data comparison; complete source/section/work-item mapping lives in TASK-007/r1 and execution snapshot TASK-010/r4"
+}

@@ -1,0 +1,175 @@
+[
+  {
+    "case": "explicit-root",
+    "cwd": "/home/lzzz/MyProjects/N-SIDE",
+    "sandbox": "read-only",
+    "command": [
+      "codex",
+      "exec",
+      "--ephemeral",
+      "--sandbox",
+      "read-only",
+      "--json",
+      "-C",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--output-last-message",
+      "/home/lzzz/MyProjects/N-SIDE/output/skills/r5-host/explicit-root.answer.md",
+      "-"
+    ],
+    "prompt": "$n-side-guide\n只读核对当前任务管线、已完成的技术迁移与下一项游戏任务，用真实任务卡简短回答。不要开始或更新任务，不运行游戏，不改文件。",
+    "exit": 0,
+    "elapsed_seconds": 64.2,
+    "events_sha256": "d94d16bf8a0813193408554ec064b8abb29c4b7be7b3da122ca30a1c60eca220",
+    "turn_completed": true,
+    "commands": [
+      "/usr/bin/bash -lc \"rg -n '任务|迁移|roadmap' /home/lzzz/.codex/memories/MEMORY.md\"",
+      "/usr/bin/bash -lc 'cat AGENTS.md docs/index.md docs/dev/handbook/documentation.md .agents/skills/n-side-guide/SKILL.md todo/README.md todo/roadmap.md docs/dev/handbook/tasks.md'",
+      "/usr/bin/bash -lc 'cat todo/tasks/*.md'",
+      "/usr/bin/bash -lc 'bun run tasks:list'",
+      "/usr/bin/bash -lc 'cat todo/evidence/TASK-006/r0/review.md todo/evidence/TASK-007/r1/result.md todo/evidence/TASK-008/r2/result.md todo/evidence/TASK-009/r3/result.md todo/evidence/TASK-010/r4/result.md; rg --files todo/evidence/TASK-011 todo/evidence/TASK-019'",
+      "/usr/bin/bash -lc 'bun run tasks:check'"
+    ],
+    "thread_ids": [
+      "01a0dd0f-7ec7-7cf1-9745-e73a744a4773"
+    ],
+    "observed_skills": [
+      "n-side-guide"
+    ],
+    "final_answer": "- **当前管线**：任务卡是唯一状态源；本次 `tasks:list`、`tasks:check` 通过，共 14 张卡：5 done、2 active、1 review、6 backlog，无 ready 或 blocked\n- **技术迁移已完成 R0—R4**：Skills 门禁与来源、文档规范和映射、双站样板、完整文档迁移、单一任务源切换均有验收记录，见 [TASK-010](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-010-task-source-switch.md) 对应的 [R4 证据](/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-010/r4/result.md)；这些不计作游戏能力完成\n- **技术收尾仍在进行**：TASK-011 的 R5 回归尚无最终验收；[TASK-019](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-019-logo-processing-check.md) Logo 工作流实测仍为 active，目前未见其证据目录\n- **下一项游戏工作**：先续接 [TASK-012《最后的玩具》](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-012-last-toy-mechanism-review.md)（G0，review），需要作者判断固定夹、供能、运输恢复和现实接应的因果与可理解性；随后才推进 TASK-013 的最小动作与范围，TASK-014 移动与镜头实验依赖 TASK-013\n\n本轮仅只读核对，未开始或更新任务、未运行游戏、未改文件\n\n",
+    "verdict": "STATE_PASS_LINK_FAIL_FIXED_IN_RECHECK"
+  },
+  {
+    "case": "implicit-game",
+    "cwd": "/home/lzzz/MyProjects/N-SIDE/game",
+    "sandbox": "read-only",
+    "command": [
+      "codex",
+      "exec",
+      "--ephemeral",
+      "--sandbox",
+      "read-only",
+      "--json",
+      "-C",
+      "/home/lzzz/MyProjects/N-SIDE/game",
+      "--output-last-message",
+      "/home/lzzz/MyProjects/N-SIDE/output/skills/r5-host/implicit-game.answer.md",
+      "-"
+    ],
+    "prompt": "只读审查当前 map_viewer capture 的 Esc 禁用镜头后移动检查，说明实际系统与状态断言能证明什么、不能证明什么。按本项目适用专业流程读取 Skill 和真实源码，最多给两条结论；不运行游戏、不写文件、不推进路线图。",
+    "exit": 0,
+    "elapsed_seconds": 94.2,
+    "events_sha256": "f5010f01c7af89436574c59e21eaaab0cbfbaa35b38c6601a79e136560af75d4",
+    "turn_completed": true,
+    "commands": [
+      "/usr/bin/bash -lc \"rg -n 'capture|map_viewer' /home/lzzz/.codex/memories/MEMORY.md\"",
+      "/usr/bin/bash -lc 'cat ../.agents/skills/nside/SKILL.md ../.agents/skills/n-side-review/SKILL.md /home/lzzz/.codex/skills/code-review/SKILL.md /home/lzzz/.codex/plugins/cache/ponytail/ponytail/4.10.0/skills/ponytail/SKILL.md'",
+      "/usr/bin/bash -lc \"cat ../AGENTS.md ../docs/index.md ../docs/dev/handbook/documentation.md ../docs/dev/validation/runtime.md ../docs/dev/handbook/tasks.md README.md ../.agents/skills/bevy-cameras/SKILL.md ../.agents/skills/bevy-testing/SKILL.md; rg -n 'Esc|disabled|capture|movement' src/bin/map_viewer*; cat Cargo.toml; rg -n 'name = \\\"bevy\\\"' Cargo.lock; rg -n 'map_viewer|Esc' ../todo/tasks\"",
+      "/usr/bin/bash -lc \"nl -ba src/bin/map_viewer/capture.rs | sed -n '1,430p'; nl -ba src/bin/map_viewer.rs | sed -n '375,472p'; cat capture/viewer-tour.json; rg --files /home/lzzz/.cargo/registry/src | rg 'bevy_camera_controller-0.19.1/.*/?free_camera|bevy_camera_controller-0.19.1/src/free_camera'; rg --files -g AGENTS.md ..\"",
+      "/usr/bin/bash -lc \"nl -ba /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_camera_controller-0.19.1/src/free_camera.rs | sed -n '35,110p;240,475p'; sed -n '365,380p' Cargo.lock; rg -n 'FreeCameraPlugin|movement|enabled' src/bin/map_viewer.rs; git status --short; rg -n 'capture|录制|运行验证' ../todo/tasks ../todo/evidence | head -35\"",
+      "/usr/bin/bash -lc \"sed -n '448,490p' /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_camera_controller-0.19.1/src/free_camera.rs; sed -n '370,378p' Cargo.lock; rg -n 'FreeCameraPlugin' src/bin/map_viewer.rs; nl -ba capture/viewer-tour.json | tail -20\""
+    ],
+    "thread_ids": [
+      "01a0dd0f-7e92-7132-b6c3-b0cacdc61a87"
+    ],
+    "observed_skills": [
+      "bevy-testing",
+      "n-side-review",
+      "nside"
+    ],
+    "final_answer": "1. **真实控制路径确实被覆盖，但本轮仅确认源码逻辑**：capture 注入按键与鼠标输入，按 `drive_input → camera_focus → run_freecamera_controller` 顺序执行，再在 `PostUpdate` 采样；没有直接设置相机位置来制造通过结果。[camera_focus](/home/lzzz/MyProjects/N-SIDE/game/src/bin/map_viewer.rs:439) 在 Esc 时禁用控制器、清零速度并取消旋转曲线，已安装的 Bevy 0.19.1 控制器在禁用时提前返回。因此测试针对真实系统的输入阻断路径，但离屏模式不能验证桌面焦点、实际鼠标释放或操作手感\n\n2. **断言能证明区间位置稳定，不能完整证明 Esc 当帧及转向都被阻断**：[脚本](/home/lzzz/MyProjects/N-SIDE/game/capture/viewer-tour.json:16) 在第 240 帧注入 Esc+W，随后持续 W 和鼠标增量；[断言实现](/home/lzzz/MyProjects/N-SIDE/game/src/bin/map_viewer/capture.rs:191) 检查 240–299 帧所有采样相对第 240 帧的最大位移 ≤ 0.0001，并仅检查第 299 帧 `enabled=false`，能抓住中途移动后返回原位。但第 240 帧已是输入处理后的样本，漏掉 239→240 的瞬时位移；没有旋转稳定断言，也没有逐帧禁用断言。最小补强是从 239 帧比较位置、检查禁用区间逐帧状态及最大转角。本轮未运行游戏或测试，运行结果为 **NOT RUN**；未写文件或推进路线图",
+    "verdict": "PASS"
+  },
+  {
+    "case": "negative-encyclopedia",
+    "cwd": "/home/lzzz/MyProjects/N-SIDE",
+    "sandbox": "read-only",
+    "command": [
+      "codex",
+      "exec",
+      "--ephemeral",
+      "--sandbox",
+      "read-only",
+      "--json",
+      "-C",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--output-last-message",
+      "/home/lzzz/MyProjects/N-SIDE/output/skills/r5-host/negative-encyclopedia.answer.md",
+      "-"
+    ],
+    "prompt": "仅润色下面这句百科正文，保留含义，只返回一句，不需要查项目文件或执行制作：兄妹与粒粒一起经营小店，帮助街坊处理异常。",
+    "exit": 0,
+    "elapsed_seconds": 35.4,
+    "events_sha256": "87702276bd26bd688ac7348f36cffe0d765c2e66e079427ab25d36315c3aac44",
+    "turn_completed": true,
+    "commands": [],
+    "thread_ids": [
+      "01a0dd0f-7e8f-76e1-a1ed-c55c5f978851"
+    ],
+    "observed_skills": [],
+    "final_answer": "兄妹俩与粒粒一同经营小店，帮街坊处理异常事件",
+    "verdict": "PASS"
+  },
+  {
+    "case": "asset-work",
+    "cwd": "/home/lzzz/MyProjects/N-SIDE",
+    "sandbox": "workspace-write",
+    "command": [
+      "codex",
+      "exec",
+      "--ephemeral",
+      "--sandbox",
+      "workspace-write",
+      "--json",
+      "-C",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--output-last-message",
+      "/home/lzzz/MyProjects/N-SIDE/output/skills/r5-host/asset-work.answer.md",
+      "-"
+    ],
+    "prompt": "$n-side-work-loop TASK-019\n实际完成 todo/tasks/TASK-019-logo-processing-check.md 的已授权资产工具工作，使用适用资产Skill。只可改该任务、todo/README.md、todo/evidence/TASK-019/r5/、output/skills/r5-host/asset/及 source-assets/branding/README.md，勿提交或推送。先看现有PNG或源图，再运行asset_report及三底色预览，记录输入hash、命令、真实结果；有看图工具就查看，否则将视觉留给根会话。长期处理约定写回品牌说明，不把本次结果全文塞进长期文档，不更改图片/许可状态/游戏。保持任务active交根会话复核，无需额外确认，不启动其他任务。",
+    "exit": 0,
+    "elapsed_seconds": 153.5,
+    "events_sha256": "3b81aa504d4cb25d6705b24512a7628a0103e383c1f2bb39cea567f229059b7d",
+    "turn_completed": true,
+    "commands": [
+      "/usr/bin/bash -lc 'cat .agents/skills/n-side-work-loop/SKILL.md .agents/skills/nside/SKILL.md .agents/skills/create-game-assets/SKILL.md docs/index.md docs/dev/handbook/documentation.md docs/dev/handbook/codex.md docs/dev/validation/runtime.md todo/tasks/TASK-019-logo-processing-check.md source-assets/branding/README.md tools/README.md'",
+      "/usr/bin/bash -lc \"rg -n 'asset|Logo|TASK-019' /home/lzzz/.codex/memories/MEMORY.md\"",
+      "/usr/bin/bash -lc \"git status --short; git branch --show-current; git rev-parse HEAD; cat docs/dev/production/asset-pipeline.md docs/dev/production/art-direction.md docs/dev/decisions/asset-tools.md .agents/skills/n-side-review/SKILL.md; cat tools/asset_preview.py; rg -n 'logo|Logo' game/src; ls todo/evidence/TASK-019/r5 output/skills/r5-host/asset; cat .agents/skills/create-game-assets/scripts/asset_report.py\"",
+      "/usr/bin/bash -lc 'cat game/src/main.rs todo/tasks/TASK-010-*.md docs/dev/handbook/tasks.md; rg --files todo/evidence/TASK-010; cat source-assets/branding/n-logo.svg'",
+      "/usr/bin/bash -lc \"mkdir -p todo/evidence/TASK-019/r5 output/skills/r5-host/asset\npython3 -B - <<'PY'\nimport hashlib,json,subprocess,sys\nfrom pathlib import Path\nimport PIL\nout=Path('todo/evidence/TASK-019/r5')\npaths=['source-assets/branding/n-logo.svg','game/assets/branding/n-logo.png','game/src/main.rs','.agents/skills/create-game-assets/scripts/asset_report.py','tools/asset_preview.py']\nhashes={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in paths}\n(out/'inputs.json').write_text(json.dumps({'revision':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'python':sys.version,'pillow':PIL.__version__,'sha256':hashes},indent=2)+'\\\\n')\ncommands=[['python3','-B','.agents/skills/create-game-assets/scripts/asset_report.py','game/assets/branding/n-logo.png','--expect-size','512x512','--require-alpha','--json'],['python3','-B','tools/asset_preview.py','game/assets/branding/n-logo.png','--display-size','205x205','--filter','lanczos','--out','output/skills/r5-host/asset/logo-contrast.png']]\nresults=[]\nfor cmd,name in zip(commands,['asset-report','logo-contrast']):\n r=subprocess.run(cmd,text=True,capture_output=True)\n for base in [out,Path('output/skills/r5-host/asset')]:\n  (base/(name+'.json')).write_text(r.stdout)\n results.append({'argv':cmd,'exit_code':r.returncode,'stderr':r.stderr,'stdout':name+'.json'})\n print(name,r.returncode,r.stdout)\n(out/'commands.json').write_text(json.dumps(results,indent=2)+'\\\\n')\nassert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in hashes.items())\nPY\"",
+      "/usr/bin/bash -lc 'cat todo/evidence/TASK-010/r4/result.md; cat package.json'",
+      "/usr/bin/bash -lc \"python3 -B - <<'PY'\nfrom pathlib import Path\np=Path('source-assets/branding/README.md')\np.write_text(p.read_text()+'''\\\\n## 检查与预览\\\\n\\\\n处理前先查看现有运行 PNG 或源图，保留 SVG 主文件与 PNG 派生关系；记录输入 SHA-256，结束后复核原件未变，命令与本轮结果进入对应任务证据\\\\n\\\\n使用 \"'`asset_report.py --expect-size 512x512 --require-alpha --json` 检查运行 PNG；`--require-alpha` 仅要求存在 alpha 通道。Logo 保留源 SVG 中的不透明黑底，不使用 `--require-cutout`，也不因通道存在判断图片透明'\"\\\\n\\\\n使用 \"'`tools/asset_preview.py` 以 Lanczos 生成白、深灰、洋红三底色预览；显示尺寸按实际使用处缩放计算，当前启动画面 `512 × 0.4` 取近似 `205×205`，实现变化后重新核对。预览进入 `output/`，逐图观察轮廓、细线、裁切和边缘，将机器结果与视觉自查分开记录；实际窗口表现按[运行验证](../../docs/dev/validation/runtime.md)另验'\"\\\\n''')\np=Path('todo/tasks/TASK-019-logo-processing-check.md')\ns=p.read_text().replace('通过新的 n-side-work-loop 入口执行本任务，输出本次证据；将可复用的处理约定回写既有品牌资产说明，由根会话核对后完成任务','R5 资产工具执行与看图自查已完成：已查看原 PNG，运行尺寸与 alpha 报告、205×205 三底色预览并核对输入 hash；长期处理约定已回写品牌说明。按本次授权保持 active，下一步由根会话复核证据与状态，不自动完成任务')\ns+='\\\\n本轮记录：[R5 结果与视觉自查](../evidence/TASK-019/r5/result.md)，输入版本与 SHA-256 见同目录 inputs.json，实际命令与退出码见 commands.json\\\\n'\np.write_text(s)\nPath('todo/evidence/TASK-019/r5/result.md').write_text('''# TASK-019 R5 资产工具实测\\\\n\\\\n## 范围与输入\\\\n\\\\n2026-09-26 使用 n-side-work-loop、nside、create-game-assets 执行，按 n-side-review 核对证据边界；任务保持 active，交根会话复核。前置 TASK-010 已完成，读取其 r4/result.md；未启动其他任务\\\\n\\\\n输入完整提交、Python/Pillow 版本、SVG、PNG、显示尺寸实现和两个工具 SHA-256 见 [inputs.json](inputs.json)。执行前工作区已有 game/README.md、todo/README.md、TASK-011 及其证据变更，以及未跟踪的 TASK-019 卡片，保留这些工作\\\\n\\\\n## 工具结果\\\\n\\\\n实际 argv、退出码与 stderr 见 [commands.json](commands.json)，原始 stdout 见 [asset-report.json](asset-report.json) 和 [logo-contrast.json](logo-contrast.json)\\\\n\\\\n- PASS：asset_report 退出 0，PNG 为 512×512 RGBA、50938 bytes、256 色，alpha min=max=255、透明像素 0，尺寸与通道检查无 problems\\\\n- PASS：预览工具退出 0，Lanczos 保持比例缩至 205×205，白色 #ffffff、深灰 #151515、洋红 #ff00ff 三底色，输出 output/skills/r5-host/asset/logo-contrast.png（615×229，含 24 像素标签区）\\\\n- 显示尺寸依据 game/src/main.rs 的 Sprite 缩放 0.4：512×0.4=204.8，预览取整 205；这是近似显示样本\\\\n- 未使用 require-cutout：SVG 自带黑色背景矩形，当前 Logo 全不透明符合既有约定；require-alpha 成功不代表存在透明区域\\\\n\\\\n## 视觉自查 self-audit\\\\n\\\\n使用 view_image 先查看 game/assets/branding/n-logo.png，再运行工具并查看 output/skills/r5-host/asset/logo-contrast.png\\\\n\\\\n原图为黑底白色立体 N 与两个冒号块，留白完整。205×205 三个预览中的主轮廓与冒号可辨，未见裁切或缺块；细斜线缩小后略有灰阶抗锯齿，仍可见。三块图形一致且背景都为黑色，与全不透明 alpha 一致，三种合成底色被原图覆盖，不能据此评价透明抠图边缘\\\\n\\\\nPASS：本轮源图与预览已实际查看，未发现上述范围内明显异常。工具原始 JSON 中 visual_review 的 NOT RUN 是自动生成占位，保留原文，本段另记真实看图结果\\\\n\\\\nNOT RUN：真实游戏窗口、GPU 采样与 DPI 下显示、作者审美、素材许可验收；本轮只执行授权资产工具工作，不改变图片、许可状态或游戏\\\\n\\\\n## 交接\\\\n\\\\n长期约定仅写回 source-assets/branding/README.md 的检查与预览段，本轮日志留在本目录。根会话下一步核对机器报告、预览和输入 hash 后决定任务状态\\\\n''')\nPY\nbun run tasks:sync\nbun run tasks:check > todo/evidence/TASK-019/r5/tasks-check.log 2>&1\nbun run check:docs > todo/evidence/TASK-019/r5/docs-check.log 2>&1\"",
+      "/usr/bin/bash -lc \"cat todo/evidence/TASK-019/r5/tasks-check.log todo/evidence/TASK-019/r5/docs-check.log\npython3 -B - <<'PY'\nimport hashlib,json\nfrom pathlib import Path\nroot=Path('todo/evidence/TASK-019/r5')\ndata=json.loads((root/'inputs.json').read_text())\nchecks={p:{'before':h,'after':hashlib.sha256(Path(p).read_bytes()).hexdigest()} for p,h in data['sha256'].items()}\nassert all(x['before']==x['after'] for x in checks.values())\npreview=Path('output/skills/r5-host/asset/logo-contrast.png')\n(root/'integrity.json').write_text(json.dumps({'unchanged':True,'inputs':checks,'preview_sha256':hashlib.sha256(preview.read_bytes()).hexdigest()},indent=2)+'\\\\n')\np=root/'result.md'\np.write_text(p.read_text()+'''\\\\n## 收尾检查\\\\n\\\\n- PASS：输入文件执行前后 SHA-256 一致，含 SVG 与 PNG，详见 [integrity.json](integrity.json)\\\\n- PASS：\"'`bun run tasks:sync` 退出 0，14 张卡片，看板已同步'\"\\\\n- PASS：\"'`bun run tasks:check` 退出 0，见 [tasks-check.log](tasks-check.log)'\"\\\\n- PASS：\"'`bun run check:docs` 退出 0，见 [docs-check.log](docs-check.log)'\"\\\\n- NOT RUN：Wiki 构建，本轮未更改 Wiki 页面，且构建输出超出用户指定写入范围\\\\n- 未提交或推送；未修改图片、许可状态或游戏，未将任务设为 done\\\\n''')\nPY\n git diff --stat\n git diff -- source-assets/branding/README.md todo/README.md\nbun run tasks:check\nbun run check:docs\""
+    ],
+    "thread_ids": [
+      "01a0dd0f-7ed7-7803-914e-e8e0aa89b357"
+    ],
+    "observed_skills": [
+      "create-game-assets",
+      "n-side-review",
+      "n-side-work-loop",
+      "nside"
+    ],
+    "final_answer": "已完成授权资产工具工作，TASK-019 保持 **active**，交根会话复核\n\n- 已查看原 PNG 和 205×205 三底色预览\n- asset_report、预览生成、任务与文档检查均 PASS\n- SVG／PNG 输入 hash 未变；未改图片、许可状态或游戏\n- 长期约定已回写品牌说明，未提交或推送\n- 真实游戏窗口与作者审美验收 NOT RUN\n\n[完整证据与结果](/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-019/r5/result.md) · [预览图](/home/lzzz/MyProjects/N-SIDE/output/skills/r5-host/asset/logo-contrast.png)",
+    "verdict": "PASS"
+  },
+  {
+    "case": "explicit-root-recheck",
+    "prompt": "$n-side-guide\n只读核对当前任务管线、已完成的技术迁移与下一项游戏任务，用真实任务卡简短回答。不要开始或更新任务，不运行游戏，不改文件。",
+    "exit": 0,
+    "turn_completed": true,
+    "verdict": "PASS",
+    "events_sha256": "b7c72967cb4f46bd8adffe9d3aa98a8d259ee10e48ea4c1caa31ed450d0f96c6",
+    "thread_ids": [
+      "01a0dd12-8443-7f21-8329-157dd0bcb317"
+    ],
+    "final_answer": "只读核对完成，`tasks:list` 正常，`tasks:check` **PASS：14 张任务卡**\n\n- **当前管线**：`todo/tasks/` 是唯一任务源，看板自动生成；5 项 done、2 项 active、1 项 review、6 项 backlog，无 ready 或 blocked\n- **已完成技术迁移**：TASK-006～010 的 R0–R4 已验收，涵盖 Skills 门禁与来源、迁移映射、双站构建、全量文档与消费者迁移、[单一任务源切换](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-010-task-pipeline.md)；不计作游戏能力完成\n- **尚未收尾**：[TASK-011](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-011-handoff-regression.md) 的 R5 回归仍 active，尚无最终验收记录；[TASK-019](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-019-logo-processing-check.md) 已有 Logo 工具与看图证据，仍 active、待复核\n- **下一项游戏工作**：先续接 G0 的 [TASK-012《最后的玩具》机制走查](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-012-last-toy-mechanism-review.md)，当前 review，需要作者判断固定夹、供能、运输恢复与现实接应确认的因果和可理解性；随后可推进 [TASK-013 最小动作与范围](/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-013-demo-action-scope.md)，再进入移动与镜头实验\n\n本轮未开始或更新任务，未运行游戏，未改文件",
+    "checked_links": [
+      "/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-010-task-pipeline.md",
+      "/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-011-handoff-regression.md",
+      "/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-019-logo-processing-check.md",
+      "/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-012-last-toy-mechanism-review.md",
+      "/home/lzzz/MyProjects/N-SIDE/todo/tasks/TASK-013-demo-action-scope.md"
+    ]
+  }
+]

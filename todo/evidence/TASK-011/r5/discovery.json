@@ -1,0 +1,331 @@
+{
+  "status": "PASS",
+  "codex": "nside-skill-discovery/0.156.1 (CachyOS Linux Rolling Release; x86_64) dumb (nside-skill-discovery; 1)",
+  "scope": "Host discovery only; no AI turn or implicit routing claim",
+  "entries": [
+    {
+      "cwd": "/home/lzzz/MyProjects/N-SIDE",
+      "skills": [
+        {
+          "name": "audio-design",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/audio-design/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-animation",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-animation/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-assets",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-assets/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-cameras",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-cameras/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-core-concepts",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-core-concepts/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-custom-assets",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-custom-assets/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-diagnostics-profiling",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-diagnostics-profiling/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ecs-components",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ecs-components/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ecs-queries",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ecs-queries/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ecs-systems",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ecs-systems/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-rendering",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-rendering/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-save-load",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-save-load/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-testing",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-testing/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ui",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ui/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "create-case",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/create-case/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "create-content",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/create-content/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "create-game-assets",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/create-game-assets/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "dialogue-systems",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/dialogue-systems/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "game-ai",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/game-ai/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "game-design-reality-check",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/game-design-reality-check/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "game-ui-ux",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/game-ui-ux/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "gameplay-mechanism-designer",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/gameplay-mechanism-designer/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "level-design",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/level-design/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "n-side-guide",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/n-side-guide/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "n-side-review",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/n-side-review/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "n-side-work-loop",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/n-side-work-loop/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "nside",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/nside/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "nside-blender-pipeline",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/nside-blender-pipeline/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "nside-reference-analysis",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/nside-reference-analysis/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "review-narrative",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/review-narrative/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "stress-testing-game-concepts",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/stress-testing-game-concepts/SKILL.md",
+          "enabled": true
+        }
+      ],
+      "missing": [],
+      "errors": []
+    },
+    {
+      "cwd": "/home/lzzz/MyProjects/N-SIDE/game",
+      "skills": [
+        {
+          "name": "audio-design",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/audio-design/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-animation",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-animation/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-assets",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-assets/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-cameras",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-cameras/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-core-concepts",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-core-concepts/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-custom-assets",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-custom-assets/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-diagnostics-profiling",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-diagnostics-profiling/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ecs-components",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ecs-components/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ecs-queries",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ecs-queries/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ecs-systems",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ecs-systems/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-rendering",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-rendering/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-save-load",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-save-load/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-testing",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-testing/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "bevy-ui",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/bevy-ui/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "create-case",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/create-case/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "create-content",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/create-content/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "create-game-assets",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/create-game-assets/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "dialogue-systems",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/dialogue-systems/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "game-ai",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/game-ai/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "game-design-reality-check",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/game-design-reality-check/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "game-ui-ux",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/game-ui-ux/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "gameplay-mechanism-designer",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/gameplay-mechanism-designer/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "level-design",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/level-design/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "n-side-guide",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/n-side-guide/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "n-side-review",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/n-side-review/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "n-side-work-loop",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/n-side-work-loop/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "nside",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/nside/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "nside-blender-pipeline",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/nside-blender-pipeline/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "nside-reference-analysis",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/nside-reference-analysis/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "review-narrative",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/review-narrative/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "stress-testing-game-concepts",
+          "path": "/home/lzzz/MyProjects/N-SIDE/.agents/skills/stress-testing-game-concepts/SKILL.md",
+          "enabled": true
+        }
+      ],
+      "missing": [],
+      "errors": []
+    }
+  ]
+}

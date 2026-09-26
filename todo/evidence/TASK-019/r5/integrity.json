@@ -1,0 +1,26 @@
+{
+  "unchanged": true,
+  "inputs": {
+    "source-assets/branding/n-logo.svg": {
+      "before": "d26e0564c8d4748baa6f50e49cbc5e5df8d047e508e55b004801ae8a26d8fa2e",
+      "after": "d26e0564c8d4748baa6f50e49cbc5e5df8d047e508e55b004801ae8a26d8fa2e"
+    },
+    "game/assets/branding/n-logo.png": {
+      "before": "d1325c44a05477fc1f3121048491e61526fbd26bb2022b7a4cf25edbf252e101",
+      "after": "d1325c44a05477fc1f3121048491e61526fbd26bb2022b7a4cf25edbf252e101"
+    },
+    "game/src/main.rs": {
+      "before": "ee4ff7403610379b9e2b84ed2a4a7afeff51f535807306f83567daf42425c1a0",
+      "after": "ee4ff7403610379b9e2b84ed2a4a7afeff51f535807306f83567daf42425c1a0"
+    },
+    ".agents/skills/create-game-assets/scripts/asset_report.py": {
+      "before": "aebb936ecd9b384f7f01fbf26c90690b912ee6e05ce7e954050f103fd4dccf2c",
+      "after": "aebb936ecd9b384f7f01fbf26c90690b912ee6e05ce7e954050f103fd4dccf2c"
+    },
+    "tools/asset_preview.py": {
+      "before": "ca67fcb92e390f7178de0f480a2c86b9208e23b7905c49e4dfaa46821508b3c6",
+      "after": "ca67fcb92e390f7178de0f480a2c86b9208e23b7905c49e4dfaa46821508b3c6"
+    }
+  },
+  "preview_sha256": "7cf88436b636e3ee032cd05e18785ff3031be3d3432b79a25907e8ffa75be9ab"
+}

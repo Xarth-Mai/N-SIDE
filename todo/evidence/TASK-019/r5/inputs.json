@@ -1,0 +1,12 @@
+{
+  "revision": "fcaad983afa3702db7b45749c09483bc99a25f68",
+  "python": "3.14.7 (main, Aug 14 2026, 06:38:32) [GCC 16.2.1 20260810]",
+  "pillow": "12.3.0",
+  "sha256": {
+    "source-assets/branding/n-logo.svg": "d26e0564c8d4748baa6f50e49cbc5e5df8d047e508e55b004801ae8a26d8fa2e",
+    "game/assets/branding/n-logo.png": "d1325c44a05477fc1f3121048491e61526fbd26bb2022b7a4cf25edbf252e101",
+    "game/src/main.rs": "ee4ff7403610379b9e2b84ed2a4a7afeff51f535807306f83567daf42425c1a0",
+    ".agents/skills/create-game-assets/scripts/asset_report.py": "aebb936ecd9b384f7f01fbf26c90690b912ee6e05ce7e954050f103fd4dccf2c",
+    "tools/asset_preview.py": "ca67fcb92e390f7178de0f480a2c86b9208e23b7905c49e4dfaa46821508b3c6"
+  }
+}

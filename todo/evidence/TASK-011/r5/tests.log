@@ -1,0 +1,99 @@
+$ python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests
+.......................................................................................................
+----------------------------------------------------------------------
+Ran 103 tests in 1.612s
+
+OK
+bun test v1.4.2 (744846f84)
+
+tools/tests/wiki.test.mjs:
+(pass) sidebar follows audience and preserves story reading order [2.50ms]
+(pass) data export is fail-closed and dev-only, ignoring hidden files and symlinks [1.36ms]
+(pass) publication requires a known profile and an actual entry page [0.43ms]
+(pass) isolated player tree excludes developer pages/data/public and uses redirects [110.99ms]
+(pass) player imports and public data cannot bypass the publication boundary [2.60ms]
+(pass) map projection retains actual drawing/interaction and drops author fields [37.11ms]
+(pass) artifact check detects injected developer raw data and search content [48.66ms]
+(pass) inline template placeholders remain literal Vue text [131.24ms]
+(pass) Vite module loading rejects source files outside the isolated tree [40.55ms]
+
+tools/tests/district-map.test.mjs:
+(pass) map places and roads have valid shared references [0.83ms]
+(pass) terrain colors follow ground elevation [0.08ms]
+(pass) overview terrain retains source controls and excludes elevated connections [87.45ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.12ms]
+(pass) shopping stays local and public hillside routes remain connected [1.06ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.26ms]
+(pass) scene keeps platforms below volumes and geometry is finite [27.48ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [6.22ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [3.86ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [0.88ms]
+(pass) tree positions stay outside building footprints [4.85ms]
+(pass) all streets clear building volumes at their actual widths and elevations [342.39ms]
+(pass) district ground-road crossings share a junction and its elevation [98.04ms]
+(pass) city framework records every building and reaches its same-level facade entrances [8.01ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.54ms]
+(pass) public streets stay outside same-level resident and service courts [3.27ms]
+(pass) building volumes share boundaries without occupying the same space [36.71ms]
+(pass) detailed places connect street access to separate public and service entrances [10.54ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [0.98ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [1.59ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.26ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [0.99ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [24.50ms]
+(pass) public, residents, students and service users have separate access rights [2.84ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.36ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.72ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.78ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.48ms]
+(pass) shared stairs and separate apartments connect through shared circulation [0.89ms]
+
+tools/tests/validate-skills.test.mjs:
+(pass) real Bun YAML, complete coverage and anchors pass [2.20ms]
+(pass) missing manifest [1.22ms]
+(pass) empty object [0.28ms]
+(pass) null manifest [0.25ms]
+(pass) bad JSON [0.24ms]
+(pass) unknown version [0.28ms]
+(pass) bad adoption schema [0.25ms]
+(pass) missing adoption target [0.51ms]
+(pass) empty sources [0.24ms]
+(pass) empty imports [0.25ms]
+(pass) empty policy [0.24ms]
+(pass) null skill [0.44ms]
+(pass) bad files type [0.49ms]
+(pass) null file record [0.45ms]
+(pass) bad source [0.42ms]
+(pass) bad fields [0.23ms]
+(pass) missing project entrypoint [0.43ms]
+(pass) empty skills directory [0.37ms]
+(pass) duplicate source [0.45ms]
+(pass) duplicate path [0.44ms]
+(pass) missing reference [0.38ms]
+(pass) altered source [0.38ms]
+(pass) unregistered script [0.47ms]
+(pass) missing command path [0.48ms]
+(pass) bad anchor [0.39ms]
+(pass) bad YAML metadata [0.47ms]
+(pass) bad metadata type [0.50ms]
+(pass) missing icon [0.49ms]
+(pass) missing license [0.39ms]
+(pass) optional links cannot exempt missing files [0.41ms]
+(pass) invalid nested fields [0.41ms]
+(pass) unavailable command [0.69ms]
+(pass) inactive upstream reference links are checked [0.49ms]
+(pass) local hashes alone explicitly do not prove upstream equality [0.40ms]
+(pass) Wiki anchors match the installed VitePress renderer while upstream keeps GitHub slugs [7.47ms]
+
+tools/tests/tasks.test.mjs:
+(pass) real YAML supports a completed negative experiment and exact evidence anchors [1.47ms]
+(pass) schema, paths and state guardrails reject corrupt cards [4.30ms]
+(pass) dependencies are unique, real, acyclic, and cancellation does not satisfy a result [1.34ms]
+(pass) reopening removes current acceptance while old evidence stays in the body [0.38ms]
+(pass) check is read-only, sync deterministic, list read-only and stale output fails [0.88ms]
+(pass) empty task source or missing roadmap cannot pass [0.30ms]
+
+ 79 pass
+ 0 fail
+ 133 expect() calls
+Ran 79 tests across 4 files. [1131.00ms]

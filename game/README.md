@@ -17,7 +17,7 @@ cargo run --manifest-path game/Cargo.toml --locked --features viewer --bin map_v
 
 地图保持唯一空间主数据，建筑容量和室内规划不生成实体。建筑外墙、天井、屋面、入口、道路、台阶、水面、平台及其支撑保留源对象关联；材质、原创招牌和公共模型的来源见[街区外观](../source-assets/district-scene/README.md)与[环境素材](../source-assets/environment-kit/README.md)
 
-地形采用地面道路节点与地形样点的 Delaunay 插值，桥面、屋顶、电梯高层和室内节点排除在自然地面之外。地形与道路、平台、建筑、水域通过多边形裁切接合；挡墙、桥厚、支柱、立面构件属于明确的派生表现，当前参数和验收记录见[Viewer 任务](../todo/archive/map-viewer.md)
+地形采用地面道路节点与地形样点的 Delaunay 插值，桥面、屋顶、电梯高层和室内节点排除在自然地面之外。地形与道路、平台、建筑、水域通过多边形裁切接合；挡墙、桥厚、支柱、立面构件属于明确的派生表现，当前参数和验收记录见[Viewer 任务](../todo/archive/legacy/map-viewer.md)
 
 ## 诊断与检查
 
@@ -37,7 +37,7 @@ cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_v
 cargo run --release --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --verify /tmp/n-side-viewer-check
 ```
 
-每个镜头预热 3 秒并测量约 5 秒，默认窗口为 2560 × 1440、Vulkan、VSync。自动退出码检查截图分辨率、每镜头至少 120 个样本与 P95 ≤ 16.67 ms。日志的 `cpu_frame_interval` 来自 `Time<Real>`，是应用帧间隔，包含 CPU、GPU 等待和呈现节奏，不能当作独立 GPU 渲染耗时。固定镜头采样与持续飞行、输入和完整视觉验收分别记录，实际观察结果见[白天样板](../todo/archive/daylight-visual.md)
+每个镜头预热 3 秒并测量约 5 秒，默认窗口为 2560 × 1440、Vulkan、VSync。自动退出码检查截图分辨率、每镜头至少 120 个样本与 P95 ≤ 16.67 ms。日志的 `cpu_frame_interval` 来自 `Time<Real>`，是应用帧间隔，包含 CPU、GPU 等待和呈现节奏，不能当作独立 GPU 渲染耗时。固定镜头采样与持续飞行、输入和完整视觉验收分别记录，实际观察结果见[白天样板](../todo/archive/legacy/daylight-visual.md)
 
 没有活动桌面时，可使用同一 Vulkan 渲染管线向 2560 × 1440 纹理离屏渲染，检查资产、画面及渲染吞吐；该结果不包含桌面合成、VSync 和人工输入，单独记录
 
