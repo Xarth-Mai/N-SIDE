@@ -36,6 +36,7 @@ export default defineConfig({
       { text: '世界', link: '/world/null-city' },
       { text: '人物', link: '/characters/family' },
       { text: '地点', link: '/locations/n-district' },
+      { text: '故事', link: '/story/' },
       { text: '玩法', link: '/gameplay/controls' },
       { text: '开发', link: '/conventions' },
     ],

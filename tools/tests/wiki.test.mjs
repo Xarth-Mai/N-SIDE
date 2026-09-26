@@ -44,11 +44,11 @@ function requestProjectAsset(root, url, method = 'GET') {
   return result
 }
 
-test('sidebar separates player and developer worlds', t => {
+test('sidebar separates encyclopedia and production documents', t => {
   const { root, put } = fixture(t)
   put('conventions.md', '# 项目约定\n')
   const sidebar = buildSidebar(root)
-  assert.deepEqual(sidebar.map(item => item.text), ['Overview', '游戏指南', '开发'])
+  assert.deepEqual(sidebar.map(item => item.text), ['Overview', '游戏百科', '开发'])
   assert.deepEqual(links(sidebar), ['/', '/conventions'])
 })
 
@@ -75,6 +75,19 @@ test('section index and object README retain distinct routes', t => {
   put('quests/QST-001/development.md', '# 开发稿\n')
   const routes = links(buildSidebar(root))
   assert.deepEqual(routes, ['/', '/quests/', '/quests/QST-001/README', '/quests/QST-001/development'])
+  assert.equal(buildSidebar(root)[2].items[0].items[0].text, '委托一')
+})
+
+test('stories appear in the encyclopedia with chapter order and readable group titles', t => {
+  const { root, put } = fixture(t)
+  put('story/index.md', '# 故事\n')
+  put('story/main/index.md', '# 主线：回声之后\n')
+  put('story/main/last-toy.md', '# 第一章 · 最后的玩具\n')
+  put('story/main/prologue.md', '# 序章 · 门还开着\n')
+  const encyclopedia = buildSidebar(root)[1]
+  assert.equal(encyclopedia.text, '游戏百科')
+  assert.equal(encyclopedia.items[0].items[0].text, '主线：回声之后')
+  assert.deepEqual(links(encyclopedia.items), ['/story/', '/story/main/', '/story/main/prologue', '/story/main/last-toy'])
 })
 
 test('navigation scans knowledge categories', t => {

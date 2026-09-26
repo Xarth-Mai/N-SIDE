@@ -8,6 +8,8 @@ import DistrictMap from '../.vitepress/components/DistrictMap.vue'
 
 # N街区
 
+[十二街坊与场所故事](place-network.md)展开各处的使用者、日常活动、人物联系和事件后续
+
 ## 河边的生活街区
 
 N街区位于 [Null City](../world/null-city.md) 内部，是一片沿河低丘上的成熟生活街区。沿河道路向两侧延伸，山脚道路绕过低丘，接向其他街坊。远处的大河、桥梁与对岸是城市的一部分，近处的店面、住宅、后巷和台阶则组成每天经过的生活空间

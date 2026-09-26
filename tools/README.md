@@ -7,6 +7,7 @@ bun run check:docs
 bun run check:roadmap
 bun run check:map
 bun run check:narrative
+bun run check:story-design
 bun run check:templates
 bun run test:tools
 ```
@@ -16,6 +17,16 @@ bun run test:tools
 Python 检查器接受 `--json`。`EMPTY` 表示当前任务数据数量为零；`incomplete` 表示路径分析达到预算，`--max-states` 用于调整预算
 
 Wiki 构建与发布见 [Wiki](../docs/production/wiki.md)
+
+## 人物、故事与场所索引
+
+`bun run check:story-design` 对照地图主数据核对[故事](../docs/story/index.md)、[人物](../docs/characters/index.md)和[场所](../docs/locations/place-network.md)的目录、引用、正文路径、潜梦分工及共楼关系；`--json` 输出机器可读结果
+
+索引分别位于 `docs/characters/characters.json`、`docs/quests/quests.json`、`docs/production/place-catalog.json` 与 `docs/production/city-story-map.json`。人物 `source_file` 相对仓库根，故事 `source_file` 相对 `docs/`，角色正文与故事章节使用各自稳定 ID
+
+检查对象是设计索引，运行任务仍由 `check:narrative` 检查。索引包含可选、替代与重访关系，不要求人物／地点／任务关联穷尽双向一致；工具不能证明正文因果、手感或实际路线可玩，正文连续性另行审阅
+
+窄测：`python3 -B -m unittest discover -s tools/tests -p test_validate_story_design.py`
 
 ## Demo 进度
 

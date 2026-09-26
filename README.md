@@ -16,6 +16,8 @@
 
 [Wiki 与项目愿景](docs/index.md) · [Roadmap：至可玩 Demo](todo/demo-roadmap.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
 
+[故事百科《回声之后》](docs/story/index.md) · [61 项进度看板](todo/demo-progress.md)
+
 ## 本地 Wiki
 
 ```sh

@@ -2,9 +2,12 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { basename, join, relative, sep } from 'node:path'
 
 const readingOrder = {
+  story: ['index.md', 'main', 'daily'],
+  'story/main': ['index.md', 'prologue.md', 'last-toy.md', 'extra-applause.md', 'no-school-bell.md', 'beyond-autumn.md', 'still-together.md', 'river-did-not-reverse.md', 'bring-today-back.md', 'after-echoes.md', 'epilogue.md'],
+  'story/daily': ['index.md', 'new-pocket.md', 'different-dinners.md', 'unfinished-window.md', 'collect-after-rain.md', 'courtside-chair.md', 'ways-to-read.md', 'after-the-late-show.md', 'photograph-today.md'],
   world: ['null-city.md', 'nightmares.md', 'history.md'],
   characters: ['family.md', 'brother.md', 'sister.md', 'agent.md'],
-  locations: ['n-district.md', 'shop.md', 'stargazing-terrace.md'],
+  locations: ['n-district.md', 'shop.md', 'stargazing-terrace.md', 'place-network.md', 'places'],
   gameplay: ['controls.md', 'daily-life.md', 'levels.md', 'dream-diving.md', 'combat.md'],
   narrative: ['workflow.md', 'data.md', 'examples', 'playtest.md'],
   production: ['workflow.md', 'gameplay.md', 'district-space.md', 'district-plan.md', 'district-architecture.md', 'district-station.md', 'district-waterfront.md', 'district-places.md', 'world-research.md', 'art.md', 'audio.md', 'assets.md', 'engineering.md', 'wiki.md'],
@@ -40,7 +43,7 @@ function section(root, directory, label) {
     const file = join(directory, entry.name)
     if (file === landing) continue
     if (entry.isDirectory()) {
-      const nested = section(root, file, entry.name === 'examples' ? '示例' : entry.name)
+      const nested = section(root, file, entry.name === 'examples' ? '示例' : undefined)
       if (nested) items.push(nested)
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
       items.push(page(root, file))
@@ -53,10 +56,10 @@ function section(root, directory, label) {
   return result
 }
 
-/** Build the player-facing and developer-facing navigation groups. */
+/** Build encyclopedia and production navigation groups. */
 export function buildSidebar(root) {
   const groups = [
-    ['游戏指南', [['世界', 'world'], ['人物', 'characters'], ['地点', 'locations'], ['敌人', 'enemies'], ['玩法', 'gameplay']]],
+    ['游戏百科', [['世界', 'world'], ['人物', 'characters'], ['地点', 'locations'], ['故事', 'story'], ['敌人', 'enemies'], ['玩法', 'gameplay']]],
     ['开发', [['叙事', 'narrative'], ['任务', 'quests'], ['制作', 'production'], ['模板', 'templates']]],
   ]
   return [

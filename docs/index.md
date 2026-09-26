@@ -24,13 +24,14 @@ N:SIDE 发生在 Null City。一对年轻兄妹经营着一家全天亮灯的生
 
 体验主要由城市生活、调查、动作和叙事推动，数值养成保持轻量
 
-## 游戏指南
+## 游戏百科
 
 | 分类 | 内容 |
 | --- | --- |
 | 世界 | [Null City](world/null-city.md)、[噩梦与梦魇](world/nightmares.md)、[往事与时间线](world/history.md) |
-| 人物 | [家庭关系](characters/family.md)、[哥哥](characters/brother.md)、[妹妹](characters/sister.md)、[家庭 Agent](characters/agent.md) |
-| 地点 | [N街区](locations/n-district.md)、[小店与住家](locations/shop.md)、[摘星台](locations/stargazing-terrace.md) |
+| 人物 | [人物总览](characters/index.md)、[家庭关系](characters/family.md)、[林屿](characters/brother.md)、[林澄](characters/sister.md)、[粒粒](characters/agent.md) |
+| 地点 | [N街区](locations/n-district.md)、[小店与住家](locations/shop.md)、[摘星台](locations/stargazing-terrace.md)、[十二街坊与场所故事](locations/place-network.md) |
+| 故事 | [主线：回声之后](story/main/index.md)、[街坊生活与故事](story/daily/index.md)、[阅读入口](story/index.md) |
 | 敌人 | [敌人档案](enemies/index.md) |
 | 玩法 | [操作](gameplay/controls.md)、[日常与时间](gameplay/daily-life.md)、[探索](gameplay/levels.md)、[潜梦工作](gameplay/dream-diving.md)、[战斗](gameplay/combat.md) |
 

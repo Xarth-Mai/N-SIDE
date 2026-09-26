@@ -1,0 +1,658 @@
+{
+  "source_commit": "9a56ec7e1f541db2b5f0fe6fa74b795fdd9039f5",
+  "source_path": "source-assets/district-map/district.json",
+  "scope": "91 named places, including buildings, outdoor places, access and service nodes; not a census of all physical building volumes",
+  "blocks": {
+    "B01": "站前交通与混合商业",
+    "B02": "游戏与设备兴趣街",
+    "B03": "西侧商住街坊",
+    "B04": "食品采购与夜食街",
+    "B05": "小店生活街坊",
+    "B06": "坡地平台住宅",
+    "B07": "社区中学与放学街",
+    "B08": "东侧中层住宅",
+    "B09": "影院会客厅街坊",
+    "B10": "音乐演出街坊",
+    "B11": "滨水社交花园",
+    "B12": "山脚住宅与登高入口"
+  },
+  "places": [
+    {
+      "place_id": "01",
+      "name": "N站",
+      "block_id": "B01",
+      "building_id": "V-01",
+      "kind": "building"
+    },
+    {
+      "place_id": "02",
+      "name": "站前广场",
+      "block_id": "B01",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "03",
+      "name": "社区商店街",
+      "block_id": "B04",
+      "building_id": null,
+      "kind": "access"
+    },
+    {
+      "place_id": "04",
+      "name": "小店与住家",
+      "block_id": "B05",
+      "building_id": "V-04",
+      "kind": "building"
+    },
+    {
+      "place_id": "05",
+      "name": "树下小空地",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "06",
+      "name": "街口饭馆",
+      "block_id": "B01",
+      "building_id": "V-06",
+      "kind": "building"
+    },
+    {
+      "place_id": "07",
+      "name": "烘焙店",
+      "block_id": "B04",
+      "building_id": "V-07",
+      "kind": "building"
+    },
+    {
+      "place_id": "08",
+      "name": "生鲜小超市",
+      "block_id": "B04",
+      "building_id": "V-08",
+      "kind": "building"
+    },
+    {
+      "place_id": "09",
+      "name": "自助洗衣店",
+      "block_id": "B05",
+      "building_id": "V-09",
+      "kind": "building"
+    },
+    {
+      "place_id": "10",
+      "name": "街坊共用院",
+      "block_id": "B03",
+      "building_id": null,
+      "kind": "resident-court"
+    },
+    {
+      "place_id": "11",
+      "name": "小修理铺",
+      "block_id": "B03",
+      "building_id": "V-11",
+      "kind": "building"
+    },
+    {
+      "place_id": "12",
+      "name": "临街公寓",
+      "block_id": "B03",
+      "building_id": "V-12",
+      "kind": "residential"
+    },
+    {
+      "place_id": "13",
+      "name": "坡上住宅",
+      "block_id": "B06",
+      "building_id": "V-13",
+      "kind": "residential"
+    },
+    {
+      "place_id": "14",
+      "name": "转角观河点",
+      "block_id": "B06",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "15",
+      "name": "小型影院与城市会客厅",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "building"
+    },
+    {
+      "place_id": "16",
+      "name": "社区诊所",
+      "block_id": "B08",
+      "building_id": "V-16",
+      "kind": "building"
+    },
+    {
+      "place_id": "17",
+      "name": "城市花园与活动草坪",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "18",
+      "name": "东侧住宅院",
+      "block_id": "B08",
+      "building_id": "V-18",
+      "kind": "residential"
+    },
+    {
+      "place_id": "19",
+      "name": "社区中学",
+      "block_id": "B07",
+      "building_id": "V-19",
+      "kind": "building"
+    },
+    {
+      "place_id": "20",
+      "name": "山脚休息台",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "21",
+      "name": "林间缓坡",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "access"
+    },
+    {
+      "place_id": "22",
+      "name": "小神龛",
+      "block_id": "B12",
+      "building_id": "V-22",
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "23",
+      "name": "摘星台",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "24",
+      "name": "河岸安静露台",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "25",
+      "name": "河岸小广场",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "26",
+      "name": "渡口入口与候船处",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "27",
+      "name": "河岸小摊",
+      "block_id": "B11",
+      "building_id": "V-27",
+      "kind": "building"
+    },
+    {
+      "place_id": "28",
+      "name": "小店货运侧院",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "service"
+    },
+    {
+      "place_id": "29",
+      "name": "店侧台阶",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "access"
+    },
+    {
+      "place_id": "30",
+      "name": "站前咖啡铺",
+      "block_id": "B01",
+      "building_id": "V-30",
+      "kind": "building"
+    },
+    {
+      "place_id": "31",
+      "name": "旅行用品与寄存店",
+      "block_id": "B01",
+      "building_id": "V-31",
+      "kind": "building"
+    },
+    {
+      "place_id": "32",
+      "name": "城市交通服务厅",
+      "block_id": "B01",
+      "building_id": "V-32",
+      "kind": "building"
+    },
+    {
+      "place_id": "33",
+      "name": "站前午间食堂",
+      "block_id": "B01",
+      "building_id": "V-33",
+      "kind": "building"
+    },
+    {
+      "place_id": "34",
+      "name": "站前书店",
+      "block_id": "B01",
+      "building_id": "V-34",
+      "kind": "building"
+    },
+    {
+      "place_id": "35",
+      "name": "音游店",
+      "block_id": "B02",
+      "building_id": "V-35",
+      "kind": "building"
+    },
+    {
+      "place_id": "36",
+      "name": "模型店",
+      "block_id": "B02",
+      "building_id": "V-36",
+      "kind": "building"
+    },
+    {
+      "place_id": "37",
+      "name": "桌游卡牌店",
+      "block_id": "B02",
+      "building_id": "V-37",
+      "kind": "building"
+    },
+    {
+      "place_id": "38",
+      "name": "游戏设备维修店",
+      "block_id": "B02",
+      "building_id": "V-38",
+      "kind": "building"
+    },
+    {
+      "place_id": "39",
+      "name": "独立游戏体验店",
+      "block_id": "B02",
+      "building_id": "V-39",
+      "kind": "building"
+    },
+    {
+      "place_id": "40",
+      "name": "兴趣旧物交换店",
+      "block_id": "B02",
+      "building_id": "V-40",
+      "kind": "building"
+    },
+    {
+      "place_id": "41",
+      "name": "手作材料店",
+      "block_id": "B02",
+      "building_id": "V-41",
+      "kind": "building"
+    },
+    {
+      "place_id": "42",
+      "name": "兴趣街会合庭",
+      "block_id": "B02",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "43",
+      "name": "共享木作工坊",
+      "block_id": "B03",
+      "building_id": "V-43",
+      "kind": "building"
+    },
+    {
+      "place_id": "44",
+      "name": "衣物修改店",
+      "block_id": "B03",
+      "building_id": "V-44",
+      "kind": "building"
+    },
+    {
+      "place_id": "45",
+      "name": "小型印制工作室",
+      "block_id": "B03",
+      "building_id": "V-45",
+      "kind": "building"
+    },
+    {
+      "place_id": "46",
+      "name": "旧书交换屋",
+      "block_id": "B03",
+      "building_id": "V-46",
+      "kind": "building"
+    },
+    {
+      "place_id": "47",
+      "name": "夜食转角",
+      "block_id": "B04",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "48",
+      "name": "甜品店",
+      "block_id": "B04",
+      "building_id": "V-48",
+      "kind": "building"
+    },
+    {
+      "place_id": "49",
+      "name": "家常面馆",
+      "block_id": "B04",
+      "building_id": "V-49",
+      "kind": "building"
+    },
+    {
+      "place_id": "50",
+      "name": "家常熟食店",
+      "block_id": "B04",
+      "building_id": "V-50",
+      "kind": "building"
+    },
+    {
+      "place_id": "51",
+      "name": "豆制品与早餐铺",
+      "block_id": "B04",
+      "building_id": "V-51",
+      "kind": "building"
+    },
+    {
+      "place_id": "52",
+      "name": "干货香料铺",
+      "block_id": "B04",
+      "building_id": "V-52",
+      "kind": "building"
+    },
+    {
+      "place_id": "53",
+      "name": "晚班汤饭店",
+      "block_id": "B04",
+      "building_id": "V-53",
+      "kind": "building"
+    },
+    {
+      "place_id": "54",
+      "name": "花草店",
+      "block_id": "B05",
+      "building_id": "V-54",
+      "kind": "building"
+    },
+    {
+      "place_id": "55",
+      "name": "包装修补工作室",
+      "block_id": "B05",
+      "building_id": "V-55",
+      "kind": "building"
+    },
+    {
+      "place_id": "56",
+      "name": "邻里茶桌庭",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "57",
+      "name": "照片冲印店",
+      "block_id": "B05",
+      "building_id": "V-57",
+      "kind": "building"
+    },
+    {
+      "place_id": "58",
+      "name": "坡地公共到达节点",
+      "block_id": "B06",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "59",
+      "name": "平台阅读角",
+      "block_id": "B06",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "60",
+      "name": "社区园艺温室",
+      "block_id": "B06",
+      "building_id": "V-60",
+      "kind": "building"
+    },
+    {
+      "place_id": "61",
+      "name": "坡地小食堂",
+      "block_id": "B06",
+      "building_id": "V-61",
+      "kind": "building"
+    },
+    {
+      "place_id": "62",
+      "name": "校外文具与日常用品店",
+      "block_id": "B07",
+      "building_id": "V-62",
+      "kind": "building"
+    },
+    {
+      "place_id": "63",
+      "name": "体育用品店",
+      "block_id": "B07",
+      "building_id": "V-63",
+      "kind": "building"
+    },
+    {
+      "place_id": "64",
+      "name": "社区公共球场",
+      "block_id": "B07",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "65",
+      "name": "放学饮品与外带铺",
+      "block_id": "B07",
+      "building_id": "V-65",
+      "kind": "building"
+    },
+    {
+      "place_id": "66",
+      "name": "校外等候庭",
+      "block_id": "B07",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "67",
+      "name": "居民服务中心",
+      "block_id": "B08",
+      "building_id": "V-67",
+      "kind": "building"
+    },
+    {
+      "place_id": "68",
+      "name": "住宅家常菜店",
+      "block_id": "B08",
+      "building_id": "V-68",
+      "kind": "building"
+    },
+    {
+      "place_id": "69",
+      "name": "居家用品店",
+      "block_id": "B08",
+      "building_id": "V-69",
+      "kind": "building"
+    },
+    {
+      "place_id": "70",
+      "name": "社区亲子活动室",
+      "block_id": "B08",
+      "building_id": "V-70",
+      "kind": "building"
+    },
+    {
+      "place_id": "71",
+      "name": "餐饮共享空间",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "building"
+    },
+    {
+      "place_id": "72",
+      "name": "屋顶公园",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "roof"
+    },
+    {
+      "place_id": "73",
+      "name": "影像书店",
+      "block_id": "B09",
+      "building_id": "V-73",
+      "kind": "building"
+    },
+    {
+      "place_id": "74",
+      "name": "社区摄影工作室",
+      "block_id": "B09",
+      "building_id": "V-74",
+      "kind": "building"
+    },
+    {
+      "place_id": "75",
+      "name": "共享工作室",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "building"
+    },
+    {
+      "place_id": "76",
+      "name": "街坊作品小展厅",
+      "block_id": "B09",
+      "building_id": "V-76",
+      "kind": "building"
+    },
+    {
+      "place_id": "77",
+      "name": "乐器音频店",
+      "block_id": "B10",
+      "building_id": "V-77",
+      "kind": "building"
+    },
+    {
+      "place_id": "78",
+      "name": "排练录音楼",
+      "block_id": "B10",
+      "building_id": "V-78",
+      "kind": "building"
+    },
+    {
+      "place_id": "79",
+      "name": "Live House",
+      "block_id": "B10",
+      "building_id": "V-79",
+      "kind": "building"
+    },
+    {
+      "place_id": "80",
+      "name": "唱片聆听店",
+      "block_id": "B10",
+      "building_id": "V-80",
+      "kind": "building"
+    },
+    {
+      "place_id": "81",
+      "name": "小型乐器工坊",
+      "block_id": "B10",
+      "building_id": "V-81",
+      "kind": "building"
+    },
+    {
+      "place_id": "82",
+      "name": "夜间茶食店",
+      "block_id": "B10",
+      "building_id": "V-82",
+      "kind": "building"
+    },
+    {
+      "place_id": "83",
+      "name": "演出会合广场",
+      "block_id": "B10",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "84",
+      "name": "滨水咖啡屋",
+      "block_id": "B11",
+      "building_id": "V-84",
+      "kind": "building"
+    },
+    {
+      "place_id": "85",
+      "name": "渡运旧物展屋",
+      "block_id": "B11",
+      "building_id": "V-85",
+      "kind": "building"
+    },
+    {
+      "place_id": "86",
+      "name": "河岸运动补给店",
+      "block_id": "B11",
+      "building_id": "V-86",
+      "kind": "building"
+    },
+    {
+      "place_id": "87",
+      "name": "桥畔轻食屋",
+      "block_id": "B11",
+      "building_id": "V-87",
+      "kind": "building"
+    },
+    {
+      "place_id": "88",
+      "name": "河岸共作亭",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "89",
+      "name": "山脚茶屋",
+      "block_id": "B12",
+      "building_id": "V-89",
+      "kind": "building"
+    },
+    {
+      "place_id": "90",
+      "name": "林缘自然观察庭",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "outdoor"
+    },
+    {
+      "place_id": "91",
+      "name": "登高用品租修店",
+      "block_id": "B12",
+      "building_id": "V-91",
+      "kind": "building"
+    }
+  ]
+}
