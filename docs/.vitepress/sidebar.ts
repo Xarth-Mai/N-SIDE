@@ -1,11 +1,10 @@
+import type { StoryNode } from '../../tools/story-graph.ts'
 import type { DefaultTheme } from 'vitepress'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { basename, join, relative, sep } from 'node:path'
 
 const readingOrder: Record<string, string[]> = {
   story: ['index.md', 'main', 'daily'],
-  'story/main': ['index.md', 'prologue.md', 'last-toy.md', 'extra-applause.md', 'no-school-bell.md', 'beyond-autumn.md', 'still-together.md', 'river-did-not-reverse.md', 'bring-today-back.md', 'after-echoes.md', 'epilogue.md'],
-  'story/daily': ['index.md', 'new-pocket.md', 'different-dinners.md', 'unfinished-window.md', 'collect-after-rain.md', 'courtside-chair.md', 'ways-to-read.md', 'after-the-late-show.md', 'photograph-today.md'],
   world: ['null-city.md', 'nightmares.md', 'history.md'],
   characters: ['family.md', 'brother.md', 'sister.md', 'agent.md'],
   locations: ['n-district.md', 'shop.md', 'stargazing-terrace.md', 'place-network.md', 'places'],
@@ -32,7 +31,12 @@ function page(root: string, file: string) {
 
 function section(root: string, directory: string, label?: string): DefaultTheme.SidebarItem | null {
   if (!existsSync(directory)) return null
-  const order = readingOrder[relative(root, directory).replace(/^player\/encyclopedia\//, '')] ?? []
+  const key = relative(root, directory).replace(/^player\/encyclopedia\//, '')
+  const storyData = join(root, '_data/stories.json')
+  const stories: StoryNode[] = ['story/main', 'story/daily'].includes(key) && existsSync(storyData) ? JSON.parse(readFileSync(storyData, 'utf8')) : []
+  const order = key === 'story/main' || key === 'story/daily'
+    ? ['index.md', ...stories.filter(n => n.role === (key === 'story/main' ? 'main' : 'side')).sort((a,b)=>a.order-b.order).map(n=>basename(n.url)+'.md')]
+    : readingOrder[key] ?? []
   const rank = (name: string) => order.includes(name) ? order.indexOf(name) : order.length
   const entries = readdirSync(directory, { withFileTypes: true })
     .filter(entry => !entry.name.startsWith('.'))

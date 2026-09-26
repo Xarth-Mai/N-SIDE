@@ -11,7 +11,7 @@
 | G2 完整体验与生产样板 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | G3 内容齐备的 Alpha | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | G4 真实试玩与独立 Demo 交付 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| DOCS-PIPELINE 文档、Skills 与任务管线修复 | 7 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| DOCS-PIPELINE 文档、Skills 与任务管线修复 | 7 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
 
 ## 进行中
 
@@ -24,6 +24,7 @@
 ## 受阻
 
 - [ ] [TASK-020 TypeScript 工具链与 Wiki 数据加载优化](tasks/TASK-020-typescript-toolchain.md) · `blocked` · DOCS-PIPELINE：当前 CUA 环境无可用浏览器，真实地图交互、搜索界面与画面验收尚未运行
+- [ ] [TASK-021 故事时间轴与任务关系](tasks/TASK-021-story-graph.md) · `blocked` · DOCS-PIPELINE：CUA 无可用浏览器，桌面与手机画面、真实点击与键盘验收尚未运行
 
 ## 近期可开始
 

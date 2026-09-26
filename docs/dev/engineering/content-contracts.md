@@ -90,3 +90,5 @@ bun run check:templates
 ```
 
 结构失败先修复最短失败路径及 ID 引用；实际恢复失败保留重现输入、提交点和日志，修复后重测重复执行与中断路径。观察事实与推测的呈现属于玩家可理解性检查，世界真相不因可计算而提前显示
+
+跨任务阅读位置、强制条件树、推荐与剧情关联见[故事关系规格](../design/story-graph.md)。已有 narrative 的成果直接按 beat / information / state_changes 引用；Wiki 的条件推演不读取玩家进度，也不是引擎执行器

@@ -85,3 +85,5 @@ bun tools/export-environment.ts --check
 `bun run check:skills` 检查本地清单、必需入口、双向文件覆盖、引用、metadata 与命令依赖；来源更新时另运行 `bun run check:skills:upstream` 从固定上游 Git 对象核对原件、完整目录和补丁。后者需要网络；离线或上游不可达记录 NOT RUN，不能用本地 hash 自洽代替来源证明
 
 已缓存独立 Git checkout 时可向 `tools/check_skill_upstream.py` 传入 `--checkouts` JSON（来源 ID 到 checkout 路径）；工具仍以清单中完整 commit 读取 Git 对象，不信工作区文件。Codex 发现命令 `python3 tools/probe_skills.py --output output/skills/discovery.json` 只证明发现；真实显式/隐式模型行为单独保存会话记录
+
+`bun run check:story-graph` 校验 quests catalog 的故事身份、条件树、成果引用、可进入性和可选支线边界；`check:story-design` 包含此检查。十八篇关系审查与 Wiki 页面由 catalog 自动投影，维护规则见[故事关系](../docs/dev/design/story-graph.md)

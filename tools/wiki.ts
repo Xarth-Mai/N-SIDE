@@ -1,3 +1,4 @@
+import { loadQuests, projectStories, validateStories, auditMarkdown } from './story-data.ts'
 import type { District, PlayerMap } from './district-types.ts'
 import type { WikiProfile } from './wiki-data.ts'
 export type WikiManifest = { profile: WikiProfile; pages: string[]; data: string[]; public: string[]; aliases: {old: string; to: string}[] }
@@ -8,8 +9,8 @@ import { buildScene } from './district-map.ts'
 import { assertProfile, filesIn, listWikiData, within } from './wiki-data.ts'
 
 const REPOSITORY = 'https://github.com/Xarth-Mai/N-SIDE/blob/main/'
-const SUPPORT = ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts']
-const COMPONENTS = ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue']
+const SUPPORT = ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts', 'story-graph.ts']
+const COMPONENTS = ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue', 'StoryGraph.vue', 'StoryCondition.vue']
 const IMAGE = new Set(['.svg', '.webp', '.png', '.jpg', '.jpeg'])
 const PUBLIC_ASSETS: Record<string, WikiProfile[]> = {
   'images/hero.webp': ['player', 'dev'],
@@ -44,6 +45,10 @@ export function prepareWiki(root: string, profile: string) {
   const selected = ['player', ...(profile === 'dev' ? ['dev'] : [])]
   const pages = selected.flatMap(name => filesIn(join(docs, name)).filter(file => extname(file) === '.md'))
   if (!pages.length || !existsSync(join(docs, profile, 'index.md'))) throw new Error(`${profile}: missing entry or pages`)
+  const quests = loadQuests(root)
+  const storyErrors = validateStories(root, quests)
+  if (storyErrors.length) throw new Error(storyErrors.join('\n'))
+  const stories = projectStories(root, quests)
   rmSync(source, { recursive: true, force: true })
   mkdirSync(source, { recursive: true })
   const publicFiles = new Set<string>(), pageSet = new Set(pages.map(file => resolve(file)))
@@ -82,7 +87,7 @@ export function prepareWiki(root: string, profile: string) {
     text = text.replace(/(!?\[[^\]\n]*\]\()([^\s)]+)(\))/g, (_all, prefix, url, end) => `${prefix}${link(url, file)}${end}`)
       .replace(/((?:src|href)=["'])([^"']+)(["'])/g, (_all, prefix, url, end) => `${prefix}${link(url, file)}${end}`)
       .replace(/(['"])([^'"\n]*\.vitepress\/components\/([^/'"]+))\1/g, (_all, quote, _old, name) => {
-        if (!COMPONENTS.includes(name) || (profile === 'player' && name !== 'DistrictMap.vue')) throw new Error(`Unpublished component ${name}`)
+        if (!COMPONENTS.includes(name) || (profile === 'player' && !['DistrictMap.vue', 'StoryGraph.vue', 'StoryCondition.vue'].includes(name))) throw new Error(`Unpublished component ${name}`)
         return `${quote}@wiki-components/${name}${quote}`
       })
       .replace(/(['"])[^'"\n]*source-assets\/district-map\/district.json\1/g, () => {
@@ -94,12 +99,20 @@ export function prepareWiki(root: string, profile: string) {
         return `${quote}@wiki-tools/${name}${quote}`
       })
     // Source imports are a separate publication channel from Markdown hyperlinks
-    const imports = new Set(['vue', 'vitepress', '@wiki-data/map.json', '@wiki-components/DistrictMap.vue',
+    const imports = new Set(['vue', 'vitepress', '@wiki-data/map.json', '@wiki-components/DistrictMap.vue', '@wiki-components/StoryGraph.vue',
       ...(profile === 'dev' ? ['@wiki-data/district.json', ...SUPPORT.map(n => `@wiki-tools/${n}`), ...COMPONENTS.map(n => `@wiki-components/${n}`)] : [])])
     if (/import\.meta\.glob/.test(text)) throw new Error(`${relative(root, file)}: glob imports are not publication inputs`)
     for (const match of text.matchAll(/\b(?:from\s*|import\s*(?:\(\s*)?)(['"])([^'"\n]+)\1/g)) {
       if (!imports.has(match[2])) throw new Error(`${relative(root, file)}: unpublished import ${match[2]}`)
     }
+    const story = stories.find(n => n.url === '/' + relative(docs, file).replace(/\.md$/, ''))
+    const directory = 'player/encyclopedia/story/'
+    const rel = relative(docs, file)
+    if (story || [directory+'index.md', directory+'main/index.md', directory+'daily/index.md'].includes(rel)) {
+      const attr = story ? `quest-id="${story.id}"` : rel === directory+'main/index.md' ? 'track="main"' : rel === directory+'daily/index.md' ? 'track="side"' : ''
+      text += `\n<script setup>\nimport StoryGraph from '@wiki-components/StoryGraph.vue'\n</script>\n\n<StoryGraph ${attr} />\n`
+    }
+    if (rel === 'dev/design/story-graph.md') text += '\n## 逐篇关系审查（由 catalog 生成）\n\n' + auditMarkdown(root)
     put(join(source, relative(docs, file)), text)
   }
   for (const file of listWikiData(docs, profile)) copy(file, join(source, relative(docs, file)))
@@ -109,14 +122,15 @@ export function prepareWiki(root: string, profile: string) {
   const map = playerMap(district)
   const projected = JSON.stringify(map) + '\n'
   const { scene: _scene, ...labels } = map
+  put(join(source, '_data/stories.json'), JSON.stringify(stories) + '\n')
   put(join(source, '_data/map.json'), JSON.stringify(labels) + '\n')
   put(join(source, 'public/project-assets/district-map/map.json'), projected)
   if (profile === 'dev') {
     copy(join(root, 'source-assets/district-map/district.json'), join(source, '_data/district.json'))
     copy(join(root, 'source-assets/district-map/district.json'), join(source, 'public/project-assets/district-map/district.json'))
   }
-  for (const name of SUPPORT.filter(name => profile === 'dev' || ['district-map.ts', 'district-types.ts'].includes(name))) copy(join(root, 'tools', name), join(source, '_tools', name))
-  for (const name of COMPONENTS.filter(name => profile === 'dev' || name === 'DistrictMap.vue')) {
+  for (const name of SUPPORT.filter(name => profile === 'dev' || ['district-map.ts', 'district-types.ts', 'story-graph.ts'].includes(name))) copy(join(root, 'tools', name), join(source, '_tools', name))
+  for (const name of COMPONENTS.filter(name => profile === 'dev' || ['DistrictMap.vue', 'StoryGraph.vue', 'StoryCondition.vue'].includes(name))) {
     const text = readFileSync(join(docs, '.vitepress/components', name), 'utf8')
       .replaceAll('../../../source-assets/district-map/district.json', '@wiki-data/district.json')
       .replaceAll('../../../tools/', '@wiki-tools/')

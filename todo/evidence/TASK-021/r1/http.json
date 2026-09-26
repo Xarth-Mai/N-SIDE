@@ -1,0 +1,264 @@
+[
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/prologue",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/last-toy",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/extra-applause",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/no-school-bell",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/beyond-autumn",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/still-together",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/river-did-not-reverse",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/bring-today-back",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/after-echoes",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/epilogue",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/new-pocket",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/different-dinners",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/unfinished-window",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/collect-after-rain",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/courtside-chair",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/ways-to-read",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/after-the-late-show",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/photograph-today",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/",
+    "status": 200,
+    "all_cards": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/main/",
+    "status": 200,
+    "all_cards": true
+  },
+  {
+    "profile": "player",
+    "path": "/player/encyclopedia/story/daily/",
+    "status": 200,
+    "all_cards": true
+  },
+  {
+    "profile": "player",
+    "path": "/dev/design/story-graph",
+    "status": 404
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/prologue",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/last-toy",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/extra-applause",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/no-school-bell",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/beyond-autumn",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/still-together",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/river-did-not-reverse",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/bring-today-back",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/after-echoes",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/epilogue",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/new-pocket",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/different-dinners",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/unfinished-window",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/collect-after-rain",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/courtside-chair",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/ways-to-read",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/after-the-late-show",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/photograph-today",
+    "status": 200,
+    "detail": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/",
+    "status": 200,
+    "all_cards": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/main/",
+    "status": 200,
+    "all_cards": true
+  },
+  {
+    "profile": "dev",
+    "path": "/player/encyclopedia/story/daily/",
+    "status": 200,
+    "all_cards": true
+  },
+  {
+    "profile": "dev",
+    "path": "/dev/design/story-graph",
+    "status": 200
+  }
+]

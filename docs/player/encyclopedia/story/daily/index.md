@@ -16,16 +16,7 @@ depends_on: ["DOC-DAILY-LIFE", "LOC-002"]
 
 ## 八条街坊故事
 
-| 故事 | 生活里的事情 |
-| --- | --- |
-| [旧外套的新口袋](new-pocket.md) | 支线 · QST-101 |
-| [一桌不同的晚饭](different-dinners.md) | 支线 · QST-102 |
-| [橱窗还差一点](unfinished-window.md) | 支线 · QST-103 |
-| [雨停之后取衣服](collect-after-rain.md) | 支线 · QST-104 |
-| [球场边的一张椅子](courtside-chair.md) | 支线 · QST-105 |
-| [一本书的几种读法](ways-to-read.md) | 支线 · QST-106 |
-| [晚场以后](after-the-late-show.md) | 支线 · QST-107 |
-| [把今天拍进去](photograph-today.md) | 支线 · QST-108 |
+本页下方收录全部街坊故事；[故事时间轴](../index.md)展示它们与主线的阅读位置和关联
 
 ## 日常时段与人物到达
 

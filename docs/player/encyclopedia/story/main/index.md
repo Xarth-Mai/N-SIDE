@@ -27,18 +27,7 @@ depends_on: ["DOC-HISTORY", "DOC-WORLD-RULES"]
 
 ## 章节
 
-| 章节 | 故事 |
-| --- | --- |
-| 序章 | [门还开着](prologue.md) |
-| 第一章 | [最后的玩具](last-toy.md) |
-| 第二章 | [多出来的掌声](extra-applause.md) |
-| 第三章 | [没有放学的那一天](no-school-bell.md) |
-| 第四章 | [初秋以外](beyond-autumn.md) |
-| 第五章 | [仍在一起](still-together.md) |
-| 第六章 | [河没有倒流](river-did-not-reverse.md) |
-| 第七章 | [把今天带回来](bring-today-back.md) |
-| 第八章 | [回声之后](after-echoes.md) |
-| 尾声 | [明天照常营业](epilogue.md) |
+章节卡片与故事关系见本页下方，也可以前往[故事时间轴](../index.md)
 
 ## 从街坊委托到城市联动
 

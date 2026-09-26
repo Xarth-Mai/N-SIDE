@@ -37,8 +37,12 @@ function wikiFixture(t: TestContext) {
   f.put('docs/public/private.json', '{"DEV_ONLY_SENTINEL":true}')
   f.put('docs/public/private.webp', 'DEV_ONLY_SENTINEL')
   f.put('source-assets/branding/n-logo.svg', '<svg/>')
-  for (const name of ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts']) f.put(`tools/${name}`, readFileSync(new URL(`../${name}`, import.meta.url)))
-  for (const name of ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue']) f.put(`docs/.vitepress/components/${name}`, readFileSync(new URL(`../../docs/.vitepress/components/${name}`, import.meta.url)))
+  for (const name of ['district-map.ts', 'district-plan.ts', 'district-architecture.ts', 'district-geometry.ts', 'district-types.ts', 'story-graph.ts']) f.put(`tools/${name}`, readFileSync(new URL(`../${name}`, import.meta.url)))
+  for (const name of ['DistrictMap.vue', 'DistrictPlan.vue', 'DistrictArchitecture.vue', 'DistrictPlaces.vue', 'StoryGraph.vue', 'StoryCondition.vue']) f.put(`docs/.vitepress/components/${name}`, readFileSync(new URL(`../../docs/.vitepress/components/${name}`, import.meta.url)))
+  const quest = JSON.parse(readFileSync(new URL('../../docs/dev/design/catalogs/quests.json', import.meta.url),'utf8')).quests.find((q: {id:string})=>q.id==='QST-002')
+  quest.story.display_order=1; quest.story.recommended=[]; quest.story.related=[]; quest.story.required=[]
+  f.put('docs/dev/design/catalogs/quests.json',JSON.stringify({story_schema_version:1,quests:[quest]}))
+  f.put('docs/dev/design/quests/QST-002/narrative.json',readFileSync(new URL('../../docs/dev/design/quests/QST-002/narrative.json',import.meta.url)))
   f.put('source-assets/district-map/district.json', readFileSync(new URL('../../source-assets/district-map/district.json', import.meta.url), 'utf8'))
   f.put('todo/evidence/TASK-007/r1/migration-map.json', JSON.stringify({ files: [
     { source: 'docs/story/main/last-toy.md', targets: ['docs/player/encyclopedia/story/main/last-toy.md'] },
@@ -50,6 +54,7 @@ function wikiFixture(t: TestContext) {
 test('sidebar follows audience and preserves story reading order', t => {
   const { root, put } = fixture(t)
   put('player/index.md'); put('dev/index.md'); put('dev/design/spec.md')
+  put('_data/stories.json',JSON.stringify([{role:'main',order:1,url:'/player/encyclopedia/story/main/prologue'},{role:'main',order:2,url:'/player/encyclopedia/story/main/last-toy'}]))
   for (const name of ['last-toy', 'prologue']) put(`player/encyclopedia/story/main/${name}.md`)
   assert.deepEqual(links(buildSidebar(root, 'player')), ['/', '/player/', '/player/encyclopedia/story/main/prologue', '/player/encyclopedia/story/main/last-toy'])
   assert.ok(links(buildSidebar(root, 'dev')).includes('/dev/design/spec'))

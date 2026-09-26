@@ -8,7 +8,7 @@
     "docs:preview": "bun tools/wiki.ts preview dev",
     "check:docs": "python3 -B tools/validate_docs.py --root . && bun run check:skills",
     "check:narrative": "python3 -B tools/validate_narrative.py --root .",
-    "check:story-design": "python3 -B tools/validate_story_design.py --root .",
+    "check:story-design": "python3 -B tools/validate_story_design.py --root . && bun run check:story-graph",
     "check:templates": "python3 -B tools/validate_narrative.py --file docs/dev/handbook/templates/narrative.json",
     "test:tools": "python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests",
     "check:map": "bun test tools/tests/district-map.test.ts",
@@ -24,7 +24,8 @@
     "tasks:list": "bun tools/tasks.ts list",
     "tasks:sync": "bun tools/tasks.ts sync",
     "tasks:check": "bun tools/tasks.ts check",
-    "check:types": "bun node_modules/typescript/bin/tsc -p tsconfig.json && bun tools/check-vue.ts -p tsconfig.vue.json"
+    "check:types": "bun node_modules/typescript/bin/tsc -p tsconfig.json && bun tools/check-vue.ts -p tsconfig.vue.json",
+    "check:story-graph": "bun tools/story-data.ts"
   },
   "devDependencies": {
     "@types/bun": "1.4.2",

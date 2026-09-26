@@ -41,7 +41,39 @@
         "CHR-035"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 1,
+        "display_order": 1,
+        "placement": "序章起点",
+        "summary": "一次补货、晚饭与小册邀请，让小店和街坊进入日常",
+        "required": [],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-008",
+            "type": "clue_setup",
+            "description": "普通小册建立合作背景，但它不是异常传播媒介",
+            "source": "player/encyclopedia/story/main/bring-today-back.md#"
+          },
+          {
+            "quest_id": "QST-010",
+            "type": "clue_payoff",
+            "description": "小册从邀请走向实际印制和阅读",
+            "source": "player/encyclopedia/story/main/epilogue.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/main/prologue.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "序章的首次阅读不等于首次认识所有熟客，具体会面对白仍需场景规格"
+          ]
+        }
+      }
     },
     {
       "id": "QST-002",
@@ -87,7 +119,46 @@
         "CHR-035"
       ],
       "diver": "CHR-002",
-      "max_simultaneous_sibling_divers": 1
+      "max_simultaneous_sibling_divers": 1,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 1,
+        "display_order": 2,
+        "placement": "序章之后，首次完整委托",
+        "summary": "找回玩具、核对运输与现实扰动，让米娜自己决定怎样出发",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-001",
+            "reason": "先熟悉小店与米娜的请求；本案 B001 会重新说明请求，序章不是能力解锁",
+            "source": "player/encyclopedia/story/main/prologue.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-101",
+            "type": "thematic_echo",
+            "description": "物主决定怎样继续使用旧物，两件事彼此独立",
+            "source": "player/encyclopedia/story/daily/new-pocket.md#"
+          },
+          {
+            "quest_id": "QST-009",
+            "type": "clue_setup",
+            "description": "双侧确认的处置方法在最终退出中再次使用",
+            "source": "player/encyclopedia/story/main/after-echoes.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/main/last-toy.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "Demo B001 与序章均有交接和请求：完整章衔接时需确认重复对白的压缩方式"
+          ]
+        },
+        "narrative": "dev/design/quests/QST-002/narrative.json"
+      }
     },
     {
       "id": "QST-003",
@@ -134,7 +205,54 @@
         "CHR-035"
       ],
       "diver": "CHR-001",
-      "max_simultaneous_sibling_divers": 1
+      "max_simultaneous_sibling_divers": 1,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 1,
+        "display_order": 3,
+        "placement": "第一幕后段",
+        "summary": "追查旧掌声的真实声源，让演出恢复属于今天的声音",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-002",
+            "reason": "先经历投影与意图的区分，再观察引座员；不是接案资格",
+            "source": "player/encyclopedia/story/main/last-toy.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-004",
+            "type": "historical_context",
+            "description": "旧录音与旧名单分别提供历史活动的材料，不能仅凭相似性认定同源",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "seating-pattern",
+            "type": "information",
+            "value": "confirmed",
+            "label": "已核对引座员的入座与转身规律",
+            "source": "player/encyclopedia/story/main/extra-applause.md#调查与行动"
+          },
+          {
+            "id": "performance-resumed",
+            "type": "state",
+            "value": true,
+            "label": "相关空间已完成安全恢复并恢复演出",
+            "source": "player/encyclopedia/story/main/extra-applause.md#转折与后续"
+          }
+        ],
+        "review": {
+          "basis": "player/encyclopedia/story/main/extra-applause.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "恢复演出的具体时点与演出空间开放状态尚无独立 beat"
+          ]
+        }
+      }
     },
     {
       "id": "QST-004",
@@ -185,7 +303,53 @@
         "CHR-034"
       ],
       "diver": "CHR-002",
-      "max_simultaneous_sibling_divers": 1
+      "max_simultaneous_sibling_divers": 1,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 1,
+        "display_order": 4,
+        "placement": "第一幕末段",
+        "summary": "用今天的路线比对固定点名，分清旧记录与真实学生",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-003",
+            "reason": "从独立录音延续到新旧名单的核对方法",
+            "source": "player/encyclopedia/story/main/extra-applause.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-005",
+            "type": "clue_setup",
+            "description": "多地点变化不同步引向楚青的环境记录",
+            "source": "player/encyclopedia/story/main/beyond-autumn.md#"
+          },
+          {
+            "quest_id": "QST-105",
+            "type": "character_continuation",
+            "description": "陈知夏在公共活动中继续记录不同使用者",
+            "source": "player/encyclopedia/story/daily/courtside-chair.md#"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "rollcall-pattern",
+            "type": "information",
+            "value": "confirmed",
+            "label": "已辨认固定名单与返回路径",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#调查与行动"
+          }
+        ],
+        "review": {
+          "basis": "player/encyclopedia/story/main/no-school-bell.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "校内受控访问在本章安排；不得把公共球场开放绑到本案完成"
+          ]
+        }
+      }
     },
     {
       "id": "QST-005",
@@ -236,7 +400,47 @@
         "CHR-035"
       ],
       "diver": "CHR-001",
-      "max_simultaneous_sibling_divers": 1
+      "max_simultaneous_sibling_divers": 1,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 2,
+        "display_order": 5,
+        "placement": "第二幕开端",
+        "summary": "解除越界的初秋联系，保留可以安全共存的局部气候",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-004",
+            "reason": "第三章记录中的不同步变化引向楚青的环境比较",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-006",
+            "type": "clue_setup",
+            "description": "终止资料与沈聆引荐把问题带向研究者会面",
+            "source": "player/encyclopedia/story/main/still-together.md#"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "coupling",
+            "type": "information",
+            "value": "confirmed",
+            "label": "单点试验已显示不同局部结构相互作用",
+            "source": "player/encyclopedia/story/main/beyond-autumn.md#转折与后续"
+          }
+        ],
+        "review": {
+          "basis": "player/encyclopedia/story/main/beyond-autumn.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "可以从温室求助独立入场；第三章引荐是否可跳过需作者确认"
+          ]
+        }
+      }
     },
     {
       "id": "QST-006",
@@ -282,7 +486,54 @@
         "CHR-033"
       ],
       "diver": "CHR-002",
-      "max_simultaneous_sibling_divers": 1
+      "max_simultaneous_sibling_divers": 1,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 2,
+        "display_order": 6,
+        "placement": "第二幕中段",
+        "summary": "与季闻、许遥会面，分清真实共梦、独立验证与源头终止",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-005",
+            "reason": "沈聆的引荐和终止资料问题铺垫会面动机",
+            "source": "player/encyclopedia/story/main/beyond-autumn.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-106",
+            "type": "character_continuation",
+            "description": "许遥以编辑身份提供意见；阅读支线不公开病程",
+            "source": "player/encyclopedia/story/daily/ways-to-read.md#"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "source-ended",
+            "type": "information",
+            "value": "confirmed",
+            "label": "独立验证、真实共梦与原始源头终止已分清",
+            "source": "player/encyclopedia/story/main/still-together.md#关键揭示"
+          },
+          {
+            "id": "connection-records",
+            "type": "information",
+            "value": "confirmed",
+            "label": "取得经授权的原始联系记录，知道渡运与地形缺项",
+            "source": "player/encyclopedia/story/main/still-together.md#关键揭示"
+          }
+        ],
+        "review": {
+          "basis": "player/encyclopedia/story/main/still-together.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "若先玩阅读支线见过许遥，第五章介绍需承认此前的编辑往来，不能提前透露病程"
+          ]
+        }
+      }
     },
     {
       "id": "QST-007",
@@ -324,7 +575,65 @@
         "CHR-035"
       ],
       "diver": "CHR-001",
-      "max_simultaneous_sibling_divers": 1
+      "max_simultaneous_sibling_divers": 1,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 2,
+        "display_order": 7,
+        "placement": "第二幕末段",
+        "summary": "在渡运资料与岸线变化中找回当年的连接方式",
+        "required": [
+          {
+            "scope": "主线判断",
+            "label": "核对岸线资料与季闻记录",
+            "condition": {
+              "all": [
+                {
+                  "type": "information",
+                  "quest_id": "QST-006",
+                  "target": "connection-records",
+                  "value": "confirmed",
+                  "reason": "判断依赖具体记录及缺项，尚不需要结束整个会面章节"
+                }
+              ]
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [
+          {
+            "quest_id": "QST-006",
+            "reason": "先了解季闻记录缺失了什么，再展开渡运调查",
+            "source": "player/encyclopedia/story/main/still-together.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-004",
+            "type": "historical_context",
+            "description": "岸线与教学联络从不同地点补证当年变化次序",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "current-risk",
+            "type": "information",
+            "value": "confirmed",
+            "label": "岸线资料补齐历史缺项，当前风险不能照搬历史等待",
+            "source": "player/encyclopedia/story/main/river-did-not-reverse.md#主线判断",
+            "gate": "主线判断"
+          }
+        ],
+        "review": {
+          "basis": "player/encyclopedia/story/main/river-did-not-reverse.md#",
+          "finding": "仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成",
+          "pending": [
+            "主线判断阶段可晚于候船现场处置；具体拆段与回访时机待 beat 规格"
+          ]
+        }
+      }
     },
     {
       "id": "QST-008",
@@ -408,7 +717,88 @@
         "CHR-035"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 3,
+        "display_order": 8,
+        "placement": "第三幕准备",
+        "summary": "汇总授权记录、替代路线与实时参照，修订共同计划",
+        "required": [
+          {
+            "scope": "start",
+            "label": "共同制定当前处置方案",
+            "condition": {
+              "all": [
+                {
+                  "type": "information",
+                  "quest_id": "QST-006",
+                  "target": "source-ended",
+                  "value": "confirmed",
+                  "reason": "排除复活源头与消灭真实伴侣的错误处置前提"
+                },
+                {
+                  "type": "information",
+                  "quest_id": "QST-007",
+                  "target": "current-risk",
+                  "value": "confirmed",
+                  "reason": "方案需要当前联系与历史差异的证据，不能仅等待自然停止"
+                }
+              ]
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [
+          {
+            "quest_id": "QST-003",
+            "reason": "了解现场声音如何与旧回放区分",
+            "source": "player/encyclopedia/story/main/extra-applause.md#"
+          },
+          {
+            "quest_id": "QST-004",
+            "reason": "理解固定名单和实时变化的区别",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          },
+          {
+            "quest_id": "QST-005",
+            "reason": "理解单点处置可能增强另一处的原因",
+            "source": "player/encyclopedia/story/main/beyond-autumn.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-108",
+            "type": "thematic_echo",
+            "description": "均关注今天，但授权照片不是主线成功钥匙",
+            "source": "player/encyclopedia/story/daily/photograph-today.md#"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "realtime-reference",
+            "type": "state",
+            "value": true,
+            "label": "演练后建立独立实时参照与双重确认",
+            "source": "player/encyclopedia/story/main/bring-today-back.md#人物冲突与决定"
+          },
+          {
+            "id": "joint-plan",
+            "type": "state",
+            "value": true,
+            "label": "接入、清醒接应、专业团队和替代路线已安排",
+            "source": "player/encyclopedia/story/main/bring-today-back.md#行动安排"
+          }
+        ],
+        "review": {
+          "basis": "player/encyclopedia/story/main/bring-today-back.md#",
+          "finding": "仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成",
+          "pending": [
+            "集中会谈已允许补齐必要信息，但引座员、点名者、候船者的可操作复习尚无 beat；不能以支线替代"
+          ]
+        }
+      }
     },
     {
       "id": "QST-009",
@@ -447,7 +837,104 @@
         "CHR-035"
       ],
       "diver": "player_choice_single_sibling",
-      "max_simultaneous_sibling_divers": 1
+      "max_simultaneous_sibling_divers": 1,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 3,
+        "display_order": 9,
+        "placement": "第三幕行动",
+        "summary": "梦内创造窗口、现实逐段确认，拆开新增联动",
+        "required": [
+          {
+            "scope": "start",
+            "label": "进入正式联合行动",
+            "condition": {
+              "all": [
+                {
+                  "type": "state",
+                  "quest_id": "QST-008",
+                  "target": "realtime-reference",
+                  "value": true,
+                  "reason": "旧回放不能冒充退出确认，必须事先建立实时参照"
+                },
+                {
+                  "type": "state",
+                  "quest_id": "QST-008",
+                  "target": "joint-plan",
+                  "value": true,
+                  "reason": "现场封闭、接应与替代路线须在潜梦前就绪"
+                }
+              ]
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [
+          {
+            "quest_id": "QST-002",
+            "reason": "把双侧确认的方法带入最后退出；不要求先做送行",
+            "source": "player/encyclopedia/story/main/last-toy.md#"
+          },
+          {
+            "quest_id": "QST-003",
+            "reason": "熟悉引座员的移动间隙",
+            "source": "player/encyclopedia/story/main/extra-applause.md#"
+          },
+          {
+            "quest_id": "QST-004",
+            "reason": "熟悉点名者的返回路径",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          },
+          {
+            "quest_id": "QST-007",
+            "reason": "熟悉候船者的固定提示",
+            "source": "player/encyclopedia/story/main/river-did-not-reverse.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-003",
+            "type": "aftermath",
+            "description": "旧输出保持处置，新联动借尚未接入的自然通路形成",
+            "source": "player/encyclopedia/story/main/extra-applause.md#"
+          },
+          {
+            "quest_id": "QST-004",
+            "type": "aftermath",
+            "description": "点名活动片段进入合流场不撤销先前处置",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          },
+          {
+            "quest_id": "QST-005",
+            "type": "aftermath",
+            "description": "保留安全的局部初秋，解除新增耦合",
+            "source": "player/encyclopedia/story/main/beyond-autumn.md#"
+          },
+          {
+            "quest_id": "QST-007",
+            "type": "aftermath",
+            "description": "候船设施险情需要现实团队完成处置",
+            "source": "player/encyclopedia/story/main/river-did-not-reverse.md#"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "new-links-ended",
+            "type": "state",
+            "value": true,
+            "label": "新增联动解除，危险输出停止，安全既有生活保留",
+            "source": "player/encyclopedia/story/main/after-echoes.md#结果与代价"
+          }
+        ],
+        "review": {
+          "basis": "player/encyclopedia/story/main/after-echoes.md#",
+          "finding": "仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成",
+          "pending": [
+            "复合场景借新通路加强旧局部活动；需在场景对白承认旧输出已被隔离"
+          ]
+        }
+      }
     },
     {
       "id": "QST-010",
@@ -505,7 +992,78 @@
         "CHR-035"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "main",
+        "optional": false,
+        "act": 3,
+        "display_order": 10,
+        "placement": "行动之后",
+        "summary": "小册、维修、新作品与家人的晚饭，让生活继续变化",
+        "required": [
+          {
+            "scope": "start",
+            "label": "进入危机后的生活",
+            "condition": {
+              "all": [
+                {
+                  "type": "state",
+                  "quest_id": "QST-009",
+                  "target": "new-links-ended",
+                  "value": true,
+                  "reason": "正文重访以危险输出停止为前提，不能在联动仍活跃时宣布恢复"
+                }
+              ]
+            },
+            "required_for_completion": true
+          },
+          {
+            "scope": "米娜来信重访",
+            "label": "展示米娜离城后的消息",
+            "condition": {
+              "all": [
+                {
+                  "type": "beat",
+                  "quest_id": "QST-002",
+                  "target": "QST-002-B016",
+                  "value": true,
+                  "reason": "米娜已经离城且主动分享消息才可出现对应重访内容"
+                }
+              ]
+            },
+            "required_for_completion": false
+          }
+        ],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-101",
+            "type": "thematic_echo",
+            "description": "生活物件可以继续使用和改变",
+            "source": "player/encyclopedia/story/daily/new-pocket.md#"
+          },
+          {
+            "quest_id": "QST-103",
+            "type": "character_continuation",
+            "description": "创作者继续迭代作品",
+            "source": "player/encyclopedia/story/daily/unfinished-window.md#"
+          },
+          {
+            "quest_id": "QST-108",
+            "type": "thematic_echo",
+            "description": "小册允许匿名与拒绝参与，不要求全员合照",
+            "source": "player/encyclopedia/story/daily/photograph-today.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/main/epilogue.md#",
+          "finding": "仅把正文明确使用的成果作为对应入口或阶段条件；不要求来源整章完成",
+          "pending": [
+            "米娜来信是局部重访条件，不阻塞整个尾声；其他案件未体验时的重访对白需逐案规格"
+          ]
+        }
+      }
     },
     {
       "id": "QST-101",
@@ -536,7 +1094,39 @@
         "CHR-017"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 2.2,
+        "placement": "第一章附近，也可在平日穿插",
+        "summary": "保留想留下的部分，把旧外套改成今天好用的样子",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-001",
+            "reason": "先认识小店的设计与邻里合作",
+            "source": "player/encyclopedia/story/main/prologue.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-103",
+            "type": "character_continuation",
+            "description": "林澄与何昕参与不同制作合作，未规定合作先后",
+            "source": "player/encyclopedia/story/daily/unfinished-window.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/new-pocket.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "正文无跨任务锁，第一章附近是阅读建议，具体日历尚未固定"
+          ]
+        }
+      }
     },
     {
       "id": "QST-102",
@@ -587,7 +1177,39 @@
         "CHR-035"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 2.4,
+        "placement": "第一幕起，可跨章节安排",
+        "summary": "不同下班时间的人一起安排一桌晚饭",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-001",
+            "reason": "从带晚饭回家延展到朋友各自的营业节奏",
+            "source": "player/encyclopedia/story/main/prologue.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-107",
+            "type": "character_continuation",
+            "description": "唐钰、宁朗的用餐与收场体现不同作息",
+            "source": "player/encyclopedia/story/daily/after-the-late-show.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/different-dinners.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "聚餐可跨章；到场名单随情境提供，不能默认做过演出支线"
+          ]
+        }
+      }
     },
     {
       "id": "QST-103",
@@ -634,7 +1256,39 @@
         "CHR-035"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 3.2,
+        "placement": "第二章附近，可独立穿插",
+        "summary": "试玩、反馈与诚实展示，让新作品继续更新",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-001",
+            "reason": "小册与橱窗的创作邀请提供背景",
+            "source": "player/encyclopedia/story/main/prologue.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-003",
+            "type": "thematic_echo",
+            "description": "同一兴趣街的普通创作与异常排查各自成立",
+            "source": "player/encyclopedia/story/main/extra-applause.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/unfinished-window.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "轮换展示不等于演出场地已经安全恢复，场所开放按现场情境处理"
+          ]
+        }
+      }
     },
     {
       "id": "QST-104",
@@ -669,7 +1323,33 @@
         "CHR-034"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 4.2,
+        "placement": "第三章附近，也可在其他雨后",
+        "summary": "一件未取衣物源于日程误解，清楚交接后回归日常",
+        "required": [],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-004",
+            "type": "thematic_echo",
+            "description": "核对当前信息可以解决误解，并非一切都由异常引起",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/collect-after-rain.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "雨后不对应固定主线章数；居民初次称呼与熟识称呼尚未拆分"
+          ]
+        }
+      }
     },
     {
       "id": "QST-105",
@@ -707,7 +1387,39 @@
         "CHR-034"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 4.4,
+        "placement": "第三章前后均可",
+        "summary": "给不同使用者安排可并行的公共活动",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-004",
+            "reason": "更了解陈知夏记录当前生活的视角；不以异常处置为参与条件",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-108",
+            "type": "character_continuation",
+            "description": "陈知夏把今天的使用者放入记录",
+            "source": "player/encyclopedia/story/daily/photograph-today.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/courtside-chair.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "主线前后都可参与，陈知夏的对白是否区分点名事件待规格"
+          ]
+        }
+      }
     },
     {
       "id": "QST-106",
@@ -736,7 +1448,39 @@
         "CHR-032"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 2,
+        "display_order": 5.5,
+        "placement": "第四至第五章附近",
+        "summary": "把经过授权的不同读法放在同一页，许遥以编辑身份参与",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-005",
+            "reason": "沈聆引荐编辑的铺垫有助于自然认识许遥",
+            "source": "player/encyclopedia/story/main/beyond-autumn.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-010",
+            "type": "clue_setup",
+            "description": "授权阅读意见延续到小册实际被人阅读",
+            "source": "player/encyclopedia/story/main/epilogue.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/ways-to-read.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "许遥提供的是当前编辑意见，主线前版本应避免病程和源头终止信息"
+          ]
+        }
+      }
     },
     {
       "id": "QST-107",
@@ -784,7 +1528,39 @@
         "CHR-035"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 3.4,
+        "placement": "第二章附近的正常演出夜晚",
+        "summary": "参与归还设备、夜食和散场，尊重每个人的下班安排",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-003",
+            "reason": "先了解宁朗受误解与恢复演出的经历",
+            "source": "player/encyclopedia/story/main/extra-applause.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-003",
+            "type": "character_continuation",
+            "description": "宁朗有新的演出与普通下班生活",
+            "source": "player/encyclopedia/story/main/extra-applause.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/after-the-late-show.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "正常演出未明确是异常前或恢复后；暂不把 QST-003 设硬锁，作者需选定或允许两种版本"
+          ]
+        }
+      }
     },
     {
       "id": "QST-108",
@@ -851,7 +1627,45 @@
         "CHR-035"
       ],
       "diver": null,
-      "max_simultaneous_sibling_divers": 0
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 3,
+        "display_order": 8.5,
+        "placement": "第七章至尾声附近，可在平日取景",
+        "summary": "拍下今天正在使用的场所，保留拒绝出镜的权利",
+        "required": [],
+        "recommended": [
+          {
+            "quest_id": "QST-004",
+            "reason": "陈知夏区分记录来源的成长为取景提供铺垫",
+            "source": "player/encyclopedia/story/main/no-school-bell.md#"
+          },
+          {
+            "quest_id": "QST-008",
+            "reason": "理解今天的照片与实时核对的区别",
+            "source": "player/encyclopedia/story/main/bring-today-back.md#"
+          }
+        ],
+        "related": [
+          {
+            "quest_id": "QST-007",
+            "type": "location_change",
+            "description": "河岸继续发生普通维护与使用变化，取景不等于险情已经解除",
+            "source": "player/encyclopedia/story/main/river-did-not-reverse.md#"
+          }
+        ],
+        "outcomes": [],
+        "review": {
+          "basis": "player/encyclopedia/story/daily/photograph-today.md#",
+          "finding": "正文未规定跨任务开始锁；显示位置只用于阅读建议",
+          "pending": [
+            "修好栏杆与具体维护事件未一一对应；不要默认第八章险情已经处理"
+          ]
+        }
+      }
     }
-  ]
+  ],
+  "story_schema_version": 1
 }
