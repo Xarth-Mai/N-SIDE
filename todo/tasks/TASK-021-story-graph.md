@@ -36,3 +36,5 @@ specs:
 第 5 轮[玩家百科目录扁平化](../evidence/TASK-021/r5/result.md)：87 篇正文迁至 player 直属目录，更新引用并保留旧地址跳转，内容文字保留检查通过
 
 第 6 轮[浏览器图标兼容](../evidence/TASK-021/r6/result.md)：补齐根 favicon.ico 与 Apple 图标，保留 SVG 图标及品牌原件
+
+第 7 轮按用户纠正将两站顶栏统一为 `N:SIDE Wiki`，取消受众名称后缀；双站构建与产物标题检查通过。简化审查：Lean already. Ship.

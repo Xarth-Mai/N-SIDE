@@ -32,7 +32,7 @@ export function wikiConfig({ root, source, profile }: { root: string; source: st
       ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
     ],
     themeConfig: {
-      logo: '/project-assets/branding/n-logo.svg', siteTitle: `N:SIDE ${profile === 'player' ? '百科' : '开发'}`,
+      logo: '/project-assets/branding/n-logo.svg', siteTitle: 'N:SIDE Wiki',
       nav: [
         { text: '游戏百科', link: '/player/' },
         { text: '故事', link: '/player/story/' },
