@@ -30,6 +30,7 @@
         "CHR-003",
         "CHR-004",
         "CHR-005",
+        "CHR-007",
         "CHR-008",
         "CHR-009",
         "CHR-014",
@@ -439,6 +440,7 @@
         "CHR-020",
         "CHR-023",
         "CHR-024",
+        "CHR-025",
         "CHR-028",
         "CHR-030",
         "CHR-031",
@@ -1091,6 +1093,7 @@
         "CHR-009",
         "CHR-010",
         "CHR-012",
+        "CHR-014",
         "CHR-018",
         "CHR-019",
         "CHR-020",
@@ -1664,7 +1667,8 @@
         "CHR-031",
         "CHR-032",
         "CHR-034",
-        "CHR-035"
+        "CHR-035",
+        "CHR-036"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1837,7 +1841,9 @@
         "79"
       ],
       "associated_character_ids": [
+        "CHR-001",
         "CHR-002",
+        "CHR-026",
         "CHR-036"
       ],
       "diver": null,
@@ -1967,6 +1973,8 @@
       ],
       "associated_character_ids": [
         "CHR-001",
+        "CHR-002",
+        "CHR-003",
         "CHR-037"
       ],
       "diver": null,
@@ -1996,10 +2004,10 @@
         ],
         "outcomes": [
           {
-            "id": "umbrella-returned",
+            "id": "off-duty-arrangement",
             "type": "state",
             "value": true,
-            "label": "普通借还按约定完成，塞拉与曜在现场之外建立相处",
+            "label": "普通咨询已交接，与塞拉完成工作之外的相处",
             "source": "player/story/daily/lend-you-an-umbrella.md"
           }
         ],
@@ -2007,7 +2015,7 @@
           "basis": "player/story/daily/lend-you-an-umbrella.md",
           "finding": "人物选择与重访结果已有正文，保持可选，不承担主线唯一信息",
           "pending": [
-            "具体预约、选择保存与错过后承接尚待场景实现"
+            "借伞与等雨分别保存选择；仅借伞路线登记后续归还，预约与重访尚待实现"
           ]
         }
       }

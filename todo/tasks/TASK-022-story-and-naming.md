@@ -1,9 +1,13 @@
 ---
 id: TASK-022
 type: document
-status: active
+status: done
 milestone: DOCS-PIPELINE
 depends_on: []
+acceptance:
+  role: codex
+  revision: 23d082ac821049d69b8b2e7d463c6aa69458c52dc696374d670d63101d8e1e10
+  record: todo/evidence/TASK-022/final/result.md
 specs:
   - docs/dev/production/naming.md
   - docs/dev/production/narrative.md
@@ -22,8 +26,8 @@ specs:
 
 ## 当前工作与下一步
 
-第 1 轮，步骤 3/6 制作；命名与人物世界基线已提交 `3083639`，正在合入完整故事及配套关系数据，下一批补齐规格与最终回归。白沙河保留，LATE BITE 对应场所 82，其余候选已由作者确认，无新增命名待选
+第 1 轮，步骤 6/6 已记录；正式命名、37 位人物、十条主线、十二条支线及跨章规格已整合并通过适用检查。白沙河保留，LATE BITE 对应场所 82，无新增命名待选。本次完成后停止，不推送或推进游戏路线图
 
 ## 结果与证据
 
-输入、完整映射与扫描范围见 `todo/evidence/TASK-022/naming/`；本任务只验收文档整合及消费者一致性，游戏实现、真实试玩与叙事锁定分别管理
+输入、完整映射与扫描范围见 `todo/evidence/TASK-022/naming/`；最终检查、内容 hash、覆盖与审查见[交付记录](../evidence/TASK-022/final/result.md)。本任务只验收文档整合及消费者一致性，游戏实现、真实试玩与叙事锁定分别管理；浏览器交互验收仍 NOT RUN，保留在既有 TASK-020、TASK-021

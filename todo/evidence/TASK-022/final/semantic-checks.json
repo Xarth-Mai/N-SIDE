@@ -1,0 +1,38 @@
+{
+  "character_identity_age_home": {
+    "result": "PASS",
+    "existing": 35,
+    "current": 37
+  },
+  "quest_ids_and_roles": {
+    "result": "PASS",
+    "main": 10,
+    "side": 12
+  },
+  "last_toy_runtime_data": {
+    "result": "PASS",
+    "changes": "display names only; 16 beats and 22 information states retained"
+  },
+  "map_identity_geometry_topology": {
+    "result": "PASS",
+    "changed_display_fields": 22
+  },
+  "runtime_source_and_assets": {
+    "result": "PASS",
+    "changes": 0
+  },
+  "docs/player_names": {
+    "result": "PASS",
+    "old_name_hits": 0
+  },
+  "docs/dev_names": {
+    "result": "PASS",
+    "old_name_hits": 0
+  },
+  "design_coverage": {
+    "result": "PASS",
+    "foreshadowing": 16,
+    "finale_beats": 14,
+    "scenes": 6
+  }
+}

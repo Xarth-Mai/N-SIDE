@@ -2,6 +2,8 @@
 
 [故事时间轴](../../player/story/index.md)收录全部十条主线与十二条可选街坊故事。[quests catalog](catalogs/quests.json)是身份、阅读顺序、故事归属和跨任务关系的维护源；正文仍由各故事页面保存，人物与空间继续使用原有目录
 
+具体四层变化、铺垫与结束状态见[跨章契约](story-continuity.md)，终章行动与恢复见[QST-009](quests/QST-009/development.md)
+
 ## 数据职责
 
 `story.role` 区分 main / side，原 `type` 保持玩法类型；`act` 与 `display_order` 表示阅读位置，`placement` 允许支线跨阶段。`status` 是文档设计状态，不参与条件计算，也不导出到玩家 Wiki

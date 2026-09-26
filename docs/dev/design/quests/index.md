@@ -4,7 +4,10 @@
 
 | 任务 | 制作资料 |
 | --- | --- |
+| QST-009 回声之后 | [任务说明](QST-009/README.md)、[终章行动与恢复](QST-009/development.md) |
 | QST-002 最后的玩具 | [任务说明](QST-002/README.md)、[Demo 范围](QST-002/demo-scope.md)、[行动与恢复](QST-002/development.md)、[信息与节点](QST-002/narrative.json) |
+
+[跨章因果与状态](../story-continuity.md)维护十六条铺垫及各案保留边界，[人物场景样稿](scenes.md)承接六段关系对白
 
 [故事索引](../catalogs/quests.json)维护章节与角色、场所关联；具体任务按下列目录维护可执行结构，索引与引擎实现分别验证
 

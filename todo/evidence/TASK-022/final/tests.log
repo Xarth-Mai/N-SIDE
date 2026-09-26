@@ -1,0 +1,121 @@
+$ python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests
+.......................................................................................................
+----------------------------------------------------------------------
+Ran 103 tests in 1.653s
+
+OK
+bun test v1.4.2 (744846f84)
+
+tools/tests/wiki.test.ts:
+(pass) sidebar follows audience and preserves story reading order [2.52ms]
+(pass) data export is fail-closed and dev-only, ignoring hidden files and symlinks [1.31ms]
+(pass) publication requires a known profile and an actual entry page [0.51ms]
+(pass) isolated player tree excludes developer pages/data/public and uses redirects [104.83ms]
+(pass) renamed pages resolve current, encyclopedia and original URLs directly with fragments [75.86ms]
+(pass) player imports and public data cannot bypass the publication boundary [3.82ms]
+(pass) map projection retains actual drawing/interaction and drops author fields [41.94ms]
+(pass) map display renaming preserves rendered geometry and stable place identity [63.13ms]
+(pass) artifact check detects injected developer raw data and search content [51.70ms]
+(pass) inline template placeholders remain literal Vue text [165.14ms]
+(pass) Vite module loading rejects source files outside the isolated tree [142.92ms]
+(pass) external search data remains inside the selected audience [45.33ms]
+(pass) real home includes the overview and audience navigation, with root-safe links [76.38ms]
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [0.84ms]
+(pass) terrain colors follow ground elevation [0.08ms]
+(pass) overview terrain retains source controls and excludes elevated connections [89.46ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.21ms]
+(pass) shopping stays local and public hillside routes remain connected [0.98ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.25ms]
+(pass) scene keeps platforms below volumes and geometry is finite [29.41ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [7.16ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [3.81ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [0.92ms]
+(pass) tree positions stay outside building footprints [4.60ms]
+(pass) all streets clear building volumes at their actual widths and elevations [380.33ms]
+(pass) district ground-road crossings share a junction and its elevation [114.73ms]
+(pass) city framework records every building and reaches its same-level facade entrances [7.79ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.45ms]
+(pass) public streets stay outside same-level resident and service courts [3.77ms]
+(pass) building volumes share boundaries without occupying the same space [37.88ms]
+(pass) detailed places connect street access to separate public and service entrances [10.34ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [0.96ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [1.59ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.27ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.01ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [24.77ms]
+(pass) public, residents, students and service users have separate access rights [2.91ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.33ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.70ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.76ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.44ms]
+(pass) shared stairs and separate apartments connect through shared circulation [0.86ms]
+
+tools/tests/validate-skills.test.ts:
+(pass) real Bun YAML, complete coverage and anchors pass [1.95ms]
+(pass) missing manifest [1.10ms]
+(pass) empty object [0.25ms]
+(pass) null manifest [0.23ms]
+(pass) bad JSON [0.32ms]
+(pass) unknown version [0.24ms]
+(pass) bad adoption schema [0.23ms]
+(pass) missing adoption target [0.48ms]
+(pass) empty sources [0.24ms]
+(pass) empty imports [0.25ms]
+(pass) empty policy [0.23ms]
+(pass) null skill [0.43ms]
+(pass) bad files type [0.42ms]
+(pass) null file record [0.43ms]
+(pass) bad source [0.42ms]
+(pass) bad fields [0.23ms]
+(pass) missing project entrypoint [0.46ms]
+(pass) empty skills directory [0.36ms]
+(pass) duplicate source [0.45ms]
+(pass) duplicate path [0.42ms]
+(pass) missing reference [0.38ms]
+(pass) altered source [0.42ms]
+(pass) unregistered script [0.43ms]
+(pass) missing command path [0.48ms]
+(pass) bad anchor [0.42ms]
+(pass) bad YAML metadata [0.48ms]
+(pass) bad metadata type [0.50ms]
+(pass) missing icon [0.51ms]
+(pass) missing license [0.38ms]
+(pass) optional links cannot exempt missing files [0.42ms]
+(pass) invalid nested fields [0.41ms]
+(pass) unavailable command [0.51ms]
+(pass) inactive upstream reference links are checked [0.49ms]
+(pass) local hashes alone explicitly do not prove upstream equality [0.40ms]
+(pass) Wiki anchors match the installed VitePress renderer while upstream keeps GitHub slugs [33.53ms]
+
+tools/tests/tasks.test.ts:
+(pass) real YAML supports a completed negative experiment and exact evidence anchors [1.41ms]
+(pass) schema, paths and state guardrails reject corrupt cards [8.30ms]
+(pass) dependencies are unique, real, acyclic, and cancellation does not satisfy a result [1.53ms]
+(pass) reopening removes current acceptance while old evidence stays in the body [0.49ms]
+(pass) check is read-only, sync deterministic, list read-only and stale output fails [0.99ms]
+(pass) empty task source or missing roadmap cannot pass [0.34ms]
+
+tools/tests/toolchain.test.ts:
+(pass) search adapter emits the original index and preserves the lazy loader contract [0.50ms]
+(pass) Vue checker reports errors inside a real SFC instead of silently skipping it [425.68ms]
+
+tools/tests/story-graph.test.ts:
+(pass) nested ALL/ANY keeps alternatives after partial satisfaction, never unlocks from one parent [0.22ms]
+(pass) all 22 stories validate; projection excludes narrative internals and design metadata [2.94ms]
+(pass) current story separates early history, later proof and optional life outcomes [1.13ms]
+(pass) unknown quests, self locks and invalid typed narrative targets fail explicitly [7.70ms]
+(pass) mandatory cycles with no entry fail, ANY external entry succeeds [2.29ms]
+(pass) optional side cannot be unavoidable, including a mandatory main stage; ANY main alternative is valid [2.79ms]
+(pass) outcomes cannot escape their required production stage in a cycle [1.17ms]
+(pass) recommendations and associations never block; mixed condition semantics are rejected [1.52ms]
+(pass) broken role, order, relation, schema and source references do not silently repair [7.39ms]
+(pass) single source owns all indexed story pages [0.55ms]
+(pass) removing an otherwise unreferenced story cannot silently drop a page [1.08ms]
+(pass) optional vignettes may depend on optional stories without blocking main completion [1.20ms]
+
+ 97 pass
+ 0 fail
+ 221 expect() calls
+Ran 97 tests across 6 files. [2.06s]
