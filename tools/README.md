@@ -16,13 +16,13 @@ bun run test:tools
 
 Python 检查器接受 `--json`。`EMPTY` 表示当前任务数据数量为零；`incomplete` 表示路径分析达到预算，`--max-states` 用于调整预算
 
-Wiki 构建与发布见 [Wiki](../docs/production/wiki.md)
+Wiki 构建与发布见 [Wiki](../docs/dev/handbook/wiki.md)
 
 ## 人物、故事与场所索引
 
-`bun run check:story-design` 对照地图主数据核对[故事](../docs/story/index.md)、[人物](../docs/characters/index.md)和[场所](../docs/locations/place-network.md)的目录、引用、正文路径、潜梦分工及共楼关系；`--json` 输出机器可读结果
+`bun run check:story-design` 对照地图主数据核对[故事](../docs/player/encyclopedia/story/index.md)、[人物](../docs/player/encyclopedia/characters/index.md)和[场所](../docs/player/encyclopedia/locations/place-network.md)的目录、引用、正文路径、潜梦分工及共楼关系；`--json` 输出机器可读结果
 
-索引分别位于 `docs/characters/characters.json`、`docs/quests/quests.json`、`docs/production/place-catalog.json` 与 `docs/production/city-story-map.json`。人物 `source_file` 相对仓库根，故事 `source_file` 相对 `docs/`，角色正文与故事章节使用各自稳定 ID
+索引分别位于 `docs/dev/design/catalogs/characters.json`、`docs/dev/design/catalogs/quests.json`、`docs/dev/design/catalogs/place-catalog.json` 与 `docs/dev/design/catalogs/city-story-map.json`。人物 `source_file` 相对仓库根，故事 `source_file` 相对 `docs/`，角色正文与故事章节使用各自稳定 ID
 
 检查对象是设计索引，运行任务仍由 `check:narrative` 检查。索引包含可选、替代与重访关系，不要求人物／地点／任务关联穷尽双向一致；工具不能证明正文因果、手感或实际路线可玩，正文连续性另行审阅
 
@@ -32,7 +32,7 @@ Wiki 构建与发布见 [Wiki](../docs/production/wiki.md)
 
 `bun run roadmap` 只读显示阶段计数与下一项，`bun run roadmap --stage M0` 查看阶段详情，`bun run roadmap --json` 输出汇总数据
 
-编辑 `todo/demo-progress.json` 后运行 `bun run roadmap:sync` 生成看板，再运行 `bun run check:roadmap` 检查依赖、证据引用与生成一致性。工具只核对记录结构，验收依据见[工作流](../docs/production/solo-workflow.md)
+编辑 `todo/demo-progress.json` 后运行 `bun run roadmap:sync` 生成看板，再运行 `bun run check:roadmap` 检查依赖、证据引用与生成一致性。工具只核对记录结构，验收依据见[工作流](../docs/dev/handbook/codex.md)
 
 进度工具使用 Python 3.10+ 标准库；测试纳入 `bun run test:tools`，窄测使用 `python3 -B -m unittest discover -s tools/tests -p test_roadmap.py`
 
@@ -51,7 +51,7 @@ python3 tools/probe_skills.py --output output/skills/discovery.json
 
 ## 真实运行与 Capture
 
-从需求和当前实现出发，完成适用测试，再按[运行验收](../docs/production/runtime-validation.md)运行真实场景、检查状态与画面、修复并复验。当前入口复用 Viewer 的城市和自由镜头；配置字段、输入与范围见[游戏工程](../game/README.md)
+从需求和当前实现出发，完成适用测试，再按[运行验收](../docs/dev/validation/runtime.md)运行真实场景、检查状态与画面、修复并复验。当前入口复用 Viewer 的城市和自由镜头；配置字段、输入与范围见[游戏工程](../game/README.md)
 
 ```sh
 python3 tools/capture.py --script game/capture/viewer-tour.json --output output/capture/my-run
@@ -64,7 +64,7 @@ Capture 使用 Python 3.10+ 与 Pillow，Rust 按 `game/` 现有环境构建，�
 
 ## 资产报告与实际尺寸预览
 
-使用 `create-game-assets` 组织需求、参考、制作与导入，按[资产管理](../docs/production/assets.md)写入现有资产包和导出路径。当前环境需要 Pillow 时可按原版脚本依赖安装：
+使用 `create-game-assets` 组织需求、参考、制作与导入，按[资产管理](../docs/dev/production/asset-pipeline.md)写入现有资产包和导出路径。当前环境需要 Pillow 时可按原版脚本依赖安装：
 
 ```sh
 python3 -m pip install -r .agents/skills/create-game-assets/scripts/requirements.txt
@@ -75,7 +75,7 @@ bun tools/export-district-scene.mjs --check
 bun tools/export-environment.mjs --check
 ```
 
-预览保留原件，用三种对比底色检查边缘；`--require-cutout` 只用于需要透明区域的素材，招牌实底和 Logo 不必抠图。资产检查、预览、capture 均写入忽略的 `output/`，不混入运行资产。工具取舍与后续采用条件见[资产工具审查](../docs/production/asset-tool-review.md)
+预览保留原件，用三种对比底色检查边缘；`--require-cutout` 只用于需要透明区域的素材，招牌实底和 Logo 不必抠图。资产检查、预览、capture 均写入忽略的 `output/`，不混入运行资产。工具取舍与后续采用条件见[资产工具审查](../docs/dev/decisions/asset-tools.md)
 
 ## CI
 

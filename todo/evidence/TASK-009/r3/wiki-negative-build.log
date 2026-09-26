@@ -1,0 +1,15 @@
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+x Build failed in 65ms
+[31m✖[0m building client + server bundles...
+build error:
+[n-side-wiki-boundary] Could not load /home/lzzz/MyProjects/N-SIDE/output/wiki-boundary-negative/docs/dev/design/data.json (imported by output/wiki-boundary-negative/output/wiki/player/source/player/index.md): Unpublished Wiki module: /home/lzzz/MyProjects/N-SIDE/output/wiki-boundary-negative/docs/dev/design/data.json
+[n-side-wiki-boundary] Could not load /home/lzzz/MyProjects/N-SIDE/output/wiki-boundary-negative/docs/dev/design/data.json (imported by output/wiki-boundary-negative/output/wiki/player/source/player/index.md): Unpublished Wiki module: /home/lzzz/MyProjects/N-SIDE/output/wiki-boundary-negative/docs/dev/design/data.json
+    at Object.load (file:///home/lzzz/MyProjects/N-SIDE/output/wiki-boundary-negative/docs/.vitepress/config.mjs:55:76)
+    at file:///home/lzzz/MyProjects/N-SIDE/node_modules/rollup/dist/es/shared/node-entry.js:23316:40
+    at async PluginDriver.hookFirstAndGetPlugin (file:///home/lzzz/MyProjects/N-SIDE/node_modules/rollup/dist/es/shared/node-entry.js:23198:28)
+    at async file:///home/lzzz/MyProjects/N-SIDE/node_modules/rollup/dist/es/shared/node-entry.js:22175:33
+    at async Queue.work (file:///home/lzzz/MyProjects/N-SIDE/node_modules/rollup/dist/es/shared/node-entry.js:23426:32)
+error: "vitepress" exited with code 1

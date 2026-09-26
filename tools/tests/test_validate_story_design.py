@@ -117,23 +117,35 @@ class StoryDesignTests(unittest.TestCase):
         self.assertTrue(M.validate(self.root)['ok'])
 
     def test_source_missing_escape_and_stale_id(self):
-        for source in ('story/missing.md', '../../outside.md',
-                       str(self.root / M.DOCS / 'story/main/prologue.md')):
+        for source in ('player/encyclopedia/story/missing.md', '../../outside.md',
+                       str(self.root / M.DOCS / 'player/encyclopedia/story/main/prologue.md')):
             with self.subTest(source=source):
                 self.edit('quests', lambda d: d['quests'][0].update({'source_file': source}))
                 self.assertIn('source', self.codes())
         self.copy_file(M.FILES['quests'])
-        path = self.root / M.DOCS / 'story/main/prologue.md'
+        path = self.root / M.DOCS / 'player/encyclopedia/story/main/prologue.md'
         path.write_text('No task identifiers')
         self.assertIn('reference', self.codes())
 
     def test_character_source_missing_or_wrong_identity(self):
-        for source in ('docs/characters/missing.md', 'docs/world/history.md', '../outside.md'):
+        for source in ('docs/player/encyclopedia/characters/missing.md', 'docs/player/encyclopedia/world/history.md', '../outside.md'):
             with self.subTest(source=source):
                 self.edit('characters', lambda d: d['characters'][0].update({'source_file': source}))
                 self.assertIn('source', self.codes())
         self.copy_file(M.FILES['characters'])
         self.edit('characters', lambda d: d['characters'][0].update({'source_file': d['characters'][1]['source_file']}))
+        self.assertIn('source', self.codes())
+
+    def test_catalogue_keeps_character_authority_in_encyclopedia(self):
+        spec = self.root / 'docs/dev/design/characters/example.md'
+        spec.parent.mkdir(parents=True, exist_ok=True)
+        spec.write_text('---\nsubject_id: CHR-001\n---\n# Implementation\n')
+        self.assertTrue(M.validate(self.root)['ok'])
+        self.edit('characters', lambda d: d['characters'][0].update({'source_file': 'docs/dev/design/characters/example.md'}))
+        self.assertIn('source', self.codes())
+        self.copy_file(M.FILES['characters'])
+        duplicate = self.root / M.CHARACTERS / 'unregistered.md'
+        duplicate.write_text('---\nsubject_id: CHR-001\n---\n# Another authority\n')
         self.assertIn('source', self.codes())
 
     def test_malformed_data_reports_failure(self):

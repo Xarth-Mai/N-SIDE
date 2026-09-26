@@ -289,18 +289,18 @@ class NarrativeTests(unittest.TestCase):
 
     def test_cli_empty_project(self):
         p = subprocess.run([sys.executable, '-B', str(TOOL), '--root', str(self.root)], capture_output=True, text=True)
-        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertEqual(p.returncode, 1, p.stderr)
         self.assertIn('EMPTY: 0', p.stdout)
 
     def test_cli_project_and_json(self):
-        self.write(f'docs/quests/{Q}/narrative.json')
+        self.write(f'docs/dev/design/quests/{Q}/narrative.json')
         p = subprocess.run([sys.executable, '-B', str(TOOL), '--root', str(self.root), '--json'], capture_output=True, text=True)
         self.assertEqual(p.returncode, 0, p.stderr)
         self.assertEqual(json.loads(p.stdout)['files'], 1)
 
     def test_duplicate_quest_files(self):
-        self.write('docs/quests/a/narrative.json')
-        self.write('docs/quests/b/narrative.json')
+        self.write('docs/dev/design/quests/a/narrative.json')
+        self.write('docs/dev/design/quests/b/narrative.json')
         p = subprocess.run([sys.executable, '-B', str(TOOL), '--root', str(self.root), '--json'], capture_output=True, text=True)
         self.assertEqual(p.returncode, 1, p.stderr)
         results = json.loads(p.stdout)['results']
@@ -311,7 +311,7 @@ class NarrativeTests(unittest.TestCase):
         self.assertEqual(p.returncode, 2)
 
     def test_template(self):
-        template = Path(__file__).resolve().parents[2] / 'docs/templates/narrative.json'
+        template = Path(__file__).resolve().parents[2] / 'docs/dev/handbook/templates/narrative.json'
         self.assertTrue(M.validate_file(template)['ok'])
 
 

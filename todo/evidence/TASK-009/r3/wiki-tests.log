@@ -1,0 +1,16 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/wiki.test.mjs:
+(pass) sidebar follows audience and preserves story reading order [2.51ms]
+(pass) data export is fail-closed and dev-only, ignoring hidden files and symlinks [1.36ms]
+(pass) publication requires a known profile and an actual entry page [0.44ms]
+(pass) isolated player tree excludes developer pages/data/public and uses redirects [123.41ms]
+(pass) player imports and public data cannot bypass the publication boundary [2.41ms]
+(pass) map projection retains actual drawing/interaction and drops author fields [59.02ms]
+(pass) artifact check detects injected developer raw data and search content [68.77ms]
+(pass) inline template placeholders remain literal Vue text [143.38ms]
+(pass) Vite module loading rejects source files outside the isolated tree [55.39ms]
+
+ 9 pass
+ 0 fail
+Ran 9 tests across 1 file. [488.00ms]

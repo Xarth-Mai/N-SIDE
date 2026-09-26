@@ -1,0 +1,2449 @@
+{
+  "source_commit": "9a56ec7e1f541db2b5f0fe6fa74b795fdd9039f5",
+  "scope": "91 named places, including buildings, outdoor places, access and service nodes; not a census of all physical building volumes",
+  "status": "accepted",
+  "places": [
+    {
+      "place_id": "01",
+      "name": "N站",
+      "block_id": "B01",
+      "building_id": "V-01",
+      "kind": "building",
+      "character_ids": [
+        "CHR-034",
+        "CHR-009"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-002",
+        "QST-007",
+        "QST-009",
+        "QST-107"
+      ],
+      "narrative_role": "主线与生活",
+      "daily_activity": "换乘、送行、散场回家",
+      "linked_place_ids": [
+        "32",
+        "31",
+        "02"
+      ],
+      "connection_reason": "交通咨询、行李与会合",
+      "aftermath": "米娜离城后留下新生活通信；现场恢复清楚的班次提示",
+      "access": "站厅按运营开放，轨道区域受控"
+    },
+    {
+      "place_id": "02",
+      "name": "站前广场",
+      "block_id": "B01",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-034",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-002",
+        "QST-008",
+        "QST-108"
+      ],
+      "narrative_role": "通路与生活",
+      "daily_activity": "出站等人、递交小册",
+      "linked_place_ids": [
+        "01",
+        "35",
+        "25"
+      ],
+      "connection_reason": "车站、兴趣街与河岸的分向",
+      "aftermath": "姚安与熟客会提起不同的回家路线",
+      "access": "全天公共通路"
+    },
+    {
+      "place_id": "03",
+      "name": "社区商店街",
+      "block_id": "B04",
+      "building_id": null,
+      "kind": "access",
+      "character_ids": [
+        "CHR-014",
+        "CHR-015"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-008",
+        "QST-102"
+      ],
+      "narrative_role": "通路与生活",
+      "daily_activity": "买菜、看橱窗、沿雨棚回家",
+      "linked_place_ids": [
+        "07",
+        "08",
+        "04"
+      ],
+      "connection_reason": "日常采购上坡路线",
+      "aftermath": "货物、菜单与熟客话题随进展变化",
+      "access": "公共道路，商铺各自营业"
+    },
+    {
+      "place_id": "04",
+      "name": "小店与住家",
+      "block_id": "B05",
+      "building_id": "V-04",
+      "kind": "building",
+      "character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-003",
+        "CHR-004",
+        "CHR-005"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-002",
+        "QST-006",
+        "QST-008",
+        "QST-009",
+        "QST-010",
+        "QST-101"
+      ],
+      "narrative_role": "核心主线与家",
+      "daily_activity": "经营、创作、吃饭、休息和接待",
+      "linked_place_ids": [
+        "28",
+        "29",
+        "05"
+      ],
+      "connection_reason": "配送、公共台阶和门前生活",
+      "aftermath": "橱窗、小册、米娜明信片与家庭交接更新",
+      "access": "前场公共，后场预约，内梯与住家私人"
+    },
+    {
+      "place_id": "05",
+      "name": "树下小空地",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-003",
+        "CHR-009",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-008",
+        "QST-010"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "坐着等朋友、看新陈列",
+      "linked_place_ids": [
+        "04",
+        "09",
+        "56"
+      ],
+      "connection_reason": "邻店与茶桌庭",
+      "aftermath": "熟客认得玩家参与的陈列，也谈自己的新事",
+      "access": "公共停留，不堵通行"
+    },
+    {
+      "place_id": "06",
+      "name": "街口饭馆",
+      "block_id": "B01",
+      "building_id": "V-06",
+      "kind": "building",
+      "character_ids": [
+        "CHR-015",
+        "CHR-034"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "通勤晚饭、沿街取餐",
+      "linked_place_ids": [
+        "01",
+        "30",
+        "33"
+      ],
+      "connection_reason": "站前不同用餐时段",
+      "aftermath": "聚餐后多一段关于各自下班时间的对白",
+      "access": "堂食与取餐开放，后厨受控"
+    },
+    {
+      "place_id": "07",
+      "name": "烘焙店",
+      "block_id": "B04",
+      "building_id": "V-07",
+      "kind": "building",
+      "character_ids": [
+        "CHR-014",
+        "CHR-002"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-005",
+        "QST-008",
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "清晨出炉、试新点心",
+      "linked_place_ids": [
+        "08",
+        "30",
+        "48"
+      ],
+      "connection_reason": "食品采购与合作菜单",
+      "aftermath": "新菜单和小册中的制作照片出现",
+      "access": "顾客区开放，烘焙后场受控"
+    },
+    {
+      "place_id": "08",
+      "name": "生鲜小超市",
+      "block_id": "B04",
+      "building_id": "V-08",
+      "kind": "building",
+      "character_ids": [
+        "CHR-004",
+        "CHR-014",
+        "CHR-015"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-005",
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "家常采购、清晨补货",
+      "linked_place_ids": [
+        "07",
+        "50",
+        "52"
+      ],
+      "connection_reason": "同一餐的不同材料",
+      "aftermath": "协作后恢复正常配送与备餐",
+      "access": "购物区开放，冷藏后场受控"
+    },
+    {
+      "place_id": "09",
+      "name": "自助洗衣店",
+      "block_id": "B05",
+      "building_id": "V-09",
+      "kind": "building",
+      "character_ids": [
+        "CHR-016",
+        "CHR-017"
+      ],
+      "quest_ids": [
+        "QST-104",
+        "QST-108"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "雨天洗衣、靠窗等候",
+      "linked_place_ids": [
+        "56",
+        "69",
+        "44"
+      ],
+      "connection_reason": "邻里联系与衣物修补",
+      "aftermath": "新交接提示和已取回的衣物",
+      "access": "顾客个人物品由本人或授权者处理"
+    },
+    {
+      "place_id": "10",
+      "name": "街坊共用院",
+      "block_id": "B03",
+      "building_id": null,
+      "kind": "resident-court",
+      "character_ids": [
+        "CHR-017",
+        "CHR-008",
+        "CHR-004"
+      ],
+      "quest_ids": [
+        "QST-101",
+        "QST-103"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "住户换盆、受邀做手工",
+      "linked_place_ids": [
+        "43",
+        "44",
+        "46"
+      ],
+      "connection_reason": "修补、木作与旧书",
+      "aftermath": "共同完成的椅子或小物留在使用位置",
+      "access": "住户共用院，活动需邀请"
+    },
+    {
+      "place_id": "11",
+      "name": "小修理铺",
+      "block_id": "B03",
+      "building_id": "V-11",
+      "kind": "building",
+      "character_ids": [
+        "CHR-008",
+        "CHR-001",
+        "CHR-009"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-002",
+        "QST-008",
+        "QST-103"
+      ],
+      "narrative_role": "主线与生活",
+      "daily_activity": "送修、试机、学习维护",
+      "linked_place_ids": [
+        "38",
+        "43",
+        "40"
+      ],
+      "connection_reason": "专门维修、木作与旧物",
+      "aftermath": "修好的玩具与新测试件可再次使用",
+      "access": "交接前场开放，工具区由店主安排"
+    },
+    {
+      "place_id": "12",
+      "name": "临街公寓",
+      "block_id": "B03",
+      "building_id": "V-12",
+      "kind": "residential",
+      "character_ids": [
+        "CHR-008",
+        "CHR-010",
+        "CHR-011",
+        "CHR-012",
+        "CHR-013",
+        "CHR-017",
+        "CHR-026",
+        "CHR-032",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-002",
+        "QST-003",
+        "QST-103",
+        "QST-107"
+      ],
+      "narrative_role": "住宅生活",
+      "daily_activity": "邻居出门、取件、各自回家",
+      "linked_place_ids": [
+        "11",
+        "35",
+        "39"
+      ],
+      "connection_reason": "工作与住宅往返",
+      "aftermath": "住户日常对白随工作和事件变化",
+      "access": "仅受邀进入指定住户，不开放整栋住宅"
+    },
+    {
+      "place_id": "13",
+      "name": "坡上住宅",
+      "block_id": "B06",
+      "building_id": "V-13",
+      "kind": "residential",
+      "character_ids": [
+        "CHR-009",
+        "CHR-019",
+        "CHR-030"
+      ],
+      "quest_ids": [
+        "QST-002",
+        "QST-005",
+        "QST-006",
+        "QST-108"
+      ],
+      "narrative_role": "主线住宅",
+      "daily_activity": "准备行李、养护植物、邻里相处",
+      "linked_place_ids": [
+        "58",
+        "59",
+        "60"
+      ],
+      "connection_reason": "上层公共生活",
+      "aftermath": "米娜房间按其选择保留；其余住户继续生活",
+      "access": "分别预约各户，不共用私人信息"
+    },
+    {
+      "place_id": "14",
+      "name": "转角观河点",
+      "block_id": "B06",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-019",
+        "CHR-002",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-108"
+      ],
+      "narrative_role": "观察与休息",
+      "daily_activity": "看河、歇脚、辨认来路",
+      "linked_place_ids": [
+        "13",
+        "58",
+        "60"
+      ],
+      "connection_reason": "坡地路线与观测",
+      "aftermath": "留下当前景物的照片对照，可仅坐下休息",
+      "access": "公共观景，非每日领奖点"
+    },
+    {
+      "place_id": "15",
+      "name": "小型影院与城市会客厅",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "building",
+      "character_ids": [
+        "CHR-024",
+        "CHR-023",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-004",
+        "QST-008",
+        "QST-010"
+      ],
+      "narrative_role": "主线公共中心",
+      "daily_activity": "看展、会合、观影",
+      "linked_place_ids": [
+        "71",
+        "72",
+        "75",
+        "76"
+      ],
+      "connection_reason": "同楼功能与外部展厅",
+      "aftermath": "《今天的街坊》更新，有当下生活而不只有灾难",
+      "access": "大厅免费，票区和后台分别管理"
+    },
+    {
+      "place_id": "16",
+      "name": "社区诊所",
+      "block_id": "B08",
+      "building_id": "V-16",
+      "kind": "building",
+      "character_ids": [
+        "CHR-022",
+        "CHR-023"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-006",
+        "QST-008"
+      ],
+      "narrative_role": "现实支持",
+      "daily_activity": "社区诊疗、家庭健康沟通",
+      "linked_place_ids": [
+        "67",
+        "18",
+        "68"
+      ],
+      "connection_reason": "服务与居民生活",
+      "aftermath": "出现清楚的预约和转介安排，不展示病历",
+      "access": "医疗信息受控；不是大型研究照护中心"
+    },
+    {
+      "place_id": "17",
+      "name": "城市花园与活动草坪",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-019",
+        "CHR-020",
+        "CHR-028"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-008",
+        "QST-108"
+      ],
+      "narrative_role": "主线观察与生活",
+      "daily_activity": "休息、草坪活动、维护",
+      "linked_place_ids": [
+        "60",
+        "72",
+        "25"
+      ],
+      "connection_reason": "园艺比较与滨水路线",
+      "aftermath": "受影响区域恢复，普通活动重新使用",
+      "access": "局部养护围合，外围通路保留"
+    },
+    {
+      "place_id": "18",
+      "name": "东侧住宅院",
+      "block_id": "B08",
+      "building_id": "V-18",
+      "kind": "residential",
+      "character_ids": [
+        "CHR-016",
+        "CHR-020",
+        "CHR-021",
+        "CHR-022",
+        "CHR-023",
+        "CHR-024",
+        "CHR-028",
+        "CHR-029",
+        "CHR-033",
+        "CHR-034"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-008",
+        "QST-104",
+        "QST-105"
+      ],
+      "narrative_role": "住宅生活",
+      "daily_activity": "接家人、门厅交接、下班回家",
+      "linked_place_ids": [
+        "16",
+        "67",
+        "68",
+        "70"
+      ],
+      "connection_reason": "社区服务链",
+      "aftermath": "居民各自恢复安排，不全改成主线感谢对白",
+      "access": "住户院落与室内按邀请进入"
+    },
+    {
+      "place_id": "19",
+      "name": "社区中学",
+      "block_id": "B07",
+      "building_id": "V-19",
+      "kind": "building",
+      "character_ids": [
+        "CHR-020",
+        "CHR-030"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-105"
+      ],
+      "narrative_role": "主线受控场所",
+      "daily_activity": "上课、放学、学校组织活动",
+      "linked_place_ids": [
+        "62",
+        "65",
+        "66",
+        "64"
+      ],
+      "connection_reason": "校外放学路线与独立球场",
+      "aftermath": "学校记录和当下路线得到正确说明",
+      "access": "校方安排访问；校园和公共球场分开"
+    },
+    {
+      "place_id": "20",
+      "name": "山脚休息台",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-030",
+        "CHR-002"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "通路与休息",
+      "daily_activity": "上山前整理物品、决定是否继续",
+      "linked_place_ids": [
+        "89",
+        "91",
+        "22"
+      ],
+      "connection_reason": "补给、天气与步道",
+      "aftermath": "可看维护与天气公告，故事后仍能散步",
+      "access": "随山路与天气管理"
+    },
+    {
+      "place_id": "21",
+      "name": "林间缓坡",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "access",
+      "character_ids": [
+        "CHR-002",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "通路与生活",
+      "daily_activity": "林间散步、下山回家",
+      "linked_place_ids": [
+        "23",
+        "13",
+        "29"
+      ],
+      "connection_reason": "观景后的回程",
+      "aftermath": "沿路日常对白与拍摄选择变化",
+      "access": "公共步道，天气关闭提供回程安排"
+    },
+    {
+      "place_id": "22",
+      "name": "小神龛",
+      "block_id": "B12",
+      "building_id": "V-22",
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-030",
+        "CHR-004",
+        "CHR-005"
+      ],
+      "quest_ids": [
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "安静生活",
+      "daily_activity": "短暂停步、整理附近小物",
+      "linked_place_ids": [
+        "20",
+        "23"
+      ],
+      "connection_reason": "登高途中",
+      "aftermath": "邻里继续清扫，不承担最终封印机关",
+      "access": "小范围公共驻足，保持原有尺度"
+    },
+    {
+      "place_id": "23",
+      "name": "摘星台",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-004",
+        "CHR-005",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "尾声与休息",
+      "daily_activity": "同夜看城市与另一侧星野",
+      "linked_place_ids": [
+        "21",
+        "20",
+        "04"
+      ],
+      "connection_reason": "上山与回家",
+      "aftermath": "照片和可选家庭对话，不新增 Boss 副本",
+      "access": "随步道开放；两面夜景同地同夜"
+    },
+    {
+      "place_id": "24",
+      "name": "河岸安静露台",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-029",
+        "CHR-006",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-007",
+        "QST-108"
+      ],
+      "narrative_role": "关系与观察",
+      "daily_activity": "安静看水、私下聊一会儿",
+      "linked_place_ids": [
+        "26",
+        "84",
+        "88"
+      ],
+      "connection_reason": "不同滨水停留方式",
+      "aftermath": "候船事件结束后仍可只听船声",
+      "access": "公共安静露台，极端天气关闭"
+    },
+    {
+      "place_id": "25",
+      "name": "河岸小广场",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-028",
+        "CHR-020",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-007",
+        "QST-008",
+        "QST-108"
+      ],
+      "narrative_role": "主线到达与生活",
+      "daily_activity": "滨水会合、小型邻里活动",
+      "linked_place_ids": [
+        "26",
+        "17",
+        "85"
+      ],
+      "connection_reason": "候船与花园",
+      "aftermath": "活动恢复普通规模，过路人不被展览堵住",
+      "access": "上层公共空间与可撤活动分区"
+    },
+    {
+      "place_id": "26",
+      "name": "渡口入口与候船处",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-029",
+        "CHR-028",
+        "CHR-034"
+      ],
+      "quest_ids": [
+        "QST-007",
+        "QST-008",
+        "QST-009"
+      ],
+      "narrative_role": "核心主线现场",
+      "daily_activity": "候船、上下船、看船离开",
+      "linked_place_ids": [
+        "32",
+        "85",
+        "87"
+      ],
+      "connection_reason": "交通说明、历史与取餐",
+      "aftermath": "低层设施修复后开放，班次提示经过核对",
+      "access": "船班和水位控制低层，上层连续通行"
+    },
+    {
+      "place_id": "27",
+      "name": "河岸小摊",
+      "block_id": "B11",
+      "building_id": "V-27",
+      "kind": "building",
+      "character_ids": [
+        "CHR-031",
+        "CHR-020",
+        "CHR-015"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-108"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "买饮品、看手写菜单",
+      "linked_place_ids": [
+        "24",
+        "17",
+        "87"
+      ],
+      "connection_reason": "河岸散步与补给",
+      "aftermath": "菜单与收摊安排随生活改变",
+      "access": "摊亭经营区，补货维护另行安排"
+    },
+    {
+      "place_id": "28",
+      "name": "小店货运侧院",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "service",
+      "character_ids": [
+        "CHR-003",
+        "CHR-035",
+        "CHR-001"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-008",
+        "QST-009"
+      ],
+      "narrative_role": "后勤与生活",
+      "daily_activity": "验收、储物转运、夜间交接",
+      "linked_place_ids": [
+        "04",
+        "11",
+        "55"
+      ],
+      "connection_reason": "小店后场与维修创作",
+      "aftermath": "交接清单清楚，复杂任务预约而非占用公共店面",
+      "access": "服务院与货门受控"
+    },
+    {
+      "place_id": "29",
+      "name": "店侧台阶",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "access",
+      "character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "公共通路",
+      "daily_activity": "从店旁上坡、在平台回望",
+      "linked_place_ids": [
+        "04",
+        "13",
+        "21"
+      ],
+      "connection_reason": "住宅与登高回程",
+      "aftermath": "看见橱窗变化，仍然属于街区通路",
+      "access": "外部公共台阶，不进入私人内梯"
+    },
+    {
+      "place_id": "30",
+      "name": "站前咖啡铺",
+      "block_id": "B01",
+      "building_id": "V-30",
+      "kind": "building",
+      "character_ids": [
+        "CHR-014",
+        "CHR-034",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-001",
+        "QST-102",
+        "QST-107"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "买早咖啡、短时等人",
+      "linked_place_ids": [
+        "01",
+        "07",
+        "32"
+      ],
+      "connection_reason": "通勤供给与交通",
+      "aftermath": "宋岚新点心进入菜单，夜班人谈交接",
+      "access": "随营业时间开放"
+    },
+    {
+      "place_id": "31",
+      "name": "旅行用品与寄存店",
+      "block_id": "B01",
+      "building_id": "V-31",
+      "kind": "building",
+      "character_ids": [
+        "CHR-035",
+        "CHR-009"
+      ],
+      "quest_ids": [
+        "QST-002",
+        "QST-008"
+      ],
+      "narrative_role": "主线与生活",
+      "daily_activity": "寄存行李、买雨具",
+      "linked_place_ids": [
+        "01",
+        "34",
+        "04"
+      ],
+      "connection_reason": "离城与逛街",
+      "aftermath": "米娜完成取件，之后服务其他普通访客",
+      "access": "寄存后台核验授权"
+    },
+    {
+      "place_id": "32",
+      "name": "城市交通服务厅",
+      "block_id": "B01",
+      "building_id": "V-32",
+      "kind": "building",
+      "character_ids": [
+        "CHR-034",
+        "CHR-029"
+      ],
+      "quest_ids": [
+        "QST-007",
+        "QST-008",
+        "QST-009",
+        "QST-107"
+      ],
+      "narrative_role": "现实协作",
+      "daily_activity": "人工换乘咨询、交通卡服务",
+      "linked_place_ids": [
+        "01",
+        "26",
+        "83"
+      ],
+      "connection_reason": "跨河与散场路线",
+      "aftermath": "新的人工说明和恢复后的正常服务",
+      "access": "服务大厅开放，办公后台受控"
+    },
+    {
+      "place_id": "33",
+      "name": "站前午间食堂",
+      "block_id": "B01",
+      "building_id": "V-33",
+      "kind": "building",
+      "character_ids": [
+        "CHR-034",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "站务与职员吃午饭",
+      "linked_place_ids": [
+        "01",
+        "06",
+        "30"
+      ],
+      "connection_reason": "不同用餐时段",
+      "aftermath": "聚餐话题与菜单变化",
+      "access": "食堂按时营业，不延长到全天任务等待"
+    },
+    {
+      "place_id": "34",
+      "name": "站前书店",
+      "block_id": "B01",
+      "building_id": "V-34",
+      "kind": "building",
+      "character_ids": [
+        "CHR-032",
+        "CHR-025",
+        "CHR-007"
+      ],
+      "quest_ids": [
+        "QST-006",
+        "QST-010",
+        "QST-106"
+      ],
+      "narrative_role": "关系与阅读",
+      "daily_activity": "通勤翻书、交换推荐",
+      "linked_place_ids": [
+        "46",
+        "73",
+        "01"
+      ],
+      "connection_reason": "图书流通与出行",
+      "aftermath": "小册上架、读者出现不同反馈",
+      "access": "免费翻阅区与销售区明确"
+    },
+    {
+      "place_id": "35",
+      "name": "音游店",
+      "block_id": "B02",
+      "building_id": "V-35",
+      "kind": "building",
+      "character_ids": [
+        "CHR-011",
+        "CHR-010",
+        "CHR-026"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-103"
+      ],
+      "narrative_role": "主线与兴趣",
+      "daily_activity": "游玩、旁观、等朋友",
+      "linked_place_ids": [
+        "38",
+        "39",
+        "42"
+      ],
+      "connection_reason": "维修、试玩和会合",
+      "aftermath": "新活动与维护安排，宁朗普通来访",
+      "access": "玩家与维护区域分开"
+    },
+    {
+      "place_id": "36",
+      "name": "模型店",
+      "block_id": "B02",
+      "building_id": "V-36",
+      "kind": "building",
+      "character_ids": [
+        "CHR-012",
+        "CHR-009",
+        "CHR-002"
+      ],
+      "quest_ids": [
+        "QST-002",
+        "QST-103"
+      ],
+      "narrative_role": "主线与创作",
+      "daily_activity": "拼装、补色、更新作品",
+      "linked_place_ids": [
+        "41",
+        "40",
+        "74"
+      ],
+      "connection_reason": "材料、旧物与拍摄",
+      "aftermath": "新的模型和制作过程展示",
+      "access": "公共拼装，受控涂装与工具"
+    },
+    {
+      "place_id": "37",
+      "name": "桌游卡牌店",
+      "block_id": "B02",
+      "building_id": "V-37",
+      "kind": "building",
+      "character_ids": [
+        "CHR-013",
+        "CHR-035",
+        "CHR-010"
+      ],
+      "quest_ids": [
+        "QST-103",
+        "QST-107"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "围桌试玩、朋友约局",
+      "linked_place_ids": [
+        "40",
+        "42",
+        "53"
+      ],
+      "connection_reason": "交流、会合和散场饭",
+      "aftermath": "米娜离开后桌上有新人，关系继续",
+      "access": "按桌席预约，旁观通路保留"
+    },
+    {
+      "place_id": "38",
+      "name": "游戏设备维修店",
+      "block_id": "B02",
+      "building_id": "V-38",
+      "kind": "building",
+      "character_ids": [
+        "CHR-008",
+        "CHR-011",
+        "CHR-001"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-008",
+        "QST-103"
+      ],
+      "narrative_role": "主线技术支持",
+      "daily_activity": "控制器和外设交接检测",
+      "linked_place_ids": [
+        "35",
+        "11",
+        "77"
+      ],
+      "connection_reason": "不同专长协作",
+      "aftermath": "排除普通故障的记录留存，正常维修继续",
+      "access": "客户设备与数据需授权"
+    },
+    {
+      "place_id": "39",
+      "name": "独立游戏体验店",
+      "block_id": "B02",
+      "building_id": "V-39",
+      "kind": "building",
+      "character_ids": [
+        "CHR-010",
+        "CHR-011",
+        "CHR-012"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-103"
+      ],
+      "narrative_role": "关系与创作",
+      "daily_activity": "试玩原创小作品、看更新板",
+      "linked_place_ids": [
+        "35",
+        "36",
+        "45"
+      ],
+      "connection_reason": "反馈、展件和印制",
+      "aftermath": "作品根据试玩修改，不固定为开幕版本",
+      "access": "展示与设备维护分开"
+    },
+    {
+      "place_id": "40",
+      "name": "兴趣旧物交换店",
+      "block_id": "B02",
+      "building_id": "V-40",
+      "kind": "building",
+      "character_ids": [
+        "CHR-013",
+        "CHR-009",
+        "CHR-012"
+      ],
+      "quest_ids": [
+        "QST-002",
+        "QST-103"
+      ],
+      "narrative_role": "主线与旧物",
+      "daily_activity": "寄售、交换、说明来历",
+      "linked_place_ids": [
+        "36",
+        "37",
+        "11"
+      ],
+      "connection_reason": "模型、社群与修理",
+      "aftermath": "米娜按自己决定留存或寄售",
+      "access": "交易资料由店员受控提供"
+    },
+    {
+      "place_id": "41",
+      "name": "手作材料店",
+      "block_id": "B02",
+      "building_id": "V-41",
+      "kind": "building",
+      "character_ids": [
+        "CHR-002",
+        "CHR-012",
+        "CHR-017"
+      ],
+      "quest_ids": [
+        "QST-002",
+        "QST-101",
+        "QST-103"
+      ],
+      "narrative_role": "创作生活",
+      "daily_activity": "选纸样、配色、采购小配件",
+      "linked_place_ids": [
+        "36",
+        "55",
+        "45"
+      ],
+      "connection_reason": "制作和印刷",
+      "aftermath": "作品在不同店铺被实际使用",
+      "access": "材料储存按经营管理"
+    },
+    {
+      "place_id": "42",
+      "name": "兴趣街会合庭",
+      "block_id": "B02",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-010",
+        "CHR-011",
+        "CHR-013"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-103"
+      ],
+      "narrative_role": "关系与通路",
+      "daily_activity": "免费等朋友、看橱窗",
+      "linked_place_ids": [
+        "35",
+        "36",
+        "37"
+      ],
+      "connection_reason": "兴趣店铺会合",
+      "aftermath": "熟人会谈新的游戏或作品",
+      "access": "全天公共停留，夜间降低音量"
+    },
+    {
+      "place_id": "43",
+      "name": "共享木作工坊",
+      "block_id": "B03",
+      "building_id": "V-43",
+      "kind": "building",
+      "character_ids": [
+        "CHR-008",
+        "CHR-017",
+        "CHR-012"
+      ],
+      "quest_ids": [
+        "QST-101",
+        "QST-103"
+      ],
+      "narrative_role": "手作生活",
+      "daily_activity": "修凳脚、磨木牌、制作展示底座",
+      "linked_place_ids": [
+        "10",
+        "11",
+        "45"
+      ],
+      "connection_reason": "院落、修理与印制",
+      "aftermath": "修好的公共物件继续被使用",
+      "access": "设备启停由负责人管理"
+    },
+    {
+      "place_id": "44",
+      "name": "衣物修改店",
+      "block_id": "B03",
+      "building_id": "V-44",
+      "kind": "building",
+      "character_ids": [
+        "CHR-017",
+        "CHR-005",
+        "CHR-016"
+      ],
+      "quest_ids": [
+        "QST-101",
+        "QST-104"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "修改衣物、试穿和取件",
+      "linked_place_ids": [
+        "55",
+        "09",
+        "10"
+      ],
+      "connection_reason": "包装、洗衣和受邀手作",
+      "aftermath": "陈静禾的新口袋、清楚的交件约定",
+      "access": "个人衣物受控保存"
+    },
+    {
+      "place_id": "45",
+      "name": "小型印制工作室",
+      "block_id": "B03",
+      "building_id": "V-45",
+      "kind": "building",
+      "character_ids": [
+        "CHR-002",
+        "CHR-024",
+        "CHR-010"
+      ],
+      "quest_ids": [
+        "QST-008",
+        "QST-010",
+        "QST-103"
+      ],
+      "narrative_role": "制作与信息组织",
+      "daily_activity": "样张、装订、少量印制",
+      "linked_place_ids": [
+        "15",
+        "76",
+        "34"
+      ],
+      "connection_reason": "展览与阅读",
+      "aftermath": "街坊册完成，勘误和不同讲述注明来源",
+      "access": "承印内容经委托者确认"
+    },
+    {
+      "place_id": "46",
+      "name": "旧书交换屋",
+      "block_id": "B03",
+      "building_id": "V-46",
+      "kind": "building",
+      "character_ids": [
+        "CHR-032",
+        "CHR-030",
+        "CHR-007"
+      ],
+      "quest_ids": [
+        "QST-006",
+        "QST-010",
+        "QST-106"
+      ],
+      "narrative_role": "阅读与关系",
+      "daily_activity": "交换旧书、读授权书签",
+      "linked_place_ids": [
+        "34",
+        "59",
+        "73"
+      ],
+      "connection_reason": "不同阅读停留点",
+      "aftermath": "新读者留下新理解",
+      "access": "轮值开放，不翻阅私人日记"
+    },
+    {
+      "place_id": "47",
+      "name": "夜食转角",
+      "block_id": "B04",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-015",
+        "CHR-027",
+        "CHR-026"
+      ],
+      "quest_ids": [
+        "QST-008",
+        "QST-102",
+        "QST-107"
+      ],
+      "narrative_role": "夜间关系",
+      "daily_activity": "小食、晚饭会合、散场取餐",
+      "linked_place_ids": [
+        "53",
+        "79",
+        "82"
+      ],
+      "connection_reason": "夜间工作链",
+      "aftermath": "收摊和恢复营业留下实际变化",
+      "access": "通行面保留，摊位分时"
+    },
+    {
+      "place_id": "48",
+      "name": "甜品店",
+      "block_id": "B04",
+      "building_id": "V-48",
+      "kind": "building",
+      "character_ids": [
+        "CHR-014",
+        "CHR-002",
+        "CHR-020"
+      ],
+      "quest_ids": [
+        "QST-102",
+        "QST-108"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "午后点心、朋友短聚",
+      "linked_place_ids": [
+        "07",
+        "65",
+        "27"
+      ],
+      "connection_reason": "不同菜单与客群",
+      "aftermath": "出现新的当日甜品与普通聊天",
+      "access": "顾客区与后厨分开"
+    },
+    {
+      "place_id": "49",
+      "name": "家常面馆",
+      "block_id": "B04",
+      "building_id": "V-49",
+      "kind": "building",
+      "character_ids": [
+        "CHR-015",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "快捷吃面、送货间隙休息",
+      "linked_place_ids": [
+        "08",
+        "52",
+        "31"
+      ],
+      "connection_reason": "食材与工作路线",
+      "aftermath": "新增关于那次聚餐的自然对白",
+      "access": "按营业时段开放"
+    },
+    {
+      "place_id": "50",
+      "name": "家常熟食店",
+      "block_id": "B04",
+      "building_id": "V-50",
+      "kind": "building",
+      "character_ids": [
+        "CHR-004",
+        "CHR-015",
+        "CHR-016"
+      ],
+      "quest_ids": [
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "买小份熟食带回家",
+      "linked_place_ids": [
+        "08",
+        "53",
+        "18"
+      ],
+      "connection_reason": "采购与晚饭",
+      "aftermath": "家常配菜继续随备料变化",
+      "access": "冷热食和后场受控"
+    },
+    {
+      "place_id": "51",
+      "name": "豆制品与早餐铺",
+      "block_id": "B04",
+      "building_id": "V-51",
+      "kind": "building",
+      "character_ids": [
+        "CHR-014",
+        "CHR-034"
+      ],
+      "quest_ids": [
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "早餐、豆浆、家用豆制品",
+      "linked_place_ids": [
+        "07",
+        "01",
+        "52"
+      ],
+      "connection_reason": "清晨采购通勤",
+      "aftermath": "早班人与夜班人偶尔在这里相遇",
+      "access": "清晨至午后，不强制深夜找店主"
+    },
+    {
+      "place_id": "52",
+      "name": "干货香料铺",
+      "block_id": "B04",
+      "building_id": "V-52",
+      "kind": "building",
+      "character_ids": [
+        "CHR-014",
+        "CHR-015"
+      ],
+      "quest_ids": [
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "调味与散装采购",
+      "linked_place_ids": [
+        "08",
+        "49",
+        "50"
+      ],
+      "connection_reason": "饭馆和家庭用料",
+      "aftermath": "帮助完成一次菜单后产生新合作",
+      "access": "经营者管理材料与信息"
+    },
+    {
+      "place_id": "53",
+      "name": "晚班汤饭店",
+      "block_id": "B04",
+      "building_id": "V-53",
+      "kind": "building",
+      "character_ids": [
+        "CHR-015",
+        "CHR-026",
+        "CHR-027",
+        "CHR-034",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-008",
+        "QST-102",
+        "QST-107"
+      ],
+      "narrative_role": "夜班关系中心",
+      "daily_activity": "热饭、收工后的短歇",
+      "linked_place_ids": [
+        "47",
+        "79",
+        "32"
+      ],
+      "connection_reason": "演出与交通",
+      "aftermath": "实际恢复夜班供餐与交接",
+      "access": "厨房和住宅分离，按营业安排"
+    },
+    {
+      "place_id": "54",
+      "name": "花草店",
+      "block_id": "B05",
+      "building_id": "V-54",
+      "kind": "building",
+      "character_ids": [
+        "CHR-019",
+        "CHR-002",
+        "CHR-020"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-108"
+      ],
+      "narrative_role": "主线观察与生活",
+      "daily_activity": "选植物、换盆、送礼",
+      "linked_place_ids": [
+        "60",
+        "04",
+        "17"
+      ],
+      "connection_reason": "温室、小店与花园",
+      "aftermath": "受影响植株恢复，新观察标签由维护者更新",
+      "access": "后院土料和工具受控"
+    },
+    {
+      "place_id": "55",
+      "name": "包装修补工作室",
+      "block_id": "B05",
+      "building_id": "V-55",
+      "kind": "building",
+      "character_ids": [
+        "CHR-017",
+        "CHR-002",
+        "CHR-012"
+      ],
+      "quest_ids": [
+        "QST-008",
+        "QST-101",
+        "QST-103"
+      ],
+      "narrative_role": "创作生活",
+      "daily_activity": "礼物包装、布袋修补",
+      "linked_place_ids": [
+        "44",
+        "41",
+        "28"
+      ],
+      "connection_reason": "手艺、材料与配送",
+      "aftermath": "小册样品和新的修补作品留下",
+      "access": "客户物品与样品分架"
+    },
+    {
+      "place_id": "56",
+      "name": "邻里茶桌庭",
+      "block_id": "B05",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-005",
+        "CHR-016",
+        "CHR-017",
+        "CHR-030"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-104"
+      ],
+      "narrative_role": "邻里关系",
+      "daily_activity": "雨后坐谈、等家人",
+      "linked_place_ids": [
+        "57",
+        "09",
+        "44"
+      ],
+      "connection_reason": "照片与普通交接",
+      "aftermath": "误会澄清后谈话恢复别的话题",
+      "access": "公共停留，私事按本人意愿讨论"
+    },
+    {
+      "place_id": "57",
+      "name": "照片冲印店",
+      "block_id": "B05",
+      "building_id": "V-57",
+      "kind": "building",
+      "character_ids": [
+        "CHR-018",
+        "CHR-031",
+        "CHR-020"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-008",
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "主线证据与生活",
+      "daily_activity": "冲印、相册、装裱",
+      "linked_place_ids": [
+        "74",
+        "76",
+        "85"
+      ],
+      "connection_reason": "当下拍摄、展示和渡运照片",
+      "aftermath": "旧照片补上来源说明，新合照经本人确认",
+      "access": "照片与原始材料受控交付"
+    },
+    {
+      "place_id": "58",
+      "name": "坡地公共到达节点",
+      "block_id": "B06",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-019",
+        "CHR-035",
+        "CHR-023"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-008"
+      ],
+      "narrative_role": "通路与现实支持",
+      "daily_activity": "电梯、缓路、上层等候",
+      "linked_place_ids": [
+        "13",
+        "59",
+        "60"
+      ],
+      "connection_reason": "住宅与平台生活",
+      "aftermath": "维护公告和替代路线清楚可读",
+      "access": "停机保留已有地面缓路"
+    },
+    {
+      "place_id": "59",
+      "name": "平台阅读角",
+      "block_id": "B06",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-032",
+        "CHR-030",
+        "CHR-019"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-106"
+      ],
+      "narrative_role": "阅读与休息",
+      "daily_activity": "读随身书、雨后看屋顶",
+      "linked_place_ids": [
+        "46",
+        "60",
+        "61"
+      ],
+      "connection_reason": "图书与上街生活",
+      "aftermath": "出现经授权的新书签",
+      "access": "免费公共停留"
+    },
+    {
+      "place_id": "60",
+      "name": "社区园艺温室",
+      "block_id": "B06",
+      "building_id": "V-60",
+      "kind": "building",
+      "character_ids": [
+        "CHR-019",
+        "CHR-033",
+        "CHR-020"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-008",
+        "QST-108"
+      ],
+      "narrative_role": "核心主线观察",
+      "daily_activity": "育苗、交换、种植小课",
+      "linked_place_ids": [
+        "54",
+        "72",
+        "90",
+        "17"
+      ],
+      "connection_reason": "不同环境对照",
+      "aftermath": "苗盘持续恢复，记录注明不同观察时段",
+      "access": "轮值开放，工具与材料受控"
+    },
+    {
+      "place_id": "61",
+      "name": "坡地小食堂",
+      "block_id": "B06",
+      "building_id": "V-61",
+      "kind": "building",
+      "character_ids": [
+        "CHR-019",
+        "CHR-030",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "高处午晚饭、维修人员休息",
+      "linked_place_ids": [
+        "13",
+        "58",
+        "60"
+      ],
+      "connection_reason": "上层生活补给",
+      "aftermath": "门前恢复普通来往与送餐",
+      "access": "按饭点开放，不进入住户门厅"
+    },
+    {
+      "place_id": "62",
+      "name": "校外文具与日常用品店",
+      "block_id": "B07",
+      "building_id": "V-62",
+      "kind": "building",
+      "character_ids": [
+        "CHR-020",
+        "CHR-002"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-105"
+      ],
+      "narrative_role": "主线交付与生活",
+      "daily_activity": "笔芯、打印页、文具采购",
+      "linked_place_ids": [
+        "19",
+        "65",
+        "66"
+      ],
+      "connection_reason": "南门同高放学街",
+      "aftermath": "学生的新路线图按同意方式展示",
+      "access": "打印文件受控交付与清理"
+    },
+    {
+      "place_id": "63",
+      "name": "体育用品店",
+      "block_id": "B07",
+      "building_id": "V-63",
+      "kind": "building",
+      "character_ids": [
+        "CHR-021",
+        "CHR-020"
+      ],
+      "quest_ids": [
+        "QST-105"
+      ],
+      "narrative_role": "运动生活",
+      "daily_activity": "补球气、简单器材修理",
+      "linked_place_ids": [
+        "64",
+        "67",
+        "70"
+      ],
+      "connection_reason": "公共运动与活动安排",
+      "aftermath": "不同水平的活动时段更清楚",
+      "access": "店面公共，储存与维修受控"
+    },
+    {
+      "place_id": "64",
+      "name": "社区公共球场",
+      "block_id": "B07",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-021",
+        "CHR-020",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-105"
+      ],
+      "narrative_role": "公共生活",
+      "daily_activity": "运动、等下一场、陪朋友",
+      "linked_place_ids": [
+        "63",
+        "66",
+        "70"
+      ],
+      "connection_reason": "器材、等候与亲子",
+      "aftermath": "新的使用安排，不由一组人长期占满",
+      "access": "公共球场独立于校园操场"
+    },
+    {
+      "place_id": "65",
+      "name": "放学饮品与外带铺",
+      "block_id": "B07",
+      "building_id": "V-65",
+      "kind": "building",
+      "character_ids": [
+        "CHR-020",
+        "CHR-021"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-105"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "放学取饮料、轻食",
+      "linked_place_ids": [
+        "19",
+        "62",
+        "66"
+      ],
+      "connection_reason": "放学和会合",
+      "aftermath": "学生正常讨论作品和运动",
+      "access": "排队收在店边，不占校门"
+    },
+    {
+      "place_id": "66",
+      "name": "校外等候庭",
+      "block_id": "B07",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-020",
+        "CHR-030",
+        "CHR-023"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-105"
+      ],
+      "narrative_role": "核心主线入口",
+      "daily_activity": "等同学、接家人、遮雨",
+      "linked_place_ids": [
+        "19",
+        "62",
+        "65"
+      ],
+      "connection_reason": "课堂外的日常",
+      "aftermath": "旧提示停止，普通接送恢复",
+      "access": "校外公共区，接送安全优先"
+    },
+    {
+      "place_id": "67",
+      "name": "居民服务中心",
+      "block_id": "B08",
+      "building_id": "V-67",
+      "kind": "building",
+      "character_ids": [
+        "CHR-023",
+        "CHR-022",
+        "CHR-024",
+        "CHR-021"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-007",
+        "QST-008",
+        "QST-009",
+        "QST-104",
+        "QST-105"
+      ],
+      "narrative_role": "协作与公共服务",
+      "daily_activity": "事务办理、预约活动、整合求助",
+      "linked_place_ids": [
+        "16",
+        "15",
+        "32",
+        "88"
+      ],
+      "connection_reason": "不同专业和现场",
+      "aftermath": "分散报告有清楚去向，日常窗口继续",
+      "access": "公共办理与内部资料分别受控"
+    },
+    {
+      "place_id": "68",
+      "name": "住宅家常菜店",
+      "block_id": "B08",
+      "building_id": "V-68",
+      "kind": "building",
+      "character_ids": [
+        "CHR-022",
+        "CHR-016",
+        "CHR-023"
+      ],
+      "quest_ids": [
+        "QST-102"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "东侧小份家常晚饭",
+      "linked_place_ids": [
+        "18",
+        "16",
+        "70"
+      ],
+      "connection_reason": "家庭与工作",
+      "aftermath": "故事后仍以普通菜单和取餐为主",
+      "access": "住宅门厅与店面分开"
+    },
+    {
+      "place_id": "69",
+      "name": "居家用品店",
+      "block_id": "B08",
+      "building_id": "V-69",
+      "kind": "building",
+      "character_ids": [
+        "CHR-016",
+        "CHR-023"
+      ],
+      "quest_ids": [
+        "QST-008",
+        "QST-104"
+      ],
+      "narrative_role": "关系与日常支持",
+      "daily_activity": "替换小件、清洁和收纳用品",
+      "linked_place_ids": [
+        "09",
+        "18",
+        "67"
+      ],
+      "connection_reason": "家庭交接与服务",
+      "aftermath": "洗衣店的新标牌实际使用",
+      "access": "大件配送走服务路"
+    },
+    {
+      "place_id": "70",
+      "name": "社区亲子活动室",
+      "block_id": "B08",
+      "building_id": "V-70",
+      "kind": "building",
+      "character_ids": [
+        "CHR-021",
+        "CHR-023",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-105"
+      ],
+      "narrative_role": "公共生活",
+      "daily_activity": "家长陪同纸艺、雨天活动",
+      "linked_place_ids": [
+        "64",
+        "67",
+        "68"
+      ],
+      "connection_reason": "不同家庭需要",
+      "aftermath": "参与形式按家庭反馈调整",
+      "access": "按人数与时段管理，儿童由监护者陪同"
+    },
+    {
+      "place_id": "71",
+      "name": "餐饮共享空间",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "building",
+      "character_ids": [
+        "CHR-024",
+        "CHR-025",
+        "CHR-026"
+      ],
+      "quest_ids": [
+        "QST-006",
+        "QST-008",
+        "QST-102"
+      ],
+      "narrative_role": "公共会合与生活",
+      "daily_activity": "各选一份饭后同桌",
+      "linked_place_ids": [
+        "15",
+        "72",
+        "75"
+      ],
+      "connection_reason": "同一综合体不同功能",
+      "aftermath": "协作后仍有不同柜台与普通食客",
+      "access": "V-15 内独立餐饮层，后台不供公共穿行"
+    },
+    {
+      "place_id": "72",
+      "name": "屋顶公园",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "roof",
+      "character_ids": [
+        "CHR-019",
+        "CHR-024",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "主线观察与休息",
+      "daily_activity": "看城、走花园、等朋友",
+      "linked_place_ids": [
+        "15",
+        "60",
+        "17"
+      ],
+      "connection_reason": "同楼到达与园艺比较",
+      "aftermath": "维护完成重新开放，地面绕行一直保留",
+      "access": "V-15 屋顶，独立公共到达，天气控制"
+    },
+    {
+      "place_id": "73",
+      "name": "影像书店",
+      "block_id": "B09",
+      "building_id": "V-73",
+      "kind": "building",
+      "character_ids": [
+        "CHR-025",
+        "CHR-007",
+        "CHR-032"
+      ],
+      "quest_ids": [
+        "QST-006",
+        "QST-010",
+        "QST-106"
+      ],
+      "narrative_role": "主线人物与阅读",
+      "daily_activity": "翻电影书、讨论小型出版",
+      "linked_place_ids": [
+        "34",
+        "46",
+        "75",
+        "76"
+      ],
+      "connection_reason": "编辑与读者联系",
+      "aftermath": "许遥的新编辑意见、小册与普通新书并列",
+      "access": "公开活动与预约会谈分开"
+    },
+    {
+      "place_id": "74",
+      "name": "社区摄影工作室",
+      "block_id": "B09",
+      "building_id": "V-74",
+      "kind": "building",
+      "character_ids": [
+        "CHR-031",
+        "CHR-018",
+        "CHR-020",
+        "CHR-012"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-010",
+        "QST-108"
+      ],
+      "narrative_role": "主线证据与创作",
+      "daily_activity": "拍家庭合照、作品照",
+      "linked_place_ids": [
+        "57",
+        "19",
+        "76"
+      ],
+      "connection_reason": "冲印、学生记录与展示",
+      "aftermath": "当下合照和授权说明补齐",
+      "access": "客户照片与后期资料受控"
+    },
+    {
+      "place_id": "75",
+      "name": "共享工作室",
+      "block_id": "B09",
+      "building_id": "V-15",
+      "kind": "building",
+      "character_ids": [
+        "CHR-006",
+        "CHR-007",
+        "CHR-033",
+        "CHR-002"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-006",
+        "QST-008"
+      ],
+      "narrative_role": "核心主线会谈",
+      "daily_activity": "创作、研究会面、预约远程参与",
+      "linked_place_ids": [
+        "15",
+        "73",
+        "67"
+      ],
+      "connection_reason": "公共交流与专业协作",
+      "aftermath": "资料逐步核对，私人内容不随主线公开",
+      "access": "V-15 内门禁预约空间；非长期照护病房"
+    },
+    {
+      "place_id": "76",
+      "name": "街坊作品小展厅",
+      "block_id": "B09",
+      "building_id": "V-76",
+      "kind": "building",
+      "character_ids": [
+        "CHR-024",
+        "CHR-031",
+        "CHR-020",
+        "CHR-002"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-008",
+        "QST-010",
+        "QST-103"
+      ],
+      "narrative_role": "主线展示与创作",
+      "daily_activity": "作品轮换、分享过程",
+      "linked_place_ids": [
+        "15",
+        "45",
+        "74"
+      ],
+      "connection_reason": "策展、印制与摄影",
+      "aftermath": "展出今天的作品并注明材料来源",
+      "access": "展品授权，布展时局部闭合"
+    },
+    {
+      "place_id": "77",
+      "name": "乐器音频店",
+      "block_id": "B10",
+      "building_id": "V-77",
+      "kind": "building",
+      "character_ids": [
+        "CHR-026",
+        "CHR-027",
+        "CHR-008"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-008",
+        "QST-107"
+      ],
+      "narrative_role": "主线技术与生活",
+      "daily_activity": "试音、调试、器材借还",
+      "linked_place_ids": [
+        "78",
+        "81",
+        "79"
+      ],
+      "connection_reason": "排练、修理与演出",
+      "aftermath": "普通设备故障与异常调查分开记录",
+      "access": "试音、储藏与搬运各有边界"
+    },
+    {
+      "place_id": "78",
+      "name": "排练录音楼",
+      "block_id": "B10",
+      "building_id": "V-78",
+      "kind": "building",
+      "character_ids": [
+        "CHR-026",
+        "CHR-027",
+        "CHR-011"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-008",
+        "QST-107"
+      ],
+      "narrative_role": "核心主线地点",
+      "daily_activity": "排练、录音、交接房间",
+      "linked_place_ids": [
+        "77",
+        "79",
+        "82"
+      ],
+      "connection_reason": "技术工作到收场休息",
+      "aftermath": "新的录音不再混入旧掌声",
+      "access": "预约进入，不翻阅其他客户素材"
+    },
+    {
+      "place_id": "79",
+      "name": "Live House",
+      "block_id": "B10",
+      "building_id": "V-79",
+      "kind": "building",
+      "character_ids": [
+        "CHR-027",
+        "CHR-026",
+        "CHR-024"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-008",
+        "QST-010",
+        "QST-107"
+      ],
+      "narrative_role": "主线与公共活动",
+      "daily_activity": "演出、布场、撤场",
+      "linked_place_ids": [
+        "78",
+        "83",
+        "53",
+        "32"
+      ],
+      "connection_reason": "完整演出与回家链",
+      "aftermath": "改期、修缮与新演出真实完成",
+      "access": "观众票区与后台分开"
+    },
+    {
+      "place_id": "80",
+      "name": "唱片聆听店",
+      "block_id": "B10",
+      "building_id": "V-80",
+      "kind": "building",
+      "character_ids": [
+        "CHR-026",
+        "CHR-025"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-107"
+      ],
+      "narrative_role": "声音线索与兴趣",
+      "daily_activity": "听唱片、聊推荐",
+      "linked_place_ids": [
+        "79",
+        "77",
+        "82"
+      ],
+      "connection_reason": "不同听音乐方式",
+      "aftermath": "旧录音经授权核对，新演出获得推荐",
+      "access": "试听与馆藏材料受控"
+    },
+    {
+      "place_id": "81",
+      "name": "小型乐器工坊",
+      "block_id": "B10",
+      "building_id": "V-81",
+      "kind": "building",
+      "character_ids": [
+        "CHR-026",
+        "CHR-027",
+        "CHR-008"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-107"
+      ],
+      "narrative_role": "手艺生活",
+      "daily_activity": "换弦、保养、取回乐器",
+      "linked_place_ids": [
+        "77",
+        "78",
+        "79"
+      ],
+      "connection_reason": "器材实际使用",
+      "aftermath": "修好的琴在新演出中被听见",
+      "access": "顾客乐器编号收存"
+    },
+    {
+      "place_id": "82",
+      "name": "夜间茶食店",
+      "block_id": "B10",
+      "building_id": "V-82",
+      "kind": "building",
+      "character_ids": [
+        "CHR-026",
+        "CHR-027",
+        "CHR-015"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-006",
+        "QST-107"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "散场热饮、安静聊天",
+      "linked_place_ids": [
+        "79",
+        "80",
+        "53"
+      ],
+      "connection_reason": "不同收工选择",
+      "aftermath": "宁朗开始谈下一次作品而不只旧事件",
+      "access": "深夜外摆收拢，照顾邻近住宅"
+    },
+    {
+      "place_id": "83",
+      "name": "演出会合广场",
+      "block_id": "B10",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-027",
+        "CHR-034",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-003",
+        "QST-008",
+        "QST-107"
+      ],
+      "narrative_role": "公共会合与安全",
+      "daily_activity": "等朋友、看海报、分批离场",
+      "linked_place_ids": [
+        "79",
+        "32",
+        "47"
+      ],
+      "connection_reason": "演出到交通夜食",
+      "aftermath": "排队设施收回，白天仍可坐下",
+      "access": "公共通路与可撤排队分区"
+    },
+    {
+      "place_id": "84",
+      "name": "滨水咖啡屋",
+      "block_id": "B11",
+      "building_id": "V-84",
+      "kind": "building",
+      "character_ids": [
+        "CHR-025",
+        "CHR-007",
+        "CHR-006",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-006",
+        "QST-106",
+        "QST-108"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "看河、读稿、雨天等人",
+      "linked_place_ids": [
+        "73",
+        "24",
+        "25"
+      ],
+      "connection_reason": "创作与散步",
+      "aftermath": "由本人选择远程参与或实地会面，保留普通聊天",
+      "access": "许遥非实地出现；私人讨论需预约"
+    },
+    {
+      "place_id": "85",
+      "name": "渡运旧物展屋",
+      "block_id": "B11",
+      "building_id": "V-85",
+      "kind": "building",
+      "character_ids": [
+        "CHR-029",
+        "CHR-018",
+        "CHR-020",
+        "CHR-028"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-007",
+        "QST-008",
+        "QST-010"
+      ],
+      "narrative_role": "核心历史地点",
+      "daily_activity": "旧船票、照片、小型展览",
+      "linked_place_ids": [
+        "26",
+        "57",
+        "88"
+      ],
+      "connection_reason": "运营与多源记录",
+      "aftermath": "说明补入已核对事实与仍未知部分",
+      "access": "提供者授权，原始档案受控"
+    },
+    {
+      "place_id": "86",
+      "name": "河岸运动补给店",
+      "block_id": "B11",
+      "building_id": "V-86",
+      "kind": "building",
+      "character_ids": [
+        "CHR-028",
+        "CHR-035",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-007",
+        "QST-108"
+      ],
+      "narrative_role": "实际补给",
+      "daily_activity": "补水、补胎、收雨具",
+      "linked_place_ids": [
+        "26",
+        "88",
+        "91"
+      ],
+      "connection_reason": "现场行走与维护",
+      "aftermath": "普通通行恢复，损坏用品分类修理",
+      "access": "维修区域在店内，不堵步道"
+    },
+    {
+      "place_id": "87",
+      "name": "桥畔轻食屋",
+      "block_id": "B11",
+      "building_id": "V-87",
+      "kind": "building",
+      "character_ids": [
+        "CHR-028",
+        "CHR-029",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-007",
+        "QST-102",
+        "QST-108"
+      ],
+      "narrative_role": "关系生活",
+      "daily_activity": "过桥或去渡口前取餐",
+      "linked_place_ids": [
+        "26",
+        "24",
+        "86"
+      ],
+      "connection_reason": "滨水工作路线",
+      "aftermath": "维修人员与通勤者恢复原来的饭点",
+      "access": "上层店面与维护后门分开"
+    },
+    {
+      "place_id": "88",
+      "name": "河岸共作亭",
+      "block_id": "B11",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-028",
+        "CHR-020",
+        "CHR-033",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-007",
+        "QST-008",
+        "QST-108"
+      ],
+      "narrative_role": "观察、协作与生活",
+      "daily_activity": "写生、避雨、邻里制作",
+      "linked_place_ids": [
+        "85",
+        "17",
+        "25"
+      ],
+      "connection_reason": "记录与公共活动",
+      "aftermath": "行动物料撤走后恢复共作桌",
+      "access": "活动预约与普通休息兼容"
+    },
+    {
+      "place_id": "89",
+      "name": "山脚茶屋",
+      "block_id": "B12",
+      "building_id": "V-89",
+      "kind": "building",
+      "character_ids": [
+        "CHR-030",
+        "CHR-019",
+        "CHR-032"
+      ],
+      "quest_ids": [
+        "QST-004",
+        "QST-005",
+        "QST-010",
+        "QST-106",
+        "QST-108"
+      ],
+      "narrative_role": "人物会面与休息",
+      "daily_activity": "热茶、读书、看步道天气",
+      "linked_place_ids": [
+        "90",
+        "20",
+        "91"
+      ],
+      "connection_reason": "观察、登高与补给",
+      "aftermath": "顾竹谈学生的新作，也谈自己的计划",
+      "access": "轮值营业，公共路不依赖店门开放"
+    },
+    {
+      "place_id": "90",
+      "name": "林缘自然观察庭",
+      "block_id": "B12",
+      "building_id": null,
+      "kind": "outdoor",
+      "character_ids": [
+        "CHR-030",
+        "CHR-019",
+        "CHR-020",
+        "CHR-031"
+      ],
+      "quest_ids": [
+        "QST-005",
+        "QST-108"
+      ],
+      "narrative_role": "自然观察",
+      "daily_activity": "看叶片、画熟悉的树",
+      "linked_place_ids": [
+        "60",
+        "89",
+        "21"
+      ],
+      "connection_reason": "环境记录与散步",
+      "aftermath": "保留不同日期的观察，不把植物写成永不生长",
+      "access": "沿划定路径，种植区按维护管理"
+    },
+    {
+      "place_id": "91",
+      "name": "登高用品租修店",
+      "block_id": "B12",
+      "building_id": "V-91",
+      "kind": "building",
+      "character_ids": [
+        "CHR-031",
+        "CHR-030",
+        "CHR-035"
+      ],
+      "quest_ids": [
+        "QST-008",
+        "QST-108"
+      ],
+      "narrative_role": "日常补给",
+      "daily_activity": "借雨具、检手电、归还用品",
+      "linked_place_ids": [
+        "89",
+        "20",
+        "90"
+      ],
+      "connection_reason": "安全登高路线",
+      "aftermath": "归还检查与普通借用继续",
+      "access": "营业随步道开放，电池工具受控"
+    }
+  ]
+}

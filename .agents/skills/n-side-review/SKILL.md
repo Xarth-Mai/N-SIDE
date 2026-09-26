@@ -7,11 +7,11 @@ description: Review N:SIDE work-package completion, playtest evidence or milesto
 
 下列路径和命令以仓库根目录为基准；从子目录开始时，先用 `git rev-parse --show-toplevel` 定位根目录再执行
 
-读取 `docs/production/solo-workflow.md`、`todo/demo-progress.json` 中目标项的 `verify`、`reviewer` 与依赖，以及真实交付和证据。核对证据针对的提交／配置／构建，检查之后的变更是否使结论失效
+读取 `docs/dev/handbook/codex.md`、`todo/demo-progress.json` 中目标项的 `verify`、`reviewer` 与依赖，以及真实交付和证据。核对证据针对的提交／配置／构建，检查之后的变更是否使结论失效
 
 分别检查：决策是否有来源；交付是否存在且接入；适用的客观测试是否实际运行；需要的作者操作、品质判断或陌生玩家测试是否确有记录。PASS、FAIL、NOT RUN 分开。代码评审不是手感验收，固定截图不是连续移动验收，构建成功不是双平台实测，批准规划不是完成游戏阶段
 
-按 `docs/production/runtime-validation.md` 核对本次修改所需的真实路径、输入、状态断言与画面观察；非隔离观察标为 self-audit，不替代作者或陌生玩家反馈。再给出“通过”“需要修订”或“缺少证据”的结论，写明最小补充动作。作者验收角色由作者实际反馈提供；试玩角色由真实操作者记录提供。技术项可以基于实际执行结果由 Codex 记录通过。字段和文件存在只能用于结构检查，不是验证真实性的替代品
+按 `docs/dev/validation/runtime.md` 核对本次修改所需的真实路径、输入、状态断言与画面观察；非隔离观察标为 self-audit，不替代作者或陌生玩家反馈。再给出“通过”“需要修订”或“缺少证据”的结论，写明最小补充动作。作者验收角色由作者实际反馈提供；试玩角色由真实操作者记录提供。技术项可以基于实际执行结果由 Codex 记录通过。字段和文件存在只能用于结构检查，不是验证真实性的替代品
 
 全部条件成立才写 `status: done`、证据路径与 `accepted` 的 `role`、`by`、`revision`、`record`、`result: pass`。保留最后 work 时将步骤设为 `record`。未通过保持 `in_progress` 或带原因的 `blocked`；历史结果留在日志
 

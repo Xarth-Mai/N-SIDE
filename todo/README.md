@@ -1,8 +1,8 @@
 # 开发任务
 
-新增任务使用[模板](../docs/templates/task.md)
+新增任务使用[模板](../docs/dev/handbook/templates/task.md)
 
-[61 项工作包看板](demo-progress.md) · [工作与证据记录](demo-worklog.md) · [工作循环与验收](../docs/production/solo-workflow.md)
+[61 项工作包看板](demo-progress.md) · [工作与证据记录](demo-worklog.md) · [工作循环与验收](../docs/dev/handbook/codex.md)
 
 ## Todo
 

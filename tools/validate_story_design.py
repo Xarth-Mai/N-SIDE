@@ -10,12 +10,22 @@ from pathlib import Path
 
 DOCS = Path('docs')
 FILES = {
-    'place-catalog': DOCS / 'production/place-catalog.json',
-    'city-story-map': DOCS / 'production/city-story-map.json',
-    'characters': DOCS / 'characters/characters.json',
-    'quests': DOCS / 'quests/quests.json',
+    'place-catalog': DOCS / 'dev/design/catalogs/place-catalog.json',
+    'city-story-map': DOCS / 'dev/design/catalogs/city-story-map.json',
+    'characters': DOCS / 'dev/design/catalogs/characters.json',
+    'quests': DOCS / 'dev/design/catalogs/quests.json',
 }
 DISTRICT = Path('source-assets/district-map/district.json')
+CHARACTERS = DOCS / 'player/encyclopedia/characters'
+STORY = DOCS / 'player/encyclopedia/story'
+
+
+def character_subject(content: str) -> str | None:
+    frontmatter = re.match(r'\A---\n(.*?)\n---(?:\n|$)', content, re.S)
+    if not frontmatter:
+        return None
+    match = re.search(r'^subject_id:\s*["\']?(CHR-\d{3,})["\']?\s*$', frontmatter.group(1), re.M)
+    return match.group(1) if match else None
 
 
 def validate(root: Path) -> dict:
@@ -137,14 +147,24 @@ def validate(root: Path) -> dict:
             add('source', cid, '人物 source_file 使用仓库根相对路径')
             continue
         path = (root / source).resolve()
-        if not path.is_relative_to((root / 'docs/characters').resolve()) or path.suffix != '.md':
-            add('source', cid, '人物档案位于 docs/characters/ 内')
+        if not path.is_relative_to((root / CHARACTERS).resolve()) or path.suffix != '.md':
+            add('source', cid, '人物权威档案位于 docs/player/encyclopedia/characters/ 内')
             continue
         try:
-            if not re.search(r'^id:\s*' + re.escape(cid) + r'\s*$', path.read_text(encoding='utf-8'), re.M):
+            if character_subject(path.read_text(encoding='utf-8')) != cid:
                 add('source', cid, '人物档案 ID 与索引不一致')
         except (OSError, UnicodeError) as exc:
             add('source', cid, str(exc))
+    # 百科角色正文是身份权威；开发规格可引用同一 subject_id
+    canonical = {(root / item['source_file']).resolve() for item in characters.values()
+                 if isinstance(item.get('source_file'), str)}
+    for path in (root / CHARACTERS).rglob('*.md'):
+        try:
+            identity = character_subject(path.read_text(encoding='utf-8'))
+            if identity and path.resolve() not in canonical:
+                add('source', str(path.relative_to(root)), '角色权威正文未登记在 characters.json，不能用开发规格替代')
+        except (OSError, UnicodeError) as exc:
+            add('source', str(path.relative_to(root)), str(exc))
     for pid, place in overlay.items():
         for field in ('narrative_role', 'daily_activity', 'connection_reason', 'aftermath', 'access'):
             text(place.get(field), f'place.{pid}.{field}')
@@ -172,8 +192,8 @@ def validate(root: Path) -> dict:
             add('source', qid, 'source_file 使用docs/ 内 Markdown 相对路径')
             continue
         path = (docs / source).resolve()
-        if not path.is_relative_to(docs) or path.suffix != '.md':
-            add('source', qid, f'正文路径超出 docs/或不是 Markdown：{source}')
+        if not path.is_relative_to((root / STORY).resolve()) or path.suffix != '.md':
+            add('source', qid, f'故事正文路径超出 docs/player/encyclopedia/story/ 或不是 Markdown：{source}')
             continue
         try:
             if source not in sources:

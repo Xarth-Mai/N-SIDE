@@ -7,7 +7,7 @@ description: Guide N:SIDE project progress when the author asks where we are, wh
 
 下列路径和命令以仓库根目录为基准；从子目录开始时，先用 `git rev-parse --show-toplevel` 定位根目录再执行
 
-读取根目录 `AGENTS.md`、`todo/README.md`、`todo/demo-progress.json`、相关阶段的 `todo/demo-roadmap.md`、`docs/production/solo-workflow.md`，以及当前工作包或原任务的最近记录。核对当前分支、提交与工作区，计划与实现不一致时先指出差异
+读取根目录 `AGENTS.md`、`todo/README.md`、`todo/demo-progress.json`、相关阶段的 `todo/demo-roadmap.md`、`docs/dev/handbook/codex.md`，以及当前工作包或原任务的最近记录。核对当前分支、提交与工作区，计划与实现不一致时先指出差异
 
 在仓库根运行 `bun run roadmap`，需要细项时运行 `bun run roadmap --stage M0` 等对应命令。工具不可用时直接读取 JSON，按同一计数规则计算；说明未执行的检查。不得用旧看板或会话印象推断状态
 

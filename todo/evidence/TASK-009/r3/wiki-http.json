@@ -1,0 +1,266 @@
+{
+  "command": "python3 todo/evidence/TASK-009/r3/wiki-http.py",
+  "result": "PASS",
+  "checks": [
+    {
+      "profile": "player",
+      "path": "/player/encyclopedia/locations/n-district",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 433,
+      "sha256": "14b485362ac4c159f03e6a582d84119aeee32baeef9cc8f785ed84ed5df5a77f",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/player/encyclopedia/locations/n-district.md?import",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 31886,
+      "sha256": "c50a8060af94322b4227b81a8954d7d2ac9ad5352acf85044c534e913e2a8e62",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/@localSearchIndexroot",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 2260759,
+      "sha256": "474c57f4476bfbd566558a2d9e9a15e521c954594e04671214ecc2036a1ec87b",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/locations/n-district.html",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 449,
+      "sha256": "a75cbc086f591f3ab1fa2931fd0726341b3c3aca177df3d3d9725547935743cf",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/project-assets/district-map/map.json",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 1400946,
+      "sha256": "caef889a3d5f7a4ad8e6d80211bf120854e57d395a9e3c84b8e55505dfd58cdf",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/dev/design/quests/QST-002/narrative.json",
+      "status": 404,
+      "expected": [
+        404
+      ],
+      "bytes": 13,
+      "sha256": "c652001687f159239efc391b65f949221c5032c8f648e7326c3992fe2f73e976",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/%64ev/design/quests/QST-002/narrative.json",
+      "status": 404,
+      "expected": [
+        404
+      ],
+      "bytes": 13,
+      "sha256": "c652001687f159239efc391b65f949221c5032c8f648e7326c3992fe2f73e976",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/production/assets.html",
+      "status": 404,
+      "expected": [
+        404
+      ],
+      "bytes": 13,
+      "sha256": "c652001687f159239efc391b65f949221c5032c8f648e7326c3992fe2f73e976",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/project-assets/district-map/district.json",
+      "status": 404,
+      "expected": [
+        404
+      ],
+      "bytes": 13,
+      "sha256": "c652001687f159239efc391b65f949221c5032c8f648e7326c3992fe2f73e976",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/@fs//home/lzzz/MyProjects/N-SIDE/docs/dev/design/quests/QST-002/narrative.json",
+      "status": 403,
+      "expected": [
+        403,
+        404
+      ],
+      "bytes": 527,
+      "sha256": "4d987f478b1aa30e1e43b0a6f0f9a56d79e14eb01226711c30a238188879101d",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/@fs//home/lzzz/MyProjects/N-SIDE/source-assets/district-map/district.json",
+      "status": 404,
+      "expected": [
+        403,
+        404
+      ],
+      "bytes": 13,
+      "sha256": "c652001687f159239efc391b65f949221c5032c8f648e7326c3992fe2f73e976",
+      "result": "PASS"
+    },
+    {
+      "profile": "player",
+      "path": "/dev/design/quests/QST-002/narrative.json",
+      "method": "HEAD",
+      "status": 404,
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/player/encyclopedia/locations/n-district",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 433,
+      "sha256": "14b485362ac4c159f03e6a582d84119aeee32baeef9cc8f785ed84ed5df5a77f",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/player/encyclopedia/locations/n-district.md?import",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 31880,
+      "sha256": "a67e24df084ac79b0aad3b7ae1433e12de49451556be1ce36d80e7979e90bba1",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/@localSearchIndexroot",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 5165804,
+      "sha256": "9900674d5db660b1c9849f14a9f96f86df61a0e63c35aae985005060d99a6e1e",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/locations/n-district.html",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 449,
+      "sha256": "a75cbc086f591f3ab1fa2931fd0726341b3c3aca177df3d3d9725547935743cf",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/project-assets/district-map/map.json",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 1400946,
+      "sha256": "caef889a3d5f7a4ad8e6d80211bf120854e57d395a9e3c84b8e55505dfd58cdf",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/dev/design/quests/QST-002/narrative.json",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 13706,
+      "sha256": "088107e76eb608800e0f6f7199480b83375c0a20135fd3bd8b47cb2d1467a23c",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/%64ev/design/quests/QST-002/narrative.json",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 13706,
+      "sha256": "088107e76eb608800e0f6f7199480b83375c0a20135fd3bd8b47cb2d1467a23c",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/production/assets.html",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 405,
+      "sha256": "2a5064fa9ba6b96961ca87ef549e2f7a88fee639827d474c4ee02d60016f46c3",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/project-assets/district-map/district.json",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "bytes": 352447,
+      "sha256": "2a5ec2d7c936d7b5ea1ab14abab472a4d2f11b0dd7fc86d0b81a9e2a10f0e52d",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/@fs//home/lzzz/MyProjects/N-SIDE/docs/dev/design/quests/QST-002/narrative.json",
+      "status": 403,
+      "expected": [
+        403,
+        404
+      ],
+      "bytes": 524,
+      "sha256": "a8ab4141605889e3dca5f0fbd8301a0f157a4d4c79c67ec1f5b43bb1c8aa716d",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/@fs//home/lzzz/MyProjects/N-SIDE/source-assets/district-map/district.json",
+      "status": 403,
+      "expected": [
+        403,
+        404
+      ],
+      "bytes": 519,
+      "sha256": "4c68307a109b24fe0df27400be40d13015e89e4a770e0d6e95b271ecd340a102",
+      "result": "PASS"
+    },
+    {
+      "profile": "dev",
+      "path": "/dev/design/quests/QST-002/narrative.json",
+      "method": "HEAD",
+      "status": 200,
+      "result": "PASS"
+    }
+  ]
+}

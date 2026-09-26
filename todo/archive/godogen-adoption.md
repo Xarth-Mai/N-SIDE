@@ -32,13 +32,13 @@ evidence: ["todo/evidence/godogen/runtime-validation.md", "todo/evidence/godogen
 
 | 上游文件或能力 | 价值与取舍 | 本地落点与验收 |
 | --- | --- | --- |
-| Godogen `README.md`、`AGENTS.md`、`prompts/runtime.md` | 改造采用开发→真实运行→画面→修复闭环，按任务影响分级；沿用既有状态和作者验收 | `AGENTS.md`、现有 work-loop/review、[运行验收](../../docs/production/runtime-validation.md)；真实输入录像与独立失败探针 |
+| Godogen `README.md`、`AGENTS.md`、`prompts/runtime.md` | 改造采用开发→真实运行→画面→修复闭环，按任务影响分级；沿用既有状态和作者验收 | `AGENTS.md`、现有 work-loop/review、[运行验收](../../docs/dev/validation/runtime.md)；真实输入录像与独立失败探针 |
 | Godogen `engines/bevy.md` 离屏 target、ready、异步落盘 | 改造采用；扩展已有 Viewer，复用真实世界与 FreeCamera，和 bevy-skills capture 比较后只留一条实现 | `map_viewer/capture.rs`、`tools/capture.py`；540 帧、状态断言、视频及失败退出 |
-| Godogen Bevy 依赖、asset features、glTF、winding、Visibility、构建 profile | 部分已有，保留针对当前版本的排错入口；不升级、不裁剪无证据的 features | `world::*`、[工程](../../docs/production/engineering.md)；当前锁文件、fmt、clippy、14 项 Rust 测试、CPU 地图预检 |
-| Godogen `asset-gen/SKILL.md` 参考统一、源图先审、尺度登记 | 改造采用；由原版 create-game-assets 负责生产，nside 接现有资产包和导出器 | [资产管理](../../docs/production/assets.md)；原版图片报告、5 图预览、现有导出一致性 |
+| Godogen Bevy 依赖、asset features、glTF、winding、Visibility、构建 profile | 部分已有，保留针对当前版本的排错入口；不升级、不裁剪无证据的 features | `world::*`、[工程](../../docs/dev/engineering/index.md)；当前锁文件、fmt、clippy、14 项 Rust 测试、CPU 地图预检 |
+| Godogen `asset-gen/SKILL.md` 参考统一、源图先审、尺度登记 | 改造采用；由原版 create-game-assets 负责生产，nside 接现有资产包和导出器 | [资产管理](../../docs/dev/production/asset-pipeline.md)；原版图片报告、5 图预览、现有导出一致性 |
 | Godogen `asset-gen/rembg.md` 对比背景检查 | 方法改编；按实际工具选择 alpha，不照搬透明禁令 | `tools/asset_preview.py`；合成像素、原件保护、错误尺寸与不透明 cutout 失败检查、实际看图 |
-| Godogen `motion.md`、GLB 与数值 QA | 静态尺度检查落地；骨骼、接触、root motion 和动作约束暂缓实现，已有适配条件 | `test_asset_environment.py` 验证 10 个真实 GLB；动画方法见[工具取舍](../../docs/production/asset-tool-review.md) |
-| Godogen `grid_slice.py`、`find_loop_frame.py`、`rembg_matting.py` | 暂缓：当前无 sprite sheet／精灵序列，重型去背景无实际需求；记录余像素、命名、循环相似度的失效边界 | [工具取舍](../../docs/production/asset-tool-review.md)逐项记录采用条件，不预建空工具 |
+| Godogen `motion.md`、GLB 与数值 QA | 静态尺度检查落地；骨骼、接触、root motion 和动作约束暂缓实现，已有适配条件 | `test_asset_environment.py` 验证 10 个真实 GLB；动画方法见[工具取舍](../../docs/dev/decisions/asset-tools.md) |
+| Godogen `grid_slice.py`、`find_loop_frame.py`、`rembg_matting.py` | 暂缓：当前无 sprite sheet／精灵序列，重型去背景无实际需求；记录余像素、命名、循环相似度的失效边界 | [工具取舍](../../docs/dev/decisions/asset-tools.md)逐项记录采用条件，不预建空工具 |
 | Godogen `asset_gen.py`、`requirements.txt`、生成模型选择和价格 | 不采用多供应商平台，现有素材足够验证；没有自动开通服务 | Codex 现有 imagegen 能力按需调用；本轮未调用生成、未产生生成费用 |
 | Godogen `publish.sh`、`setup.md`、`scripts/render_dir.py`、`generate_codex_metadata.py` | 不采用空仓复制、强制发布、模板替换和另一套配置生成器；原版 Skill 已含可用配置 | 原样 Skill + UPSTREAM + 本地适配；实际 Codex 发现，未运行 publish |
 | Bevy 13 个基础 Skill | 原样采用，版本与 0.19.1 锁文件匹配；原文示例不是本地编译证明 | `.agents/skills/bevy-*`；来源哈希、宿主发现、实际使用 API 的构建 |

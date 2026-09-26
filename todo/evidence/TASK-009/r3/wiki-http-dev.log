@@ -1,0 +1,13 @@
+Preview uses an isolated snapshot; restart this command after editing source documents
+
+  vitepress v1.6.4
+
+  ➜  Local:   http://127.0.0.1:5188/
+The request url "/home/lzzz/MyProjects/N-SIDE/docs/dev/design/quests/QST-002/narrative.json" is outside of Vite serving allow list.
+
+- /home/lzzz/MyProjects/N-SIDE/output/wiki/dev/source
+- /home/lzzz/MyProjects/N-SIDE/node_modules
+
+Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+
+The request url "/home/lzzz/MyProjects/N-SIDE/source-assets/district-map/district.json" is outside of Vite serving allow list.

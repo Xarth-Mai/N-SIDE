@@ -16,7 +16,7 @@
 
 [Wiki 与项目愿景](docs/index.md) · [Roadmap：至可玩 Demo](todo/demo-roadmap.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
 
-[故事百科《回声之后》](docs/story/index.md) · [Demo 定义](docs/production/demo-scope.md) · [61 项进度看板](todo/demo-progress.md)
+[故事百科《回声之后》](docs/player/encyclopedia/story/index.md) · [Demo 定义](docs/dev/direction/demo-scope.md) · [61 项进度看板](todo/demo-progress.md)
 
 ## 本地 Wiki
 
@@ -25,7 +25,7 @@ bun install
 bun run docs:dev
 ```
 
-[Wiki 构建与预览](docs/production/wiki.md) · [检查工具](tools/README.md) · [目录约定](docs/conventions.md)
+[Wiki 构建与预览](docs/dev/handbook/wiki.md) · [检查工具](tools/README.md) · [目录约定](docs/dev/handbook/documentation.md)
 
 ## 游戏开发
 
@@ -38,7 +38,7 @@ cargo run --locked
 
 格式、编译、测试与构建命令见[游戏工程](game/README.md)
 
-[开发与运行验收](docs/production/runtime-validation.md) · [资产生产](docs/production/assets.md) · [Skills 与验证工具](tools/README.md#skills-与来源检查)
+[开发与运行验收](docs/dev/validation/runtime.md) · [资产生产](docs/dev/production/asset-pipeline.md) · [Skills 与验证工具](tools/README.md#skills-与来源检查)
 
 ## 许可证
 

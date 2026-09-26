@@ -1,0 +1,74 @@
+[
+  {
+    "source": "docs/characters/characters.json",
+    "target": "docs/dev/design/catalogs/characters.json",
+    "baseline_sha256": "1808ded8eeaee855c7dd358a6378601b233875a78ab21068847c2533b95158b8",
+    "target_sha256": "d454ef936e6c1a620afebbc22ed85d279bd9d1735dd6ad2d0be933d5abc66ce5",
+    "allowed_changes": [
+      "/characters/*/source_file: docs/characters/ -> docs/player/encyclopedia/characters/",
+      "/characters/*/status: approved -> accepted（设计状态词汇映射，不重新批准）"
+    ],
+    "result": "PASS"
+  },
+  {
+    "source": "docs/production/city-story-map.json",
+    "target": "docs/dev/design/catalogs/city-story-map.json",
+    "baseline_sha256": "ec45d2d20e5277eb69629ae6dbfdf7e90e8281d2f7d7ecd1bb3f120d1b551787",
+    "target_sha256": "7604bfbb646e0186a8d20f248ae3322a8a0fd207ea6c9dba4c38702e7e4eb4be",
+    "allowed_changes": [
+      "/status: approved -> accepted（设计状态词汇映射，不重新批准）"
+    ],
+    "result": "PASS"
+  },
+  {
+    "source": "docs/production/place-catalog.json",
+    "target": "docs/dev/design/catalogs/place-catalog.json",
+    "baseline_sha256": "2df004bf5d459c15db984e115f7ab84c2d0ab316318f2bf01679c937767a9b9d",
+    "target_sha256": "2df004bf5d459c15db984e115f7ab84c2d0ab316318f2bf01679c937767a9b9d",
+    "allowed_changes": [],
+    "result": "PASS"
+  },
+  {
+    "source": "docs/quests/QST-002/narrative.json",
+    "target": "docs/dev/design/quests/QST-002/narrative.json",
+    "baseline_sha256": "088107e76eb608800e0f6f7199480b83375c0a20135fd3bd8b47cb2d1467a23c",
+    "target_sha256": "088107e76eb608800e0f6f7199480b83375c0a20135fd3bd8b47cb2d1467a23c",
+    "allowed_changes": [],
+    "result": "PASS"
+  },
+  {
+    "source": "docs/quests/quests.json",
+    "target": "docs/dev/design/catalogs/quests.json",
+    "baseline_sha256": "4e9a632672443522fdf64946abfe4e9bb65925497da744f27842816712d8b9a9",
+    "target_sha256": "9eab2bd89717ac53d0de8794c3465b055eeef31c882030d06b6c8881a907a3b7",
+    "allowed_changes": [
+      "/quests/*/source_file: story/ -> player/encyclopedia/story/（仍相对docs根）",
+      "/quests/*/status: approved -> accepted（设计状态词汇映射，不重新批准）"
+    ],
+    "result": "PASS"
+  },
+  {
+    "source": "docs/templates/asset-manifest.json",
+    "target": "docs/dev/handbook/templates/asset-manifest.json",
+    "baseline_sha256": "d20a942ab1224edceb5ede2e09960f12c7c159f8857afecf70c2c5c8464f2d23",
+    "target_sha256": "d20a942ab1224edceb5ede2e09960f12c7c159f8857afecf70c2c5c8464f2d23",
+    "allowed_changes": [],
+    "result": "PASS"
+  },
+  {
+    "source": "docs/templates/dialogue.csv",
+    "target": "docs/dev/handbook/templates/dialogue.csv",
+    "baseline_sha256": "b14ff07843711cce06b0f21535587bdd8686af285c803a95fdaa99da30f4fed8",
+    "target_sha256": "b14ff07843711cce06b0f21535587bdd8686af285c803a95fdaa99da30f4fed8",
+    "allowed_changes": [],
+    "result": "PASS"
+  },
+  {
+    "source": "docs/templates/narrative.json",
+    "target": "docs/dev/handbook/templates/narrative.json",
+    "baseline_sha256": "63402b34d7103085812d479f5c28bfd404a78525f658ca29f8d77901f9440bbb",
+    "target_sha256": "63402b34d7103085812d479f5c28bfd404a78525f658ca29f8d77901f9440bbb",
+    "allowed_changes": [],
+    "result": "PASS"
+  }
+]

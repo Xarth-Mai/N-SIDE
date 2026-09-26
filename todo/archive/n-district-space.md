@@ -9,7 +9,7 @@ evidence: []
 
 ## 目标与资料
 
-依据[街区空间制作](../../docs/production/district-space.md)完善街区简图与小店空间，记录待定设计及核对结果
+依据[街区空间制作](../../docs/dev/design/locations/district-space.md)完善街区简图与小店空间，记录待定设计及核对结果
 
 空间取舍见[空间设计决策](../n-district-questionnaire.md)。本任务保留街区简图与 Wiki 预览的既有记录；详细室内、交通、人物与日常片段由 [TASK-002](n-district-modern-city.md)承接，下列候选作为输入资料
 

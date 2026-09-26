@@ -886,11 +886,11 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "1bd03522d4c3bae864f1ff69f86094a2157ed86562d569434a8a45f7268b9663"
+          "sha256": "6a1cb8cf2e28e580e8be51904341983acdaebdbf8337c4d70bae84c30ec3f96d"
         },
         {
           "path": "references/content-and-review.md",
-          "sha256": "d95ec4170b633cb75ebf9636d68f7d2ddef86c4dca4c82038c3e5a6f634633d6"
+          "sha256": "879da56e222227b9f28ad2353a50f9560d591648b3a6794c96d86f23f51d6874"
         }
       ],
       "upstream_paths": [
@@ -911,7 +911,7 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "bd255a3217755152e65ab53bde051e743606f0d524b362a58d8e12979b76cca9"
+          "sha256": "62395497d6018a6e953b5ca34e8ed46eeeae5676f2d0a69e290045038c3d78a6"
         }
       ],
       "upstream_paths": [
@@ -929,7 +929,7 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "e7066cbb38716549fb1166f36da6d51e52ac8f783acba878ae880f403be00f95"
+          "sha256": "3473ac0ab442ffa43480363861e31d89d9e2b74e1eacd96ebd7dbf272a5de295"
         }
       ],
       "upstream_paths": [
@@ -1359,7 +1359,7 @@
       ],
       "decision": "defer",
       "local_paths": [
-        "docs/production/runtime-validation.md"
+        "docs/dev/validation/runtime.md"
       ],
       "reason": "Keep one capture path using existing Bevy screenshot/Viewer facilities; do not add bevy_capture or a second encoder framework"
     },
@@ -1453,7 +1453,7 @@
       "decision": "extract",
       "local_paths": [
         ".agents/skills/nside/references/content-and-review.md",
-        "docs/production/runtime-validation.md"
+        "docs/dev/validation/runtime.md"
       ],
       "reason": "Use state contracts, captured proof and bounded feedback; preserve narrative uncertainty; label nonisolated review self-audit and omit arcade score gates"
     },
@@ -1501,7 +1501,7 @@
       ],
       "decision": "adapt",
       "local_paths": [
-        "docs/production/runtime-validation.md"
+        "docs/dev/validation/runtime.md"
       ],
       "reason": "Reuse the real scene/input path, wait for asynchronous screenshots and record assertions separately from observed visuals; keep locked Bevy"
     },
@@ -1514,8 +1514,8 @@
       ],
       "decision": "selective-methods",
       "local_paths": [
-        "docs/production/assets.md",
-        "docs/production/asset-tool-review.md",
+        "docs/dev/production/asset-pipeline.md",
+        "docs/dev/decisions/asset-tools.md",
         "tools/asset_preview.py"
       ],
       "reason": "Keep source-image approval, alpha-edge contrast, asset scale and numeric QA where current assets support them; no second generation workflow"
@@ -1530,10 +1530,72 @@
       ],
       "decision": "reject",
       "local_paths": [
-        "docs/production/runtime-validation.md",
-        "docs/production/assets.md"
+        "docs/dev/validation/runtime.md",
+        "docs/dev/production/asset-pipeline.md"
       ],
       "reason": "No scaffold, destructive publisher, external agent framework or paid-provider defaults"
+    },
+    {
+      "source": "skills-gamedev",
+      "upstream_paths": [
+        "skills/blender-modeling/",
+        "skills/blender-animation/",
+        "skills/narrative-design/"
+      ],
+      "decision": "adapt",
+      "local_paths": [
+        "docs/dev/production/blender-animation.md",
+        "docs/dev/production/narrative.md"
+      ],
+      "reason": "Project handbook maps retained methods to existing contracts and commands; attribution remains in each page and THIRD_PARTY_NOTICES"
+    },
+    {
+      "source": "awesome-gamedev-agent-skills",
+      "upstream_paths": [
+        "skills/disciplines/game-ui-ux/",
+        "skills/disciplines/audio-design/"
+      ],
+      "decision": "adapt",
+      "local_paths": [
+        "docs/dev/production/ui.md",
+        "docs/dev/production/sound.md"
+      ],
+      "reason": "Project handbook maps retained methods to existing contracts and commands; attribution remains in each page and THIRD_PARTY_NOTICES"
+    },
+    {
+      "source": "mengto-skills",
+      "upstream_paths": [
+        "agent-skills/codex/video-to-superprompt/",
+        "agent-skills/game-development/create-game-vfx/"
+      ],
+      "decision": "adapt",
+      "local_paths": [
+        "docs/dev/production/reference-analysis.md",
+        "docs/dev/production/vfx.md"
+      ],
+      "reason": "Project handbook maps retained methods to existing contracts and commands; attribution remains in each page and THIRD_PARTY_NOTICES"
+    },
+    {
+      "source": "agentic-gamedev-skills",
+      "upstream_paths": [
+        ".agents/skills/gating-intent-legibility/"
+      ],
+      "decision": "adapt",
+      "local_paths": [
+        "docs/dev/validation/visual-review.md"
+      ],
+      "reason": "Project handbook maps retained methods to existing contracts and commands; attribution remains in each page and THIRD_PARTY_NOTICES"
+    },
+    {
+      "source": "godogen",
+      "upstream_paths": [
+        "prompts/runtime.md"
+      ],
+      "decision": "adapt",
+      "local_paths": [
+        "docs/dev/production/pipeline.md"
+      ],
+      "reason": "Project handbook maps retained methods to existing contracts and commands; attribution remains in each page and THIRD_PARTY_NOTICES"
     }
   ],
   "policy": {

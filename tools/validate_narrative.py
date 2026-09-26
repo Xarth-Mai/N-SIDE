@@ -322,7 +322,7 @@ def validate_file(path: Path, max_states: int = 50000) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     source = parser.add_mutually_exclusive_group()
-    source.add_argument('--root', type=Path, help='Project root; scans docs/quests')
+    source.add_argument('--root', type=Path, help='Project root; scans docs/dev/design/quests')
     source.add_argument('--file', type=Path, action='append', help='Check a specific data file; repeatable')
     parser.add_argument('--max-states', type=int, default=50000)
     parser.add_argument('--json', action='store_true')
@@ -335,7 +335,7 @@ def main() -> int:
         root = (args.root or Path('.')).resolve()
         if not root.is_dir():
             parser.error(f'项目目录：{root}')
-        paths = sorted((root / 'docs/quests').rglob('narrative.json'))
+        paths = sorted((root / 'docs/dev/design/quests').rglob('narrative.json'))
     results = [validate_file(path, args.max_states) for path in paths]
     seen: dict[str, str] = {}
     for item in results:
@@ -348,7 +348,7 @@ def main() -> int:
             seen[qid] = item['file']
     payload = {'files': len(results), 'states_checked': sum(r['states_checked'] for r in results),
                'complete': all(r['complete'] for r in results),
-               'ok': all(r['ok'] for r in results), 'results': results}
+               'ok': bool(results) and all(r['ok'] for r in results), 'results': results}
     if args.json:
         print(json.dumps(payload, ensure_ascii=False, indent=2))
     else:

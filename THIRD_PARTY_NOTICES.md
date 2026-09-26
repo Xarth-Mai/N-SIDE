@@ -2,7 +2,7 @@
 
 本清单记录 N:SIDE 实际保留的开发 Skills 与改编方法。完整文件映射和 SHA-256 校验值见 [manifest.json](third_party/skills/manifest.json)，项目差异见 [.agents/skills/nside/SKILL.md](.agents/skills/nside/SKILL.md)
 
-原版 Skill 目录逐文件保留，仅增加 `UPSTREAM.md`；项目改编明确标注来源。下面的许可适用于相应开发材料，不改变 N:SIDE 其他代码或资产的许可证。字体、模型、声音、生成服务与编码器的条款单独记录在所属资产包或依赖中
+原版 Skill 目录逐文件保留，少量必要修改登记为补丁并保留 `UPSTREAM.md`；项目改编明确标注来源。下面的许可适用于相应开发材料，不改变 N:SIDE 其他代码或资产的许可证。字体、模型、声音、生成服务与编码器的条款单独记录在所属资产包或依赖中
 
 ## chrisgliddon/bevy-skills
 
@@ -98,7 +98,7 @@
 - Upstream commit: [`0b725bca053769a4727f76c332bf1f7b42e146ab`](https://github.com/htdt/godogen/tree/0b725bca053769a4727f76c332bf1f7b42e146ab)
 - License: MIT; [LICENSE.md](third_party/skills/godogen/LICENSE.md)
 
-方法改编：`prompts/runtime.md`、`engines/bevy.md` → [运行验收](docs/production/runtime-validation.md)、[Viewer capture](game/src/bin/map_viewer/capture.rs)与[执行入口](tools/capture.py)；`asset-gen/rembg.md` 等 → [资产工具审查](docs/production/asset-tool-review.md)与 [asset_preview.py](tools/asset_preview.py)。本地代码连接现有 Bevy/资产路径；没有复制发布器、空项目 scaffold 或多供应商生成器
+方法改编：`prompts/runtime.md`、`engines/bevy.md` → [运行验收](docs/dev/validation/runtime.md)、[Viewer capture](game/src/bin/map_viewer/capture.rs)与[执行入口](tools/capture.py)；`asset-gen/rembg.md` 等 → [资产工具审查](docs/dev/decisions/asset-tools.md)与 [asset_preview.py](tools/asset_preview.py)。本地代码连接现有 Bevy/资产路径；没有复制发布器、空项目 scaffold 或多供应商生成器
 
 ## MengTo/Skills
 
@@ -118,23 +118,35 @@
 
 ## 改编与未采用范围
 
-- **bevy-skills / defer**：`skills/bevy-capture/` → `docs/production/runtime-validation.md` — Keep one capture path using existing Bevy screenshot/Viewer facilities; do not add bevy_capture or a second encoder framework
+- **bevy-skills / defer**：`skills/bevy-capture/` → `docs/dev/validation/runtime.md` — Keep one capture path using existing Bevy screenshot/Viewer facilities; do not add bevy_capture or a second encoder framework
 - **bevy-skills / defer**：`skills/bevy-physics/`, `skills/bevy-vfx/`, `skills/bevy-audio/`, `skills/bevy-input-actions/` → `.agents/skills/nside/SKILL.md` — Revisit when choosing actual physics, VFX, audio or input backends; no automatic Rapier/Hanabi/Seedling dependency
 - **bevy-skills / reject**：`skills/bevy/` → `.agents/skills/nside/SKILL.md` — The upstream all-skills router assumes the full collection; use the existing N:SIDE progress owners plus project specialist adapter
 - **game-design-agent-skills / reject**：`game-gmt-review/` → `.agents/skills/game-design-reality-check/` — Narrow legacy review overlaps the selected reality check
 - **awesome-gamedev-agent-skills / defer**：`skills/disciplines/shader-programming/`, `skills/disciplines/physics-tuning/`, `skills/disciplines/game-feel/`, `skills/disciplines/camera-systems/` → `.agents/skills/nside/SKILL.md` — Install only when a concrete task needs these workflows; Bevy camera and project art references cover current work
 - **skills-gamedev / adapt**：`skills/blender-modeling/`, `skills/blender-animation/`, `skills/blender-tooling/` → `.agents/skills/nside-blender-pipeline/` — Use asset-specific budgets and GLB export; preserve rigs and sources; no universal Ctrl+A, fixed skeleton, 60 FPS or add-on framework
 - **skills-gamedev / extract**：`skills/narrative-design/`, `skills/playtesting/`, `skills/level-design/`, `skills/game-audio/`, `skills/tech-art/` → `.agents/skills/nside/references/content-and-review.md` — Preserve original references, retain existing narrative/review owners, one level-design Skill; reject universal metrics, mandatory LOD counts and middleware
-- **agentic-gamedev-skills / extract**：`.agents/skills/implementing-gameplay-invariants/`, `.agents/skills/directing-game-visuals/`, `.agents/skills/maximizing-game-feel/`, `.agents/skills/evaluating-gameplay-balance/`, `.agents/skills/gating-intent-legibility/` → `.agents/skills/nside/references/content-and-review.md`, `docs/production/runtime-validation.md` — Use state contracts, captured proof and bounded feedback; preserve narrative uncertainty; label nonisolated review self-audit and omit arcade score gates
+- **agentic-gamedev-skills / extract**：`.agents/skills/implementing-gameplay-invariants/`, `.agents/skills/directing-game-visuals/`, `.agents/skills/maximizing-game-feel/`, `.agents/skills/evaluating-gameplay-balance/`, `.agents/skills/gating-intent-legibility/` → `.agents/skills/nside/references/content-and-review.md`, `docs/dev/validation/runtime.md` — Use state contracts, captured proof and bounded feedback; preserve narrative uncertainty; label nonisolated review self-audit and omit arcade score gates
 - **mengto-skills / adapt**：`agent-skills/codex/video-to-superprompt/`, `agent-skills/game-development/build-hybrid-game-assets/` → `.agents/skills/nside-reference-analysis/` — Keep media inspection, temporal sampling, visual layers and asset representation; replace web architecture with project Bevy implementation brief
 - **mengto-skills / extract**：`agent-skills/game-development/author-game-levels/` → `.agents/skills/nside/references/content-and-review.md` — Keep stable anchors, separated geometry and state; reject mandatory flat gameplay plane, which conflicts with existing slopes, steps and bridges
 - **mengto-skills / extract**：`agent-skills/game-development/design-game-encounters/`, `agent-skills/game-development/create-game-vfx/`, `agent-skills/game-development/build-game-audio-feedback/` → `.agents/skills/nside/references/content-and-review.md` — Use event-role clarity, cleanup and recovery checks; no browser/mobile architecture or implemented-combat claims
-- **godogen / adapt**：`prompts/runtime.md`, `engines/bevy.md` → `docs/production/runtime-validation.md` — Reuse the real scene/input path, wait for asynchronous screenshots and record assertions separately from observed visuals; keep locked Bevy
-- **godogen / selective-methods**：`asset-gen/rembg.md`, `asset-gen/motion.md`, `asset-gen/tools/` → `docs/production/assets.md`, `docs/production/asset-tool-review.md`, `tools/asset_preview.py` — Keep source-image approval, alpha-edge contrast, asset scale and numeric QA where current assets support them; no second generation workflow
-- **godogen / reject**：`publish.sh`, `setup.md`, `AGENTS.md`, `asset-gen/tools/asset_gen.py` → `docs/production/runtime-validation.md`, `docs/production/assets.md` — No scaffold, destructive publisher, external agent framework or paid-provider defaults
+- **godogen / adapt**：`prompts/runtime.md`, `engines/bevy.md` → `docs/dev/validation/runtime.md` — Reuse the real scene/input path, wait for asynchronous screenshots and record assertions separately from observed visuals; keep locked Bevy
+- **godogen / selective-methods**：`asset-gen/rembg.md`, `asset-gen/motion.md`, `asset-gen/tools/` → `docs/dev/production/asset-pipeline.md`, `docs/dev/decisions/asset-tools.md`, `tools/asset_preview.py` — Keep source-image approval, alpha-edge contrast, asset scale and numeric QA where current assets support them; no second generation workflow
+- **godogen / reject**：`publish.sh`, `setup.md`, `AGENTS.md`, `asset-gen/tools/asset_gen.py` → `docs/dev/validation/runtime.md`, `docs/dev/production/asset-pipeline.md` — No scaffold, destructive publisher, external agent framework or paid-provider defaults
 
 ## 更新与独立分发
 
 本地完整性由 `bun tools/validate-skills.mjs` 检查；固定上游内容由 `python3 tools/check_skill_upstream.py --output output/skills/upstream.json` 独立比较，检查完整目录、原文件、补丁基线与精确差异、许可及固定链接目标。后者读取 GitHub 固定 Git 对象，或 `--checkouts` 提供的独立 Git checkout，不以本地 hash 自洽替代上游证据
 
 更新选中目录时固定新的完整 commit，比较原文件与项目适配的差异，再刷新 manifest 校验值及本清单。不要将上游示例占位符写成项目配置；本地文件、锚点、宿主 metadata、工具依赖与固定上游引用分别校验，不保留断链豁免。独立打包任何 Skill 时一并携带对应 LICENSE、NOTICE、方法归属说明和 UPSTREAM 信息
+
+## 项目手册中的方法改编
+
+以下页面将上面固定版本的方法转为本项目契约，页面中保留来源与修改声明；上游原文仍在对应 Skill 或参考目录，未作为第二份项目规格维护
+
+| 来源 | 本地方法 | 修改范围 |
+| --- | --- | --- |
+| skills-gamedev | [Blender 与动画](docs/dev/production/blender-animation.md)、[叙事制作](docs/dev/production/narrative.md) | 按现有资产类别、对象 ID 和恢复契约接入，不套用固定预算 |
+| awesome-gamedev-agent-skills | [UI](docs/dev/production/ui.md)、[声音](docs/dev/production/sound.md) | 对象归属、焦点返回、启停与切场恢复；保留 Apache 声明 |
+| MengTo/Skills | [参考分析](docs/dev/production/reference-analysis.md)、[VFX](docs/dev/production/vfx.md) | 空间、节奏、事件与真实 Bevy 路径，移除浏览器架构假设 |
+| agentic-gamedev-skills | [视觉审查](docs/dev/validation/visual-review.md) | 分离机器断言、视觉自查、隔离评审与真实试玩 |
+| godogen | [制作循环](docs/dev/production/pipeline.md) | 真实运行证据与复验，沿用单一资产和 capture 流程 |

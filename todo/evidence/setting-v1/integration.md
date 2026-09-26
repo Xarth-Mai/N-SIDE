@@ -15,12 +15,12 @@ ZIP SHA256：`51c87085381e680c1411cebc3f013e1a67e9b0e06298a5812642c4a2c1ff39b8`
 
 ## 接入与维护归属
 
-- [故事百科](../../../docs/story/index.md)按主线／街坊故事分组，展开序章、八章、尾声与八条生活故事，共 18 个独立篇章
-- [人物百科](../../../docs/characters/index.md)按家庭、共同梦境与街坊分组，35 份独立档案沿用原 ID；认知和出场制作要求集中在[人物叙事制作](../../../docs/production/character-narrative.md)
-- [场所总览](../../../docs/locations/place-network.md)连接 12 个分区页，91 个场所保留用途、人物、故事、连接与事后变化，地图几何不变
-- [世界](../../../docs/world/nightmares.md)、[完整历史](../../../docs/world/history.md)、[城市](../../../docs/world/null-city.md)、[潜梦](../../../docs/gameplay/dream-diving.md)、[日常](../../../docs/gameplay/daily-life.md)自然融合完整规则与背景，取消指向版本稿的回链
+- [故事百科](../../../docs/player/encyclopedia/story/index.md)按主线／街坊故事分组，展开序章、八章、尾声与八条生活故事，共 18 个独立篇章
+- [人物百科](../../../docs/player/encyclopedia/characters/index.md)按家庭、共同梦境与街坊分组，35 份独立档案沿用原 ID；认知和出场制作要求集中在[人物叙事制作](../../../docs/dev/design/characters/narrative.md)
+- [场所总览](../../../docs/player/encyclopedia/locations/place-network.md)连接 12 个分区页，91 个场所保留用途、人物、故事、连接与事后变化，地图几何不变
+- [世界](../../../docs/player/encyclopedia/world/nightmares.md)、[完整历史](../../../docs/player/encyclopedia/world/history.md)、[城市](../../../docs/player/encyclopedia/world/null-city.md)、[潜梦](../../../docs/player/encyclopedia/gameplay/dream-diving.md)、[日常](../../../docs/player/encyclopedia/gameplay/daily-life.md)自然融合完整规则与背景，取消指向版本稿的回链
 - 设计索引归位 `docs/characters/characters.json`、`docs/quests/quests.json`、`docs/production/place-catalog.json` 与 `docs/production/city-story-map.json`；正文路径、正式状态与字段同步更新
-- [Demo 定义](../../../docs/production/demo-scope.md)维护已验收支柱与后续预算；[QST-002](../../../docs/quests/QST-002/README.md)集中范围、开发稿与信息节点，不与百科完整章节混为同一个范围
+- [Demo 定义](../../../docs/dev/direction/demo-scope.md)维护已验收支柱与后续预算；[QST-002](../../../docs/dev/design/quests/QST-002/README.md)集中范围、开发稿与信息节点，不与百科完整章节混为同一个范围
 - 原包整稿与 HTML 是分章内容的重复导出，不再单独维护；Wiki 的百科／开发导航与主题入口共同承担阅读层级
 
 ## 当前工程与已有成果

@@ -18,13 +18,17 @@ export function walk(directory) {
     return entry.isDirectory() ? walk(path) : [path]
   })
 }
-export function anchors(body) {
+export function anchors(body, vitepress = false) {
   const result = new Set()
   const counts = new Map()
   for (const match of body.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1\s*$/gm, '').matchAll(/^#{1,6}\s+(.+?)\s*#*$/gm)) {
     let id = match[1].match(/\{#([^}]+)\}/)?.[1]
     if (!id) {
-      id = match[1].toLowerCase().replace(/<[^>]*>/g, '').replace(/[^\p{L}\p{N}_\-\s]/gu, '').trim().replace(/\s/g, '-')
+      const title = match[1].replace(/<[^>]*>/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/`([^`]+)`/g, '$1').replace(/(\*\*|__|[~*])(.+?)\1/g, '$2')
+      // VitePress 1.6 uses NFKD and separates punctuation; upstream Markdown uses GitHub slugs
+      id = vitepress
+        ? title.normalize('NFKD').replace(/[\u0300-\u036f\u0000-\u001f]/g, '').replace(/[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g, '-').replace(/^-+|-+$/g, '').replace(/^(\d)/, '_$1').toLowerCase()
+        : title.toLowerCase().replace(/[^\p{L}\p{N}_\-\s]/gu, '').trim().replace(/\s/g, '-')
       const count = counts.get(id) ?? 0
       counts.set(id, count + 1)
       if (count) id += `-${count}`
@@ -50,6 +54,7 @@ export function validate(root) {
     if (!Array.isArray(manifest?.[key]) || (key !== 'references' && !manifest[key].length)) issue(manifestPath, `${key} must be a nonempty array${key === 'references' ? ' (references may be empty)' : ''}`)
   }
   if (!object(manifest?.policy) || !Array.isArray(manifest.policy.required_skills) || !manifest.policy.required_skills.length || !manifest.policy.required_skills.every(text)) issue(manifestPath, 'policy.required_skills must be a nonempty name array')
+  if (manifest?.adoptions !== undefined && !Array.isArray(manifest.adoptions)) issue(manifestPath, 'adoptions must be an array')
   if (issues.length) return result()
 
   const registered = new Set(['third_party/skills/manifest.json'])
@@ -175,7 +180,7 @@ export function validate(root) {
         const [link, anchor] = target.split('#')
         const destination = link ? resolve(dirname(file), decodeURIComponent(link.split('?')[0])) : file
         if (!existsSync(destination)) issue(file, `missing local reference ${target}`)
-        else if (anchor && destination.endsWith('.md') && !anchors(readFileSync(destination, 'utf8')).has(decodeURIComponent(anchor))) issue(file, `missing anchor ${target}`)
+        else if (anchor && destination.endsWith('.md') && !anchors(readFileSync(destination, 'utf8'), relative(root, destination).startsWith('docs/')).has(decodeURIComponent(anchor))) issue(file, `missing anchor ${target}`)
       } catch (error) { issue(file, `invalid local reference ${target}: ${error.message}`) }
     }
     // Only concrete interpreter script invocations, not arbitrary prose or asset examples
@@ -184,6 +189,12 @@ export function validate(root) {
       const base = /^(?:tools|game|\.agents)\//.test(path) ? root : join(root, unit?.local_path ?? '')
       if (!existsSync(resolve(base, path))) issue(file, `missing command path ${path}`)
     }
+  }
+  for (const adoption of manifest.adoptions ?? []) {
+    if (!object(adoption) || !sources.has(adoption.source) || !Array.isArray(adoption.local_paths) || !adoption.local_paths.length) {
+      issue(manifestPath, 'invalid adoption source or local_paths'); continue
+    }
+    for (const path of adoption.local_paths) if (!text(path) || path.startsWith('/') || path.split('/').includes('..') || !existsSync(join(root, path))) issue(manifestPath, `missing adoption destination ${path}`)
   }
   const expected = [...manifest.local_skills, ...manifest.skills].filter(object).map(unit => unit.name)
   for (const name of new Set([...expected, ...manifest.policy.required_skills])) if (!names.has(name)) issue(manifestPath, `missing required skill ${name}`)

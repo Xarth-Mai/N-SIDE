@@ -20,9 +20,9 @@
 
 ## 叙事与关卡
 
-使用既有 `create-case`、`create-content`、`review-narrative` 和 [叙事流程](../../../../docs/narrative/workflow.md)，把台词、环境和选择连接到玩家能观察到的状态或关系。人物语言与知情范围按正式档案核对，生活场景允许安静停留，选择后果的显现时机服从委托因果，不套用“两场内全部可见”或未经校准的通过率
+使用既有 `create-case`、`create-content`、`review-narrative` 和 [叙事流程](../../../../docs/dev/production/narrative.md)，把台词、环境和选择连接到玩家能观察到的状态或关系。人物语言与知情范围按正式档案核对，生活场景允许安静停留，选择后果的显现时机服从委托因果，不套用“两场内全部可见”或未经校准的通过率
 
-关卡主入口为 `level-design`；poorvith 的布局方法作为补充，不同时启用两个同名 Skill。技术美术和音频方法归现有[美术](../../../../docs/production/art.md)、[声音](../../../../docs/production/audio.md)与[资产管理](../../../../docs/production/assets.md)，LOD 数量、移动端变体、音频中间件以实际范围和性能证据决定
+关卡主入口为 `level-design`；poorvith 的布局方法作为补充，不同时启用两个同名 Skill。技术美术和音频方法归现有[美术](../../../../docs/dev/production/art-direction.md)、[声音](../../../../docs/dev/production/sound.md)与[资产管理](../../../../docs/dev/production/asset-pipeline.md)，LOD 数量、移动端变体、音频中间件以实际范围和性能证据决定
 
 ## 事件、空间与恢复
 

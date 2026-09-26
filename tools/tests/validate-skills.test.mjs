@@ -36,6 +36,8 @@ for (const [name, mutate, message] of [
   ['null manifest', f => f.write('third_party/skills/manifest.json', 'null'), 'schema_version'],
   ['bad JSON', f => f.write('third_party/skills/manifest.json', '{'), 'cannot be read'],
   ['unknown version', f => { f.manifest.schema_version = 3; f.save() }, 'schema_version'],
+  ['bad adoption schema', f => { f.manifest.adoptions = {}; f.save() }, 'adoptions must be an array'],
+  ['missing adoption target', f => { f.manifest.adoptions = [{source:'source',local_paths:['docs/missing.md']}]; f.save() }, 'missing adoption destination'],
   ['empty sources', f => { f.manifest.sources = []; f.save() }, 'sources'],
   ['empty imports', f => { f.manifest.skills = []; f.save() }, 'skills'],
   ['empty policy', f => { f.manifest.policy.required_skills = []; f.save() }, 'required_skills'],
@@ -72,4 +74,14 @@ test('inactive upstream reference links are checked', () => {
 test('local hashes alone explicitly do not prove upstream equality', () => {
   const f = fixture(); f.alter('references/more.md', '# More\n## Detail\nLocally rewritten text\n')
   expect(validate(f.root).ok).toBe(true) // Independent source comparison is a separate command
+})
+
+test('Wiki anchors match the installed VitePress renderer while upstream keeps GitHub slugs', async () => {
+  const { createMarkdownRenderer } = await import('vitepress')
+  const { anchors } = await import('../validate-skills.mjs')
+  const body = '# 1. Échelle / 尺度（m）\n## 动作 `start_stop`\n## 标题\n## 标题\n## 指定 {#specific}\n'
+  const renderer = await createMarkdownRenderer(process.cwd())
+  const actual = new Set([...renderer.render(body).matchAll(/<h[1-6] id="([^"]+)"/g)].map(match => match[1]))
+  expect(anchors(body, true)).toEqual(actual)
+  expect(anchors('# 1. title')).toEqual(new Set(['1-title']))
 })

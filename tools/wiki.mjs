@@ -65,12 +65,16 @@ export function prepareWiki(root, profile) {
     }
     const markdown = extname(target) === '.md' ? target : `${target}.md`
     const landing = join(target, 'index.md')
+    if (target === docs || markdown === join(docs, 'index.md')) return `/${suffix}`
     if (pageSet.has(target) || pageSet.has(markdown) || pageSet.has(landing)) return url
     if (profile === 'dev' && listWikiData(docs, profile).includes(target)) return url
     throw new Error(`${relative(root, file)}: unpublished local reference: ${url} (${rel})`)
   }
   for (const file of pages) {
     let text = readFileSync(file, 'utf8')
+    if (/<!--\s*@include\s*:|^\s*<<<(?:\s|$)/m.test(text)) throw new Error(`${relative(root, file)}: external include/snippet inputs are not published`)
+    // Source identity and design metadata remain in the repository, not player page payloads
+    if (relative(docs, file).startsWith('player/')) text = text.replace(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/, '')
     text = text.replace(/(!?\[[^\]\n]*\]\()([^\s)]+)(\))/g, (_all, prefix, url, end) => `${prefix}${link(url, file)}${end}`)
       .replace(/((?:src|href)=["'])([^"']+)(["'])/g, (_all, prefix, url, end) => `${prefix}${link(url, file)}${end}`)
       .replace(/(['"])([^'"\n]*\.vitepress\/components\/([^/'"]+))\1/g, (_all, quote, _old, name) => {
@@ -86,8 +90,11 @@ export function prepareWiki(root, profile) {
         return `${quote}@wiki-tools/${name}${quote}`
       })
     // Source imports are a separate publication channel from Markdown hyperlinks
-    for (const match of text.matchAll(/\b(?:from\s*|import\s*\()(['"])([^'"\n]+)\1/g)) {
-      if (!/^(?:vue|vitepress|@wiki-components\/|@wiki-tools\/|@wiki-data\/)/.test(match[2])) throw new Error(`${relative(root, file)}: unpublished import ${match[2]}`)
+    const imports = new Set(['vue', 'vitepress', '@wiki-data/map.json', '@wiki-components/DistrictMap.vue',
+      ...(profile === 'dev' ? ['@wiki-data/district.json', ...SUPPORT.map(n => `@wiki-tools/${n}`), ...COMPONENTS.map(n => `@wiki-components/${n}`)] : [])])
+    if (/import\.meta\.glob/.test(text)) throw new Error(`${relative(root, file)}: glob imports are not publication inputs`)
+    for (const match of text.matchAll(/\b(?:from\s*|import\s*(?:\(\s*)?)(['"])([^'"\n]+)\1/g)) {
+      if (!imports.has(match[2])) throw new Error(`${relative(root, file)}: unpublished import ${match[2]}`)
     }
     put(join(source, relative(docs, file)), text)
   }
@@ -134,7 +141,9 @@ export function checkWikiBuild(root, profile) {
   const files = filesIn(output), names = files.map(p => relative(output, p))
   for (const name of manifest.pages.map(p => p.replace(/\.md$/, '.html'))) if (!names.includes(name)) throw new Error(`Missing built page ${name}`)
   const raw = new Set([...manifest.data, ...manifest.public, 'hashmap.json'])
+  const html = new Set(['index.html', '404.html', ...manifest.pages.map(p => p.replace(/\.md$/, '.html')), ...manifest.public.filter(p => p.endsWith('.html'))])
   for (const name of names) {
+    if (name.endsWith('.html') && !html.has(name)) throw new Error(`Unexpected published page: ${name}`)
     if (['.json', '.csv'].includes(extname(name)) && !raw.has(name)) throw new Error(`Unexpected published data: ${name}`)
     if (profile === 'player' && name.startsWith('dev/')) throw new Error(`Developer file in player output: ${name}`)
   }
@@ -158,6 +167,7 @@ if (import.meta.main) {
     const root = resolve(import.meta.dir, '..')
     if (command === 'check') console.log(JSON.stringify(checkWikiBuild(root, profile)))
     else if (['build', 'dev', 'prepare', 'preview'].includes(command)) {
+      if (command === 'preview') checkWikiBuild(root, profile)
       const prepared = command === 'preview' ? { source: join(root, 'output/wiki', profile, 'source') } : prepareWiki(root, profile)
       if (command === 'prepare') console.log(JSON.stringify(prepared.manifest))
       else {

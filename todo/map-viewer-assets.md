@@ -2,7 +2,7 @@
 
 核验日期：2026-09-25
 
-本清单服务于全图基础外观及小店—采购街样板，采用[美术规范](../docs/production/art.md)中的轮廓、店面分段、生活细节和材质尺度要求，资产接入遵循[资产管理](../docs/production/assets.md)
+本清单服务于全图基础外观及小店—采购街样板，采用[美术规范](../docs/dev/production/art-direction.md)中的轮廓、店面分段、生活细节和材质尺度要求，资产接入遵循[资产管理](../docs/dev/production/asset-pipeline.md)
 
 首批 Kenney 与 ambientCG 子集已取得并导出，精确文件、原件哈希、米制和材质调整见[环境素材包](../source-assets/environment-kit/README.md)；可复现导出、Bevy 异步依赖加载及六镜头窗口渲染检查 PASS。全图基础外观与店面首轮画面已检查，样板美术验收仍待作者确认，替补与待核条目保持 `candidate`，性能及限制见[实际验证记录](archive/map-viewer.md#实际验证记录)
 

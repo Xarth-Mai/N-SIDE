@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "module_escape": {
+    "vitepress_exit": 1,
+    "diagnostic": "Unpublished Wiki module"
+  },
+  "external_include": {
+    "rejected_before_build": true
+  }
+}

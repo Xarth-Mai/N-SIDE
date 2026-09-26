@@ -25,7 +25,7 @@ function request(root, profile, url, method = 'GET') {
 function wikiFixture(t) {
   const f = fixture(t)
   f.put('docs/player/index.md', '# 玩家入口\n\n[故事](encyclopedia/story/main/last-toy.md)\n')
-  f.put('docs/player/encyclopedia/story/main/last-toy.md', '# 最后的玩具\n\n米娜自己决定打包\n')
+  f.put('docs/player/encyclopedia/story/main/last-toy.md', '---\nsubject_id: QST-002\ndesign_state: accepted\n---\n# 最后的玩具\n\n米娜自己决定打包\n')
   f.put('docs/dev/index.md', '# 开发入口\n\n[私有规格](design/spec.md)\n')
   f.put('docs/dev/design/spec.md', '# DEV_ONLY_SENTINEL\n\n内部规格 [数据](data.json)\n')
   f.put('docs/dev/design/data.json', '{"DEV_ONLY_SENTINEL":true}')
@@ -74,6 +74,7 @@ test('isolated player tree excludes developer pages/data/public and uses redirec
   const { root, put } = wikiFixture(t)
   const player = prepareWiki(root, 'player'), dev = prepareWiki(root, 'dev')
   assert.deepEqual(player.manifest.data, [])
+  assert.doesNotMatch(readFileSync(join(player.source, 'player/encyclopedia/story/main/last-toy.md'), 'utf8'), /design_state|subject_id/)
   assert.ok(!player.manifest.pages.some(p => p.startsWith('dev/')))
   assert.ok(!player.manifest.public.some(p => p.includes('private')))
   assert.deepEqual(player.manifest.aliases.map(a => a.old), ['story/main/last-toy.html'])
@@ -89,6 +90,14 @@ test('player imports and public data cannot bypass the publication boundary', t 
   const { root, put } = wikiFixture(t)
   put('docs/player/leak.md', '# 泄漏\n\n<script setup>\nimport x from "../../dev/design/data.json"\n</script>\n')
   assert.throws(() => prepareWiki(root, 'player'), /unpublished import/)
+  for (const source of ['import x from "@wiki-data/../../dev/data.json"', 'import "../../dev/design/data.json"', 'const pages=import.meta.glob("../../dev/**")']) {
+    put('docs/player/leak.md', `# 泄漏\n\n<script setup>\n${source}\n</script>\n`)
+    assert.throws(() => prepareWiki(root, 'player'), /unpublished import|glob imports/)
+  }
+  for (const directive of ['<!-- @include: ../../../../../docs/dev/design/spec.md -->', '<<< ../../../../../docs/dev/design/spec.md']) {
+    put('docs/player/leak.md', `# 泄漏\n\n${directive}\n`)
+    assert.throws(() => prepareWiki(root, 'player'), /external include/)
+  }
   put('docs/player/leak.md', '# 泄漏\n\n[附件](../public/private.json)\n')
   assert.throws(() => prepareWiki(root, 'player'), /Unsupported public/)
   put('docs/player/leak.md', '# 泄漏\n\n![内部图片](../public/private.webp)\n')
@@ -113,13 +122,29 @@ test('artifact check detects injected developer raw data and search content', t 
   put(relative(root, join(output, 'dev/secret.json')), '{}')
   assert.throws(() => checkWikiBuild(root, 'player'), /Unexpected published data/)
   rmSync(join(output, 'dev'), { recursive: true })
+  put(relative(root, join(output, 'secret.html')), 'DEV_ONLY_SENTINEL')
+  assert.throws(() => checkWikiBuild(root, 'player'), /Unexpected published page/)
+  rmSync(join(output, 'secret.html'))
   put(relative(root, join(output, 'assets/search.js')), 'DOCS-PIPELINE')
   assert.throws(() => checkWikiBuild(root, 'player'), /Developer content/)
 })
 
 test('inline template placeholders remain literal Vue text', async () => {
   const { createMarkdownRenderer } = await import('vitepress')
-  const { markdown } = await import('../../docs/.vitepress/config.mjs')
+  const { markdown, default: directConfig } = await import('../../docs/.vitepress/config.mjs')
+  assert.throws(directConfig, /Choose a Wiki audience/)
   const md = await createMarkdownRenderer(process.cwd(), markdown)
   assert.match(md.render('`{{交付目标}}`'), /<code v-pre[^>]*>\{\{交付目标\}\}<\/code>/)
+})
+
+test('Vite module loading rejects source files outside the isolated tree', async t => {
+  const { root } = wikiFixture(t)
+  const { source } = prepareWiki(root, 'player')
+  const { wikiConfig } = await import('../../docs/.vitepress/config.mjs')
+  const config = wikiConfig({ root: process.cwd(), source, profile: 'player' })
+  const boundary = config.vite.plugins.find(p => p.name === 'n-side-wiki-boundary')
+  assert.throws(() => boundary.load(join(root, 'docs/dev/design/data.json')), /Unpublished Wiki module/)
+  assert.equal(boundary.load(join(source, '_data/map.json')), undefined)
+  for (const id of ['/@siteData', '/@localSearchIndex', '/@localSearchIndexroot', '/player/', '/player/index', '/project-assets/branding/n-logo.svg']) assert.equal(boundary.load(id), undefined)
+  assert.throws(() => boundary.load('/@localSearchIndex/../../docs/dev/design/data.json'), /Unpublished Wiki module/)
 })

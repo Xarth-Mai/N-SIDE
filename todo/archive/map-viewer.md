@@ -27,13 +27,13 @@ evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/m
 
 | 资料 | 用途 |
 | --- | --- |
-| [美术](../../docs/production/art.md) | 全局视觉方向与环境详细规范 |
+| [美术](../../docs/dev/production/art-direction.md) | 全局视觉方向与环境详细规范 |
 | [美术参考研究](../map-viewer-art-reference.md) | 官方资料、观察与 N:SIDE 选择的对应 |
 | [素材候选](../map-viewer-assets.md) | 实际来源、许可与筛选理由 |
 | [地图资产包](../../source-assets/district-map/README.md) | 唯一主数据及字段说明 |
-| [街区建筑](../../docs/production/district-architecture.md) | 建筑外形、入口、楼层和天井 |
+| [街区建筑](../../docs/dev/design/locations/district-architecture.md) | 建筑外形、入口、楼层和天井 |
 | [街区设计任务](n-district-modern-city.md) | 地图阶段交付与验收状态 |
-| [资产管理](../../docs/production/assets.md) | 主文件、许可、导出与接入规则 |
+| [资产管理](../../docs/dev/production/asset-pipeline.md) | 主文件、许可、导出与接入规则 |
 
 ## 已确认范围
 
