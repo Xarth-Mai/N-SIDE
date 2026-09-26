@@ -12,9 +12,6 @@
     "check:templates": "python3 -B tools/validate_narrative.py --file docs/dev/handbook/templates/narrative.json",
     "test:tools": "python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests",
     "check:map": "bun test tools/tests/district-map.test.mjs",
-    "roadmap": "python3 -B tools/roadmap.py --root .",
-    "roadmap:sync": "python3 -B tools/roadmap.py --root . --write",
-    "check:roadmap": "python3 -B tools/roadmap.py --root . --check",
     "check:skills": "bun tools/validate-skills.mjs",
     "capture": "python3 tools/capture.py",
     "check:skills:upstream": "python3 tools/check_skill_upstream.py --output output/skills/upstream.json",
@@ -23,7 +20,10 @@
     "docs:build:player": "bun tools/wiki.mjs build player",
     "docs:build:dev": "bun tools/wiki.mjs build dev",
     "docs:preview:player": "bun tools/wiki.mjs preview player",
-    "docs:preview:dev": "bun tools/wiki.mjs preview dev"
+    "docs:preview:dev": "bun tools/wiki.mjs preview dev",
+    "tasks:list": "bun tools/tasks.mjs list",
+    "tasks:sync": "bun tools/tasks.mjs sync",
+    "tasks:check": "bun tools/tasks.mjs check"
   },
   "devDependencies": {
     "delaunator": "5.0.1",

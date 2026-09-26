@@ -1,22 +1,18 @@
 ---
 name: n-side-review
-description: Review N:SIDE work-package completion, playtest evidence or milestone readiness. Use when asked to accept work or enter the next stage; distinguish automated checks from actual author or player acceptance and reopen invalidated results.
+description: Review N:SIDE task evidence or milestone readiness. Distinguish technical checks from real author or player feedback, and reopen results invalidated by changes; keep a read-only review read-only.
 ---
 
-# N:SIDE 交付与阶段验收
+# N:SIDE 交付与里程碑验收
 
-下列路径和命令以仓库根目录为基准；从子目录开始时，先用 `git rev-parse --show-toplevel` 定位根目录再执行
+从子目录开始时，用 `git rev-parse --show-toplevel` 定位仓库根；读取目标任务卡的验收条件、specs、依赖和实际产物，核对证据输入的完整提交或内容 hash，以及之后变更是否使结论失效
 
-读取 `docs/dev/handbook/codex.md`、`todo/demo-progress.json` 中目标项的 `verify`、`reviewer` 与依赖，以及真实交付和证据。核对证据针对的提交／配置／构建，检查之后的变更是否使结论失效
+按 [任务规则](../../../docs/dev/handbook/tasks.md)分别核对决定来源、交付接入、适用检查、需要的作者或真实玩家反馈。机器通过、画面自查、隔离评审和实际试玩分别标注；代码评审不能证明手感，截图不能证明连续操作，构建不能证明双平台，设计接受不能证明实现完成
 
-分别检查：决策是否有来源；交付是否存在且接入；适用的客观测试是否实际运行；需要的作者操作、品质判断或陌生玩家测试是否确有记录。PASS、FAIL、NOT RUN 分开。代码评审不是手感验收，固定截图不是连续移动验收，构建成功不是双平台实测，批准规划不是完成游戏阶段
+依据 [运行验证](../../../docs/dev/validation/runtime.md)给出通过、需要修订或缺少证据，附最小补充动作。技术任务可由 Codex 依据实际结果验收；主观体验和里程碑放行必须有对应真实反馈。只请求评审时先交结论，保持状态只读
 
-按 `docs/dev/validation/runtime.md` 核对本次修改所需的真实路径、输入、状态断言与画面观察；非隔离观察标为 self-audit，不替代作者或陌生玩家反馈。再给出“通过”“需要修订”或“缺少证据”的结论，写明最小补充动作。作者验收角色由作者实际反馈提供；试玩角色由真实操作者记录提供。技术项可以基于实际执行结果由 Codex 记录通过。字段和文件存在只能用于结构检查，不是验证真实性的替代品
+获授权更新且验收条件满足时写 done 和 acceptance.role/revision/record；record须指向本任务 evidence 中的真实记录，字段存在只证明可追溯。未满足时保持 active 或需要反馈的 review；确实无法继续时 blocked 并说明原因
 
-全部条件成立才写 `status: done`、证据路径与 `accepted` 的 `role`、`by`、`revision`、`record`、`result: pass`。保留最后 work 时将步骤设为 `record`。未通过保持 `in_progress` 或带原因的 `blocked`；历史结果留在日志
+里程碑按 todo/roadmap.md 的成果门槛检查完整体验、覆盖与范围，不把卡片数量视为完成百分比。取消依[任务规则](../../../docs/dev/handbook/tasks.md)记录原因和依赖替代，不满足其他任务的前置结果
 
-阶段验收项检查本阶段全部未取消工作包、获批取消的范围影响及整体体验，并取得作者明确放行。已批准范围取消单列 `cancelled` 与作者 `scope_change`，不计入 done，不取消阶段出口。范围增减或拆分增加计划修订并保留 ID 与批准来源
-
-变更推翻旧结论时重开受影响项，移除有效 `accepted`，核查依赖项和阶段出口是否需要重开；保留旧证据，不悄悄沿用。执行 `bun run roadmap:sync`、`bun run check:roadmap` 和适用回归
-
-报告已验收 x/y 的真实变化、通过依据、未测范围与一个下一动作。用户只要求评审而未要求更新状态时，先输出评审结果，保持数据只读
+新变更推翻旧结果时重开原卡，移除当前 acceptance，将旧证据保留在正文，复查受影响依赖。更新后运行 `bun run tasks:sync`、`bun run tasks:check` 和适用回归；报告通过依据、未测范围与下一动作

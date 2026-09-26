@@ -2,9 +2,9 @@
 
 在仓库根目录执行：
 
-```sh
+```fish
 bun run check:docs
-bun run check:roadmap
+bun run tasks:check
 bun run check:map
 bun run check:narrative
 bun run check:story-design
@@ -12,7 +12,7 @@ bun run check:templates
 bun run test:tools
 ```
 
-文档检查覆盖文本格式、ID、依赖、Skills、本地链接和 Wiki 发布路径。叙事检查扫描 `docs/quests/`，核对结构、节点、信息顺序、选择、场景与台词
+文档检查覆盖文本格式、ID、依赖、Skills、本地链接和 Wiki 发布路径。叙事检查扫描 `docs/dev/design/quests/`，核对结构、节点、信息顺序、选择、场景与台词
 
 Python 检查器接受 `--json`。`EMPTY` 表示当前任务数据数量为零；`incomplete` 表示路径分析达到预算，`--max-states` 用于调整预算
 
@@ -28,19 +28,17 @@ Wiki 构建与发布见 [Wiki](../docs/dev/handbook/wiki.md)
 
 窄测：`python3 -B -m unittest discover -s tools/tests -p test_validate_story_design.py`
 
-## Demo 进度
+## 任务与生成看板
 
-`bun run roadmap` 只读显示阶段计数与下一项，`bun run roadmap --stage M0` 查看阶段详情，`bun run roadmap --json` 输出汇总数据
+`bun run tasks:list` 只读显示里程碑计数与可执行任务；编辑 `todo/tasks/TASK-xxx-title.md` 后运行 `bun run tasks:sync`，再运行 `bun run tasks:check` 校验结构、引用、依赖、证据和看板一致性。check 不写文件，sync 对相同输入稳定
 
-编辑 `todo/demo-progress.json` 后运行 `bun run roadmap:sync` 生成看板，再运行 `bun run check:roadmap` 检查依赖、证据引用与生成一致性。工具只核对记录结构，验收依据见[工作流](../docs/dev/handbook/codex.md)
-
-进度工具使用 Python 3.10+ 标准库；测试纳入 `bun run test:tools`，窄测使用 `python3 -B -m unittest discover -s tools/tests -p test_roadmap.py`
+任务卡的状态含义和完成依据见[任务手册](../docs/dev/handbook/tasks.md)。Bun 原生 YAML 解析，无额外依赖；窄测 `bun test tools/tests/tasks.test.mjs`，纳入 test:tools。旧进度 JSON 与 Python 生成器退出活动入口，历史记录只供追溯
 
 ## Skills 与来源检查
 
 原版 Skill 保留完整目录与原名，项目差异集中在 [.agents/skills/nside/](../.agents/skills/nside/SKILL.md)。[第三方清单](../THIRD_PARTY_NOTICES.md)记录完整上游 commit、作者、采用方式及许可；`third_party/skills/manifest.json` 是迁入文件的来源与校验清单，不承载项目进度
 
-```sh
+```fish
 bun run check:skills
 python3 tools/probe_skills.py --output output/skills/discovery.json
 ```
@@ -53,7 +51,7 @@ python3 tools/probe_skills.py --output output/skills/discovery.json
 
 从需求和当前实现出发，完成适用测试，再按[运行验收](../docs/dev/validation/runtime.md)运行真实场景、检查状态与画面、修复并复验。当前入口复用 Viewer 的城市和自由镜头；配置字段、输入与范围见[游戏工程](../game/README.md)
 
-```sh
+```fish
 python3 tools/capture.py --script game/capture/viewer-tour.json --output output/capture/my-run
 python3 tools/capture.py --script game/capture/assertion-failure.json --output output/capture/my-failure
 ```
@@ -66,7 +64,7 @@ Capture 使用 Python 3.10+ 与 Pillow，Rust 按 `game/` 现有环境构建，�
 
 使用 `create-game-assets` 组织需求、参考、制作与导入，按[资产管理](../docs/dev/production/asset-pipeline.md)写入现有资产包和导出路径。当前环境需要 Pillow 时可按原版脚本依赖安装：
 
-```sh
+```fish
 python3 -m pip install -r .agents/skills/create-game-assets/scripts/requirements.txt
 python3 .agents/skills/create-game-assets/scripts/asset_report.py game/assets/environment/signs/shop.png --expect-size 1024x128 --json
 python3 tools/asset_preview.py game/assets/environment/signs/shop.png --display-size 512x64 --out output/assets/shop-preview.png

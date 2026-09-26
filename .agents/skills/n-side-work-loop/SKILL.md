@@ -1,24 +1,18 @@
 ---
 name: n-side-work-loop
-description: Execute or resume a N:SIDE work package through explain, decide, build, verify, playtest and record. Use for authorized implementation, prototypes or revisions after feedback; not for read-only progress questions or automatic stage approval.
+description: Execute or resume an authorized N:SIDE task through design, production, checks and evidence. Use for implementation, experiments, assets or document work; not for read-only status or automatic milestone approval.
 ---
 
-# N:SIDE 工作循环
+# N:SIDE 任务执行
 
-下列路径和命令以仓库根目录为基准；从子目录开始时，先用 `git rev-parse --show-toplevel` 定位根目录再执行
+从子目录开始时，用 `git rev-parse --show-toplevel` 定位仓库根；读取指定任务卡、关联规格、前置结果及最近证据，按 [Codex 工作流](../../../docs/dev/handbook/codex.md)继续，不重新访谈已有决定
 
-先读取 `docs/dev/handbook/codex.md`、`todo/demo-progress.json`、指定工作包的现有设计与记录。确认前置通过、范围和授权；用户明确指定旧主题时读取归档与总路线图承接表，在新工作日志中续接，不重开已结项记录或强行映射为主线完成
+依据任务类型明确输入与验收，然后设 active 并制作。原型比较少量假设，生产按既定清单分批，修复保留复现和回归；简单文档小修压缩步骤，不强制六轮或作者逐项审批。实际步骤、批次、轮次和下一动作写在卡片正文
 
-采用六步：`orient` 定位与必要讲解 → `design` 决策与设计 → `build` 制作 → `verify` 客观检查 → `review` 实际体验／作者验收 → `record` 记录与下一步。从上次记录恢复，不每次从头访谈。详细拆分当前与下一项，远期保持工作包粒度
+专业工作读取 nside 适配入口后选对应 Skill。通用方法归 Skill，项目长期事实与契约归 docs，本轮实际输入、命令、结果和反馈归 todo/evidence/TASK-xxx/run-id/，沿用源资产与数据唯一源
 
-开始时解释本轮问题与通过标准，读取已有决定。方案需要作者选择时给推荐和代价，等待真实选择；普通实现自主完成。每轮只验证少量假设，用同条件对照避免无法归因的同时大改
+检查深度按 [运行验证](../../../docs/dev/validation/runtime.md)选择：影响真实行为或表现时获取状态与画面，观察问题并修复复验；纯文档使用语义、引用与构建检查。PASS、FAIL、NOT RUN分别记录；实验否定假设也可以形成合格交付
 
-将当前工作包设为 `in_progress`，维护 `work.round`、`step`、`record`、`next_action`。轮次使用明确记录锚点，例如 `todo/demo-worklog.md#m1-03-r02`；持续记录输入提交／校验和、实际结果、未测项和反馈。简单客观交付可省略空 work，保留真实证据即可
+需要作者试玩时给启动方式、短路线与具体观察问题，将卡片设 review 并写明待判断内容。技术任务依据实际检查可以完成；主观品质、陌生玩家理解和里程碑放行只引用真实反馈。范围内普通实现自主推进，真实阻碍写明所缺输入
 
-专业方法先读 `nside` 项目适配入口，再按需复用原版 Skill 与既有 `create-case`、`create-content`、`review-narrative`。代码、数据和源资产按既有单一来源维护。检查与真实运行采用 `docs/dev/validation/runtime.md`，获取画面及状态证据、实际观察、修复后复验；无法执行的图形、Windows、手柄、Codex 或人工测试明确记 NOT RUN
-
-交给作者试玩时提供确切启动方法、短路线和最多三个观察问题。需要作者或玩家体验判断的项，在缺少真实反馈时停在 `review`，不能用截图、自动测试或模拟“作者满意”代替操作和品质判断；纯技术交付按 `reviewer: codex` 的实际检查结果验收。客观检查失败时在授权范围内依据新证据继续修复；重复失败且无法取得新证据时，报告具体阻碍和所需输入
-
-根据反馈保留已成立部分，修改相关假设，必要时开启下一轮；不按轮数增加完成数量。验收读取 `n-side-review`。收尾更新长期设计、证据和 JSON，再运行 `bun run roadmap:sync`、`bun run check:roadmap` 与相关项目检查。报告真实进度变化及下次能直接续接的动作
-
-制作型工作包同时读取所链接的批次清单，显示已验收对象 x/y；轮次与批次分开。一个实际作者反馈可以覆盖多个工作包，以同一证据分别记录，避免重复询问
+依据 n-side-review 核对交付后更新任务，长期决定回写权威规格，再运行 `bun run tasks:sync`、`bun run tasks:check` 和适用检查。收尾报告交付、证据、限制与一个下一动作；一次反馈可供多个任务引用，不重复询问

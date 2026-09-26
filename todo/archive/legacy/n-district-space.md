@@ -9,15 +9,15 @@ evidence: []
 
 ## 目标与资料
 
-依据[街区空间制作](../../docs/dev/design/locations/district-space.md)完善街区简图与小店空间，记录待定设计及核对结果
+依据[街区空间制作](../../../docs/dev/design/locations/district-space.md)完善街区简图与小店空间，记录待定设计及核对结果
 
-空间取舍见[空间设计决策](../n-district-questionnaire.md)。本任务保留街区简图与 Wiki 预览的既有记录；详细室内、交通、人物与日常片段由 [TASK-002](n-district-modern-city.md)承接，下列候选作为输入资料
+空间取舍见[空间设计决策](../../../docs/dev/decisions/district-baseline.md)。本任务保留街区简图与 Wiki 预览的既有记录；详细室内、交通、人物与日常片段由 [TASK-002](n-district-modern-city.md)承接，下列候选作为输入资料
 
 ## 候选与待定
 
 ### 图面与交通
 
-主数据见[地图资产包](../../source-assets/district-map/README.md)，原版记录 29 个图面点位与六组空间，扩容沿用核心邻接关系，名称索引由同一份数据生成。图面编号与正式地点 ID 独立
+主数据见[地图资产包](../../../source-assets/district-map/README.md)，原版记录 29 个图面点位与六组空间，扩容沿用核心邻接关系，名称索引由同一份数据生成。图面编号与正式地点 ID 独立
 
 简图保留地点与道路关系，采购短环经商店街弯口、食品店后街及社区横街回家。斜俯视导览以地形面、建筑体积与河堤表现高低关系，风貌与道路结构共用数据；尺寸、坡度与工程关系留待后续空间制作校核
 

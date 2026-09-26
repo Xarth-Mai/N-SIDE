@@ -1,6 +1,6 @@
 # Demo 工作与证据记录
 
-[细化进度](demo-progress.md) · [总路线图](demo-roadmap.md) · [工作循环规则](../docs/dev/handbook/codex.md)
+[细化进度](demo-progress.md) · [总路线图](demo-roadmap.md) · [工作循环规则](../../../docs/dev/handbook/codex.md)
 
 本文件记录跨会话需要续接的决定、轮次、实际验证与验收。已有任务的详细证据继续保留原处，通过链接关联，不重复复制。状态只在 `demo-progress.json` 编辑，看板由工具生成
 
@@ -28,7 +28,7 @@
 | `bun run check:docs`、`bun run check:roadmap` | PASS，文档链接、进度结构、依赖与看板同步通过 |
 | 三个 Skill 的 `quick_validate.py` | PASS，名称、描述与格式有效 |
 | `bun run docs:build` | PASS，地图 29 项检查通过，Wiki 客户端／服务端及页面渲染成功 |
-| 真实 Codex 行为检查 | 七项只读检查 PASS，覆盖根目录与 game/ 发现、旧主题续接、证据不足、迭代反馈、阶段放行及显式 work-loop 调用；详见[行为证据](evidence/workflow-integration.md) |
+| 真实 Codex 行为检查 | 七项只读检查 PASS，覆盖根目录与 game/ 发现、旧主题续接、证据不足、迭代反馈、阶段放行及显式 work-loop 调用；详见[行为证据](../../evidence/workflow-integration.md) |
 | 指令审查 | 已修正纯技术项误等人工反馈、固定两轮停止、旧归档续接路径及从子目录执行的问题；无剩余高影响发现 |
 | `git diff --check` | PASS |
 | 游戏编译、实机操作及工作循环实际制作／状态写回 | NOT RUN，本次为工作流接入；只读行为检查中的合成进度不计入正式验收 |
@@ -60,11 +60,11 @@
 
 目的：在现有城市与 Viewer 基础上，将作者稿接入长期资料，分清已定规则、工作稿与待选 Demo 范围，交付现状／约束／未知清单和体验支柱
 
-输入：`9a56ec7` 与作者提交的《设定与叙事设计包 v1》，ZIP 校验和、来源说明、连续性修订和实际检查见[接入证据](evidence/setting-v1/integration.md)
+输入：`9a56ec7` 与作者提交的《设定与叙事设计包 v1》，ZIP 校验和、来源说明、连续性修订和实际检查见[接入证据](../../evidence/setting-v1/integration.md)
 
 授权：作者要求全力推进；沿用既定规则，新增工作名、章名和具体情节继续作为草案；原指令明确首章候选不自动等于 Demo 内容，未取得阶段或范围放行
 
-交付：[完整作者稿与索引](../docs/player/encyclopedia/story/index.md)、[Demo 定义与体验支柱](../docs/dev/direction/demo-scope.md)、[首委托候选](../docs/dev/design/quests/QST-002/demo-scope.md)、正式世界／历史／潜梦兼容修订，以及可复跑设计索引检查
+交付：[完整作者稿与索引](../../../docs/player/encyclopedia/story/index.md)、[Demo 定义与体验支柱](../../../docs/dev/direction/demo-scope.md)、[首委托候选](../../../docs/dev/design/quests/QST-002/demo-scope.md)、正式世界／历史／潜梦兼容修订，以及可复跑设计索引检查
 
 首次提交走查时完成定位、设计、制作与客观检查，处于第 1 轮第 5/6 步 `review`。当时 108 项 Python、46 项 Bun 测试及文档、设计索引、进度检查和 Wiki 构建通过，正式叙事运行资产检查为 EMPTY；游戏编译与实机操作 NOT RUN，最终整合结果另见接入证据
 
@@ -100,7 +100,7 @@
 
 作者对设定归属的后续指令：整批内容直接融入现有设计，不保留独立草稿；游戏指南改为游戏百科，故事及其他文档可展开，层级组织好且不限制文档数量。已落实为主题总览、人物分组、独立故事篇章和十二街坊分区，旧版本内容目录移除，来源证据继续保留
 
-新增局部机制尚待本轮作者走查：固定夹保持出口、运输完成带来低扰动窗口、现实接应确认隔离，以及处理完后才由米娜选择打包。下一动作是对照[开发稿](../docs/dev/design/quests/QST-002/development.md)确认或修订这条操作因果，随后按原依赖进入 M0-03
+新增局部机制尚待本轮作者走查：固定夹保持出口、运输完成带来低扰动窗口、现实接应确认隔离，以及处理完后才由米娜选择打包。下一动作是对照[开发稿](../../../docs/dev/design/quests/QST-002/development.md)确认或修订这条操作因果，随后按原依赖进入 M0-03
 
 本轮最终检查：109 项 Python、47 项 Bun 测试通过，155 个 Markdown 与 70 个文档 ID 通过，人物／故事／场所索引、叙事路径、进度检查及 Wiki 构建通过；18 篇故事、12 个分区页与 5 个 JSON 构建导出核对通过。M0-02 保持进行中，第 1 轮第 5/6 步 review，总已验收 1/61；游戏构建与实机操作 NOT RUN
 

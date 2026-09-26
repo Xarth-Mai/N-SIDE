@@ -27,7 +27,7 @@ jobs:
       - run: python3 -m pip install -r .agents/skills/create-game-assets/scripts/requirements.txt
       - run: bun install --frozen-lockfile
       - run: bun run check:docs
-      - run: bun run check:roadmap
+      - run: bun run tasks:check
       - run: bun run check:narrative
       - run: bun run check:story-design
       - run: bun run check:templates

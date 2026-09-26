@@ -11,7 +11,7 @@ description: Apply N:SIDE project constraints when selecting imported game-desig
 
 | 当前工作 | 入口 | 本地输入与边界 |
 | --- | --- | --- |
-| 把设定变成可玩机制 | `gameplay-mechanism-designer` | [Demo 范围](../../../docs/dev/direction/demo-scope.md)、相关 `docs/gameplay/`、当前委托；从指定问题开始，不重做整个游戏 |
+| 把设定变成可玩机制 | `gameplay-mechanism-designer` | [Demo 范围](../../../docs/dev/direction/demo-scope.md)、相关 `docs/dev/design/systems/`、当前委托；从指定问题开始，不重做整个游戏 |
 | 日常设计审查、找最小实验 | `game-design-reality-check` | 实际提案与已有证据；结论写入当前任务记录 |
 | 专门寻找无解状态、支配策略、规则漏洞 | `stress-testing-game-concepts` | 只攻击待验证规则；需要修复时保留失败轨迹；不重复上一项整份报告 |
 | ECS、资产、镜头、渲染、动画、UI、测试 | 对应 `bevy-*` Skill | [工程入口](../../../game/README.md)、`game/Cargo.toml`、`game/Cargo.lock`、当前安装的 Bevy 源码和同版本示例 |
@@ -23,7 +23,7 @@ description: Apply N:SIDE project constraints when selecting imported game-desig
 ## 工程映射
 
 - Bevy 参考针对 0.19；本项目以锁文件为准。上游的 compile-check 声明不等于本地检查通过，使用到的 API 以当前源码和实际编译验证，不为安装 Skill 升级引擎
-- 13 个 Bevy 基础 Skill 的完整原文保留。未安装的可选兄弟 Skill 在各 `UPSTREAM.md` 提供固定版本链接；内置 Rapier、Hanabi、Seedling、输入插件和 `bevy_capture` 示例不构成本项目选型
+- 13 个 Bevy 基础 Skill 保留完整目录，必要链接修订登记补丁。未安装的可选兄弟 Skill 使用固定版本线上链接，来源在各 `UPSTREAM.md` 记录；内置 Rapier、Hanabi、Seedling、输入插件和 `bevy_capture` 示例不构成本项目选型
 - 渲染和交互验证统一走[运行验收](../../../docs/dev/validation/runtime.md)，复用真实系统、操作路径与场景。ECS 单测、离屏渲染、人工试玩各自说明覆盖范围
 - UI 使用 Bevy 的布局、交互与焦点系统；按值变化更新可用变更检测或现有消息，不为上游的 Godot signal 示例另建总线。键鼠与手柄沿用项目范围
 - 对白以[现有数据契约](../../../docs/dev/engineering/content-contracts.md)中的 `narrative.json`、稳定 ID 和 `dialogue.csv` 为输入；Ink/Yarn 仅是上游比较材料，不自动引入。任务事实、玩家认知和一次性事件分开检查
@@ -36,7 +36,7 @@ description: Apply N:SIDE project constraints when selecting imported game-desig
 
 生图调用读取当前环境实际提供的 `imagegen` Skill；Codex 组织流程不表示已配置视频、3D 或外部付费服务。优先复用既有素材，先看源图再做下游处理，alpha 路径服从工具真实能力
 
-仅在任务需要时读[内容与验收方法适配](references/content-and-review.md)。进度、循环和阶段验收继续使用原有三个项目 Skill，不因工具安装、编译或截图成功增加游戏已验收数量
+仅在任务需要时读[内容与验收方法适配](references/content-and-review.md)。任务卡、执行与里程碑验收使用三个项目 Skill 和 docs/dev/handbook/tasks.md，不因工具安装、编译或截图成功增加游戏已验收数量
 
 ## Provenance
 

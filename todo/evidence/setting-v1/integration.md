@@ -27,7 +27,7 @@ ZIP SHA256：`51c87085381e680c1411cebc3f013e1a67e9b0e06298a5812642c4a2c1ff39b8`
 
 本轮只读核对 `game/src/main.rs`：正式入口仍创建 `Camera2d` 与 Logo Sprite。已有地图、世界运行时与 Viewer 可复用，尚不能据此宣称角色控制、任务、潜梦、存档或完整 Demo 已验收
 
-城市与 Viewer 既有成果见[归档承接](../../demo-roadmap.md#城市与-viewer-归档承接)，不重开旧任务，也不将历史固定镜头记录折算成游戏阶段完成数。M0—M7 的 61 项 ID、依赖、分母和验收角色保持原样
+城市与 Viewer 既有成果见[归档承接](../../archive/legacy/demo-roadmap.md#城市与-viewer-归档承接)，不重开旧任务，也不将历史固定镜头记录折算成游戏阶段完成数。M0—M7 的 61 项 ID、依赖、分母和验收角色保持原样
 
 ## 连续性核对与修订
 

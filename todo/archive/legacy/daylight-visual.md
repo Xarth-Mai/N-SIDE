@@ -6,13 +6,13 @@
 
 已交付可调白天静态基线、玩家高度镜头、自然地形连续法线、首层构件厚度与 MSAA／TAA／SSAO 对比证据
 
-剩余工作统一由 [Demo 路线图的归档承接](../demo-roadmap.md#城市与-viewer-归档承接)维护。历史 `PASS`、`NOT RUN`、`SKIPPED` 与未勾选项保留实际含义，本次结项采用作者确认的交付范围，完整空间与视觉验收继续按承接阶段开展
+剩余工作统一由 [Demo 路线图的归档承接](demo-roadmap.md#城市与-viewer-归档承接)维护。历史 `PASS`、`NOT RUN`、`SKIPPED` 与未勾选项保留实际含义，本次结项采用作者确认的交付范围，完整空间与视觉验收继续按承接阶段开展
 
 以下原阶段计划与交付记录保留当时的版本、状态和证据；其中未完成项已转入后续，当前执行入口以路线图为准
 
 [TASK-003](map-viewer.md)的视觉子记录，基线为 `3503563`。样板集中在小店—采购街，山坡与河面沿用独立验证镜头；空间范围为建筑外壳、街道、公共空间与室外构件，橱窗保留浅景
 
-目标是玩家高度下入口有吸引力、转角有层次、树与建筑有落地感、阴影中仍能辨路，随后将同一套规则扩展至其他街段。持久方向见[美术规范](../../docs/dev/production/art-direction.md#白天视觉样板)，小店路口接面与影院平台承托继续进入[空间收口](n-district-closeout.md#已修正与保留项)
+目标是玩家高度下入口有吸引力、转角有层次、树与建筑有落地感、阴影中仍能辨路，随后将同一套规则扩展至其他街段。持久方向见[美术规范](../../../docs/dev/production/art-direction.md#白天视觉样板)，小店路口接面与影院平台承托继续进入[空间收口](n-district-closeout.md#已修正与保留项)
 
 ## 阶段与当前状态
 
@@ -74,7 +74,7 @@
 
 ## 2026-09-25｜静态样板交付
 
-最终输入对应 `3503563` 加本轮工作区补丁，地图哈希仍为 `2a5ec2d7c936d7b5ea1ab14abab472a4d2f11b0dd7fc86d0b81a9e2a10f0e52d`，源码、配置与外观文件见[输入校验和](../evidence/daylight/inputs.sha256)，二进制哈希与运行结果见[渲染摘要](../evidence/daylight/render.txt)。图片均为实际运行截图，转换为质量 80 的 WebP
+最终输入对应 `3503563` 加本轮工作区补丁，地图哈希仍为 `2a5ec2d7c936d7b5ea1ab14abab472a4d2f11b0dd7fc86d0b81a9e2a10f0e52d`，源码、配置与外观文件见[输入校验和](../../evidence/daylight/inputs.sha256)，二进制哈希与运行结果见[渲染摘要](../../evidence/daylight/render.txt)。图片均为实际运行截图，转换为质量 80 的 WebP
 
 本轮采用 EV100 9.7、TonyMcMapface、18000 lx 太阳、1100 环境贴图强度与 80 均匀补光；太阳方向 `[650,780,-380]` 使临街正面受光、侧面留在阴影中。阴影贴图维持 4096，首级 40 m、最大 2400 m，以同一光照兼顾近景与全图；连续移动中的级联变化仍需观察
 
@@ -82,22 +82,22 @@
 
 | 固定视点 | 图片 |
 | --- | --- |
-| 小店同机位前后 | [上一版](../evidence/city-closeout/shop.webp)／[本轮](../evidence/daylight/shop.webp)，包含构件与光照变化 |
-| 玩家高度 | [店门](../evidence/daylight/eye-shop.webp)、[烘焙转角](../evidence/daylight/eye-corner.webp)、[背侧阴影](../evidence/daylight/eye-shade.webp) |
-| 总体与采购街 | [全图](../evidence/daylight/overview.webp)、[街景](../evidence/daylight/street.webp)、[山坡](../evidence/daylight/hillside.webp) |
-| 关键空间 | [影院](../evidence/daylight/cinema.webp)、[桥下](../evidence/daylight/bridge.webp)、[校园](../evidence/daylight/campus.webp) |
+| 小店同机位前后 | [上一版](../../evidence/city-closeout/shop.webp)／[本轮](../../evidence/daylight/shop.webp)，包含构件与光照变化 |
+| 玩家高度 | [店门](../../evidence/daylight/eye-shop.webp)、[烘焙转角](../../evidence/daylight/eye-corner.webp)、[背侧阴影](../../evidence/daylight/eye-shade.webp) |
+| 总体与采购街 | [全图](../../evidence/daylight/overview.webp)、[街景](../../evidence/daylight/street.webp)、[山坡](../../evidence/daylight/hillside.webp) |
+| 关键空间 | [影院](../../evidence/daylight/cinema.webp)、[桥下](../../evidence/daylight/bridge.webp)、[校园](../../evidence/daylight/campus.webp) |
 
 ### 组合选择
 
-接触阴影以 length 0.3 m、thickness 0.1 m 试用时，中远景墙面出现点状自遮挡噪声；同机位关闭后消失，见[开启](../evidence/daylight/contact-on.webp)／[关闭](../evidence/daylight/contact-off.webp)。这组诊断图使用调校前太阳方向 `[650,480,380]`，其余光照相同；只用于判断该效果，性能不进入最终统计。默认关闭接触阴影，保留配置开关以便后续调整
+接触阴影以 length 0.3 m、thickness 0.1 m 试用时，中远景墙面出现点状自遮挡噪声；同机位关闭后消失，见[开启](../../evidence/daylight/contact-on.webp)／[关闭](../../evidence/daylight/contact-off.webp)。这组诊断图使用调校前太阳方向 `[650,480,380]`，其余光照相同；只用于判断该效果，性能不进入最终统计。默认关闭接触阴影，保留配置开关以便后续调整
 
 SSAO 在门框内角、檐口及挡墙相接处增加少量间接遮蔽；TAA 静态文字仍可读。静态收益尚不足以替代运动稳定性判断，因此默认保留 MSAA4，TAA 与 TAA＋SSAO 作为对照方案
 
 | 镜头 | MSAA4 | TAA | TAA＋SSAO |
 | --- | --- | --- | --- |
-| 小店中景 | [图](../evidence/daylight/shop.webp) | [图](../evidence/daylight/taa-shop.webp) | [图](../evidence/daylight/taa-ssao-shop.webp) |
-| 店门 | [图](../evidence/daylight/eye-shop.webp) | [图](../evidence/daylight/taa-eye-shop.webp) | [图](../evidence/daylight/taa-ssao-eye-shop.webp) |
-| 阴影后场 | [图](../evidence/daylight/eye-shade.webp) | [图](../evidence/daylight/taa-eye-shade.webp) | [图](../evidence/daylight/taa-ssao-eye-shade.webp) |
+| 小店中景 | [图](../../evidence/daylight/shop.webp) | [图](../../evidence/daylight/taa-shop.webp) | [图](../../evidence/daylight/taa-ssao-shop.webp) |
+| 店门 | [图](../../evidence/daylight/eye-shop.webp) | [图](../../evidence/daylight/taa-eye-shop.webp) | [图](../../evidence/daylight/taa-ssao-eye-shop.webp) |
+| 阴影后场 | [图](../../evidence/daylight/eye-shade.webp) | [图](../../evidence/daylight/taa-eye-shade.webp) | [图](../../evidence/daylight/taa-ssao-eye-shade.webp) |
 
 ### 实测范围
 
@@ -111,4 +111,4 @@ SSAO 在门框内角、檐口及挡墙相接处增加少量间接遮蔽；TAA �
 | MSAA4 店门窗口，VSync | 5.58 ms，179.2 FPS | 5.61 ms | 897 帧 |
 | MSAA4 店门窗口，无封顶 | 3.13 ms，319.5 FPS | 3.27 ms | 1599 帧 |
 
-后续 M4 使用这组固定参数沿小店—采购街连续观察，确认阴影、标识和细线的运动稳定性；风、水面与局部粒子各自制作有来源、可关闭比较的小样板，进度统一维护于 [Demo 路线图](../demo-roadmap.md#城市与-viewer-归档承接)
+后续 M4 使用这组固定参数沿小店—采购街连续观察，确认阴影、标识和细线的运动稳定性；风、水面与局部粒子各自制作有来源、可关闭比较的小样板，进度统一维护于 [Demo 路线图](demo-roadmap.md#城市与-viewer-归档承接)

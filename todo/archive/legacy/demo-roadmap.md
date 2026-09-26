@@ -13,7 +13,7 @@ evidence: ["todo/demo-worklog.md#m0-01-r01"]
 
 本路线图于 2026-09-25 根据用户提供的完整方案整理。方案中的现状核对基线为 `main@bf64189`，已有测试结论来自仓库记录；本次整理时工作区 HEAD 为 `3503563`，未重新编译或运行图形程序，以下历史数字与实现现状按方案来源保留，不作为本次运行验证结果
 
-相关资料：[制作流程](../docs/dev/production/pipeline.md)、[项目约定](../docs/dev/handbook/documentation.md)、[家庭 Agent](../docs/player/encyclopedia/characters/agent.md)、[小店与住家](../docs/player/encyclopedia/locations/shop.md)、[潜梦工作](../docs/player/encyclopedia/gameplay/dream-diving.md)、[战斗](../docs/player/encyclopedia/gameplay/combat.md)、[叙事数据](../docs/dev/engineering/content-contracts.md)、[叙事试玩](../docs/dev/validation/playtesting.md)、[《最后的玩具》示例](../docs/dev/production/narrative.md)
+相关资料：[制作流程](../../../docs/dev/production/pipeline.md)、[项目约定](../../../docs/dev/handbook/documentation.md)、[家庭 Agent](../../../docs/player/encyclopedia/characters/agent.md)、[小店与住家](../../../docs/player/encyclopedia/locations/shop.md)、[潜梦工作](../../../docs/player/encyclopedia/gameplay/dream-diving.md)、[战斗](../../../docs/player/encyclopedia/gameplay/combat.md)、[叙事数据](../../../docs/dev/engineering/content-contracts.md)、[叙事试玩](../../../docs/dev/validation/playtesting.md)、[《最后的玩具》示例](../../../docs/dev/production/narrative.md)
 
 ### 已明确的 Agent 设定与实现边界
 
@@ -76,7 +76,7 @@ evidence: ["todo/demo-worklog.md#m0-01-r01"]
 
 M2 与 M3 可以部分并行，美术、UI、声音与测试从前期参与，M4 是各工作线的合流点。工作包状态与计数见[61 项进度看板](demo-progress.md)，只编辑 `demo-progress.json`；决定、反馈与验证见[工作日志](demo-worklog.md)
 
-完整设定已融入[游戏百科与故事](../docs/player/encyclopedia/story/index.md)，M0-01 体验基线已通过作者确认；M0-02 正在细化已选的[《最后的玩具》](../docs/dev/design/quests/QST-002/README.md)，具体范围见[Demo 定义](../docs/dev/direction/demo-scope.md)。完整游戏的章节、人物与场所分别维护，Demo 的交互制作范围仍按工作包收口
+完整设定已融入[游戏百科与故事](../../../docs/player/encyclopedia/story/index.md)，M0-01 体验基线已通过作者确认；M0-02 正在细化已选的[《最后的玩具》](../../../docs/dev/design/quests/QST-002/README.md)，具体范围见[Demo 定义](../../../docs/dev/direction/demo-scope.md)。完整游戏的章节、人物与场所分别维护，Demo 的交互制作范围仍按工作包收口
 
 ### M0：产品与 Demo 定义
 
@@ -312,16 +312,16 @@ M0 收口范围，M4 收口品质和制作方法，M5 收口内容。之后每�
 
 | 承接阶段 | 剩余工作与出口 | 原记录 |
 | --- | --- | --- |
-| M1 人尺度原型 | 修复 `home` 路口共用接面及内部基座，保留源高程与缓路坡度；明确 `cinema_upper_platform` 贴墙边承托；结合玩家尺度连续核对道路、入口、平台及校园高差 | [空间问题对象与约束](archive/n-district-closeout.md#已修正与保留项) |
-| M4 完整样板 | 核对主要城市视线、树木与地形遮挡、街区边缘和摘星台取景；完成侧后立面、材料尺度及作者对白天样板的视觉判断 | [原观察路线](archive/n-district-closeout.md#p4-观察与修订) |
-| M4 视觉与动态 | 检查移动时阴影、细线与树叶闪烁、TAA 残影，按样板需要制作植物风、水面和有来源的局部粒子 | [阶段与静态基线](archive/daylight-visual.md#阶段与当前状态) |
-| M4 性能 | 核对首次进入卡顿、显存占用及实际交互场景下的性能，复用固定配置与关闭效果对照；CPU 帧间隔与 GPU 耗时分别表述 | [已测结果及未验项](archive/daylight-visual.md#性能与验收记录) |
-| M1／M4 设计与资料 | 随空间和样板复核 P7 未完成的选项、容量与场所归属、现实依据、双中心与生活路线一致性，并补静态地图桌面／移动端阅读检查；本次仅收口归档路径、状态与交付引用 | [P7 原清单](archive/n-district-modern-city.md#p7地图整合与研究复核) |
-| M0 确定范围后滚动安排 | 既有室内方案作为参考，可进入室内、生活活动、科技互动与昼夜细化随 Demo 内容展开 | [P5／P6 后续边界](archive/n-district-modern-city.md#p5重点室内后续独立范围) |
+| M1 人尺度原型 | 修复 `home` 路口共用接面及内部基座，保留源高程与缓路坡度；明确 `cinema_upper_platform` 贴墙边承托；结合玩家尺度连续核对道路、入口、平台及校园高差 | [空间问题对象与约束](n-district-closeout.md#已修正与保留项) |
+| M4 完整样板 | 核对主要城市视线、树木与地形遮挡、街区边缘和摘星台取景；完成侧后立面、材料尺度及作者对白天样板的视觉判断 | [原观察路线](n-district-closeout.md#p4-观察与修订) |
+| M4 视觉与动态 | 检查移动时阴影、细线与树叶闪烁、TAA 残影，按样板需要制作植物风、水面和有来源的局部粒子 | [阶段与静态基线](daylight-visual.md#阶段与当前状态) |
+| M4 性能 | 核对首次进入卡顿、显存占用及实际交互场景下的性能，复用固定配置与关闭效果对照；CPU 帧间隔与 GPU 耗时分别表述 | [已测结果及未验项](daylight-visual.md#性能与验收记录) |
+| M1／M4 设计与资料 | 随空间和样板复核 P7 未完成的选项、容量与场所归属、现实依据、双中心与生活路线一致性，并补静态地图桌面／移动端阅读检查；本次仅收口归档路径、状态与交付引用 | [P7 原清单](n-district-modern-city.md#p7地图整合与研究复核) |
+| M0 确定范围后滚动安排 | 既有室内方案作为参考，可进入室内、生活活动、科技互动与昼夜细化随 Demo 内容展开 | [P5／P6 后续边界](n-district-modern-city.md#p5重点室内后续独立范围) |
 
 Viewer 专属人工连续飞行、鼠标捕获与失焦恢复保留历史 `SKIPPED`；完整样板判断和未执行测量保留 `NOT RUN`。正式游戏的移动、输入及失焦行为按 M1 实际实现验收，历史固定镜头结果继续作为其对应版本的证据
 
-归档依据：[城市扩容 TASK-002](archive/n-district-modern-city.md#结项记录)、[Viewer TASK-003](archive/map-viewer.md#结项记录)、[空间收口](archive/n-district-closeout.md#结项记录)、[白天样板](archive/daylight-visual.md#结项记录)。证据目录和源数据保持原位
+归档依据：[城市扩容 TASK-002](n-district-modern-city.md#结项记录)、[Viewer TASK-003](map-viewer.md#结项记录)、[空间收口](n-district-closeout.md#结项记录)、[白天样板](daylight-visual.md#结项记录)。证据目录和源数据保持原位
 
 ### 范围变化记录
 

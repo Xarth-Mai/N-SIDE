@@ -1,6 +1,6 @@
 # N街区空间设计决策
 
-关联任务：[N街区扩容与轻近未来都市设计](archive/n-district-modern-city.md)，原地图记录见 [TASK-001](archive/n-district-space.md)
+关联任务：[N街区扩容与轻近未来都市设计](../../../todo/archive/legacy/n-district-modern-city.md)，原地图记录见 [TASK-001](../../../todo/archive/legacy/n-district-space.md)
 
 ## 街区布局
 

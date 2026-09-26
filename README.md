@@ -14,13 +14,13 @@
 
 ## 入口
 
-[Wiki 与项目愿景](docs/index.md) · [Roadmap：至可玩 Demo](todo/demo-roadmap.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
+[Wiki 与项目愿景](docs/index.md) · [Roadmap：至可玩 Demo](todo/roadmap.md) · [开发任务](todo/README.md) · [Agent 入口](AGENTS.md) · [游戏工程](game/README.md)
 
-[故事百科《回声之后》](docs/player/encyclopedia/story/index.md) · [Demo 定义](docs/dev/direction/demo-scope.md) · [61 项进度看板](todo/demo-progress.md)
+[故事百科《回声之后》](docs/player/encyclopedia/story/index.md) · [Demo 定义](docs/dev/direction/demo-scope.md) · [当前任务](todo/README.md)
 
 ## 本地 Wiki
 
-```sh
+```fish
 bun install
 bun run docs:dev
 ```
@@ -31,7 +31,7 @@ bun run docs:dev
 
 当前工程使用 Rust 2024 与 Bevy 0.19.1，从 `game/` 启动：
 
-```sh
+```fish
 cd game
 cargo run --locked
 ```

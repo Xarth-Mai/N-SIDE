@@ -1,0 +1,3494 @@
+{
+  "baseline": "a0deb64e1447d84ab7161e494ee1748de279090c",
+  "files": [
+    {
+      "source": "docs/.vitepress/components/DistrictArchitecture.vue",
+      "action": "update-consumer",
+      "targets": [
+        {
+          "path": "docs/.vitepress/components/DistrictArchitecture.vue",
+          "sha256": "2843ac44494860450af98fd441ddf3c7278ca335500242a6d8a76bac9d9be7ff"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/.vitepress/components/DistrictMap.vue",
+      "action": "update-consumer",
+      "targets": [
+        {
+          "path": "docs/.vitepress/components/DistrictMap.vue",
+          "sha256": "9366a7f9babfc6a49b90a5bb9d4056579be8f7c03ea3271a191e5bf242ae66fa"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/.vitepress/components/DistrictPlaces.vue",
+      "action": "update-consumer",
+      "targets": [
+        {
+          "path": "docs/.vitepress/components/DistrictPlaces.vue",
+          "sha256": "fee373e471cefe3acb314f19370f24a4c88b73543ec1dd17b5aa8cd657ffe85b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/.vitepress/components/DistrictPlan.vue",
+      "action": "update-consumer",
+      "targets": [
+        {
+          "path": "docs/.vitepress/components/DistrictPlan.vue",
+          "sha256": "b4d2dd0c6314ca91d4ecc6dc360d53ef33853e75df70974118cef70ab47633ba"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/.vitepress/config.mjs",
+      "action": "update-consumer",
+      "targets": [
+        {
+          "path": "docs/.vitepress/config.mjs",
+          "sha256": "3ab7789ab7e9b8e46de2c779157ccb74c600248ffd0a1c7741a38ccb9a79cccd"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/.vitepress/sidebar.mjs",
+      "action": "update-consumer",
+      "targets": [
+        {
+          "path": "docs/.vitepress/sidebar.mjs",
+          "sha256": "dddadaf9d7d13d4168f50923f635ea1b90d2054f43fa022d53950ecf0fe8f158"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/agent.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/agent.md",
+          "sha256": "ba34a85488f8ce9c23e98478d189d1cc47e483ee0fe6d258a4806362e9d06381"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/brother.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/brother.md",
+          "sha256": "6b7db92d1c5a413430ebace0ebb9ccf3a09a02917004f16ba9c0fd14b6727f6c"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/characters.json",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/design/catalogs/characters.json",
+          "sha256": "d454ef936e6c1a620afebbc22ed85d279bd9d1735dd6ad2d0be933d5abc66ce5"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/family-members/chen-jing-he.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/family-members/chen-jing-he.md",
+          "sha256": "93b452825bf3a8af82d3cd7dd39c88638ee2bcd79d09eafc3c9b9b6241417701"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/family-members/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/family-members/index.md",
+          "sha256": "a8e2504c838702acb9868c1466e79ea06ac80d9f42840ba0458d3a6f532273bb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/family-members/lin-qi-ming.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/family-members/lin-qi-ming.md",
+          "sha256": "ec1229f963e1f8bf80c402fcf106e268145f5344849b94413522af3d8ba8ce65"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/family.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/family.md",
+          "sha256": "811b61d9a0c017eaf49f86c44a83c6dd54b643dbad8183bca4669c013e6154b7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/index.md",
+          "sha256": "87869e3f6a9548d0805b2891e023fcbbd2ec211da2675921c872a241a5c0136a"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/chen-zhi-xia.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/chen-zhi-xia.md",
+          "sha256": "2a388dcc2cdf1f2e221e4255e28c1e543070880434c67ab850053d7f466bb9f3"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/cheng-jia.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/cheng-jia.md",
+          "sha256": "de4448f63b4e363b39943858498935174f21e91cec073698239ede15b406eaa1"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/chu-qing.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/chu-qing.md",
+          "sha256": "acb6c6c067d976b7b514379fcadd690d3602f9a4ff5fc2e6ab1d095a9ecde84d"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/gu-zhu.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/gu-zhu.md",
+          "sha256": "8b267e8b3355f12de20c7f1337a30dde0c5b846fec88c19463fc3c0d92f228ea"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/he-qiu.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/he-qiu.md",
+          "sha256": "8d6b301144ad46070bbdda70b3f61224ec2ff615fc562807ecb5f4afde7c9d67"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/he-xin.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/he-xin.md",
+          "sha256": "93fa623b1afe79572a7c033a4025b999d417723c7f86799c0b9b71d8a16b3c2f"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/he-yun.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/he-yun.md",
+          "sha256": "8a25f91e673021c953963c54d654a0ad87db2fb3233f34488436b7700cf4bc95"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/index.md",
+          "sha256": "62dbf695799d9ef973ee885f7c54893335389891d21664e27fb00cf6d3436ae7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/jiang-tang.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/jiang-tang.md",
+          "sha256": "69791f47574a815929809a8d7782867717ddade7091e6fd4b74e514d757c9258"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/liang-su.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/liang-su.md",
+          "sha256": "6e891c7fd3389c761280039679ddceabad7a93e6d4e46d8216d34dc4d4180238"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/lu-heng.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/lu-heng.md",
+          "sha256": "db1e0acf6030860c6ee4db7639de59a21bddb46daae4741267e761a8549eefcd"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/mina.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/mina.md",
+          "sha256": "cc2f28f11b124d32c3d76fda27862002a8a3a4d65c332f1eaad846c34ac4c912"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/ning-lang.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/ning-lang.md",
+          "sha256": "e79963b7bc3716444f44a5a518b5076fa80a76cb24af0657c259f3b6eac89fad"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/qiao-yin.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/qiao-yin.md",
+          "sha256": "37e7663a59432780c79c98d95c4158363c7b98c0bd4c6252fbcbd29440d986f7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/qiu-ning.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/qiu-ning.md",
+          "sha256": "7195d851ae3d1a4789ada92391c17c9c99aea2bf29f179719b53d5a49327ec06"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/shao-min.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/shao-min.md",
+          "sha256": "8408747073f6af6fc6b862a4acdd18a839680875291cab337c426cc74783ebc1"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/shen-ling.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/shen-ling.md",
+          "sha256": "de64c2dd62c54b243f2475fbbeedeebb34e2214533500f0254bf4c3efdb3d1fe"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/song-lan.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/song-lan.md",
+          "sha256": "170dcaedcf2927943086b8064221ad11aab8615f8e07cf18ae448fde1c3140cb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/su-he.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/su-he.md",
+          "sha256": "86eff48581c3bab6d60b2d85ac4589e4d189c6f984bf31a4bd94d22ebb6906c7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/tang-yu.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/tang-yu.md",
+          "sha256": "5db485ed9ebe0755d491efab73216570eae2384607c619d01d0e2803264420bb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/wei-hang.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/wei-hang.md",
+          "sha256": "f2d1d4c98051d8b463e44d20b603539e3e78f0ca2e887830af27417d5ecbdd92"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/wen-ran.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/wen-ran.md",
+          "sha256": "2ae46974feb9d80f110609adc878298b3f8c90bc1773ef9f562ea840db76e6e4"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/yao-an.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/yao-an.md",
+          "sha256": "c6db77f2b70b4088cd8857256228a0e451f95a1fc28ec57dab67cd0678571885"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/ye-chu.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/ye-chu.md",
+          "sha256": "57c64353e28b7f2f981fd2ee5ee070d78f4b9bb4e0a51f59eafd009d7d142d16"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/zhao-yan.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/zhao-yan.md",
+          "sha256": "9b77337afccdf8e13c52d2952f014013762f0b9bdd5b0e028c048c43f0c4ea19"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/zheng-bo.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/zheng-bo.md",
+          "sha256": "518376f923f7c27ca8ffaf299b20ac6377ce72e6f831ea75b355386eba2aa677"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/zheng-che.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/zheng-che.md",
+          "sha256": "ab73e88086a6222e4a3ddb515109b53eee7eae8d31a7af71205b6981daccb42b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/zhong-fan.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/zhong-fan.md",
+          "sha256": "cc9762e4d0e068d77737105b54a01697cf079142764d6d88f3709cb01a447e7a"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/neighbors/zhou-ran.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/neighbors/zhou-ran.md",
+          "sha256": "d9af3500ec78a7c0095122f490c01cbbc7c86b34170145be255da72d800e64c3"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/shared-dreams/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/shared-dreams/index.md",
+          "sha256": "a0fd5c3b5ebee56c9f390287ded1e79e57e565f1cd7430f5fa0c35aee23487ce"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/shared-dreams/ji-wen.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/shared-dreams/ji-wen.md",
+          "sha256": "1ccaa2a78faab3fc7988c8e02d4ea441523e43323db7a638a1f68f84b2c22041"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/shared-dreams/xu-yao.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/shared-dreams/xu-yao.md",
+          "sha256": "00b1182463a0bf4ae31fd56808668a7f067e4d232b3e8cc27c901b108b5d410e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/characters/sister.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/characters/sister.md",
+          "sha256": "9617d912c4be7770fb89af4cae1b4d12fa67c27e5f9ea779d6d5adbc4711b506"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/conventions.md",
+      "action": "replace",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/documentation.md",
+          "sha256": "1d879a9e96c383b033622182675a83d0b54b561d1bad99408f33fb5a5f84fccb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/enemies/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/enemies/index.md",
+          "sha256": "82a627810c3a829dab052596ed8d99cddcaaecee8dca1786cfab92ccac53e113"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/gameplay/combat.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/gameplay/combat.md",
+          "sha256": "4b4fffeb6edd447df0511d7ed2101aff0f7d5cc5df03769592bd4b7b0c909fba"
+        },
+        {
+          "path": "docs/dev/design/systems/combat.md",
+          "sha256": "1ffb6248cebd9a49d9d26a4fede02d2a595a780390d10abc316a6925796351b6"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/gameplay/controls.md",
+      "action": "merge",
+      "targets": [
+        {
+          "path": "docs/dev/design/systems/input.md",
+          "sha256": "fe2306f17b1d37e9b27995b38848e2660fe9337733148da8d939e34e2a6a6fa0"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/gameplay/daily-life.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/gameplay/daily-life.md",
+          "sha256": "e916c997f1a8ec74aa2c072bf8f942f0efb2637d4727c8727defa633127a8414"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/gameplay/dream-diving.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/gameplay/dream-diving.md",
+          "sha256": "d75b4edab54a6a58fd8d601a1208eeb1bd3e9f07242f537b7376c95e368ca523"
+        },
+        {
+          "path": "docs/dev/design/systems/state-and-recovery.md",
+          "sha256": "5fc8679a5493a920ef3ad0594a372abe51aa6d7ab10d8e809d0fadaa9c66ccf4"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/gameplay/levels.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/gameplay/levels.md",
+          "sha256": "31abbc68a96b2a4ec8d5f7b80862e4177ee0b19f3c22a1a10a405f4f361cd70d"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/index.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/index.md",
+          "sha256": "b3ce35a08e23f3fae07808ecec535380749e2559c0c15e71d55e84a447accfb1"
+        },
+        {
+          "path": "docs/player/index.md",
+          "sha256": "6ae502b1ac52c0be9d36888b43bd209039772818a4d610d63e14c8c01b61cedb"
+        },
+        {
+          "path": "docs/dev/direction/vision.md",
+          "sha256": "547d6171492d82fd03d9495f17c614eb165db3be093b115ce6d910a2524a8278"
+        },
+        {
+          "path": "docs/dev/index.md",
+          "sha256": "40bf53ac12536b9f28237d409bf1bf5c87328f0c4de60734c8b5b60fd18be85f"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/n-district.md",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/n-district.md",
+          "sha256": "28682d757fee29af1e52feed86ec897c06767f326710e245179ac5d5097a47d7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/place-network.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/place-network.md",
+          "sha256": "b173e13077887154d15dbe39591a24b5a433ff88f33a03feaa75dbeb79e7b8f4"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b01.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b01.md",
+          "sha256": "dae6994274d80fc6e3ade9d6172b92990051219b08e209950eafb23bd68635d8"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b02.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b02.md",
+          "sha256": "c047bc110e707cf0ca59e8a78586183cf864a0a66f206abc88e8982286b60ddb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b03.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b03.md",
+          "sha256": "a7d88b9178b73b0be66c9aa29622edf21fdd711e4d99b9e0b1086d703a0fdd4d"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b04.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b04.md",
+          "sha256": "a3f2e73b0400c09f0ff81a33e2caf96675bd19974212691eddfcb685ddabc25b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b05.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b05.md",
+          "sha256": "e555d5bfba2f6cabbdd47a2394e35668b4f2dc3354d51ad366218f711023bcd8"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b06.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b06.md",
+          "sha256": "63be34b43b71ed5bc5259de252c73d6b666b33c1a3e2b743cac8c61892c8f410"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b07.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b07.md",
+          "sha256": "2f04cf498040646ad5f4ae2c9e3f8f393883ada148940ea7a16d7470912cb78e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b08.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b08.md",
+          "sha256": "0a75b25221133a6fa6edb1b52915382890f0215707b8e792a5e276b81aa118f4"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b09.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b09.md",
+          "sha256": "586e64faabcb905618f0d4c825c6845e14df20f819a56ed4a9f78cd59e6576d1"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b10.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b10.md",
+          "sha256": "301409de1c25b307e8c06269e5c23931e748a92fad64a99cfadc2a257e5dc4c3"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b11.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b11.md",
+          "sha256": "1d4abaa86272581c493aa353ea8c92035772a155f91b5802aa5d6454781446e5"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/b12.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/b12.md",
+          "sha256": "c8daa48daa55f2e0855baf88a8f08ef3552b2ff8e0b6cc469dc855ac32bccbb0"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/places/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/places/index.md",
+          "sha256": "2406b67f46e83923edb0079b7af823759291b274cb5d32e3f364a4fc0fe3a4a7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/shop.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/shop.md",
+          "sha256": "112765e96236538f18e6458a1ee1668ef1a7f8aea5db00bc97e3fc9ac2a3e6ff"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/locations/stargazing-terrace.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/locations/stargazing-terrace.md",
+          "sha256": "63cfe75595206380cee4603e927b77c36d63ad1e54fd6fb9dac4bf333d73ab64"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/narrative/data.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/engineering/content-contracts.md",
+          "sha256": "3c2f26f0286bc10eaddda4ab94273a9833109f6e2eaa8eeaecd272cad0a11052"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/narrative/examples/last-toy.md",
+      "action": "merge",
+      "targets": [
+        {
+          "path": "docs/dev/production/narrative.md",
+          "sha256": "9f0a10af9be179c4515eeb168dd42d53142a22ea4623e698067d1df718347bb1"
+        },
+        {
+          "path": "docs/player/encyclopedia/story/main/last-toy.md",
+          "sha256": "634d14438595f5f4d53ad9cce1865991837b82ec7f655d72b706aa029b1060d2"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/narrative/playtest.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/validation/playtesting.md",
+          "sha256": "833de360d886f3329ec4066e65f832c346f3a6007276ccae70095d5113263b03"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/narrative/workflow.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/production/narrative.md",
+          "sha256": "9f0a10af9be179c4515eeb168dd42d53142a22ea4623e698067d1df718347bb1"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/art.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/dev/production/art-direction.md",
+          "sha256": "d7e23266667200b88acd400492b7d024c205298490ef626f700ee31ddfb06c9f"
+        },
+        {
+          "path": "docs/dev/production/asset-pipeline.md",
+          "sha256": "f4f1f023313fc6a27c43a2706380e0f41ecbe60fbce67b2182969da931d35aab"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/asset-tool-review.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/dev/decisions/asset-tools.md",
+          "sha256": "8abb9d75cbd28b91d94c94f024bd455d7b7171aba86f319188ace1393382e729"
+        },
+        {
+          "path": "docs/dev/production/asset-pipeline.md",
+          "sha256": "f4f1f023313fc6a27c43a2706380e0f41ecbe60fbce67b2182969da931d35aab"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/assets.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/production/asset-pipeline.md",
+          "sha256": "f4f1f023313fc6a27c43a2706380e0f41ecbe60fbce67b2182969da931d35aab"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/audio.md",
+      "action": "expand",
+      "targets": [
+        {
+          "path": "docs/dev/production/sound.md",
+          "sha256": "be7e07d54e1b0fb4fc748dd98bbd6873168e4e2ea762c5e1548c53d82ccb821b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/character-narrative.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/characters/narrative.md",
+          "sha256": "6b057ddf7a0adba0015d57342de489a0ddcb932afe9e2902738f4e0cd70d7c5f"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/city-story-map.json",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/design/catalogs/city-story-map.json",
+          "sha256": "7604bfbb646e0186a8d20f248ae3322a8a0fd207ea6c9dba4c38702e7e4eb4be"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/demo-scope.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/direction/demo-scope.md",
+          "sha256": "fb2e3418608c332edb3ff7651bb0551ea2aa797603e49b451f9ea87a7be221f9"
+        },
+        {
+          "path": "todo/tasks/TASK-012-last-toy-mechanism-review.md",
+          "sha256": "300b632d14a253cb2286342ca77a9a7daf1244fa4a5e1d2e1830327154018202"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/district-architecture.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/locations/district-architecture.md",
+          "sha256": "3a74fde43d7ce1dcc5964b7e1656342837398d8fcdea101fb71a722c13cd8885"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/district-places.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/locations/district-places.md",
+          "sha256": "e7de4a8a8fca0f22eeccf9cca6e31b635365411c559b321d535289c4794530bb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/district-plan.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/locations/district-plan.md",
+          "sha256": "ec4a029011b8f0fff5f8e26e3eb937260796e2f3c3ccd12ed65ff04a1a394221"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/district-space.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/locations/district-space.md",
+          "sha256": "ec00bc2ef62c769687d422e65e2fda37787618e2d85538b97e55f10885403af2"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/district-station.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/locations/district-station.md",
+          "sha256": "60cf1647772abb939ea328409dce50d10c79854ee87ba0864428f287d453ae16"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/district-waterfront.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/locations/district-waterfront.md",
+          "sha256": "0ee2612598de52e1343b3a41866b16a7affbf6bcc088cb90eb99a55216219a30"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/engineering.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/engineering/index.md",
+          "sha256": "4c4b63bc7f2fce9ac15968b2582f8d7393fdbbdcf22a3259259b8be80f7bf264"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/gameplay.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/dev/design/systems/index.md",
+          "sha256": "021f607cb7669403a0a7d46e136916630f50fa93f27839e88f85abc2b7ae6b11"
+        },
+        {
+          "path": "docs/dev/design/systems/input.md",
+          "sha256": "fe2306f17b1d37e9b27995b38848e2660fe9337733148da8d939e34e2a6a6fa0"
+        },
+        {
+          "path": "docs/dev/design/locations/level-specification.md",
+          "sha256": "45df08485db3c0c6dbb4ea43ce8a4571eb9e99374acf8449a547c3731307590b"
+        },
+        {
+          "path": "docs/dev/design/systems/combat.md",
+          "sha256": "1ffb6248cebd9a49d9d26a4fede02d2a595a780390d10abc316a6925796351b6"
+        },
+        {
+          "path": "docs/dev/design/systems/daily-life.md",
+          "sha256": "0b8a9648509b2d7b24bda4560250726230b01512cc94c70ec893c8ba2297a854"
+        },
+        {
+          "path": "docs/dev/design/systems/state-and-recovery.md",
+          "sha256": "5fc8679a5493a920ef3ad0594a372abe51aa6d7ab10d8e809d0fadaa9c66ccf4"
+        },
+        {
+          "path": "docs/dev/design/systems/enemies.md",
+          "sha256": "bc136c966c36c4ea25ee4d6b133d45a2fbd2e1d268ccd43026f3060cd04f90d1"
+        },
+        {
+          "path": "docs/dev/design/quests/index.md",
+          "sha256": "ee25470c1848137539b213489cd122c84d37ba884b95e0deeb353d46cf335ad7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/place-catalog.json",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/design/catalogs/place-catalog.json",
+          "sha256": "2df004bf5d459c15db984e115f7ab84c2d0ab316318f2bf01679c937767a9b9d"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/runtime-validation.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/validation/runtime.md",
+          "sha256": "65e0e97e13f071555e87dc8bbc4cbc8bfbf0d7ad770293cedbfeff1b7bac839b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/solo-workflow.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/codex.md",
+          "sha256": "7e8d28f16d0a41547d73736f28bef20acaf54e2dc2b3775541c8cc990d00bc47"
+        },
+        {
+          "path": "docs/dev/handbook/tasks.md",
+          "sha256": "086af3c9015929cb16efba9d636385bb42504de16b67923edba60d57cade5178"
+        },
+        {
+          "path": "todo/archive/legacy/solo-workflow.md",
+          "sha256": "3a8cc311346f304224ac89be2af89115d2b0dd4bbc8390e5383984e443d184c1"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/wiki.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/wiki.md",
+          "sha256": "ce3246e7773bf2821b872c5de560c4ce9a6c72a4da8a9854848045d124e48f9d"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/workflow.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/production/pipeline.md",
+          "sha256": "6321ce9ea1fc0fd5a39a88fff9309ec465a12c365cbef1ba05ff4f1c3ad86153"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/production/world-research.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/dev/design/locations/world-research.md",
+          "sha256": "9c90b7784d22235f88acffd543972743f7e94df4d85eaf25f30081dce6ec6542"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/public/images/hero.webp",
+      "action": "classify-public",
+      "targets": [
+        {
+          "path": "docs/public/images/hero.webp",
+          "sha256": "94d73481532a4cec954e8143e1c5d1c919f8bbc3358089f8752a358c671a9d34"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/public/images/hillside-layout-concept.webp",
+      "action": "classify-public",
+      "targets": [
+        {
+          "path": "docs/public/images/hillside-layout-concept.webp",
+          "sha256": "537a7dadb5de81c7cdcb2e2392668ceba822da8d84a77f01f5985810b394c387"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/public/images/hillside-reference.webp",
+      "action": "classify-public",
+      "targets": [
+        {
+          "path": "docs/public/images/hillside-reference.webp",
+          "sha256": "f4e49a9b1cf781ece6e4debaa78317751f8cb17f0d46cd31e8af82e44dfdef0d"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/quests/QST-002/README.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/dev/design/quests/QST-002/README.md",
+          "sha256": "cfd220ecfa5250a1c8831b5f016629a09e9b9cd3e84b08d297d7dcb235e9ecf2"
+        },
+        {
+          "path": "docs/player/encyclopedia/story/main/last-toy.md",
+          "sha256": "634d14438595f5f4d53ad9cce1865991837b82ec7f655d72b706aa029b1060d2"
+        },
+        {
+          "path": "todo/tasks/TASK-012-last-toy-mechanism-review.md",
+          "sha256": "300b632d14a253cb2286342ca77a9a7daf1244fa4a5e1d2e1830327154018202"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/quests/QST-002/demo-scope.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/dev/design/quests/QST-002/demo-scope.md",
+          "sha256": "ed3bbb614d74d3bedc1e7338586b94fe30a06593a87c5b9c5c831f0a374b42d4"
+        },
+        {
+          "path": "todo/tasks/TASK-012-last-toy-mechanism-review.md",
+          "sha256": "300b632d14a253cb2286342ca77a9a7daf1244fa4a5e1d2e1830327154018202"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/quests/QST-002/development.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/dev/design/quests/QST-002/development.md",
+          "sha256": "0c04eda6b88e53489e491867aeb8d06243c2948fe0c4633ee46d15c153ab072b"
+        },
+        {
+          "path": "todo/tasks/TASK-012-last-toy-mechanism-review.md",
+          "sha256": "300b632d14a253cb2286342ca77a9a7daf1244fa4a5e1d2e1830327154018202"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/quests/QST-002/narrative.json",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/design/quests/QST-002/narrative.json",
+          "sha256": "088107e76eb608800e0f6f7199480b83375c0a20135fd3bd8b47cb2d1467a23c"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/quests/index.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/design/quests/index.md",
+          "sha256": "ee25470c1848137539b213489cd122c84d37ba884b95e0deeb353d46cf335ad7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/quests/quests.json",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/design/catalogs/quests.json",
+          "sha256": "9eab2bd89717ac53d0de8794c3465b055eeef31c882030d06b6c8881a907a3b7"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/after-the-late-show.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/after-the-late-show.md",
+          "sha256": "69479a8505185f28abdadb6213a84b96db8de877622855b21f6ac9d3ce2721b4"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/collect-after-rain.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/collect-after-rain.md",
+          "sha256": "03b0f998523bb014e488f8f6d719823b68a0b1e0b0cb4dfd0c55c3a8651f4b3f"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/courtside-chair.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/courtside-chair.md",
+          "sha256": "960fdb4b333ed6e912cbd52643e9521ba838c719487223f2a26a002adf3d0513"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/different-dinners.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/different-dinners.md",
+          "sha256": "395c2fb59023320da046e14917732dd7328412ad2b184f20d18acbf4c78b192b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/index.md",
+          "sha256": "ddb28bd2deb267c8f7a02856751fa5bf5893d531df426b42ae93375fb5d5b06e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/new-pocket.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/new-pocket.md",
+          "sha256": "abc5981116e1f2af72daef4a8a9ae2bce3e55816321caab01c0c1bf5dcc5c8ec"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/photograph-today.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/photograph-today.md",
+          "sha256": "ebba2ebaf08c78eebe62ae9625a3358aebb0a21e09ea4ce517c55df4e3b2323c"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/unfinished-window.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/unfinished-window.md",
+          "sha256": "76aded6844bbf91dc3cdc59cbb2331918a51f02b49a8081bf18fbf63d0f8f608"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/daily/ways-to-read.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/daily/ways-to-read.md",
+          "sha256": "ee76d6f7a18b660384e5335bbc4c759b3e98090f2e421f3ebe1b6b6f45d4767b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/index.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/index.md",
+          "sha256": "ca11129e10f035b2b273eab7312503c228ff6d212ba362b88c708e0026999ccd"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/after-echoes.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/after-echoes.md",
+          "sha256": "e148690d96c77ef8d0154132528fe13c5c413ff6f9c62b9e82b4e155c0dcb80b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/beyond-autumn.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/beyond-autumn.md",
+          "sha256": "82bee6330ebcca0cc3017501ea481eef04c6513e20bab82bf4c54b4337ca255a"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/bring-today-back.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/bring-today-back.md",
+          "sha256": "8d61dfaf0aeada47600b4a94ba1fb539ea44a11645e25fbceca1db04fce02c50"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/epilogue.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/epilogue.md",
+          "sha256": "c8e9207697850985d11f006a516370cd6874bcd6d8f0a1609ee34eea095e00f8"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/extra-applause.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/extra-applause.md",
+          "sha256": "3ed521d3362b435633ad75e81dfccc0465b8cabdfef523c84ff0c85aa8ff9269"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/index.md",
+      "action": "semantic-split",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/index.md",
+          "sha256": "700982e6e25fd9dacad728cbb65d19094084e813fdad4b30708f51ecde430e82"
+        },
+        {
+          "path": "docs/dev/production/narrative.md",
+          "sha256": "9f0a10af9be179c4515eeb168dd42d53142a22ea4623e698067d1df718347bb1"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/last-toy.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/last-toy.md",
+          "sha256": "634d14438595f5f4d53ad9cce1865991837b82ec7f655d72b706aa029b1060d2"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/no-school-bell.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/no-school-bell.md",
+          "sha256": "684b4bf14f7ba0bb904b5fb322fda7d52215122712b0b77737a1f0b973fa6be8"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/prologue.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/prologue.md",
+          "sha256": "6e360b3cb4d82bc26404909bb6ada9bfd9d788866a70f2e5200371ca1108c064"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/river-did-not-reverse.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/river-did-not-reverse.md",
+          "sha256": "9dd09dda404c5464131397a182ed63ebe25fc5bb65043c58dc7b569ed93bd4ea"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/story/main/still-together.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/story/main/still-together.md",
+          "sha256": "9144376a3726cb03a823a0943ee943116a4c7fde8fd5525ccafbada3ff0d5e4a"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/asset-manifest.json",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/asset-manifest.json",
+          "sha256": "d20a942ab1224edceb5ede2e09960f12c7c159f8857afecf70c2c5c8464f2d23"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/case-development.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/case-development.md",
+          "sha256": "6fdb1a16cda50ba491f8d9144d5606a399342ad3e147f8f738b3d8d7c58e9290"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/character.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/character.md",
+          "sha256": "ebb29d5e93c10e08e5795177d56b92687bdec7412ddc9df53270489decce0cc4"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/continuity-review.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/continuity-review.md",
+          "sha256": "90f8f2b411db668786cf2f68b1dc4660c6164326d20b3a766f3fefe28be36557"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/daily-scene.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/daily-scene.md",
+          "sha256": "70e3bf1431f473924fc276e42c623e21e5bd5be7621513873d562bad16221d58"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/dialogue.csv",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/dialogue.csv",
+          "sha256": "b14ff07843711cce06b0f21535587bdd8686af285c803a95fdaa99da30f4fed8"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/enemy.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/enemy.md",
+          "sha256": "f28eccaf84f7d6c67ac04e38b7ae4611f97677eaaa70e979f7511467995e01cb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/index.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/index.md",
+          "sha256": "e436cef4df99ae7fb22364f2072734dccbfcbec5a03ce347f8ce309cee58f5a8"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/location.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/location.md",
+          "sha256": "7050c0c1b95433254a576286ef61bc21d0594ed8d33e331f10a5ff2df1c456d0"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/narrative-playtest.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/narrative-playtest.md",
+          "sha256": "6789ba3813ed26164959233ee05799900c40bb7441a9a69a7cdf897a1f7f9dc0"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/narrative.json",
+      "action": "move-with-consumers",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/narrative.json",
+          "sha256": "63402b34d7103085812d479f5c28bfd404a78525f658ca29f8d77901f9440bbb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/quest.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/quest.md",
+          "sha256": "e0873307f1681697e5a3234b8cd59f9033fd4f6e248f6b6c3acf754f8995bbad"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/templates/task.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/handbook/templates/task.md",
+          "sha256": "cf70fd44624988959be60f76ca37ef70cccb056533180d7f07dd779e92cd7813"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/world/history.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/world/history.md",
+          "sha256": "4694cc14c5d5c162f3fdbf6c7cf359402da1665ece495cf1eb6dba69e27a2822"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/world/nightmares.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/world/nightmares.md",
+          "sha256": "952f35120088286dc5f9a315e0a6ec11660d5b1ac99aec83741a8705f8a505ae"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "docs/world/null-city.md",
+      "action": "move",
+      "targets": [
+        {
+          "path": "docs/player/encyclopedia/world/null-city.md",
+          "sha256": "8609dcf3969788d1b383ba16eeb96bbe2c4d601d7afd4db9c3f7b9a1e19c475e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/README.md",
+      "action": "generate-from-tasks",
+      "targets": [
+        {
+          "path": "todo/README.md",
+          "sha256": "445581335ff417a665ba51c89a4bb2c5d2d46b1af045e668403aaf015bd8b5e8"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/archive/daylight-visual.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/daylight-visual.md",
+          "sha256": "d48edeabadfcb1eab78ef0e112542d3d7606a0ce37cbe8a21128c89e1f69721f"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/archive/godogen-adoption.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/godogen-adoption.md",
+          "sha256": "0111d4543a15cdeab06138d5679fb2470bada094f778de67d32221ec7274aa31"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/archive/map-viewer.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/map-viewer.md",
+          "sha256": "e2b4b7375f4789704e58224840c8e2687874df94abbcaf3de11d0e449339e60a"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/archive/n-district-closeout.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/n-district-closeout.md",
+          "sha256": "86b3a78b1c36f8f6e07421c3a851cea34aa2a63a6a8698d7e4ce55fede35ff3d"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/archive/n-district-modern-city.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/n-district-modern-city.md",
+          "sha256": "e2598fe7d70177e05cbaa509f9c62a31abf777b3fb73ce8af29e1585d8af1546"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/archive/n-district-space.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/n-district-space.md",
+          "sha256": "996b9f55c0ac639d834538ad3f3f4917165eaef775b8da8b54b8768538d4df9a"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/demo-progress.json",
+      "action": "archive-and-replan",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/demo-progress.json",
+          "sha256": "28cba17daf6ce7ad58de4bbb2edb444d4467e5734e5e31dcb548287915c18a42"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/demo-progress.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/demo-progress.md",
+          "sha256": "a47d4ac8c2e1393de87c69c16689afb9122acd015a3de934b0e1d91715adeb65"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/demo-roadmap.md",
+      "action": "archive-and-replan",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/demo-roadmap.md",
+          "sha256": "0befcf81a9d33274cc910ae2588cbb77ee01be6f44e8f43314bdac6907edba06"
+        },
+        {
+          "path": "todo/roadmap.md",
+          "sha256": "7a6b62f3fbb6df1ea08f36f247e1b876477e1750802f5060e7e68a9947468d66"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/demo-worklog.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/demo-worklog.md",
+          "sha256": "b432acf37f8bad42acea3133c7a1c5388d0c70ff83e69f96280befb4a7b57c59"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/before-shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/before-shop.webp",
+          "sha256": "9c2bc6335ceb7e0a6cd796e4f7d52c17966365619927f874ba894f9f169fd15c"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/before-street.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/before-street.webp",
+          "sha256": "cf1be6ca9d732d3e9b794d67e97ebf78c30ce04b421b7c58a98c639c9ec42e41"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/bridge.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/bridge.webp",
+          "sha256": "89da1a5c94875901ce5eb237e6d3a881e96b618a5f3092dc7cd5fd153f2f9f98"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/campus.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/campus.webp",
+          "sha256": "98fb1a06b35b09e4dd3b91df76ff2a7db3eff68b7af92ff444aa33a13415303e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/cinema.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/cinema.webp",
+          "sha256": "a7b9e6660b518ffb32ed36c966ad74fe8305b1698a18e31ee5c9ba79da9b5e83"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/hillside.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/hillside.webp",
+          "sha256": "16b8e0c3cce567a2e78e96da6b3fdf74391136eac1ea7f24782a3d3f52668627"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/inputs.sha256",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/inputs.sha256",
+          "sha256": "dcb5b017cadf6514cd35eadc7bd169dce45a7ef7e80be633cf00e6a2221c5793"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/overview.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/overview.webp",
+          "sha256": "f6ad83e00a2c12d1c8e371515e3310a591847056c67d48a1810e91e80364c652"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/render.txt",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/render.txt",
+          "sha256": "665a6aa811aacea2cb43bc55fe7d65a89ab9642e5cacdf93790dc488789cbf3b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/shop.webp",
+          "sha256": "dbc301ef9103e5829adfdcfb7cf87ba3495c283f17654707cadd8999434a6cf3"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/city-closeout/street.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/city-closeout/street.webp",
+          "sha256": "dd485456e89dca029fd86f4c536344a462e7cc4be23bd30758d62b636b680617"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/bridge.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/bridge.webp",
+          "sha256": "79900e1c4880469a79d76e7a56cef7e8a9c0374f66079427b73fb656eaa4ac40"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/campus.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/campus.webp",
+          "sha256": "4e506f6ed1a4d28efc4d92fc28c47976d3b3404fe0968e00b2a3828f993340d5"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/cinema.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/cinema.webp",
+          "sha256": "5f330d8691f17d2d71ce76f0cf9b1e02ed122a1e1da178640bbe514d8c9fea7e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/contact-off.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/contact-off.webp",
+          "sha256": "c8d0005e52e72aa7aa81e9caa8f3e8b6ce2fe2151def9e1020d3e9a3b1c88c6b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/contact-on.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/contact-on.webp",
+          "sha256": "4f89bd25c7aefb5fd17384d637b46e4b6451889f22cae6275b0f3041e3378102"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/eye-corner.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/eye-corner.webp",
+          "sha256": "698576c308ac906a1186879f3fd5fe339815c5d96426e67a8c825d4f35b9547e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/eye-shade.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/eye-shade.webp",
+          "sha256": "c7f8245ebb0ffc37e813fad83e0695464e79137277e0fe92b2851c900e009ecb"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/eye-shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/eye-shop.webp",
+          "sha256": "cff7ad19601948cdbe23256e0574a81b2b2c938a33bef675d385c4df82cb8917"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/hillside.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/hillside.webp",
+          "sha256": "b45b4d1fd8b8cb0d6380c4fae73c159d15dc4da6756d15eac6ec7c624c8c1d68"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/inputs.sha256",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/inputs.sha256",
+          "sha256": "b9afaaef5d695f403f5f2870fc25fd9b6768005d35b8302556690fd7159f1ef2"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/overview.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/overview.webp",
+          "sha256": "cc6ae42a222132474543b96529f8123b217fa1398ad58df22018eb942e5c6484"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/render.txt",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/render.txt",
+          "sha256": "b13ab60d9cb722f238b022cc5d835af73f8f4ca70cf6cae5b70d6c322380bb0b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/shop.webp",
+          "sha256": "41b82d5b382510e349ea5907356eba71fa6d09b93713c8e94500af8904bd06b6"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/street.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/street.webp",
+          "sha256": "a80804fded87481d550b2ade8833f713b05de6cea47995741bb89674066cc10b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/taa-eye-shade.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/taa-eye-shade.webp",
+          "sha256": "a4c3002fd215536a4220dc1b62b404d93df161fb6c5c617758a72480ec105fd0"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/taa-eye-shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/taa-eye-shop.webp",
+          "sha256": "dfef6c485da8bab82d93a037745083511194bc4e35c26d4f6523494f61bca70b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/taa-shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/taa-shop.webp",
+          "sha256": "9fc7ddbc6340608341ed40b04eda9442860434e9a9a6d4c87f0c00960973e51e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/taa-ssao-eye-shade.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/taa-ssao-eye-shade.webp",
+          "sha256": "a8666272b3e89d500d3f41e170778f284d2d4e1df6b1a9fa47f2de8564f8dd33"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/taa-ssao-eye-shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/taa-ssao-eye-shop.webp",
+          "sha256": "e277b5ee30427c067e1c473fda01e947050c19c7b16eb89434569dbec128de79"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/daylight/taa-ssao-shop.webp",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/daylight/taa-ssao-shop.webp",
+          "sha256": "1e171d74d5de2b44b5072f09b7cc2a2abb9b3c2cefa90f0e222d2c521a2e6a50"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/godogen/asset-validation.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/godogen/asset-validation.md",
+          "sha256": "d36efbf3c1d7094fceeb9e711835cba3b4077dced26c651f57b951566055a673"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/godogen/runtime-validation.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/godogen/runtime-validation.md",
+          "sha256": "dabff0d14a063c4b2ea8b40194821142a0405995552e512c0ee02ed059e42d47"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/godogen/skill-forward-probe.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/godogen/skill-forward-probe.md",
+          "sha256": "a7262fd9beb1b906a3a2f03f7d83cf43df2c26918350dafc67b2962fa54c91a3"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/godogen/skill-validation.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/godogen/skill-validation.md",
+          "sha256": "62424ca0e538f1dc96e24d16afac676c82176e9a95951007b8826100a1ee81e6"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/setting-v1/integration.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/setting-v1/integration.md",
+          "sha256": "54a70ef5a533af00e58d755d849b2acbf2f526c21045326c74f1a1665a58a14e"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/setting-v1/source-continuity.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/setting-v1/source-continuity.md",
+          "sha256": "32a19fe6a0192f70590cad5ef48829ffffdef205a7fc99e35dfcaa92b2417ff9"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/setting-v1/source-decisions.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/setting-v1/source-decisions.md",
+          "sha256": "8244ea1c5f5942ba94311c899a65cb867f98091bde9daea133487b92afa1c8b6"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/setting-v1/source-manifest.json",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/setting-v1/source-manifest.json",
+          "sha256": "4b574e3ec383e50d2d1a1ce0930487866c85f38ac0abb7694ca95f54e6d3195b"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/setting-v1/source-validation.json",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/setting-v1/source-validation.json",
+          "sha256": "8bfd434928ad060cf5f54945325bc332551a7e7ec65c7e205ea94eda2a983c70"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/evidence/workflow-integration.md",
+      "action": "preserve-evidence",
+      "targets": [
+        {
+          "path": "todo/evidence/workflow-integration.md",
+          "sha256": "c005958c6fa5eb9115381c2738ef4e538cef6ccdf9f391a1b17101f0aa9e7c4a"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/map-viewer-art-reference.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/map-viewer-art-reference.md",
+          "sha256": "adac8064794ceeeda22f8ea4e01e94d28a1ab367cd4911c55ca1e223e35d5398"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/map-viewer-assets.md",
+      "action": "archive",
+      "targets": [
+        {
+          "path": "todo/archive/legacy/map-viewer-assets.md",
+          "sha256": "dbad455385349acb78f77504ffded33e641f579cc7e3d2e20eb839bc090c4311"
+        }
+      ],
+      "result": "migrated"
+    },
+    {
+      "source": "todo/n-district-questionnaire.md",
+      "action": "adapt",
+      "targets": [
+        {
+          "path": "docs/dev/decisions/district-baseline.md",
+          "sha256": "cf78d3b8a0501b376cd8a043a0d6f698fc0219079a2ed42559de199b94211ef4"
+        }
+      ],
+      "result": "migrated"
+    }
+  ],
+  "legacy_work_items": [
+    {
+      "old_id": "M0-01",
+      "old_title": "现状、已有约束与体验支柱",
+      "old_status": "done",
+      "old_sha256": "fe4485453aa2d96ea431d27460b40c7d9222dd6862e29a8121bcc8df6d2335cd",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "核对最新提交、路线图与活动任务，整理一页现状／约束／未知清单和体验支柱；沿用离线 Agent 等已定内容",
+      "preserved_acceptance": "作者确认新增解释；每项既有结论有仓库出处。区分城市已有成果与尚未验收的游戏能力，不重问已有决定",
+      "old_dependencies": [],
+      "action": "decision",
+      "targets": [
+        "docs/dev/direction/demo-scope.md",
+        "todo/archive/legacy/demo-worklog.md#m0-01-accepted"
+      ],
+      "reason": "作者真实确认的基线写回方向；不建新done卡片、不重新计数",
+      "historical_acceptance": {
+        "role": "author",
+        "by": "项目作者",
+        "revision": "895348c7594cafc15af963ce628ecf00694b5a052410a6f242fc8df25e7f369c",
+        "record": "todo/demo-worklog.md#m0-01-accepted",
+        "result": "pass"
+      },
+      "historical_work": {
+        "round": 1,
+        "step": "record",
+        "record": "todo/demo-worklog.md#m0-01-r01",
+        "next_action": "已获作者认可，沿《最后的玩具》精简方向推进 M0-02"
+      }
+    },
+    {
+      "old_id": "M0-02",
+      "old_title": "首委托与玩家因果链",
+      "old_status": "in_progress",
+      "old_sha256": "21c8e86a34ad947bba322e6b21344051dc71b5e6ac29992fb5da3715bf8c37ec",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "一个委托 Pitch、因果图与玩家行动序列，标出现实／梦境往返、必要信息和可见后续；调用 create-case",
+      "preserved_acceptance": "作者选定提案，能复述从日常到回家的闭环；关键变化由玩家观察或行动获得，不仅靠对白告知",
+      "old_dependencies": [
+        "M0-01"
+      ],
+      "action": "task",
+      "targets": [
+        "todo/tasks/TASK-012-last-toy-mechanism-review.md"
+      ],
+      "reason": "沿已选精简方向续接固定夹/供能/运输/现实确认的待作者判断，不重选首委托",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成",
+      "historical_work": {
+        "round": 1,
+        "step": "review",
+        "record": "todo/demo-worklog.md#m0-02-r01",
+        "next_action": "走查《最后的玩具》16个节点的运输循环、固定夹、现实确认和恢复规则，按反馈确认或修订后进入 M0-03"
+      }
+    },
+    {
+      "old_id": "M0-03",
+      "old_title": "可操作角色、动作词表与镜头假设",
+      "old_status": "backlog",
+      "old_sha256": "e79067a3e641320c26e62c5bdc533512a53b7d52e53d3d5134158c6ceeff5f97",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "角色分工、最小动作词表、镜头待验证问题；标清确定的方向和留给 M1／M3 的实验",
+      "preserved_acceptance": "角色分工获确认；每个动作对应委托需要；镜头参数、锁定方式等未验证项没有被提前写成定案",
+      "old_dependencies": [
+        "M0-02"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-013-demo-action-scope.md"
+      ],
+      "reason": "依据委托真实操作收口人物/室内/路线/交互范围，不将25—40分钟等建议直接批准",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M0-04",
+      "old_title": "可玩空间、时长与内容预算",
+      "old_status": "backlog",
+      "old_sha256": "8f49e1511f252dde1e5e8f5d63de5c8880686d849d103e68152e7a205d4717c7",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "Demo 范围图、首尾节奏图、内容／资产数量上限与明确后置项；25—40 分钟等原建议逐项确认或调整",
+      "preserved_acceptance": "作者批准这次交付边界；地图保留但制作深度分级；所有开放区域的碰撞和边界有责任归属",
+      "old_dependencies": [
+        "M0-02",
+        "M0-03"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-013-demo-action-scope.md"
+      ],
+      "reason": "依据委托真实操作收口人物/室内/路线/交互范围，不将25—40分钟等建议直接批准",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M0-05",
+      "old_title": "UI 信息架构与操作线框",
+      "old_status": "backlog",
+      "old_sha256": "acb4acf574c60c10d8890ef971b7baa20a08554dbba29b2a2aaa69cd3ebe3e3c",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "页面清单、信息层级、页面流、灰度线框、键鼠／手柄操作草案；范围内的界面记录常规和异常状态",
+      "preserved_acceptance": "作者沿开场、调查、行动、回家流程走查线框；没有关键操作无入口或无返回路径；先验证怎么用再定装饰",
+      "old_dependencies": [
+        "M0-03",
+        "M0-04"
+      ],
+      "action": "task",
+      "targets": [
+        "todo/tasks/TASK-015-investigation-ui-flow.md"
+      ],
+      "reason": "只验信息架构与双输入路径；M2-04实现和手感仍留G1门槛",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M0-06",
+      "old_title": "美术、动画与声音生产方案",
+      "old_status": "backlog",
+      "old_sha256": "bd4c0fd240c5dd7fd709e0861fb31c1282c77ae40aba7a71cbb6e8c72a60a504",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "角色比例与视觉方向小样、声音事件／情绪表、资产制作与导出路线；复用白天视觉样板而非另起渲染工程",
+      "preserved_acceptance": "作者能判断目标观感；至少一类角色、环境、动画、音频有可执行来源与接入方法，成本和授权未知项明确",
+      "old_dependencies": [
+        "M0-03",
+        "M0-04"
+      ],
+      "action": "task",
+      "targets": [
+        "todo/tasks/TASK-017-production-baseline.md"
+      ],
+      "reason": "已有静态城市基线继续复用；实际角色/动画/声音小样才能锁定生产来源与成本",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M0-07",
+      "old_title": "技术、存档与双平台验证基线",
+      "old_status": "backlog",
+      "old_sha256": "dc6a4af633289f220e7349d8238da818d2e009fbb58239b808aad0a26ffd08ea",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "离线与资源边界、保存原则、Linux／Windows × 键鼠／手柄矩阵、风险探针和初始预算；保留现有 Rust／Bevy",
+      "preserved_acceptance": "作者确认成本与平台承诺；技术选择由小样证据支撑；Viewer 历史成绩没有冒充正式玩法性能",
+      "old_dependencies": [
+        "M0-03",
+        "M0-04"
+      ],
+      "action": "task",
+      "targets": [
+        "todo/tasks/TASK-018-platform-save-baseline.md"
+      ],
+      "reason": "明确参考设备和离线发布/存档约束，具体实现和双平台实测仍由G1/G4证据证明",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M0-08",
+      "old_title": "M0 范围基线验收",
+      "old_status": "backlog",
+      "old_sha256": "186404d3411de58f79d68da59d83b99d5748e8217638bacd36ee2e03d15acd77",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G0",
+      "preserved_deliverable": "批准的 Demo 定义、决策来源、未决实验和近期 M1 任务；长期结论写回对应 docs",
+      "preserved_acceptance": "前七项通过，作者能说明玩家从哪里开始、怎样处理异常、怎样回家；批准范围不等于批准所有原型参数",
+      "old_dependencies": [
+        "M0-01",
+        "M0-02",
+        "M0-03",
+        "M0-04",
+        "M0-05",
+        "M0-06",
+        "M0-07"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g0"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M1-01",
+      "old_title": "正式入口、输入与最小运行骨架",
+      "old_status": "backlog",
+      "old_sha256": "869347226974c9efaa56e5a3cc0e3cda250d7e582f7581200f0dc04e3457b3d3",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "可启动的角色试验场、动作命名、游戏状态边界、资源加载诊断与调试入口；保留 Viewer 独立用途",
+      "preserved_acceptance": "从正式入口进入原型；输入状态和场景资源生命周期有可复现检查；无重复全局系统或孤立第二份地图",
+      "old_dependencies": [
+        "M0-08"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-014-human-scale-prototype.md"
+      ],
+      "reason": "同一真实路线验证输入→移动/碰撞→镜头假设，保留可重复比较，不等待全部M0或重造地图",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M1-02",
+      "old_title": "人物移动与碰撞手感",
+      "old_status": "backlog",
+      "old_sha256": "7adf00f39c8647aee194c8356b20eb8edf5f7e0cf57d6a6d57be31c335dddd59",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "代理角色、移动控制器、简化碰撞与可重复路线；参数集中可调，附失败位置",
+      "preserved_acceptance": "作者走过平地、斜坡、台阶、墙角与门口；无穿墙、跌出场景或不可恢复卡住；移动方向符合输入",
+      "old_dependencies": [
+        "M1-01"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-014-human-scale-prototype.md"
+      ],
+      "reason": "同一真实路线验证输入→移动/碰撞→镜头假设，保留可重复比较，不等待全部M0或重造地图",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M1-03",
+      "old_title": "跟随镜头、室内与遮挡",
+      "old_status": "backlog",
+      "old_sha256": "3481e73860024baf27ac097a160527b95daf962f315856d6ca7af8a7156d9cde",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "少量镜头方案，同路线、同输入对比；记录选型和被舍弃方案的原因",
+      "preserved_acceptance": "作者实际移动、转弯和进屋后确认；能看清角色与目的地，不以固定截图替代遮挡、眩晕和手感判断",
+      "old_dependencies": [
+        "M1-02"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-014-human-scale-prototype.md"
+      ],
+      "reason": "同一真实路线验证输入→移动/碰撞→镜头假设，保留可重复比较，不等待全部M0或重造地图",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M1-04",
+      "old_title": "室内灰盒、入口与进出生命周期",
+      "old_status": "backlog",
+      "old_sha256": "2b38e0fee59281b8e2489f5a0c650f5d5d99e819cd9eb7c3ea42201dd9eb2f26",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "选定室内灰盒、门／出生点／返回锚点与反复进入退出逻辑；沿用 district.json 与源对象 ID",
+      "preserved_acceptance": "作者从街道进入小店和住家再返回；尺度、碰撞、镜头成立，重复进出不会积累实体或丢失控制",
+      "old_dependencies": [
+        "M1-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M1-05",
+      "old_title": "交互提示、HUD、暂停与焦点",
+      "old_status": "backlog",
+      "old_sha256": "ebd83cd16b97c1040bfca8f6cdddc842292cad28e2f075784e510959fff74302",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "接近／目标选择／不可用提示、基础 HUD、暂停、加载／错误界面与焦点返回规则",
+      "preserved_acceptance": "键鼠和手柄独立完成交互、暂停和返回；按钮提示随设备切换；菜单操作不同时触发角色动作",
+      "old_dependencies": [
+        "M1-01",
+        "M1-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M1-06",
+      "old_title": "代理人物、基础动画与交互反馈",
+      "old_status": "backlog",
+      "old_sha256": "4ed932169f423774aa87208711c8eabcb35269698a54e2f273bdea22a704df43",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "最低限度代理人物动画、交互动作／声音，检查角色与街景尺度及轮廓",
+      "preserved_acceptance": "实际镜头可读角色动作和交互结果；动画时序不阻断输入；未批量制作尚未验证的正式动画",
+      "old_dependencies": [
+        "M1-02",
+        "M1-05"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M1-07",
+      "old_title": "双平台双输入与恢复检查",
+      "old_status": "backlog",
+      "old_sha256": "bbf10d0f6e20348c1d34bf2189c48016fa0c2f2f234e9fb63f22f5274fb55d08",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "构建／设备／输入／路线矩阵和日志，修复启动与恢复问题；缺失测试明确写 NOT RUN",
+      "preserved_acceptance": "四类平台输入组合都有实际记录，启动、交互、暂停、设备重连与恢复通过；构建成功不等于已实机测试",
+      "old_dependencies": [
+        "M1-04",
+        "M1-05",
+        "M1-06"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M1-08",
+      "old_title": "M1 人尺度游玩验收",
+      "old_status": "backlog",
+      "old_sha256": "30fd4ebefb52f2e0a85e26d88150fe2b1323e027adf90394fdaf6fd8c2eebda5",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "可重复的“小店出发—街段—坡道台阶—室内—返回”构建与冻结的尺度／镜头方向",
+      "preserved_acceptance": "作者完成整条路线，七项结果成立；操作／遮挡／进出无阻断，允许 M2 与 M3 在稳定基础上并行",
+      "old_dependencies": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M2-01",
+      "old_title": "任务、认知与世界状态契约",
+      "old_status": "backlog",
+      "old_sha256": "49f0d29eaf159d576a5f092762673057c4fb461ab2725f1dada7efc8aade20ee",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "复用 narrative.json 的最小运行语义、稳定 ID、事件与条件表；向 M3 提供结果提交／检查点接口",
+      "preserved_acceptance": "用最小案例验证条件、节点推进、事件只执行一次和状态分层；静态合法与运行正确分别有测试",
+      "old_dependencies": [
+        "M1-08"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-016-state-recovery-probe.md"
+      ],
+      "reason": "最小真实状态路径验证设计数据与运行语义、幂等和保存，不把完整M2/M3作为笼统前置",
+      "remaining_scope": "迁移卡片不表示相关游戏能力已完成"
+    },
+    {
+      "old_id": "M2-02",
+      "old_title": "店务与邻里日常片段",
+      "old_status": "backlog",
+      "old_sha256": "7e85fe385267b0f3fde1957b101789e3111ced72bc8dc2ac82786c17624ea4d6",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "复用首委托人物和场景的日常片段，包含玩家动作、即时回应与再次到访变化；调用 create-content",
+      "preserved_acceptance": "作者能亲自参与，而不是只看对白；互动可自然退出；没有无意加入签到惩罚或重型经济系统",
+      "old_dependencies": [
+        "M2-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M2-03",
+      "old_title": "现实调查与线索顺序",
+      "old_status": "backlog",
+      "old_sha256": "c48ed3f7c70186c402e8822e7370db5edc0875b248760ca34e3939b9d7c610fc",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "信息图、物件检查、询问与补充路径，接入状态条件；调用 create-case 和 review-narrative",
+      "preserved_acceptance": "实际按不同顺序调查仍能理解当前目标；关键证据可获得，未获得的真相不提前显示，无信息死锁",
+      "old_dependencies": [
+        "M2-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M2-04",
+      "old_title": "对话、调查记录与物品 UI",
+      "old_status": "backlog",
+      "old_sha256": "9a5899de3bb44a74cb8be779578d50d06781b1cd1c47aeb420672ede2044ad72",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "对话／选项／物件观察、委托摘要、线索记录、关键工具和保存反馈；实现焦点、返回与不可用状态",
+      "preserved_acceptance": "作者用两种输入获取和回看线索；能区分事实与推测；跳过、关闭、长文本和重开不会破坏流程",
+      "old_dependencies": [
+        "M2-02",
+        "M2-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M2-05",
+      "old_title": "时段、NPC 活动与重访",
+      "old_status": "backlog",
+      "old_sha256": "a99094e3093ee4a81b6ac7e9aa0df4ee18fe7c5b3757f44de63975f595b6f3fb",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "离散时段切换、有限 NPC 活动、已发生事件对应的对白／环境变化",
+      "preserved_acceptance": "作者等待、离开和重访后仍能找到关键人物；变化与已有任务状态一致，支线不形成无意的永久错过",
+      "old_dependencies": [
+        "M2-02",
+        "M2-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M2-06",
+      "old_title": "存档、幂等与任务恢复",
+      "old_status": "backlog",
+      "old_sha256": "964c692c56134410dbd9001b3899b7beac6407a122078e0bfec483b232049d3a",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "版本化存档、检查点与稳定 ID；进入退出、跳过、乱序、重访和存读档测试；与 M3 共用恢复语义",
+      "preserved_acceptance": "每个关键状态保存后恢复一致，奖励与一次性事件不重复；损坏数据可诊断，正式进度不被测试覆盖",
+      "old_dependencies": [
+        "M2-01",
+        "M2-03",
+        "M2-05"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-016-state-recovery-probe.md"
+      ],
+      "reason": "最小真实状态路径验证设计数据与运行语义、幂等和保存，不把完整M2/M3作为笼统前置",
+      "remaining_scope": "完整保存/恢复、全场景与入梦矩阵仍留G1门槛"
+    },
+    {
+      "old_id": "M2-07",
+      "old_title": "现实片段的表演、字幕与声音",
+      "old_status": "backlog",
+      "old_sha256": "3d79e9782f66222d5ca40a456dbf32243b28e5cc467a54b74504d2d259cfa4af",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "现实片段低成本演出、环境层、交互声音和字幕布局",
+      "preserved_acceptance": "作者完成实际对话与调查，能辨认说话者和反馈；暂停、跳过和读档后音频／表演正常退出恢复",
+      "old_dependencies": [
+        "M2-04",
+        "M2-05"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M2-08",
+      "old_title": "M2 日常调查端到端验收",
+      "old_status": "backlog",
+      "old_sha256": "23cd44a2bbfbaa0608da72b0405f671bd16d15edc32b0e8bf57343a28a5c582e",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "无需开发者改变量的日常—获得请求—现实调查片段，附不同路线与恢复记录",
+      "preserved_acceptance": "陌生试玩者知道目标并感知行动后果；线索乱序、跳过、重访及保存恢复无阻断；作者确认进入整合",
+      "old_dependencies": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M3-01",
+      "old_title": "现实与梦境对应规则",
+      "old_status": "backlog",
+      "old_sha256": "d49cfab10feb9da167fc54f1b7fa4d0e32eb1378ced60b3eb5f9f2c258633dd6",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "一个梦境灰盒、对应关系图、连接与返回点；接入共享任务状态",
+      "preserved_acceptance": "作者能由观察推断规则；现实线索确实影响理解或行动，梦境不是与委托无关的战斗房间",
+      "old_dependencies": [
+        "M1-08",
+        "M2-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M3-02",
+      "old_title": "基础动作、瞄准与手感",
+      "old_status": "backlog",
+      "old_sha256": "1a6139a9c0a900927a2a575eede61685f1951249b441ba83bda047d97496686e",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "小而完整的动作集，动作阶段、取消、判定、受击、输入缓冲和镜头小样",
+      "preserved_acceptance": "作者反复操作后能辨认输入与结果；基础动作可控、反馈一致；保留对比证据再确定参数",
+      "old_dependencies": [
+        "M1-08"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M3-03",
+      "old_title": "敌人行为、预警与对策",
+      "old_status": "backlog",
+      "old_sha256": "101fd6036b9b24860e254cabd80aeb5544d49e937468d0d6834e7ebacea59812",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "一种核心敌人模板、攻击预警、行为状态、可利用的空当与遭遇灰盒",
+      "preserved_acceptance": "作者看得懂危险并能用已学动作应对；死亡可解释，敌人行为在暂停与重试后稳定",
+      "old_dependencies": [
+        "M3-02"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M3-04",
+      "old_title": "关键工具与异常处理机制",
+      "old_status": "backlog",
+      "old_sha256": "c8ab8b0428df4700c0f336d5c7bb943f9b67db0b5262ed48058d3ed592b29302",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "一项关键工具、异常核心交互和机制型高潮；把规则理解连接到玩家行动",
+      "preserved_acceptance": "通过观察和操作改变异常，不能只清空血条绕过关键机制；成功和错误尝试都有可感知反馈",
+      "old_dependencies": [
+        "M3-01",
+        "M3-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M3-05",
+      "old_title": "兄妹接应与 Agent 支援",
+      "old_status": "backlog",
+      "old_sha256": "45914fd98bc6e511f53871a69dec0854c3e9a99b60a845d7bdd5f5db3fa15688",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "一种实际有用的支援，包含触发、表情／拟声／界面反馈、失败和退出处理，全部为游戏内逻辑",
+      "preserved_acceptance": "作者能感到支援价值但仍自己判断；不依赖在线模型；退出或重试后无残留支援或重复触发",
+      "old_dependencies": [
+        "M3-01",
+        "M3-04"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M3-06",
+      "old_title": "入梦、退出、失败与恢复",
+      "old_status": "backlog",
+      "old_sha256": "8b0578857a7194b1559bf4c6934ded4353dac60025124421a0f82d216be3266b",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "准备、连接、退出、检查点重试与结果提交；与现实任务及存档共享恢复规则",
+      "preserved_acceptance": "连续入梦／退出／失败重试不丢任务、不重复消耗；结果提交只执行一次，恢复后角色与场景一致",
+      "old_dependencies": [
+        "M3-04",
+        "M3-05",
+        "M2-06"
+      ],
+      "action": "merge",
+      "targets": [
+        "todo/tasks/TASK-016-state-recovery-probe.md"
+      ],
+      "reason": "最小真实状态路径验证设计数据与运行语义、幂等和保存，不把完整M2/M3作为笼统前置",
+      "remaining_scope": "完整保存/恢复、全场景与入梦矩阵仍留G1门槛"
+    },
+    {
+      "old_id": "M3-07",
+      "old_title": "行动 UI、动画、预警与声音",
+      "old_status": "backlog",
+      "old_sha256": "94a807847b2a6f35753eec711817ff2e599cc91d05fcbd7c567871ef4352fc1d",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "潜梦准备、行动 HUD、工具／支援、失败／返回界面及动画、临时 VFX／SFX",
+      "preserved_acceptance": "两种输入能完成行动和重试；作者能看清／听清预警与命中，菜单不会误触发战斗",
+      "old_dependencies": [
+        "M3-02",
+        "M3-03",
+        "M3-05"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M3-08",
+      "old_title": "M3 潜梦行动验收",
+      "old_status": "backlog",
+      "old_sha256": "5854274a8040a913985a1bb6f98af87381a98c042a8eb9675a4455ffcbfe5d3b",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G1",
+      "preserved_deliverable": "进入—观察—判断—交战或回避—工具处理—退出的可重复片段",
+      "preserved_acceptance": "玩家能解释规则、失败原因与操作后果；重试和退出状态一致；作者确认动作方案，不以增加内容掩盖问题",
+      "old_dependencies": [
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-05",
+        "M3-06",
+        "M3-07"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g1"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-01",
+      "old_title": "完整委托、场景与正式台词",
+      "old_status": "backlog",
+      "old_sha256": "611e8217cd8896ef32623c56d5b3f0a5cbe5290f42e7a449ea6d07269e5816e3",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "完整开发稿、场景规格、narrative.json、稳定台词 ID、选择后果与重访；沿用叙事 skills",
+      "preserved_acceptance": "因果、信息、角色意图与玩家动作相互支持；作者走查通过，脚本不是互不相关片段的拼接",
+      "old_dependencies": [
+        "M2-08",
+        "M3-08"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-02",
+      "old_title": "首尾完整的整合灰盒",
+      "old_status": "backlog",
+      "old_sha256": "8f065db85c8a30a4669339a1ef681da3a317554a22114ddb89f71f2211f1118b",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "日常—请求—调查—潜梦—处理—后续—回家的连续构建与完整流程测试",
+      "preserved_acceptance": "不使用开发者传送或变量修正也能完成；重复进出、暂停、保存及恢复有测试证据",
+      "old_dependencies": [
+        "M4-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-03",
+      "old_title": "路线、节奏与回家体验",
+      "old_status": "backlog",
+      "old_sha256": "3c1d81a1d4522f7c48bd8f67e6c85ed81b2e88bc7d51c19dbbeb1758728945d1",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "主路、必要支路、停留和恢复点调整；按真实体验修订节奏与教学",
+      "preserved_acceptance": "作者和试玩者完整游玩后知道下一步；关键变化看得见，结尾有现实后果与回家，不靠凑时长",
+      "old_dependencies": [
+        "M4-02"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-04",
+      "old_title": "角色与场景品质样板",
+      "old_status": "backlog",
+      "old_sha256": "f507d8c98984e7d38497c3bd3c18a09cb5a086e007ba23850523e88b5f624c6d",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "主要角色与 Agent、代表性室内街段、梦境核心及动作样板；承接当前白天视觉与空间收口记录",
+      "preserved_acceptance": "作者在实际移动与交互中确认比例、遮挡、光照和动画；静态美图与完整品质验收分开",
+      "old_dependencies": [
+        "M4-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-05",
+      "old_title": "统一 UI／UX 设计与组件",
+      "old_status": "backlog",
+      "old_sha256": "2598c4315a4ec66c065874487095d39e5204a0dcd2b0586d4bf1cf261e7738ac",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "字体层级、组件、图标、动效、双输入与状态规范，接入完整跨系统流程",
+      "preserved_acceptance": "作者完整操作后认可阅读与节奏；正常、空、加载、不可用、错误以及转场恢复均有表现",
+      "old_dependencies": [
+        "M4-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-06",
+      "old_title": "表演、音乐、音效与混音样板",
+      "old_status": "backlog",
+      "old_sha256": "118245a7d88be616c076975f27d51fe316ecbc4d7129c6e58a88501836e81888",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "环境层、主题过渡、动作音、Agent 表达、字幕与选定配音样板；记录源文件与许可",
+      "preserved_acceptance": "实际游玩中声音与动作／字幕同步，预警可辨；暂停、转场、重试没有音频残留",
+      "old_dependencies": [
+        "M4-04",
+        "M4-05"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-07",
+      "old_title": "样板成本、预算与制作规则",
+      "old_status": "backlog",
+      "old_sha256": "8c02783a4fc4117f6e5a48d0e6d19849164b1f6d4dc55a6032d7f085aaeaff31",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "真实工时／返工记录、场景与资产规格、性能／内存／加载预算、剩余生产清单与调整方案",
+      "preserved_acceptance": "作者依据实测而非代码量作取舍；高成本项已减量或有明确制作来源，预算覆盖真实玩法",
+      "old_dependencies": [
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M4-08",
+      "old_title": "M4 样板验收与生产放行",
+      "old_status": "backlog",
+      "old_sha256": "4f9c51313e18b89ef3c28a7545599ef279d6fff13351201ea7e053a27897b4d9",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G2",
+      "preserved_deliverable": "通过完整试玩的代表性构建、品质基线、生产方法、预算与 M5 批次计划",
+      "preserved_acceptance": "玩家能说明观察如何改变判断、行动如何导致后果；作者确认目标品质与成本后才扩大制作",
+      "old_dependencies": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06",
+        "M4-07"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g2"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-01",
+      "old_title": "内容／资产清单与制作批次",
+      "old_status": "backlog",
+      "old_sha256": "6170a98866ebd3e755e9b96815188496993dbc63b68fbf6799cc4c3864d93962",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "有稳定 ID 的内容与资产清单、负责方、来源许可、批次和完成定义；仅近期批次拆到操作步骤",
+      "preserved_acceptance": "作者确认清单与总量；没有新增未批准系统；每一批能进入实际构建验收，不建立悬空资产堆",
+      "old_dependencies": [
+        "M4-08"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-02",
+      "old_title": "核心关卡与环境内容生产",
+      "old_status": "backlog",
+      "old_sha256": "af47c5337ef974e5b118586e113254dc7fd0698a2c668e179e1548398f7908ee",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "按批次导出并接入核心关卡、材质、光照、道具和碰撞；普通城市使用已验证模块",
+      "preserved_acceptance": "每批在实际镜头、移动和任务路径下通过可达、遮挡、品质与性能检查；记录剩余资产数量",
+      "old_dependencies": [
+        "M5-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-03",
+      "old_title": "角色、NPC 与动画生产",
+      "old_status": "backlog",
+      "old_sha256": "3203038d42567f614ba9e0102e148591e8de7dde5a9fe5b42adc51c7d302d093",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "角色／动画／活动批次、关键 NPC 与复访表现；导出、引用和场景接入一并完成",
+      "preserved_acceptance": "作者检查人物辨识与表演；任务中动作完整，活动／重试／退出无残留状态；占位替换有记录",
+      "old_dependencies": [
+        "M5-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-04",
+      "old_title": "日常、教学、可选互动与后续",
+      "old_status": "backlog",
+      "old_sha256": "de0e9f2b5d6299f854a1a1b5e501cb7282be835e27523eaf15e46327c6b95d0b",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "开场教学、范围内的生活片段／可选互动、世界与对白后续，全部接入真实状态",
+      "preserved_acceptance": "正常游玩能学习必需操作；可选内容可退出，关键任务无死锁；后续变化在重访与读档后保留",
+      "old_dependencies": [
+        "M5-02",
+        "M5-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-05",
+      "old_title": "完整 UI 页面与全部状态",
+      "old_status": "backlog",
+      "old_sha256": "a400bffb8debb31549d5e49158bd93e114b87aa7c3d1c9f2fa49c733d6725f2b",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "新游戏、继续、设置、暂停、调查、工具、潜梦、战斗、重试、结尾及异常状态",
+      "preserved_acceptance": "两种输入覆盖全流程；作者验收可读性和统一性；承诺设置真实有效，无无法返回的界面",
+      "old_dependencies": [
+        "M5-01",
+        "M5-04"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-06",
+      "old_title": "正式声音、特效、字幕与演出",
+      "old_status": "backlog",
+      "old_sha256": "c518ea1039bf30eef15776dc67b30b6c38a6b7a33cd6fe01ff23813d9de8b472",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "正式音乐／环境／动作声音、VFX、字幕和选定配音，源文件、台词 ID 与运行资产一致",
+      "preserved_acceptance": "作者完整观看和操作后确认节奏；关键反馈清楚；修改台词有对应补录／不配音安排与许可",
+      "old_dependencies": [
+        "M5-03",
+        "M5-04"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-07",
+      "old_title": "Alpha 集成与内容完整性检查",
+      "old_status": "backlog",
+      "old_sha256": "068eec689bc786d144f686ca9be69000c0d44d1c126a52e7649686572f39a4e1",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "首尾完整 Alpha、任务／资源引用检查、保存恢复矩阵、许可缺口与已知问题",
+      "preserved_acceptance": "无需开发者修正即可玩到结尾；所有必需内容存在，主要恢复路径通过；未完成表现明确而非隐藏",
+      "old_dependencies": [
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M5-08",
+      "old_title": "M5 Alpha 验收与内容冻结",
+      "old_status": "backlog",
+      "old_sha256": "9a423c5652044dfec34885975d749d4de67718839d8ef1f634db84cf93cfe3b3",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G3",
+      "preserved_deliverable": "完整 Alpha、冻结的 Demo 清单、允许带入 Beta 的问题和修复优先级",
+      "preserved_acceptance": "作者确认全部承诺内容已存在且能完成；Beta 转为修复打磨，新增范围需要记录替代项和重测成本",
+      "old_dependencies": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g3"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M6-01",
+      "old_title": "试玩问题、路线与测试安排",
+      "old_status": "backlog",
+      "old_sha256": "8eefa0b473d793fa203dcc10e291a1afba402bdd91f18dc7deeec304dac22805",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "测前问题、路线、评分要点、平台输入覆盖和知情说明；沿用叙事试玩口径",
+      "preserved_acceptance": "作者确认测试目的与边界；记录分母和构建版本，避免主持人帮助被误算为独立完成",
+      "old_dependencies": [
+        "M5-08"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M6-02",
+      "old_title": "陌生玩家理解与关卡修订",
+      "old_status": "backlog",
+      "old_sha256": "2652184bb238fa633146211d66dec168c0a6eb63e52edef568dd96628e1b47cb",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "实际试玩记录、玩家原话／行为、问题归因、叙事／关卡修订和复测",
+      "preserved_acceptance": "陌生玩家能独立推进并复述关键因果；未测路线保留未知，重大修改后重新试玩",
+      "old_dependencies": [
+        "M6-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M6-03",
+      "old_title": "动作、难度、节奏与混音修订",
+      "old_status": "backlog",
+      "old_sha256": "b1e1e7bff2084b7392a958ec540c4204dd058bd33c62c13b8487ac3ae20f27bd",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "根据实际卡点调整动作、敌人、教学、重试和声音；保留改前改后对照",
+      "preserved_acceptance": "作者实玩并核对试玩反馈；失败原因可理解，预警可感知，修改没有引入新的流程阻断",
+      "old_dependencies": [
+        "M6-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M6-04",
+      "old_title": "UI／无障碍与设备切换",
+      "old_status": "backlog",
+      "old_sha256": "1052f485983a95bc4c4b3da971e13d0378dc9caebb3720afcdecd24a47e69de0",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "UI 覆盖矩阵与缺陷修订，验证两种输入、焦点恢复、相机／震动配置和不同显示设置",
+      "preserved_acceptance": "实际设备记录证明核心操作与阅读可用；设置有效，切换或断连不丢进度、不锁死界面",
+      "old_dependencies": [
+        "M6-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M6-05",
+      "old_title": "真实性能、加载与双平台兼容",
+      "old_status": "backlog",
+      "old_sha256": "741cf2de89cfa7ef69901edb1189a936c28327807456a0da9f3c934e1bda97aa",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "锁定构建、设备、分辨率与路线的性能／显存／内存／加载记录，针对根因优化",
+      "preserved_acceptance": "达到 M4 实测预算；覆盖实际玩法而非仅固定镜头；四类平台输入组合缺项明确，不伪造实机结论",
+      "old_dependencies": [
+        "M6-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M6-06",
+      "old_title": "回归、边界与存档完整性",
+      "old_status": "backlog",
+      "old_sha256": "dfe3d520042f9339d4322dbbc797c56c9abcc44c578fed1f367f319434c3adde",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "主路／支路／失败／跳过／时段／读档回归，关闭阻断缺陷并记录复测版本",
+      "preserved_acceptance": "关键流程阻断为零；无已知不可恢复进度损坏；旧验收失效时重开对应项而非沿用旧通过记录",
+      "old_dependencies": [
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M6-07",
+      "old_title": "M6 Beta 验收与候选放行",
+      "old_status": "backlog",
+      "old_sha256": "1887447d1682e9c672b2c0f902d2d5a244263e329ad6c287107eb94326115c0e",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "体验、兼容、性能和恢复证据齐备的 Beta，以及候选剩余风险",
+      "preserved_acceptance": "作者根据陌生玩家与双平台记录放行；主线无需主持人解释，关键后果可观察，剩余风险可接受",
+      "old_dependencies": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M7-01",
+      "old_title": "分发、资源定位与用户数据目录",
+      "old_status": "backlog",
+      "old_sha256": "5d370609218637003d7d03a1760896de6fc661bf471c357f799842afc11c9ecf",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "Linux／Windows 打包、独立资源定位、可写用户数据目录、版本与诊断流程",
+      "preserved_acceptance": "离线启动不需要源码、Rust、Bun 或网络下载素材；安装目录只读时用户数据仍可正常保存",
+      "old_dependencies": [
+        "M6-07"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M7-02",
+      "old_title": "首次启动、产品外壳与存档兼容",
+      "old_status": "backlog",
+      "old_sha256": "e0e8928a058794d3a8982d9a06fe2653c63ace77e3b8a240ddcc9942954d7aec",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "完整标题／继续／设置／帮助／错误／结束界面，存档版本、备份恢复或明确不兼容处理",
+      "preserved_acceptance": "作者从干净用户目录完成首次启动与继续；异常可理解，进度不会静默覆盖或不可恢复损坏",
+      "old_dependencies": [
+        "M7-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M7-03",
+      "old_title": "许可、署名、说明与展示资料",
+      "old_status": "backlog",
+      "old_sha256": "9f8154a1c0cf2c89f6dd0574228bc24923e4246299ff4191b56c3de8ce8d0ab0",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "许可清单、署名、操作说明、已知问题、真实截图录屏与反馈渠道",
+      "preserved_acceptance": "作者核对授权与对外内容；缺少许可的资产替换或移除，展示不把计划内容当已交付功能",
+      "old_dependencies": [
+        "M7-01"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M7-04",
+      "old_title": "固定 Release Candidate 与校验包",
+      "old_status": "backlog",
+      "old_sha256": "e18ca823b8d9e0ce0d1ea9db0322e1e451a3ad7ce33a9b043edbbeee9d00f41c",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "固定候选提交、双平台包、校验值和可复现构建记录",
+      "preserved_acceptance": "包与记录一致；候选修改后生成新版本并重测受影响项，不继续引用旧包的验收",
+      "old_dependencies": [
+        "M7-02",
+        "M7-03"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M7-05",
+      "old_title": "干净环境与发布包实机验收",
+      "old_status": "backlog",
+      "old_sha256": "3b793657d1c4461a79196e7e6fc7ad00eabb4d77067c526a6c6707045a672235",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "无开发依赖的 Linux／Windows × 键鼠／手柄实机记录，关联包哈希和实际操作人",
+      "preserved_acceptance": "从解压发布包到完整通关、保存恢复均通过；未测试组合不算通过，不能用 cargo run 或 Viewer 代替",
+      "old_dependencies": [
+        "M7-04"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    },
+    {
+      "old_id": "M7-06",
+      "old_title": "M7 发布批准与 Demo 交付",
+      "old_status": "backlog",
+      "old_sha256": "6eeef4316a5a92421957d378e3422ccb7f292814d5e01bc25cf279d13d46cbca",
+      "source": "todo/archive/legacy/demo-progress.json",
+      "milestone": "G4",
+      "preserved_deliverable": "作者批准的发布版本、可取得的双平台包、说明、反馈方式与发布后问题记录入口",
+      "preserved_acceptance": "作者明确授权发布；候选与已测包一致，无主线阻断和进度损坏；实际分发完成后才记阶段 done",
+      "old_dependencies": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05"
+      ],
+      "action": "milestone",
+      "targets": [
+        "todo/roadmap.md#g4"
+      ],
+      "reason": "尚未到可给出真实预算与当前动作的阶段；保留成果/验收门槛和重大风险，达到前置结果后再展开卡片，不维持旧固定分母"
+    }
+  ],
+  "notes": [
+    "All 198 baseline files have reachable targets; historical original hashes remain in the R1 input map",
+    "Old JSON copied byte-for-byte, no active writer retained",
+    "M0-01 accepted direction retained as direction; M0-02 pending review becomes TASK-012, future work reorganized by results rather than old denominator"
+  ]
+}

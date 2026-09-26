@@ -13,7 +13,7 @@ evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/m
 
 已交付共享世界模块、可运行的自由观察器、全图生成与资产加载、固定机位和窗口性能记录，以及首轮白天视觉配置
 
-剩余工作统一由 [Demo 路线图的归档承接](../demo-roadmap.md#城市与-viewer-归档承接)维护。历史 `PASS`、`NOT RUN`、`SKIPPED` 与未勾选项保留实际含义，本次结项采用作者确认的交付范围，完整空间与视觉验收继续按承接阶段开展
+剩余工作统一由 [Demo 路线图的归档承接](demo-roadmap.md#城市与-viewer-归档承接)维护。历史 `PASS`、`NOT RUN`、`SKIPPED` 与未勾选项保留实际含义，本次结项采用作者确认的交付范围，完整空间与视觉验收继续按承接阶段开展
 
 以下原阶段计划与交付记录保留当时的版本、状态和证据；其中未完成项已转入后续，当前执行入口以路线图为准
 
@@ -23,17 +23,17 @@ evidence: ["docs/production/art.md", "todo/map-viewer-art-reference.md", "todo/m
 
 本任务以 2026-09-25 的需求访谈为准，替代附件《N:SIDE Map Viewer 开发方案》中的较大工具范围。2026-09-25 作者确认城市框架设计完成，授权开始 Viewer 工程与素材导入；美术规范和候选素材研究已在阶段 A 完成
 
-白天静态成果见[白天视觉样板](daylight-visual.md)，空间修订证据见[城市框架与 Viewer 收口](n-district-closeout.md)。TASK-003 已按交付范围结项，后续空间与视觉工作由 [Demo 路线图](../demo-roadmap.md#城市与-viewer-归档承接)承接。获准跳过的人工连续飞行、鼠标捕获及失焦恢复保留 SKIPPED
+白天静态成果见[白天视觉样板](daylight-visual.md)，空间修订证据见[城市框架与 Viewer 收口](n-district-closeout.md)。TASK-003 已按交付范围结项，后续空间与视觉工作由 [Demo 路线图](demo-roadmap.md#城市与-viewer-归档承接)承接。获准跳过的人工连续飞行、鼠标捕获及失焦恢复保留 SKIPPED
 
 | 资料 | 用途 |
 | --- | --- |
-| [美术](../../docs/dev/production/art-direction.md) | 全局视觉方向与环境详细规范 |
-| [美术参考研究](../map-viewer-art-reference.md) | 官方资料、观察与 N:SIDE 选择的对应 |
-| [素材候选](../map-viewer-assets.md) | 实际来源、许可与筛选理由 |
-| [地图资产包](../../source-assets/district-map/README.md) | 唯一主数据及字段说明 |
-| [街区建筑](../../docs/dev/design/locations/district-architecture.md) | 建筑外形、入口、楼层和天井 |
+| [美术](../../../docs/dev/production/art-direction.md) | 全局视觉方向与环境详细规范 |
+| [美术参考研究](map-viewer-art-reference.md) | 官方资料、观察与 N:SIDE 选择的对应 |
+| [素材候选](map-viewer-assets.md) | 实际来源、许可与筛选理由 |
+| [地图资产包](../../../source-assets/district-map/README.md) | 唯一主数据及字段说明 |
+| [街区建筑](../../../docs/dev/design/locations/district-architecture.md) | 建筑外形、入口、楼层和天井 |
 | [街区设计任务](n-district-modern-city.md) | 地图阶段交付与验收状态 |
-| [资产管理](../../docs/dev/production/asset-pipeline.md) | 主文件、许可、导出与接入规则 |
+| [资产管理](../../../docs/dev/production/asset-pipeline.md) | 主文件、许可、导出与接入规则 |
 
 ## 已确认范围
 

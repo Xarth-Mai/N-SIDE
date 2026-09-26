@@ -6,15 +6,13 @@
 
 影响玩法、场景、UI、视觉或动画的修改按[运行验证](docs/dev/validation/runtime.md)执行真实路径、获取画面与状态证据、实际观察并复验；纯文档按其适用检查验收
 
-## 项目推进
+## 项目工作
 
-项目进度以 `todo/demo-progress.json` 为唯一编辑源，[看板](todo/demo-progress.md)由工具生成；阶段目标见[总路线图](todo/demo-roadmap.md)，循环与验收见[个人开发工作流](docs/dev/handbook/codex.md)
+任务唯一编辑源为 `todo/tasks/` 卡片，[当前看板](todo/README.md)由 `bun run tasks:sync` 生成，`bun run tasks:check` 只读校验；[路线图](todo/roadmap.md)记录成果门槛，规则见[任务手册](docs/dev/handbook/tasks.md)
 
-查询位置和下一步使用 `n-side-guide`，授权制作或迭代使用 `n-side-work-loop`，核对交付和阶段放行使用 `n-side-review`；专业叙事沿用现有 Skills
+进度查询用 n-side-guide，授权执行用 n-side-work-loop，交付评审用 n-side-review。专业工作先读 [nside 适配入口](.agents/skills/nside/SKILL.md)，来源与固定版本见[第三方声明](THIRD_PARTY_NOTICES.md)
 
-专业 Skills 先读 [nside 适配入口](.agents/skills/nside/SKILL.md)，按任务选择原版方法与项目差异；来源、许可与固定版本见 [第三方声明](THIRD_PARTY_NOTICES.md)，不将上游模板当成更改设定、依赖或资产清单的授权
-
-按当前任务读取相关设计与最近工作记录，简述真实进度、轮次、下一动作及需要作者判断的事项。只读查询保持数据不变，已有决定直接沿用；指定旧主题时读取归档与 Demo 承接，在新记录中续接。日常实现自主推进，体验判断和阶段放行依据真实反馈
+读取当前任务、相关规格与最近证据，说明真实状态、正在做哪一步、下一动作和需要作者判断的事项。技术实现自主推进，体验与里程碑放行依据真实反馈；长期结论回写 docs，本轮结果归 todo。旧记录在 todo/archive/legacy 中追溯，不把文档迁移或工具安装计作游戏能力
 
 ## 资源与工具链
 
