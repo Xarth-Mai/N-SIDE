@@ -1,0 +1,365 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [4.92ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.95ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1042.63ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [408.49ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [380.12ms]
+64 | })
+65 |
+66 | test('upper homes stairs and greenhouse approaches retain level junctions and usable flights',()=>{
+67 |   const data:District=source,junctions=new Set(['homes_high_m','homes_high_junction','fw_f_junction22','fw_f_junction86','fw_f_junction87'])
+68 |   const conflicts=roadWidthConflicts(data,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>id.startsWith('junction_homes_')))
+69 |   assert.deepEqual(conflicts,[],'upper-street stairs must clear both streets, neighboring flights and doorway landings')
+              ^
+AssertionError: upper-street stairs must clear both streets, neighboring flights and doorway landings
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'homes_high_junction',
++         'fw_f_junction86'
++       ],
++       road: 160
++     },
++     area: 4.5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'stair_homes_high_m_homes_high_junction_01_out',
++         'homes_high_junction'
++       ],
++       road: 258
++     },
++     maxDelta: 1.629414678571436,
++     point: [
++       186.5,
++       437
++     ],
++     sharedNodes: [
++       'homes_high_junction'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction22',
++         'homes_high_junction'
++       ],
++       road: 160
++     },
++     area: 4.5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'stair_homes_high_m_homes_high_junction_01_out',
++         'homes_high_junction'
++       ],
++       road: 258
++     },
++     maxDelta: 1.6106252499999982,
++     point: [
++       185,
++       437
++     ],
++     sharedNodes: [
++       'homes_high_junction'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'homes_high_junction',
++         'fw_f_junction86'
++       ],
++       road: 160
++     },
++     area: 3,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_junction86',
++         'fw_f_v_f59_resident'
++       ],
++       road: 528
++     },
++     maxDelta: 1.1052156278195326,
++     point: [
++       191,
++       443
++     ],
++     sharedNodes: [
++       'fw_f_junction86'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction86',
++         'fw_f_junction87'
++       ],
++       road: 160
++     },
++     area: 3,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_junction87',
++         'fw_f_v_f60_resident'
++       ],
++       road: 529
++     },
++     maxDelta: 1.1005093304347753,
++     point: [
++       219.75,
++       442.7913043478261
++     ],
++     sharedNodes: [
++       'fw_f_junction87'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction86',
++         'fw_f_junction87'
++       ],
++       road: 160
++     },
++     area: 3,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_junction86',
++         'fw_f_v_f59_resident'
++       ],
++       road: 528
++     },
++     maxDelta: 1.0926893421052597,
++     point: [
++       192,
++       443
++     ],
++     sharedNodes: [
++       'fw_f_junction86'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction87',
++         'platform_east'
++       ],
++       road: 160
++     },
++     area: 3,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_junction87',
++         'fw_f_v_f60_resident'
++       ],
++       road: 529
++     },
++     maxDelta: 1.0879829999999941,
++     point: [
++       220.75,
++       443
++     ],
++     sharedNodes: [
++       'fw_f_junction87'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'platform_mid',
++         'fw_f_junction22'
++       ],
++       road: 160
++     },
++     area: 3,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_junction22',
++         'fw_f_v_60_public'
++       ],
++       road: 454
++     },
++     maxDelta: 0.9306989635814915,
++     point: [
++       154.5,
++       442.57142857142856
++     ],
++     sharedNodes: [
++       'fw_f_junction22'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction22',
++         'homes_high_junction'
++       ],
++       road: 160
++     },
++     area: 3,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_junction22',
++         'fw_f_v_60_public'
++       ],
++       road: 454
++     },
++     maxDelta: 0.9182374142857128,
++     point: [
++       155.5,
++       443
++     ],
++     sharedNodes: [
++       'fw_f_junction22'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'homes_high_m',
++         'stair_homes_high_m_homes_high_junction_01_in'
++       ],
++       road: 256
++     },
++     area: 2.25,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'v_a17_upper_landing',
++         'homes_high_m'
++       ],
++       road: 356
++     },
++     maxDelta: 0.7629275892857095,
++     point: [
++       183.5,
++       422.25
++     ],
++     sharedNodes: [
++       'homes_high_m'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'homes_high_m',
++         'stair_homes_high_m_homes_high_junction_01_in'
++       ],
++       road: 256
++     },
++     area: 2.25,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'homes_high_m',
++         'v_a15_upper_landing'
++       ],
++       road: 357
++     },
++     maxDelta: 0.7629275892857095,
++     point: [
++       186.5,
++       422.2142857142857
++     ],
++     sharedNodes: [
++       'homes_high_m'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'homes_high_m',
++         'stair_homes_high_m_homes_high_junction_01_in'
++       ],
++       road: 256
++     },
++     area: 1.5,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'homes_high_m',
++         'v_a15_upper_landing'
++       ],
++       road: 286
++     },
++     maxDelta: 0.5933881250000042,
++     point: [
++       186.5,
++       421.9107142857143
++     ],
++     sharedNodes: [
++       'homes_high_m'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'homes_high_m',
++         'stair_homes_high_m_homes_high_junction_01_in'
++       ],
++       road: 256
++     },
++     area: 1.5,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'homes_high_m',
++         'v_a17_upper_landing'
++       ],
++       road: 289
++     },
++     maxDelta: 0.5933881250000042,
++     point: [
++       185,
++       422
++     ],
++     sharedNodes: [
++       'homes_high_m'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:69:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) upper homes stairs and greenhouse approaches retain level junctions and usable flights [465.25ms]
+
+ 5 pass
+ 1 fail
+Ran 6 tests across 1 file. [2.40s]

@@ -1,0 +1,285 @@
+{
+  "status": "PASS",
+  "script": {
+    "scene": "district",
+    "view": "inspect-road-upper-residential",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 540,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      0,
+      89,
+      149,
+      239,
+      359,
+      449,
+      539
+    ],
+    "events": [
+      {
+        "start": 0,
+        "end": 1,
+        "keys": [
+          "M"
+        ]
+      },
+      {
+        "start": 90,
+        "end": 150,
+        "look": [
+          5.0,
+          0.0
+        ]
+      },
+      {
+        "start": 240,
+        "end": 360,
+        "look": [
+          -5.0,
+          0.0
+        ]
+      },
+      {
+        "start": 390,
+        "end": 450,
+        "look": [
+          5.0,
+          0.0
+        ]
+      },
+      {
+        "start": 480,
+        "end": 481,
+        "keys": [
+          "Escape"
+        ]
+      },
+      {
+        "start": 481,
+        "end": 540,
+        "keys": [
+          "W"
+        ],
+        "look": [
+          8.0,
+          0.0
+        ]
+      }
+    ],
+    "assertions": [
+      {
+        "name": "inspection_keeps_camera_position",
+        "from": 0,
+        "to": 539,
+        "max_distance": 0.0001
+      },
+      {
+        "name": "right_look_uses_real_controller",
+        "from": 89,
+        "to": 149,
+        "min_rotation": 0.29
+      },
+      {
+        "name": "left_look_uses_real_controller",
+        "from": 239,
+        "to": 359,
+        "min_rotation": 0.59
+      },
+      {
+        "name": "return_look_uses_real_controller",
+        "from": 389,
+        "to": 449,
+        "min_rotation": 0.29
+      },
+      {
+        "name": "release_blocks_held_movement",
+        "from": 480,
+        "to": 539,
+        "max_distance": 0.0001,
+        "enabled": false
+      }
+    ]
+  },
+  "script_sha256": "9b666014972e4a7b61a1515e2a7b6ca46c1170ad0a0c73adab4dae881a689fd1",
+  "git_commit": "1002bf878f741b2e9e775de5394dde6a54f0dd0c",
+  "git_worktree": "M game/src/bin/map_viewer.rs\n M source-assets/district-map/district.json\n M tools/tests/road-width.test.ts\n?? todo/evidence/TASK-025/r5/",
+  "cargo_lock_sha256": "d90f8a806751b4af4c30ae6826715b9cc81faeb668e6315ccd8ea2d1b0e73dfa",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "PASS",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "82735e552cfd8b42f33e0920283804d33113e0f2758f0e57421daff091d58987",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r5/residential-look/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r5/residential-look"
+  ],
+  "runtime_exit_code": 0,
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 540,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 540
+    },
+    {
+      "checked_frames": 540,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 0,
+        "max_distance": 9.999999747378752e-05,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "inspection_keeps_camera_position",
+        "to": 539,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "inspection_keeps_camera_position",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 89,
+        "max_distance": null,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": 0.28999999165534973,
+        "min_ui_scroll": null,
+        "name": "right_look_uses_real_controller",
+        "to": 149,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "right_look_uses_real_controller",
+      "passed": true,
+      "rotation_radians": 0.29999837279319763
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 239,
+        "max_distance": null,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": 0.5899999737739563,
+        "min_ui_scroll": null,
+        "name": "left_look_uses_real_controller",
+        "to": 359,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "left_look_uses_real_controller",
+      "passed": true,
+      "rotation_radians": 0.5999994277954102
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 389,
+        "max_distance": null,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": 0.28999999165534973,
+        "min_ui_scroll": null,
+        "name": "return_look_uses_real_controller",
+        "to": 449,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "return_look_uses_real_controller",
+      "passed": true,
+      "rotation_radians": 0.2999999523162842
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 480,
+        "max_distance": 9.999999747378752e-05,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "release_blocks_held_movement",
+        "to": 539,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "release_blocks_held_movement",
+      "passed": true,
+      "rotation_radians": 0.0006905339541845024
+    }
+  ],
+  "ffmpeg_version": "ffmpeg version n9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "video_command": [
+    "/usr/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-framerate",
+    "30",
+    "-i",
+    "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r5/residential-look/frames/frame%05d.png",
+    "-frames:v",
+    "540",
+    "-c:v",
+    "libx264",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r5/residential-look/video.mp4"
+  ],
+  "elapsed_wall_seconds": 33.955705313012004
+}

@@ -62,3 +62,17 @@ test('music street junctions clear their neighbors and equipment reaches the lev
   assert.ok(pointInside(data.nodes[trolley.nodes[0]],bay.polygon),'equipment transfer must occur inside the unloading bay')
   assert.ok(trolley.nodes.every(id=>data.nodes[id][2]===bay.elevation),'equipment trolley route must stay at the unloading level')
 })
+
+test('upper homes stairs and greenhouse approaches retain level junctions and usable flights',()=>{
+  const data:District=source,junctions=new Set(['homes_high_m','homes_high_junction','fw_f_junction22','fw_f_junction86','fw_f_junction87'])
+  const conflicts=roadWidthConflicts(data,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>id.startsWith('junction_homes_')))
+  assert.deepEqual(conflicts,[],'upper-street stairs must clear both streets, neighboring flights and doorway landings')
+  for(const road of data.roads.filter(r=>r.nodes.some(id=>id.startsWith('junction_homes_')))) {
+    const points=road.nodes.map(id=>data.nodes[id])
+    if(road.kind==='landing')assert.ok(points.every(p=>Math.abs(p[2]-points[0][2])<.001),`${road.nodes.join(' -> ')}: junction landing must stay level`)
+    if(road.kind==='steps')for(let i=1;i<points.length;i++) {
+      const a=points[i-1],b=points[i],risers=Math.ceil(Math.abs(b[2]-a[2])/.17)
+      assert.ok(risers<=48&&Math.hypot(b[0]-a[0],b[1]-a[1])/risers>=.28,`${road.nodes.join(' -> ')}: retain a usable flight after clearing the road width`)
+    }
+  }
+})

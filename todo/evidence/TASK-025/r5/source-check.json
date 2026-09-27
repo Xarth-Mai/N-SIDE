@@ -1,0 +1,749 @@
+{
+  "baseline_commit": "1002bf878f741b2e9e775de5394dde6a54f0dd0c",
+  "before_sha256": "791ae5548dece4227ec7363c72c12b6ae189d39e0b42c75f3fe8cab26043c9db",
+  "after_sha256": "9435838bb2143c7dcee3844345a345b125cee98c3d45bbae8d4a9134724280ac",
+  "before": {
+    "nodes": 1536,
+    "roads": 862,
+    "terrain_samples": 8375
+  },
+  "after": {
+    "nodes": 1548,
+    "roads": 870,
+    "terrain_samples": 8390
+  },
+  "changed_original_nodes": [
+    {
+      "id": "stair_homes_high_m_homes_high_junction_01_in",
+      "before": [
+        185,
+        429.5,
+        80.062894
+      ],
+      "after": [
+        200,
+        425,
+        80.062894
+      ]
+    },
+    {
+      "id": "stair_homes_high_m_homes_high_junction_01_out",
+      "before": [
+        185,
+        431.5,
+        80.062894
+      ],
+      "after": [
+        200,
+        431,
+        80.062894
+      ]
+    }
+  ],
+  "new_nodes": {
+    "junction_homes_lower_turn": [
+      185,
+      425,
+      75.315789
+    ],
+    "junction_homes_lower_start": [
+      188,
+      425,
+      75.315789
+    ],
+    "junction_homes_mid_east": [
+      203,
+      425,
+      80.062894
+    ],
+    "junction_homes_mid_north": [
+      203,
+      431,
+      80.062894
+    ],
+    "junction_homes_upper_end": [
+      188,
+      431,
+      84.81
+    ],
+    "junction_homes_upper_turn": [
+      185,
+      431,
+      84.81
+    ],
+    "junction_homes_greenhouse_lower": [
+      155.5,
+      444,
+      84.442385
+    ],
+    "junction_homes_greenhouse_upper": [
+      155.5,
+      456,
+      90.285714
+    ],
+    "junction_homes_f59_lower": [
+      192,
+      444,
+      84.897684
+    ],
+    "junction_homes_f59_upper": [
+      192,
+      456,
+      91.285714
+    ],
+    "junction_homes_f60_lower": [
+      220.75,
+      444,
+      85.257816
+    ],
+    "junction_homes_f60_upper": [
+      220.75,
+      456,
+      91.785714
+    ]
+  },
+  "changed_roads": [
+    {
+      "index": 256,
+      "before": {
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "junction_homes_lower_start",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps",
+        "width": 3
+      }
+    },
+    {
+      "index": 257,
+      "before": {
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_in",
+          "stair_homes_high_m_homes_high_junction_01_out"
+        ],
+        "kind": "landing",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_in",
+          "junction_homes_mid_east",
+          "junction_homes_mid_north",
+          "stair_homes_high_m_homes_high_junction_01_out"
+        ],
+        "kind": "landing",
+        "width": 3
+      }
+    },
+    {
+      "index": 258,
+      "before": {
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_out",
+          "homes_high_junction"
+        ],
+        "kind": "steps",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_out",
+          "junction_homes_upper_end"
+        ],
+        "kind": "steps",
+        "width": 3
+      }
+    },
+    {
+      "index": 454,
+      "before": {
+        "nodes": [
+          "fw_f_junction22",
+          "fw_f_v_60_public"
+        ],
+        "kind": "steps",
+        "width": 2
+      },
+      "after": {
+        "nodes": [
+          "junction_homes_greenhouse_lower",
+          "junction_homes_greenhouse_upper"
+        ],
+        "kind": "steps",
+        "width": 2
+      }
+    },
+    {
+      "index": 528,
+      "before": {
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_v_f59_resident"
+        ],
+        "kind": "steps",
+        "width": 2,
+        "access": "resident"
+      },
+      "after": {
+        "nodes": [
+          "junction_homes_f59_lower",
+          "junction_homes_f59_upper"
+        ],
+        "kind": "steps",
+        "width": 2,
+        "access": "resident"
+      }
+    },
+    {
+      "index": 529,
+      "before": {
+        "nodes": [
+          "fw_f_junction87",
+          "fw_f_v_f60_resident"
+        ],
+        "kind": "steps",
+        "width": 2,
+        "access": "resident"
+      },
+      "after": {
+        "nodes": [
+          "junction_homes_f60_lower",
+          "junction_homes_f60_upper"
+        ],
+        "kind": "steps",
+        "width": 2,
+        "access": "resident"
+      }
+    },
+    {
+      "index": 862,
+      "before": null,
+      "after": {
+        "nodes": [
+          "homes_high_m",
+          "junction_homes_lower_turn",
+          "junction_homes_lower_start"
+        ],
+        "kind": "landing",
+        "width": 3
+      }
+    },
+    {
+      "index": 863,
+      "before": null,
+      "after": {
+        "nodes": [
+          "junction_homes_upper_end",
+          "junction_homes_upper_turn",
+          "homes_high_junction"
+        ],
+        "kind": "landing",
+        "width": 3
+      }
+    },
+    {
+      "index": 864,
+      "before": null,
+      "after": {
+        "nodes": [
+          "fw_f_junction22",
+          "junction_homes_greenhouse_lower"
+        ],
+        "kind": "landing",
+        "width": 2
+      }
+    },
+    {
+      "index": 865,
+      "before": null,
+      "after": {
+        "nodes": [
+          "junction_homes_greenhouse_upper",
+          "fw_f_v_60_public"
+        ],
+        "kind": "landing",
+        "width": 2
+      }
+    },
+    {
+      "index": 866,
+      "before": null,
+      "after": {
+        "nodes": [
+          "fw_f_junction86",
+          "junction_homes_f59_lower"
+        ],
+        "kind": "landing",
+        "width": 2,
+        "access": "resident"
+      }
+    },
+    {
+      "index": 867,
+      "before": null,
+      "after": {
+        "nodes": [
+          "junction_homes_f59_upper",
+          "fw_f_v_f59_resident"
+        ],
+        "kind": "landing",
+        "width": 2,
+        "access": "resident"
+      }
+    },
+    {
+      "index": 868,
+      "before": null,
+      "after": {
+        "nodes": [
+          "fw_f_junction87",
+          "junction_homes_f60_lower"
+        ],
+        "kind": "landing",
+        "width": 2,
+        "access": "resident"
+      }
+    },
+    {
+      "index": 869,
+      "before": null,
+      "after": {
+        "nodes": [
+          "junction_homes_f60_upper",
+          "fw_f_v_f60_resident"
+        ],
+        "kind": "landing",
+        "width": 2,
+        "access": "resident"
+      }
+    }
+  ],
+  "unchanged_sections": [
+    "version",
+    "groups",
+    "buildings",
+    "places",
+    "trees",
+    "surfaces",
+    "blocks",
+    "units",
+    "parcels",
+    "sections",
+    "routes",
+    "connections",
+    "elevatedNodes",
+    "housingAssumptions",
+    "logistics",
+    "architectures"
+  ],
+  "original_node_ids_preserved": true,
+  "original_node_elevations_preserved": true,
+  "authored_terrain_preserved": true,
+  "terrain_bake_recipe_preserved": true,
+  "short_route_preserved": true,
+  "peak": [
+    230,
+    950,
+    450
+  ],
+  "removed_conflicts": [
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "homes_high_junction",
+          "fw_f_junction86"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 258,
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_out",
+          "homes_high_junction"
+        ],
+        "kind": "steps"
+      },
+      "area": 4.5,
+      "maxDelta": 1.629414678571436,
+      "point": [
+        186.5,
+        437
+      ],
+      "sharedNodes": [
+        "homes_high_junction"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction22",
+          "homes_high_junction"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 258,
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_out",
+          "homes_high_junction"
+        ],
+        "kind": "steps"
+      },
+      "area": 4.5,
+      "maxDelta": 1.6106252499999982,
+      "point": [
+        185,
+        437
+      ],
+      "sharedNodes": [
+        "homes_high_junction"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "homes_high_junction",
+          "fw_f_junction86"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 528,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_v_f59_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.1052156278195326,
+      "point": [
+        191,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction86"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_junction87"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 529,
+        "nodes": [
+          "fw_f_junction87",
+          "fw_f_v_f60_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.1005093304347753,
+      "point": [
+        219.75,
+        442.7913043478261
+      ],
+      "sharedNodes": [
+        "fw_f_junction87"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_junction87"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 528,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_v_f59_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.0926893421052597,
+      "point": [
+        192,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction86"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction87",
+          "platform_east"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 529,
+        "nodes": [
+          "fw_f_junction87",
+          "fw_f_v_f60_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.0879829999999941,
+      "point": [
+        220.75,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction87"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "platform_mid",
+          "fw_f_junction22"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 454,
+        "nodes": [
+          "fw_f_junction22",
+          "fw_f_v_60_public"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 0.9306989635814915,
+      "point": [
+        154.5,
+        442.57142857142856
+      ],
+      "sharedNodes": [
+        "fw_f_junction22"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction22",
+          "homes_high_junction"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 454,
+        "nodes": [
+          "fw_f_junction22",
+          "fw_f_v_60_public"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 0.9182374142857128,
+      "point": [
+        155.5,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction22"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 356,
+        "nodes": [
+          "v_a17_upper_landing",
+          "homes_high_m"
+        ],
+        "kind": "lane"
+      },
+      "area": 2.25,
+      "maxDelta": 0.7629275892857095,
+      "point": [
+        183.5,
+        422.25
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 357,
+        "nodes": [
+          "homes_high_m",
+          "v_a15_upper_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 2.25,
+      "maxDelta": 0.7629275892857095,
+      "point": [
+        186.5,
+        422.2142857142857
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 286,
+        "nodes": [
+          "homes_high_m",
+          "v_a15_upper_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.5,
+      "maxDelta": 0.5933881250000042,
+      "point": [
+        186.5,
+        421.9107142857143
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 289,
+        "nodes": [
+          "homes_high_m",
+          "v_a17_upper_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.5,
+      "maxDelta": 0.5933881250000042,
+      "point": [
+        185,
+        422
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    }
+  ],
+  "new_conflicts": [],
+  "remaining_conflicts": 71,
+  "changed_roads_building_hits": [],
+  "stair_flights": [
+    {
+      "road": 256,
+      "nodes": [
+        "junction_homes_lower_start",
+        "stair_homes_high_m_homes_high_junction_01_in"
+      ],
+      "rise": 4.747105000000005,
+      "run": 12,
+      "risers": 28,
+      "tread": 0.42857142857142855,
+      "riser": 0.16953946428571445
+    },
+    {
+      "road": 258,
+      "nodes": [
+        "stair_homes_high_m_homes_high_junction_01_out",
+        "junction_homes_upper_end"
+      ],
+      "rise": 4.747106000000002,
+      "run": 12,
+      "risers": 28,
+      "tread": 0.42857142857142855,
+      "riser": 0.1695395000000001
+    },
+    {
+      "road": 454,
+      "nodes": [
+        "junction_homes_greenhouse_lower",
+        "junction_homes_greenhouse_upper"
+      ],
+      "rise": 5.843328999999997,
+      "run": 12,
+      "risers": 35,
+      "tread": 0.34285714285714286,
+      "riser": 0.16695225714285705
+    },
+    {
+      "road": 528,
+      "nodes": [
+        "junction_homes_f59_lower",
+        "junction_homes_f59_upper"
+      ],
+      "rise": 6.3880300000000005,
+      "run": 12,
+      "risers": 38,
+      "tread": 0.3157894736842105,
+      "riser": 0.16810605263157896
+    },
+    {
+      "road": 529,
+      "nodes": [
+        "junction_homes_f60_lower",
+        "junction_homes_f60_upper"
+      ],
+      "rise": 6.527897999999993,
+      "run": 12,
+      "risers": 39,
+      "tread": 0.3076923076923077,
+      "riser": 0.16738199999999984
+    }
+  ],
+  "scope": "Ground-road width and footprint checks, not actor collision or playability approval; affected graph edges have no non-road route/arrival/logistics consumers in this source. Existing routes, entrances and source IDs remain unchanged."
+}

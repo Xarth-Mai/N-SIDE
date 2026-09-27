@@ -1,0 +1,32 @@
+[
+  {
+    "view": "inspect-road-upper-residential",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r5/before/inspect-road-upper-residential",
+      "--view",
+      "inspect-road-upper-residential"
+    ],
+    "exit_code": 0,
+    "seconds": 16.689153006009292,
+    "source_sha256": "791ae5548dece4227ec7363c72c12b6ae189d39e0b42c75f3fe8cab26043c9db"
+  },
+  {
+    "view": "inspect-road-upper-stairs",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r5/before/inspect-road-upper-stairs",
+      "--view",
+      "inspect-road-upper-stairs"
+    ],
+    "exit_code": 0,
+    "seconds": 16.911921658960637,
+    "source_sha256": "791ae5548dece4227ec7363c72c12b6ae189d39e0b42c75f3fe8cab26043c9db"
+  }
+]

@@ -1,0 +1,103 @@
+{
+  "scene": "district",
+  "view": "inspect-road-upper-residential",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 540,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    0,
+    89,
+    149,
+    239,
+    359,
+    449,
+    539
+  ],
+  "events": [
+    {
+      "start": 0,
+      "end": 1,
+      "keys": [
+        "M"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 150,
+      "look": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "start": 240,
+      "end": 360,
+      "look": [
+        -5.0,
+        0.0
+      ]
+    },
+    {
+      "start": 390,
+      "end": 450,
+      "look": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "start": 480,
+      "end": 481,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 481,
+      "end": 540,
+      "keys": [
+        "W"
+      ],
+      "look": [
+        8.0,
+        0.0
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "name": "inspection_keeps_camera_position",
+      "from": 0,
+      "to": 539,
+      "max_distance": 0.0001
+    },
+    {
+      "name": "right_look_uses_real_controller",
+      "from": 89,
+      "to": 149,
+      "min_rotation": 0.29
+    },
+    {
+      "name": "left_look_uses_real_controller",
+      "from": 239,
+      "to": 359,
+      "min_rotation": 0.59
+    },
+    {
+      "name": "return_look_uses_real_controller",
+      "from": 389,
+      "to": 449,
+      "min_rotation": 0.29
+    },
+    {
+      "name": "release_blocks_held_movement",
+      "from": 480,
+      "to": 539,
+      "max_distance": 0.0001,
+      "enabled": false
+    }
+  ]
+}

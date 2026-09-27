@@ -1,0 +1,71 @@
+{
+  "source_sha256": "9435838bb2143c7dcee3844345a345b125cee98c3d45bbae8d4a9134724280ac",
+  "fixed_views_and_capture_binary_sha256": "82735e552cfd8b42f33e0920283804d33113e0f2758f0e57421daff091d58987",
+  "supplement_binary_sha256": "af54f34aada88a5dee23a5eab3037111c11a8a08c0be7692f83be8aae68075ee",
+  "supplement": "Only added inspect-road-upper-stairs-low; map remained unchanged",
+  "images": [
+    {
+      "source": "output/roads/2026-09-27/r5/before/inspect-road-upper-residential/inspect-road-upper-residential.png",
+      "source_sha256": "617da978a7196895cae746f9429be43c113b92bded2642cdefc79a0e3040a220",
+      "file": "todo/evidence/TASK-025/r5/before/inspect-road-upper-residential.webp",
+      "sha256": "5bfdb7337f48aff30505185feacf4f91b8c1804b22c9758033e60ee8e3bcf957",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/before/inspect-road-upper-stairs/inspect-road-upper-stairs.png",
+      "source_sha256": "86dba31d1d7b0b262eb388f26b56c8284d26ad935e5816e301cfd1b02121a9ea",
+      "file": "todo/evidence/TASK-025/r5/before/inspect-road-upper-stairs.webp",
+      "sha256": "c28a1c8f1a6aea5c481142a918a012bda9f7d620700cc7268b6302a200abea18",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/after/inspect-road-upper-residential/inspect-road-upper-residential.png",
+      "source_sha256": "28910ee3209e2ca89e02e5a436c084946977bb62822d999a08ce7baab32660b8",
+      "file": "todo/evidence/TASK-025/r5/after/inspect-road-upper-residential.webp",
+      "sha256": "0a942ddb8e2b3d73c80ae5865e4c552ec9be085ad7ca8d62cb314a7665659ecf",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/after/inspect-road-upper-stairs/inspect-road-upper-stairs.png",
+      "source_sha256": "8670b613db4c15b97804458421a8ad496bdc94a20a2366dae2cab9c6cf320064",
+      "file": "todo/evidence/TASK-025/r5/after/inspect-road-upper-stairs.webp",
+      "sha256": "a10a47e25f694a2523f403611c970525bf6e9c0a039cd45f620d138d92141f5c",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/after/inspect-road-upper-stairs-low/inspect-road-upper-stairs-low.png",
+      "source_sha256": "07cf067e822074661b1b1aafcc33aa560e2da52aa82e5498d6f7839dfacb34ed",
+      "file": "todo/evidence/TASK-025/r5/after/inspect-road-upper-stairs-low.webp",
+      "sha256": "cef8f096ecf1ffc1d9dd6985d4948560c6b1af466a6e41c505d4e791d42bba6e",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/residential-look/frames/frame00090.png",
+      "source_sha256": "019dd83cefd23357dc009161c33de5bb4f72270e1ed04ea2ef52c29053079dba",
+      "file": "todo/evidence/TASK-025/r5/capture/frame00090.webp",
+      "sha256": "75a1a88ed433a83c747e561d0bfa7f9ad799cf34ec88ef0a435f5221e557101c",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/residential-look/frames/frame00091.png",
+      "source_sha256": "1a67ded02e75b62d818367335f7799b870903066fc7f87a641ba45b1f40db933",
+      "file": "todo/evidence/TASK-025/r5/capture/frame00091.webp",
+      "sha256": "e8eb33b2181593576ae3aced0bf15a39bd6ec2a29f9706df092fb04a2633e96a",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/residential-look/frames/frame00149.png",
+      "source_sha256": "efcf2f464e7d4536ee310f8fdd160346e8ab9b55d83a0aa45f0833e019cd854b",
+      "file": "todo/evidence/TASK-025/r5/capture/frame00149.webp",
+      "sha256": "69b378517fe5d7b398b3239f0a40fe1972f124d5b51322453fafdbfff1ddf256",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r5/residential-look/frames/frame00359.png",
+      "source_sha256": "bf94d91041a58f45e869856e1842e9234e575195b07544f09745f85f78883818",
+      "file": "todo/evidence/TASK-025/r5/capture/frame00359.webp",
+      "sha256": "f1c1bbce19d4cd090f1f0cc4fca8a14172044df44fba638ca7459edd4f96b111",
+      "quality": 80
+    }
+  ]
+}
