@@ -1,0 +1,46 @@
+[
+  {
+    "command": [
+      "game/target/debug/n-side",
+      "--help"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "output": "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen game-entry evidence\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return\n",
+    "passed": true
+  },
+  {
+    "command": [
+      "game/target/debug/n-side",
+      "--capture",
+      "game/capture/game-entry.json"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "output": "--capture and --output must be used together\n",
+    "passed": true
+  },
+  {
+    "command": [
+      "game/target/debug/n-side",
+      "--unknown"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "output": "unknown argument \"--unknown\"\n",
+    "passed": true
+  },
+  {
+    "command": [
+      "game/target/debug/n-side",
+      "--capture",
+      "game/capture/viewer-tour.json",
+      "--output",
+      "output/game-entry/2026-09-28/r1/wrong-scene"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "output": "n-side --capture requires scene game-entry; district and ui-signal use map_viewer\n",
+    "passed": true
+  }
+]

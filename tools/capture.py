@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Run the real Viewer capture, retain provenance, and encode frames when ffmpeg exists.
+"""Run native game or Viewer capture, retain provenance, and encode frames when ffmpeg exists.
 
 Workflow adapted from htdt/godogen engines/bevy.md, revision
 0b725bca053769a4727f76c332bf1f7b42e146ab, Copyright 2026 Alex Ermolov (MIT).
 Retained license: third_party/skills/godogen/LICENSE.md. This implementation
-uses the existing N:SIDE Viewer, its scripted inputs, and checked PNG output.
+uses the existing N:SIDE game or Viewer, scripted inputs, and checked PNG output.
 """
 from __future__ import annotations
 
@@ -80,7 +80,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--script", type=Path, default=ROOT / "game/capture/viewer-tour.json")
     parser.add_argument("--output", type=Path, required=True, help="fresh evidence directory")
-    parser.add_argument("--binary", type=Path, help="use this prebuilt map_viewer; otherwise cargo build --locked")
+    parser.add_argument("--binary", type=Path, help="use this prebuilt game or Viewer binary; otherwise build map_viewer with cargo --locked")
     parser.add_argument("--no-video", action="store_true", help="retain PNG evidence only")
     args = parser.parse_args()
     try:
@@ -124,7 +124,7 @@ def main() -> int:
         code = run_logged(command, output / "runtime.log", timeout + 30)
         report["runtime_exit_code"] = code
         if code:
-            raise RuntimeError(f"Viewer exited {code}; see runtime.log and state.json when available")
+            raise RuntimeError(f"Native capture exited {code}; see runtime.log and state.json when available")
         state = verify_outputs(output, script)
         report["checks"] = state["checks"]
         ffmpeg = shutil.which("ffmpeg")

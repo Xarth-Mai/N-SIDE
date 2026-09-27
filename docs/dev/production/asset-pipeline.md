@@ -67,7 +67,7 @@ python3 -B tools/asset_preview.py game/assets/environment/signs/shop.png --displ
 python3 -B -m unittest discover -s tools/tests -p 'test_asset*.py'
 ```
 
-Logo 的 `205×205` 预览来自当前 `512×512` 图与启动画面 `0.4` 缩放的近似显示尺寸，仍需在真实窗口中核对；Logo 是不透明黑底，因此不要求 cutout。招牌 `512×64` 是半尺寸可读性样本，透视场景中的实际覆盖像素由运行 capture 检查。上游 `--require-alpha` 只检查通道是否存在；本地 `--require-cutout` 进一步拒绝完全透明或完全不透明的图片。预览保留宽高比，浅色、深色、洋红底用于发现灰边、色溢和缺口，工具输出不会自动声称视觉通过
+Logo 的 `205×205` 预览来自 `512×512` 图按 `0.4` 缩放的历史工具样本；当前标题使用可编辑文字，该尺寸不是现有运行界面的显示契约；Logo 是不透明黑底，因此不要求 cutout。招牌 `512×64` 是半尺寸可读性样本，透视场景中的实际覆盖像素由运行 capture 检查。上游 `--require-alpha` 只检查通道是否存在；本地 `--require-cutout` 进一步拒绝完全透明或完全不透明的图片。预览保留宽高比，浅色、深色、洋红底用于发现灰边、色溢和缺口，工具输出不会自动声称视觉通过
 
 <a id="glb骨骼与动画"></a>
 

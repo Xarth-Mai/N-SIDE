@@ -1,0 +1,10 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 20.16s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-b9866308b7ef9f9c)
+
+running 3 tests
+test app::tests::keyboard_gamepad_and_mouse_use_the_real_entry_actions ... ok
+test app::tests::returning_to_title_cancels_pending_preparation_without_removing_the_camera ... ok
+test app::tests::real_preparation_failure_can_return_and_retry ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 28 filtered out; finished in 0.01s

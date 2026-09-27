@@ -3,11 +3,11 @@
 Rust 2024 / Bevy 0.19.1，所有命令从仓库根执行
 
 ```sh
-cargo run --manifest-path game/Cargo.toml --locked
+cargo run --manifest-path game/Cargo.toml --locked -- --project-root .
 cargo run --manifest-path game/Cargo.toml --locked --features viewer --bin map_viewer -- --project-root .
 ```
 
-默认游戏入口展示现有 Logo。Map Viewer 启动时读取 `source-assets/district-map/district.json`、`source-assets/district-scene/appearance.json` 与 `source-assets/district-scene/daylight.json`，运行素材来自 `game/assets/`；模型和材质随仓库提供，启动无需下载。地图、外观及光照配置修改后重启，Rust 修改由 Cargo 增量编译
+默认游戏入口提供标题、加载、固定镜头街区预览与返回标题；当前是人物尺度原型的运行基础。正式入口与 Map Viewer 读取 `source-assets/district-map/district.json`、`source-assets/district-scene/appearance.json` 与 `source-assets/district-scene/daylight.json`，运行素材来自 `game/assets/`；模型和材质随仓库提供，启动无需下载。地图、外观及光照配置修改后重启，Rust 修改由 Cargo 增量编译
 
 ## GitHub Actions
 
@@ -15,7 +15,7 @@ cargo run --manifest-path game/Cargo.toml --locked --features viewer --bin map_v
 
 Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完成后从运行摘要链接或 Artifacts 下载 `n-side-windows-x86_64-msvc`，保存期为 14 天。手动入口需要 workflow 已存在于默认分支
 
-完整解压后双击 `run-game.cmd` 启动 Logo 游戏入口，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
+完整解压后双击 `run-game.cmd` 启动标题与街区预览，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
 
 构建使用 `x86_64-pc-windows-msvc`、现有 release 配置和 Cargo.lock，上传前从打包目录执行 Viewer `--validate`；该检查验证地图、几何、素材绑定与光照数据，不证明 Windows 图形启动或视觉验收通过
 
@@ -23,9 +23,24 @@ Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完�
 
 右键按住观察，M 切换鼠标捕获，WASD 移动，Q/E 下降或上升，Shift 加速，滚轮调整速度，Esc 释放鼠标；失焦时停止运动，重新按右键或 M 恢复控制。自由相机可以穿过实体
 
+## 正式入口与场景恢复
+
+标题提供「进入街区」和「退出」，进入后固定在月台杂货附近的观察位置；Esc 或返回按钮退出预览并清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。人物移动、碰撞、跟随镜头、任务和存档仍由后续原型接入
+
+场景准备在 Bevy 任务池中进行，标题输入和加载反馈保持响应；取消后丢弃旧准备结果。每次进入建立新的 `SceneLoading`，依次核对资产依赖和模型实例化，真实就绪才切换到街区。返回标题移除带 `MapSource` 的场景层级与加载资源，保留宿主镜头、灯光和 UI
+
+`game/src/capture.rs` 为正式入口和 Viewer 的唯一录制实现，默认游戏无需启用 `viewer` 特性。正式入口脚本覆盖两次进入与清理，使用真实输入驱动并比较两次源对象数量
+
+```fish
+cargo build --manifest-path game/Cargo.toml --locked --bin n-side
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/game-entry.json --output output/capture/game-entry
+```
+
+脚本的 `waits` 在指定帧等待真实 `game_page`，期间继续异步加载和渲染，暂停录制时间线；它不设置应用状态，墙钟超时仍有效。`game_page`、`world_ready`、`min_world_entities`、`max_world_entities` 和 `same_world_entities` 从实际 ECS 状态检查标题、加载、清理与重入；录制时长不代表真实加载耗时
+
 ## 世界运行时
 
-`world::map` 负责 v7 数据和引用校验，唯一坐标转换为 `[x,y,h] → [x,h,-y]`，1 unit = 1 m。`world::geometry` 使用 f64 空间计算生成外部几何，`world::assets` 校验表现资产，`world::scene` 负责加载、材质和实例；`world::visual` 共享白天成像与照明，Viewer 负责窗口和官方 [FreeCamera](https://docs.rs/bevy/0.19.1/bevy/camera_controller/free_camera/index.html)
+`world::map` 负责 v7 数据和引用校验，唯一坐标转换为 `[x,y,h] → [x,h,-y]`，1 unit = 1 m。`world::geometry` 使用 f64 空间计算生成外部几何，`world::assets` 校验表现资产，`world::scene` 负责加载、材质和实例；`world::visual` 共享白天成像与照明，正式入口使用 Bevy States 管理标题、加载、街区和失败状态，Viewer 使用官方 [FreeCamera](https://docs.rs/bevy/0.19.1/bevy/camera_controller/free_camera/index.html)
 
 地图保持唯一空间主数据，建筑容量和室内规划不生成实体。建筑外墙、天井、屋面、入口、道路、台阶、水面、平台及其支撑保留源对象关联；材质、原创招牌和公共模型的来源见[街区外观](../source-assets/district-scene/README.md)与[环境素材](../source-assets/environment-kit/README.md)
 
@@ -33,7 +48,7 @@ Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完�
 
 ## 诊断与检查
 
-加载错误输出到终端并返回非零退出码，地图错误包含文件、字段路径、对象 ID、原值和原因；资产错误包含文件、源对象、模型场景、材质槽及底层依赖错误。模型、颜色和法线贴图的递归依赖成功、模型完成实例化后才输出 `[world/ready]`。显式可选模型的省略会报告 Warning 和降级计数
+正式入口的场景加载错误显示失败页并允许重试或返回；启动配置错误、Viewer 与 capture 的失败输出诊断并返回非零退出码。地图错误包含文件、字段路径、对象 ID、原值和原因；资产错误包含文件、源对象、模型场景、材质槽及底层依赖错误。模型、颜色和法线贴图的递归依赖成功、模型完成实例化后才输出 `[world/ready]`。显式可选模型的省略会报告 Warning 和降级计数
 
 ```sh
 cargo fmt --manifest-path game/Cargo.toml --check
@@ -116,7 +131,7 @@ python3 tools/capture.py --script game/capture/ascent-lookout.json --output outp
 
 ## 街区信号 UI 样板
 
-`SignalUiPlugin` 在同一真实城市场景中叠加工作菜单、调查记录排版样例、设置和街区说明。`--ui-preview` 是技术与视觉实验入口，正式游戏入口仍为 Logo；样例记录不写任务或存档，不可用入口显示原因
+`SignalUiPlugin` 在同一真实城市场景中叠加工作菜单、调查记录排版样例、设置和街区说明。`--ui-preview` 是技术与视觉实验入口，正式入口的标题外壳复用相同 tokens 与字体；样例记录不写任务或存档，不可用入口显示原因
 
 ```fish
 bun tools/export-ui.ts --check
@@ -130,7 +145,7 @@ Capture 的 `gamepad` 字段发送 `Down`、`Up`、`Confirm`、`Back`、`Menu`�
 
 字体异步就绪后才开始 UI capture，失败诊断返回非零。UI 样板使用 `scene: ui-signal` 捕获，不与固定镜头 `--verify` 模式混用；固定镜头仍负责世界渲染检查。布局、字形和遮挡必须实际看图，参数与实现状态分别见[UI 规格](../docs/dev/design/systems/ui.md)、[源资产](../source-assets/ui-kit/README.md)与 TASK-026 的运行记录
 
-当前锁定的 Parley 0.9.0 使用 `WordSegmenter::new_for_non_complex_scripts`，含中文时日志会报告 `No segmentation model for complex script: Chinese/Japanese`。本轮字形覆盖、实际显示和换行已分别核对；按词选择尚未实现，不能据此宣称中文分词正确。保留原诊断，暂未为此更换 Bevy 或加入本地 Parley 分支
+当前锁定的 Parley 0.9.0 使用 `WordSegmenter::new_for_non_complex_scripts`，含中文时日志会报告 `No segmentation model for complex script: Chinese/Japanese`。本轮字形覆盖、实际显示和换行已分别核对；按词选择尚未实现，不能据此宣称中文分词正确。保留原诊断，暂未为此更换 Bevy 或加入本地 Parley 分支；后续接文本编辑或升级依赖时重新核查。背景、文字与焦点只在值变化时更新，减少无效重排
 
 机器检查覆盖资产就绪、每帧有限 Transform、完整截图与脚本断言。读取、写入、超时和断言错误均返回非零退出码，原始诊断留在日志。交付前实际打开关键帧和连续帧，或播放视频，分别记录构图、遮挡、材质和动作观察；生成成功不自动等于视觉通过。`output/` 属于忽略的验收产物，不能进入 `game/assets/`
 
@@ -140,5 +155,3 @@ cargo test --manifest-path game/Cargo.toml --features viewer --locked
 ```
 
 这些测试不依赖 GPU，检查输入脚本、证据序列和进程超时；实际渲染仍需 Vulkan 设备。无设备时保留失败诊断并在具备 GPU 的环境运行录制命令，不将跳过计为通过
-
-当前锁定的 Parley 0.9.0 中文按词分段会输出 `No segmentation model for complex script: Chinese/Japanese`，其 `analysis/mod.rs` 使用非复杂文字的 word segmenter；本轮未为只读 UI 引入整个依赖分叉。实际中文字形与换行单独看图检查，告警保留在原始日志，不能据此宣称中文按词选择或文本编辑已通过。背景、文字与焦点只在值变化时更新，减少无效重排；后续接文本编辑或升级依赖时重新核查该限制

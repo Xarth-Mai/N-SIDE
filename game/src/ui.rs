@@ -12,30 +12,30 @@ use serde::{Deserialize, Serialize};
 pub const FONT: &str = "ui/fonts/NotoSansSC-VF.ttf";
 
 #[derive(Resource, Deserialize)]
-struct Tokens {
-    colors: Colors,
-    title_size: f32,
-    heading_size: f32,
-    body_size: f32,
-    line_height: f32,
-    panel_radius: f32,
-    button_radius: f32,
+pub(crate) struct Tokens {
+    pub(crate) colors: Colors,
+    pub(crate) title_size: f32,
+    pub(crate) heading_size: f32,
+    pub(crate) body_size: f32,
+    pub(crate) line_height: f32,
+    pub(crate) panel_radius: f32,
+    pub(crate) button_radius: f32,
     panel_slide_ms: f32,
 }
 
 #[derive(Deserialize)]
-struct Colors {
-    base: String,
-    raised: String,
-    text: String,
-    secondary: String,
-    focus: String,
+pub(crate) struct Colors {
+    pub(crate) base: String,
+    pub(crate) raised: String,
+    pub(crate) text: String,
+    pub(crate) secondary: String,
+    pub(crate) focus: String,
     warm: String,
     dream: String,
-    warning: String,
+    pub(crate) warning: String,
 }
 
-fn color(hex: &str) -> Color {
+pub(crate) fn color(hex: &str) -> Color {
     Srgba::hex(hex)
         .expect("UI tokens have validated sRGB colors")
         .into()

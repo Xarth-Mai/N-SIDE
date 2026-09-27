@@ -1,0 +1,34 @@
+{
+  "base_commit": "5defc087dda80e04777b2ab66b7881e261a8af92",
+  "inputs": {
+    "game/src/app.rs": "e519ba672aa7f7eec43a7b83fef0511e21c3ba3bb9776aeda7d351474eacb4d5",
+    "game/src/main.rs": "57195ef357165cc705984b6cf2999c56a7b7f83d64647136ba603b9b7b2d0ade",
+    "game/src/capture.rs": "977661ce28d612685f6918f57087aa1baf1511cd081acd353480bd0dd2d0473d",
+    "game/src/world/scene.rs": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+    "game/src/world/geometry.rs": "7c2734c76b14f2933a381758c97fe2177009c6d9e4cb2d38b94dc9e8531b2bac",
+    "game/src/bin/map_viewer.rs": "648f4a04bf86c5df9dd546d901acee2aa82b617d502feb513dd0c4f52ae84269",
+    "game/src/ui.rs": "316dbd9beb0165a5720445bdde2a56161b035fdae297657c9468385554c66223",
+    "game/src/lib.rs": "1d789b4209be0efa6485ac88270db7bcc380ca26f7c356b7f7c5c15c2734f4c1",
+    "game/capture/game-entry.json": "f3e1ecd4561842544856ab5e738eab503ff81757b67a3667b3c53a1e1a0fbd91",
+    "game/Cargo.lock": "d90f8a806751b4af4c30ae6826715b9cc81faeb668e6315ccd8ea2d1b0e73dfa",
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "source-assets/district-scene/appearance.json": "572b7c11f3d4ba138db9efbaaffca5c9d6ca406488b1a590e217df28464a8949",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/ui-kit/tokens.json": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426",
+    "tools/capture.py": "c8b6f01a0ba4627a80a85fda39d6894337d94fc444747573e78c6ee425a0e209"
+  },
+  "binaries": {
+    "game/target/debug/n-side": "9898b11a0295fce42edea23d86cd215dfabba17f7d58d6991f5b92fad9819883",
+    "game/target/debug/map_viewer": "e9b62819ae593f6e699ab7aa803daff7253e979fa015417e88c4749aa1bd2e5f"
+  },
+  "scope": "Game entry lifecycle and one shared capture; no character, collision, quest or save implementation",
+  "negative_fixture": "missing-map-root links existing game/assets, appearance.json and daylight.json; district.json deliberately absent in isolated output directory; original assets untouched",
+  "visual_review": "self-audit; actual source PNGs viewed, WebP derivatives quality 80",
+  "commands": {
+    "rustc --version": "rustc 1.98.1 (48a229cea 2026-09-01) (Arch Linux rust 1:1.98.1-1.1)",
+    "cargo --version": "cargo 1.98.1 (797e8a9bc 2026-08-05) (Arch Linux rust 1:1.98.1-1.1)",
+    "bun --version": "1.4.2",
+    "python3 --version": "Python 3.14.7"
+  },
+  "archive_normalization": "Archived text logs strip trailing spaces and trailing blank lines only; original runtime logs remain under output"
+}

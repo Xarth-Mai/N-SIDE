@@ -1,0 +1,171 @@
+{
+  "scene": "game-entry",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 540,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    0,
+    59,
+    61,
+    63,
+    64,
+    119,
+    179,
+    181,
+    239,
+    271,
+    273,
+    274,
+    329,
+    449,
+    451,
+    479,
+    481,
+    483,
+    485,
+    539
+  ],
+  "events": [
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 180,
+      "end": 181,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 270,
+      "end": 271,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 450,
+      "end": 451,
+      "gamepad": [
+        "Back"
+      ]
+    },
+    {
+      "start": 480,
+      "end": 481,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 481,
+      "end": 482,
+      "keys": [
+        "Escape"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 64,
+      "game_page": "world"
+    },
+    {
+      "frame": 181,
+      "game_page": "title"
+    },
+    {
+      "frame": 274,
+      "game_page": "world"
+    },
+    {
+      "frame": 451,
+      "game_page": "title"
+    },
+    {
+      "frame": 485,
+      "game_page": "title"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "title_starts_without_world",
+      "from": 0,
+      "to": 59,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0,
+      "enabled": false
+    },
+    {
+      "name": "enter_loads_real_world",
+      "from": 64,
+      "to": 179,
+      "game_page": "world",
+      "world_ready": true,
+      "min_world_entities": 1,
+      "max_distance": 0.0001,
+      "enabled": false
+    },
+    {
+      "name": "escape_clears_world",
+      "from": 181,
+      "to": 239,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0
+    },
+    {
+      "name": "reentry_keeps_world_entity_count",
+      "from": 119,
+      "to": 329,
+      "game_page": "world",
+      "world_ready": true,
+      "min_world_entities": 1,
+      "same_world_entities": true
+    },
+    {
+      "name": "second_world_remains_stable",
+      "from": 274,
+      "to": 449,
+      "game_page": "world",
+      "world_ready": true,
+      "min_world_entities": 1,
+      "max_distance": 0.0001,
+      "enabled": false
+    },
+    {
+      "name": "second_escape_clears_world",
+      "from": 451,
+      "to": 539,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0,
+      "same_world_entities": true
+    },
+    {
+      "name": "third_entry_is_still_preparing_when_cancelled",
+      "from": 481,
+      "to": 481,
+      "game_page": "loading",
+      "world_ready": false,
+      "max_world_entities": 0
+    },
+    {
+      "name": "cancel_returns_to_empty_title",
+      "from": 485,
+      "to": 539,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0
+    }
+  ]
+}

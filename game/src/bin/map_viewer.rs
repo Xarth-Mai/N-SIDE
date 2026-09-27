@@ -1,6 +1,3 @@
-#[path = "map_viewer/capture.rs"]
-mod capture;
-
 use bevy::{
     anti_alias::taa::TemporalAntiAliasing,
     app::ScheduleRunnerPlugin,
@@ -22,6 +19,7 @@ use bevy::{
     },
     winit::WinitPlugin,
 };
+use n_side::capture::{self, CaptureInput, CaptureTarget, Recording};
 use n_side::ui::{SignalUi, SignalUiPlugin, UiInput};
 use n_side::world::{
     geometry::Ground,
@@ -33,8 +31,6 @@ use std::{path::PathBuf, time::Instant};
 
 #[derive(Resource)]
 struct CameraViews(Vec<(String, Transform)>);
-#[derive(Resource)]
-struct CaptureTarget(Option<Handle<Image>>);
 #[derive(Resource)]
 struct Verification {
     output: PathBuf,
@@ -127,6 +123,9 @@ fn run() -> Result<AppExit, String> {
         .map(|path| capture::Recording::load(&path, capture_output.unwrap()))
         .transpose()?;
     if let Some(recording) = &capture {
+        if recording.script.scene == "game-entry" {
+            return Err("game-entry capture uses the n-side binary".into());
+        }
         headless = true;
         ui_preview |= recording.script.scene == "ui-signal";
         selected_view = Some(recording.script.view.clone());
@@ -284,9 +283,11 @@ fn run() -> Result<AppExit, String> {
         .add_systems(
             RunFixedMainLoop,
             camera_focus
+                .after(CaptureInput)
                 .after(UiInput)
                 .before(run_freecamera_controller),
-        );
+        )
+        .add_systems(Update, exit_on_scene_failure);
     if ui_preview {
         app.add_plugins(SignalUiPlugin);
     }
@@ -931,6 +932,20 @@ fn frame_points_from(corners: &[Vec3], direction: Vec3) -> Result<Transform, Str
         * 1.12;
     pose.translation = center + direction * distance;
     Ok(pose)
+}
+
+fn exit_on_scene_failure(
+    loading: Res<SceneLoading>,
+    recording: Option<Res<Recording>>,
+    mut exit: MessageWriter<AppExit>,
+) {
+    // The recorder writes its failure evidence before ending a capture
+    if recording.is_none()
+        && let Some(error) = &loading.failure
+    {
+        error!("[scene/failed] {error}");
+        exit.write(AppExit::error());
+    }
 }
 
 fn camera_focus(

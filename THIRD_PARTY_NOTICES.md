@@ -98,7 +98,7 @@
 - Upstream commit: [`0b725bca053769a4727f76c332bf1f7b42e146ab`](https://github.com/htdt/godogen/tree/0b725bca053769a4727f76c332bf1f7b42e146ab)
 - License: MIT; [LICENSE.md](third_party/skills/godogen/LICENSE.md)
 
-方法改编：`prompts/runtime.md`、`engines/bevy.md` → [运行验收](docs/dev/validation/runtime.md)、[Viewer capture](game/src/bin/map_viewer/capture.rs)与[执行入口](tools/capture.py)；`asset-gen/rembg.md` 等 → [资产工具审查](docs/dev/decisions/asset-tools.md)与 [asset_preview.py](tools/asset_preview.py)。本地代码连接现有 Bevy/资产路径；没有复制发布器、空项目 scaffold 或多供应商生成器
+方法改编：`prompts/runtime.md`、`engines/bevy.md` → [运行验收](docs/dev/validation/runtime.md)、[共享 capture](game/src/capture.rs)与[执行入口](tools/capture.py)；`asset-gen/rembg.md` 等 → [资产工具审查](docs/dev/decisions/asset-tools.md)与 [asset_preview.py](tools/asset_preview.py)。本地代码连接现有 Bevy/资产路径；没有复制发布器、空项目 scaffold 或多供应商生成器
 
 ## MengTo/Skills
 

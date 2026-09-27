@@ -140,7 +140,7 @@ pub struct SceneLoading {
     tracked: Vec<TrackedAsset>,
     materials: BTreeMap<String, Handle<StandardMaterial>>,
     models: BTreeMap<String, Handle<WorldAsset>>,
-    started: Instant,
+    started: Option<Instant>,
     degraded: BTreeSet<String>,
     pub ready: bool,
     pub failure: Option<String>,
@@ -153,7 +153,7 @@ impl SceneLoading {
             tracked: vec![],
             materials: BTreeMap::new(),
             models: BTreeMap::new(),
-            started: Instant::now(),
+            started: None,
             degraded: BTreeSet::new(),
             ready: false,
             failure: None,
@@ -164,9 +164,28 @@ impl SceneLoading {
 pub struct WorldScenePlugin;
 impl Plugin for WorldScenePlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, load_assets)
-            .add_systems(Update, finish_loading);
+        app.add_systems(
+            Update,
+            (
+                load_assets.run_if(resource_exists::<SceneLoading>),
+                finish_loading,
+            )
+                .chain(),
+        );
     }
+}
+
+/// Remove map roots and their descendants before inserting a new SceneLoading
+/// Host cameras, lighting and UI keep their own lifecycle
+pub fn clear_scene(world: &mut World) {
+    let roots: Vec<_> = world
+        .query_filtered::<Entity, (With<MapSource>, Without<ChildOf>)>()
+        .iter(world)
+        .collect();
+    for root in roots {
+        world.despawn(root);
+    }
+    world.remove_resource::<SceneLoading>();
 }
 
 fn track(
@@ -192,6 +211,11 @@ fn load_assets(
     server: Res<AssetServer>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
+    // Polling reinserts this resource, so an added tick is not a load guard
+    if loading.started.is_some() {
+        return;
+    }
+    loading.started = Some(Instant::now());
     let prepared = loading.prepared.take().expect("prepared scene");
     for warning in &prepared.warnings {
         warn!("{warning}");
@@ -291,10 +315,11 @@ fn finish_loading(world: &mut World) {
     let Some(mut loading) = world.remove_resource::<SceneLoading>() else {
         return;
     };
-    if loading.ready || loading.failure.is_some() {
+    if loading.ready || loading.failure.is_some() || loading.started.is_none() {
         world.insert_resource(loading);
         return;
     }
+    let started = loading.started.expect("asset loading started");
     let server = world.resource::<AssetServer>();
     let mut pending = false;
     let mut required_failed = false;
@@ -317,7 +342,7 @@ fn finish_loading(world: &mut World) {
             .collect::<Vec<_>>()
             .join("\n");
         loading.failure = Some(errors);
-    } else if loading.started.elapsed().as_secs() > 120 {
+    } else if started.elapsed().as_secs() > 120 {
         let contexts = loading
             .tracked
             .iter()
@@ -362,7 +387,7 @@ fn finish_loading(world: &mut World) {
                     "[world/ready] meshes={meshes} model_instances={props} dependencies={} failed=0 degraded={} startup_seconds={:.3}",
                     loading.tracked.len(),
                     loading.degraded.len(),
-                    loading.started.elapsed().as_secs_f64()
+                    started.elapsed().as_secs_f64()
                 );
             }
             Err(error) => loading.failure = Some(error),
@@ -370,7 +395,6 @@ fn finish_loading(world: &mut World) {
     }
     if let Some(error) = &loading.failure {
         error!("{error}\n[world/failed] ready=false");
-        world.write_message(AppExit::error());
     }
     world.insert_resource(loading);
 }
@@ -1354,6 +1378,133 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn lifecycle_scene() -> PreparedScene {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let mut appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let (material, spec) = appearance.materials.iter_mut().next().unwrap();
+        spec.color_texture = None;
+        spec.normal_texture = None;
+        let material = material.clone();
+        PreparedScene {
+            map,
+            appearance,
+            parts: vec![GeometryPart {
+                source: "lifecycle-test".into(),
+                material,
+                mesh: Cuboid::default().into(),
+            }],
+            props: vec![],
+            asset_root: root.join("game/assets"),
+            warnings: vec![],
+            model_contexts: BTreeMap::new(),
+        }
+    }
+
+    fn lifecycle_app() -> App {
+        let mut app = App::new();
+        app.add_plugins((MinimalPlugins, AssetPlugin::default(), WorldScenePlugin))
+            .init_asset::<Mesh>()
+            .init_asset::<StandardMaterial>();
+        app.finish();
+        app.cleanup();
+        app
+    }
+
+    #[test]
+    fn lifecycle_waits_for_a_scene_and_starts_each_scene_once() {
+        let mut idle = App::new();
+        idle.add_plugins(WorldScenePlugin);
+        idle.update();
+
+        let mut app = lifecycle_app();
+        app.update();
+        app.update();
+        assert!(!app.world().contains_resource::<SceneLoading>());
+
+        for _ in 0..2 {
+            app.insert_resource(SceneLoading::new(lifecycle_scene()));
+            app.update();
+            let loading = app.world().resource::<SceneLoading>();
+            assert!(loading.ready && loading.failure.is_none());
+            assert!(loading.prepared.is_none());
+            let material = loading.materials.values().next().unwrap().id();
+            for _ in 0..3 {
+                app.update();
+                assert_eq!(
+                    app.world()
+                        .resource::<SceneLoading>()
+                        .materials
+                        .values()
+                        .next()
+                        .unwrap()
+                        .id(),
+                    material
+                );
+                assert_eq!(
+                    app.world_mut()
+                        .query::<&MapSource>()
+                        .iter(app.world())
+                        .count(),
+                    1
+                );
+            }
+            clear_scene(app.world_mut());
+            app.update();
+            assert!(!app.world().contains_resource::<SceneLoading>());
+            assert_eq!(
+                app.world_mut()
+                    .query::<&MapSource>()
+                    .iter(app.world())
+                    .count(),
+                0
+            );
+        }
+    }
+
+    #[test]
+    fn lifecycle_clear_removes_map_roots_and_descendants_only() {
+        let mut world = World::new();
+        let root = world.spawn(MapSource("map-root".into())).id();
+        let child = world.spawn((MapSource("model".into()), ChildOf(root))).id();
+        let grandchild = world.spawn(ChildOf(child)).id();
+        let other = world.spawn(Name::new("host-owned")).id();
+        let other_child = world
+            .spawn((MapSource("host-owned-child".into()), ChildOf(other)))
+            .id();
+        world.insert_resource(SceneLoading::new(lifecycle_scene()));
+
+        for _ in 0..2 {
+            clear_scene(&mut world);
+            assert!(!world.contains_resource::<SceneLoading>());
+            for entity in [root, child, grandchild] {
+                assert!(world.get_entity(entity).is_err());
+            }
+            for entity in [other, other_child] {
+                assert!(world.get_entity(entity).is_ok());
+            }
+        }
+    }
+
+    #[test]
+    fn lifecycle_failure_is_reported_without_exiting_the_host() {
+        let mut app = lifecycle_app();
+        let mut loading = SceneLoading::new(lifecycle_scene());
+        loading.started = Some(Instant::now() - std::time::Duration::from_secs(121));
+        app.insert_resource(loading);
+        app.update();
+        assert!(
+            app.world()
+                .resource::<SceneLoading>()
+                .failure
+                .as_ref()
+                .is_some_and(|error| error.contains("[asset/timeout]"))
+        );
+        assert!(!app.world().resource::<SceneLoading>().ready);
+        assert!(app.should_exit().is_none());
+    }
 
     #[test]
     fn vegetation_uses_real_assets_and_keeps_public_space_clear() {

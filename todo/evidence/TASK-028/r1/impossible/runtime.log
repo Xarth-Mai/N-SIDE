@@ -1,0 +1,28 @@
+2026-09-27T16:36:37.781247Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T16:36:37.808310Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T16:36:37.883961Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T16:36:37.883984Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T16:36:37.884517Z  INFO n_side::app: [game/state] title
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T16:36:38.159917Z  INFO n_side::app: [game/state] loading
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T16:36:47.149771Z  INFO n_side::world::scene: [world/ready] meshes=3302 model_instances=263 dependencies=25 failed=0 degraded=0 startup_seconds=0.052
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T16:36:50.494587Z  INFO n_side::capture: [capture/check] {"name":"required_assets_ready","passed":true}
+2026-09-27T16:36:50.494603Z  INFO n_side::capture: [capture/check] {"expected":120,"name":"all_frames_saved","passed":true,"saved":120}
+2026-09-27T16:36:50.494608Z  INFO n_side::capture: [capture/check] {"checked_frames":120,"name":"finite_transforms","passed":true}
+2026-09-27T16:36:50.494612Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"enabled":null,"from":4,"game_page":"world","max_distance":null,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":100000000,"name":"reject_impossible_entity_count","same_world_entities":null,"to":119,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"reject_impossible_entity_count","passed":false,"rotation_radians":0.0}
+2026-09-27T16:36:50.494622Z  INFO n_side::capture: [capture/finished] status=FAIL saved=120 report=/home/lzzz/MyProjects/N-SIDE/output/game-entry/2026-09-28/r1/impossible/state.json

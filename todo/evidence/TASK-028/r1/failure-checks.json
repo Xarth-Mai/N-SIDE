@@ -1,0 +1,36 @@
+[
+  {
+    "case": "missing_map",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/game-entry/2026-09-28/r1/missing-map-root",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/game/capture/game-entry.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/game-entry/2026-09-28/r1/missing-map"
+    ],
+    "exit": 1,
+    "error": "game loading: /home/lzzz/MyProjects/N-SIDE/output/game-entry/2026-09-28/r1/missing-map-root/source-assets/district-map/district.json#: cannot read map: No such file or directory (os error 2); actual=<unread>",
+    "passed": true
+  },
+  {
+    "case": "impossible_assertion",
+    "command": [
+      "python3",
+      "tools/capture.py",
+      "--binary",
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--script",
+      "/home/lzzz/MyProjects/N-SIDE/output/game-entry/2026-09-28/r1/impossible.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/game-entry/2026-09-28/r1/impossible"
+    ],
+    "exit": 1,
+    "native_exit": 1,
+    "failed_checks": [
+      "reject_impossible_entity_count"
+    ],
+    "passed": true
+  }
+]

@@ -15,7 +15,9 @@
 
 ## Capture 的使用边界
 
-`tools/capture.py` 驱动现有 `map_viewer` 的离屏模式，复用 `WorldScenePlugin`、真实模型与材质、白天成像和 `FreeCameraPlugin`。首条脚本为 `game/capture/viewer-tour.json`，展示相机输入、移动、观察和停止；Viewer 当前没有人物碰撞、任务交互或角色动画，这条证据只证明已存在的控制与渲染路径
+`tools/capture.py` 驱动正式入口或 `map_viewer` 的离屏模式，二者复用 `game/src/capture.rs`。Viewer 复用 `WorldScenePlugin`、真实模型与材质、白天成像和 `FreeCameraPlugin`。Viewer 脚本为 `game/capture/viewer-tour.json`，展示相机输入、移动、观察和停止；Viewer 当前没有人物碰撞、任务交互或角色动画，这条证据只证明已存在的控制与渲染路径
+
+正式入口通过 `game/capture/game-entry.json` 记录标题、真实加载、固定镜头街区、清理与再次进入；指定 `--binary game/target/debug/n-side`，构建及参数见仓库 `game/README.md`。脚本等待实际状态而不强制跳过加载，墙钟超时持续生效；场景未就绪或进入失败页会留下原始原因并返回非零
 
 新增玩法后扩展同一输入／状态路径和相应验收场景。脚本可以发送输入、选场景和声明期待状态，不能直接设置受验收结果，也不能另造只供录像的场景副本
 

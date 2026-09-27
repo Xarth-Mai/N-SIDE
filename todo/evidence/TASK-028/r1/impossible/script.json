@@ -1,0 +1,41 @@
+{
+  "scene": "game-entry",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 120,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    0,
+    1,
+    3,
+    4,
+    119
+  ],
+  "events": [
+    {
+      "start": 1,
+      "end": 2,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 4,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "reject_impossible_entity_count",
+      "from": 4,
+      "to": 119,
+      "game_page": "world",
+      "min_world_entities": 100000000
+    }
+  ]
+}

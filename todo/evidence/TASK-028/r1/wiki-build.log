@@ -1,0 +1,92 @@
+$ bun run check:map && bun run docs:build:player && bun run docs:build:dev
+$ bun test tools/tests/district-map.test.ts tools/tests/road-width.test.ts tools/tests/station-square.test.ts tools/tests/terrain-shape.test.ts
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [2.24ms]
+(pass) terrain colors follow ground elevation [0.12ms]
+(pass) map overview fits extended terrain on wide and narrow screens [174.02ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [43.21ms]
+(pass) mountain city keeps metre scale and usable graded route alternatives [6.03ms]
+(pass) overview terrain retains source controls and excludes elevated connections [3714.11ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.06ms]
+(pass) shopping stays local and public hillside routes remain connected [1.50ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.25ms]
+(pass) scene keeps platforms below volumes and geometry is finite [120.39ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [6.84ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [14.08ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [0.98ms]
+(pass) tree positions stay outside building footprints [6.41ms]
+(pass) all streets clear building volumes at their actual widths and elevations [355.80ms]
+(pass) district ground-road crossings share a junction and its elevation [311.56ms]
+(pass) city framework records every building and reaches its same-level facade entrances [13.89ms]
+(pass) city stairs retain short flights, level rests and full-size treads [1.07ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.87ms]
+(pass) public streets stay outside same-level resident and service courts [4.76ms]
+(pass) building volumes share boundaries without occupying the same space [26.54ms]
+(pass) detailed places connect street access to separate public and service entrances [14.99ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.55ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [4.34ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.26ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [0.99ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [59.74ms]
+(pass) public, residents, students and service users have separate access rights [12.00ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.53ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.83ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.78ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.46ms]
+(pass) shared stairs and separate apartments connect through shared circulation [1.05ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) terrain bake preserves authored geometry and repeats without drift [3168.48ms]
+(pass) terrain noise protects complete road segments and footprints [3196.86ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [47.98ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [343.37ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [1.52ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.69ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1143.02ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [427.34ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [398.82ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [435.41ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1121.16ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [1737.41ms]
+(pass) east terraces clear neighboring road ribbons and retain usable exterior approaches [449.51ms]
+(pass) west old housing clear neighboring road ribbons and retain usable exterior approaches [387.62ms]
+(pass) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [404.85ms]
+(pass) all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches [469.34ms]
+(pass) platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces [0.62ms]
+(pass) ground platforms meet adjacent road ribbons and stair treads at their own level [40.24ms]
+
+tools/tests/station-square.test.ts:
+(pass) station meeting court retains usable space with a level public arrival clear of sloping roads [421.90ms]
+
+ 52 pass
+ 0 fail
+Ran 52 tests across 4 files. [19.25s]
+$ bun tools/wiki.ts build player
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+build complete in 2.86s.
+{"profile":"player","pages":95,"files":547,"result":"PASS"}
+$ bun tools/wiki.ts build dev
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+build complete in 5.15s.
+{"profile":"dev","pages":157,"files":788,"result":"PASS"}
