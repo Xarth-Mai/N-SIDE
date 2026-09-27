@@ -10,7 +10,10 @@ use bevy::{
     render::view::screenshot::{Screenshot, ScreenshotCaptured},
     time::{TimeSystems, TimeUpdateStrategy},
 };
-use n_side::world::scene::SceneLoading;
+use n_side::{
+    ui::{SignalUi, UiFont, UiInput},
+    world::scene::SceneLoading,
+};
 use serde::{Deserialize, Serialize};
 use std::{
     fs,
@@ -44,6 +47,8 @@ pub struct InputSpan {
     #[serde(default)]
     right_mouse: bool,
     #[serde(default)]
+    gamepad: Vec<String>,
+    #[serde(default)]
     look: [f32; 2],
 }
 
@@ -57,9 +62,17 @@ pub struct Assertion {
     max_distance: Option<f32>,
     min_rotation: Option<f32>,
     enabled: Option<bool>,
+    ui_page: Option<String>,
+    ui_focus: Option<usize>,
+    ui_scale: Option<f32>,
+    ui_device: Option<String>,
+    ui_reduced_motion: Option<bool>,
+    ui_record: Option<usize>,
+    min_ui_scroll: Option<f32>,
+    max_ui_scroll: Option<f32>,
 }
 
-const KEYS: [(&str, KeyCode); 9] = [
+const KEYS: [(&str, KeyCode); 15] = [
     ("W", KeyCode::KeyW),
     ("A", KeyCode::KeyA),
     ("S", KeyCode::KeyS),
@@ -69,12 +82,33 @@ const KEYS: [(&str, KeyCode); 9] = [
     ("Shift", KeyCode::ShiftLeft),
     ("M", KeyCode::KeyM),
     ("Escape", KeyCode::Escape),
+    ("Tab", KeyCode::Tab),
+    ("Enter", KeyCode::Enter),
+    ("Down", KeyCode::ArrowDown),
+    ("Up", KeyCode::ArrowUp),
+    ("PageDown", KeyCode::PageDown),
+    ("PageUp", KeyCode::PageUp),
 ];
+
+const PAD: [(&str, GamepadButton); 7] = [
+    ("Down", GamepadButton::DPadDown),
+    ("Up", GamepadButton::DPadUp),
+    ("Confirm", GamepadButton::South),
+    ("Back", GamepadButton::East),
+    ("Menu", GamepadButton::Start),
+    ("ScrollDown", GamepadButton::RightTrigger),
+    ("ScrollUp", GamepadButton::LeftTrigger),
+];
+#[derive(Component)]
+struct ScriptGamepad;
 
 impl Script {
     fn validate(&self) -> Result<(), String> {
-        if self.scene != "district" || self.view.is_empty() {
-            return Err("scene must be district and view must name an existing Viewer view".into());
+        if !matches!(self.scene.as_str(), "district" | "ui-signal") || self.view.is_empty() {
+            return Err(
+                "scene must be district or ui-signal and view must name an existing Viewer view"
+                    .into(),
+            );
         }
         if !(64..=4096).contains(&self.width)
             || !(64..=4096).contains(&self.height)
@@ -96,6 +130,10 @@ impl Script {
                     .keys
                     .iter()
                     .any(|key| !KEYS.iter().any(|(name, _)| name == key))
+                || event
+                    .gamepad
+                    .iter()
+                    .any(|button| !PAD.iter().any(|(name, _)| name == button))
             {
                 return Err("input spans must be ordered, non-overlapping, within frames and use known keys/finite mouse deltas".into());
             }
@@ -117,7 +155,29 @@ impl Script {
                 || (check.min_distance.is_none()
                     && check.max_distance.is_none()
                     && check.min_rotation.is_none()
-                    && check.enabled.is_none())
+                    && check.enabled.is_none()
+                    && check.ui_page.is_none()
+                    && check.ui_focus.is_none()
+                    && check.ui_scale.is_none()
+                    && check.ui_device.is_none()
+                    && check.ui_reduced_motion.is_none()
+                    && check.ui_record.is_none()
+                    && check.min_ui_scroll.is_none()
+                    && check.max_ui_scroll.is_none())
+                || check.ui_page.as_ref().is_some_and(|page| {
+                    !["world", "menu", "records", "settings", "district"].contains(&page.as_str())
+                })
+                || check
+                    .ui_device
+                    .as_ref()
+                    .is_some_and(|device| !["keyboard_mouse", "gamepad"].contains(&device.as_str()))
+                || check
+                    .ui_scale
+                    .is_some_and(|scale| ![1.0, 1.25].contains(&scale))
+                || [check.min_ui_scroll, check.max_ui_scroll]
+                    .into_iter()
+                    .flatten()
+                    .any(|scroll| !scroll.is_finite() || scroll < 0.0)
             {
                 return Err("assertions require a name, valid frame interval and finite nonnegative limits or enabled expectation".into());
             }
@@ -133,6 +193,7 @@ struct Sample {
     position: [f32; 3],
     rotation: [f32; 4],
     enabled: bool,
+    ui: Option<serde_json::Value>,
 }
 
 #[derive(Resource)]
@@ -209,7 +270,41 @@ impl Recording {
                     let passed = assertion.min_distance.is_none_or(|v| distance >= v)
                         && assertion.max_distance.is_none_or(|v| peak_distance <= v)
                         && assertion.min_rotation.is_none_or(|v| rotation >= v)
-                        && assertion.enabled.is_none_or(|v| b.enabled == v);
+                        && assertion.enabled.is_none_or(|v| b.enabled == v)
+                        && assertion
+                            .ui_page
+                            .as_ref()
+                            .is_none_or(|v| b.ui.as_ref().is_some_and(|ui| ui["page"] == *v))
+                        && assertion
+                            .ui_focus
+                            .is_none_or(|v| b.ui.as_ref().is_some_and(|ui| ui["focus"] == v))
+                        && assertion
+                            .ui_scale
+                            .is_none_or(|v| b.ui.as_ref().is_some_and(|ui| ui["scale"] == v))
+                        && assertion
+                            .ui_device
+                            .as_ref()
+                            .is_none_or(|v| b.ui.as_ref().is_some_and(|ui| ui["device"] == *v))
+                        && assertion.ui_reduced_motion.is_none_or(|v| {
+                            b.ui.as_ref().is_some_and(|ui| ui["reduced_motion"] == v)
+                        })
+                        && assertion.ui_record.is_none_or(|v| {
+                            b.ui.as_ref().is_some_and(|ui| ui["selected_record"] == v)
+                        })
+                        && assertion.min_ui_scroll.is_none_or(|v| {
+                            b.ui.as_ref().is_some_and(|ui| {
+                                ui["scroll"]
+                                    .as_f64()
+                                    .is_some_and(|scroll| scroll >= v as f64)
+                            })
+                        })
+                        && assertion.max_ui_scroll.is_none_or(|v| {
+                            b.ui.as_ref().is_some_and(|ui| {
+                                ui["scroll"]
+                                    .as_f64()
+                                    .is_some_and(|scroll| scroll <= v as f64)
+                            })
+                        });
                     (Some(distance), Some(rotation), Some(b.enabled), passed)
                 });
             checks.push(serde_json::json!({"name":assertion.name, "passed":passed, "expected":assertion, "distance":distance, "rotation_radians":rotation, "enabled":enabled}));
@@ -221,7 +316,7 @@ impl Recording {
             "checks":checks, "samples":self.samples,
             "determinism":"Fixed simulated dt and explicit input sequence; scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
             "visual_review":"NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
-            "scope":"Existing free camera and world assets, not player collision, animation, quests or gameplay acceptance"
+            "scope":"Existing free camera, world assets, and opt-in UI experiment; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. No player collision, animation or gameplay acceptance"
         });
         let written = serde_json::to_vec_pretty(&report)
             .map_err(|e| e.to_string())
@@ -253,10 +348,14 @@ pub fn install(app: &mut App, recording: Recording) {
     app.world_mut()
         .resource_mut::<Time<Virtual>>()
         .set_max_delta(Duration::from_secs(1));
+    app.world_mut().spawn((ScriptGamepad, Gamepad::default()));
     app.insert_resource(Time::<Fixed>::from_hz(recording.script.fps as f64))
         .insert_resource(recording)
         .add_systems(First, advance_clock.before(TimeSystems))
-        .add_systems(RunFixedMainLoop, drive_input.before(camera_focus))
+        .add_systems(
+            RunFixedMainLoop,
+            drive_input.before(UiInput).before(camera_focus),
+        )
         .add_systems(PostUpdate, record);
 }
 
@@ -264,8 +363,13 @@ fn advance_clock(
     mut recording: ResMut<Recording>,
     loading: Res<SceneLoading>,
     mut strategy: ResMut<TimeUpdateStrategy>,
+    ui_font: Option<Res<UiFont>>,
+    assets: Res<AssetServer>,
 ) {
-    recording.tick = loading.ready
+    recording.tick = ui_font
+        .as_ref()
+        .is_none_or(|font| assets.is_loaded_with_dependencies(font.0.id()))
+        && loading.ready
         && recording.warmup == 0
         && !recording.pending
         && recording.samples.len() < recording.script.frames as usize;
@@ -282,10 +386,14 @@ fn drive_input(
     mut keys: ResMut<ButtonInput<KeyCode>>,
     mut buttons: ResMut<ButtonInput<MouseButton>>,
     mut motion: ResMut<AccumulatedMouseMotion>,
+    mut pad: Query<&mut Gamepad, With<ScriptGamepad>>,
 ) {
     keys.clear();
     buttons.clear();
     motion.delta = Vec2::ZERO;
+    for mut gamepad in &mut pad {
+        gamepad.digital_mut().clear();
+    }
     if !recording.tick {
         return;
     }
@@ -295,6 +403,15 @@ fn drive_input(
         .events
         .iter()
         .find(|e| e.start <= frame && frame < e.end);
+    for mut gamepad in &mut pad {
+        for (name, button) in PAD {
+            if event.is_some_and(|e| e.gamepad.iter().any(|b| b == name)) {
+                gamepad.digital_mut().press(button);
+            } else {
+                gamepad.digital_mut().release(button);
+            }
+        }
+    }
     for (name, key) in KEYS {
         if event.is_some_and(|e| e.keys.iter().any(|k| k == name)) {
             keys.press(key);
@@ -312,6 +429,10 @@ fn drive_input(
     }
 }
 
+#[expect(
+    clippy::too_many_arguments,
+    reason = "Bevy injects recorder, world, UI and asset state for evidence"
+)]
 fn record(
     mut commands: Commands,
     mut recording: ResMut<Recording>,
@@ -320,9 +441,17 @@ fn record(
     camera: Query<(&Transform, &FreeCameraState), With<Camera3d>>,
     transforms: Query<(Entity, &Transform)>,
     mut exit: MessageWriter<AppExit>,
+    ui: Option<Res<SignalUi>>,
+    ui_font: Option<Res<UiFont>>,
+    assets: Res<AssetServer>,
 ) {
     if recording.finished {
         return;
+    }
+    if let Some(font) = &ui_font
+        && let Some(bevy::asset::LoadState::Failed(error)) = assets.get_load_state(font.0.id())
+    {
+        recording.failure = Some(format!("UI font loading failed: {error}"));
     }
     if let Some(error) = &loading.failure {
         recording.failure = Some(format!("asset loading: {error}"));
@@ -383,6 +512,9 @@ fn record(
         position: transform.translation.to_array(),
         rotation: transform.rotation.to_array(),
         enabled: state.enabled,
+        ui: ui
+            .as_ref()
+            .map(|ui| serde_json::to_value(&**ui).expect("finite UI state")),
     });
     recording.pending = true;
     commands.spawn(Screenshot::image(target.clone())).observe(
@@ -430,6 +562,15 @@ mod tests {
         let script: Script =
             serde_json::from_str(include_str!("../../../capture/viewer-tour.json")).unwrap();
         assert!(script.validate().is_ok());
+        let ui_script: Script =
+            serde_json::from_str(include_str!("../../../capture/ui-signal.json")).unwrap();
+        assert!(ui_script.validate().is_ok());
+        let mut invalid_ui = ui_script.clone();
+        invalid_ui.events[0].gamepad.push("typo".into());
+        assert!(invalid_ui.validate().is_err());
+        let mut invalid_ui = ui_script;
+        invalid_ui.assertions[0].ui_page = Some("fake_quest".into());
+        assert!(invalid_ui.validate().is_err());
         let mut invalid = script.clone();
         invalid.events[0].keys.push("typo".into());
         assert!(invalid.validate().is_err());

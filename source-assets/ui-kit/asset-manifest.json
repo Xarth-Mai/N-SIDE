@@ -1,0 +1,52 @@
+{
+  "id": "AST-005",
+  "status": "exported",
+  "author": [
+    "Adobe",
+    "Noto contributors"
+  ],
+  "license": "OFL-1.1",
+  "upstream": "https://github.com/notofonts/noto-cjk",
+  "revision": "523d033d6cb47f4a80c58a35753646f5c3608a78",
+  "version": "Sans2.004",
+  "retrieved": "2026-09-27",
+  "export_command": "bun tools/export-ui.ts",
+  "purpose": "街区信号中文标题、正文与输入提示的同家族字重原型",
+  "generation": null,
+  "cost": 0,
+  "font": {
+    "family": "Noto Sans SC",
+    "weight": [
+      100,
+      900
+    ],
+    "unicode_codepoints": 30890,
+    "subset": "Upstream SC subset; no local subsetting or font modification"
+  },
+  "files": [
+    {
+      "source": "fonts/NotoSansSC-VF.ttf",
+      "output": "fonts/NotoSansSC-VF.ttf",
+      "sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964",
+      "bytes": 17773132,
+      "upstream_path": "Sans/Variable/TTF/Subset/NotoSansSC-VF.ttf",
+      "url": "https://raw.githubusercontent.com/notofonts/noto-cjk/523d033d6cb47f4a80c58a35753646f5c3608a78/Sans/Variable/TTF/Subset/NotoSansSC-VF.ttf"
+    },
+    {
+      "source": "licenses/OFL.txt",
+      "output": "licenses/OFL.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "bytes": 4301,
+      "upstream_path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/notofonts/noto-cjk/523d033d6cb47f4a80c58a35753646f5c3608a78/LICENSE"
+    },
+    {
+      "source": "licenses/COPYRIGHT.txt",
+      "output": "licenses/COPYRIGHT.txt",
+      "sha256": "d3e6aa5c6d3893ca46a34dd3d8b82b824503965e31704978c8ac0fdd8d57e937",
+      "bytes": 78,
+      "upstream_path": null,
+      "derived_from": "fonts/NotoSansSC-VF.ttf name ID 0, verbatim"
+    }
+  ]
+}

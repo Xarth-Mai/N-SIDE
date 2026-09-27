@@ -102,11 +102,29 @@ test $status -ne 0
 
 第一条录制 18 秒、640 × 360、30 fps 的真实输入过程，检查横移、转向、释放后停稳和恢复控制。第二条故意要求相机在短时间内移动 1000 m，必须产生 `FAIL` 及非零退出码；它用于验证断言没有失效
 
-`game/capture/viewer-tour.json` 是输入与预期的唯一源：`scene` 当前支持 `district`，`view` 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/Shift/M/Escape，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角或结束时控制器启用状态
+每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 `district` 和 `ui-signal`，`view` 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/Shift/M/Escape/Tab/Enter/Up/Down/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角或结束时控制器启用状态
 
 资源依赖和场景实例就绪后预热 30 个渲染帧，再按 `1 / fps` 推进模拟；每张截图收到异步回调并成功落盘后才推进下一帧，等待期间模拟时间为零。固定输入与时间步改善同环境复现，不能保证跨平台、跨 GPU 的像素一致性；当前场景没有随机行为，`seed` 只作为证据记录，尚无随机系统消费它
 
 输出包含 `frames/` 连续 PNG、`keyframes/` 选定帧、`script.json`、`state.json` 断言与每帧状态、`runtime.log`，以及 `run.json` 中的提交、工作树状态、二进制与 Cargo.lock 哈希、命令和耗时。检测到 ffmpeg 时生成 `video.mp4`，缺少时明确记录 `NOT RUN` 并保留完整图片序列；墙钟时间不作为游戏帧率指标
+
+## 街区信号 UI 样板
+
+`SignalUiPlugin` 在同一真实城市场景中叠加工作菜单、调查记录排版样例、设置和街区说明。`--ui-preview` 是技术与视觉实验入口，正式游戏入口仍为 Logo；样例记录不写任务或存档，不可用入口显示原因
+
+```fish
+bun tools/export-ui.ts --check
+cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --view shop --ui-preview
+python3 tools/capture.py --script game/capture/ui-signal.json --output output/capture/ui-signal
+```
+
+Tab 打开或返回，方向键移动焦点，Enter 确认，Esc 返回；鼠标可选可用按钮，PageUp/PageDown 或滚轮滚动正文。手柄使用方向键、南键确认、东键返回、Start 菜单、肩键翻页；具体提示随当前输入切换。界面缩放 100%/125% 和减少动态效果在本次会话中生效，未实现设置持久化或重映射
+
+Capture 的 `gamepad` 字段发送 `Down`、`Up`、`Confirm`、`Back`、`Menu`、`ScrollDown`、`ScrollUp` 等允许的数字输入，直接经过同一 Bevy `Gamepad` 状态路径；这是模拟输入，不是实物连接、热插拔或手感验收。`ui_page`、`ui_focus`、`ui_record`、`ui_scale`、`ui_device`、`ui_reduced_motion`、`min_ui_scroll` / `max_ui_scroll` 断言读取实际 UI 状态，配合菜单开启期间镜头停移与返回后的真实相机操作检查
+
+字体异步就绪后才开始 UI capture，失败诊断返回非零。UI 样板使用 `scene: ui-signal` 捕获，不与固定镜头 `--verify` 模式混用；固定镜头仍负责世界渲染检查。布局、字形和遮挡必须实际看图，参数与实现状态分别见[UI 规格](../docs/dev/design/systems/ui.md)、[源资产](../source-assets/ui-kit/README.md)与 TASK-026 的运行记录
+
+当前锁定的 Parley 0.9.0 使用 `WordSegmenter::new_for_non_complex_scripts`，含中文时日志会报告 `No segmentation model for complex script: Chinese/Japanese`。本轮字形覆盖、实际显示和换行已分别核对；按词选择尚未实现，不能据此宣称中文分词正确。保留原诊断，暂未为此更换 Bevy 或加入本地 Parley 分支
 
 机器检查覆盖资产就绪、每帧有限 Transform、完整截图与脚本断言。读取、写入、超时和断言错误均返回非零退出码，原始诊断留在日志。交付前实际打开关键帧和连续帧，或播放视频，分别记录构图、遮挡、材质和动作观察；生成成功不自动等于视觉通过。`output/` 属于忽略的验收产物，不能进入 `game/assets/`
 
@@ -116,3 +134,5 @@ cargo test --manifest-path game/Cargo.toml --features viewer --locked
 ```
 
 这些测试不依赖 GPU，检查输入脚本、证据序列和进程超时；实际渲染仍需 Vulkan 设备。无设备时保留失败诊断并在具备 GPU 的环境运行录制命令，不将跳过计为通过
+
+当前锁定的 Parley 0.9.0 中文按词分段会输出 `No segmentation model for complex script: Chinese/Japanese`，其 `analysis/mod.rs` 使用非复杂文字的 word segmenter；本轮未为只读 UI 引入整个依赖分叉。实际中文字形与换行单独看图检查，告警保留在原始日志，不能据此宣称中文按词选择或文本编辑已通过。背景、文字与焦点只在值变化时更新，减少无效重排；后续接文本编辑或升级依赖时重新核查该限制

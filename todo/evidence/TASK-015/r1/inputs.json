@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-27",
+  "base_commit": "b64759e204c6897ddd0321e2df4c3a704e9843e7",
+  "scope": "TASK-015 documentation source checked before final task record update",
+  "files": {
+    "docs/dev/design/systems/ui.md": "523ce8e5c589144515d607726a2f47ebe3adfbab9bc79b8cfc5ef1486583d8f1",
+    "docs/dev/design/systems/index.md": "5d79f7d5dca3ed9c668dc7b02ddcd94ab5028b961bdab9c1250fb3a53f37932a",
+    "docs/dev/design/systems/input.md": "273ae058a570167cf34343aa9002de6403dc0a5a470c31cd92daecf2782b57a0",
+    "docs/dev/index.md": "c1ee43b6f08d4f42ec015208b88b39d24f24bf30402e05c1a70f7106e9fb6824",
+    "docs/dev/production/ui.md": "8dee60be764e4f543ac6f048498fbf759488e97c21f458ee37505f0eb21898b8",
+    "docs/dev/production/art-direction.md": "d699c8c719d4d6a4751915e00ceabfc614a4fc628b9bc348bbc73aa163c916ec"
+  }
+}

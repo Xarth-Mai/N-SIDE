@@ -1,0 +1,5372 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 180,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 180
+    },
+    {
+      "checked_frames": 180,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 89,
+        "max_distance": null,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "settings_125_percent",
+        "to": 89,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "settings",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": 1.25
+      },
+      "name": "settings_125_percent",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 149,
+        "max_distance": null,
+        "max_ui_scroll": 0.0,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "record_at_125_percent",
+        "to": 149,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": 1.25
+      },
+      "name": "record_at_125_percent",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 179,
+        "max_distance": null,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": 100.0,
+        "name": "long_record_can_scroll",
+        "to": 179,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "long_record_can_scroll",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 0,
+        "max_distance": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "menus_block_world",
+        "to": 179,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "menus_block_world",
+      "passed": true,
+      "rotation_radians": 0.0
+    }
+  ],
+  "determinism": "Fixed simulated dt and explicit input sequence; scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 13.787425559,
+  "error": null,
+  "samples": [
+    {
+      "enabled": false,
+      "frame": 0,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.03333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 1,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.06666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 2,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.1,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 3,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.13333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 4,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.16666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 5,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.2,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 6,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.23333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 7,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.26666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 8,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.3,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 9,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.3333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 10,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.36666666666666664,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 11,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.4,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 12,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.43333333333333335,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 13,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.4666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 14,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.5,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 15,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.5333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 16,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.5666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 17,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.6,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 18,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.6333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 19,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.6666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 20,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.7,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 21,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.7333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 22,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.7666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 23,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.8,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 24,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.8333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 25,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.8666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 26,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.9,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 27,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.9333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 28,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 0.9666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 29,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.0,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 30,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.0333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 31,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.0666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 32,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.1,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 33,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.1333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 34,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.1666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 35,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.2,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 36,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.2333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 37,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.2666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 38,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.3,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 39,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.3333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 1,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 40,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.3666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 41,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.4,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 42,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.4333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 43,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.4666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 44,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.5,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 45,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.5333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 46,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.5666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 47,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.6,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 48,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.6333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 49,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.6666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 2,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 50,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.7,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 51,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.7333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 52,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.7666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 53,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.8,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 54,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.8333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 55,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.8666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 56,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.9,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 57,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.9333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 58,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 1.9666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 59,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.0,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 0,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 60,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.033333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 61,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.066666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 62,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.1,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 63,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.1333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 64,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.1666666666666665,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 65,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.2,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 66,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.2333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 67,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.2666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 68,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.3,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 69,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.3333333333333335,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 70,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.3666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 71,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.4,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 72,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.433333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 73,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.466666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 74,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.5,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 75,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.533333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 76,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.566666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 77,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.6,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 78,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.6333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 79,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.6666666666666665,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.0,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 80,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.7,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 81,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.7333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 82,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.7666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 83,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.8,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 84,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.8333333333333335,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 85,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.8666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 86,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.9,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 87,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.933333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 88,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 2.966666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 89,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.0,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 90,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.033333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 91,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.066666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 92,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.1,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 93,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.1333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 94,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.1666666666666665,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 95,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.2,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 96,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.2333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 97,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.2666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 98,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.3,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 99,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.3333333333333335,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "settings",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 100,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.3666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 184.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 101,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.4,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 102,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.433333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 103,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.466666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 104,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.5,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 105,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.533333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 106,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.566666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 107,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.6,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 108,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.6333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 109,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.6666666666666665,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 110,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.7,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 111,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.7333333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 112,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.7666666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 113,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.8,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 114,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.8333333333333335,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 115,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.8666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 116,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.9,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 117,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.933333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 118,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 3.966666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 119,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.0,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 4,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 120,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.033333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 121,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.066666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 122,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.1,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 123,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.133333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 124,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.166666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 125,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.2,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 126,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.233333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 127,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.266666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 128,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.3,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 129,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 130,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.366666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 131,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.4,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 132,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.433333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 133,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.466666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 134,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.5,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 135,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.533333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 136,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.566666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 137,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.6,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 138,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.633333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 139,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 3,
+        "input_consumed": true,
+        "menu_focus": 4,
+        "page": "menu",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 87.29999542236328,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 140,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.7,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 141,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.733333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 142,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.766666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 143,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.8,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 144,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.833333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 145,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.866666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 146,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.9,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 147,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.933333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 148,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 4.966666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 149,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.0,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 150,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.033333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 151,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.066666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 152,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.1,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 153,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.133333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 154,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.166666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 155,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.2,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 156,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.233333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 157,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.266666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 158,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.3,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 159,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.333333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 0.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 160,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.366666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 161,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.4,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 162,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.433333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 163,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.466666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 164,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.5,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 165,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.533333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 166,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.566666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 167,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.6,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 168,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.633333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 169,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.666666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 170,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.7,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 171,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.733333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 172,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.766666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 173,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.8,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 174,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.833333333333333,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 175,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.866666666666666,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 176,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.9,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 177,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.933333333333334,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 178,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 5.966666666666667,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    },
+    {
+      "enabled": false,
+      "frame": 179,
+      "position": [
+        110.0,
+        33.0,
+        -238.0
+      ],
+      "rotation": [
+        -0.04673471301794052,
+        0.4156110882759094,
+        0.02138938009738922,
+        0.9080891609191895
+      ],
+      "simulation_seconds": 6.0,
+      "ui": {
+        "device": "keyboard_mouse",
+        "focus": 0,
+        "input_consumed": true,
+        "menu_focus": 2,
+        "page": "records",
+        "reduced_motion": false,
+        "saved_record_scroll": 0.0,
+        "scale": 1.25,
+        "scroll": 240.0,
+        "selected_record": 0
+      }
+    }
+  ],
+  "scope": "Existing free camera, world assets, and opt-in UI experiment; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. No player collision, animation or gameplay acceptance",
+  "script": {
+    "assertions": [
+      {
+        "enabled": null,
+        "from": 89,
+        "max_distance": null,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "settings_125_percent",
+        "to": 89,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "settings",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": 1.25
+      },
+      {
+        "enabled": null,
+        "from": 149,
+        "max_distance": null,
+        "max_ui_scroll": 0.0,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "record_at_125_percent",
+        "to": 149,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": 1.25
+      },
+      {
+        "enabled": null,
+        "from": 179,
+        "max_distance": null,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": 100.0,
+        "name": "long_record_can_scroll",
+        "to": 179,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      {
+        "enabled": false,
+        "from": 0,
+        "max_distance": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "menus_block_world",
+        "to": 179,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      }
+    ],
+    "events": [
+      {
+        "end": 31,
+        "gamepad": [],
+        "keys": [
+          "Down"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 41,
+        "gamepad": [],
+        "keys": [
+          "Down"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 40
+      },
+      {
+        "end": 51,
+        "gamepad": [],
+        "keys": [
+          "Down"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 50
+      },
+      {
+        "end": 61,
+        "gamepad": [],
+        "keys": [
+          "Down",
+          "Enter"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 60
+      },
+      {
+        "end": 81,
+        "gamepad": [],
+        "keys": [
+          "Enter"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 80
+      },
+      {
+        "end": 101,
+        "gamepad": [],
+        "keys": [
+          "Escape"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 100
+      },
+      {
+        "end": 121,
+        "gamepad": [],
+        "keys": [
+          "Up"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 120
+      },
+      {
+        "end": 141,
+        "gamepad": [],
+        "keys": [
+          "Up",
+          "Enter"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 140
+      },
+      {
+        "end": 161,
+        "gamepad": [],
+        "keys": [
+          "PageDown"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 160
+      }
+    ],
+    "fps": 30,
+    "frames": 180,
+    "height": 1024,
+    "keyframes": [
+      29,
+      59,
+      89,
+      119,
+      149,
+      179
+    ],
+    "scene": "ui-signal",
+    "seed": 0,
+    "timeout_seconds": 300,
+    "view": "shop",
+    "width": 1280
+  },
+  "status": "PASS",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality"
+}

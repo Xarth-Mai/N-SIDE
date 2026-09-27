@@ -1,0 +1,137 @@
+$ bun node_modules/typescript/bin/tsc -p tsconfig.json && bun tools/check-vue.ts -p tsconfig.vue.json
+$ python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests
+.......................................................................................................
+----------------------------------------------------------------------
+Ran 103 tests in 1.922s
+
+OK
+bun test v1.4.2 (744846f84)
+
+tools/tests/wiki.test.ts:
+(pass) sidebar follows audience and preserves story reading order [2.89ms]
+(pass) data export is fail-closed and dev-only, ignoring hidden files and symlinks [3.45ms]
+(pass) publication requires a known profile and an actual entry page [0.67ms]
+(pass) isolated player tree excludes developer pages/data/public and uses redirects [384.45ms]
+(pass) renamed pages resolve current, encyclopedia and original URLs directly with fragments [333.81ms]
+(pass) player imports and public data cannot bypass the publication boundary [4.89ms]
+(pass) map projection retains actual drawing/interaction and drops author fields [157.09ms]
+(pass) map display renaming preserves rendered geometry and stable place identity [291.84ms]
+(pass) artifact check detects injected developer raw data and search content [202.99ms]
+(pass) inline template placeholders remain literal Vue text [181.79ms]
+(pass) Vite module loading rejects source files outside the isolated tree [273.71ms]
+(pass) external search data remains inside the selected audience [213.10ms]
+(pass) real home includes the overview and audience navigation, with root-safe links [357.54ms]
+(pass) published logo is readable even when the source is private [179.48ms]
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [1.56ms]
+(pass) terrain colors follow ground elevation [0.18ms]
+(pass) map overview fits extended terrain on wide and narrow screens [181.66ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [110.84ms]
+(pass) mountain city keeps metre scale and usable graded route alternatives [5.09ms]
+(pass) overview terrain retains source controls and excludes elevated connections [4032.29ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.03ms]
+(pass) shopping stays local and public hillside routes remain connected [1.32ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.26ms]
+(pass) scene keeps platforms below volumes and geometry is finite [143.41ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [6.71ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [12.58ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [1.11ms]
+(pass) tree positions stay outside building footprints [6.77ms]
+(pass) all streets clear building volumes at their actual widths and elevations [367.29ms]
+(pass) district ground-road crossings share a junction and its elevation [286.84ms]
+(pass) city framework records every building and reaches its same-level facade entrances [13.89ms]
+(pass) city stairs retain short flights, level rests and full-size treads [1.17ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.94ms]
+(pass) public streets stay outside same-level resident and service courts [4.87ms]
+(pass) building volumes share boundaries without occupying the same space [29.25ms]
+(pass) detailed places connect street access to separate public and service entrances [16.56ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.67ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [4.78ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.41ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.44ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [54.00ms]
+(pass) public, residents, students and service users have separate access rights [12.89ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.57ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.91ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.95ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.63ms]
+(pass) shared stairs and separate apartments connect through shared circulation [1.29ms]
+
+tools/tests/validate-skills.test.ts:
+(pass) real Bun YAML, complete coverage and anchors pass [2.54ms]
+(pass) missing manifest [1.41ms]
+(pass) empty object [0.31ms]
+(pass) null manifest [0.29ms]
+(pass) bad JSON [0.28ms]
+(pass) unknown version [0.32ms]
+(pass) bad adoption schema [0.29ms]
+(pass) missing adoption target [0.64ms]
+(pass) empty sources [0.30ms]
+(pass) empty imports [0.31ms]
+(pass) empty policy [0.33ms]
+(pass) null skill [0.58ms]
+(pass) bad files type [0.45ms]
+(pass) null file record [0.46ms]
+(pass) bad source [0.45ms]
+(pass) bad fields [0.25ms]
+(pass) missing project entrypoint [0.46ms]
+(pass) empty skills directory [0.40ms]
+(pass) duplicate source [0.45ms]
+(pass) duplicate path [0.47ms]
+(pass) missing reference [0.39ms]
+(pass) altered source [0.41ms]
+(pass) unregistered script [0.49ms]
+(pass) missing command path [0.51ms]
+(pass) bad anchor [0.44ms]
+(pass) bad YAML metadata [0.49ms]
+(pass) bad metadata type [0.51ms]
+(pass) missing icon [0.47ms]
+(pass) missing license [0.48ms]
+(pass) optional links cannot exempt missing files [0.55ms]
+(pass) invalid nested fields [0.52ms]
+(pass) unavailable command [0.71ms]
+(pass) inactive upstream reference links are checked [0.63ms]
+(pass) local hashes alone explicitly do not prove upstream equality [0.53ms]
+(pass) Wiki anchors match the installed VitePress renderer while upstream keeps GitHub slugs [32.96ms]
+
+tools/tests/tasks.test.ts:
+(pass) real YAML supports a completed negative experiment and exact evidence anchors [1.79ms]
+(pass) schema, paths and state guardrails reject corrupt cards [5.46ms]
+(pass) dependencies are unique, real, acyclic, and cancellation does not satisfy a result [1.35ms]
+(pass) reopening removes current acceptance while old evidence stays in the body [0.75ms]
+(pass) check is read-only, sync deterministic, list read-only and stale output fails [0.90ms]
+(pass) empty task source or missing roadmap cannot pass [0.31ms]
+
+tools/tests/toolchain.test.ts:
+(pass) search adapter emits the original index and preserves the lazy loader contract [0.48ms]
+(pass) Vue checker reports errors inside a real SFC instead of silently skipping it [457.12ms]
+
+tools/tests/story-graph.test.ts:
+(pass) nested ALL/ANY keeps alternatives after partial satisfaction, never unlocks from one parent [0.21ms]
+(pass) all 22 stories validate; projection excludes narrative internals and design metadata [2.97ms]
+(pass) current story separates early history, later proof and optional life outcomes [1.20ms]
+(pass) unknown quests, self locks and invalid typed narrative targets fail explicitly [7.16ms]
+(pass) mandatory cycles with no entry fail, ANY external entry succeeds [2.04ms]
+(pass) optional side cannot be unavoidable, including a mandatory main stage; ANY main alternative is valid [2.77ms]
+(pass) outcomes cannot escape their required production stage in a cycle [1.16ms]
+(pass) recommendations and associations never block; mixed condition semantics are rejected [1.62ms]
+(pass) broken role, order, relation, schema and source references do not silently repair [7.41ms]
+(pass) single source owns all indexed story pages [0.57ms]
+(pass) removing an otherwise unreferenced story cannot silently drop a page [1.11ms]
+(pass) optional vignettes may depend on optional stories without blocking main completion [1.16ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) terrain bake preserves authored geometry and repeats without drift [3117.69ms]
+(pass) terrain noise protects complete road segments and footprints [3301.20ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [48.87ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [3.95ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.55ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [976.12ms]
+
+ 108 pass
+ 0 fail
+ 221 expect() calls
+Ran 108 tests across 8 files. [15.96s]

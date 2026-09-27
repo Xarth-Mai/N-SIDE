@@ -1,0 +1,12 @@
+{
+  "scope": "Non-ASCII characters in final UI source including symbols; runtime shaping/clipping reviewed separately",
+  "status": "PASS",
+  "font_sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964",
+  "module_sha256": "3e74f21a4baf9e7750e70ebdd60d5dba09218d231627bc0be94164ec6d50ac97",
+  "unique_non_ascii": 304,
+  "missing": [],
+  "weight_axis": [
+    100,
+    900
+  ]
+}

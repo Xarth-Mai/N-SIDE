@@ -1,0 +1,149 @@
+{
+  "baseline": "b64759e",
+  "files": {
+    "game/src/ui.rs": "4a982542138b834f5d7937873a5496152a0cbcee8d159886b81c41d6f3f26f3d",
+    "game/src/lib.rs": "cce35afb0352a3905156f36d2f3faef38369738b9d423d0164d205fd7aedb37e",
+    "game/src/bin/map_viewer.rs": "39ef6a3f4b2c95979a298db5e6310ce393a7f82edf8ca9f960bae1db030d105d",
+    "game/src/bin/map_viewer/capture.rs": "f810523d35336ddb7a8fc486865bcf4c3948601f1ba5562f41a5b258d034efae",
+    "game/src/world/geometry.rs": "fb86a856778e22edf048883958b982947e349d0103ae40010ac6806c91791ecd",
+    "game/capture/ui-signal.json": "74f9f77e8176c0e0f4d99cb0a61168419fc659d52a332a29ba7d21165b60269a",
+    "game/Cargo.lock": "d90f8a806751b4af4c30ae6826715b9cc81faeb668e6315ccd8ea2d1b0e73dfa",
+    "source-assets/ui-kit/tokens.json": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426",
+    "source-assets/ui-kit/asset-manifest.json": "25a589d8e8ee49cb6bc4421e455a3c141b644743f99c6c1dc353f767c6bc9d45",
+    "source-assets/district-map/district.json": "77d5870f1d145d02ea353f2f6f351665261fe2735a2816916fb921a7e1501a8c",
+    "tools/export-ui.ts": "a4639201e37304367225e9ee69f7b11725cb25da494b3bc25ebb1bc2510b6266"
+  },
+  "binary_sha256": "43f65e38cd265f736691f0a0becebb57e69265da1e711554c1e0ef26d5796664",
+  "images": [
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00029.png",
+      "sha256": "950133116fcbf4ba0f1be8e6c261a84bb5c38ad4795d436a58f346426879a66c",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00029.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00100.png",
+      "sha256": "cc9f866164a2e4de5eb2f4d20689ad863337e3ca8309492a439d27c8f6eab6be",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00100.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00150.png",
+      "sha256": "e14fba8d7c48a6582d8f7183c6e927950228d391b084bd7de56e739fbe2a26ee",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00150.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00200.png",
+      "sha256": "fb3e8f5397370aa6fa1b34765fde3bc87da1895973931463858c1d8f8d90014f",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00200.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00229.png",
+      "sha256": "6c5c3dd1d6ec876b2d9369440a41aebb398eaff00e3ec1dab4051e7358909e28",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00229.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00259.png",
+      "sha256": "5b3500f3742e84bf0171a4c0cf4b7f9029abf1bb0ddea1ab70330055300cefc1",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00259.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00289.png",
+      "sha256": "3aafa2008dd2b036fd228e7c65e185235c667c0b010a6d5c326a115e4f4be3b2",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00289.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00379.png",
+      "sha256": "184af495ebb8f31231031b7b85487a2e2de5e60df924d4c4cf247ca5675fbd7f",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00379.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00409.png",
+      "sha256": "ea55dd330cc4682b7e5e6f239306014fdc4fbf9f6dfeb2aa29d9e96729881990",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00409.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00439.png",
+      "sha256": "77e58d3fdbabe091f020e1bcae2955c2ca989d010dcc3af6e7a510a34ab8b02c",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00439.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00479.png",
+      "sha256": "2a5c106c1b1469b44bdbad4fa1fc370f9fea706d7cb07b4d5580a8a5a875f825",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00479.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00529.png",
+      "sha256": "2445fd1357b1b5f38dad116e6b33d78f1a954c38d6e3ab62cf4d5905f018930d",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00529.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/main/keyframes/frame00599.png",
+      "sha256": "bfe2f73d6d8ee86519fb659fe4f9c4ee13599f93c3e6bdc44cdb8c6f9a444464",
+      "derived": "todo/evidence/TASK-026/r2/main/frame00599.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/narrow/keyframes/frame00029.png",
+      "sha256": "7897259ba438362b0f7643015891bbc632f8a4cf2b9dff3aabe664e7cce53d2c",
+      "derived": "todo/evidence/TASK-026/r2/narrow/frame00029.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/narrow/keyframes/frame00059.png",
+      "sha256": "43c14b1a914af879efae2b6b2afa2697f7adfe06403714b3380337a6df3cbce5",
+      "derived": "todo/evidence/TASK-026/r2/narrow/frame00059.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/narrow/keyframes/frame00089.png",
+      "sha256": "8017b71385c412430aa72b9e33cd77fa29837251b2ab09d38f90f3291d5b2b43",
+      "derived": "todo/evidence/TASK-026/r2/narrow/frame00089.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/narrow/keyframes/frame00119.png",
+      "sha256": "7ca2423c9b34e6d41ec170dacfb9cfc926739c534820b88a830d9c91f79bbad4",
+      "derived": "todo/evidence/TASK-026/r2/narrow/frame00119.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/narrow/keyframes/frame00149.png",
+      "sha256": "c771ea36dac839d2e76d5a13ad0c27d40e60fadcb13a91cce6eb874edac0ad3b",
+      "derived": "todo/evidence/TASK-026/r2/narrow/frame00149.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/narrow/keyframes/frame00179.png",
+      "sha256": "2b43689da5b1e62249bf225211a0bfc8f4aa45d8a0afd1c04e5f8d25098c0494",
+      "derived": "todo/evidence/TASK-026/r2/narrow/frame00179.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/wide/keyframes/frame00029.png",
+      "sha256": "8cb25309e3112ce62283b86f225a24b9c64ae34f40be1e93b65c359e91155c89",
+      "derived": "todo/evidence/TASK-026/r2/wide/frame00029.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/wide/keyframes/frame00059.png",
+      "sha256": "d3c2489518807bea5d869b93d9d8e5e89db68369b53aa73bc9590ed3326bf86e",
+      "derived": "todo/evidence/TASK-026/r2/wide/frame00059.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/wide/keyframes/frame00089.png",
+      "sha256": "62f73b734ca38eeefff3b963685647567b631a7c298dd52127c2186b6780cc77",
+      "derived": "todo/evidence/TASK-026/r2/wide/frame00089.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/wide/keyframes/frame00119.png",
+      "sha256": "d2f51c38f0529ac40a404c9055e0315617c18448d050b1542c476578787a91d3",
+      "derived": "todo/evidence/TASK-026/r2/wide/frame00119.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/wide/keyframes/frame00149.png",
+      "sha256": "ef55a4441d3c17c5f42fbb2a1961b541d883b92a312fde6cb219f2e916b98500",
+      "derived": "todo/evidence/TASK-026/r2/wide/frame00149.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/wide/keyframes/frame00179.png",
+      "sha256": "9de466eb23004c26b6f827bbe56fab21b5fd02fcadea42a8f5d2c7cdfc3b644d",
+      "derived": "todo/evidence/TASK-026/r2/wide/frame00179.webp"
+    },
+    {
+      "source": "output/ui-signal/2026-09-27/r2/expected-failure/keyframes/frame00029.png",
+      "sha256": "c0759d287f5142e3fe6c41be342fe3d57e21e1c0532a3ee76afeb5047219722e",
+      "derived": "todo/evidence/TASK-026/r2/expected-failure/frame00029.webp"
+    }
+  ]
+}

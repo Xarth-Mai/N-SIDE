@@ -22,6 +22,7 @@ use bevy::{
     },
     winit::WinitPlugin,
 };
+use n_side::ui::{SignalUi, SignalUiPlugin, UiInput};
 use n_side::world::{
     geometry::Ground,
     map::{Building, Fixture, Map, map_to_world},
@@ -65,6 +66,7 @@ fn run() -> Result<AppExit, String> {
     let mut selected_view = None;
     let mut uncapped = false;
     let mut capture_script = None;
+    let mut ui_preview = false;
     let mut capture_output = None;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
@@ -73,6 +75,7 @@ fn run() -> Result<AppExit, String> {
                 root = PathBuf::from(args.next().ok_or("--project-root requires a directory")?)
             }
             "--validate" => validate = true,
+            "--ui-preview" => ui_preview = true,
             "--capture" => {
                 capture_script = Some(PathBuf::from(
                     args.next().ok_or("--capture requires a script")?,
@@ -104,7 +107,7 @@ fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--validate           Check map, geometry, appearance and daylight without a GPU\n--capture SCRIPT --output DIRECTORY  Scripted offscreen interaction evidence\n--verify DIRECTORY   Automated fixed-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n--visual PATH        Daylight JSON (default source-assets/district-scene/daylight.json)\n--aa MODE            msaa4 (default), taa, taa-ssao\n--view NAME          Start at or verify one fixed view\n--uncapped           Disable window VSync for measurement\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
+                    "N:SIDE Map Viewer\n--project-root PATH  Repository root (default .)\n--ui-preview         Neighborhood Signal UI experiment over the real world\n--validate           Check map, geometry, appearance and daylight without a GPU\n--capture SCRIPT --output DIRECTORY  Scripted offscreen interaction evidence\n--verify DIRECTORY   Automated fixed-view render and frame-time check\n--verify-headless DIRECTORY  Vulkan offscreen render check (no window)\n--visual PATH        Daylight JSON (default source-assets/district-scene/daylight.json)\n--aa MODE            msaa4 (default), taa, taa-ssao\n--view NAME          Start at or verify one fixed view\n--uncapped           Disable window VSync for measurement\n\nWASD move, Q/E down/up, Shift accelerate, wheel speed, right mouse look, M toggle capture, Esc release"
                 );
                 return Ok(AppExit::Success);
             }
@@ -117,11 +120,15 @@ fn run() -> Result<AppExit, String> {
     if capture_script.is_some() && (verify.is_some() || selected_view.is_some() || validate) {
         return Err("--capture selects its own scene/view; cannot combine with --verify, --view or --validate".into());
     }
+    if ui_preview && verify.is_some() {
+        return Err("--ui-preview uses --capture with scene ui-signal for font, input and UI state verification; fixed-view --verify is world-only".into());
+    }
     let capture = capture_script
         .map(|path| capture::Recording::load(&path, capture_output.unwrap()))
         .transpose()?;
     if let Some(recording) = &capture {
         headless = true;
+        ui_preview |= recording.script.scene == "ui-signal";
         selected_view = Some(recording.script.view.clone());
     }
     let (width, height) = capture.as_ref().map_or((2560, 1440), |recording| {
@@ -276,8 +283,13 @@ fn run() -> Result<AppExit, String> {
         )
         .add_systems(
             RunFixedMainLoop,
-            camera_focus.before(run_freecamera_controller),
+            camera_focus
+                .after(UiInput)
+                .before(run_freecamera_controller),
         );
+    if ui_preview {
+        app.add_plugins(SignalUiPlugin);
+    }
     if headless {
         app.add_plugins(ScheduleRunnerPlugin::run_loop(std::time::Duration::ZERO));
     }
@@ -698,6 +710,7 @@ fn camera_focus(
     mouse: Res<ButtonInput<MouseButton>>,
     loading: Res<SceneLoading>,
     verification: Option<Res<Verification>>,
+    ui: Option<Res<SignalUi>>,
     mut windows: Query<(&Window, &mut CursorOptions), With<PrimaryWindow>>,
     mut cameras: Query<&mut FreeCameraState>,
 ) {
@@ -709,6 +722,9 @@ fn camera_focus(
             || keys.just_pressed(KeyCode::Escape)
             || !loading.ready
             || verification.is_some()
+            || ui
+                .as_ref()
+                .is_some_and(|ui| ui.is_open() || ui.input_consumed)
         {
             state.enabled = false;
             state.velocity = Vec3::ZERO;

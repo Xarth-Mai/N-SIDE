@@ -1,0 +1,64 @@
+{
+  "scope": "Opaque UI fill pairs only; no claim on every antialias edge, future textures or overlay combinations",
+  "status": "PASS",
+  "pairs": [
+    {
+      "ink": "text",
+      "background": "base",
+      "ratio": 15.97131121198736,
+      "passed": true
+    },
+    {
+      "ink": "text",
+      "background": "raised",
+      "ratio": 12.544149017207195,
+      "passed": true
+    },
+    {
+      "ink": "secondary",
+      "background": "base",
+      "ratio": 9.044045694598355,
+      "passed": true
+    },
+    {
+      "ink": "secondary",
+      "background": "raised",
+      "ratio": 7.1033527182365885,
+      "passed": true
+    },
+    {
+      "ink": "base",
+      "background": "focus",
+      "ratio": 13.973666987640733,
+      "passed": true
+    },
+    {
+      "ink": "warm",
+      "background": "base",
+      "ratio": 7.4080107240468545,
+      "passed": true
+    },
+    {
+      "ink": "dream",
+      "background": "base",
+      "ratio": 10.625812427771258,
+      "passed": true
+    },
+    {
+      "ink": "warning",
+      "background": "base",
+      "ratio": 6.511394914374172,
+      "passed": true
+    }
+  ],
+  "rendered_palette_pixel_counts": {
+    "base": 991891,
+    "raised": 41012,
+    "text": 27845,
+    "secondary": 5339,
+    "focus": 24353,
+    "warm": 2309,
+    "dream": 0,
+    "warning": 0
+  }
+}

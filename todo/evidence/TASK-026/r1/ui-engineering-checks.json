@@ -1,0 +1,98 @@
+{
+  "results": [
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "game/Cargo.toml",
+        "--check"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "log": "ui-format.log"
+    },
+    {
+      "command": [
+        "game/target/debug/map_viewer",
+        "--ui-preview",
+        "--verify",
+        "output/should-not-exist-ui-verify"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "passed": true,
+      "log": "ui-cli-negative.log"
+    },
+    {
+      "command": "cargo clippy --manifest-path game/Cargo.toml --all-targets --features viewer --locked -- -D warnings",
+      "exit_code": 0,
+      "passed": true,
+      "evidence_type": "tool output observed this turn; no raw log file was redirected",
+      "output_summary": "Finished dev profile in 1.50s"
+    },
+    {
+      "command": "cargo test --manifest-path game/Cargo.toml --features viewer --locked ui::tests",
+      "exit_code": 0,
+      "passed": true,
+      "evidence_type": "tool output observed this turn; no raw log file was redirected",
+      "tests": [
+        "ui::tests::menu_flow_keeps_focus_and_sample_information_separate",
+        "ui::tests::token_colors_and_text_contrast_are_valid"
+      ],
+      "passed_count": 2,
+      "output_summary": "Compiled 29.54s; 2 passed, 0 failed"
+    },
+    {
+      "command": "cargo build --manifest-path game/Cargo.toml --features viewer --bin map_viewer --locked",
+      "exit_code": 0,
+      "passed": true,
+      "evidence_type": "tool output observed this turn; no raw log file was redirected",
+      "output_summary": "Finished dev profile in 10.84s"
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "--manifest-path",
+        "game/Cargo.toml",
+        "--all-targets",
+        "--features",
+        "viewer",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "ui-final-clippy.log"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--manifest-path",
+        "game/Cargo.toml",
+        "--features",
+        "viewer",
+        "--bin",
+        "map_viewer",
+        "--locked"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "ui-final-build.log"
+    }
+  ],
+  "inputs_sha256": {
+    "game/src/ui.rs": "3e74f21a4baf9e7750e70ebdd60d5dba09218d231627bc0be94164ec6d50ac97",
+    "game/src/bin/map_viewer.rs": "39ef6a3f4b2c95979a298db5e6310ce393a7f82edf8ca9f960bae1db030d105d",
+    "game/src/bin/map_viewer/capture.rs": "f810523d35336ddb7a8fc486865bcf4c3948601f1ba5562f41a5b258d034efae",
+    "game/src/lib.rs": "cce35afb0352a3905156f36d2f3faef38369738b9d423d0164d205fd7aedb37e",
+    "game/capture/ui-signal.json": "74f9f77e8176c0e0f4d99cb0a61168419fc659d52a332a29ba7d21165b60269a",
+    "source-assets/ui-kit/tokens.json": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426"
+  },
+  "binary_sha256": "37c70787c78917525fa71a8819b145f6f704f1e58a1dd759e088f7c4881fc38e"
+}

@@ -1,0 +1,683 @@
+{
+  "status": "PASS",
+  "script": {
+    "scene": "ui-signal",
+    "view": "shop",
+    "width": 1600,
+    "height": 900,
+    "fps": 30,
+    "frames": 600,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      29,
+      100,
+      150,
+      200,
+      229,
+      259,
+      289,
+      379,
+      409,
+      439,
+      479,
+      529,
+      599
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 59,
+        "keys": [
+          "M",
+          "W"
+        ]
+      },
+      {
+        "start": 60,
+        "end": 61,
+        "keys": [
+          "Down"
+        ]
+      },
+      {
+        "start": 90,
+        "end": 91,
+        "keys": [
+          "Enter"
+        ]
+      },
+      {
+        "start": 120,
+        "end": 121,
+        "keys": [
+          "Down",
+          "Enter"
+        ]
+      },
+      {
+        "start": 180,
+        "end": 181,
+        "keys": [
+          "PageDown"
+        ]
+      },
+      {
+        "start": 210,
+        "end": 211,
+        "gamepad": [
+          "Down"
+        ]
+      },
+      {
+        "start": 240,
+        "end": 241,
+        "gamepad": [
+          "Confirm"
+        ]
+      },
+      {
+        "start": 270,
+        "end": 271,
+        "gamepad": [
+          "Back"
+        ]
+      },
+      {
+        "start": 300,
+        "end": 301,
+        "gamepad": [
+          "Down"
+        ]
+      },
+      {
+        "start": 330,
+        "end": 331,
+        "gamepad": [
+          "Down"
+        ]
+      },
+      {
+        "start": 360,
+        "end": 361,
+        "gamepad": [
+          "Confirm"
+        ]
+      },
+      {
+        "start": 390,
+        "end": 391,
+        "gamepad": [
+          "Confirm"
+        ]
+      },
+      {
+        "start": 420,
+        "end": 421,
+        "gamepad": [
+          "Down",
+          "Confirm"
+        ]
+      },
+      {
+        "start": 450,
+        "end": 451,
+        "gamepad": [
+          "Back"
+        ]
+      },
+      {
+        "start": 480,
+        "end": 481,
+        "keys": [
+          "Tab",
+          "M",
+          "W"
+        ]
+      },
+      {
+        "start": 495,
+        "end": 496,
+        "keys": [
+          "M"
+        ]
+      },
+      {
+        "start": 496,
+        "end": 520,
+        "keys": [
+          "W"
+        ]
+      },
+      {
+        "start": 540,
+        "end": 541,
+        "keys": [
+          "Tab",
+          "M",
+          "W"
+        ]
+      }
+    ],
+    "assertions": [
+      {
+        "name": "main_menu_starts_with_focus",
+        "from": 29,
+        "to": 29,
+        "ui_page": "menu",
+        "ui_focus": 0,
+        "enabled": false
+      },
+      {
+        "name": "unavailable_quest_does_not_open",
+        "from": 100,
+        "to": 100,
+        "ui_page": "menu",
+        "ui_focus": 1
+      },
+      {
+        "name": "keyboard_opens_record_sample",
+        "from": 150,
+        "to": 150,
+        "ui_page": "records",
+        "ui_record": 0,
+        "ui_device": "keyboard_mouse"
+      },
+      {
+        "name": "long_chinese_scrolls",
+        "from": 200,
+        "to": 200,
+        "min_ui_scroll": 100
+      },
+      {
+        "name": "gamepad_selects_empty_record",
+        "from": 259,
+        "to": 259,
+        "ui_page": "records",
+        "ui_record": 1,
+        "ui_device": "gamepad"
+      },
+      {
+        "name": "back_restores_work_menu_focus",
+        "from": 289,
+        "to": 289,
+        "ui_page": "menu",
+        "ui_focus": 2
+      },
+      {
+        "name": "gamepad_opens_settings",
+        "from": 379,
+        "to": 379,
+        "ui_page": "settings",
+        "ui_focus": 0
+      },
+      {
+        "name": "scale_setting_takes_effect",
+        "from": 409,
+        "to": 409,
+        "ui_page": "settings",
+        "ui_scale": 1.25
+      },
+      {
+        "name": "reduced_motion_takes_effect",
+        "from": 439,
+        "to": 439,
+        "ui_reduced_motion": true
+      },
+      {
+        "name": "settings_return_keeps_focus",
+        "from": 479,
+        "to": 479,
+        "ui_page": "menu",
+        "ui_focus": 4
+      },
+      {
+        "name": "menu_blocks_camera_input",
+        "from": 0,
+        "to": 479,
+        "max_distance": 0.0001,
+        "enabled": false
+      },
+      {
+        "name": "return_to_world_allows_real_camera",
+        "from": 495,
+        "to": 519,
+        "min_distance": 8,
+        "enabled": true,
+        "ui_page": "world"
+      },
+      {
+        "name": "reopen_restores_focus_and_settings",
+        "from": 599,
+        "to": 599,
+        "ui_page": "menu",
+        "ui_focus": 4,
+        "ui_scale": 1.25,
+        "ui_reduced_motion": true,
+        "ui_device": "keyboard_mouse",
+        "enabled": false
+      },
+      {
+        "name": "closing_menu_consumes_simultaneous_world_input",
+        "from": 479,
+        "to": 490,
+        "max_distance": 0.0001,
+        "enabled": false,
+        "ui_page": "world"
+      },
+      {
+        "name": "device_switch_preserves_reading_position",
+        "from": 229,
+        "to": 229,
+        "ui_page": "records",
+        "ui_record": 0,
+        "ui_device": "gamepad",
+        "min_ui_scroll": 100
+      }
+    ]
+  },
+  "script_sha256": "72aed79e2373f46c4ad0e48c058588511834419fede820f15361fae763bf6c88",
+  "git_commit": "b64759e204c6897ddd0321e2df4c3a704e9843e7",
+  "git_worktree": "M docs/dev/design/systems/index.md\n M docs/dev/design/systems/input.md\n M docs/dev/index.md\n M docs/dev/production/art-direction.md\n M docs/dev/production/ui.md\n M game/README.md\n M game/src/bin/map_viewer.rs\n M game/src/bin/map_viewer/capture.rs\n M game/src/lib.rs\n M source-assets/district-map/district.json\n M todo/README.md\n M todo/tasks/TASK-015-investigation-ui-flow.md\n M todo/tasks/TASK-025-road-junction-widths.md\n M tools/README.md\n M tools/tests/road-width.test.ts\n?? docs/dev/design/systems/ui.md\n?? game/assets/ui/\n?? game/capture/ui-signal.json\n?? game/src/ui.rs\n?? source-assets/ui-kit/\n?? todo/evidence/TASK-015/\n?? todo/evidence/TASK-025/\n?? todo/evidence/TASK-026/\n?? todo/tasks/TASK-026-signal-ui-prototype.md\n?? tools/export-ui.ts",
+  "cargo_lock_sha256": "d90f8a806751b4af4c30ae6826715b9cc81faeb668e6315ccd8ea2d1b0e73dfa",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "PASS",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "c33cd4a03728b2f1be9c17cfa85091544724f71d74d3f3e2967057f2eee901f0",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/ui-signal/2026-09-27/r1/main/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/ui-signal/2026-09-27/r1/main"
+  ],
+  "runtime_exit_code": 0,
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 600,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 600
+    },
+    {
+      "checked_frames": 600,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 29,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "main_menu_starts_with_focus",
+        "to": 29,
+        "ui_device": null,
+        "ui_focus": 0,
+        "ui_page": "menu",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "main_menu_starts_with_focus",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 100,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "unavailable_quest_does_not_open",
+        "to": 100,
+        "ui_device": null,
+        "ui_focus": 1,
+        "ui_page": "menu",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "unavailable_quest_does_not_open",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 150,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "keyboard_opens_record_sample",
+        "to": 150,
+        "ui_device": "keyboard_mouse",
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": 0,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "keyboard_opens_record_sample",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 200,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": 100.0,
+        "name": "long_chinese_scrolls",
+        "to": 200,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "long_chinese_scrolls",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 259,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "gamepad_selects_empty_record",
+        "to": 259,
+        "ui_device": "gamepad",
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": 1,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "gamepad_selects_empty_record",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 289,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "back_restores_work_menu_focus",
+        "to": 289,
+        "ui_device": null,
+        "ui_focus": 2,
+        "ui_page": "menu",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "back_restores_work_menu_focus",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 379,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "gamepad_opens_settings",
+        "to": 379,
+        "ui_device": null,
+        "ui_focus": 0,
+        "ui_page": "settings",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "gamepad_opens_settings",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 409,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "scale_setting_takes_effect",
+        "to": 409,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "settings",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": 1.25
+      },
+      "name": "scale_setting_takes_effect",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 439,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "reduced_motion_takes_effect",
+        "to": 439,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": true,
+        "ui_scale": null
+      },
+      "name": "reduced_motion_takes_effect",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 479,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "settings_return_keeps_focus",
+        "to": 479,
+        "ui_device": null,
+        "ui_focus": 4,
+        "ui_page": "menu",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "settings_return_keeps_focus",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 0,
+        "max_distance": 9.999999747378752e-05,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "menu_blocks_camera_input",
+        "to": 479,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "menu_blocks_camera_input",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 9.600104331970215,
+      "enabled": true,
+      "expected": {
+        "enabled": true,
+        "from": 495,
+        "max_distance": null,
+        "min_distance": 8.0,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "return_to_world_allows_real_camera",
+        "to": 519,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "world",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "return_to_world_allows_real_camera",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 599,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "reopen_restores_focus_and_settings",
+        "to": 599,
+        "ui_device": "keyboard_mouse",
+        "ui_focus": 4,
+        "ui_page": "menu",
+        "ui_record": null,
+        "ui_reduced_motion": true,
+        "ui_scale": 1.25
+      },
+      "name": "reopen_restores_focus_and_settings",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 479,
+        "max_distance": 9.999999747378752e-05,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "closing_menu_consumes_simultaneous_world_input",
+        "to": 490,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "world",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "closing_menu_consumes_simultaneous_world_input",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 229,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": 100.0,
+        "name": "device_switch_preserves_reading_position",
+        "to": 229,
+        "ui_device": "gamepad",
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": 0,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "device_switch_preserves_reading_position",
+      "passed": true,
+      "rotation_radians": 0.0
+    }
+  ],
+  "ffmpeg_version": "ffmpeg version n9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "video_command": [
+    "/usr/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-framerate",
+    "30",
+    "-i",
+    "/home/lzzz/MyProjects/N-SIDE/output/ui-signal/2026-09-27/r1/main/frames/frame%05d.png",
+    "-frames:v",
+    "600",
+    "-c:v",
+    "libx264",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "/home/lzzz/MyProjects/N-SIDE/output/ui-signal/2026-09-27/r1/main/video.mp4"
+  ],
+  "elapsed_wall_seconds": 42.17042950697942
+}

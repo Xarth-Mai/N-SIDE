@@ -1,0 +1,115 @@
+{
+  "scene": "ui-signal",
+  "view": "shop",
+  "width": 1280,
+  "height": 1024,
+  "fps": 30,
+  "frames": 180,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    29,
+    59,
+    89,
+    119,
+    149,
+    179
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 40,
+      "end": 41,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 51,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Down",
+        "Enter"
+      ]
+    },
+    {
+      "start": 80,
+      "end": 81,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 100,
+      "end": 101,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 120,
+      "end": 121,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 140,
+      "end": 141,
+      "keys": [
+        "Up",
+        "Enter"
+      ]
+    },
+    {
+      "start": 160,
+      "end": 161,
+      "keys": [
+        "PageDown"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "name": "settings_125_percent",
+      "from": 89,
+      "to": 89,
+      "ui_page": "settings",
+      "ui_scale": 1.25
+    },
+    {
+      "name": "record_at_125_percent",
+      "from": 149,
+      "to": 149,
+      "ui_page": "records",
+      "ui_scale": 1.25
+    },
+    {
+      "name": "long_record_can_scroll",
+      "from": 179,
+      "to": 179,
+      "ui_page": "records",
+      "min_ui_scroll": 100
+    },
+    {
+      "name": "menus_block_world",
+      "from": 0,
+      "to": 179,
+      "max_distance": 0.0001,
+      "enabled": false
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "script_sha256": "a4639201e37304367225e9ee69f7b11725cb25da494b3bc25ebb1bc2510b6266",
+  "scope": "Isolated export integrity and read-only failures; actual font glyph coverage is separate",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "valid_export",
+      "exit_code": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "PASS: exported 1 UI files\n",
+      "stderr": ""
+    },
+    {
+      "name": "read_only_check",
+      "exit_code": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "PASS: verified 1 UI files\n",
+      "stderr": ""
+    },
+    {
+      "name": "check_did_not_write",
+      "passed": true
+    },
+    {
+      "name": "corrupt_export",
+      "exit_code": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "14 | for (const file of manifest.files) {\n15 |   const input = await readFile(resolve(source, file.source))\n16 |   assert.equal(createHash('sha256').update(input).digest('hex'), file.sha256, `UI source checksum differs: ${file.source}`)\n17 |   assert.equal(input.length, file.bytes, `UI source size differs: ${file.source}`)\n18 |   const path = resolve(destination, file.output)\n19 |   if (check) assert(input.equals(await readFile(path)), `UI export differs: ${file.output}`)\n                  ^\nAssertionError: UI export differs: fixture.bin\n generatedMessage: false,\n     actual: false,\n   expected: true,\n   operator: \"==\",\n       diff: \"simple\",\n       code: \"ERR_ASSERTION\"\n\n      at /tmp/nside-ui-export-d9dtaa_d/tools/export-ui.ts:19:14\n\nBun v1.4.2 (Linux x64)\n"
+    },
+    {
+      "name": "corrupt_source",
+      "exit_code": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "11 | assert(process.argv.slice(2).every(arg => arg === '--check'), 'Usage: bun tools/export-ui.ts [--check]')\n12 | const check = process.argv.includes('--check')\n13 | assert(manifest.files.length > 0, 'UI asset manifest must contain files')\n14 | for (const file of manifest.files) {\n15 |   const input = await readFile(resolve(source, file.source))\n16 |   assert.equal(createHash('sha256').update(input).digest('hex'), file.sha256, `UI source checksum differs: ${file.source}`)\n              ^\nAssertionError: UI source checksum differs: fixture.bin\n+ actual - expected\n\n+ '9b054c3a49fda6663a5e3c22342966fe5ca2ab0e878372b9ae1fb813e9d9b791'\n- '83acda02f3d73aa5a6b57aa7156f4f7f4cdbd0ec1e4ec104521e09ae3a235064'\n\n generatedMessage: false,\n     actual: \"9b054c3a49fda6663a5e3c22342966fe5ca2ab0e878372b9ae1fb813e9d9b791\",\n   expected: \"83acda02f3d73aa5a6b57aa7156f4f7f4cdbd0ec1e4ec104521e09ae3a235064\",\n   operator: \"strictEqual\",\n       diff: \"simple\",\n       code: \"ERR_ASSERTION\"\n\n      at /tmp/nside-ui-export-d9dtaa_d/tools/export-ui.ts:16:10\n\nBun v1.4.2 (Linux x64)\n"
+    }
+  ]
+}

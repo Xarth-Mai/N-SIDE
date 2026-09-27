@@ -96,9 +96,12 @@ python3 tools/asset_preview.py game/assets/environment/signs/shop.png --display-
 python3 .agents/skills/create-game-assets/scripts/build_preview_sheet.py game/assets/environment/signs/*-display.png --out output/assets/displays.png --columns 5 --cell-size 192
 bun tools/export-district-scene.ts --check
 bun tools/export-environment.ts --check
+bun tools/export-ui.ts --check
 ```
 
 预览保留原件，用三种对比底色检查边缘；`--require-cutout` 只用于需要透明区域的素材，招牌实底和 Logo 不必抠图。资产检查、预览、capture 均写入忽略的 `output/`，不混入运行资产。工具取舍与后续采用条件见[资产工具审查](../docs/dev/decisions/asset-tools.md)
+
+UI 字体及完整声明由 `bun tools/export-ui.ts` 从[UI 资产包](../source-assets/ui-kit/README.md)原样导出；`--check` 校验源哈希、大小与运行副本，只读失败报告不自动覆盖。试验 tokens 由 UI 模块编译时读取，避免每个页面各自维护颜色与动效
 
 ## CI
 

@@ -1,0 +1,248 @@
+{
+  "status": "PASS",
+  "script": {
+    "scene": "ui-signal",
+    "view": "shop",
+    "width": 1280,
+    "height": 1024,
+    "fps": 30,
+    "frames": 180,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      29,
+      59,
+      89,
+      119,
+      149,
+      179
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 31,
+        "keys": [
+          "Down"
+        ]
+      },
+      {
+        "start": 40,
+        "end": 41,
+        "keys": [
+          "Down"
+        ]
+      },
+      {
+        "start": 50,
+        "end": 51,
+        "keys": [
+          "Down"
+        ]
+      },
+      {
+        "start": 60,
+        "end": 61,
+        "keys": [
+          "Down",
+          "Enter"
+        ]
+      },
+      {
+        "start": 80,
+        "end": 81,
+        "keys": [
+          "Enter"
+        ]
+      },
+      {
+        "start": 100,
+        "end": 101,
+        "keys": [
+          "Escape"
+        ]
+      },
+      {
+        "start": 120,
+        "end": 121,
+        "keys": [
+          "Up"
+        ]
+      },
+      {
+        "start": 140,
+        "end": 141,
+        "keys": [
+          "Up",
+          "Enter"
+        ]
+      },
+      {
+        "start": 160,
+        "end": 161,
+        "keys": [
+          "PageDown"
+        ]
+      }
+    ],
+    "assertions": [
+      {
+        "name": "settings_125_percent",
+        "from": 89,
+        "to": 89,
+        "ui_page": "settings",
+        "ui_scale": 1.25
+      },
+      {
+        "name": "record_at_125_percent",
+        "from": 149,
+        "to": 149,
+        "ui_page": "records",
+        "ui_scale": 1.25
+      },
+      {
+        "name": "long_record_can_scroll",
+        "from": 179,
+        "to": 179,
+        "ui_page": "records",
+        "min_ui_scroll": 100
+      },
+      {
+        "name": "menus_block_world",
+        "from": 0,
+        "to": 179,
+        "max_distance": 0.0001,
+        "enabled": false
+      }
+    ]
+  },
+  "script_sha256": "4413a9e54c1049e4172c9e5fb5a26ab2aff206c48618d4d9f542c94acb730ca4",
+  "git_commit": "b64759e204c6897ddd0321e2df4c3a704e9843e7",
+  "git_worktree": "M docs/dev/design/systems/index.md\n M docs/dev/design/systems/input.md\n M docs/dev/index.md\n M docs/dev/production/art-direction.md\n M docs/dev/production/ui.md\n M game/README.md\n M game/src/bin/map_viewer.rs\n M game/src/bin/map_viewer/capture.rs\n M game/src/lib.rs\n M source-assets/district-map/district.json\n M todo/README.md\n M todo/tasks/TASK-015-investigation-ui-flow.md\n M todo/tasks/TASK-025-road-junction-widths.md\n M tools/README.md\n M tools/tests/road-width.test.ts\n?? docs/dev/design/systems/ui.md\n?? game/assets/ui/\n?? game/capture/ui-signal.json\n?? game/src/ui.rs\n?? source-assets/ui-kit/\n?? todo/evidence/TASK-015/\n?? todo/evidence/TASK-025/\n?? todo/evidence/TASK-026/\n?? todo/tasks/TASK-026-signal-ui-prototype.md\n?? tools/export-ui.ts",
+  "cargo_lock_sha256": "d90f8a806751b4af4c30ae6826715b9cc81faeb668e6315ccd8ea2d1b0e73dfa",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "NOT RUN: --no-video",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "c33cd4a03728b2f1be9c17cfa85091544724f71d74d3f3e2967057f2eee901f0",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/ui-signal/2026-09-27/r1/narrow-first/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/ui-signal/2026-09-27/r1/narrow-first"
+  ],
+  "runtime_exit_code": 0,
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 180,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 180
+    },
+    {
+      "checked_frames": 180,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 89,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "settings_125_percent",
+        "to": 89,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "settings",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": 1.25
+      },
+      "name": "settings_125_percent",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 149,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "record_at_125_percent",
+        "to": 149,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": 1.25
+      },
+      "name": "record_at_125_percent",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 179,
+        "max_distance": null,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": 100.0,
+        "name": "long_record_can_scroll",
+        "to": 179,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": "records",
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "long_record_can_scroll",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 0,
+        "max_distance": 9.999999747378752e-05,
+        "min_distance": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "name": "menus_block_world",
+        "to": 179,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null
+      },
+      "name": "menus_block_world",
+      "passed": true,
+      "rotation_radians": 0.0
+    }
+  ],
+  "elapsed_wall_seconds": 18.36603665497387
+}

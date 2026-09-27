@@ -1,0 +1,277 @@
+{
+  "scene": "ui-signal",
+  "view": "shop",
+  "width": 1600,
+  "height": 900,
+  "fps": 30,
+  "frames": 600,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    29,
+    100,
+    150,
+    200,
+    229,
+    259,
+    289,
+    379,
+    409,
+    439,
+    479,
+    529,
+    599
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 59,
+      "keys": [
+        "M",
+        "W"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 91,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 120,
+      "end": 121,
+      "keys": [
+        "Down",
+        "Enter"
+      ]
+    },
+    {
+      "start": 180,
+      "end": 181,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 210,
+      "end": 211,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 240,
+      "end": 241,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 270,
+      "end": 271,
+      "gamepad": [
+        "Back"
+      ]
+    },
+    {
+      "start": 300,
+      "end": 301,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 330,
+      "end": 331,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 360,
+      "end": 361,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 390,
+      "end": 391,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 420,
+      "end": 421,
+      "gamepad": [
+        "Down",
+        "Confirm"
+      ]
+    },
+    {
+      "start": 450,
+      "end": 451,
+      "gamepad": [
+        "Back"
+      ]
+    },
+    {
+      "start": 480,
+      "end": 481,
+      "keys": [
+        "Tab",
+        "M",
+        "W"
+      ]
+    },
+    {
+      "start": 495,
+      "end": 496,
+      "keys": [
+        "M"
+      ]
+    },
+    {
+      "start": 496,
+      "end": 520,
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "start": 540,
+      "end": 541,
+      "keys": [
+        "Tab",
+        "M",
+        "W"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "name": "main_menu_starts_with_focus",
+      "from": 29,
+      "to": 29,
+      "ui_page": "menu",
+      "ui_focus": 0,
+      "enabled": false
+    },
+    {
+      "name": "unavailable_quest_does_not_open",
+      "from": 100,
+      "to": 100,
+      "ui_page": "menu",
+      "ui_focus": 1
+    },
+    {
+      "name": "keyboard_opens_record_sample",
+      "from": 150,
+      "to": 150,
+      "ui_page": "records",
+      "ui_record": 0,
+      "ui_device": "keyboard_mouse",
+      "max_ui_scroll": 0
+    },
+    {
+      "name": "long_chinese_scrolls",
+      "from": 200,
+      "to": 200,
+      "min_ui_scroll": 100
+    },
+    {
+      "name": "gamepad_selects_empty_record",
+      "from": 259,
+      "to": 259,
+      "ui_page": "records",
+      "ui_record": 1,
+      "ui_device": "gamepad"
+    },
+    {
+      "name": "back_restores_work_menu_focus",
+      "from": 289,
+      "to": 289,
+      "ui_page": "menu",
+      "ui_focus": 2
+    },
+    {
+      "name": "gamepad_opens_settings",
+      "from": 379,
+      "to": 379,
+      "ui_page": "settings",
+      "ui_focus": 0
+    },
+    {
+      "name": "scale_setting_takes_effect",
+      "from": 409,
+      "to": 409,
+      "ui_page": "settings",
+      "ui_scale": 1.25
+    },
+    {
+      "name": "reduced_motion_takes_effect",
+      "from": 439,
+      "to": 439,
+      "ui_reduced_motion": true
+    },
+    {
+      "name": "settings_return_keeps_focus",
+      "from": 479,
+      "to": 479,
+      "ui_page": "menu",
+      "ui_focus": 4
+    },
+    {
+      "name": "menu_blocks_camera_input",
+      "from": 0,
+      "to": 479,
+      "max_distance": 0.0001,
+      "enabled": false
+    },
+    {
+      "name": "return_to_world_allows_real_camera",
+      "from": 495,
+      "to": 519,
+      "min_distance": 8,
+      "enabled": true,
+      "ui_page": "world"
+    },
+    {
+      "name": "reopen_restores_focus_and_settings",
+      "from": 599,
+      "to": 599,
+      "ui_page": "menu",
+      "ui_focus": 4,
+      "ui_scale": 1.25,
+      "ui_reduced_motion": true,
+      "ui_device": "keyboard_mouse",
+      "enabled": false
+    },
+    {
+      "name": "closing_menu_consumes_simultaneous_world_input",
+      "from": 479,
+      "to": 490,
+      "max_distance": 0.0001,
+      "enabled": false,
+      "ui_page": "world"
+    },
+    {
+      "name": "device_switch_preserves_reading_position",
+      "from": 229,
+      "to": 229,
+      "ui_page": "records",
+      "ui_record": 0,
+      "ui_device": "gamepad",
+      "min_ui_scroll": 100
+    }
+  ]
+}

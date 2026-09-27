@@ -4,7 +4,7 @@
 
 ## 机器检查
 
-命令为 `game/target/debug/map_viewer --project-root . --verify-headless output/road-junctions/2026-09-27/r2/<view> --view <view>`，view依次为 inspect-road-old-home、inspect-road-home-north、inspect-road-upper-homes、inspect-road-foothill-east、inspect-road-north、block-B05、block-B06、block-B12。8次退出码均为0，各目录保留原始指标JSON与运行日志，完整命令见[render-checks.json](render-checks.json)，输入与图像hash见[provenance.json](provenance.json)
+命令为 `game/target/debug/map_viewer --project-root . --verify-headless output/road-junctions/2026-09-27/r2/<view> --view <view>`，view依次为 inspect-road-old-home、inspect-road-home-north、inspect-road-upper-homes、inspect-road-foothill-east、inspect-road-north、block-B05、block-B06、block-B12。8次退出码均为0，各目录保留含机器指标的运行日志，完整命令见[render-checks.json](render-checks.json)，输入与图像hash见[provenance.json](provenance.json)
 
 ## 实际看图
 

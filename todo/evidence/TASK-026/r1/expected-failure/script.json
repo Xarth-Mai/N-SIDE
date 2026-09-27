@@ -1,0 +1,22 @@
+{
+  "scene": "ui-signal",
+  "view": "shop",
+  "width": 960,
+  "height": 540,
+  "fps": 30,
+  "frames": 30,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    29
+  ],
+  "events": [],
+  "assertions": [
+    {
+      "name": "intentional_wrong_page",
+      "from": 29,
+      "to": 29,
+      "ui_page": "world"
+    }
+  ]
+}
