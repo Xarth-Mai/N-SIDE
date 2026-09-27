@@ -1,0 +1,59 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [2.25ms]
+(pass) terrain colors follow ground elevation [0.12ms]
+(pass) map overview fits extended terrain on wide and narrow screens [177.36ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [45.36ms]
+(pass) mountain city keeps metre scale and usable graded route alternatives [4.32ms]
+(pass) overview terrain retains source controls and excludes elevated connections [3696.80ms]
+(pass) authored exterior sightlines clear intervening building volumes [1.95ms]
+(pass) shopping stays local and public hillside routes remain connected [1.41ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.25ms]
+(pass) scene keeps platforms below volumes and geometry is finite [126.51ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [7.06ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [13.01ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [1.06ms]
+(pass) tree positions stay outside building footprints [7.43ms]
+(pass) all streets clear building volumes at their actual widths and elevations [337.65ms]
+(pass) district ground-road crossings share a junction and its elevation [281.19ms]
+(pass) city framework records every building and reaches its same-level facade entrances [13.69ms]
+(pass) city stairs retain short flights, level rests and full-size treads [1.07ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.83ms]
+(pass) public streets stay outside same-level resident and service courts [4.83ms]
+(pass) building volumes share boundaries without occupying the same space [28.48ms]
+(pass) detailed places connect street access to separate public and service entrances [14.84ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.45ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [3.61ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.29ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.40ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [59.00ms]
+(pass) public, residents, students and service users have separate access rights [11.03ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.47ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.84ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.76ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.46ms]
+(pass) shared stairs and separate apartments connect through shared circulation [1.07ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) terrain bake preserves authored geometry and repeats without drift [3190.14ms]
+(pass) terrain noise protects complete road segments and footprints [3200.68ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [47.47ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [343.20ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [1.51ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.72ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1048.58ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [376.78ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [400.26ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [384.59ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1032.92ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [1615.99ms]
+
+tools/tests/station-square.test.ts:
+(pass) station meeting court retains usable space with a level public arrival clear of sloping roads [364.99ms]
+
+ 46 pass
+ 0 fail
+Ran 46 tests across 4 files. [16.91s]

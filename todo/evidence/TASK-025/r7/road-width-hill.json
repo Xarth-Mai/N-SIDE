@@ -1,0 +1,11 @@
+{
+  "scope": "hill",
+  "source_sha256": "b725070d95322c1b0612dabb006066a4dfd6b160ed8b5dbcadf7f61a4dec1d22",
+  "result": "PASS",
+  "thresholds": {
+    "overlapArea": 0.5,
+    "heightDelta": 0.35
+  },
+  "scopeNote": "Ground-road top-surface candidates, including shared endpoints; bounded miters and horizontal stair treads match geometry.rs. Buildings, platform masks, retaining walls, bridge clearance and player collision require separate checks.",
+  "conflicts": []
+}

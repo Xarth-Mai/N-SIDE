@@ -1,0 +1,153 @@
+{
+  "source_sha256": "b1088fb91d9d58d84e97067d0bf92d2e967496a59e40579c6c813c1ed13a8039",
+  "baseline_commit": "389c309815e2a6235941b98a8f7b7c7986353c89",
+  "baseline_source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+  "render_binary_sha256": {
+    "before": [
+      "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947"
+    ],
+    "after": [
+      "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947"
+    ],
+    "before-supplement": [
+      "8b2282ed0c8c5b677cbdee41c1aeea915ec79ddcaf7db00f709a21714af1728b"
+    ],
+    "after-supplement": [
+      "8b2282ed0c8c5b677cbdee41c1aeea915ec79ddcaf7db00f709a21714af1728b"
+    ]
+  },
+  "capture_binary_sha256": "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947",
+  "supplement_change": "Raised residential north inspection eye from 127m to 153m; same before/after maps; no scene or renderer change",
+  "visual_review": "Self-audit in review.md; initial residential north view clips hillside, retained and superseded by supplement",
+  "raw_video": "output/roads/2026-09-27/r7/station-look/video.mp4",
+  "raw_video_sha256": "caf8f3d25d257dd98d46ee8303cb625373f3259b65c57f3afcddd8f36435c3c7",
+  "video_playback": "NOT RUN; inspected keyframes 149/359 and consecutive frames 90/91",
+  "images": [
+    {
+      "source": "output/roads/2026-09-27/r7/before/inspect-road-foothill-gate/inspect-road-foothill-gate.png",
+      "source_sha256": "adece18b2ac74c9f5c420806ebc0d2ea818d2f27935503d9150e8bcbcf8e4b94",
+      "file": "todo/evidence/TASK-025/r7/before/inspect-road-foothill-gate.webp",
+      "sha256": "f4ecfb4d922b3ea41e0c3a44eb8cc6903bb69778ce6f311816ed76eced069818",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/before/inspect-road-res-north/inspect-road-res-north.png",
+      "source_sha256": "1746a606becf773837ade2d2d542cc4be487e98096b3bd24cc90deec9e7e7d53",
+      "file": "todo/evidence/TASK-025/r7/before/inspect-road-res-north.webp",
+      "sha256": "36443f4448febb259d0f94857b90c2316b2da43a64e46f3e78c4f5b301b4e397",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/before/inspect-road-station-square/inspect-road-station-square.png",
+      "source_sha256": "3942093bee0d2001567fc70e09dd57cf3203269c0e5192fb9a0ae2a8f303660f",
+      "file": "todo/evidence/TASK-025/r7/before/inspect-road-station-square.webp",
+      "sha256": "27276551570dac46751abfb5d09fc29d3ea9046a319fe9a0436f88fde7ce8227",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/before/inspect-road-west-plateau/inspect-road-west-plateau.png",
+      "source_sha256": "0922c7524f1f44cc3944302a4faab02bb5c34315f189e4296fd6d1d3252bf9c7",
+      "file": "todo/evidence/TASK-025/r7/before/inspect-road-west-plateau.webp",
+      "sha256": "8f39aaef77ef766bfef14fada43e6caad017487a3a4de9a6ef75bc7ccc85d9ef",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/before/inspect-road-west-rear/inspect-road-west-rear.png",
+      "source_sha256": "2f08ad1af954ad2c9dcc0ff02f591432c0132c6ae90977dbd119afd0d61606b9",
+      "file": "todo/evidence/TASK-025/r7/before/inspect-road-west-rear.webp",
+      "sha256": "d909fe4f6b52574f65f5b955f467b13b79503713fb510535ec3a1615deb87aef",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after/eye-ascent-3/eye-ascent-3.png",
+      "source_sha256": "fbfe09f529278093ecaab7df7d20d51c0a97d36a0c72fed9edf740c6988189bf",
+      "file": "todo/evidence/TASK-025/r7/after/eye-ascent-3.webp",
+      "sha256": "32d416f58ceac0619fdb183e354ac1f416ab5b97831be62fa53c515152cbfb50",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after/inspect-road-foothill-gate/inspect-road-foothill-gate.png",
+      "source_sha256": "c2150638bf72f0a64cf1cda4f9fac10e7aa0a0211bfcd2c586b2d4ca337a381c",
+      "file": "todo/evidence/TASK-025/r7/after/inspect-road-foothill-gate.webp",
+      "sha256": "e48bd88d2b63a39aa6fa7ccf97ae71818d97fe2d819754cd8321738ea32cbf45",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after/inspect-road-res-north/inspect-road-res-north.png",
+      "source_sha256": "b75b14a9be4de2f1d4d0f64335e110a2c129ec4fc008d04c29d5e139eb528140",
+      "file": "todo/evidence/TASK-025/r7/after/inspect-road-res-north.webp",
+      "sha256": "0e582d2889962106e8c59ec94d26b66ee0a3231f30136fc5b960aa41f4cbdede",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after/inspect-road-station-square/inspect-road-station-square.png",
+      "source_sha256": "97d0d016ea3897b921dad2ae8cf0387308df8e413c2e85e1fa28146199570c16",
+      "file": "todo/evidence/TASK-025/r7/after/inspect-road-station-square.webp",
+      "sha256": "cff785519bdf521a1c25f7ee5622a78a33df924cee2769a492c46662226435a5",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after/inspect-road-west-plateau/inspect-road-west-plateau.png",
+      "source_sha256": "22da3b52b4736668d83a758e342d27df69177c31a8f146b2b6a4790caeccf090",
+      "file": "todo/evidence/TASK-025/r7/after/inspect-road-west-plateau.webp",
+      "sha256": "25ea268ce92484a02c0a25207641b27e394d0027314add8404b4d8eae2c3a010",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after/inspect-road-west-rear/inspect-road-west-rear.png",
+      "source_sha256": "44b1cde23c9474572b251d3f4c1182269afefa5dda0d8b2ca8a689015fb17bd7",
+      "file": "todo/evidence/TASK-025/r7/after/inspect-road-west-rear.webp",
+      "sha256": "9233bad61291a78bbfdfbce2011e75cd3168ba63a966da86fd66c59cef47ef59",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after/mountain-profile/mountain-profile.png",
+      "source_sha256": "7b11a848f10a74694ded004d5c5434be1ebe8a463542a6f180f69f4fb936351b",
+      "file": "todo/evidence/TASK-025/r7/after/mountain-profile.webp",
+      "sha256": "a17c903fb5a49d551ff2a0b7dd064661e4982dabb1989566ba281c87b2ee495f",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/before-supplement/inspect-road-res-north/inspect-road-res-north.png",
+      "source_sha256": "3785bb14cc71f77c51eb54adbd085f8c9bd208160e285ea44197e251ac509408",
+      "file": "todo/evidence/TASK-025/r7/before-supplement/inspect-road-res-north.webp",
+      "sha256": "fd62aafafed11dc410c71c5fb5f6f5393789e9ed212ceacb2941fa8c8eba6b21",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/after-supplement/inspect-road-res-north/inspect-road-res-north.png",
+      "source_sha256": "0d4476ffba12a1563baa64f36e164441968ce26f50a2df22d66cdf7b7440b041",
+      "file": "todo/evidence/TASK-025/r7/after-supplement/inspect-road-res-north.webp",
+      "sha256": "cafd56153bd8205ff9c464d75a080c5b02e50a4055b0f7363083a171c0066a05",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/station-look/frames/frame00090.png",
+      "source_sha256": "744a5ca86d752b7455ec343cba5a9c25c23db62bfc42543f68a3798287052221",
+      "file": "todo/evidence/TASK-025/r7/capture/frame00090.webp",
+      "sha256": "2b1155dd044515ebebf6a232add4a2a3f27af4b6056aec35de0bbf6ff58e86a4",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/station-look/frames/frame00091.png",
+      "source_sha256": "045f998b0b5eb0d0a7d2b419fae6f85556e83cd3f1dec4fbb890510391ae7911",
+      "file": "todo/evidence/TASK-025/r7/capture/frame00091.webp",
+      "sha256": "31019405da5f2ac95acca1cdeb669a91724e967c874f14d9d00af7adef1fca3c",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/station-look/frames/frame00149.png",
+      "source_sha256": "f4217c49d3aaf089a95d17671424ceff8fe63ebed87afe4e39e08480107b52ca",
+      "file": "todo/evidence/TASK-025/r7/capture/frame00149.webp",
+      "sha256": "812da01d866ccd8c1d9d555ecd45ecebf101eea7da409222d937134426fa4387",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r7/station-look/frames/frame00359.png",
+      "source_sha256": "578a49317b2dc6c542f7b2cabb21e0783b1bb1f53445c3757f271ea677cf842f",
+      "file": "todo/evidence/TASK-025/r7/capture/frame00359.webp",
+      "sha256": "8b0c69b429951ec51cdd557fcc5a834cedfaa9a65dbe61f42e0d1d310e1b6cbb",
+      "quality": 80
+    }
+  ]
+}

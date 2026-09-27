@@ -101,3 +101,12 @@ test('station and music approaches plus the long ascent join at width without sh
   }
   assert.deepEqual(roadWidthConflicts(data,'hill-short'),[],'the short summit alternative remains clear')
 })
+
+test('foothill housing and west plateau approaches clear streets, stairs and resident side paths',()=>{
+  const junctions=new Set(['foothill_house_gate','platform_west','res_n','fw_f_plateau_w2','fw_f_plateau_w3','fw_f_plateau_w4','fw_f_junction83','fw_f_plateau_w5','fw_f_plateau_w_rear0','fw_f_plateau_w_rear1'])
+  const relevant=(id:string)=>junctions.has(id)||/^junction_(plateau_|foothill_house_)/.test(id)
+  const conflicts=roadWidthConflicts(source,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(relevant))
+  assert.deepEqual(conflicts,[],'level approaches must clear neighboring roads and resident entrances across the full width')
+  assert.deepEqual(roadWidthConflicts(source,'hill'),[],'the complete long summit route must clear neighboring ribbons too')
+  assert.deepEqual(roadWidthConflicts(source,'hill-short'),[],'the shorter summit route remains clear')
+})

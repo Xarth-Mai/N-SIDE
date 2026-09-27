@@ -1,0 +1,82 @@
+[
+  {
+    "view": "inspect-road-foothill-gate",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/before/inspect-road-foothill-gate",
+      "--view",
+      "inspect-road-foothill-gate"
+    ],
+    "exit_code": 0,
+    "seconds": 16.689055275986902,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947"
+  },
+  {
+    "view": "inspect-road-west-plateau",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/before/inspect-road-west-plateau",
+      "--view",
+      "inspect-road-west-plateau"
+    ],
+    "exit_code": 0,
+    "seconds": 16.740632514993194,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947"
+  },
+  {
+    "view": "inspect-road-west-rear",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/before/inspect-road-west-rear",
+      "--view",
+      "inspect-road-west-rear"
+    ],
+    "exit_code": 0,
+    "seconds": 16.64044680999359,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947"
+  },
+  {
+    "view": "inspect-road-res-north",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/before/inspect-road-res-north",
+      "--view",
+      "inspect-road-res-north"
+    ],
+    "exit_code": 0,
+    "seconds": 16.74097169598099,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947"
+  },
+  {
+    "view": "inspect-road-station-square",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r7/before/inspect-road-station-square",
+      "--view",
+      "inspect-road-station-square"
+    ],
+    "exit_code": 0,
+    "seconds": 16.739167354011443,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "a19530570b5d9c5b2f00099a7c08f10828bbe200fe8a2e4070088a9043d21947"
+  }
+]

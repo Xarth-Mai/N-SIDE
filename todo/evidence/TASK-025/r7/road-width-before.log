@@ -1,0 +1,471 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [4.32ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.87ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1091.46ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [430.90ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [411.14ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [427.01ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1050.58ms]
+104 |
+105 | test('foothill housing and west plateau approaches clear streets, stairs and resident side paths',()=>{
+106 |   const junctions=new Set(['foothill_house_gate','platform_west','res_n','fw_f_plateau_w2','fw_f_plateau_w3','fw_f_plateau_w4','fw_f_junction83','fw_f_plateau_w5','fw_f_plateau_w_rear0','fw_f_plateau_w_rear1'])
+107 |   const relevant=(id:string)=>junctions.has(id)||/^junction_(plateau_|foothill_house_)/.test(id)
+108 |   const conflicts=roadWidthConflicts(source,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(relevant))
+109 |   assert.deepEqual(conflicts,[],'level approaches must clear neighboring roads and resident entrances across the full width')
+               ^
+AssertionError: level approaches must clear neighboring roads and resident entrances across the full width
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'stair_level_west_upper_to_res_n_res_n_03_out',
++         'res_n'
++       ],
++       road: 42
++     },
++     area: 5.86999897917525,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'res_n',
++         'fw_f_plateau_w5'
++       ],
++       road: 175
++     },
++     maxDelta: 1.285196194995919,
++     point: [
++       -2.1239577662083926,
++       507.1927083333333
++     ],
++     sharedNodes: [
++       'res_n'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'res_n',
++         'fw_f_plateau_w5'
++       ],
++       road: 175
++     },
++     area: 15.000706144753167,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'pause_fw_f_junction83_fw_f_plateau_w5',
++         'fw_f_plateau_w5'
++       ],
++       road: 395
++     },
++     maxDelta: 1.0618337452596336,
++     point: [
++       -8.573610543986204,
++       511.0625
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w5'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'foothill_east',
++         'foothill_house_gate'
++       ],
++       road: 176
++     },
++     area: 50.68065933568869,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'foothill_house_gate',
++         'fw_e_foot_s_e'
++       ],
++       road: 618
++     },
++     maxDelta: 0.895561100846578,
++     point: [
++       542,
++       624.7401923062409
++     ],
++     sharedNodes: [
++       'foothill_house_gate'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w5',
++         'upland_west_turn'
++       ],
++       road: 175
++     },
++     area: 5.5715444392353675,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'pause_fw_f_junction83_fw_f_plateau_w5',
++         'fw_f_plateau_w5'
++       ],
++       road: 395
++     },
++     maxDelta: 0.8010461655199208,
++     point: [
++       -12.5,
++       513.1785714285714
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w5'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'stair_level_west_upper_to_res_n_res_n_03_out',
++         'res_n'
++       ],
++       road: 42
++     },
++     area: 3.6511102037112266,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w5',
++         'res_n'
++       ],
++       road: 396
++     },
++     maxDelta: 0.7965371460092996,
++     point: [
++       -1.213690152119062,
++       508.3958333333333
++     ],
++     sharedNodes: [
++       'res_n'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1',
++         'fw_f_plateau_w_rear1'
++       ],
++       road: 407
++     },
++     area: 6.327953618376341,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w_rear1',
++         'fw_f_v_f53_resident'
++       ],
++       road: 524
++     },
++     maxDelta: 0.7627551000000068,
++     point: [
++       -71,
++       511.63748833959284
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w_rear1'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'stair_level_west_upper_to_res_n_res_n_03_out',
++         'res_n'
++       ],
++       road: 42
++     },
++     area: 6.553967929896885,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'res_n',
++         'fw_f_wood_homes0'
++       ],
++       road: 396
++     },
++     maxDelta: 0.7591704375000035,
++     point: [
++       3,
++       508
++     ],
++     sharedNodes: [
++       'res_n'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction80',
++         'fw_f_plateau_w2'
++       ],
++       road: 388
++     },
++     area: 5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_plateau_w2',
++         'level_fw_f_junction81_from_fw_f_plateau_w2'
++       ],
++       road: 401
++     },
++     maxDelta: 0.7521824347826112,
++     point: [
++       -73,
++       454.4782608695652
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w2'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w2',
++         'fw_f_plateau_w3'
++       ],
++       road: 388
++     },
++     area: 5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_plateau_w2',
++         'level_fw_f_junction81_from_fw_f_plateau_w2'
++       ],
++       road: 401
++     },
++     maxDelta: 0.7521824347826112,
++     point: [
++       -71,
++       454.4782608695652
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w2'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'pause_fw_f_junction83_fw_f_plateau_w5',
++         'fw_f_plateau_w5'
++       ],
++       road: 395
++     },
++     area: 8.90595189484543,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w5',
++         'res_n'
++       ],
++       road: 396
++     },
++     maxDelta: 0.7367568121390207,
++     point: [
++       -8.009325072754137,
++       512.4732142857143
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w5'
++     ]
++   },
++   {
++     a: {
++       kind: 'trail',
++       nodes: [
++         'foothill_house_gate',
++         'foothill_east'
++       ],
++       road: 72
++     },
++     area: 28.840329667844344,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'foothill_house_gate',
++         'fw_e_foot_s_e'
++       ],
++       road: 618
++     },
++     maxDelta: 0.6649609950624722,
++     point: [
++       542,
++       619.2801098892805
++     ],
++     sharedNodes: [
++       'foothill_house_gate'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w2',
++         'fw_f_plateau_w3'
++       ],
++       road: 388
++     },
++     area: 3.4121952348614286,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_plateau_w3',
++         'stair_fw_f_plateau_w3_fw_f_plateau_w4_01_in'
++       ],
++       road: 389
++     },
++     maxDelta: 0.5875331724137993,
++     point: [
++       -28,
++       453.9238178293455
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w3'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'platform_west',
++         'west_upper_south'
++       ],
++       road: 146
++     },
++     area: 15.027622859437543,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'platform_west',
++         'fw_f_plateau_w0'
++       ],
++       road: 388
++     },
++     maxDelta: 0.47824000181427095,
++     point: [
++       -154.4934210274257,
++       442.7027699291358
++     ],
++     sharedNodes: [
++       'platform_west'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1',
++         'fw_f_plateau_w_rear1'
++       ],
++       road: 407
++     },
++     area: 4,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w_rear1',
++         'fw_f_junction82'
++       ],
++       road: 408
++     },
++     maxDelta: 0.4237528333333387,
++     point: [
++       -73,
++       514.0066666666667
++     ],
++     sharedNodes: [
++       'fw_f_plateau_w_rear1'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1',
++         'fw_f_plateau_w_rear1'
++       ],
++       road: 407
++     },
++     area: 2.262877331380878,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_w_rear0',
++         'fw_f_plateau_w_stay0'
++       ],
++       road: 428
++     },
++     maxDelta: 0.4237528333333387,
++     point: [
++       -75,
++       488.09832753514763
++     ],
++     sharedNodes: []
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'pause_fw_f_plateau_w4_fw_f_junction83',
++         'pause_fw_f_junction83_fw_f_plateau_w4'
++       ],
++       road: 393
++     },
++     area: 1.25,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction83',
++         'fw_f_v_f54_resident'
++       ],
++       road: 525
++     },
++     maxDelta: 0.39544812499998727,
++     point: [
++       -12.5,
++       494.7890625
++     ],
++     sharedNodes: []
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:109:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) foothill housing and west plateau approaches clear streets, stairs and resident side paths [408.45ms]
+
+ 7 pass
+ 1 fail
+Ran 8 tests across 1 file. [3.94s]
