@@ -11,6 +11,8 @@ import { polygonArea, routeProfile } from '../../../../tools/district-plan.ts'
 const buildings=data.buildings.filter(b=>data.architectures.find(a=>a.id==='P3-A1').buildings.includes(b.id))
 const supply=data.logistics.find(r=>r.id==='shop-supply')
 const area=id=>polygonArea(data.parcels.find(p=>p.id===id).polygon)
+const shop=data.buildings.find(b=>b.id==='V-04')
+const supplyGrade=Math.max(...routeProfile(data.nodes,supply.legs[0].nodes).slice(1).map(p=>Math.abs(p.grade))).toFixed(2)
 </script>
 
 # 小店与坡地住宅建筑
@@ -54,7 +56,7 @@ P05-D、P05-E 的部分规划容量转给四个新增地块，B05 合计仍为 2
 
 ## 小店这一栋
 
-小店为两层商住建筑，首层 +20 m、住家 +24.2 m、屋面 +27.6 m，外轮廓 18×20 m。中部 4×4 m 采光庭向上开放，每层功能面积为 344 m²，两层共 688 m²；图中房间以功能控制线分区
+小店为两层商住建筑，首层 +{{ shop.elevation }} m、住家 +{{ shop.design.floors[1].z }} m、屋面 +{{ (shop.elevation + shop.height).toFixed(1) }} m，外轮廓 18×20 m。台地调整只移动落地标高，首层至住家的 4.2 m 与建筑总高 7.6 m 保持不变。中部 4×4 m 采光庭向上开放，每层功能面积为 344 m²，两层共 688 m²；图中房间以功能控制线分区
 
 东门共用接待与陈列，洽谈位在前后场之间，可关闭隔断。西侧货门先进入收货与后场通行，再分别抵达储物、包装和设备工作间；需要潜梦时，设备房留给身体与接应，收货人员仍可在门厅验收。私人内梯从受控后场上楼，与室外公共台阶各自独立
 
@@ -67,15 +69,15 @@ P05-D、P05-E 的部分规划容量转给四个新增地块，B05 合计仍为 2
 <tbody><tr v-for="leg in supply.legs" :key="leg.mode"><td>{{ leg.mode }}</td><td>{{ leg.mode==='推车'?'装卸位 → 共享收货场 → 西侧货门':'西侧城市道路 → 街坊支路 → 背街装卸位' }}</td><td>{{ routeProfile(data.nodes,leg.nodes).at(-1).distance.toFixed(1) }} m</td></tr></tbody>
 </table>
 
-小型配送车在背街装卸位停靠，推车段全程 +20 m，经侧院与服务巷进入后门。车行接入最陡分段约 7.14%，车辆转弯、净空与雨天作业面随交通专项核验。前后门之间的步行联系另行保留，配送距离按城市接入和装卸位分别计算
+小型配送车在背街装卸位停靠，推车段沿 +{{ data.nodes.loading[2] }} m 同高后场，经侧院与服务巷进入后门。车行接入最陡分段约 {{ supplyGrade }}%，车辆转弯、净空与雨天作业面随交通专项核验。前后门之间的步行联系另行保留，配送距离按城市接入和装卸位分别计算
 
 普通店屋把住户门厅与经营入口分开，小店延续兄妹与顾客共用前门的生活关系。公众沿街道与平台经过；住户从住宅门进入；学生和受邀访客使用受管理的校园道路；后勤从服务入口进入
 
 ## 坡地与采光
 
-采购弯口 +12 m、树下所在段 +15 m、小店 +20 m、公共台阶中段 +24 m、上巷与住宅路 +26—30 m 逐段联系。既有缓行支路继续接回店前，高差进入道路纵剖和相邻建筑基底
+采购弯口 +{{ data.nodes.market_turn[2] }} m、树下所在段 +{{ data.nodes.court[2] }} m、小店 +{{ data.nodes.home[2] }} m、公共台阶中段 +{{ data.nodes.steps_mid[2] }} m、上方住宅路 +{{ data.nodes.upper_front_w[2] }} m 逐段联系。既有缓行支路继续接回店前，高差进入道路纵剖和相邻建筑基底；城区升高后重新核对局部坡度与入口接缝
 
-P06-D 的四栋住宅从南侧 +30 m 进入 1F，北侧 +33 m 后街进入 2F，内部交通属于住户。公众从建筑南北两条室外通路绕行，后街继续接回上层住宅路；公共电梯的 +36 m 平台通过既有外部路线联系，三者标高分别记录
+P06-D 的四栋住宅从南侧 +{{ data.nodes.upper_front_w[2] }} m 进入 1F，北侧 +{{ data.nodes.v_13_upper[2] }} m 后街进入 2F，内部交通属于住户。公众从建筑南北两条室外通路绕行，后街继续接回上层住宅路；公共电梯的 +{{ data.nodes.slope_lift_high[2] }} m 平台通过既有外部路线联系，三者标高分别记录，住宅自身 3 m 层高保持不变
 
 靠坡住宅首层的主要居住面朝低街与侧面采光庭，贴坡部分安排家务和交通。店屋和小公寓用天井、前后立面与院落采光，半埋边界、挡墙和截排水按剖面所示位置深化
 

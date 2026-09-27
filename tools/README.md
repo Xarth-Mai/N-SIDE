@@ -48,6 +48,16 @@ python3 tools/probe_skills.py --output output/skills/discovery.json
 
 更新来源时先固定完整 commit，比较原文与适配层，再更新哈希；不要直接重写上游正文或删除许可来消除检查错误
 
+## 山体离线细化
+
+`bun tools/terrain-shape.ts` 将固定种子的自然山面细化写回地图的 `terrain.samples`，`--check` 只读核对是否需要重建。手工城区、山顶、道路和入口仍由地图主数据决定，字段与维护顺序见[地图源](../source-assets/district-map/README.md)。改形后运行地图检查和真实 Viewer 捕获，分别核对路线、接缝与山体轮廓
+
+```fish
+bun tools/terrain-shape.ts --check
+bun run check:map
+python3 tools/capture.py --script game/capture/mountain-city.json --output output/capture/mountain-city
+```
+
 ## 真实运行与 Capture
 
 从需求和当前实现出发，完成适用测试，再按[运行验收](../docs/dev/validation/runtime.md)运行真实场景、检查状态与画面、修复并复验。当前入口复用 Viewer 的城市和自由镜头；配置字段、输入与范围见[游戏工程](../game/README.md)

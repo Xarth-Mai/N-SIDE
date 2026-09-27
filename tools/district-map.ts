@@ -7,7 +7,11 @@ const c = Math.cos(turn), s = Math.sin(turn)
 export const project = ([x,y,z=0]: Point) => [x*c+y*s, (x*s-y*c)*Math.sin(tilt)-z*Math.cos(tilt)]
 export const depth = ([x,y]: Point) => x*s-y*c
 export const svgPath = (points: Point[]) => points.map((p,i)=>`${i?'L':'M'}${project(p).map(v=>v.toFixed(2)).join(',')}`).join(' ')
-export const heightColor = (h: number) => `rgb(${[223,213,175].map((v,i)=>Math.round(v+([103,139,112][i]-v)*Math.max(0,Math.min(1,h/80)))).join(',')})`
+export const heightColor = (h: number, maximum=80) => `rgb(${[223,213,175].map((v,i)=>Math.round(v+([103,139,112][i]-v)*Math.max(0,Math.min(1,h/Math.max(1,maximum))))).join(',')})`
+
+export function mapFrame([left,top,right,bottom]: Scene['bounds'], aspect: number) {
+  return {x:(left+right)/2,y:(top+bottom)/2,width:Math.max(220,right-left,(bottom-top)*aspect)*1.08}
+}
 
 export function buildGround(data: District) {
   // Match the Viewer ground controls; roofs and elevated connections remain separate
@@ -203,9 +207,13 @@ export function buildScene(data: District): Scene {
     for(const [dx,dy,dz,r,color] of ([[2,0,12,8,'#6e9274'],[-2,1,15,7,'#8aaa7d'],[-3,2,18,4,'#b0c399']] as [number,number,number,number,string][]))shapes.push(face(circle(x+dx,y+dy,z+dz,r),color))
     add([x,y],'tree',shapes)
   }
-  // Benches and delivery crates give the shop's public and service spaces different uses
-  add([61,220],'detail',[face(rectangle(51,218,15,3,17),'#a88e6c'),line([[51,221,17],[66,221,17]],'#7c8066',1.5)])
-  add([20,278],'detail',[face(rectangle(14,272,7,6,22),'#b9a786'),face([[14,272,20],[21,272,20],[21,272,22],[14,272,22]],'#958971')],'28')
   objects.sort((a,b)=>a.depth-b.depth)
-  return {terrain,surfaces:objects.filter(o=>o.kind==='surface'),water:face(data.terrain.water.map(p=>[...p,0]),'#86b9b9'),objects:objects.filter(o=>o.kind!=='surface')}
+  const water=face(data.terrain.water.map(p=>[...p,0]),'#86b9b9')
+  const bounds: Scene['bounds']=[Infinity,Infinity,-Infinity,-Infinity]
+  for(const shape of [...terrain,water,...objects.flatMap(o=>o.shapes)])for(const match of shape.d.matchAll(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g)) {
+    const x=Number(match[1]),y=Number(match[2])
+    bounds[0]=Math.min(bounds[0],x);bounds[1]=Math.min(bounds[1],y)
+    bounds[2]=Math.max(bounds[2],x);bounds[3]=Math.max(bounds[3],y)
+  }
+  return {terrain,surfaces:objects.filter(o=>o.kind==='surface'),water,objects:objects.filter(o=>o.kind!=='surface'),bounds,maxElevation:Math.max(...mesh.triangles.flatMap(t=>t.map(p=>p[2])))}
 }

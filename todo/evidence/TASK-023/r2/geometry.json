@@ -1,0 +1,147 @@
+{
+  "datum": "river surface 0m; xyz scale 1m",
+  "baseline_commit": "8365df245375fb9aa70ff5feccf2273e5cacf5ec",
+  "map_sha256": "784ef145fb231712faa433d3ea6e9c35e73ddd3a0a03c839218d6d278ba93ba0",
+  "bake": {
+    "version": 1,
+    "authored": 39,
+    "seed": 260927,
+    "spacing": 60
+  },
+  "sample_count": 848,
+  "summit": [
+    230,
+    1150,
+    450
+  ],
+  "hillgate": [
+    360,
+    600,
+    90
+  ],
+  "station_to_peak_planar_m": 1172.7744881263404,
+  "station_eye_peak_angle_degrees": 20.577867716260645,
+  "profiles": {
+    "home": {
+      "planar_length_m": 289.5286269554486,
+      "net_rise_m": 20,
+      "max_abs_grade_percent": 9.965457582448797
+    },
+    "shopping": {
+      "planar_length_m": 496.5055430805421,
+      "net_rise_m": 0,
+      "max_abs_grade_percent": 6.786300951485813
+    },
+    "hill": {
+      "planar_length_m": 5186.417458024794,
+      "net_rise_m": 422,
+      "max_abs_grade_percent": 19.33582786825826
+    },
+    "home-ramp": {
+      "planar_length_m": 136.67857174213043,
+      "net_rise_m": 5,
+      "max_abs_grade_percent": 4.47213595499958
+    },
+    "after-school": {
+      "planar_length_m": 1066.8146950712944,
+      "net_rise_m": 16,
+      "max_abs_grade_percent": 10.0
+    },
+    "friends": {
+      "planar_length_m": 2115.351441736942,
+      "net_rise_m": 40,
+      "max_abs_grade_percent": 9.778024140774095
+    },
+    "cinema": {
+      "planar_length_m": 801.7126636965102,
+      "net_rise_m": -17,
+      "max_abs_grade_percent": 32.8125
+    },
+    "music": {
+      "planar_length_m": 1934.0007892880778,
+      "net_rise_m": -4.666667,
+      "max_abs_grade_percent": 32.8125
+    },
+    "quiet": {
+      "planar_length_m": 2376.7494625638824,
+      "net_rise_m": 22,
+      "max_abs_grade_percent": 32.8125
+    },
+    "home-gentle": {
+      "planar_length_m": 647.140944508378,
+      "net_rise_m": 20,
+      "max_abs_grade_percent": 4.895838795857644
+    },
+    "shopping-gentle": {
+      "planar_length_m": 877.3950286773721,
+      "net_rise_m": 0,
+      "max_abs_grade_percent": 4.895838795857644
+    },
+    "cinema-gentle": {
+      "planar_length_m": 887.9888154355663,
+      "net_rise_m": 0,
+      "max_abs_grade_percent": 4.895838795857644
+    },
+    "home-to-hillgate": {
+      "planar_length_m": 460.0472306211177,
+      "net_rise_m": 62,
+      "max_abs_grade_percent": 19.33582786825826
+    },
+    "hillgate-to-summit": {
+      "planar_length_m": 4726.370227403676,
+      "net_rise_m": 360,
+      "max_abs_grade_percent": 18.74866400166894
+    }
+  },
+  "source_preservation": [
+    {
+      "check": "buildings_stable_ids",
+      "before": 231,
+      "after": 231,
+      "missing": [],
+      "passed": true
+    },
+    {
+      "check": "places_stable_ids",
+      "before": 91,
+      "after": 91,
+      "missing": [],
+      "passed": true
+    },
+    {
+      "check": "blocks_stable_ids",
+      "before": 12,
+      "after": 12,
+      "missing": [],
+      "passed": true
+    },
+    {
+      "check": "parcels_stable_ids",
+      "before": 58,
+      "after": 58,
+      "missing": [],
+      "passed": true
+    },
+    {
+      "check": "surfaces_stable_ids",
+      "before": 62,
+      "after": 62,
+      "missing": [],
+      "passed": true
+    },
+    {
+      "check": "stable_nodes",
+      "before": 995,
+      "after": 1241,
+      "missing": [],
+      "passed": true
+    },
+    {
+      "check": "building_heights_and_local_floor_offsets",
+      "buildings": 231,
+      "changed": [],
+      "passed": true
+    }
+  ],
+  "verification_head": "85f2ecb9ae27339e3556445419f1e1928dcc378c"
+}

@@ -1,0 +1,26 @@
+{
+  "source": "author attachment Photo 1.jpg, 2026-09-27",
+  "sha256": "ee0fe3425f466232972b4d7b88e5e928f7f56392c20cdd7a80ce426575a44b4f",
+  "dimensions": [
+    1280,
+    720
+  ],
+  "use": "spatial layering and street-to-mountain composition analysis only",
+  "redistributed": false,
+  "observations": [
+    "Foreground street stays locally flat; public stairs connect close terraces",
+    "Cinema roof and adjacent uphill buildings form a continuous middle distance",
+    "One dominant forested skyline sits high in the street opening"
+  ],
+  "not_measured": [
+    "real-world heights",
+    "lens focal length",
+    "walkability"
+  ],
+  "author_changes": [
+    "stargazing terrace must be the highest point",
+    "remove two-peak design",
+    "compress horizontal distance; shop-to-foothill need not be so gentle"
+  ],
+  "working_height_m": 450
+}

@@ -1,0 +1,227 @@
+{
+  "baseline_commit": "8365df245375fb9aa70ff5feccf2273e5cacf5ec",
+  "baseline_map_sha256": "7922f77b190fb837642b81f31f823e7d0aa7f66835b7343044afc7b0f8b62d3b",
+  "map_sha256": "63c8bc8cbaf221ab02ec66788f45f976dd562f7720443201332e48d86801d4fd",
+  "datum": "river surface 0m, 1 unit = 1m on all axes",
+  "main_peak": [
+    500,
+    1770,
+    450
+  ],
+  "station_to_main_peak_planar_m": 1839.2661580097645,
+  "station_eye_peak_angle_degrees": 13.462625053572308,
+  "front_peak": [
+    230,
+    1400,
+    280
+  ],
+  "hillgate": [
+    360,
+    900,
+    90
+  ],
+  "routes": {
+    "home": {
+      "distance_m": 289.5286269554486,
+      "net_rise_m": 20,
+      "max_abs_grade_percent": 9.965457582448796,
+      "nodes": [
+        "station",
+        "square",
+        "market_entry",
+        "market_turn",
+        "court",
+        "shop_south_junction",
+        "home"
+      ]
+    },
+    "hill": {
+      "distance_m": 2652.4313728581096,
+      "net_rise_m": 252,
+      "max_abs_grade_percent": 11.66216824094838,
+      "nodes": [
+        "home",
+        "east_low_junction",
+        "east_mid_junction",
+        "bend",
+        "upper",
+        "hillgate",
+        "fw_e_forest_turn",
+        "shrine",
+        "hill_shrine_north",
+        "hill_east_01",
+        "hill_east_02",
+        "hill_east_03",
+        "hill_east_04",
+        "hill_bend",
+        "summit"
+      ]
+    },
+    "hillgate-to-summit": {
+      "distance_m": 1899.6797324664292,
+      "net_rise_m": 190,
+      "mean_grade_percent": 10.001685902776648,
+      "max_abs_grade_percent": 11.66216824094838
+    },
+    "home-gentle": {
+      "distance_m": 647.140944508378,
+      "net_rise_m": 20,
+      "max_abs_grade_percent": 4.895838795857644,
+      "nodes": [
+        "station",
+        "station_front_start",
+        "st_06_front",
+        "v_m01_front",
+        "st_30_front",
+        "v_m01_service_s",
+        "st_31_front",
+        "v_m02_front",
+        "st_34_front",
+        "v_m02_service_s",
+        "fw_f_junction31",
+        "v_m03_front",
+        "fw_f_junction33",
+        "fw_f_junction32",
+        "v_m03_service_s",
+        "station_east_corner",
+        "station_east",
+        "food_ramp_lower",
+        "food_ramp_middle",
+        "food_ramp_turn",
+        "food_ramp_upper",
+        "community",
+        "fw_f_junction20",
+        "fw_f_junction21",
+        "fw_f_home_ramp_cross",
+        "home_ramp_b",
+        "home"
+      ]
+    },
+    "shopping-gentle": {
+      "distance_m": 877.3950286773721,
+      "net_rise_m": 0,
+      "max_abs_grade_percent": 4.895838795857644,
+      "nodes": [
+        "home",
+        "home_ramp_b",
+        "fw_f_home_ramp_cross",
+        "fw_f_junction21",
+        "fw_f_junction20",
+        "community",
+        "fw_f_junction71",
+        "fw_f_cross3",
+        "fw_f_junction69",
+        "fw_f_cross2",
+        "fw_f_junction14",
+        "fw_f_cross1",
+        "market_back",
+        "food_entry",
+        "market_back",
+        "food_service_turn",
+        "alley_corner",
+        "market_turn",
+        "bakery_front",
+        "bakery_entry",
+        "bakery_front",
+        "market_turn",
+        "alley_corner",
+        "food_service_turn",
+        "market_back",
+        "fw_f_cross1",
+        "fw_f_junction14",
+        "fw_f_cross2",
+        "fw_f_junction69",
+        "fw_f_cross3",
+        "fw_f_junction71",
+        "community",
+        "fw_f_junction20",
+        "fw_f_junction21",
+        "fw_f_home_ramp_cross",
+        "home_ramp_b",
+        "home"
+      ]
+    },
+    "cinema-gentle": {
+      "distance_m": 887.9888154355663,
+      "net_rise_m": 0,
+      "max_abs_grade_percent": 4.895838795857644,
+      "nodes": [
+        "home",
+        "home_ramp_b",
+        "fw_f_home_ramp_cross",
+        "fw_f_junction21",
+        "fw_f_junction20",
+        "community",
+        "fw_w_cinema_s",
+        "school_s",
+        "library_gate",
+        "fw_w_cinema_front",
+        "cinema_entry",
+        "fw_w_cinema_front",
+        "library_gate",
+        "school_s",
+        "fw_w_cinema_s",
+        "community",
+        "fw_f_junction20",
+        "fw_f_junction21",
+        "fw_f_home_ramp_cross",
+        "home_ramp_b",
+        "home"
+      ]
+    }
+  },
+  "source_preservation_checks": [
+    {
+      "check": "buildings_stable_ids",
+      "passed": true,
+      "before": 231,
+      "after": 231,
+      "missing": []
+    },
+    {
+      "check": "places_stable_ids",
+      "passed": true,
+      "before": 91,
+      "after": 91,
+      "missing": []
+    },
+    {
+      "check": "parcels_stable_ids",
+      "passed": true,
+      "before": 58,
+      "after": 58,
+      "missing": []
+    },
+    {
+      "check": "blocks_stable_ids",
+      "passed": true,
+      "before": 12,
+      "after": 12,
+      "missing": []
+    },
+    {
+      "check": "surfaces_stable_ids",
+      "passed": true,
+      "before": 62,
+      "after": 62,
+      "missing": []
+    },
+    {
+      "check": "node_stable_ids",
+      "passed": true,
+      "before": 995,
+      "after": 1015,
+      "missing": []
+    },
+    {
+      "check": "building_height_and_local_floor_offsets",
+      "passed": true,
+      "buildings": 231,
+      "errors": []
+    }
+  ],
+  "trees": {
+    "before": 51,
+    "after": 68
+  }
+}

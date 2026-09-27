@@ -1073,12 +1073,19 @@ mod tests {
             !south.is_empty(),
             "retain support on the south platform edge"
         );
-        // The 3 m public approach is centred on x=530; columns are 0.55 m wide
-        assert!(
-            south
-                .iter()
-                .all(|(p, bottom)| { (p[0] - 530.0).abs() >= 1.775 && *bottom == 18.0 })
-        );
+        let approach = map.nodes["fw_e_school_edge_low"];
+        // The 3 m public approach must stay clear; columns are 0.55 m wide
+        // Its ground elevation also anchors the platform foundation
+        for (p, bottom) in south {
+            assert!(
+                (p[0] - approach[0]).abs() >= 1.775,
+                "column at {p:?} blocks the public approach"
+            );
+            assert_eq!(
+                *bottom, approach[2],
+                "column at {p:?} must reach the public approach ground"
+            );
+        }
         assert!(
             columns.iter().all(|(p, _)| {
                 (526.0..=534.0).contains(&p[0]) && (327.0..=358.0).contains(&p[1])
@@ -1121,16 +1128,44 @@ mod tests {
             .fold([f32::INFINITY, f32::NEG_INFINITY], |range, p| {
                 [range[0].min(p[1]), range[1].max(p[1])]
             });
-        let source_max = map
+        let source_peak = map
             .terrain
             .samples
             .iter()
-            .map(|p| p[2])
-            .max_by(f64::total_cmp)
+            .max_by(|a, b| a[2].total_cmp(&b[2]))
             .unwrap();
+        let source_max = source_peak[2];
+        // A summit plaza cuts away natural terrain; its paving must retain the authored height
+        let summit_surface = map.surfaces.iter().enumerate().find(|(_, surface)| {
+            !surface.elevated
+                && (surface.elevation - source_max).abs() < 1e-6
+                && polygon(&surface.polygon)
+                    .contains(&geo::Point::new(source_peak[0], source_peak[1]))
+        });
+        let visible_max = if let Some((index, surface)) = summit_surface {
+            let source = format!(
+                "/surfaces/{index} ({})",
+                surface.id.as_deref().unwrap_or("unnamed")
+            );
+            parts
+                .iter()
+                .find(|part| part.source == source)
+                .expect("summit paving is rendered")
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap()
+                .iter()
+                .map(|p| p[1])
+                .max_by(f32::total_cmp)
+                .unwrap()
+        } else {
+            rendered_range[1]
+        };
         assert!(
-            (f64::from(rendered_range[1]) - source_max).abs() < 1e-4,
-            "highest terrain control was lost: rendered={rendered_range:?}, source_max={source_max}"
+            (f64::from(visible_max) - source_max).abs() < 1e-4,
+            "highest ground or its covering surface was lost: rendered={visible_max}, source_max={source_max}"
         );
         eprintln!(
             "terrain controls preserved={} rendered_height_range={rendered_range:?}",

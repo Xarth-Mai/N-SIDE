@@ -2,9 +2,9 @@ import type { District, Point } from '../district-types.ts'
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import source from '../../source-assets/district-map/district.json' with { type: 'json' }
-import { buildGround, buildScene, project, heightColor } from '../district-map.ts'
+import { buildGround, buildScene, mapFrame, project, heightColor } from '../district-map.ts'
 import { architectureStats, sectionRoads } from '../district-architecture.ts'
-import { frameworkCoverage, reachableNodes } from '../district-plan.ts'
+import { frameworkCoverage, mountainProfile, reachableNodes, routeProfile } from '../district-plan.ts'
 import {polygonArea,pointInside,onBoundary,segmentInside,polygonInside,intersectionArea,roadWidth,roadAllowed,roadHitsBuilding} from '../district-geometry.ts'
 
 const data: District = source
@@ -37,6 +37,69 @@ test('terrain colors follow ground elevation', () => {
   assert.equal(heightColor(80),'rgb(103,139,112)')
   assert.equal(heightColor(-10),heightColor(0))
   assert.equal(heightColor(100),heightColor(80))
+  assert.equal(new Set([0,80,250,450].map(h=>heightColor(h,450))).size,4,'city, mountainside and summit elevation bands remain distinct')
+  assert.equal(heightColor(500,450),heightColor(450,450))
+})
+
+test('map overview fits extended terrain on wide and narrow screens', () => {
+  const extended=structuredClone(data)
+  const north=Math.max(...Object.values(data.nodes).map(p=>p[1]))+900
+  extended.terrain.samples.push([710,north,450])
+  const scene=buildScene(extended)
+  assert.ok(scene.maxElevation>=450)
+  for(const aspect of [16/9,1,9/16]) {
+    const frame=mapFrame(scene.bounds,aspect)
+    for(const point of [...extended.terrain.samples,...Object.values(extended.nodes),...extended.terrain.water]) {
+      const [x,y]=project(point)
+      assert.ok(Math.abs(x-frame.x)<frame.width/2&&Math.abs(y-frame.y)<frame.width/aspect/2,`clipped source point ${point} at aspect ${aspect}`)
+    }
+  }
+})
+
+test('mountain cross section uses sampled ground up to the stargazing summit', () => {
+  const section=mountainProfile(data),ground=buildGround(data)
+  assert.equal(section.markers.length,5)
+  assert.equal(section.markers.at(-1)!.point[2],Math.max(...data.terrain.samples.map(p=>p[2])))
+  assert.ok(section.samples.every((p,i)=>Number.isFinite(p.height)&&(!i||p.distance>=section.samples[i-1].distance)))
+  for(const marker of section.markers) {
+    const sample=section.samples.find(p=>Math.abs(p.distance-marker.distance)<1e-6)!
+    assert.ok(sample,`${marker.label} appears in the transect`)
+    assert.ok(Math.abs(sample.height-ground.height(marker.point[0],marker.point[1]))<1e-6)
+  }
+})
+
+test('mountain city keeps metre scale and usable graded route alternatives', () => {
+  const peak=data.terrain.samples.reduce((a,b)=>a[2]>b[2]?a:b)
+  assert.equal(peak[2],450)
+  assert.equal(data.nodes.summit[2],450)
+  assert.equal(data.nodes.hillgate[2],90)
+  const distance=Math.hypot(peak[0]-data.nodes.station[0],peak[1]-data.nodes.station[1])
+  assert.ok(distance>=1000&&distance<=1300,'summit forms a close mountain backdrop from the station')
+  assert.deepEqual(peak,data.nodes.summit,'stargazing terrace is the highest point of the mountain')
+  assert.equal(data.nodes.cinema_roof[2]-data.nodes.cinema_lift_low[2],12,'cinema retains local floor scale')
+  for(const id of ['home-gentle','shopping-gentle','cinema-gentle']) {
+    const route=data.routes.find(r=>r.id===id)!
+    assert.ok(route,`${id}: explicit gentle alternative`)
+    for(const segment of routeProfile(data.nodes,route.nodes).slice(1)) {
+      assert.ok(segment.grade!==null&&Math.abs(segment.grade)<=5.001,`${id}/${segment.id}: ${segment.grade}% exceeds gentle route limit`)
+    }
+    for(let i=1;i<route.nodes.length;i++) {
+      const [a,b]=[route.nodes[i-1],route.nodes[i]]
+      assert.ok(data.roads.some(r=>roadAllowed(r,'public')&&!['steps','interior'].includes(r.kind)&&r.nodes.some((n,j)=>j>0&&((n===a&&r.nodes[j-1]===b)||(n===b&&r.nodes[j-1]===a)))),`${id}: ${a} to ${b} lacks a public step-free road`)
+    }
+  }
+  const uphill=data.routes.find(r=>r.id==='hill')!
+  assert.ok(uphill,'registered mountain route')
+  const start=uphill.nodes.indexOf('hillgate'),end=uphill.nodes.indexOf('summit')
+  assert.ok(start>=0&&end>start)
+  const climb=routeProfile(data.nodes,uphill.nodes.slice(start,end+1))
+  assert.ok(climb.at(-1)!.distance>=3000,'360m climb needs an actual switchback route')
+  for(let i=1;i<climb.length;i++) {
+    const a=climb[i-1].id,b=climb[i].id
+    const road=data.roads.find(r=>r.nodes.some((n,j)=>j>0&&((n===a&&r.nodes[j-1]===b)||(n===b&&r.nodes[j-1]===a))))
+    assert.ok(road,`${a} to ${b}: connected mountain route`)
+    assert.ok(road.kind==='steps'||(climb[i].grade!==null&&Math.abs(climb[i].grade!)<=12.01),`${a} to ${b}: steep mountain sections need real stairs`)
+  }
 })
 
 test('overview terrain retains source controls and excludes elevated connections', () => {
@@ -146,7 +209,7 @@ test('sections follow connected routes and distinguish a lift from a slope', asy
   for(const route of [...data.routes,...data.sections])for(let i=1;i<route.nodes.length;i++)assert.ok(linked(route.nodes[i-1],route.nodes[i]),`${route.id}: ${route.nodes[i]}`)
   const home=routeProfile(data.nodes,data.routes.find(r=>r.id==='home')!.nodes)
   assert.ok(home.at(-1)!.distance>280&&home.at(-1)!.distance<320)
-  assert.equal(home.at(-1)!.point[2]-home[0].point[2],12)
+  assert.equal(home.at(-1)!.point[2]-home[0].point[2],20)
   const ramp=routeProfile(data.nodes,data.routes.find(r=>r.id==='home-ramp')!.nodes)
   assert.ok(ramp.slice(1).every(p=>Math.abs(p.grade!)<=5))
   const lift=routeProfile(data.nodes,['cinema_lift_low','cinema_lift_high'])
@@ -506,5 +569,5 @@ test('shared stairs and separate apartments connect through shared circulation',
   }
   const crossing=sectionRoads(data,data.architectures.find(a=>a.id==='P3-A1')!.sections.find(s=>s.id==='B-B')!).find(r=>r.kind==='steps')
   assert.equal(crossing!.width,3)
-  assert.equal(crossing!.elevation,22.69)
+  assert.equal(crossing!.elevation,30.69)
 })

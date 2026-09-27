@@ -1,0 +1,603 @@
+{
+  "map_sha256": "784ef145fb231712faa433d3ea6e9c35e73ddd3a0a03c839218d6d278ba93ba0",
+  "runs": [
+    {
+      "run": "verified-eye-station",
+      "status": "PASS",
+      "exit_code": 0,
+      "video": "NOT RUN: --no-video",
+      "script": {
+        "scene": "district",
+        "view": "eye-station",
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "frames": 2,
+        "seed": 0,
+        "timeout_seconds": 180,
+        "keyframes": [
+          0,
+          1
+        ],
+        "events": [],
+        "assertions": [
+          {
+            "name": "fixed_view_stays_at_real_anchor",
+            "from": 0,
+            "to": 1,
+            "max_distance": 0.0001
+          }
+        ]
+      },
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "expected": 2,
+          "name": "all_frames_saved",
+          "passed": true,
+          "saved": 2
+        },
+        {
+          "checked_frames": 2,
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "distance": 0.0,
+          "enabled": false,
+          "expected": {
+            "enabled": null,
+            "from": 0,
+            "max_distance": 9.999999747378752e-05,
+            "min_distance": null,
+            "min_rotation": null,
+            "name": "fixed_view_stays_at_real_anchor",
+            "to": 1
+          },
+          "name": "fixed_view_stays_at_real_anchor",
+          "passed": true,
+          "rotation_radians": 0.0009765624417923391
+        }
+      ],
+      "binary_sha256": "2c885afc4eef6c11721adbfddaac2c5c26bad9e5383b0025468c1d2a5ad235b7",
+      "run_json_sha256": "31f41807f56bc67d15d2c7f9de0e9dbb034021cb67714f98c1e8791e7f6a8a2c"
+    },
+    {
+      "run": "verified-eye-cinema",
+      "status": "PASS",
+      "exit_code": 0,
+      "video": "NOT RUN: --no-video",
+      "script": {
+        "scene": "district",
+        "view": "eye-cinema",
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "frames": 2,
+        "seed": 0,
+        "timeout_seconds": 180,
+        "keyframes": [
+          0,
+          1
+        ],
+        "events": [],
+        "assertions": [
+          {
+            "name": "fixed_view_stays_at_real_anchor",
+            "from": 0,
+            "to": 1,
+            "max_distance": 0.0001
+          }
+        ]
+      },
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "expected": 2,
+          "name": "all_frames_saved",
+          "passed": true,
+          "saved": 2
+        },
+        {
+          "checked_frames": 2,
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "distance": 0.0,
+          "enabled": false,
+          "expected": {
+            "enabled": null,
+            "from": 0,
+            "max_distance": 9.999999747378752e-05,
+            "min_distance": null,
+            "min_rotation": null,
+            "name": "fixed_view_stays_at_real_anchor",
+            "to": 1
+          },
+          "name": "fixed_view_stays_at_real_anchor",
+          "passed": true,
+          "rotation_radians": 0.0
+        }
+      ],
+      "binary_sha256": "2c885afc4eef6c11721adbfddaac2c5c26bad9e5383b0025468c1d2a5ad235b7",
+      "run_json_sha256": "4ee6eef08cb3cebe8a4f5b69127de613de8efb8eb92e836baaa78bc4f51e1ac2"
+    },
+    {
+      "run": "verified-eye-shop-mountain",
+      "status": "PASS",
+      "exit_code": 0,
+      "video": "NOT RUN: --no-video",
+      "script": {
+        "scene": "district",
+        "view": "eye-shop-mountain",
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "frames": 2,
+        "seed": 0,
+        "timeout_seconds": 180,
+        "keyframes": [
+          0,
+          1
+        ],
+        "events": [],
+        "assertions": [
+          {
+            "name": "fixed_view_stays_at_real_anchor",
+            "from": 0,
+            "to": 1,
+            "max_distance": 0.0001
+          }
+        ]
+      },
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "expected": 2,
+          "name": "all_frames_saved",
+          "passed": true,
+          "saved": 2
+        },
+        {
+          "checked_frames": 2,
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "distance": 0.0,
+          "enabled": false,
+          "expected": {
+            "enabled": null,
+            "from": 0,
+            "max_distance": 9.999999747378752e-05,
+            "min_distance": null,
+            "min_rotation": null,
+            "name": "fixed_view_stays_at_real_anchor",
+            "to": 1
+          },
+          "name": "fixed_view_stays_at_real_anchor",
+          "passed": true,
+          "rotation_radians": 0.0
+        }
+      ],
+      "binary_sha256": "2c885afc4eef6c11721adbfddaac2c5c26bad9e5383b0025468c1d2a5ad235b7",
+      "run_json_sha256": "a8f20f7847b3bf6dd07f14870e415a066042fcaa8fae3cb1e592b2323d99c71c"
+    },
+    {
+      "run": "verified-mountain-profile",
+      "status": "PASS",
+      "exit_code": 0,
+      "video": "NOT RUN: --no-video",
+      "script": {
+        "scene": "district",
+        "view": "mountain-profile",
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "frames": 2,
+        "seed": 0,
+        "timeout_seconds": 180,
+        "keyframes": [
+          0,
+          1
+        ],
+        "events": [],
+        "assertions": [
+          {
+            "name": "fixed_view_stays_at_real_anchor",
+            "from": 0,
+            "to": 1,
+            "max_distance": 0.0001
+          }
+        ]
+      },
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "expected": 2,
+          "name": "all_frames_saved",
+          "passed": true,
+          "saved": 2
+        },
+        {
+          "checked_frames": 2,
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "distance": 0.0,
+          "enabled": false,
+          "expected": {
+            "enabled": null,
+            "from": 0,
+            "max_distance": 9.999999747378752e-05,
+            "min_distance": null,
+            "min_rotation": null,
+            "name": "fixed_view_stays_at_real_anchor",
+            "to": 1
+          },
+          "name": "fixed_view_stays_at_real_anchor",
+          "passed": true,
+          "rotation_radians": 0.0
+        }
+      ],
+      "binary_sha256": "2c885afc4eef6c11721adbfddaac2c5c26bad9e5383b0025468c1d2a5ad235b7",
+      "run_json_sha256": "511379b7512618d95de64b15254c4d28c5394bf7b978f551eb471c2636fe44ae"
+    },
+    {
+      "run": "verified-hillside",
+      "status": "PASS",
+      "exit_code": 0,
+      "video": "PASS",
+      "script": {
+        "scene": "district",
+        "view": "hillside",
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "frames": 2,
+        "seed": 0,
+        "timeout_seconds": 180,
+        "keyframes": [
+          0,
+          1
+        ],
+        "events": [],
+        "assertions": [
+          {
+            "name": "fixed_view_stays_at_real_anchor",
+            "from": 0,
+            "to": 1,
+            "max_distance": 0.0001
+          }
+        ]
+      },
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "expected": 2,
+          "name": "all_frames_saved",
+          "passed": true,
+          "saved": 2
+        },
+        {
+          "checked_frames": 2,
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "distance": 0.0,
+          "enabled": false,
+          "expected": {
+            "enabled": null,
+            "from": 0,
+            "max_distance": 9.999999747378752e-05,
+            "min_distance": null,
+            "min_rotation": null,
+            "name": "fixed_view_stays_at_real_anchor",
+            "to": 1
+          },
+          "name": "fixed_view_stays_at_real_anchor",
+          "passed": true,
+          "rotation_radians": 0.0
+        }
+      ],
+      "binary_sha256": "2c885afc4eef6c11721adbfddaac2c5c26bad9e5383b0025468c1d2a5ad235b7",
+      "run_json_sha256": "866fbed5d1764aa8c44a92b997be16f0ffd85cafb61049429b4a14643722e833"
+    },
+    {
+      "run": "verified-tour",
+      "status": "PASS",
+      "exit_code": 0,
+      "video": "PASS",
+      "script": {
+        "scene": "district",
+        "view": "eye-shop-mountain",
+        "width": 960,
+        "height": 540,
+        "fps": 30,
+        "frames": 540,
+        "seed": 0,
+        "timeout_seconds": 300,
+        "keyframes": [
+          0,
+          74,
+          149,
+          239,
+          329,
+          374,
+          419,
+          539
+        ],
+        "events": [
+          {
+            "start": 0,
+            "end": 1,
+            "keys": [
+              "M"
+            ]
+          },
+          {
+            "start": 60,
+            "end": 75,
+            "keys": [
+              "A"
+            ]
+          },
+          {
+            "start": 90,
+            "end": 150,
+            "look": [
+              -2.0,
+              0.0
+            ]
+          },
+          {
+            "start": 180,
+            "end": 240,
+            "look": [
+              2.0,
+              0.0
+            ]
+          },
+          {
+            "start": 270,
+            "end": 271,
+            "keys": [
+              "Escape"
+            ]
+          },
+          {
+            "start": 271,
+            "end": 330,
+            "keys": [
+              "W"
+            ],
+            "look": [
+              5.0,
+              0.0
+            ]
+          },
+          {
+            "start": 345,
+            "end": 346,
+            "keys": [
+              "M"
+            ]
+          },
+          {
+            "start": 360,
+            "end": 375,
+            "keys": [
+              "D"
+            ]
+          },
+          {
+            "start": 420,
+            "end": 421,
+            "keys": [
+              "Escape"
+            ]
+          }
+        ],
+        "assertions": [
+          {
+            "name": "street_strafe_uses_real_controller",
+            "from": 59,
+            "to": 74,
+            "min_distance": 5.9
+          },
+          {
+            "name": "look_across_city_and_ridge",
+            "from": 89,
+            "to": 149,
+            "min_rotation": 0.11
+          },
+          {
+            "name": "released_input_cannot_move_camera",
+            "from": 270,
+            "to": 329,
+            "max_distance": 0.0001,
+            "enabled": false
+          },
+          {
+            "name": "resume_returns_along_street",
+            "from": 359,
+            "to": 374,
+            "min_distance": 5.9,
+            "enabled": true
+          },
+          {
+            "name": "final_view_is_stable",
+            "from": 420,
+            "to": 539,
+            "max_distance": 0.0001,
+            "enabled": false
+          }
+        ]
+      },
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "expected": 540,
+          "name": "all_frames_saved",
+          "passed": true,
+          "saved": 540
+        },
+        {
+          "checked_frames": 540,
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "distance": 5.999958038330078,
+          "enabled": true,
+          "expected": {
+            "enabled": null,
+            "from": 59,
+            "max_distance": null,
+            "min_distance": 5.900000095367432,
+            "min_rotation": null,
+            "name": "street_strafe_uses_real_controller",
+            "to": 74
+          },
+          "name": "street_strafe_uses_real_controller",
+          "passed": true,
+          "rotation_radians": 0.0
+        },
+        {
+          "distance": 0.0,
+          "enabled": true,
+          "expected": {
+            "enabled": null,
+            "from": 89,
+            "max_distance": null,
+            "min_distance": null,
+            "min_rotation": 0.10999999940395355,
+            "name": "look_across_city_and_ridge",
+            "to": 149
+          },
+          "name": "look_across_city_and_ridge",
+          "passed": true,
+          "rotation_radians": 0.11999814212322235
+        },
+        {
+          "distance": 0.0,
+          "enabled": false,
+          "expected": {
+            "enabled": false,
+            "from": 270,
+            "max_distance": 9.999999747378752e-05,
+            "min_distance": null,
+            "min_rotation": null,
+            "name": "released_input_cannot_move_camera",
+            "to": 329
+          },
+          "name": "released_input_cannot_move_camera",
+          "passed": true,
+          "rotation_radians": 0.0
+        },
+        {
+          "distance": 5.999958038330078,
+          "enabled": true,
+          "expected": {
+            "enabled": true,
+            "from": 359,
+            "max_distance": null,
+            "min_distance": 5.900000095367432,
+            "min_rotation": null,
+            "name": "resume_returns_along_street",
+            "to": 374
+          },
+          "name": "resume_returns_along_street",
+          "passed": true,
+          "rotation_radians": 0.0
+        },
+        {
+          "distance": 0.0,
+          "enabled": false,
+          "expected": {
+            "enabled": false,
+            "from": 420,
+            "max_distance": 9.999999747378752e-05,
+            "min_distance": null,
+            "min_rotation": null,
+            "name": "final_view_is_stable",
+            "to": 539
+          },
+          "name": "final_view_is_stable",
+          "passed": true,
+          "rotation_radians": 0.0
+        }
+      ],
+      "binary_sha256": "2c885afc4eef6c11721adbfddaac2c5c26bad9e5383b0025468c1d2a5ad235b7",
+      "run_json_sha256": "d55d330119b890497554630ca8a322182e64e5b7a2828071fec8f6a586dd170d"
+    },
+    {
+      "run": "verified-expected-failure",
+      "status": "FAIL",
+      "exit_code": 1,
+      "video": "NOT RUN",
+      "script": {
+        "scene": "district",
+        "view": "shop",
+        "width": 640,
+        "height": 360,
+        "fps": 30,
+        "frames": 30,
+        "seed": 0,
+        "timeout_seconds": 300,
+        "keyframes": [
+          0,
+          29
+        ],
+        "events": [
+          {
+            "start": 0,
+            "end": 1,
+            "keys": [
+              "M"
+            ]
+          },
+          {
+            "start": 1,
+            "end": 30,
+            "keys": [
+              "A"
+            ]
+          }
+        ],
+        "assertions": [
+          {
+            "name": "intentional_failure_movement_does_not_teleport",
+            "from": 0,
+            "to": 29,
+            "min_distance": 1000.0
+          }
+        ]
+      },
+      "checks": null,
+      "binary_sha256": "2c885afc4eef6c11721adbfddaac2c5c26bad9e5383b0025468c1d2a5ad235b7",
+      "run_json_sha256": "41313a8b82466f88bd3d15ea015199c621d34a1573bfbceada6906ee9d368bf4"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import type { District } from './district-types.ts'
 // Areas and section distances use design metres, independently of camera projection
 import { polygonArea, pointInside, onBoundary, roadAllowed } from './district-geometry.ts'
+import { buildGround } from './district-map.ts'
 export { polygonArea, pointInside as inside } from './district-geometry.ts'
 
 export function routeProfile(nodes: District["nodes"], ids: string[]) {
@@ -11,6 +12,24 @@ export function routeProfile(nodes: District["nodes"], ids: string[]) {
     distance+=length
     return {id,point,distance,length,rise:point[2]-previous[2],grade:length?(point[2]-previous[2])/length*100:null}
   })
+}
+
+/** A ground transect through landmarks, not a walkable route or an access claim */
+export function mountainProfile(data: District) {
+  const ground=buildGround(data)
+  const markers=[['river_gate','河岸'],['station','站前'],['home','小店'],['hillgate','山脚'],['summit','摘星台 / 最高点']]
+    .map(([id,label])=>({label,point:data.nodes[id],distance:0}))
+  const samples=[{distance:0,height:markers[0].point[2]}]
+  for(let i=1;i<markers.length;i++) {
+    const a=markers[i-1],b=markers[i],length=Math.hypot(b.point[0]-a.point[0],b.point[1]-a.point[1])
+    b.distance=a.distance+length
+    const count=Math.max(1,Math.ceil(length/20))
+    for(let j=1;j<=count;j++) {
+      const t=j/count
+      samples.push({distance:a.distance+length*t,height:ground.height(a.point[0]+(b.point[0]-a.point[0])*t,a.point[1]+(b.point[1]-a.point[1])*t)})
+    }
+  }
+  return {markers,samples,distance:markers.at(-1)!.distance}
 }
 
 export function parcelStats(data: District) {

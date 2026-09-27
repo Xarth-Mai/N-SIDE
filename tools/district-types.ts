@@ -5,6 +5,7 @@ export type District = {
   terrain: {
     water: number[][]
     samples: number[][]
+    bake?: { version: number; authored: number; seed: number; spacing: number }
   }
   nodes: Record<string, number[]>
   roads: {
@@ -245,5 +246,5 @@ export type Architecture = District['architectures'][number]
 export type Point = number[]
 export type Shape = { d: string; fill: string; stroke?: string; width?: number; opacity?: number; fillRule?: "evenodd" }
 export type SceneObject = { key: number; depth: number; kind: string; shapes: Shape[]; place?: string }
-export type Scene = { terrain: (Shape & { height: number })[]; surfaces: SceneObject[]; water: Shape; objects: SceneObject[] }
+export type Scene = { terrain: (Shape & { height: number })[]; surfaces: SceneObject[]; water: Shape; objects: SceneObject[]; bounds: [number, number, number, number]; maxElevation: number }
 export type PlayerMap = { groups: Record<string, string>; places: Pick<District["places"][number], "id" | "name" | "group" | "position" | "use" | "entry" | "page">[]; scene: Scene }

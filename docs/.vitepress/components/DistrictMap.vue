@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, shallowRef, ref, watch } from 'vue'
 import { withBase } from 'vitepress'
 import data from '@wiki-data/map.json'
-import { heightColor, project } from '../../../tools/district-map.ts'
+import { heightColor, mapFrame, project } from '../../../tools/district-map.ts'
 
 import type { Scene } from '../../../tools/district-types.ts'
 const scene=shallowRef<Scene>()
@@ -16,7 +16,7 @@ async function loadScene(){
     const response=await fetch(withBase('/project-assets/district-map/map.json'),{signal:current.signal})
     if(!response.ok)throw new Error(`HTTP ${response.status}`)
     const map=await response.json()
-    if(!map?.scene||!Array.isArray(map.scene.terrain)||!Array.isArray(map.scene.objects)||!Array.isArray(map.scene.surfaces)||typeof map.scene.water?.d!=='string')throw new Error('Invalid map')
+    if(!map?.scene||!Array.isArray(map.scene.terrain)||!Array.isArray(map.scene.objects)||!Array.isArray(map.scene.surfaces)||typeof map.scene.water?.d!=='string'||!Array.isArray(map.scene.bounds)||map.scene.bounds.length!==4||!map.scene.bounds.every(Number.isFinite)||!Number.isFinite(map.scene.maxElevation))throw new Error('Invalid map')
     if(!current.signal.aborted)scene.value=map.scene
   }catch{if(!current.signal.aborted)error.value='地图加载失败，请重试'}
   finally{if(!current.signal.aborted)loading.value=false}
@@ -24,6 +24,9 @@ async function loadScene(){
 onMounted(loadScene)
 const svg=ref<SVGSVGElement | null>(null),mode=ref('scape'),frame=ref('all'),selected=ref<string | null>(null),names=ref(true),expanded=ref(false)
 const size=ref([700,700]),camera=ref({x:260,y:-140,width:1700})
+const fullFrame=computed(()=>scene.value?mapFrame(scene.value.bounds,size.value[0]/size.value[1]):camera.value)
+const maximum=computed(()=>scene.value?.maxElevation??80)
+watch(scene,()=>{if(frame.value==='all')fit('all')})
 const place=computed(()=>data.places.find(p=>p.id===selected.value))
 const view=computed(()=>{const c=camera.value,h=c.width*size.value[1]/size.value[0];return `${c.x-c.width/2} ${c.y-h/2} ${c.width} ${h}`})
 const scale=computed(()=>size.value[0]/camera.value.width)
@@ -36,13 +39,14 @@ watch(svg,element=>{
 },{flush:'post'})
 function fit(which: string){
   frame.value=which
-  camera.value=which==='home'?{x:130,y:-215,width:360}:{x:260,y:-140,width:Math.max(1750,1500*size.value[0]/size.value[1])}
+  const [x,y]=project(data.places.find(p=>p.id==='04')!.position)
+  camera.value=which==='home'?{x,y,width:360}:fullFrame.value
 }
 function choose(id: string){
   selected.value=id
   if(camera.value.width>600){const target=data.places.find(p=>p.id===id);if(!target)return;const [x,y]=project(target.position);camera.value={x,y,width:360};frame.value='detail'}
 }
-function zoom(factor: number){frame.value='detail';camera.value={...camera.value,width:Math.max(220,Math.min(2400,camera.value.width*factor))}}
+function zoom(factor: number){frame.value='detail';camera.value={...camera.value,width:Math.max(220,Math.min(fullFrame.value.width*2,camera.value.width*factor))}}
 let pointer: {id: number; x: number; y: number} | null=null
 function down(e: PointerEvent){if(e.button!==0||(e.target instanceof Element && e.target.closest('[data-place]')))return;pointer={id:e.pointerId,x:e.clientX,y:e.clientY};svg.value?.setPointerCapture(e.pointerId)}
 function move(e: PointerEvent){if(pointer?.id!==e.pointerId)return;const k=scale.value;camera.value={...camera.value,x:camera.value.x-(e.clientX-pointer.x)/k,y:camera.value.y-(e.clientY-pointer.y)/k};frame.value='detail';pointer={id:e.pointerId,x:e.clientX,y:e.clientY}}
@@ -82,7 +86,7 @@ const structure=computed(()=>mode.value==='roads')
 
 <template>
   <section class="district-map" :class="{expanded}" aria-label="Null Site导览图" @keydown.esc="expanded=false">
-    <header class="map-header"><div><span class="map-kicker">NULL CITY · N DISTRICT</span><h3>沿着坡道，回到家</h3></div><button type="button" @click="expanded=!expanded">{{ expanded?'退出全屏':'全屏查看' }}</button></header>
+    <header class="map-header"><div><span class="map-kicker">NULL CITY · NULL SITE</span><h3>沿着坡道，回到家</h3></div><button type="button" @click="expanded=!expanded">{{ expanded?'退出全屏':'全屏查看' }}</button></header>
     <div class="map-toolbar">
       <div class="map-tabs" aria-label="地图样式"><button type="button" :aria-pressed="mode==='scape'" @click="mode='scape'">街区风貌</button><button type="button" :aria-pressed="structure" @click="mode='roads'">道路结构</button></div>
       <div class="map-tabs" aria-label="地图取景"><button type="button" :aria-pressed="frame==='all'" @click="fit('all')">全图</button><button type="button" :aria-pressed="frame==='home'" @click="fit('home')">小店附近</button></div>
@@ -94,7 +98,7 @@ const structure=computed(()=>mode.value==='roads')
       <svg v-if="scene" ref="svg" class="map-canvas" :viewBox="view" tabindex="0" role="group" aria-label="街区斜俯视导览，方向键移动，加减键缩放；地点也可从下方列表选择" @keydown="key" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up" @lostpointercapture="pointer=null">
         <title>Null Site · 河岸、街坊与山坡</title>
         <rect x="-3000" y="-3000" width="6000" height="6000" fill="#e5e4d5"/>
-        <g class="terrain"><path v-for="(face,i) in scene.terrain" :key="i" :d="face.d" :fill="structure?heightColor(face.height):face.fill" :stroke="structure?heightColor(face.height):face.fill" stroke-width=".8"/></g>
+        <g class="terrain"><path v-for="(face,i) in scene.terrain" :key="i" :d="face.d" :fill="structure?heightColor(face.height,maximum):face.fill" :stroke="structure?heightColor(face.height,maximum):face.fill" stroke-width=".8"/></g>
         <path :d="scene.water.d" :fill="scene.water.fill"/>
         <g stroke="#c0d9d3" stroke-width="1" opacity=".65"><path v-for="i in 12" :key="i" :d="`M ${project([-280+i*90,-220-i%3*40,0]).join(',')} l 35 9 m 10 3 l 12 3`"/></g>
         <g v-for="surface in scene.surfaces" :key="surface.key" :data-surface-place="surface.place"><path v-for="(shape,j) in surface.shapes" :key="j" :d="shape.d" :fill="shape.fill" :stroke="selected===surface.place?'#c2763b':shape.stroke" :stroke-width="selected===surface.place?1.7:shape.width"/></g>
@@ -114,7 +118,7 @@ const structure=computed(()=>mode.value==='roads')
       <div class="map-credit">Null Site <span>／</span> {{ structure?'道路与公共边界':'街区风貌' }}</div>
     </div>
     <div v-if="place" class="map-detail" aria-live="polite"><button class="detail-close" type="button" aria-label="关闭地点详情" @click="selected=null">×</button><span class="map-kicker">{{ data.groups[place.group] }} · {{ place.id }}</span><h4>{{ place.name }}</h4><p>{{ place.use }}</p><p class="entry">{{ place.entry }}</p><a v-if="place.page" :href="withBase(place.page)">地点介绍 →</a></div>
-    <footer><span v-if="structure" class="height-legend">低 <i :style="{background:`linear-gradient(to right,${heightColor(0)},${heightColor(80)})`}"/> 高 <span>细墙线 · 地块边界</span></span><span v-else>从河岸到山林 · 沿路认识街坊</span><span>细看地点可放大，或使用地点索引</span></footer>
+    <footer><span v-if="structure" class="height-legend">0m <i :style="{background:`linear-gradient(to right,${heightColor(0,maximum)},${heightColor(maximum,maximum)})`}"/> {{ maximum }}m <span>细墙线 · 地块边界</span></span><span v-else>从河岸到山林 · 沿路认识街坊</span><span>细看地点可放大，或使用地点索引</span></footer>
     <details class="map-index"><summary>地点索引 · {{ data.places.length }}</summary><div><button v-for="p in data.places" :key="p.id" type="button" @click="choose(p.id);frame='detail';camera={...camera,x:project(p.position)[0],y:project(p.position)[1],width:360}"><span>{{ p.id }}</span>{{ p.name }}</button></div></details>
   </section>
 </template>

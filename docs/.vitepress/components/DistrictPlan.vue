@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import source from '../../../source-assets/district-map/district.json'
 import type { District, Point, Building, Road, Surface } from '../../../tools/district-types.ts'
-import { routeProfile } from '../../../tools/district-plan.ts'
+import { mountainProfile, routeProfile } from '../../../tools/district-plan.ts'
 import { roadWidth, segmentIntervals } from '../../../tools/district-geometry.ts'
 import { sectionRoads } from '../../../tools/district-architecture.ts'
 const data: District = source
@@ -26,6 +26,9 @@ const roleName: Record<string,string>={public:'公共入口',resident:'住宅入
 const roadColor=(r: Road)=>r.access==='service'?'#b38a72':r.access==='resident'?'#97ac80':r.access==='controlled'?'#a89ab8':['bridge','deck'].includes(r.kind)?'#849d9d':['shore','trail'].includes(r.kind)?'#9bb8ae':'#c3aa80'
 const surfaceColor=(s: Surface)=>(({park:'#d8e2c7',garden:'#d8e2c7',private:'#e7dfcb',service:'#ded3c9',court:'#e6e4d8',platform:'#dfd8c7'} as Record<string,string>)[s.kind]??'#e4e5d3')
 const buildingColor=(b: Pick<Building, "place" | "design" | "kind">)=>b.place==='04'?'#c9a987':b.kind==='school'?'#b3c6cd':b.kind==='home'?'#c1ccc2':b.kind==='civic'?'#c0b8c9':'#d6c9b6'
+const mountain=!props.blockIds&&!props.sectionIds?mountainProfile(data):undefined
+const mountainScale=mountain?870/Math.max(mountain.distance,1):1
+const mountainBase=mountain?50+Math.max(...mountain.samples.map(p=>p.height))*mountainScale:0
 const profiles=(data.sections??[]).filter(s=>!props.sectionIds||props.sectionIds.includes(s.id)).map(section=>{
   const samples=routeProfile(data.nodes,section.nodes).map(p=>({...p,height:p.point[2],label:section.labels?.[p.id]}))
   const distance=samples.at(-1)?.distance??0
@@ -83,6 +86,23 @@ const profiles=(data.sections??[]).filter(s=>!props.sectionIds||props.sectionIds
       </div>
     </figure>
     <ul class="plan-legend" aria-label="到达图图例"><li><span style="color:#397b85">●</span>公共入口</li><li><span style="color:#638657">●</span>住户入口</li><li><span style="color:#7777a0">●</span>校园入口</li><li><span style="color:#a06e50">■</span>服务入口</li><li>浅棕：公共道路</li><li>灰绿：住户通路</li><li>紫灰：受管理通路</li><li>棕色：后勤通路</li></ul>
+    <figure v-if="mountain" class="plan-section">
+      <h4>河岸—城区台地—山脚—摘星台</h4>
+      <p>同源地形折线纵剖面，沿各地标之间的平面直线累计距离；横纵等比例，以河面为 0m。折线穿过自然地形，不表示可通行道路；登山路线另见下方剖面</p>
+      <div class="plan-scroll" tabindex="0" role="region" aria-label="河岸至摘星台等比例地形纵剖面">
+        <svg class="profile-map" :viewBox="`0 0 1000 ${mountainBase+95}`" role="img" aria-label="河岸至摘星台的实际地形高度与水平距离">
+          <title>山城等比例纵剖面</title>
+          <g v-for="height in [0,100,200,300,450]" :key="height" class="profile-grid"><line x1="65" :y1="mountainBase-height*mountainScale" x2="935" :y2="mountainBase-height*mountainScale"/><text x="55" :y="mountainBase-height*mountainScale+4" text-anchor="end">{{ height }}</text></g>
+          <polygon :points="`65,${mountainBase} ${mountain.samples.map(p=>`${65+p.distance*mountainScale},${mountainBase-p.height*mountainScale}`).join(' ')} 935,${mountainBase}`" fill="#e1e8d7"/>
+          <polyline :points="mountain.samples.map(p=>`${65+p.distance*mountainScale},${mountainBase-p.height*mountainScale}`).join(' ')" fill="none" stroke="#647e69" stroke-width="3"/>
+          <g v-for="(p,i) in mountain.markers" :key="p.label" class="sample-label">
+            <circle :cx="65+p.distance*mountainScale" :cy="mountainBase-p.point[2]*mountainScale" r="4" fill="#b5794e"/>
+            <text :x="65+p.distance*mountainScale" :y="mountainBase+25+(i%2)*35" :text-anchor="i===0?'start':i===mountain.markers.length-1?'end':'middle'">{{ p.label }}<tspan :x="65+p.distance*mountainScale" dy="15">{{ Math.round(p.distance) }}m / +{{ p.point[2] }}m</tspan></text>
+          </g>
+          <text x="65" y="22" class="axis-label">相对河面高程 / m · 横纵比例 1:1</text>
+        </svg>
+      </div>
+    </figure>
     <div v-for="profile in profiles" :key="profile.id" class="plan-section">
       <h4>{{ profile.id }} · {{ profile.name }}</h4>
       <p>{{ profile.note }}</p>

@@ -23,7 +23,8 @@ use bevy::{
     winit::WinitPlugin,
 };
 use n_side::world::{
-    map::map_to_world,
+    geometry::Ground,
+    map::{Map, map_to_world},
     scene::{PreparedScene, SceneLoading, WorldScenePlugin},
     visual::{Antialiasing, DaylightSettings},
 };
@@ -172,142 +173,7 @@ fn run() -> Result<AppExit, String> {
         );
         return Ok(AppExit::Success);
     }
-    let map = &prepared.map;
-    let bounds = map.nodes.values().fold(
-        [
-            f64::INFINITY,
-            f64::INFINITY,
-            f64::NEG_INFINITY,
-            f64::NEG_INFINITY,
-        ],
-        |b, p| {
-            [
-                b[0].min(p[0]),
-                b[1].min(p[1]),
-                b[2].max(p[0]),
-                b[3].max(p[1]),
-            ]
-        },
-    );
-    let center = [
-        (bounds[0] + bounds[2]) / 2.0,
-        (bounds[1] + bounds[3]) / 2.0,
-        20.0,
-    ];
-    let span = (bounds[2] - bounds[0]).max(bounds[3] - bounds[1]);
-    let view = |eye: [f64; 3], target: [f64; 3]| {
-        Transform::from_translation(map_to_world(eye)).looking_at(map_to_world(target), Vec3::Y)
-    };
-    let shop = *map
-        .nodes
-        .get("shop_front_door")
-        .ok_or("[viewer/view] /nodes/shop_front_door: missing review anchor")?;
-    let cinema = *map
-        .nodes
-        .get("cinema_roof")
-        .ok_or("[viewer/view] /nodes/cinema_roof: missing review anchor")?;
-    let mut views = vec![
-        (
-            "overview",
-            view(
-                [
-                    center[0] + span * 0.15,
-                    center[1] - span * 0.90,
-                    span * 0.76,
-                ],
-                center,
-            ),
-        ),
-        (
-            "shop",
-            view(
-                [shop[0] + 22.0, shop[1] - 17.0, shop[2] + 5.0],
-                [shop[0], shop[1] + 2.0, shop[2] + 2.0],
-            ),
-        ),
-        (
-            "street",
-            view(
-                [shop[0] + 40.0, shop[1] - 66.0, shop[2] + 22.0],
-                [shop[0] - 28.0, shop[1] - 38.0, shop[2] - 2.0],
-            ),
-        ),
-        (
-            "cinema",
-            view(
-                [cinema[0] + 90.0, cinema[1] - 75.0, cinema[2] + 40.0],
-                cinema,
-            ),
-        ),
-    ];
-    let bridge = map
-        .roads
-        .iter()
-        .find(|r| r.kind == "bridge")
-        .ok_or("map has no bridge for the verification view")?;
-    let a = map.nodes[&bridge.nodes[0]];
-    let b = map.nodes[bridge.nodes.last().unwrap()];
-    let bridge_mid = [
-        (a[0] + b[0]) * 0.5,
-        (a[1] + b[1]) * 0.5,
-        (a[2] + b[2]) * 0.5,
-    ];
-    views.push((
-        "bridge",
-        view(
-            [bridge_mid[0] + 60.0, bridge_mid[1] + 50.0, 6.5],
-            bridge_mid,
-        ),
-    ));
-    let summit = *map
-        .nodes
-        .get("summit")
-        .ok_or("[viewer/view] /nodes/summit missing")?;
-    let foothill = *map
-        .nodes
-        .get("hillgate")
-        .ok_or("[viewer/view] /nodes/hillgate missing")?;
-    views.push((
-        "hillside",
-        view(
-            [foothill[0] + 220.0, foothill[1] - 100.0, foothill[2] + 18.0],
-            [
-                (foothill[0] + summit[0]) / 2.0,
-                (foothill[1] + summit[1]) / 2.0,
-                (foothill[2] + summit[2]) / 2.0,
-            ],
-        ),
-    ));
-    let campus = *map
-        .nodes
-        .get("fw_e_school_edge_low")
-        .ok_or("[viewer/view] /nodes/fw_e_school_edge_low missing")?;
-    views.push((
-        "campus",
-        view(
-            [campus[0], campus[1] - 18.0, campus[2] + 2.0],
-            [campus[0], campus[1], campus[2] + 6.0],
-        ),
-    ));
-    // Eye heights follow real road nodes rather than the distant shop datum
-    for (name, anchor, target) in [
-        ("eye-shop", "home", "shop_front_door"),
-        ("eye-corner", "market_turn", "bakery_entry"),
-        ("eye-shade", "service_shared", "shop_rear_door"),
-    ] {
-        let mut eye = *map
-            .nodes
-            .get(anchor)
-            .ok_or_else(|| format!("[viewer/view] missing {anchor}"))?;
-        let mut target = *map
-            .nodes
-            .get(target)
-            .ok_or_else(|| format!("[viewer/view] missing {target}"))?;
-        eye[2] += 1.7;
-        target[2] += 1.7;
-        println!("[visual/view] name={name} anchor={anchor} eye={eye:?} target={target:?} fov=55");
-        views.push((name, view(eye, target)));
-    }
+    let mut views = camera_views(&prepared.map)?;
     if let Some(name) = selected_view {
         let selected = views
             .iter()
@@ -434,6 +300,182 @@ fn run() -> Result<AppExit, String> {
         .add_systems(Update, verify_frames);
     }
     Ok(app.run())
+}
+
+fn camera_views(map: &Map) -> Result<Vec<(&'static str, Transform)>, String> {
+    let bounds = map.nodes.values().chain(&map.terrain.samples).fold(
+        [
+            f64::INFINITY,
+            f64::INFINITY,
+            f64::NEG_INFINITY,
+            f64::NEG_INFINITY,
+        ],
+        |b, p| {
+            [
+                b[0].min(p[0]),
+                b[1].min(p[1]),
+                b[2].max(p[0]),
+                b[3].max(p[1]),
+            ]
+        },
+    );
+    let peak = *map
+        .terrain
+        .samples
+        .iter()
+        .max_by(|a, b| a[2].total_cmp(&b[2]))
+        .ok_or("[viewer/view] /terrain/samples: missing mountain controls")?;
+    let ground = Ground::new(map)?;
+    let center = [
+        (bounds[0] + bounds[2]) / 2.0,
+        (bounds[1] + bounds[3]) / 2.0,
+        peak[2] * 0.5,
+    ];
+    let span = (bounds[2] - bounds[0]).max(bounds[3] - bounds[1]);
+    let view = |eye: [f64; 3], target: [f64; 3]| {
+        Transform::from_translation(map_to_world(eye)).looking_at(map_to_world(target), Vec3::Y)
+    };
+    let shop = *map
+        .nodes
+        .get("shop_front_door")
+        .ok_or("[viewer/view] /nodes/shop_front_door: missing review anchor")?;
+    let cinema = *map
+        .nodes
+        .get("cinema_roof")
+        .ok_or("[viewer/view] /nodes/cinema_roof: missing review anchor")?;
+    let mut views = vec![
+        (
+            "overview",
+            view(
+                [
+                    center[0] + span * 0.15,
+                    center[1] - span * 0.90,
+                    center[2] + span * 0.76,
+                ],
+                center,
+            ),
+        ),
+        (
+            "shop",
+            view(
+                [shop[0] + 22.0, shop[1] - 17.0, shop[2] + 5.0],
+                [shop[0], shop[1] + 2.0, shop[2] + 2.0],
+            ),
+        ),
+        (
+            "street",
+            view(
+                [shop[0] + 40.0, shop[1] - 66.0, shop[2] + 22.0],
+                [shop[0] - 28.0, shop[1] - 38.0, shop[2] - 2.0],
+            ),
+        ),
+        (
+            "cinema",
+            view(
+                [cinema[0] + 90.0, cinema[1] - 75.0, cinema[2] + 40.0],
+                cinema,
+            ),
+        ),
+    ];
+    let bridge = map
+        .roads
+        .iter()
+        .find(|r| r.kind == "bridge")
+        .ok_or("map has no bridge for the verification view")?;
+    let a = map.nodes[&bridge.nodes[0]];
+    let b = map.nodes[bridge.nodes.last().unwrap()];
+    let bridge_mid = [
+        (a[0] + b[0]) * 0.5,
+        (a[1] + b[1]) * 0.5,
+        (a[2] + b[2]) * 0.5,
+    ];
+    views.push((
+        "bridge",
+        view(
+            [bridge_mid[0] + 60.0, bridge_mid[1] + 50.0, 6.5],
+            bridge_mid,
+        ),
+    ));
+    let summit = *map
+        .nodes
+        .get("summit")
+        .ok_or("[viewer/view] /nodes/summit missing")?;
+    let foothill = *map
+        .nodes
+        .get("hillgate")
+        .ok_or("[viewer/view] /nodes/hillgate missing")?;
+    let hillside_xy = [foothill[0] + 220.0, foothill[1] - 100.0];
+    views.push((
+        "hillside",
+        view(
+            [
+                hillside_xy[0],
+                hillside_xy[1],
+                ground.height(hillside_xy) + 35.0,
+            ],
+            [
+                (foothill[0] + summit[0]) / 2.0,
+                (foothill[1] + summit[1]) / 2.0,
+                (foothill[2] + summit[2]) / 2.0,
+            ],
+        ),
+    ));
+    let campus = *map
+        .nodes
+        .get("fw_e_school_edge_low")
+        .ok_or("[viewer/view] /nodes/fw_e_school_edge_low missing")?;
+    views.push((
+        "campus",
+        view(
+            [campus[0], campus[1] - 18.0, campus[2] + 2.0],
+            [campus[0], campus[1], campus[2] + 6.0],
+        ),
+    ));
+    // Eye heights follow real road nodes rather than the distant shop datum
+    for (name, anchor, target) in [
+        ("eye-shop", "home", "shop_front_door"),
+        ("eye-corner", "market_turn", "bakery_entry"),
+        ("eye-shade", "service_shared", "shop_rear_door"),
+    ] {
+        let mut eye = *map
+            .nodes
+            .get(anchor)
+            .ok_or_else(|| format!("[viewer/view] missing {anchor}"))?;
+        let mut target = *map
+            .nodes
+            .get(target)
+            .ok_or_else(|| format!("[viewer/view] missing {target}"))?;
+        eye[2] += 1.7;
+        target[2] += 1.7;
+        println!("[visual/view] name={name} anchor={anchor} eye={eye:?} target={target:?} fov=55");
+        views.push((name, view(eye, target)));
+    }
+    // Level eye views keep the skyline's apparent rise visible at the shared 55-degree FOV
+    for (name, anchor) in [
+        ("eye-station", "station"),
+        ("eye-cinema", "fw_w_cinema_s"),
+        ("eye-shop-mountain", "home"),
+    ] {
+        let mut eye = *map
+            .nodes
+            .get(anchor)
+            .ok_or_else(|| format!("[viewer/view] missing {anchor}"))?;
+        eye[2] += 1.7;
+        let distance = (peak[0] - eye[0]).hypot(peak[1] - eye[1]);
+        let elevation_angle = (peak[2] - eye[2]).atan2(distance).to_degrees();
+        let target = [peak[0], peak[1], eye[2]];
+        println!(
+            "[visual/view] name={name} anchor={anchor} eye={eye:?} target={target:?} peak={peak:?} horizontal_distance_m={distance:.1} peak_angle_deg={elevation_angle:.2} fov=55"
+        );
+        views.push((name, view(eye, target)));
+    }
+    // Side-on overview exposes the river-to-ridge elevation sequence at the same meter scale
+    let profile_eye = [center[0] + span * 1.1, center[1], peak[2] + span * 0.2];
+    println!(
+        "[visual/view] name=mountain-profile eye={profile_eye:?} target={center:?} terrain_peak={peak:?} fov=55"
+    );
+    views.push(("mountain-profile", view(profile_eye, center)));
+    Ok(views)
 }
 
 fn camera_focus(
@@ -566,5 +608,72 @@ fn verify_frames(
         verify.frames.clear();
         verify.captured = false;
         verify.capture_done = false;
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn mountain_views_use_source_scale_and_cover_the_peak() {
+        let map = Map::load(
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("../source-assets/district-map/district.json"),
+        )
+        .unwrap();
+        let views = camera_views(&map).unwrap();
+        let peak = map_to_world(
+            *map.terrain
+                .samples
+                .iter()
+                .max_by(|a, b| a[2].total_cmp(&b[2]))
+                .unwrap(),
+        );
+        for (name, anchor) in [
+            ("eye-station", "station"),
+            ("eye-cinema", "fw_w_cinema_s"),
+            ("eye-shop-mountain", "home"),
+        ] {
+            let camera = views.iter().find(|(id, _)| *id == name).unwrap().1;
+            let expected_eye = map_to_world(map.nodes[anchor]) + Vec3::Y * 1.7;
+            assert!(
+                camera.translation.distance(expected_eye) < 0.001,
+                "{name}: eye height"
+            );
+            let horizontal = Vec3::new(peak.x - expected_eye.x, 0.0, peak.z - expected_eye.z);
+            assert!(
+                camera.forward().dot(horizontal.normalize()) > 0.9999,
+                "{name}: level view toward summit"
+            );
+        }
+        for (name, camera) in &views {
+            assert!(camera.is_finite(), "{name}: invalid transform");
+            assert_eq!(camera.scale, Vec3::ONE, "{name}: physical scale changed");
+            assert!(
+                camera.translation.distance(peak) < 7000.0,
+                "{name}: peak outside far plane"
+            );
+        }
+        for name in [
+            "overview",
+            "mountain-profile",
+            "eye-station",
+            "eye-cinema",
+            "eye-shop-mountain",
+        ] {
+            let camera = views.iter().find(|(id, _)| *id == name).unwrap().1;
+            let peak_in_view = camera.compute_affine().inverse().transform_point3(peak);
+            let half_height = -peak_in_view.z * (55.0_f32.to_radians() * 0.5).tan();
+            assert!(peak_in_view.z < -0.1, "{name}: peak behind camera");
+            assert!(
+                peak_in_view.y.abs() < half_height,
+                "{name}: peak vertically clipped"
+            );
+            assert!(
+                peak_in_view.x.abs() < half_height * 16.0 / 9.0,
+                "{name}: peak horizontally clipped"
+            );
+        }
     }
 }

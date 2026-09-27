@@ -6,6 +6,7 @@ depends_on: ["DOC-DISTRICT-SPACE", "DOC-DISTRICT-PLAN", "DOC-DISTRICT-PLACES"]
 
 <script setup lang="ts">
 import DistrictPlan from '../../../.vitepress/components/DistrictPlan.vue'
+import data from '../../../../source-assets/district-map/district.json'
 </script>
 
 # 影院与滨水建筑
@@ -16,9 +17,11 @@ import DistrictPlan from '../../../.vitepress/components/DistrictPlan.vue'
 
 ## 影院街与公共屋顶
 
-影院基底为 +17 m，餐饮联系层为 +21 m，公共屋顶为 +29 m。屋面边界内是建筑的屋顶花园，边界外的平台单独支承公共通路，转折后接到上街。地面入口、公共电梯和上街入口共同组织高低到达
+影院基底为 +{{ data.nodes.cinema_entry[2] }} m，餐饮联系层为 +{{ data.nodes.cinema_dining_entry[2] }} m，公共屋顶为 +{{ data.nodes.cinema_roof[2] }} m。城区台地调整后，低街至公共屋顶仍保持 12 m 局部高差，各层相对建筑基底的高度保持不变。屋面边界内是建筑的屋顶花园，边界外的平台单独支承公共通路，转折后接到上街。地面入口、公共电梯和上街入口共同组织高低到达
 
 沿街普通建筑承接生活商业、工作与住宅，入口面向公共街道；影院外围保留低街通行，屋顶花园形成独立的高处停留选择。屋面、平台和上街关系采用同一组标高，结构与开放管理由后续专项确定
+
+镜厅前街的人眼视线沿街道纵深展开，近处低街、侧向公共台阶与屋顶平台组成第一层高差，后方住宅台地继续抬升到北坡。门前与停留平台保持平整，公共垂直交通连接上下街；山体的视觉高度由街道、住宅和山顶的实际位置共同形成，按总图中的取景要求核对
 
 ## 音乐街与后台到达
 
