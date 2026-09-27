@@ -1,0 +1,53 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.47s
+     Running unittests src/lib.rs (target/debug/deps/n_side-5e961ca7daca702b)
+
+running 47 tests
+test app::tests::keyboard_gamepad_and_mouse_use_the_real_entry_actions ... ok
+test app::tests::pause_actions_resume_one_body_and_title_cleans_reentry ... ok
+test app::tests::pause_blocks_same_frame_and_held_gameplay_input_until_release ... ok
+test app::tests::real_preparation_failure_can_return_and_retry ... ok
+test app::tests::returning_to_title_cancels_pending_preparation_without_removing_the_camera ... ok
+test capture::tests::player_checks_require_real_snapshots_and_bound_the_whole_interval ... ok
+test capture::tests::rotation_limit_detects_a_turn_even_when_the_camera_returns ... ok
+test capture::tests::script_contract_rejects_unreproducible_inputs ... ok
+test capture::tests::script_contract_validates_game_waits_and_world_assertions ... ok
+test capture::tests::script_contract_validates_walk_axes_and_player_limits ... ok
+test capture::tests::waits_hold_the_clock_and_script_inputs_reach_real_gamepad_axes ... ok
+test player::tests::body_stops_at_wall_can_leave_and_does_not_climb_tall_obstacle ... ok
+test player::tests::close_camera_hides_proxy_and_clear_view_restores_it ... ok
+test player::tests::ramp_contacts_keep_moving_without_passing_a_wall_or_tall_step ... ok
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... ok
+test player::tests::steep_face_cannot_be_climbed_by_repeated_edge_contacts ... ok
+test player::tests::steps_need_headroom_and_a_supported_landing ... ok
+test player::tests::walks_complete_short_ascent ... ok
+test ui::tests::menu_flow_keeps_focus_and_sample_information_separate ... ok
+test ui::tests::token_colors_and_text_contrast_are_valid ... ok
+test world::assets::tests::appearance_rejects_invalid_paths_values_and_bindings ... ok
+test world::assets::tests::loaded_parent_waits_for_real_png_dependency_and_reports_failures ... ok
+test world::assets::tests::model_preflight_and_context_preserve_material_slots ... ok
+test world::collision::tests::capsule_and_camera_sweep_stop_at_thin_wall_at_high_speed ... ok
+test world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall ... ok
+test world::collision::tests::support_uses_step_and_slope_triangles_and_preserves_sources ... ok
+test world::geometry::tests::authored_fixtures_render_supported_objects_and_graded_drains ... ok
+test world::geometry::tests::bridge_rails_open_at_grade_and_keep_protection_above_lower_roads ... ok
+test world::geometry::tests::clipped_terrain_keeps_continuous_normals_without_moving_the_surface ... ok
+test world::geometry::tests::concave_roofs_keep_holes_and_face_up ... ok
+test world::geometry::tests::platform_bearings_are_real_and_road_clearance_uses_local_height ... ok
+test world::geometry::tests::platform_columns_leave_the_campus_public_approach_clear ... ok
+test world::geometry::tests::real_map_generates_finite_geometry_without_raising_ground_to_roof ... ok
+test world::geometry::tests::road_walls_follow_exposed_ground_and_real_neighbor_levels ... ok
+test world::map::tests::bearing_edges_require_existing_unique_structural_anchors ... ok
+test world::map::tests::errors_locate_source_and_refuse_invalid_core_data ... ok
+test world::map::tests::real_map_and_axis_contract ... ok
+test world::scene::tests::all_authored_facades_cover_entries_courts_and_keep_roofs_clear ... ok
+test world::scene::tests::displays_stay_on_ground_floor_front_windows ... ok
+test world::scene::tests::lifecycle_clear_removes_map_roots_and_descendants_only ... ok
+test world::scene::tests::lifecycle_failure_is_reported_without_exiting_the_host ... ok
+test world::scene::tests::lifecycle_waits_for_a_scene_and_starts_each_scene_once ... ok
+test world::scene::tests::sample_frames_leave_recessed_displays_and_doorways_clear ... ok
+test world::scene::tests::slope_and_neighbour_occlusion_remove_windows_without_hiding_entries ... ok
+test world::scene::tests::vegetation_uses_real_assets_and_keeps_public_space_clear ... ok
+test world::visual::tests::camera_aa_modes_use_compatible_prepasses_and_matching_sky ... ok
+test world::visual::tests::daylight_input_rejects_invalid_render_parameters ... ok
+
+test result: ok. 47 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 37.59s

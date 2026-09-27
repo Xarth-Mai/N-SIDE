@@ -29,6 +29,7 @@
     599,
     610,
     612,
+    616,
     649
   ],
   "events": [
@@ -111,6 +112,20 @@
       "gamepad": [
         "Back"
       ]
+    },
+    {
+      "start": 612,
+      "end": 613,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 614,
+      "end": 615,
+      "gamepad": [
+        "Confirm"
+      ]
     }
   ],
   "waits": [
@@ -119,7 +134,7 @@
       "game_page": "world"
     },
     {
-      "frame": 612,
+      "frame": 616,
       "game_page": "title"
     }
   ],
@@ -228,7 +243,7 @@
     },
     {
       "name": "return_clears_world",
-      "from": 612,
+      "from": 616,
       "to": 649,
       "game_page": "title",
       "world_ready": false,

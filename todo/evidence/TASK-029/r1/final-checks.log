@@ -1,0 +1,6 @@
+$ bun tools/tasks.ts sync
+PASS: 24 task cards; sync
+$ bun tools/tasks.ts check
+PASS: 24 task cards; check
+source fingerprints PASS
+board generation stable PASS

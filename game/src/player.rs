@@ -2,6 +2,7 @@
 use crate::{
     app::GamePhase,
     capture::CaptureInput,
+    ui::UiInput,
     world::{
         collision::{CollisionHit, CollisionWorld},
         map::{Map, map_to_world},
@@ -213,6 +214,7 @@ struct PlayerBody;
 struct Intent {
     direction: Vec3,
     reset: bool,
+    wait_for_release: bool,
 }
 #[derive(Resource)]
 struct Orbit {
@@ -236,10 +238,17 @@ pub fn install(app: &mut App) {
             OnEnter(GamePhase::World),
             spawn_body.run_if(resource_exists::<PlayerState>),
         )
+        .add_systems(OnExit(GamePhase::World), |mut intent: ResMut<Intent>| {
+            *intent = Intent {
+                wait_for_release: true,
+                ..default()
+            };
+        })
         .add_systems(
             RunFixedMainLoop,
             read_input
                 .after(CaptureInput)
+                .after(UiInput)
                 .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop)
                 .run_if(in_state(GamePhase::World))
                 .run_if(resource_exists::<PlayerState>),
@@ -247,15 +256,19 @@ pub fn install(app: &mut App) {
         .add_systems(
             FixedUpdate,
             move_player
-                .run_if(in_state(GamePhase::World))
+                .run_if(gameplay_active)
                 .run_if(resource_exists::<PlayerState>),
         )
         .add_systems(
             Update,
             show_player
-                .run_if(in_state(GamePhase::World))
+                .run_if(gameplay_active)
                 .run_if(resource_exists::<PlayerState>),
         );
+}
+
+fn gameplay_active(phase: Res<State<GamePhase>>, next: Res<NextState<GamePhase>>) -> bool {
+    *phase.get() == GamePhase::World && matches!(*next, NextState::Unchanged)
 }
 
 pub fn clear(world: &mut World) {
@@ -281,7 +294,11 @@ fn spawn_body(
     player: Res<PlayerState>,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
+    bodies: Query<(), With<PlayerBody>>,
 ) {
+    if !bodies.is_empty() {
+        return;
+    }
     commands.spawn((
         PlayerBody,
         Mesh3d(meshes.add(Capsule3d::new(RADIUS, HEIGHT - RADIUS * 2.0))),
@@ -314,10 +331,18 @@ fn read_input(
     pads: Query<&Gamepad>,
     windows: Query<&Window, With<PrimaryWindow>>,
     time: Res<Time<Virtual>>,
+    next: Res<NextState<GamePhase>>,
     mut intent: ResMut<Intent>,
     mut orbit: ResMut<Orbit>,
 ) {
     intent.direction = Vec3::ZERO;
+    if !matches!(*next, NextState::Unchanged) {
+        *intent = Intent {
+            wait_for_release: true,
+            ..default()
+        };
+        return;
+    }
     if windows.iter().any(|window| !window.focused) {
         intent.reset = false;
         return;
@@ -334,6 +359,24 @@ fn read_input(
         movement += stick(pad.left_stick());
         look += stick(pad.right_stick());
         intent.reset |= pad.just_pressed(GamepadButton::Select);
+    }
+    if intent.wait_for_release {
+        intent.reset = false;
+        intent.wait_for_release = keys.any_pressed([
+            KeyCode::KeyW,
+            KeyCode::KeyA,
+            KeyCode::KeyS,
+            KeyCode::KeyD,
+            KeyCode::KeyQ,
+            KeyCode::KeyE,
+            KeyCode::KeyR,
+        ]) || buttons.pressed(MouseButton::Right)
+            || pads.iter().any(|pad| {
+                pad.left_stick().length() > 0.15
+                    || pad.right_stick().length() > 0.15
+                    || pad.pressed(GamepadButton::Select)
+            });
+        return;
     }
     orbit.yaw += look.x * 1.6 * time.delta_secs();
     orbit.pitch -= look.y * 1.2 * time.delta_secs();

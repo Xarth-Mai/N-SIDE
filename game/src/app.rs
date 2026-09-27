@@ -10,7 +10,7 @@ use crate::{
     },
 };
 use bevy::{
-    app::ScheduleRunnerPlugin,
+    app::{RunFixedMainLoopSystems, ScheduleRunnerPlugin},
     audio::AudioPlugin,
     camera::RenderTarget,
     input::mouse::AccumulatedMouseMotion,
@@ -37,6 +37,7 @@ pub enum GamePhase {
     Title,
     Loading,
     World,
+    Paused,
     Failed,
 }
 
@@ -46,6 +47,7 @@ impl GamePhase {
             Self::Title => "title",
             Self::Loading => "loading",
             Self::World => "world",
+            Self::Paused => "paused",
             Self::Failed => "failed",
         }
     }
@@ -67,6 +69,8 @@ struct EntryUi {
 #[derive(Clone, Copy)]
 enum Action {
     Enter,
+    Pause,
+    Resume,
     Title,
     Quit,
 }
@@ -75,7 +79,8 @@ fn actions(phase: GamePhase) -> &'static [(&'static str, Action)] {
     match phase {
         GamePhase::Title => &[("进入街区", Action::Enter), ("退出", Action::Quit)],
         GamePhase::Loading => &[("取消并返回标题", Action::Title)],
-        GamePhase::World => &[("返回标题", Action::Title)],
+        GamePhase::World => &[("暂停", Action::Pause)],
+        GamePhase::Paused => &[("继续", Action::Resume), ("返回标题", Action::Title)],
         GamePhase::Failed => &[
             ("重试", Action::Enter),
             ("返回标题", Action::Title),
@@ -242,9 +247,15 @@ fn install_lifecycle(app: &mut App) {
         .add_systems(OnEnter(GamePhase::World), |mut ui: ResMut<EntryUi>| {
             ui.focus = 0
         })
+        .add_systems(OnEnter(GamePhase::Paused), |mut ui: ResMut<EntryUi>| {
+            ui.focus = 0
+        })
         .add_systems(
             RunFixedMainLoop,
-            entry_input.after(CaptureInput).in_set(UiInput),
+            entry_input
+                .after(CaptureInput)
+                .in_set(UiInput)
+                .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop),
         )
         .add_systems(
             Update,
@@ -413,8 +424,11 @@ fn entry_input(
         || pressed(GamepadButton::East)
         || pressed(GamepadButton::Start)
     {
-        if *phase.get() != GamePhase::Title {
-            (*next).set_if_neq(GamePhase::Title);
+        match *phase.get() {
+            GamePhase::World => (*next).set_if_neq(GamePhase::Paused),
+            GamePhase::Paused => (*next).set_if_neq(GamePhase::World),
+            GamePhase::Loading | GamePhase::Failed => (*next).set_if_neq(GamePhase::Title),
+            GamePhase::Title => {}
         }
         return;
     }
@@ -436,6 +450,8 @@ fn entry_input(
     if activate {
         match options[ui.focus].1 {
             Action::Enter => (*next).set_if_neq(GamePhase::Loading),
+            Action::Pause => (*next).set_if_neq(GamePhase::Paused),
+            Action::Resume => (*next).set_if_neq(GamePhase::World),
             Action::Title => (*next).set_if_neq(GamePhase::Title),
             Action::Quit => {
                 exit.write(AppExit::Success);
@@ -524,6 +540,8 @@ fn draw_shell(
             },
             BackgroundColor(if world {
                 Color::NONE
+            } else if page == GamePhase::Paused {
+                color(&tokens.colors.base).with_alpha(0.82)
             } else {
                 color(&tokens.colors.base)
             }),
@@ -532,10 +550,10 @@ fn draw_shell(
             parent
                 .spawn((
                     Node {
-                        width: px(if world { 480.0 } else { 720.0 }),
+                        width: px(if world { 280.0 } else { 720.0 }),
                         max_width: percent(100),
-                        padding: UiRect::all(px(32)),
-                        row_gap: px(24),
+                        padding: UiRect::all(px(if world { 16.0 } else { 32.0 })),
+                        row_gap: px(if world { 12.0 } else { 24.0 }),
                         flex_direction: FlexDirection::Column,
                         border: UiRect::all(px(3)),
                         border_radius: BorderRadius::all(px(tokens.panel_radius)),
@@ -548,16 +566,15 @@ fn draw_shell(
                     let (heading, description) = match page {
                         GamePhase::Title => ("N:SIDE", "街区信号  :  生活仍在继续"),
                         GamePhase::Loading => ("正在进入街区", "正在准备街景与素材"),
-                        GamePhase::World if walk.0 => {
-                            ("月台杂货 · 步行实验", "中性代理 · 室外移动")
-                        }
-                        GamePhase::World => ("月台杂货 · 街景", "街区预览 · 固定镜头"),
+                        GamePhase::World => ("", ""),
+                        GamePhase::Paused => ("暂停", "继续当前行程，或返回标题"),
                         GamePhase::Failed => (
                             "暂时无法进入街区",
                             "街区资料或素材加载失败，请重试或返回标题",
                         ),
                     };
-                    panel.spawn(text(
+                    if !heading.is_empty() {
+                        panel.spawn(text(
                         heading,
                         if world {
                             tokens.heading_size
@@ -569,7 +586,8 @@ fn draw_shell(
                         } else {
                             &tokens.colors.focus
                         }),
-                    ));
+                        ));
+                    }
                     if !description.is_empty() {
                         panel.spawn(text(
                             description,
@@ -607,14 +625,16 @@ fn draw_shell(
                         match (page, ui.gamepad) {
                             (GamePhase::Title, false) => "↑ ↓ 选择 · Enter 确认",
                             (GamePhase::Title, true) => "方向键选择 · A 确认",
-                            (GamePhase::World, false) if walk.0 => {
-                                "WASD 移动 · 右键 / Q E 镜头\nR 回到起点 · Esc 返回标题"
+                            (GamePhase::World, false) => "Esc / Tab 暂停",
+                            (GamePhase::World, true) => "Start / B 暂停",
+                            (GamePhase::Paused, false) if walk.0 => {
+                                "↑ ↓ 选择 · Enter 确认 · Esc 继续\nWASD 移动 · 右键 / Q E 镜头 · R 回到起点"
                             }
-                            (GamePhase::World, false) => "Esc 返回标题",
-                            (GamePhase::World, true) if walk.0 => {
-                                "左摇杆移动 · 右摇杆镜头\nSelect 回到起点 · B 返回标题"
+                            (GamePhase::Paused, true) if walk.0 => {
+                                "方向键选择 · A 确认 · B 继续\n左摇杆移动 · 右摇杆镜头 · Select 回到起点"
                             }
-                            (GamePhase::World, true) => "B 返回标题",
+                            (GamePhase::Paused, false) => "↑ ↓ 选择 · Enter 确认 · Esc 继续",
+                            (GamePhase::Paused, true) => "方向键选择 · A 确认 · B 继续",
                             (GamePhase::Loading, false) => "Esc 取消并返回",
                             (GamePhase::Loading, true) => "B 取消并返回",
                             (GamePhase::Failed, false) => "↑ ↓ 选择 · Enter 确认 · Esc 返回",
@@ -889,5 +909,329 @@ mod tests {
         assert!(app.world().get_entity(child).is_err());
         assert!(app.world().get_entity(camera).is_ok());
         assert_eq!(app.world().resource::<EntryUi>().focus, 0);
+    }
+
+    fn enter_walk_fixture(app: &mut App) -> (Entity, Entity) {
+        use crate::world::geometry::GeometryPart;
+        let map = Map::load(
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("../source-assets/district-map/district.json"),
+        )
+        .unwrap();
+        let home = map_to_world(map.nodes["home"]);
+        let collision = CollisionWorld::from_parts(&[GeometryPart {
+            source: "/terrain".into(),
+            material: "test".into(),
+            mesh: Mesh::from(Cuboid::new(100.0, 1.0, 100.0)).translated_by(home - Vec3::Y * 0.5),
+        }])
+        .unwrap();
+        app.insert_resource(PlayerState::from_map(&map, &collision).unwrap());
+        app.insert_resource(collision);
+        let map_entity = app
+            .world_mut()
+            .spawn(MapSource("pause-fixture".into()))
+            .id();
+        let map_child = app.world_mut().spawn(ChildOf(map_entity)).id();
+        app.world_mut()
+            .resource_mut::<NextState<GamePhase>>()
+            .set(GamePhase::World);
+        frame(app);
+        (map_entity, map_child)
+    }
+
+    fn walk_app() -> (App, Entity, Entity) {
+        let mut app = lifecycle_app();
+        app.init_resource::<Assets<Mesh>>()
+            .init_resource::<Assets<StandardMaterial>>()
+            .insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(1));
+        player::install(&mut app);
+        let camera = app
+            .world_mut()
+            .spawn((Camera3d::default(), Transform::default()))
+            .id();
+        let pad = app.world_mut().spawn(Gamepad::default()).id();
+        (app, camera, pad)
+    }
+
+    fn frame(app: &mut App) {
+        app.update();
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .clear();
+        app.world_mut()
+            .resource_mut::<ButtonInput<MouseButton>>()
+            .clear();
+        app.world_mut()
+            .resource_mut::<AccumulatedMouseMotion>()
+            .delta = Vec2::ZERO;
+        for mut pad in app
+            .world_mut()
+            .query::<&mut Gamepad>()
+            .iter_mut(app.world_mut())
+        {
+            pad.digital_mut().clear();
+        }
+    }
+
+    #[test]
+    fn pause_blocks_same_frame_and_held_gameplay_input_until_release() {
+        for fixed_ticks in [0, 1, 3] {
+            let (mut app, camera, pad) = walk_app();
+            enter_walk_fixture(&mut app);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyD);
+            for _ in 0..10 {
+                frame(&mut app);
+            }
+            let before = app.world().resource::<PlayerState>().foot;
+            let view = *app.world().get::<Transform>(camera).unwrap();
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(fixed_ticks));
+            {
+                let mut keys = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+                keys.press(KeyCode::Escape);
+                keys.press(KeyCode::KeyR);
+                keys.press(KeyCode::KeyE);
+            }
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .press(MouseButton::Right);
+            app.world_mut()
+                .resource_mut::<AccumulatedMouseMotion>()
+                .delta = Vec2::new(50.0, 20.0);
+            {
+                let mut pad = app.world_mut().get_mut::<Gamepad>(pad).unwrap();
+                pad.analog_mut().set(GamepadAxis::LeftStickX, 0.8);
+                pad.analog_mut().set(GamepadAxis::RightStickX, 0.8);
+                pad.digital_mut().press(GamepadButton::Select);
+            }
+            frame(&mut app);
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::PendingIfNeq(GamePhase::Paused)
+            ));
+            assert_eq!(
+                app.world().resource::<PlayerState>().foot,
+                before,
+                "opening frame {fixed_ticks}"
+            );
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            for _ in 0..12 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert_eq!(app.world().resource::<PlayerState>().foot, before);
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            assert_eq!(app.world().resource::<PlayerState>().resets, 0);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::Enter);
+            frame(&mut app);
+            for _ in 0..12 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+            assert_eq!(
+                app.world().resource::<PlayerState>().foot,
+                before,
+                "held input after resume {fixed_ticks}"
+            );
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            assert_eq!(app.world().resource::<PlayerState>().resets, 0);
+            // Opposite held controls are still held; their summed direction is not a release
+            *app.world_mut().get_mut::<Gamepad>(pad).unwrap() = Gamepad::default();
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .reset_all();
+            {
+                let mut keys = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+                keys.release(KeyCode::KeyR);
+                keys.press(KeyCode::KeyA);
+                keys.press(KeyCode::KeyQ);
+            }
+            frame(&mut app);
+            {
+                let mut keys = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+                keys.release(KeyCode::KeyA);
+                keys.release(KeyCode::KeyQ);
+            }
+            frame(&mut app);
+            assert_eq!(app.world().resource::<PlayerState>().foot, before);
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .reset_all();
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .reset_all();
+            *app.world_mut().get_mut::<Gamepad>(pad).unwrap() = Gamepad::default();
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(1));
+            frame(&mut app);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyD);
+            frame(&mut app);
+            assert!(app.world().resource::<PlayerState>().foot.x > before.x + 0.04);
+        }
+    }
+
+    #[test]
+    fn pause_actions_resume_one_body_and_title_cleans_reentry() {
+        let (mut app, camera, pad) = walk_app();
+        let (map, child) = enter_walk_fixture(&mut app);
+        let body = app
+            .world_mut()
+            .query_filtered::<Entity, With<Mesh3d>>()
+            .single(app.world())
+            .unwrap();
+        for (key, button) in [
+            (Some(KeyCode::Escape), None),
+            (Some(KeyCode::Tab), None),
+            (None, Some(GamepadButton::Start)),
+            (None, Some(GamepadButton::East)),
+        ] {
+            if let Some(key) = key {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .press(key);
+            }
+            if let Some(button) = button {
+                app.world_mut()
+                    .get_mut::<Gamepad>(pad)
+                    .unwrap()
+                    .digital_mut()
+                    .press(button);
+            }
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            if let Some(key) = key {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .release(key);
+            }
+            if let Some(button) = button {
+                app.world_mut()
+                    .get_mut::<Gamepad>(pad)
+                    .unwrap()
+                    .digital_mut()
+                    .release(button);
+            }
+            frame(&mut app);
+            if let Some(key) = key {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .press(key);
+            }
+            if let Some(button) = button {
+                app.world_mut()
+                    .get_mut::<Gamepad>(pad)
+                    .unwrap()
+                    .digital_mut()
+                    .press(button);
+            }
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+            assert_eq!(
+                app.world_mut()
+                    .query_filtered::<Entity, With<Mesh3d>>()
+                    .single(app.world())
+                    .unwrap(),
+                body
+            );
+            if let Some(key) = key {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .release(key);
+            }
+            if let Some(button) = button {
+                app.world_mut()
+                    .get_mut::<Gamepad>(pad)
+                    .unwrap()
+                    .digital_mut()
+                    .release(button);
+            }
+            frame(&mut app);
+        }
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(KeyCode::Escape);
+        frame(&mut app);
+        frame(&mut app);
+        let continue_button = app
+            .world_mut()
+            .spawn((
+                Interaction::Pressed,
+                ShellButton {
+                    phase: GamePhase::Paused,
+                    index: 0,
+                },
+            ))
+            .id();
+        frame(&mut app);
+        frame(&mut app);
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::World
+        );
+        app.world_mut().despawn(continue_button);
+        app.world_mut()
+            .get_mut::<Gamepad>(pad)
+            .unwrap()
+            .digital_mut()
+            .press(GamepadButton::Start);
+        frame(&mut app);
+        frame(&mut app);
+        app.world_mut()
+            .get_mut::<Gamepad>(pad)
+            .unwrap()
+            .digital_mut()
+            .press(GamepadButton::DPadDown);
+        frame(&mut app);
+        app.world_mut()
+            .get_mut::<Gamepad>(pad)
+            .unwrap()
+            .digital_mut()
+            .press(GamepadButton::South);
+        frame(&mut app);
+        frame(&mut app);
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::Title
+        );
+        for entity in [map, child, body] {
+            assert!(app.world().get_entity(entity).is_err());
+        }
+        assert!(app.world().get_entity(camera).is_ok());
+        assert!(!app.world().contains_resource::<PlayerState>());
+        assert!(!app.world().contains_resource::<CollisionWorld>());
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .reset_all();
+        *app.world_mut().get_mut::<Gamepad>(pad).unwrap() = Gamepad::default();
+        enter_walk_fixture(&mut app);
+        assert_eq!(
+            app.world_mut().query::<&Mesh3d>().iter(app.world()).count(),
+            1
+        );
+        let before = app.world().resource::<PlayerState>().foot;
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(KeyCode::KeyD);
+        frame(&mut app);
+        assert!(app.world().resource::<PlayerState>().foot.x > before.x);
     }
 }

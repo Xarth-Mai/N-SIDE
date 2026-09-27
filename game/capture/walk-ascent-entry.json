@@ -19,6 +19,8 @@
     959,
     989,
     1019,
+    1022,
+    1026,
     1049
   ],
   "events": [
@@ -43,6 +45,20 @@
       "gamepad": [
         "Back"
       ]
+    },
+    {
+      "start": 1022,
+      "end": 1023,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 1024,
+      "end": 1025,
+      "gamepad": [
+        "Confirm"
+      ]
     }
   ],
   "waits": [
@@ -51,7 +67,7 @@
       "game_page": "world"
     },
     {
-      "frame": 1022,
+      "frame": 1026,
       "game_page": "title"
     }
   ],
@@ -114,7 +130,7 @@
     },
     {
       "name": "title_clears_walk_world",
-      "from": 1022,
+      "from": 1026,
       "to": 1049,
       "game_page": "title",
       "world_ready": false,

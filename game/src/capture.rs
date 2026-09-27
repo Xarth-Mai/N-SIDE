@@ -83,6 +83,7 @@ pub struct Assertion {
     min_distance: Option<f32>,
     max_distance: Option<f32>,
     min_rotation: Option<f32>,
+    max_rotation: Option<f32>,
     enabled: Option<bool>,
     ui_page: Option<String>,
     ui_focus: Option<usize>,
@@ -108,7 +109,7 @@ pub struct Assertion {
     player_blocked: Option<String>,
 }
 
-const GAME_PAGES: [&str; 4] = ["title", "loading", "world", "failed"];
+const GAME_PAGES: [&str; 5] = ["title", "loading", "world", "paused", "failed"];
 
 const KEYS: [(&str, KeyCode); 16] = [
     ("W", KeyCode::KeyW),
@@ -218,6 +219,7 @@ impl Script {
                     check.min_distance,
                     check.max_distance,
                     check.min_rotation,
+                    check.max_rotation,
                     check.min_player_distance,
                     check.max_player_distance,
                     check.min_player_camera_distance,
@@ -229,6 +231,7 @@ impl Script {
                 || (check.min_distance.is_none()
                     && check.max_distance.is_none()
                     && check.min_rotation.is_none()
+                    && check.max_rotation.is_none()
                     && check.enabled.is_none()
                     && check.ui_page.is_none()
                     && check.ui_focus.is_none()
@@ -245,6 +248,10 @@ impl Script {
                     && check.same_world_entities.is_none()
                     && !check.has_player_assertion())
                 || (check.has_player_assertion() && self.scene != "walk-preview")
+                || check
+                    .min_rotation
+                    .zip(check.max_rotation)
+                    .is_some_and(|(min, max)| min > max)
                 || [check.min_player_height, check.max_player_height]
                     .into_iter()
                     .flatten()
@@ -454,8 +461,8 @@ impl Recording {
                 .samples
                 .get(assertion.from as usize)
                 .zip(self.samples.get(assertion.to as usize));
-            let (distance, rotation, enabled, passed) =
-                measured.map_or((None, None, None, false), |(a, b)| {
+            let (distance, rotation, peak_rotation, enabled, passed) =
+                measured.map_or((None, None, None, None, false), |(a, b)| {
                     let distance =
                         Vec3::from_array(a.position).distance(Vec3::from_array(b.position));
                     let rotation =
@@ -467,12 +474,21 @@ impl Recording {
                             Vec3::from_array(a.position).distance(Vec3::from_array(sample.position))
                         })
                         .fold(0.0_f32, f32::max);
+                    let peak_rotation = self.samples
+                        [assertion.from as usize..=assertion.to as usize]
+                        .iter()
+                        .map(|sample| {
+                            Quat::from_array(a.rotation)
+                                .angle_between(Quat::from_array(sample.rotation))
+                        })
+                        .fold(0.0_f32, f32::max);
                     let passed = assertion.min_distance.is_none_or(|v| distance >= v)
                         && assertion.check_player(
                             &self.samples[assertion.from as usize..=assertion.to as usize],
                         )
                         && assertion.max_distance.is_none_or(|v| peak_distance <= v)
                         && assertion.min_rotation.is_none_or(|v| rotation >= v)
+                        && assertion.max_rotation.is_none_or(|v| peak_rotation <= v)
                         && assertion.enabled.is_none_or(|v| b.enabled == v)
                         && assertion
                             .game_page
@@ -522,9 +538,15 @@ impl Recording {
                                     .is_some_and(|scroll| scroll <= v as f64)
                             })
                         });
-                    (Some(distance), Some(rotation), Some(b.enabled), passed)
+                    (
+                        Some(distance),
+                        Some(rotation),
+                        Some(peak_rotation),
+                        Some(b.enabled),
+                        passed,
+                    )
                 });
-            checks.push(serde_json::json!({"name":assertion.name, "passed":passed, "expected":assertion, "distance":distance, "rotation_radians":rotation, "enabled":enabled}));
+            checks.push(serde_json::json!({"name":assertion.name, "passed":passed, "expected":assertion, "distance":distance, "rotation_radians":rotation, "peak_rotation_radians":peak_rotation, "enabled":enabled}));
         }
         let passed = self.failure.is_none() && checks.iter().all(|c| c["passed"] == true);
         let report = serde_json::json!({
@@ -988,6 +1010,9 @@ mod tests {
         let ascent_script: Script =
             serde_json::from_str(include_str!("../capture/walk-ascent-entry.json")).unwrap();
         assert!(ascent_script.validate().is_ok());
+        let pause_script: Script =
+            serde_json::from_str(include_str!("../capture/walk-pause.json")).unwrap();
+        assert!(pause_script.validate().is_ok());
         let mut invalid = script.clone();
         invalid.events[0].move_axis = [1.01, 0.0];
         assert!(invalid.validate().is_err());
@@ -1011,6 +1036,78 @@ mod tests {
         let mut invalid = script;
         invalid.scene = "game-entry".into();
         assert!(invalid.validate().is_err());
+    }
+
+    #[test]
+    fn rotation_limit_detects_a_turn_even_when_the_camera_returns() {
+        let mut script: Script =
+            serde_json::from_str(include_str!("../capture/walk-pause.json")).unwrap();
+        script.frames = 3;
+        script.events.clear();
+        script.waits.clear();
+        script.keyframes = vec![0];
+        script.assertions = vec![
+            serde_json::from_value(serde_json::json!({
+                "name": "paused camera", "from": 0, "to": 2, "max_rotation": 0.01
+            }))
+            .unwrap(),
+        ];
+        assert!(script.validate().is_ok());
+        script.assertions[0].max_rotation = Some(-0.1);
+        assert!(script.validate().is_err());
+        script.assertions[0].max_rotation = Some(0.01);
+        script.assertions[0].min_rotation = Some(0.02);
+        assert!(script.validate().is_err());
+        script.assertions[0].min_rotation = None;
+        let output = std::env::temp_dir().join(format!(
+            "n-side-rotation-{}-{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&output).unwrap();
+        let samples = [0.0, 0.5, 0.0]
+            .into_iter()
+            .enumerate()
+            .map(|(frame, angle)| Sample {
+                frame: frame as u32,
+                simulation_seconds: frame as f64 / 30.0,
+                position: [0.; 3],
+                rotation: Quat::from_rotation_y(angle).to_array(),
+                enabled: false,
+                game_page: Some("paused".into()),
+                world_ready: true,
+                world_entities: 1,
+                player: None,
+                ui: None,
+            })
+            .collect();
+        let mut recording = Recording {
+            script,
+            output: output.clone(),
+            started: Instant::now(),
+            warmup: 0,
+            tick: false,
+            pending: false,
+            saved: 3,
+            transforms_checked: 3,
+            world_ready_seen: true,
+            samples,
+            failure: None,
+            finished: false,
+        };
+        assert!(!recording.finish(None));
+        let report: serde_json::Value =
+            serde_json::from_slice(&fs::read(output.join("state.json")).unwrap()).unwrap();
+        let check = report["checks"].as_array().unwrap().last().unwrap();
+        assert_eq!(check["passed"], false);
+        assert!(check["rotation_radians"].as_f64().unwrap() < 0.001);
+        assert!(check["peak_rotation_radians"].as_f64().unwrap() > 0.49);
+        recording.samples[1].rotation = Quat::IDENTITY.to_array();
+        assert!(recording.finish(None));
+        fs::remove_dir_all(output).unwrap();
     }
 
     #[test]

@@ -21,4 +21,4 @@ document_id: DOC-CONTROLS
 
 在街区中移动和观察，靠近人物或物件进行交互；进入梦境后，使用随身工具探索和战斗
 
-上述是 Demo 的输入设计目标。正式入口支持标题、加载、固定镜头街区预览与返回，键鼠和手柄数字输入走同一状态路径；独立 Viewer 保留 FreeCamera 与捕获脚本。实际支持的按键和启动命令见仓库 `game/README.md`；追加 `--walk-preview` 可进行同地图的室外胶囊移动与跟随镜头实验，技术边界见[实验契约](../../engineering/player-preview.md)；正式角色动作、存档、实体手柄断连与完整 Demo 输入仍需对应验收
+上述是 Demo 的输入设计目标。正式入口支持标题、加载、固定镜头街区预览、暂停与原会话继续，键鼠和手柄数字输入走同一状态路径；独立 Viewer 保留 FreeCamera 与捕获脚本。实际支持的按键和启动命令见仓库 `game/README.md`；追加 `--walk-preview` 可进行同地图的室外胶囊移动与跟随镜头实验，技术边界见[实验契约](../../engineering/player-preview.md)；正式角色动作、存档、实体手柄断连与完整 Demo 输入仍需对应验收

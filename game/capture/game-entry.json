@@ -16,6 +16,8 @@
     119,
     179,
     181,
+    182,
+    186,
     239,
     271,
     273,
@@ -23,6 +25,8 @@
     329,
     449,
     451,
+    452,
+    456,
     479,
     481,
     483,
@@ -45,6 +49,20 @@
       ]
     },
     {
+      "start": 182,
+      "end": 183,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 184,
+      "end": 185,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
       "start": 270,
       "end": 271,
       "gamepad": [
@@ -56,6 +74,20 @@
       "end": 451,
       "gamepad": [
         "Back"
+      ]
+    },
+    {
+      "start": 452,
+      "end": 453,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 454,
+      "end": 455,
+      "gamepad": [
+        "Confirm"
       ]
     },
     {
@@ -79,7 +111,7 @@
       "game_page": "world"
     },
     {
-      "frame": 181,
+      "frame": 186,
       "game_page": "title"
     },
     {
@@ -87,7 +119,7 @@
       "game_page": "world"
     },
     {
-      "frame": 451,
+      "frame": 456,
       "game_page": "title"
     },
     {
@@ -116,8 +148,8 @@
       "enabled": false
     },
     {
-      "name": "escape_clears_world",
-      "from": 181,
+      "name": "pause_return_clears_world",
+      "from": 186,
       "to": 239,
       "game_page": "title",
       "world_ready": false,
@@ -143,8 +175,8 @@
       "enabled": false
     },
     {
-      "name": "second_escape_clears_world",
-      "from": 451,
+      "name": "second_pause_return_clears_world",
+      "from": 456,
       "to": 539,
       "game_page": "title",
       "world_ready": false,
