@@ -1,0 +1,24 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 17.72s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-2cc9a0af6753b554)
+
+running 1 test
+test ui::tests::menu_flow_keeps_focus_and_sample_information_separate ... FAILED
+
+failures:
+
+---- ui::tests::menu_flow_keeps_focus_and_sample_information_separate stdout ----
+
+thread 'ui::tests::menu_flow_keeps_focus_and_sample_information_separate' (335) panicked at src/ui.rs:1006:9:
+assertion `left == right` failed
+  left: 0
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    ui::tests::menu_flow_keeps_focus_and_sample_information_separate
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 21 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

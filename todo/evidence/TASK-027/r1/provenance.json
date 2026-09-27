@@ -1,0 +1,18 @@
+{
+  "revision": "8be25a7c77387856d24a8af4740dbcca56bd44de7f87e15ef28b1006466fc3d3",
+  "revision_definition": "SHA-256 of sorted JSON input hash mapping, Python json.dumps defaults",
+  "inputs": {
+    "game/src/ui.rs": "538c3936628e2652d0ccfdb7296a9c685b20faa30cdf40cbdc2f0f18aef5b836",
+    "game/capture/ui-signal.json": "c2eb78c271fabb88e82c5ba7192f092a479c6ad207fe591cc10677f54c667ae6"
+  },
+  "raw": "output/ui-signal/2026-09-27/r3-focus/main",
+  "district_sha256": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+  "visual_frames": [
+    599,
+    659,
+    749,
+    779,
+    780,
+    809
+  ]
+}

@@ -129,7 +129,11 @@ impl SignalUi {
                     3 => self.page = Page::District,
                     _ => self.page = Page::Settings,
                 }
-                self.focus = 0;
+                self.focus = if self.page == Page::Records {
+                    self.selected_record
+                } else {
+                    0
+                };
                 self.scroll = if self.page == Page::Records {
                     self.saved_record_scroll
                 } else {
@@ -1001,6 +1005,13 @@ mod tests {
         assert_eq!(ui.selected_record, 1);
         ui.back();
         assert_eq!(ui.focus, 2);
+        ui.activate();
+        assert_eq!(ui.page, Page::Records);
+        assert_eq!(ui.focus, 1);
+        assert_eq!(ui.selected_record, 1);
+        ui.activate();
+        assert_eq!(ui.selected_record, 1);
+        ui.back();
         ui.focus = 4;
         ui.activate();
         ui.activate();
