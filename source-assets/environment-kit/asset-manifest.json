@@ -15,7 +15,7 @@
   "source_archives": "Selected members fetched by HTTP Range and verified by ZIP CRC; complete archive hashes are not available",
   "units": "meter",
   "up_axis": "+Y",
-  "export_command": "bun tools/export-environment.mjs",
+  "export_command": "bun tools/export-environment.ts",
   "files": [
     {
       "source": "licenses/kenney-nature.txt",
@@ -296,6 +296,201 @@
       "bytes": 7048,
       "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
       "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
+    },
+    {
+      "source": "nature/tree_pineRoundA.glb",
+      "output": "nature/tree_pineRoundA.glb",
+      "sha256": "7dc9711f31585eafdcb965d0649c30af5e19f2def1955f7a915081d30759ef8e",
+      "bytes": 14488,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/tree_pineRoundA.glb",
+      "retrieved": "2026-09-27",
+      "purpose": "林缘与登高路旁针叶树",
+      "triangles": 204,
+      "transform": {
+        "source_height": 1.3664372,
+        "height_m": 6.5,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "woodBarkDark": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.18,
+              0.11,
+              0.06,
+              1
+            ]
+          },
+          "leafsDark": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.075,
+              0.19,
+              0.095,
+              1
+            ]
+          }
+        }
+      },
+      "generation": null,
+      "cost": 0
+    },
+    {
+      "source": "nature/tree_cone_fall.glb",
+      "output": "nature/tree_cone_fall.glb",
+      "sha256": "bd1d2833ef7a838fc27224c6f4a7cb0bb0680e1896f1c1f122814a8424e4c694",
+      "bytes": 10916,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/tree_cone_fall.glb",
+      "retrieved": "2026-09-27",
+      "purpose": "街树与公园的少量初秋色",
+      "triangles": 132,
+      "transform": {
+        "source_height": 1.43033278,
+        "height_m": 5.0,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "woodBirch": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.48,
+              0.42,
+              0.31,
+              1
+            ]
+          },
+          "leafsFall": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.45,
+              0.24,
+              0.055,
+              1
+            ]
+          }
+        }
+      },
+      "generation": null,
+      "cost": 0
+    },
+    {
+      "source": "nature/rock_smallA.glb",
+      "output": "nature/rock_smallA.glb",
+      "sha256": "df9fff9d711e61370e8df0caa2514c89b8f8a8dc6c6fafaf4eb2ec79c5ae07c1",
+      "bytes": 3044,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/rock_smallA.glb",
+      "retrieved": "2026-09-27",
+      "purpose": "路径之外的自然裸岩",
+      "triangles": 16,
+      "transform": {
+        "source_height": 0.19122400899999997,
+        "height_m": 0.65,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "grass": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.16,
+              0.28,
+              0.1,
+              1
+            ]
+          },
+          "dirt": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.28,
+              0.27,
+              0.23,
+              1
+            ]
+          }
+        }
+      },
+      "generation": null,
+      "cost": 0
+    },
+    {
+      "source": "nature/grass.glb",
+      "output": "nature/grass.glb",
+      "sha256": "260e41d3e5f2472492ed7b475c5b92a30b13ce2bad408535b5ff50574d4575e7",
+      "bytes": 11496,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/grass.glb",
+      "retrieved": "2026-09-27",
+      "purpose": "公园与山路边草丛",
+      "triangles": 132,
+      "transform": {
+        "source_height": 0.254,
+        "height_m": 0.35,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "grass": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.16,
+              0.28,
+              0.1,
+              1
+            ]
+          }
+        }
+      },
+      "generation": null,
+      "cost": 0
+    },
+    {
+      "source": "nature/flower_yellowA.glb",
+      "output": "nature/flower_yellowA.glb",
+      "sha256": "8a3b08cd2ca411c21f9c581d5bda651d78b13c50cba45ad8fa0389398ead6d1d",
+      "bytes": 7120,
+      "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "archive_member": "Models/GLTF format/flower_yellowA.glb",
+      "retrieved": "2026-09-27",
+      "purpose": "公园与停步区域外沿的小花",
+      "triangles": 76,
+      "transform": {
+        "source_height": 0.1925,
+        "height_m": 0.35,
+        "ground_pivot": true,
+        "axis": "Y-up",
+        "materials": {
+          "grass": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.16,
+              0.28,
+              0.1,
+              1
+            ]
+          },
+          "colorYellow": {
+            "metallicFactor": 0,
+            "roughnessFactor": 1,
+            "baseColorFactor": [
+              0.7,
+              0.5,
+              0.13,
+              1
+            ]
+          }
+        }
+      },
+      "generation": null,
+      "cost": 0
     }
   ],
   "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"

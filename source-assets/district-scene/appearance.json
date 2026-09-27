@@ -422,6 +422,31 @@
       "file": "environment/nature/plant_bushDetailed.glb",
       "scene": 0,
       "scale": 1
+    },
+    "tree_pine": {
+      "file": "environment/nature/tree_pineRoundA.glb",
+      "scene": 0,
+      "scale": 1
+    },
+    "tree_autumn": {
+      "file": "environment/nature/tree_cone_fall.glb",
+      "scene": 0,
+      "scale": 1
+    },
+    "rock": {
+      "file": "environment/nature/rock_smallA.glb",
+      "scene": 0,
+      "scale": 1
+    },
+    "grass": {
+      "file": "environment/nature/grass.glb",
+      "scene": 0,
+      "scale": 1
+    },
+    "flowers": {
+      "file": "environment/nature/flower_yellowA.glb",
+      "scene": 0,
+      "scale": 1
     }
   },
   "shopfronts": {
