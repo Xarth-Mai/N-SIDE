@@ -94,6 +94,15 @@ pub struct Surface {
     pub base_elevation: Option<f64>,
     pub boundary: Option<Vec<[f64; 2]>>,
     pub access: Option<String>,
+    #[serde(default, rename = "bearingEdges")]
+    pub bearing_edges: Vec<BearingEdge>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct BearingEdge {
+    pub edge: usize,
+    pub building: Option<String>,
+    pub lift: Option<String>,
 }
 
 /// The only map/engine axis conversion: source [east, north, height] in meters
@@ -307,6 +316,32 @@ impl Map {
             if let Some(boundary) = &surface.boundary {
                 c.line(&format!("{p}/boundary"), boundary)?;
             }
+            let mut edges = BTreeSet::new();
+            for (j, bearing) in surface.bearing_edges.iter().enumerate() {
+                let path = format!("{p}/bearingEdges/{j}");
+                if !surface.elevated || surface.building.is_some() {
+                    return Err(
+                        c.error(&path, "bearing edges require an exterior elevated surface")
+                    );
+                }
+                if bearing.edge >= surface.polygon.len() || !edges.insert(bearing.edge) {
+                    return Err(c.error(&path, "bearing edge must exist and be unique"));
+                }
+                if bearing.building.is_some() == bearing.lift.is_some() {
+                    return Err(c.error(&path, "specify exactly one bearing building or lift node"));
+                }
+                c.reference(
+                    &format!("{path}/building"),
+                    bearing.building.as_deref(),
+                    &building_ids,
+                )?;
+                if let Some(node) = &bearing.lift {
+                    self.node_ref(c, &format!("{path}/lift"), node)?;
+                    if self.bearing_lift(node).is_none() {
+                        return Err(c.error(&path, "bearing lift node must belong to a lift at the top of a vertical exterior shaft"));
+                    }
+                }
+            }
         }
         for (i, road) in self.roads.iter().enumerate() {
             let p = format!("/roads/{i}");
@@ -365,6 +400,20 @@ impl Map {
         } else {
             Err(c.error(path, "reference to missing node"))
         }
+    }
+
+    pub fn bearing_lift(&self, node: &str) -> Option<&Road> {
+        let anchor = self.nodes.get(node)?;
+        self.roads.iter().find(|r| {
+            r.kind == "lift"
+                && r.building.is_none()
+                && r.nodes.iter().any(|n| n == node)
+                && r.nodes.iter().all(|n| {
+                    self.nodes
+                        .get(n)
+                        .is_some_and(|p| p[..2] == anchor[..2] && p[2] <= anchor[2])
+                })
+        })
     }
 }
 
@@ -627,5 +676,55 @@ mod tests {
                 .cause
                 .contains("duplicate node ID")
         );
+    }
+
+    #[test]
+    fn bearing_edges_require_existing_unique_structural_anchors() {
+        for (bearing, expected) in [
+            (
+                serde_json::json!([{ "edge": 0, "building": "absent" }]),
+                "missing object",
+            ),
+            (
+                serde_json::json!([{ "edge": 0, "lift": "absent" }]),
+                "missing node",
+            ),
+            (
+                serde_json::json!([{ "edge": 0, "lift": "home" }]),
+                "belong to a lift",
+            ),
+            (
+                serde_json::json!([{ "edge": 0, "lift": "cinema_upper" }]),
+                "top of a vertical exterior shaft",
+            ),
+            (
+                serde_json::json!([{ "edge": 99, "building": "V-15" }]),
+                "exist and be unique",
+            ),
+            (
+                serde_json::json!([{ "edge": 0, "building": "V-15", "lift": "upper_transfer_public" }]),
+                "exactly one",
+            ),
+            (
+                serde_json::json!([{ "edge": 0, "building": "V-15" }, { "edge": 0, "building": "V-15" }]),
+                "exist and be unique",
+            ),
+        ] {
+            let mut document: Value = serde_json::from_str(SOURCE).unwrap();
+            let surface = document["surfaces"]
+                .as_array_mut()
+                .unwrap()
+                .iter_mut()
+                .find(|s| s["id"] == "cinema_upper_platform")
+                .unwrap();
+            surface["bearingEdges"] = bearing;
+            let message = Map::parse(&document.to_string(), "bearing-fault.json")
+                .unwrap_err()
+                .to_string();
+            assert!(
+                message.contains("bearingEdges") && message.contains(expected),
+                "{message}"
+            );
+        }
     }
 }

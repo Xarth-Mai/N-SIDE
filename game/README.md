@@ -65,6 +65,8 @@ cargo run --release --manifest-path game/Cargo.toml --features viewer --locked -
 
 山城灰盒使用 `eye-station`、`eye-cinema`、`eye-shop-mountain` 核对站前、镜厅前街公共路口与小店门前的山体视线，均取源道路节点上方 1.7m，以55°视场水平望向山顶方向；近山峰顶可以超出水平视场，保留该真实结果；`eye-shop-uphill` 在同一眼高明确仰视20°核对山顶，`hillside` 从小店起坡段侧看山腹，`mountain-profile` 从侧向检查河岸至后山的比例。摘星台位于最高点，山体与城区沿用源数据的米制比例，`overview` 随完整地形范围取景
 
+`eye-slope-support` 从上街实际节点观察平台，`eye-transfer-support` 从镜厅低层公共连廊的3/4位置、上方1.7m看换层平台底面；两者朝向目标的仰角不作为水平街景视角。`inspect-cinema-bearing` 是镜厅屋顶连接旁的自由检查机位，用于近看短梁搭接，不代表行人位置
+
 ```fish
 cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --view eye-station
 python3 tools/capture.py --script game/capture/mountain-city.json --output output/capture/mountain-city

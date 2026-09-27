@@ -1,0 +1,52 @@
+{
+  "scope": "数值按既有Viewer分级公式计算，不代替人物碰撞/施工验收",
+  "segments": 73,
+  "max_riser": 0.16998191139240512,
+  "min_tread": 0.2808988764044944,
+  "longest": [
+    {
+      "nodes": [
+        "upper",
+        "hillgate"
+      ],
+      "count": 575,
+      "riser": 0.1698855843478261,
+      "tread": 0.4317284030367447,
+      "horizontal_metres": 248.2438317461282,
+      "rise_metres": 97.684211
+    },
+    {
+      "nodes": [
+        "platform_east",
+        "hillgate"
+      ],
+      "count": 486,
+      "riser": 0.1699000596707819,
+      "tread": 0.3680770333332987,
+      "horizontal_metres": 178.88543819998318,
+      "rise_metres": 82.571429
+    },
+    {
+      "nodes": [
+        "foothill_east",
+        "fw_e_forest_turn"
+      ],
+      "count": 248,
+      "riser": 0.16985002822580644,
+      "tread": 0.7942627259512988,
+      "horizontal_metres": 196.9771560359221,
+      "rise_metres": 42.122806999999995
+    },
+    {
+      "nodes": [
+        "cinema_upper",
+        "upper"
+      ],
+      "count": 208,
+      "riser": 0.1697874471153846,
+      "tread": 0.35000528313848644,
+      "horizontal_metres": 72.80109889280519,
+      "rise_metres": 35.315788999999995
+    }
+  ]
+}

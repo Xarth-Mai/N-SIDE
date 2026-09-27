@@ -112,6 +112,7 @@ export type District = {
     building?: string
     users?: string[]
     baseElevation?: number
+    bearingEdges?: { edge: number; building?: string; lift?: string }[]
   }[]
   blocks: {
     id: string

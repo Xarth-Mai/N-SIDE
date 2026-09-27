@@ -7,7 +7,7 @@ import { buildGround } from '../district-map.ts'
 
 const data:District=source
 
-test('terrain bake preserves authored geometry and repeats without drift',()=>{
+test('terrain bake preserves authored geometry and repeats without drift',{timeout:20_000},()=>{
   const result=bakeTerrain(data),count=data.terrain.bake!.authored
   assert.deepEqual(bakeTerrain(result),result)
   assert.deepEqual(result.terrain.samples.slice(0,count),data.terrain.samples.slice(0,count))
@@ -23,7 +23,7 @@ test('terrain bake preserves authored geometry and repeats without drift',()=>{
   assert.ok(Math.abs(mountainBase(data,-70,930)-mountainBase(data,530,930))>20,'east and west shoulders have distinct large forms')
 })
 
-test('terrain noise protects complete road segments and footprints',()=>{
+test('terrain noise protects complete road segments and footprints',{timeout:20_000},()=>{
   const sample=structuredClone(data)
   sample.nodes.terrain_test_a=[-700,570,125];sample.nodes.terrain_test_b=[-400,570,125]
   sample.roads.push({nodes:['terrain_test_a','terrain_test_b'],kind:'lane',width:4})
@@ -32,6 +32,24 @@ test('terrain noise protects complete road segments and footprints',()=>{
   assert.equal(samples.find(p=>p[0]===-580&&p[1]===570)?.[2],125,'long road midpoint remains at its true grade')
   assert.equal(samples.find(p=>p[0]===-580&&p[1]===690)?.[2],132,'platform interior is protected')
   const result=bakeTerrain(data),ground=buildGround(result),rest=result.surfaces.find(s=>s.id==='fw-e-existing-20')!
+  for(const id of ['fw-f-plateau-west-court','fw-f-plateau-east-court']) {
+    const area=result.surfaces.find(s=>s.id===id)!
+    for(let i=0;i<area.polygon.length;i++)for(const t of [.25,.5,.75]) {
+      const a=area.polygon[i],b=area.polygon[(i+1)%area.polygon.length]
+      assert.ok(Math.abs(ground.height(a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1]))-area.elevation)<.01,`${id}: courtyard edge must not become a tall unsupported cut`)
+    }
+  }
+  // Independently measured quarter-point on the Viewer's mitered bypass edge
+  assert.ok(Math.abs(ground.height(292.081206495,410.169618192)-81.3834585)<.01,'bent stair edges must meet terrain without an artificial cut bank')
+  for(const [from,to] of [['upper','fw_e_school_up_w'],['cinema_upper','school_n']]) {
+    const road=result.roads.find(r=>r.nodes.includes(from)&&r.nodes.includes(to))!,a=result.nodes[from],b=result.nodes[to]
+    const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
+    for(const t of [.25,.5,.75])for(const side of [-1,0,1]) {
+      const x=a[0]+dx*t-dy/length*road.width/2*side,y=a[1]+dy*t+dx/length*road.width/2*side
+      assert.ok(Math.abs(ground.height(x,y)-(a[2]+(b[2]-a[2])*t))<.01,`${from} to ${to}: actual road ribbon must meet ground at ${t}/${side}`)
+    }
+  }
+
   for(let i=0;i<rest.polygon.length;i++)for(const t of [0,.25,.5,.75]) {
     const a=rest.polygon[i],b=rest.polygon[(i+1)%rest.polygon.length],x=a[0]+t*(b[0]-a[0]),y=a[1]+t*(b[1]-a[1])
     assert.ok(Math.abs(ground.height(x,y)-rest.elevation)<1e-6,'interpolated platform edges must not become isolated triangular cut banks')

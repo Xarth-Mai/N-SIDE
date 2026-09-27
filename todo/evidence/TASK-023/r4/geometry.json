@@ -1,0 +1,814 @@
+{
+  "source_sha256": "adcca7dc8c081c851f3d5a3914d7aca1cfa794a97229033696622ab66e3b7dfa",
+  "source_counts": {
+    "before": 1345,
+    "after": 8257
+  },
+  "preserved": {
+    "old_nodes": true,
+    "buildings": true,
+    "places": true,
+    "summit": [
+      230,
+      950,
+      450
+    ],
+    "home": [
+      100,
+      255,
+      28
+    ],
+    "old_surfaces": true,
+    "gentle_routes": true,
+    "authored_terrain": true
+  },
+  "added_nodes": {
+    "slope_platform_bypass": [
+      292,
+      400,
+      79.368421
+    ],
+    "shop-steps-low-junction": [
+      122.5,
+      325,
+      45.127273
+    ],
+    "shop-steps-low-entry": [
+      140,
+      325,
+      45.127273
+    ],
+    "shop-steps-middle-junction": [
+      125.5,
+      343,
+      51.716364
+    ],
+    "shop-steps-middle-entry": [
+      115,
+      343,
+      51.716364
+    ],
+    "shop-steps-high-junction": [
+      127.666667,
+      356,
+      56.475152
+    ],
+    "shop-steps-high-entry": [
+      145,
+      356,
+      56.475152
+    ],
+    "bend-steps-rest-junction": [
+      216,
+      333,
+      52.419139
+    ],
+    "bend-steps-rest-entry": [
+      233,
+      333,
+      52.419139
+    ]
+  },
+  "new_surfaces": [
+    {
+      "id": "shop-steps-low",
+      "name": "坡巷停步与绿荫小台地",
+      "kind": "park",
+      "elevation": 45.127273,
+      "polygon": [
+        [
+          132,
+          320
+        ],
+        [
+          149,
+          320
+        ],
+        [
+          149,
+          330
+        ],
+        [
+          132,
+          330
+        ]
+      ],
+      "access": "public",
+      "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+    },
+    {
+      "id": "shop-steps-middle",
+      "name": "坡巷停步与绿荫小台地",
+      "kind": "park",
+      "elevation": 51.716364,
+      "polygon": [
+        [
+          110,
+          338
+        ],
+        [
+          120,
+          338
+        ],
+        [
+          120,
+          348
+        ],
+        [
+          110,
+          348
+        ]
+      ],
+      "access": "public",
+      "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+    },
+    {
+      "id": "shop-steps-high",
+      "name": "坡巷停步与绿荫小台地",
+      "kind": "park",
+      "elevation": 56.475152,
+      "polygon": [
+        [
+          137,
+          351
+        ],
+        [
+          153,
+          351
+        ],
+        [
+          153,
+          361
+        ],
+        [
+          137,
+          361
+        ]
+      ],
+      "access": "public",
+      "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+    },
+    {
+      "id": "bend-steps-rest",
+      "name": "坡巷停步与绿荫小台地",
+      "kind": "park",
+      "elevation": 52.419139,
+      "polygon": [
+        [
+          226,
+          328
+        ],
+        [
+          242,
+          328
+        ],
+        [
+          242,
+          338
+        ],
+        [
+          226,
+          338
+        ]
+      ],
+      "access": "public",
+      "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+    }
+  ],
+  "trees_added": [
+    [
+      136,
+      321
+    ],
+    [
+      113,
+      346
+    ],
+    [
+      150,
+      359
+    ],
+    [
+      238,
+      337
+    ]
+  ],
+  "road_layout": {
+    "before": [
+      {
+        "id": "upper",
+        "point": [
+          280,
+          365,
+          72.315789
+        ]
+      },
+      {
+        "id": "school_n",
+        "point": [
+          450,
+          355,
+          41
+        ]
+      }
+    ],
+    "after": [
+      {
+        "id": "upper",
+        "point": [
+          280,
+          365,
+          72.315789
+        ]
+      },
+      {
+        "id": "fw_e_school_up_w",
+        "point": [
+          380,
+          366,
+          41
+        ]
+      },
+      {
+        "id": "school_upper_street",
+        "point": [
+          450,
+          365,
+          41
+        ]
+      },
+      {
+        "id": "school_n",
+        "point": [
+          450,
+          355,
+          41
+        ]
+      }
+    ],
+    "reason": "The former rising stair ribbon and low cinema street converged inside one narrow strip at different heights; the stair now joins the existing public upper cross-street before reaching school_n"
+  },
+  "same_geometry_spot_checks": [
+    {
+      "point": [
+        -96,
+        482
+      ],
+      "expected": 99.285714,
+      "before": 89.98596803076924,
+      "after": 99.285714
+    },
+    {
+      "point": [
+        197,
+        488
+      ],
+      "expected": 100.678571,
+      "before": 95.37248845794393,
+      "after": 100.678571
+    },
+    {
+      "point": [
+        375,
+        347.5
+      ],
+      "expected": 38,
+      "before": 48.32572352941176,
+      "after": 37.99999999108911
+    }
+  ],
+  "actual_new_ribbon_samples": [
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.25,
+      "side": -1,
+      "point": [
+        305.02999850011247,
+        362.25014998875093,
+        64.48684175
+      ],
+      "actual": 64.48684163934102,
+      "delta": -1.1065897354001208e-07
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.25,
+      "side": 0,
+      "point": [
+        305,
+        365.25,
+        64.48684175
+      ],
+      "actual": 64.48684182828163,
+      "delta": 7.828163006706745e-08
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.25,
+      "side": 1,
+      "point": [
+        304.97000149988753,
+        368.24985001124907,
+        64.48684175
+      ],
+      "actual": 64.4868416743007,
+      "delta": -7.56992903916398e-08
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.5,
+      "side": -1,
+      "point": [
+        330.02999850011247,
+        362.50014998875093,
+        56.6578945
+      ],
+      "actual": 56.6578944879557,
+      "delta": -1.2044296227031737e-08
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.5,
+      "side": 0,
+      "point": [
+        330,
+        365.5,
+        56.6578945
+      ],
+      "actual": 56.6578945,
+      "delta": 0
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.5,
+      "side": 1,
+      "point": [
+        329.97000149988753,
+        368.49985001124907,
+        56.6578945
+      ],
+      "actual": 56.65789450332014,
+      "delta": 3.3201459359588625e-09
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.75,
+      "side": -1,
+      "point": [
+        355.02999850011247,
+        362.75014998875093,
+        48.82894725
+      ],
+      "actual": 48.82894732145655,
+      "delta": 7.145655445128796e-08
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.75,
+      "side": 0,
+      "point": [
+        355,
+        365.75,
+        48.82894725
+      ],
+      "actual": 48.828947171718355,
+      "delta": -7.828164427792217e-08
+    },
+    {
+      "from": "upper",
+      "to": "fw_e_school_up_w",
+      "t": 0.75,
+      "side": 1,
+      "point": [
+        354.97000149988753,
+        368.74985001124907,
+        48.82894725
+      ],
+      "actual": 48.82894732845263,
+      "delta": 7.845262928185548e-08
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.25,
+      "side": -1,
+      "point": [
+        375.2487592975525,
+        345.012407024475,
+        38
+      ],
+      "actual": 38.000000002970296,
+      "delta": 2.970296009152662e-09
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.25,
+      "side": 0,
+      "point": [
+        375,
+        347.5,
+        38
+      ],
+      "actual": 37.99999999108911,
+      "delta": -8.910888027457986e-09
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.25,
+      "side": 1,
+      "point": [
+        374.7512407024475,
+        349.987592975525,
+        38
+      ],
+      "actual": 38.00000063556803,
+      "delta": 6.355680284286791e-07
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.5,
+      "side": -1,
+      "point": [
+        400.2487592975525,
+        347.512407024475,
+        39
+      ],
+      "actual": 38.99999999207921,
+      "delta": -7.920789357740432e-09
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.5,
+      "side": 0,
+      "point": [
+        400,
+        350,
+        39
+      ],
+      "actual": 39,
+      "delta": 0
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.5,
+      "side": 1,
+      "point": [
+        399.7512407024475,
+        352.487592975525,
+        39
+      ],
+      "actual": 39.00000000792079,
+      "delta": 7.920789357740432e-09
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.75,
+      "side": -1,
+      "point": [
+        425.2487592975525,
+        350.012407024475,
+        40
+      ],
+      "actual": 40.00000007851585,
+      "delta": 7.851585337448341e-08
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.75,
+      "side": 0,
+      "point": [
+        425,
+        352.5,
+        40
+      ],
+      "actual": 40.000000008910895,
+      "delta": 8.910895132885344e-09
+    },
+    {
+      "from": "cinema_upper",
+      "to": "school_n",
+      "t": 0.75,
+      "side": 1,
+      "point": [
+        424.7512407024475,
+        354.987592975525,
+        40
+      ],
+      "actual": 39.99999999702971,
+      "delta": -2.9702889037253044e-09
+    }
+  ],
+  "maximum_new_ribbon_delta": 6.355680284286791e-07,
+  "counts": {
+    "nodes": {
+      "before": 1246,
+      "after": 1255
+    },
+    "roads": {
+      "before": 618,
+      "after": 622
+    },
+    "surfaces": {
+      "before": 75,
+      "after": 79
+    },
+    "trees": {
+      "before": 68,
+      "after": 72
+    },
+    "buildings": {
+      "before": 231,
+      "after": 231
+    },
+    "places": {
+      "before": 91,
+      "after": 91
+    },
+    "blocks": {
+      "before": 12,
+      "after": 12
+    },
+    "parcels": {
+      "before": 58,
+      "after": 58
+    }
+  },
+  "bent_road_edges": {
+    "source_sha256": "adcca7dc8c081c851f3d5a3914d7aca1cfa794a97229033696622ab66e3b7dfa",
+    "scope": "Fixed Viewer miter edge quarter-points of upper → slope_platform_bypass → platform_east; approximate stair midline height, not character playtest",
+    "non_terrain_unchanged": true,
+    "source_samples": 8257,
+    "max_abs_delta": 0.5740212122817212,
+    "max_abs_before_delta": 1.7801934466912002,
+    "probes": [
+      {
+        "segment": 1,
+        "t": 0.25,
+        "side": -1,
+        "x": 285.9159906387348,
+        "y": 373.00497269630984,
+        "road_height": 74.078947,
+        "before_ground": 74.12487873674897,
+        "ground": 74.0789470306745,
+        "before_delta": 0.04593173674896889,
+        "delta": 3.067449938498612e-08
+      },
+      {
+        "segment": 1,
+        "t": 0.25,
+        "side": 1,
+        "x": 280.0840093612652,
+        "y": 374.49502730369016,
+        "road_height": 74.078947,
+        "before_ground": 73.40904241530427,
+        "ground": 73.50492578771828,
+        "before_delta": -0.669904584695729,
+        "delta": -0.5740212122817212
+      },
+      {
+        "segment": 1,
+        "t": 0.5,
+        "side": -1,
+        "x": 288.9941434396318,
+        "y": 381.98291836559264,
+        "road_height": 75.842105,
+        "before_ground": 75.93396881732046,
+        "ground": 75.84210497320423,
+        "before_delta": 0.09186381732045845,
+        "delta": -2.679577448816417e-08
+      },
+      {
+        "segment": 1,
+        "t": 0.5,
+        "side": 1,
+        "x": 283.0058565603682,
+        "y": 383.01708163440736,
+        "road_height": 75.842105,
+        "before_ground": 75.75024118267953,
+        "ground": 75.8421050283506,
+        "before_delta": -0.09186381732047266,
+        "delta": 2.8350598313409137e-08
+      },
+      {
+        "segment": 1,
+        "t": 0.75,
+        "side": -1,
+        "x": 292.0722962405287,
+        "y": 390.96086403487544,
+        "road_height": 77.605263,
+        "before_ground": 77.74305862435214,
+        "ground": 77.60526305467585,
+        "before_delta": 0.13779562435215098,
+        "delta": 5.467585140195297e-08
+      },
+      {
+        "segment": 1,
+        "t": 0.75,
+        "side": 1,
+        "x": 285.9277037594713,
+        "y": 391.53913596512456,
+        "road_height": 77.605263,
+        "before_ground": 77.46746724248969,
+        "ground": 77.60526294330967,
+        "before_delta": -0.13779575751030393,
+        "delta": -5.6690325322961144e-08
+      },
+      {
+        "segment": 2,
+        "t": 0.25,
+        "side": -1,
+        "x": 292.0812064949851,
+        "y": 410.16961819229346,
+        "road_height": 81.3834585,
+        "before_ground": 83.1636519466912,
+        "ground": 81.3834590982102,
+        "before_delta": 1.7801934466912002,
+        "delta": 5.982101924928429e-07
+      },
+      {
+        "segment": 2,
+        "t": 0.25,
+        "side": 1,
+        "x": 285.9187935050149,
+        "y": 409.83038180770654,
+        "road_height": 81.3834585,
+        "before_ground": 81.52298475329937,
+        "ground": 81.3834584539139,
+        "before_delta": 0.13952625329936552,
+        "delta": -4.608610026934912e-08
+      },
+      {
+        "segment": 2,
+        "t": 0.5,
+        "side": -1,
+        "x": 289.0119639485446,
+        "y": 420.40042668042867,
+        "road_height": 83.398496,
+        "before_ground": 83.30547839830504,
+        "ground": 83.39849594015672,
+        "before_delta": -0.0930176016949531,
+        "delta": -5.98432734477683e-08
+      },
+      {
+        "segment": 2,
+        "t": 0.5,
+        "side": 1,
+        "x": 282.9880360514554,
+        "y": 419.59957331957133,
+        "road_height": 83.398496,
+        "before_ground": 83.49151360169496,
+        "ground": 83.39849596286608,
+        "before_delta": 0.09301760169496731,
+        "delta": -3.7133915498088754e-08
+      },
+      {
+        "segment": 2,
+        "t": 0.75,
+        "side": -1,
+        "x": 285.942721402104,
+        "y": 430.6312351685638,
+        "road_height": 85.4135335,
+        "before_ground": 85.36702485691237,
+        "ground": 85.41353354438569,
+        "before_delta": -0.04650864308763403,
+        "delta": 4.4385686237546906e-08
+      },
+      {
+        "segment": 2,
+        "t": 0.75,
+        "side": 1,
+        "x": 280.057278597896,
+        "y": 429.3687648314362,
+        "road_height": 85.4135335,
+        "before_ground": 85.07446908996425,
+        "ground": 85.06792336068335,
+        "before_delta": -0.3390644100357463,
+        "delta": -0.34561013931664775
+      }
+    ],
+    "remaining": "Two small negative banks adjoin lower streets; no terrain-wide densification or route relocation. The former 1.780m positive miter cut is covered by regression."
+  },
+  "platform_route": {
+    "reason": "原6m宽公共台阶穿入坡平台东缘，板底也侵入2.5m通路净空；严格路面高度复验抓出，未放宽检测",
+    "old_nodes": [
+      "upper",
+      "platform_east"
+    ],
+    "new_nodes": [
+      "upper",
+      "slope_platform_bypass",
+      "platform_east"
+    ],
+    "added_node": [
+      292,
+      400,
+      79.368421
+    ],
+    "preserved": "原节点、平台边界、6m局部升降高差与台阶宽度不变",
+    "source_of_decision": "实际geometry检测与ribbon高度，运行记录保留失败日志",
+    "uphill_branch": {
+      "before": [
+        "upper",
+        "hillgate"
+      ],
+      "after": [
+        "upper",
+        "slope_platform_bypass",
+        "hillgate"
+      ],
+      "reason": "东绕台阶与原上山直线产生7.5m异高交叉，改为共用真实岔口；剖面和路线同时经过该节点，保留原终点与宽度"
+    }
+  },
+  "bearings": [
+    {
+      "id": "cinema_upper_platform",
+      "kind": "platform",
+      "elevation": 37,
+      "elevated": true,
+      "polygon": [
+        [
+          340,
+          240
+        ],
+        [
+          344,
+          240
+        ],
+        [
+          355,
+          257
+        ],
+        [
+          355,
+          345
+        ],
+        [
+          345,
+          345
+        ],
+        [
+          345,
+          262
+        ],
+        [
+          340,
+          250
+        ]
+      ],
+      "bearingEdges": [
+        {
+          "edge": 6,
+          "building": "V-15"
+        }
+      ]
+    },
+    {
+      "id": "upper-transfer-landing",
+      "kind": "platform",
+      "polygon": [
+        [
+          348,
+          342
+        ],
+        [
+          357,
+          342
+        ],
+        [
+          357,
+          348
+        ],
+        [
+          348,
+          348
+        ]
+      ],
+      "elevation": 72.315789,
+      "baseElevation": 37,
+      "elevated": true,
+      "access": "public",
+      "name": "高街公共与后勤分流换层平台",
+      "bearingEdges": [
+        {
+          "edge": 3,
+          "lift": "upper_transfer_public"
+        }
+      ]
+    }
+  ]
+}

@@ -6,7 +6,10 @@ use bevy::{
     mesh::{Indices, PrimitiveTopology},
     prelude::*,
 };
-use geo::{Area, BooleanOps, BoundingRect, Contains, LineString, MultiPolygon, Point, Polygon};
+use geo::{
+    Area, BooleanOps, BoundingRect, Centroid, Closest, ClosestPoint, Contains, LineString,
+    MultiPolygon, Point, Polygon,
+};
 use spade::{DelaunayTriangulation, FloatTriangulation, HasPosition, Point2, Triangulation};
 
 use super::map::{Map, Surface, map_to_world};
@@ -525,13 +528,61 @@ fn box_geometry(
     Ok(())
 }
 
-fn platform_supports(map: &Map, ground: &Ground, surface: &Surface) -> Vec<([f64; 2], f64)> {
+struct SupportObstacle {
+    area: Polygon,
+    heights: [f64; 2],
+    slope: Option<[f64; 2]>,
+    step_half: f64,
+}
+
+impl SupportObstacle {
+    fn blocks(&self, footprint: &Polygon, bottom: f64, top: f64) -> bool {
+        if bottom >= self.heights[1] || top <= self.heights[0] || !overlap(footprint, &self.area) {
+            return false;
+        }
+        let intersection = footprint.intersection(&self.area);
+        if intersection.unsigned_area() <= 1e-8 {
+            return false;
+        }
+        let heights = self.slope.map_or(self.heights, |[start, end]| {
+            intersection.0.iter().flat_map(|p| &p.exterior().0).fold(
+                [f64::INFINITY, f64::NEG_INFINITY],
+                |range, p| {
+                    let h = ribbon_height(&self.area, [p.x, p.y], start, end) + 0.025;
+                    [
+                        range[0].min(h - self.step_half),
+                        range[1].max(h + self.step_half + 2.5),
+                    ]
+                },
+            )
+        });
+        bottom < heights[1] && top > heights[0]
+    }
+}
+
+#[derive(Default)]
+struct PlatformSupports {
+    columns: Vec<([f64; 2], f64)>,
+    beams: Vec<Polygon>,
+    unresolved: Vec<String>,
+}
+
+fn platform_supports(
+    map: &Map,
+    ground: &Ground,
+    surface: &Surface,
+) -> Result<PlatformSupports, String> {
     let width = 0.55;
     let top = surface.elevation - 0.4;
     let mut obstacles: Vec<_> = map
         .buildings
         .iter()
-        .map(|b| (polygon(&b.polygon), [b.elevation, b.elevation + b.height]))
+        .map(|b| SupportObstacle {
+            area: polygon(&b.polygon),
+            heights: [b.elevation, b.elevation + b.height],
+            slope: None,
+            step_half: 0.0,
+        })
         .collect();
     for road in &map.roads {
         if road.building.is_some() || road.kind == "interior" {
@@ -556,15 +607,126 @@ fn platform_supports(map: &Map, ground: &Ground, surface: &Surface) -> Vec<([f64
             } else {
                 ribbon(a, b, offsets[i], offsets[i + 1])
             };
-            obstacles.push((footprint, [a[2].min(b[2]), a[2].max(b[2]) + 0.05]));
+            let step_half = if road.kind == "steps" {
+                let rise = (b[2] - a[2]).abs();
+                rise / (rise / 0.17).ceil().max(1.0) / 2.0
+            } else {
+                0.0
+            };
+            obstacles.push(SupportObstacle {
+                area: footprint,
+                heights: [
+                    a[2].min(b[2]) - step_half,
+                    a[2].max(b[2])
+                        + if road.kind == "lift" {
+                            0.0
+                        } else {
+                            2.525 + step_half
+                        },
+                ],
+                slope: (road.kind != "lift").then_some([a[2], b[2]]),
+                step_half,
+            });
         }
     }
-    let mut supports = Vec::new();
-    for edge in polygon(&surface.polygon).exterior().0.windows(2) {
+    let mut supports = PlatformSupports::default();
+    for (edge_index, edge) in polygon(&surface.polygon)
+        .exterior()
+        .0
+        .windows(2)
+        .enumerate()
+    {
         let a = [edge[0].x, edge[0].y];
         let b = [edge[1].x, edge[1].y];
         let length = distance2(a, b).sqrt();
         let count = (length / 12.0).ceil().max(1.0) as usize;
+        if let Some(bearing) = surface.bearing_edges.iter().find(|b| b.edge == edge_index) {
+            let (anchor, roof) = if let Some(id) = &bearing.building {
+                let building = map.buildings.iter().find(|b| &b.id == id).unwrap();
+                (
+                    polygon(&building.polygon),
+                    building.elevation + building.height,
+                )
+            } else {
+                let node = bearing.lift.as_ref().unwrap();
+                let lift = map.bearing_lift(node).unwrap();
+                let p = map.nodes[node];
+                let w = lift.width / 2.0;
+                (
+                    polygon(&[
+                        [p[0] - w, p[1] - w],
+                        [p[0] + w, p[1] - w],
+                        [p[0] + w, p[1] + w],
+                        [p[0] - w, p[1] + w],
+                    ]),
+                    lift.nodes
+                        .iter()
+                        .map(|n| map.nodes[n][2])
+                        .max_by(f64::total_cmp)
+                        .unwrap(),
+                )
+            };
+            let source = format!(
+                "surface={} bearing edge={edge_index}",
+                surface.id.as_deref().unwrap_or("unnamed")
+            );
+            if (roof - surface.elevation).abs() > 0.001 {
+                return Err(format!(
+                    "{source}: bearing top {roof} differs from platform {}",
+                    surface.elevation
+                ));
+            }
+            let centroid = anchor.centroid().unwrap();
+            for i in 0..count {
+                let t = (i as f64 + 0.5) / count as f64;
+                let mut start = Point::new(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t);
+                let (Closest::SinglePoint(nearest) | Closest::Intersection(nearest)) =
+                    anchor.closest_point(&start)
+                else {
+                    return Err(format!("{source}: no bearing point"));
+                };
+                let d = distance2([nearest.x(), nearest.y()], [centroid.x(), centroid.y()]).sqrt();
+                let end = nearest + (centroid - nearest) * (0.55 / d.max(0.55));
+                let span = distance2([start.x(), start.y()], [end.x(), end.y()]).sqrt();
+                if span < 1e-6 {
+                    return Err(format!("{source}: bearing has no beam span"));
+                }
+                let extension = start + (start - end) * (0.4 / span);
+                if polygon(&surface.polygon).contains(&extension) {
+                    start = extension;
+                }
+                // ponytail: short graybox bearing beams only; longer spans require authored structural geometry
+                if span > 6.0 {
+                    return Err(format!("{source}: bearing exceeds 6 m short-beam span"));
+                }
+                let endpoints = [[start.x(), start.y(), top], [end.x(), end.y(), top]];
+                let offsets = road_offsets(&endpoints, 0.8);
+                let beam = ribbon(endpoints[0], endpoints[1], offsets[0], offsets[1]);
+                if beam.intersection(&anchor).unsigned_area() < 0.1 {
+                    return Err(format!("{source}: beam has insufficient bearing overlap"));
+                }
+                if beam
+                    .difference(&polygon(&surface.polygon).union(&anchor))
+                    .unsigned_area()
+                    > 0.01
+                {
+                    return Err(format!(
+                        "{source}: beam crosses a gap outside platform and bearing"
+                    ));
+                }
+                let free_beam = beam.difference(&anchor);
+                if obstacles
+                    .iter()
+                    .any(|o| free_beam.0.iter().any(|p| o.blocks(p, top - 0.8, top)))
+                {
+                    return Err(format!(
+                        "{source}: beam obstructs building or lower road clearance"
+                    ));
+                }
+                supports.beams.push(beam);
+            }
+            continue;
+        }
         for i in 0..count {
             let center = (i as f64 + 0.5) / count as f64;
             let mut found = false;
@@ -587,27 +749,22 @@ fn platform_supports(map: &Map, ground: &Ground, surface: &Surface) -> Vec<([f64
                     [p[0] + w, p[1] + w],
                     [p[0] - w, p[1] + w],
                 ]);
-                if obstacles.iter().any(|(area, heights)| {
-                    bottom < heights[1]
-                        && top > heights[0]
-                        && overlap(&footprint, area)
-                        && footprint.intersection(area).unsigned_area() > 1e-8
-                }) {
+                if obstacles.iter().any(|o| o.blocks(&footprint, bottom, top)) {
                     continue;
                 }
-                supports.push((p, bottom));
+                supports.columns.push((p, bottom));
                 found = true;
                 break;
             }
             if !found {
-                eprintln!(
+                supports.unresolved.push(format!(
                     "WARNING [geometry/support] surface={} edge={a:?}->{b:?} bay={i}: no clear column position; support layout requires spatial review",
                     surface.id.as_deref().unwrap_or("unnamed")
-                );
+                ));
             }
         }
     }
-    supports
+    Ok(supports)
 }
 
 fn bridge_rail(mesh: &mut MeshData, a: [f64; 3], b: [f64; 3], source: &str) -> Result<(), String> {
@@ -781,8 +938,21 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
             for piece in subtract(&poly, &masks) {
                 base.underside(&piece, |_| surface.elevation - 0.4, &source)?;
             }
-            for (p, bottom) in platform_supports(map, &ground, surface) {
+            let supports = platform_supports(map, &ground, surface)?;
+            for warning in supports.unresolved {
+                eprintln!("{warning}");
+            }
+            for (p, bottom) in supports.columns {
                 box_geometry(&mut base, p, 0.55, bottom, surface.elevation - 0.4, &source)?;
+            }
+            for beam in supports.beams {
+                base.polygon(&beam, |_| surface.elevation - 0.4, &source)?;
+                base.underside(&beam, |_| surface.elevation - 1.2, &source)?;
+                base.walls(
+                    &beam,
+                    |_| surface.elevation - 1.2,
+                    |_| surface.elevation - 0.4,
+                );
             }
         } else {
             base.retaining_walls(&poly, &ground, |_| surface.elevation);
@@ -1067,7 +1237,7 @@ mod tests {
             .iter()
             .find(|s| s.id.as_deref() == Some("fw-e-campus-upper-walk"))
             .unwrap();
-        let columns = platform_supports(&map, &ground, surface);
+        let columns = platform_supports(&map, &ground, surface).unwrap().columns;
         let south: Vec<_> = columns.iter().filter(|(p, _)| p[1] == 327.0).collect();
         assert!(
             !south.is_empty(),
@@ -1090,6 +1260,125 @@ mod tests {
             columns.iter().all(|(p, _)| {
                 (526.0..=534.0).contains(&p[0]) && (327.0..=358.0).contains(&p[1])
             })
+        );
+    }
+
+    #[test]
+    fn platform_bearings_are_real_and_road_clearance_uses_local_height() {
+        let road = SupportObstacle {
+            area: ribbon(
+                [0.0, 0.0, 0.0],
+                [0.0, 100.0, 50.0],
+                [-2.0, 0.0],
+                [-2.0, 0.0],
+            ),
+            heights: [0.0, 52.525],
+            slope: Some([0.0, 50.0]),
+            step_half: 0.0,
+        };
+        let high = polygon(&[[-0.2, 80.0], [0.2, 80.0], [0.2, 80.4], [-0.2, 80.4]]);
+        assert!(
+            !road.blocks(&high, 0.0, 20.0),
+            "distant low road must not block a column below the local road"
+        );
+        let low = polygon(&[[-0.2, 10.0], [0.2, 10.0], [0.2, 10.4], [-0.2, 10.4]]);
+        assert!(road.blocks(&low, 0.0, 20.0));
+        assert!(
+            road.blocks(&low, 7.0, 8.0),
+            "beam must leave 2.5 m headroom above lower road"
+        );
+        let bend = [[0.0, 0.0, 0.0], [100.0, 0.0, 20.0], [100.0, 100.0, 20.0]];
+        let offsets = road_offsets(&bend, 10.0);
+        let miter = SupportObstacle {
+            area: ribbon(bend[0], bend[1], offsets[0], offsets[1]),
+            heights: [0.0, 22.525],
+            slope: Some([0.0, 20.0]),
+            step_half: 0.0,
+        };
+        let edge = polygon(&[[93.9, 3.9], [94.1, 3.9], [94.1, 4.1], [93.9, 4.1]]);
+        assert!(road_height(bend[0], bend[1], [94.0, 4.0]) + 2.525 < 21.7);
+        assert!(
+            miter.blocks(&edge, 21.7, 21.8),
+            "center-line projection misses headroom at a mitered ribbon edge"
+        );
+
+        let mut map = Map::load(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../source-assets/district-map/district.json"
+        ))
+        .unwrap();
+        let ground = Ground::new(&map).unwrap();
+        for id in [
+            "slope_upper_platform",
+            "cinema_upper_platform",
+            "upper-transfer-landing",
+        ] {
+            let surface = map
+                .surfaces
+                .iter()
+                .find(|s| s.id.as_deref() == Some(id))
+                .unwrap();
+            let supports = platform_supports(&map, &ground, surface).unwrap();
+            assert!(
+                supports.unresolved.is_empty(),
+                "{id}: {:?}",
+                supports.unresolved
+            );
+            assert_eq!(
+                supports.beams.len(),
+                surface.bearing_edges.len(),
+                "each declared short edge emits its bearing beam"
+            );
+        }
+        let mut surface = map
+            .surfaces
+            .iter()
+            .find(|s| s.id.as_deref() == Some("cinema_upper_platform"))
+            .unwrap()
+            .clone();
+        surface.bearing_edges.clear();
+        assert!(
+            !platform_supports(&map, &ground, &surface)
+                .unwrap()
+                .unresolved
+                .is_empty(),
+            "nearby building alone must not suppress unsupported bays"
+        );
+        let surface = map
+            .surfaces
+            .iter()
+            .find(|s| s.id.as_deref() == Some("upper-transfer-landing"))
+            .unwrap()
+            .clone();
+        let mut wrong_height = surface.clone();
+        wrong_height.elevation += 1.0;
+        assert!(
+            platform_supports(&map, &ground, &wrong_height)
+                .err()
+                .unwrap()
+                .contains("bearing top")
+        );
+        map.nodes.insert(
+            "beam_obstacle_a".into(),
+            [348.6, 344.0, surface.elevation - 1.6],
+        );
+        map.nodes.insert(
+            "beam_obstacle_b".into(),
+            [348.6, 346.0, surface.elevation - 1.6],
+        );
+        map.roads.push(super::super::map::Road {
+            nodes: vec!["beam_obstacle_a".into(), "beam_obstacle_b".into()],
+            kind: "lane".into(),
+            width: 0.5,
+            building: None,
+            surface: None,
+            access: None,
+        });
+        assert!(
+            platform_supports(&map, &ground, &surface)
+                .err()
+                .unwrap()
+                .contains("lower road clearance")
         );
     }
 

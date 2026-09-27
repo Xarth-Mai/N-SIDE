@@ -436,6 +436,7 @@ fn camera_views(map: &Map) -> Result<Vec<(&'static str, Transform)>, String> {
         ("eye-shop", "home", "shop_front_door"),
         ("eye-corner", "market_turn", "bakery_entry"),
         ("eye-shade", "service_shared", "shop_rear_door"),
+        ("eye-slope-support", "upper", "slope_lift_high"),
     ] {
         let mut eye = *map
             .nodes
@@ -450,6 +451,23 @@ fn camera_views(map: &Map) -> Result<Vec<(&'static str, Transform)>, String> {
         println!("[visual/view] name={name} anchor={anchor} eye={eye:?} target={target:?} fov=55");
         views.push((name, view(eye, target)));
     }
+    // Inspect the transfer landing from the actual low public deck, with a labelled upward view
+    let from = map.nodes["cinema_deck_turn"];
+    let to = map.nodes["cinema_upper"];
+    let eye = [
+        from[0] + (to[0] - from[0]) * 0.75,
+        from[1] + (to[1] - from[1]) * 0.75,
+        from[2] + (to[2] - from[2]) * 0.75 + 1.7,
+    ];
+    let target = map.nodes["upper_transfer_public"];
+    println!("[visual/view] name=eye-transfer-support eye={eye:?} target={target:?} fov=55");
+    views.push(("eye-transfer-support", view(eye, target)));
+    // Free inspection pose, not a pedestrian eye: expose the short roof bearing behind the shaft
+    let roof = map.nodes["cinema_roof"];
+    let target = [roof[0], roof[1], roof[2] - 0.8];
+    let eye = [roof[0] + 12.0, roof[1] - 7.0, roof[2] - 2.5];
+    println!("[visual/view] name=inspect-cinema-bearing eye={eye:?} target={target:?} fov=55");
+    views.push(("inspect-cinema-bearing", view(eye, target)));
     // The closer summit naturally leaves a level 55-degree view; keep that view and label the tilt
     let mut eye = map.nodes["home"];
     eye[2] += 1.7;

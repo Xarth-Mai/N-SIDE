@@ -1,0 +1,176 @@
+[
+  {
+    "command": "bun test tools/tests",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/bun-final.log",
+    "log_sha256": "d3b6295b675230ccc476e9113206c01c8dfa1d2bd58f3db24e1b71f42886546e",
+    "tail": [
+      "(pass) terrain bake preserves authored geometry and repeats without drift [2734.31ms]",
+      "(pass) terrain noise protects complete road segments and footprints [3399.91ms]",
+      "(pass) terrain bake rejects invalid metadata and unsupported source formatting [46.96ms]",
+      "",
+      " 104 pass",
+      " 0 fail",
+      " 221 expect() calls",
+      "Ran 104 tests across 7 files. [13.85s]"
+    ]
+  },
+  {
+    "command": "bun tools/terrain-shape.ts --check",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/bake-final.log",
+    "log_sha256": "7ffb73cea6564f4c15028a46660aad4f36f37b3f6bed0b7e8c8d3396ea2640dd",
+    "tail": [
+      "PASS terrain bake: 8257 samples"
+    ]
+  },
+  {
+    "command": "bun run check:types",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/types-final.log",
+    "log_sha256": "8d450ea020023089f7748b0ff97dd45c0ffda76e73ccfcda4719b03d979840a5",
+    "tail": [
+      "$ bun node_modules/typescript/bin/tsc -p tsconfig.json && bun tools/check-vue.ts -p tsconfig.vue.json"
+    ]
+  },
+  {
+    "command": "cargo test --manifest-path game/Cargo.toml --features viewer --locked",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/rust-final.log",
+    "log_sha256": "a7b2eedb5cebcf71921cde74cb15c09ca6259ec2134d2f2af656656a9b02a979",
+    "tail": [
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "",
+      "   Doc-tests n_side",
+      "",
+      "running 0 tests",
+      "",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      ""
+    ]
+  },
+  {
+    "command": "cargo clippy --manifest-path game/Cargo.toml --features viewer --all-targets --locked -- -D warnings",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/clippy-final.log",
+    "log_sha256": "532e1a175e9f4fbcdf22c8fe8e6574cd58c0992345cdd1693ba0d2ea025556ae",
+    "tail": [
+      "    Checking n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)",
+      "    Finished `dev` profile [optimized + debuginfo] target(s) in 1.43s"
+    ]
+  },
+  {
+    "command": "cargo build --manifest-path game/Cargo.toml --features viewer --bin map_viewer --locked",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/build-final.log",
+    "log_sha256": "e8523c358817aefe901f86d2637bf4942161375985c77128d738ae748738e989",
+    "tail": [
+      "   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)",
+      "    Finished `dev` profile [optimized + debuginfo] target(s) in 7.59s"
+    ]
+  },
+  {
+    "command": "game/target/debug/map_viewer --project-root . --validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/validate-final.log",
+    "log_sha256": "dcdccb3ee7c1be4354c7e2049601cd2fdbc71bd1e05933941774649d90f7e9b4",
+    "tail": [
+      "[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=vsync",
+      "[map/validated] schema=7 nodes=1255 roads=622 buildings=231 surfaces=79 trees=72 meshes=2627 elapsed_seconds=7.515",
+      "[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths",
+      "[validate/pass] CPU geometry and bindings; asynchronous image decoding and GPU rendering require normal launch or --verify"
+    ]
+  },
+  {
+    "command": "bun run docs:build",
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "output/terrain/2026-09-27/r4/wiki-final.log",
+    "log_sha256": "b86a86a086147c71a5f5228260b38fa760689f3424bc84c0f052ccd28e4aa4e5",
+    "tail": [
+      "- Using dynamic import() to code-split the application",
+      "- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks",
+      "- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.",
+      "\u001b[32m✓\u001b[0m building client + server bundles...",
+      "- rendering pages...",
+      "\u001b[32m✓\u001b[0m rendering pages...",
+      "build complete in 5.59s.",
+      "{\"profile\":\"dev\",\"pages\":156,\"files\":785,\"result\":\"PASS\"}"
+    ]
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:sync"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 18 task cards; sync\n$ bun tools/tasks.ts sync\n"
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:sync"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 18 task cards; sync\n$ bun tools/tasks.ts sync\n",
+    "generated_content_stable": true
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:check"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 18 task cards; check\n$ bun tools/tasks.ts check\n",
+    "check_content_and_mtime_unchanged": true
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "check:docs"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 276 Markdown files, 90 IDs\nPASS: 31 Skills; 25 recorded imports\n$ python3 -B tools/validate_docs.py --root . && bun run check:skills\n$ bun tools/validate-skills.ts\n"
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "check:story-design"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 91 places, 12 blocks, 37 characters, 22 quests, 64 referenced_buildings\nPASS: 22 stories; mandatory conditions, references, reachability and optional-side boundary\n$ python3 -B tools/validate_story_design.py --root . && bun run check:story-graph\n$ bun tools/story-data.ts\n"
+  },
+  {
+    "command": [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "game/Cargo.toml",
+      "--",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  }
+]

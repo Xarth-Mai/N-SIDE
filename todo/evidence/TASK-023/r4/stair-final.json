@@ -1,0 +1,96 @@
+{
+  "scope": "当前Viewer踏步公式的数值检查，不代替人物行走验收；stair-baseline是东绕台阶修正前的本轮工作状态",
+  "segments": 78,
+  "max_riser": 0.16998191139240512,
+  "min_tread": 0.2808988764044944,
+  "longest": [
+    {
+      "nodes": [
+        "slope_platform_bypass",
+        "hillgate"
+      ],
+      "count": 534,
+      "riser": 0.16972205805243445,
+      "tread": 0.39558789292916535,
+      "horizontal_metres": 211.2439348241743,
+      "rise_metres": 90.631579
+    },
+    {
+      "nodes": [
+        "platform_east",
+        "hillgate"
+      ],
+      "count": 486,
+      "riser": 0.1699000596707819,
+      "tread": 0.3680770333332987,
+      "horizontal_metres": 178.88543819998318,
+      "rise_metres": 82.571429
+    },
+    {
+      "nodes": [
+        "foothill_east",
+        "fw_e_forest_turn"
+      ],
+      "count": 248,
+      "riser": 0.16985002822580644,
+      "tread": 0.7942627259512988,
+      "horizontal_metres": 196.9771560359221,
+      "rise_metres": 42.122806999999995
+    },
+    {
+      "nodes": [
+        "cinema_upper",
+        "upper"
+      ],
+      "count": 208,
+      "riser": 0.1697874471153846,
+      "tread": 0.35000528313848644,
+      "horizontal_metres": 72.80109889280519,
+      "rise_metres": 35.315788999999995
+    },
+    {
+      "nodes": [
+        "west_upper",
+        "res_n"
+      ],
+      "count": 191,
+      "riser": 0.16958780104712037,
+      "tread": 0.4712041884816754,
+      "horizontal_metres": 90.0,
+      "rise_metres": 32.39126999999999
+    },
+    {
+      "nodes": [
+        "upper",
+        "fw_e_school_up_w"
+      ],
+      "count": 185,
+      "riser": 0.1692745351351351,
+      "tread": 0.5405675668919256,
+      "horizontal_metres": 100.00499987500625,
+      "rise_metres": 31.315788999999995
+    },
+    {
+      "nodes": [
+        "old_home",
+        "west_upper"
+      ],
+      "count": 174,
+      "riser": 0.1691981379310345,
+      "tread": 0.5172413793103449,
+      "horizontal_metres": 90.0,
+      "rise_metres": 29.440476000000004
+    },
+    {
+      "nodes": [
+        "north",
+        "hill_west_gate"
+      ],
+      "count": 137,
+      "riser": 0.16918086131386853,
+      "tread": 1.0103868613138687,
+      "horizontal_metres": 138.423,
+      "rise_metres": 23.17777799999999
+    }
+  ]
+}

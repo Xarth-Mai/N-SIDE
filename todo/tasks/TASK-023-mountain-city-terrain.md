@@ -25,7 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-第3轮，步骤5/6 画面评审；完成小店起坡的地形、宅地与接路修订，并把长崎整体城市组织写入正式设定和制作规范。技术检查、6处实图与18秒真实Viewer操作已有证据；大裸坡、局部尖长切坡及重复体量仍需街段细化。作者尚未确认河口港湾选择，当前白沙河继续有效；下一动作是复看同机位的山城尺度，再在本任务内细化小店至上街的生活界面
+第4轮，步骤5/6 体验评审；已修复院落／道路边缘误切坡、平台承托和两处异高通路冲突，补入4处沿台阶停步台地，完成同机位对照与18秒真实Viewer录制。待判断街道层次和灰盒比例；裸坡、长台阶节奏与街坊密度仍未通过品质验收，下一轮继续本任务，不推进玩法路线图
+
 ## 结果与证据
 
-本轮基线 `c9cd5e7c6a0202b6e0aabfafe03f1e7261e36307`，当前证据见 [r3交付与自查](../evidence/TASK-023/r3/review.md)，数值和源保护见 [geometry.json](../evidence/TASK-023/r3/geometry.json)，大体积运行产物归 `output/terrain/2026-09-27/r3/review-*`。旧 [r2单峰方案](../evidence/TASK-023/r2/review.md)与 [r1双峰方案](../evidence/TASK-023/r1/review.md)保留历史范围；本轮没有人物通行、电梯交互或登山实玩验收，没有放行G1
+本轮基线 `8ae11b3164d64e1c026980d9fcc2f3c1a267f3cc`，当前证据见 [r4交付与自查](../evidence/TASK-023/r4/review.md)，数值和源保护见 [geometry.json](../evidence/TASK-023/r4/geometry.json)，大体积运行产物归 `output/terrain/2026-09-27/r4/final-*`。旧 [r3城市参照](../evidence/TASK-023/r3/review.md)、[r2单峰方案](../evidence/TASK-023/r2/review.md)与 [r1双峰方案](../evidence/TASK-023/r1/review.md)保留历史范围；本轮没有人物通行、电梯交互或登山实玩验收，没有放行G1

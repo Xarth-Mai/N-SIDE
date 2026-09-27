@@ -1,0 +1,31 @@
+{
+  "reason": "原6m宽公共台阶穿入坡平台东缘，板底也侵入2.5m通路净空；严格路面高度复验抓出，未放宽检测",
+  "old_nodes": [
+    "upper",
+    "platform_east"
+  ],
+  "new_nodes": [
+    "upper",
+    "slope_platform_bypass",
+    "platform_east"
+  ],
+  "added_node": [
+    292,
+    400,
+    79.368421
+  ],
+  "preserved": "原节点、平台边界、6m局部升降高差与台阶宽度不变",
+  "source_of_decision": "实际geometry检测与ribbon高度，运行记录保留失败日志",
+  "uphill_branch": {
+    "before": [
+      "upper",
+      "hillgate"
+    ],
+    "after": [
+      "upper",
+      "slope_platform_bypass",
+      "hillgate"
+    ],
+    "reason": "东绕台阶与原上山直线产生7.5m异高交叉，改为共用真实岔口；剖面和路线同时经过该节点，保留原终点与宽度"
+  }
+}

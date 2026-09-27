@@ -1,0 +1,17 @@
+{
+  "baseline_commit": "8ae11b3164d64e1c026980d9fcc2f3c1a267f3cc",
+  "map_sha256": "6e422a6fc658e4d62ad6326d073dd01b01783b4a29a3603ee0a88c19a7a50535",
+  "authorization": "继续当前TASK-023；本轮处理r3已经记录的大切坡与平台支撑问题",
+  "scope": "小店—上街—镜厅灰盒街段，实际支撑与通行净空，源地形过渡和同机位运行证据",
+  "preserve": [
+    "白沙河",
+    "小店+28m",
+    "摘星台唯一最高点+450m",
+    "稳定对象ID",
+    "建筑自身楼层与高度",
+    "3条gentle路线与5%检查",
+    "车道10%检查",
+    "正式剧情与命名"
+  ],
+  "reference": "沿用docs/dev/design/locations/world-research.md的R15及r3已核实资料，不新增水体设定"
+}

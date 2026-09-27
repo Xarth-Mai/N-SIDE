@@ -35,21 +35,51 @@ export function bakeTerrain(data:District) {
   const result=structuredClone(data),recipe=result.terrain.bake
   if(!recipe||recipe.version!==1||!Number.isInteger(recipe.authored)||recipe.authored<3||recipe.authored>data.terrain.samples.length||!Number.isInteger(recipe.seed)||!Number.isFinite(recipe.spacing)||recipe.spacing<40||recipe.spacing>120)throw new Error('Invalid terrain.bake: version 1, authored sample prefix, integer seed and spacing 40..120 are required')
   const authored=result.terrain.samples.slice(0,recipe.authored)
-  const elevated=new Set(data.elevatedNodes),ids=new Set<string>(),segments:[Point,Point][]=[]
+  const elevated=new Set(data.elevatedNodes),ids=new Set<string>(),segments:[Point,Point,Point,Point][]=[]
   for(const road of data.roads)if(!road.building&&!['bridge','deck','lift','interior'].includes(road.kind)&&!data.surfaces.some(s=>s.id===road.surface&&s.elevated)) {
     for(const id of road.nodes)if(!elevated.has(id))ids.add(id)
-    for(let i=1;i<road.nodes.length;i++)segments.push([data.nodes[road.nodes[i-1]],data.nodes[road.nodes[i]]])
+    // Match Viewer road_offsets: the whole polyline owns each bounded miter, not each segment
+    const points=road.nodes.map(id=>data.nodes[id]),normals=points.slice(1).map((b,i)=>{
+      const a=points[i],dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
+      return [-dy/length,dx/length]
+    })
+    const offsets=points.map((_,i)=>{
+      if(i===0)return normals[0].map(n=>n*road.width/2)
+      if(i===points.length-1)return normals[i-1].map(n=>n*road.width/2)
+      const a=normals[i-1],b=normals[i],factor=Math.min(road.width/2/Math.max(.01,1+a[0]*b[0]+a[1]*b[1]),road.width*2)
+      return a.map((n,j)=>(n+b[j])*factor)
+    })
+    for(let i=1;i<points.length;i++)segments.push([points[i-1],points[i],offsets[i-1],offsets[i]])
   }
   const controls=[...authored,...[...ids].map(id=>data.nodes[id])]
   const occupied=new Set(controls.map(p=>p.slice(0,2).join(',')))
   const generated:Point[]=[]
   const peak=data.nodes.summit
   const areas=[...data.buildings,...data.surfaces.filter(s=>!s.elevated)]
-  // Lock the actual footprint boundary too: a coarse grid alone can leave a tall cut bank at a corner.
-  for(const area of areas)for(const [x,y] of area.polygon) {
+  // Sample full edges: corner-only controls let long Delaunay triangles cut through a terrace or street
+  const addControl=(x:number,y:number,z:number)=>{
+    x=Math.round(x*1e6)/1e6;y=Math.round(y*1e6)/1e6
     const key=`${x},${y}`
-    if(y<270||y>1920||x< -700||x>1100||area.elevation>=peak[2]||occupied.has(key))continue
-    const point=[x,y,area.elevation];controls.push(point);generated.push(point);occupied.add(key)
+    if(y<270||y>1920||x< -700||x>1100||z>=peak[2]||occupied.has(key))return
+    const point=[x,y,z];controls.push(point);generated.push(point);occupied.add(key)
+  }
+  for(const area of areas)for(let i=0;i<area.polygon.length;i++) {
+    const a=area.polygon[i],b=area.polygon[(i+1)%area.polygon.length]
+    const spacing=Math.min(a[1],b[1])<data.nodes.hillgate[1]?('height' in area?12:2):Infinity
+    const count=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/spacing))
+    for(let j=0;j<count;j++)addControl(a[0]+(b[0]-a[0])*j/count,a[1]+(b[1]-a[1])*j/count,area.elevation)
+  }
+  for(const [a,b,start,end] of segments) {
+    const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
+    if(!length)continue
+    const count=Math.max(1,Math.ceil(length/6))
+    for(let j=0;j<=count;j++)for(const side of [-1,0,1]) {
+      const t=j/count,x=a[0]+dx*t+(start[0]+(end[0]-start[0])*t)*side,y=a[1]+dy*t+(start[1]+(end[1]-start[1])*t)*side
+      if(y>data.nodes.hillgate[1])continue
+      // Footprints own their ground; road overlaps are clipped to these same surfaces at rendering time
+      const area=areas.find(area=>pointInside([x,y],area.polygon))
+      addControl(x,y,area?.elevation??a[2]+(b[2]-a[2])*t)
+    }
   }
   const residuals=controls.map(p=>({p,delta:p[2]-mountainBase(data,p[0],p[1])}))
   for(let y=270;y<=1920;y+=recipe.spacing)for(let x=-700;x<=1100;x+=recipe.spacing) {
