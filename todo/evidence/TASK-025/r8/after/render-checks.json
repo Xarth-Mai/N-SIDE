@@ -1,0 +1,242 @@
+[
+  {
+    "view": "inspect-road-east-door",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-east-door",
+      "--view",
+      "inspect-road-east-door"
+    ],
+    "exit_code": 0,
+    "seconds": 18.917098861013073,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-east-platform",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-east-platform",
+      "--view",
+      "inspect-road-east-platform"
+    ],
+    "exit_code": 0,
+    "seconds": 16.84065163001651,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-wood-homes",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-wood-homes",
+      "--view",
+      "inspect-road-wood-homes"
+    ],
+    "exit_code": 0,
+    "seconds": 16.891081987996586,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-east-plateau",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-east-plateau",
+      "--view",
+      "inspect-road-east-plateau"
+    ],
+    "exit_code": 0,
+    "seconds": 16.889569307037164,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-east-neighbors",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-east-neighbors",
+      "--view",
+      "inspect-road-east-neighbors"
+    ],
+    "exit_code": 0,
+    "seconds": 16.842067621997558,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-old-low",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-old-low",
+      "--view",
+      "inspect-road-old-low"
+    ],
+    "exit_code": 0,
+    "seconds": 16.84059861098649,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-interest-north",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-interest-north",
+      "--view",
+      "inspect-road-interest-north"
+    ],
+    "exit_code": 0,
+    "seconds": 16.839293219032697,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-west-link",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-west-link",
+      "--view",
+      "inspect-road-west-link"
+    ],
+    "exit_code": 0,
+    "seconds": 16.89061749796383,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-west-north",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-west-north",
+      "--view",
+      "inspect-road-west-north"
+    ],
+    "exit_code": 0,
+    "seconds": 16.942871717968956,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-old-court",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-old-court",
+      "--view",
+      "inspect-road-old-court"
+    ],
+    "exit_code": 0,
+    "seconds": 16.890951598994434,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-food-lower",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-food-lower",
+      "--view",
+      "inspect-road-food-lower"
+    ],
+    "exit_code": 0,
+    "seconds": 16.942147617053706,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-food-north",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-food-north",
+      "--view",
+      "inspect-road-food-north"
+    ],
+    "exit_code": 0,
+    "seconds": 16.840384590032045,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-river-low",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-river-low",
+      "--view",
+      "inspect-road-river-low"
+    ],
+    "exit_code": 0,
+    "seconds": 16.83879240899114,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-dock",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-dock",
+      "--view",
+      "inspect-road-dock"
+    ],
+    "exit_code": 0,
+    "seconds": 16.890138518007006,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  },
+  {
+    "view": "inspect-road-river-service",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/after/inspect-road-river-service",
+      "--view",
+      "inspect-road-river-service"
+    ],
+    "exit_code": 0,
+    "seconds": 16.839339549012948,
+    "source_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+    "binary_sha256": "1c237c0d43b82f9c5aa39bd69120b35c0f0126dea08c01c71b6f9aeb05f564fe"
+  }
+]

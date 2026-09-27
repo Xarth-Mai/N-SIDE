@@ -1,0 +1,750 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [4.66ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.86ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1111.85ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [438.18ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [427.68ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [455.08ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1072.81ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [1860.01ms]
+129 | for(const [name,junctions,prefix] of [
+130 |   ['east terraces',['fw_f_wood_homes1','fw_f_wood_homes2','fw_f_plateau_e1','fw_f_plateau_e2','fw_f_plateau_e4','fw_f_plateau_e_mid0','platform_east','fw_f_neighbors3'],'junction_east_'],
+131 |   ['west old housing',['fw_f_old_low1','interest_n','west_link','west_north','fw_f_old_court0'],'junction_old_'],
+132 | ] as const) test(`${name} clear neighboring road ribbons and retain usable exterior approaches`,()=>{
+133 |   const relevant=(id:string)=>(junctions as readonly string[]).includes(id)||id.startsWith(prefix)
+134 |   assert.deepEqual(roadWidthConflicts(source,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(relevant)),[],'level exits must clear neighboring ribbons')
+               ^
+AssertionError: level exits must clear neighboring ribbons
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_e0',
++         'fw_f_plateau_e_mid0'
++       ],
++       road: 424
++     },
++     area: 4.880818986574013,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_plateau_e_mid0',
++         'fw_f_v_f63_resident'
++       ],
++       road: 532
++     },
++     maxDelta: 1.5691966406249946,
++     point: [
++       175.10014204545453,
++       482
++     ],
++     sharedNodes: [
++       'fw_f_plateau_e_mid0'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction85',
++         'fw_f_wood_homes1'
++       ],
++       road: 396
++     },
++     area: 4,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_wood_homes1',
++         'stair_fw_f_wood_homes1_fw_f_wood_homes2_01_in'
++       ],
++       road: 397
++     },
++     maxDelta: 0.5909356710526339,
++     point: [
++       68,
++       508
++     ],
++     sharedNodes: [
++       'fw_f_wood_homes1'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'stair_fw_f_wood_homes1_fw_f_wood_homes2_01_out',
++         'fw_f_wood_homes2'
++       ],
++       road: 399
++     },
++     area: 4,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_wood_homes2',
++         'fw_f_wood_homes3'
++       ],
++       road: 400
++     },
++     maxDelta: 0.5909356710526339,
++     point: [
++       68,
++       470
++     ],
++     sharedNodes: [
++       'fw_f_wood_homes2'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'level_fw_f_junction88_to_fw_f_plateau_e4',
++         'fw_f_plateau_e4'
++       ],
++       road: 422
++     },
++     area: 1.9460678118630312,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_e4',
++         'platform_east'
++       ],
++       road: 423
++     },
++     maxDelta: 0.5863247564102494,
++     point: [
++       271.1923076923077,
++       451.1923076923077
++     ],
++     sharedNodes: [
++       'fw_f_plateau_e4'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_junction78',
++         'fw_f_neighbors3'
++       ],
++       road: 383
++     },
++     area: 8.434799611095514,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_neighbors_w3',
++         'fw_f_neighbors3'
++       ],
++       road: 385
++     },
++     maxDelta: 0.5338047541605775,
++     point: [
++       248.61922908564333,
++       280
++     ],
++     sharedNodes: [
++       'fw_f_neighbors3'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'pause_fw_f_junction89_fw_f_plateau_e1',
++         'fw_f_plateau_e1'
++       ],
++       road: 416
++     },
++     area: 6.25,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_e1',
++         'fw_f_junction90'
++       ],
++       road: 417
++     },
++     maxDelta: 0.42391181818182133,
++     point: [
++       124.5,
++       517.5
++     ],
++     sharedNodes: [
++       'fw_f_plateau_e1'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_junction91',
++         'fw_f_plateau_e2'
++       ],
++       road: 417
++     },
++     area: 6.25,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_plateau_e2',
++         'level_fw_f_plateau_e3_from_fw_f_plateau_e2'
++       ],
++       road: 418
++     },
++     maxDelta: 0.4183568888888942,
++     point: [
++       267.5,
++       517.5
++     ],
++     sharedNodes: [
++       'fw_f_plateau_e2'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_plateau_e_mid0',
++         'fw_f_plateau_e_mid1'
++       ],
++       road: 424
++     },
++     area: 0.5454545454558684,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_plateau_e_mid0',
++         'fw_f_v_f63_resident'
++       ],
++       road: 532
++     },
++     maxDelta: 0.4129464843749986,
++     point: [
++       178,
++       481.4798927814636
++     ],
++     sharedNodes: [
++       'fw_f_plateau_e_mid0'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:134:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) east terraces clear neighboring road ribbons and retain usable exterior approaches [467.28ms]
+129 | for(const [name,junctions,prefix] of [
+130 |   ['east terraces',['fw_f_wood_homes1','fw_f_wood_homes2','fw_f_plateau_e1','fw_f_plateau_e2','fw_f_plateau_e4','fw_f_plateau_e_mid0','platform_east','fw_f_neighbors3'],'junction_east_'],
+131 |   ['west old housing',['fw_f_old_low1','interest_n','west_link','west_north','fw_f_old_court0'],'junction_old_'],
+132 | ] as const) test(`${name} clear neighboring road ribbons and retain usable exterior approaches`,()=>{
+133 |   const relevant=(id:string)=>(junctions as readonly string[]).includes(id)||id.startsWith(prefix)
+134 |   assert.deepEqual(roadWidthConflicts(source,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(relevant)),[],'level exits must clear neighboring ribbons')
+               ^
+AssertionError: level exits must clear neighboring ribbons
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_old_low1',
++         'fw_f_junction4'
++       ],
++       road: 366
++     },
++     area: 18.862120926793068,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_interest_east1',
++         'fw_f_old_low1'
++       ],
++       road: 741
++     },
++     maxDelta: 1.2995740788169456,
++     point: [
++       -180,
++       146.02111126803277
++     ],
++     sharedNodes: [
++       'fw_f_old_low1'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'interest_n',
++         'west_link'
++       ],
++       road: 138
++     },
++     area: 10.5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'west_link',
++         'stair_west_link_west_link_n_01_in'
++       ],
++       road: 181
++     },
++     maxDelta: 0.8504807692307743,
++     point: [
++       -193.5,
++       277.8205128205128
++     ],
++     sharedNodes: [
++       'west_link'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'west_north',
++         'old_home'
++       ],
++       road: 20
++     },
++     area: 10.5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'stair_west_court_gate_west_north_01_out',
++         'west_north'
++       ],
++       road: 34
++     },
++     maxDelta: 0.8113178877840923,
++     point: [
++       -106.5,
++       327
++     ],
++     sharedNodes: [
++       'west_north'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'interest_n',
++         'west_link'
++       ],
++       road: 138
++     },
++     area: 20.718084186279157,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'interest_n',
++         'fw_f_interest_east0'
++       ],
++       road: 364
++     },
++     maxDelta: 0.802266828505088,
++     point: [
++       -300.44521569169365,
++       272
++     ],
++     sharedNodes: [
++       'interest_n'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'stair_west_court_gate_west_north_01_out',
++         'west_north'
++       ],
++       road: 34
++     },
++     area: 12.25,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'old_north_gate',
++         'west_north'
++       ],
++       road: 139
++     },
++     maxDelta: 0.7414184531250001,
++     point: [
++       -110,
++       326.6875
++     ],
++     sharedNodes: [
++       'west_north'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'west_court_gate',
++         'fw_f_old_court0'
++       ],
++       road: 369
++     },
++     area: 2.25,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_old_court0',
++         'pause_fw_f_junction53_fw_f_old_court0'
++       ],
++       road: 370
++     },
++     maxDelta: 0.41677537878787874,
++     point: [
++       -104,
++       276.24242424242425
++     ],
++     sharedNodes: [
++       'fw_f_old_court0'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'fw_f_old_court0',
++         'pause_fw_f_junction53_fw_f_old_court0'
++       ],
++       road: 370
++     },
++     area: 1.6541795551274845,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_f_old_court0',
++         'fw_f_old_court4'
++       ],
++       road: 379
++     },
++     maxDelta: 0.41677537878787874,
++     point: [
++       -103.61174242424242,
++       276.24242424242425
++     ],
++     sharedNodes: [
++       'fw_f_old_court0'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:134:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) west old housing clear neighboring road ribbons and retain usable exterior approaches [407.94ms]
+136 | })
+137 |
+138 | test('food street bypasses shop footprints and waterfront stairs descend beside the waiting court',()=>{
+139 |   const junctions=new Set(['food_ramp_lower','community','cross_w','river_w','dock'])
+140 |   const relevant=(id:string)=>junctions.has(id)||/^junction_(food_lower|community_|river_|dock_)/.test(id)
+141 |   assert.deepEqual(roadWidthConflicts(source,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(relevant)),[],'food and waterfront approaches must clear neighboring ribbons')
+               ^
+AssertionError: food and waterfront approaches must clear neighboring ribbons
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'food_ramp_lower',
++         'stair_food_ramp_lower_food_east_01_in'
++       ],
++       road: 737
++     },
++     area: 7.875,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'food_ramp_lower',
++         'food_ramp_middle'
++       ],
++       road: 740
++     },
++     maxDelta: 1.0403495140084154,
++     point: [
++       178.5,
++       80.90322580645162
++     ],
++     sharedNodes: [
++       'food_ramp_lower'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'food_ramp_lower',
++         'stair_food_ramp_lower_food_east_01_in'
++       ],
++       road: 737
++     },
++     area: 1.125,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'station_east',
++         'food_ramp_lower'
++       ],
++       road: 740
++     },
++     maxDelta: 0.5951612903225811,
++     point: [
++       178.5,
++       79.45161290322581
++     ],
++     sharedNodes: [
++       'food_ramp_lower'
++     ]
++   },
++   {
++     a: {
++       kind: 'avenue',
++       nodes: [
++         'fw_w_garden_cross',
++         'cross_w'
++       ],
++       road: 173
++     },
++     area: 46.33124999999973,
++     b: {
++       kind: 'service',
++       nodes: [
++         'cross_w',
++         'fw_w_v-85_maintenance'
++       ],
++       road: 719
++     },
++     maxDelta: 0.5907692307692303,
++     point: [
++       198.3,
++       -41
++     ],
++     sharedNodes: [
++       'cross_w'
++     ]
++   },
++   {
++     a: {
++       kind: 'shore',
++       nodes: [
++         'river_w',
++         'river_gate'
++       ],
++       road: 125
++     },
++     area: 10.5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'river_w',
++         'low_platform'
++       ],
++       road: 127
++     },
++     maxDelta: 0.583333333333333,
++     point: [
++       177,
++       -103.125
++     ],
++     sharedNodes: [
++       'river_w'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'river_w',
++         'low_platform'
++       ],
++       road: 127
++     },
++     area: 10.5,
++     b: {
++       kind: 'shore',
++       nodes: [
++         'river_w',
++         'fw_w_v-85_walk'
++       ],
++       road: 638
++     },
++     maxDelta: 0.583333333333333,
++     point: [
++       180,
++       -103.5
++     ],
++     sharedNodes: [
++       'river_w'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'dock',
++         'dock_low'
++       ],
++       road: 128
++     },
++     area: 7,
++     b: {
++       kind: 'shore',
++       nodes: [
++         'fw_w_v-85_walk',
++         'dock'
++       ],
++       road: 639
++     },
++     maxDelta: 0.583333333333333,
++     point: [
++       298,
++       -103.125
++     ],
++     sharedNodes: [
++       'dock'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'dock',
++         'dock_low'
++       ],
++       road: 128
++     },
++     area: 7,
++     b: {
++       kind: 'shore',
++       nodes: [
++         'dock',
++         'terrace_turn'
++       ],
++       road: 639
++     },
++     maxDelta: 0.583333333333333,
++     point: [
++       300,
++       -103.5
++     ],
++     sharedNodes: [
++       'dock'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_w_cinema_s',
++         'community'
++       ],
++       road: 634
++     },
++     area: 66.02677504608437,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'food_ramp_level',
++         'community'
++       ],
++       road: 740
++     },
++     maxDelta: 0.4712442983111629,
++     point: [
++       202.00892501536165,
++       133
++     ],
++     sharedNodes: [
++       'community'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'dock',
++         'dock_low'
++       ],
++       road: 128
++     },
++     area: 4.4810988842818915,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'dock',
++         'ferry_waiting_entry'
++       ],
++       road: 207
++     },
++     maxDelta: 0.41666666666666696,
++     point: [
++       298,
++       -102.08333333333333
++     ],
++     sharedNodes: [
++       'dock'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:141:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [434.24ms]
+
+ 8 pass
+ 3 fail
+Ran 11 tests across 1 file. [6.72s]

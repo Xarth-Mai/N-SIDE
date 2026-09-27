@@ -1,0 +1,57 @@
+bun test v1.4.2 (744846f84)
+
+output/roads/2026-09-27/r8/water/initial-defects.test.ts:
+92 |   ] as const) assert.ok(Math.abs(data.nodes[high][2]-data.nodes[low][2]-rise)<1e-6,`${low}: moving a hillside must not stretch local vertical facilities`)
+93 |   for(const id of ['home-gentle','shopping-gentle','cinema-gentle']) {
+94 |     const route=data.routes.find(r=>r.id===id)!
+95 |     assert.ok(route,`${id}: explicit gentle alternative`)
+96 |     for(const segment of routeProfile(data.nodes,route.nodes).slice(1)) {
+97 |       assert.ok(segment.grade!==null&&Math.abs(segment.grade)<=5.001,`${id}/${segment.id}: ${segment.grade}% exceeds gentle route limit`)
+                  ^
+AssertionError: cinema-gentle/fw_f_food_north1: 5.238094285714285% exceeds gentle route limit
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/water/initial-defects.test.ts:97:14
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) mountain city keeps metre scale and usable graded route alternatives [4.50ms]
+290 |     const point=a.a.map((n,j)=>n+u[j]*t),otherZ=b.a[2]+v[2]*s
+291 |     const label=`${a.ids.join(' → ')} / ${b.ids.join(' → ')}`
+292 |     if(Math.abs(point[2]-otherZ)>1e-5)issues.push(`${label}: crossing elevations ${point[2].toFixed(3)} / ${otherZ.toFixed(3)}`)
+293 |     else issues.push(`${label}: same-level crossing lacks a shared node`)
+294 |   }
+295 |   assert.deepEqual(issues,[])
+               ^
+AssertionError: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   'dock → terrace_turn / junction_dock_upper_east → junction_dock_stair_top: same-level crossing lacks a shared node'
++ ]
+- []
+
+ generatedMessage: true,
+     actual: [ "dock → terrace_turn / junction_dock_upper_east → junction_dock_stair_top: same-level crossing lacks a shared node" ],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r8/water/initial-defects.test.ts:295:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) district ground-road crossings share a junction and its elevation [172.39ms]
+
+ 0 pass
+ 31 filtered out
+ 2 fail
+Ran 2 tests across 1 file. [214.00ms]

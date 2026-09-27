@@ -1,0 +1,137 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [2.52ms]
+(pass) terrain colors follow ground elevation [0.12ms]
+(pass) map overview fits extended terrain on wide and narrow screens [175.37ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [43.92ms]
+92 |   ] as const) assert.ok(Math.abs(data.nodes[high][2]-data.nodes[low][2]-rise)<1e-6,`${low}: moving a hillside must not stretch local vertical facilities`)
+93 |   for(const id of ['home-gentle','shopping-gentle','cinema-gentle']) {
+94 |     const route=data.routes.find(r=>r.id===id)!
+95 |     assert.ok(route,`${id}: explicit gentle alternative`)
+96 |     for(const segment of routeProfile(data.nodes,route.nodes).slice(1)) {
+97 |       assert.ok(segment.grade!==null&&Math.abs(segment.grade)<=5.001,`${id}/${segment.id}: ${segment.grade}% exceeds gentle route limit`)
+                  ^
+AssertionError: cinema-gentle/fw_f_food_north1: 5.238094285714285% exceeds gentle route limit
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/district-map.test.ts:97:14
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) mountain city keeps metre scale and usable graded route alternatives [3.00ms]
+(pass) overview terrain retains source controls and excludes elevated connections [3775.10ms]
+(pass) authored exterior sightlines clear intervening building volumes [1.97ms]
+(pass) shopping stays local and public hillside routes remain connected [1.47ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.25ms]
+(pass) scene keeps platforms below volumes and geometry is finite [123.83ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [6.96ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [14.27ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [1.33ms]
+(pass) tree positions stay outside building footprints [6.74ms]
+(pass) all streets clear building volumes at their actual widths and elevations [366.91ms]
+290 |     const point=a.a.map((n,j)=>n+u[j]*t),otherZ=b.a[2]+v[2]*s
+291 |     const label=`${a.ids.join(' → ')} / ${b.ids.join(' → ')}`
+292 |     if(Math.abs(point[2]-otherZ)>1e-5)issues.push(`${label}: crossing elevations ${point[2].toFixed(3)} / ${otherZ.toFixed(3)}`)
+293 |     else issues.push(`${label}: same-level crossing lacks a shared node`)
+294 |   }
+295 |   assert.deepEqual(issues,[])
+               ^
+AssertionError: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   'junction_east_platform_west → platform_east / level_platform_east_from_slope_upper_landing → junction_east_platform_top: same-level crossing lacks a shared node',
++   'dock → terrace_turn / junction_dock_upper_east → junction_dock_stair_top: same-level crossing lacks a shared node'
++ ]
+- []
+
+ generatedMessage: true,
+     actual: [ "junction_east_platform_west → platform_east / level_platform_east_from_slope_upper_landing → junction_east_platform_top: same-level crossing lacks a shared node",
+  "dock → terrace_turn / junction_dock_upper_east → junction_dock_stair_top: same-level crossing lacks a shared node"
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/district-map.test.ts:295:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) district ground-road crossings share a junction and its elevation [309.61ms]
+(pass) city framework records every building and reaches its same-level facade entrances [14.94ms]
+333 |         assert.ok(count<=48,`${label}: ${count} uninterrupted risers`)
+334 |         assert.ok(run/count>=.28-1e-6,`${label}: tread ${run/count}m below this graybox's 0.28m minimum`)
+335 |       }
+336 |       if(road.kind==='landing'&&road.nodes[i-1].startsWith('stair_')&&!road.nodes.some(id=>id.startsWith('pause_'))) {
+337 |         rests++
+338 |         assert.ok(rise<1e-6&&run>=2-1e-6,`${label}: rest must be level and at least 2m long`)
+                     ^
+AssertionError: stair_slope_upper_landing_level_platform_east_from_slope_upper_landing_01_in → stair_slope_upper_landing_level_platform_east_from_slope_upper_landing_01_out: rest must be level and at least 2m long
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/district-map.test.ts:338:16
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) city stairs retain short flights, level rests and full-size treads [0.85ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [2.11ms]
+(pass) public streets stay outside same-level resident and service courts [4.65ms]
+(pass) building volumes share boundaries without occupying the same space [29.03ms]
+(pass) detailed places connect street access to separate public and service entrances [15.19ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.60ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [4.40ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.27ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.04ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [59.43ms]
+(pass) public, residents, students and service users have separate access rights [11.80ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.46ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.84ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.83ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.45ms]
+(pass) shared stairs and separate apartments connect through shared circulation [1.08ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) terrain bake preserves authored geometry and repeats without drift [3120.74ms]
+(pass) terrain noise protects complete road segments and footprints [3283.84ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [53.46ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [338.61ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [1.26ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.59ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1148.59ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [450.06ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [427.51ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [446.63ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1107.94ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [1677.17ms]
+(pass) east terraces clear neighboring road ribbons and retain usable exterior approaches [396.71ms]
+(pass) west old housing clear neighboring road ribbons and retain usable exterior approaches [443.24ms]
+(pass) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [379.61ms]
+
+tools/tests/station-square.test.ts:
+(pass) station meeting court retains usable space with a level public arrival clear of sloping roads [391.92ms]
+
+3 tests failed:
+(fail) mountain city keeps metre scale and usable graded route alternatives [3.00ms]
+(fail) district ground-road crossings share a junction and its elevation [309.61ms]
+(fail) city stairs retain short flights, level rests and full-size treads [0.85ms]
+
+ 46 pass
+ 3 fail
+Ran 49 tests across 4 files. [18.70s]

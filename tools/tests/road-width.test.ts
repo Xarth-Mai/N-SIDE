@@ -110,3 +110,43 @@ test('foothill housing and west plateau approaches clear streets, stairs and res
   assert.deepEqual(roadWidthConflicts(source,'hill'),[],'the complete long summit route must clear neighboring ribbons too')
   assert.deepEqual(roadWidthConflicts(source,'hill-short'),[],'the shorter summit route remains clear')
 })
+
+function checkExteriorApproaches(data:District, roads:District['roads']) {
+  for(const road of roads) {
+    const p=road.nodes.map(id=>data.nodes[id]),o=roadOffsets(p,road.width)
+    for(let i=1;i<p.length;i++) {
+      const [a,b]=[p[i-1],p[i]],[u,v]=[o[i-1],o[i]],run=Math.hypot(b[0]-a[0],b[1]-a[1]),rise=Math.abs(b[2]-a[2])
+      if(road.kind==='steps') {
+        const risers=Math.ceil(rise/.17)
+        assert.ok(risers>0&&risers<=48&&run/risers>=.28,`${road.nodes[i-1]} -> ${road.nodes[i]}: keep a usable stair flight`)
+      } else assert.ok(rise/run<=.100001,`${road.nodes[i-1]} -> ${road.nodes[i]}: exterior approach is too steep`)
+      const ribbon=[[a[0]-u[0],a[1]-u[1]],[b[0]-v[0],b[1]-v[1]],[b[0]+v[0],b[1]+v[1]],[a[0]+u[0],a[1]+u[1]]]
+      for(const building of data.buildings)assert.ok(intersectionArea(ribbon,building.polygon)<1e-6,`${road.nodes[i-1]} -> ${road.nodes[i]}: exterior path crosses ${building.id}`)
+    }
+  }
+}
+
+for(const [name,junctions,prefix] of [
+  ['east terraces',['fw_f_wood_homes1','fw_f_wood_homes2','fw_f_plateau_e1','fw_f_plateau_e2','fw_f_plateau_e4','fw_f_plateau_e_mid0','platform_east','fw_f_neighbors3'],'junction_east_'],
+  ['west old housing',['fw_f_old_low1','interest_n','west_link','west_north','fw_f_old_court0'],'junction_old_'],
+] as const) test(`${name} clear neighboring road ribbons and retain usable exterior approaches`,()=>{
+  const relevant=(id:string)=>(junctions as readonly string[]).includes(id)||id.startsWith(prefix)
+  assert.deepEqual(roadWidthConflicts(source,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(relevant)),[],'level exits must clear neighboring ribbons')
+  checkExteriorApproaches(source,source.roads.filter(r=>r.nodes.some(id=>id.startsWith(prefix))))
+})
+
+test('food street bypasses shop footprints and waterfront stairs descend beside the waiting court',()=>{
+  const data:District=source
+  const junctions=new Set(['food_ramp_lower','community','cross_w','river_w','dock'])
+  const relevant=(id:string)=>junctions.has(id)||/^junction_(food_lower|community_|river_|dock_)/.test(id)
+  assert.deepEqual(roadWidthConflicts(data,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(relevant)),[],'food and waterfront approaches must clear neighboring ribbons')
+  checkExteriorApproaches(data,data.roads.filter(r=>r.nodes.some(id=>/^junction_(food_lower|community_|river_|dock_)/.test(id)||id==='fw_f_food_north3')))
+  const court=data.surfaces.find(s=>s.id==='ferry_waiting_surface')!
+  for(const r of data.roads.filter(r=>r.kind==='steps'&&r.nodes.some(id=>id.startsWith('junction_dock_')))) {
+    const p=r.nodes.map(id=>data.nodes[id]),o=roadOffsets(p,r.width)
+    for(let i=1;i<p.length;i++) {
+      const [a,b]=[p[i-1],p[i]],[u,v]=[o[i-1],o[i]],ribbon=[[a[0]-u[0],a[1]-u[1]],[b[0]-v[0],b[1]-v[1]],[b[0]+v[0],b[1]+v[1]],[a[0]+u[0],a[1]+u[1]]]
+      assert.ok(intersectionArea(ribbon,court.polygon)<1e-6,'dock descent must not cut through the upper waiting court')
+    }
+  }
+})

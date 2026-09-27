@@ -623,6 +623,70 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
             "inspect-road-res-north",
             view([34., 541., 153.], [-4., 511., 107.]),
         ),
+        (
+            "inspect-road-east-door",
+            view([172., 477., 112.], [171., 486., 101.]),
+        ),
+        (
+            "inspect-road-east-platform",
+            view([309., 393., 104.], [276., 424., 84.]),
+        ),
+        (
+            "inspect-road-wood-homes",
+            view([100., 464., 117.], [70., 491., 99.]),
+        ),
+        (
+            "inspect-road-east-plateau",
+            view([202., 449., 128.], [188., 485., 101.]),
+        ),
+        (
+            "inspect-road-east-neighbors",
+            view([250., 301., 44.], [249., 276., 28.]),
+        ),
+        (
+            "inspect-road-old-low",
+            view([-221., 117., 33.], [-179., 151., 17.]),
+        ),
+        (
+            "inspect-road-interest-north",
+            view([-327., 296., 34.], [-301., 271., 16.]),
+        ),
+        (
+            "inspect-road-west-link",
+            view([-222., 255., 43.], [-190., 281., 26.]),
+        ),
+        (
+            "inspect-road-west-north",
+            view([-65., 297., 60.], [-108., 313., 34.]),
+        ),
+        (
+            "inspect-road-old-court",
+            view([-66., 254., 41.], [-104., 279., 28.]),
+        ),
+        (
+            "inspect-road-food-lower",
+            view([204., 57., 29.], [180., 86., 13.]),
+        ),
+        (
+            "inspect-road-food-north",
+            view([253., 207., 45.], [236., 167., 23.]),
+        ),
+        (
+            "inspect-road-river-low",
+            view([216., -145., 25.], [181., -108., 4.]),
+        ),
+        (
+            "inspect-road-dock",
+            view([344., -143., 24.], [308., -110., 4.]),
+        ),
+        (
+            "inspect-road-river-service",
+            view([222., -18., 26.], [210., -50., 8.]),
+        ),
+        (
+            "inspect-road-east-platform-reverse",
+            view([260., 400., 111.], [280., 426., 84.]),
+        ),
     ]);
     let mut views: Vec<_> = views
         .into_iter()
