@@ -1,0 +1,61 @@
+{
+  "baseline_commit": "c9cd5e7c6a0202b6e0aabfafe03f1e7261e36307",
+  "map_sha256": "784ef145fb231712faa433d3ea6e9c35e73ddd3a0a03c839218d6d278ba93ba0",
+  "user_target": "小店附近开始山坡街坊，374m/+28m至约1km/+450m只作比例参考；允许人工台地和较缓过渡，优先参考长崎真实空间，不把数值作为硬门槛；整体参考长崎，包括地形与城市组织",
+  "scope": "保留对象ID、建筑自身层高、小店与低街；高街台地、地形、接路与登山路线按本轮反馈重排；补齐低地中心、山腹住宅、沿坡街道、交通、宅地与滨水的正式设定和制作规范",
+  "references": [
+    {
+      "url": "https://www.city.nagasaki.lg.jp/teian/31486.html",
+      "publisher": "长崎市都市计划课",
+      "consulted": "2026-09-27",
+      "used_for": "斜面住宅、生活道路与垂直交通分工；不据此声称本地图符合真实工程规范或套用现实测绘尺寸"
+    },
+    {
+      "url": "https://www.city.nagasaki.lg.jp/uploaded/attachment/26634.pdf",
+      "publisher": "长崎市",
+      "title": "东山手・南山手地区景观结构",
+      "pages_viewed": [
+        4,
+        5
+      ],
+      "sha256": "55fd8ca52f939a67ed143ba87de65a2b1d4510d8470a4e94d06d7a22270851a7",
+      "observation": "沿岸平地与坡上宅地共同形成街区，斜面已经住宅造成；保留既有小路骨架，并有斜行电梯联系不同高程"
+    },
+    {
+      "url": "https://www.city.nagasaki.lg.jp/uploaded/attachment/26637.pdf",
+      "publisher": "长崎市",
+      "title": "景观指南",
+      "pages_viewed": [
+        39,
+        40
+      ],
+      "sha256": "c8bd190af25dc6a6310d9124ef95aceba706760153c2ae7a6c2aaa2924519001",
+      "observation": "实际照片显示石砌挡墙、沿墙坡路和短台阶连接上方平院；坡面/墙前绿化缓和人工边界，避免悬挑板表达宅地"
+    },
+    {
+      "url": "https://www.city.nagasaki.lg.jp/page/2179.html",
+      "publisher": "长崎市",
+      "consulted": "2026-09-27",
+      "used_for": "港湾、山腹住宅、有限河谷平地与历史开发剖面，历史统计不作2026现状"
+    },
+    {
+      "url": "https://www.city.nagasaki.lg.jp/uploaded/attachment/11377.pdf",
+      "publisher": "长崎市",
+      "consulted": "2026-09-27",
+      "title": "立地适正化计划第3章",
+      "pages_viewed": [
+        68,
+        69
+      ],
+      "used_for": "低地/山腹配置剖面，中心/地区中心/生活地区与公共交通轴；协作研究实际看过PDF第5、6页图"
+    },
+    {
+      "url": "https://www.city.nagasaki.lg.jp/page/1384.html",
+      "publisher": "长崎市",
+      "consulted": "2026-09-27",
+      "used_for": "低地商店街与站点、上方住宅学校之间的公共升降设施"
+    }
+  ],
+  "reference_boundary": "实际读取文字与指定PDF页图；本地PDF仅留忽略的output作分析，不导入运行资产或随仓库再分发；本轮不把长崎法规阈值作为N:SIDE工程合规结论",
+  "water_decision": "沿用白沙河；已询问是否改为河口港湾，尚未收到选择，不先改变现行水体设定"
+}

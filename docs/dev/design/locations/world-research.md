@@ -2,13 +2,13 @@
 
 本页记录 Null Site空间设计采用的现实依据、适用条件与项目选择，配合[街区空间制作](district-space.md)使用。研究记录按空间设计问题组织
 
-资料访问日期为 2026-09-25；未标注发布日期的运营网页按访问时内容引用。案例用于空间关系与活动研究，具体面积、高程、容量和技术能力由 N:SIDE 的设计另行确定
+资料访问日期随各条来源记录；未标注发布日期的运营网页按对应访问时内容引用。案例用于空间关系与活动研究，具体面积、高程、容量和技术能力由 N:SIDE 的设计另行确定
 
 <a id="r1-坡地公共到达与设施维护"></a>
 
 ## R1｜坡地公共到达与设施维护
 
-来源：[香港路政署《Paving the way for all walks of life》简版](https://www.hyd.gov.hk/misc/hyd_public/en/transcript_2026_short.pdf)，2026 文件，第 2—3 页 Public Lighting Service、Universal Accessibility Programme、Hillside Escalator Links and Elevator Systems
+来源（访问日期：2026-09-25）：[香港路政署《Paving the way for all walks of life》简版](https://www.hyd.gov.hk/misc/hyd_public/en/transcript_2026_short.pdf)，2026 文件，第 2—3 页 Public Lighting Service、Universal Accessibility Programme、Hillside Escalator Links and Elevator Systems
 
 事实：路政署介绍路灯运行的远程监测、公共步行设施增设电梯，以及坡地扶梯和升降机系统，同时承担道路与边坡设施的检查维护
 
@@ -22,7 +22,7 @@
 
 ## R2｜影院、会客与小型表演
 
-来源：[下北線路街设施介绍](https://senrogai.com/facility/)，NANSEI PLUS／（tefu）lounge、ADRIFT、BONUS TRACK 条目，页面未标发布日期
+来源（访问日期：2026-09-25）：[下北線路街设施介绍](https://senrogai.com/facility/)，NANSEI PLUS／（tefu）lounge、ADRIFT、BONUS TRACK 条目，页面未标发布日期
 
 事实：（tefu）lounge 将食品零售、咖啡、会客空间、小影院和共享办公组合在五层设施内；ADRIFT 是具备小型表演设施的咖啡空间；BONUS TRACK 包含住居併设店铺和广场活动
 
@@ -36,7 +36,7 @@
 
 ## R3｜多层社交空间
 
-来源：[theCOMMONS Thonglor](https://www.thecommonsbkk.com/thonglor)，项目介绍与 MARKET、VILLAGE、PLAY YARD、TOP YARD 四层展示，页面未标发布日期
+来源（访问日期：2026-09-25）：[theCOMMONS Thonglor](https://www.thecommonsbkk.com/thonglor)，项目介绍与 MARKET、VILLAGE、PLAY YARD、TOP YARD 四层展示，页面未标发布日期
 
 事实：运营方介绍四个层级的社区空间，结合餐饮、活动与停留
 
@@ -50,7 +50,7 @@
 
 ## R4｜公园与商业的垂直组合
 
-来源：[MIYASHITA PARK 官方介绍](https://www.miyashita-park.tokyo/)，MIYASHITA PARK、PARK、SHOP 章节，页面未标发布日期
+来源（访问日期：2026-09-25）：[MIYASHITA PARK 官方介绍](https://www.miyashita-park.tokyo/)，MIYASHITA PARK、PARK、SHOP 章节，页面未标发布日期
 
 事实：项目结合公园与商业，公园有草坪、滑板、攀岩和多用途运动设施，提供休息与活动空间
 
@@ -64,7 +64,7 @@
 
 ## R5｜连续店屋与内部空间
 
-来源：[Singapore URA：Understanding the Shophouse](https://www.ura.gov.sg/conservation/conservation-resources/understanding-the-shophouse/)，页面内容更新于 2026-06-17，Shophouse Typology、Airwells、Rear Court 与 Adaptive Reuse 章节；[Figure 2：Key Elements of a Typical Shophouse](https://isomer-user-content.by.gov.sg/467/2f9c6791-9ba9-4767-879e-039c53c141d3/overviewFig2.pdf)与[Figure 3：Variations of Shophouse](https://isomer-user-content.by.gov.sg/467/aa84091e-d9f2-4591-95a5-d135e21f179d/overviewFig3.pdf)，均为 2023 年 12 月版单页剖切轴测图
+来源（访问日期：2026-09-25）：[Singapore URA：Understanding the Shophouse](https://www.ura.gov.sg/conservation/conservation-resources/understanding-the-shophouse/)，页面内容更新于 2026-06-17，Shophouse Typology、Airwells、Rear Court 与 Adaptive Reuse 章节；[Figure 2：Key Elements of a Typical Shophouse](https://isomer-user-content.by.gov.sg/467/2f9c6791-9ba9-4767-879e-039c53c141d3/overviewFig2.pdf)与[Figure 3：Variations of Shophouse](https://isomer-user-content.by.gov.sg/467/aa84091e-d9f2-4591-95a5-d135e21f179d/overviewFig3.pdf)，均为 2023 年 12 月版单页剖切轴测图
 
 事实：历史店屋以共墙方式连续排列，天井与后院帮助内部采光通风，传统用途包含底层经营和上层居住。Figure 3 将主楼、内部楼梯、天井、后楼和后院放在同一张剖切图中，展示有无前院及一进、两进建筑的差别
 
@@ -78,7 +78,7 @@
 
 ## R6｜音游与兴趣商业
 
-来源：[TAITO STATION 秋叶原店设备信息](https://www.taito.co.jp/store/topics/00001802/18993/31)，五层音游区与四层混合游戏区，动态设备清单，页面未标统一版本日期
+来源（访问日期：2026-09-25）：[TAITO STATION 秋叶原店设备信息](https://www.taito.co.jp/store/topics/00001802/18993/31)，五层音游区与四层混合游戏区，动态设备清单，页面未标统一版本日期
 
 事实：运营方按楼层区分音游与混合游戏区域，音游设备包含多种玩法与操作形式
 
@@ -92,7 +92,7 @@
 
 ## R7｜排练空间与设备服务
 
-来源：[SOUND STUDIO NOAH 下北泽 A3st](https://www.studionoah.jp/shimokita/a3st/)，房间介绍、EQUIPMENT 与店内房型列表，页面未标发布日期
+来源（访问日期：2026-09-25）：[SOUND STUDIO NOAH 下北泽 A3st](https://www.studionoah.jp/shimokita/a3st/)，房间介绍、EQUIPMENT 与店内房型列表，页面未标发布日期
 
 事实：A3st 面向小组练习，配有鼓、音箱、混音与网络设施；店内还列有不同大小的练习室与录音空间
 
@@ -106,7 +106,7 @@
 
 ## R8｜普通中学的完整校园
 
-来源：[文部科学省学校设施整备指针入口](https://www.mext.go.jp/a_menu/shisetu/seibi/main7_a12.htm)与[《中学校施設整備指針》2022 年 6 月版](https://www.mext.go.jp/content/20220624-mxt_kouhou01-000023406_03.pdf)，封面为令和 4 年 6 月，修订日期为 2022-06-24；第二章第一节「通学环境」及第二节「配置计划」，印刷页 16—20（PDF 第 22—26 页）
+来源（访问日期：2026-09-25）：[文部科学省学校设施整备指针入口](https://www.mext.go.jp/a_menu/shisetu/seibi/main7_a12.htm)与[《中学校施設整備指針》2022 年 6 月版](https://www.mext.go.jp/content/20220624-mxt_kouhou01-000023406_03.pdf)，封面为令和 4 年 6 月，修订日期为 2022-06-24；第二章第一节「通学环境」及第二节「配置计划」，印刷页 16—20（PDF 第 22—26 页）
 
 事实：配置计划统筹校舍、室内外体育和服务设施，按学生、访客及车辆的动线安排校门与设施；通学路径考虑交通安全与视线，校门应便于识别和抵达校舍，服务车辆另有临时停靠空间
 
@@ -120,7 +120,7 @@
 
 ## R9｜街角烘焙与门前停留
 
-来源：[atelier tao+c：Over Bakery，设计方供稿与图纸](https://www.archdaily.com/1003557/over-bakery-atelier-tao-plus-c)，ArchDaily 于 2023-07-10 发布；[Floor Plan 原图](https://www.archdaily.com/1003557/over-bakery-atelier-tao-plus-c/64a639435921182c48f61829-over-bakery-atelier-tao-plus-c-floor-plan)，项目年份 2022
+来源（访问日期：2026-09-25）：[atelier tao+c：Over Bakery，设计方供稿与图纸](https://www.archdaily.com/1003557/over-bakery-atelier-tao-plus-c)，ArchDaily 于 2023-07-10 发布；[Floor Plan 原图](https://www.archdaily.com/1003557/over-bakery-atelier-tao-plus-c/64a639435921182c48f61829-over-bakery-atelier-tao-plus-c-floor-plan)，项目年份 2022
 
 事实：平面将厨房置于后半部，售卖与坐食位于临街前半部，转折玻璃界面退入原外墙，形成入口与窗边停步空间。街道两侧的既有建筑轮廓一同入图，能够核对弯口、顾客入口与门前余地的关系
 
@@ -132,7 +132,7 @@
 
 ## R10｜小型公寓的采光与入口
 
-来源：[Wittman Estes：Broadway Hill Apartments](https://www.wittman-estes.com/projects/broadway-hill-apartments)，设计方公布方案；图纸为 `20201120_Broadway Hill_Plan 1 (C)`、`20201120_Broadway Hill_Plan 2` 与 `20201123_Broadway Hill_Section`，分别标注 GROUND LEVEL、UPPER LEVEL 和建筑纵剖面
+来源（访问日期：2026-09-25）：[Wittman Estes：Broadway Hill Apartments](https://www.wittman-estes.com/projects/broadway-hill-apartments)，设计方公布方案；图纸为 `20201120_Broadway Hill_Plan 1 (C)`、`20201120_Broadway Hill_Plan 2` 与 `20201123_Broadway Hill_Section`，分别标注 GROUND LEVEL、UPPER LEVEL 和建筑纵剖面
 
 事实：两段住宅体量之间设置露天花园楼梯，上层平面从中间的楼梯分别进入两侧住户。地面层区分上层住户、地面住户和花园住户的入口，纵剖面将街道、较低花园、层层平台和屋顶联系在一起，上层住户的卫生间靠近中间交通空间
 
@@ -144,7 +144,7 @@
 
 ## R11｜坡地住宅的上下街入口
 
-来源：[Wittman Estes：Tsuga Townhomes](https://www.wittman-estes.com/projects/tsugatownhomes)，设计方项目页；图纸为标出 Highland Park Way SW、8th Ave SW 的总平面，以及标出 Main House、Duplex South 的场地建筑剖面
+来源（访问日期：2026-09-25）：[Wittman Estes：Tsuga Townhomes](https://www.wittman-estes.com/projects/tsugatownhomes)，设计方项目页；图纸为标出 Highland Park Way SW、8th Ave SW 的总平面，以及标出 Main House、Duplex South 的场地建筑剖面
 
 事实：总平面中三户住宅分成主屋与双户体量，中间留出内院；剖面中双户住宅的下层门厅接较低内院，较高一侧接厨房层外的平台与上街，卧室、厨房和屋顶平台由室内楼梯联系。开窗与两栋之间的空隙共同组织看树与远处的视线
 
@@ -156,7 +156,7 @@
 
 ## R12｜站前混合楼与公共穿行
 
-来源：[日本设计：SHIBUYA CAST.](https://www.nihonsekkei.co.jp/projects/6510/)及设计方广报志 [NIHON SEKKEI 12](https://www.nihonsekkei.co.jp/wp-content/uploads/2020/10/NIHONSEKKEI_12.pdf)，PDF 第 12 页的 1F Plan 与 Section；项目于 2017 年 4 月竣工
+来源（访问日期：2026-09-25）：[日本设计：SHIBUYA CAST.](https://www.nihonsekkei.co.jp/projects/6510/)及设计方广报志 [NIHON SEKKEI 12](https://www.nihonsekkei.co.jp/wp-content/uploads/2020/10/NIHONSEKKEI_12.pdf)，PDF 第 12 页的 1F Plan 与 Section；项目于 2017 年 4 月竣工
 
 事实：一层平面将广场、贯通步行通道、商店、共享办公和电梯厅放在同一街区关系中，通道连接广场与背侧住宅区域。剖面将低层商业与会客、中部办公、上部住宅分开，车辆坡道位于较低层级；公共经过与进入楼上用途拥有各自的位置
 
@@ -168,7 +168,7 @@
 
 ## R13｜模型兴趣店的展示、活动与会合
 
-来源：[TORAFU ARCHITECTS：TAMIYA PLAMODEL FACTORY TOKYO，设计方发布的平面及说明](https://www.tecture.jp/projects/5820)，项目于 2024 年 5 月竣工；[运营方开业资料](https://www.tamiya.com/english/newstopics/e_news_14)，2024-04-23；[2025 年 7 月活动安排](https://www.tamiya.com/mini4wd/tamiya_tokyo/mini4wd_event_202507)
+来源（访问日期：2026-09-25）：[TORAFU ARCHITECTS：TAMIYA PLAMODEL FACTORY TOKYO，设计方发布的平面及说明](https://www.tecture.jp/projects/5820)，项目于 2024 年 5 月竣工；[运营方开业资料](https://www.tamiya.com/english/newstopics/e_news_14)，2024-04-23；[2025 年 7 月活动安排](https://www.tamiya.com/mini4wd/tamiya_tokyo/mini4wd_event_202507)
 
 事实：平面中商品陈列居中，活动区与咖啡、实物展示分居两端，活动区另有临街开口，后侧建筑走廊与店内陈列分开。运营资料将模型展示、制作讲习、赛事和咖啡会合组合；2025 年 7 月活动记录显示，同一活动场地在上午比赛、下午工作坊之间换场
 
@@ -180,10 +180,32 @@
 
 ## R14｜制作工作区与工具、作品储存
 
-来源：[Harvey Mudd College：Makerspace Floor Plan](https://www.hmc.edu/makerspace/wp-content/uploads/sites/63/2021/08/makerspace-floorplan.pdf)，2021 年发布路径的单页分区图；[校方 Explore the Makerspace](https://www.hmc.edu/makerspace/explore/)，场所分区、工具培训与作品储存说明
+来源（访问日期：2026-09-25）：[Harvey Mudd College：Makerspace Floor Plan](https://www.hmc.edu/makerspace/wp-content/uploads/sites/63/2021/08/makerspace-floorplan.pdf)，2021 年发布路径的单页分区图；[校方 Explore the Makerspace](https://www.hmc.edu/makerspace/explore/)，场所分区、工具培训与作品储存说明
 
 事实：平面分别标出开放制作、电子工位、独立喷涂间、工具设备管理、作品储存和讨论休息位置，并标出通向相邻机械与木工空间的联系。校方运营说明提供工具借用、使用培训和作品寄存，部分工具的使用需要额外培训
 
 适用条件：这是面向校园成员的共享制作设施。2021 年图纸与当前网页的个别房间用途已有调整，引用范围为图中明确的功能分区；图纸未给出通风量、设备净距或商业对公众开放条件
 
 项目选择：兴趣街的模型与设备楼把公众展示、轻量拼装和工作人员检修分区，工具领还、材料与待修件、完成品交接各有位置。有粉尘或气味的作业放入独立房间，排风与维护接口随建筑安排；声学、抽排和设备搬运净距进入工程专项，以使用者与工作人员各自的通路检验平面
+
+<a id="r15-长崎的山地城市结构"></a>
+
+## R15｜长崎的山地城市结构
+
+来源（访问日期：2026-09-27）：长崎市[「さかんまち」形成说明](https://www.city.nagasaki.lg.jp/page/2179.html)、[立地适正化计划第2章](https://www.city.nagasaki.lg.jp/uploaded/attachment/11376.pdf)印刷页24—26、37与[第3章](https://www.city.nagasaki.lg.jp/uploaded/attachment/11377.pdf)印刷页65—69；第3章的配置剖面与公共交通联系轴图已实际查看，分别为印刷页68、69（PDF第5、6页）
+
+补充来源（访问日期：2026-09-27）：长崎市[Glover Sky Road工程说明](https://www.city.nagasaki.lg.jp/page/1384.html)、[坡地改善实例](https://www.city.nagasaki.lg.jp/page/2182.html)、[坡地居住环境改善](https://www.city.nagasaki.lg.jp/teian/31486.html)及[景观计划第1—2章](https://www.city.nagasaki.lg.jp/uploaded/attachment/3520.pdf)印刷页5（PDF第3页）。[立地适正化计划发布入口](https://www.city.nagasaki.lg.jp/page/3883.html)注明 2024 年改订、2025 年局部变更；地形形成说明引用的开发高度与人口集中区为历史资料，不作为当前人口或建成范围统计
+
+| 研究层级 | 已核实的实际关系 | 对 Null Site 的适用条件 |
+| --- | --- | --- |
+| 低地、谷地与山腹 | 形成说明将长崎描述为深入内陆的港湾与周围 300—400 m 级山体围合的城市，有限平地沿入港河流展开；历史市街地通过填筑和向山腹扩展形成，人口集中区曾从约 150 m 扩展到 200 m 以上 | 借鉴紧邻水边的山城关系和人工整地，住宅可以继续嵌入山腹；地表坡度、建筑台地和道路纵坡分别设计，不把某条高程线当作统一城市边界 |
+| 城市中心与交通 | 立地适正化计划以中心、地区中心和生活地区组织服务，公交联系轴连接各处；配置剖面将较集中的城市功能放在低地，坡地道路及基础设施完备处仍可承载住宅 | 站前、采购街与公共设施形成各自服务范围，图外城市联系继续存在；从生活道路接公交节点，再联系其他城区，不让每次出门都变成登山 |
+| 坡地道路与公共到达 | Glover Sky Road 下端联系商店街、公交与电车停靠，上端联系住宅和学校；多个乘降口接横向道路，斜行与垂直升降设施共同处理高差 | 保留沿坡横路与台阶近路，以真实公共升降设施接上街；每个出口有可用平台和去向，配送、无台阶到达与紧急绕行分别核对 |
+| 人工改造与维护 | 坡地改善包含生活道路整备、利用既有道路增加车辆接入，以及拆除危险空宅后形成公共空间；实施条件和改造成本使不同街段保持差异 | 老路、错台宅地、局部新整地与小庭院可以并存；挡墙、排水、护栏、养护和停用绕行随地块安排，不把整座山切成等宽水平带 |
+| 城市景观 | 景观计划同时讨论山上俯瞰、水边仰望的立体城市，以及山、车站、干道和广场组成的识别骨架；生活活动与自然条件共同形成景观 | 从低街、店前、上街和摘星台核对同一套城市关系，坡上住宅与山脊构成层次，灯光、声音和服务设施来自实际用途 |
+
+项目选择：小店位于坡地生活区前缘，店前与邻近街段允许较缓的人工过渡，店后住宅沿山腹台地逐层抬升；沿坡生活道路、短台阶、公共升降设施与局部平台共同分配高差，摘星台继续位于北坡唯一最高点。具体高程、距离与调整依据归[山城基线](../../decisions/district-baseline.md#山城高程与登高目标)，路线和地块落点归[总图](district-plan.md)，本页不另设一套数值标准
+
+适用边界：长崎的港湾地形与当前[白沙河两岸城市](../../../player/world/null-city.md#河流与城区)设定存在区别。城市是否临海、白沙河是否入湾，以及港区、河口和潮汐关系尚待作者确定，本条研究不据此改写现有水体。保留 N:SIDE 的人物、街坊用途、正式名称与独立历史，不移植参考城市的人口规模、历史事件或景点清单
+
+后续核对：以同一份主数据检查水边低地、商店街、坡地住宅和山顶的连续剖面，并从站前、镜厅、小店与上街检查住宅是否真正嵌入山势；公共交通接入、补货、排水和步行近路须在地块与道路中各有位置，视觉相似不能代替可通行与运行维护验证

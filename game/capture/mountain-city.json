@@ -37,7 +37,7 @@
       "end": 150,
       "look": [
         -2.0,
-        0.0
+        -6.0
       ]
     },
     {
@@ -45,7 +45,7 @@
       "end": 240,
       "look": [
         2.0,
-        0.0
+        6.0
       ]
     },
     {
@@ -96,10 +96,10 @@
       "min_distance": 5.9
     },
     {
-      "name": "look_across_city_and_ridge",
+      "name": "look_up_from_street_to_summit",
       "from": 89,
       "to": 149,
-      "min_rotation": 0.11
+      "min_rotation": 0.35
     },
     {
       "name": "released_input_cannot_move_camera",

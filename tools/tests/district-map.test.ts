@@ -59,6 +59,10 @@ test('map overview fits extended terrain on wide and narrow screens', () => {
 test('mountain cross section uses sampled ground up to the stargazing summit', () => {
   const section=mountainProfile(data),ground=buildGround(data)
   assert.equal(section.markers.length,5)
+  const shop=section.markers[2]
+  assert.deepEqual(shop.point,[100,255,28],'the shop stays at the foot of the slope')
+  assert.ok(Math.abs(shop.distance-374)<1,'chainage starts at the river, not at the shop')
+  assert.ok(section.distance<1370,'the actual summit is closer than the superseded distant-foot plan')
   assert.equal(section.markers.at(-1)!.point[2],Math.max(...data.terrain.samples.map(p=>p[2])))
   assert.ok(section.samples.every((p,i)=>Number.isFinite(p.height)&&(!i||p.distance>=section.samples[i-1].distance)))
   for(const marker of section.markers) {
@@ -66,17 +70,26 @@ test('mountain cross section uses sampled ground up to the stargazing summit', (
     assert.ok(sample,`${marker.label} appears in the transect`)
     assert.ok(Math.abs(sample.height-ground.height(marker.point[0],marker.point[1]))<1e-6)
   }
+  const peak=data.nodes.summit,run=Math.hypot(peak[0]-shop.point[0],peak[1]-shop.point[1])
+  for(const [distance,minimum] of [[100,45],[200,70]]) {
+    const t=distance/run
+    const height=ground.height(shop.point[0]+(peak[0]-shop.point[0])*t,shop.point[1]+(peak[1]-shop.point[1])*t)
+    assert.ok(height>=minimum,`ground ${distance}m behind the shop is ${height}m: the old long low slope must not remain`)
+  }
 })
 
 test('mountain city keeps metre scale and usable graded route alternatives', () => {
   const peak=data.terrain.samples.reduce((a,b)=>a[2]>b[2]?a:b)
   assert.equal(peak[2],450)
   assert.equal(data.nodes.summit[2],450)
-  assert.equal(data.nodes.hillgate[2],90)
-  const distance=Math.hypot(peak[0]-data.nodes.station[0],peak[1]-data.nodes.station[1])
-  assert.ok(distance>=1000&&distance<=1300,'summit forms a close mountain backdrop from the station')
+  assert.ok(data.nodes.hillgate[2]>data.nodes.home[2]&&data.nodes.hillgate[2]<peak[2],'the forest entrance is uphill from the shop foothill')
   assert.deepEqual(peak,data.nodes.summit,'stargazing terrace is the highest point of the mountain')
   assert.equal(data.nodes.cinema_roof[2]-data.nodes.cinema_lift_low[2],12,'cinema retains local floor scale')
+  for(const [low,high,rise] of [
+    ['slope_lift_low','slope_lift_high',6],
+    ['fw_e_school_edge_low','fw_e_school_lift_high',15],
+    ['fw_e_east_lift_low','fw_e_east_lift_top',26],
+  ] as const) assert.ok(Math.abs(data.nodes[high][2]-data.nodes[low][2]-rise)<1e-6,`${low}: moving a hillside must not stretch local vertical facilities`)
   for(const id of ['home-gentle','shopping-gentle','cinema-gentle']) {
     const route=data.routes.find(r=>r.id===id)!
     assert.ok(route,`${id}: explicit gentle alternative`)
@@ -93,7 +106,8 @@ test('mountain city keeps metre scale and usable graded route alternatives', () 
   const start=uphill.nodes.indexOf('hillgate'),end=uphill.nodes.indexOf('summit')
   assert.ok(start>=0&&end>start)
   const climb=routeProfile(data.nodes,uphill.nodes.slice(start,end+1))
-  assert.ok(climb.at(-1)!.distance>=3000,'360m climb needs an actual switchback route')
+  const a=data.nodes.hillgate,b=data.nodes.summit
+  assert.ok(climb.at(-1)!.distance>Math.hypot(b[0]-a[0],b[1]-a[1]),'the mountain route traverses the slope rather than jumping directly to the summit')
   for(let i=1;i<climb.length;i++) {
     const a=climb[i-1].id,b=climb[i].id
     const road=data.roads.find(r=>r.nodes.some((n,j)=>j>0&&((n===a&&r.nodes[j-1]===b)||(n===b&&r.nodes[j-1]===a))))
@@ -214,10 +228,12 @@ test('sections follow connected routes and distinguish a lift from a slope', asy
   assert.ok(ramp.slice(1).every(p=>Math.abs(p.grade!)<=5))
   const lift=routeProfile(data.nodes,['cinema_lift_low','cinema_lift_high'])
   assert.equal(lift[1].length,0);assert.equal(lift[1].grade,null);assert.equal(lift[1].rise,12)
-  // The ground network remains usable when decks, steps and lifts are unavailable
+  // Low-city services retain ground access; the higher hillside uses its public vertical connection
   const seen=new Set(['station']);let previous=-1
   while(previous!==seen.size){previous=seen.size;for(const r of data.roads.filter(r=>!['steps','lift','deck','interior'].includes(r.kind)&&roadAllowed(r,'public')))if(r.nodes.some(id=>seen.has(id)))r.nodes.forEach(id=>seen.add(id))}
-  for(const id of ['home','library_gate','school_gate','interest_mid','music_west','river_w','east_clinic','upper'])assert.ok(seen.has(id),id)
+  for(const id of ['home','library_gate','school_gate','interest_mid','music_west','river_w','east_clinic'])assert.ok(seen.has(id),id)
+  const stepFree=reachableNodes({...data,roads:data.roads.filter(r=>!['steps','trail','interior'].includes(r.kind))})
+  assert.ok(stepFree.has('upper'),'the uphill street still requires a public step-free route, including its real lift and platforms')
 })
 
 test('geometry handles concave boundaries, shared walls, road width and local elevation', () => {
@@ -569,5 +585,5 @@ test('shared stairs and separate apartments connect through shared circulation',
   }
   const crossing=sectionRoads(data,data.architectures.find(a=>a.id==='P3-A1')!.sections.find(s=>s.id==='B-B')!).find(r=>r.kind==='steps')
   assert.equal(crossing!.width,3)
-  assert.equal(crossing!.elevation,30.69)
+  assert.equal(crossing!.elevation,data.nodes.shop_upper_junction[2],'the section crosses the real stair landing at its current elevation')
 })

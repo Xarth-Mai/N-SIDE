@@ -87,7 +87,7 @@ const profiles=(data.sections??[]).filter(s=>!props.sectionIds||props.sectionIds
     </figure>
     <ul class="plan-legend" aria-label="到达图图例"><li><span style="color:#397b85">●</span>公共入口</li><li><span style="color:#638657">●</span>住户入口</li><li><span style="color:#7777a0">●</span>校园入口</li><li><span style="color:#a06e50">■</span>服务入口</li><li>浅棕：公共道路</li><li>灰绿：住户通路</li><li>紫灰：受管理通路</li><li>棕色：后勤通路</li></ul>
     <figure v-if="mountain" class="plan-section">
-      <h4>河岸—城区台地—山脚—摘星台</h4>
+      <h4>河岸—小店山脚—坡地街坊—摘星台</h4>
       <p>同源地形折线纵剖面，沿各地标之间的平面直线累计距离；横纵等比例，以河面为 0m。折线穿过自然地形，不表示可通行道路；登山路线另见下方剖面</p>
       <div class="plan-scroll" tabindex="0" role="region" aria-label="河岸至摘星台等比例地形纵剖面">
         <svg class="profile-map" :viewBox="`0 0 1000 ${mountainBase+95}`" role="img" aria-label="河岸至摘星台的实际地形高度与水平距离">

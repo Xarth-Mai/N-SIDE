@@ -17,7 +17,7 @@ export function routeProfile(nodes: District["nodes"], ids: string[]) {
 /** A ground transect through landmarks, not a walkable route or an access claim */
 export function mountainProfile(data: District) {
   const ground=buildGround(data)
-  const markers=[['river_gate','河岸'],['station','站前'],['home','小店'],['hillgate','山脚'],['summit','摘星台 / 最高点']]
+  const markers=[['river_gate','河岸'],['station','站前'],['home','小店 / 山脚'],['hillgate','林缘入口'],['summit','摘星台 / 最高点']]
     .map(([id,label])=>({label,point:data.nodes[id],distance:0}))
   const samples=[{distance:0,height:markers[0].point[2]}]
   for(let i=1;i<markers.length;i++) {

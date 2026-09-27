@@ -1,0 +1,60 @@
+[
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:sync"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 18 task cards; sync\n$ bun tools/tasks.ts sync"
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:sync"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 18 task cards; sync\n$ bun tools/tasks.ts sync",
+    "generated_content_stable": true
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:check"
+    ],
+    "exit_code": 0,
+    "output": "PASS: 18 task cards; check\n$ bun tools/tasks.ts check",
+    "check_content_and_mtime_unchanged": true
+  },
+  {
+    "command": [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "game/Cargo.toml",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "bun",
+      "tools/terrain-shape.ts",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": "PASS terrain bake: 1345 samples"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  }
+]

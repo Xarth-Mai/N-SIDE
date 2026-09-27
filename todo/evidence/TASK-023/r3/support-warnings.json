@@ -1,0 +1,16 @@
+{
+  "log": "output/terrain/2026-09-27/r3/review-tour/runtime.log",
+  "warnings": [
+    "WARNING [geometry/support] surface=slope_upper_platform edge=[281.0, 382.0]->[281.0, 400.0] bay=0: no clear column position; support layout requires spatial review",
+    "WARNING [geometry/support] surface=slope_upper_platform edge=[281.0, 382.0]->[281.0, 400.0] bay=1: no clear column position; support layout requires spatial review",
+    "WARNING [geometry/support] surface=cinema_upper_platform edge=[340.0, 250.0]->[340.0, 240.0] bay=0: no clear column position; support layout requires spatial review",
+    "WARNING [geometry/support] surface=upper-transfer-landing edge=[348.0, 348.0]->[348.0, 342.0] bay=0: no clear column position; support layout requires spatial review"
+  ],
+  "status": "REQUIRES SPATIAL REVIEW",
+  "boundary": "automatic column placement could not find clear positions in these bays; other checks do not establish structural validity",
+  "diagnosis": {
+    "slope_upper_platform": "2 new warnings: east edge lies in 6m public steps corridor upper→platform_east; elevated column would obstruct it, with conservative whole-segment height envelope",
+    "upper-transfer-landing": "1 new warning: west edge borders the existing low public passage and steps; base at37m would obstruct passage; beam or shaft support has not been designed",
+    "cinema_upper_platform": "1 retained warning: building junction edge has no clear independent column placement"
+  }
+}

@@ -402,8 +402,8 @@ fn camera_views(map: &Map) -> Result<Vec<(&'static str, Transform)>, String> {
         .ok_or("[viewer/view] /nodes/summit missing")?;
     let foothill = *map
         .nodes
-        .get("hillgate")
-        .ok_or("[viewer/view] /nodes/hillgate missing")?;
+        .get("home")
+        .ok_or("[viewer/view] /nodes/home missing")?;
     let hillside_xy = [foothill[0] + 220.0, foothill[1] - 100.0];
     views.push((
         "hillside",
@@ -450,6 +450,19 @@ fn camera_views(map: &Map) -> Result<Vec<(&'static str, Transform)>, String> {
         println!("[visual/view] name={name} anchor={anchor} eye={eye:?} target={target:?} fov=55");
         views.push((name, view(eye, target)));
     }
+    // The closer summit naturally leaves a level 55-degree view; keep that view and label the tilt
+    let mut eye = map.nodes["home"];
+    eye[2] += 1.7;
+    let distance = (peak[0] - eye[0]).hypot(peak[1] - eye[1]);
+    let target = [
+        peak[0],
+        peak[1],
+        eye[2] + distance * 20.0_f64.to_radians().tan(),
+    ];
+    println!(
+        "[visual/view] name=eye-shop-uphill eye={eye:?} target={target:?} pitch_deg=20 fov=55"
+    );
+    views.push(("eye-shop-uphill", view(eye, target)));
     // Level eye views keep the skyline's apparent rise visible at the shared 55-degree FOV
     for (name, anchor) in [
         ("eye-station", "station"),
@@ -655,13 +668,19 @@ mod tests {
                 "{name}: peak outside far plane"
             );
         }
-        for name in [
-            "overview",
-            "mountain-profile",
-            "eye-station",
-            "eye-cinema",
-            "eye-shop-mountain",
-        ] {
+        let uphill = views
+            .iter()
+            .find(|(id, _)| *id == "eye-shop-uphill")
+            .unwrap()
+            .1;
+        assert!(
+            uphill
+                .translation
+                .distance(map_to_world(map.nodes["home"]) + Vec3::Y * 1.7)
+                < 0.001
+        );
+        assert!((uphill.forward().y.asin().to_degrees() - 20.0).abs() < 0.001);
+        for name in ["overview", "mountain-profile", "eye-shop-uphill"] {
             let camera = views.iter().find(|(id, _)| *id == name).unwrap().1;
             let peak_in_view = camera.compute_affine().inverse().transform_point3(peak);
             let half_height = -peak_in_view.z * (55.0_f32.to_radians() * 0.5).tan();

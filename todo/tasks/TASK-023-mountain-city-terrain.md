@@ -7,6 +7,8 @@ depends_on: []
 specs:
   - docs/dev/decisions/district-baseline.md
   - docs/dev/design/locations/district-plan.md
+  - docs/dev/design/locations/district-space.md
+  - docs/dev/design/locations/world-research.md
   - source-assets/district-map/README.md
   - docs/dev/validation/runtime.md
 ---
@@ -15,7 +17,7 @@ specs:
 
 ## 目标与范围
 
-按作者最新反馈重做河岸、坡地街区与单一主峰：城区上缘约80m、山脚90m，摘星台设为450m最高点；收紧城区到山脚的空缓坡。保留既有场所身份、建筑层高和局部入口关系，重排登高路线及必要的台地过渡，同步地图、Wiki 和真实 Viewer
+按作者最新反馈重做河岸、坡地街区与单一主峰：山坡起点移到小店（河岸起算剖面约374m／+28m），之后沿人工改造的坡地街坊上升，峰顶与距离按参考比例和实际街坊关系协调；保持唯一最高点。保留既有场所身份、建筑层高和局部入口关系，重排登高路线及必要的台地过渡，同步地图、Wiki 和真实 Viewer
 
 ## 验收条件
 
@@ -23,8 +25,7 @@ specs:
 
 ## 当前工作与下一步
 
-第2轮，步骤5/6 体验验收；已交付450m单峰、小店至山脚约460m路线及固定种子自然山面细化，完成三处水平人眼视点、山侧、全景与18秒连续录制。等待作者判断山体高度、街坊上升和水平紧凑程度，具体画面、启动方式与技术检查见[第二轮记录](../evidence/TASK-023/r2/review.md)；不放行G1或自动推进后续玩法
-
+第3轮，步骤5/6 画面评审；完成小店起坡的地形、宅地与接路修订，并把长崎整体城市组织写入正式设定和制作规范。技术检查、6处实图与18秒真实Viewer操作已有证据；大裸坡、局部尖长切坡及重复体量仍需街段细化。作者尚未确认河口港湾选择，当前白沙河继续有效；下一动作是复看同机位的山城尺度，再在本任务内细化小店至上街的生活界面
 ## 结果与证据
 
-基线 `8365df245375fb9aa70ff5feccf2273e5cacf5ec`，期间新增的 `85f2ecb` TypeScript配置提交完整保留；本轮结果归 `todo/evidence/TASK-023/r2/`，双峰方案和作者否定反馈保留在 [r1](../evidence/TASK-023/r1/review.md)，最终大体积渲染产物归 `output/terrain/2026-09-27/verified-*`。当前不是人物碰撞或登山操作验收，摘星台两面夜景的成因继续单独管理
+本轮基线 `c9cd5e7c6a0202b6e0aabfafe03f1e7261e36307`，当前证据见 [r3交付与自查](../evidence/TASK-023/r3/review.md)，数值和源保护见 [geometry.json](../evidence/TASK-023/r3/geometry.json)，大体积运行产物归 `output/terrain/2026-09-27/r3/review-*`。旧 [r2单峰方案](../evidence/TASK-023/r2/review.md)与 [r1双峰方案](../evidence/TASK-023/r1/review.md)保留历史范围；本轮没有人物通行、电梯交互或登山实玩验收，没有放行G1

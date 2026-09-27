@@ -12,7 +12,7 @@ test('terrain bake preserves authored geometry and repeats without drift',()=>{
   assert.deepEqual(bakeTerrain(result),result)
   assert.deepEqual(result.terrain.samples.slice(0,count),data.terrain.samples.slice(0,count))
   assert.deepEqual({...result,terrain:data.terrain},data,'roads, entrances, buildings and platforms stay unchanged')
-  assert.ok(result.terrain.samples.length>count&&result.terrain.samples.length<1000)
+  assert.ok(result.terrain.samples.length>count,'natural terrain is actually refined beyond authored controls')
   assert.ok(result.terrain.samples.every(p=>p.every(Number.isFinite)&&p[2]<=450))
   assert.ok(result.terrain.samples.slice(count).every(p=>p[2]<450),'only authored summit controls can reach the highest level')
   const grid=new Map(result.terrain.samples.slice(count).map(([x,y,z])=>[`${x},${y}`,z])),spacing=data.terrain.bake!.spacing

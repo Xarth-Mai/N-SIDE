@@ -63,7 +63,7 @@ cargo run --release --manifest-path game/Cargo.toml --features viewer --locked -
 
 `--aa msaa4|taa|taa-ssao` 比较抗锯齿与遮蔽；后两者自动关闭 MSAA，切换固定镜头时重置 TAA 历史。`--visual PATH` 指定替代光照配置，可用关闭接触阴影或改变环境强度的配置做同机位对照；`--view NAME` 选择启动位置或单镜头检查。窗口性能对照使用 `--uncapped` 关闭 VSync，正常操作保留默认 VSync，离屏模式无显式帧率限制
 
-山城灰盒使用 `eye-station`、`eye-cinema`、`eye-shop-mountain` 核对站前、镜厅前街公共路口与小店门前的山体视线，均取源道路节点上方 1.7m，以55°视场水平望向山顶方向；`mountain-profile` 从侧向检查河岸至后山的比例。摘星台位于最高点，山体与城区沿用源数据的米制比例，`overview` 随完整地形范围取景
+山城灰盒使用 `eye-station`、`eye-cinema`、`eye-shop-mountain` 核对站前、镜厅前街公共路口与小店门前的山体视线，均取源道路节点上方 1.7m，以55°视场水平望向山顶方向；近山峰顶可以超出水平视场，保留该真实结果；`eye-shop-uphill` 在同一眼高明确仰视20°核对山顶，`hillside` 从小店起坡段侧看山腹，`mountain-profile` 从侧向检查河岸至后山的比例。摘星台位于最高点，山体与城区沿用源数据的米制比例，`overview` 随完整地形范围取景
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --view eye-station

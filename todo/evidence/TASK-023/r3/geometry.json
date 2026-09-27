@@ -1,0 +1,598 @@
+{
+  "source_sha256": "6e422a6fc658e4d62ad6326d073dd01b01783b4a29a3603ee0a88c19a7a50535",
+  "counts": {
+    "buildings": {
+      "before": 231,
+      "after": 231,
+      "lost": []
+    },
+    "places": {
+      "before": 91,
+      "after": 91,
+      "lost": []
+    },
+    "blocks": {
+      "before": 12,
+      "after": 12,
+      "lost": []
+    },
+    "parcels": {
+      "before": 58,
+      "after": 58,
+      "lost": []
+    },
+    "surfaces": {
+      "before": 74,
+      "after": 75,
+      "lost": []
+    },
+    "roads": {
+      "before": 590,
+      "after": 618,
+      "lost": []
+    },
+    "nodes": {
+      "before": 1241,
+      "after": 1246,
+      "added": [
+        "loading_service_upper",
+        "upper_transfer_public",
+        "upper_transfer_service_high",
+        "upper_transfer_service_low",
+        "west_contour_turn"
+      ],
+      "lost": []
+    },
+    "trees": {
+      "before": 68,
+      "after": 68
+    },
+    "routes": {
+      "before": 12,
+      "after": 12
+    },
+    "sections": {
+      "before": 9,
+      "after": 9
+    },
+    "architectures": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "terrain_samples": {
+    "before": 848,
+    "after": 1345,
+    "authored": 39
+  },
+  "building_bases_changed": 66,
+  "building_heights_and_relative_floors_preserved": true,
+  "building_footprint_translations": [
+    {
+      "id": "V-22",
+      "before": [
+        [
+          651,
+          852
+        ],
+        [
+          669,
+          852
+        ],
+        [
+          669,
+          868
+        ],
+        [
+          651,
+          868
+        ]
+      ],
+      "after": [
+        [
+          651,
+          828.901
+        ],
+        [
+          669,
+          828.901
+        ],
+        [
+          669,
+          844.901
+        ],
+        [
+          651,
+          844.901
+        ]
+      ]
+    }
+  ],
+  "routes": {
+    "hill": {
+      "horizontal_metres": 5155.832506608625,
+      "rise_metres": 422.0,
+      "max_grade_percent": 39.35010602797126
+    },
+    "home-gentle": {
+      "horizontal_metres": 647.140944508378,
+      "rise_metres": 20.0,
+      "max_grade_percent": 4.895838795857644,
+      "same_nodes_and_coordinates": true
+    },
+    "shopping-gentle": {
+      "horizontal_metres": 877.3950286773721,
+      "rise_metres": 0.0,
+      "max_grade_percent": 4.895838795857644,
+      "same_nodes_and_coordinates": true
+    },
+    "cinema-gentle": {
+      "horizontal_metres": 887.9888154355663,
+      "rise_metres": 0.0,
+      "max_grade_percent": 4.895838795857644,
+      "same_nodes_and_coordinates": true
+    }
+  },
+  "new_transfer_nodes": {
+    "loading_service_upper": [
+      -10,
+      270,
+      44.0
+    ],
+    "upper_transfer_public": [
+      350,
+      345,
+      72.315789
+    ],
+    "upper_transfer_service_high": [
+      354,
+      345,
+      72.315789
+    ],
+    "upper_transfer_service_low": [
+      354,
+      345,
+      37
+    ],
+    "west_contour_turn": [
+      -520,
+      500,
+      115
+    ]
+  },
+  "new_transfer_roads": [
+    {
+      "nodes": [
+        "loading",
+        "loading_service_upper"
+      ],
+      "kind": "lift",
+      "width": 2.5,
+      "access": "service"
+    },
+    {
+      "nodes": [
+        "loading_service_upper",
+        "old_home"
+      ],
+      "kind": "bridge",
+      "width": 2.5,
+      "access": "service"
+    },
+    {
+      "nodes": [
+        "cinema_upper",
+        "upper_transfer_service_low"
+      ],
+      "kind": "bridge",
+      "width": 2,
+      "access": "service"
+    },
+    {
+      "nodes": [
+        "cinema_upper",
+        "upper_transfer_public"
+      ],
+      "kind": "lift",
+      "width": 2,
+      "access": "public"
+    },
+    {
+      "nodes": [
+        "upper_transfer_service_low",
+        "upper_transfer_service_high"
+      ],
+      "kind": "lift",
+      "width": 2,
+      "access": "service"
+    },
+    {
+      "nodes": [
+        "upper_transfer_service_high",
+        "upper_transfer_public"
+      ],
+      "kind": "bridge",
+      "width": 2,
+      "access": "service"
+    },
+    {
+      "nodes": [
+        "upper_transfer_public",
+        "upper"
+      ],
+      "kind": "bridge",
+      "width": 3,
+      "access": "public"
+    },
+    {
+      "nodes": [
+        "platform_west",
+        "west_contour_turn",
+        "upland_west_turn"
+      ],
+      "kind": "lane",
+      "width": 5,
+      "access": "public"
+    }
+  ],
+  "landmarks": {
+    "home": [
+      100,
+      255,
+      28.0
+    ],
+    "bend": [
+      180,
+      315,
+      41.227273
+    ],
+    "upper_homes": [
+      130,
+      370,
+      61.6
+    ],
+    "upper": [
+      280,
+      365,
+      72.315789
+    ],
+    "res_n": [
+      0,
+      510,
+      105.831746
+    ],
+    "foothill_west": [
+      -65,
+      555,
+      150.0
+    ],
+    "hillgate": [
+      360,
+      600,
+      170
+    ],
+    "foothill_east": [
+      570,
+      710,
+      175.0
+    ],
+    "summit": [
+      230,
+      950,
+      450
+    ]
+  },
+  "local_vertical_rises": {
+    "cinema_lift_low:cinema_lift_high": 12,
+    "slope_lift_low:slope_lift_high": 6.0,
+    "fw_e_school_edge_low:fw_e_school_lift_high": 15,
+    "fw_e_east_lift_low:fw_e_east_lift_top": 26
+  },
+  "transect": {
+    "markers": [
+      {
+        "label": "河岸",
+        "point": [
+          0,
+          -100,
+          6
+        ],
+        "distance": 0
+      },
+      {
+        "label": "站前",
+        "point": [
+          0,
+          0,
+          8
+        ],
+        "distance": 100
+      },
+      {
+        "label": "小店 / 山脚",
+        "point": [
+          100,
+          255,
+          28
+        ],
+        "distance": 373.9069184960467
+      },
+      {
+        "label": "林缘入口",
+        "point": [
+          360,
+          600,
+          170
+        ],
+        "distance": 805.9080759019037
+      },
+      {
+        "label": "摘星台 / 最高点",
+        "point": [
+          230,
+          950,
+          450
+        ],
+        "distance": 1179.271169953793
+      }
+    ],
+    "samples": [
+      {
+        "distance": 0,
+        "height": 6
+      },
+      {
+        "distance": 20,
+        "height": 6.701754385964913
+      },
+      {
+        "distance": 40,
+        "height": 7.4035087719298245
+      },
+      {
+        "distance": 60,
+        "height": 8
+      },
+      {
+        "distance": 80,
+        "height": 8
+      },
+      {
+        "distance": 100,
+        "height": 8
+      },
+      {
+        "distance": 119.56477989257476,
+        "height": 8.23469387755102
+      },
+      {
+        "distance": 139.12955978514952,
+        "height": 8.047619047619047
+      },
+      {
+        "distance": 158.6943396777243,
+        "height": 8
+      },
+      {
+        "distance": 178.25911957029905,
+        "height": 11.47038327526132
+      },
+      {
+        "distance": 197.82389946287384,
+        "height": 16.91743119266055
+      },
+      {
+        "distance": 217.38867935544857,
+        "height": 20
+      },
+      {
+        "distance": 236.95345924802336,
+        "height": 20
+      },
+      {
+        "distance": 256.5182391405981,
+        "height": 20
+      },
+      {
+        "distance": 276.08301903317295,
+        "height": 20.38186813186813
+      },
+      {
+        "distance": 295.6477989257477,
+        "height": 21.63787375415282
+      },
+      {
+        "distance": 315.2125788183224,
+        "height": 23.514685150375943
+      },
+      {
+        "distance": 334.77735871089715,
+        "height": 25.680733082706766
+      },
+      {
+        "distance": 354.342138603472,
+        "height": 26.58505575611059
+      },
+      {
+        "distance": 373.9069184960467,
+        "height": 28
+      },
+      {
+        "distance": 393.5433347417675,
+        "height": 29.188119383490076
+      },
+      {
+        "distance": 413.17975098748826,
+        "height": 32.7256789218015
+      },
+      {
+        "distance": 432.81616723320906,
+        "height": 37.417714787554694
+      },
+      {
+        "distance": 452.4525834789298,
+        "height": 43.50777229682366
+      },
+      {
+        "distance": 472.0889997246506,
+        "height": 50.02102204545453
+      },
+      {
+        "distance": 491.7254159703714,
+        "height": 56.65199012121211
+      },
+      {
+        "distance": 511.3618322160921,
+        "height": 63.40777569008264
+      },
+      {
+        "distance": 530.9982484618129,
+        "height": 72.31581457575757
+      },
+      {
+        "distance": 550.6346647075337,
+        "height": 72.315789
+      },
+      {
+        "distance": 570.2710809532545,
+        "height": 72.315789
+      },
+      {
+        "distance": 589.9074971989752,
+        "height": 77.74480696022727
+      },
+      {
+        "distance": 609.543913444696,
+        "height": 86.61009849107998
+      },
+      {
+        "distance": 629.1803296904168,
+        "height": 93.928571
+      },
+      {
+        "distance": 648.8167459361375,
+        "height": 96.10642087012985
+      },
+      {
+        "distance": 668.4531621818583,
+        "height": 105.21307055454545
+      },
+      {
+        "distance": 688.0895784275791,
+        "height": 112.40513801818182
+      },
+      {
+        "distance": 707.7259946732999,
+        "height": 121.21462763636359
+      },
+      {
+        "distance": 727.3624109190207,
+        "height": 132.1617629090909
+      },
+      {
+        "distance": 746.9988271647414,
+        "height": 142.55714015151517
+      },
+      {
+        "distance": 766.6352434104622,
+        "height": 152.06970454545456
+      },
+      {
+        "distance": 786.2716596561829,
+        "height": 169.06336979166662
+      },
+      {
+        "distance": 805.9080759019037,
+        "height": 170
+      },
+      {
+        "distance": 825.5587650625295,
+        "height": 170.84425964912282
+      },
+      {
+        "distance": 845.2094542231551,
+        "height": 176.52874561403513
+      },
+      {
+        "distance": 864.860143383781,
+        "height": 189.18613157894742
+      },
+      {
+        "distance": 884.5108325444066,
+        "height": 210.52034210526318
+      },
+      {
+        "distance": 904.1615217050324,
+        "height": 232.01876315789468
+      },
+      {
+        "distance": 923.8122108656582,
+        "height": 265.9744824561403
+      },
+      {
+        "distance": 943.4629000262839,
+        "height": 296.8887017543859
+      },
+      {
+        "distance": 963.1135891869097,
+        "height": 329.3798333333333
+      },
+      {
+        "distance": 982.7642783475354,
+        "height": 352.9713157894737
+      },
+      {
+        "distance": 1002.4149675081612,
+        "height": 376.5292456140351
+      },
+      {
+        "distance": 1022.065656668787,
+        "height": 401.8225701754386
+      },
+      {
+        "distance": 1041.7163458294128,
+        "height": 416.5611842105263
+      },
+      {
+        "distance": 1061.3670349900385,
+        "height": 424.2633245614036
+      },
+      {
+        "distance": 1081.0177241506642,
+        "height": 431.9654649122807
+      },
+      {
+        "distance": 1100.66841331129,
+        "height": 437.17073684210527
+      },
+      {
+        "distance": 1120.3191024719158,
+        "height": 437.93505263157897
+      },
+      {
+        "distance": 1139.9697916325415,
+        "height": 438.69936842105255
+      },
+      {
+        "distance": 1159.6204807931672,
+        "height": 448.79338596491226
+      },
+      {
+        "distance": 1179.271169953793,
+        "height": 450
+      }
+    ],
+    "distance": 1179.271169953793
+  },
+  "shopToSummitPlanDistance": 707.0537461890715,
+  "groundBehindShop": [
+    {
+      "metres": 100,
+      "height": 54.39461820421099
+    },
+    {
+      "metres": 200,
+      "height": 90.24028962840002
+    }
+  ]
+}
