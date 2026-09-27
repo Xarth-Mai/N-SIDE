@@ -1,0 +1,312 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [4.24ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.89ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1062.46ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [414.14ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [423.93ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [391.12ms]
+78 | })
+79 |
+80 | test('station and music approaches plus the long ascent join at width without sharpening slopes or steps',()=>{
+81 |   const data:District=source,junctions=new Set(['square','city_w','fw_w_music_gate','fw_w_music_north','hill_east_approach','hill_east_curve_06','hill_east_curve_08'])
+82 |   const conflicts=roadWidthConflicts(data,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>/^junction_(square|city_w|music_gate|music_north|trail)_/.test(id)))
+83 |   assert.deepEqual(conflicts,[],'both sides of each new level approach must clear every neighboring road')
+              ^
+AssertionError: both sides of each new level approach must clear every neighboring road
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'pause_hill_east_arc_06_10_hill_east_curve_06',
++         'hill_east_curve_06'
++       ],
++       road: 109
++     },
++     area: 35.366569291596534,
++     b: {
++       kind: 'trail',
++       nodes: [
++         'hill_east_curve_06',
++         'hill_east_arc_07_01'
++       ],
++       road: 110
++     },
++     maxDelta: 3.0829649727633637,
++     point: [
++       354.93871828310273,
++       930.0842797498108
++     ],
++     sharedNodes: [
++       'hill_east_curve_06'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'hill_east_arc_08_10',
++         'hill_east_curve_08'
++       ],
++       road: 113
++     },
++     area: 20.082770205190172,
++     b: {
++       kind: 'trail',
++       nodes: [
++         'hill_east_curve_08',
++         'hill_east_arc_09_01'
++       ],
++       road: 114
++     },
++     maxDelta: 1.8380242250406127,
++     point: [
++       298.17713394223796,
++       931.2182887034835
++     ],
++     sharedNodes: [
++       'hill_east_curve_08'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'stair_fw_e_forest_turn_hill_east_approach_02_out',
++         'hill_east_approach'
++       ],
++       road: 89
++     },
++     area: 9.55120101524517,
++     b: {
++       kind: 'trail',
++       nodes: [
++         'hill_east_approach',
++         'shrine'
++       ],
++       road: 90
++     },
++     maxDelta: 0.9496370209520251,
++     point: [
++       795.7707429204783,
++       848.456453850637
++     ],
++     sharedNodes: [
++       'hill_east_approach'
++     ]
++   },
++   {
++     a: {
++       kind: 'main',
++       nodes: [
++         'square',
++         'market_entry'
++       ],
++       road: 1
++     },
++     area: 16.22960680247462,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'square',
++         'station_prom_e'
++       ],
++       road: 300
++     },
++     maxDelta: 0.8881100056183513,
++     point: [
++       -2.927941821604157,
++       50.75636894635035
++     ],
++     sharedNodes: [
++       'square'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_w_music_north',
++         'fw_w_v-w15_door'
++       ],
++       road: 679
++     },
++     area: 12.108354343101382,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_w_music_gate',
++         'fw_w_music_north'
++       ],
++       road: 681
++     },
++     maxDelta: 0.8158616596147183,
++     point: [
++       638.7413743000595,
++       133
++     ],
++     sharedNodes: [
++       'fw_w_music_north'
++     ]
++   },
++   {
++     a: {
++       kind: 'main',
++       nodes: [
++         'square',
++         'market_entry'
++       ],
++       road: 1
++     },
++     area: 10.300000000000011,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'square',
++         'station_north_start'
++       ],
++       road: 345
++     },
++     maxDelta: 0.6454692651896856,
++     point: [
++       4.567871647593536,
++       47.44328018359654
++     ],
++     sharedNodes: [
++       'square'
++     ]
++   },
++   {
++     a: {
++       kind: 'avenue',
++       nodes: [
++         'station_cross',
++         'city_w'
++       ],
++       road: 120
++     },
++     area: 15,
++     b: {
++       kind: 'service',
++       nodes: [
++         'city_w',
++         'fw_w_west_loading'
++       ],
++       road: 695
++     },
++     maxDelta: 0.5999999999999996,
++     point: [
++       -160,
++       -42.5
++     ],
++     sharedNodes: [
++       'city_w'
++     ]
++   },
++   {
++     a: {
++       kind: 'avenue',
++       nodes: [
++         'city_w',
++         'station_west'
++       ],
++       road: 120
++     },
++     area: 15,
++     b: {
++       kind: 'service',
++       nodes: [
++         'city_w',
++         'fw_w_west_loading'
++       ],
++       road: 695
++     },
++     maxDelta: 0.5999999999999996,
++     point: [
++       -162,
++       -42.5
++     ],
++     sharedNodes: [
++       'city_w'
++     ]
++   },
++   {
++     a: {
++       kind: 'avenue',
++       nodes: [
++         'east_j',
++         'fw_w_music_gate'
++       ],
++       road: 173
++     },
++     area: 12,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_w_music_gate',
++         'fw_w_music_north'
++       ],
++       road: 681
++     },
++     maxDelta: 0.5600000400000003,
++     point: [
++       674,
++       135
++     ],
++     sharedNodes: [
++       'fw_w_music_gate'
++     ]
++   },
++   {
++     a: {
++       kind: 'avenue',
++       nodes: [
++         'fw_w_music_gate',
++         'fw_w_music_delivery'
++       ],
++       road: 173
++     },
++     area: 12,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_w_music_gate',
++         'fw_w_music_north'
++       ],
++       road: 681
++     },
++     maxDelta: 0.5600000400000003,
++     point: [
++       674,
++       135
++     ],
++     sharedNodes: [
++       'fw_w_music_gate'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:83:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) station and music approaches plus the long ascent join at width without sharpening slopes or steps [401.96ms]
+
+ 6 pass
+ 1 fail
+Ran 7 tests across 1 file. [2.80s]

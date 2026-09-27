@@ -1,0 +1,34 @@
+[
+  {
+    "view": "inspect-road-station-square",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/supplement/inspect-road-station-square",
+      "--view",
+      "inspect-road-station-square"
+    ],
+    "exit_code": 0,
+    "seconds": 17.245500696997624,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "b9b6b76f218e7e7ad1038a494009fa2be4eafced5d34ecf51df1680ad0684d54"
+  },
+  {
+    "view": "inspect-trail-shrine-door",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/supplement/inspect-trail-shrine-door",
+      "--view",
+      "inspect-trail-shrine-door"
+    ],
+    "exit_code": 0,
+    "seconds": 16.639980928972363,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "b9b6b76f218e7e7ad1038a494009fa2be4eafced5d34ecf51df1680ad0684d54"
+  }
+]

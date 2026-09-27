@@ -1,0 +1,150 @@
+{
+  "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+  "baseline_commit": "74102782c05eab0c4d1001c5989319a9a9eec8ea",
+  "baseline_source_sha256": "9435838bb2143c7dcee3844345a345b125cee98c3d45bbae8d4a9134724280ac",
+  "render_binary_sha256": {
+    "before": [
+      "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+    ],
+    "after": [
+      "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+    ],
+    "supplement": [
+      "b9b6b76f218e7e7ad1038a494009fa2be4eafced5d34ecf51df1680ad0684d54"
+    ]
+  },
+  "capture_binary_sha256": "b9b6b76f218e7e7ad1038a494009fa2be4eafced5d34ecf51df1680ad0684d54",
+  "supplement_change": "Only adjusted station inspection pose and added shrine west door inspection pose; map unchanged",
+  "visual_review": "Self-audit in review.md; initial station view obstructed, retained and superseded by supplement",
+  "raw_video": "output/roads/2026-09-27/r6/trail-look/video.mp4",
+  "raw_video_sha256": "d3a1026024459ff8aa583dc41f61942c9c228568f6cd6cfd190407625009c863",
+  "video_playback": "NOT RUN; inspected keyframes 149/359 and consecutive frames 90/91",
+  "images": [
+    {
+      "source": "output/roads/2026-09-27/r6/before/inspect-trail-shrine/inspect-trail-shrine.png",
+      "source_sha256": "bc0780dffb11777ef4d26f2af18ca670d2ba6811cd4399d6f946770464af3b06",
+      "file": "todo/evidence/TASK-025/r6/before/inspect-trail-shrine.webp",
+      "sha256": "cd838bef2fa1b29c63a2cbf83ab8fdaa28033bd6b6314e1692d91ccf9e9f7321",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/before/inspect-trail-turn-eight/inspect-trail-turn-eight.png",
+      "source_sha256": "01aedaaacf987948b8310011a4ef58f7190f6ac41d2e16c0dbef0262410335ec",
+      "file": "todo/evidence/TASK-025/r6/before/inspect-trail-turn-eight.webp",
+      "sha256": "2c791139a4ae4be9b712b41b8573aa5e86d7532d20b4d171393a061610af941f",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/before/inspect-trail-turn-six/inspect-trail-turn-six.png",
+      "source_sha256": "36205c746d8ef2f7004bc02292db36d69bbb69912c22b458a2fcf2fec945ce0c",
+      "file": "todo/evidence/TASK-025/r6/before/inspect-trail-turn-six.webp",
+      "sha256": "a23139f743bbb78033a2f0f3624706b4e53b541e2402741bbe364f3dd46508da",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/eye-ascent-3/eye-ascent-3.png",
+      "source_sha256": "c25a3eba3b7a7d0f2448181c926bac9dd61ce3b91d12fd63d1f760d215263865",
+      "file": "todo/evidence/TASK-025/r6/after/eye-ascent-3.webp",
+      "sha256": "98a7dd95d6b99cb1e12967e571409ffb32f6750480c2b5700f2e81a8d590aa81",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/inspect-road-city-west/inspect-road-city-west.png",
+      "source_sha256": "0f9fd83f1bde256a806074e549755a10d1f14fc362480f1e973570bfe3a8080b",
+      "file": "todo/evidence/TASK-025/r6/after/inspect-road-city-west.webp",
+      "sha256": "ac2b29442fc495aa71275d98250ac9ebba13a8737abea842048f83c9e31e1bbd",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/inspect-road-music-north/inspect-road-music-north.png",
+      "source_sha256": "db3bbce4dcab27c4e5ffec70a6ec9452cec7fb703921480df94421bf61dd12ee",
+      "file": "todo/evidence/TASK-025/r6/after/inspect-road-music-north.webp",
+      "sha256": "9c37cbbccb14605569045eff429f44eb5117bd63c1bef868e8fcee2d853b4313",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/inspect-road-station-square/inspect-road-station-square.png",
+      "source_sha256": "5513d1627b9be9dbfe2110f29bd67ce337ca671392b540a5f8eb1d833d81aac9",
+      "file": "todo/evidence/TASK-025/r6/after/inspect-road-station-square.webp",
+      "sha256": "095e936e0fa4fdf4c0265006b0f075256061829849fe912a1f394ddbf1ae3817",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/inspect-trail-east-entry/inspect-trail-east-entry.png",
+      "source_sha256": "24d60e3ee403f01b74fd402df6453060601f43950ddc38f28e19b134dbc94c30",
+      "file": "todo/evidence/TASK-025/r6/after/inspect-trail-east-entry.webp",
+      "sha256": "8c6b7432bebe2a08933562a2f25bb32df436f570649455403bf66682d93fd209",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/inspect-trail-shrine/inspect-trail-shrine.png",
+      "source_sha256": "d7fa1f5b0086f533c8cae95e5723eef08bf66d9a28d90893142cdcd959c4f265",
+      "file": "todo/evidence/TASK-025/r6/after/inspect-trail-shrine.webp",
+      "sha256": "c0e0a1a000f6e80db43e2a6972cf6d45c0807e127fa060336265f9aa6da189da",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/inspect-trail-turn-eight/inspect-trail-turn-eight.png",
+      "source_sha256": "5455f30013c576553493633bdc00352c7c5f67779d07313dcad0beec7aef41ef",
+      "file": "todo/evidence/TASK-025/r6/after/inspect-trail-turn-eight.webp",
+      "sha256": "7f01f23d51df4aea6c1410800dd8ea4cc5e3dfdb4daf8f0a6d85dd2e3c2cb3d1",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/inspect-trail-turn-six/inspect-trail-turn-six.png",
+      "source_sha256": "88f4d30e604937c9a7798b1450ba267fa275926788825544e2e6a868caebb004",
+      "file": "todo/evidence/TASK-025/r6/after/inspect-trail-turn-six.webp",
+      "sha256": "4442124d67410d6a07e83b39f9ecc81eb6be2370354204e87d700094f71e73dc",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/after/mountain-profile/mountain-profile.png",
+      "source_sha256": "23ceb1c114024a15ff20822fd70490c72380b7f761d77190c0c31f274be47110",
+      "file": "todo/evidence/TASK-025/r6/after/mountain-profile.webp",
+      "sha256": "702cdc31906a8516724289a1eaf6d2268a24f0ac1d03e4abaa67911afdfc9611",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/supplement/inspect-road-station-square/inspect-road-station-square.png",
+      "source_sha256": "3942093bee0d2001567fc70e09dd57cf3203269c0e5192fb9a0ae2a8f303660f",
+      "file": "todo/evidence/TASK-025/r6/supplement/inspect-road-station-square.webp",
+      "sha256": "27276551570dac46751abfb5d09fc29d3ea9046a319fe9a0436f88fde7ce8227",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/supplement/inspect-trail-shrine-door/inspect-trail-shrine-door.png",
+      "source_sha256": "c01b79026e7040077f8b1f5abdecb6029f70e499605e78b8b73480586df3d9f9",
+      "file": "todo/evidence/TASK-025/r6/supplement/inspect-trail-shrine-door.webp",
+      "sha256": "0f7f5ac5f60d2f3df3c45dcc43d0518e4c2916f39f8bd12e1a9b05914cc61e34",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/trail-look/frames/frame00090.png",
+      "source_sha256": "d56ce0fa5f2adada478939c8aa127f20c5458aed1a3adf7f2393d67ebcf55274",
+      "file": "todo/evidence/TASK-025/r6/capture/frame00090.webp",
+      "sha256": "25add930b8492dac399cea5ea152ed319b79f6fc5d23c0322e48f045e96bad4a",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/trail-look/frames/frame00091.png",
+      "source_sha256": "a43a5fa4dac1458eac2cc82776866bb60b579c5d0fed60b4592238d976b198b0",
+      "file": "todo/evidence/TASK-025/r6/capture/frame00091.webp",
+      "sha256": "4fe314763b3e5eff76909699d74741aa96975c0762ccf831cca218dfc585be00",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/trail-look/frames/frame00149.png",
+      "source_sha256": "ab7d0e9d4bffa79aebc02176a8dc0abaff57d7e748fe02d6bdfc39252984d9a3",
+      "file": "todo/evidence/TASK-025/r6/capture/frame00149.webp",
+      "sha256": "2abde5773d7bc90c0b13be0b8b11dc64faa226afe6642873d6801085d709c785",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r6/trail-look/frames/frame00359.png",
+      "source_sha256": "0dbc52a1c5affbaca3799ee8b6152db829179876f4eece57af03a6db75e3e257",
+      "file": "todo/evidence/TASK-025/r6/capture/frame00359.webp",
+      "sha256": "62e57795a90974606b4c68b2f8d42454a1435423a60c54e6d14bd7ed0dfa2129",
+      "quality": 80
+    }
+  ]
+}

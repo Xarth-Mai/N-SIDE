@@ -1,0 +1,146 @@
+[
+  {
+    "view": "inspect-trail-east-entry",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/inspect-trail-east-entry",
+      "--view",
+      "inspect-trail-east-entry"
+    ],
+    "exit_code": 0,
+    "seconds": 16.841880810970906,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "inspect-trail-turn-six",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/inspect-trail-turn-six",
+      "--view",
+      "inspect-trail-turn-six"
+    ],
+    "exit_code": 0,
+    "seconds": 16.6879059849889,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "inspect-trail-turn-eight",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/inspect-trail-turn-eight",
+      "--view",
+      "inspect-trail-turn-eight"
+    ],
+    "exit_code": 0,
+    "seconds": 16.690586947021075,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "inspect-trail-shrine",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/inspect-trail-shrine",
+      "--view",
+      "inspect-trail-shrine"
+    ],
+    "exit_code": 0,
+    "seconds": 16.6389381379704,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "inspect-road-station-square",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/inspect-road-station-square",
+      "--view",
+      "inspect-road-station-square"
+    ],
+    "exit_code": 0,
+    "seconds": 16.69007757602958,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "inspect-road-city-west",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/inspect-road-city-west",
+      "--view",
+      "inspect-road-city-west"
+    ],
+    "exit_code": 0,
+    "seconds": 16.68974724598229,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "inspect-road-music-north",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/inspect-road-music-north",
+      "--view",
+      "inspect-road-music-north"
+    ],
+    "exit_code": 0,
+    "seconds": 16.639482038037386,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "mountain-profile",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/mountain-profile",
+      "--view",
+      "mountain-profile"
+    ],
+    "exit_code": 0,
+    "seconds": 16.541418184991926,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  },
+  {
+    "view": "eye-ascent-3",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r6/after/eye-ascent-3",
+      "--view",
+      "eye-ascent-3"
+    ],
+    "exit_code": 0,
+    "seconds": 16.6896630669944,
+    "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+    "binary_sha256": "5ab1d7152225d3da7d322a889a00f4069d23a7b61cf9988adc4ae41d658bceca"
+  }
+]

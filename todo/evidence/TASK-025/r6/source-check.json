@@ -1,0 +1,3701 @@
+{
+  "baseline_commit": "74102782c05eab0c4d1001c5989319a9a9eec8ea",
+  "before_sha256": "9435838bb2143c7dcee3844345a345b125cee98c3d45bbae8d4a9134724280ac",
+  "after_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+  "before": {
+    "nodes": 1548,
+    "roads": 870,
+    "terrain": 8390,
+    "candidates": 71
+  },
+  "after": {
+    "nodes": 1564,
+    "roads": 874,
+    "terrain": 8390,
+    "candidates": 61
+  },
+  "changed_nodes": [
+    {
+      "id": "hill_east_arc_08_10",
+      "before": [
+        300.273,
+        932.857,
+        433.030444
+      ],
+      "after": [
+        300.273,
+        932.857,
+        434.444444
+      ]
+    },
+    {
+      "id": "hill_east_arc_09_01",
+      "before": [
+        295.334,
+        933.287,
+        435.293
+      ],
+      "after": [
+        295.334,
+        933.287,
+        434.444444
+      ]
+    }
+  ],
+  "added_nodes": [
+    {
+      "id": "junction_music_gate_west",
+      "point": [
+        672,
+        135,
+        8
+      ]
+    },
+    {
+      "id": "junction_music_gate_north",
+      "point": [
+        670,
+        156,
+        10
+      ]
+    },
+    {
+      "id": "junction_music_gate_upper",
+      "point": [
+        643,
+        156,
+        12.666667
+      ]
+    },
+    {
+      "id": "junction_music_north_east",
+      "point": [
+        643,
+        135,
+        12.666667
+      ]
+    },
+    {
+      "id": "junction_city_w_south",
+      "point": [
+        -160,
+        -44,
+        8
+      ]
+    },
+    {
+      "id": "junction_city_w_turn",
+      "point": [
+        -148,
+        -50,
+        7
+      ]
+    },
+    {
+      "id": "junction_square_north",
+      "point": [
+        2,
+        55,
+        9
+      ]
+    },
+    {
+      "id": "junction_square_bend",
+      "point": [
+        -9,
+        73,
+        11.1
+      ]
+    },
+    {
+      "id": "junction_square_west",
+      "point": [
+        -5,
+        45,
+        9
+      ]
+    },
+    {
+      "id": "junction_square_east",
+      "point": [
+        5,
+        46,
+        9
+      ]
+    },
+    {
+      "id": "junction_trail_approach_in",
+      "point": [
+        796.190646,
+        846.209397,
+        200.333333
+      ]
+    },
+    {
+      "id": "junction_trail_approach_out",
+      "point": [
+        794.024133,
+        850.307403,
+        200.333333
+      ]
+    },
+    {
+      "id": "junction_trail_curve06_in",
+      "point": [
+        356.910427,
+        930.545444,
+        399.444444
+      ]
+    },
+    {
+      "id": "junction_trail_curve06_out",
+      "point": [
+        352.933863,
+        929.799914,
+        399.444444
+      ]
+    },
+    {
+      "id": "junction_shrine_southeast",
+      "point": [
+        676,
+        822,
+        204
+      ]
+    },
+    {
+      "id": "junction_shrine_southwest",
+      "point": [
+        645,
+        822,
+        205.777778
+      ]
+    }
+  ],
+  "changed_roads": [
+    {
+      "index": 1,
+      "before": {
+        "nodes": [
+          "square",
+          "market_entry",
+          "market_turn",
+          "junction_market_turn_north",
+          "court",
+          "shop_south_junction",
+          "flat_home_from_shop_south_junction",
+          "home",
+          "flat_home_to_east_low_junction",
+          "east_low_junction",
+          "flat_east_low_junction_to_east_mid_junction",
+          "flat_east_mid_junction_from_east_low_junction",
+          "east_mid_junction"
+        ],
+        "kind": "main",
+        "width": 8
+      },
+      "after": {
+        "nodes": [
+          "square",
+          "junction_square_north",
+          "junction_square_bend",
+          "market_entry",
+          "market_turn",
+          "junction_market_turn_north",
+          "court",
+          "shop_south_junction",
+          "flat_home_from_shop_south_junction",
+          "home",
+          "flat_home_to_east_low_junction",
+          "east_low_junction",
+          "flat_east_low_junction_to_east_mid_junction",
+          "flat_east_mid_junction_from_east_low_junction",
+          "east_mid_junction"
+        ],
+        "kind": "main",
+        "width": 8
+      }
+    },
+    {
+      "index": 89,
+      "before": {
+        "nodes": [
+          "stair_fw_e_forest_turn_hill_east_approach_02_out",
+          "hill_east_approach"
+        ],
+        "kind": "steps",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "stair_fw_e_forest_turn_hill_east_approach_02_out",
+          "junction_trail_approach_in"
+        ],
+        "kind": "steps",
+        "width": 4
+      }
+    },
+    {
+      "index": 90,
+      "before": {
+        "nodes": [
+          "hill_east_approach",
+          "shrine",
+          "hill_shrine_north",
+          "hill_east_01",
+          "hill_east_arc_01_01",
+          "hill_east_arc_01_02",
+          "hill_east_arc_01_03",
+          "hill_east_arc_01_04",
+          "hill_east_arc_01_05",
+          "hill_east_arc_01_06",
+          "hill_east_arc_01_07",
+          "hill_east_arc_01_08",
+          "hill_east_arc_01_09",
+          "hill_east_arc_01_10",
+          "hill_east_02",
+          "hill_east_arc_02_01",
+          "hill_east_arc_02_02",
+          "hill_east_arc_02_03",
+          "hill_east_arc_02_04",
+          "hill_east_arc_02_05",
+          "hill_east_arc_02_06",
+          "hill_east_arc_02_07",
+          "hill_east_arc_02_08"
+        ],
+        "kind": "trail",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "junction_trail_approach_out",
+          "junction_shrine_southeast",
+          "junction_shrine_southwest",
+          "shrine",
+          "hill_shrine_north",
+          "hill_east_01",
+          "hill_east_arc_01_01",
+          "hill_east_arc_01_02",
+          "hill_east_arc_01_03",
+          "hill_east_arc_01_04",
+          "hill_east_arc_01_05",
+          "hill_east_arc_01_06",
+          "hill_east_arc_01_07",
+          "hill_east_arc_01_08",
+          "hill_east_arc_01_09",
+          "hill_east_arc_01_10",
+          "hill_east_02",
+          "hill_east_arc_02_01",
+          "hill_east_arc_02_02",
+          "hill_east_arc_02_03",
+          "hill_east_arc_02_04",
+          "hill_east_arc_02_05",
+          "hill_east_arc_02_06",
+          "hill_east_arc_02_07",
+          "hill_east_arc_02_08"
+        ],
+        "kind": "trail",
+        "width": 4
+      }
+    },
+    {
+      "index": 109,
+      "before": {
+        "nodes": [
+          "pause_hill_east_arc_06_10_hill_east_curve_06",
+          "hill_east_curve_06"
+        ],
+        "kind": "steps",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "pause_hill_east_arc_06_10_hill_east_curve_06",
+          "junction_trail_curve06_in"
+        ],
+        "kind": "steps",
+        "width": 4
+      }
+    },
+    {
+      "index": 110,
+      "before": {
+        "nodes": [
+          "hill_east_curve_06",
+          "hill_east_arc_07_01",
+          "hill_east_arc_07_02"
+        ],
+        "kind": "trail",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "junction_trail_curve06_out",
+          "hill_east_arc_07_01"
+        ],
+        "kind": "steps",
+        "width": 4
+      }
+    },
+    {
+      "index": 113,
+      "before": {
+        "nodes": [
+          "hill_east_arc_08_07",
+          "hill_east_arc_08_08",
+          "hill_east_arc_08_09",
+          "hill_east_arc_08_10",
+          "hill_east_curve_08"
+        ],
+        "kind": "steps",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "hill_east_arc_08_07",
+          "hill_east_arc_08_08",
+          "hill_east_arc_08_09",
+          "hill_east_arc_08_10"
+        ],
+        "kind": "steps",
+        "width": 4
+      }
+    },
+    {
+      "index": 114,
+      "before": {
+        "nodes": [
+          "hill_east_curve_08",
+          "hill_east_arc_09_01",
+          "hill_east_arc_09_02"
+        ],
+        "kind": "trail",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "hill_east_arc_09_01",
+          "hill_east_arc_09_02"
+        ],
+        "kind": "steps",
+        "width": 4
+      }
+    },
+    {
+      "index": 300,
+      "before": {
+        "nodes": [
+          "square",
+          "station_prom_e",
+          "station_prom_w",
+          "station_west_cross",
+          "station_west_court",
+          "station_west_north",
+          "station_link_north",
+          "station_interest_turn"
+        ],
+        "kind": "lane",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "square",
+          "junction_square_west",
+          "station_prom_e",
+          "station_prom_w",
+          "station_west_cross",
+          "station_west_court",
+          "station_west_north",
+          "station_link_north",
+          "station_interest_turn"
+        ],
+        "kind": "lane",
+        "width": 4
+      }
+    },
+    {
+      "index": 345,
+      "before": {
+        "nodes": [
+          "square",
+          "station_north_start"
+        ],
+        "kind": "lane",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "square",
+          "junction_square_east",
+          "station_north_start"
+        ],
+        "kind": "lane",
+        "width": 3
+      }
+    },
+    {
+      "index": 681,
+      "before": {
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_north"
+        ],
+        "kind": "lane",
+        "width": 4,
+        "access": "public"
+      },
+      "after": {
+        "nodes": [
+          "fw_w_music_gate",
+          "junction_music_gate_west",
+          "junction_music_gate_north",
+          "junction_music_gate_upper",
+          "junction_music_north_east",
+          "fw_w_music_north"
+        ],
+        "kind": "lane",
+        "width": 4,
+        "access": "public"
+      }
+    },
+    {
+      "index": 695,
+      "before": {
+        "nodes": [
+          "city_w",
+          "fw_w_west_loading"
+        ],
+        "kind": "service",
+        "width": 4,
+        "access": "service"
+      },
+      "after": {
+        "nodes": [
+          "city_w",
+          "junction_city_w_south",
+          "junction_city_w_turn",
+          "fw_w_west_loading"
+        ],
+        "kind": "service",
+        "width": 4,
+        "access": "service"
+      }
+    },
+    {
+      "index": 870,
+      "before": null,
+      "after": {
+        "nodes": [
+          "junction_trail_approach_in",
+          "hill_east_approach",
+          "junction_trail_approach_out"
+        ],
+        "kind": "landing",
+        "width": 4
+      }
+    },
+    {
+      "index": 871,
+      "before": null,
+      "after": {
+        "nodes": [
+          "junction_trail_curve06_in",
+          "hill_east_curve_06",
+          "junction_trail_curve06_out"
+        ],
+        "kind": "landing",
+        "width": 4
+      }
+    },
+    {
+      "index": 872,
+      "before": null,
+      "after": {
+        "nodes": [
+          "hill_east_arc_07_01",
+          "hill_east_arc_07_02"
+        ],
+        "kind": "trail",
+        "width": 4
+      }
+    },
+    {
+      "index": 873,
+      "before": null,
+      "after": {
+        "nodes": [
+          "hill_east_arc_08_10",
+          "hill_east_curve_08",
+          "hill_east_arc_09_01"
+        ],
+        "kind": "landing",
+        "width": 4
+      }
+    }
+  ],
+  "consumer_changes": [
+    {
+      "path": "places/5/arrivals/service/nodes",
+      "before": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_06_service"
+      ],
+      "after": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "junction_square_east",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_06_service"
+      ]
+    },
+    {
+      "path": "places/29/arrivals/service/nodes",
+      "before": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_30_back",
+        "st_30_service"
+      ],
+      "after": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "junction_square_east",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_30_back",
+        "st_30_service"
+      ]
+    },
+    {
+      "path": "places/30/arrivals/service/nodes",
+      "before": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_30_back",
+        "st_31_back",
+        "st_31_service"
+      ],
+      "after": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "junction_square_east",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_30_back",
+        "st_31_back",
+        "st_31_service"
+      ]
+    },
+    {
+      "path": "places/33/arrivals/service/nodes",
+      "before": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_30_back",
+        "st_31_back",
+        "st_34_back",
+        "st_34_service"
+      ],
+      "after": [
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "junction_square_east",
+        "square",
+        "station",
+        "station_n",
+        "st_06_back",
+        "st_30_back",
+        "st_31_back",
+        "st_34_back",
+        "st_34_service"
+      ]
+    },
+    {
+      "path": "places/80/arrivals/public/nodes",
+      "before": [
+        "music_west",
+        "east_j",
+        "fw_w_music_gate",
+        "fw_w_music_north",
+        "fw_w_music_east_mid",
+        "fw_w_music_yard",
+        "rehearsal_loading",
+        "audio_loading",
+        "fw_w_workshop_front",
+        "fw_w_workshop_door"
+      ],
+      "after": [
+        "music_west",
+        "east_j",
+        "fw_w_music_gate",
+        "junction_music_gate_west",
+        "junction_music_gate_north",
+        "junction_music_gate_upper",
+        "junction_music_north_east",
+        "fw_w_music_north",
+        "fw_w_music_east_mid",
+        "fw_w_music_yard",
+        "rehearsal_loading",
+        "audio_loading",
+        "fw_w_workshop_front",
+        "fw_w_workshop_door"
+      ]
+    },
+    {
+      "path": "routes/0/nodes",
+      "before": [
+        "station",
+        "square",
+        "market_entry",
+        "market_turn",
+        "junction_market_turn_north",
+        "court",
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction",
+        "home"
+      ],
+      "after": [
+        "station",
+        "square",
+        "junction_square_north",
+        "junction_square_bend",
+        "market_entry",
+        "market_turn",
+        "junction_market_turn_north",
+        "court",
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction",
+        "home"
+      ]
+    },
+    {
+      "path": "routes/2/nodes",
+      "before": [
+        "home",
+        "flat_home_to_east_low_junction",
+        "east_low_junction",
+        "flat_east_low_junction_to_east_mid_junction",
+        "flat_east_mid_junction_from_east_low_junction",
+        "east_mid_junction",
+        "level_east_mid_junction_to_bend",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+        "level_bend_from_east_mid_junction",
+        "bend",
+        "level_bend_to_bend-steps-rest-junction",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+        "level_bend-steps-rest-junction_from_bend",
+        "bend-steps-rest-junction",
+        "level_bend-steps-rest-junction_to_upper",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+        "level_upper_from_bend-steps-rest-junction",
+        "upper",
+        "level_upper_to_slope_platform_bypass",
+        "level_slope_platform_bypass_from_upper",
+        "slope_platform_bypass",
+        "slope_junction_hill",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_out",
+        "hillgate_hill_landing",
+        "hillgate",
+        "foothill_south_w",
+        "foothill_south_e",
+        "foothill_house_gate",
+        "foothill_east",
+        "junction_foothill_east_north",
+        "junction_foothill_east_stair",
+        "stair_foothill_east_fw_e_forest_turn_01_in",
+        "stair_foothill_east_fw_e_forest_turn_01_out",
+        "stair_foothill_east_fw_e_forest_turn_02_in",
+        "stair_foothill_east_fw_e_forest_turn_02_out",
+        "stair_foothill_east_fw_e_forest_turn_03_in",
+        "stair_foothill_east_fw_e_forest_turn_03_out",
+        "stair_foothill_east_fw_e_forest_turn_04_in",
+        "stair_foothill_east_fw_e_forest_turn_04_out",
+        "stair_foothill_east_fw_e_forest_turn_05_in",
+        "stair_foothill_east_fw_e_forest_turn_05_out",
+        "pause_fw_e_forest_turn_stair_foothill_east_fw_e_forest_turn_05_out",
+        "fw_e_forest_turn",
+        "pause_fw_e_forest_turn_stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_out",
+        "stair_fw_e_forest_turn_hill_east_approach_02_in",
+        "stair_fw_e_forest_turn_hill_east_approach_02_out",
+        "hill_east_approach",
+        "shrine",
+        "hill_shrine_north",
+        "hill_east_01",
+        "hill_east_arc_01_01",
+        "hill_east_arc_01_02",
+        "hill_east_arc_01_03",
+        "hill_east_arc_01_04",
+        "hill_east_arc_01_05",
+        "hill_east_arc_01_06",
+        "hill_east_arc_01_07",
+        "hill_east_arc_01_08",
+        "hill_east_arc_01_09",
+        "hill_east_arc_01_10",
+        "hill_east_02",
+        "hill_east_arc_02_01",
+        "hill_east_arc_02_02",
+        "hill_east_arc_02_03",
+        "hill_east_arc_02_04",
+        "hill_east_arc_02_05",
+        "hill_east_arc_02_06",
+        "hill_east_arc_02_07",
+        "hill_east_arc_02_08",
+        "hill_east_arc_02_09",
+        "hill_east_arc_02_10",
+        "hill_east_03",
+        "hill_east_arc_03_01",
+        "hill_east_arc_03_02",
+        "hill_east_arc_03_03",
+        "hill_east_arc_03_04",
+        "hill_east_arc_03_05",
+        "hill_east_arc_03_06",
+        "hill_east_arc_03_07",
+        "hill_east_arc_03_08",
+        "hill_east_arc_03_09",
+        "hill_east_arc_03_10",
+        "hill_east_04",
+        "hill_east_arc_04_01",
+        "hill_east_arc_04_02",
+        "hill_east_arc_04_03",
+        "hill_east_arc_04_04",
+        "hill_east_arc_04_05",
+        "hill_east_arc_04_06",
+        "hill_east_arc_04_07",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_07",
+        "hill_east_arc_04_08",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_08",
+        "hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_10",
+        "hill_east_arc_04_10",
+        "hill_east_curve_04",
+        "hill_east_arc_05_01",
+        "hill_east_arc_05_02",
+        "hill_east_arc_05_03",
+        "hill_east_arc_05_04",
+        "hill_east_arc_05_05",
+        "hill_east_arc_05_06",
+        "hill_east_arc_05_07",
+        "hill_east_arc_05_08",
+        "hill_east_arc_05_09",
+        "hill_east_arc_05_10",
+        "hill_east_curve_05",
+        "hill_east_arc_06_01",
+        "hill_east_arc_06_02",
+        "hill_east_arc_06_03",
+        "hill_east_arc_06_04",
+        "hill_east_arc_06_05",
+        "hill_east_arc_06_06",
+        "hill_east_arc_06_07",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_07",
+        "hill_east_arc_06_08",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_08",
+        "hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_arc_06_09",
+        "hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_curve_06",
+        "hill_east_curve_06",
+        "hill_east_arc_07_01",
+        "hill_east_arc_07_02",
+        "hill_east_arc_07_03",
+        "hill_east_arc_07_04",
+        "hill_east_arc_07_05",
+        "hill_east_arc_07_06",
+        "hill_east_arc_07_07",
+        "hill_east_arc_07_08",
+        "hill_east_arc_07_09",
+        "hill_east_arc_07_10",
+        "hill_east_curve_07",
+        "hill_east_arc_08_01",
+        "hill_east_arc_08_02",
+        "hill_east_arc_08_03",
+        "hill_east_arc_08_04",
+        "hill_east_arc_08_05",
+        "hill_east_arc_08_06",
+        "hill_east_arc_08_07",
+        "hill_east_arc_08_08",
+        "hill_east_arc_08_09",
+        "hill_east_arc_08_10",
+        "hill_east_curve_08",
+        "hill_east_arc_09_01",
+        "hill_east_arc_09_02",
+        "hill_east_arc_09_03",
+        "hill_east_arc_09_04",
+        "hill_east_arc_09_05",
+        "hill_east_arc_09_06",
+        "hill_east_arc_09_07",
+        "hill_east_arc_09_08",
+        "hill_east_arc_09_09",
+        "hill_east_arc_09_10",
+        "hill_east_curve_09",
+        "hill_east_arc_10_01",
+        "hill_east_arc_10_02",
+        "hill_east_arc_10_03",
+        "hill_east_arc_10_04",
+        "hill_east_arc_10_05",
+        "hill_east_arc_10_06",
+        "hill_east_arc_10_07",
+        "hill_east_arc_10_08",
+        "hill_east_arc_10_09",
+        "hill_east_arc_10_10",
+        "hill_bend",
+        "summit"
+      ],
+      "after": [
+        "home",
+        "flat_home_to_east_low_junction",
+        "east_low_junction",
+        "flat_east_low_junction_to_east_mid_junction",
+        "flat_east_mid_junction_from_east_low_junction",
+        "east_mid_junction",
+        "level_east_mid_junction_to_bend",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+        "level_bend_from_east_mid_junction",
+        "bend",
+        "level_bend_to_bend-steps-rest-junction",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+        "level_bend-steps-rest-junction_from_bend",
+        "bend-steps-rest-junction",
+        "level_bend-steps-rest-junction_to_upper",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+        "level_upper_from_bend-steps-rest-junction",
+        "upper",
+        "level_upper_to_slope_platform_bypass",
+        "level_slope_platform_bypass_from_upper",
+        "slope_platform_bypass",
+        "slope_junction_hill",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_out",
+        "hillgate_hill_landing",
+        "hillgate",
+        "foothill_south_w",
+        "foothill_south_e",
+        "foothill_house_gate",
+        "foothill_east",
+        "junction_foothill_east_north",
+        "junction_foothill_east_stair",
+        "stair_foothill_east_fw_e_forest_turn_01_in",
+        "stair_foothill_east_fw_e_forest_turn_01_out",
+        "stair_foothill_east_fw_e_forest_turn_02_in",
+        "stair_foothill_east_fw_e_forest_turn_02_out",
+        "stair_foothill_east_fw_e_forest_turn_03_in",
+        "stair_foothill_east_fw_e_forest_turn_03_out",
+        "stair_foothill_east_fw_e_forest_turn_04_in",
+        "stair_foothill_east_fw_e_forest_turn_04_out",
+        "stair_foothill_east_fw_e_forest_turn_05_in",
+        "stair_foothill_east_fw_e_forest_turn_05_out",
+        "pause_fw_e_forest_turn_stair_foothill_east_fw_e_forest_turn_05_out",
+        "fw_e_forest_turn",
+        "pause_fw_e_forest_turn_stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_out",
+        "stair_fw_e_forest_turn_hill_east_approach_02_in",
+        "stair_fw_e_forest_turn_hill_east_approach_02_out",
+        "junction_trail_approach_in",
+        "hill_east_approach",
+        "junction_trail_approach_out",
+        "junction_shrine_southeast",
+        "junction_shrine_southwest",
+        "shrine",
+        "hill_shrine_north",
+        "hill_east_01",
+        "hill_east_arc_01_01",
+        "hill_east_arc_01_02",
+        "hill_east_arc_01_03",
+        "hill_east_arc_01_04",
+        "hill_east_arc_01_05",
+        "hill_east_arc_01_06",
+        "hill_east_arc_01_07",
+        "hill_east_arc_01_08",
+        "hill_east_arc_01_09",
+        "hill_east_arc_01_10",
+        "hill_east_02",
+        "hill_east_arc_02_01",
+        "hill_east_arc_02_02",
+        "hill_east_arc_02_03",
+        "hill_east_arc_02_04",
+        "hill_east_arc_02_05",
+        "hill_east_arc_02_06",
+        "hill_east_arc_02_07",
+        "hill_east_arc_02_08",
+        "hill_east_arc_02_09",
+        "hill_east_arc_02_10",
+        "hill_east_03",
+        "hill_east_arc_03_01",
+        "hill_east_arc_03_02",
+        "hill_east_arc_03_03",
+        "hill_east_arc_03_04",
+        "hill_east_arc_03_05",
+        "hill_east_arc_03_06",
+        "hill_east_arc_03_07",
+        "hill_east_arc_03_08",
+        "hill_east_arc_03_09",
+        "hill_east_arc_03_10",
+        "hill_east_04",
+        "hill_east_arc_04_01",
+        "hill_east_arc_04_02",
+        "hill_east_arc_04_03",
+        "hill_east_arc_04_04",
+        "hill_east_arc_04_05",
+        "hill_east_arc_04_06",
+        "hill_east_arc_04_07",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_07",
+        "hill_east_arc_04_08",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_08",
+        "hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_10",
+        "hill_east_arc_04_10",
+        "hill_east_curve_04",
+        "hill_east_arc_05_01",
+        "hill_east_arc_05_02",
+        "hill_east_arc_05_03",
+        "hill_east_arc_05_04",
+        "hill_east_arc_05_05",
+        "hill_east_arc_05_06",
+        "hill_east_arc_05_07",
+        "hill_east_arc_05_08",
+        "hill_east_arc_05_09",
+        "hill_east_arc_05_10",
+        "hill_east_curve_05",
+        "hill_east_arc_06_01",
+        "hill_east_arc_06_02",
+        "hill_east_arc_06_03",
+        "hill_east_arc_06_04",
+        "hill_east_arc_06_05",
+        "hill_east_arc_06_06",
+        "hill_east_arc_06_07",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_07",
+        "hill_east_arc_06_08",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_08",
+        "hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_arc_06_09",
+        "hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_curve_06",
+        "junction_trail_curve06_in",
+        "hill_east_curve_06",
+        "junction_trail_curve06_out",
+        "hill_east_arc_07_01",
+        "hill_east_arc_07_02",
+        "hill_east_arc_07_03",
+        "hill_east_arc_07_04",
+        "hill_east_arc_07_05",
+        "hill_east_arc_07_06",
+        "hill_east_arc_07_07",
+        "hill_east_arc_07_08",
+        "hill_east_arc_07_09",
+        "hill_east_arc_07_10",
+        "hill_east_curve_07",
+        "hill_east_arc_08_01",
+        "hill_east_arc_08_02",
+        "hill_east_arc_08_03",
+        "hill_east_arc_08_04",
+        "hill_east_arc_08_05",
+        "hill_east_arc_08_06",
+        "hill_east_arc_08_07",
+        "hill_east_arc_08_08",
+        "hill_east_arc_08_09",
+        "hill_east_arc_08_10",
+        "hill_east_curve_08",
+        "hill_east_arc_09_01",
+        "hill_east_arc_09_02",
+        "hill_east_arc_09_03",
+        "hill_east_arc_09_04",
+        "hill_east_arc_09_05",
+        "hill_east_arc_09_06",
+        "hill_east_arc_09_07",
+        "hill_east_arc_09_08",
+        "hill_east_arc_09_09",
+        "hill_east_arc_09_10",
+        "hill_east_curve_09",
+        "hill_east_arc_10_01",
+        "hill_east_arc_10_02",
+        "hill_east_arc_10_03",
+        "hill_east_arc_10_04",
+        "hill_east_arc_10_05",
+        "hill_east_arc_10_06",
+        "hill_east_arc_10_07",
+        "hill_east_arc_10_08",
+        "hill_east_arc_10_09",
+        "hill_east_arc_10_10",
+        "hill_bend",
+        "summit"
+      ]
+    },
+    {
+      "path": "routes/5/nodes",
+      "before": [
+        "station_entry",
+        "station",
+        "square",
+        "station_prom_e",
+        "station_prom_w",
+        "station_west_cross",
+        "station_west_court",
+        "station_west_north",
+        "station_link_north",
+        "station_interest_turn",
+        "interest_s",
+        "interest_loading",
+        "interest_mid",
+        "models_front_court",
+        "table_front_court",
+        "fw_f_junction49",
+        "interest_court_walk",
+        "interest_court_entry",
+        "interest_court_walk",
+        "fw_f_junction49",
+        "table_front_court",
+        "models_front_court",
+        "interest_mid",
+        "game_front_court",
+        "game_entry",
+        "game_front_court",
+        "interest_mid",
+        "interest_loading",
+        "interest_s",
+        "station_interest_turn",
+        "station_west_turn",
+        "station_west",
+        "city_w",
+        "station_west_cross",
+        "west_j",
+        "west_market_ramp_junction",
+        "west_market",
+        "junction_market_turn_west",
+        "market_turn",
+        "junction_market_turn_east",
+        "alley_corner",
+        "night_front",
+        "night_entry",
+        "night_front",
+        "alley_corner",
+        "junction_market_turn_east",
+        "market_turn",
+        "junction_market_turn_north",
+        "court",
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction",
+        "home",
+        "flat_home_to_east_low_junction",
+        "east_low_junction",
+        "flat_east_low_junction_to_east_mid_junction",
+        "flat_east_mid_junction_from_east_low_junction",
+        "east_mid_junction",
+        "level_east_mid_junction_to_bend",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+        "level_bend_from_east_mid_junction",
+        "bend",
+        "level_bend_to_bend-steps-rest-junction",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+        "level_bend-steps-rest-junction_from_bend",
+        "bend-steps-rest-junction",
+        "level_bend-steps-rest-junction_to_upper",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+        "level_upper_from_bend-steps-rest-junction",
+        "upper",
+        "slope_lift_low",
+        "slope_lift_high",
+        "slope_platform_entry"
+      ],
+      "after": [
+        "station_entry",
+        "station",
+        "square",
+        "junction_square_west",
+        "station_prom_e",
+        "station_prom_w",
+        "station_west_cross",
+        "station_west_court",
+        "station_west_north",
+        "station_link_north",
+        "station_interest_turn",
+        "interest_s",
+        "interest_loading",
+        "interest_mid",
+        "models_front_court",
+        "table_front_court",
+        "fw_f_junction49",
+        "interest_court_walk",
+        "interest_court_entry",
+        "interest_court_walk",
+        "fw_f_junction49",
+        "table_front_court",
+        "models_front_court",
+        "interest_mid",
+        "game_front_court",
+        "game_entry",
+        "game_front_court",
+        "interest_mid",
+        "interest_loading",
+        "interest_s",
+        "station_interest_turn",
+        "station_west_turn",
+        "station_west",
+        "city_w",
+        "station_west_cross",
+        "west_j",
+        "west_market_ramp_junction",
+        "west_market",
+        "junction_market_turn_west",
+        "market_turn",
+        "junction_market_turn_east",
+        "alley_corner",
+        "night_front",
+        "night_entry",
+        "night_front",
+        "alley_corner",
+        "junction_market_turn_east",
+        "market_turn",
+        "junction_market_turn_north",
+        "court",
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction",
+        "home",
+        "flat_home_to_east_low_junction",
+        "east_low_junction",
+        "flat_east_low_junction_to_east_mid_junction",
+        "flat_east_mid_junction_from_east_low_junction",
+        "east_mid_junction",
+        "level_east_mid_junction_to_bend",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+        "level_bend_from_east_mid_junction",
+        "bend",
+        "level_bend_to_bend-steps-rest-junction",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+        "level_bend-steps-rest-junction_from_bend",
+        "bend-steps-rest-junction",
+        "level_bend-steps-rest-junction_to_upper",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+        "level_upper_from_bend-steps-rest-junction",
+        "upper",
+        "slope_lift_low",
+        "slope_lift_high",
+        "slope_platform_entry"
+      ]
+    },
+    {
+      "path": "routes/7/nodes",
+      "before": [
+        "audio_entry",
+        "audio_walk",
+        "rehearsal_walk",
+        "music_west_walk",
+        "east_g",
+        "east_j",
+        "music_east",
+        "fw_w_junction_18",
+        "fw_w_live_north",
+        "fw_w_live_bypass_n",
+        "fw_w_live_bypass_s",
+        "live_approach",
+        "live_meeting",
+        "live_entry",
+        "live_meeting",
+        "live_approach",
+        "tea_corner",
+        "tea_front",
+        "tea_entry",
+        "tea_front",
+        "tea_corner",
+        "live_approach",
+        "fw_w_live_bypass_s",
+        "fw_w_live_bypass_n",
+        "fw_w_live_north",
+        "fw_w_junction_18",
+        "music_east",
+        "east_j",
+        "east_g",
+        "school_front",
+        "school_s",
+        "fw_w_cinema_s",
+        "community",
+        "fw_f_food_south0",
+        "food_east",
+        "stair_food_ramp_lower_food_east_01_out",
+        "stair_food_ramp_lower_food_east_01_in",
+        "food_ramp_lower",
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "square",
+        "station",
+        "station_entry"
+      ],
+      "after": [
+        "audio_entry",
+        "audio_walk",
+        "rehearsal_walk",
+        "music_west_walk",
+        "east_g",
+        "east_j",
+        "music_east",
+        "fw_w_junction_18",
+        "fw_w_live_north",
+        "fw_w_live_bypass_n",
+        "fw_w_live_bypass_s",
+        "live_approach",
+        "live_meeting",
+        "live_entry",
+        "live_meeting",
+        "live_approach",
+        "tea_corner",
+        "tea_front",
+        "tea_entry",
+        "tea_front",
+        "tea_corner",
+        "live_approach",
+        "fw_w_live_bypass_s",
+        "fw_w_live_bypass_n",
+        "fw_w_live_north",
+        "fw_w_junction_18",
+        "music_east",
+        "east_j",
+        "east_g",
+        "school_front",
+        "school_s",
+        "fw_w_cinema_s",
+        "community",
+        "fw_f_food_south0",
+        "food_east",
+        "stair_food_ramp_lower_food_east_01_out",
+        "stair_food_ramp_lower_food_east_01_in",
+        "food_ramp_lower",
+        "station_east",
+        "station_north_end",
+        "v_m03_north",
+        "v_m02_north",
+        "v_m01_north",
+        "station_north_start",
+        "junction_square_east",
+        "square",
+        "station",
+        "station_entry"
+      ]
+    },
+    {
+      "path": "sections/0/nodes",
+      "before": [
+        "station",
+        "square",
+        "market_entry",
+        "market_turn",
+        "junction_market_turn_north",
+        "court",
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction",
+        "home",
+        "flat_home_to_east_low_junction",
+        "east_low_junction",
+        "flat_east_low_junction_to_east_mid_junction",
+        "flat_east_mid_junction_from_east_low_junction",
+        "east_mid_junction",
+        "level_east_mid_junction_to_bend",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+        "level_bend_from_east_mid_junction",
+        "bend",
+        "level_bend_to_bend-steps-rest-junction",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+        "level_bend-steps-rest-junction_from_bend",
+        "bend-steps-rest-junction",
+        "level_bend-steps-rest-junction_to_upper",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+        "level_upper_from_bend-steps-rest-junction",
+        "upper",
+        "level_upper_to_slope_platform_bypass",
+        "level_slope_platform_bypass_from_upper",
+        "slope_platform_bypass",
+        "slope_junction_hill",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_out",
+        "hillgate_hill_landing",
+        "hillgate",
+        "foothill_south_w",
+        "foothill_south_e",
+        "foothill_house_gate",
+        "foothill_east",
+        "junction_foothill_east_north",
+        "junction_foothill_east_stair",
+        "stair_foothill_east_fw_e_forest_turn_01_in",
+        "stair_foothill_east_fw_e_forest_turn_01_out",
+        "stair_foothill_east_fw_e_forest_turn_02_in",
+        "stair_foothill_east_fw_e_forest_turn_02_out",
+        "stair_foothill_east_fw_e_forest_turn_03_in",
+        "stair_foothill_east_fw_e_forest_turn_03_out",
+        "stair_foothill_east_fw_e_forest_turn_04_in",
+        "stair_foothill_east_fw_e_forest_turn_04_out",
+        "stair_foothill_east_fw_e_forest_turn_05_in",
+        "stair_foothill_east_fw_e_forest_turn_05_out",
+        "pause_fw_e_forest_turn_stair_foothill_east_fw_e_forest_turn_05_out",
+        "fw_e_forest_turn",
+        "pause_fw_e_forest_turn_stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_out",
+        "stair_fw_e_forest_turn_hill_east_approach_02_in",
+        "stair_fw_e_forest_turn_hill_east_approach_02_out",
+        "hill_east_approach",
+        "shrine",
+        "hill_shrine_north",
+        "hill_east_01",
+        "hill_east_arc_01_01",
+        "hill_east_arc_01_02",
+        "hill_east_arc_01_03",
+        "hill_east_arc_01_04",
+        "hill_east_arc_01_05",
+        "hill_east_arc_01_06",
+        "hill_east_arc_01_07",
+        "hill_east_arc_01_08",
+        "hill_east_arc_01_09",
+        "hill_east_arc_01_10",
+        "hill_east_02",
+        "hill_east_arc_02_01",
+        "hill_east_arc_02_02",
+        "hill_east_arc_02_03",
+        "hill_east_arc_02_04",
+        "hill_east_arc_02_05",
+        "hill_east_arc_02_06",
+        "hill_east_arc_02_07",
+        "hill_east_arc_02_08",
+        "hill_east_arc_02_09",
+        "hill_east_arc_02_10",
+        "hill_east_03",
+        "hill_east_arc_03_01",
+        "hill_east_arc_03_02",
+        "hill_east_arc_03_03",
+        "hill_east_arc_03_04",
+        "hill_east_arc_03_05",
+        "hill_east_arc_03_06",
+        "hill_east_arc_03_07",
+        "hill_east_arc_03_08",
+        "hill_east_arc_03_09",
+        "hill_east_arc_03_10",
+        "hill_east_04",
+        "hill_east_arc_04_01",
+        "hill_east_arc_04_02",
+        "hill_east_arc_04_03",
+        "hill_east_arc_04_04",
+        "hill_east_arc_04_05",
+        "hill_east_arc_04_06",
+        "hill_east_arc_04_07",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_07",
+        "hill_east_arc_04_08",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_08",
+        "hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_10",
+        "hill_east_arc_04_10",
+        "hill_east_curve_04",
+        "hill_east_arc_05_01",
+        "hill_east_arc_05_02",
+        "hill_east_arc_05_03",
+        "hill_east_arc_05_04",
+        "hill_east_arc_05_05",
+        "hill_east_arc_05_06",
+        "hill_east_arc_05_07",
+        "hill_east_arc_05_08",
+        "hill_east_arc_05_09",
+        "hill_east_arc_05_10",
+        "hill_east_curve_05",
+        "hill_east_arc_06_01",
+        "hill_east_arc_06_02",
+        "hill_east_arc_06_03",
+        "hill_east_arc_06_04",
+        "hill_east_arc_06_05",
+        "hill_east_arc_06_06",
+        "hill_east_arc_06_07",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_07",
+        "hill_east_arc_06_08",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_08",
+        "hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_arc_06_09",
+        "hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_curve_06",
+        "hill_east_curve_06",
+        "hill_east_arc_07_01",
+        "hill_east_arc_07_02",
+        "hill_east_arc_07_03",
+        "hill_east_arc_07_04",
+        "hill_east_arc_07_05",
+        "hill_east_arc_07_06",
+        "hill_east_arc_07_07",
+        "hill_east_arc_07_08",
+        "hill_east_arc_07_09",
+        "hill_east_arc_07_10",
+        "hill_east_curve_07",
+        "hill_east_arc_08_01",
+        "hill_east_arc_08_02",
+        "hill_east_arc_08_03",
+        "hill_east_arc_08_04",
+        "hill_east_arc_08_05",
+        "hill_east_arc_08_06",
+        "hill_east_arc_08_07",
+        "hill_east_arc_08_08",
+        "hill_east_arc_08_09",
+        "hill_east_arc_08_10",
+        "hill_east_curve_08",
+        "hill_east_arc_09_01",
+        "hill_east_arc_09_02",
+        "hill_east_arc_09_03",
+        "hill_east_arc_09_04",
+        "hill_east_arc_09_05",
+        "hill_east_arc_09_06",
+        "hill_east_arc_09_07",
+        "hill_east_arc_09_08",
+        "hill_east_arc_09_09",
+        "hill_east_arc_09_10",
+        "hill_east_curve_09",
+        "hill_east_arc_10_01",
+        "hill_east_arc_10_02",
+        "hill_east_arc_10_03",
+        "hill_east_arc_10_04",
+        "hill_east_arc_10_05",
+        "hill_east_arc_10_06",
+        "hill_east_arc_10_07",
+        "hill_east_arc_10_08",
+        "hill_east_arc_10_09",
+        "hill_east_arc_10_10",
+        "hill_bend",
+        "summit"
+      ],
+      "after": [
+        "station",
+        "square",
+        "junction_square_north",
+        "junction_square_bend",
+        "market_entry",
+        "market_turn",
+        "junction_market_turn_north",
+        "court",
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction",
+        "home",
+        "flat_home_to_east_low_junction",
+        "east_low_junction",
+        "flat_east_low_junction_to_east_mid_junction",
+        "flat_east_mid_junction_from_east_low_junction",
+        "east_mid_junction",
+        "level_east_mid_junction_to_bend",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+        "level_bend_from_east_mid_junction",
+        "bend",
+        "level_bend_to_bend-steps-rest-junction",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+        "level_bend-steps-rest-junction_from_bend",
+        "bend-steps-rest-junction",
+        "level_bend-steps-rest-junction_to_upper",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+        "level_upper_from_bend-steps-rest-junction",
+        "upper",
+        "level_upper_to_slope_platform_bypass",
+        "level_slope_platform_bypass_from_upper",
+        "slope_platform_bypass",
+        "slope_junction_hill",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_out",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_out",
+        "hillgate_hill_landing",
+        "hillgate",
+        "foothill_south_w",
+        "foothill_south_e",
+        "foothill_house_gate",
+        "foothill_east",
+        "junction_foothill_east_north",
+        "junction_foothill_east_stair",
+        "stair_foothill_east_fw_e_forest_turn_01_in",
+        "stair_foothill_east_fw_e_forest_turn_01_out",
+        "stair_foothill_east_fw_e_forest_turn_02_in",
+        "stair_foothill_east_fw_e_forest_turn_02_out",
+        "stair_foothill_east_fw_e_forest_turn_03_in",
+        "stair_foothill_east_fw_e_forest_turn_03_out",
+        "stair_foothill_east_fw_e_forest_turn_04_in",
+        "stair_foothill_east_fw_e_forest_turn_04_out",
+        "stair_foothill_east_fw_e_forest_turn_05_in",
+        "stair_foothill_east_fw_e_forest_turn_05_out",
+        "pause_fw_e_forest_turn_stair_foothill_east_fw_e_forest_turn_05_out",
+        "fw_e_forest_turn",
+        "pause_fw_e_forest_turn_stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_out",
+        "stair_fw_e_forest_turn_hill_east_approach_02_in",
+        "stair_fw_e_forest_turn_hill_east_approach_02_out",
+        "junction_trail_approach_in",
+        "hill_east_approach",
+        "junction_trail_approach_out",
+        "junction_shrine_southeast",
+        "junction_shrine_southwest",
+        "shrine",
+        "hill_shrine_north",
+        "hill_east_01",
+        "hill_east_arc_01_01",
+        "hill_east_arc_01_02",
+        "hill_east_arc_01_03",
+        "hill_east_arc_01_04",
+        "hill_east_arc_01_05",
+        "hill_east_arc_01_06",
+        "hill_east_arc_01_07",
+        "hill_east_arc_01_08",
+        "hill_east_arc_01_09",
+        "hill_east_arc_01_10",
+        "hill_east_02",
+        "hill_east_arc_02_01",
+        "hill_east_arc_02_02",
+        "hill_east_arc_02_03",
+        "hill_east_arc_02_04",
+        "hill_east_arc_02_05",
+        "hill_east_arc_02_06",
+        "hill_east_arc_02_07",
+        "hill_east_arc_02_08",
+        "hill_east_arc_02_09",
+        "hill_east_arc_02_10",
+        "hill_east_03",
+        "hill_east_arc_03_01",
+        "hill_east_arc_03_02",
+        "hill_east_arc_03_03",
+        "hill_east_arc_03_04",
+        "hill_east_arc_03_05",
+        "hill_east_arc_03_06",
+        "hill_east_arc_03_07",
+        "hill_east_arc_03_08",
+        "hill_east_arc_03_09",
+        "hill_east_arc_03_10",
+        "hill_east_04",
+        "hill_east_arc_04_01",
+        "hill_east_arc_04_02",
+        "hill_east_arc_04_03",
+        "hill_east_arc_04_04",
+        "hill_east_arc_04_05",
+        "hill_east_arc_04_06",
+        "hill_east_arc_04_07",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_07",
+        "hill_east_arc_04_08",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_08",
+        "hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_10",
+        "hill_east_arc_04_10",
+        "hill_east_curve_04",
+        "hill_east_arc_05_01",
+        "hill_east_arc_05_02",
+        "hill_east_arc_05_03",
+        "hill_east_arc_05_04",
+        "hill_east_arc_05_05",
+        "hill_east_arc_05_06",
+        "hill_east_arc_05_07",
+        "hill_east_arc_05_08",
+        "hill_east_arc_05_09",
+        "hill_east_arc_05_10",
+        "hill_east_curve_05",
+        "hill_east_arc_06_01",
+        "hill_east_arc_06_02",
+        "hill_east_arc_06_03",
+        "hill_east_arc_06_04",
+        "hill_east_arc_06_05",
+        "hill_east_arc_06_06",
+        "hill_east_arc_06_07",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_07",
+        "hill_east_arc_06_08",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_08",
+        "hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_arc_06_09",
+        "hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_curve_06",
+        "junction_trail_curve06_in",
+        "hill_east_curve_06",
+        "junction_trail_curve06_out",
+        "hill_east_arc_07_01",
+        "hill_east_arc_07_02",
+        "hill_east_arc_07_03",
+        "hill_east_arc_07_04",
+        "hill_east_arc_07_05",
+        "hill_east_arc_07_06",
+        "hill_east_arc_07_07",
+        "hill_east_arc_07_08",
+        "hill_east_arc_07_09",
+        "hill_east_arc_07_10",
+        "hill_east_curve_07",
+        "hill_east_arc_08_01",
+        "hill_east_arc_08_02",
+        "hill_east_arc_08_03",
+        "hill_east_arc_08_04",
+        "hill_east_arc_08_05",
+        "hill_east_arc_08_06",
+        "hill_east_arc_08_07",
+        "hill_east_arc_08_08",
+        "hill_east_arc_08_09",
+        "hill_east_arc_08_10",
+        "hill_east_curve_08",
+        "hill_east_arc_09_01",
+        "hill_east_arc_09_02",
+        "hill_east_arc_09_03",
+        "hill_east_arc_09_04",
+        "hill_east_arc_09_05",
+        "hill_east_arc_09_06",
+        "hill_east_arc_09_07",
+        "hill_east_arc_09_08",
+        "hill_east_arc_09_09",
+        "hill_east_arc_09_10",
+        "hill_east_curve_09",
+        "hill_east_arc_10_01",
+        "hill_east_arc_10_02",
+        "hill_east_arc_10_03",
+        "hill_east_arc_10_04",
+        "hill_east_arc_10_05",
+        "hill_east_arc_10_06",
+        "hill_east_arc_10_07",
+        "hill_east_arc_10_08",
+        "hill_east_arc_10_09",
+        "hill_east_arc_10_10",
+        "hill_bend",
+        "summit"
+      ]
+    },
+    {
+      "path": "architectures/1/street/nodes",
+      "before": [
+        "station",
+        "square",
+        "station_prom_e",
+        "station_prom_w",
+        "station_west_cross",
+        "station_west_court",
+        "station_west_north",
+        "station_link_north",
+        "station_interest_turn",
+        "interest_s",
+        "interest_loading",
+        "interest_mid",
+        "interest_low",
+        "interest_high",
+        "interest_n"
+      ],
+      "after": [
+        "station",
+        "square",
+        "junction_square_west",
+        "station_prom_e",
+        "station_prom_w",
+        "station_west_cross",
+        "station_west_court",
+        "station_west_north",
+        "station_link_north",
+        "station_interest_turn",
+        "interest_s",
+        "interest_loading",
+        "interest_mid",
+        "interest_low",
+        "interest_high",
+        "interest_n"
+      ]
+    }
+  ],
+  "preserved_sections": [
+    "buildings",
+    "surfaces",
+    "trees",
+    "parcels",
+    "logistics",
+    "elevatedNodes",
+    "blocks",
+    "units",
+    "connections",
+    "housingAssumptions"
+  ],
+  "authored_terrain_unchanged": true,
+  "terrain_recipe_unchanged": true,
+  "terrain_sample_changes": [
+    {
+      "index": 7555,
+      "before": [
+        680,
+        270,
+        25.759
+      ],
+      "after": [
+        680,
+        270,
+        25.757
+      ]
+    },
+    {
+      "index": 7764,
+      "before": [
+        560,
+        690,
+        173.37
+      ],
+      "after": [
+        560,
+        690,
+        173.371
+      ]
+    },
+    {
+      "index": 7765,
+      "before": [
+        620,
+        690,
+        145.718
+      ],
+      "after": [
+        620,
+        690,
+        145.817
+      ]
+    },
+    {
+      "index": 7766,
+      "before": [
+        680,
+        690,
+        157.807
+      ],
+      "after": [
+        680,
+        690,
+        158.089
+      ]
+    },
+    {
+      "index": 7767,
+      "before": [
+        740,
+        690,
+        163.252
+      ],
+      "after": [
+        740,
+        690,
+        163.338
+      ]
+    },
+    {
+      "index": 7768,
+      "before": [
+        800,
+        690,
+        110.48
+      ],
+      "after": [
+        800,
+        690,
+        110.628
+      ]
+    },
+    {
+      "index": 7769,
+      "before": [
+        860,
+        690,
+        34.12
+      ],
+      "after": [
+        860,
+        690,
+        34.138
+      ]
+    },
+    {
+      "index": 7795,
+      "before": [
+        560,
+        750,
+        188.558
+      ],
+      "after": [
+        560,
+        750,
+        188.572
+      ]
+    },
+    {
+      "index": 7796,
+      "before": [
+        680,
+        750,
+        197.506
+      ],
+      "after": [
+        680,
+        750,
+        197.621
+      ]
+    },
+    {
+      "index": 7798,
+      "before": [
+        800,
+        750,
+        158.905
+      ],
+      "after": [
+        800,
+        750,
+        158.977
+      ]
+    },
+    {
+      "index": 7799,
+      "before": [
+        860,
+        750,
+        131.636
+      ],
+      "after": [
+        860,
+        750,
+        135.55
+      ]
+    },
+    {
+      "index": 7800,
+      "before": [
+        920,
+        750,
+        38.541
+      ],
+      "after": [
+        920,
+        750,
+        38.955
+      ]
+    },
+    {
+      "index": 7820,
+      "before": [
+        380,
+        810,
+        348.816
+      ],
+      "after": [
+        380,
+        810,
+        349.459
+      ]
+    },
+    {
+      "index": 7821,
+      "before": [
+        440,
+        810,
+        233.994
+      ],
+      "after": [
+        440,
+        810,
+        234.156
+      ]
+    },
+    {
+      "index": 7822,
+      "before": [
+        500,
+        810,
+        172.65
+      ],
+      "after": [
+        500,
+        810,
+        172.841
+      ]
+    },
+    {
+      "index": 7823,
+      "before": [
+        560,
+        810,
+        192.808
+      ],
+      "after": [
+        560,
+        810,
+        195.179
+      ]
+    },
+    {
+      "index": 7824,
+      "before": [
+        620,
+        810,
+        191.83
+      ],
+      "after": [
+        620,
+        810,
+        197.753
+      ]
+    },
+    {
+      "index": 7825,
+      "before": [
+        680,
+        810,
+        201.054
+      ],
+      "after": [
+        680,
+        810,
+        202.641
+      ]
+    },
+    {
+      "index": 7826,
+      "before": [
+        740,
+        810,
+        210.566
+      ],
+      "after": [
+        740,
+        810,
+        210.41
+      ]
+    },
+    {
+      "index": 7827,
+      "before": [
+        800,
+        810,
+        203.094
+      ],
+      "after": [
+        800,
+        810,
+        202.976
+      ]
+    },
+    {
+      "index": 7828,
+      "before": [
+        860,
+        810,
+        161.875
+      ],
+      "after": [
+        860,
+        810,
+        169.799
+      ]
+    },
+    {
+      "index": 7829,
+      "before": [
+        920,
+        810,
+        94.54
+      ],
+      "after": [
+        920,
+        810,
+        99.346
+      ]
+    },
+    {
+      "index": 7848,
+      "before": [
+        200,
+        870,
+        383.904
+      ],
+      "after": [
+        200,
+        870,
+        383.905
+      ]
+    },
+    {
+      "index": 7849,
+      "before": [
+        260,
+        870,
+        393.009
+      ],
+      "after": [
+        260,
+        870,
+        393.036
+      ]
+    },
+    {
+      "index": 7850,
+      "before": [
+        380,
+        870,
+        375.359
+      ],
+      "after": [
+        380,
+        870,
+        376.521
+      ]
+    },
+    {
+      "index": 7851,
+      "before": [
+        440,
+        870,
+        297.62
+      ],
+      "after": [
+        440,
+        870,
+        297.438
+      ]
+    },
+    {
+      "index": 7852,
+      "before": [
+        500,
+        870,
+        224.217
+      ],
+      "after": [
+        500,
+        870,
+        224.266
+      ]
+    },
+    {
+      "index": 7853,
+      "before": [
+        560,
+        870,
+        210.457
+      ],
+      "after": [
+        560,
+        870,
+        210.987
+      ]
+    },
+    {
+      "index": 7854,
+      "before": [
+        620,
+        870,
+        203.717
+      ],
+      "after": [
+        620,
+        870,
+        204.608
+      ]
+    },
+    {
+      "index": 7855,
+      "before": [
+        680,
+        870,
+        198.533
+      ],
+      "after": [
+        680,
+        870,
+        199.28
+      ]
+    },
+    {
+      "index": 7856,
+      "before": [
+        740,
+        870,
+        197.18
+      ],
+      "after": [
+        740,
+        870,
+        196.047
+      ]
+    },
+    {
+      "index": 7857,
+      "before": [
+        800,
+        870,
+        197.094
+      ],
+      "after": [
+        800,
+        870,
+        198.297
+      ]
+    },
+    {
+      "index": 7858,
+      "before": [
+        860,
+        870,
+        155.77
+      ],
+      "after": [
+        860,
+        870,
+        172.105
+      ]
+    },
+    {
+      "index": 7859,
+      "before": [
+        920,
+        870,
+        43.493
+      ],
+      "after": [
+        920,
+        870,
+        56.729
+      ]
+    },
+    {
+      "index": 7878,
+      "before": [
+        200,
+        930,
+        448.02
+      ],
+      "after": [
+        200,
+        930,
+        448.021
+      ]
+    },
+    {
+      "index": 7879,
+      "before": [
+        260,
+        930,
+        446.582
+      ],
+      "after": [
+        260,
+        930,
+        446.583
+      ]
+    },
+    {
+      "index": 7880,
+      "before": [
+        320,
+        930,
+        427.194
+      ],
+      "after": [
+        320,
+        930,
+        428.271
+      ]
+    },
+    {
+      "index": 7881,
+      "before": [
+        380,
+        930,
+        380.765
+      ],
+      "after": [
+        380,
+        930,
+        382.007
+      ]
+    },
+    {
+      "index": 7882,
+      "before": [
+        440,
+        930,
+        318.032
+      ],
+      "after": [
+        440,
+        930,
+        318.028
+      ]
+    },
+    {
+      "index": 7883,
+      "before": [
+        500,
+        930,
+        269.518
+      ],
+      "after": [
+        500,
+        930,
+        269.511
+      ]
+    },
+    {
+      "index": 7884,
+      "before": [
+        560,
+        930,
+        213.152
+      ],
+      "after": [
+        560,
+        930,
+        213.154
+      ]
+    },
+    {
+      "index": 7885,
+      "before": [
+        620,
+        930,
+        160.84
+      ],
+      "after": [
+        620,
+        930,
+        163.049
+      ]
+    },
+    {
+      "index": 7886,
+      "before": [
+        680,
+        930,
+        153.588
+      ],
+      "after": [
+        680,
+        930,
+        157.497
+      ]
+    },
+    {
+      "index": 7887,
+      "before": [
+        740,
+        930,
+        125.469
+      ],
+      "after": [
+        740,
+        930,
+        141.686
+      ]
+    },
+    {
+      "index": 7888,
+      "before": [
+        800,
+        930,
+        124.786
+      ],
+      "after": [
+        800,
+        930,
+        149.443
+      ]
+    },
+    {
+      "index": 7889,
+      "before": [
+        860,
+        930,
+        76.387
+      ],
+      "after": [
+        860,
+        930,
+        104.752
+      ]
+    },
+    {
+      "index": 7890,
+      "before": [
+        920,
+        930,
+        28.542
+      ],
+      "after": [
+        920,
+        930,
+        30.428
+      ]
+    },
+    {
+      "index": 7910,
+      "before": [
+        260,
+        990,
+        446.76
+      ],
+      "after": [
+        260,
+        990,
+        446.786
+      ]
+    },
+    {
+      "index": 7911,
+      "before": [
+        320,
+        990,
+        426.936
+      ],
+      "after": [
+        320,
+        990,
+        426.947
+      ]
+    },
+    {
+      "index": 7912,
+      "before": [
+        380,
+        990,
+        390.177
+      ],
+      "after": [
+        380,
+        990,
+        390.226
+      ]
+    },
+    {
+      "index": 7913,
+      "before": [
+        440,
+        990,
+        328.648
+      ],
+      "after": [
+        440,
+        990,
+        328.703
+      ]
+    },
+    {
+      "index": 7916,
+      "before": [
+        620,
+        990,
+        113.496
+      ],
+      "after": [
+        620,
+        990,
+        113.499
+      ]
+    },
+    {
+      "index": 7917,
+      "before": [
+        680,
+        990,
+        47.841
+      ],
+      "after": [
+        680,
+        990,
+        47.865
+      ]
+    },
+    {
+      "index": 7918,
+      "before": [
+        740,
+        990,
+        28.993
+      ],
+      "after": [
+        740,
+        990,
+        30.35
+      ]
+    },
+    {
+      "index": 7919,
+      "before": [
+        800,
+        990,
+        29.647
+      ],
+      "after": [
+        800,
+        990,
+        34.07
+      ]
+    },
+    {
+      "index": 7920,
+      "before": [
+        860,
+        990,
+        27.445
+      ],
+      "after": [
+        860,
+        990,
+        28.189
+      ]
+    },
+    {
+      "index": 7941,
+      "before": [
+        260,
+        1050,
+        445.032
+      ],
+      "after": [
+        260,
+        1050,
+        445.036
+      ]
+    },
+    {
+      "index": 7942,
+      "before": [
+        320,
+        1050,
+        429.893
+      ],
+      "after": [
+        320,
+        1050,
+        429.922
+      ]
+    },
+    {
+      "index": 7943,
+      "before": [
+        380,
+        1050,
+        390.717
+      ],
+      "after": [
+        380,
+        1050,
+        390.73
+      ]
+    }
+  ],
+  "short_ascent_unchanged": true,
+  "short_ascent_horizontal_length": 1213.9347168334762,
+  "removed_conflicts": [
+    {
+      "a": {
+        "road": 109,
+        "nodes": [
+          "pause_hill_east_arc_06_10_hill_east_curve_06",
+          "hill_east_curve_06"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 110,
+        "nodes": [
+          "hill_east_curve_06",
+          "hill_east_arc_07_01"
+        ],
+        "kind": "trail"
+      },
+      "area": 35.366569291596534,
+      "maxDelta": 3.0829649727633637,
+      "point": [
+        354.93871828310273,
+        930.0842797498108
+      ],
+      "sharedNodes": [
+        "hill_east_curve_06"
+      ]
+    },
+    {
+      "a": {
+        "road": 113,
+        "nodes": [
+          "hill_east_arc_08_10",
+          "hill_east_curve_08"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 114,
+        "nodes": [
+          "hill_east_curve_08",
+          "hill_east_arc_09_01"
+        ],
+        "kind": "trail"
+      },
+      "area": 20.082770205190172,
+      "maxDelta": 1.8380242250406127,
+      "point": [
+        298.17713394223796,
+        931.2182887034835
+      ],
+      "sharedNodes": [
+        "hill_east_curve_08"
+      ]
+    },
+    {
+      "a": {
+        "road": 89,
+        "nodes": [
+          "stair_fw_e_forest_turn_hill_east_approach_02_out",
+          "hill_east_approach"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 90,
+        "nodes": [
+          "hill_east_approach",
+          "shrine"
+        ],
+        "kind": "trail"
+      },
+      "area": 9.55120101524517,
+      "maxDelta": 0.9496370209520251,
+      "point": [
+        795.7707429204783,
+        848.456453850637
+      ],
+      "sharedNodes": [
+        "hill_east_approach"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "square",
+          "market_entry"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 300,
+        "nodes": [
+          "square",
+          "station_prom_e"
+        ],
+        "kind": "lane"
+      },
+      "area": 16.22960680247462,
+      "maxDelta": 0.8881100056183513,
+      "point": [
+        -2.927941821604157,
+        50.75636894635035
+      ],
+      "sharedNodes": [
+        "square"
+      ]
+    },
+    {
+      "a": {
+        "road": 679,
+        "nodes": [
+          "fw_w_music_north",
+          "fw_w_v-w15_door"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 681,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_north"
+        ],
+        "kind": "lane"
+      },
+      "area": 12.108354343101382,
+      "maxDelta": 0.8158616596147183,
+      "point": [
+        638.7413743000595,
+        133
+      ],
+      "sharedNodes": [
+        "fw_w_music_north"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "square",
+          "market_entry"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 345,
+        "nodes": [
+          "square",
+          "station_north_start"
+        ],
+        "kind": "lane"
+      },
+      "area": 10.300000000000011,
+      "maxDelta": 0.6454692651896856,
+      "point": [
+        4.567871647593536,
+        47.44328018359654
+      ],
+      "sharedNodes": [
+        "square"
+      ]
+    },
+    {
+      "a": {
+        "road": 120,
+        "nodes": [
+          "station_cross",
+          "city_w"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 695,
+        "nodes": [
+          "city_w",
+          "fw_w_west_loading"
+        ],
+        "kind": "service"
+      },
+      "area": 15,
+      "maxDelta": 0.5999999999999996,
+      "point": [
+        -160,
+        -42.5
+      ],
+      "sharedNodes": [
+        "city_w"
+      ]
+    },
+    {
+      "a": {
+        "road": 120,
+        "nodes": [
+          "city_w",
+          "station_west"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 695,
+        "nodes": [
+          "city_w",
+          "fw_w_west_loading"
+        ],
+        "kind": "service"
+      },
+      "area": 15,
+      "maxDelta": 0.5999999999999996,
+      "point": [
+        -162,
+        -42.5
+      ],
+      "sharedNodes": [
+        "city_w"
+      ]
+    },
+    {
+      "a": {
+        "road": 173,
+        "nodes": [
+          "east_j",
+          "fw_w_music_gate"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 681,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_north"
+        ],
+        "kind": "lane"
+      },
+      "area": 12,
+      "maxDelta": 0.5600000400000003,
+      "point": [
+        674,
+        135
+      ],
+      "sharedNodes": [
+        "fw_w_music_gate"
+      ]
+    },
+    {
+      "a": {
+        "road": 173,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_delivery"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 681,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_north"
+        ],
+        "kind": "lane"
+      },
+      "area": 12,
+      "maxDelta": 0.5600000400000003,
+      "point": [
+        674,
+        135
+      ],
+      "sharedNodes": [
+        "fw_w_music_gate"
+      ]
+    }
+  ],
+  "new_conflicts": [],
+  "modified_road_grades": [
+    {
+      "road": 1,
+      "nodes": [
+        "square",
+        "junction_square_north"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 0
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "junction_square_north",
+        "junction_square_bend"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 9.954954725939519
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "junction_square_bend",
+        "market_entry"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 9.976303284229832
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "market_entry",
+        "market_turn"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 9.965457582448797
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "market_turn",
+        "junction_market_turn_north"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 5
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "junction_market_turn_north",
+        "court"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 4.856429311786321
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "court",
+        "shop_south_junction"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 6.547029645098122
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 9.732359988105907
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "flat_home_from_shop_south_junction",
+        "home"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 0
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "home",
+        "flat_home_to_east_low_junction"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 0
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "flat_home_to_east_low_junction",
+        "east_low_junction"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 9.677419354838724
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "east_low_junction",
+        "flat_east_low_junction_to_east_mid_junction"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 0
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "flat_east_low_junction_to_east_mid_junction",
+        "flat_east_mid_junction_from_east_low_junction"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 9.98415213946118
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "flat_east_mid_junction_from_east_low_junction",
+        "east_mid_junction"
+      ],
+      "kind": "main",
+      "width": 8,
+      "grade_percent": 0
+    },
+    {
+      "road": 89,
+      "nodes": [
+        "stair_fw_e_forest_turn_hill_east_approach_02_out",
+        "junction_trail_approach_in"
+      ],
+      "kind": "steps",
+      "width": 4,
+      "grade_percent": 29.583148113571827
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "junction_trail_approach_out",
+        "junction_shrine_southeast"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 3.021031689903815
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "junction_shrine_southeast",
+        "junction_shrine_southwest"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 5.7347677419355225
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "junction_shrine_southwest",
+        "shrine"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "shrine",
+        "hill_shrine_north"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 8.24178764437849
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_shrine_north",
+        "hill_east_01"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 2.250263641156617
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_01",
+        "hill_east_arc_01_01"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.2317269185194
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_01",
+        "hill_east_arc_01_02"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 5.127033175531485
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_02",
+        "hill_east_arc_01_03"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 6.614508126879913
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_03",
+        "hill_east_arc_01_04"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 8.170560388411761
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_04",
+        "hill_east_arc_01_05"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 7.768457843781351
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_05",
+        "hill_east_arc_01_06"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 5.338050582660157
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_06",
+        "hill_east_arc_01_07"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.585453866986932
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_07",
+        "hill_east_arc_01_08"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.168925198637725
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_08",
+        "hill_east_arc_01_09"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.059510966924141
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_09",
+        "hill_east_arc_01_10"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.219228567765521
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_01_10",
+        "hill_east_02"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.580759962439411
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_02",
+        "hill_east_arc_02_01"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.160090286586132
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_02_01",
+        "hill_east_arc_02_02"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 3.8981659347888784
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_02_02",
+        "hill_east_arc_02_03"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 3.8125614026671615
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_02_03",
+        "hill_east_arc_02_04"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 3.9267956275746627
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_02_04",
+        "hill_east_arc_02_05"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.269215105335807
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_02_05",
+        "hill_east_arc_02_06"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 4.882371520374407
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_02_06",
+        "hill_east_arc_02_07"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 5.918790235187759
+    },
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_arc_02_07",
+        "hill_east_arc_02_08"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 8.45064991647595
+    },
+    {
+      "road": 109,
+      "nodes": [
+        "pause_hill_east_arc_06_10_hill_east_curve_06",
+        "junction_trail_curve06_in"
+      ],
+      "kind": "steps",
+      "width": 4,
+      "grade_percent": 51.68482586910252
+    },
+    {
+      "road": 110,
+      "nodes": [
+        "junction_trail_curve06_out",
+        "hill_east_arc_07_01"
+      ],
+      "kind": "steps",
+      "width": 4,
+      "grade_percent": 36.39810337405162
+    },
+    {
+      "road": 113,
+      "nodes": [
+        "hill_east_arc_08_07",
+        "hill_east_arc_08_08"
+      ],
+      "kind": "steps",
+      "width": 4,
+      "grade_percent": 11.528768482713945
+    },
+    {
+      "road": 113,
+      "nodes": [
+        "hill_east_arc_08_08",
+        "hill_east_arc_08_09"
+      ],
+      "kind": "steps",
+      "width": 4,
+      "grade_percent": 13.27108436761003
+    },
+    {
+      "road": 113,
+      "nodes": [
+        "hill_east_arc_08_09",
+        "hill_east_arc_08_10"
+      ],
+      "kind": "steps",
+      "width": 4,
+      "grade_percent": 26.384369369811097
+    },
+    {
+      "road": 114,
+      "nodes": [
+        "hill_east_arc_09_01",
+        "hill_east_arc_09_02"
+      ],
+      "kind": "steps",
+      "width": 4,
+      "grade_percent": 16.84789080185998
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "square",
+        "junction_square_west"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "junction_square_west",
+        "station_prom_e"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 10
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "station_prom_e",
+        "station_prom_w"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "station_prom_w",
+        "station_west_cross"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "station_west_cross",
+        "station_west_court"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "station_west_court",
+        "station_west_north"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 1.7948953965443453
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "station_west_north",
+        "station_link_north"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 300,
+      "nodes": [
+        "station_link_north",
+        "station_interest_turn"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 345,
+      "nodes": [
+        "square",
+        "junction_square_east"
+      ],
+      "kind": "lane",
+      "width": 3,
+      "grade_percent": 0
+    },
+    {
+      "road": 345,
+      "nodes": [
+        "junction_square_east",
+        "station_north_start"
+      ],
+      "kind": "lane",
+      "width": 3,
+      "grade_percent": 9.805806756909202
+    },
+    {
+      "road": 681,
+      "nodes": [
+        "fw_w_music_gate",
+        "junction_music_gate_west"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 681,
+      "nodes": [
+        "junction_music_gate_west",
+        "junction_music_gate_north"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 9.480909262799544
+    },
+    {
+      "road": 681,
+      "nodes": [
+        "junction_music_gate_north",
+        "junction_music_gate_upper"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 9.876544444444447
+    },
+    {
+      "road": 681,
+      "nodes": [
+        "junction_music_gate_upper",
+        "junction_music_north_east"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 681,
+      "nodes": [
+        "junction_music_north_east",
+        "fw_w_music_north"
+      ],
+      "kind": "lane",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 695,
+      "nodes": [
+        "city_w",
+        "junction_city_w_south"
+      ],
+      "kind": "service",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 695,
+      "nodes": [
+        "junction_city_w_south",
+        "junction_city_w_turn"
+      ],
+      "kind": "service",
+      "width": 4,
+      "grade_percent": 7.453559924999299
+    },
+    {
+      "road": 695,
+      "nodes": [
+        "junction_city_w_turn",
+        "fw_w_west_loading"
+      ],
+      "kind": "service",
+      "width": 4,
+      "grade_percent": 6.401843996644799
+    },
+    {
+      "road": 870,
+      "nodes": [
+        "junction_trail_approach_in",
+        "hill_east_approach"
+      ],
+      "kind": "landing",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 870,
+      "nodes": [
+        "hill_east_approach",
+        "junction_trail_approach_out"
+      ],
+      "kind": "landing",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 871,
+      "nodes": [
+        "junction_trail_curve06_in",
+        "hill_east_curve_06"
+      ],
+      "kind": "landing",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 871,
+      "nodes": [
+        "hill_east_curve_06",
+        "junction_trail_curve06_out"
+      ],
+      "kind": "landing",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 872,
+      "nodes": [
+        "hill_east_arc_07_01",
+        "hill_east_arc_07_02"
+      ],
+      "kind": "trail",
+      "width": 4,
+      "grade_percent": 9.860286625178933
+    },
+    {
+      "road": 873,
+      "nodes": [
+        "hill_east_arc_08_10",
+        "hill_east_curve_08"
+      ],
+      "kind": "landing",
+      "width": 4,
+      "grade_percent": 0
+    },
+    {
+      "road": 873,
+      "nodes": [
+        "hill_east_curve_08",
+        "hill_east_arc_09_01"
+      ],
+      "kind": "landing",
+      "width": 4,
+      "grade_percent": 0
+    }
+  ],
+  "stair_treads": [
+    {
+      "nodes": [
+        "stair_fw_e_forest_turn_hill_east_approach_02_out",
+        "junction_trail_approach_in"
+      ],
+      "risers": 33,
+      "tread": 0.5732677121196342
+    },
+    {
+      "nodes": [
+        "pause_hill_east_arc_06_10_hill_east_curve_06",
+        "junction_trail_curve06_in"
+      ],
+      "risers": 13,
+      "tread": 0.31567068943416715
+    },
+    {
+      "nodes": [
+        "junction_trail_curve06_out",
+        "hill_east_arc_07_01"
+      ],
+      "risers": 11,
+      "tread": 0.44155372648554025
+    },
+    {
+      "nodes": [
+        "hill_east_arc_08_07",
+        "hill_east_arc_08_08"
+      ],
+      "risers": 9,
+      "tread": 1.3627744485170263
+    },
+    {
+      "nodes": [
+        "hill_east_arc_08_08",
+        "hill_east_arc_08_09"
+      ],
+      "risers": 9,
+      "tread": 1.1845109268396248
+    },
+    {
+      "nodes": [
+        "hill_east_arc_08_09",
+        "hill_east_arc_08_10"
+      ],
+      "risers": 17,
+      "tread": 0.6304980757539331
+    },
+    {
+      "nodes": [
+        "hill_east_arc_09_01",
+        "hill_east_arc_09_02"
+      ],
+      "risers": 10,
+      "tread": 1.0073142210849597
+    }
+  ],
+  "modified_road_building_footprint_hits": [],
+  "baseline_road_building_footprint_hits": [
+    {
+      "road": 90,
+      "nodes": [
+        "hill_east_approach",
+        "shrine"
+      ],
+      "building": "V-22",
+      "area": 72.29076211381471
+    }
+  ],
+  "building_footprint_scope": "2D footprints including existing below-building paths; V-22 overlap must be reviewed visually and is not declared collision-clear"
+}

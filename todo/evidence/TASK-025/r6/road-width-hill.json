@@ -1,0 +1,66 @@
+{
+  "scope": "hill",
+  "source_sha256": "93d682bce484cb57f182577f504e98d5ff7c22b8f54acdfa252e967da864f315",
+  "result": "FAIL",
+  "thresholds": {
+    "overlapArea": 0.5,
+    "heightDelta": 0.35
+  },
+  "scopeNote": "Ground-road top-surface candidates, including shared endpoints; bounded miters and horizontal stair treads match geometry.rs. Buildings, platform masks, retaining walls, bridge clearance and player collision require separate checks.",
+  "conflicts": [
+    {
+      "a": {
+        "road": 176,
+        "nodes": [
+          "foothill_east",
+          "foothill_house_gate"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 618,
+        "nodes": [
+          "foothill_house_gate",
+          "fw_e_foot_s_e"
+        ],
+        "kind": "lane"
+      },
+      "area": 50.68065933568869,
+      "maxDelta": 0.895561100846578,
+      "point": [
+        542,
+        624.7401923062409
+      ],
+      "sharedNodes": [
+        "foothill_house_gate"
+      ]
+    },
+    {
+      "a": {
+        "road": 72,
+        "nodes": [
+          "foothill_house_gate",
+          "foothill_east"
+        ],
+        "kind": "trail"
+      },
+      "b": {
+        "road": 618,
+        "nodes": [
+          "foothill_house_gate",
+          "fw_e_foot_s_e"
+        ],
+        "kind": "lane"
+      },
+      "area": 28.840329667844344,
+      "maxDelta": 0.6649609950624722,
+      "point": [
+        542,
+        619.2801098892805
+      ],
+      "sharedNodes": [
+        "foothill_house_gate"
+      ]
+    }
+  ]
+}

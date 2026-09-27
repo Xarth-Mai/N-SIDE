@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { roadWidthConflicts } from '../check-road-width.ts'
-import { pointInside, roadAllowed } from '../district-geometry.ts'
+import { pointInside, roadAllowed, roadOffsets, intersectionArea } from '../district-geometry.ts'
 import type { District } from '../district-types.ts'
 import source from '../../source-assets/district-map/district.json' with { type: 'json' }
 
@@ -75,4 +75,29 @@ test('upper homes stairs and greenhouse approaches retain level junctions and us
       assert.ok(risers<=48&&Math.hypot(b[0]-a[0],b[1]-a[1])/risers>=.28,`${road.nodes.join(' -> ')}: retain a usable flight after clearing the road width`)
     }
   }
+})
+
+test('station and music approaches plus the long ascent join at width without sharpening slopes or steps',()=>{
+  const data:District=source,junctions=new Set(['square','city_w','fw_w_music_gate','fw_w_music_north','hill_east_approach','hill_east_curve_06','hill_east_curve_08'])
+  const conflicts=roadWidthConflicts(data,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>/^junction_(square|city_w|music_gate|music_north|trail)_/.test(id)))
+  assert.deepEqual(conflicts,[],'both sides of each new level approach must clear every neighboring road')
+  const stairEnds=new Set(['junction_trail_approach_in','junction_trail_curve06_in','junction_trail_curve06_out','hill_east_arc_08_10','hill_east_arc_09_01'])
+  for(const r of data.roads)for(let i=1;i<r.nodes.length;i++) {
+    const ids=r.nodes.slice(i-1,i+1),[a,b]=ids.map(id=>data.nodes[id]),run=Math.hypot(b[0]-a[0],b[1]-a[1]),rise=Math.abs(b[2]-a[2])
+    if(ids.some(id=>/^junction_(square|city_w|music_gate|music_north)_/.test(id)))assert.ok(rise/run<=.100001,`${ids.join(' -> ')}: level junction must not create a steeper lowland approach`)
+    if(r.kind==='steps'&&ids.some(id=>stairEnds.has(id))) {
+      const risers=Math.ceil(rise/.17)
+      assert.ok(risers>0&&risers<=48&&run/risers>=.28,`${ids.join(' -> ')}: the shortened stair flight needs usable treads`)
+    }
+  }
+  const shrine=data.buildings.find(b=>b.id==='V-22')!
+  for(const road of data.roads.filter(r=>r.nodes.includes('shrine'))) {
+    const points=road.nodes.map(id=>data.nodes[id]),offsets=roadOffsets(points,road.width)
+    for(let i=1;i<points.length;i++) {
+      const [a,b]=points.slice(i-1,i+1),[u,v]=offsets.slice(i-1,i+1)
+      const ribbon=[[a[0]-u[0],a[1]-u[1]],[b[0]-v[0],b[1]-v[1]],[b[0]+v[0],b[1]+v[1]],[a[0]+u[0],a[1]+u[1]]]
+      assert.ok(intersectionArea(ribbon,shrine.polygon)<1e-6,`${road.nodes.slice(i-1,i+1).join(' -> ')}: an exterior trail must not pass underneath the shrine floor`)
+    }
+  }
+  assert.deepEqual(roadWidthConflicts(data,'hill-short'),[],'the short summit alternative remains clear')
 })
