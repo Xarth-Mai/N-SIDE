@@ -8,7 +8,7 @@ use bevy::{
 };
 use geo::{
     Area, BooleanOps, BoundingRect, Centroid, Closest, ClosestPoint, Contains, Intersects,
-    LineString, MultiPolygon, Point, Polygon,
+    LineString, MultiLineString, MultiPolygon, Point, Polygon,
 };
 use spade::{DelaunayTriangulation, FloatTriangulation, HasPosition, Point2, Triangulation};
 
@@ -372,6 +372,74 @@ impl MeshData {
                         [ground.height(a), ground.height(b)],
                         [high(a), high(b)],
                     );
+                }
+            }
+        }
+    }
+
+    fn road_walls(
+        &mut self,
+        poly: &Polygon,
+        ground: &Ground,
+        heights: [f64; 2],
+        steps: bool,
+        neighbors: &[(&Polygon, [f64; 2])],
+    ) {
+        for (index, edge) in poly.exterior().0.windows(2).enumerate() {
+            // Stair cross-edges are actual risers; only the two side edges retain earth
+            if steps && index % 2 == 1 {
+                continue;
+            }
+            let mut edges = vec![(LineString::from(vec![edge[1], edge[0]]), None)];
+            for (other, levels) in neighbors {
+                let mut split = Vec::new();
+                for (edge, existing) in edges {
+                    let line = MultiLineString(vec![edge]);
+                    split.extend(
+                        other
+                            .clip(&line, true)
+                            .into_iter()
+                            .map(|part| (part, existing)),
+                    );
+                    for part in other.clip(&line, false) {
+                        let a = part.0.first().unwrap();
+                        let b = part.0.last().unwrap();
+                        let middle = [(a.x + b.x) / 2.0, (a.y + b.y) / 2.0];
+                        let height = ribbon_height(poly, middle, heights[0], heights[1]);
+                        let nearest = existing.filter(|(mask, z): &(&Polygon, [f64; 2])| {
+                            (ribbon_height(mask, middle, z[0], z[1]) - height).abs()
+                                < (ribbon_height(other, middle, levels[0], levels[1]) - height)
+                                    .abs()
+                        });
+                        split.push((part, nearest.or(Some((*other, *levels)))));
+                    }
+                }
+                edges = split;
+            }
+            for (line, neighbor) in edges {
+                for edge in line.0.windows(2) {
+                    for segment in ground
+                        .edge_points([edge[0].x, edge[0].y], [edge[1].x, edge[1].y])
+                        .windows(2)
+                    {
+                        let [a, b] = [segment[0], segment[1]];
+                        let high = |p| {
+                            if steps {
+                                (heights[0] + heights[1]) / 2.0 + 0.025
+                            } else {
+                                ribbon_height(poly, p, heights[0], heights[1]) + 0.025
+                            }
+                        };
+                        // Terrain is already cut away inside another road. Keep its real
+                        // height difference, rather than erecting a wall to absent earth
+                        let low = |p| {
+                            neighbor.map_or_else(
+                                || ground.height(p),
+                                |(mask, z)| ribbon_height(mask, p, z[0], z[1]) + 0.025,
+                            )
+                        };
+                        self.wall(a, b, [low(a), low(b)], [high(a), high(b)]);
+                    }
                 }
             }
         }
@@ -944,7 +1012,7 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
     terrain_masks.extend(ground_surfaces.iter().cloned());
     terrain_masks.push(polygon(&map.terrain.water));
     let mut road_masks = Vec::new();
-    for road in &map.roads {
+    for (road_index, road) in map.roads.iter().enumerate() {
         if road.building.is_some()
             || matches!(road.kind.as_str(), "interior" | "lift" | "bridge" | "deck")
         {
@@ -955,11 +1023,15 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         for (index, pair) in points.windows(2).enumerate() {
             let [a, b] = [pair[0], pair[1]];
             if distance2([a[0], a[1]], [b[0], b[1]]) > 1e-8 {
-                road_masks.push(ribbon(a, b, offsets[index], offsets[index + 1]));
+                road_masks.push((
+                    ribbon(a, b, offsets[index], offsets[index + 1]),
+                    [a[2], b[2]],
+                    (road_index, index),
+                ));
             }
         }
     }
-    terrain_masks.extend(road_masks.iter().cloned());
+    terrain_masks.extend(road_masks.iter().map(|(poly, _, _)| poly.clone()));
 
     // Clip each ground triangle, retaining its original planar interpolation
     let mut terrain = MeshData::default();
@@ -1137,6 +1209,12 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                 ));
             }
             let elevated = matches!(road.kind.as_str(), "bridge" | "deck");
+            let footprint = ribbon(a, b, offsets[segment], offsets[segment + 1]);
+            let neighbors: Vec<_> = road_masks
+                .iter()
+                .filter(|(other, _, id)| *id != (index, segment) && overlap(&footprint, other))
+                .map(|(poly, levels, _)| (poly, *levels))
+                .collect();
             let steps = if road.kind == "steps" {
                 ((b[2] - a[2]).abs() / 0.17).ceil().max(1.0) as usize
             } else {
@@ -1199,7 +1277,31 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                         structure.underside(&piece, |p| height(p) - thickness, &source)?;
                     }
                 } else {
-                    structure.retaining_walls(&poly, &ground, |p| height(p) + 0.025);
+                    structure.road_walls(
+                        &poly,
+                        &ground,
+                        [from[2], to[2]],
+                        road.kind == "steps",
+                        &neighbors,
+                    );
+                    if road.kind == "steps" {
+                        let p = &poly.exterior().0;
+                        let high = (from[2] + to[2]) / 2.0 + 0.025;
+                        let low = if step == 0 {
+                            from[2]
+                        } else {
+                            from[2] - (to[2] - from[2]) / 2.0
+                        } + 0.025;
+                        structure.wall([p[0].x, p[0].y], [p[3].x, p[3].y], [low; 2], [high; 2]);
+                        if step + 1 == steps {
+                            structure.wall(
+                                [p[2].x, p[2].y],
+                                [p[1].x, p[1].y],
+                                [to[2] + 0.025; 2],
+                                [high; 2],
+                            );
+                        }
+                    }
                 }
             }
             if elevated {
@@ -1275,6 +1377,101 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn road_walls_follow_exposed_ground_and_real_neighbor_levels() {
+        let mut triangulation = DelaunayTriangulation::new();
+        for [x, y] in [[-20., -20.], [20., -20.], [20., 20.], [-20., 20.]] {
+            triangulation.insert(GroundPoint([x, y, 15.])).unwrap();
+        }
+        let ground = Ground(triangulation);
+        let road = ribbon([0., 0., 10.], [10., 0., 10.], [0., 2.], [0., 2.]);
+        let crossing = ribbon([5., -5., 10.], [5., 5., 10.], [-1., 0.], [-1., 0.]);
+        for height in [10., 12.] {
+            let mut walls = MeshData::default();
+            walls.road_walls(&road, &ground, [10.; 2], false, &[(&crossing, [height; 2])]);
+            let internal: Vec<_> = walls
+                .positions
+                .as_chunks::<3>()
+                .0
+                .iter()
+                .filter(|triangle| {
+                    let x = triangle.iter().map(|p| p[0]).sum::<f32>() / 3.;
+                    x > 4.001 && x < 5.999
+                })
+                .collect();
+            if height == 10. {
+                assert!(
+                    internal.is_empty(),
+                    "same-level intersection has no internal ground wall"
+                );
+            } else {
+                assert!(
+                    !internal.is_empty(),
+                    "different road heights keep their real discontinuity"
+                );
+                assert!(
+                    internal
+                        .iter()
+                        .flat_map(|tri| tri.iter())
+                        .all(|p| p[1] >= 10.024 && p[1] <= 12.026)
+                );
+            }
+            assert!(
+                walls.positions.iter().any(|p| (p[1] - 15.).abs() < 1e-5),
+                "exposed cut banks remain"
+            );
+        }
+
+        let mut map = Map::load(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../source-assets/district-map/district.json"
+        ))
+        .unwrap();
+        map.nodes = [("a".into(), [0., 0., 10.]), ("b".into(), [4., 0., 10.32])].into();
+        map.terrain.samples = vec![
+            [-20., -20., 15.],
+            [20., -20., 15.],
+            [20., 20., 15.],
+            [-20., 20., 15.],
+        ];
+        map.buildings.clear();
+        map.surfaces.clear();
+        map.architectures.clear();
+        map.roads = vec![super::super::map::Road {
+            nodes: vec!["a".into(), "b".into()],
+            kind: "steps".into(),
+            width: 4.,
+            building: None,
+            surface: None,
+            access: None,
+        }];
+        let parts = generate(&map).unwrap();
+        let structure = parts
+            .iter()
+            .find(|p| p.source.ends_with("/structure"))
+            .unwrap();
+        let positions = structure
+            .mesh
+            .attribute(Mesh::ATTRIBUTE_POSITION)
+            .unwrap()
+            .as_float3()
+            .unwrap();
+        let risers: Vec<_> = positions
+            .as_chunks::<3>()
+            .0
+            .iter()
+            .filter(|tri| tri.iter().all(|p| (p[0] - 2.).abs() < 1e-4))
+            .collect();
+        assert!(!risers.is_empty(), "internal stair riser must be rendered");
+        assert!(
+            risers
+                .iter()
+                .flat_map(|tri| tri.iter())
+                .all(|p| p[1] >= 10.104 && p[1] <= 10.266),
+            "riser joins adjacent treads, not the much higher uncut hill"
+        );
+    }
 
     #[test]
     fn authored_fixtures_render_supported_objects_and_graded_drains() {

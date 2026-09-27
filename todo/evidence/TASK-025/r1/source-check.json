@@ -1,0 +1,688 @@
+{
+  "baseline_commit": "b64759e",
+  "before_sha256": "49f46aed0e9d3a578304f0a99d7174864e7a9c2dcc9382c7ffcd1c2ca402acf0",
+  "after_sha256": "77d5870f1d145d02ea353f2f6f351665261fe2735a2816916fb921a7e1501a8c",
+  "result": "PASS",
+  "scope": "Five authored junction approaches and all their rendered-width road overlaps; excludes neighboring endpoints, buildings/platform clipping and player collision",
+  "counts": {
+    "nodes": 1518,
+    "roads": 858,
+    "terrain_samples": 8359,
+    "candidates_before": 108,
+    "candidates_after": 98
+  },
+  "unchanged_fields": [
+    "version",
+    "groups",
+    "buildings",
+    "places",
+    "trees",
+    "surfaces",
+    "blocks",
+    "units",
+    "parcels",
+    "connections",
+    "elevatedNodes",
+    "housingAssumptions",
+    "logistics",
+    "architectures"
+  ],
+  "original_node_ids_preserved": true,
+  "original_road_kind_width_access_preserved": true,
+  "authored_terrain_prefix_preserved": true,
+  "short_route_unchanged": true,
+  "changed_nodes": {
+    "stair_old_home_level_west_upper_from_old_home_01_in": {
+      "before": [
+        0.0,
+        349.25,
+        51.360119
+      ],
+      "after": [
+        0.0,
+        355.25,
+        51.360119
+      ]
+    },
+    "stair_old_home_level_west_upper_from_old_home_01_out": {
+      "before": [
+        0.0,
+        351.25,
+        51.360119
+      ],
+      "after": [
+        0.0,
+        357.25,
+        51.360119
+      ]
+    },
+    "stair_old_home_level_west_upper_from_old_home_02_in": {
+      "before": [
+        0.0,
+        370.5,
+        58.720238
+      ],
+      "after": [
+        0.0,
+        374.5,
+        58.720238
+      ]
+    },
+    "stair_old_home_level_west_upper_from_old_home_02_out": {
+      "before": [
+        0.0,
+        372.5,
+        58.720238
+      ],
+      "after": [
+        0.0,
+        376.5,
+        58.720238
+      ]
+    },
+    "stair_old_home_level_west_upper_from_old_home_03_in": {
+      "before": [
+        0.0,
+        391.75,
+        66.080357
+      ],
+      "after": [
+        0.0,
+        393.75,
+        66.080357
+      ]
+    },
+    "stair_old_home_level_west_upper_from_old_home_03_out": {
+      "before": [
+        0.0,
+        393.75,
+        66.080357
+      ],
+      "after": [
+        0.0,
+        395.75,
+        66.080357
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_01_in": {
+      "before": [
+        598.476981,
+        722.656436,
+        182.020468
+      ],
+      "after": [
+        598.476981,
+        729.390792,
+        182.020468
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_01_out": {
+      "before": [
+        600.304604,
+        723.468713,
+        182.020468
+      ],
+      "after": [
+        600.333934,
+        730.133574,
+        182.020468
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_02_in": {
+      "before": [
+        628.781585,
+        736.125149,
+        189.040936
+      ],
+      "after": [
+        628.781585,
+        741.512634,
+        189.040936
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_02_out": {
+      "before": [
+        630.609208,
+        736.937426,
+        189.040936
+      ],
+      "after": [
+        630.638538,
+        742.255415,
+        189.040936
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_03_in": {
+      "before": [
+        659.086188,
+        749.593862,
+        196.061403
+      ],
+      "after": [
+        659.086188,
+        753.634476,
+        196.061403
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_03_out": {
+      "before": [
+        660.913812,
+        750.406138,
+        196.061403
+      ],
+      "after": [
+        660.943142,
+        754.377256,
+        196.061403
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_04_in": {
+      "before": [
+        689.390792,
+        763.062574,
+        203.081871
+      ],
+      "after": [
+        689.390792,
+        765.756317,
+        203.081871
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_04_out": {
+      "before": [
+        691.218415,
+        763.874851,
+        203.081871
+      ],
+      "after": [
+        691.247745,
+        766.499098,
+        203.081871
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_05_in": {
+      "before": [
+        719.695396,
+        776.531287,
+        210.102339
+      ],
+      "after": [
+        719.695396,
+        777.878158,
+        210.102339
+      ]
+    },
+    "stair_foothill_east_fw_e_forest_turn_05_out": {
+      "before": [
+        721.523019,
+        777.343564,
+        210.102339
+      ],
+      "after": [
+        721.552349,
+        778.62094,
+        210.102339
+      ]
+    },
+    "stair_home_north_level_upper_homes_from_home_north_01_in": {
+      "before": [
+        111.746043,
+        348.703717,
+        53.720588
+      ],
+      "after": [
+        113.698417,
+        350.981487,
+        53.720588
+      ]
+    },
+    "stair_home_north_level_upper_homes_from_home_north_01_out": {
+      "before": [
+        113.047626,
+        350.22223,
+        53.720588
+      ],
+      "after": [
+        115.0,
+        352.5,
+        53.720588
+      ]
+    }
+  },
+  "added_nodes": {
+    "junction_old_home_north": [
+      0.0,
+      338.0,
+      44.0
+    ],
+    "junction_home_north_upper": [
+      103.904748,
+      339.55554,
+      45.841176
+    ],
+    "junction_upper_homes_west": [
+      122.533235,
+      372.871833,
+      61.6
+    ],
+    "junction_west_upper_east": [
+      5.600074,
+      417.846126,
+      73.440476
+    ],
+    "junction_foothill_east_north": [
+      570,
+      718,
+      175
+    ],
+    "junction_foothill_east_stair": [
+      575.5,
+      720.2,
+      175
+    ],
+    "junction_foothill_east_road": [
+      577.809496,
+      711.735444,
+      175.0
+    ],
+    "junction_north_west_trail": [
+      70.0,
+      574.0,
+      152.888889
+    ]
+  },
+  "removed_candidates": [
+    {
+      "a": {
+        "road": 73,
+        "nodes": [
+          "foothill_east",
+          "stair_foothill_east_fw_e_forest_turn_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 176,
+        "nodes": [
+          "upland_east_bend",
+          "foothill_east"
+        ],
+        "kind": "lane"
+      },
+      "area": 69.92222887615208,
+      "maxDelta": 9.050247517118862,
+      "point": [
+        595.9830606020588,
+        719.3593918671826
+      ],
+      "sharedNodes": [
+        "foothill_east"
+      ]
+    },
+    {
+      "a": {
+        "road": 21,
+        "nodes": [
+          "old_home",
+          "stair_old_home_level_west_upper_from_old_home_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 141,
+        "nodes": [
+          "old_home",
+          "home_north_west"
+        ],
+        "kind": "lane"
+      },
+      "area": 15.895713410721555,
+      "maxDelta": 2.0116063180651054,
+      "point": [
+        2.9190481051547,
+        335.25
+      ],
+      "sharedNodes": [
+        "old_home"
+      ]
+    },
+    {
+      "a": {
+        "road": 20,
+        "nodes": [
+          "west_north",
+          "old_home"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 21,
+        "nodes": [
+          "old_home",
+          "stair_old_home_level_west_upper_from_old_home_01_in"
+        ],
+        "kind": "steps"
+      },
+      "area": 9,
+      "maxDelta": 1.2884266704545482,
+      "point": [
+        -3,
+        332.8363636363636
+      ],
+      "sharedNodes": [
+        "old_home"
+      ]
+    },
+    {
+      "a": {
+        "road": 141,
+        "nodes": [
+          "home_north_east",
+          "home_north"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 142,
+        "nodes": [
+          "home_north",
+          "stair_home_north_level_upper_homes_from_home_north_01_in"
+        ],
+        "kind": "steps"
+      },
+      "area": 6.149603341531474,
+      "maxDelta": 1.2623365754203206,
+      "point": [
+        100.71386385072087,
+        337.92859066731023
+      ],
+      "sharedNodes": [
+        "home_north"
+      ]
+    },
+    {
+      "a": {
+        "road": 175,
+        "nodes": [
+          "foothill_west",
+          "north"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 730,
+        "nodes": [
+          "north",
+          "stair_north_hill_west_gate_01_in"
+        ],
+        "kind": "steps"
+      },
+      "area": 4.476752441689314,
+      "maxDelta": 0.6125725633084755,
+      "point": [
+        68.5,
+        572.9222391521739
+      ],
+      "sharedNodes": [
+        "north"
+      ]
+    },
+    {
+      "a": {
+        "road": 29,
+        "nodes": [
+          "west_upper",
+          "upper_homes"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 153,
+        "nodes": [
+          "upper_homes",
+          "level_upper_homes_to_platform_mid"
+        ],
+        "kind": "landing"
+      },
+      "area": 15.3302003354911,
+      "maxDelta": 0.43440505710412225,
+      "point": [
+        126.30747886281205,
+        374.63444388596093
+      ],
+      "sharedNodes": [
+        "upper_homes"
+      ]
+    },
+    {
+      "a": {
+        "road": 72,
+        "nodes": [
+          "foothill_house_gate",
+          "foothill_east"
+        ],
+        "kind": "trail"
+      },
+      "b": {
+        "road": 73,
+        "nodes": [
+          "foothill_east",
+          "stair_foothill_east_fw_e_forest_turn_01_in"
+        ],
+        "kind": "steps"
+      },
+      "area": 1.869146696786629,
+      "maxDelta": 0.42147748956398345,
+      "point": [
+        571.9015482478252,
+        709.3753089781077
+      ],
+      "sharedNodes": [
+        "foothill_east"
+      ]
+    },
+    {
+      "a": {
+        "road": 142,
+        "nodes": [
+          "home_north",
+          "stair_home_north_level_upper_homes_from_home_north_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 386,
+        "nodes": [
+          "home_north",
+          "fw_f_north_homes0"
+        ],
+        "kind": "lane"
+      },
+      "area": 0.9642857025573903,
+      "maxDelta": 0.4191176595744679,
+      "point": [
+        101.18015800118195,
+        335
+      ],
+      "sharedNodes": [
+        "home_north"
+      ]
+    },
+    {
+      "a": {
+        "road": 28,
+        "nodes": [
+          "level_west_upper_from_old_home",
+          "west_upper"
+        ],
+        "kind": "landing"
+      },
+      "b": {
+        "road": 29,
+        "nodes": [
+          "west_upper",
+          "upper_homes"
+        ],
+        "kind": "lane"
+      },
+      "area": 13.104268807281187,
+      "maxDelta": 0.37132982707058204,
+      "point": [
+        3,
+        415.63191039757294
+      ],
+      "sharedNodes": [
+        "west_upper"
+      ]
+    },
+    {
+      "a": {
+        "road": 29,
+        "nodes": [
+          "west_upper",
+          "upper_homes"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 145,
+        "nodes": [
+          "level_upper_homes_from_home_north",
+          "upper_homes"
+        ],
+        "kind": "landing"
+      },
+      "area": 12.749756464967504,
+      "maxDelta": 0.36128416876632485,
+      "point": [
+        124.9564197031602,
+        368.7255951271267
+      ],
+      "sharedNodes": [
+        "upper_homes"
+      ]
+    }
+  ],
+  "new_candidates": [],
+  "affected_stair_flights": [
+    {
+      "road": 21,
+      "nodes": [
+        "junction_old_home_north",
+        "stair_old_home_level_west_upper_from_old_home_01_in"
+      ],
+      "risers": 44,
+      "tread_m": 0.39204545454545453
+    },
+    {
+      "road": 23,
+      "nodes": [
+        "stair_old_home_level_west_upper_from_old_home_01_out",
+        "stair_old_home_level_west_upper_from_old_home_02_in"
+      ],
+      "risers": 44,
+      "tread_m": 0.39204545454545453
+    },
+    {
+      "road": 25,
+      "nodes": [
+        "stair_old_home_level_west_upper_from_old_home_02_out",
+        "stair_old_home_level_west_upper_from_old_home_03_in"
+      ],
+      "risers": 44,
+      "tread_m": 0.39204545454545453
+    },
+    {
+      "road": 27,
+      "nodes": [
+        "stair_old_home_level_west_upper_from_old_home_03_out",
+        "level_west_upper_from_old_home"
+      ],
+      "risers": 44,
+      "tread_m": 0.39204545454545453
+    },
+    {
+      "road": 73,
+      "nodes": [
+        "junction_foothill_east_stair",
+        "stair_foothill_east_fw_e_forest_turn_01_in"
+      ],
+      "risers": 42,
+      "tread_m": 0.5892134700600805
+    },
+    {
+      "road": 75,
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_01_out",
+        "stair_foothill_east_fw_e_forest_turn_02_in"
+      ],
+      "risers": 42,
+      "tread_m": 0.7295013727050632
+    },
+    {
+      "road": 77,
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_02_out",
+        "stair_foothill_east_fw_e_forest_turn_03_in"
+      ],
+      "risers": 42,
+      "tread_m": 0.7295013594411098
+    },
+    {
+      "road": 79,
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_03_out",
+        "stair_foothill_east_fw_e_forest_turn_04_in"
+      ],
+      "risers": 42,
+      "tread_m": 0.7295013594411124
+    },
+    {
+      "road": 81,
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_04_out",
+        "stair_foothill_east_fw_e_forest_turn_05_in"
+      ],
+      "risers": 42,
+      "tread_m": 0.7295013727050622
+    },
+    {
+      "road": 83,
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_05_out",
+        "pause_fw_e_forest_turn_stair_foothill_east_fw_e_forest_turn_05_out"
+      ],
+      "risers": 42,
+      "tread_m": 0.717605215403354
+    },
+    {
+      "road": 142,
+      "nodes": [
+        "junction_home_north_upper",
+        "stair_home_north_level_upper_homes_from_home_north_01_in"
+      ],
+      "risers": 47,
+      "tread_m": 0.3201885318661512
+    },
+    {
+      "road": 144,
+      "nodes": [
+        "stair_home_north_level_upper_homes_from_home_north_01_out",
+        "level_upper_homes_from_home_north"
+      ],
+      "risers": 47,
+      "tread_m": 0.320188531866151
+    },
+    {
+      "road": 730,
+      "nodes": [
+        "junction_north_west_trail",
+        "stair_north_hill_west_gate_01_in"
+      ],
+      "risers": 46,
+      "tread_m": 0.8871231956521747
+    }
+  ],
+  "smallest_affected_tread_m": 0.320188531866151,
+  "max_affected_flight_risers": 47
+}

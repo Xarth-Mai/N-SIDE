@@ -1,0 +1,15 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/terrain-shape.test.ts:
+(pass) terrain bake preserves authored geometry and repeats without drift [2984.62ms]
+(pass) terrain noise protects complete road segments and footprints [3300.36ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [50.85ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [2.40ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.93ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1043.19ms]
+
+ 6 pass
+ 0 fail
+Ran 6 tests across 2 files. [7.42s]

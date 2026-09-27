@@ -1,0 +1,47 @@
+{
+  "geometry_sha256": "fb86a856778e22edf048883958b982947e349d0103ae40010ac6806c91791ecd",
+  "binary_sha256": "43f65e38cd265f736691f0a0becebb57e69265da1e711554c1e0ef26d5796664",
+  "source_sha256": "77d5870f1d145d02ea353f2f6f351665261fe2735a2816916fb921a7e1501a8c",
+  "images": [
+    {
+      "source": "output/road-junctions/2026-09-27/r2/block-B05/block-B05.png",
+      "sha256": "5541b614eee7b1b9ef592dc81d21fdea17ccdb1d85605103fbf696330753c61e",
+      "webp": "todo/evidence/TASK-025/r2/block-B05/view.webp"
+    },
+    {
+      "source": "output/road-junctions/2026-09-27/r2/block-B06/block-B06.png",
+      "sha256": "7934a0089c824e9a3b497fe3f6ec027500b94b370873acb650292202b73f2e3e",
+      "webp": "todo/evidence/TASK-025/r2/block-B06/view.webp"
+    },
+    {
+      "source": "output/road-junctions/2026-09-27/r2/block-B12/block-B12.png",
+      "sha256": "cc11118176eea47ff92ee632c661cb1613dd04774416657de10920133cf24675",
+      "webp": "todo/evidence/TASK-025/r2/block-B12/view.webp"
+    },
+    {
+      "source": "output/road-junctions/2026-09-27/r2/inspect-road-foothill-east/inspect-road-foothill-east.png",
+      "sha256": "34fe1ad3c510b0cc0f03d620589c2b0d81d72b778c37127a5bbbb620b6a837a5",
+      "webp": "todo/evidence/TASK-025/r2/inspect-road-foothill-east/view.webp"
+    },
+    {
+      "source": "output/road-junctions/2026-09-27/r2/inspect-road-home-north/inspect-road-home-north.png",
+      "sha256": "97849c0c2d1777789305a901e81898b7b935000887ffb9704bf97cac5451703a",
+      "webp": "todo/evidence/TASK-025/r2/inspect-road-home-north/view.webp"
+    },
+    {
+      "source": "output/road-junctions/2026-09-27/r2/inspect-road-north/inspect-road-north.png",
+      "sha256": "4357689877da9d0372e1421d9610ac8cd9de1c75c8ac9557ef60636a9b2ce7ff",
+      "webp": "todo/evidence/TASK-025/r2/inspect-road-north/view.webp"
+    },
+    {
+      "source": "output/road-junctions/2026-09-27/r2/inspect-road-old-home/inspect-road-old-home.png",
+      "sha256": "31ec8243e57742b40723f86e93c8771e51542a112e22d378a4817f12cf126a7d",
+      "webp": "todo/evidence/TASK-025/r2/inspect-road-old-home/view.webp"
+    },
+    {
+      "source": "output/road-junctions/2026-09-27/r2/inspect-road-upper-homes/inspect-road-upper-homes.png",
+      "sha256": "a9a3cbcc28e96293c5fa78eea2238630bbe64a60c6bd0de4e5035df47e624dbd",
+      "webp": "todo/evidence/TASK-025/r2/inspect-road-upper-homes/view.webp"
+    }
+  ]
+}

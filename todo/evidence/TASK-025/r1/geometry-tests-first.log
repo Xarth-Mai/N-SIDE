@@ -1,0 +1,178 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/terrain-shape.test.ts:
+(pass) terrain bake preserves authored geometry and repeats without drift [2955.73ms]
+(pass) terrain noise protects complete road segments and footprints [3375.55ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [48.16ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [2.06ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.80ms]
+33 |
+34 | test('upper-street and foothill junctions join at road width without shortening stair treads',()=>{
+35 |   const data:District=source
+36 |   const junctions=new Set(['old_home','home_north','west_upper','upper_homes','foothill_east','north'])
+37 |   const conflicts=roadWidthConflicts(data,'all').filter(c=>[...c.a.nodes,...c.b.nodes].some(id=>junctions.has(id)||id.startsWith('junction_')))
+38 |   assert.deepEqual(conflicts,[],'the repaired approach must clear every other road, including its shared node')
+              ^
+AssertionError: the repaired approach must clear every other road, including its shared node
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'foothill_east',
++         'foothill_house_gate'
++       ],
++       road: 176
++     },
++     area: 50.68065933568869,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'foothill_house_gate',
++         'fw_e_foot_s_e'
++       ],
++       road: 618
++     },
++     maxDelta: 0.895561100846578,
++     point: [
++       542,
++       624.7401923062409
++     ],
++     sharedNodes: [
++       'foothill_house_gate'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'west_north',
++         'old_home'
++       ],
++       road: 20
++     },
++     area: 10.5,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'stair_west_court_gate_west_north_01_out',
++         'west_north'
++       ],
++       road: 34
++     },
++     maxDelta: 0.8113178877840923,
++     point: [
++       -106.5,
++       327
++     ],
++     sharedNodes: [
++       'west_north'
++     ]
++   },
++   {
++     a: {
++       kind: 'trail',
++       nodes: [
++         'foothill_house_gate',
++         'foothill_east'
++       ],
++       road: 72
++     },
++     area: 28.840329667844344,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'foothill_house_gate',
++         'fw_e_foot_s_e'
++       ],
++       road: 618
++     },
++     maxDelta: 0.6649609950624722,
++     point: [
++       542,
++       619.2801098892805
++     ],
++     sharedNodes: [
++       'foothill_house_gate'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'shop_steps_high_turn',
++         'shop_steps_high_level'
++       ],
++       road: 70
++     },
++     area: 2.25,
++     b: {
++       kind: 'landing',
++       nodes: [
++         'shop_steps_high_level',
++         'upper_homes'
++       ],
++       road: 71
++     },
++     maxDelta: 0.578611870967741,
++     point: [
++       131.5,
++       365.5
++     ],
++     sharedNodes: [
++       'shop_steps_high_level'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_e_foot_ne',
++         'foothill_east'
++       ],
++       road: 152
++     },
++     area: 38.32929127954412,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_e_foot_ne_corner',
++         'fw_e_foot_ne'
++       ],
++       road: 621
++     },
++     maxDelta: 0.3610917984559592,
++     point: [
++       545,
++       699
++     ],
++     sharedNodes: [
++       'fw_e_foot_ne'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:38:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) upper-street and foothill junctions join at road width without shortening stair treads [382.41ms]
+
+ 5 pass
+ 1 fail
+Ran 6 tests across 2 files. [6.81s]

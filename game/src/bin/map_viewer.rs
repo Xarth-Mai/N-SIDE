@@ -506,6 +506,28 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         "[visual/view] name=mountain-profile eye={profile_eye:?} target={center:?} terrain_peak={peak:?} fov=55"
     );
     views.push(("mountain-profile", view(profile_eye, center)));
+    views.extend([
+        (
+            "inspect-road-old-home",
+            view([-8., 318., 52.], [0., 340., 47.]),
+        ),
+        (
+            "inspect-road-home-north",
+            view([91., 324., 51.], [109., 345., 50.]),
+        ),
+        (
+            "inspect-road-upper-homes",
+            view([143., 363., 68.], [123., 373., 63.]),
+        ),
+        (
+            "inspect-road-foothill-east",
+            view([592., 695., 191.], [578., 720., 177.]),
+        ),
+        (
+            "inspect-road-north",
+            view([56., 560., 160.], [70., 577., 154.]),
+        ),
+    ]);
     let mut views: Vec<_> = views
         .into_iter()
         .map(|(name, pose)| (name.to_owned(), pose))

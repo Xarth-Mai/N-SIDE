@@ -1,0 +1,2652 @@
+{
+  "scope": "all",
+  "source_sha256": "77d5870f1d145d02ea353f2f6f351665261fe2735a2816916fb921a7e1501a8c",
+  "result": "FAIL",
+  "thresholds": {
+    "overlapArea": 0.5,
+    "heightDelta": 0.35
+  },
+  "scopeNote": "Ground-road top-surface candidates, including shared endpoints; bounded miters and horizontal stair treads match geometry.rs. Buildings, platform masks, retaining walls, bridge clearance and player collision require separate checks.",
+  "conflicts": [
+    {
+      "a": {
+        "road": 161,
+        "nodes": [
+          "fw_e_school_edge_top",
+          "east_n"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 558,
+        "nodes": [
+          "school_steps_east_rest",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "steps"
+      },
+      "area": 18.69398885422561,
+      "maxDelta": 3.3269642857142756,
+      "point": [
+        537.8626984126985,
+        351.5
+      ],
+      "sharedNodes": [
+        "fw_e_school_edge_top"
+      ]
+    },
+    {
+      "a": {
+        "road": 109,
+        "nodes": [
+          "pause_hill_east_arc_06_10_hill_east_curve_06",
+          "hill_east_curve_06"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 110,
+        "nodes": [
+          "hill_east_curve_06",
+          "hill_east_arc_07_01"
+        ],
+        "kind": "trail"
+      },
+      "area": 35.366569291596534,
+      "maxDelta": 3.0829649727633637,
+      "point": [
+        354.93871828310273,
+        930.0842797498108
+      ],
+      "sharedNodes": [
+        "hill_east_curve_06"
+      ]
+    },
+    {
+      "a": {
+        "road": 173,
+        "nodes": [
+          "music_cross",
+          "cross_e"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 690,
+        "nodes": [
+          "music_cross",
+          "fw_w_audio_delivery"
+        ],
+        "kind": "service"
+      },
+      "area": 79.80816635699921,
+      "maxDelta": 2.394392876416685,
+      "point": [
+        653.0397956607263,
+        -29
+      ],
+      "sharedNodes": [
+        "music_cross"
+      ]
+    },
+    {
+      "a": {
+        "road": 226,
+        "nodes": [
+          "east_g",
+          "music_west_walk"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 675,
+        "nodes": [
+          "music_west_walk",
+          "fw_w_music_mid"
+        ],
+        "kind": "lane"
+      },
+      "area": 25.439920264365355,
+      "maxDelta": 1.9511031498869276,
+      "point": [
+        551.5,
+        94.81997342145496
+      ],
+      "sharedNodes": [
+        "music_west_walk"
+      ]
+    },
+    {
+      "a": {
+        "road": 113,
+        "nodes": [
+          "hill_east_arc_08_10",
+          "hill_east_curve_08"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 114,
+        "nodes": [
+          "hill_east_curve_08",
+          "hill_east_arc_09_01"
+        ],
+        "kind": "trail"
+      },
+      "area": 20.082770205190172,
+      "maxDelta": 1.8380242250406127,
+      "point": [
+        298.17713394223796,
+        931.2182887034835
+      ],
+      "sharedNodes": [
+        "hill_east_curve_08"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "homes_high_junction",
+          "fw_f_junction86"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 258,
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_out",
+          "homes_high_junction"
+        ],
+        "kind": "steps"
+      },
+      "area": 4.5,
+      "maxDelta": 1.629414678571436,
+      "point": [
+        186.5,
+        437
+      ],
+      "sharedNodes": [
+        "homes_high_junction"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "area": 6.87208101316287,
+      "maxDelta": 1.622011920284839,
+      "point": [
+        6.142173382921186,
+        96.87245891022341
+      ],
+      "sharedNodes": [
+        "market_entry"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction22",
+          "homes_high_junction"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 258,
+        "nodes": [
+          "stair_homes_high_m_homes_high_junction_01_out",
+          "homes_high_junction"
+        ],
+        "kind": "steps"
+      },
+      "area": 4.5,
+      "maxDelta": 1.6106252499999982,
+      "point": [
+        185,
+        437
+      ],
+      "sharedNodes": [
+        "homes_high_junction"
+      ]
+    },
+    {
+      "a": {
+        "road": 424,
+        "nodes": [
+          "fw_f_plateau_e0",
+          "fw_f_plateau_e_mid0"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 532,
+        "nodes": [
+          "fw_f_plateau_e_mid0",
+          "fw_f_v_f63_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 4.880818986574013,
+      "maxDelta": 1.5691966406249946,
+      "point": [
+        175.10014204545453,
+        482
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_e_mid0"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 736,
+        "nodes": [
+          "market_turn",
+          "market_service_high"
+        ],
+        "kind": "service"
+      },
+      "area": 25.319974180201598,
+      "maxDelta": 1.402101019260062,
+      "point": [
+        17.701686003130064,
+        139.25385372239157
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 192,
+        "nodes": [
+          "market_turn",
+          "v_a01_door_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 13.820153072165795,
+      "maxDelta": 1.3220105331381333,
+      "point": [
+        10.029912105266733,
+        143.52532357836998
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 366,
+        "nodes": [
+          "fw_f_old_low1",
+          "fw_f_junction4"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 741,
+        "nodes": [
+          "fw_f_interest_east1",
+          "fw_f_old_low1"
+        ],
+        "kind": "lane"
+      },
+      "area": 18.862120926793068,
+      "maxDelta": 1.2995740788169456,
+      "point": [
+        -180,
+        146.02111126803277
+      ],
+      "sharedNodes": [
+        "fw_f_old_low1"
+      ]
+    },
+    {
+      "a": {
+        "road": 42,
+        "nodes": [
+          "stair_level_west_upper_to_res_n_res_n_03_out",
+          "res_n"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 175,
+        "nodes": [
+          "res_n",
+          "fw_f_plateau_w5"
+        ],
+        "kind": "lane"
+      },
+      "area": 5.86999897917525,
+      "maxDelta": 1.285196194995919,
+      "point": [
+        -2.1239577662083926,
+        507.1927083333333
+      ],
+      "sharedNodes": [
+        "res_n"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "square",
+          "market_entry"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "area": 1.6490062224609687,
+      "maxDelta": 1.258417956364962,
+      "point": [
+        6.856666471323148,
+        95.35687992114046
+      ],
+      "sharedNodes": [
+        "market_entry"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "homes_high_junction",
+          "fw_f_junction86"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 528,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_v_f59_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.1052156278195326,
+      "point": [
+        191,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction86"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_junction87"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 529,
+        "nodes": [
+          "fw_f_junction87",
+          "fw_f_v_f60_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.1005093304347753,
+      "point": [
+        219.75,
+        442.7913043478261
+      ],
+      "sharedNodes": [
+        "fw_f_junction87"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_junction87"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 528,
+        "nodes": [
+          "fw_f_junction86",
+          "fw_f_v_f59_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.0926893421052597,
+      "point": [
+        192,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction86"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction87",
+          "platform_east"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 529,
+        "nodes": [
+          "fw_f_junction87",
+          "fw_f_v_f60_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 1.0879829999999941,
+      "point": [
+        220.75,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction87"
+      ]
+    },
+    {
+      "a": {
+        "road": 175,
+        "nodes": [
+          "res_n",
+          "fw_f_plateau_w5"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 395,
+        "nodes": [
+          "pause_fw_f_junction83_fw_f_plateau_w5",
+          "fw_f_plateau_w5"
+        ],
+        "kind": "steps"
+      },
+      "area": 15.000706144753167,
+      "maxDelta": 1.0618337452596336,
+      "point": [
+        -8.573610543986204,
+        511.0625
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w5"
+      ]
+    },
+    {
+      "a": {
+        "road": 737,
+        "nodes": [
+          "food_ramp_lower",
+          "stair_food_ramp_lower_food_east_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 740,
+        "nodes": [
+          "food_ramp_lower",
+          "food_ramp_middle"
+        ],
+        "kind": "lane"
+      },
+      "area": 7.875,
+      "maxDelta": 1.0403495140084154,
+      "point": [
+        178.5,
+        80.90322580645162
+      ],
+      "sharedNodes": [
+        "food_ramp_lower"
+      ]
+    },
+    {
+      "a": {
+        "road": 171,
+        "nodes": [
+          "music_west",
+          "east_j"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 173,
+        "nodes": [
+          "east_j",
+          "fw_w_music_gate"
+        ],
+        "kind": "avenue"
+      },
+      "area": 26.445311299430614,
+      "maxDelta": 1.0244110050570825,
+      "point": [
+        674,
+        157.82947828092776
+      ],
+      "sharedNodes": [
+        "east_j"
+      ]
+    },
+    {
+      "a": {
+        "road": 56,
+        "nodes": [
+          "east_g",
+          "east_j"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 173,
+        "nodes": [
+          "east_j",
+          "fw_w_music_gate"
+        ],
+        "kind": "avenue"
+      },
+      "area": 25.953372489864705,
+      "maxDelta": 1.000718805342773,
+      "point": [
+        674,
+        158.393664146545
+      ],
+      "sharedNodes": [
+        "east_j"
+      ]
+    },
+    {
+      "a": {
+        "road": 89,
+        "nodes": [
+          "stair_fw_e_forest_turn_hill_east_approach_02_out",
+          "hill_east_approach"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 90,
+        "nodes": [
+          "hill_east_approach",
+          "shrine"
+        ],
+        "kind": "trail"
+      },
+      "area": 9.55120101524517,
+      "maxDelta": 0.9496370209520251,
+      "point": [
+        795.7707429204783,
+        848.456453850637
+      ],
+      "sharedNodes": [
+        "hill_east_approach"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "platform_mid",
+          "fw_f_junction22"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 454,
+        "nodes": [
+          "fw_f_junction22",
+          "fw_f_v_60_public"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 0.9306989635814915,
+      "point": [
+        154.5,
+        442.57142857142856
+      ],
+      "sharedNodes": [
+        "fw_f_junction22"
+      ]
+    },
+    {
+      "a": {
+        "road": 160,
+        "nodes": [
+          "fw_f_junction22",
+          "homes_high_junction"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 454,
+        "nodes": [
+          "fw_f_junction22",
+          "fw_f_v_60_public"
+        ],
+        "kind": "steps"
+      },
+      "area": 3,
+      "maxDelta": 0.9182374142857128,
+      "point": [
+        155.5,
+        443
+      ],
+      "sharedNodes": [
+        "fw_f_junction22"
+      ]
+    },
+    {
+      "a": {
+        "road": 176,
+        "nodes": [
+          "foothill_east",
+          "foothill_house_gate"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 618,
+        "nodes": [
+          "foothill_house_gate",
+          "fw_e_foot_s_e"
+        ],
+        "kind": "lane"
+      },
+      "area": 50.68065933568869,
+      "maxDelta": 0.895561100846578,
+      "point": [
+        542,
+        624.7401923062409
+      ],
+      "sharedNodes": [
+        "foothill_house_gate"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "square",
+          "market_entry"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 300,
+        "nodes": [
+          "square",
+          "station_prom_e"
+        ],
+        "kind": "lane"
+      },
+      "area": 16.22960680247462,
+      "maxDelta": 0.8881100056183513,
+      "point": [
+        -2.927941821604157,
+        50.75636894635035
+      ],
+      "sharedNodes": [
+        "square"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_turn",
+          "court"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 17,
+        "nodes": [
+          "market_turn",
+          "alley_corner"
+        ],
+        "kind": "lane"
+      },
+      "area": 77.73475216089173,
+      "maxDelta": 0.8567578840032404,
+      "point": [
+        36.06429792468529,
+        166.31589649653685
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 138,
+        "nodes": [
+          "interest_n",
+          "west_link"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 181,
+        "nodes": [
+          "west_link",
+          "stair_west_link_west_link_n_01_in"
+        ],
+        "kind": "steps"
+      },
+      "area": 10.5,
+      "maxDelta": 0.8504807692307743,
+      "point": [
+        -193.5,
+        277.8205128205128
+      ],
+      "sharedNodes": [
+        "west_link"
+      ]
+    },
+    {
+      "a": {
+        "road": 679,
+        "nodes": [
+          "fw_w_music_north",
+          "fw_w_v-w15_door"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 681,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_north"
+        ],
+        "kind": "lane"
+      },
+      "area": 12.108354343101382,
+      "maxDelta": 0.8158616596147183,
+      "point": [
+        638.7413743000595,
+        133
+      ],
+      "sharedNodes": [
+        "fw_w_music_north"
+      ]
+    },
+    {
+      "a": {
+        "road": 20,
+        "nodes": [
+          "west_north",
+          "old_home"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 34,
+        "nodes": [
+          "stair_west_court_gate_west_north_01_out",
+          "west_north"
+        ],
+        "kind": "steps"
+      },
+      "area": 10.5,
+      "maxDelta": 0.8113178877840923,
+      "point": [
+        -106.5,
+        327
+      ],
+      "sharedNodes": [
+        "west_north"
+      ]
+    },
+    {
+      "a": {
+        "road": 138,
+        "nodes": [
+          "interest_n",
+          "west_link"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 364,
+        "nodes": [
+          "interest_n",
+          "fw_f_interest_east0"
+        ],
+        "kind": "lane"
+      },
+      "area": 20.718084186279157,
+      "maxDelta": 0.802266828505088,
+      "point": [
+        -300.44521569169365,
+        272
+      ],
+      "sharedNodes": [
+        "interest_n"
+      ]
+    },
+    {
+      "a": {
+        "road": 175,
+        "nodes": [
+          "fw_f_plateau_w5",
+          "upland_west_turn"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 395,
+        "nodes": [
+          "pause_fw_f_junction83_fw_f_plateau_w5",
+          "fw_f_plateau_w5"
+        ],
+        "kind": "steps"
+      },
+      "area": 5.5715444392353675,
+      "maxDelta": 0.8010461655199208,
+      "point": [
+        -12.5,
+        513.1785714285714
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w5"
+      ]
+    },
+    {
+      "a": {
+        "road": 42,
+        "nodes": [
+          "stair_level_west_upper_to_res_n_res_n_03_out",
+          "res_n"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 396,
+        "nodes": [
+          "fw_f_plateau_w5",
+          "res_n"
+        ],
+        "kind": "lane"
+      },
+      "area": 3.6511102037112266,
+      "maxDelta": 0.7965371460092996,
+      "point": [
+        -1.213690152119062,
+        508.3958333333333
+      ],
+      "sharedNodes": [
+        "res_n"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 356,
+        "nodes": [
+          "v_a17_upper_landing",
+          "homes_high_m"
+        ],
+        "kind": "lane"
+      },
+      "area": 2.25,
+      "maxDelta": 0.7629275892857095,
+      "point": [
+        183.5,
+        422.25
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 357,
+        "nodes": [
+          "homes_high_m",
+          "v_a15_upper_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 2.25,
+      "maxDelta": 0.7629275892857095,
+      "point": [
+        186.5,
+        422.2142857142857
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    },
+    {
+      "a": {
+        "road": 407,
+        "nodes": [
+          "level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1",
+          "fw_f_plateau_w_rear1"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 524,
+        "nodes": [
+          "fw_f_plateau_w_rear1",
+          "fw_f_v_f53_resident"
+        ],
+        "kind": "lane"
+      },
+      "area": 6.327953618376341,
+      "maxDelta": 0.7627551000000068,
+      "point": [
+        -71,
+        511.63748833959284
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w_rear1"
+      ]
+    },
+    {
+      "a": {
+        "road": 42,
+        "nodes": [
+          "stair_level_west_upper_to_res_n_res_n_03_out",
+          "res_n"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 396,
+        "nodes": [
+          "res_n",
+          "fw_f_wood_homes0"
+        ],
+        "kind": "lane"
+      },
+      "area": 6.553967929896885,
+      "maxDelta": 0.7591704375000035,
+      "point": [
+        3,
+        508
+      ],
+      "sharedNodes": [
+        "res_n"
+      ]
+    },
+    {
+      "a": {
+        "road": 388,
+        "nodes": [
+          "fw_f_junction80",
+          "fw_f_plateau_w2"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 401,
+        "nodes": [
+          "fw_f_plateau_w2",
+          "level_fw_f_junction81_from_fw_f_plateau_w2"
+        ],
+        "kind": "steps"
+      },
+      "area": 5,
+      "maxDelta": 0.7521824347826112,
+      "point": [
+        -73,
+        454.4782608695652
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w2"
+      ]
+    },
+    {
+      "a": {
+        "road": 388,
+        "nodes": [
+          "fw_f_plateau_w2",
+          "fw_f_plateau_w3"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 401,
+        "nodes": [
+          "fw_f_plateau_w2",
+          "level_fw_f_junction81_from_fw_f_plateau_w2"
+        ],
+        "kind": "steps"
+      },
+      "area": 5,
+      "maxDelta": 0.7521824347826112,
+      "point": [
+        -71,
+        454.4782608695652
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w2"
+      ]
+    },
+    {
+      "a": {
+        "road": 555,
+        "nodes": [
+          "fw_e_school_edge_low",
+          "school_steps_east_base"
+        ],
+        "kind": "landing"
+      },
+      "b": {
+        "road": 556,
+        "nodes": [
+          "school_steps_east_base",
+          "school_steps_east_mid"
+        ],
+        "kind": "steps"
+      },
+      "area": 2.25,
+      "maxDelta": 0.75,
+      "point": [
+        544,
+        331.24444444444447
+      ],
+      "sharedNodes": [
+        "school_steps_east_base"
+      ]
+    },
+    {
+      "a": {
+        "road": 34,
+        "nodes": [
+          "stair_west_court_gate_west_north_01_out",
+          "west_north"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 139,
+        "nodes": [
+          "old_north_gate",
+          "west_north"
+        ],
+        "kind": "lane"
+      },
+      "area": 12.25,
+      "maxDelta": 0.7414184531250001,
+      "point": [
+        -110,
+        326.6875
+      ],
+      "sharedNodes": [
+        "west_north"
+      ]
+    },
+    {
+      "a": {
+        "road": 395,
+        "nodes": [
+          "pause_fw_f_junction83_fw_f_plateau_w5",
+          "fw_f_plateau_w5"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 396,
+        "nodes": [
+          "fw_f_plateau_w5",
+          "res_n"
+        ],
+        "kind": "lane"
+      },
+      "area": 8.90595189484543,
+      "maxDelta": 0.7367568121390207,
+      "point": [
+        -8.009325072754137,
+        512.4732142857143
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w5"
+      ]
+    },
+    {
+      "a": {
+        "road": 176,
+        "nodes": [
+          "east_n",
+          "east_upper"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 591,
+        "nodes": [
+          "fw_e_upper_w",
+          "east_upper"
+        ],
+        "kind": "lane"
+      },
+      "area": 213.72413988657354,
+      "maxDelta": 0.7313955432632611,
+      "point": [
+        626.7767078681051,
+        363.6262163461607
+      ],
+      "sharedNodes": [
+        "east_upper"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "court",
+          "shop_south_junction"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 252,
+        "nodes": [
+          "court",
+          "tree_entry"
+        ],
+        "kind": "lane"
+      },
+      "area": 20.738484282675927,
+      "maxDelta": 0.7283927266438823,
+      "point": [
+        62.98639392383215,
+        201.83560101269464
+      ],
+      "sharedNodes": [
+        "court"
+      ]
+    },
+    {
+      "a": {
+        "road": 72,
+        "nodes": [
+          "foothill_house_gate",
+          "foothill_east"
+        ],
+        "kind": "trail"
+      },
+      "b": {
+        "road": 618,
+        "nodes": [
+          "foothill_house_gate",
+          "fw_e_foot_s_e"
+        ],
+        "kind": "lane"
+      },
+      "area": 28.840329667844344,
+      "maxDelta": 0.6649609950624722,
+      "point": [
+        542,
+        619.2801098892805
+      ],
+      "sharedNodes": [
+        "foothill_house_gate"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "square",
+          "market_entry"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 345,
+        "nodes": [
+          "square",
+          "station_north_start"
+        ],
+        "kind": "lane"
+      },
+      "area": 10.300000000000011,
+      "maxDelta": 0.6454692651896856,
+      "point": [
+        4.567871647593536,
+        47.44328018359654
+      ],
+      "sharedNodes": [
+        "square"
+      ]
+    },
+    {
+      "a": {
+        "road": 249,
+        "nodes": [
+          "shop_west_s",
+          "shop_west_m"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 268,
+        "nodes": [
+          "shop_west_s",
+          "v_a04_door_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 10.22653973947854,
+      "maxDelta": 0.6433961576194989,
+      "point": [
+        36.5,
+        202.48010216963684
+      ],
+      "sharedNodes": [
+        "shop_west_s"
+      ]
+    },
+    {
+      "a": {
+        "road": 120,
+        "nodes": [
+          "station_cross",
+          "city_w"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 695,
+        "nodes": [
+          "city_w",
+          "fw_w_west_loading"
+        ],
+        "kind": "service"
+      },
+      "area": 15,
+      "maxDelta": 0.5999999999999996,
+      "point": [
+        -160,
+        -42.5
+      ],
+      "sharedNodes": [
+        "city_w"
+      ]
+    },
+    {
+      "a": {
+        "road": 120,
+        "nodes": [
+          "city_w",
+          "station_west"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 695,
+        "nodes": [
+          "city_w",
+          "fw_w_west_loading"
+        ],
+        "kind": "service"
+      },
+      "area": 15,
+      "maxDelta": 0.5999999999999996,
+      "point": [
+        -162,
+        -42.5
+      ],
+      "sharedNodes": [
+        "city_w"
+      ]
+    },
+    {
+      "a": {
+        "road": 737,
+        "nodes": [
+          "food_ramp_lower",
+          "stair_food_ramp_lower_food_east_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 740,
+        "nodes": [
+          "station_east",
+          "food_ramp_lower"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.125,
+      "maxDelta": 0.5951612903225811,
+      "point": [
+        178.5,
+        79.45161290322581
+      ],
+      "sharedNodes": [
+        "food_ramp_lower"
+      ]
+    },
+    {
+      "a": {
+        "road": 68,
+        "nodes": [
+          "pause_shop-steps-middle-junction_shop-steps-high-junction",
+          "shop-steps-high-junction"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 69,
+        "nodes": [
+          "shop-steps-high-junction",
+          "shop-steps-high-entry"
+        ],
+        "kind": "landing"
+      },
+      "area": 1.9060359739160049,
+      "maxDelta": 0.5948484999999977,
+      "point": [
+        128.4032436838942,
+        354.5
+      ],
+      "sharedNodes": [
+        "shop-steps-high-junction"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 286,
+        "nodes": [
+          "homes_high_m",
+          "v_a15_upper_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.5,
+      "maxDelta": 0.5933881250000042,
+      "point": [
+        186.5,
+        421.9107142857143
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    },
+    {
+      "a": {
+        "road": 256,
+        "nodes": [
+          "homes_high_m",
+          "stair_homes_high_m_homes_high_junction_01_in"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 289,
+        "nodes": [
+          "homes_high_m",
+          "v_a17_upper_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.5,
+      "maxDelta": 0.5933881250000042,
+      "point": [
+        185,
+        422
+      ],
+      "sharedNodes": [
+        "homes_high_m"
+      ]
+    },
+    {
+      "a": {
+        "road": 396,
+        "nodes": [
+          "fw_f_junction85",
+          "fw_f_wood_homes1"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 397,
+        "nodes": [
+          "fw_f_wood_homes1",
+          "stair_fw_f_wood_homes1_fw_f_wood_homes2_01_in"
+        ],
+        "kind": "steps"
+      },
+      "area": 4,
+      "maxDelta": 0.5909356710526339,
+      "point": [
+        68,
+        508
+      ],
+      "sharedNodes": [
+        "fw_f_wood_homes1"
+      ]
+    },
+    {
+      "a": {
+        "road": 399,
+        "nodes": [
+          "stair_fw_f_wood_homes1_fw_f_wood_homes2_01_out",
+          "fw_f_wood_homes2"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 400,
+        "nodes": [
+          "fw_f_wood_homes2",
+          "fw_f_wood_homes3"
+        ],
+        "kind": "lane"
+      },
+      "area": 4,
+      "maxDelta": 0.5909356710526339,
+      "point": [
+        68,
+        470
+      ],
+      "sharedNodes": [
+        "fw_f_wood_homes2"
+      ]
+    },
+    {
+      "a": {
+        "road": 173,
+        "nodes": [
+          "fw_w_garden_cross",
+          "cross_w"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 719,
+        "nodes": [
+          "cross_w",
+          "fw_w_v-85_maintenance"
+        ],
+        "kind": "service"
+      },
+      "area": 46.33124999999973,
+      "maxDelta": 0.5907692307692303,
+      "point": [
+        198.3,
+        -41
+      ],
+      "sharedNodes": [
+        "cross_w"
+      ]
+    },
+    {
+      "a": {
+        "road": 388,
+        "nodes": [
+          "fw_f_plateau_w2",
+          "fw_f_plateau_w3"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 389,
+        "nodes": [
+          "fw_f_plateau_w3",
+          "stair_fw_f_plateau_w3_fw_f_plateau_w4_01_in"
+        ],
+        "kind": "steps"
+      },
+      "area": 3.4121952348614286,
+      "maxDelta": 0.5875331724137993,
+      "point": [
+        -28,
+        453.9238178293455
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w3"
+      ]
+    },
+    {
+      "a": {
+        "road": 422,
+        "nodes": [
+          "level_fw_f_junction88_to_fw_f_plateau_e4",
+          "fw_f_plateau_e4"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 423,
+        "nodes": [
+          "fw_f_plateau_e4",
+          "platform_east"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.9460678118630312,
+      "maxDelta": 0.5863247564102494,
+      "point": [
+        271.1923076923077,
+        451.1923076923077
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_e4"
+      ]
+    },
+    {
+      "a": {
+        "road": 557,
+        "nodes": [
+          "school_steps_east_mid",
+          "school_steps_east_rest"
+        ],
+        "kind": "landing"
+      },
+      "b": {
+        "road": 558,
+        "nodes": [
+          "school_steps_east_rest",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "steps"
+      },
+      "area": 1.2283902284543728,
+      "maxDelta": 0.5833333333333357,
+      "point": [
+        542.6809523809525,
+        346
+      ],
+      "sharedNodes": [
+        "school_steps_east_rest"
+      ]
+    },
+    {
+      "a": {
+        "road": 125,
+        "nodes": [
+          "river_w",
+          "river_gate"
+        ],
+        "kind": "shore"
+      },
+      "b": {
+        "road": 127,
+        "nodes": [
+          "river_w",
+          "low_platform"
+        ],
+        "kind": "steps"
+      },
+      "area": 10.5,
+      "maxDelta": 0.583333333333333,
+      "point": [
+        177,
+        -103.125
+      ],
+      "sharedNodes": [
+        "river_w"
+      ]
+    },
+    {
+      "a": {
+        "road": 127,
+        "nodes": [
+          "river_w",
+          "low_platform"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 638,
+        "nodes": [
+          "river_w",
+          "fw_w_v-85_walk"
+        ],
+        "kind": "shore"
+      },
+      "area": 10.5,
+      "maxDelta": 0.583333333333333,
+      "point": [
+        180,
+        -103.5
+      ],
+      "sharedNodes": [
+        "river_w"
+      ]
+    },
+    {
+      "a": {
+        "road": 128,
+        "nodes": [
+          "dock",
+          "dock_low"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 639,
+        "nodes": [
+          "fw_w_v-85_walk",
+          "dock"
+        ],
+        "kind": "shore"
+      },
+      "area": 7,
+      "maxDelta": 0.583333333333333,
+      "point": [
+        298,
+        -103.125
+      ],
+      "sharedNodes": [
+        "dock"
+      ]
+    },
+    {
+      "a": {
+        "road": 128,
+        "nodes": [
+          "dock",
+          "dock_low"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 639,
+        "nodes": [
+          "dock",
+          "terrace_turn"
+        ],
+        "kind": "shore"
+      },
+      "area": 7,
+      "maxDelta": 0.583333333333333,
+      "point": [
+        300,
+        -103.5
+      ],
+      "sharedNodes": [
+        "dock"
+      ]
+    },
+    {
+      "a": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 726,
+        "nodes": [
+          "v_a01_door_landing",
+          "v_51_door_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.1382392171738047,
+      "maxDelta": 0.5833333333333321,
+      "point": [
+        -3.0093261131167264,
+        100.57927196149217
+      ],
+      "sharedNodes": [
+        "v_51_door_landing"
+      ]
+    },
+    {
+      "a": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 726,
+        "nodes": [
+          "v_51_door_landing",
+          "v_51_door"
+        ],
+        "kind": "lane"
+      },
+      "area": 0.720822929297384,
+      "maxDelta": 0.5833333333333321,
+      "point": [
+        -3.031504065040649,
+        100.53150406504065
+      ],
+      "sharedNodes": [
+        "v_51_door_landing"
+      ]
+    },
+    {
+      "a": {
+        "road": 183,
+        "nodes": [
+          "stair_west_link_west_link_n_01_out",
+          "west_link_n"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 184,
+        "nodes": [
+          "west_link_n",
+          "west_link_corner"
+        ],
+        "kind": "lane"
+      },
+      "area": 12.25,
+      "maxDelta": 0.5812499999999972,
+      "point": [
+        -186.5,
+        336.5
+      ],
+      "sharedNodes": [
+        "west_link_n"
+      ]
+    },
+    {
+      "a": {
+        "road": 69,
+        "nodes": [
+          "shop-steps-high-entry",
+          "shop_steps_high_turn"
+        ],
+        "kind": "landing"
+      },
+      "b": {
+        "road": 70,
+        "nodes": [
+          "shop_steps_high_turn",
+          "shop_steps_high_level"
+        ],
+        "kind": "steps"
+      },
+      "area": 2.25,
+      "maxDelta": 0.578611870967741,
+      "point": [
+        143.5483870967742,
+        364
+      ],
+      "sharedNodes": [
+        "shop_steps_high_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 70,
+        "nodes": [
+          "shop_steps_high_turn",
+          "shop_steps_high_level"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 71,
+        "nodes": [
+          "shop_steps_high_level",
+          "upper_homes"
+        ],
+        "kind": "landing"
+      },
+      "area": 2.25,
+      "maxDelta": 0.578611870967741,
+      "point": [
+        131.5,
+        365.5
+      ],
+      "sharedNodes": [
+        "shop_steps_high_level"
+      ]
+    },
+    {
+      "a": {
+        "road": 173,
+        "nodes": [
+          "east_j",
+          "fw_w_music_gate"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 681,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_north"
+        ],
+        "kind": "lane"
+      },
+      "area": 12,
+      "maxDelta": 0.5600000400000003,
+      "point": [
+        674,
+        135
+      ],
+      "sharedNodes": [
+        "fw_w_music_gate"
+      ]
+    },
+    {
+      "a": {
+        "road": 173,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_delivery"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 681,
+        "nodes": [
+          "fw_w_music_gate",
+          "fw_w_music_north"
+        ],
+        "kind": "lane"
+      },
+      "area": 12,
+      "maxDelta": 0.5600000400000003,
+      "point": [
+        674,
+        135
+      ],
+      "sharedNodes": [
+        "fw_w_music_gate"
+      ]
+    },
+    {
+      "a": {
+        "road": 56,
+        "nodes": [
+          "east_g",
+          "east_j"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 162,
+        "nodes": [
+          "east_clinic",
+          "east_g"
+        ],
+        "kind": "lane"
+      },
+      "area": 123.02306284188671,
+      "maxDelta": 0.5418754949753826,
+      "point": [
+        595.2936196934796,
+        175.56116359291968
+      ],
+      "sharedNodes": [
+        "east_g"
+      ]
+    },
+    {
+      "a": {
+        "road": 51,
+        "nodes": [
+          "east_n",
+          "housing_front"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 161,
+        "nodes": [
+          "fw_e_school_edge_top",
+          "east_n"
+        ],
+        "kind": "lane"
+      },
+      "area": 8.75,
+      "maxDelta": 0.5375000000000014,
+      "point": [
+        547.5,
+        351.5
+      ],
+      "sharedNodes": [
+        "east_n"
+      ]
+    },
+    {
+      "a": {
+        "road": 383,
+        "nodes": [
+          "fw_f_junction78",
+          "fw_f_neighbors3"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 385,
+        "nodes": [
+          "fw_f_neighbors_w3",
+          "fw_f_neighbors3"
+        ],
+        "kind": "lane"
+      },
+      "area": 8.434799611095514,
+      "maxDelta": 0.5338047541605775,
+      "point": [
+        248.61922908564333,
+        280
+      ],
+      "sharedNodes": [
+        "fw_f_neighbors3"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 192,
+        "nodes": [
+          "bakery_front",
+          "market_turn"
+        ],
+        "kind": "lane"
+      },
+      "area": 5.809632537131165,
+      "maxDelta": 0.5282351476027891,
+      "point": [
+        10.708151745348632,
+        151.66419925935278
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 150,
+        "nodes": [
+          "slope_junction_platform",
+          "level_platform_east_from_slope_junction_platform"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 247,
+        "nodes": [
+          "stair_slope_upper_landing_level_platform_east_from_slope_upper_landing_01_out",
+          "level_platform_east_from_slope_upper_landing"
+        ],
+        "kind": "steps"
+      },
+      "area": 17.15713221354963,
+      "maxDelta": 0.49164563194443645,
+      "point": [
+        280.8634582267225,
+        427.23169149672265
+      ],
+      "sharedNodes": []
+    },
+    {
+      "a": {
+        "road": 162,
+        "nodes": [
+          "east_clinic",
+          "east_g"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 202,
+        "nodes": [
+          "east_clinic",
+          "clinic_service_s"
+        ],
+        "kind": "service"
+      },
+      "area": 2.342467250287882,
+      "maxDelta": 0.4846299669678178,
+      "point": [
+        707.686056126833,
+        170.94109717452238
+      ],
+      "sharedNodes": [
+        "east_clinic"
+      ]
+    },
+    {
+      "a": {
+        "road": 146,
+        "nodes": [
+          "platform_west",
+          "west_upper_south"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 388,
+        "nodes": [
+          "platform_west",
+          "fw_f_plateau_w0"
+        ],
+        "kind": "lane"
+      },
+      "area": 15.027622859437543,
+      "maxDelta": 0.47824000181427095,
+      "point": [
+        -154.4934210274257,
+        442.7027699291358
+      ],
+      "sharedNodes": [
+        "platform_west"
+      ]
+    },
+    {
+      "a": {
+        "road": 634,
+        "nodes": [
+          "fw_w_cinema_s",
+          "community"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 740,
+        "nodes": [
+          "food_ramp_level",
+          "community"
+        ],
+        "kind": "lane"
+      },
+      "area": 66.02677504608437,
+      "maxDelta": 0.4712442983111629,
+      "point": [
+        202.00892501536165,
+        133
+      ],
+      "sharedNodes": [
+        "community"
+      ]
+    },
+    {
+      "a": {
+        "road": 174,
+        "nodes": [
+          "east_s",
+          "east_g"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 708,
+        "nodes": [
+          "fw_w_garden_e",
+          "east_s"
+        ],
+        "kind": "lane"
+      },
+      "area": 17.11103570598425,
+      "maxDelta": 0.4446697907933075,
+      "point": [
+        509.19489629146267,
+        -17.98957951357343
+      ],
+      "sharedNodes": [
+        "east_s"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 17,
+        "nodes": [
+          "west_market",
+          "market_turn"
+        ],
+        "kind": "lane"
+      },
+      "area": 15.565235418163866,
+      "maxDelta": 0.42623915894752074,
+      "point": [
+        11.358958633895167,
+        152.63041639437594
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 416,
+        "nodes": [
+          "pause_fw_f_junction89_fw_f_plateau_e1",
+          "fw_f_plateau_e1"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 417,
+        "nodes": [
+          "fw_f_plateau_e1",
+          "fw_f_junction90"
+        ],
+        "kind": "lane"
+      },
+      "area": 6.25,
+      "maxDelta": 0.42391181818182133,
+      "point": [
+        124.5,
+        517.5
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_e1"
+      ]
+    },
+    {
+      "a": {
+        "road": 407,
+        "nodes": [
+          "level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1",
+          "fw_f_plateau_w_rear1"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 408,
+        "nodes": [
+          "fw_f_plateau_w_rear1",
+          "fw_f_junction82"
+        ],
+        "kind": "lane"
+      },
+      "area": 4,
+      "maxDelta": 0.4237528333333387,
+      "point": [
+        -73,
+        514.0066666666667
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_w_rear1"
+      ]
+    },
+    {
+      "a": {
+        "road": 407,
+        "nodes": [
+          "level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1",
+          "fw_f_plateau_w_rear1"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 428,
+        "nodes": [
+          "fw_f_plateau_w_rear0",
+          "fw_f_plateau_w_stay0"
+        ],
+        "kind": "lane"
+      },
+      "area": 2.262877331380878,
+      "maxDelta": 0.4237528333333387,
+      "point": [
+        -75,
+        488.09832753514763
+      ],
+      "sharedNodes": []
+    },
+    {
+      "a": {
+        "road": 52,
+        "nodes": [
+          "school_service_approach",
+          "east_g"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 162,
+        "nodes": [
+          "east_clinic",
+          "east_g"
+        ],
+        "kind": "lane"
+      },
+      "area": 5.841775920249347,
+      "maxDelta": 0.4185498978228601,
+      "point": [
+        552.5,
+        182.32320695844828
+      ],
+      "sharedNodes": [
+        "east_g"
+      ]
+    },
+    {
+      "a": {
+        "road": 417,
+        "nodes": [
+          "fw_f_junction91",
+          "fw_f_plateau_e2"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 418,
+        "nodes": [
+          "fw_f_plateau_e2",
+          "level_fw_f_plateau_e3_from_fw_f_plateau_e2"
+        ],
+        "kind": "steps"
+      },
+      "area": 6.25,
+      "maxDelta": 0.4183568888888942,
+      "point": [
+        267.5,
+        517.5
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_e2"
+      ]
+    },
+    {
+      "a": {
+        "road": 369,
+        "nodes": [
+          "west_court_gate",
+          "fw_f_old_court0"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 370,
+        "nodes": [
+          "fw_f_old_court0",
+          "pause_fw_f_junction53_fw_f_old_court0"
+        ],
+        "kind": "steps"
+      },
+      "area": 2.25,
+      "maxDelta": 0.41677537878787874,
+      "point": [
+        -104,
+        276.24242424242425
+      ],
+      "sharedNodes": [
+        "fw_f_old_court0"
+      ]
+    },
+    {
+      "a": {
+        "road": 370,
+        "nodes": [
+          "fw_f_old_court0",
+          "pause_fw_f_junction53_fw_f_old_court0"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 379,
+        "nodes": [
+          "fw_f_old_court0",
+          "fw_f_old_court4"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.6541795551274845,
+      "maxDelta": 0.41677537878787874,
+      "point": [
+        -103.61174242424242,
+        276.24242424242425
+      ],
+      "sharedNodes": [
+        "fw_f_old_court0"
+      ]
+    },
+    {
+      "a": {
+        "road": 128,
+        "nodes": [
+          "dock",
+          "dock_low"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 207,
+        "nodes": [
+          "dock",
+          "ferry_waiting_entry"
+        ],
+        "kind": "lane"
+      },
+      "area": 4.4810988842818915,
+      "maxDelta": 0.41666666666666696,
+      "point": [
+        298,
+        -102.08333333333333
+      ],
+      "sharedNodes": [
+        "dock"
+      ]
+    },
+    {
+      "a": {
+        "road": 161,
+        "nodes": [
+          "school_n",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 558,
+        "nodes": [
+          "school_steps_east_rest",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "steps"
+      },
+      "area": 0.723214285710128,
+      "maxDelta": 0.4166666666666643,
+      "point": [
+        530,
+        353.21678746673996
+      ],
+      "sharedNodes": [
+        "fw_e_school_edge_top"
+      ]
+    },
+    {
+      "a": {
+        "road": 424,
+        "nodes": [
+          "fw_f_plateau_e_mid0",
+          "fw_f_plateau_e_mid1"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 532,
+        "nodes": [
+          "fw_f_plateau_e_mid0",
+          "fw_f_v_f63_resident"
+        ],
+        "kind": "steps"
+      },
+      "area": 0.5454545454558684,
+      "maxDelta": 0.4129464843749986,
+      "point": [
+        178,
+        481.4798927814636
+      ],
+      "sharedNodes": [
+        "fw_f_plateau_e_mid0"
+      ]
+    },
+    {
+      "a": {
+        "road": 52,
+        "nodes": [
+          "school_service_approach",
+          "east_g"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 56,
+        "nodes": [
+          "east_g",
+          "east_j"
+        ],
+        "kind": "lane"
+      },
+      "area": 5.361993479789817,
+      "maxDelta": 0.4101588505176679,
+      "point": [
+        552.5,
+        182.14479739191654
+      ],
+      "sharedNodes": [
+        "east_g"
+      ]
+    },
+    {
+      "a": {
+        "road": 51,
+        "nodes": [
+          "east_n",
+          "housing_front"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 561,
+        "nodes": [
+          "housing_front",
+          "fw_e_hw_mid"
+        ],
+        "kind": "lane"
+      },
+      "area": 6.25,
+      "maxDelta": 0.40625,
+      "point": [
+        552.5,
+        262.5
+      ],
+      "sharedNodes": [
+        "housing_front"
+      ]
+    },
+    {
+      "a": {
+        "road": 393,
+        "nodes": [
+          "pause_fw_f_plateau_w4_fw_f_junction83",
+          "pause_fw_f_junction83_fw_f_plateau_w4"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 525,
+        "nodes": [
+          "fw_f_junction83",
+          "fw_f_v_f54_resident"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.25,
+      "maxDelta": 0.39544812499998727,
+      "point": [
+        -12.5,
+        494.7890625
+      ],
+      "sharedNodes": []
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "court",
+          "shop_south_junction"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 179,
+        "nodes": [
+          "court",
+          "home_ramp_a"
+        ],
+        "kind": "lane"
+      },
+      "area": 43.73239478487176,
+      "maxDelta": 0.3853147701686517,
+      "point": [
+        69.76605238542597,
+        198.23712815896266
+      ],
+      "sharedNodes": [
+        "court"
+      ]
+    },
+    {
+      "a": {
+        "road": 51,
+        "nodes": [
+          "east_n",
+          "housing_front"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 163,
+        "nodes": [
+          "east_n",
+          "east_homes"
+        ],
+        "kind": "lane"
+      },
+      "area": 8.75,
+      "maxDelta": 0.375,
+      "point": [
+        552.5,
+        351.5
+      ],
+      "sharedNodes": [
+        "east_n"
+      ]
+    },
+    {
+      "a": {
+        "road": 152,
+        "nodes": [
+          "fw_e_foot_ne",
+          "foothill_east"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 621,
+        "nodes": [
+          "fw_e_foot_ne_corner",
+          "fw_e_foot_ne"
+        ],
+        "kind": "lane"
+      },
+      "area": 38.32929127954412,
+      "maxDelta": 0.3610917984559592,
+      "point": [
+        545,
+        699
+      ],
+      "sharedNodes": [
+        "fw_e_foot_ne"
+      ]
+    },
+    {
+      "a": {
+        "road": 51,
+        "nodes": [
+          "east_n",
+          "housing_front"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 176,
+        "nodes": [
+          "east_n",
+          "east_upper"
+        ],
+        "kind": "lane"
+      },
+      "area": 8.152756220719311,
+      "maxDelta": 0.3568261432715474,
+      "point": [
+        552.5,
+        351.65889751171295
+      ],
+      "sharedNodes": [
+        "east_n"
+      ]
+    }
+  ]
+}

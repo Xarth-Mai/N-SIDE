@@ -1,0 +1,114 @@
+[
+  {
+    "view": "inspect-road-old-home",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/inspect-road-old-home",
+      "--view",
+      "inspect-road-old-home"
+    ],
+    "exit_code": 0,
+    "seconds": 16.638548578019254
+  },
+  {
+    "view": "inspect-road-home-north",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/inspect-road-home-north",
+      "--view",
+      "inspect-road-home-north"
+    ],
+    "exit_code": 0,
+    "seconds": 16.489103425003123
+  },
+  {
+    "view": "inspect-road-upper-homes",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/inspect-road-upper-homes",
+      "--view",
+      "inspect-road-upper-homes"
+    ],
+    "exit_code": 0,
+    "seconds": 16.592039244016632
+  },
+  {
+    "view": "inspect-road-foothill-east",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/inspect-road-foothill-east",
+      "--view",
+      "inspect-road-foothill-east"
+    ],
+    "exit_code": 0,
+    "seconds": 16.489777765993495
+  },
+  {
+    "view": "inspect-road-north",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/inspect-road-north",
+      "--view",
+      "inspect-road-north"
+    ],
+    "exit_code": 0,
+    "seconds": 16.539372673025355
+  },
+  {
+    "view": "block-B05",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/block-B05",
+      "--view",
+      "block-B05"
+    ],
+    "exit_code": 0,
+    "seconds": 16.48921457497636
+  },
+  {
+    "view": "block-B06",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/block-B06",
+      "--view",
+      "block-B06"
+    ],
+    "exit_code": 0,
+    "seconds": 16.53926147299353
+  },
+  {
+    "view": "block-B12",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/road-junctions/2026-09-27/r2/block-B12",
+      "--view",
+      "block-B12"
+    ],
+    "exit_code": 0,
+    "seconds": 16.490238406986464
+  }
+]

@@ -1,0 +1,167 @@
+{
+  "scope": "105 samples per new level ribbon, against baked source triangulation before road masks and retaining walls",
+  "results": [
+    {
+      "road": 29,
+      "nodes": [
+        "west_upper",
+        "junction_west_upper_east"
+      ],
+      "kind": "lane",
+      "elevation": 73.440476,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 1.3895686379328254e-8,
+      "whereAbove": [
+        6.677011107115194,
+        420.6461628689213
+      ],
+      "maxRoadBelowBaseGround": 1.4210854715202004e-14,
+      "whereBelow": [
+        -1.0769369698853608,
+        417.199963078298
+      ],
+      "buildingOverlaps": []
+    },
+    {
+      "road": 29,
+      "nodes": [
+        "junction_upper_homes_west",
+        "upper_homes"
+      ],
+      "kind": "lane",
+      "elevation": 61.6,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 7.105427357601002e-15,
+      "whereAbove": [
+        123.07170364569677,
+        374.27185139902247
+      ],
+      "maxRoadBelowBaseGround": 3.2555426798808185e-8,
+      "whereBelow": [
+        121.45629770860646,
+        370.071796201955
+      ],
+      "buildingOverlaps": []
+    },
+    {
+      "road": 176,
+      "nodes": [
+        "junction_foothill_east_road",
+        "foothill_east"
+      ],
+      "kind": "lane",
+      "elevation": 175,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 0.32873439654071035,
+      "whereAbove": [
+        573.9481458254768,
+        707.2919875204187
+      ],
+      "maxRoadBelowBaseGround": 2.2953232945206423,
+      "whereBelow": [
+        578.5687526938494,
+        708.318789309686
+      ],
+      "buildingOverlaps": []
+    },
+    {
+      "road": 854,
+      "nodes": [
+        "old_home",
+        "junction_old_home_north"
+      ],
+      "kind": "landing",
+      "elevation": 44,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 0,
+      "whereAbove": [],
+      "maxRoadBelowBaseGround": 0.07598433905685198,
+      "whereBelow": [
+        3,
+        335.6
+      ],
+      "buildingOverlaps": []
+    },
+    {
+      "road": 855,
+      "nodes": [
+        "home_north",
+        "junction_home_north_upper"
+      ],
+      "kind": "landing",
+      "elevation": 45.841176,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 7.105427357601002e-15,
+      "whereAbove": [
+        101.33412237413617,
+        334.251590022169
+      ],
+      "maxRoadBelowBaseGround": 1.4210854715202004e-14,
+      "whereBelow": [
+        105.04363297413617,
+        338.579353022169
+      ],
+      "buildingOverlaps": []
+    },
+    {
+      "road": 856,
+      "nodes": [
+        "foothill_east",
+        "junction_foothill_east_north"
+      ],
+      "kind": "landing",
+      "elevation": 175,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 0.040750011740527725,
+      "whereAbove": [
+        572,
+        710
+      ],
+      "maxRoadBelowBaseGround": 1.6790124000000333,
+      "whereBelow": [
+        568,
+        717.483252738283
+      ],
+      "buildingOverlaps": []
+    },
+    {
+      "road": 856,
+      "nodes": [
+        "junction_foothill_east_north",
+        "junction_foothill_east_stair"
+      ],
+      "kind": "landing",
+      "elevation": 175,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 5.684341886080802e-14,
+      "whereAbove": [
+        574.4,
+        719.76
+      ],
+      "maxRoadBelowBaseGround": 1.6790123999999764,
+      "whereBelow": [
+        568,
+        719.3540659228538
+      ],
+      "buildingOverlaps": []
+    },
+    {
+      "road": 857,
+      "nodes": [
+        "north",
+        "junction_north_west_trail"
+      ],
+      "kind": "landing",
+      "elevation": 152.888889,
+      "sampleCount": 105,
+      "maxRoadAboveBaseGround": 0,
+      "whereAbove": [],
+      "maxRoadBelowBaseGround": 2.842170943040401e-14,
+      "whereBelow": [
+        70,
+        571.4
+      ],
+      "buildingOverlaps": []
+    }
+  ]
+}
