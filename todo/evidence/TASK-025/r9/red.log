@@ -1,0 +1,577 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+151 |   }
+152 | })
+153 |
+154 | test('all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches',()=>{
+155 |   const data:District=source
+156 |   assert.deepEqual(roadWidthConflicts(data,'all'),[],'all source ground-road widths must meet at compatible elevations')
+               ^
+AssertionError: all source ground-road widths must meet at compatible elevations
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'music_west',
++         'east_j'
++       ],
++       road: 171
++     },
++     area: 26.445311299430614,
++     b: {
++       kind: 'avenue',
++       nodes: [
++         'east_j',
++         'fw_w_music_gate'
++       ],
++       road: 173
++     },
++     maxDelta: 1.0244110050570825,
++     point: [
++       674,
++       157.82947828092776
++     ],
++     sharedNodes: [
++       'east_j'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_g',
++         'east_j'
++       ],
++       road: 56
++     },
++     area: 25.953372489864705,
++     b: {
++       kind: 'avenue',
++       nodes: [
++         'east_j',
++         'fw_w_music_gate'
++       ],
++       road: 173
++     },
++     maxDelta: 1.000718805342773,
++     point: [
++       674,
++       158.393664146545
++     ],
++     sharedNodes: [
++       'east_j'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_n',
++         'east_upper'
++       ],
++       road: 176
++     },
++     area: 213.72413988657354,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_e_upper_w',
++         'east_upper'
++       ],
++       road: 591
++     },
++     maxDelta: 0.7313955432632611,
++     point: [
++       626.7767078681051,
++       363.6262163461607
++     ],
++     sharedNodes: [
++       'east_upper'
++     ]
++   },
++   {
++     a: {
++       kind: 'main',
++       nodes: [
++         'court',
++         'shop_south_junction'
++       ],
++       road: 1
++     },
++     area: 20.681601115345075,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'court',
++         'tree_entry'
++       ],
++       road: 252
++     },
++     maxDelta: 0.7129255305210229,
++     point: [
++       62.986393923832146,
++       201.83560101269464
++     ],
++     sharedNodes: [
++       'court'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'shop_west_s',
++         'shop_west_m'
++       ],
++       road: 249
++     },
++     area: 10.22653973947854,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'shop_west_s',
++         'v_a04_door_landing'
++       ],
++       road: 268
++     },
++     maxDelta: 0.6433961576194989,
++     point: [
++       36.5,
++       202.48010216963684
++     ],
++     sharedNodes: [
++       'shop_west_s'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'pause_shop-steps-middle-junction_shop-steps-high-junction',
++         'shop-steps-high-junction'
++       ],
++       road: 68
++     },
++     area: 1.9060359739160049,
++     b: {
++       kind: 'landing',
++       nodes: [
++         'shop-steps-high-junction',
++         'shop-steps-high-entry'
++       ],
++       road: 69
++     },
++     maxDelta: 0.5948484999999977,
++     point: [
++       128.4032436838942,
++       354.5
++     ],
++     sharedNodes: [
++       'shop-steps-high-junction'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'stair_west_link_west_link_n_01_out',
++         'west_link_n'
++       ],
++       road: 183
++     },
++     area: 12.25,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'west_link_n',
++         'west_link_corner'
++       ],
++       road: 184
++     },
++     maxDelta: 0.5812499999999972,
++     point: [
++       -186.5,
++       336.5
++     ],
++     sharedNodes: [
++       'west_link_n'
++     ]
++   },
++   {
++     a: {
++       kind: 'landing',
++       nodes: [
++         'shop-steps-high-entry',
++         'shop_steps_high_turn'
++       ],
++       road: 69
++     },
++     area: 2.25,
++     b: {
++       kind: 'steps',
++       nodes: [
++         'shop_steps_high_turn',
++         'shop_steps_high_level'
++       ],
++       road: 70
++     },
++     maxDelta: 0.578611870967741,
++     point: [
++       143.5483870967742,
++       364
++     ],
++     sharedNodes: [
++       'shop_steps_high_turn'
++     ]
++   },
++   {
++     a: {
++       kind: 'steps',
++       nodes: [
++         'shop_steps_high_turn',
++         'shop_steps_high_level'
++       ],
++       road: 70
++     },
++     area: 2.25,
++     b: {
++       kind: 'landing',
++       nodes: [
++         'shop_steps_high_level',
++         'upper_homes'
++       ],
++       road: 71
++     },
++     maxDelta: 0.578611870967741,
++     point: [
++       131.5,
++       365.5
++     ],
++     sharedNodes: [
++       'shop_steps_high_level'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_g',
++         'east_j'
++       ],
++       road: 56
++     },
++     area: 123.02306284188671,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'east_clinic',
++         'east_g'
++       ],
++       road: 162
++     },
++     maxDelta: 0.5418754949753826,
++     point: [
++       595.2936196934796,
++       175.56116359291968
++     ],
++     sharedNodes: [
++       'east_g'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_n',
++         'housing_front'
++       ],
++       road: 51
++     },
++     area: 8.75,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_e_school_edge_top',
++         'east_n'
++       ],
++       road: 161
++     },
++     maxDelta: 0.5375000000000014,
++     point: [
++       547.5,
++       351.5
++     ],
++     sharedNodes: [
++       'east_n'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_clinic',
++         'east_g'
++       ],
++       road: 162
++     },
++     area: 2.342467250287882,
++     b: {
++       kind: 'service',
++       nodes: [
++         'east_clinic',
++         'clinic_service_s'
++       ],
++       road: 202
++     },
++     maxDelta: 0.4846299669678178,
++     point: [
++       707.686056126833,
++       170.94109717452238
++     ],
++     sharedNodes: [
++       'east_clinic'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_s',
++         'east_g'
++       ],
++       road: 174
++     },
++     area: 17.11103570598425,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_w_garden_e',
++         'east_s'
++       ],
++       road: 708
++     },
++     maxDelta: 0.4446697907933075,
++     point: [
++       509.19489629146267,
++       -17.98957951357343
++     ],
++     sharedNodes: [
++       'east_s'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'school_service_approach',
++         'east_g'
++       ],
++       road: 52
++     },
++     area: 5.841775920249347,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'east_clinic',
++         'east_g'
++       ],
++       road: 162
++     },
++     maxDelta: 0.4185498978228601,
++     point: [
++       552.5,
++       182.32320695844828
++     ],
++     sharedNodes: [
++       'east_g'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'school_service_approach',
++         'east_g'
++       ],
++       road: 52
++     },
++     area: 5.361993479789817,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'east_g',
++         'east_j'
++       ],
++       road: 56
++     },
++     maxDelta: 0.4101588505176679,
++     point: [
++       552.5,
++       182.14479739191654
++     ],
++     sharedNodes: [
++       'east_g'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_n',
++         'housing_front'
++       ],
++       road: 51
++     },
++     area: 6.25,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'housing_front',
++         'fw_e_hw_mid'
++       ],
++       road: 561
++     },
++     maxDelta: 0.40625,
++     point: [
++       552.5,
++       262.5
++     ],
++     sharedNodes: [
++       'housing_front'
++     ]
++   },
++   {
++     a: {
++       kind: 'main',
++       nodes: [
++         'court',
++         'shop_south_junction'
++       ],
++       road: 1
++     },
++     area: 44.121811899263776,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'court',
++         'home_ramp_a'
++       ],
++       road: 179
++     },
++     maxDelta: 0.4014054354931247,
++     point: [
++       69.76605238542595,
++       198.23712815896266
++     ],
++     sharedNodes: [
++       'court'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_n',
++         'housing_front'
++       ],
++       road: 51
++     },
++     area: 8.75,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'east_n',
++         'east_homes'
++       ],
++       road: 163
++     },
++     maxDelta: 0.375,
++     point: [
++       552.5,
++       351.5
++     ],
++     sharedNodes: [
++       'east_n'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'fw_e_foot_ne',
++         'foothill_east'
++       ],
++       road: 152
++     },
++     area: 38.32929127954412,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'fw_e_foot_ne_corner',
++         'fw_e_foot_ne'
++       ],
++       road: 621
++     },
++     maxDelta: 0.3610917984559592,
++     point: [
++       545,
++       699
++     ],
++     sharedNodes: [
++       'fw_e_foot_ne'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_n',
++         'housing_front'
++       ],
++       road: 51
++     },
++     area: 8.152756220719311,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'east_n',
++         'east_upper'
++       ],
++       road: 176
++     },
++     maxDelta: 0.3568261432715474,
++     point: [
++       552.5,
++       351.65889751171295
++     ],
++     sharedNodes: [
++       'east_n'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:156:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches [466.32ms]
+
+ 0 pass
+ 11 filtered out
+ 1 fail
+Ran 1 test across 1 file. [542.00ms]

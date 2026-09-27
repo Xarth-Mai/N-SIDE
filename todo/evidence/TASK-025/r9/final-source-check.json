@@ -1,0 +1,738 @@
+{
+  "baseline_commit": "58725a3",
+  "before_sha256": "2a805a0a30f8f6468d9df23dc25c87cd00cca9678609e03f8a8d464448f16cbb",
+  "after_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+  "before": {
+    "nodes": 1604,
+    "roads": 897,
+    "samples": 8402,
+    "candidates": 20
+  },
+  "after": {
+    "nodes": 1628,
+    "roads": 901,
+    "samples": 8348,
+    "candidates": 0
+  },
+  "changedNodes": [
+    {
+      "id": "junction_e9_housing_0",
+      "before": null,
+      "after": [
+        550,
+        350,
+        39.5
+      ]
+    },
+    {
+      "id": "junction_e9_housing_1",
+      "before": null,
+      "after": [
+        566,
+        338,
+        37.587477
+      ]
+    },
+    {
+      "id": "junction_e9_housing_2",
+      "before": null,
+      "after": [
+        566,
+        321,
+        35.961833
+      ]
+    },
+    {
+      "id": "junction_e9_housing_3",
+      "before": null,
+      "after": [
+        550,
+        304,
+        33.729419
+      ]
+    },
+    {
+      "id": "junction_e9_housing_4",
+      "before": null,
+      "after": [
+        550,
+        265,
+        30
+      ]
+    },
+    {
+      "id": "junction_e9_housing_gate",
+      "before": null,
+      "after": [
+        554,
+        260,
+        30
+      ]
+    },
+    {
+      "id": "junction_e9_upper_start",
+      "before": null,
+      "after": [
+        550,
+        362,
+        39.5
+      ]
+    },
+    {
+      "id": "junction_e9_foot_merge",
+      "before": null,
+      "after": [
+        549.020681,
+        703.181721,
+        174
+      ]
+    },
+    {
+      "id": "junction_e9_garden_north",
+      "before": null,
+      "after": [
+        513.035631,
+        -11.29061,
+        8
+      ]
+    },
+    {
+      "id": "junction_e9_music_start",
+      "before": null,
+      "after": [
+        554,
+        180,
+        22
+      ]
+    },
+    {
+      "id": "junction_e9_music_merge",
+      "before": null,
+      "after": [
+        624,
+        163.111111,
+        14.853333
+      ]
+    },
+    {
+      "id": "junction_e9_music_lower",
+      "before": null,
+      "after": [
+        673,
+        160.388889,
+        10
+      ]
+    },
+    {
+      "id": "junction_e9_music_direct_bend",
+      "before": null,
+      "after": [
+        596,
+        171,
+        17.73
+      ]
+    },
+    {
+      "id": "junction_e9_music_west_bend",
+      "before": null,
+      "after": [
+        558,
+        170,
+        21
+      ]
+    },
+    {
+      "id": "junction_e9_clinic_upper",
+      "before": null,
+      "after": [
+        601,
+        183,
+        17.3
+      ]
+    },
+    {
+      "id": "junction_e9_clinic_lower",
+      "before": null,
+      "after": [
+        700,
+        170.625,
+        9
+      ]
+    },
+    {
+      "id": "junction_e9_avenue_south",
+      "before": null,
+      "after": [
+        680,
+        156,
+        10
+      ]
+    },
+    {
+      "id": "junction_e9_upper_platform_exit",
+      "before": null,
+      "after": [
+        823.484206,
+        357.826067,
+        41
+      ]
+    },
+    {
+      "id": "junction_shop_court_north",
+      "before": null,
+      "after": [
+        64.192938,
+        196.813169,
+        23
+      ]
+    },
+    {
+      "id": "junction_shop_west_north",
+      "before": null,
+      "after": [
+        38,
+        203,
+        23
+      ]
+    },
+    {
+      "id": "junction_shop_upper_south",
+      "before": null,
+      "after": [
+        127.17347,
+        353.040818,
+        56.475152
+      ]
+    },
+    {
+      "id": "junction_shop_upper_base",
+      "before": null,
+      "after": [
+        142,
+        364,
+        56.475152
+      ]
+    },
+    {
+      "id": "junction_shop_upper_top",
+      "before": null,
+      "after": [
+        133,
+        364,
+        61.6
+      ]
+    },
+    {
+      "id": "junction_shop_west_link_top",
+      "before": null,
+      "after": [
+        -190,
+        335,
+        36.625
+      ]
+    }
+  ],
+  "roads": [
+    {
+      "i": 1,
+      "before": {
+        "nodes": [
+          "square",
+          "junction_square_north",
+          "junction_square_bend",
+          "market_entry",
+          "market_turn",
+          "junction_market_turn_north",
+          "court",
+          "shop_south_junction",
+          "flat_home_from_shop_south_junction",
+          "home",
+          "flat_home_to_east_low_junction",
+          "east_low_junction",
+          "flat_east_low_junction_to_east_mid_junction",
+          "flat_east_mid_junction_from_east_low_junction",
+          "east_mid_junction"
+        ],
+        "kind": "main",
+        "width": 8
+      },
+      "after": {
+        "nodes": [
+          "square",
+          "junction_square_north",
+          "junction_square_bend",
+          "market_entry",
+          "market_turn",
+          "junction_market_turn_north",
+          "court",
+          "junction_shop_court_north",
+          "shop_south_junction",
+          "flat_home_from_shop_south_junction",
+          "home",
+          "flat_home_to_east_low_junction",
+          "east_low_junction",
+          "flat_east_low_junction_to_east_mid_junction",
+          "flat_east_mid_junction_from_east_low_junction",
+          "east_mid_junction"
+        ],
+        "kind": "main",
+        "width": 8
+      }
+    },
+    {
+      "i": 51,
+      "before": {
+        "nodes": [
+          "east_n",
+          "housing_front"
+        ],
+        "kind": "lane",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "east_n",
+          "junction_e9_housing_0",
+          "junction_e9_housing_1",
+          "junction_e9_housing_2",
+          "junction_e9_housing_3",
+          "junction_e9_housing_4",
+          "housing_front"
+        ],
+        "kind": "lane",
+        "width": 5
+      }
+    },
+    {
+      "i": 56,
+      "before": {
+        "nodes": [
+          "east_g",
+          "east_j"
+        ],
+        "kind": "lane",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "east_g",
+          "junction_e9_music_start",
+          "junction_e9_music_direct_bend",
+          "junction_e9_music_merge"
+        ],
+        "kind": "lane",
+        "width": 5
+      }
+    },
+    {
+      "i": 68,
+      "before": {
+        "nodes": [
+          "pause_shop-steps-middle-junction_shop-steps-high-junction",
+          "shop-steps-high-junction"
+        ],
+        "kind": "steps",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "pause_shop-steps-middle-junction_shop-steps-high-junction",
+          "junction_shop_upper_south"
+        ],
+        "kind": "steps",
+        "width": 3
+      }
+    },
+    {
+      "i": 70,
+      "before": {
+        "nodes": [
+          "shop_steps_high_turn",
+          "shop_steps_high_level"
+        ],
+        "kind": "steps",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "junction_shop_upper_base",
+          "junction_shop_upper_top"
+        ],
+        "kind": "steps",
+        "width": 3
+      }
+    },
+    {
+      "i": 152,
+      "before": {
+        "nodes": [
+          "hillgate",
+          "fw_e_foot_mid_w",
+          "fw_e_foot_mid",
+          "fw_e_foot_walk_w",
+          "fw_e_foot_nw",
+          "fw_e_v_ef48_resident0_via0",
+          "fw_e_v_ef49_resident0_via0",
+          "fw_e_foot_ne",
+          "foothill_east"
+        ],
+        "kind": "lane",
+        "width": 6
+      },
+      "after": {
+        "nodes": [
+          "hillgate",
+          "fw_e_foot_mid_w",
+          "fw_e_foot_mid",
+          "fw_e_foot_walk_w",
+          "fw_e_foot_nw",
+          "fw_e_v_ef48_resident0_via0",
+          "fw_e_v_ef49_resident0_via0",
+          "fw_e_foot_ne",
+          "junction_e9_foot_merge",
+          "foothill_east"
+        ],
+        "kind": "lane",
+        "width": 6
+      }
+    },
+    {
+      "i": 162,
+      "before": {
+        "nodes": [
+          "east_j",
+          "east_clinic",
+          "east_g"
+        ],
+        "kind": "lane",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "east_j",
+          "east_clinic",
+          "junction_e9_clinic_lower",
+          "junction_e9_clinic_upper",
+          "junction_e9_music_start",
+          "east_g"
+        ],
+        "kind": "lane",
+        "width": 5
+      }
+    },
+    {
+      "i": 171,
+      "before": {
+        "nodes": [
+          "east_g",
+          "music_west",
+          "east_j"
+        ],
+        "kind": "lane",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "east_g",
+          "junction_e9_music_start",
+          "junction_e9_music_west_bend",
+          "music_west",
+          "junction_e9_music_merge",
+          "junction_e9_music_lower",
+          "east_j"
+        ],
+        "kind": "lane",
+        "width": 5
+      }
+    },
+    {
+      "i": 173,
+      "before": {
+        "nodes": [
+          "city_east",
+          "city_e",
+          "east_avenue",
+          "fw_w_junction_18",
+          "east_j",
+          "fw_w_music_gate",
+          "fw_w_music_delivery",
+          "music_cross",
+          "cross_e",
+          "fw_w_garden_cross",
+          "cross_w"
+        ],
+        "kind": "avenue",
+        "width": 12
+      },
+      "after": {
+        "nodes": [
+          "city_east",
+          "city_e",
+          "east_avenue",
+          "fw_w_junction_18",
+          "east_j",
+          "junction_e9_avenue_south",
+          "fw_w_music_gate",
+          "fw_w_music_delivery",
+          "music_cross",
+          "cross_e",
+          "fw_w_garden_cross",
+          "cross_w"
+        ],
+        "kind": "avenue",
+        "width": 12
+      }
+    },
+    {
+      "i": 174,
+      "before": {
+        "nodes": [
+          "garden_gate",
+          "park_s",
+          "fw_w_junction_0",
+          "east_s",
+          "east_g"
+        ],
+        "kind": "lane",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "garden_gate",
+          "park_s",
+          "fw_w_junction_0",
+          "east_s",
+          "junction_e9_garden_north",
+          "east_g"
+        ],
+        "kind": "lane",
+        "width": 5
+      }
+    },
+    {
+      "i": 176,
+      "before": {
+        "nodes": [
+          "east_n",
+          "east_upper",
+          "res_e",
+          "fw_e_east_upper_join",
+          "upland_east_turn",
+          "upland_east_bend",
+          "junction_foothill_east_road",
+          "foothill_east",
+          "junction_foothill_house_north",
+          "foothill_house_gate",
+          "foothill_south_e",
+          "foothill_south_w",
+          "hillgate"
+        ],
+        "kind": "lane",
+        "width": 7
+      },
+      "after": {
+        "nodes": [
+          "east_n",
+          "junction_e9_upper_start",
+          "fw_e_upper_w",
+          "east_upper",
+          "res_e",
+          "fw_e_east_upper_join",
+          "junction_e9_upper_platform_exit",
+          "upland_east_turn",
+          "upland_east_bend",
+          "junction_foothill_east_road",
+          "foothill_east",
+          "junction_foothill_house_north",
+          "foothill_house_gate",
+          "foothill_south_e",
+          "foothill_south_w",
+          "hillgate"
+        ],
+        "kind": "lane",
+        "width": 7
+      }
+    },
+    {
+      "i": 183,
+      "before": {
+        "nodes": [
+          "stair_west_link_west_link_n_01_out",
+          "west_link_n"
+        ],
+        "kind": "steps",
+        "width": 7
+      },
+      "after": {
+        "nodes": [
+          "stair_west_link_west_link_n_01_out",
+          "junction_shop_west_link_top"
+        ],
+        "kind": "steps",
+        "width": 7
+      }
+    },
+    {
+      "i": 249,
+      "before": {
+        "nodes": [
+          "court",
+          "shop_west_s",
+          "shop_west_m"
+        ],
+        "kind": "lane",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "court",
+          "shop_west_s",
+          "junction_shop_west_north",
+          "shop_west_m"
+        ],
+        "kind": "lane",
+        "width": 3
+      }
+    },
+    {
+      "i": 561,
+      "before": {
+        "nodes": [
+          "housing_front",
+          "fw_e_hw_mid",
+          "housing_gate"
+        ],
+        "kind": "lane",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "housing_front",
+          "junction_e9_housing_gate",
+          "fw_e_hw_mid",
+          "housing_gate"
+        ],
+        "kind": "lane",
+        "width": 5
+      }
+    },
+    {
+      "i": 591,
+      "before": {
+        "nodes": [
+          "fw_e_upper_w",
+          "east_upper",
+          "fw_e_upper_e"
+        ],
+        "kind": "lane",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "east_upper",
+          "fw_e_upper_e"
+        ],
+        "kind": "lane",
+        "width": 5
+      }
+    },
+    {
+      "i": 897,
+      "before": null,
+      "after": {
+        "nodes": [
+          "shop-steps-high-junction",
+          "junction_shop_upper_south"
+        ],
+        "kind": "landing",
+        "width": 3
+      }
+    },
+    {
+      "i": 898,
+      "before": null,
+      "after": {
+        "nodes": [
+          "shop_steps_high_turn",
+          "junction_shop_upper_base"
+        ],
+        "kind": "landing",
+        "width": 3
+      }
+    },
+    {
+      "i": 899,
+      "before": null,
+      "after": {
+        "nodes": [
+          "shop_steps_high_level",
+          "junction_shop_upper_top"
+        ],
+        "kind": "landing",
+        "width": 3
+      }
+    },
+    {
+      "i": 900,
+      "before": null,
+      "after": {
+        "nodes": [
+          "west_link_n",
+          "junction_shop_west_link_top"
+        ],
+        "kind": "landing",
+        "width": 7
+      }
+    }
+  ],
+  "preserved": [
+    {
+      "field": "buildings",
+      "unchanged": true
+    },
+    {
+      "field": "surfaces",
+      "unchanged": true
+    },
+    {
+      "field": "parcels",
+      "unchanged": true
+    },
+    {
+      "field": "trees",
+      "unchanged": true
+    },
+    {
+      "field": "elevatedNodes",
+      "unchanged": true
+    }
+  ],
+  "buildingIntersections": [],
+  "authoredTerrainUnchanged": true,
+  "routes": [
+    {
+      "id": "hill",
+      "before": 5228.799286768331,
+      "after": 5228.799286768331,
+      "nodesUnchanged": true,
+      "coordinatesUnchanged": true,
+      "conflicts": []
+    },
+    {
+      "id": "hill-short",
+      "before": 1311.1873445785216,
+      "after": 1311.1873445785216,
+      "nodesUnchanged": true,
+      "coordinatesUnchanged": true,
+      "conflicts": []
+    },
+    {
+      "id": "cinema-gentle",
+      "before": 961.6908870623507,
+      "after": 961.6908870623507,
+      "nodesUnchanged": true,
+      "coordinatesUnchanged": true,
+      "conflicts": []
+    }
+  ]
+}

@@ -150,3 +150,9 @@ test('food street bypasses shop footprints and waterfront stairs descend beside 
     }
   }
 })
+
+test('all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches',()=>{
+  const data:District=source
+  assert.deepEqual(roadWidthConflicts(data,'all'),[],'all source ground-road widths must meet at compatible elevations')
+  checkExteriorApproaches(data,data.roads.filter(r=>r.nodes.some(id=>/^junction_(e9_|shop_)/.test(id))))
+})
