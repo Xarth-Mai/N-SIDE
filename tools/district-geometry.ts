@@ -35,7 +35,7 @@ export function segmentIntervals(a: Point,b: Point,polygon: Point[],boundary=fal
 export const segmentInside=(a: Point,b: Point,p: Point[])=>pointInside(a,p)&&pointInside(b,p)&&Math.abs(segmentIntervals(a,b,p,true).reduce((n,[lo,hi])=>n+hi-lo,0)-1)<EPS
 export const polygonInside=(p: Point[],container: Point[])=>edges(p).every(([a,b])=>segmentInside(a,b,container))
 
-function triangles(polygon: Point[]){
+export function triangles(polygon: Point[]){
   const p=signedArea(polygon)<0?[...polygon].reverse():[...polygon],out=[]
   while(p.length>3){
     const i=p.findIndex((b,i)=>{

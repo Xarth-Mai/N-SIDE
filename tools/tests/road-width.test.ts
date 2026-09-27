@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { roadWidthConflicts } from '../check-road-width.ts'
+import { roadWidthConflicts, roadSurfaceConflicts } from '../check-road-width.ts'
 import { pointInside, roadAllowed, roadOffsets, intersectionArea } from '../district-geometry.ts'
 import type { District } from '../district-types.ts'
 import source from '../../source-assets/district-map/district.json' with { type: 'json' }
@@ -155,4 +155,30 @@ test('all ground-road junctions clear neighboring ribbons while retaining usable
   const data:District=source
   assert.deepEqual(roadWidthConflicts(data,'all'),[],'all source ground-road widths must meet at compatible elevations')
   checkExteriorApproaches(data,data.roads.filter(r=>r.nodes.some(id=>/^junction_(e9_|shop_)/.test(id))))
+})
+
+test('platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces',()=>{
+  const data:Pick<District,'nodes'|'roads'|'routes'|'surfaces'>={
+    nodes:{a:[2,2,0],b:[8,2,0]},roads:[{nodes:['a','b'],kind:'lane',width:1}],routes:[],
+    surfaces:[{id:'court',kind:'plaza',elevation:2,polygon:[[0,-4],[10,-4],[10,4],[6,4],[6,-2],[4,-2],[4,4],[0,4]]}],
+  }
+  const hit=roadSurfaceConflicts(data)
+  assert.equal(hit.length,1)
+  assert.ok(Math.abs(hit[0].area-4)<1e-6,'the concave cutout is not a filled convex envelope')
+  assert.equal(hit[0].maxDelta,1.975)
+  data.surfaces[0].elevation=0
+  assert.deepEqual(roadSurfaceConflicts(data),[],'same-level circulation may overlap a court')
+  data.nodes.a[2]=.34;data.nodes.b[2]=.34
+  assert.ok(Math.abs(roadSurfaceConflicts(data)[0].maxDelta-.365)<1e-6,'the rendered road top includes its 2.5 cm surface offset')
+  data.surfaces[0].elevation=2;data.surfaces[0].elevated=true
+  assert.deepEqual(roadSurfaceConflicts(data),[],'elevated structures require a separate clearance check')
+  data.surfaces[0].elevated=false;data.surfaces[0].polygon=[[4,-1],[6,-1],[6,1],[4,1]]
+  data.nodes={a:[0,0,0],b:[10,0,4]};data.roads[0].kind='steps'
+  assert.ok(roadSurfaceConflicts(data)[0].maxDelta>.4,'horizontal stair patches extend beyond the continuous-slope interpolation')
+  data.surfaces[0].elevation=NaN
+  assert.throws(()=>roadSurfaceConflicts(data),/invalid elevation/)
+})
+
+test('ground platforms meet adjacent road ribbons and stair treads at their own level',()=>{
+  assert.deepEqual(roadSurfaceConflicts(source),[],'platform edges must clear slopes and stair flights before their level arrival')
 })

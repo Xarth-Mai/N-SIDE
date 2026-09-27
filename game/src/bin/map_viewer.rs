@@ -723,6 +723,50 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
             "inspect-road-northeast-foot",
             view([559., 674., 188.], [538., 701., 174.]),
         ),
+        (
+            "inspect-road-platform-shop-back",
+            view([108., 295., 57.], [78., 267., 29.]),
+        ),
+        (
+            "inspect-road-platform-loading",
+            view([-35., 235., 47.], [-10., 265., 28.]),
+        ),
+        (
+            "inspect-road-platform-middle",
+            view([153., 313., 78.], [125., 343., 51.]),
+        ),
+        (
+            "inspect-road-platform-bend",
+            view([263., 304., 91.], [228., 333., 53.]),
+        ),
+        (
+            "inspect-road-platform-homes-rear",
+            view([211., 449., 116.], [197., 421., 77.]),
+        ),
+        (
+            "inspect-road-platform-neighbors",
+            view([247., 245., 49.], [225., 220., 24.]),
+        ),
+        (
+            "inspect-road-platform-river-square",
+            view([216., -145., 25.], [181., -82., 6.]),
+        ),
+        (
+            "inspect-road-platform-station-west",
+            view([-141., 43., 27.], [-105., 67., 10.]),
+        ),
+        (
+            "inspect-road-platform-summit-east",
+            view([270., 930., 460.], [245., 944., 450.]),
+        ),
+        (
+            "inspect-road-platform-summit-west",
+            view([203., 988., 461.], [224., 969., 450.]),
+        ),
+        (
+            "inspect-road-platform-dock-tip",
+            view([326., -174., 17.], [300., -145., 2.]),
+        ),
     ]);
     let mut views: Vec<_> = views
         .into_iter()

@@ -65,12 +65,13 @@ python3 tools/capture.py --script game/capture/mountain-city.json --output outpu
 ```fish
 bun tools/check-road-width.ts hill-short
 bun tools/check-road-width.ts all
+bun tools/check-road-width.ts all --surfaces
 bun test tools/tests/road-width.test.ts
 ```
 
-第一条检查 `hill-short` 的全部相邻路段与全城地面路带，包括小店至山脚的城市段；第二条检查全城并如实返回尚存候选，暂不并入总检查。输出 JSON 包含当前源 SHA-256、道路索引、节点、最大高差及共享节点，重定向可保存本轮证据；命令只读源文件
+第一条检查 `hill-short` 的全部相邻路段与全城地面路带，包括小店至山脚的城市段；第二条检查全城地面路带；第三条检查地面道路与非架空、非建筑归属平台的交叠，凹形平台先按实际轮廓剖分为三角形。输出 JSON 包含当前源 SHA-256、道路索引、节点、最大高差及共享节点，重定向可保存本轮证据；命令只读源文件
 
-计算排除室内、电梯及桥面／架空道路，不重建建筑与平台掩膜、挡墙或人物碰撞。候选需要结合实际场景复核；来源与范围不能替代画面、连续操作或桥下净空检查。窄回归同时覆盖共享节点失效、同高连接及选定路线与其他道路的交叉
+计算排除室内、电梯及桥面／架空道路，平台模式检查其表面标高与真实踏面，不以建筑掩膜隐藏候选。结构净空、挡墙和人物碰撞仍需单独检查。`check:map` 已纳入全城道路与平台回归、站前庭院及地形检查；只读命令同时验证共用端点失效、凹形边界、同高连接和水平台阶，不替代实际画面、连续操作或桥下净空
 
 ## 真实运行与 Capture
 

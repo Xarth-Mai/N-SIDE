@@ -1,0 +1,22 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 27.89s
+     Running unittests src/lib.rs (target/debug/deps/n_side-2cc9a0af6753b554)
+
+running 1 test
+test world::geometry::tests::road_walls_follow_exposed_ground_and_real_neighbor_levels ... FAILED
+
+failures:
+
+---- world::geometry::tests::road_walls_follow_exposed_ground_and_real_neighbor_levels stdout ----
+
+thread 'world::geometry::tests::road_walls_follow_exposed_ground_and_real_neighbor_levels' (321) panicked at src/world/geometry.rs:1474:21:
+ascending: riser at x=0 must face the downhill observer
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    world::geometry::tests::road_walls_follow_exposed_ground_and_real_neighbor_levels
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 21 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `--lib`

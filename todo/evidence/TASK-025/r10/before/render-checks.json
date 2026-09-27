@@ -1,0 +1,98 @@
+[
+  {
+    "view": "inspect-road-platform-shop-back",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/before/inspect-road-platform-shop-back",
+      "--view",
+      "inspect-road-platform-shop-back"
+    ],
+    "exit_code": 0,
+    "seconds": 17.040063861000817,
+    "source_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+    "binary_sha256": "a66f49f7b4716f10ed3df276834a88652c5e81d47c7db60e1c77561bbfb22720"
+  },
+  {
+    "view": "inspect-road-platform-loading",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/before/inspect-road-platform-loading",
+      "--view",
+      "inspect-road-platform-loading"
+    ],
+    "exit_code": 0,
+    "seconds": 16.839468610007316,
+    "source_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+    "binary_sha256": "a66f49f7b4716f10ed3df276834a88652c5e81d47c7db60e1c77561bbfb22720"
+  },
+  {
+    "view": "inspect-road-platform-homes-rear",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/before/inspect-road-platform-homes-rear",
+      "--view",
+      "inspect-road-platform-homes-rear"
+    ],
+    "exit_code": 0,
+    "seconds": 16.79057658300735,
+    "source_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+    "binary_sha256": "a66f49f7b4716f10ed3df276834a88652c5e81d47c7db60e1c77561bbfb22720"
+  },
+  {
+    "view": "inspect-road-platform-river-square",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/before/inspect-road-platform-river-square",
+      "--view",
+      "inspect-road-platform-river-square"
+    ],
+    "exit_code": 0,
+    "seconds": 16.839537029038183,
+    "source_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+    "binary_sha256": "a66f49f7b4716f10ed3df276834a88652c5e81d47c7db60e1c77561bbfb22720"
+  },
+  {
+    "view": "inspect-road-platform-station-west",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/before/inspect-road-platform-station-west",
+      "--view",
+      "inspect-road-platform-station-west"
+    ],
+    "exit_code": 0,
+    "seconds": 16.890819137974177,
+    "source_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+    "binary_sha256": "a66f49f7b4716f10ed3df276834a88652c5e81d47c7db60e1c77561bbfb22720"
+  },
+  {
+    "view": "inspect-road-platform-summit-east",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/baseline-project",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r10/before/inspect-road-platform-summit-east",
+      "--view",
+      "inspect-road-platform-summit-east"
+    ],
+    "exit_code": 0,
+    "seconds": 16.740302764985245,
+    "source_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+    "binary_sha256": "a66f49f7b4716f10ed3df276834a88652c5e81d47c7db60e1c77561bbfb22720"
+  }
+]

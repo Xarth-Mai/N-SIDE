@@ -1,9 +1,13 @@
 ---
 id: TASK-025
 type: fix
-status: active
+status: done
 milestone: G1
 depends_on: []
+acceptance:
+  role: codex
+  revision: 70bb0607db9fc2f7d2661f72c7a622d1d7fdacd53fe98748e8b8f541f02d8058
+  record: todo/evidence/TASK-025/r10/review.md
 specs:
   - docs/dev/design/locations/district-plan.md
   - docs/dev/design/locations/district-space.md
@@ -23,7 +27,7 @@ specs:
 
 ## 当前工作与下一步
 
-第9轮，步骤6/6 记录与平台交叉续修；全城地面道路彼此的路幅高差候选20→0，50项回归、19次GPU机位与18秒连续观察完成。另发现20处道路与平台的既有高差重叠，继续第10轮处理；不把road-road通过算作平台、人物碰撞或最终美术通过
+第10轮，步骤6/6 技术修复完成；全城地面道路彼此与地面平台均0高差候选，52项地图回归、22库＋4Viewer测试、25机位及修后18秒连续录制通过。真实看图发现的楼梯立板反面已修复并以升/降梯回归和补拍复验；保留450m单峰和约1.31km短路线。人物碰撞、最终美术与G1仍未验收
 
 ## 结果与证据
 
@@ -46,3 +50,6 @@ specs:
 第8轮[东台地、旧住区与食品滨水修复](../evidence/TASK-025/r8/review.md)记录25对候选的消除、穿楼与候船平台修复、真实失败和修后证据；保留隔离测试误读旧源的撤回说明与不可用机位补拍
 
 第9轮[小店公共台阶与东部街道](../evidence/TASK-025/r9/review.md)保留全城0路幅候选、全局回归、50项测试和实际画面；新增平台交叉问题独立追踪，原节点及长短登高路线保持
+
+
+第10轮[平台接入与楼梯立板](../evidence/TASK-025/r10/review.md)保存22→0的检查器校准、逐项源变化、原始视觉FAIL与几何修复证据。此任务按路幅和平台高差技术范围完成，地形品质与后续人物实验沿各自任务继续

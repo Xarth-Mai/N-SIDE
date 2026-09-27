@@ -11,7 +11,7 @@
     "check:story-design": "python3 -B tools/validate_story_design.py --root . && bun run check:story-graph",
     "check:templates": "python3 -B tools/validate_narrative.py --file docs/dev/handbook/templates/narrative.json",
     "test:tools": "python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests",
-    "check:map": "bun test tools/tests/district-map.test.ts",
+    "check:map": "bun test tools/tests/district-map.test.ts tools/tests/road-width.test.ts tools/tests/station-square.test.ts tools/tests/terrain-shape.test.ts",
     "check:skills": "bun tools/validate-skills.ts",
     "capture": "python3 tools/capture.py",
     "check:skills:upstream": "python3 tools/check_skill_upstream.py --output output/skills/upstream.json",

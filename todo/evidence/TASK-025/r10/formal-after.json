@@ -1,0 +1,11 @@
+{
+  "scope": "ground-surfaces",
+  "source_sha256": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+  "result": "PASS",
+  "thresholds": {
+    "overlapArea": 0.5,
+    "heightDelta": 0.35
+  },
+  "scopeNote": "Ground-road tops against non-elevated, non-building platforms, including concave footprints; no building masks or structural/collision clearance implied.",
+  "conflicts": []
+}

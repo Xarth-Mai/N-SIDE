@@ -1,0 +1,335 @@
+{
+  "result": "FAIL",
+  "conflicts": [
+    {
+      "road": 257,
+      "nodes": [
+        "stair_homes_high_m_homes_high_junction_01_in",
+        "junction_homes_mid_east"
+      ],
+      "kind": "landing",
+      "surface": "homes-rear-walk",
+      "area": 5.625,
+      "maxDelta": 4.7721050000000105,
+      "point": [
+        200,
+        423.5
+      ]
+    },
+    {
+      "road": 257,
+      "nodes": [
+        "junction_homes_mid_east",
+        "junction_homes_mid_north"
+      ],
+      "kind": "landing",
+      "surface": "homes-rear-walk",
+      "area": 1.125,
+      "maxDelta": 4.7721050000000105,
+      "point": [
+        204.5,
+        423.5
+      ]
+    },
+    {
+      "road": 256,
+      "nodes": [
+        "junction_homes_lower_start",
+        "stair_homes_high_m_homes_high_junction_01_in"
+      ],
+      "kind": "steps",
+      "surface": "homes-rear-walk",
+      "area": 18,
+      "maxDelta": 4.687335267857151,
+      "point": [
+        199.57142857142858,
+        423.5
+      ]
+    },
+    {
+      "road": 11,
+      "nodes": [
+        "level_bend-steps-rest-junction_to_upper",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in"
+      ],
+      "kind": "steps",
+      "surface": "bend-steps-rest",
+      "area": 12.889320309172035,
+      "maxDelta": 3.424011212499998,
+      "point": [
+        234.7165109975117,
+        337.8861197937563
+      ]
+    },
+    {
+      "road": 142,
+      "nodes": [
+        "junction_home_north_upper",
+        "stair_home_north_level_upper_homes_from_home_north_01_in"
+      ],
+      "kind": "steps",
+      "surface": "shop-steps-middle",
+      "area": 15.137355893180938,
+      "maxDelta": 2.7487173191489376,
+      "point": [
+        110,
+        342.0568950397218
+      ]
+    },
+    {
+      "road": 728,
+      "nodes": [
+        "v_a08_door_landing",
+        "fw_grade_v_a08_service_0"
+      ],
+      "kind": "service",
+      "surface": "shop-site",
+      "area": 2,
+      "maxDelta": 2.0465149999999994,
+      "point": [
+        90,
+        270
+      ]
+    },
+    {
+      "road": 728,
+      "nodes": [
+        "fw_grade_v_a08_service_0",
+        "fw_grade_v_a08_service_1"
+      ],
+      "kind": "service",
+      "surface": "shop-site",
+      "area": 46,
+      "maxDelta": 2.0465149999999994,
+      "point": [
+        67.58490566037736,
+        268.58490566037733
+      ]
+    },
+    {
+      "road": 728,
+      "nodes": [
+        "fw_grade_v_a08_service_0",
+        "fw_grade_v_a08_service_1"
+      ],
+      "kind": "service",
+      "surface": "shop-service-apron",
+      "area": 4,
+      "maxDelta": 2.0465149999999994,
+      "point": [
+        70,
+        270
+      ]
+    },
+    {
+      "road": 728,
+      "nodes": [
+        "fw_grade_v_a08_service_1",
+        "fw_grade_v_a08_service_2"
+      ],
+      "kind": "service",
+      "surface": "shop-site",
+      "area": 2,
+      "maxDelta": 2.0465149999999994,
+      "point": [
+        67,
+        269.10714285714283
+      ]
+    },
+    {
+      "road": 728,
+      "nodes": [
+        "fw_grade_v_a08_service_1",
+        "fw_grade_v_a08_service_2"
+      ],
+      "kind": "service",
+      "surface": "shop-service-apron",
+      "area": 6,
+      "maxDelta": 2.0465149999999994,
+      "point": [
+        69,
+        270
+      ]
+    },
+    {
+      "road": 124,
+      "nodes": [
+        "cross_s",
+        "river_w"
+      ],
+      "kind": "lane",
+      "surface": 8,
+      "area": 209.9999999999991,
+      "maxDelta": 1.2530701754385971,
+      "point": [
+        176.5,
+        -65
+      ]
+    },
+    {
+      "road": 430,
+      "nodes": [
+        "fw_f_junction19",
+        "fw_f_laundry_back0"
+      ],
+      "kind": "service",
+      "surface": "fw-f-neighbors-court",
+      "area": 3.75,
+      "maxDelta": 1.1885416666666693,
+      "point": [
+        216,
+        225
+      ]
+    },
+    {
+      "road": 118,
+      "nodes": [
+        "hill_bend",
+        "summit"
+      ],
+      "kind": "trail",
+      "surface": "fw-e-existing-23",
+      "area": 73.48084449426096,
+      "maxDelta": 1.1424413248631708,
+      "point": [
+        245.45645829705245,
+        939.6147618218342
+      ]
+    },
+    {
+      "road": 430,
+      "nodes": [
+        "fw_f_neighbors1",
+        "fw_f_junction19"
+      ],
+      "kind": "service",
+      "surface": "fw-f-neighbors-court",
+      "area": 35.25,
+      "maxDelta": 1.1312500000000014,
+      "point": [
+        218.5,
+        225.5
+      ]
+    },
+    {
+      "road": 19,
+      "nodes": [
+        "station_west_cross",
+        "west_j"
+      ],
+      "kind": "lane",
+      "surface": "station-west-walk",
+      "area": 81.36776576690818,
+      "maxDelta": 1.0587792189449434,
+      "point": [
+        -99.63531541535826,
+        60
+      ]
+    },
+    {
+      "road": 430,
+      "nodes": [
+        "fw_f_neighbors1",
+        "fw_f_junction19"
+      ],
+      "kind": "service",
+      "surface": "fw-f-neighbors-service",
+      "area": 30.75,
+      "maxDelta": 0.7958333333333307,
+      "point": [
+        239,
+        222.5
+      ]
+    },
+    {
+      "road": 1,
+      "nodes": [
+        "shop_south_junction",
+        "flat_home_from_shop_south_junction"
+      ],
+      "kind": "main",
+      "surface": "shop-site",
+      "area": 18.370133951844764,
+      "maxDelta": 0.7246449217561555,
+      "point": [
+        89.15052932897575,
+        245
+      ]
+    },
+    {
+      "road": 735,
+      "nodes": [
+        "hill_west_curve_11",
+        "summit"
+      ],
+      "kind": "trail",
+      "surface": "fw-e-existing-23",
+      "area": 45.66469007785781,
+      "maxDelta": 0.6565018531946976,
+      "point": [
+        222.39450599808148,
+        964
+      ]
+    },
+    {
+      "road": 130,
+      "nodes": [
+        "service_j",
+        "loading"
+      ],
+      "kind": "service",
+      "surface": "shop-loading-bay",
+      "area": 36,
+      "maxDelta": 0.6289487317731357,
+      "point": [
+        -12,
+        261
+      ]
+    },
+    {
+      "road": 129,
+      "nodes": [
+        "dock_low",
+        "dock_tip"
+      ],
+      "kind": "landing",
+      "surface": 9,
+      "area": 115,
+      "maxDelta": 0.43500000000000005,
+      "point": [
+        297.5,
+        -148
+      ]
+    },
+    {
+      "road": 430,
+      "nodes": [
+        "fw_f_junction19",
+        "fw_f_laundry_back0"
+      ],
+      "kind": "service",
+      "surface": "fw-f-neighbors-service",
+      "area": 23.625,
+      "maxDelta": 0.3687499999999986,
+      "point": [
+        218.5,
+        222.5
+      ]
+    },
+    {
+      "road": 451,
+      "nodes": [
+        "fw_f_junction19",
+        "fw_f_v_54_service"
+      ],
+      "kind": "service",
+      "surface": "fw-f-neighbors-service",
+      "area": 14,
+      "maxDelta": 0.3687499999999986,
+      "point": [
+        217.5,
+        224
+      ]
+    }
+  ]
+}

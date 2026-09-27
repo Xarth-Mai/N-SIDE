@@ -1292,11 +1292,11 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                         } else {
                             from[2] - (to[2] - from[2]) / 2.0
                         } + 0.025;
-                        structure.wall([p[0].x, p[0].y], [p[3].x, p[3].y], [low; 2], [high; 2]);
+                        structure.wall([p[3].x, p[3].y], [p[0].x, p[0].y], [low; 2], [high; 2]);
                         if step + 1 == steps {
                             structure.wall(
-                                [p[2].x, p[2].y],
                                 [p[1].x, p[1].y],
+                                [p[2].x, p[2].y],
                                 [to[2] + 0.025; 2],
                                 [high; 2],
                             );
@@ -1446,31 +1446,47 @@ mod tests {
             surface: None,
             access: None,
         }];
-        let parts = generate(&map).unwrap();
-        let structure = parts
-            .iter()
-            .find(|p| p.source.ends_with("/structure"))
-            .unwrap();
-        let positions = structure
-            .mesh
-            .attribute(Mesh::ATTRIBUTE_POSITION)
-            .unwrap()
-            .as_float3()
-            .unwrap();
-        let risers: Vec<_> = positions
-            .as_chunks::<3>()
-            .0
-            .iter()
-            .filter(|tri| tri.iter().all(|p| (p[0] - 2.).abs() < 1e-4))
-            .collect();
-        assert!(!risers.is_empty(), "internal stair riser must be rendered");
-        assert!(
-            risers
+        for direction in ["ascending", "descending"] {
+            if direction == "descending" {
+                map.roads[0].nodes.reverse();
+            }
+            let parts = generate(&map).unwrap();
+            let structure = parts
                 .iter()
-                .flat_map(|tri| tri.iter())
-                .all(|p| p[1] >= 10.104 && p[1] <= 10.266),
-            "riser joins adjacent treads, not the much higher uncut hill"
-        );
+                .find(|p| p.source.ends_with("/structure"))
+                .unwrap();
+            let positions = structure
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            for x in [0., 2., 4.] {
+                let risers: Vec<_> = positions
+                    .as_chunks::<3>()
+                    .0
+                    .iter()
+                    .filter(|tri| tri.iter().all(|p| (p[0] - x).abs() < 1e-4))
+                    .collect();
+                assert_eq!(risers.len(), 2, "{direction}: riser at x={x} must be closed");
+                for tri in &risers {
+                    let [a, b, c] = tri.map(Vec3::from);
+                    assert!(
+                        (b - a).cross(c - a).dot(Vec3::NEG_X) > 0.,
+                        "{direction}: riser at x={x} must face the downhill observer"
+                    );
+                }
+                if x == 2. {
+                    assert!(
+                        risers
+                            .iter()
+                            .flat_map(|tri| tri.iter())
+                            .all(|p| p[1] >= 10.104 && p[1] <= 10.266),
+                        "riser joins adjacent treads, not the much higher uncut hill"
+                    );
+                }
+            }
+        }
     }
 
     #[test]

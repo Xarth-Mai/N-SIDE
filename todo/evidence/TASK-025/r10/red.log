@@ -1,0 +1,338 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces [2.97ms]
+174 |   data.nodes={a:[0,0,0],b:[10,0,4]};data.roads[0].kind='steps'
+175 |   assert.ok(roadSurfaceConflicts(data)[0].maxDelta>.4,'horizontal stair patches extend beyond the continuous-slope interpolation')
+176 | })
+177 |
+178 | test('ground platforms meet adjacent road ribbons and stair treads at their own level',()=>{
+179 |   assert.deepEqual(roadSurfaceConflicts(source),[],'platform edges must clear slopes and stair flights before their level arrival')
+               ^
+AssertionError: platform edges must clear slopes and stair flights before their level arrival
++ actual - expected
+
++ [
++   {
++     area: 5.625,
++     kind: 'landing',
++     maxDelta: 4.747105000000005,
++     nodes: [
++       'stair_homes_high_m_homes_high_junction_01_in',
++       'junction_homes_mid_east'
++     ],
++     point: [
++       200,
++       423.5
++     ],
++     road: 257,
++     surface: 'homes-rear-walk'
++   },
++   {
++     area: 1.125,
++     kind: 'landing',
++     maxDelta: 4.747105000000005,
++     nodes: [
++       'junction_homes_mid_east',
++       'junction_homes_mid_north'
++     ],
++     point: [
++       204.5,
++       423.5
++     ],
++     road: 257,
++     surface: 'homes-rear-walk'
++   },
++   {
++     area: 18,
++     kind: 'steps',
++     maxDelta: 4.662335267857145,
++     nodes: [
++       'junction_homes_lower_start',
++       'stair_homes_high_m_homes_high_junction_01_in'
++     ],
++     point: [
++       199.57142857142858,
++       423.5
++     ],
++     road: 256,
++     surface: 'homes-rear-walk'
++   },
++   {
++     area: 12.889320309172035,
++     kind: 'steps',
++     maxDelta: 3.3990112124999996,
++     nodes: [
++       'level_bend-steps-rest-junction_to_upper',
++       'stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in'
++     ],
++     point: [
++       234.7165109975117,
++       337.8861197937563
++     ],
++     road: 11,
++     surface: 'bend-steps-rest'
++   },
++   {
++     area: 15.137355893180938,
++     kind: 'steps',
++     maxDelta: 2.773717319148936,
++     nodes: [
++       'junction_home_north_upper',
++       'stair_home_north_level_upper_homes_from_home_north_01_in'
++     ],
++     point: [
++       110,
++       342.0568950397218
++     ],
++     road: 142,
++     surface: 'shop-steps-middle'
++   },
++   {
++     area: 2,
++     kind: 'service',
++     maxDelta: 2.021515000000001,
++     nodes: [
++       'v_a08_door_landing',
++       'fw_grade_v_a08_service_0'
++     ],
++     point: [
++       90,
++       270
++     ],
++     road: 728,
++     surface: 'shop-site'
++   },
++   {
++     area: 46,
++     kind: 'service',
++     maxDelta: 2.021515000000001,
++     nodes: [
++       'fw_grade_v_a08_service_0',
++       'fw_grade_v_a08_service_1'
++     ],
++     point: [
++       67.58490566037736,
++       268.58490566037733
++     ],
++     road: 728,
++     surface: 'shop-site'
++   },
++   {
++     area: 4,
++     kind: 'service',
++     maxDelta: 2.021515000000001,
++     nodes: [
++       'fw_grade_v_a08_service_0',
++       'fw_grade_v_a08_service_1'
++     ],
++     point: [
++       70,
++       270
++     ],
++     road: 728,
++     surface: 'shop-service-apron'
++   },
++   {
++     area: 2,
++     kind: 'service',
++     maxDelta: 2.021515000000001,
++     nodes: [
++       'fw_grade_v_a08_service_1',
++       'fw_grade_v_a08_service_2'
++     ],
++     point: [
++       67,
++       269.10714285714283
++     ],
++     road: 728,
++     surface: 'shop-site'
++   },
++   {
++     area: 6,
++     kind: 'service',
++     maxDelta: 2.021515000000001,
++     nodes: [
++       'fw_grade_v_a08_service_1',
++       'fw_grade_v_a08_service_2'
++     ],
++     point: [
++       69,
++       270
++     ],
++     road: 728,
++     surface: 'shop-service-apron'
++   },
++   {
++     area: 209.9999999999991,
++     kind: 'lane',
++     maxDelta: 1.2280701754385968,
++     nodes: [
++       'cross_s',
++       'river_w'
++     ],
++     point: [
++       176.5,
++       -65
++     ],
++     road: 124,
++     surface: 8
++   },
++   {
++     area: 3.75,
++     kind: 'service',
++     maxDelta: 1.2135416666666679,
++     nodes: [
++       'fw_f_junction19',
++       'fw_f_laundry_back0'
++     ],
++     point: [
++       216,
++       225
++     ],
++     road: 430,
++     surface: 'fw-f-neighbors-court'
++   },
++   {
++     area: 73.48084449426096,
++     kind: 'trail',
++     maxDelta: 1.1674413248631481,
++     nodes: [
++       'hill_bend',
++       'summit'
++     ],
++     point: [
++       245.45645829705245,
++       939.6147618218342
++     ],
++     road: 118,
++     surface: 'fw-e-existing-23'
++   },
++   {
++     area: 35.25,
++     kind: 'service',
++     maxDelta: 1.15625,
++     nodes: [
++       'fw_f_neighbors1',
++       'fw_f_junction19'
++     ],
++     point: [
++       218.5,
++       225.5
++     ],
++     road: 430,
++     surface: 'fw-f-neighbors-court'
++   },
++   {
++     area: 81.36776576690818,
++     kind: 'lane',
++     maxDelta: 1.033779218944943,
++     nodes: [
++       'station_west_cross',
++       'west_j'
++     ],
++     point: [
++       -99.63531541535826,
++       60
++     ],
++     road: 19,
++     surface: 'station-west-walk'
++   },
++   {
++     area: 30.75,
++     kind: 'service',
++     maxDelta: 0.7708333333333321,
++     nodes: [
++       'fw_f_neighbors1',
++       'fw_f_junction19'
++     ],
++     point: [
++       239,
++       222.5
++     ],
++     road: 430,
++     surface: 'fw-f-neighbors-service'
++   },
++   {
++     area: 18.370133951844764,
++     kind: 'main',
++     maxDelta: 0.749644921756154,
++     nodes: [
++       'shop_south_junction',
++       'flat_home_from_shop_south_junction'
++     ],
++     point: [
++       89.15052932897575,
++       245
++     ],
++     road: 1,
++     surface: 'shop-site'
++   },
++   {
++     area: 45.66469007785781,
++     kind: 'trail',
++     maxDelta: 0.6815018531946748,
++     nodes: [
++       'hill_west_curve_11',
++       'summit'
++     ],
++     point: [
++       222.39450599808148,
++       964
++     ],
++     road: 735,
++     surface: 'fw-e-existing-23'
++   },
++   {
++     area: 36,
++     kind: 'service',
++     maxDelta: 0.6539487317731343,
++     nodes: [
++       'service_j',
++       'loading'
++     ],
++     point: [
++       -12,
++       261
++     ],
++     road: 130,
++     surface: 'shop-loading-bay'
++   },
++   {
++     area: 115,
++     kind: 'landing',
++     maxDelta: 0.45999999999999996,
++     nodes: [
++       'dock_low',
++       'dock_tip'
++     ],
++     point: [
++       297.5,
++       -148
++     ],
++     road: 129,
++     surface: 9
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:179:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) ground platforms meet adjacent road ribbons and stair treads at their own level [58.35ms]
+
+ 1 pass
+ 12 filtered out
+ 1 fail
+Ran 2 tests across 1 file. [122.00ms]

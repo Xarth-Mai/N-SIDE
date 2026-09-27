@@ -1,0 +1,17 @@
+{
+  "baseline": "8a5003a",
+  "revision": "70bb0607db9fc2f7d2661f72c7a622d1d7fdacd53fe98748e8b8f541f02d8058",
+  "revision_definition": "SHA-256 of sorted JSON input hash mapping, Python json.dumps defaults",
+  "inputs": {
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "game/src/world/geometry.rs": "59400bfa846b8e0dad6832d90beb447161dd8e33ae9e85fdf6ac62c61085e56e",
+    "game/src/bin/map_viewer.rs": "8212480976da7384f8d0714b377bf5d5542789d1a984561f5e049106e0d425b1",
+    "tools/check-road-width.ts": "2a1a57dd095143ee7316fdb37fd1a608cd4faf421f411ab0c96a55877f794956",
+    "tools/district-geometry.ts": "2ce9663167eb760c114b5f89552ab7477e89337f0993b678824cfb0fe97c7080",
+    "tools/tests/road-width.test.ts": "5b983e428325d177422bdf8195b54054e80969bba2d84bf99e1790928989ddc9",
+    "package.json": "76f3305a50e62a33e81570f1b2cc483ef475fb186cc9c4a2f151319cff06218e"
+  },
+  "raw_root": "output/roads/2026-09-27/r10",
+  "fixed_runs": 25,
+  "visual_self_audit": "initial stairs FAIL; corrected winding final PASS for viewed scope"
+}

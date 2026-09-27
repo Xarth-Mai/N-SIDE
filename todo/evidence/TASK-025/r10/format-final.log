@@ -1,0 +1,13 @@
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/geometry.rs:1468:
+                     .iter()
+                     .filter(|tri| tri.iter().all(|p| (p[0] - x).abs() < 1e-4))
+                     .collect();
+-                assert_eq!(risers.len(), 2, "{direction}: riser at x={x} must be closed");
++                assert_eq!(
++                    risers.len(),
++                    2,
++                    "{direction}: riser at x={x} must be closed"
++                );
+                 for tri in &risers {
+                     let [a, b, c] = tri.map(Vec3::from);
+                     assert!(

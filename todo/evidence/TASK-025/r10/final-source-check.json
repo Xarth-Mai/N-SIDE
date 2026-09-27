@@ -1,0 +1,958 @@
+{
+  "surfaceChanges": [
+    {
+      "before": {
+        "kind": "platform",
+        "place": "04",
+        "elevation": 28,
+        "polygon": [
+          [
+            66,
+            245
+          ],
+          [
+            94,
+            245
+          ],
+          [
+            94,
+            270
+          ],
+          [
+            66,
+            270
+          ]
+        ],
+        "id": "shop-site",
+        "name": "小店、住家与门前平台"
+      },
+      "after": {
+        "kind": "platform",
+        "place": "04",
+        "elevation": 28,
+        "polygon": [
+          [
+            66,
+            245
+          ],
+          [
+            88.9,
+            245
+          ],
+          [
+            94,
+            252.8
+          ],
+          [
+            94,
+            268
+          ],
+          [
+            66,
+            268
+          ]
+        ],
+        "id": "shop-site",
+        "name": "小店、住家与门前平台"
+      },
+      "beforeArea": 700,
+      "afterArea": 624.1100000000006
+    },
+    {
+      "before": {
+        "id": "shop-service-apron",
+        "name": "共用服务巷与门外验收",
+        "polygon": [
+          [
+            55,
+            251
+          ],
+          [
+            70,
+            251
+          ],
+          [
+            70,
+            272
+          ],
+          [
+            55,
+            272
+          ]
+        ],
+        "elevation": 28,
+        "kind": "service"
+      },
+      "after": {
+        "id": "shop-service-apron",
+        "name": "共用服务巷与门外验收",
+        "polygon": [
+          [
+            55,
+            251
+          ],
+          [
+            66,
+            251
+          ],
+          [
+            66,
+            272
+          ],
+          [
+            55,
+            272
+          ]
+        ],
+        "elevation": 28,
+        "kind": "service"
+      },
+      "beforeArea": 315,
+      "afterArea": 231
+    },
+    {
+      "before": {
+        "id": "homes-rear-walk",
+        "name": "上街入口平台",
+        "polygon": [
+          [
+            156,
+            418
+          ],
+          [
+            238,
+            418
+          ],
+          [
+            238,
+            425
+          ],
+          [
+            156,
+            425
+          ]
+        ],
+        "elevation": 75.315789,
+        "kind": "platform"
+      },
+      "after": {
+        "id": "homes-rear-walk",
+        "name": "上街入口平台",
+        "polygon": [
+          [
+            156,
+            418
+          ],
+          [
+            238,
+            418
+          ],
+          [
+            238,
+            423
+          ],
+          [
+            156,
+            423
+          ]
+        ],
+        "elevation": 75.315789,
+        "kind": "platform"
+      },
+      "beforeArea": 574,
+      "afterArea": 410
+    },
+    {
+      "before": {
+        "id": "shop-steps-middle",
+        "name": "坡巷停步与绿荫小台地",
+        "kind": "park",
+        "elevation": 51.716364,
+        "polygon": [
+          [
+            110,
+            338
+          ],
+          [
+            120,
+            338
+          ],
+          [
+            120,
+            348
+          ],
+          [
+            110,
+            348
+          ]
+        ],
+        "access": "public",
+        "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+      },
+      "after": {
+        "id": "shop-steps-middle",
+        "name": "坡巷停步与绿荫小台地",
+        "kind": "park",
+        "elevation": 51.716364,
+        "polygon": [
+          [
+            130,
+            338
+          ],
+          [
+            140,
+            338
+          ],
+          [
+            140,
+            348
+          ],
+          [
+            130,
+            348
+          ]
+        ],
+        "access": "public",
+        "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+      },
+      "beforeArea": 100,
+      "afterArea": 100
+    },
+    {
+      "before": {
+        "id": "bend-steps-rest",
+        "name": "坡巷停步与绿荫小台地",
+        "kind": "park",
+        "elevation": 52.419139,
+        "polygon": [
+          [
+            226,
+            328
+          ],
+          [
+            242,
+            328
+          ],
+          [
+            242,
+            338
+          ],
+          [
+            226,
+            338
+          ]
+        ],
+        "access": "public",
+        "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+      },
+      "after": {
+        "id": "bend-steps-rest",
+        "name": "坡巷停步与绿荫小台地",
+        "kind": "park",
+        "elevation": 52.419139,
+        "polygon": [
+          [
+            226,
+            324
+          ],
+          [
+            242,
+            324
+          ],
+          [
+            242,
+            334
+          ],
+          [
+            226,
+            334
+          ]
+        ],
+        "access": "public",
+        "use": "沿台阶分段到达的平地停步空间，留出连续通路"
+      },
+      "beforeArea": 160,
+      "afterArea": 160
+    }
+  ],
+  "baseline_commit": "8a5003a",
+  "before_sha256": "df2e13f0630151ecf564588b1cb8f85491b89b55e1bcd47813dcbd15b5d805f8",
+  "after_sha256": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+  "before": {
+    "nodes": 1628,
+    "roads": 901,
+    "samples": 8348,
+    "candidates": 0
+  },
+  "after": {
+    "nodes": 1638,
+    "roads": 904,
+    "samples": 8334,
+    "candidates": 0
+  },
+  "changedNodes": [
+    {
+      "id": "fw_f_laundry_back0",
+      "before": [
+        202,
+        224,
+        24
+      ],
+      "after": [
+        202,
+        220,
+        24
+      ]
+    },
+    {
+      "id": "fw_f_junction19",
+      "before": [
+        218.5,
+        224,
+        24.34375
+      ],
+      "after": [
+        218.5,
+        220,
+        24
+      ]
+    },
+    {
+      "id": "shop-steps-middle-entry",
+      "before": [
+        115,
+        343,
+        51.716364
+      ],
+      "after": [
+        135,
+        343,
+        51.716364
+      ]
+    },
+    {
+      "id": "shop_loading_level",
+      "before": null,
+      "after": [
+        -10,
+        255,
+        28
+      ]
+    },
+    {
+      "id": "neighbors_service_launch",
+      "before": null,
+      "after": [
+        247,
+        224,
+        25
+      ]
+    },
+    {
+      "id": "neighbors_service_level",
+      "before": null,
+      "after": [
+        240,
+        216,
+        24
+      ]
+    },
+    {
+      "id": "platform_river_square_north",
+      "before": null,
+      "after": [
+        180,
+        -64,
+        6
+      ]
+    },
+    {
+      "id": "platform_station_west_north",
+      "before": null,
+      "after": [
+        -110,
+        64,
+        8.5
+      ]
+    },
+    {
+      "id": "platform_summit_west",
+      "before": null,
+      "after": [
+        222.676176,
+        967.161539,
+        450
+      ]
+    },
+    {
+      "id": "platform_summit_east_in",
+      "before": null,
+      "after": [
+        250.064726,
+        939.451661,
+        448.444444
+      ]
+    },
+    {
+      "id": "platform_summit_east_out",
+      "before": null,
+      "after": [
+        246.966746,
+        941.080317,
+        450
+      ]
+    },
+    {
+      "id": "platform_dock_edge",
+      "before": null,
+      "after": [
+        300,
+        -148,
+        2
+      ]
+    },
+    {
+      "id": "shop_service_corner",
+      "before": null,
+      "after": [
+        -27,
+        188,
+        21.8
+      ]
+    }
+  ],
+  "roads": [
+    {
+      "i": 19,
+      "before": {
+        "nodes": [
+          "city_w",
+          "station_west_cross",
+          "west_j",
+          "fw_f_junction58",
+          "fw_f_junction59",
+          "old_repair"
+        ],
+        "kind": "lane",
+        "width": 7
+      },
+      "after": {
+        "nodes": [
+          "city_w",
+          "station_west_cross",
+          "platform_station_west_north",
+          "west_j",
+          "fw_f_junction58",
+          "fw_f_junction59",
+          "old_repair"
+        ],
+        "kind": "lane",
+        "width": 7
+      }
+    },
+    {
+      "i": 118,
+      "before": {
+        "nodes": [
+          "hill_bend",
+          "summit"
+        ],
+        "kind": "trail",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "hill_bend",
+          "platform_summit_east_in"
+        ],
+        "kind": "landing",
+        "width": 4
+      }
+    },
+    {
+      "i": 124,
+      "before": {
+        "nodes": [
+          "cross_s",
+          "river_w"
+        ],
+        "kind": "lane",
+        "width": 7
+      },
+      "after": {
+        "nodes": [
+          "cross_s",
+          "platform_river_square_north",
+          "river_w"
+        ],
+        "kind": "lane",
+        "width": 7
+      }
+    },
+    {
+      "i": 129,
+      "before": {
+        "nodes": [
+          "dock_low",
+          "dock_tip"
+        ],
+        "kind": "landing",
+        "width": 5
+      },
+      "after": {
+        "nodes": [
+          "dock_low",
+          "platform_dock_edge"
+        ],
+        "kind": "landing",
+        "width": 5
+      }
+    },
+    {
+      "i": 130,
+      "before": {
+        "nodes": [
+          "west_market",
+          "service_j",
+          "loading"
+        ],
+        "kind": "service",
+        "access": "service",
+        "width": 4
+      },
+      "after": {
+        "nodes": [
+          "west_market",
+          "shop_service_corner",
+          "service_j",
+          "shop_loading_level",
+          "loading"
+        ],
+        "kind": "service",
+        "access": "service",
+        "width": 4
+      }
+    },
+    {
+      "i": 430,
+      "before": {
+        "nodes": [
+          "fw_f_neighbors1",
+          "fw_f_junction19",
+          "fw_f_laundry_back0",
+          "fw_f_laundry_back1"
+        ],
+        "kind": "service",
+        "width": 3,
+        "access": "service"
+      },
+      "after": {
+        "nodes": [
+          "fw_f_neighbors1",
+          "neighbors_service_launch",
+          "neighbors_service_level",
+          "fw_f_junction19",
+          "fw_f_laundry_back0",
+          "fw_f_laundry_back1"
+        ],
+        "kind": "service",
+        "width": 3,
+        "access": "service"
+      }
+    },
+    {
+      "i": 451,
+      "before": {
+        "nodes": [
+          "fw_f_junction19",
+          "fw_f_v_54_service"
+        ],
+        "kind": "service",
+        "width": 2,
+        "access": "service"
+      },
+      "after": {
+        "nodes": [
+          "fw_f_junction19",
+          "fw_f_v_54_service"
+        ],
+        "kind": "service",
+        "width": 2,
+        "access": "service"
+      }
+    },
+    {
+      "i": 735,
+      "before": {
+        "nodes": [
+          "hill_west_gate",
+          "hill_west_01",
+          "hill_west_02",
+          "hill_west_03",
+          "hill_west_04",
+          "hill_west_05",
+          "hill_west_arc_01_04",
+          "hill_west_arc_01_05",
+          "hill_west_arc_01_06",
+          "hill_west_arc_01_07",
+          "hill_west_arc_01_08",
+          "hill_west_arc_01_09",
+          "hill_west_arc_01_10",
+          "forest",
+          "hill_west_arc_02_01",
+          "hill_west_arc_02_02",
+          "hill_west_arc_02_03",
+          "hill_west_arc_02_04",
+          "hill_west_arc_02_05",
+          "hill_west_arc_02_06",
+          "hill_west_arc_02_07",
+          "hill_west_arc_02_08",
+          "hill_west_arc_02_09",
+          "hill_west_arc_02_10",
+          "hill_west_06",
+          "hill_west_arc_03_01",
+          "hill_west_arc_03_02",
+          "hill_west_arc_03_03",
+          "hill_west_arc_03_04",
+          "hill_west_arc_03_05",
+          "hill_west_arc_03_06",
+          "hill_west_arc_03_07",
+          "hill_west_arc_03_08",
+          "hill_west_arc_03_09",
+          "hill_west_arc_03_10",
+          "hill_west_curve_03",
+          "hill_west_arc_04_01",
+          "hill_west_arc_04_02",
+          "hill_west_arc_04_03",
+          "hill_west_arc_04_04",
+          "hill_west_arc_04_05",
+          "hill_west_arc_04_06",
+          "hill_west_arc_04_07",
+          "hill_west_arc_04_08",
+          "hill_west_arc_04_09",
+          "hill_west_arc_04_10",
+          "hill_west_curve_04",
+          "hill_west_arc_05_01",
+          "hill_west_arc_05_02",
+          "hill_west_arc_05_03",
+          "hill_west_arc_05_04",
+          "hill_west_arc_05_05",
+          "hill_west_arc_05_06",
+          "hill_west_arc_05_07",
+          "hill_west_arc_05_08",
+          "hill_west_arc_05_09",
+          "hill_west_arc_05_10",
+          "hill_west_curve_05",
+          "hill_west_arc_06_01",
+          "hill_west_arc_06_02",
+          "hill_west_arc_06_03",
+          "hill_west_arc_06_04",
+          "hill_west_arc_06_05",
+          "hill_west_arc_06_06",
+          "hill_west_arc_06_07",
+          "hill_west_arc_06_08",
+          "hill_west_arc_06_09",
+          "hill_west_arc_06_10",
+          "hill_west_curve_06",
+          "hill_west_arc_07_01",
+          "hill_west_arc_07_02",
+          "hill_west_arc_07_03",
+          "hill_west_arc_07_04",
+          "hill_west_arc_07_05",
+          "hill_west_arc_07_06",
+          "hill_west_arc_07_07",
+          "hill_west_arc_07_08",
+          "hill_west_arc_07_09",
+          "hill_west_arc_07_10",
+          "hill_west_curve_07",
+          "hill_west_arc_08_01",
+          "hill_west_arc_08_02",
+          "hill_west_arc_08_03",
+          "hill_west_arc_08_04",
+          "hill_west_arc_08_05",
+          "hill_west_arc_08_06",
+          "hill_west_arc_08_07",
+          "hill_west_arc_08_08",
+          "hill_west_arc_08_09",
+          "hill_west_arc_08_10",
+          "hill_west_curve_08",
+          "hill_west_arc_09_01",
+          "hill_west_arc_09_02",
+          "hill_west_arc_09_03",
+          "hill_west_arc_09_04",
+          "hill_west_arc_09_05",
+          "hill_west_arc_09_06",
+          "hill_west_arc_09_07",
+          "hill_west_arc_09_08",
+          "hill_west_arc_09_09",
+          "hill_west_arc_09_10",
+          "hill_west_curve_09",
+          "hill_west_arc_10_01",
+          "hill_west_arc_10_02",
+          "hill_west_arc_10_03",
+          "hill_west_arc_10_04",
+          "hill_west_arc_10_05",
+          "hill_west_arc_10_06",
+          "hill_west_arc_10_07",
+          "hill_west_arc_10_08",
+          "hill_west_arc_10_09",
+          "hill_west_arc_10_10",
+          "hill_west_curve_10",
+          "hill_west_arc_11_01",
+          "hill_west_arc_11_02",
+          "hill_west_arc_11_03",
+          "hill_west_arc_11_04",
+          "hill_west_arc_11_05",
+          "hill_west_arc_11_06",
+          "hill_west_arc_11_07",
+          "hill_west_arc_11_08",
+          "hill_west_arc_11_09",
+          "hill_west_arc_11_10",
+          "hill_west_curve_11",
+          "summit"
+        ],
+        "kind": "trail",
+        "width": 3
+      },
+      "after": {
+        "nodes": [
+          "hill_west_gate",
+          "hill_west_01",
+          "hill_west_02",
+          "hill_west_03",
+          "hill_west_04",
+          "hill_west_05",
+          "hill_west_arc_01_04",
+          "hill_west_arc_01_05",
+          "hill_west_arc_01_06",
+          "hill_west_arc_01_07",
+          "hill_west_arc_01_08",
+          "hill_west_arc_01_09",
+          "hill_west_arc_01_10",
+          "forest",
+          "hill_west_arc_02_01",
+          "hill_west_arc_02_02",
+          "hill_west_arc_02_03",
+          "hill_west_arc_02_04",
+          "hill_west_arc_02_05",
+          "hill_west_arc_02_06",
+          "hill_west_arc_02_07",
+          "hill_west_arc_02_08",
+          "hill_west_arc_02_09",
+          "hill_west_arc_02_10",
+          "hill_west_06",
+          "hill_west_arc_03_01",
+          "hill_west_arc_03_02",
+          "hill_west_arc_03_03",
+          "hill_west_arc_03_04",
+          "hill_west_arc_03_05",
+          "hill_west_arc_03_06",
+          "hill_west_arc_03_07",
+          "hill_west_arc_03_08",
+          "hill_west_arc_03_09",
+          "hill_west_arc_03_10",
+          "hill_west_curve_03",
+          "hill_west_arc_04_01",
+          "hill_west_arc_04_02",
+          "hill_west_arc_04_03",
+          "hill_west_arc_04_04",
+          "hill_west_arc_04_05",
+          "hill_west_arc_04_06",
+          "hill_west_arc_04_07",
+          "hill_west_arc_04_08",
+          "hill_west_arc_04_09",
+          "hill_west_arc_04_10",
+          "hill_west_curve_04",
+          "hill_west_arc_05_01",
+          "hill_west_arc_05_02",
+          "hill_west_arc_05_03",
+          "hill_west_arc_05_04",
+          "hill_west_arc_05_05",
+          "hill_west_arc_05_06",
+          "hill_west_arc_05_07",
+          "hill_west_arc_05_08",
+          "hill_west_arc_05_09",
+          "hill_west_arc_05_10",
+          "hill_west_curve_05",
+          "hill_west_arc_06_01",
+          "hill_west_arc_06_02",
+          "hill_west_arc_06_03",
+          "hill_west_arc_06_04",
+          "hill_west_arc_06_05",
+          "hill_west_arc_06_06",
+          "hill_west_arc_06_07",
+          "hill_west_arc_06_08",
+          "hill_west_arc_06_09",
+          "hill_west_arc_06_10",
+          "hill_west_curve_06",
+          "hill_west_arc_07_01",
+          "hill_west_arc_07_02",
+          "hill_west_arc_07_03",
+          "hill_west_arc_07_04",
+          "hill_west_arc_07_05",
+          "hill_west_arc_07_06",
+          "hill_west_arc_07_07",
+          "hill_west_arc_07_08",
+          "hill_west_arc_07_09",
+          "hill_west_arc_07_10",
+          "hill_west_curve_07",
+          "hill_west_arc_08_01",
+          "hill_west_arc_08_02",
+          "hill_west_arc_08_03",
+          "hill_west_arc_08_04",
+          "hill_west_arc_08_05",
+          "hill_west_arc_08_06",
+          "hill_west_arc_08_07",
+          "hill_west_arc_08_08",
+          "hill_west_arc_08_09",
+          "hill_west_arc_08_10",
+          "hill_west_curve_08",
+          "hill_west_arc_09_01",
+          "hill_west_arc_09_02",
+          "hill_west_arc_09_03",
+          "hill_west_arc_09_04",
+          "hill_west_arc_09_05",
+          "hill_west_arc_09_06",
+          "hill_west_arc_09_07",
+          "hill_west_arc_09_08",
+          "hill_west_arc_09_09",
+          "hill_west_arc_09_10",
+          "hill_west_curve_09",
+          "hill_west_arc_10_01",
+          "hill_west_arc_10_02",
+          "hill_west_arc_10_03",
+          "hill_west_arc_10_04",
+          "hill_west_arc_10_05",
+          "hill_west_arc_10_06",
+          "hill_west_arc_10_07",
+          "hill_west_arc_10_08",
+          "hill_west_arc_10_09",
+          "hill_west_arc_10_10",
+          "hill_west_curve_10",
+          "hill_west_arc_11_01",
+          "hill_west_arc_11_02",
+          "hill_west_arc_11_03",
+          "hill_west_arc_11_04",
+          "hill_west_arc_11_05",
+          "hill_west_arc_11_06",
+          "hill_west_arc_11_07",
+          "hill_west_arc_11_08",
+          "hill_west_arc_11_09",
+          "hill_west_arc_11_10",
+          "hill_west_curve_11",
+          "platform_summit_west",
+          "summit"
+        ],
+        "kind": "trail",
+        "width": 3
+      }
+    },
+    {
+      "i": 778,
+      "before": {
+        "nodes": [
+          "shop-steps-middle-junction",
+          "shop-steps-middle-entry"
+        ],
+        "kind": "lane",
+        "width": 1.8,
+        "access": "public"
+      },
+      "after": {
+        "nodes": [
+          "shop-steps-middle-junction",
+          "shop-steps-middle-entry"
+        ],
+        "kind": "lane",
+        "width": 1.8,
+        "access": "public"
+      }
+    },
+    {
+      "i": 901,
+      "before": null,
+      "after": {
+        "nodes": [
+          "platform_summit_east_in",
+          "platform_summit_east_out"
+        ],
+        "kind": "steps",
+        "width": 4
+      }
+    },
+    {
+      "i": 902,
+      "before": null,
+      "after": {
+        "nodes": [
+          "platform_summit_east_out",
+          "summit"
+        ],
+        "kind": "landing",
+        "width": 4
+      }
+    },
+    {
+      "i": 903,
+      "before": null,
+      "after": {
+        "nodes": [
+          "platform_dock_edge",
+          "dock_tip"
+        ],
+        "kind": "steps",
+        "width": 5
+      }
+    }
+  ],
+  "preserved": [
+    {
+      "field": "buildings",
+      "unchanged": true
+    },
+    {
+      "field": "surfaces",
+      "unchanged": false
+    },
+    {
+      "field": "parcels",
+      "unchanged": true
+    },
+    {
+      "field": "trees",
+      "unchanged": true
+    },
+    {
+      "field": "elevatedNodes",
+      "unchanged": true
+    }
+  ],
+  "buildingIntersections": [],
+  "authoredTerrainUnchanged": true,
+  "routes": [
+    {
+      "id": "hill",
+      "before": 5228.799286768331,
+      "after": 5229.080401528694,
+      "nodesUnchanged": false,
+      "coordinatesUnchanged": false,
+      "conflicts": []
+    },
+    {
+      "id": "hill-short",
+      "before": 1311.1873445785216,
+      "after": 1311.4684593388854,
+      "nodesUnchanged": false,
+      "coordinatesUnchanged": false,
+      "conflicts": []
+    },
+    {
+      "id": "cinema-gentle",
+      "before": 961.6908870623507,
+      "after": 961.6908870623507,
+      "nodesUnchanged": true,
+      "coordinatesUnchanged": true,
+      "conflicts": []
+    }
+  ]
+}

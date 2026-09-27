@@ -1,0 +1,174 @@
+[
+  {
+    "pixel": [
+      930,
+      627
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)/structure",
+        "triangle": 64,
+        "material": "concrete",
+        "distance": 27.19440123058145,
+        "point": [
+          246.94598180102548,
+          940.2886572480709,
+          449.8910319417401
+        ],
+        "front": false
+      },
+      {
+        "source": "/roads/902 (platform_summit_east_out -> summit)/structure",
+        "triangle": 14,
+        "material": "concrete",
+        "distance": 27.572202690985925,
+        "point": [
+          246.62570110538107,
+          940.4315936451978,
+          449.75059189809986
+        ],
+        "front": false
+      }
+    ]
+  },
+  {
+    "pixel": [
+      949,
+      628
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)/structure",
+        "triangle": 64,
+        "material": "concrete",
+        "distance": 27.182376991069017,
+        "point": [
+          247.16165887002097,
+          940.6989180580317,
+          449.859736408612
+        ],
+        "front": false
+      }
+    ]
+  },
+  {
+    "pixel": [
+      937,
+      639
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)/structure",
+        "triangle": 58,
+        "material": "concrete",
+        "distance": 26.92610256768034,
+        "point": [
+          247.34094486302791,
+          940.2877916459125,
+          449.7168310898248
+        ],
+        "front": false
+      }
+    ]
+  },
+  {
+    "pixel": [
+      950,
+      644
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)",
+        "triangle": 15,
+        "material": "paving",
+        "distance": 26.82361519518671,
+        "point": [
+          247.6022681845577,
+          940.5089339389891,
+          449.6361083984375
+        ],
+        "front": true
+      }
+    ]
+  },
+  {
+    "pixel": [
+      956,
+      657
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)",
+        "triangle": 12,
+        "material": "paving",
+        "distance": 26.48121231890137,
+        "point": [
+          248.05694142170626,
+          940.4450071595904,
+          449.4805603027344
+        ],
+        "front": true
+      }
+    ]
+  },
+  {
+    "pixel": [
+      975,
+      637
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)/structure",
+        "triangle": 59,
+        "material": "concrete",
+        "distance": 26.87653018754947,
+        "point": [
+          247.76920228328996,
+          941.1024086477754,
+          449.7591001362781
+        ],
+        "front": false
+      }
+    ]
+  },
+  {
+    "pixel": [
+      1001,
+      622
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)",
+        "triangle": 19,
+        "material": "paving",
+        "distance": 27.258967674505747,
+        "point": [
+          247.62754455836694,
+          941.8939679756775,
+          449.9472351074219
+        ],
+        "front": true
+      }
+    ]
+  },
+  {
+    "pixel": [
+      967,
+      684
+    ],
+    "hits": [
+      {
+        "source": "/roads/901 (platform_summit_east_in -> platform_summit_east_out)/structure",
+        "triangle": 31,
+        "material": "concrete",
+        "distance": 25.83759383690216,
+        "point": [
+          248.92772523295454,
+          940.2975111092193,
+          449.16017729027044
+        ],
+        "front": false
+      }
+    ]
+  }
+]

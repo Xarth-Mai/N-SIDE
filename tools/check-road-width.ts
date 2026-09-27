@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { clip, polygonArea, roadOffsets } from './district-geometry.ts'
+import { clip, polygonArea, roadOffsets, triangles } from './district-geometry.ts'
 import type { District, Point } from './district-types.ts'
 
 type RoadData=Pick<District,'nodes'|'roads'|'routes'>
@@ -69,13 +69,36 @@ export function roadWidthConflicts(data:RoadData,scope:string) {
   return conflicts.sort((a,b)=>b.maxDelta-a.maxDelta)
 }
 
+export function roadSurfaceConflicts(data:RoadData & Pick<District,'surfaces'>) {
+  const surfaces=data.surfaces.flatMap((surface,index)=>{
+    if(!Number.isFinite(surface.elevation))throw new Error(`surfaces[${index}]: invalid elevation`)
+    return surface.elevated||surface.building?[]:[{surface,index,patches:triangles(surface.polygon)}]
+  }),conflicts=[]
+  for(const road of segments(data))for(const {surface,index,patches}of surfaces) {
+    if(!overlaps(road.polygon,surface.polygon))continue
+    let area=0,maxDelta=0,point:Point=[]
+    for(const p of road.patches)for(const q of patches) {
+      const overlap=clip(p,q),part=polygonArea(overlap)
+      if(part<1e-8)continue
+      area+=part
+      for(const v of overlap) {
+        // geometry.rs lifts road tops 2.5 cm above their design level; platforms keep theirs
+        const delta=Math.abs(height(p,v)+.025-surface.elevation)
+        if(delta>maxDelta){maxDelta=delta;point=v.slice(0,2)}
+      }
+    }
+    if(area>.5&&maxDelta>.35)conflicts.push({road:road.road,nodes:road.nodes,kind:road.kind,surface:surface.id??index,area,maxDelta,point})
+  }
+  return conflicts.sort((a,b)=>b.maxDelta-a.maxDelta)
+}
+
 if(import.meta.main) {
   try {
-    const scope=process.argv[2]
-    if(!scope||process.argv.length!==3)throw new Error('Usage: bun tools/check-road-width.ts <route-id|all>')
+    const scope=process.argv[2],surfaces=process.argv[3]==='--surfaces'
+    if(!scope||process.argv.length!==(surfaces?4:3)||(surfaces&&scope!=='all'))throw new Error('Usage: bun tools/check-road-width.ts <route-id|all> | all --surfaces')
     const text=await Bun.file(new URL('../source-assets/district-map/district.json',import.meta.url)).text()
-    const conflicts=roadWidthConflicts(JSON.parse(text),scope)
-    console.log(JSON.stringify({scope,source_sha256:createHash('sha256').update(text).digest('hex'),result:conflicts.length?'FAIL':'PASS',thresholds:{overlapArea:0.5,heightDelta:0.35},scopeNote:'Ground-road top-surface candidates, including shared endpoints; bounded miters and horizontal stair treads match geometry.rs. Buildings, platform masks, retaining walls, bridge clearance and player collision require separate checks.',conflicts},null,2))
+    const conflicts=surfaces?roadSurfaceConflicts(JSON.parse(text)):roadWidthConflicts(JSON.parse(text),scope)
+    console.log(JSON.stringify({scope:surfaces?'ground-surfaces':scope,source_sha256:createHash('sha256').update(text).digest('hex'),result:conflicts.length?'FAIL':'PASS',thresholds:{overlapArea:0.5,heightDelta:0.35},scopeNote:surfaces?'Ground-road tops against non-elevated, non-building platforms, including concave footprints; no building masks or structural/collision clearance implied.':'Ground-road top-surface candidates, including shared endpoints; bounded miters and horizontal stair treads match geometry.rs. Buildings, platform masks, retaining walls, bridge clearance and player collision require separate checks.',conflicts},null,2))
     process.exitCode=conflicts.length?1:0
   }catch(error) {
     console.error(`[road-width] ${error instanceof Error?error.message:String(error)}`)
