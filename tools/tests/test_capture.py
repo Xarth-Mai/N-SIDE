@@ -4,13 +4,31 @@ from pathlib import Path
 import tempfile
 import unittest
 import sys
+from unittest.mock import patch
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from capture import verify_outputs, run_logged
+from capture import main, verify_outputs, run_logged
 
 
 class CaptureTests(unittest.TestCase):
+    def test_walk_script_enables_the_real_native_mode(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            binary = root / "native-game"
+            binary.write_bytes(b"unused native binary for command construction")
+            for scene in ("game-entry", "walk-preview"):
+                script = root / f"{scene}.json"
+                script.write_text(json.dumps({"scene": scene, "timeout_seconds": 1}))
+                output = root / scene
+                args = ["capture.py", "--script", str(script), "--output", str(output), "--binary", str(binary), "--no-video"]
+                with patch.object(sys, "argv", args), patch("capture.run_logged", return_value=0) as run, patch("capture.verify_outputs", return_value={"checks": [{"passed": True}]}), patch("capture.command_output", return_value="test"):
+                    self.assertEqual(main(), 0)
+                command = run.call_args.args[0]
+                self.assertEqual(command[0], str(binary))
+                self.assertEqual("--walk-preview" in command, scene == "walk-preview")
+                self.assertEqual(command[command.index("--capture") + 1], str(output / "script.json"))
+
     def test_evidence_gate(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)

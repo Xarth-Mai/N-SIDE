@@ -1,0 +1,22 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 20.66s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+[player/steps] foot=Vec3(106.39795, 29.47776, -272.60678) grounded=true blocked=None
+[player/ramp] foot=Vec3(117.16173, 27.191526, -246.4129) grounded=true blocked=None
+[player/wall] foot=Vec3(88.376, 28.055874, -255.0) grounded=true blocked=Some("buildings[V-04]/derived-facade")
+
+thread 'player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry' (298) panicked at src/player.rs:565:9:
+assertion failed: player.blocked.as_deref().is_some_and(|source| source.contains("(V-04)"))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... FAILED
+
+failures:
+
+failures:
+    player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 39 filtered out; finished in 8.67s
+
+error: test failed, to rerun pass `--lib`

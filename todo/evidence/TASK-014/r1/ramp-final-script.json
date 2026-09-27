@@ -1,0 +1,203 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 600,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    0,
+    29,
+    31,
+    33,
+    34,
+    59,
+    119,
+    179,
+    209,
+    239,
+    299,
+    359,
+    389,
+    399,
+    409,
+    419,
+    429,
+    449,
+    459,
+    469,
+    479,
+    509,
+    539,
+    569,
+    572,
+    599
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 210,
+      "move_axis": [
+        0.8944272,
+        -0.4472136
+      ]
+    },
+    {
+      "start": 210,
+      "end": 211,
+      "keys": [
+        "R"
+      ]
+    },
+    {
+      "start": 240,
+      "end": 360,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 390,
+      "end": 420,
+      "look_axis": [
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "start": 450,
+      "end": 480,
+      "look_axis": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "start": 480,
+      "end": 510,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 570,
+      "end": 571,
+      "gamepad": [
+        "Back"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 572,
+      "game_page": "title"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "title_starts_without_world",
+      "from": 0,
+      "to": 29,
+      "game_page": "title",
+      "max_world_entities": 0
+    },
+    {
+      "name": "walk_starts_on_home_road",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "world_ready": true,
+      "min_player_height": 28.0,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "real_axis_follows_downhill_ramp",
+      "from": 59,
+      "to": 209,
+      "min_player_distance": 15.0,
+      "max_player_distance": 16.5,
+      "min_player_height": 27.0,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "ramp_lowers_capsule_feet",
+      "from": 209,
+      "to": 209,
+      "min_player_height": 27.0,
+      "max_player_height": 27.7,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "reset_restores_home_road_height",
+      "from": 239,
+      "to": 239,
+      "min_player_height": 28.0,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "approach_reaches_real_shop_wall",
+      "from": 239,
+      "to": 359,
+      "min_player_distance": 11.0,
+      "max_player_distance": 11.8,
+      "player_blocked": "V-04",
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "camera_orbit_keeps_body_still",
+      "from": 389,
+      "to": 479,
+      "max_player_distance": 0.01,
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "wall_shortens_camera_boom",
+      "from": 420,
+      "to": 449,
+      "min_player_camera_distance": 0.05,
+      "max_player_camera_distance": 0.99,
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "clear_view_restores_camera_boom",
+      "from": 520,
+      "to": 539,
+      "min_player_camera_distance": 3.79,
+      "max_player_camera_distance": 3.81,
+      "max_player_distance": 0.01,
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "back_clears_world",
+      "from": 572,
+      "to": 599,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0
+    }
+  ]
+}

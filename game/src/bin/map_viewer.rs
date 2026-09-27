@@ -123,8 +123,11 @@ fn run() -> Result<AppExit, String> {
         .map(|path| capture::Recording::load(&path, capture_output.unwrap()))
         .transpose()?;
     if let Some(recording) = &capture {
-        if recording.script.scene == "game-entry" {
-            return Err("game-entry capture uses the n-side binary".into());
+        if matches!(
+            recording.script.scene.as_str(),
+            "game-entry" | "walk-preview"
+        ) {
+            return Err("game-entry/walk-preview capture uses the n-side binary".into());
         }
         headless = true;
         ui_preview |= recording.script.scene == "ui-signal";

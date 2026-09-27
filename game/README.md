@@ -15,7 +15,7 @@ cargo run --manifest-path game/Cargo.toml --locked --features viewer --bin map_v
 
 Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完成后从运行摘要链接或 Artifacts 下载 `n-side-windows-x86_64-msvc`，保存期为 14 天。手动入口需要 workflow 已存在于默认分支
 
-完整解压后双击 `run-game.cmd` 启动标题与街区预览，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
+完整解压后双击 `run-game.cmd` 启动标题与街区预览，`run-walk-preview.cmd` 启动室外步行实验，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
 
 构建使用 `x86_64-pc-windows-msvc`、现有 release 配置和 Cargo.lock，上传前从打包目录执行 Viewer `--validate`；该检查验证地图、几何、素材绑定与光照数据，不证明 Windows 图形启动或视觉验收通过
 
@@ -25,7 +25,7 @@ Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完�
 
 ## 正式入口与场景恢复
 
-标题提供「进入街区」和「退出」，进入后固定在月台杂货附近的观察位置；Esc 或返回按钮退出预览并清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。人物移动、碰撞、跟随镜头、任务和存档仍由后续原型接入
+标题提供「进入街区」和「退出」，进入后固定在月台杂货附近的观察位置；Esc 或返回按钮退出预览并清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的室外人物尺度实验；任务和存档仍由后续原型接入
 
 场景准备在 Bevy 任务池中进行，标题输入和加载反馈保持响应；取消后丢弃旧准备结果。每次进入建立新的 `SceneLoading`，依次核对资产依赖和模型实例化，真实就绪才切换到街区。返回标题移除带 `MapSource` 的场景层级与加载资源，保留宿主镜头、灯光和 UI
 
@@ -37,6 +37,19 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 ```
 
 脚本的 `waits` 在指定帧等待真实 `game_page`，期间继续异步加载和渲染，暂停录制时间线；它不设置应用状态，墙钟超时仍有效。`game_page`、`world_ready`、`min_world_entities`、`max_world_entities` 和 `same_world_entities` 从实际 ECS 状态检查标题、加载、清理与重入；录制时长不代表真实加载耗时
+
+## 人物尺度实验
+
+`--walk-preview` 复用正式入口和地图，在 `/nodes/home` 放置1.7m高、半径0.3m的中性胶囊代理。WASD／左摇杆移动，右键拖动／Q E／右摇杆转动镜头，R／Select返回起点，Esc／东键返回标题。当前为室外技术实验，不确定正式主控、角色造型或最终手感
+
+```fish
+cargo run --manifest-path game/Cargo.toml --locked -- --project-root . --walk-preview
+cargo build --manifest-path game/Cargo.toml --locked --bin n-side
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-preview.json --output output/capture/walk-preview
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-ramp-camera.json --output output/capture/walk-ramp-camera
+```
+
+碰撞从同一份渲染网格建立静态三角 BVH，覆盖地形、道路、建筑、平台及结构设施；道路台阶的踏面与立面均参与扫掠。Parry只负责空间查询，人物和镜头系统由 `player.rs` 维护；相机沿目标到期望位置作球体扫掠。参数、当前覆盖与失败处理见[人物尺度实验契约](../docs/dev/engineering/player-preview.md)
 
 ## 世界运行时
 
@@ -123,7 +136,7 @@ test $status -ne 0
 python3 tools/capture.py --script game/capture/ascent-lookout.json --output output/capture/ascent-lookout --binary game/target/debug/map_viewer
 ```
 
-每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 `district` 和 `ui-signal`，`view` 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/Shift/M/Escape/Tab/Enter/Up/Down/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角或结束时控制器启用状态
+每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 Viewer 的 `district` / `ui-signal` 以及正式入口的 `game-entry` / `walk-preview`；正式入口 `view` 为 `shop`，Viewer 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/Shift/M/Escape/Tab/Enter/Up/Down/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角或结束时控制器启用状态
 
 资源依赖和场景实例就绪后预热 30 个渲染帧，再按 `1 / fps` 推进模拟；每张截图收到异步回调并成功落盘后才推进下一帧，等待期间模拟时间为零。固定输入与时间步改善同环境复现，不能保证跨平台、跨 GPU 的像素一致性；当前场景没有随机行为，`seed` 只作为证据记录，尚无随机系统消费它
 

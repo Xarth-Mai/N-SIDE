@@ -1,7 +1,9 @@
 use crate::{
     capture::{self, CaptureInput, CaptureTarget},
+    player::{self, PlayerState, WalkPreview},
     ui::{FONT, Tokens, UiFont, UiInput, color},
     world::{
+        collision::CollisionWorld,
         map::{Map, map_to_world},
         scene::{PreparedScene, SceneLoading, WorldScenePlugin, clear_scene},
         visual::{Antialiasing, DaylightSettings},
@@ -11,6 +13,7 @@ use bevy::{
     app::ScheduleRunnerPlugin,
     audio::AudioPlugin,
     camera::RenderTarget,
+    input::mouse::AccumulatedMouseMotion,
     input_focus::{FocusCause, InputFocus},
     prelude::*,
     render::{
@@ -51,7 +54,11 @@ impl GamePhase {
 #[derive(Resource)]
 struct ProjectRoot(PathBuf);
 #[derive(Resource)]
-struct Preparation(Task<Result<PreparedScene, String>>);
+struct Preparation(Task<Result<PreparedWorld, String>>);
+struct PreparedWorld {
+    scene: PreparedScene,
+    player: Option<(CollisionWorld, PlayerState)>,
+}
 #[derive(Resource, Default)]
 struct EntryUi {
     focus: usize,
@@ -88,6 +95,7 @@ struct ShellButton {
 pub fn run() -> Result<AppExit, String> {
     let mut root = PathBuf::from(".");
     let mut script = None;
+    let mut walk = false;
     let mut output = None;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
@@ -95,6 +103,7 @@ pub fn run() -> Result<AppExit, String> {
             "--project-root" => {
                 root = PathBuf::from(args.next().ok_or("--project-root requires a directory")?)
             }
+            "--walk-preview" => walk = true,
             "--capture" => {
                 script = Some(PathBuf::from(
                     args.next().ok_or("--capture requires a script")?,
@@ -107,7 +116,7 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen game-entry evidence\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
+                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence\n--walk-preview  Neutral exterior movement experiment\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
                 );
                 return Ok(AppExit::Success);
             }
@@ -122,11 +131,10 @@ pub fn run() -> Result<AppExit, String> {
         .transpose()?;
     if recording
         .as_ref()
-        .is_some_and(|r| r.script.scene != "game-entry")
+        .is_some_and(|r| r.script.scene != if walk { "walk-preview" } else { "game-entry" })
     {
         return Err(
-            "n-side --capture requires scene game-entry; district and ui-signal use map_viewer"
-                .into(),
+            "n-side capture scene must be game-entry, or walk-preview with --walk-preview".into(),
         );
     }
     let root = root
@@ -178,7 +186,9 @@ pub fn run() -> Result<AppExit, String> {
         )
         .init_resource::<CaptureTarget>();
     visual.install(&mut app);
+    app.insert_resource(WalkPreview(walk));
     install_lifecycle(&mut app);
+    player::install(&mut app);
     app.add_systems(
         Startup,
         move |mut commands: Commands,
@@ -248,24 +258,43 @@ fn enter_title(world: &mut World) {
     // Dropping the task discards any late result; the task never writes into World
     world.remove_resource::<Preparation>();
     world.remove_resource::<GameLoadError>();
+    player::clear(world);
     clear_scene(world);
     world.resource_mut::<EntryUi>().focus = 0;
     info!("[game/state] title");
 }
 
 fn begin_loading(world: &mut World) {
+    player::clear(world);
     clear_scene(world);
     world.remove_resource::<GameLoadError>();
     world.resource_mut::<EntryUi>().focus = 0;
     let root = world.resource::<ProjectRoot>().0.clone();
-    world.insert_resource(Preparation(
-        AsyncComputeTaskPool::get().spawn(async move { PreparedScene::load(&root) }),
-    ));
+    let walk = world
+        .get_resource::<WalkPreview>()
+        .is_some_and(|preview| preview.0);
+    world.insert_resource(Preparation(AsyncComputeTaskPool::get().spawn(async move {
+        let scene = PreparedScene::load(&root)?;
+        let player = if walk {
+            let collision = CollisionWorld::from_parts(&scene.parts)?;
+            info!(
+                "[player/collision] triangles={} sources={}",
+                collision.triangle_count(),
+                collision.source_count()
+            );
+            let player = PlayerState::from_map(&scene.map, &collision)?;
+            Some((collision, player))
+        } else {
+            None
+        };
+        Ok(PreparedWorld { scene, player })
+    })));
     info!("[game/state] loading");
 }
 
 fn enter_failed(world: &mut World) {
     world.remove_resource::<Preparation>();
+    player::clear(world);
     clear_scene(world);
     world.resource_mut::<EntryUi>().focus = 0;
     info!("[game/state] failed");
@@ -304,7 +333,7 @@ fn poll_preparation(
         return;
     };
     commands.remove_resource::<Preparation>();
-    let result = result.and_then(|prepared| Ok((shop_view(&prepared.map)?, prepared)));
+    let result = result.and_then(|prepared| Ok((shop_view(&prepared.scene.map)?, prepared)));
     match result {
         Ok((view, prepared)) => {
             let Ok(mut camera) = camera.single_mut() else {
@@ -315,7 +344,11 @@ fn poll_preparation(
                 return;
             };
             *camera = view;
-            commands.insert_resource(SceneLoading::new(prepared));
+            if let Some((collision, player)) = prepared.player {
+                commands.insert_resource(collision);
+                commands.insert_resource(player);
+            }
+            commands.insert_resource(SceneLoading::new(prepared.scene));
         }
         Err(error) => {
             error!("{error}");
@@ -350,6 +383,8 @@ fn poll_scene(
 )]
 fn entry_input(
     keys: Res<ButtonInput<KeyCode>>,
+    mouse: Res<ButtonInput<MouseButton>>,
+    motion: Res<AccumulatedMouseMotion>,
     gamepads: Query<&Gamepad>,
     buttons: Query<(&Interaction, &ShellButton), Changed<Interaction>>,
     windows: Query<&Window, With<PrimaryWindow>>,
@@ -362,13 +397,17 @@ fn entry_input(
         return;
     }
     let pressed = |button| gamepads.iter().any(|pad| pad.just_pressed(button));
-    if gamepads
-        .iter()
-        .any(|pad| pad.get_just_pressed().next().is_some())
+    if keys.get_just_pressed().next().is_some()
+        || mouse.get_just_pressed().next().is_some()
+        || motion.delta != Vec2::ZERO
     {
-        ui.gamepad = true;
-    } else if keys.get_just_pressed().next().is_some() {
         ui.gamepad = false;
+    } else if gamepads.iter().any(|pad| {
+        pad.get_just_pressed().next().is_some()
+            || pad.left_stick().length() > 0.15
+            || pad.right_stick().length() > 0.15
+    }) {
+        ui.gamepad = true;
     }
     if keys.any_just_pressed([KeyCode::Escape, KeyCode::Tab])
         || pressed(GamepadButton::East)
@@ -426,6 +465,7 @@ fn draw_shell(
     roots: Query<Entity, With<ShellRoot>>,
     mut scale: ResMut<UiScale>,
     mut prior: Local<Option<(GamePhase, bool, UVec2)>>,
+    walk: Res<WalkPreview>,
 ) {
     let Ok((camera_id, camera)) = cameras.single() else {
         return;
@@ -508,6 +548,9 @@ fn draw_shell(
                     let (heading, description) = match page {
                         GamePhase::Title => ("N:SIDE", "街区信号  :  生活仍在继续"),
                         GamePhase::Loading => ("正在进入街区", "正在准备街景与素材"),
+                        GamePhase::World if walk.0 => {
+                            ("月台杂货 · 步行实验", "中性代理 · 室外移动")
+                        }
                         GamePhase::World => ("月台杂货 · 街景", "街区预览 · 固定镜头"),
                         GamePhase::Failed => (
                             "暂时无法进入街区",
@@ -564,7 +607,13 @@ fn draw_shell(
                         match (page, ui.gamepad) {
                             (GamePhase::Title, false) => "↑ ↓ 选择 · Enter 确认",
                             (GamePhase::Title, true) => "方向键选择 · A 确认",
+                            (GamePhase::World, false) if walk.0 => {
+                                "WASD 移动 · 右键 / Q E 镜头\nR 回到起点 · Esc 返回标题"
+                            }
                             (GamePhase::World, false) => "Esc 返回标题",
+                            (GamePhase::World, true) if walk.0 => {
+                                "左摇杆移动 · 右摇杆镜头\nSelect 回到起点 · B 返回标题"
+                            }
                             (GamePhase::World, true) => "B 返回标题",
                             (GamePhase::Loading, false) => "Esc 取消并返回",
                             (GamePhase::Loading, true) => "B 取消并返回",
@@ -643,7 +692,10 @@ mod tests {
         let mut app = App::new();
         app.add_plugins((MinimalPlugins, StatesPlugin))
             .init_resource::<ButtonInput<KeyCode>>()
+            .init_resource::<ButtonInput<MouseButton>>()
+            .init_resource::<AccumulatedMouseMotion>()
             .insert_resource(ProjectRoot(root));
+        app.insert_resource(WalkPreview(false));
         install_lifecycle(&mut app);
         app.finish();
         app.cleanup();
@@ -698,6 +750,22 @@ mod tests {
             .unwrap()
             .digital_mut()
             .clear();
+        app.world_mut()
+            .get_mut::<Gamepad>(pad)
+            .unwrap()
+            .analog_mut()
+            .set(GamepadAxis::LeftStickX, 0.5);
+        app.world_mut().resource_mut::<EntryUi>().gamepad = false;
+        app.update();
+        assert!(app.world().resource::<EntryUi>().gamepad);
+        app.world_mut()
+            .resource_mut::<AccumulatedMouseMotion>()
+            .delta = Vec2::X;
+        app.update();
+        assert!(!app.world().resource::<EntryUi>().gamepad);
+        app.world_mut()
+            .resource_mut::<AccumulatedMouseMotion>()
+            .delta = Vec2::ZERO;
         app.world_mut().spawn((
             Interaction::Pressed,
             ShellButton {

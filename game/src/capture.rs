@@ -4,12 +4,14 @@
 //! N:SIDE implementation records real application input, state and rendered frames
 use crate::{
     app::{GameLoadError, GamePhase},
+    player::PlayerState,
     ui::{SignalUi, UiFont, UiInput},
     world::scene::{MapSource, SceneLoading},
 };
 #[cfg(feature = "viewer")]
 use bevy::camera_controller::free_camera::FreeCameraState;
 use bevy::{
+    app::RunFixedMainLoopSystems,
     input::mouse::AccumulatedMouseMotion,
     prelude::*,
     render::view::screenshot::{Screenshot, ScreenshotCaptured},
@@ -66,6 +68,10 @@ pub struct InputSpan {
     gamepad: Vec<String>,
     #[serde(default)]
     look: [f32; 2],
+    #[serde(default)]
+    move_axis: [f32; 2],
+    #[serde(default)]
+    look_axis: [f32; 2],
 }
 
 #[derive(Clone, Deserialize, Serialize)]
@@ -91,17 +97,27 @@ pub struct Assertion {
     min_world_entities: Option<usize>,
     max_world_entities: Option<usize>,
     same_world_entities: Option<bool>,
+    min_player_distance: Option<f32>,
+    max_player_distance: Option<f32>,
+    min_player_height: Option<f32>,
+    max_player_height: Option<f32>,
+    min_player_camera_distance: Option<f32>,
+    max_player_camera_distance: Option<f32>,
+    player_grounded: Option<bool>,
+    max_player_resets: Option<u32>,
+    player_blocked: Option<String>,
 }
 
 const GAME_PAGES: [&str; 4] = ["title", "loading", "world", "failed"];
 
-const KEYS: [(&str, KeyCode); 15] = [
+const KEYS: [(&str, KeyCode); 16] = [
     ("W", KeyCode::KeyW),
     ("A", KeyCode::KeyA),
     ("S", KeyCode::KeyS),
     ("D", KeyCode::KeyD),
     ("Q", KeyCode::KeyQ),
     ("E", KeyCode::KeyE),
+    ("R", KeyCode::KeyR),
     ("Shift", KeyCode::ShiftLeft),
     ("M", KeyCode::KeyM),
     ("Escape", KeyCode::Escape),
@@ -113,12 +129,13 @@ const KEYS: [(&str, KeyCode); 15] = [
     ("PageUp", KeyCode::PageUp),
 ];
 
-const PAD: [(&str, GamepadButton); 7] = [
+const PAD: [(&str, GamepadButton); 8] = [
     ("Down", GamepadButton::DPadDown),
     ("Up", GamepadButton::DPadUp),
     ("Confirm", GamepadButton::South),
     ("Back", GamepadButton::East),
     ("Menu", GamepadButton::Start),
+    ("Reset", GamepadButton::Select),
     ("ScrollDown", GamepadButton::RightTrigger),
     ("ScrollUp", GamepadButton::LeftTrigger),
 ];
@@ -126,13 +143,19 @@ const PAD: [(&str, GamepadButton); 7] = [
 struct ScriptGamepad;
 
 impl Script {
+    fn game_scene(&self) -> bool {
+        matches!(self.scene.as_str(), "game-entry" | "walk-preview")
+    }
+
     fn validate(&self) -> Result<(), String> {
-        if !matches!(self.scene.as_str(), "district" | "ui-signal" | "game-entry")
-            || self.view.is_empty()
-            || (self.scene == "game-entry" && self.view != "shop")
+        if !matches!(
+            self.scene.as_str(),
+            "district" | "ui-signal" | "game-entry" | "walk-preview"
+        ) || self.view.is_empty()
+            || (self.game_scene() && self.view != "shop")
         {
             return Err(
-                "scene must be district/ui-signal with an existing Viewer view, or game-entry with view shop".into(),
+                "scene must be district/ui-signal with an existing Viewer view, or game-entry/walk-preview with view shop".into(),
             );
         }
         if !(64..=4096).contains(&self.width)
@@ -152,6 +175,11 @@ impl Script {
                 || event.end > self.frames
                 || event.look.iter().any(|v| !v.is_finite())
                 || event
+                    .move_axis
+                    .iter()
+                    .chain(&event.look_axis)
+                    .any(|v| !v.is_finite() || !(-1.0..=1.0).contains(v))
+                || event
                     .keys
                     .iter()
                     .any(|key| !KEYS.iter().any(|(name, _)| name == key))
@@ -160,19 +188,19 @@ impl Script {
                     .iter()
                     .any(|button| !PAD.iter().any(|(name, _)| name == button))
             {
-                return Err("input spans must be ordered, non-overlapping, within frames and use known keys/finite mouse deltas".into());
+                return Err("input spans must be ordered, non-overlapping, within frames and use known keys, finite mouse deltas and gamepad axes in -1..1".into());
             }
             previous_end = event.end;
         }
         let mut wait_frames = std::collections::BTreeSet::new();
         for wait in &self.waits {
-            if self.scene != "game-entry"
+            if !self.game_scene()
                 || wait.frame >= self.frames
                 || !wait_frames.insert(wait.frame)
                 || !GAME_PAGES.contains(&wait.game_page.as_str())
             {
                 return Err(
-                    "waits require game-entry, unique frames within frames and a known game_page"
+                    "waits require game-entry/walk-preview, unique frames within frames and a known game_page"
                         .into(),
                 );
             }
@@ -186,10 +214,18 @@ impl Script {
             if check.name.trim().is_empty()
                 || check.from > check.to
                 || check.to >= self.frames
-                || [check.min_distance, check.max_distance, check.min_rotation]
-                    .into_iter()
-                    .flatten()
-                    .any(|v| !v.is_finite() || v < 0.0)
+                || [
+                    check.min_distance,
+                    check.max_distance,
+                    check.min_rotation,
+                    check.min_player_distance,
+                    check.max_player_distance,
+                    check.min_player_camera_distance,
+                    check.max_player_camera_distance,
+                ]
+                .into_iter()
+                .flatten()
+                .any(|v| !v.is_finite() || v < 0.0)
                 || (check.min_distance.is_none()
                     && check.max_distance.is_none()
                     && check.min_rotation.is_none()
@@ -206,10 +242,33 @@ impl Script {
                     && check.world_ready.is_none()
                     && check.min_world_entities.is_none()
                     && check.max_world_entities.is_none()
-                    && check.same_world_entities.is_none())
-                || check.game_page.as_ref().is_some_and(|page| {
-                    self.scene != "game-entry" || !GAME_PAGES.contains(&page.as_str())
-                })
+                    && check.same_world_entities.is_none()
+                    && !check.has_player_assertion())
+                || (check.has_player_assertion() && self.scene != "walk-preview")
+                || [check.min_player_height, check.max_player_height]
+                    .into_iter()
+                    .flatten()
+                    .any(|v| !v.is_finite())
+                || check
+                    .min_player_distance
+                    .zip(check.max_player_distance)
+                    .is_some_and(|(min, max)| min > max)
+                || check
+                    .min_player_height
+                    .zip(check.max_player_height)
+                    .is_some_and(|(min, max)| min > max)
+                || check
+                    .min_player_camera_distance
+                    .zip(check.max_player_camera_distance)
+                    .is_some_and(|(min, max)| min > max)
+                || check
+                    .player_blocked
+                    .as_ref()
+                    .is_some_and(|value| value.trim().is_empty())
+                || check
+                    .game_page
+                    .as_ref()
+                    .is_some_and(|page| !self.game_scene() || !GAME_PAGES.contains(&page.as_str()))
                 || check
                     .min_world_entities
                     .zip(check.max_world_entities)
@@ -236,6 +295,86 @@ impl Script {
     }
 }
 
+impl Assertion {
+    fn has_player_assertion(&self) -> bool {
+        self.min_player_distance.is_some()
+            || self.max_player_distance.is_some()
+            || self.min_player_height.is_some()
+            || self.max_player_height.is_some()
+            || self.min_player_camera_distance.is_some()
+            || self.max_player_camera_distance.is_some()
+            || self.player_grounded.is_some()
+            || self.max_player_resets.is_some()
+            || self.player_blocked.is_some()
+    }
+
+    fn check_player(&self, samples: &[Sample]) -> bool {
+        if !self.has_player_assertion() {
+            return true;
+        }
+        let Some(start) = samples.first().and_then(|sample| sample.player.as_ref()) else {
+            return false;
+        };
+        let mut peak_distance = 0.0_f32;
+        let mut min_height = f32::INFINITY;
+        let mut max_height = f32::NEG_INFINITY;
+        let mut min_camera_distance = f32::INFINITY;
+        let mut max_camera_distance = f32::NEG_INFINITY;
+        let mut blocked = false;
+        for sample in samples {
+            let Some(player) = &sample.player else {
+                return false;
+            };
+            peak_distance = peak_distance
+                .max(Vec3::from_array(start.foot).distance(Vec3::from_array(player.foot)));
+            min_height = min_height.min(player.foot[1]);
+            max_height = max_height.max(player.foot[1]);
+            min_camera_distance = min_camera_distance.min(player.camera_distance);
+            max_camera_distance = max_camera_distance.max(player.camera_distance);
+            blocked |= self.player_blocked.as_ref().is_some_and(|source| {
+                player
+                    .blocked
+                    .as_ref()
+                    .is_some_and(|actual| actual.contains(source))
+            });
+        }
+        let end = samples.last().unwrap().player.as_ref().unwrap();
+        self.min_player_distance.is_none_or(|limit| {
+            Vec3::from_array(start.foot).distance(Vec3::from_array(end.foot)) >= limit
+        }) && self
+            .max_player_distance
+            .is_none_or(|limit| peak_distance <= limit)
+            && self
+                .min_player_height
+                .is_none_or(|limit| min_height >= limit)
+            && self
+                .max_player_height
+                .is_none_or(|limit| max_height <= limit)
+            && self
+                .min_player_camera_distance
+                .is_none_or(|limit| min_camera_distance >= limit)
+            && self
+                .max_player_camera_distance
+                .is_none_or(|limit| max_camera_distance <= limit)
+            && self
+                .player_grounded
+                .is_none_or(|expected| end.grounded == expected)
+            && self
+                .max_player_resets
+                .is_none_or(|limit| end.resets <= limit)
+            && (self.player_blocked.is_none() || blocked)
+    }
+}
+
+#[derive(Serialize)]
+struct PlayerSample {
+    foot: [f32; 3],
+    grounded: bool,
+    blocked: Option<String>,
+    resets: u32,
+    camera_distance: f32,
+}
+
 #[derive(Serialize)]
 struct Sample {
     frame: u32,
@@ -246,6 +385,7 @@ struct Sample {
     game_page: Option<String>,
     world_ready: bool,
     world_entities: usize,
+    player: Option<PlayerSample>,
     ui: Option<serde_json::Value>,
 }
 
@@ -299,7 +439,7 @@ impl Recording {
     }
 
     fn finish(&mut self, loading: Option<&SceneLoading>) -> bool {
-        let assets_ready = if self.script.scene == "game-entry" {
+        let assets_ready = if self.script.game_scene() {
             self.world_ready_seen
         } else {
             loading.is_some_and(|loading| loading.ready && loading.failure.is_none())
@@ -328,6 +468,9 @@ impl Recording {
                         })
                         .fold(0.0_f32, f32::max);
                     let passed = assertion.min_distance.is_none_or(|v| distance >= v)
+                        && assertion.check_player(
+                            &self.samples[assertion.from as usize..=assertion.to as usize],
+                        )
                         && assertion.max_distance.is_none_or(|v| peak_distance <= v)
                         && assertion.min_rotation.is_none_or(|v| rotation >= v)
                         && assertion.enabled.is_none_or(|v| b.enabled == v)
@@ -390,7 +533,7 @@ impl Recording {
             "checks":checks, "samples":self.samples,
             "determinism":"Fixed simulated dt and explicit input sequence; scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
             "visual_review":"NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
-            "scope":"Real game entry, world assets, Viewer camera and opt-in UI experiment; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. No player collision, animation or gameplay acceptance"
+            "scope":"Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. State checks and images do not establish author/player acceptance"
         });
         let written = serde_json::to_vec_pretty(&report)
             .map_err(|e| e.to_string())
@@ -428,7 +571,10 @@ pub fn install(app: &mut App, recording: Recording) {
         .add_systems(First, advance_clock.before(TimeSystems))
         .add_systems(
             RunFixedMainLoop,
-            drive_input.in_set(CaptureInput).before(UiInput),
+            drive_input
+                .in_set(CaptureInput)
+                .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop)
+                .before(UiInput),
         )
         .add_systems(PostUpdate, record);
 }
@@ -444,8 +590,7 @@ fn advance_clock(
     recording.tick = ui_font
         .as_ref()
         .is_none_or(|font| assets.is_loaded_with_dependencies(font.0.id()))
-        && (recording.script.scene == "game-entry"
-            || loading.as_ref().is_some_and(|loading| loading.ready))
+        && (recording.script.game_scene() || loading.as_ref().is_some_and(|loading| loading.ready))
         && recording.script.waits.iter().all(|wait| {
             wait.frame != recording.samples.len() as u32
                 || phase
@@ -486,6 +631,16 @@ fn drive_input(
         .iter()
         .find(|e| e.start <= frame && frame < e.end);
     for mut gamepad in &mut pad {
+        let movement = event.map_or([0.0; 2], |event| event.move_axis);
+        let look = event.map_or([0.0; 2], |event| event.look_axis);
+        for (axis, value) in [
+            (GamepadAxis::LeftStickX, movement[0]),
+            (GamepadAxis::LeftStickY, movement[1]),
+            (GamepadAxis::RightStickX, look[0]),
+            (GamepadAxis::RightStickY, look[1]),
+        ] {
+            gamepad.analog_mut().set(axis, value);
+        }
         for (name, button) in PAD {
             if event.is_some_and(|e| e.gamepad.iter().any(|b| b == name)) {
                 gamepad.digital_mut().press(button);
@@ -521,6 +676,7 @@ fn record(
     loading: Option<Res<SceneLoading>>,
     phase: Option<Res<State<GamePhase>>>,
     load_error: Option<Res<GameLoadError>>,
+    player: Option<Res<PlayerState>>,
     target: Res<CaptureTarget>,
     camera: Query<&Transform, With<Camera3d>>,
     #[cfg(feature = "viewer")] controller: Query<&FreeCameraState, With<Camera3d>>,
@@ -575,7 +731,7 @@ fn record(
         });
         return;
     }
-    if recording.script.scene != "game-entry" && !world_ready {
+    if !recording.script.game_scene() && !world_ready {
         return;
     }
     if recording.warmup > 0 {
@@ -583,6 +739,13 @@ fn record(
         return;
     }
     if !recording.tick {
+        return;
+    }
+    if player
+        .as_ref()
+        .is_some_and(|player| !player.foot.is_finite() || !player.camera_distance.is_finite())
+    {
+        recording.failure = Some("non-finite player state".into());
         return;
     }
     for (entity, transform) in &transforms {
@@ -618,6 +781,13 @@ fn record(
         game_page: phase.as_ref().map(|phase| phase.get().as_str().to_owned()),
         world_ready,
         world_entities: world_entities.iter().count(),
+        player: player.as_ref().map(|player| PlayerSample {
+            foot: player.foot.to_array(),
+            grounded: player.grounded,
+            blocked: player.blocked.clone(),
+            resets: player.resets,
+            camera_distance: player.camera_distance,
+        }),
         ui: ui
             .as_ref()
             .map(|ui| serde_json::to_value(&**ui).expect("finite UI state")),
@@ -665,7 +835,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn game_waits_hold_the_clock_until_the_real_phase_matches() {
+    fn waits_hold_the_clock_and_script_inputs_reach_real_gamepad_axes() {
         let mut script: Script =
             serde_json::from_str(include_str!("../capture/game-entry.json")).unwrap();
         script.waits[0].frame = 0;
@@ -707,6 +877,48 @@ mod tests {
         assert!(
             matches!(app.world().resource::<TimeUpdateStrategy>(), TimeUpdateStrategy::ManualDuration(dt) if dt.is_zero())
         );
+        let pad = app
+            .world_mut()
+            .spawn((ScriptGamepad, Gamepad::default()))
+            .id();
+        app.init_resource::<ButtonInput<KeyCode>>()
+            .init_resource::<ButtonInput<MouseButton>>()
+            .init_resource::<AccumulatedMouseMotion>()
+            .add_systems(Update, drive_input.after(advance_clock));
+        {
+            let mut recording = app.world_mut().resource_mut::<Recording>();
+            recording.pending = false;
+            recording.script.events = vec![InputSpan {
+                start: 0,
+                end: 1,
+                keys: vec!["R".into()],
+                right_mouse: false,
+                gamepad: vec!["Reset".into()],
+                look: [0.0; 2],
+                move_axis: [0.5, 1.0],
+                look_axis: [-1.0, 0.25],
+            }];
+        }
+        app.update();
+        let gamepad = app.world().get::<Gamepad>(pad).unwrap();
+        assert_eq!(gamepad.left_stick(), Vec2::new(0.5, 1.0));
+        assert_eq!(gamepad.right_stick(), Vec2::new(-1.0, 0.25));
+        assert!(gamepad.just_pressed(GamepadButton::Select));
+        assert!(
+            app.world()
+                .resource::<ButtonInput<KeyCode>>()
+                .just_pressed(KeyCode::KeyR)
+        );
+        app.world_mut()
+            .resource_mut::<Recording>()
+            .script
+            .events
+            .clear();
+        app.update();
+        let gamepad = app.world().get::<Gamepad>(pad).unwrap();
+        assert_eq!(gamepad.left_stick(), Vec2::ZERO);
+        assert_eq!(gamepad.right_stick(), Vec2::ZERO);
+        assert!(!gamepad.pressed(GamepadButton::Select));
     }
 
     #[test]
@@ -763,5 +975,89 @@ mod tests {
         let mut invalid = script;
         invalid.view = "overview".into();
         assert!(invalid.validate().is_err());
+    }
+
+    #[test]
+    fn script_contract_validates_walk_axes_and_player_limits() {
+        let script: Script =
+            serde_json::from_str(include_str!("../capture/walk-preview.json")).unwrap();
+        assert!(script.validate().is_ok());
+        let ramp_script: Script =
+            serde_json::from_str(include_str!("../capture/walk-ramp-camera.json")).unwrap();
+        assert!(ramp_script.validate().is_ok());
+        let mut invalid = script.clone();
+        invalid.events[0].move_axis = [1.01, 0.0];
+        assert!(invalid.validate().is_err());
+        let mut invalid = script.clone();
+        invalid.events[0].look_axis = [0.0, f32::NAN];
+        assert!(invalid.validate().is_err());
+        let mut invalid = script.clone();
+        invalid.assertions[0].max_player_distance = Some(-0.1);
+        assert!(invalid.validate().is_err());
+        let mut invalid = script.clone();
+        invalid.assertions[0].min_player_height = Some(10.0);
+        invalid.assertions[0].max_player_height = Some(9.0);
+        assert!(invalid.validate().is_err());
+        let mut invalid = script.clone();
+        invalid.assertions[0].player_blocked = Some(String::new());
+        assert!(invalid.validate().is_err());
+        let mut invalid = script.clone();
+        invalid.assertions[0].min_player_camera_distance = Some(2.0);
+        invalid.assertions[0].max_player_camera_distance = Some(1.0);
+        assert!(invalid.validate().is_err());
+        let mut invalid = script;
+        invalid.scene = "game-entry".into();
+        assert!(invalid.validate().is_err());
+    }
+
+    #[test]
+    fn player_checks_require_real_snapshots_and_bound_the_whole_interval() {
+        let assertion: Assertion = serde_json::from_value(serde_json::json!({
+            "name": "wall approach", "from": 0, "to": 2,
+            "min_player_distance": 3.0, "max_player_distance": 5.0,
+            "min_player_height": 28.0, "max_player_height": 28.5,
+            "min_player_camera_distance": 4.0, "max_player_camera_distance": 7.0,
+            "player_grounded": true, "max_player_resets": 0,
+            "player_blocked": "V-04"
+        }))
+        .unwrap();
+        let sample = |x| Sample {
+            frame: 0,
+            simulation_seconds: 0.0,
+            position: [0.0; 3],
+            rotation: [0.0, 0.0, 0.0, 1.0],
+            enabled: false,
+            game_page: Some("world".into()),
+            world_ready: true,
+            world_entities: 1,
+            ui: None,
+            player: Some(PlayerSample {
+                foot: [x, 28.0, 0.0],
+                grounded: true,
+                blocked: None,
+                resets: 0,
+                camera_distance: 6.0,
+            }),
+        };
+        let mut samples = [sample(0.0), sample(3.0), sample(4.0)];
+        samples[1].player.as_mut().unwrap().blocked = Some("/buildings/V-04/wall".into());
+        assert!(assertion.check_player(&samples));
+        samples[1].player.as_mut().unwrap().camera_distance = 8.0;
+        assert!(!assertion.check_player(&samples));
+        samples[1].player.as_mut().unwrap().camera_distance = 3.0;
+        assert!(!assertion.check_player(&samples));
+        samples[1].player.as_mut().unwrap().camera_distance = 6.0;
+        samples[1].player.as_mut().unwrap().foot[0] = 6.0;
+        assert!(!assertion.check_player(&samples));
+        samples[1].player.as_mut().unwrap().foot = [3.0, 27.9, 0.0];
+        assert!(!assertion.check_player(&samples));
+        samples[1].player.as_mut().unwrap().foot[1] = 28.0;
+        samples[2].player.as_mut().unwrap().resets = 1;
+        assert!(!assertion.check_player(&samples));
+        samples[2].player.as_mut().unwrap().resets = 0;
+        samples[1].player.as_mut().unwrap().blocked = None;
+        assert!(!assertion.check_player(&samples));
+        samples[1].player = None;
+        assert!(!assertion.check_player(&samples));
     }
 }

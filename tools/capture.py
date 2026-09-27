@@ -120,6 +120,8 @@ def main() -> int:
                 raise RuntimeError(f"cargo build exited {code}; see build.log")
         report["binary_sha256"] = digest(binary)
         command = [str(binary), "--project-root", str(ROOT), "--capture", str(output / "script.json"), "--output", str(output)]
+        if script["scene"] == "walk-preview":
+            command.append("--walk-preview")
         report["command"] = command
         code = run_logged(command, output / "runtime.log", timeout + 30)
         report["runtime_exit_code"] = code

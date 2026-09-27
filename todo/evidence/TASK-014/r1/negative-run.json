@@ -1,0 +1,71 @@
+{
+  "status": "FAIL",
+  "script": {
+    "scene": "walk-preview",
+    "view": "shop",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 120,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      0,
+      59,
+      119
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 31,
+        "keys": [
+          "Enter"
+        ]
+      },
+      {
+        "start": 60,
+        "end": 100,
+        "keys": [
+          "W"
+        ]
+      }
+    ],
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "assertions": [
+      {
+        "name": "impossible_player_motion",
+        "from": 59,
+        "to": 119,
+        "min_player_distance": 1000.0
+      }
+    ]
+  },
+  "script_sha256": "27dfbb2bda9b6f0d07cd25255f24e861f1e31f9d980b6a1c22c62ad6cfc40707",
+  "git_commit": "8749a967cff76bc7a02a071ae40cb67e2297b65f",
+  "git_worktree": "M .github/workflows/build-windows.yml\n M THIRD_PARTY_NOTICES.md\n M docs/dev/design/systems/input.md\n M docs/dev/engineering/index.md\n M docs/dev/validation/runtime.md\n M game/Cargo.lock\n M game/Cargo.toml\n M game/README.md\n M game/src/app.rs\n M game/src/bin/map_viewer.rs\n M game/src/capture.rs\n M game/src/lib.rs\n M game/src/world/mod.rs\n M todo/README.md\n M todo/tasks/TASK-014-human-scale-prototype.md\n M tools/capture.py\n M tools/tests/test_capture.py\n?? docs/dev/engineering/player-preview.md\n?? game/capture/walk-preview.json\n?? game/capture/walk-ramp-camera.json\n?? game/src/player.rs\n?? game/src/world/collision.rs\n?? third_party/parry/\n?? todo/evidence/TASK-014/",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "NOT RUN",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "ddcc1c6333bfc4cddb566a4dfa4bd748e5781f4cd9f3ad85150ea2e5b5097a85",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r1/negative/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r1/negative",
+    "--walk-preview"
+  ],
+  "runtime_exit_code": 1,
+  "error": "Native capture exited 1; see runtime.log and state.json when available",
+  "elapsed_wall_seconds": 25.889580379996914
+}

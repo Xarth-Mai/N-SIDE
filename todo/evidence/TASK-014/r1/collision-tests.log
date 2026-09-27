@@ -1,0 +1,13 @@
+    Blocking waiting for file lock on build directory
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 27.29s
+     Running unittests src/lib.rs (target/debug/deps/n_side-5e961ca7daca702b)
+
+running 3 tests
+[collision/exact-skin-tangent] CollisionHit { fraction: 0.026022606, normal: test world::collision::tests::support_uses_step_and_slope_triangles_and_preserves_sources ... Vec3ok(
+-0.9999909, -0.0, -0.0042806496), point: Vec3(6.765127e-6, 0.6199957, 0.026663562), source: "/buildings/0 (wall)", triangle: 1 }
+test world::collision::tests::capsule_and_camera_sweep_stop_at_thin_wall_at_high_speed ... ok
+[collision/probe] triangles=105688 source_ranges=2505 mesh_bytes=16047784 bounds=(Vec3(-820.0, -2.0, -2040.0), Vec3(1320.0, 450.025, 580.0)) geometry=8.196177426s bvh=31.704551ms support_1000=670.65µs support=CollisionHit { fraction: 0.49687505, normal: Vec3(0.0, 1.0, 0.0), point: Vec3(90.0, 28.025, -255.0), source: "/roads/190 (shop_entry -> shop_front_door)", triangle: 51870 } doorstep=CollisionHit { fraction: 0.28388673, normal: Vec3(0.29946688, 0.95410675, -0.0), point: Vec3(88.49905, 28.035103, -255.00002), source: "/architectures/0 (P3-A1)/fixtures/5 (门前截水沟)", triangle: 104537 } wall=CollisionHit { fraction: 0.33600616, normal: Vec3(1.0, 1.9342901e-6, -5.1581073e-6), point: Vec3(87.99999, 29.626785, -255.00182), source: "/buildings/1 (V-04)", triangle: 15997 }
+test world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 36 filtered out; finished in 8.23s

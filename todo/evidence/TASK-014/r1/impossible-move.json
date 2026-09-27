@@ -1,0 +1,45 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 120,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    0,
+    59,
+    119
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 100,
+      "keys": [
+        "W"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "impossible_player_motion",
+      "from": 59,
+      "to": 119,
+      "min_player_distance": 1000.0
+    }
+  ]
+}

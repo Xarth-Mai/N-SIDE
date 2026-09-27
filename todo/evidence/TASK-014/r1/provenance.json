@@ -1,0 +1,31 @@
+{
+  "base_commit": "8749a967cff76bc7a02a071ae40cb67e2297b65f",
+  "inputs": {
+    "game/src/player.rs": "59dd647cd17b5639d6e05e290a7e43fa75d1420fd2519b5874098c01edf6d3c1",
+    "game/src/world/collision.rs": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+    "game/src/world/mod.rs": "573e20c25b4db126bfebe339ac4e1578d5096e3b01629328564272048d609fe9",
+    "game/src/app.rs": "d851df298b267c3add13138bebddffacc34da1369aa537168719aa003871b3f4",
+    "game/src/capture.rs": "159c3302968f86927a7bf68717d3aef73a05d1f07897f1319479ad178b281fff",
+    "game/src/lib.rs": "879c9645eabc11afa5d93decb02f053f6d0a7eace39803e251ac45dabf8bb417",
+    "game/src/bin/map_viewer.rs": "b877ae4c3eb366fb8afd229f5ef823662955eff40d543ca1b5c624a23a0101e4",
+    "game/Cargo.toml": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/capture/walk-preview.json": "d31831f08a949808f5064fbbf19a3b564b6f36f800908bbc7a20c462638ad917",
+    "game/capture/walk-ramp-camera.json": "f671a0744580694f3124c0f5b7eaa942f6f02c06956ba8d76feedb34d450c297",
+    "game/capture/game-entry.json": "f3e1ecd4561842544856ab5e738eab503ff81757b67a3667b3c53a1e1a0fbd91",
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "source-assets/district-scene/appearance.json": "572b7c11f3d4ba138db9efbaaffca5c9d6ca406488b1a590e217df28464a8949",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "tools/capture.py": "4225a1755898159bd964377c8aa12e1548b61fe7276d9be3c96846369b3d4b26"
+  },
+  "binaries": {
+    "game/target/debug/n-side": "ddcc1c6333bfc4cddb566a4dfa4bd748e5781f4cd9f3ad85150ea2e5b5097a85",
+    "game/target/debug/map_viewer": "772584eed83be2aef02023004d309f62fab2638e55d314c26a55b3e5174d8642"
+  },
+  "scope": "Neutral outdoor capsule, static collision, follow camera and shared capture; no formal character or game design acceptance",
+  "archive_normalization": "Archived logs strip trailing whitespace and final blank lines; original runtime logs remain under output",
+  "visual_review": "self-audit; PNGs actually viewed; archived derivatives WebP quality 80",
+  "ordinary_fixed_hz": 64,
+  "capture_fixed_hz": 30,
+  "notes": "Current full prepared collision includes 557496 triangles and 3301 source ranges; 105688 triangle/16.05MB microbenchmark covers base geometry only"
+}

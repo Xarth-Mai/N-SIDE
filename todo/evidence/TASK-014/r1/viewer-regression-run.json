@@ -1,0 +1,436 @@
+{
+  "status": "PASS",
+  "script": {
+    "scene": "district",
+    "view": "shop",
+    "width": 640,
+    "height": 360,
+    "fps": 30,
+    "frames": 540,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      0,
+      60,
+      149,
+      239,
+      329,
+      419,
+      539
+    ],
+    "events": [
+      {
+        "start": 0,
+        "end": 1,
+        "keys": [
+          "M"
+        ]
+      },
+      {
+        "start": 30,
+        "end": 60,
+        "keys": [
+          "A"
+        ]
+      },
+      {
+        "start": 90,
+        "end": 150,
+        "look": [
+          5.0,
+          0.0
+        ]
+      },
+      {
+        "start": 180,
+        "end": 225,
+        "keys": [
+          "D"
+        ]
+      },
+      {
+        "start": 240,
+        "end": 241,
+        "keys": [
+          "Escape",
+          "W"
+        ]
+      },
+      {
+        "start": 241,
+        "end": 300,
+        "keys": [
+          "W"
+        ],
+        "look": [
+          8.0,
+          0.0
+        ]
+      },
+      {
+        "start": 300,
+        "end": 301,
+        "keys": [
+          "M"
+        ]
+      },
+      {
+        "start": 301,
+        "end": 330,
+        "keys": [
+          "A"
+        ]
+      },
+      {
+        "start": 360,
+        "end": 420,
+        "look": [
+          -5.0,
+          0.0
+        ]
+      },
+      {
+        "start": 450,
+        "end": 480,
+        "keys": [
+          "E"
+        ]
+      },
+      {
+        "start": 510,
+        "end": 511,
+        "keys": [
+          "Escape"
+        ]
+      }
+    ],
+    "assertions": [
+      {
+        "name": "strafe_uses_real_controller",
+        "from": 29,
+        "to": 59,
+        "min_distance": 11.9
+      },
+      {
+        "name": "look_changes_orientation",
+        "from": 89,
+        "to": 149,
+        "min_rotation": 0.29
+      },
+      {
+        "name": "escape_blocks_held_input",
+        "from": 240,
+        "to": 299,
+        "max_distance": 0.0001,
+        "enabled": false
+      },
+      {
+        "name": "toggle_restores_movement",
+        "from": 300,
+        "to": 329,
+        "min_distance": 11.5,
+        "enabled": true
+      },
+      {
+        "name": "release_friction_settles",
+        "from": 505,
+        "to": 509,
+        "max_distance": 0.0001
+      },
+      {
+        "name": "final_release_is_stable",
+        "from": 510,
+        "to": 539,
+        "max_distance": 0.0001,
+        "enabled": false
+      }
+    ]
+  },
+  "script_sha256": "46a0133a8f319e1b7de4376fdf99f9a2d62a3171598a3ab066814e292c2238dd",
+  "git_commit": "8749a967cff76bc7a02a071ae40cb67e2297b65f",
+  "git_worktree": "M .github/workflows/build-windows.yml\n M THIRD_PARTY_NOTICES.md\n M docs/dev/design/systems/input.md\n M docs/dev/engineering/index.md\n M docs/dev/validation/runtime.md\n M game/Cargo.lock\n M game/Cargo.toml\n M game/README.md\n M game/src/app.rs\n M game/src/bin/map_viewer.rs\n M game/src/capture.rs\n M game/src/lib.rs\n M game/src/world/mod.rs\n M todo/README.md\n M todo/tasks/TASK-014-human-scale-prototype.md\n M tools/capture.py\n M tools/tests/test_capture.py\n?? docs/dev/engineering/player-preview.md\n?? game/capture/walk-preview.json\n?? game/capture/walk-ramp-camera.json\n?? game/src/player.rs\n?? game/src/world/collision.rs\n?? third_party/parry/\n?? todo/evidence/TASK-014/",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "PASS",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "772584eed83be2aef02023004d309f62fab2638e55d314c26a55b3e5174d8642",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r1/viewer-regression/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r1/viewer-regression"
+  ],
+  "runtime_exit_code": 0,
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 540,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 540
+    },
+    {
+      "checked_frames": 540,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 12.000191688537598,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 29,
+        "game_page": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": 11.899999618530273,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "strafe_uses_real_controller",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 59,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "strafe_uses_real_controller",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 89,
+        "game_page": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": 0.28999999165534973,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "look_changes_orientation",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 149,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "look_changes_orientation",
+      "passed": true,
+      "rotation_radians": 0.29999837279319763
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 240,
+        "game_page": null,
+        "max_distance": 9.999999747378752e-05,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "escape_blocks_held_input",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 299,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "escape_blocks_held_input",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 11.599993705749512,
+      "enabled": true,
+      "expected": {
+        "enabled": true,
+        "from": 300,
+        "game_page": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": 11.5,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "toggle_restores_movement",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 329,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "toggle_restores_movement",
+      "passed": true,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 505,
+        "game_page": null,
+        "max_distance": 9.999999747378752e-05,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "release_friction_settles",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 509,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "release_friction_settles",
+      "passed": true,
+      "rotation_radians": 0.0006905339541845024
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 510,
+        "game_page": null,
+        "max_distance": 9.999999747378752e-05,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "final_release_is_stable",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 539,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "final_release_is_stable",
+      "passed": true,
+      "rotation_radians": 0.0006905339541845024
+    }
+  ],
+  "ffmpeg_version": "ffmpeg version n9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "video_command": [
+    "/usr/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-framerate",
+    "30",
+    "-i",
+    "/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r1/viewer-regression/frames/frame%05d.png",
+    "-frames:v",
+    "540",
+    "-c:v",
+    "libx264",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r1/viewer-regression/video.mp4"
+  ],
+  "elapsed_wall_seconds": 22.01260535302572
+}

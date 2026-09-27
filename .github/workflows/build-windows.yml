@@ -43,8 +43,10 @@ jobs:
           Copy-Item source-assets/district-map/district.json "$package/source-assets/district-map/"
           Copy-Item source-assets/district-scene/appearance.json, source-assets/district-scene/daylight.json "$package/source-assets/district-scene/"
           Copy-Item source-assets/environment-kit/licenses/* "$package/licenses/"
+          Copy-Item third_party/parry/LICENSE "$package/licenses/Parry-Apache-2.0.txt"
           Copy-Item source-assets/environment-kit/asset-manifest.json "$package/licenses/environment-assets.json"
           @('@echo off', 'cd /d "%~dp0"', 'game\n-side.exe --project-root "%CD%"', 'exit /b %errorlevel%') | Set-Content "$package/run-game.cmd" -Encoding ascii
+          @('@echo off', 'cd /d "%~dp0"', 'game\n-side.exe --project-root "%CD%" --walk-preview', 'exit /b %errorlevel%') | Set-Content "$package/run-walk-preview.cmd" -Encoding ascii
           @('@echo off', 'cd /d "%~dp0"', 'game\map_viewer.exe --project-root "%CD%"', 'exit /b %errorlevel%') | Set-Content "$package/run-viewer.cmd" -Encoding ascii
           @(
             'N:SIDE - Windows x86_64 MSVC',
@@ -54,11 +56,13 @@ jobs:
             'Game entry: arrows select, Enter confirms, Esc returns to title; gamepad D-pad, South and East are supported.',
             'UI font: Noto Sans SC, OFL 1.1; license and copyright are under game/assets/ui/licenses/.',
             'Viewer controls: right mouse to look, WASD to move, Q/E down/up, Shift faster, wheel speed, M capture mouse, Esc release.',
+            'run-walk-preview.cmd: exterior capsule experiment; WASD/left stick move, right mouse/Q/E/right stick look, R/Select reset, Esc/B title.',
             'Requires Windows and a graphics driver supporting Vulkan.',
+            'Collision queries: parry3d 0.30.2, Apache-2.0; license in licenses/Parry-Apache-2.0.txt.',
             'Environment assets: Kenney and ambientCG, CC0; license texts and source manifest are in licenses/.',
             "Commit: $env:GITHUB_SHA"
           ) | Set-Content "$package/README.txt" -Encoding utf8
-          foreach ($file in @('game/n-side.exe', 'game/map_viewer.exe', 'game/assets/ui/fonts/NotoSansSC-VF.ttf', 'game/assets/ui/licenses/OFL.txt', 'game/assets/ui/licenses/COPYRIGHT.txt', 'source-assets/district-map/district.json', 'source-assets/district-scene/appearance.json', 'source-assets/district-scene/daylight.json')) {
+          foreach ($file in @('run-walk-preview.cmd', 'licenses/Parry-Apache-2.0.txt', 'game/n-side.exe', 'game/map_viewer.exe', 'game/assets/ui/fonts/NotoSansSC-VF.ttf', 'game/assets/ui/licenses/OFL.txt', 'game/assets/ui/licenses/COPYRIGHT.txt', 'source-assets/district-map/district.json', 'source-assets/district-scene/appearance.json', 'source-assets/district-scene/daylight.json')) {
             if (!(Test-Path "$package/$file" -PathType Leaf)) { throw "Missing package file: $file" }
           }
           Push-Location $package

@@ -21,6 +21,7 @@ geo = { version = "0.33", default-features = false }
 earcutr = "0.4"
 spade = "2"
 gltf = { version = "1.4", default-features = false, features = ["utils", "names"] }
+parry3d = { version = "=0.30.2", default-features = false, features = ["required-features", "std", "alloc"] }
 
 [profile.dev]
 opt-level = 1

@@ -1,0 +1,33 @@
+2026-09-27T17:26:21.314072Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T17:26:21.349820Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T17:26:21.429209Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T17:26:21.429269Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T17:26:21.430019Z  INFO n_side::app: [game/state] title
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T17:26:22.118179Z  INFO n_side::app: [game/state] loading
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T17:26:33.398861Z  INFO n_side::app: [player/collision] triangles=557496 sources=3301
+2026-09-27T17:26:33.497301Z  INFO n_side::world::scene: [world/ready] meshes=3302 model_instances=263 dependencies=25 failed=0 degraded=0 startup_seconds=0.095
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T17:26:43.259150Z  INFO n_side::capture: [capture/check] {"name":"required_assets_ready","passed":true}
+2026-09-27T17:26:43.259182Z  INFO n_side::capture: [capture/check] {"expected":120,"name":"all_frames_saved","passed":true,"saved":120}
+2026-09-27T17:26:43.259188Z  INFO n_side::capture: [capture/check] {"checked_frames":120,"name":"finite_transforms","passed":true}
+2026-09-27T17:26:43.259192Z  INFO n_side::capture: [capture/check] {"distance":4.266510009765625,"enabled":false,"expected":{"enabled":null,"from":59,"game_page":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":null,"max_player_resets":null,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":1000.0,"min_player_height":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"impossible_player_motion","player_blocked":null,"player_grounded":null,"same_world_entities":null,"to":119,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"impossible_player_motion","passed":false,"rotation_radians":0.0006905339541845024}
+2026-09-27T17:26:43.259207Z  INFO n_side::capture: [capture/finished] status=FAIL saved=120 report=/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r1/negative/state.json

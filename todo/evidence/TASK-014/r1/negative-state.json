@@ -1,0 +1,3543 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 120,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 120
+    },
+    {
+      "checked_frames": 120,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 4.266510009765625,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 59,
+        "game_page": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": 1000.0,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "impossible_player_motion",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 119,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "impossible_player_motion",
+      "passed": false,
+      "rotation_radians": 0.0006905339541845024
+    }
+  ],
+  "determinism": "Fixed simulated dt and explicit input sequence; scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 21.837023946,
+  "error": null,
+  "samples": [
+    {
+      "enabled": false,
+      "frame": 0,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.03333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 1,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.06666666666666667,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 2,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.1,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 3,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.13333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 4,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.16666666666666666,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 5,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.2,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 6,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.23333333333333334,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 7,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.26666666666666666,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 8,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.3,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 9,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.3333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 10,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.36666666666666664,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 11,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.4,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 12,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.43333333333333335,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 13,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.4666666666666667,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 14,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.5,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 15,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.5333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 16,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.5666666666666667,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 17,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.6,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 18,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.6333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 19,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.6666666666666666,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 20,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.7,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 21,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.7333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 22,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.7666666666666667,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 23,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.8,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 24,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.8333333333333334,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 25,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.8666666666666667,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 26,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.9,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 27,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.9333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 28,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 0.9666666666666667,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 29,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 1.0,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 30,
+      "game_page": "title",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 1.0333333333333334,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 31,
+      "game_page": "loading",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 1.0666666666666667,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 32,
+      "game_page": "loading",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 1.1,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 33,
+      "game_page": "loading",
+      "player": null,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 1.1333333333333333,
+      "ui": null,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "enabled": false,
+      "frame": 34,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.1666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 35,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.2,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 36,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.2333333333333334,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 37,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.2666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 38,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.3,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 39,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.3333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 40,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.3666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 41,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.4,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 42,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.4333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 43,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.4666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 44,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.5,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 45,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.5333333333333334,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 46,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.5666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 47,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.6,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 48,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.6333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 49,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.6666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 50,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.7,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 51,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.7333333333333334,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 52,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.7666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 53,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.8,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 54,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.8333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 55,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.8666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 56,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.9,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 57,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.9333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 58,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.9666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 59,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.0,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 60,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.10667419433594
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.3982696533203
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.033333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 61,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.21334838867188
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.50494384765625
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.066666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 62,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -255.3200225830078
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -251.6116180419922
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.1,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 63,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -255.42669677734375
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -251.71829223632812
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.1333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 64,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -255.5333709716797
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -251.82496643066406
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.1666666666666665,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 65,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -255.64004516601562
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -251.931640625
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.2,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 66,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -255.74671936035156
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.03831481933594
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.2333333333333334,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 67,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -255.8533935546875
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.14498901367188
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.2666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 68,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -255.96006774902344
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.2516632080078
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.3,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 69,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -256.0667419433594
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.35833740234375
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.3333333333333335,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 70,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -256.17340087890625
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.46499633789062
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.3666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 71,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -256.2800598144531
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.5716552734375
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.4,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 72,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -256.38671875
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.67831420898438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.433333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 73,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -256.4933776855469
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.78497314453125
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.466666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 74,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04587745666504,
+          -256.60003662109375
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22515106201172,
+        -252.89163208007812
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.5,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 75,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04584503173828,
+          -256.7066955566406
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22511863708496,
+        -252.998291015625
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.533333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 76,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04584503173828,
+          -256.8133544921875
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.22511863708496,
+        -253.10494995117188
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.566666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 77,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04584312438965,
+          -256.9200134277344
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225116729736328,
+        -253.21160888671875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.6,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 78,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.04584312438965,
+          -257.02667236328125
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225116729736328,
+        -253.31826782226562
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.6333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 79,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045812606811523,
+          -257.1333312988281
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225086212158203,
+        -253.4249267578125
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.6666666666666665,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 80,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045812606811523,
+          -257.239990234375
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225086212158203,
+        -253.53158569335938
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.7,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 81,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045812606811523,
+          -257.3466491699219
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225086212158203,
+        -253.63824462890625
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.7333333333333334,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 82,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -257.45330810546875
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -253.74490356445312
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.7666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 83,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -257.5599670410156
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -253.8515625
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.8,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 84,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -257.6666259765625
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -253.95822143554688
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.8333333333333335,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 85,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -257.7732849121094
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -254.06488037109375
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.8666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 86,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -257.87994384765625
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -254.17153930664062
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.9,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 87,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -257.9866027832031
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -254.2781982421875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.933333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 88,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -258.09326171875
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -254.38485717773438
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.966666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 89,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -258.1999206542969
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -254.49151611328125
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.0,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 90,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045804977416992,
+          -258.30657958984375
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225078582763672,
+        -254.59817504882812
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.033333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 91,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.0457820892334,
+          -258.4132385253906
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225055694580078,
+        -254.704833984375
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.066666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 92,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.0457820892334,
+          -258.5198974609375
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225055694580078,
+        -254.81149291992188
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.1,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 93,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.0457820892334,
+          -258.6265563964844
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225055694580078,
+        -254.91815185546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.1333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 94,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045772552490234,
+          -258.73321533203125
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225046157836914,
+        -255.02481079101562
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.1666666666666665,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 95,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045772552490234,
+          -258.8398742675781
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225046157836914,
+        -255.1314697265625
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.2,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 96,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045772552490234,
+          -258.946533203125
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225046157836914,
+        -255.23812866210938
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.2333333333333334,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 97,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045772552490234,
+          -259.0531921386719
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225046157836914,
+        -255.34478759765625
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.2666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 98,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.15985107421875
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.45144653320312
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.3,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 99,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.3333333333333335,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 100,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.3666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 101,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.4,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 102,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.433333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 103,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.466666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 104,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.5,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 105,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.533333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 106,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.566666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 107,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.6,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 108,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.6333333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 109,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.6666666666666665,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 110,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.7,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 111,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.7333333333333334,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 112,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.7666666666666666,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 113,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.8,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 114,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.8333333333333335,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 115,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.8666666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 116,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.9,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 117,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.933333333333333,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 118,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 3.966666666666667,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 119,
+      "game_page": "world",
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045764923095703,
+          -259.2665100097656
+        ],
+        "grounded": true,
+        "resets": 0
+      },
+      "position": [
+        100.0,
+        30.225038528442383,
+        -255.55810546875
+      ],
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 4.0,
+      "ui": null,
+      "world_entities": 4572,
+      "world_ready": true
+    }
+  ],
+  "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. State checks and images do not establish author/player acceptance",
+  "script": {
+    "assertions": [
+      {
+        "enabled": null,
+        "from": 59,
+        "game_page": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": 1000.0,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "impossible_player_motion",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 119,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      }
+    ],
+    "events": [
+      {
+        "end": 31,
+        "gamepad": [],
+        "keys": [
+          "Enter"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 100,
+        "gamepad": [],
+        "keys": [
+          "W"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 60
+      }
+    ],
+    "fps": 30,
+    "frames": 120,
+    "height": 720,
+    "keyframes": [
+      0,
+      59,
+      119
+    ],
+    "scene": "walk-preview",
+    "seed": 0,
+    "timeout_seconds": 300,
+    "view": "shop",
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "width": 1280
+  },
+  "status": "FAIL",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality"
+}

@@ -1,8 +1,16 @@
-# Third-party development Skills and methods
+# Third-party code, development Skills and methods
 
-本清单记录 N:SIDE 实际保留的开发 Skills 与改编方法。完整文件映射和 SHA-256 校验值见 [manifest.json](third_party/skills/manifest.json)，项目差异见 [.agents/skills/nside/SKILL.md](.agents/skills/nside/SKILL.md)
+本清单记录 N:SIDE 实际使用的第三方代码、开发 Skills 与改编方法。Skills 的完整文件映射和 SHA-256 校验值见 [manifest.json](third_party/skills/manifest.json)，项目差异见 [.agents/skills/nside/SKILL.md](.agents/skills/nside/SKILL.md)
 
-原版 Skill 目录逐文件保留，少量必要修改登记为补丁并保留 `UPSTREAM.md`；项目改编明确标注来源。下面的许可适用于相应开发材料，不改变 N:SIDE 其他代码或资产的许可证。字体、模型、声音、生成服务与编码器的条款单独记录在所属资产包或依赖中
+原版 Skill 目录逐文件保留，少量必要修改登记为补丁并保留 `UPSTREAM.md`；项目改编明确标注来源。下面的许可适用于各自列明的依赖或开发材料，不改变 N:SIDE 其他代码或资产的许可证。字体、模型、声音、生成服务与编码器的条款单独记录在所属资产包或依赖中
+
+## Parry collision queries
+
+- Author / attribution: Sébastien Crozet; `Copyright 2020 Sébastien Crozet`
+- Dependency: `parry3d` 0.30.2; registry checksum `01b00bf3ea4e0961a3f44aeb666b7dc3b0e87027b629561bd8283a7f6b2e2ed1`
+- License: Apache-2.0; [LICENSE](third_party/parry/LICENSE), [package and license provenance](third_party/parry/UPSTREAM.md)
+
+`game/src/world/collision.rs` 调用已发布 crate 的静态三角网格与形状扫掠 API，没有复制或修改 Parry 实现源码。发布包的 VCS 元数据记录 commit `1be4b1a7cd0a090bd7efb1207b7bc0d453f4132e` 并标记 `dirty: true`，因此以 registry checksum 固定实际依赖，不声称与该 Git commit 逐字节相同。许可证从该固定 revision 保留，已核对的完整上游树及 crate 内均未发现 NOTICE 文件；该依赖独立于下列 Skills 清单
 
 ## chrisgliddon/bevy-skills
 

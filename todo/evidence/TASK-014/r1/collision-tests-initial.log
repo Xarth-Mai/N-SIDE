@@ -1,0 +1,65 @@
+   Compiling downcast-rs v2.0.2
+   Compiling safe_arch v1.2.0
+   Compiling num-complex v0.4.6
+   Compiling glam v0.33.11
+   Compiling rstar v0.13.0
+   Compiling num-derive v0.4.2
+   Compiling ena v0.14.4
+   Compiling bevy_reflect v0.19.1
+   Compiling wide v1.7.1
+   Compiling bevy_ecs v0.19.1
+   Compiling bevy_math v0.19.1
+   Compiling simba v0.10.2
+   Compiling glamx v0.3.1
+   Compiling parry3d v0.30.2
+   Compiling bevy_color v0.19.1
+   Compiling bevy_app v0.19.1
+   Compiling bevy_time v0.19.1
+   Compiling bevy_transform v0.19.1
+   Compiling bevy_input v0.19.1
+   Compiling bevy_log v0.19.1
+   Compiling bevy_a11y v0.19.1
+   Compiling bevy_state v0.19.1
+   Compiling bevy_clipboard v0.19.1
+   Compiling bevy_diagnostic v0.19.1
+   Compiling bevy_asset v0.19.1
+   Compiling bevy_gilrs v0.19.1
+   Compiling bevy_mesh v0.19.1
+   Compiling bevy_image v0.19.1
+   Compiling bevy_shader v0.19.1
+   Compiling bevy_audio v0.19.1
+   Compiling bevy_window v0.19.1
+   Compiling bevy_text v0.19.1
+   Compiling bevy_scene v0.19.1
+   Compiling bevy_camera v0.19.1
+   Compiling bevy_material v0.19.1
+   Compiling bevy_animation v0.19.1
+   Compiling bevy_gizmos v0.19.1
+   Compiling bevy_light v0.19.1
+   Compiling bevy_picking v0.19.1
+   Compiling bevy_render v0.19.1
+   Compiling bevy_sprite v0.19.1
+   Compiling bevy_input_focus v0.19.1
+   Compiling bevy_world_serialization v0.19.1
+   Compiling bevy_gltf v0.19.1
+   Compiling bevy_core_pipeline v0.19.1
+   Compiling bevy_ui v0.19.1
+   Compiling bevy_winit v0.19.1
+   Compiling bevy_ui_widgets v0.19.1
+   Compiling bevy_sprite_render v0.19.1
+   Compiling bevy_pbr v0.19.1
+   Compiling bevy_post_process v0.19.1
+   Compiling bevy_anti_alias v0.19.1
+   Compiling bevy_ui_render v0.19.1
+   Compiling bevy_gizmos_render v0.19.1
+   Compiling bevy_internal v0.19.1
+   Compiling bevy v0.19.1
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error[E0425]: cannot find value `walk` in this scope
+   --> src/app.rs:689:41
+    |
+689 |         app.insert_resource(WalkPreview(walk));
+    |                                         ^^^^ not found in this scope
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `n-side` (lib test) due to 1 previous error

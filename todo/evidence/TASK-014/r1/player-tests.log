@@ -1,0 +1,12 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 13.67s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 3 tests
+test player::tests::body_stops_at_wall_can_leave_and_does_not_climb_tall_obstacle ... ok
+test player::tests::steps_need_headroom_and_a_supported_landing ... ok
+[player/steps] foot=Vec3(106.39795, 29.47776, -272.60678) grounded=true blocked=None
+[player/wall] foot=Vec3(88.32083, 28.055815, -255.0) grounded=true blocked=Some("/buildings/1 (V-04)")
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 36 filtered out; finished in 8.23s
