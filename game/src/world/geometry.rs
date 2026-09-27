@@ -835,6 +835,68 @@ fn platform_supports(
     Ok(supports)
 }
 
+fn bridge_rail_spans(
+    a: [f64; 3],
+    b: [f64; 3],
+    neighbors: &[(&Polygon, [f64; 2])],
+) -> Vec<[[f64; 3]; 2]> {
+    let mut spans = vec![[a, b]];
+    for (road, heights) in neighbors {
+        if a[2].min(b[2]) > heights[0].max(heights[1]) + 0.17
+            || a[2].max(b[2]) < heights[0].min(heights[1]) - 0.17
+        {
+            continue;
+        }
+        // A mitered sloped ribbon can have two distinct planes
+        for indices in [[0, 1, 2], [0, 2, 3]] {
+            let triangle = polygon(&indices.map(|i| {
+                let p = road.exterior().0[i];
+                [p.x, p.y]
+            }));
+            let mut remaining = Vec::new();
+            for [start, end] in spans {
+                let line = MultiLineString(vec![LineString::from(vec![
+                    (start[0], start[1]),
+                    (end[0], end[1]),
+                ])]);
+                let at = |p: geo::Coord| [p.x, p.y, road_height(a, b, [p.x, p.y])];
+                for outside in triangle.clip(&line, true) {
+                    remaining.extend(outside.0.windows(2).map(|edge| [at(edge[0]), at(edge[1])]));
+                }
+                for inside in triangle.clip(&line, false) {
+                    for edge in inside.0.windows(2) {
+                        let [from, to] = [at(edge[0]), at(edge[1])];
+                        let difference = |p: [f64; 3]| {
+                            p[2] - ribbon_height(road, [p[0], p[1]], heights[0], heights[1])
+                        };
+                        let [low, high] = [difference(from), difference(to)];
+                        let mut cuts = vec![0.0, 1.0];
+                        // Open only where the adjoining road is within one generated riser
+                        // Roads passing below the bridge retain the protective rail
+                        if (high - low).abs() > 1e-9 {
+                            for limit in [-0.17, 0.17] {
+                                let t = (limit - low) / (high - low);
+                                if t > 0.0 && t < 1.0 {
+                                    cuts.push(t);
+                                }
+                            }
+                        }
+                        cuts.sort_by(f64::total_cmp);
+                        for range in cuts.windows(2) {
+                            if (low + (high - low) * (range[0] + range[1]) / 2.0).abs() > 0.17 {
+                                remaining
+                                    .push([lerp(from, to, range[0]), lerp(from, to, range[1])]);
+                            }
+                        }
+                    }
+                }
+            }
+            spans = remaining;
+        }
+    }
+    spans
+}
+
 fn bridge_rail(mesh: &mut MeshData, a: [f64; 3], b: [f64; 3], source: &str) -> Result<(), String> {
     let offsets = road_offsets(&[a, b], 0.16);
     let bar = ribbon(a, b, offsets[0], offsets[1]);
@@ -1327,8 +1389,7 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
             }
             if road.kind == "bridge" {
                 for side in [-1.0, 1.0] {
-                    bridge_rail(
-                        &mut structure,
+                    for [from, to] in bridge_rail_spans(
                         [
                             a[0] + offsets[segment][0] * side,
                             a[1] + offsets[segment][1] * side,
@@ -1339,8 +1400,10 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                             b[1] + offsets[segment + 1][1] * side,
                             b[2],
                         ],
-                        &source,
-                    )?;
+                        &neighbors,
+                    ) {
+                        bridge_rail(&mut structure, from, to, &source)?;
+                    }
                 }
             }
         }
@@ -1377,6 +1440,35 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn bridge_rails_open_at_grade_and_keep_protection_above_lower_roads() {
+        let a = [0., 0., 5.];
+        let b = [10., 0., 5.];
+        let crossing = polygon(&[[4., -2.], [6., -2.], [6., 2.], [4., 2.]]);
+        let spans = bridge_rail_spans(a, b, &[(&crossing, [5.; 2])]);
+        assert_eq!(spans.len(), 2);
+        assert!(
+            spans
+                .iter()
+                .all(|[a, b]| a[0].max(b[0]) <= 4. || a[0].min(b[0]) >= 6.)
+        );
+        let length = |spans: &Vec<[[f64; 3]; 2]>| {
+            spans
+                .iter()
+                .map(|[a, b]| distance2([a[0], a[1]], [b[0], b[1]]).sqrt())
+                .sum::<f64>()
+        };
+        assert!((length(&spans) - 8.).abs() < 1e-6);
+        assert!((length(&bridge_rail_spans(a, b, &[(&crossing, [0.; 2])])) - 10.).abs() < 1e-6);
+
+        let ramp = polygon(&[[4., -2.], [6., -2.], [6., 2.], [4., 2.]]);
+        let partial = bridge_rail_spans(a, b, &[(&ramp, [5., 4.])]);
+        assert!(
+            (length(&partial) - 9.66).abs() < 1e-6,
+            "only the at-grade part of the crossing opens: {partial:?}"
+        );
+    }
 
     #[test]
     fn road_walls_follow_exposed_ground_and_real_neighbor_levels() {

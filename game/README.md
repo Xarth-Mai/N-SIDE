@@ -51,6 +51,13 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 碰撞从同一份渲染网格建立静态三角 BVH，覆盖地形、道路、建筑、平台及结构设施；道路台阶的踏面与立面均参与扫掠。Parry只负责空间查询，人物和镜头系统由 `player.rs` 维护；相机沿目标到期望位置作球体扫掠。参数、当前覆盖与失败处理见[人物尺度实验契约](../docs/dev/engineering/player-preview.md)
 
+短登高检查分为整段CPU移动探针和真实入口录制：前者从小店沿源路线逐点行走到摘星台，遇到停滞、异常恢复或超时返回失败；后者录制小店出发的缓坡和首段台阶。二者均不写入目标高度或传送角色，完整登山画面和人工体验另行记录
+
+```fish
+cargo test --manifest-path game/Cargo.toml --locked --lib walks_complete_short_ascent -- --nocapture
+python3 tools/capture.py --script game/capture/walk-ascent-entry.json --output output/capture/walk-ascent-entry --binary game/target/debug/n-side
+```
+
 ## 世界运行时
 
 `world::map` 负责 v7 数据和引用校验，唯一坐标转换为 `[x,y,h] → [x,h,-y]`，1 unit = 1 m。`world::geometry` 使用 f64 空间计算生成外部几何，`world::assets` 校验表现资产，`world::scene` 负责加载、材质和实例；`world::visual` 共享白天成像与照明，正式入口使用 Bevy States 管理标题、加载、街区和失败状态，Viewer 使用官方 [FreeCamera](https://docs.rs/bevy/0.19.1/bevy/camera_controller/free_camera/index.html)
@@ -93,7 +100,7 @@ cargo run --release --manifest-path game/Cargo.toml --features viewer --locked -
 
 山城灰盒使用 `eye-station`、`eye-cinema`、`eye-shop-mountain` 核对站前、镜厅前街公共路口与小店门前的山体视线，均取源道路节点上方 1.7m，以55°视场水平望向山顶方向；近山峰顶可以超出水平视场，保留该真实结果；`eye-shop-uphill` 在同一眼高明确仰视20°核对山顶，`hillside` 从小店起坡段侧看山腹，`mountain-profile` 从侧向检查河岸至后山的比例。摘星台位于最高点，山体与城区沿用源数据的米制比例，`overview` 随完整地形范围取景
 
-`eye-slope-support` 从上街实际节点观察平台，`eye-transfer-support` 从镜厅低层公共连廊的3/4位置、上方1.7m看换层平台底面；两者朝向目标的仰角不作为水平街景视角。`inspect-cinema-bearing` 是镜厅屋顶连接旁的自由检查机位，用于近看短梁搭接，不代表行人位置
+`eye-upper-bridge` 从登高接入路回看上街桥口，检查护栏与道路交会；`eye-slope-support` 从上街实际节点观察平台，`eye-transfer-support` 从镜厅低层公共连廊的3/4位置、上方1.7m看换层平台底面；两者朝向目标的仰角不作为水平街景视角。`inspect-cinema-bearing` 是镜厅屋顶连接旁的自由检查机位，用于近看短梁搭接，不代表行人位置
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --view eye-station

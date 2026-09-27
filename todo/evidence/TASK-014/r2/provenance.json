@@ -1,0 +1,23 @@
+{
+  "base_commit": "686cc9ccd23d78b694ec0b1487a4f2b1e4597399",
+  "inputs_sha256": {
+    "game/src/player.rs": "2f35997dc2afef7d4648aeff3e9cede6e22352e0863848ba66cd9f97ff6fea68",
+    "game/src/world/collision.rs": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+    "game/src/world/geometry.rs": "a4a2500dd754ab0ba0077bd6ed8c539a81c2dc5acf1c2197feef31c24ff5871b",
+    "game/src/capture.rs": "409d6d38cab48a9de3202a5f4468f2ea7206274b696e88edaf1196bbe5c6703c",
+    "game/src/app.rs": "d851df298b267c3add13138bebddffacc34da1369aa537168719aa003871b3f4",
+    "game/src/bin/map_viewer.rs": "12df10a13c1e616289cec1522f3a053e76e2af8cb0e771aeeaf7cce7cf1d01ae",
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/capture/walk-ascent-entry.json": "d7445833d6d5dd2e12254f70cb3e640cb3b710ef46fe7b891fa897d74d798b3c",
+    "game/capture/walk-preview.json": "d31831f08a949808f5064fbbf19a3b564b6f36f800908bbc7a20c462638ad917",
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "source-assets/district-scene/appearance.json": "572b7c11f3d4ba138db9efbaaffca5c9d6ca406488b1a590e217df28464a8949",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3"
+  },
+  "route": "hill-short",
+  "movement_scope": "CPU actual mover at 64/30Hz, horizontal intent only; GPU ascent entry and wall regression",
+  "gpu": "AMD Radeon RX 6650 XT / RADV Mesa 26.2.3-arch3.1 / Vulkan",
+  "evidence_note": "JSON whitespace compacted; log trailing whitespace stripped; viewed PNG archived as WebP quality 80; raw originals retained in output",
+  "author_acceptance": "NOT RUN",
+  "full_ascent_gpu": "NOT RUN"
+}

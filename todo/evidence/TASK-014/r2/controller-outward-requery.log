@@ -1,0 +1,25 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 37.83s
+     Running unittests src/lib.rs (target/debug/deps/n_side-5e961ca7daca702b)
+
+running 6 tests
+test player::tests::body_stops_at_wall_can_leave_and_does_not_climb_tall_obstacle ... ok
+test player::tests::steps_need_headroom_and_a_supported_landing ... ok
+[player/ramp-obstacle] name=clear dt=0.015625 foot=Vec3(130.17052, 22.039307, -260.0044) blocked=None
+[player/ramp-obstacle] name=clear dt=0.033333335 foot=Vec3(130.07565, 22.02983, -test player::tests::close_camera_hides_proxy_and_clear_view_restores_it ... 260ok.
+00168) blocked=None
+test player::tests::steep_face_cannot_be_climbed_by_repeated_edge_contacts ... ok
+[player/ramp-obstacle] name=wall dt=0.015625 foot=Vec3(114.62914, 20.48549, -260.0) blocked=Some("/buildings/0")
+[player/ramp-obstacle] name=wall dt=0.033333335 foot=Vec3(114.62916, 20.485498, -260.0) blocked=Some("/buildings/0")
+[player/ramp-obstacle] name=tall-step dt=0.015625 foot=Vec3(114.67901, 20.490236, -260.0) blocked=Some("/roads/1")
+[player/ramp-obstacle] name=tall-step dt=0.033333335 foot=Vec3(114.67901, 20.490498, -260.0) blocked=Some("/roads/1")
+test player::tests::ramp_contacts_keep_moving_without_passing_a_wall_or_tall_step ... ok
+[player/steps] foot=Vec3(106.39795, 29.47776, -272.60678) grounded=true blocked=None
+[player/ramp] foot=Vec3(117.16173, 27.191526, -246.4129) grounded=true blocked=None
+[player/wall] foot=Vec3(88.376, 28.055874, -255.0) grounded=true blocked=Some("buildings[V-04]/derived-facade")
+[player/ascent-entry] dt=0.015625 foot=Vec3(186.50272, 43.392944, -320.0075) grounded=true blocked=None resets=0
+[player/ascent-entry] dt=0.033333335 foot=Vec3(186.9143, 43.689213, -320.3123) grounded=true blocked=None resets=0
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 37 filtered out; finished in 8.79s
+

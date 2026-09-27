@@ -175,6 +175,10 @@ fn slide(collision: &CollisionWorld, mut foot: Vec3, mut delta: Vec3) -> (Vec3, 
             hit.normal
         };
         delta -= normal * delta.dot(normal).min(0.0);
+        if hit.fraction < 1.0e-4 {
+            // Roundoff can leave the projected dot negative; re-query a micrometre outward
+            delta += normal * 1.0e-6;
+        }
         if hit.normal.y < WALKABLE_Y {
             blocked = Some(hit.source.to_owned());
         }
@@ -573,6 +577,80 @@ mod tests {
     }
 
     #[test]
+    fn ramp_contacts_keep_moving_without_passing_a_wall_or_tall_step() {
+        use bevy::{asset::RenderAssetUsages, mesh::PrimitiveTopology};
+        let origin = Vec3::new(110., 20., -260.);
+        for (name, obstacle) in [
+            ("clear", None),
+            (
+                "wall",
+                Some(block(
+                    "/buildings/0",
+                    Vec3::new(0.1, 4., 10.),
+                    origin + Vec3::new(5., 2.5, 0.),
+                )),
+            ),
+            (
+                "tall-step",
+                Some(block(
+                    "/roads/1",
+                    Vec3::new(2., 1., 10.),
+                    origin + Vec3::new(6., 1., 0.),
+                )),
+            ),
+        ] {
+            let mut parts = vec![GeometryPart {
+                source: "/roads/0".into(),
+                material: "test".into(),
+                mesh: Mesh::new(
+                    PrimitiveTopology::TriangleList,
+                    RenderAssetUsages::default(),
+                )
+                .with_inserted_attribute(
+                    Mesh::ATTRIBUTE_POSITION,
+                    vec![
+                        [0., 0., -5.],
+                        [0., 0., 5.],
+                        [30., 3., 5.],
+                        [0., 0., -5.],
+                        [30., 3., 5.],
+                        [30., 3., -5.],
+                    ],
+                )
+                .translated_by(origin),
+            }];
+            parts.extend(obstacle);
+            let collision = CollisionWorld::from_parts(&parts).unwrap();
+            for dt in [1.0 / 64.0, 1.0 / 30.0] {
+                let mut player = PlayerState::at(origin + Vec3::new(1., 0.13, 0.));
+                for _ in 0..(6.0 / dt) as usize {
+                    player.step(&collision, Vec3::X, dt);
+                }
+                eprintln!(
+                    "[player/ramp-obstacle] name={name} dt={dt} foot={:?} blocked={:?}",
+                    player.foot, player.blocked
+                );
+                assert!(
+                    player.grounded && player.resets == 0,
+                    "{name}: {:?}",
+                    player.foot
+                );
+                if name == "clear" {
+                    assert!(player.foot.x > origin.x + 18., "{name}: {:?}", player.foot);
+                } else {
+                    assert!(
+                        (origin.x + 4.5..origin.x + 4.8).contains(&player.foot.x),
+                        "{name}: {:?}",
+                        player.foot
+                    );
+                    assert!(player.foot.y < origin.y + 0.7, "{name}: {:?}", player.foot);
+                    assert!(player.blocked.is_some(), "{name}: {:?}", player.foot);
+                }
+            }
+        }
+    }
+
+    #[test]
     fn real_shop_walk_reaches_steps_and_wall_through_swept_geometry() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let prepared = crate::world::scene::PreparedScene::load(root).unwrap();
@@ -616,5 +694,202 @@ mod tests {
                 .as_deref()
                 .is_some_and(|source| source.contains("V-04"))
         );
+        for dt in [1.0 / 64.0, 1.0 / 30.0] {
+            let mut player = PlayerState::from_map(&prepared.map, &world).unwrap();
+            for _ in 0..(35.0 / dt) as usize {
+                player.step(&world, Vec3::new(0.8, 0.0, -0.6), dt);
+            }
+            eprintln!(
+                "[player/ascent-entry] dt={dt} foot={:?} grounded={} blocked={:?} resets={}",
+                player.foot, player.grounded, player.blocked, player.resets
+            );
+            assert!(
+                player.foot.x > 180.0 && player.foot.y > 41.0,
+                "{:?}",
+                player.foot
+            );
+            assert!(player.grounded && player.resets == 0);
+        }
+    }
+
+    #[test]
+    fn walks_complete_short_ascent() {
+        let started = std::time::Instant::now();
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let source: serde_json::Value = serde_json::from_str(
+            &std::fs::read_to_string(root.join("source-assets/district-map/district.json"))
+                .unwrap(),
+        )
+        .unwrap();
+        let route = source["routes"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|route| route["id"] == "hill-short")
+            .unwrap();
+        let nodes: Vec<&str> = route["nodes"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|node| node.as_str().unwrap())
+            .collect();
+        assert_eq!(nodes.first(), Some(&"home"));
+        assert_eq!(nodes.last(), Some(&"summit"));
+
+        let prepared = crate::world::scene::PreparedScene::load(root).unwrap();
+        let collision = CollisionWorld::from_parts(&prepared.parts).unwrap();
+        assert_eq!(
+            Time::<Fixed>::default().timestep().as_secs_f32(),
+            1.0 / 64.0
+        );
+        let preparation_seconds = started.elapsed().as_secs_f64();
+        for dt in [1.0 / 64.0, 1.0 / 30.0] {
+            let mut player = PlayerState::from_map(&prepared.map, &collision).unwrap();
+            let mut tick = 0_u32;
+            // A route node can lie at a tread/platform boundary; allow one generated riser plus skin
+            let height_tolerance = 0.17 + SKIN + SEPARATION;
+            eprintln!(
+                "[ascent/start] route=hill-short nodes={} triangles={} dt={dt} height_tolerance={height_tolerance} preparation_seconds={:.3} spawn={:?}",
+                nodes.len(),
+                collision.triangle_count(),
+                preparation_seconds,
+                player.foot
+            );
+            for (index, pair) in nodes.windows(2).enumerate() {
+                let [from, node] = [pair[0], pair[1]];
+                let roads: Vec<usize> = prepared
+                    .map
+                    .roads
+                    .iter()
+                    .enumerate()
+                    .filter_map(|(index, road)| {
+                        road.nodes
+                            .windows(2)
+                            .any(|edge| {
+                                (edge[0] == from && edge[1] == node)
+                                    || (edge[0] == node && edge[1] == from)
+                            })
+                            .then_some(index)
+                    })
+                    .collect();
+                assert_eq!(
+                    roads.len(),
+                    1,
+                    "hill-short edge {from} -> {node}: roads={roads:?}"
+                );
+                let target = map_to_world(prepared.map.nodes[node]);
+                // Node height bounds this observation only; it never sets the player's position
+                let origin = target + Vec3::Y * 0.7;
+                let exact_ray = collision.support(origin, 1.5);
+                let centered_support = exact_ray.filter(|hit| hit.surface_normal.y >= WALKABLE_Y);
+                // A ray exactly on a mesh seam can miss both neighboring upward triangles
+                let support = centered_support.or_else(|| {
+                    [Vec3::X, -Vec3::X, Vec3::Z, -Vec3::Z]
+                        .into_iter()
+                        .filter_map(|offset| collision.support(origin + offset * 0.01, 1.5))
+                        .find(|hit| {
+                            hit.surface_normal.y >= WALKABLE_Y
+                                && (hit.point.y - target.y).abs() <= 0.17 + 0.025
+                        })
+                });
+                if centered_support.is_none() {
+                    let capsule =
+                        collision.capsule_cast(origin, HEIGHT, RADIUS, -Vec3::Y * 1.5, SKIN);
+                    eprintln!(
+                        "[ascent/target-seam] node={node} target={target:?} exact_ray={exact_ray:?} confirmed={support:?} capsule={capsule:?} capsule_foot={:?}",
+                        capsule.map(|hit| origin - Vec3::Y * 1.5 * hit.fraction)
+                    );
+                }
+                let support = support.unwrap_or_else(|| {
+                    panic!("hill-short node {node} roads={roads:?}: no actual walkable target mesh")
+                });
+                let mut best_remaining = f32::INFINITY;
+                let mut progress_tick = tick;
+                loop {
+                    let horizontal =
+                        Vec3::new(target.x - player.foot.x, 0.0, target.z - player.foot.z);
+                    let distance = horizontal.length();
+                    let height_error = (player.foot.y - support.point.y).abs();
+                    let remaining = distance + (height_error - height_tolerance).max(0.0);
+                    if best_remaining - remaining >= 0.01 {
+                        best_remaining = remaining;
+                        progress_tick = tick;
+                    }
+                    let seconds = tick as f32 * dt;
+                    let failure = if player.resets != 0 {
+                        Some("automatic recovery")
+                    } else if seconds >= 900.0 {
+                        Some("900 simulated seconds exhausted")
+                    } else if (tick - progress_tick) as f32 * dt >= 2.0 {
+                        Some("no 1cm effective progress for 2 seconds")
+                    } else {
+                        None
+                    };
+                    let reached =
+                        distance < 0.06 && height_error <= height_tolerance && player.grounded;
+                    if reached || failure.is_some() {
+                        eprintln!(
+                            "[ascent/node] index={} from={from} node={node} roads={roads:?} seconds={seconds:.6} foot={:?} target={target:?} distance={distance:.6} height_error={height_error:.6} grounded={} blocked={:?} resets={} support={support:?} result={}",
+                            index + 1,
+                            player.foot,
+                            player.grounded,
+                            player.blocked,
+                            player.resets,
+                            failure.unwrap_or("reached")
+                        );
+                    }
+                    if let Some(reason) = failure {
+                        eprintln!(
+                            "[ascent/contact] ground_normal={:?} vertical_speed={} horizontal={:?} up={:?} down={:?}",
+                            player.ground_normal,
+                            player.vertical_speed,
+                            collision.capsule_cast(
+                                player.foot,
+                                HEIGHT,
+                                RADIUS,
+                                horizontal.clamp_length_max(SPEED * dt),
+                                SKIN
+                            ),
+                            collision.capsule_cast(
+                                player.foot,
+                                HEIGHT,
+                                RADIUS,
+                                Vec3::Y * STEP,
+                                SKIN
+                            ),
+                            collision.capsule_cast(
+                                player.foot,
+                                HEIGHT,
+                                RADIUS,
+                                -Vec3::Y * (STEP + SKIN),
+                                SKIN
+                            ),
+                        );
+                        panic!(
+                            "hill-short stopped: {reason}; wall_seconds={:.3}",
+                            started.elapsed().as_secs_f64()
+                        );
+                    }
+                    if reached {
+                        break;
+                    }
+                    // Route following supplies only a bounded horizontal analogue intention to the real mover
+                    player.step(
+                        &collision,
+                        (horizontal / (SPEED * dt)).clamp_length_max(1.0),
+                        dt,
+                    );
+                    tick += 1;
+                }
+            }
+            eprintln!(
+                "[ascent/complete] nodes={} seconds={:.6} foot={:?} resets={} wall_seconds={:.3}",
+                nodes.len(),
+                tick as f32 * dt,
+                player.foot,
+                player.resets,
+                started.elapsed().as_secs_f64()
+            );
+        }
     }
 }

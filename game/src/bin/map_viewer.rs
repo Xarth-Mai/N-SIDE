@@ -453,6 +453,11 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         ("eye-corner", "market_turn", "bakery_entry"),
         ("eye-shade", "service_shared", "shop_rear_door"),
         ("eye-slope-support", "upper", "slope_lift_high"),
+        (
+            "eye-upper-bridge",
+            "level_upper_to_slope_platform_bypass",
+            "upper",
+        ),
     ] {
         let mut eye = *map
             .nodes

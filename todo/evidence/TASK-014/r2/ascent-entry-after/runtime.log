@@ -1,0 +1,55 @@
+2026-09-27T17:59:45.859918Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T17:59:45.924941Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T17:59:46.007382Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T17:59:46.007408Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T17:59:46.007942Z  INFO n_side::app: [game/state] title
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T17:59:46.587367Z  INFO n_side::app: [game/state] loading
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T17:59:55.797291Z  INFO n_side::app: [player/collision] triangles=557434 sources=3301
+2026-09-27T17:59:55.845808Z  INFO n_side::world::scene: [world/ready] meshes=3302 model_instances=263 dependencies=25 failed=0 degraded=0 startup_seconds=0.047
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T18:00:23.346036Z  INFO n_side::app: [game/state] title
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-27T18:00:23.876259Z  INFO n_side::capture: [capture/check] {"name":"required_assets_ready","passed":true}
+2026-09-27T18:00:23.876279Z  INFO n_side::capture: [capture/check] {"expected":1050,"name":"all_frames_saved","passed":true,"saved":1050}
+2026-09-27T18:00:23.876289Z  INFO n_side::capture: [capture/check] {"checked_frames":1050,"name":"finite_transforms","passed":true}
+2026-09-27T18:00:23.876293Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"enabled":null,"from":59,"game_page":"world","max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":28.149999618530273,"max_player_resets":0,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":28.0,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"start_at_shop_without_recovery","player_blocked":null,"player_grounded":true,"same_world_entities":null,"to":59,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":true},"name":"start_at_shop_without_recovery","passed":true,"rotation_radians":0.0006905339541845024}
+2026-09-27T18:00:23.876309Z  INFO n_side::capture: [capture/check] {"distance":41.67659378051758,"enabled":false,"expected":{"enabled":null,"from":59,"game_page":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":32.099998474121094,"max_player_resets":0,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":40.0,"min_player_height":28.0,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"cross_previously_stalled_ramp","player_blocked":null,"player_grounded":true,"same_world_entities":null,"to":449,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"cross_previously_stalled_ramp","passed":true,"rotation_radians":0.0006905339541845024}
+2026-09-27T18:00:23.876321Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"enabled":null,"from":599,"game_page":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":33.0,"max_player_resets":0,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":31.899999618530273,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"ramp_exit_keeps_support","player_blocked":null,"player_grounded":true,"same_world_entities":null,"to":599,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"ramp_exit_keeps_support","passed":true,"rotation_radians":0.0006905339541845024}
+2026-09-27T18:00:23.876332Z  INFO n_side::capture: [capture/check] {"distance":94.1554946899414,"enabled":false,"expected":{"enabled":null,"from":59,"game_page":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":97.19999694824219,"max_player_height":null,"max_player_resets":0,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":93.0,"min_player_height":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"climb_first_stair_flights","player_blocked":null,"player_grounded":true,"same_world_entities":null,"to":959,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"climb_first_stair_flights","passed":true,"rotation_radians":0.0006905339541845024}
+2026-09-27T18:00:23.876343Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"enabled":null,"from":959,"game_page":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":41.5,"max_player_resets":0,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":40.5,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"stairs_gain_expected_height","player_blocked":null,"player_grounded":true,"same_world_entities":null,"to":959,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"stairs_gain_expected_height","passed":true,"rotation_radians":0.0006905339541845024}
+2026-09-27T18:00:23.876356Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"enabled":null,"from":980,"game_page":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":0.0010000000474974513,"max_player_height":null,"max_player_resets":0,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"release_stays_supported","player_blocked":null,"player_grounded":true,"same_world_entities":null,"to":1019,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"release_stays_supported","passed":true,"rotation_radians":0.0006905339541845024}
+2026-09-27T18:00:23.876368Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"enabled":null,"from":1022,"game_page":"title","max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":null,"max_player_resets":null,"max_ui_scroll":null,"max_world_entities":0,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"title_clears_walk_world","player_blocked":null,"player_grounded":null,"same_world_entities":null,"to":1049,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":false},"name":"title_clears_walk_world","passed":true,"rotation_radians":0.0006905339541845024}
+2026-09-27T18:00:23.876380Z  INFO n_side::capture: [capture/finished] status=PASS saved=1050 report=/home/lzzz/MyProjects/N-SIDE/output/player/2026-09-28/r2/ascent-entry-after/state.json

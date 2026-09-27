@@ -1,7 +1,7 @@
 ---
 id: "TASK-014"
 type: "experiment"
-status: "active"
+status: "review"
 milestone: "G1"
 depends_on: ["TASK-028"]
 migrated_from: ["M1-01", "M1-02", "M1-03"]
@@ -20,10 +20,12 @@ specs: ["docs/dev/design/systems/input.md", "docs/dev/engineering/player-preview
 
 ## 当前工作与下一步
 
-第1轮，步骤6/6 记录与路线扩展；真实胶囊已走小店北阶、缓坡及店墙，650帧／16项与600帧／13项实机检查通过。看图修复门框遗漏碰撞和近镜头代理遮挡；原入口与失败探针已复验。下一轮沿真实短登高节点序列验证人体可达性；正式角色、人工手感、室内与G1保持未验收
+第2轮，步骤5/6 体验验收；坡面停滞与桥栏杆接入口已修复。64Hz／30Hz均从home连续通过hill-short全部130节点到450m摘星台，零自动恢复；35秒真实输入录制已通过并查看。等待作者实际操作判断镜头、台阶和约7分钟上山节奏；完整登高GPU画面、室内与G1保持未验收，独立的暂停恢复功能继续推进
 
 依赖由TASK-013调整为实际需要的TASK-028运行入口：本轮代理与参数仅供实验，正式主控及可达内容范围仍由TASK-013决定；不代签其设计验收，也不把室外短段通过扩大为全城可通行
 
 ## 结果与证据
+
+第2轮见[坡面、桥口与完整登高探针](../evidence/TASK-014/r2/review.md)，保留首次失败、逐步修复、两种时间步和真实画面，原始录制位于 `output/player/2026-09-28/r2/`
 
 历史输入：todo/archive/legacy/demo-progress.json；迁移来源见R1完整索引。本轮[技术检查与画面自查](../evidence/TASK-014/r1/review.md)进入 `todo/evidence/TASK-014/r1/`，实际GPU记录与临时探针放在 `output/player/2026-09-28/r1/`

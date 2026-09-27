@@ -1,0 +1,124 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 1050,
+  "seed": 0,
+  "timeout_seconds": 400,
+  "keyframes": [
+    29,
+    59,
+    209,
+    299,
+    449,
+    599,
+    719,
+    839,
+    959,
+    989,
+    1019,
+    1049
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 960,
+      "move_axis": [
+        0.8,
+        0.6
+      ]
+    },
+    {
+      "start": 1020,
+      "end": 1021,
+      "gamepad": [
+        "Back"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 1022,
+      "game_page": "title"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "start_at_shop_without_recovery",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "world_ready": true,
+      "player_grounded": true,
+      "min_player_height": 28,
+      "max_player_height": 28.15,
+      "max_player_resets": 0
+    },
+    {
+      "name": "cross_previously_stalled_ramp",
+      "from": 59,
+      "to": 449,
+      "min_player_distance": 40,
+      "min_player_height": 28,
+      "max_player_height": 32.1,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "ramp_exit_keeps_support",
+      "from": 599,
+      "to": 599,
+      "min_player_height": 31.9,
+      "max_player_height": 33,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "climb_first_stair_flights",
+      "from": 59,
+      "to": 959,
+      "min_player_distance": 93,
+      "max_player_distance": 97.2,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "stairs_gain_expected_height",
+      "from": 959,
+      "to": 959,
+      "min_player_height": 40.5,
+      "max_player_height": 41.5,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "release_stays_supported",
+      "from": 980,
+      "to": 1019,
+      "max_player_distance": 0.001,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "title_clears_walk_world",
+      "from": 1022,
+      "to": 1049,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0
+    }
+  ]
+}

@@ -985,6 +985,9 @@ mod tests {
         let ramp_script: Script =
             serde_json::from_str(include_str!("../capture/walk-ramp-camera.json")).unwrap();
         assert!(ramp_script.validate().is_ok());
+        let ascent_script: Script =
+            serde_json::from_str(include_str!("../capture/walk-ascent-entry.json")).unwrap();
+        assert!(ascent_script.validate().is_ok());
         let mut invalid = script.clone();
         invalid.events[0].move_axis = [1.01, 0.0];
         assert!(invalid.validate().is_err());
