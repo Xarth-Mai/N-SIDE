@@ -24,14 +24,14 @@ use bevy::{
 };
 use n_side::world::{
     geometry::Ground,
-    map::{Map, map_to_world},
+    map::{Building, Fixture, Map, map_to_world},
     scene::{PreparedScene, SceneLoading, WorldScenePlugin},
     visual::{Antialiasing, DaylightSettings},
 };
 use std::{path::PathBuf, time::Instant};
 
 #[derive(Resource)]
-struct CameraViews(Vec<(&'static str, Transform)>);
+struct CameraViews(Vec<(String, Transform)>);
 #[derive(Resource)]
 struct CaptureTarget(Option<Handle<Image>>);
 #[derive(Resource)]
@@ -180,7 +180,7 @@ fn run() -> Result<AppExit, String> {
             .position(|(id, _)| *id == name)
             .ok_or_else(|| format!("[viewer/view] unknown view {name:?}"))?;
         if verify.is_some() {
-            views = vec![views[selected]];
+            views = vec![views[selected].clone()];
         } else {
             views.swap(0, selected);
         }
@@ -302,7 +302,7 @@ fn run() -> Result<AppExit, String> {
     Ok(app.run())
 }
 
-fn camera_views(map: &Map) -> Result<Vec<(&'static str, Transform)>, String> {
+fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
     let bounds = map.nodes.values().chain(&map.terrain.samples).fold(
         [
             f64::INFINITY,
@@ -506,7 +506,169 @@ fn camera_views(map: &Map) -> Result<Vec<(&'static str, Transform)>, String> {
         "[visual/view] name=mountain-profile eye={profile_eye:?} target={center:?} terrain_peak={peak:?} fov=55"
     );
     views.push(("mountain-profile", view(profile_eye, center)));
+    let mut views: Vec<_> = views
+        .into_iter()
+        .map(|(name, pose)| (name.to_owned(), pose))
+        .collect();
+    let mainland: Vec<_> = map
+        .buildings
+        .iter()
+        .filter(|b| b.bank == "district")
+        .collect();
+    views.push(("city-overview".into(), building_view(&mainland)?));
+    for block in &map.blocks {
+        let buildings: Vec<_> = mainland
+            .iter()
+            .copied()
+            .filter(|b| {
+                map.parcels
+                    .iter()
+                    .any(|p| Some(&p.id) == b.parcel.as_ref() && p.block == block.id)
+            })
+            .collect();
+        let pose =
+            building_view(&buildings).map_err(|e| format!("[viewer/view] {}: {e}", block.id))?;
+        println!(
+            "[visual/view] name=block-{} buildings={} eye={:?} fov=55",
+            block.id,
+            buildings.len(),
+            pose.translation
+        );
+        views.push((format!("block-{}", block.id), pose));
+    }
+    let ascent: Vec<_> = map
+        .nodes
+        .iter()
+        .filter(|(name, _)| name.contains("hill_short"))
+        .map(|(_, p)| map_to_world(*p))
+        .collect();
+    views.push(("ascent-overview".into(), frame_points(&ascent)?));
+    for i in 1..=3 {
+        let name = format!("hill_short_rest{i}");
+        let mut eye = *map
+            .nodes
+            .get(&name)
+            .ok_or_else(|| format!("[viewer/view] missing {name}"))?;
+        // Stand within the city-facing side of the 8 m landing, retaining a 1 m edge margin
+        let distance = (shop[0] - eye[0]).hypot(shop[1] - eye[1]);
+        eye[0] += (shop[0] - eye[0]) / distance * 3.0;
+        eye[1] += (shop[1] - eye[1]) / distance * 3.0;
+        eye[2] += 1.7;
+        views.push((format!("eye-ascent-{i}"), view(eye, shop)));
+    }
+    for architecture in &map.architectures {
+        for (index, fixture) in architecture.fixtures.iter().enumerate() {
+            let name = format!("fixture-{}-{:02}", architecture.id, index + 1);
+            let pose = fixture_view(map, fixture)
+                .map_err(|error| format!("[viewer/view] {name}: {error}"))?;
+            println!(
+                "[visual/view] name={name} eye={:?} occlusion_check=sampled-building-centerline step_m=0.25",
+                pose.translation
+            );
+            views.push((name, pose));
+        }
+    }
     Ok(views)
+}
+
+fn fixture_view(map: &Map, fixture: &Fixture) -> Result<Transform, String> {
+    let corners: Vec<_> = fixture
+        .polygon
+        .iter()
+        .flat_map(|p| {
+            [fixture.elevation, fixture.elevation + 2.2].map(|h| map_to_world([p[0], p[1], h]))
+        })
+        .collect();
+    let mut target = corners.iter().copied().sum::<Vec3>() / corners.len() as f32;
+    target.y = (fixture.elevation
+        + match fixture.kind.as_str() {
+            "bench" => 0.48,
+            "screen" => 1.45,
+            "locker" => 1.0,
+            _ => 0.035,
+        }) as f32;
+    for direction in [
+        Vec3::new(0.45, 0.75, 1.0),
+        Vec3::new(-0.45, 0.75, 1.0),
+        Vec3::new(0.45, 0.75, -1.0),
+        Vec3::new(-0.45, 0.75, -1.0),
+    ] {
+        let pose = frame_points_from(&corners, direction)?;
+        if clear_building_segment(map, pose.translation, target) {
+            return Ok(pose);
+        }
+    }
+    Err(format!(
+        "{}: four inspection directions intersect building bodies; author a clear fixture placement or inspection view",
+        fixture.name
+    ))
+}
+
+// Bounded source-volume sampling checks the center sightline, not foliage or full-mesh visibility
+fn clear_building_segment(map: &Map, eye: Vec3, target: Vec3) -> bool {
+    use geo::{Contains, LineString, Point, Polygon};
+    let samples = (eye.distance(target) / 0.25).ceil().max(1.0) as usize;
+    map.buildings.iter().all(|building| {
+        let ring = |points: &[[f64; 2]]| {
+            LineString::from(points.iter().map(|p| (p[0], p[1])).collect::<Vec<_>>())
+        };
+        let holes = building
+            .design
+            .as_ref()
+            .and_then(|d| d.lightwell.as_ref())
+            .map(|h| vec![ring(h)])
+            .unwrap_or_default();
+        let footprint = Polygon::new(ring(&building.polygon), holes);
+        (0..=samples).all(|i| {
+            let p = eye.lerp(target, i as f32 / samples as f32);
+            f64::from(p.y) <= building.elevation
+                || f64::from(p.y) >= building.elevation + building.height
+                || !footprint.contains(&Point::new(f64::from(p.x), -f64::from(p.z)))
+        })
+    })
+}
+
+/// Frame actual buildings, excluding unused parcels and the distant mountain extent
+fn building_view(buildings: &[&Building]) -> Result<Transform, String> {
+    let corners: Vec<_> = buildings
+        .iter()
+        .flat_map(|b| {
+            b.polygon.iter().flat_map(|p| {
+                [b.elevation, b.elevation + b.height].map(|h| map_to_world([p[0], p[1], h]))
+            })
+        })
+        .collect();
+    frame_points(&corners)
+}
+
+fn frame_points(corners: &[Vec3]) -> Result<Transform, String> {
+    frame_points_from(corners, Vec3::new(0.45, 0.75, 1.0))
+}
+
+fn frame_points_from(corners: &[Vec3], direction: Vec3) -> Result<Transform, String> {
+    if corners.is_empty() {
+        return Err("view has no geometry to inspect".into());
+    }
+    let low = corners
+        .iter()
+        .fold(Vec3::splat(f32::INFINITY), |a, b| a.min(*b));
+    let high = corners
+        .iter()
+        .fold(Vec3::splat(f32::NEG_INFINITY), |a, b| a.max(*b));
+    let center = (low + high) * 0.5;
+    let direction = direction.normalize();
+    let mut pose = Transform::from_translation(center + direction).looking_at(center, Vec3::Y);
+    let tan_v = (55.0_f32.to_radians() * 0.5).tan();
+    let distance = corners
+        .iter()
+        .map(|p| {
+            let local = pose.rotation.inverse() * (*p - center);
+            local.z + (local.y.abs() / tan_v).max(local.x.abs() / (tan_v * 16.0 / 9.0))
+        })
+        .fold(1.0_f32, f32::max)
+        * 1.12;
+    pose.translation = center + direction * distance;
+    Ok(pose)
 }
 
 fn camera_focus(
@@ -645,6 +807,107 @@ fn verify_frames(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn fixture_views_reject_building_obstructions() {
+        let map = Map::load(
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("../source-assets/district-map/district.json"),
+        )
+        .unwrap();
+        for architecture in &map.architectures {
+            for fixture in &architecture.fixtures {
+                let pose = fixture_view(&map, fixture).unwrap();
+                assert!(pose.translation.is_finite());
+            }
+        }
+        let rear_drain = map
+            .architectures
+            .iter()
+            .flat_map(|a| &a.fixtures)
+            .find(|f| f.name == "背侧检修排水带")
+            .unwrap();
+        let corners: Vec<_> = rear_drain
+            .polygon
+            .iter()
+            .flat_map(|p| {
+                [rear_drain.elevation, rear_drain.elevation + 2.2]
+                    .map(|h| map_to_world([p[0], p[1], h]))
+            })
+            .collect();
+        let mut target = corners.iter().copied().sum::<Vec3>() / corners.len() as f32;
+        target.y = (rear_drain.elevation + 0.035) as f32;
+        assert!(
+            !clear_building_segment(&map, frame_points(&corners).unwrap().translation, target),
+            "regression must include the original through-building view"
+        );
+        assert!(clear_building_segment(
+            &map,
+            fixture_view(&map, rear_drain).unwrap().translation,
+            target
+        ));
+        let shop = map.buildings.iter().find(|b| b.id == "V-04").unwrap();
+        let inside = map_to_world([80.0, 254.0, shop.elevation + 1.0]);
+        assert!(!clear_building_segment(&map, inside, inside + Vec3::X));
+        assert!(!clear_building_segment(
+            &map,
+            inside + Vec3::X * 15.0,
+            inside
+        ));
+        let sky = inside + Vec3::Y * (shop.height as f32 + 2.0);
+        assert!(clear_building_segment(&map, sky, sky + Vec3::X));
+    }
+
+    #[test]
+    fn every_block_view_frames_all_its_source_buildings() {
+        let map = Map::load(
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("../source-assets/district-map/district.json"),
+        )
+        .unwrap();
+        let views = camera_views(&map).unwrap();
+        let mut covered = std::collections::BTreeSet::new();
+        for block in &map.blocks {
+            let camera = views
+                .iter()
+                .find(|(name, _)| *name == format!("block-{}", block.id))
+                .unwrap()
+                .1;
+            for building in map.buildings.iter().filter(|b| {
+                map.parcels
+                    .iter()
+                    .any(|p| Some(&p.id) == b.parcel.as_ref() && p.block == block.id)
+            }) {
+                assert!(covered.insert(&building.id));
+                for p in &building.polygon {
+                    for h in [building.elevation, building.elevation + building.height] {
+                        let local = camera
+                            .compute_affine()
+                            .inverse()
+                            .transform_point3(map_to_world([p[0], p[1], h]));
+                        let half_height = -local.z * (55.0_f32.to_radians() * 0.5).tan();
+                        assert!(
+                            local.z < -0.1
+                                && local.z > -7000.0
+                                && local.y.abs() < half_height
+                                && local.x.abs() < half_height * 16.0 / 9.0,
+                            "{} clipped from {}",
+                            building.id,
+                            block.id
+                        );
+                    }
+                }
+            }
+        }
+        assert_eq!(
+            covered.len(),
+            map.buildings
+                .iter()
+                .filter(|b| b.bank == "district")
+                .count()
+        );
+        assert!(building_view(&[]).is_err());
+    }
 
     #[test]
     fn mountain_views_use_source_scale_and_cover_the_peak() {

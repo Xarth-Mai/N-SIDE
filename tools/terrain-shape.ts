@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import type { District, Point } from './district-types.ts'
-import { pointInside } from './district-geometry.ts'
+import { pointInside, roadOffsets } from './district-geometry.ts'
 
 const clamp=(x:number)=>Math.max(0,Math.min(1,x))
 const smooth=(x:number)=>{const t=clamp(x);return t*t*(3-2*t)}
@@ -38,17 +38,7 @@ export function bakeTerrain(data:District) {
   const elevated=new Set(data.elevatedNodes),ids=new Set<string>(),segments:[Point,Point,Point,Point][]=[]
   for(const road of data.roads)if(!road.building&&!['bridge','deck','lift','interior'].includes(road.kind)&&!data.surfaces.some(s=>s.id===road.surface&&s.elevated)) {
     for(const id of road.nodes)if(!elevated.has(id))ids.add(id)
-    // Match Viewer road_offsets: the whole polyline owns each bounded miter, not each segment
-    const points=road.nodes.map(id=>data.nodes[id]),normals=points.slice(1).map((b,i)=>{
-      const a=points[i],dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
-      return [-dy/length,dx/length]
-    })
-    const offsets=points.map((_,i)=>{
-      if(i===0)return normals[0].map(n=>n*road.width/2)
-      if(i===points.length-1)return normals[i-1].map(n=>n*road.width/2)
-      const a=normals[i-1],b=normals[i],factor=Math.min(road.width/2/Math.max(.01,1+a[0]*b[0]+a[1]*b[1]),road.width*2)
-      return a.map((n,j)=>(n+b[j])*factor)
-    })
+    const points=road.nodes.map(id=>data.nodes[id]),offsets=roadOffsets(points,road.width)
     for(let i=1;i<points.length;i++)segments.push([points[i-1],points[i],offsets[i-1],offsets[i]])
   }
   const controls=[...authored,...[...ids].map(id=>data.nodes[id])]

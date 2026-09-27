@@ -12,6 +12,7 @@ const stats=planStats(data),housing=housingEstimate(data),parcels=parcelStats(da
 const blockParcels=id=>parcels.filter(p=>p.block===id)
 const blockTotal=(id,field)=>blockParcels(id).reduce((sum,p)=>sum+p[field],0)
 const profile=id=>routeProfile(data.nodes,data.routes.find(r=>r.id===id).nodes)
+const spatialLength=id=>data.routes.find(r=>r.id===id).nodes.reduce((sum,node,i,nodes)=>i ? sum+Math.hypot(...data.nodes[node].map((v,axis)=>v-data.nodes[nodes[i-1]][axis])) : sum,0)
 </script>
 
 # 街区总图与剖面
@@ -101,9 +102,17 @@ N站及其西侧兴趣街承担到达、工作与兴趣消费，东侧影院和�
 
 ## 距离与坡度
 
-直接回家线约 {{ Math.round(profile('home').at(-1).distance) }} m、增加 {{ data.nodes.home[2] - data.nodes.station[2] }} m 高程；小店至摘星台约 {{ Math.round(profile('hill').at(-1).distance) }} m、增加 {{ data.nodes.summit[2] - data.nodes.home[2] }} m 高程。采购短环约 {{ Math.round(profile('shopping').at(-1).distance) }} m，经商店街弯口、生鲜后街和社区横街回家
+直接回家线约 {{ Math.round(profile('home').at(-1).distance) }} m、增加 {{ data.nodes.home[2] - data.nodes.station[2] }} m 高程；小店至摘星台的长观景路线约 {{ Math.round(profile('hill').at(-1).distance) }} m、增加 {{ data.nodes.summit[2] - data.nodes.home[2] }} m 高程。采购短环约 {{ Math.round(profile('shopping').at(-1).distance) }} m，经商店街弯口、生鲜后街和社区横街回家
 
 其中坡上山脚休息台（林缘入口）至摘星台的路线平距约 {{ Math.round(profile('hill').at(-1).distance - profile('hill').find(p=>p.id==='hillgate').distance) }} m、净登高 {{ data.nodes.summit[2] - data.nodes.hillgate[2] }} m。此处平距沿路线逐段累计，不是两端直线距离；实际行走距离还包含坡度与台阶的竖向变化
+
+### 较短的上山游玩路线
+
+`hill-short` 从小店接公共住宅台阶和林缘入口，再沿朝城山面进入三个水平回望台，最后到摘星台。全程平距约 {{ Math.round(profile('hill-short').at(-1).distance) }} m，三维折线长度约 {{ Math.round(spatialLength('hill-short')) }} m；净登高仍为 {{ data.nodes.summit[2] - data.nodes.home[2] }} m。三处停步点分别位于 +{{ data.nodes.hill_short_rest1[2] }}／+{{ data.nodes.hill_short_rest2[2] }}／+{{ data.nodes.hill_short_rest3[2] }} m，供看城区、树影与山脊变化，步行通路穿过其水平面
+
+这条近路通过公共台阶缩短绕行，不要求乘坐尚未实现操作的升降设施。较长的 `hill` 和 `hill-return` 保留林间散步、神龛支路与不同回程视野；短路可原路返回。台阶分为短梯段与水平休息段，灰盒先检查连续级数、踏面和路面实际宽度，人物步速、上下阶控制、登高时长与停留节奏由后续实玩校准
+
+### 日常缓行与登山的区别
 
 树下至店前直达段之外，保留约 {{ Math.round(profile('home-ramp').at(-1).distance) }} m 的缓行支路。街区台地调整后，应重新核对各段坡度、入口净宽、铺装、转弯平台与实际无障碍条件；沿用的路线名称不构成坡度已达标的证明
 

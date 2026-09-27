@@ -60,7 +60,7 @@ function cut(subject: Point[],distance: (p: Point) => number){
   }
   return out
 }
-function clip(subject: Point[],convex: Point[]){
+export function clip(subject: Point[],convex: Point[]){
   let out=subject
   for(const [a,b] of edges(signedArea(convex)<0?[...convex].reverse():convex)){
     out=cut(out,p=>cross(a,b,p))
@@ -74,6 +74,21 @@ export function intersectionArea(a: Point[],b: Point[]){
 }
 export const roadWidth=(r: Pick<Road, "kind"> & Partial<Road>)=>r.width??(({main:10,avenue:15,shore:7,bridge:16,deck:5,steps:6,trail:4,service:5,landing:9} as Record<string,number>)[r.kind]??7)
 export const roadAllowed=(road: Partial<Road>,user='public')=>road.access==='controlled'?(road.users??[]).includes(user):['service','resident'].includes(road.access ?? '')?road.access===user:!road.access||road.access==='public'
+
+// Match Viewer road_offsets; each whole polyline owns its bounded corner miter
+export function roadOffsets(points:Point[],width:number) {
+  const normals=points.slice(1).map((b,i)=>{
+    const a=points[i],dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
+    if(length<1e-6)throw new Error('Non-lift road segment requires horizontal length')
+    return [-dy/length,dx/length]
+  })
+  return points.map((_,i)=>{
+    if(i===0)return normals[0].map(n=>n*width/2)
+    if(i===points.length-1)return normals[i-1].map(n=>n*width/2)
+    const a=normals[i-1],b=normals[i],factor=Math.min(width/2/Math.max(.01,1+a[0]*b[0]+a[1]*b[1]),width*2)
+    return a.map((n,j)=>(n+b[j])*factor)
+  })
+}
 
 export function roadHitsBuilding(a: Point,b: Point,width: number,building: Pick<Building,"polygon" | "elevation" | "height">){
   const dz=b[2]-a[2],bottom=building.elevation,top=bottom+building.height

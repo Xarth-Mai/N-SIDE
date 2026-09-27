@@ -8,7 +8,8 @@ depends_on: ["DOC-DISTRICT-PLAN", "DOC-DISTRICT-PLACES", "LOC-001"]
 import DistrictArchitecture from '../../../.vitepress/components/DistrictArchitecture.vue'
 import data from '../../../../source-assets/district-map/district.json'
 import { polygonArea, routeProfile } from '../../../../tools/district-plan.ts'
-const buildings=data.buildings.filter(b=>data.architectures.find(a=>a.id==='P3-A1').buildings.includes(b.id))
+const segment=data.architectures.find(a=>a.id==='P3-A1')
+const buildings=data.buildings.filter(b=>segment.buildings.includes(b.id))
 const supply=data.logistics.find(r=>r.id==='shop-supply')
 const area=id=>polygonArea(data.parcels.find(p=>p.id===id).polygon)
 const shop=data.buildings.find(b=>b.id==='V-04')
@@ -23,7 +24,7 @@ const supplyGrade=Math.max(...routeProfile(data.nodes,supply.legs[0].nodes).slic
 
 样段覆盖采购街、小店周围的两侧店屋、西院支巷、上巷住宅与坡地住宅南组。连续商住、背侧服务和局部错台住宅共同组织回家路；街面、建筑背面与上街在同一平面中设计
 
-共深化 {{ buildings.length }} 个建筑单元，包含 7 个原有体量和 17 个新增普通商住或住宅。新增建筑承接普通经营和住户生活，特色目的地仍为全区既有的 84 处。每栋记录用地、轮廓、基底、楼层用途、主要入口与设计状态
+本样段深化 {{ buildings.length }} 个建筑单元，包含对照基线中的 {{ segment.baseline.buildings.length }} 个体量及之后补齐的 {{ buildings.length - segment.baseline.buildings.length }} 个普通商住或住宅。全区当前记录 {{ data.places.length }} 处场所，其中 {{ data.places.filter(p=>p.featured).length }} 处为特色目的地；辅助通路与后勤节点单列。每栋记录用地、轮廓、基底、楼层用途、主要入口与设计状态，样段外的完整建筑覆盖见[总图](district-plan.md#街坊覆盖与建筑到达)
 
 ### 街坊与开放空间
 
@@ -38,7 +39,7 @@ const supplyGrade=Math.max(...routeProfile(data.nodes,supply.legs[0].nodes).slic
 
 小店地块从原先的大范围台地收至实际用地，原台地同步调整。西院、树下、门前、收货场与北侧住户后院分别有空间身份。窄建筑缝属于共墙或检修边界，公共穿行沿明确巷口和道路进行
 
-P05-D、P05-E 的部分规划容量转给四个新增地块，B05 合计仍为 24 个体量容量。建筑数量与未展开的容量见[逐地块统计](district-plan.md#十二街坊与地块容量)
+P05-D、P05-E 的部分规划容量转给四个新增地块，B05 当前地块容量合计 {{ data.parcels.filter(p=>p.block==='B05').reduce((sum,p)=>sum+p.capacity,0) }} 个体量。建筑数量与未展开的容量见[逐地块统计](district-plan.md#十二街坊与地块容量)
 
 ### 图纸口径
 

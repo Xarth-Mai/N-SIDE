@@ -1,0 +1,371 @@
+{
+  "baseline": "fcf92ee799d94775fcd26812f930e9217ed9db3f",
+  "method": "Actual bounded-miter road ribbons; overlap area independently rechecked by district-geometry intersectionArea; building footprint masks checked; bridge and deck excluded",
+  "classification": "14 real ground-road overlaps in six groups; no authorized elevated structure and no building-mask false positive",
+  "findings": [
+    {
+      "a": [
+        "hill_west_arc_04_10",
+        "hill_west_curve_04"
+      ],
+      "b": [
+        "hill_west_arc_05_01",
+        "hill_west_arc_05_02"
+      ],
+      "area": 1.3178320700280892,
+      "delta": 6.039634712246766,
+      "point": [
+        -36.45271996946597,
+        985.4935050590161,
+        311.21924149115296
+      ],
+      "aKind": "trail",
+      "bKind": "trail",
+      "independentArea": 1.3178320700280892,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        311.12557185803064,
+        316.80785244387823
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "hill_west_arc_06_10",
+        "hill_west_curve_06"
+      ],
+      "b": [
+        "hill_west_arc_07_01",
+        "hill_west_arc_07_02"
+      ],
+      "area": 1.0827303887999733,
+      "delta": 4.649712423129927,
+      "point": [
+        37.72351852462016,
+        960.521352713474,
+        370.1971489015079
+      ],
+      "aKind": "trail",
+      "bKind": "trail",
+      "independentArea": 1.0827303887999733,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        370.10699803395596,
+        374.42758153603916
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction67",
+        "fw_f_food_south1"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 20.486234199433966,
+      "delta": 3.897837234233034,
+      "point": [
+        257.25,
+        126,
+        20
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 20.486234199432147,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        16.28276692542196
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction67",
+        "fw_f_v_f36_public"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 1.7324953183506295,
+      "delta": 3.631496010913029,
+      "point": [
+        258.25,
+        124,
+        20
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 1.7324953183506295,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        16.415824819690354
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction68",
+        "fw_f_junction67"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 29.65559808051148,
+      "delta": 3.585175798161721,
+      "point": [
+        245.75,
+        126,
+        20
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 29.65559808051148,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        16.68414418177187
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction68",
+        "fw_f_v_f36_service"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 0.5824953183491743,
+      "delta": 3.0988135642730192,
+      "point": [
+        246.75,
+        124,
+        20
+      ],
+      "aKind": "service",
+      "bKind": "lane",
+      "independentArea": 0.5824953183509933,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        16.947843073753504
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction16",
+        "fw_f_junction68"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 25.969968984070874,
+      "delta": 3.052493351521715,
+      "point": [
+        232.5,
+        126,
+        20
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 25.969968984070874,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        17.256642085600696
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "platform_west",
+        "west_upper"
+      ],
+      "b": [
+        "fw_f_junction30",
+        "fw_f_junction29"
+      ],
+      "area": 2.3922601989843315,
+      "delta": 2.6350165579289495,
+      "point": [
+        -32.1867732448959,
+        421,
+        76.07549255792895
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 2.3922601989843315,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        75.73651165162813,
+        73.440476
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction17",
+        "fw_f_junction16"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 12.63372893257656,
+      "delta": 2.438750532566921,
+      "point": [
+        223.5,
+        126,
+        20
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 12.63372893257656,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        17.771311918335698
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "platform_west",
+        "west_upper"
+      ],
+      "b": [
+        "fw_f_plateau_low0",
+        "fw_f_junction30"
+      ],
+      "area": 22.99938999758524,
+      "delta": 2.130486836923069,
+      "point": [
+        -26,
+        420.226653344388,
+        75.56307956003236
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 22.999389997584785,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        74.99295622142814,
+        73.440476
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction12",
+        "fw_f_junction17"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 10.544971910099775,
+      "delta": 2.0218686178051755,
+      "point": [
+        211.5,
+        126,
+        20
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 10.544971910099775,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        18.257067715523796
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "old_home",
+        "home_north"
+      ],
+      "b": [
+        "fw_f_cross4",
+        "fw_f_north_homes1"
+      ],
+      "area": 25.720065543097007,
+      "delta": 1.5125226382544312,
+      "point": [
+        18,
+        327.8962523408249,
+        44.32865336174557
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 25.720065543097007,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        44.52599637811333,
+        45.841176
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "fw_f_junction13",
+        "fw_f_junction12"
+      ],
+      "b": [
+        "food_ramp_upper",
+        "community"
+      ],
+      "area": 3.183728932577651,
+      "delta": 1.4660260647895136,
+      "point": [
+        202.5,
+        126,
+        20
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 3.183728932577651,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        20,
+        18.742823512711887
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    },
+    {
+      "a": [
+        "east_n",
+        "east_upper"
+      ],
+      "b": [
+        "fw_e_v_ef30_resident0_via0",
+        "fw_e_v_ef29_resident0_via0"
+      ],
+      "area": 36.23307464859681,
+      "delta": 0.3760172878264427,
+      "point": [
+        695.5,
+        366,
+        40.95481789414795
+      ],
+      "aKind": "lane",
+      "bKind": "lane",
+      "independentArea": 36.23307464859681,
+      "buildingMaskedArea": 0,
+      "centerHeights": [
+        40.86419953749679,
+        41
+      ],
+      "classification": "ground ribbons overlap at different elevations; no bridge/deck contract"
+    }
+  ]
+}

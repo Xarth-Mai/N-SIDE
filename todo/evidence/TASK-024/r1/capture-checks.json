@@ -1,0 +1,71 @@
+[
+  {
+    "case": "city",
+    "runtime_exit_code": 0,
+    "status": "PASS",
+    "failed_checks": [],
+    "output": "output/city-graybox/2026-09-27/r1/final-city-tour-recheck",
+    "video_sha256": "1194157160f7d3bc1e1b841b6563fcd4764a39f8159333c8ed8fe3abee32b4a0",
+    "video_probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 960,
+          "height": 540,
+          "nb_frames": "540"
+        }
+      ],
+      "format": {
+        "duration": "18.000000"
+      }
+    }
+  },
+  {
+    "case": "mountain",
+    "runtime_exit_code": 0,
+    "status": "PASS",
+    "failed_checks": [],
+    "output": "output/city-graybox/2026-09-27/r1/final-mountain-tour",
+    "video_sha256": "34bd56f9cbe00226ff2ed1cc948d6e6a61c75d7130a850e223d05af4e0b4027e",
+    "video_probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 960,
+          "height": 540,
+          "nb_frames": "540"
+        }
+      ],
+      "format": {
+        "duration": "18.000000"
+      }
+    }
+  },
+  {
+    "case": "expected-failure",
+    "runtime_exit_code": 1,
+    "status": "FAIL",
+    "failed_checks": [
+      {
+        "distance": 11.600184440612793,
+        "enabled": true,
+        "expected": {
+          "enabled": null,
+          "from": 0,
+          "max_distance": null,
+          "min_distance": 1000.0,
+          "min_rotation": null,
+          "name": "intentional_failure_movement_does_not_teleport",
+          "to": 29
+        },
+        "name": "intentional_failure_movement_does_not_teleport",
+        "passed": false,
+        "rotation_radians": 0.0
+      }
+    ],
+    "output": "output/city-graybox/2026-09-27/r1/final-expected-failure",
+    "validation": "PASS: intentional assertion returned nonzero"
+  }
+]

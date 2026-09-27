@@ -567,199 +567,374 @@ fn add_frame(
     Ok(())
 }
 
+fn entry_opening(kind: &str, role: &str) -> Vec2 {
+    match (kind, role) {
+        ("station" | "cinema", "public") => Vec2::new(3.6, 2.75),
+        ("school", "student") => Vec2::new(2.4, 2.6),
+        ("interest" | "maker" | "music", "service") => Vec2::new(2.4, 2.6),
+        (_, "public") => Vec2::new(1.8, 2.35),
+        _ => Vec2::new(1.3, 2.35),
+    }
+}
+
+fn window_exposed(
+    map: &Map,
+    ground: &Ground,
+    building: &Building,
+    p: [f64; 3],
+    half: f64,
+    bottom: f64,
+    normal: [f64; 2],
+) -> bool {
+    [-half, 0.0, half].into_iter().all(|offset| {
+        let sample = [
+            p[0] + normal[0] * 0.25 - normal[1] * offset,
+            p[1] + normal[1] * 0.25 + normal[0] * offset,
+        ];
+        ground.height(sample) < bottom - 0.1
+            && !map.buildings.iter().any(|other| {
+                other.id != building.id
+                    && other.elevation < p[2] + (p[2] - bottom)
+                    && other.elevation + other.height > bottom
+                    && contains(sample, &other.polygon)
+                    && !other
+                        .design
+                        .as_ref()
+                        .and_then(|d| d.lightwell.as_ref())
+                        .is_some_and(|hole| contains(sample, hole))
+            })
+    })
+}
+
 fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, String> {
     let mut parts = Vec::new();
+    let ground = Ground::new(map)?;
     for building in &map.buildings {
         let Some(design) = &building.design else {
             continue;
         };
         let mut batches = BTreeMap::new();
-        let polygon = &building.polygon;
-        let signed_area: f64 = polygon
-            .iter()
-            .zip(polygon.iter().cycle().skip(1))
-            .take(polygon.len())
-            .map(|(a, b)| a[0] * b[1] - a[1] * b[0])
-            .sum();
-        let side = if signed_area >= 0.0 { 1.0 } else { -1.0 };
-        for (a, b) in polygon
-            .iter()
-            .zip(polygon.iter().cycle().skip(1))
-            .take(polygon.len())
+        let top = building.elevation + building.height;
+        // Inner-court normals face the opening, independent of authored polygon winding
+        for (polygon, court) in std::iter::once((&building.polygon, false))
+            .chain(design.lightwell.iter().map(|p| (p, true)))
         {
-            let dx = b[0] - a[0];
-            let dy = b[1] - a[1];
-            let length = dx.hypot(dy);
-            let normal = [side * dy / length, -side * dx / length];
-            let rotation = Quat::from_rotation_y(dy.atan2(dx) as f32);
-            let display = appearance.displays.get(&building.id).filter(|_| {
-                design.front.is_some_and(|[u, v]| {
-                    [u, v]
-                        .iter()
-                        .all(|p| ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length < 0.02)
-                })
-            });
-            for (floor_index, floor) in design.floors.iter().enumerate() {
-                let ceiling = design
-                    .floors
-                    .get(floor_index + 1)
-                    .map_or(building.elevation + building.height, |f| f.z);
-                if ceiling - floor.z < 2.4 {
-                    continue;
-                }
-                let n = (length / 3.8).floor() as usize;
-                for i in 0..n {
-                    let t = (i as f64 + 0.5) / n as f64;
-                    let p = [
-                        a[0] + dx * t + normal[0] * 0.055,
-                        a[1] + dy * t + normal[1] * 0.055,
-                        floor.z + 1.65,
-                    ];
-                    let width =
-                        if floor_index == 0 && matches!(building.kind.as_str(), "shop" | "home") {
-                            2.35_f32
-                        } else {
-                            1.45_f32
-                        };
-                    // Door nodes own their facade bays
-                    if design.entries.iter().any(|e| {
-                        let door = map.nodes[&e.node];
-                        (door[0] - p[0]).hypot(door[1] - p[1])
-                            < (f64::from(width) / 2.0 + 0.95).max(1.8)
-                            && (door[2] - floor.z).abs() < 0.3
-                    }) {
+            let signed_area: f64 = polygon
+                .iter()
+                .zip(polygon.iter().cycle().skip(1))
+                .take(polygon.len())
+                .map(|(a, b)| a[0] * b[1] - a[1] * b[0])
+                .sum();
+            let side = if (signed_area >= 0.0) != court {
+                1.0
+            } else {
+                -1.0
+            };
+            for (a, b) in polygon
+                .iter()
+                .zip(polygon.iter().cycle().skip(1))
+                .take(polygon.len())
+            {
+                let dx = b[0] - a[0];
+                let dy = b[1] - a[1];
+                let length = dx.hypot(dy);
+                let normal = [side * dy / length, -side * dx / length];
+                let rotation = Quat::from_rotation_y(dy.atan2(dx) as f32);
+                let on_edge = |p: [f64; 2]| {
+                    let t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (length * length);
+                    (-0.001..=1.001).contains(&t)
+                        && ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length < 0.02
+                };
+                let public_face = !court
+                    && design.entries.iter().any(|e| {
+                        let p = map.nodes[&e.node];
+                        matches!(e.role.as_str(), "public" | "student") && on_edge([p[0], p[1]])
+                    });
+                let display = appearance
+                    .displays
+                    .get(&building.id)
+                    .filter(|_| !court)
+                    .filter(|_| {
+                        design.front.is_some_and(|[u, v]| {
+                            [u, v].iter().all(|p| {
+                                ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length < 0.02
+                            })
+                        })
+                    });
+                for (floor_index, floor) in design.floors.iter().enumerate() {
+                    let ceiling = design
+                        .floors
+                        .get(floor_index + 1)
+                        .map_or(building.elevation + building.height, |f| f.z);
+                    if ceiling - floor.z < 2.4 {
                         continue;
                     }
-                    if floor_index == 0
-                        && let Some(material) = display
-                    {
-                        let center = map_to_world([
-                            p[0] + normal[0] * 0.105,
-                            p[1] + normal[1] * 0.105,
-                            p[2],
-                        ]);
-                        add_frame(&mut batches, center, Vec2::new(width, 1.67), rotation, true)?;
-                        // Shallow display boxes keep the original building envelope intact
-                        add_sign(&mut batches, material, map_to_world(p), width, 1.67, normal)?;
+                    let commercial = floor_index == 0
+                        && public_face
+                        && !matches!(design.kind.as_str(), "school" | "shrine");
+                    let (pitch, width, height, center) = if court {
+                        (3.8, 1.2, 1.4, 1.65)
+                    } else if design.kind == "music" && !commercial {
+                        (5.0, 1.4, 0.7, (ceiling - floor.z - 0.7).max(1.7))
+                    } else if design.kind == "school" {
+                        (3.8, 2.6, 1.6, 1.8)
+                    } else if commercial && matches!(design.kind.as_str(), "station" | "cinema") {
+                        (
+                            4.2,
+                            3.1,
+                            (ceiling - floor.z - 1.0).min(4.0),
+                            (ceiling - floor.z).min(5.0) / 2.0,
+                        )
+                    } else if commercial {
+                        (3.8, 2.35, 1.67, 1.65)
+                    } else {
+                        (3.8, 1.45, 1.67, 1.65)
+                    };
+                    let n = (length / pitch).floor() as usize;
+                    for i in 0..n {
+                        let t = (i as f64 + 0.5) / n as f64;
+                        let p = [
+                            a[0] + dx * t + normal[0] * 0.055,
+                            a[1] + dy * t + normal[1] * 0.055,
+                            floor.z + center,
+                        ];
+                        let width = width as f32;
+                        let height = height as f32;
+                        if !window_exposed(
+                            map,
+                            &ground,
+                            building,
+                            p,
+                            f64::from(width) / 2.0,
+                            p[2] - f64::from(height) / 2.0,
+                            normal,
+                        ) {
+                            continue;
+                        }
+                        // Door nodes own their facade bays
+                        if design.entries.iter().any(|e| {
+                            let door = map.nodes[&e.node];
+                            (door[0] - p[0]).hypot(door[1] - p[1])
+                                < f64::from(width + entry_opening(&design.kind, &e.role).x) / 2.0
+                                    + 0.2
+                                && (door[2] - floor.z).abs() < 0.3
+                        }) {
+                            continue;
+                        }
+                        if floor_index == 0
+                            && let Some(material) = display
+                        {
+                            let center = map_to_world([
+                                p[0] + normal[0] * 0.105,
+                                p[1] + normal[1] * 0.105,
+                                p[2],
+                            ]);
+                            add_frame(
+                                &mut batches,
+                                center,
+                                Vec2::new(width, 1.67),
+                                rotation,
+                                true,
+                            )?;
+                            // Shallow display boxes keep the original building envelope intact
+                            add_sign(&mut batches, material, map_to_world(p), width, 1.67, normal)?;
+                            add_box(
+                                &mut batches,
+                                "trim",
+                                center,
+                                Vec3::new(0.045, 1.67, 0.12),
+                                rotation,
+                            )?;
+                            add_box(
+                                &mut batches,
+                                "metal",
+                                center - Vec3::Y * 0.12,
+                                Vec3::new(width * 0.89, 0.045, 0.18),
+                                rotation,
+                            )?;
+                            continue;
+                        }
                         add_box(
                             &mut batches,
                             "trim",
-                            center,
-                            Vec3::new(0.045, 1.67, 0.12),
+                            map_to_world(p),
+                            Vec3::new(width + 0.16, height + 0.18, 0.12),
+                            rotation,
+                        )?;
+                        let p = [p[0] + normal[0] * 0.07, p[1] + normal[1] * 0.07, p[2]];
+                        add_box(
+                            &mut batches,
+                            "glass",
+                            map_to_world(p),
+                            Vec3::new(width, height, 0.025),
+                            rotation,
+                        )?;
+                    }
+                    if floor_index > 0 {
+                        let p = [
+                            (a[0] + b[0]) / 2.0 + normal[0] * 0.04,
+                            (a[1] + b[1]) / 2.0 + normal[1] * 0.04,
+                            floor.z,
+                        ];
+                        add_box(
+                            &mut batches,
+                            "trim",
+                            map_to_world(p),
+                            Vec3::new(length as f32, 0.13, 0.18),
+                            rotation,
+                        )?;
+                    }
+                }
+                // Roof-access nodes describe a route onto a roof, not a door floating above it
+                for (_, entry) in design.entries.iter().enumerate().filter(|(i, e)| {
+                    !court
+                        && !design.entries[..*i]
+                            .iter()
+                            .any(|previous| previous.node == e.node)
+                }) {
+                    let p = map.nodes[&entry.node];
+                    if p[2] >= top - 0.2 {
+                        continue;
+                    }
+                    let t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (length * length);
+                    let distance = ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length;
+                    if !(-0.001..=1.001).contains(&t) || distance > 0.02 {
+                        continue;
+                    }
+                    let approach = [p[0] + normal[0] * 0.3, p[1] + normal[1] * 0.3];
+                    if let Some(other) = map.buildings.iter().find(|other| {
+                        other.id != building.id
+                            && other.elevation < p[2] + 1.9
+                            && other.elevation + other.height > p[2] + 0.1
+                            && contains(approach, &other.polygon)
+                    }) {
+                        return Err(format!(
+                            "[geometry/entry] {}:{} blocked by building {}",
+                            building.id, entry.node, other.id
+                        ));
+                    }
+                    if ground.height(approach) > p[2] + 0.35 {
+                        return Err(format!(
+                            "[geometry/entry] {}:{} terrain obstructs approach: ground={} entry={}",
+                            building.id,
+                            entry.node,
+                            ground.height(approach),
+                            p[2]
+                        ));
+                    }
+                    if display.is_some() && (p[2] - building.elevation).abs() < 0.3 {
+                        let center = map_to_world([
+                            p[0] + normal[0] * 0.16,
+                            p[1] + normal[1] * 0.16,
+                            p[2] + 1.175,
+                        ]);
+                        add_frame(&mut batches, center, Vec2::new(1.3, 2.35), rotation, false)?;
+                        add_box(
+                            &mut batches,
+                            if entry.role == "public" {
+                                "glass"
+                            } else {
+                                "metal"
+                            },
+                            map_to_world([
+                                p[0] + normal[0] * 0.04,
+                                p[1] + normal[1] * 0.04,
+                                p[2] + 1.175,
+                            ]),
+                            Vec3::new(1.3, 2.35, 0.03),
                             rotation,
                         )?;
                         add_box(
                             &mut batches,
                             "metal",
-                            center - Vec3::Y * 0.12,
-                            Vec3::new(width * 0.89, 0.045, 0.18),
+                            map_to_world([
+                                p[0] + normal[0] * 0.1 + dx / length * 0.45,
+                                p[1] + normal[1] * 0.1 + dy / length * 0.45,
+                                p[2] + 1.1,
+                            ]),
+                            Vec3::new(0.04, 0.34, 0.08),
                             rotation,
                         )?;
                         continue;
                     }
-                    add_box(
-                        &mut batches,
-                        "trim",
-                        map_to_world(p),
-                        Vec3::new(width + 0.16, 1.85, 0.12),
-                        rotation,
-                    )?;
-                    let p = [p[0] + normal[0] * 0.07, p[1] + normal[1] * 0.07, p[2]];
-                    add_box(
-                        &mut batches,
-                        "glass",
-                        map_to_world(p),
-                        Vec3::new(width, 1.67, 0.025),
-                        rotation,
-                    )?;
-                }
-                if floor_index > 0 {
-                    let p = [
-                        (a[0] + b[0]) / 2.0 + normal[0] * 0.04,
-                        (a[1] + b[1]) / 2.0 + normal[1] * 0.04,
-                        floor.z,
-                    ];
-                    add_box(
-                        &mut batches,
-                        "trim",
-                        map_to_world(p),
-                        Vec3::new(length as f32, 0.13, 0.18),
-                        rotation,
-                    )?;
-                }
-            }
-            for entry in &design.entries {
-                let p = map.nodes[&entry.node];
-                let t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (length * length);
-                let distance = ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length;
-                if !(-0.001..=1.001).contains(&t) || distance > 0.02 {
-                    continue;
-                }
-                if display.is_some() && (p[2] - building.elevation).abs() < 0.3 {
+                    let available_height = design
+                        .floors
+                        .iter()
+                        .find(|f| f.z > p[2] + 0.1)
+                        .map_or(top, |f| f.z)
+                        - p[2];
+                    let requested = entry_opening(&design.kind, &entry.role);
+                    let opening = Vec2::new(
+                        requested
+                            .x
+                            .min((2.0 * length * t.min(1.0 - t) - 0.3) as f32),
+                        requested.y.min((available_height - 0.3) as f32),
+                    );
+                    if opening.x < 0.6 || opening.y < 1.9 {
+                        return Err(format!(
+                            "[geometry/entry] {}:{} lacks room for a doorway",
+                            building.id, entry.node
+                        ));
+                    }
                     let center = map_to_world([
                         p[0] + normal[0] * 0.16,
                         p[1] + normal[1] * 0.16,
-                        p[2] + 1.175,
+                        p[2] + f64::from(opening.y) / 2.0,
                     ]);
-                    add_frame(&mut batches, center, Vec2::new(1.3, 2.35), rotation, false)?;
+                    add_frame(&mut batches, center, opening, rotation, false)?;
                     add_box(
                         &mut batches,
-                        if entry.role == "public" {
+                        if matches!(entry.role.as_str(), "public" | "student") {
                             "glass"
                         } else {
                             "metal"
                         },
-                        map_to_world([
-                            p[0] + normal[0] * 0.04,
-                            p[1] + normal[1] * 0.04,
-                            p[2] + 1.175,
-                        ]),
-                        Vec3::new(1.3, 2.35, 0.03),
+                        center - map_to_world([normal[0] * 0.08, normal[1] * 0.08, 0.0]),
+                        Vec3::new(opening.x, opening.y, 0.03),
                         rotation,
                     )?;
+                    if opening.x > 1.8 {
+                        add_box(
+                            &mut batches,
+                            "metal",
+                            center,
+                            Vec3::new(0.08, opening.y, 0.10),
+                            rotation,
+                        )?;
+                    }
+                    if design.canopy.is_none()
+                        && matches!(entry.role.as_str(), "public" | "student")
+                    {
+                        add_box(
+                            &mut batches,
+                            "awning",
+                            map_to_world([
+                                p[0] + normal[0] * 0.55,
+                                p[1] + normal[1] * 0.55,
+                                p[2] + f64::from(opening.y) + 0.2,
+                            ]),
+                            Vec3::new(opening.x + 0.8, 0.16, 1.1),
+                            rotation,
+                        )?;
+                    }
+                }
+                // Roof coping keeps the authored top height and leaves roof paths open
+                if !design.floors.iter().any(|f| f.name == "RF") {
                     add_box(
                         &mut batches,
-                        "metal",
+                        "trim",
                         map_to_world([
-                            p[0] + normal[0] * 0.1 + dx / length * 0.45,
-                            p[1] + normal[1] * 0.1 + dy / length * 0.45,
-                            p[2] + 1.1,
+                            (a[0] + b[0]) / 2.0 + normal[0] * 0.04,
+                            (a[1] + b[1]) / 2.0 + normal[1] * 0.04,
+                            top - 0.15,
                         ]),
-                        Vec3::new(0.04, 0.34, 0.08),
+                        Vec3::new(length as f32, 0.3, 0.16),
                         rotation,
                     )?;
-                    continue;
                 }
-                let center = [
-                    p[0] + normal[0] * 0.10,
-                    p[1] + normal[1] * 0.10,
-                    p[2] + 1.25,
-                ];
-                add_box(
-                    &mut batches,
-                    "trim",
-                    map_to_world(center),
-                    Vec3::new(1.55, 2.55, 0.16),
-                    rotation,
-                )?;
-                let center = [
-                    center[0] + normal[0] * 0.09,
-                    center[1] + normal[1] * 0.09,
-                    center[2],
-                ];
-                add_box(
-                    &mut batches,
-                    if entry.role == "public" {
-                        "glass"
-                    } else {
-                        "metal"
-                    },
-                    map_to_world(center),
-                    Vec3::new(1.3, 2.35, 0.03),
-                    rotation,
-                )?;
             }
         }
+        let polygon = &building.polygon;
         if let Some([a, b]) = design.front {
             let dx = b[0] - a[0];
             let dy = b[1] - a[1];
@@ -888,6 +1063,213 @@ fn planter_positions(map: &Map, building: &Building) -> Vec<[f64; 3]> {
         .collect()
 }
 
+// Conservative horizontal radii of the normalized models; tests check the actual exported GLBs
+fn vegetation_radius(model: &str) -> f64 {
+    match model {
+        "tree_pine" => 2.3,
+        "tree_autumn" => 1.35,
+        "rock" => 0.9,
+        "grass" => 0.45,
+        "flowers" => 0.3,
+        "tree_a" | "tree_b" => 3.5,
+        "streetlight" => 1.4,
+        _ => 0.7,
+    }
+}
+
+fn vegetation_obstacles(map: &Map) -> Vec<geo::Polygon> {
+    let polygon = |points: &[[f64; 2]]| {
+        geo::Polygon::new(
+            geo::LineString::from(points.iter().map(|p| (p[0], p[1])).collect::<Vec<_>>()),
+            vec![],
+        )
+    };
+    let mut areas: Vec<_> = map
+        .buildings
+        .iter()
+        .map(|b| polygon(&b.polygon))
+        .chain(
+            map.surfaces
+                .iter()
+                .filter(|s| s.kind != "park" || s.elevated || s.building.is_some())
+                .map(|s| polygon(&s.polygon)),
+        )
+        .chain(
+            map.architectures
+                .iter()
+                .flat_map(|a| &a.fixtures)
+                .map(|f| polygon(&f.polygon)),
+        )
+        .chain(std::iter::once(polygon(&map.terrain.water)))
+        .collect();
+    for road in &map.roads {
+        if road.building.is_some() || matches!(road.kind.as_str(), "interior" | "lift") {
+            continue;
+        }
+        let points: Vec<_> = road.nodes.iter().map(|n| map.nodes[n]).collect();
+        let offsets = geometry::road_offsets(&points, road.width);
+        for (i, pair) in points.windows(2).enumerate() {
+            areas.push(geometry::ribbon(
+                pair[0],
+                pair[1],
+                offsets[i],
+                offsets[i + 1],
+            ));
+        }
+    }
+    areas
+}
+
+fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
+    use geo::{BoundingRect, Contains, Distance, Euclidean, LineString, Point, Polygon};
+    let obstacles = vegetation_obstacles(map);
+    let mut candidates = Vec::new();
+    for (i, surface) in map
+        .surfaces
+        .iter()
+        .enumerate()
+        .filter(|(_, s)| s.kind == "park" && !s.elevated && s.building.is_none())
+    {
+        let area = Polygon::new(
+            LineString::from(
+                surface
+                    .polygon
+                    .iter()
+                    .map(|p| (p[0], p[1]))
+                    .collect::<Vec<_>>(),
+            ),
+            vec![],
+        );
+        let bounds = area.bounding_rect().unwrap();
+        for (j, uv) in [
+            [0.2, 0.2],
+            [0.8, 0.8],
+            [0.8, 0.2],
+            [0.2, 0.8],
+            [0.5, 0.2],
+            [0.5, 0.8],
+        ]
+        .iter()
+        .enumerate()
+        {
+            let p = [
+                bounds.min().x + bounds.width() * uv[0],
+                bounds.min().y + bounds.height() * uv[1],
+            ];
+            let model = [
+                "flowers",
+                "grass",
+                "rock",
+                "flowers",
+                "tree_autumn",
+                "grass",
+            ][j];
+            let point = Point::new(p[0], p[1]);
+            if area.contains(&point)
+                && Euclidean.distance(&point, area.exterior()) > vegetation_radius(model) + 0.4
+            {
+                candidates.push((format!("surfaces[{i}]/derived-vegetation[{j}]"), model, p));
+            }
+        }
+    }
+    for (i, road) in map.roads.iter().enumerate().filter(|(_, r)| {
+        r.building.is_none()
+            && (r.kind == "trail"
+                || (r.kind == "steps" && r.nodes.iter().any(|n| n.starts_with("hill_short_"))))
+    }) {
+        for (j, pair) in road.nodes.windows(2).enumerate() {
+            let a = map.nodes[&pair[0]];
+            let b = map.nodes[&pair[1]];
+            let dx = b[0] - a[0];
+            let dy = b[1] - a[1];
+            let length = dx.hypot(dy);
+            let count = (length / 24.0).ceil().max(1.0) as usize;
+            for slot in 0..count {
+                for (side_index, side) in [-1.0, 1.0].into_iter().enumerate() {
+                    let index = i * 31 + j * 7 + slot * 2 + side_index;
+                    let model =
+                        ["tree_pine", "grass", "rock", "flowers", "grass", "rock"][index % 6];
+                    let distance = road.width / 2.0 + vegetation_radius(model) + 1.0;
+                    let t = (slot as f64 + 0.5) / count as f64;
+                    let p = [
+                        a[0] + dx * t - dy / length * distance * side,
+                        a[1] + dy * t + dx / length * distance * side,
+                    ];
+                    candidates.push((
+                        format!("roads[{i}]/segment[{j}]/derived-vegetation[{slot}:{side_index}]"),
+                        model,
+                        p,
+                    ));
+                }
+            }
+        }
+    }
+    let initial = props.len();
+    let height = |p: [f64; 2]| {
+        map.surfaces
+            .iter()
+            .find(|s| {
+                s.kind == "park" && !s.elevated && s.building.is_none() && contains(p, &s.polygon)
+            })
+            .map_or_else(|| ground.height(p), |s| s.elevation)
+    };
+    for (source, model, p) in candidates {
+        if props.len() - initial >= 200 {
+            break;
+        }
+        let radius = vegetation_radius(model);
+        let point = Point::new(p[0], p[1]);
+        if obstacles
+            .iter()
+            .any(|area| Euclidean.distance(&point, area) < radius + 0.4)
+            || map
+                .buildings
+                .iter()
+                .filter_map(|b| b.design.as_ref())
+                .flat_map(|d| &d.entries)
+                .any(|e| {
+                    let door = map.nodes[&e.node];
+                    (door[0] - p[0]).hypot(door[1] - p[1]) < radius + 2.0
+                })
+            || props.iter().any(|prop| {
+                let q = prop.transform.translation;
+                (f64::from(q.x) - p[0]).hypot(-f64::from(q.z) - p[1])
+                    < radius + vegetation_radius(&prop.model) + 0.25
+            })
+        {
+            continue;
+        }
+        let (foot, tolerance) = if model.starts_with("tree_") {
+            (0.2, 0.25)
+        } else if model == "rock" {
+            (radius, 0.2)
+        } else {
+            (radius, 0.08)
+        };
+        let heights = [[-foot, -foot], [foot, -foot], [foot, foot], [-foot, foot]]
+            .map(|d| height([p[0] + d[0], p[1] + d[1]]));
+        let low = heights
+            .into_iter()
+            .fold(f64::INFINITY, f64::min)
+            .min(height(p));
+        let high = heights
+            .into_iter()
+            .fold(f64::NEG_INFINITY, f64::max)
+            .max(height(p));
+        if high - low > tolerance {
+            continue;
+        }
+        props.push(PropPlacement {
+            source,
+            model: model.into(),
+            transform: Transform::from_translation(map_to_world([p[0], p[1], low - 0.015]))
+                .with_rotation(Quat::from_rotation_y(
+                    (props.len() - initial) as f32 * 2.399,
+                )),
+        });
+    }
+}
+
 fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, String> {
     let ground = Ground::new(map)?;
     let mut props = Vec::new();
@@ -901,7 +1283,16 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
         let h = supported.unwrap_or_else(|| ground.height(*p));
         props.push(PropPlacement {
             source: format!("trees[{i}]"),
-            model: if i % 2 == 0 { "tree_a" } else { "tree_b" }.into(),
+            model: if h >= map.nodes["hillgate"][2] {
+                "tree_pine"
+            } else if i % 11 == 0 {
+                "tree_autumn"
+            } else if i % 2 == 0 {
+                "tree_a"
+            } else {
+                "tree_b"
+            }
+            .into(),
             transform: Transform::from_translation(map_to_world([p[0], p[1], h]))
                 .with_rotation(Quat::from_rotation_y(i as f32 * 2.399)),
         });
@@ -956,12 +1347,321 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
             });
         }
     }
+    add_vegetation(map, &ground, &mut props);
     Ok(props)
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn vegetation_uses_real_assets_and_keeps_public_space_clear() {
+        use geo::{Distance, Euclidean, Point};
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let first = props(&map, &appearance).unwrap();
+        let second = props(&map, &appearance).unwrap();
+        assert_eq!(first.len(), second.len());
+        assert!(first.iter().zip(&second).all(|(a, b)| a.source == b.source
+            && a.model == b.model
+            && a.transform == b.transform));
+        let additions: Vec<_> = first
+            .iter()
+            .filter(|p| p.source.contains("/derived-vegetation["))
+            .collect();
+        assert!(!additions.is_empty() && additions.len() <= 200);
+        assert!(additions.iter().any(|p| p.source.starts_with("surfaces[")));
+        assert!(additions.iter().any(|p| p.source.starts_with("roads[")));
+        let obstacles = vegetation_obstacles(&map);
+        let ground = Ground::new(&map).unwrap();
+        for p in &additions {
+            let at = p.transform.translation;
+            assert!(at.is_finite());
+            let point = Point::new(f64::from(at.x), -f64::from(at.z));
+            assert!(obstacles.iter().all(
+                |area| Euclidean.distance(&point, area) >= vegetation_radius(&p.model) + 0.399
+            ));
+            let height = map
+                .surfaces
+                .iter()
+                .find(|s| {
+                    s.kind == "park"
+                        && !s.elevated
+                        && s.building.is_none()
+                        && contains([point.x(), point.y()], &s.polygon)
+                })
+                .map_or_else(|| ground.height([point.x(), point.y()]), |s| s.elevation);
+            assert!(
+                f64::from(at.y) <= height + 0.001 && height - f64::from(at.y) < 0.27,
+                "{} floats or sinks too far",
+                p.source
+            );
+            for other in &first {
+                if p.source == other.source {
+                    continue;
+                }
+                let q = other.transform.translation;
+                assert!(
+                    (at.x - q.x).hypot(at.z - q.z) as f64
+                        >= vegetation_radius(&p.model) + vegetation_radius(&other.model) + 0.249,
+                    "{} overlaps {}",
+                    p.source,
+                    other.source
+                );
+            }
+        }
+        let mut counts = BTreeMap::new();
+        for p in &first {
+            *counts.entry(p.model.as_str()).or_insert(0) += 1;
+        }
+        for name in [
+            "tree_pine",
+            "tree_autumn",
+            "rock",
+            "grass",
+            "flowers",
+            "tree_a",
+            "tree_b",
+            "shrub",
+            "streetlight",
+        ] {
+            assert!(
+                counts.get(name).is_some_and(|n| *n > 0),
+                "{name} has no actual placements"
+            );
+            let spec = appearance.models.get(name).expect("asset binding exists");
+            assets::validate_model(&root.join("game/assets"), name, spec).unwrap();
+            let asset = gltf::Gltf::open(root.join("game/assets").join(&spec.file)).unwrap();
+            let mut radius = 0.0_f64;
+            for node in asset.scenes().nth(spec.scene).unwrap().nodes() {
+                assert!(
+                    node.children().next().is_none(),
+                    "bounds probe expects these normalized direct-mesh scene roots"
+                );
+                let matrix = Mat4::from_cols_array_2d(&node.transform().matrix());
+                for primitive in node.mesh().unwrap().primitives() {
+                    let reader = primitive.reader(|_| asset.blob.as_deref());
+                    for p in reader.read_positions().unwrap() {
+                        let p = matrix.transform_point3(Vec3::from(p)) * spec.scale;
+                        radius = radius.max(f64::from(p.x.hypot(p.z)));
+                    }
+                }
+            }
+            assert!(
+                radius > 0.0 && radius <= vegetation_radius(name),
+                "{name}: exported radius={radius} exceeds placement allowance"
+            );
+        }
+        let mut added_counts = BTreeMap::new();
+        for p in &additions {
+            *added_counts.entry(p.model.as_str()).or_insert(0) += 1;
+        }
+        let short_roads: Vec<_> = map
+            .roads
+            .iter()
+            .enumerate()
+            .filter(|(_, r)| r.nodes.iter().any(|n| n.starts_with("hill_short_")))
+            .map(|(i, _)| format!("roads[{i}]/"))
+            .collect();
+        if !short_roads.is_empty() {
+            assert!(
+                additions.iter().any(|p| short_roads
+                    .iter()
+                    .any(|prefix| p.source.starts_with(prefix))),
+                "new uphill route has no accepted vegetation placements"
+            );
+        }
+        eprintln!(
+            "vegetation additions={} added={added_counts:?} parks={} trails_or_uphill={} model counts={counts:?}",
+            additions.len(),
+            additions
+                .iter()
+                .filter(|p| p.source.starts_with("surfaces["))
+                .count(),
+            additions
+                .iter()
+                .filter(|p| p.source.starts_with("roads["))
+                .count()
+        );
+    }
+
+    #[test]
+    fn all_authored_facades_cover_entries_courts_and_keep_roofs_clear() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let parts = facades(&map, &appearance).unwrap();
+        let mut entries = 0;
+        let mut courts = 0;
+        let mut kinds = BTreeSet::new();
+        for building in map.buildings.iter().filter(|b| b.design.is_some()) {
+            let design = building.design.as_ref().unwrap();
+            kinds.insert(&design.kind);
+            let source = format!("buildings[{}]/derived-facade", building.id);
+            let meshes: Vec<_> = parts.iter().filter(|p| p.source == source).collect();
+            assert!(!meshes.is_empty(), "{} has no facade geometry", building.id);
+            let top = building.elevation + building.height;
+            for mesh in &meshes {
+                let positions = mesh
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap();
+                assert!(positions.iter().flatten().all(|v| v.is_finite()));
+                assert!(
+                    positions.iter().all(|v| f64::from(v[1]) <= top + 0.001),
+                    "{} extends above authored roof",
+                    building.id
+                );
+            }
+            let boxes: Vec<_> = meshes
+                .iter()
+                .filter(|p| matches!(p.material.as_str(), "glass" | "metal"))
+                .flat_map(|p| {
+                    p.mesh
+                        .attribute(Mesh::ATTRIBUTE_POSITION)
+                        .unwrap()
+                        .as_float3()
+                        .unwrap()
+                        .as_chunks::<24>()
+                        .0
+                        .iter()
+                })
+                .map(|vertices| {
+                    vertices.iter().fold(
+                        (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                        |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
+                    )
+                })
+                .collect();
+            let mut seen = BTreeSet::new();
+            for entry in &design.entries {
+                if !seen.insert(&entry.node) {
+                    continue;
+                }
+                let p = map_to_world(map.nodes[&entry.node]);
+                if f64::from(p.y) >= top - 0.2 {
+                    continue;
+                }
+                let count = boxes
+                    .iter()
+                    .filter(|(lo, hi)| {
+                        let c = (*lo + *hi) / 2.0;
+                        (lo.y - p.y).abs() < 0.001
+                            && hi.y - lo.y >= 1.9
+                            && (hi.x - lo.x).max(hi.z - lo.z) > 0.6
+                            && Vec2::new(c.x - p.x, c.z - p.z).length() < 0.2
+                    })
+                    .count();
+                assert_eq!(
+                    count, 1,
+                    "{}:{} missing or duplicated doorway",
+                    building.id, entry.node
+                );
+                entries += 1;
+            }
+            if let Some(hole) = &design.lightwell {
+                assert!(
+                    boxes.iter().any(|(lo, hi)| {
+                        let c = (*lo + *hi) / 2.0;
+                        contains([f64::from(c.x), -f64::from(c.z)], hole)
+                    }),
+                    "{} inner court has no inward-facing windows",
+                    building.id
+                );
+                courts += 1;
+            }
+        }
+        assert!(entries > 0 && courts > 0 && kinds.len() > 1);
+        eprintln!(
+            "building facade coverage: buildings={} types={} unique doorways={entries} lightwells={courts}",
+            map.buildings.iter().filter(|b| b.design.is_some()).count(),
+            kinds.len()
+        );
+    }
+
+    #[test]
+    fn slope_and_neighbour_occlusion_remove_windows_without_hiding_entries() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let mut map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let building = map
+            .buildings
+            .iter()
+            .find(|b| b.id == "V-04")
+            .unwrap()
+            .clone();
+        let p = [76.75, 246.945, building.elevation + 5.85];
+        assert!(window_exposed(
+            &map,
+            &ground,
+            &building,
+            p,
+            0.725,
+            p[2] - 0.835,
+            [0.0, -1.0]
+        ));
+        assert!(!window_exposed(
+            &map,
+            &ground,
+            &building,
+            [p[0], p[1], building.elevation],
+            0.725,
+            building.elevation - 0.835,
+            [0.0, -1.0]
+        ));
+        let baseline = facades(&map, &appearance).unwrap();
+        let glass_vertices = |parts: &[GeometryPart]| {
+            parts
+                .iter()
+                .find(|p| p.source == "buildings[V-04]/derived-facade" && p.material == "glass")
+                .unwrap()
+                .mesh
+                .count_vertices()
+        };
+        let mut neighbour = building.clone();
+        neighbour.id = "test-occluding-neighbour".into();
+        neighbour.polygon = vec![[75.0, 244.0], [78.5, 244.0], [78.5, 246.9], [75.0, 246.9]];
+        neighbour.design = None;
+        map.buildings.push(neighbour);
+        assert!(!window_exposed(
+            &map,
+            &ground,
+            &building,
+            p,
+            0.725,
+            p[2] - 0.835,
+            [0.0, -1.0]
+        ));
+        let occluded = facades(&map, &appearance).unwrap();
+        assert!(glass_vertices(&occluded) < glass_vertices(&baseline));
+        map.buildings.last_mut().unwrap().elevation = building.elevation + 20.0;
+        assert!(window_exposed(
+            &map,
+            &ground,
+            &building,
+            p,
+            0.725,
+            p[2] - 0.835,
+            [0.0, -1.0]
+        ));
+        let neighbour = map.buildings.last_mut().unwrap();
+        neighbour.elevation = building.elevation;
+        neighbour.polygon = vec![[88.1, 254.0], [89.5, 254.0], [89.5, 256.0], [88.1, 256.0]];
+        let error = facades(&map, &appearance)
+            .err()
+            .expect("blocked doorway must not disappear silently");
+        assert!(
+            error.contains("V-04:shop_front_door blocked by building test-occluding-neighbour")
+        );
+    }
 
     #[test]
     fn displays_stay_on_ground_floor_front_windows() {

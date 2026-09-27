@@ -1,0 +1,470 @@
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1510 roads=854 buildings=231 surfaces=82 trees=72 meshes=3213 elapsed_seconds=9.316
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25
+2026-09-27T03:36:32.651893Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T03:36:32.699769Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T03:36:32.782472Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T03:36:32.782494Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T03:36:32.792724Z  INFO bevy_camera_controller::free_camera: 
+Freecamera Controls:
+    Mouse	- Move camera orientation
+    Scroll	- Adjust movement speed
+    Right	- Hold to grab cursor
+    KeyM	- Toggle cursor grab
+    KeyW & KeyS	- Fly forward & backwards
+    KeyA & KeyD	- Fly sideways left & right
+    KeyE & KeyQ	- Fly up & down
+    ShiftLeft	- Fly faster while held
+    [ControlLeft + ]Numpad7	- Snap to Up (+Y)/Down (-Y)
+    [ControlLeft + ]Numpad3	- Snap to Right (+X)/Left (-X)
+    [ControlLeft + ]Numpad1	- Snap to Front (-Z)/Back (+Z)
+2026-09-27T03:36:32.825728Z  INFO n_side::world::scene: [world/ready] meshes=3213 model_instances=260 dependencies=25 failed=0 degraded=0 startup_seconds=0.054
+2026-09-27T03:36:37.988072Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/overview.png
+2026-09-27T03:36:40.912758Z  INFO map_viewer: [verify/view] view=overview frames=2455 mean_ms=2.04 p95_ms=3.11 fps=490.7 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:36:46.037074Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/shop.png
+2026-09-27T03:36:48.916436Z  INFO map_viewer: [verify/view] view=shop frames=1376 mean_ms=3.64 p95_ms=5.02 fps=275.0 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:36:54.044594Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/street.png
+2026-09-27T03:36:56.919625Z  INFO map_viewer: [verify/view] view=street frames=1458 mean_ms=3.43 p95_ms=4.83 fps=291.2 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:02.059661Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/cinema.png
+2026-09-27T03:37:04.922108Z  INFO map_viewer: [verify/view] view=cinema frames=1316 mean_ms=3.80 p95_ms=5.22 fps=262.9 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:10.006692Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/bridge.png
+2026-09-27T03:37:12.923005Z  INFO map_viewer: [verify/view] view=bridge frames=2652 mean_ms=1.89 p95_ms=2.09 fps=530.2 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:18.034982Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/hillside.png
+2026-09-27T03:37:20.925458Z  INFO map_viewer: [verify/view] view=hillside frames=1764 mean_ms=2.84 p95_ms=4.16 fps=352.5 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:26.041342Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/campus.png
+2026-09-27T03:37:28.925808Z  INFO map_viewer: [verify/view] view=campus frames=1650 mean_ms=3.03 p95_ms=4.34 fps=329.8 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:34.049837Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-shop.png
+2026-09-27T03:37:36.930319Z  INFO map_viewer: [verify/view] view=eye-shop frames=1395 mean_ms=3.59 p95_ms=5.00 fps=278.6 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:42.054858Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-corner.png
+2026-09-27T03:37:44.932664Z  INFO map_viewer: [verify/view] view=eye-corner frames=1592 mean_ms=3.14 p95_ms=4.48 fps=318.2 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:50.058539Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-shade.png
+2026-09-27T03:37:52.935478Z  INFO map_viewer: [verify/view] view=eye-shade frames=1363 mean_ms=3.67 p95_ms=5.07 fps=272.4 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:37:58.054206Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-slope-support.png
+2026-09-27T03:38:00.936319Z  INFO map_viewer: [verify/view] view=eye-slope-support frames=1545 mean_ms=3.24 p95_ms=4.55 fps=308.9 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:38:06.036991Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-transfer-support.png
+2026-09-27T03:38:08.936580Z  INFO map_viewer: [verify/view] view=eye-transfer-support frames=2508 mean_ms=1.99 p95_ms=2.35 fps=501.5 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:38:14.065820Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/inspect-cinema-bearing.png
+2026-09-27T03:38:16.939549Z  INFO map_viewer: [verify/view] view=inspect-cinema-bearing frames=1448 mean_ms=3.46 p95_ms=4.87 fps=289.3 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:38:22.067417Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-shop-uphill.png
+2026-09-27T03:38:24.940326Z  INFO map_viewer: [verify/view] view=eye-shop-uphill frames=1558 mean_ms=3.21 p95_ms=4.53 fps=311.4 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:38:30.078849Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-station.png
+2026-09-27T03:38:32.940473Z  INFO map_viewer: [verify/view] view=eye-station frames=1236 mean_ms=4.05 p95_ms=5.45 fps=247.1 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:38:38.072853Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-cinema.png
+2026-09-27T03:38:40.943674Z  INFO map_viewer: [verify/view] view=eye-cinema frames=1351 mean_ms=3.70 p95_ms=5.07 fps=269.9 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:38:46.081979Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-shop-mountain.png
+2026-09-27T03:38:48.946551Z  INFO map_viewer: [verify/view] view=eye-shop-mountain frames=1318 mean_ms=3.80 p95_ms=5.20 fps=263.3 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:38:54.017961Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/mountain-profile.png
+2026-09-27T03:38:56.948338Z  INFO map_viewer: [verify/view] view=mountain-profile frames=2773 mean_ms=1.80 p95_ms=2.21 fps=554.3 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:02.069268Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/city-overview.png
+2026-09-27T03:39:04.950826Z  INFO map_viewer: [verify/view] view=city-overview frames=1859 mean_ms=2.69 p95_ms=3.94 fps=371.5 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:10.075962Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B01.png
+2026-09-27T03:39:12.952632Z  INFO map_viewer: [verify/view] view=block-B01 frames=1428 mean_ms=3.50 p95_ms=4.86 fps=285.5 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:18.068243Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B02.png
+2026-09-27T03:39:20.954314Z  INFO map_viewer: [verify/view] view=block-B02 frames=1690 mean_ms=2.96 p95_ms=4.26 fps=337.8 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:26.090697Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B03.png
+2026-09-27T03:39:28.956367Z  INFO map_viewer: [verify/view] view=block-B03 frames=1448 mean_ms=3.46 p95_ms=4.84 fps=289.4 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:34.098039Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B04.png
+2026-09-27T03:39:36.959482Z  INFO map_viewer: [verify/view] view=block-B04 frames=1315 mean_ms=3.81 p95_ms=5.21 fps=262.7 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:42.099309Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B05.png
+2026-09-27T03:39:44.960045Z  INFO map_viewer: [verify/view] view=block-B05 frames=1344 mean_ms=3.72 p95_ms=5.11 fps=268.7 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:50.087444Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B06.png
+2026-09-27T03:39:52.962127Z  INFO map_viewer: [verify/view] view=block-B06 frames=1533 mean_ms=3.26 p95_ms=4.49 fps=306.3 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:39:58.090155Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B07.png
+2026-09-27T03:40:00.962847Z  INFO map_viewer: [verify/view] view=block-B07 frames=1375 mean_ms=3.64 p95_ms=4.99 fps=274.9 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:40:06.095452Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B08.png
+2026-09-27T03:40:08.962954Z  INFO map_viewer: [verify/view] view=block-B08 frames=1487 mean_ms=3.36 p95_ms=4.67 fps=297.3 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:40:14.093180Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B09.png
+2026-09-27T03:40:16.965792Z  INFO map_viewer: [verify/view] view=block-B09 frames=1361 mean_ms=3.68 p95_ms=5.06 fps=272.0 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:40:22.088733Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B10.png
+2026-09-27T03:40:24.966654Z  INFO map_viewer: [verify/view] view=block-B10 frames=1491 mean_ms=3.36 p95_ms=4.68 fps=298.0 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:40:30.083238Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B11.png
+2026-09-27T03:40:32.968234Z  INFO map_viewer: [verify/view] view=block-B11 frames=1555 mean_ms=3.22 p95_ms=4.52 fps=310.7 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:40:38.092775Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/block-B12.png
+2026-09-27T03:40:40.969397Z  INFO map_viewer: [verify/view] view=block-B12 frames=1666 mean_ms=3.00 p95_ms=4.23 fps=333.0 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:40:46.090438Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/ascent-overview.png
+2026-09-27T03:40:48.970998Z  INFO map_viewer: [verify/view] view=ascent-overview frames=1843 mean_ms=2.71 p95_ms=3.97 fps=368.5 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:40:54.104806Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-ascent-1.png
+2026-09-27T03:40:56.974091Z  INFO map_viewer: [verify/view] view=eye-ascent-1 frames=1480 mean_ms=3.38 p95_ms=4.71 fps=295.7 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:02.099963Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-ascent-2.png
+2026-09-27T03:41:04.975018Z  INFO map_viewer: [verify/view] view=eye-ascent-2 frames=1429 mean_ms=3.50 p95_ms=4.90 fps=285.7 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:10.096685Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/eye-ascent-3.png
+2026-09-27T03:41:12.975622Z  INFO map_viewer: [verify/view] view=eye-ascent-3 frames=1496 mean_ms=3.34 p95_ms=4.67 fps=299.1 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:18.092662Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-01.png
+2026-09-27T03:41:20.978675Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-01 frames=1576 mean_ms=3.18 p95_ms=4.43 fps=314.9 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:26.095823Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-02.png
+2026-09-27T03:41:28.980742Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-02 frames=1670 mean_ms=3.00 p95_ms=4.27 fps=333.8 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:34.099252Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-03.png
+2026-09-27T03:41:36.983758Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-03 frames=1618 mean_ms=3.09 p95_ms=4.27 fps=323.1 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:42.109554Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-04.png
+2026-09-27T03:41:44.985799Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-04 frames=1514 mean_ms=3.31 p95_ms=4.62 fps=302.6 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:50.107996Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-05.png
+2026-09-27T03:41:52.986577Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-05 frames=1553 mean_ms=3.22 p95_ms=4.53 fps=310.5 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:41:58.113501Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-06.png
+2026-09-27T03:42:00.986918Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-06 frames=1512 mean_ms=3.31 p95_ms=4.57 fps=302.3 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:42:06.102633Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-07.png
+2026-09-27T03:42:08.988917Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-07 frames=1582 mean_ms=3.16 p95_ms=4.48 fps=316.1 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:42:14.110900Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-08.png
+2026-09-27T03:42:16.989428Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-08 frames=1627 mean_ms=3.07 p95_ms=4.30 fps=325.2 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:42:22.102741Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A1-09.png
+2026-09-27T03:42:24.989879Z  INFO map_viewer: [verify/view] view=fixture-P3-A1-09 frames=1747 mean_ms=2.86 p95_ms=4.11 fps=349.2 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:42:30.104149Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-01.png
+2026-09-27T03:42:32.991571Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-01 frames=1638 mean_ms=3.05 p95_ms=4.35 fps=327.5 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:42:38.107786Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-02.png
+2026-09-27T03:42:40.994059Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-02 frames=1746 mean_ms=2.87 p95_ms=4.15 fps=348.8 profile=dev mode=offscreen metric=cpu_frame_interval
+2026-09-27T03:42:46.110499Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-03.png
+2026-09-27T03:42:48.994773Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-03 frames=1699 mean_ms=2.94 p95_ms=4.28 fps=339.7 profile=dev mode=offscreen metric=cpu_frame_interval
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1510 roads=854 buildings=231 surfaces=82 trees=72 meshes=3213 elapsed_seconds=9.293
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25
+2026-09-27T03:43:49.198645Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T03:43:49.214755Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T03:43:49.287617Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T03:43:49.287642Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T03:43:49.295595Z  INFO bevy_camera_controller::free_camera: 
+Freecamera Controls:
+    Mouse	- Move camera orientation
+    Scroll	- Adjust movement speed
+    Right	- Hold to grab cursor
+    KeyM	- Toggle cursor grab
+    KeyW & KeyS	- Fly forward & backwards
+    KeyA & KeyD	- Fly sideways left & right
+    KeyE & KeyQ	- Fly up & down
+    ShiftLeft	- Fly faster while held
+    [ControlLeft + ]Numpad7	- Snap to Up (+Y)/Down (-Y)
+    [ControlLeft + ]Numpad3	- Snap to Right (+X)/Left (-X)
+    [ControlLeft + ]Numpad1	- Snap to Front (-Z)/Back (+Z)
+2026-09-27T03:43:49.331415Z  INFO n_side::world::scene: [world/ready] meshes=3213 model_instances=260 dependencies=25 failed=0 degraded=0 startup_seconds=0.053
+2026-09-27T03:43:54.514279Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-04.png
+2026-09-27T03:43:57.400441Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-04 frames=1812 mean_ms=2.76 p95_ms=3.93 fps=362.2 profile=dev mode=offscreen metric=cpu_frame_interval
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1510 roads=854 buildings=231 surfaces=82 trees=72 meshes=3213 elapsed_seconds=9.235
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25
+2026-09-27T03:44:06.926215Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T03:44:06.939210Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T03:44:07.010392Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T03:44:07.010415Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T03:44:07.018138Z  INFO bevy_camera_controller::free_camera: 
+Freecamera Controls:
+    Mouse	- Move camera orientation
+    Scroll	- Adjust movement speed
+    Right	- Hold to grab cursor
+    KeyM	- Toggle cursor grab
+    KeyW & KeyS	- Fly forward & backwards
+    KeyA & KeyD	- Fly sideways left & right
+    KeyE & KeyQ	- Fly up & down
+    ShiftLeft	- Fly faster while held
+    [ControlLeft + ]Numpad7	- Snap to Up (+Y)/Down (-Y)
+    [ControlLeft + ]Numpad3	- Snap to Right (+X)/Left (-X)
+    [ControlLeft + ]Numpad1	- Snap to Front (-Z)/Back (+Z)
+2026-09-27T03:44:07.051618Z  INFO n_side::world::scene: [world/ready] meshes=3213 model_instances=260 dependencies=25 failed=0 degraded=0 startup_seconds=0.051
+2026-09-27T03:44:12.236875Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-05.png
+2026-09-27T03:44:15.124274Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-05 frames=1780 mean_ms=2.81 p95_ms=4.02 fps=355.6 profile=dev mode=offscreen metric=cpu_frame_interval
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1510 roads=854 buildings=231 surfaces=82 trees=72 meshes=3213 elapsed_seconds=9.231
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25
+2026-09-27T03:44:24.609096Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T03:44:24.635473Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T03:44:24.708345Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T03:44:24.708372Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T03:44:24.713712Z  INFO bevy_camera_controller::free_camera: 
+Freecamera Controls:
+    Mouse	- Move camera orientation
+    Scroll	- Adjust movement speed
+    Right	- Hold to grab cursor
+    KeyM	- Toggle cursor grab
+    KeyW & KeyS	- Fly forward & backwards
+    KeyA & KeyD	- Fly sideways left & right
+    KeyE & KeyQ	- Fly up & down
+    ShiftLeft	- Fly faster while held
+    [ControlLeft + ]Numpad7	- Snap to Up (+Y)/Down (-Y)
+    [ControlLeft + ]Numpad3	- Snap to Right (+X)/Left (-X)
+    [ControlLeft + ]Numpad1	- Snap to Front (-Z)/Back (+Z)
+2026-09-27T03:44:24.747152Z  INFO n_side::world::scene: [world/ready] meshes=3213 model_instances=260 dependencies=25 failed=0 degraded=0 startup_seconds=0.049
+2026-09-27T03:44:29.934150Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-06.png
+2026-09-27T03:44:32.816425Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-06 frames=1616 mean_ms=3.10 p95_ms=4.38 fps=323.1 profile=dev mode=offscreen metric=cpu_frame_interval
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1510 roads=854 buildings=231 surfaces=82 trees=72 meshes=3213 elapsed_seconds=9.213
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25
+2026-09-27T03:44:42.287372Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T03:44:42.310109Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T03:44:42.382960Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T03:44:42.382982Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T03:44:42.388327Z  INFO bevy_camera_controller::free_camera: 
+Freecamera Controls:
+    Mouse	- Move camera orientation
+    Scroll	- Adjust movement speed
+    Right	- Hold to grab cursor
+    KeyM	- Toggle cursor grab
+    KeyW & KeyS	- Fly forward & backwards
+    KeyA & KeyD	- Fly sideways left & right
+    KeyE & KeyQ	- Fly up & down
+    ShiftLeft	- Fly faster while held
+    [ControlLeft + ]Numpad7	- Snap to Up (+Y)/Down (-Y)
+    [ControlLeft + ]Numpad3	- Snap to Right (+X)/Left (-X)
+    [ControlLeft + ]Numpad1	- Snap to Front (-Z)/Back (+Z)
+2026-09-27T03:44:42.420504Z  INFO n_side::world::scene: [world/ready] meshes=3213 model_instances=260 dependencies=25 failed=0 degraded=0 startup_seconds=0.047
+2026-09-27T03:44:47.602830Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-07.png
+2026-09-27T03:44:50.488041Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-07 frames=1876 mean_ms=2.67 p95_ms=3.92 fps=374.9 profile=dev mode=offscreen metric=cpu_frame_interval
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1510 roads=854 buildings=231 surfaces=82 trees=72 meshes=3213 elapsed_seconds=9.301
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25
+2026-09-27T03:45:00.062938Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-27T03:45:00.075666Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-27T03:45:00.148854Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-27T03:45:00.148880Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-27T03:45:00.152637Z  INFO bevy_camera_controller::free_camera: 
+Freecamera Controls:
+    Mouse	- Move camera orientation
+    Scroll	- Adjust movement speed
+    Right	- Hold to grab cursor
+    KeyM	- Toggle cursor grab
+    KeyW & KeyS	- Fly forward & backwards
+    KeyA & KeyD	- Fly sideways left & right
+    KeyE & KeyQ	- Fly up & down
+    ShiftLeft	- Fly faster while held
+    [ControlLeft + ]Numpad7	- Snap to Up (+Y)/Down (-Y)
+    [ControlLeft + ]Numpad3	- Snap to Right (+X)/Left (-X)
+    [ControlLeft + ]Numpad1	- Snap to Front (-Z)/Back (+Z)
+2026-09-27T03:45:00.184690Z  INFO n_side::world::scene: [world/ready] meshes=3213 model_instances=260 dependencies=25 failed=0 degraded=0 startup_seconds=0.045
+2026-09-27T03:45:05.367015Z  INFO bevy_render::view::window::screenshot: Screenshot saved to output/city-graybox/2026-09-27/r1/final-views/fixture-P3-A2-08.png
+2026-09-27T03:45:08.254353Z  INFO map_viewer: [verify/view] view=fixture-P3-A2-08 frames=1696 mean_ms=2.95 p95_ms=4.27 fps=338.9 profile=dev mode=offscreen metric=cpu_frame_interval

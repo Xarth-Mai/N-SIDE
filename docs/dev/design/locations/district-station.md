@@ -24,7 +24,7 @@ const grade=Math.max(...routeProfile(data.nodes,supply.legs[0].nodes).slice(1).m
 
 ## 街面、体量与楼层
 
-本段覆盖 B01、B02 的 {{ segment.buildings.length }} 个单元，包含 14 个既有体量与 10 栋新增普通建筑。已设计占地 {{ stats.reduce((n,t)=>n+t.footprint,0).toLocaleString() }} m²、初算楼面 {{ stats.reduce((n,t)=>n+t.floorArea,0).toLocaleString() }} m²；规划容量与实际建筑分别见总图，普通楼层使用不增加特色目的地数量
+本样段选取 B01、B02 的 {{ segment.buildings.length }} 个单元，包含对照基线中的 {{ segment.baseline.buildings.length }} 个体量及之后补齐的 {{ segment.buildings.length - segment.baseline.buildings.length }} 栋普通建筑；两街坊的全部落图建筑见[总图覆盖表](district-plan.md#街坊覆盖与建筑到达)。样段已设计占地 {{ stats.reduce((n,t)=>n+t.footprint,0).toLocaleString() }} m²、初算楼面 {{ stats.reduce((n,t)=>n+t.floorArea,0).toLocaleString() }} m²；规划容量与实际建筑分别统计，普通楼层使用不增加特色目的地数量
 
 | 街段 | 建筑安排 | 公共与私人关系 |
 | --- | --- | --- |

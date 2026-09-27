@@ -32,17 +32,22 @@ test('terrain noise protects complete road segments and footprints',{timeout:20_
   assert.equal(samples.find(p=>p[0]===-580&&p[1]===570)?.[2],125,'long road midpoint remains at its true grade')
   assert.equal(samples.find(p=>p[0]===-580&&p[1]===690)?.[2],132,'platform interior is protected')
   const result=bakeTerrain(data),ground=buildGround(result),rest=result.surfaces.find(s=>s.id==='fw-e-existing-20')!
-  for(const id of ['fw-f-plateau-west-court','fw-f-plateau-east-court']) {
+  for(const id of ['fw-f-plateau-west-court','fw-f-plateau-east-court','hill-short-rest1','hill-short-rest2','hill-short-rest3']) {
     const area=result.surfaces.find(s=>s.id===id)!
     for(let i=0;i<area.polygon.length;i++)for(const t of [.25,.5,.75]) {
       const a=area.polygon[i],b=area.polygon[(i+1)%area.polygon.length]
       assert.ok(Math.abs(ground.height(a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1]))-area.elevation)<.01,`${id}: courtyard edge must not become a tall unsupported cut`)
     }
   }
-  // Independently measured quarter-point on the Viewer's mitered bypass edge
-  assert.ok(Math.abs(ground.height(292.081206495,410.169618192)-81.3834585)<.01,'bent stair edges must meet terrain without an artificial cut bank')
-  for(const [from,to] of [['upper','fw_e_school_up_w'],['cinema_upper','school_n']]) {
-    const road=result.roads.find(r=>r.nodes.includes(from)&&r.nodes.includes(to))!,a=result.nodes[from],b=result.nodes[to]
+  // Preserve the former bent-road failure independently of later street/landing revisions
+  const bent=structuredClone(data)
+  bent.nodes={summit:data.nodes.summit,home:data.nodes.home,hillgate:data.nodes.hillgate,a:[280,365,72.315789],b:[292,400,79.368421],c:[280,440,87.428571]}
+  bent.roads=[{nodes:['a','b','c'],kind:'steps',width:6}];bent.buildings=[];bent.surfaces=[];bent.elevatedNodes=[]
+  assert.ok(Math.abs(buildGround(bakeTerrain(bent)).height(292.081206495,410.169618192)-81.3834585)<.01,'bent stair edges must meet terrain without an artificial cut bank')
+  const streets=result.roads.filter(r=>r.nodes.some(id=>id.includes('upper')&&id.includes('fw_e_school_up_w'))||(r.nodes.includes('cinema_upper')&&r.nodes.includes('school_n')))
+  assert.ok(streets.length>1,'current flights and landings remain covered')
+  for(const road of streets)for(let i=1;i<road.nodes.length;i++) {
+    const from=road.nodes[i-1],to=road.nodes[i],a=result.nodes[from],b=result.nodes[to]
     const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
     for(const t of [.25,.5,.75])for(const side of [-1,0,1]) {
       const x=a[0]+dx*t-dy/length*road.width/2*side,y=a[1]+dy*t+dx/length*road.width/2*side

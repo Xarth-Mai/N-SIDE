@@ -78,6 +78,16 @@ game/target/release/map_viewer --aa taa-ssao --view eye-shop --verify-headless /
 game/target/release/map_viewer --uncapped --view eye-corner --verify /tmp/n-side-window-check
 ```
 
+## 全城灰盒检查
+
+`city-overview` 按当前本岸楼体取景，`block-B01` 至 `block-B12` 按源地块归属覆盖各街坊的全部已落图建筑；`overview` 继续包含远山。`ascent-overview` 查看短登高全段，`eye-ascent-1` 至 `eye-ascent-3` 从三个停步台的临城侧、眼高1.7m回望城市。全城、逐坊机位按16:9画幅完整取景，使用相同55°视场，不改变地图尺度。构件覆盖包括建筑体量、屋面、按用途派生的门窗、天井和已有街道设施；入口与窗的几何检查不能代替人物碰撞与室内验收
+
+```fish
+cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --view city-overview
+cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --view block-B06
+python3 tools/capture.py --script game/capture/city-graybox.json --output output/capture/city-graybox
+```
+
 ## 连续操作 capture
 
 `map_viewer --capture` 使用上面的世界、材质、相机与控制器，通过输入资源驱动已有的 WASD、鼠标观察、M 捕获和 Esc 释放。当前首个场景是小店外的自由相机操作，不包含尚未实现的人物碰撞、任务或动画验收

@@ -1,0 +1,3844 @@
+{
+  "source_sha256": "49f46aed0e9d3a578304f0a99d7174864e7a9c2dcc9382c7ffcd1c2ca402acf0",
+  "method": "Each adjacent pair on current steps records; risers = max(1, ceil(abs(rise)/0.17)), matching geometry.rs",
+  "steps": [
+    {
+      "from": "level_east_mid_junction_to_bend",
+      "to": "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+      "count": 28,
+      "run": 17.5,
+      "rise": 4.663637000000001,
+      "tread": 0.625
+    },
+    {
+      "from": "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+      "to": "level_bend_from_east_mid_junction",
+      "count": 28,
+      "run": 17.5,
+      "rise": 4.663635999999997,
+      "tread": 0.625
+    },
+    {
+      "from": "level_bend_to_bend-steps-rest-junction",
+      "to": "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+      "count": 33,
+      "run": 11.124611706936511,
+      "rise": 5.595933000000002,
+      "tread": 0.33710944566474277
+    },
+    {
+      "from": "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+      "to": "level_bend-steps-rest-junction_from_bend",
+      "count": 33,
+      "run": 11.124611706936511,
+      "rise": 5.595933000000002,
+      "tread": 0.33710944566474277
+    },
+    {
+      "from": "level_bend-steps-rest-junction_to_upper",
+      "to": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+      "count": 40,
+      "run": 13.851391510302582,
+      "rise": 6.632216999999997,
+      "tread": 0.34628478775756455
+    },
+    {
+      "from": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+      "to": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+      "count": 40,
+      "run": 13.851391510302582,
+      "rise": 6.632216,
+      "tread": 0.34628478775756455
+    },
+    {
+      "from": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+      "to": "level_upper_from_bend-steps-rest-junction",
+      "count": 40,
+      "run": 13.851391510302582,
+      "rise": 6.632216999999997,
+      "tread": 0.34628478775756455
+    },
+    {
+      "from": "old_home",
+      "to": "stair_old_home_level_west_upper_from_old_home_01_in",
+      "count": 44,
+      "run": 19.25,
+      "rise": 7.360118999999997,
+      "tread": 0.4375
+    },
+    {
+      "from": "stair_old_home_level_west_upper_from_old_home_01_out",
+      "to": "stair_old_home_level_west_upper_from_old_home_02_in",
+      "count": 44,
+      "run": 19.25,
+      "rise": 7.3601190000000045,
+      "tread": 0.4375
+    },
+    {
+      "from": "stair_old_home_level_west_upper_from_old_home_02_out",
+      "to": "stair_old_home_level_west_upper_from_old_home_03_in",
+      "count": 44,
+      "run": 19.25,
+      "rise": 7.3601190000000045,
+      "tread": 0.4375
+    },
+    {
+      "from": "stair_old_home_level_west_upper_from_old_home_03_out",
+      "to": "level_west_upper_from_old_home",
+      "count": 44,
+      "run": 19.25,
+      "rise": 7.360118999999997,
+      "tread": 0.4375
+    },
+    {
+      "from": "west_court_gate",
+      "to": "stair_west_court_gate_west_north_01_in",
+      "count": 32,
+      "run": 26.5,
+      "rise": 5.272307999999999,
+      "tread": 0.828125
+    },
+    {
+      "from": "stair_west_court_gate_west_north_01_out",
+      "to": "west_north",
+      "count": 32,
+      "run": 26.5,
+      "rise": 5.272309,
+      "tread": 0.828125
+    },
+    {
+      "from": "level_west_upper_to_res_n",
+      "to": "stair_level_west_upper_to_res_n_res_n_01_in",
+      "count": 48,
+      "run": 19.25,
+      "rise": 8.09781799999999,
+      "tread": 0.4010416666666667
+    },
+    {
+      "from": "stair_level_west_upper_to_res_n_res_n_01_out",
+      "to": "stair_level_west_upper_to_res_n_res_n_02_in",
+      "count": 48,
+      "run": 19.25,
+      "rise": 8.097817000000006,
+      "tread": 0.4010416666666667
+    },
+    {
+      "from": "stair_level_west_upper_to_res_n_res_n_02_out",
+      "to": "stair_level_west_upper_to_res_n_res_n_03_in",
+      "count": 48,
+      "run": 19.25,
+      "rise": 8.097817000000006,
+      "tread": 0.4010416666666667
+    },
+    {
+      "from": "stair_level_west_upper_to_res_n_res_n_03_out",
+      "to": "res_n",
+      "count": 48,
+      "run": 19.25,
+      "rise": 8.09781799999999,
+      "tread": 0.4010416666666667
+    },
+    {
+      "from": "level_upper_to_fw_e_school_up_w",
+      "to": "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_01_in",
+      "count": 47,
+      "run": 20.001249982501186,
+      "rise": 7.828946999999999,
+      "tread": 0.4255585102659827
+    },
+    {
+      "from": "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_01_out",
+      "to": "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_02_in",
+      "count": 47,
+      "run": 20.001249982501186,
+      "rise": 7.828947999999997,
+      "tread": 0.4255585102659827
+    },
+    {
+      "from": "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_02_out",
+      "to": "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_03_in",
+      "count": 47,
+      "run": 20.001249982501186,
+      "rise": 7.828946999999999,
+      "tread": 0.4255585102659827
+    },
+    {
+      "from": "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_03_out",
+      "to": "fw_e_school_up_w",
+      "count": 47,
+      "run": 20.001249982501186,
+      "rise": 7.828946999999999,
+      "tread": 0.4255585102659827
+    },
+    {
+      "from": "level_home_to_shop_north_junction",
+      "to": "level_shop_north_junction_from_home",
+      "count": 12,
+      "run": 10.97222023905535,
+      "rise": 2.021515000000001,
+      "tread": 0.9143516865879459
+    },
+    {
+      "from": "level_shop_north_junction_to_shop_upper_junction",
+      "to": "level_shop_upper_junction_from_shop_north_junction",
+      "count": 26,
+      "run": 9.89657924372213,
+      "rise": 4.295757999999999,
+      "tread": 0.3806376632200819
+    },
+    {
+      "from": "level_shop_upper_junction_to_steps_mid",
+      "to": "pause_steps_mid_level_shop_upper_junction_to_steps_mid",
+      "count": 32,
+      "run": 16.154698723135283,
+      "rise": 5.319091,
+      "tread": 0.5048343350979776
+    },
+    {
+      "from": "pause_steps_mid_shop-steps-low-junction",
+      "to": "pause_shop-steps-low-junction_steps_mid",
+      "count": 33,
+      "run": 14.206906412926054,
+      "rise": 5.490909000000002,
+      "tread": 0.4305123155432138
+    },
+    {
+      "from": "pause_shop-steps-low-junction_shop-steps-middle-junction",
+      "to": "pause_shop-steps-middle-junction_shop-steps-low-junction",
+      "count": 39,
+      "run": 17.248287678075158,
+      "rise": 6.589090999999996,
+      "tread": 0.44226378661731175
+    },
+    {
+      "from": "pause_shop-steps-middle-junction_shop-steps-high-junction",
+      "to": "shop-steps-high-junction",
+      "count": 28,
+      "run": 12.679318749637055,
+      "rise": 4.758788000000003,
+      "tread": 0.45283281248703766
+    },
+    {
+      "from": "shop_steps_high_turn",
+      "to": "shop_steps_high_level",
+      "count": 31,
+      "run": 15,
+      "rise": 5.124848,
+      "tread": 0.4838709677419355
+    },
+    {
+      "from": "foothill_east",
+      "to": "stair_foothill_east_fw_e_forest_turn_01_in",
+      "count": 42,
+      "run": 31.162859610383286,
+      "rise": 7.020467999999994,
+      "tread": 0.7419728478662687
+    },
+    {
+      "from": "stair_foothill_east_fw_e_forest_turn_01_out",
+      "to": "stair_foothill_east_fw_e_forest_turn_02_in",
+      "count": 42,
+      "run": 31.162859610383183,
+      "rise": 7.020467999999994,
+      "tread": 0.7419728478662663
+    },
+    {
+      "from": "stair_foothill_east_fw_e_forest_turn_02_out",
+      "to": "stair_foothill_east_fw_e_forest_turn_03_in",
+      "count": 42,
+      "run": 31.162858696571742,
+      "rise": 7.020467000000025,
+      "tread": 0.741972826108851
+    },
+    {
+      "from": "stair_foothill_east_fw_e_forest_turn_03_out",
+      "to": "stair_foothill_east_fw_e_forest_turn_04_in",
+      "count": 42,
+      "run": 31.162858696571742,
+      "rise": 7.020467999999994,
+      "tread": 0.741972826108851
+    },
+    {
+      "from": "stair_foothill_east_fw_e_forest_turn_04_out",
+      "to": "stair_foothill_east_fw_e_forest_turn_05_in",
+      "count": 42,
+      "run": 31.162859610383183,
+      "rise": 7.020467999999994,
+      "tread": 0.7419728478662663
+    },
+    {
+      "from": "stair_foothill_east_fw_e_forest_turn_05_out",
+      "to": "pause_fw_e_forest_turn_stair_foothill_east_fw_e_forest_turn_05_out",
+      "count": 42,
+      "run": 30.66285949878638,
+      "rise": 7.020467999999994,
+      "tread": 0.7300680833044376
+    },
+    {
+      "from": "pause_fw_e_forest_turn_stair_fw_e_forest_turn_hill_east_approach_01_in",
+      "to": "stair_fw_e_forest_turn_hill_east_approach_01_in",
+      "count": 33,
+      "run": 24.417834269609127,
+      "rise": 5.596490999999986,
+      "tread": 0.7399343718063371
+    },
+    {
+      "from": "stair_fw_e_forest_turn_hill_east_approach_01_out",
+      "to": "stair_fw_e_forest_turn_hill_east_approach_02_in",
+      "count": 33,
+      "run": 24.917833784816864,
+      "rise": 5.596492000000012,
+      "tread": 0.7550858722671777
+    },
+    {
+      "from": "stair_fw_e_forest_turn_hill_east_approach_02_out",
+      "to": "hill_east_approach",
+      "count": 33,
+      "run": 24.917833922525023,
+      "rise": 5.596490999999986,
+      "tread": 0.7550858764401522
+    },
+    {
+      "from": "hill_east_arc_02_08",
+      "to": "hill_east_arc_02_09",
+      "count": 19,
+      "run": 34.959853146144674,
+      "rise": 3.1818890000000124,
+      "tread": 1.8399922708497196
+    },
+    {
+      "from": "hill_east_arc_03_02",
+      "to": "hill_east_arc_03_03",
+      "count": 19,
+      "run": 29.128104933208544,
+      "rise": 3.181888000000015,
+      "tread": 1.533058154379397
+    },
+    {
+      "from": "hill_east_arc_03_03",
+      "to": "hill_east_arc_03_04",
+      "count": 19,
+      "run": 28.70460982142057,
+      "rise": 3.1818890000000124,
+      "tread": 1.5107689379695035
+    },
+    {
+      "from": "hill_east_arc_04_07",
+      "to": "pause_hill_east_arc_04_08_hill_east_arc_04_07",
+      "count": 17,
+      "run": 27.896225708552247,
+      "rise": 2.8279999999999745,
+      "tread": 1.64095445344425
+    },
+    {
+      "from": "pause_hill_east_arc_04_08_hill_east_arc_04_09",
+      "to": "pause_hill_east_arc_04_09_hill_east_arc_04_08",
+      "count": 17,
+      "run": 25.17614294820429,
+      "rise": 2.8279999999999745,
+      "tread": 1.4809495851884877
+    },
+    {
+      "from": "pause_hill_east_arc_04_09_hill_east_arc_04_10",
+      "to": "hill_east_arc_04_10",
+      "count": 17,
+      "run": 28.00364623190519,
+      "rise": 2.828778,
+      "tread": 1.6472733077591288
+    },
+    {
+      "from": "hill_east_arc_05_02",
+      "to": "hill_east_arc_05_03",
+      "count": 15,
+      "run": 21.25537393225535,
+      "rise": 2.4741109999999935,
+      "tread": 1.4170249288170234
+    },
+    {
+      "from": "hill_east_arc_05_03",
+      "to": "hill_east_arc_05_04",
+      "count": 15,
+      "run": 20.773422082073957,
+      "rise": 2.4748890000000188,
+      "tread": 1.384894805471597
+    },
+    {
+      "from": "hill_east_arc_06_07",
+      "to": "pause_hill_east_arc_06_08_hill_east_arc_06_07",
+      "count": 13,
+      "run": 19.571686989400227,
+      "rise": 2.120999999999981,
+      "tread": 1.5055143838000176
+    },
+    {
+      "from": "pause_hill_east_arc_06_08_hill_east_arc_06_09",
+      "to": "pause_hill_east_arc_06_09_hill_east_arc_06_08",
+      "count": 13,
+      "run": 17.233566652069012,
+      "rise": 2.120999999999981,
+      "tread": 1.3256589732360777
+    },
+    {
+      "from": "pause_hill_east_arc_06_09_hill_east_arc_06_10",
+      "to": "pause_hill_east_arc_06_10_hill_east_arc_06_09",
+      "count": 13,
+      "run": 18.50317390645143,
+      "rise": 2.1217770000000087,
+      "tread": 1.423321069727033
+    },
+    {
+      "from": "pause_hill_east_arc_06_10_hill_east_curve_06",
+      "to": "hill_east_curve_06",
+      "count": 13,
+      "run": 22.10371876051821,
+      "rise": 2.120999999999981,
+      "tread": 1.7002860585014008
+    },
+    {
+      "from": "hill_east_arc_07_02",
+      "to": "hill_east_arc_07_03",
+      "count": 11,
+      "run": 14.42127213528679,
+      "rise": 1.7678890000000251,
+      "tread": 1.3110247395715264
+    },
+    {
+      "from": "hill_east_arc_07_03",
+      "to": "hill_east_arc_07_04",
+      "count": 11,
+      "run": 13.75088331708196,
+      "rise": 1.7678889999999683,
+      "tread": 1.2500803015529056
+    },
+    {
+      "from": "hill_east_arc_08_07",
+      "to": "hill_east_arc_08_08",
+      "count": 9,
+      "run": 12.264970036653237,
+      "rise": 1.4139999999999873,
+      "tread": 1.3627744485170263
+    },
+    {
+      "from": "hill_east_arc_08_08",
+      "to": "hill_east_arc_08_09",
+      "count": 9,
+      "run": 10.660598341556623,
+      "rise": 1.414777000000015,
+      "tread": 1.1845109268396248
+    },
+    {
+      "from": "hill_east_arc_08_09",
+      "to": "hill_east_arc_08_10",
+      "count": 9,
+      "run": 10.718467287816862,
+      "rise": 1.4139999999999873,
+      "tread": 1.1909408097574292
+    },
+    {
+      "from": "hill_east_arc_08_10",
+      "to": "hill_east_curve_08",
+      "count": 9,
+      "run": 11.795816419392018,
+      "rise": 1.4139999999999873,
+      "tread": 1.3106462688213354
+    },
+    {
+      "from": "hill_east_arc_09_02",
+      "to": "hill_east_arc_09_03",
+      "count": 5,
+      "run": 7.9284745695499295,
+      "rise": 0.848555000000033,
+      "tread": 1.5856949139099858
+    },
+    {
+      "from": "hill_east_arc_09_03",
+      "to": "hill_east_arc_09_04",
+      "count": 5,
+      "run": 7.186838873941647,
+      "rise": 0.8485559999999737,
+      "tread": 1.4373677747883293
+    },
+    {
+      "from": "hill_east_arc_10_08",
+      "to": "hill_east_arc_10_09",
+      "count": 3,
+      "run": 4.184866545064474,
+      "rise": 0.4238889999999742,
+      "tread": 1.3949555150214914
+    },
+    {
+      "from": "hill_east_arc_10_09",
+      "to": "hill_east_arc_10_10",
+      "count": 3,
+      "run": 3.703622685965767,
+      "rise": 0.42466699999999946,
+      "tread": 1.2345408953219223
+    },
+    {
+      "from": "hill_east_arc_10_10",
+      "to": "hill_bend",
+      "count": 3,
+      "run": 3.5387130429013354,
+      "rise": 0.42388799999997673,
+      "tread": 1.1795710143004452
+    },
+    {
+      "from": "river_w",
+      "to": "low_platform",
+      "count": 24,
+      "run": 25,
+      "rise": 4,
+      "tread": 1.0416666666666667
+    },
+    {
+      "from": "dock",
+      "to": "dock_low",
+      "count": 24,
+      "run": 25,
+      "rise": 4,
+      "tread": 1.0416666666666667
+    },
+    {
+      "from": "home_north",
+      "to": "stair_home_north_level_upper_homes_from_home_north_01_in",
+      "count": 47,
+      "run": 18.04886106583841,
+      "rise": 7.879412000000002,
+      "tread": 0.3840183205497534
+    },
+    {
+      "from": "stair_home_north_level_upper_homes_from_home_north_01_out",
+      "to": "level_upper_homes_from_home_north",
+      "count": 47,
+      "run": 18.04886106583841,
+      "rise": 7.879412000000002,
+      "tread": 0.3840183205497534
+    },
+    {
+      "from": "level_upper_to_slope_platform_bypass",
+      "to": "level_slope_platform_bypass_from_upper",
+      "count": 42,
+      "run": 18.999999972972933,
+      "rise": 7.052632000000003,
+      "tread": 0.4523809517374508
+    },
+    {
+      "from": "slope_junction_platform",
+      "to": "level_platform_east_from_slope_junction_platform",
+      "count": 48,
+      "run": 26.76122609633567,
+      "rise": 8.060150000000007,
+      "tread": 0.5575255436736598
+    },
+    {
+      "from": "level_upper_homes_to_platform_mid",
+      "to": "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_01_in",
+      "count": 44,
+      "run": 17.5702256442119,
+      "rise": 7.466666999999994,
+      "tread": 0.39932331009572497
+    },
+    {
+      "from": "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_01_out",
+      "to": "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_02_in",
+      "count": 44,
+      "run": 17.57022663416134,
+      "rise": 7.466666000000004,
+      "tread": 0.3993233325945759
+    },
+    {
+      "from": "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_02_out",
+      "to": "level_platform_mid_from_upper_homes",
+      "count": 44,
+      "run": 17.570225644211842,
+      "rise": 7.466667000000001,
+      "tread": 0.3993233100957237
+    },
+    {
+      "from": "west_link",
+      "to": "stair_west_link_west_link_n_01_in",
+      "count": 35,
+      "run": 31.5,
+      "rise": 5.8125,
+      "tread": 0.9
+    },
+    {
+      "from": "stair_west_link_west_link_n_01_out",
+      "to": "west_link_n",
+      "count": 35,
+      "run": 31.5,
+      "rise": 5.8125,
+      "tread": 0.9
+    },
+    {
+      "from": "slope_upper_landing",
+      "to": "stair_slope_upper_landing_level_platform_east_from_slope_upper_landing_01_in",
+      "count": 27,
+      "run": 17.524984244001416,
+      "rise": 4.556391000000005,
+      "tread": 0.649073490518571
+    },
+    {
+      "from": "stair_slope_upper_landing_level_platform_east_from_slope_upper_landing_01_out",
+      "to": "level_platform_east_from_slope_upper_landing",
+      "count": 27,
+      "run": 17.52498424400136,
+      "rise": 4.556391000000005,
+      "tread": 0.6490734905185689
+    },
+    {
+      "from": "shop_west_m",
+      "to": "shop_west_n",
+      "count": 18,
+      "run": 24.041630560342615,
+      "rise": 3,
+      "tread": 1.3356461422412564
+    },
+    {
+      "from": "homes_high_m",
+      "to": "stair_homes_high_m_homes_high_junction_01_in",
+      "count": 28,
+      "run": 8.5,
+      "rise": 4.747105000000005,
+      "tread": 0.30357142857142855
+    },
+    {
+      "from": "stair_homes_high_m_homes_high_junction_01_out",
+      "to": "homes_high_junction",
+      "count": 28,
+      "run": 8.5,
+      "rise": 4.747106000000002,
+      "tread": 0.30357142857142855
+    },
+    {
+      "from": "market_entry",
+      "to": "v_51_door_landing",
+      "count": 36,
+      "run": 15.435349040433131,
+      "rise": 6,
+      "tread": 0.428759695567587
+    },
+    {
+      "from": "fw_f_old_court0",
+      "to": "pause_fw_f_junction53_fw_f_old_court0",
+      "count": 33,
+      "run": 20.5,
+      "rise": 5.501434999999997,
+      "tread": 0.6212121212121212
+    },
+    {
+      "from": "pause_fw_f_junction53_fw_f_old_court1",
+      "to": "fw_f_old_court1",
+      "count": 26,
+      "run": 20.5,
+      "rise": 4.395454999999998,
+      "tread": 0.7884615384615384
+    },
+    {
+      "from": "fw_f_old_court2",
+      "to": "stair_fw_f_old_court2_fw_f_old_court3_01_in",
+      "count": 30,
+      "run": 25,
+      "rise": 4.948444999999996,
+      "tread": 0.8333333333333334
+    },
+    {
+      "from": "stair_fw_f_old_court2_fw_f_old_court3_01_out",
+      "to": "fw_f_old_court3",
+      "count": 30,
+      "run": 25,
+      "rise": 4.9484449999999995,
+      "tread": 0.8333333333333334
+    },
+    {
+      "from": "fw_f_junction78",
+      "to": "fw_f_neighbors3",
+      "count": 12,
+      "run": 12,
+      "rise": 2.036363999999999,
+      "tread": 1
+    },
+    {
+      "from": "fw_f_plateau_w3",
+      "to": "stair_fw_f_plateau_w3_fw_f_plateau_w4_01_in",
+      "count": 29,
+      "run": 15.643317155969434,
+      "rise": 4.868132000000003,
+      "tread": 0.5394247295161874
+    },
+    {
+      "from": "stair_fw_f_plateau_w3_fw_f_plateau_w4_01_out",
+      "to": "pause_fw_f_plateau_w4_stair_fw_f_plateau_w3_fw_f_plateau_w4_01_out",
+      "count": 29,
+      "run": 15.143317245407543,
+      "rise": 4.868131000000005,
+      "tread": 0.5221833532899153
+    },
+    {
+      "from": "pause_fw_f_plateau_w4_fw_f_junction83",
+      "to": "pause_fw_f_junction83_fw_f_plateau_w4",
+      "count": 32,
+      "run": 14.75,
+      "rise": 5.375,
+      "tread": 0.4609375
+    },
+    {
+      "from": "pause_fw_f_junction83_fw_f_plateau_w5",
+      "to": "fw_f_plateau_w5",
+      "count": 28,
+      "run": 19.75,
+      "rise": 4.621480999999989,
+      "tread": 0.7053571428571429
+    },
+    {
+      "from": "fw_f_wood_homes1",
+      "to": "stair_fw_f_wood_homes1_fw_f_wood_homes2_01_in",
+      "count": 38,
+      "run": 20,
+      "rise": 6.415872999999991,
+      "tread": 0.5263157894736842
+    },
+    {
+      "from": "stair_fw_f_wood_homes1_fw_f_wood_homes2_01_out",
+      "to": "fw_f_wood_homes2",
+      "count": 38,
+      "run": 20,
+      "rise": 6.415873000000005,
+      "tread": 0.5263157894736842
+    },
+    {
+      "from": "fw_f_plateau_w2",
+      "to": "level_fw_f_junction81_from_fw_f_plateau_w2",
+      "count": 23,
+      "run": 14.25,
+      "rise": 3.8444879999999984,
+      "tread": 0.6195652173913043
+    },
+    {
+      "from": "level_fw_f_junction81_to_fw_f_plateau_w_rear0",
+      "to": "stair_level_fw_f_junction81_to_fw_f_plateau_w_rear0_level_fw_f_plateau_w_rear0_from_fw_f_junction81_01_in",
+      "count": 26,
+      "run": 7.324999999999989,
+      "rise": 4.374459000000002,
+      "tread": 0.2817307692307688
+    },
+    {
+      "from": "stair_level_fw_f_junction81_to_fw_f_plateau_w_rear0_level_fw_f_plateau_w_rear0_from_fw_f_junction81_01_out",
+      "to": "level_fw_f_plateau_w_rear0_from_fw_f_junction81",
+      "count": 26,
+      "run": 7.324999999999989,
+      "rise": 4.374459000000002,
+      "tread": 0.2817307692307688
+    },
+    {
+      "from": "level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1",
+      "to": "fw_f_plateau_w_rear1",
+      "count": 30,
+      "run": 29.899999999999977,
+      "rise": 5.085034000000007,
+      "tread": 0.9966666666666659
+    },
+    {
+      "from": "level_platform_mid_to_fw_f_plateau_e0",
+      "to": "stair_level_platform_mid_to_fw_f_plateau_e0_level_fw_f_plateau_e0_from_platform_mid_01_in",
+      "count": 40,
+      "run": 14.774984148364675,
+      "rise": 6.714286000000001,
+      "tread": 0.3693746037091169
+    },
+    {
+      "from": "stair_level_platform_mid_to_fw_f_plateau_e0_level_fw_f_plateau_e0_from_platform_mid_01_out",
+      "to": "level_fw_f_plateau_e0_from_platform_mid",
+      "count": 40,
+      "run": 14.774984148364734,
+      "rise": 6.714285000000004,
+      "tread": 0.36937460370911834
+    },
+    {
+      "from": "level_fw_f_plateau_e0_to_fw_f_junction89",
+      "to": "pause_fw_f_junction89_level_fw_f_plateau_e0_to_fw_f_junction89",
+      "count": 42,
+      "run": 18,
+      "rise": 7.049999999999997,
+      "tread": 0.42857142857142855
+    },
+    {
+      "from": "pause_fw_f_junction89_fw_f_plateau_e1",
+      "to": "fw_f_plateau_e1",
+      "count": 22,
+      "run": 18.5,
+      "rise": 3.7304239999999993,
+      "tread": 0.8409090909090909
+    },
+    {
+      "from": "fw_f_plateau_e2",
+      "to": "level_fw_f_plateau_e3_from_fw_f_plateau_e2",
+      "count": 45,
+      "run": 38,
+      "rise": 7.5304239999999965,
+      "tread": 0.8444444444444444
+    },
+    {
+      "from": "level_fw_f_plateau_e3_to_fw_f_junction88",
+      "to": "level_fw_f_junction88_from_fw_f_plateau_e3",
+      "count": 40,
+      "run": 11.5,
+      "rise": 6.716667000000001,
+      "tread": 0.2875
+    },
+    {
+      "from": "level_fw_f_junction88_to_fw_f_plateau_e4",
+      "to": "fw_f_plateau_e4",
+      "count": 39,
+      "run": 15.5,
+      "rise": 6.533332999999999,
+      "tread": 0.3974358974358974
+    },
+    {
+      "from": "fw_f_junction22",
+      "to": "fw_f_v_60_public",
+      "count": 35,
+      "run": 18,
+      "rise": 5.843328999999997,
+      "tread": 0.5142857142857142
+    },
+    {
+      "from": "fw_f_junction86",
+      "to": "fw_f_v_f59_resident",
+      "count": 38,
+      "run": 18,
+      "rise": 6.3880300000000005,
+      "tread": 0.47368421052631576
+    },
+    {
+      "from": "fw_f_junction87",
+      "to": "fw_f_v_f60_resident",
+      "count": 39,
+      "run": 18,
+      "rise": 6.527897999999993,
+      "tread": 0.46153846153846156
+    },
+    {
+      "from": "fw_f_plateau_e_mid0",
+      "to": "fw_f_v_f63_resident",
+      "count": 32,
+      "run": 12.20911544707478,
+      "rise": 5.285714999999996,
+      "tread": 0.38153485772108686
+    },
+    {
+      "from": "school_steps_east_base",
+      "to": "school_steps_east_mid",
+      "count": 45,
+      "run": 14,
+      "rise": 7.5,
+      "tread": 0.3111111111111111
+    },
+    {
+      "from": "school_steps_east_rest",
+      "to": "fw_e_school_edge_top",
+      "count": 45,
+      "run": 16.64331697709324,
+      "rise": 7.5,
+      "tread": 0.36985148837984977
+    },
+    {
+      "from": "cinema_upper",
+      "to": "stair_cinema_upper_fw_w_upper_turn_01_in",
+      "count": 32,
+      "run": 33,
+      "rise": 5.316091999999998,
+      "tread": 1.03125
+    },
+    {
+      "from": "stair_cinema_upper_fw_w_upper_turn_01_out",
+      "to": "fw_w_upper_turn",
+      "count": 32,
+      "run": 33,
+      "rise": 5.316092000000005,
+      "tread": 1.03125
+    },
+    {
+      "from": "north",
+      "to": "stair_north_hill_west_gate_01_in",
+      "count": 46,
+      "run": 44.80766700000004,
+      "rise": 7.725925999999987,
+      "tread": 0.9740797173913052
+    },
+    {
+      "from": "stair_north_hill_west_gate_01_out",
+      "to": "stair_north_hill_west_gate_02_in",
+      "count": 46,
+      "run": 44.80766599999993,
+      "rise": 7.725926000000015,
+      "tread": 0.9740796956521723
+    },
+    {
+      "from": "stair_north_hill_west_gate_02_out",
+      "to": "hill_west_gate",
+      "count": 46,
+      "run": 44.80766700000004,
+      "rise": 7.725925999999987,
+      "tread": 0.9740797173913052
+    },
+    {
+      "from": "food_ramp_lower",
+      "to": "stair_food_ramp_lower_food_east_01_in",
+      "count": 31,
+      "run": 15,
+      "rise": 5.25,
+      "tread": 0.4838709677419355
+    },
+    {
+      "from": "stair_food_ramp_lower_food_east_01_out",
+      "to": "food_east",
+      "count": 31,
+      "run": 15,
+      "rise": 5.25,
+      "tread": 0.4838709677419355
+    },
+    {
+      "from": "slope_junction_hill",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_01_in",
+      "count": 45,
+      "run": 13.362035555479471,
+      "rise": 7.552632000000003,
+      "tread": 0.29693412345509934
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_01_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_02_in",
+      "count": 45,
+      "run": 13.36203555547949,
+      "rise": 7.552631000000005,
+      "tread": 0.2969341234550998
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_02_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_03_in",
+      "count": 45,
+      "run": 13.362035555479437,
+      "rise": 7.5526319999999885,
+      "tread": 0.2969341234550986
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_03_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_04_in",
+      "count": 45,
+      "run": 13.362035555479418,
+      "rise": 7.552631000000005,
+      "tread": 0.2969341234550982
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_04_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_05_in",
+      "count": 45,
+      "run": 13.362035555479437,
+      "rise": 7.552632000000003,
+      "tread": 0.2969341234550986
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_05_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_06_in",
+      "count": 45,
+      "run": 13.362035555479437,
+      "rise": 7.552632000000003,
+      "tread": 0.2969341234550986
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_06_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_07_in",
+      "count": 45,
+      "run": 13.362035555479418,
+      "rise": 7.552630999999991,
+      "tread": 0.2969341234550982
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_07_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_08_in",
+      "count": 45,
+      "run": 13.362035555479418,
+      "rise": 7.552632000000017,
+      "tread": 0.2969341234550982
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_08_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_09_in",
+      "count": 45,
+      "run": 13.362035555479437,
+      "rise": 7.552630999999991,
+      "tread": 0.2969341234550986
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_09_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_10_in",
+      "count": 45,
+      "run": 13.362035555479437,
+      "rise": 7.5526319999999885,
+      "tread": 0.2969341234550986
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_10_out",
+      "to": "stair_slope_junction_hill_hillgate_hill_landing_11_in",
+      "count": 45,
+      "run": 13.362035555479418,
+      "rise": 7.552631000000019,
+      "tread": 0.2969341234550982
+    },
+    {
+      "from": "stair_slope_junction_hill_hillgate_hill_landing_11_out",
+      "to": "hillgate_hill_landing",
+      "count": 45,
+      "run": 13.362035555479437,
+      "rise": 7.5526319999999885,
+      "tread": 0.2969341234550986
+    },
+    {
+      "from": "hill_short_gate",
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_01_in",
+      "count": 45,
+      "run": 15.00178525510856,
+      "rise": 7.5,
+      "tread": 0.3333730056690791
+    },
+    {
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_01_out",
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_02_in",
+      "count": 45,
+      "run": 15.00178525510856,
+      "rise": 7.5,
+      "tread": 0.3333730056690791
+    },
+    {
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_02_out",
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_03_in",
+      "count": 45,
+      "run": 15.00178655497597,
+      "rise": 7.5,
+      "tread": 0.33337303455502154
+    },
+    {
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_03_out",
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_04_in",
+      "count": 45,
+      "run": 15.001785255108603,
+      "rise": 7.5,
+      "tread": 0.33337300566908007
+    },
+    {
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_04_out",
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_05_in",
+      "count": 45,
+      "run": 15.001785255108603,
+      "rise": 7.5,
+      "tread": 0.33337300566908007
+    },
+    {
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_05_out",
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_06_in",
+      "count": 45,
+      "run": 15.00178655497597,
+      "rise": 7.5,
+      "tread": 0.33337303455502154
+    },
+    {
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_06_out",
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_07_in",
+      "count": 45,
+      "run": 15.001785255108603,
+      "rise": 7.5,
+      "tread": 0.33337300566908007
+    },
+    {
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_07_out",
+      "to": "hill_short_rest1_arrival",
+      "count": 45,
+      "run": 15.00178525510856,
+      "rise": 7.5,
+      "tread": 0.3333730056690791
+    },
+    {
+      "from": "hill_short_rest1_departure",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_01_in",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.91666699999999,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_01_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_02_in",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.916666000000021,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_02_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_03_in",
+      "count": 47,
+      "run": 13.665824253283,
+      "rise": 7.91666699999999,
+      "tread": 0.29076221815495745
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_03_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_04_in",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.916667000000018,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_04_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_05_in",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.916665999999964,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_05_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_06_in",
+      "count": 47,
+      "run": 13.665824253283061,
+      "rise": 7.916667000000018,
+      "tread": 0.29076221815495873
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_06_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_07_in",
+      "count": 47,
+      "run": 13.665824253283061,
+      "rise": 7.916667000000018,
+      "tread": 0.29076221815495873
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_07_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_08_in",
+      "count": 47,
+      "run": 13.66582425328299,
+      "rise": 7.916665999999964,
+      "tread": 0.29076221815495723
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_08_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_09_in",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.916667000000018,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_09_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_10_in",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.916667000000018,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_10_out",
+      "to": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_11_in",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.916665999999964,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_11_out",
+      "to": "hill_short_rest2_arrival",
+      "count": 47,
+      "run": 13.66582425328298,
+      "rise": 7.916667000000018,
+      "tread": 0.290762218154957
+    },
+    {
+      "from": "hill_short_rest2_departure",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_in",
+      "count": 46,
+      "run": 21.820855900057687,
+      "rise": 7.727273000000025,
+      "tread": 0.4743664326099497
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_in",
+      "count": 46,
+      "run": 21.820854650192793,
+      "rise": 7.727271999999971,
+      "tread": 0.47436640543897374
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_in",
+      "count": 46,
+      "run": 21.820855900057655,
+      "rise": 7.727273000000025,
+      "tread": 0.47436643260994904
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_04_in",
+      "count": 46,
+      "run": 21.820855605971822,
+      "rise": 7.727272999999968,
+      "tread": 0.4743664262167787
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_04_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_05_in",
+      "count": 46,
+      "run": 21.82085494427865,
+      "rise": 7.727273000000025,
+      "tread": 0.47436641183214456
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_05_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_06_in",
+      "count": 46,
+      "run": 21.82085560597183,
+      "rise": 7.727271999999971,
+      "tread": 0.4743664262167789
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_06_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_in",
+      "count": 46,
+      "run": 21.82085494427865,
+      "rise": 7.727273000000025,
+      "tread": 0.47436641183214456
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_08_in",
+      "count": 46,
+      "run": 21.820855605971822,
+      "rise": 7.727272999999968,
+      "tread": 0.4743664262167787
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_08_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_09_in",
+      "count": 46,
+      "run": 21.82085590005768,
+      "rise": 7.727273000000025,
+      "tread": 0.47436643260994954
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_09_out",
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_10_in",
+      "count": 46,
+      "run": 21.820854650192835,
+      "rise": 7.727271999999971,
+      "tread": 0.4743664054389747
+    },
+    {
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_10_out",
+      "to": "hill_short_rest3_arrival",
+      "count": 46,
+      "run": 21.820855900057712,
+      "rise": 7.727273000000025,
+      "tread": 0.47436643260995026
+    },
+    {
+      "from": "hill_short_rest3_departure",
+      "to": "stair_hill_short_rest3_departure_hill_short_summit_wait_01_in",
+      "count": 46,
+      "run": 15.128926960949304,
+      "rise": 7.688889000000017,
+      "tread": 0.3288897165423762
+    },
+    {
+      "from": "stair_hill_short_rest3_departure_hill_short_summit_wait_01_out",
+      "to": "stair_hill_short_rest3_departure_hill_short_summit_wait_02_in",
+      "count": 46,
+      "run": 15.12892696094926,
+      "rise": 7.688888999999961,
+      "tread": 0.3288897165423752
+    },
+    {
+      "from": "stair_hill_short_rest3_departure_hill_short_summit_wait_02_out",
+      "to": "stair_hill_short_rest3_departure_hill_short_summit_wait_03_in",
+      "count": 46,
+      "run": 15.128926759770746,
+      "rise": 7.68888800000002,
+      "tread": 0.32888971216892926
+    },
+    {
+      "from": "stair_hill_short_rest3_departure_hill_short_summit_wait_03_out",
+      "to": "stair_hill_short_rest3_departure_hill_short_summit_wait_04_in",
+      "count": 46,
+      "run": 15.12892696094919,
+      "rise": 7.688889000000017,
+      "tread": 0.3288897165423737
+    },
+    {
+      "from": "stair_hill_short_rest3_departure_hill_short_summit_wait_04_out",
+      "to": "hill_short_summit_wait",
+      "count": 46,
+      "run": 15.128926960949304,
+      "rise": 7.688888999999961,
+      "tread": 0.3288897165423762
+    }
+  ],
+  "landings": [
+    {
+      "nodes": [
+        "east_mid_junction",
+        "level_east_mid_junction_to_bend"
+      ],
+      "width": 8,
+      "points": [
+        [
+          144,
+          288,
+          31.9
+        ],
+        [
+          147.2,
+          290.4,
+          31.9
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+        "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out"
+      ],
+      "width": 8,
+      "points": [
+        [
+          161.2,
+          300.9,
+          36.563637
+        ],
+        [
+          162.8,
+          302.1,
+          36.563637
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_bend_from_east_mid_junction",
+        "bend",
+        "level_bend_to_bend-steps-rest-junction"
+      ],
+      "width": 8,
+      "points": [
+        [
+          176.8,
+          312.6,
+          41.227273
+        ],
+        [
+          180,
+          315,
+          41.227273
+        ],
+        [
+          183.577709,
+          316.788854,
+          41.227273
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+        "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out"
+      ],
+      "width": 8,
+      "points": [
+        [
+          193.527864,
+          321.763932,
+          46.823206
+        ],
+        [
+          195.316719,
+          322.658359,
+          46.823206
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_bend-steps-rest-junction_from_bend",
+        "bend-steps-rest-junction",
+        "level_bend-steps-rest-junction_to_upper"
+      ],
+      "width": 8,
+      "points": [
+        [
+          205.266874,
+          327.633437,
+          52.419139
+        ],
+        [
+          216,
+          333,
+          52.419139
+        ],
+        [
+          226.733126,
+          338.366563,
+          52.419139
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out"
+      ],
+      "width": 8,
+      "points": [
+        [
+          239.122187,
+          344.561094,
+          59.051356
+        ],
+        [
+          240.911042,
+          345.455521,
+          59.051356
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+        "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out"
+      ],
+      "width": 8,
+      "points": [
+        [
+          253.300103,
+          351.650052,
+          65.683572
+        ],
+        [
+          255.088958,
+          352.544479,
+          65.683572
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_upper_from_bend-steps-rest-junction",
+        "upper"
+      ],
+      "width": 8,
+      "points": [
+        [
+          267.478019,
+          358.73901,
+          72.315789
+        ],
+        [
+          280,
+          365,
+          72.315789
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_old_home_level_west_upper_from_old_home_01_in",
+        "stair_old_home_level_west_upper_from_old_home_01_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          349.25,
+          51.360119
+        ],
+        [
+          0,
+          351.25,
+          51.360119
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_old_home_level_west_upper_from_old_home_02_in",
+        "stair_old_home_level_west_upper_from_old_home_02_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          370.5,
+          58.720238
+        ],
+        [
+          0,
+          372.5,
+          58.720238
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_old_home_level_west_upper_from_old_home_03_in",
+        "stair_old_home_level_west_upper_from_old_home_03_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          391.75,
+          66.080357
+        ],
+        [
+          0,
+          393.75,
+          66.080357
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_west_upper_from_old_home",
+        "west_upper"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          413,
+          73.440476
+        ],
+        [
+          0,
+          420,
+          73.440476
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_west_court_gate_west_north_01_in",
+        "stair_west_court_gate_west_north_01_out"
+      ],
+      "width": 7,
+      "points": [
+        [
+          -110,
+          301.5,
+          31.352691
+        ],
+        [
+          -110,
+          303.5,
+          31.352691
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "west_upper",
+        "level_west_upper_to_res_n"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          420,
+          73.440476
+        ],
+        [
+          0,
+          427,
+          73.440476
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_west_upper_to_res_n_res_n_01_in",
+        "stair_level_west_upper_to_res_n_res_n_01_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          446.25,
+          81.538294
+        ],
+        [
+          0,
+          448.25,
+          81.538294
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_west_upper_to_res_n_res_n_02_in",
+        "stair_level_west_upper_to_res_n_res_n_02_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          467.5,
+          89.636111
+        ],
+        [
+          0,
+          469.5,
+          89.636111
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_west_upper_to_res_n_res_n_03_in",
+        "stair_level_west_upper_to_res_n_res_n_03_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          0,
+          488.75,
+          97.733928
+        ],
+        [
+          0,
+          490.75,
+          97.733928
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "upper",
+        "level_upper_to_fw_e_school_up_w"
+      ],
+      "width": 6,
+      "points": [
+        [
+          280,
+          365,
+          72.315789
+        ],
+        [
+          293.9993,
+          365.139993,
+          72.315789
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_01_in",
+        "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_01_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          313.99955,
+          365.339995,
+          64.486842
+        ],
+        [
+          315.99945,
+          365.359995,
+          64.486842
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_02_in",
+        "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_02_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          335.9997,
+          365.559997,
+          56.657894
+        ],
+        [
+          337.9996,
+          365.579996,
+          56.657894
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_03_in",
+        "stair_level_upper_to_fw_e_school_up_w_fw_e_school_up_w_03_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          357.99985,
+          365.779998,
+          48.828947
+        ],
+        [
+          359.99975,
+          365.799998,
+          48.828947
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "home",
+        "level_home_to_shop_north_junction"
+      ],
+      "width": 3,
+      "points": [
+        [
+          100,
+          255,
+          28
+        ],
+        [
+          103.75773,
+          265.338253,
+          28
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_shop_north_junction_from_home",
+        "shop_north_junction",
+        "level_shop_north_junction_to_shop_upper_junction"
+      ],
+      "width": 3,
+      "points": [
+        [
+          107.50597,
+          275.650397,
+          30.021515
+        ],
+        [
+          108.36,
+          278,
+          30.021515
+        ],
+        [
+          109.214223,
+          280.349533,
+          30.021515
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_shop_upper_junction_from_shop_north_junction",
+        "shop_upper_junction",
+        "level_shop_upper_junction_to_steps_mid"
+      ],
+      "width": 3,
+      "points": [
+        [
+          112.595777,
+          289.650467,
+          34.317273
+        ],
+        [
+          113.45,
+          292,
+          34.317273
+        ],
+        [
+          114.304882,
+          294.349293,
+          34.317273
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_steps_mid_level_shop_upper_junction_to_steps_mid",
+        "steps_mid",
+        "pause_steps_mid_shop-steps-low-junction"
+      ],
+      "width": 3,
+      "points": [
+        [
+          119.829024,
+          309.530141,
+          39.636364
+        ],
+        [
+          120,
+          310,
+          39.636364
+        ],
+        [
+          120.082199,
+          310.493197,
+          39.636364
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_shop-steps-low-junction_steps_mid",
+        "shop-steps-low-junction",
+        "pause_shop-steps-low-junction_shop-steps-middle-junction"
+      ],
+      "width": 3,
+      "points": [
+        [
+          122.417801,
+          324.506803,
+          45.127273
+        ],
+        [
+          122.5,
+          325,
+          45.127273
+        ],
+        [
+          122.582199,
+          325.493197,
+          45.127273
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_shop-steps-middle-junction_shop-steps-low-junction",
+        "shop-steps-middle-junction",
+        "pause_shop-steps-middle-junction_shop-steps-high-junction"
+      ],
+      "width": 3,
+      "points": [
+        [
+          125.417801,
+          342.506803,
+          51.716364
+        ],
+        [
+          125.5,
+          343,
+          51.716364
+        ],
+        [
+          125.5822,
+          343.493197,
+          51.716364
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "shop-steps-high-junction",
+        "shop-steps-high-entry",
+        "shop_steps_high_turn"
+      ],
+      "width": 3,
+      "points": [
+        [
+          127.666667,
+          356,
+          56.475152
+        ],
+        [
+          145,
+          356,
+          56.475152
+        ],
+        [
+          145,
+          364,
+          56.475152
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "shop_steps_high_level",
+        "upper_homes"
+      ],
+      "width": 3,
+      "points": [
+        [
+          130,
+          364,
+          61.6
+        ],
+        [
+          130,
+          370,
+          61.6
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_01_in",
+        "stair_foothill_east_fw_e_forest_turn_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          598.476981,
+          722.656436,
+          182.020468
+        ],
+        [
+          600.304604,
+          723.468713,
+          182.020468
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_02_in",
+        "stair_foothill_east_fw_e_forest_turn_02_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          628.781585,
+          736.125149,
+          189.040936
+        ],
+        [
+          630.609208,
+          736.937426,
+          189.040936
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_03_in",
+        "stair_foothill_east_fw_e_forest_turn_03_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          659.086188,
+          749.593862,
+          196.061403
+        ],
+        [
+          660.913812,
+          750.406138,
+          196.061403
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_04_in",
+        "stair_foothill_east_fw_e_forest_turn_04_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          689.390792,
+          763.062574,
+          203.081871
+        ],
+        [
+          691.218415,
+          763.874851,
+          203.081871
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_foothill_east_fw_e_forest_turn_05_in",
+        "stair_foothill_east_fw_e_forest_turn_05_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          719.695396,
+          776.531287,
+          210.102339
+        ],
+        [
+          721.523019,
+          777.343564,
+          210.102339
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_fw_e_forest_turn_stair_foothill_east_fw_e_forest_turn_05_out",
+        "fw_e_forest_turn",
+        "pause_fw_e_forest_turn_stair_fw_e_forest_turn_hill_east_approach_01_in"
+      ],
+      "width": 4,
+      "points": [
+        [
+          749.543094,
+          789.796931,
+          217.122807
+        ],
+        [
+          750,
+          790,
+          217.122807
+        ],
+        [
+          750.317446,
+          790.3863,
+          217.122807
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_fw_e_forest_turn_hill_east_approach_01_in",
+        "stair_fw_e_forest_turn_hill_east_approach_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          765.820143,
+          809.251533,
+          211.526316
+        ],
+        [
+          767.089928,
+          810.796734,
+          211.526316
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_fw_e_forest_turn_hill_east_approach_02_in",
+        "stair_fw_e_forest_turn_hill_east_approach_02_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          782.910072,
+          830.048266,
+          205.929824
+        ],
+        [
+          784.179857,
+          831.593467,
+          205.929824
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_hill_east_arc_04_08_hill_east_arc_04_07",
+        "hill_east_arc_04_08",
+        "pause_hill_east_arc_04_08_hill_east_arc_04_09"
+      ],
+      "width": 4,
+      "points": [
+        [
+          418.755629,
+          1002.732543,
+          340.404111
+        ],
+        [
+          418.554,
+          1002.275,
+          340.404111
+        ],
+        [
+          418.460461,
+          1001.783828,
+          340.404111
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_hill_east_arc_04_09_hill_east_arc_04_08",
+        "hill_east_arc_04_09",
+        "pause_hill_east_arc_04_09_hill_east_arc_04_10"
+      ],
+      "width": 4,
+      "points": [
+        [
+          413.750539,
+          977.052172,
+          343.232111
+        ],
+        [
+          413.657,
+          976.561,
+          343.232111
+        ],
+        [
+          413.669314,
+          976.061152,
+          343.232111
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_hill_east_arc_06_08_hill_east_arc_06_07",
+        "hill_east_arc_06_08",
+        "pause_hill_east_arc_06_08_hill_east_arc_06_09"
+      ],
+      "width": 4,
+      "points": [
+        [
+          361.050282,
+          972.869756,
+          393.080667
+        ],
+        [
+          360.836,
+          972.418,
+          393.080667
+        ],
+        [
+          360.725051,
+          971.930465,
+          393.080667
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_hill_east_arc_06_09_hill_east_arc_06_08",
+        "hill_east_arc_06_09",
+        "pause_hill_east_arc_06_09_hill_east_arc_06_10"
+      ],
+      "width": 4,
+      "points": [
+        [
+          356.900949,
+          955.126535,
+          395.201667
+        ],
+        [
+          356.79,
+          954.639,
+          395.201667
+        ],
+        [
+          356.784514,
+          954.13903,
+          395.201667
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_hill_east_arc_06_10_hill_east_arc_06_09",
+        "hill_east_arc_06_10",
+        "pause_hill_east_arc_06_10_hill_east_curve_06"
+      ],
+      "width": 4,
+      "points": [
+        [
+          356.581486,
+          935.63697,
+          397.323444
+        ],
+        [
+          356.576,
+          935.137,
+          397.323444
+        ],
+        [
+          356.612321,
+          934.638321,
+          397.323444
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "dock_low",
+        "dock_tip"
+      ],
+      "width": 5,
+      "points": [
+        [
+          300,
+          -125,
+          2
+        ],
+        [
+          300,
+          -150,
+          1.5
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_home_north_level_upper_homes_from_home_north_01_in",
+        "stair_home_north_level_upper_homes_from_home_north_01_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          111.746043,
+          348.703717,
+          53.720588
+        ],
+        [
+          113.047626,
+          350.22223,
+          53.720588
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_upper_homes_from_home_north",
+        "upper_homes"
+      ],
+      "width": 6,
+      "points": [
+        [
+          124.793669,
+          363.925947,
+          61.6
+        ],
+        [
+          130,
+          370,
+          61.6
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "upper",
+        "level_upper_to_slope_platform_bypass"
+      ],
+      "width": 6,
+      "points": [
+        [
+          280,
+          365,
+          72.315789
+        ],
+        [
+          284.540541,
+          378.243243,
+          72.315789
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_slope_platform_bypass_from_upper",
+        "slope_platform_bypass",
+        "slope_junction_platform"
+      ],
+      "width": 6,
+      "points": [
+        [
+          290.702703,
+          396.216216,
+          79.368421
+        ],
+        [
+          292,
+          400,
+          79.368421
+        ],
+        [
+          288.551825,
+          411.493915,
+          79.368421
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_platform_east_from_slope_junction_platform",
+        "platform_east"
+      ],
+      "width": 6,
+      "points": [
+        [
+          280.862044,
+          437.126521,
+          87.428571
+        ],
+        [
+          280,
+          440,
+          87.428571
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "upper_homes",
+        "level_upper_homes_to_platform_mid"
+      ],
+      "width": 6,
+      "points": [
+        [
+          130,
+          370,
+          61.6
+        ],
+        [
+          128.868629,
+          377.919596,
+          61.6
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_01_in",
+        "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_01_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          126.383824,
+          395.313232,
+          69.066667
+        ],
+        [
+          126.100981,
+          397.293131,
+          69.066667
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_02_in",
+        "stair_level_upper_homes_to_platform_mid_level_platform_mid_from_upper_homes_02_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          123.616176,
+          414.686768,
+          76.533333
+        ],
+        [
+          123.333333,
+          416.666667,
+          76.533333
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_platform_mid_from_upper_homes",
+        "platform_mid"
+      ],
+      "width": 6,
+      "points": [
+        [
+          120.848528,
+          434.060303,
+          84
+        ],
+        [
+          120,
+          440,
+          84
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_west_link_west_link_n_01_in",
+        "stair_west_link_west_link_n_01_out"
+      ],
+      "width": 7,
+      "points": [
+        [
+          -190,
+          306.5,
+          30.8125
+        ],
+        [
+          -190,
+          308.5,
+          30.8125
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_upper_landing_level_platform_east_from_slope_upper_landing_01_in",
+        "stair_slope_upper_landing_level_platform_east_from_slope_upper_landing_01_out"
+      ],
+      "width": 3,
+      "points": [
+        [
+          278.875156,
+          417.503119,
+          82.87218
+        ],
+        [
+          278.975031,
+          419.500624,
+          82.87218
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_platform_east_from_slope_upper_landing",
+        "platform_east"
+      ],
+      "width": 3,
+      "points": [
+        [
+          279.850187,
+          437.003743,
+          87.428571
+        ],
+        [
+          280,
+          440,
+          87.428571
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_homes_high_m_homes_high_junction_01_in",
+        "stair_homes_high_m_homes_high_junction_01_out"
+      ],
+      "width": 3,
+      "points": [
+        [
+          185,
+          429.5,
+          80.062894
+        ],
+        [
+          185,
+          431.5,
+          80.062894
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_fw_f_junction53_fw_f_old_court0",
+        "fw_f_junction53",
+        "pause_fw_f_junction53_fw_f_old_court1"
+      ],
+      "width": 3,
+      "points": [
+        [
+          -104,
+          295.5,
+          31.581818
+        ],
+        [
+          -104,
+          296,
+          31.581818
+        ],
+        [
+          -104,
+          296.5,
+          31.581818
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_fw_f_old_court2_fw_f_old_court3_01_in",
+        "stair_fw_f_old_court2_fw_f_old_court3_01_out"
+      ],
+      "width": 3,
+      "points": [
+        [
+          -27,
+          292,
+          31.028828
+        ],
+        [
+          -27,
+          290,
+          31.028828
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_fw_f_plateau_w3_fw_f_plateau_w4_01_in",
+        "stair_fw_f_plateau_w3_fw_f_plateau_w4_01_out"
+      ],
+      "width": 5,
+      "points": [
+        [
+          -19.540758,
+          465.158822,
+          91.56044
+        ],
+        [
+          -18.459242,
+          466.841178,
+          91.56044
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_fw_f_plateau_w4_stair_fw_f_plateau_w3_fw_f_plateau_w4_01_out",
+        "fw_f_plateau_w4",
+        "pause_fw_f_plateau_w4_fw_f_junction83"
+      ],
+      "width": 5,
+      "points": [
+        [
+          -10.270379,
+          479.579411,
+          96.428571
+        ],
+        [
+          -10,
+          480,
+          96.428571
+        ],
+        [
+          -10,
+          480.5,
+          96.428571
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_fw_f_junction83_fw_f_plateau_w4",
+        "fw_f_junction83",
+        "pause_fw_f_junction83_fw_f_plateau_w5"
+      ],
+      "width": 5,
+      "points": [
+        [
+          -10,
+          495.25,
+          101.803571
+        ],
+        [
+          -10,
+          495.75,
+          101.803571
+        ],
+        [
+          -10,
+          496.25,
+          101.803571
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_fw_f_wood_homes1_fw_f_wood_homes2_01_in",
+        "stair_fw_f_wood_homes1_fw_f_wood_homes2_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          70,
+          490,
+          99.415873
+        ],
+        [
+          70,
+          488,
+          99.415873
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_fw_f_junction81_from_fw_f_plateau_w2",
+        "fw_f_junction81",
+        "level_fw_f_junction81_to_fw_f_plateau_w_rear0"
+      ],
+      "width": 4,
+      "points": [
+        [
+          -73,
+          466.25,
+          90.536796
+        ],
+        [
+          -73,
+          466.75,
+          90.536796
+        ],
+        [
+          -73,
+          467.25,
+          90.536796
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_fw_f_junction81_to_fw_f_plateau_w_rear0_level_fw_f_plateau_w_rear0_from_fw_f_junction81_01_in",
+        "stair_level_fw_f_junction81_to_fw_f_plateau_w_rear0_level_fw_f_plateau_w_rear0_from_fw_f_junction81_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          -73,
+          474.575,
+          94.911255
+        ],
+        [
+          -73,
+          476.575,
+          94.911255
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_fw_f_plateau_w_rear0_from_fw_f_junction81",
+        "fw_f_plateau_w_rear0",
+        "level_fw_f_plateau_w_rear0_to_fw_f_plateau_w_rear1"
+      ],
+      "width": 4,
+      "points": [
+        [
+          -73,
+          483.9,
+          99.285714
+        ],
+        [
+          -73,
+          485,
+          99.285714
+        ],
+        [
+          -73,
+          486.1,
+          99.285714
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "platform_mid",
+        "level_platform_mid_to_fw_f_plateau_e0"
+      ],
+      "width": 5,
+      "points": [
+        [
+          120,
+          440,
+          84
+        ],
+        [
+          120.299626,
+          445.992514,
+          84
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_level_platform_mid_to_fw_f_plateau_e0_level_fw_f_plateau_e0_from_platform_mid_01_in",
+        "stair_level_platform_mid_to_fw_f_plateau_e0_level_fw_f_plateau_e0_from_platform_mid_01_out"
+      ],
+      "width": 5,
+      "points": [
+        [
+          121.037453,
+          460.749064,
+          90.714286
+        ],
+        [
+          121.137329,
+          462.746569,
+          90.714286
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_fw_f_plateau_e0_from_platform_mid",
+        "fw_f_plateau_e0",
+        "level_fw_f_plateau_e0_to_fw_f_junction89"
+      ],
+      "width": 5,
+      "points": [
+        [
+          121.875156,
+          477.503119,
+          97.428571
+        ],
+        [
+          122,
+          480,
+          97.428571
+        ],
+        [
+          122,
+          482.5,
+          97.428571
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "pause_fw_f_junction89_level_fw_f_plateau_e0_to_fw_f_junction89",
+        "fw_f_junction89",
+        "pause_fw_f_junction89_fw_f_plateau_e1"
+      ],
+      "width": 5,
+      "points": [
+        [
+          122,
+          500.5,
+          104.478571
+        ],
+        [
+          122,
+          501,
+          104.478571
+        ],
+        [
+          122,
+          501.5,
+          104.478571
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_fw_f_plateau_e3_from_fw_f_plateau_e2",
+        "fw_f_plateau_e3",
+        "level_fw_f_plateau_e3_to_fw_f_junction88"
+      ],
+      "width": 5,
+      "points": [
+        [
+          270,
+          482,
+          100.678571
+        ],
+        [
+          270,
+          480,
+          100.678571
+        ],
+        [
+          270,
+          478,
+          100.678571
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "level_fw_f_junction88_from_fw_f_plateau_e3",
+        "fw_f_junction88",
+        "level_fw_f_junction88_to_fw_f_plateau_e4"
+      ],
+      "width": 5,
+      "points": [
+        [
+          270,
+          466.5,
+          93.961904
+        ],
+        [
+          270,
+          466,
+          93.961904
+        ],
+        [
+          270,
+          465.5,
+          93.961904
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "fw_e_school_edge_low",
+        "school_steps_east_base"
+      ],
+      "width": 3,
+      "points": [
+        [
+          530,
+          330,
+          26
+        ],
+        [
+          544,
+          330,
+          26
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "school_steps_east_mid",
+        "school_steps_east_rest"
+      ],
+      "width": 3,
+      "points": [
+        [
+          544,
+          344,
+          33.5
+        ],
+        [
+          544,
+          346,
+          33.5
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_cinema_upper_fw_w_upper_turn_01_in",
+        "stair_cinema_upper_fw_w_upper_turn_01_out"
+      ],
+      "width": 3,
+      "points": [
+        [
+          317,
+          345,
+          42.316092
+        ],
+        [
+          315,
+          345,
+          42.316092
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_north_hill_west_gate_01_in",
+        "stair_north_hill_west_gate_01_out"
+      ],
+      "width": 3,
+      "points": [
+        [
+          70,
+          614.807667,
+          160.614815
+        ],
+        [
+          70,
+          616.807667,
+          160.614815
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_north_hill_west_gate_02_in",
+        "stair_north_hill_west_gate_02_out"
+      ],
+      "width": 3,
+      "points": [
+        [
+          70,
+          661.615333,
+          168.340741
+        ],
+        [
+          70,
+          663.615333,
+          168.340741
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_food_ramp_lower_food_east_01_in",
+        "stair_food_ramp_lower_food_east_01_out"
+      ],
+      "width": 3,
+      "points": [
+        [
+          180,
+          93,
+          14.75
+        ],
+        [
+          180,
+          95,
+          14.75
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "slope_platform_bypass",
+        "slope_junction_hill"
+      ],
+      "width": 6,
+      "points": [
+        [
+          292,
+          400,
+          79.368421
+        ],
+        [
+          295.862833,
+          411.361273,
+          79.368421
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_01_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_01_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          300.164109,
+          424.012084,
+          86.921053
+        ],
+        [
+          300.807914,
+          425.905629,
+          86.921053
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_02_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_02_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          305.10919,
+          438.55644,
+          94.473684
+        ],
+        [
+          305.752995,
+          440.449985,
+          94.473684
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_03_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_03_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          310.054271,
+          453.100796,
+          102.026316
+        ],
+        [
+          310.698076,
+          454.994341,
+          102.026316
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_04_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_04_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          314.999352,
+          467.645152,
+          109.578947
+        ],
+        [
+          315.643157,
+          469.538697,
+          109.578947
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_05_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_05_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          319.944433,
+          482.189508,
+          117.131579
+        ],
+        [
+          320.588238,
+          484.083053,
+          117.131579
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_06_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_06_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          324.889514,
+          496.733864,
+          124.684211
+        ],
+        [
+          325.533319,
+          498.627409,
+          124.684211
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_07_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_07_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          329.834595,
+          511.27822,
+          132.236842
+        ],
+        [
+          330.4784,
+          513.171765,
+          132.236842
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_08_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_08_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          334.779676,
+          525.822576,
+          139.789474
+        ],
+        [
+          335.423481,
+          527.716121,
+          139.789474
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_09_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_09_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          339.724757,
+          540.366932,
+          147.342105
+        ],
+        [
+          340.368562,
+          542.260477,
+          147.342105
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_10_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_10_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          344.669838,
+          554.911288,
+          154.894737
+        ],
+        [
+          345.313643,
+          556.804833,
+          154.894737
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_slope_junction_hill_hillgate_hill_landing_11_in",
+        "stair_slope_junction_hill_hillgate_hill_landing_11_out"
+      ],
+      "width": 6,
+      "points": [
+        [
+          349.614919,
+          569.455644,
+          162.447368
+        ],
+        [
+          350.258724,
+          571.349189,
+          162.447368
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "hillgate_hill_landing",
+        "hillgate"
+      ],
+      "width": 6,
+      "points": [
+        [
+          354.56,
+          584,
+          170
+        ],
+        [
+          360,
+          600,
+          170
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_gate_hill_short_rest1_arrival_01_in",
+        "stair_hill_short_gate_hill_short_rest1_arrival_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          326.071192,
+          613.571523,
+          177.5
+        ],
+        [
+          324.214238,
+          614.314305,
+          177.5
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_gate_hill_short_rest1_arrival_02_in",
+        "stair_hill_short_gate_hill_short_rest1_arrival_02_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          310.28543,
+          619.885828,
+          185
+        ],
+        [
+          308.428477,
+          620.628609,
+          185
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_gate_hill_short_rest1_arrival_03_in",
+        "stair_hill_short_gate_hill_short_rest1_arrival_03_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          294.499668,
+          626.200133,
+          192.5
+        ],
+        [
+          292.642715,
+          626.942914,
+          192.5
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_gate_hill_short_rest1_arrival_04_in",
+        "stair_hill_short_gate_hill_short_rest1_arrival_04_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          278.713907,
+          632.514437,
+          200
+        ],
+        [
+          276.856953,
+          633.257219,
+          200
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_gate_hill_short_rest1_arrival_05_in",
+        "stair_hill_short_gate_hill_short_rest1_arrival_05_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          262.928145,
+          638.828742,
+          207.5
+        ],
+        [
+          261.071192,
+          639.571523,
+          207.5
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_gate_hill_short_rest1_arrival_06_in",
+        "stair_hill_short_gate_hill_short_rest1_arrival_06_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          247.142383,
+          645.143047,
+          215
+        ],
+        [
+          245.28543,
+          645.885828,
+          215
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_gate_hill_short_rest1_arrival_07_in",
+        "stair_hill_short_gate_hill_short_rest1_arrival_07_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          231.356622,
+          651.457351,
+          222.5
+        ],
+        [
+          229.499668,
+          652.200133,
+          222.5
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "hill_short_rest1_arrival",
+        "hill_short_rest1",
+        "hill_short_rest1_departure"
+      ],
+      "width": 4,
+      "points": [
+        [
+          215.57086,
+          657.771656,
+          230
+        ],
+        [
+          210,
+          660,
+          230
+        ],
+        [
+          205.757359,
+          664.242641,
+          230
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_01_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          196.094162,
+          673.905838,
+          237.916667
+        ],
+        [
+          194.679948,
+          675.320052,
+          237.916667
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_02_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_02_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          185.016751,
+          684.983249,
+          245.833333
+        ],
+        [
+          183.602537,
+          686.397463,
+          245.833333
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_03_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_03_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          173.93934,
+          696.06066,
+          253.75
+        ],
+        [
+          172.525126,
+          697.474874,
+          253.75
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_04_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_04_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          162.861929,
+          707.138071,
+          261.666667
+        ],
+        [
+          161.447715,
+          708.552285,
+          261.666667
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_05_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_05_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          151.784518,
+          718.215482,
+          269.583333
+        ],
+        [
+          150.370304,
+          719.629696,
+          269.583333
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_06_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_06_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          140.707107,
+          729.292893,
+          277.5
+        ],
+        [
+          139.292893,
+          730.707107,
+          277.5
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_07_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_07_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          129.629696,
+          740.370304,
+          285.416667
+        ],
+        [
+          128.215482,
+          741.784518,
+          285.416667
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_08_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_08_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          118.552285,
+          751.447715,
+          293.333333
+        ],
+        [
+          117.138071,
+          752.861929,
+          293.333333
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_09_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_09_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          107.474874,
+          762.525126,
+          301.25
+        ],
+        [
+          106.06066,
+          763.93934,
+          301.25
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_10_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_10_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          96.397463,
+          773.602537,
+          309.166667
+        ],
+        [
+          94.983249,
+          775.016751,
+          309.166667
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_11_in",
+        "stair_hill_short_rest1_departure_hill_short_rest2_arrival_11_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          85.320052,
+          784.679948,
+          317.083333
+        ],
+        [
+          83.905838,
+          786.094162,
+          317.083333
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "hill_short_rest2_arrival",
+        "hill_short_rest2",
+        "hill_short_rest2_departure"
+      ],
+      "width": 4,
+      "points": [
+        [
+          74.242641,
+          795.757359,
+          325
+        ],
+        [
+          70,
+          800,
+          325
+        ],
+        [
+          75.734674,
+          801.764515,
+          325
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          96.59059,
+          808.18172,
+          332.727273
+        ],
+        [
+          98.502148,
+          808.769892,
+          332.727273
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          119.358063,
+          815.187096,
+          340.454545
+        ],
+        [
+          121.269621,
+          815.775268,
+          340.454545
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          142.125537,
+          822.192473,
+          348.181818
+        ],
+        [
+          144.037095,
+          822.780645,
+          348.181818
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_04_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_04_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          164.893011,
+          829.197849,
+          355.909091
+        ],
+        [
+          166.804569,
+          829.786021,
+          355.909091
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_05_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_05_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          187.660484,
+          836.203226,
+          363.636364
+        ],
+        [
+          189.572042,
+          836.791398,
+          363.636364
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_06_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_06_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          210.427958,
+          843.208602,
+          371.363636
+        ],
+        [
+          212.339516,
+          843.796774,
+          371.363636
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          233.195431,
+          850.213979,
+          379.090909
+        ],
+        [
+          235.106989,
+          850.802151,
+          379.090909
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_08_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_08_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          255.962905,
+          857.219355,
+          386.818182
+        ],
+        [
+          257.874463,
+          857.807527,
+          386.818182
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_09_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_09_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          278.730379,
+          864.224732,
+          394.545455
+        ],
+        [
+          280.641937,
+          864.812904,
+          394.545455
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_10_in",
+        "stair_hill_short_rest2_departure_hill_short_rest3_arrival_10_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          301.497852,
+          871.230108,
+          402.272727
+        ],
+        [
+          303.40941,
+          871.81828,
+          402.272727
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "hill_short_rest3_arrival",
+        "hill_short_rest3",
+        "hill_short_rest3_departure"
+      ],
+      "width": 4,
+      "points": [
+        [
+          324.265326,
+          878.235485,
+          410
+        ],
+        [
+          330,
+          880,
+          410
+        ],
+        [
+          325.196971,
+          883.595958,
+          410
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_01_in",
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_01_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          313.086192,
+          892.663122,
+          417.688889
+        ],
+        [
+          311.485183,
+          893.861775,
+          417.688889
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_02_in",
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_02_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          299.374404,
+          902.928939,
+          425.377778
+        ],
+        [
+          297.773394,
+          904.127591,
+          425.377778
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_03_in",
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_03_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          285.662616,
+          913.194756,
+          433.066666
+        ],
+        [
+          284.061606,
+          914.393408,
+          433.066666
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_04_in",
+        "stair_hill_short_rest3_departure_hill_short_summit_wait_04_out"
+      ],
+      "width": 4,
+      "points": [
+        [
+          271.950827,
+          923.460572,
+          440.755555
+        ],
+        [
+          270.349818,
+          924.659225,
+          440.755555
+        ]
+      ]
+    },
+    {
+      "nodes": [
+        "hill_short_summit_wait",
+        "hill_bend"
+      ],
+      "width": 4,
+      "points": [
+        [
+          258.239039,
+          933.726389,
+          448.444444
+        ],
+        [
+          251.835,
+          938.521,
+          448.444444
+        ]
+      ]
+    }
+  ]
+}

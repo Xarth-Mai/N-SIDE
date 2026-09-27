@@ -1,0 +1,6080 @@
+{
+  "baseline": "fcf92ee799d94775fcd26812f930e9217ed9db3f",
+  "source": "source-assets/district-map/district.json",
+  "sha256": "49f46aed0e9d3a578304f0a99d7174864e7a9c2dcc9382c7ffcd1c2ca402acf0",
+  "statistics": {
+    "blocks": 12,
+    "parcelArea": 325404,
+    "urbanArea": 753920,
+    "blockArea": 2572520,
+    "capacity": 283,
+    "remaining": 59,
+    "places": 84,
+    "detailed": 24,
+    "buildings": 224,
+    "background": 7,
+    "namedPlaces": 91,
+    "entrances": 396,
+    "fixtures": 17,
+    "allBuildingKinds": {
+      "apartment": 107,
+      "civic": 6,
+      "home": 4,
+      "school": 6,
+      "shop": 106,
+      "shrine": 1,
+      "station": 1
+    },
+    "districtDesignTypes": {
+      "apartment": 74,
+      "cinema": 1,
+      "civic": 6,
+      "corner": 2,
+      "interest": 3,
+      "maker": 6,
+      "mixed": 85,
+      "music": 2,
+      "public": 2,
+      "row": 10,
+      "school": 6,
+      "shop": 3,
+      "shrine": 1,
+      "slope": 21,
+      "station": 2
+    },
+    "fixturesByKind": {
+      "bench": 5,
+      "drain": 3,
+      "locker": 2,
+      "screen": 7
+    },
+    "roadsByKind": {
+      "avenue": 3,
+      "bridge": 7,
+      "crossing": 3,
+      "deck": 5,
+      "interior": 2,
+      "landing": 126,
+      "lane": 419,
+      "lift": 8,
+      "main": 2,
+      "service": 106,
+      "shore": 9,
+      "steps": 151,
+      "trail": 13
+    }
+  },
+  "protection": {
+    "stableIds": [
+      "buildings",
+      "places",
+      "parcels",
+      "blocks"
+    ],
+    "buildings": [
+      "polygon",
+      "height",
+      "bank",
+      "parcel",
+      "kind",
+      "floor names, uses and relative heights"
+    ],
+    "river": "unchanged",
+    "result": "PASS"
+  },
+  "coverage": [
+    {
+      "id": "B01",
+      "name": "站前交通与混合商业",
+      "buildings": 21,
+      "described": 21,
+      "arrived": 21,
+      "entries": 49,
+      "connected": 49,
+      "roads": 66,
+      "widths": 66,
+      "linked": 66,
+      "parcels": [
+        "P01-A",
+        "P01-B",
+        "P01-C",
+        "P01-D",
+        "P01-E",
+        "P01-F"
+      ],
+      "buildingIds": [
+        "V-01",
+        "V-06",
+        "V-30",
+        "V-31",
+        "V-32",
+        "V-33",
+        "V-34",
+        "V-M01",
+        "V-M02",
+        "V-M03",
+        "V-M04",
+        "V-M05",
+        "V-F07",
+        "V-F08",
+        "V-F09",
+        "V-F10",
+        "V-F11",
+        "V-F12",
+        "V-F13",
+        "V-F14",
+        "V-F15"
+      ],
+      "entryMap": [
+        {
+          "building": "V-01",
+          "node": "station_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -14,
+            10,
+            8
+          ]
+        },
+        {
+          "building": "V-01",
+          "node": "station_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -30,
+            -6,
+            8
+          ]
+        },
+        {
+          "building": "V-06",
+          "node": "st_06_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            32,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-06",
+          "node": "st_06_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            38,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-06",
+          "node": "st_06_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            32,
+            -12,
+            8
+          ]
+        },
+        {
+          "building": "V-30",
+          "node": "st_30_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            53,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-30",
+          "node": "st_30_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            59,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-30",
+          "node": "st_30_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            53,
+            -12,
+            8
+          ]
+        },
+        {
+          "building": "V-31",
+          "node": "st_31_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            74,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-31",
+          "node": "st_31_resident",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            80,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-31",
+          "node": "st_31_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            74,
+            -12,
+            8
+          ]
+        },
+        {
+          "building": "V-32",
+          "node": "transport_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -63,
+            -15,
+            8
+          ]
+        },
+        {
+          "building": "V-32",
+          "node": "transport_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -63,
+            1,
+            8
+          ]
+        },
+        {
+          "building": "V-33",
+          "node": "canteen_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -183,
+            2,
+            8
+          ]
+        },
+        {
+          "building": "V-33",
+          "node": "canteen_core",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -183,
+            12,
+            8
+          ]
+        },
+        {
+          "building": "V-33",
+          "node": "canteen_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -198,
+            -12,
+            8
+          ]
+        },
+        {
+          "building": "V-34",
+          "node": "st_34_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            95,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-34",
+          "node": "st_34_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            101,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-34",
+          "node": "st_34_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            95,
+            -12,
+            8
+          ]
+        },
+        {
+          "building": "V-M01",
+          "node": "v_m01_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            40,
+            18,
+            8
+          ]
+        },
+        {
+          "building": "V-M01",
+          "node": "v_m01_core",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            29,
+            40,
+            8
+          ]
+        },
+        {
+          "building": "V-M01",
+          "node": "v_m01_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            56,
+            25,
+            8
+          ]
+        },
+        {
+          "building": "V-M01",
+          "node": "v_m01_office",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            56,
+            35,
+            8
+          ]
+        },
+        {
+          "building": "V-M02",
+          "node": "v_m02_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            84,
+            18,
+            8
+          ]
+        },
+        {
+          "building": "V-M02",
+          "node": "v_m02_core",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            71,
+            40,
+            8
+          ]
+        },
+        {
+          "building": "V-M02",
+          "node": "v_m02_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            102,
+            25,
+            8
+          ]
+        },
+        {
+          "building": "V-M03",
+          "node": "v_m03_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            131,
+            18,
+            8
+          ]
+        },
+        {
+          "building": "V-M03",
+          "node": "v_m03_core",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            117,
+            40,
+            8
+          ]
+        },
+        {
+          "building": "V-M03",
+          "node": "v_m03_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            150,
+            25,
+            8
+          ]
+        },
+        {
+          "building": "V-M04",
+          "node": "v_m04_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -183,
+            33.5,
+            8.5
+          ]
+        },
+        {
+          "building": "V-M05",
+          "node": "v_m05_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -183,
+            58.5,
+            9
+          ]
+        },
+        {
+          "building": "V-F07",
+          "node": "fw_f_v_f07_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            124.5,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-F07",
+          "node": "fw_f_v_f07_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            113.5,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-F08",
+          "node": "fw_f_v_f08_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            150.25,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-F08",
+          "node": "fw_f_v_f08_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            138.75,
+            4,
+            8
+          ]
+        },
+        {
+          "building": "V-F09",
+          "node": "fw_f_v_f09_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            28.25,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F09",
+          "node": "fw_f_v_f09_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            34.5,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F10",
+          "node": "fw_f_v_f10_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            55.25,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F10",
+          "node": "fw_f_v_f10_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            61.5,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F11",
+          "node": "fw_f_v_f11_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            84.25,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F11",
+          "node": "fw_f_v_f11_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            90.5,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F12",
+          "node": "fw_f_v_f12_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            113.25,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F12",
+          "node": "fw_f_v_f12_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            119.5,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F13",
+          "node": "fw_f_v_f13_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            139.75,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F13",
+          "node": "fw_f_v_f13_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            151.25,
+            61,
+            8
+          ]
+        },
+        {
+          "building": "V-F14",
+          "node": "fw_f_v_f14_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            203.75,
+            13,
+            8
+          ]
+        },
+        {
+          "building": "V-F14",
+          "node": "fw_f_v_f14_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            208,
+            6.75,
+            8
+          ]
+        },
+        {
+          "building": "V-F15",
+          "node": "fw_f_v_f15_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            205,
+            46.5,
+            8.8
+          ]
+        },
+        {
+          "building": "V-F15",
+          "node": "fw_f_v_f15_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            191,
+            46.5,
+            8.8
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "01",
+          "name": "Null Station",
+          "featured": true,
+          "building": "V-01",
+          "access": "station"
+        },
+        {
+          "id": "02",
+          "name": "站前广场",
+          "featured": true,
+          "building": null,
+          "access": "square"
+        },
+        {
+          "id": "06",
+          "name": "街口饭馆",
+          "featured": true,
+          "building": "V-06",
+          "access": "station_east"
+        },
+        {
+          "id": "30",
+          "name": "站前咖啡铺",
+          "featured": true,
+          "building": "V-30",
+          "access": "station_east"
+        },
+        {
+          "id": "31",
+          "name": "旅行用品与寄存店",
+          "featured": true,
+          "building": "V-31",
+          "access": "station_east"
+        },
+        {
+          "id": "32",
+          "name": "城市交通服务厅",
+          "featured": true,
+          "building": "V-32",
+          "access": "station"
+        },
+        {
+          "id": "33",
+          "name": "站前午间食堂",
+          "featured": true,
+          "building": "V-33",
+          "access": "station_west"
+        },
+        {
+          "id": "34",
+          "name": "白页书店",
+          "featured": true,
+          "building": "V-34",
+          "access": "station_east"
+        }
+      ],
+      "fixtures": [
+        {
+          "source": "architectures[P3-A2]/fixtures[0]",
+          "name": "站西座椅",
+          "kind": "bench",
+          "blocks": [
+            "B01"
+          ],
+          "elevation": 8.5,
+          "polygon": [
+            [
+              -145,
+              55
+            ],
+            [
+              -133,
+              55
+            ],
+            [
+              -133,
+              57
+            ],
+            [
+              -145,
+              57
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A2]/fixtures[1]",
+          "name": "交通设备状态柱",
+          "kind": "screen",
+          "blocks": [
+            "B01"
+          ],
+          "assignment": "Existing station-edge fixture south of B01 planning boundary",
+          "elevation": 7.932432,
+          "polygon": [
+            [
+              -66,
+              -22
+            ],
+            [
+              -65,
+              -22
+            ],
+            [
+              -65,
+              -21
+            ],
+            [
+              -66,
+              -21
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A2]/fixtures[5]",
+          "name": "混合楼楼层导向",
+          "kind": "screen",
+          "blocks": [
+            "B01"
+          ],
+          "elevation": 8,
+          "polygon": [
+            [
+              27,
+              43
+            ],
+            [
+              28,
+              43
+            ],
+            [
+              28,
+              44
+            ],
+            [
+              27,
+              44
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "name": "游戏与设备兴趣街",
+      "buildings": 16,
+      "described": 16,
+      "arrived": 16,
+      "entries": 28,
+      "connected": 28,
+      "roads": 38,
+      "widths": 38,
+      "linked": 38,
+      "parcels": [
+        "P02-A",
+        "P02-B"
+      ],
+      "buildingIds": [
+        "V-35",
+        "V-36",
+        "V-37",
+        "V-38",
+        "V-39",
+        "V-40",
+        "V-41",
+        "V-M06",
+        "V-M07",
+        "V-M08",
+        "V-M09",
+        "V-M10",
+        "V-F16",
+        "V-F17",
+        "V-F18",
+        "V-F19"
+      ],
+      "entryMap": [
+        {
+          "building": "V-35",
+          "node": "game_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -386,
+            153,
+            12
+          ]
+        },
+        {
+          "building": "V-35",
+          "node": "game_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -386,
+            113,
+            12
+          ]
+        },
+        {
+          "building": "V-36",
+          "node": "models_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -285,
+            137,
+            12
+          ]
+        },
+        {
+          "building": "V-36",
+          "node": "models_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -285,
+            113,
+            12
+          ]
+        },
+        {
+          "building": "V-37",
+          "node": "table_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -258,
+            137,
+            12
+          ]
+        },
+        {
+          "building": "V-37",
+          "node": "table_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -258,
+            113,
+            12
+          ]
+        },
+        {
+          "building": "V-38",
+          "node": "repair_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -342,
+            125,
+            12
+          ]
+        },
+        {
+          "building": "V-38",
+          "node": "repair_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -354,
+            113,
+            12
+          ]
+        },
+        {
+          "building": "V-39",
+          "node": "st_39_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -357,
+            156,
+            12
+          ]
+        },
+        {
+          "building": "V-39",
+          "node": "indie_service_door",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -357,
+            140,
+            12
+          ]
+        },
+        {
+          "building": "V-40",
+          "node": "st_40_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -336,
+            156,
+            12
+          ]
+        },
+        {
+          "building": "V-40",
+          "node": "st_40_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -329,
+            156,
+            12
+          ]
+        },
+        {
+          "building": "V-41",
+          "node": "st_41_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -234,
+            129,
+            12
+          ]
+        },
+        {
+          "building": "V-41",
+          "node": "materials_service_door",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -234,
+            113,
+            12
+          ]
+        },
+        {
+          "building": "V-M06",
+          "node": "v_m06_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -322,
+            198,
+            12.76
+          ]
+        },
+        {
+          "building": "V-M06",
+          "node": "v_m06_core",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -322,
+            206,
+            12.76
+          ]
+        },
+        {
+          "building": "V-M07",
+          "node": "v_m07_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -322,
+            230,
+            14.11
+          ]
+        },
+        {
+          "building": "V-M07",
+          "node": "v_m07_core",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -322,
+            238,
+            14.11
+          ]
+        },
+        {
+          "building": "V-M08",
+          "node": "v_m08_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -298,
+            198,
+            12.76
+          ]
+        },
+        {
+          "building": "V-M08",
+          "node": "v_m08_core",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -298,
+            206,
+            12.76
+          ]
+        },
+        {
+          "building": "V-M09",
+          "node": "v_m09_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -298,
+            230,
+            14.11
+          ]
+        },
+        {
+          "building": "V-M09",
+          "node": "v_m09_core",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -298,
+            238,
+            14.11
+          ]
+        },
+        {
+          "building": "V-M10",
+          "node": "v_m10_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -257,
+            198,
+            12.76
+          ]
+        },
+        {
+          "building": "V-F16",
+          "node": "fw_f_v_f16_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -375,
+            197.5,
+            12.8
+          ]
+        },
+        {
+          "building": "V-F17",
+          "node": "fw_f_v_f17_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -375,
+            236.75,
+            14.1
+          ]
+        },
+        {
+          "building": "V-F18",
+          "node": "fw_f_v_f18_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -230,
+            243,
+            14.5
+          ]
+        },
+        {
+          "building": "V-F19",
+          "node": "fw_f_v_f19_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -241,
+            159.5,
+            12.5
+          ]
+        },
+        {
+          "building": "V-F19",
+          "node": "fw_f_v_f19_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -236.25,
+            155,
+            12.5
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "35",
+          "name": "BYTE BEAT",
+          "featured": true,
+          "building": "V-35",
+          "access": "interest_mid"
+        },
+        {
+          "id": "36",
+          "name": "FRAME",
+          "featured": true,
+          "building": "V-36",
+          "access": "interest_mid"
+        },
+        {
+          "id": "37",
+          "name": "桌游卡牌店",
+          "featured": true,
+          "building": "V-37",
+          "access": "interest_mid"
+        },
+        {
+          "id": "38",
+          "name": "游戏设备维修店",
+          "featured": true,
+          "building": "V-38",
+          "access": "interest_mid"
+        },
+        {
+          "id": "39",
+          "name": "PLAYROOM",
+          "featured": true,
+          "building": "V-39",
+          "access": "interest_mid"
+        },
+        {
+          "id": "40",
+          "name": "兴趣旧物交换店",
+          "featured": true,
+          "building": "V-40",
+          "access": "interest_mid"
+        },
+        {
+          "id": "41",
+          "name": "手作材料店",
+          "featured": true,
+          "building": "V-41",
+          "access": "interest_mid"
+        },
+        {
+          "id": "42",
+          "name": "兴趣街会合庭",
+          "featured": true,
+          "building": null,
+          "access": "interest_mid"
+        }
+      ],
+      "fixtures": [
+        {
+          "source": "architectures[P3-A2]/fixtures[2]",
+          "name": "音游外庭座椅",
+          "kind": "bench",
+          "blocks": [
+            "B02"
+          ],
+          "elevation": 12,
+          "polygon": [
+            [
+              -392,
+              170.5
+            ],
+            [
+              -384,
+              170.5
+            ],
+            [
+              -384,
+              172.5
+            ],
+            [
+              -392,
+              172.5
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A2]/fixtures[3]",
+          "name": "模型展示台",
+          "kind": "screen",
+          "blocks": [
+            "B02"
+          ],
+          "elevation": 12,
+          "polygon": [
+            [
+              -293,
+              141
+            ],
+            [
+              -288,
+              141
+            ],
+            [
+              -288,
+              142
+            ],
+            [
+              -293,
+              142
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A2]/fixtures[4]",
+          "name": "北排住宅取件柜",
+          "kind": "locker",
+          "blocks": [
+            "B02"
+          ],
+          "elevation": 14.244942,
+          "polygon": [
+            [
+              -300,
+              239
+            ],
+            [
+              -299,
+              239
+            ],
+            [
+              -299,
+              242
+            ],
+            [
+              -300,
+              242
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A2]/fixtures[6]",
+          "name": "后场可维护电力接口",
+          "kind": "screen",
+          "blocks": [
+            "B02"
+          ],
+          "elevation": 12,
+          "polygon": [
+            [
+              -383,
+              109
+            ],
+            [
+              -379,
+              109
+            ],
+            [
+              -379,
+              110
+            ],
+            [
+              -383,
+              110
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A2]/fixtures[7]",
+          "name": "坡脚截水带",
+          "kind": "drain",
+          "blocks": [
+            "B02"
+          ],
+          "elevation": 14.388387,
+          "polygon": [
+            [
+              -348,
+              245
+            ],
+            [
+              -322,
+              245
+            ],
+            [
+              -322,
+              246
+            ],
+            [
+              -348,
+              246
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B03",
+      "name": "西侧商住街坊",
+      "buildings": 19,
+      "described": 19,
+      "arrived": 19,
+      "entries": 32,
+      "connected": 32,
+      "roads": 66,
+      "widths": 66,
+      "linked": 66,
+      "parcels": [
+        "P03-A",
+        "P03-B",
+        "P03-C",
+        "P03-D",
+        "P03-E",
+        "P03-F"
+      ],
+      "buildingIds": [
+        "V-11",
+        "V-12",
+        "V-43",
+        "V-44",
+        "V-45",
+        "V-46",
+        "V-F21",
+        "V-F22",
+        "V-F24",
+        "V-F25",
+        "V-F26",
+        "V-F27",
+        "V-F28",
+        "V-F29",
+        "V-F30",
+        "V-F31",
+        "V-F32",
+        "V-F33",
+        "V-F34"
+      ],
+      "entryMap": [
+        {
+          "building": "V-11",
+          "node": "fw_f_v_11_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -124,
+            116,
+            15
+          ]
+        },
+        {
+          "building": "V-11",
+          "node": "fw_f_v_11_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -130,
+            116,
+            15
+          ]
+        },
+        {
+          "building": "V-12",
+          "node": "fw_f_v_12_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -141,
+            264,
+            36.625
+          ]
+        },
+        {
+          "building": "V-43",
+          "node": "fw_f_v_43_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -167.5,
+            204,
+            22.5
+          ]
+        },
+        {
+          "building": "V-43",
+          "node": "fw_f_v_43_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -172,
+            200,
+            22.5
+          ]
+        },
+        {
+          "building": "V-44",
+          "node": "fw_f_v_44_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -158.5,
+            109,
+            16.333333
+          ]
+        },
+        {
+          "building": "V-44",
+          "node": "fw_f_v_44_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -167.5,
+            109,
+            16.333333
+          ]
+        },
+        {
+          "building": "V-45",
+          "node": "fw_f_v_45_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -70.5,
+            209,
+            23
+          ]
+        },
+        {
+          "building": "V-45",
+          "node": "fw_f_v_45_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -66,
+            193,
+            23
+          ]
+        },
+        {
+          "building": "V-46",
+          "node": "fw_f_v_46_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -79,
+            242,
+            26.080383
+          ]
+        },
+        {
+          "building": "V-46",
+          "node": "fw_f_v_46_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -79,
+            250,
+            26.080383
+          ]
+        },
+        {
+          "building": "V-F21",
+          "node": "fw_f_v_f21_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -132,
+            291.25,
+            36.625
+          ]
+        },
+        {
+          "building": "V-F22",
+          "node": "fw_f_v_f22_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -150,
+            208.75,
+            22.5
+          ]
+        },
+        {
+          "building": "V-F22",
+          "node": "fw_f_v_f22_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -150,
+            202.5,
+            22.5
+          ]
+        },
+        {
+          "building": "V-F24",
+          "node": "fw_f_v_f24_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -97,
+            296,
+            31.581818
+          ]
+        },
+        {
+          "building": "V-F25",
+          "node": "fw_f_v_f25_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -62.5,
+            310,
+            35.977273
+          ]
+        },
+        {
+          "building": "V-F26",
+          "node": "fw_f_v_f26_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -40,
+            310,
+            35.977273
+          ]
+        },
+        {
+          "building": "V-F27",
+          "node": "fw_f_v_f27_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -52.25,
+            258,
+            26.080383
+          ]
+        },
+        {
+          "building": "V-F27",
+          "node": "fw_f_v_f27_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -65,
+            248,
+            26.080383
+          ]
+        },
+        {
+          "building": "V-F28",
+          "node": "fw_f_v_f28_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -32.25,
+            258,
+            26.080383
+          ]
+        },
+        {
+          "building": "V-F29",
+          "node": "fw_f_v_f29_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -98,
+            110.75,
+            14.5
+          ]
+        },
+        {
+          "building": "V-F29",
+          "node": "fw_f_v_f29_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -102,
+            116,
+            14.5
+          ]
+        },
+        {
+          "building": "V-F30",
+          "node": "fw_f_v_f30_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -78,
+            211,
+            23
+          ]
+        },
+        {
+          "building": "V-F30",
+          "node": "fw_f_v_f30_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -78,
+            199,
+            23
+          ]
+        },
+        {
+          "building": "V-F31",
+          "node": "fw_f_v_f31_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -54,
+            211,
+            23
+          ]
+        },
+        {
+          "building": "V-F31",
+          "node": "fw_f_v_f31_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -54,
+            205,
+            23
+          ]
+        },
+        {
+          "building": "V-F32",
+          "node": "fw_f_v_f32_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -166.75,
+            143,
+            16.333333
+          ]
+        },
+        {
+          "building": "V-F32",
+          "node": "fw_f_v_f32_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -156.25,
+            143,
+            16.333333
+          ]
+        },
+        {
+          "building": "V-F33",
+          "node": "fw_f_v_f33_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -143,
+            143,
+            16.333333
+          ]
+        },
+        {
+          "building": "V-F33",
+          "node": "fw_f_v_f33_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -133,
+            143,
+            16.333333
+          ]
+        },
+        {
+          "building": "V-F34",
+          "node": "fw_f_v_f34_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -120,
+            143,
+            16.333333
+          ]
+        },
+        {
+          "building": "V-F34",
+          "node": "fw_f_v_f34_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -110,
+            143,
+            16.333333
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "10",
+          "name": "街坊共用院",
+          "featured": true,
+          "building": null,
+          "access": "west_court_gate"
+        },
+        {
+          "id": "11",
+          "name": "小修理铺",
+          "featured": true,
+          "building": "V-11",
+          "access": "old_repair"
+        },
+        {
+          "id": "12",
+          "name": "临街公寓",
+          "featured": false,
+          "building": "V-12",
+          "access": "old_north_gate"
+        },
+        {
+          "id": "43",
+          "name": "共享木作工坊",
+          "featured": true,
+          "building": "V-43",
+          "access": "fw_f_old_low2"
+        },
+        {
+          "id": "44",
+          "name": "衣物修改店",
+          "featured": true,
+          "building": "V-44",
+          "access": "old_repair"
+        },
+        {
+          "id": "45",
+          "name": "小型印制工作室",
+          "featured": true,
+          "building": "V-45",
+          "access": "west_market"
+        },
+        {
+          "id": "46",
+          "name": "旧书交换屋",
+          "featured": true,
+          "building": "V-46",
+          "access": "west_court_gate"
+        }
+      ],
+      "fixtures": []
+    },
+    {
+      "id": "B04",
+      "name": "食品采购与夜食街",
+      "buildings": 17,
+      "described": 17,
+      "arrived": 17,
+      "entries": 41,
+      "connected": 41,
+      "roads": 54,
+      "widths": 54,
+      "linked": 54,
+      "parcels": [
+        "P04-A",
+        "P04-B",
+        "P04-C",
+        "P04-D",
+        "P04-E",
+        "P04-F"
+      ],
+      "buildingIds": [
+        "V-07",
+        "V-08",
+        "V-48",
+        "V-49",
+        "V-50",
+        "V-51",
+        "V-52",
+        "V-53",
+        "V-A01",
+        "V-A02",
+        "V-A03",
+        "V-F36",
+        "V-F37",
+        "V-F38",
+        "V-F39",
+        "V-F40",
+        "V-F41"
+      ],
+      "entryMap": [
+        {
+          "building": "V-07",
+          "node": "bakery_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -7,
+            145,
+            20
+          ]
+        },
+        {
+          "building": "V-07",
+          "node": "bakery_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -27,
+            137,
+            20
+          ]
+        },
+        {
+          "building": "V-07",
+          "node": "bakery_resident_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -16,
+            150,
+            20
+          ]
+        },
+        {
+          "building": "V-08",
+          "node": "food_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            58,
+            135,
+            20
+          ]
+        },
+        {
+          "building": "V-08",
+          "node": "food_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            46,
+            145,
+            20
+          ]
+        },
+        {
+          "building": "V-08",
+          "node": "food_resident_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            58,
+            142,
+            20
+          ]
+        },
+        {
+          "building": "V-48",
+          "node": "dessert_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            125,
+            164,
+            20
+          ]
+        },
+        {
+          "building": "V-48",
+          "node": "dessert_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            125,
+            148,
+            20
+          ]
+        },
+        {
+          "building": "V-49",
+          "node": "fw_f_v_49_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            211.5,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-49",
+          "node": "fw_f_v_49_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            202.5,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-50",
+          "node": "fw_f_v_50_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            111.5,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-50",
+          "node": "fw_f_v_50_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            102.5,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-51",
+          "node": "v_51_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -7,
+            101.5,
+            20
+          ]
+        },
+        {
+          "building": "V-51",
+          "node": "v_51_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -7,
+            96,
+            20
+          ]
+        },
+        {
+          "building": "V-51",
+          "node": "v_51_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -27,
+            102,
+            20
+          ]
+        },
+        {
+          "building": "V-52",
+          "node": "v_52_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            58,
+            101.5,
+            20
+          ]
+        },
+        {
+          "building": "V-52",
+          "node": "v_52_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            58,
+            96,
+            20
+          ]
+        },
+        {
+          "building": "V-52",
+          "node": "v_52_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            34,
+            102,
+            20
+          ]
+        },
+        {
+          "building": "V-53",
+          "node": "fw_f_v_53_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            232.5,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-53",
+          "node": "fw_f_v_53_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            223.5,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-A01",
+          "node": "v_a01_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -7,
+            117.5,
+            20
+          ]
+        },
+        {
+          "building": "V-A01",
+          "node": "v_a01_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -7,
+            112,
+            20
+          ]
+        },
+        {
+          "building": "V-A01",
+          "node": "v_a01_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -27,
+            118,
+            20
+          ]
+        },
+        {
+          "building": "V-A02",
+          "node": "v_a02_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            58,
+            117,
+            20
+          ]
+        },
+        {
+          "building": "V-A02",
+          "node": "v_a02_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            58,
+            112,
+            20
+          ]
+        },
+        {
+          "building": "V-A02",
+          "node": "v_a02_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            34,
+            117,
+            20
+          ]
+        },
+        {
+          "building": "V-A03",
+          "node": "v_a03_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            143,
+            164,
+            20
+          ]
+        },
+        {
+          "building": "V-A03",
+          "node": "v_a03_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            137,
+            164,
+            20
+          ]
+        },
+        {
+          "building": "V-A03",
+          "node": "v_a03_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            143,
+            148,
+            20
+          ]
+        },
+        {
+          "building": "V-F36",
+          "node": "fw_f_v_f36_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            257.25,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-F36",
+          "node": "fw_f_v_f36_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            245.75,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-F37",
+          "node": "fw_f_v_f37_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            134,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-F37",
+          "node": "fw_f_v_f37_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            124,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-F38",
+          "node": "fw_f_v_f38_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            157,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-F38",
+          "node": "fw_f_v_f38_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            147,
+            114,
+            20
+          ]
+        },
+        {
+          "building": "V-F39",
+          "node": "fw_f_v_f39_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            200,
+            169,
+            22.5
+          ]
+        },
+        {
+          "building": "V-F39",
+          "node": "fw_f_v_f39_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            206,
+            169,
+            22.5
+          ]
+        },
+        {
+          "building": "V-F40",
+          "node": "fw_f_v_f40_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            235,
+            164,
+            23
+          ]
+        },
+        {
+          "building": "V-F40",
+          "node": "fw_f_v_f40_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            225,
+            164,
+            23
+          ]
+        },
+        {
+          "building": "V-F41",
+          "node": "fw_f_v_f41_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            258,
+            164,
+            23
+          ]
+        },
+        {
+          "building": "V-F41",
+          "node": "fw_f_v_f41_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            248,
+            164,
+            23
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "03",
+          "name": "社区商店街",
+          "featured": false,
+          "building": null,
+          "access": "market_entry"
+        },
+        {
+          "id": "07",
+          "name": "烘焙店",
+          "featured": true,
+          "building": "V-07",
+          "access": "market_turn"
+        },
+        {
+          "id": "08",
+          "name": "生鲜小超市",
+          "featured": true,
+          "building": "V-08",
+          "access": "market_back"
+        },
+        {
+          "id": "47",
+          "name": "夜食转角",
+          "featured": true,
+          "building": null,
+          "access": "alley_corner"
+        },
+        {
+          "id": "48",
+          "name": "甜品店",
+          "featured": true,
+          "building": "V-48",
+          "access": "alley_corner"
+        },
+        {
+          "id": "49",
+          "name": "家常面馆",
+          "featured": true,
+          "building": "V-49",
+          "access": "food_east"
+        },
+        {
+          "id": "50",
+          "name": "家常熟食店",
+          "featured": true,
+          "building": "V-50",
+          "access": "food_east"
+        },
+        {
+          "id": "51",
+          "name": "豆制品与早餐铺",
+          "featured": true,
+          "building": "V-51",
+          "access": "market_turn"
+        },
+        {
+          "id": "52",
+          "name": "干货香料铺",
+          "featured": true,
+          "building": "V-52",
+          "access": "market_back"
+        },
+        {
+          "id": "53",
+          "name": "晚班汤饭店",
+          "featured": true,
+          "building": "V-53",
+          "access": "food_east"
+        }
+      ],
+      "fixtures": []
+    },
+    {
+      "id": "B05",
+      "name": "小店生活街坊",
+      "buildings": 22,
+      "described": 22,
+      "arrived": 22,
+      "entries": 36,
+      "connected": 36,
+      "roads": 89,
+      "widths": 89,
+      "linked": 89,
+      "parcels": [
+        "P05-A",
+        "P05-B",
+        "P05-C",
+        "P05-D",
+        "P05-E",
+        "P05-F",
+        "P05-G",
+        "P05-H",
+        "P05-I",
+        "P05-J"
+      ],
+      "buildingIds": [
+        "V-04",
+        "V-09",
+        "V-54",
+        "V-55",
+        "V-57",
+        "V-A04",
+        "V-A05",
+        "V-A06",
+        "V-A07",
+        "V-A08",
+        "V-A09",
+        "V-A10",
+        "V-A11",
+        "V-A12",
+        "V-A13",
+        "V-A14",
+        "V-F42",
+        "V-F43",
+        "V-F44",
+        "V-F45",
+        "V-F46",
+        "V-F47"
+      ],
+      "entryMap": [
+        {
+          "building": "V-04",
+          "node": "shop_front_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            88,
+            255,
+            28
+          ]
+        },
+        {
+          "building": "V-04",
+          "node": "shop_rear_door",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            70,
+            257,
+            28
+          ]
+        },
+        {
+          "building": "V-09",
+          "node": "laundry_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            202,
+            198,
+            24
+          ]
+        },
+        {
+          "building": "V-09",
+          "node": "fw_f_laundry_back1",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            202,
+            214,
+            24
+          ]
+        },
+        {
+          "building": "V-54",
+          "node": "fw_f_v_54_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            218.5,
+            198,
+            24
+          ]
+        },
+        {
+          "building": "V-54",
+          "node": "fw_f_v_54_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            218.5,
+            214,
+            24
+          ]
+        },
+        {
+          "building": "V-55",
+          "node": "fw_f_v_55_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            148,
+            202,
+            24
+          ]
+        },
+        {
+          "building": "V-55",
+          "node": "fw_f_v_55_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            148,
+            210,
+            24
+          ]
+        },
+        {
+          "building": "V-57",
+          "node": "v_57_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            42,
+            319,
+            45.841176
+          ]
+        },
+        {
+          "building": "V-57",
+          "node": "photo_resident_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            48,
+            319,
+            45.841176
+          ]
+        },
+        {
+          "building": "V-A04",
+          "node": "v_a04_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            32,
+            204,
+            23
+          ]
+        },
+        {
+          "building": "V-A04",
+          "node": "v_a04_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            32,
+            197,
+            23
+          ]
+        },
+        {
+          "building": "V-A04",
+          "node": "v_a04_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            12,
+            204,
+            23
+          ]
+        },
+        {
+          "building": "V-A05",
+          "node": "v_a05_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            32,
+            223,
+            25
+          ]
+        },
+        {
+          "building": "V-A06",
+          "node": "v_a06_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            50,
+            243,
+            28
+          ]
+        },
+        {
+          "building": "V-A07",
+          "node": "v_a07_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            73,
+            236.5,
+            26.69
+          ]
+        },
+        {
+          "building": "V-A07",
+          "node": "v_a07_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            73,
+            231,
+            26.69
+          ]
+        },
+        {
+          "building": "V-A07",
+          "node": "v_a07_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            57,
+            236,
+            26.69
+          ]
+        },
+        {
+          "building": "V-A08",
+          "node": "v_a08_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            88,
+            277.5,
+            30.021515
+          ]
+        },
+        {
+          "building": "V-A08",
+          "node": "v_a08_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            88,
+            273,
+            30.021515
+          ]
+        },
+        {
+          "building": "V-A08",
+          "node": "v_a08_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            70,
+            277,
+            30.021515
+          ]
+        },
+        {
+          "building": "V-A09",
+          "node": "v_a09_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            88,
+            291.5,
+            34.317273
+          ]
+        },
+        {
+          "building": "V-A10",
+          "node": "v_a10_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            62,
+            319,
+            45.841176
+          ]
+        },
+        {
+          "building": "V-A11",
+          "node": "v_a11_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            82,
+            319,
+            45.841176
+          ]
+        },
+        {
+          "building": "V-A12",
+          "node": "v_a12_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            137,
+            262,
+            29
+          ]
+        },
+        {
+          "building": "V-A12",
+          "node": "v_a12_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            137,
+            256,
+            29
+          ]
+        },
+        {
+          "building": "V-A12",
+          "node": "v_a12_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            155,
+            262,
+            29
+          ]
+        },
+        {
+          "building": "V-A13",
+          "node": "v_a13_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            161,
+            282.5,
+            32.136364
+          ]
+        },
+        {
+          "building": "V-A14",
+          "node": "v_a14_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            191,
+            304,
+            40.127273
+          ]
+        },
+        {
+          "building": "V-F42",
+          "node": "fw_f_v_f42_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            193,
+            234,
+            26
+          ]
+        },
+        {
+          "building": "V-F43",
+          "node": "fw_f_v_f43_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            215,
+            263.75,
+            27.5
+          ]
+        },
+        {
+          "building": "V-F44",
+          "node": "fw_f_v_f44_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            237.25,
+            278,
+            29.309091
+          ]
+        },
+        {
+          "building": "V-F45",
+          "node": "fw_f_v_f45_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            253,
+            245.5,
+            26
+          ]
+        },
+        {
+          "building": "V-F46",
+          "node": "fw_f_v_f46_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            253,
+            272,
+            27.2
+          ]
+        },
+        {
+          "building": "V-F47",
+          "node": "fw_f_v_f47_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            148,
+            225.25,
+            25
+          ]
+        },
+        {
+          "building": "V-F47",
+          "node": "fw_f_v_f47_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            154,
+            228,
+            25
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "04",
+          "name": "月台杂货与住家",
+          "featured": true,
+          "building": "V-04",
+          "access": "shop_entry"
+        },
+        {
+          "id": "05",
+          "name": "树下小空地",
+          "featured": true,
+          "building": null,
+          "access": "court"
+        },
+        {
+          "id": "09",
+          "name": "自助洗衣店",
+          "featured": true,
+          "building": "V-09",
+          "access": "shop_neighbors"
+        },
+        {
+          "id": "28",
+          "name": "小店货运侧院",
+          "featured": false,
+          "building": null,
+          "access": "yard"
+        },
+        {
+          "id": "29",
+          "name": "店侧台阶",
+          "featured": false,
+          "building": null,
+          "access": "steps_mid"
+        },
+        {
+          "id": "54",
+          "name": "花草店",
+          "featured": true,
+          "building": "V-54",
+          "access": "shop_neighbors"
+        },
+        {
+          "id": "55",
+          "name": "包装修补工作室",
+          "featured": true,
+          "building": "V-55",
+          "access": "shop_neighbors"
+        },
+        {
+          "id": "56",
+          "name": "邻里茶桌庭",
+          "featured": true,
+          "building": null,
+          "access": "home_north"
+        },
+        {
+          "id": "57",
+          "name": "FLASHBACK",
+          "featured": true,
+          "building": "V-57",
+          "access": "home_north"
+        }
+      ],
+      "fixtures": [
+        {
+          "source": "architectures[P3-A1]/fixtures[0]",
+          "name": "树下座椅",
+          "kind": "bench",
+          "blocks": [
+            "B05"
+          ],
+          "elevation": 23,
+          "polygon": [
+            [
+              49,
+              219
+            ],
+            [
+              56,
+              219
+            ],
+            [
+              56,
+              220.5
+            ],
+            [
+              49,
+              220.5
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A1]/fixtures[1]",
+          "name": "侧台座椅",
+          "kind": "bench",
+          "blocks": [
+            "B05"
+          ],
+          "elevation": 39.636364,
+          "polygon": [
+            [
+              125,
+              308
+            ],
+            [
+              126.2,
+              308
+            ],
+            [
+              126.2,
+              312
+            ],
+            [
+              125,
+              312
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A1]/fixtures[2]",
+          "name": "取件与交接柜",
+          "kind": "locker",
+          "blocks": [
+            "B05"
+          ],
+          "elevation": 28,
+          "polygon": [
+            [
+              91.4,
+              260
+            ],
+            [
+              92,
+              260
+            ],
+            [
+              92,
+              263
+            ],
+            [
+              91.4,
+              263
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A1]/fixtures[5]",
+          "name": "门前截水沟",
+          "kind": "drain",
+          "blocks": [
+            "B05"
+          ],
+          "elevation": 28,
+          "polygon": [
+            [
+              88.1,
+              247
+            ],
+            [
+              88.5,
+              247
+            ],
+            [
+              88.5,
+              267
+            ],
+            [
+              88.1,
+              267
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A1]/fixtures[6]",
+          "name": "背侧检修排水带",
+          "kind": "drain",
+          "blocks": [
+            "B05"
+          ],
+          "elevation": 28,
+          "polygon": [
+            [
+              69,
+              247
+            ],
+            [
+              70,
+              247
+            ],
+            [
+              70,
+              267
+            ],
+            [
+              69,
+              267
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A1]/fixtures[7]",
+          "name": "院口楼宇导向",
+          "kind": "screen",
+          "blocks": [
+            "B05"
+          ],
+          "elevation": 24.631579,
+          "polygon": [
+            [
+              36,
+              219
+            ],
+            [
+              36.5,
+              219
+            ],
+            [
+              36.5,
+              220
+            ],
+            [
+              36,
+              220
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A1]/fixtures[8]",
+          "name": "洗衣等候座位",
+          "kind": "bench",
+          "blocks": [
+            "B05"
+          ],
+          "elevation": 23.819767,
+          "polygon": [
+            [
+              195,
+              195
+            ],
+            [
+              199,
+              195
+            ],
+            [
+              199,
+              196
+            ],
+            [
+              195,
+              196
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B06",
+      "name": "坡地平台住宅",
+      "buildings": 26,
+      "described": 26,
+      "arrived": 26,
+      "entries": 31,
+      "connected": 31,
+      "roads": 144,
+      "widths": 144,
+      "linked": 144,
+      "parcels": [
+        "P06-A",
+        "P06-B",
+        "P06-C",
+        "P06-D",
+        "P06-E",
+        "P06-F"
+      ],
+      "buildingIds": [
+        "V-13",
+        "V-60",
+        "V-61",
+        "V-A15",
+        "V-A16",
+        "V-A17",
+        "V-F01",
+        "V-F02",
+        "V-F03",
+        "V-F04",
+        "V-F05",
+        "V-F06",
+        "V-F48",
+        "V-F50",
+        "V-F52",
+        "V-F53",
+        "V-F54",
+        "V-F57",
+        "V-F58",
+        "V-F59",
+        "V-F60",
+        "V-F61",
+        "V-F62",
+        "V-F63",
+        "V-F64",
+        "V-F65"
+      ],
+      "entryMap": [
+        {
+          "building": "V-13",
+          "node": "homes_entry",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            185,
+            398,
+            72.315789
+          ]
+        },
+        {
+          "building": "V-13",
+          "node": "v_13_upper",
+          "role": "resident",
+          "level": "2F",
+          "point": [
+            185,
+            414,
+            75.315789
+          ]
+        },
+        {
+          "building": "V-60",
+          "node": "fw_f_v_60_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            155.5,
+            458,
+            90.285714
+          ]
+        },
+        {
+          "building": "V-61",
+          "node": "fw_f_v_61_public",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -137.5,
+            463,
+            86.692308
+          ]
+        },
+        {
+          "building": "V-61",
+          "node": "fw_f_v_61_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -128.5,
+            463,
+            86.692308
+          ]
+        },
+        {
+          "building": "V-A15",
+          "node": "v_a15_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            205,
+            398,
+            72.315789
+          ]
+        },
+        {
+          "building": "V-A15",
+          "node": "v_a15_upper",
+          "role": "resident",
+          "level": "2F",
+          "point": [
+            205,
+            414,
+            75.315789
+          ]
+        },
+        {
+          "building": "V-A16",
+          "node": "v_a16_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            225,
+            398,
+            72.315789
+          ]
+        },
+        {
+          "building": "V-A16",
+          "node": "v_a16_upper",
+          "role": "resident",
+          "level": "2F",
+          "point": [
+            225,
+            414,
+            75.315789
+          ]
+        },
+        {
+          "building": "V-A17",
+          "node": "v_a17_door",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            167,
+            398,
+            72.315789
+          ]
+        },
+        {
+          "building": "V-A17",
+          "node": "v_a17_upper",
+          "role": "resident",
+          "level": "2F",
+          "point": [
+            167,
+            414,
+            75.315789
+          ]
+        },
+        {
+          "building": "V-F01",
+          "node": "fw_f_v_f01_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -136,
+            409,
+            73.440476
+          ]
+        },
+        {
+          "building": "V-F02",
+          "node": "fw_f_v_f02_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -114,
+            409,
+            73.440476
+          ]
+        },
+        {
+          "building": "V-F03",
+          "node": "fw_f_v_f03_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -92,
+            409,
+            73.440476
+          ]
+        },
+        {
+          "building": "V-F04",
+          "node": "fw_f_v_f04_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -70,
+            409,
+            73.440476
+          ]
+        },
+        {
+          "building": "V-F05",
+          "node": "fw_f_v_f05_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -48,
+            409,
+            73.440476
+          ]
+        },
+        {
+          "building": "V-F06",
+          "node": "fw_f_v_f06_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -26,
+            409,
+            73.440476
+          ]
+        },
+        {
+          "building": "V-F48",
+          "node": "fw_f_v_f48_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -113.5,
+            462,
+            86.692308
+          ]
+        },
+        {
+          "building": "V-F50",
+          "node": "fw_f_v_f50_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -68,
+            466.75,
+            90.821429
+          ]
+        },
+        {
+          "building": "V-F52",
+          "node": "fw_f_v_f52_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -122.25,
+            510,
+            104.370748
+          ]
+        },
+        {
+          "building": "V-F53",
+          "node": "fw_f_v_f53_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -65,
+            505.25,
+            104.370748
+          ]
+        },
+        {
+          "building": "V-F54",
+          "node": "fw_f_v_f54_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -24,
+            495.75,
+            102.607143
+          ]
+        },
+        {
+          "building": "V-F57",
+          "node": "fw_f_v_f57_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            35.75,
+            504,
+            105.831746
+          ]
+        },
+        {
+          "building": "V-F58",
+          "node": "fw_f_v_f58_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            56.75,
+            504,
+            105.831746
+          ]
+        },
+        {
+          "building": "V-F59",
+          "node": "fw_f_v_f59_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            192,
+            458,
+            91.285714
+          ]
+        },
+        {
+          "building": "V-F60",
+          "node": "fw_f_v_f60_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            220.75,
+            458,
+            91.785714
+          ]
+        },
+        {
+          "building": "V-F61",
+          "node": "fw_f_v_f61_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            261,
+            466,
+            93.928571
+          ]
+        },
+        {
+          "building": "V-F62",
+          "node": "fw_f_v_f62_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            133,
+            501,
+            104.428571
+          ]
+        },
+        {
+          "building": "V-F63",
+          "node": "fw_f_v_f63_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            169.75,
+            489,
+            102.714286
+          ]
+        },
+        {
+          "building": "V-F64",
+          "node": "fw_f_v_f64_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            238,
+            513,
+            108.208995
+          ]
+        },
+        {
+          "building": "V-F65",
+          "node": "fw_f_v_f65_resident",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            258.75,
+            513,
+            108.208995
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "13",
+          "name": "坡上住宅",
+          "featured": false,
+          "building": "V-13",
+          "access": "upper"
+        },
+        {
+          "id": "14",
+          "name": "转角观河点",
+          "featured": true,
+          "building": null,
+          "access": "upper"
+        },
+        {
+          "id": "58",
+          "name": "坡地公共到达节点",
+          "featured": true,
+          "building": null,
+          "access": "slope_lift_low"
+        },
+        {
+          "id": "59",
+          "name": "平台阅读角",
+          "featured": true,
+          "building": null,
+          "access": "platform_mid"
+        },
+        {
+          "id": "60",
+          "name": "四季温室",
+          "featured": true,
+          "building": "V-60",
+          "access": "platform_mid"
+        },
+        {
+          "id": "61",
+          "name": "坡地小食堂",
+          "featured": true,
+          "building": "V-61",
+          "access": "platform_west"
+        }
+      ],
+      "fixtures": [
+        {
+          "source": "architectures[P3-A1]/fixtures[3]",
+          "name": "平台状态屏",
+          "kind": "screen",
+          "blocks": [
+            "B06"
+          ],
+          "elevation": 78.315789,
+          "polygon": [
+            [
+              276,
+              393
+            ],
+            [
+              276.5,
+              393
+            ],
+            [
+              276.5,
+              394
+            ],
+            [
+              276,
+              394
+            ]
+          ]
+        },
+        {
+          "source": "architectures[P3-A1]/fixtures[4]",
+          "name": "电梯维护位",
+          "kind": "screen",
+          "blocks": [
+            "B06"
+          ],
+          "elevation": 78.315789,
+          "polygon": [
+            [
+              275,
+              386
+            ],
+            [
+              279,
+              386
+            ],
+            [
+              279,
+              389
+            ],
+            [
+              275,
+              389
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B07",
+      "name": "星见学园与放学街",
+      "buildings": 12,
+      "described": 12,
+      "arrived": 12,
+      "entries": 20,
+      "connected": 20,
+      "roads": 40,
+      "widths": 40,
+      "linked": 40,
+      "parcels": [
+        "P07-A",
+        "P07-B",
+        "P07-C"
+      ],
+      "buildingIds": [
+        "V-19",
+        "V-62",
+        "V-63",
+        "V-65",
+        "V-EF01",
+        "V-EF02",
+        "V-EF03",
+        "V-EF04",
+        "V-EF05",
+        "V-EF06",
+        "V-EF07",
+        "V-EF08"
+      ],
+      "entryMap": [
+        {
+          "building": "V-19",
+          "node": "school_building_entry",
+          "role": "student",
+          "level": "1F",
+          "point": [
+            440,
+            269,
+            26
+          ]
+        },
+        {
+          "building": "V-19",
+          "node": "school_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            500,
+            285,
+            26
+          ]
+        },
+        {
+          "building": "V-62",
+          "node": "stationery_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            416,
+            164,
+            26
+          ]
+        },
+        {
+          "building": "V-62",
+          "node": "stationery_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            416,
+            148,
+            26
+          ]
+        },
+        {
+          "building": "V-63",
+          "node": "fw_e_v_63_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            452,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-63",
+          "node": "fw_e_v_63_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            452,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-65",
+          "node": "takeaway_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            465,
+            164,
+            26
+          ]
+        },
+        {
+          "building": "V-65",
+          "node": "takeaway_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            465,
+            164,
+            26
+          ]
+        },
+        {
+          "building": "V-EF01",
+          "node": "fw_e_v_ef01_student0",
+          "role": "student",
+          "level": "1F",
+          "point": [
+            411,
+            291,
+            26
+          ]
+        },
+        {
+          "building": "V-EF02",
+          "node": "fw_e_v_ef02_student0",
+          "role": "student",
+          "level": "1F",
+          "point": [
+            480,
+            246,
+            26
+          ]
+        },
+        {
+          "building": "V-EF03",
+          "node": "fw_e_v_ef03_student0",
+          "role": "student",
+          "level": "1F",
+          "point": [
+            440,
+            313,
+            26
+          ]
+        },
+        {
+          "building": "V-EF04",
+          "node": "fw_e_v_ef04_student0",
+          "role": "student",
+          "level": "1F",
+          "point": [
+            480,
+            313,
+            26
+          ]
+        },
+        {
+          "building": "V-EF04",
+          "node": "fw_e_v_ef04_service1",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            495,
+            322,
+            26
+          ]
+        },
+        {
+          "building": "V-EF05",
+          "node": "fw_e_v_ef05_student0",
+          "role": "student",
+          "level": "1F",
+          "point": [
+            449,
+            197,
+            26
+          ]
+        },
+        {
+          "building": "V-EF06",
+          "node": "fw_e_v_ef06_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            478,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF06",
+          "node": "fw_e_v_ef06_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            478,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF07",
+          "node": "fw_e_v_ef07_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            497,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF07",
+          "node": "fw_e_v_ef07_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            497,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF08",
+          "node": "fw_e_v_ef08_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            516,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF08",
+          "node": "fw_e_v_ef08_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            516,
+            378,
+            41
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "19",
+          "name": "星见学园",
+          "featured": true,
+          "building": "V-19",
+          "access": "school_gate"
+        },
+        {
+          "id": "62",
+          "name": "校外文具与日常用品店",
+          "featured": true,
+          "building": "V-62",
+          "access": "school_stationery_front"
+        },
+        {
+          "id": "63",
+          "name": "体育用品店",
+          "featured": true,
+          "building": "V-63",
+          "access": "school_upper_street"
+        },
+        {
+          "id": "64",
+          "name": "社区公共球场",
+          "featured": true,
+          "building": null,
+          "access": "school_upper_street"
+        },
+        {
+          "id": "65",
+          "name": "放学饮品与外带铺",
+          "featured": true,
+          "building": "V-65",
+          "access": "school_takeaway_front"
+        },
+        {
+          "id": "66",
+          "name": "校外等候庭",
+          "featured": true,
+          "building": null,
+          "access": "school_south_walk"
+        }
+      ],
+      "fixtures": []
+    },
+    {
+      "id": "B08",
+      "name": "东侧中层住宅",
+      "buildings": 30,
+      "described": 30,
+      "arrived": 30,
+      "entries": 60,
+      "connected": 60,
+      "roads": 51,
+      "widths": 51,
+      "linked": 51,
+      "parcels": [
+        "P08-A",
+        "P08-B",
+        "P08-C"
+      ],
+      "buildingIds": [
+        "V-16",
+        "V-18",
+        "V-67",
+        "V-68",
+        "V-69",
+        "V-70",
+        "V-EF09",
+        "V-EF10",
+        "V-EF11",
+        "V-EF12",
+        "V-EF13",
+        "V-EF14",
+        "V-EF15",
+        "V-EF16",
+        "V-EF17",
+        "V-EF18",
+        "V-EF19",
+        "V-EF20",
+        "V-EF21",
+        "V-EF22",
+        "V-EF23",
+        "V-EF24",
+        "V-EF25",
+        "V-EF26",
+        "V-EF27",
+        "V-EF28",
+        "V-EF29",
+        "V-EF30",
+        "V-EF31",
+        "V-EF32"
+      ],
+      "entryMap": [
+        {
+          "building": "V-16",
+          "node": "clinic_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            725,
+            188,
+            9
+          ]
+        },
+        {
+          "building": "V-16",
+          "node": "clinic_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            725,
+            210,
+            9
+          ]
+        },
+        {
+          "building": "V-18",
+          "node": "fw_e_v_18_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            630,
+            295,
+            29
+          ]
+        },
+        {
+          "building": "V-18",
+          "node": "fw_e_v_18_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            630,
+            295,
+            29
+          ]
+        },
+        {
+          "building": "V-67",
+          "node": "fw_e_v_67_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            582,
+            204,
+            29
+          ]
+        },
+        {
+          "building": "V-67",
+          "node": "fw_e_v_67_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            582,
+            204,
+            29
+          ]
+        },
+        {
+          "building": "V-68",
+          "node": "fw_e_v_68_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            749,
+            188,
+            9
+          ]
+        },
+        {
+          "building": "V-68",
+          "node": "fw_e_v_68_service1",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            749,
+            204,
+            9
+          ]
+        },
+        {
+          "building": "V-69",
+          "node": "fw_e_v_69_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            582,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-69",
+          "node": "fw_e_v_69_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            582,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-70",
+          "node": "fw_e_v_70_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            770,
+            188,
+            9
+          ]
+        },
+        {
+          "building": "V-70",
+          "node": "fw_e_v_70_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            770,
+            188,
+            9
+          ]
+        },
+        {
+          "building": "V-EF09",
+          "node": "fw_e_v_ef09_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            583.5,
+            220,
+            29
+          ]
+        },
+        {
+          "building": "V-EF09",
+          "node": "fw_e_v_ef09_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            583.5,
+            220,
+            29
+          ]
+        },
+        {
+          "building": "V-EF10",
+          "node": "fw_e_v_ef10_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            609.5,
+            220,
+            29
+          ]
+        },
+        {
+          "building": "V-EF10",
+          "node": "fw_e_v_ef10_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            609.5,
+            220,
+            29
+          ]
+        },
+        {
+          "building": "V-EF11",
+          "node": "fw_e_v_ef11_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            636.5,
+            220,
+            29
+          ]
+        },
+        {
+          "building": "V-EF11",
+          "node": "fw_e_v_ef11_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            636.5,
+            220,
+            29
+          ]
+        },
+        {
+          "building": "V-EF12",
+          "node": "fw_e_v_ef12_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            605.5,
+            207,
+            29
+          ]
+        },
+        {
+          "building": "V-EF12",
+          "node": "fw_e_v_ef12_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            605.5,
+            207,
+            29
+          ]
+        },
+        {
+          "building": "V-EF13",
+          "node": "fw_e_v_ef13_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            625,
+            207,
+            29
+          ]
+        },
+        {
+          "building": "V-EF13",
+          "node": "fw_e_v_ef13_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            625,
+            207,
+            29
+          ]
+        },
+        {
+          "building": "V-EF14",
+          "node": "fw_e_v_ef14_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            647.5,
+            207,
+            29
+          ]
+        },
+        {
+          "building": "V-EF14",
+          "node": "fw_e_v_ef14_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            647.5,
+            207,
+            29
+          ]
+        },
+        {
+          "building": "V-EF15",
+          "node": "fw_e_v_ef15_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            590,
+            297,
+            29
+          ]
+        },
+        {
+          "building": "V-EF15",
+          "node": "fw_e_v_ef15_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            590,
+            297,
+            29
+          ]
+        },
+        {
+          "building": "V-EF16",
+          "node": "fw_e_v_ef16_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            585,
+            313,
+            29
+          ]
+        },
+        {
+          "building": "V-EF16",
+          "node": "fw_e_v_ef16_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            585,
+            313,
+            29
+          ]
+        },
+        {
+          "building": "V-EF17",
+          "node": "fw_e_v_ef17_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            617,
+            313,
+            29
+          ]
+        },
+        {
+          "building": "V-EF17",
+          "node": "fw_e_v_ef17_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            617,
+            313,
+            29
+          ]
+        },
+        {
+          "building": "V-EF18",
+          "node": "fw_e_v_ef18_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            648.5,
+            313,
+            29
+          ]
+        },
+        {
+          "building": "V-EF18",
+          "node": "fw_e_v_ef18_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            648.5,
+            313,
+            29
+          ]
+        },
+        {
+          "building": "V-EF19",
+          "node": "fw_e_v_ef19_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            727.5,
+            228,
+            9
+          ]
+        },
+        {
+          "building": "V-EF19",
+          "node": "fw_e_v_ef19_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            727.5,
+            228,
+            9
+          ]
+        },
+        {
+          "building": "V-EF20",
+          "node": "fw_e_v_ef20_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            763.5,
+            228,
+            9
+          ]
+        },
+        {
+          "building": "V-EF20",
+          "node": "fw_e_v_ef20_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            763.5,
+            228,
+            9
+          ]
+        },
+        {
+          "building": "V-EF21",
+          "node": "fw_e_v_ef21_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            803.5,
+            228,
+            9
+          ]
+        },
+        {
+          "building": "V-EF21",
+          "node": "fw_e_v_ef21_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            803.5,
+            228,
+            9
+          ]
+        },
+        {
+          "building": "V-EF22",
+          "node": "fw_e_v_ef22_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            727.5,
+            278,
+            12
+          ]
+        },
+        {
+          "building": "V-EF22",
+          "node": "fw_e_v_ef22_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            727.5,
+            278,
+            12
+          ]
+        },
+        {
+          "building": "V-EF23",
+          "node": "fw_e_v_ef23_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            763.5,
+            278,
+            12
+          ]
+        },
+        {
+          "building": "V-EF23",
+          "node": "fw_e_v_ef23_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            763.5,
+            278,
+            12
+          ]
+        },
+        {
+          "building": "V-EF24",
+          "node": "fw_e_v_ef24_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            803.5,
+            278,
+            12
+          ]
+        },
+        {
+          "building": "V-EF24",
+          "node": "fw_e_v_ef24_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            803.5,
+            278,
+            12
+          ]
+        },
+        {
+          "building": "V-EF25",
+          "node": "fw_e_v_ef25_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            727.5,
+            325,
+            15
+          ]
+        },
+        {
+          "building": "V-EF25",
+          "node": "fw_e_v_ef25_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            727.5,
+            325,
+            15
+          ]
+        },
+        {
+          "building": "V-EF26",
+          "node": "fw_e_v_ef26_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            763.5,
+            325,
+            15
+          ]
+        },
+        {
+          "building": "V-EF26",
+          "node": "fw_e_v_ef26_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            763.5,
+            325,
+            15
+          ]
+        },
+        {
+          "building": "V-EF27",
+          "node": "fw_e_v_ef27_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            803.5,
+            325,
+            15
+          ]
+        },
+        {
+          "building": "V-EF27",
+          "node": "fw_e_v_ef27_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            803.5,
+            325,
+            15
+          ]
+        },
+        {
+          "building": "V-EF28",
+          "node": "fw_e_v_ef28_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            615.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF28",
+          "node": "fw_e_v_ef28_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            615.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF29",
+          "node": "fw_e_v_ef29_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            655.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF29",
+          "node": "fw_e_v_ef29_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            655.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF30",
+          "node": "fw_e_v_ef30_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            695.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF30",
+          "node": "fw_e_v_ef30_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            695.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF31",
+          "node": "fw_e_v_ef31_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            735.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF31",
+          "node": "fw_e_v_ef31_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            735.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF32",
+          "node": "fw_e_v_ef32_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            788.5,
+            378,
+            41
+          ]
+        },
+        {
+          "building": "V-EF32",
+          "node": "fw_e_v_ef32_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            788.5,
+            378,
+            41
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "16",
+          "name": "社区诊所",
+          "featured": true,
+          "building": "V-16",
+          "access": "east_clinic"
+        },
+        {
+          "id": "18",
+          "name": "东侧住宅院",
+          "featured": false,
+          "building": "V-18",
+          "access": "housing_gate"
+        },
+        {
+          "id": "67",
+          "name": "Null Site 服务中心",
+          "featured": true,
+          "building": "V-67",
+          "access": "housing_gate"
+        },
+        {
+          "id": "68",
+          "name": "住宅家常菜店",
+          "featured": true,
+          "building": "V-68",
+          "access": "east_clinic"
+        },
+        {
+          "id": "69",
+          "name": "居家用品店",
+          "featured": true,
+          "building": "V-69",
+          "access": "east_upper"
+        },
+        {
+          "id": "70",
+          "name": "社区亲子活动室",
+          "featured": true,
+          "building": "V-70",
+          "access": "east_clinic"
+        }
+      ],
+      "fixtures": []
+    },
+    {
+      "id": "B09",
+      "name": "影院会客厅街坊",
+      "buildings": 13,
+      "described": 13,
+      "arrived": 13,
+      "entries": 18,
+      "connected": 18,
+      "roads": 42,
+      "widths": 42,
+      "linked": 42,
+      "parcels": [
+        "P09-A",
+        "P09-B",
+        "P09-C",
+        "P09-D"
+      ],
+      "buildingIds": [
+        "V-15",
+        "V-73",
+        "V-74",
+        "V-76",
+        "V-W01",
+        "V-W02",
+        "V-W03",
+        "V-W04",
+        "V-W05",
+        "V-W06",
+        "V-W07",
+        "V-W08",
+        "V-W09"
+      ],
+      "entryMap": [
+        {
+          "building": "V-15",
+          "node": "cinema_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            306,
+            220,
+            25
+          ]
+        },
+        {
+          "building": "V-15",
+          "node": "cinema_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            320,
+            250,
+            25
+          ]
+        },
+        {
+          "building": "V-15",
+          "node": "cinema_dining_entry",
+          "role": "public",
+          "level": "2F",
+          "point": [
+            340,
+            232,
+            29
+          ]
+        },
+        {
+          "building": "V-15",
+          "node": "cinema_roof",
+          "role": "public",
+          "level": "RF",
+          "point": [
+            340,
+            245,
+            37
+          ]
+        },
+        {
+          "building": "V-73",
+          "node": "fw_w_book_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            311,
+            111,
+            23
+          ]
+        },
+        {
+          "building": "V-73",
+          "node": "fw_w_book_service",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            293,
+            111,
+            23
+          ]
+        },
+        {
+          "building": "V-74",
+          "node": "fw_w_photo_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            302,
+            319,
+            47.632184
+          ]
+        },
+        {
+          "building": "V-76",
+          "node": "fw_w_gallery_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            392,
+            119,
+            23
+          ]
+        },
+        {
+          "building": "V-76",
+          "node": "fw_w_gallery_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            392,
+            103,
+            23
+          ]
+        },
+        {
+          "building": "V-W01",
+          "node": "fw_w_v-w01_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            320,
+            111,
+            23
+          ]
+        },
+        {
+          "building": "V-W02",
+          "node": "fw_w_v-w02_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            302,
+            158,
+            23
+          ]
+        },
+        {
+          "building": "V-W03",
+          "node": "fw_w_v-w03_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            332,
+            158,
+            23
+          ]
+        },
+        {
+          "building": "V-W04",
+          "node": "fw_w_v-w04_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            419,
+            126,
+            23
+          ]
+        },
+        {
+          "building": "V-W05",
+          "node": "fw_w_v-w05_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            448,
+            126,
+            23
+          ]
+        },
+        {
+          "building": "V-W06",
+          "node": "fw_w_v-w06_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            477,
+            126,
+            23
+          ]
+        },
+        {
+          "building": "V-W07",
+          "node": "fw_w_v-w07_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            330,
+            319,
+            47.632184
+          ]
+        },
+        {
+          "building": "V-W08",
+          "node": "fw_w_v-w08_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            302,
+            326,
+            47.632184
+          ]
+        },
+        {
+          "building": "V-W09",
+          "node": "fw_w_v-w09_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            330,
+            326,
+            47.632184
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "15",
+          "name": "镜厅",
+          "featured": true,
+          "building": "V-15",
+          "access": "library_gate"
+        },
+        {
+          "id": "71",
+          "name": "餐饮共享空间",
+          "featured": true,
+          "building": "V-15",
+          "access": "library_gate"
+        },
+        {
+          "id": "72",
+          "name": "屋顶公园",
+          "featured": true,
+          "building": "V-15",
+          "access": "cinema_upper"
+        },
+        {
+          "id": "73",
+          "name": "MONO",
+          "featured": true,
+          "building": "V-73",
+          "access": "cinema_south"
+        },
+        {
+          "id": "74",
+          "name": "社区摄影工作室",
+          "featured": true,
+          "building": "V-74",
+          "access": "cinema_upper"
+        },
+        {
+          "id": "75",
+          "name": "共享工作室",
+          "featured": true,
+          "building": "V-15",
+          "access": "library_gate"
+        },
+        {
+          "id": "76",
+          "name": "街坊作品小展厅",
+          "featured": true,
+          "building": "V-76",
+          "access": "school_s"
+        }
+      ],
+      "fixtures": []
+    },
+    {
+      "id": "B10",
+      "name": "音乐演出街坊",
+      "buildings": 15,
+      "described": 15,
+      "arrived": 15,
+      "entries": 20,
+      "connected": 20,
+      "roads": 28,
+      "widths": 28,
+      "linked": 28,
+      "parcels": [
+        "P10-A",
+        "P10-B"
+      ],
+      "buildingIds": [
+        "V-77",
+        "V-78",
+        "V-79",
+        "V-80",
+        "V-81",
+        "V-82",
+        "V-W10",
+        "V-W11",
+        "V-W12",
+        "V-W13",
+        "V-W14",
+        "V-W15",
+        "V-W16",
+        "V-W17",
+        "V-W18"
+      ],
+      "entryMap": [
+        {
+          "building": "V-77",
+          "node": "audio_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            568,
+            17,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-77",
+          "node": "audio_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            592,
+            25,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-78",
+          "node": "rehearsal_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            568,
+            52,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-78",
+          "node": "rehearsal_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            603,
+            52,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-79",
+          "node": "live_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            734,
+            39,
+            8
+          ]
+        },
+        {
+          "building": "V-79",
+          "node": "live_service_entry",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            734,
+            3,
+            8
+          ]
+        },
+        {
+          "building": "V-80",
+          "node": "fw_w_record_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            767,
+            19,
+            8
+          ]
+        },
+        {
+          "building": "V-80",
+          "node": "fw_w_record_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            767,
+            3,
+            8
+          ]
+        },
+        {
+          "building": "V-81",
+          "node": "fw_w_workshop_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            613,
+            11,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-82",
+          "node": "tea_entry",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            788,
+            19,
+            8
+          ]
+        },
+        {
+          "building": "V-82",
+          "node": "fw_w_tea_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            788,
+            3,
+            8
+          ]
+        },
+        {
+          "building": "V-W10",
+          "node": "fw_w_v-w10_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            568,
+            89,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-W11",
+          "node": "fw_w_v-w11_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            568,
+            116,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-W12",
+          "node": "fw_w_v-w12_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            621,
+            89,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-W13",
+          "node": "fw_w_v-w13_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            610,
+            128,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-W14",
+          "node": "fw_w_v-w14_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            640,
+            26,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-W15",
+          "node": "fw_w_v-w15_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            650,
+            128,
+            12.666667
+          ]
+        },
+        {
+          "building": "V-W16",
+          "node": "fw_w_v-w16_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            724,
+            130,
+            8
+          ]
+        },
+        {
+          "building": "V-W17",
+          "node": "fw_w_v-w17_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            752.5,
+            130,
+            8
+          ]
+        },
+        {
+          "building": "V-W18",
+          "node": "fw_w_v-w18_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            788,
+            130,
+            8
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "77",
+          "name": "乐器音频店",
+          "featured": true,
+          "building": "V-77",
+          "access": "music_west"
+        },
+        {
+          "id": "78",
+          "name": "排练录音楼",
+          "featured": true,
+          "building": "V-78",
+          "access": "music_west"
+        },
+        {
+          "id": "79",
+          "name": "AFTER 9",
+          "featured": true,
+          "building": "V-79",
+          "access": "music_east"
+        },
+        {
+          "id": "80",
+          "name": "唱片聆听店",
+          "featured": true,
+          "building": "V-80",
+          "access": "music_east"
+        },
+        {
+          "id": "81",
+          "name": "小型乐器工坊",
+          "featured": true,
+          "building": "V-81",
+          "access": "music_west"
+        },
+        {
+          "id": "82",
+          "name": "LATE BITE",
+          "featured": true,
+          "building": "V-82",
+          "access": "music_east"
+        },
+        {
+          "id": "83",
+          "name": "演出会合广场",
+          "featured": true,
+          "building": null,
+          "access": "music_east"
+        }
+      ],
+      "fixtures": []
+    },
+    {
+      "id": "B11",
+      "name": "滨水社交花园",
+      "buildings": 13,
+      "described": 13,
+      "arrived": 13,
+      "entries": 21,
+      "connected": 21,
+      "roads": 55,
+      "widths": 55,
+      "linked": 55,
+      "parcels": [
+        "P11-A",
+        "P11-B",
+        "P11-C",
+        "P11-D",
+        "P11-E"
+      ],
+      "buildingIds": [
+        "V-27",
+        "V-84",
+        "V-85",
+        "V-86",
+        "V-87",
+        "V-W19",
+        "V-W20",
+        "V-W21",
+        "V-W22",
+        "V-W23",
+        "V-W24",
+        "V-W25",
+        "V-W26"
+      ],
+      "entryMap": [
+        {
+          "building": "V-27",
+          "node": "fw_w_v-27_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            560,
+            -88,
+            6
+          ]
+        },
+        {
+          "building": "V-27",
+          "node": "fw_w_v-27_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            560,
+            -72,
+            6
+          ]
+        },
+        {
+          "building": "V-84",
+          "node": "fw_w_cafe_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            284,
+            38,
+            8
+          ]
+        },
+        {
+          "building": "V-84",
+          "node": "fw_w_cafe_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            266,
+            38,
+            8
+          ]
+        },
+        {
+          "building": "V-85",
+          "node": "fw_w_v-85_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            240,
+            -88,
+            6
+          ]
+        },
+        {
+          "building": "V-85",
+          "node": "fw_w_v-85_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            240,
+            -72,
+            6
+          ]
+        },
+        {
+          "building": "V-86",
+          "node": "fw_w_sport_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            311,
+            38,
+            8
+          ]
+        },
+        {
+          "building": "V-86",
+          "node": "fw_w_sport_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            329,
+            38,
+            8
+          ]
+        },
+        {
+          "building": "V-87",
+          "node": "fw_w_v-87_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            600,
+            -88,
+            6
+          ]
+        },
+        {
+          "building": "V-87",
+          "node": "fw_w_v-87_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            600,
+            -72,
+            6
+          ]
+        },
+        {
+          "building": "V-W19",
+          "node": "fw_w_v-w19_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            271,
+            21,
+            8
+          ]
+        },
+        {
+          "building": "V-W20",
+          "node": "fw_w_v-w20_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            322,
+            21,
+            8
+          ]
+        },
+        {
+          "building": "V-W21",
+          "node": "fw_w_v-w21_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            269,
+            53,
+            8
+          ]
+        },
+        {
+          "building": "V-W22",
+          "node": "fw_w_v-w22_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            323,
+            53,
+            8
+          ]
+        },
+        {
+          "building": "V-W23",
+          "node": "fw_w_v-w23_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -185.5,
+            -88,
+            6
+          ]
+        },
+        {
+          "building": "V-W23",
+          "node": "fw_w_v-w23_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -185.5,
+            -68,
+            6
+          ]
+        },
+        {
+          "building": "V-W24",
+          "node": "fw_w_v-w24_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -137,
+            -88,
+            6
+          ]
+        },
+        {
+          "building": "V-W24",
+          "node": "fw_w_v-w24_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -137,
+            -68,
+            6
+          ]
+        },
+        {
+          "building": "V-W25",
+          "node": "fw_w_v-w25_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -57,
+            -88,
+            6
+          ]
+        },
+        {
+          "building": "V-W25",
+          "node": "fw_w_v-w25_back",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -57,
+            -68,
+            6
+          ]
+        },
+        {
+          "building": "V-W26",
+          "node": "fw_w_v-w26_door",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            505,
+            -88,
+            6
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "17",
+          "name": "城市花园与活动草坪",
+          "featured": true,
+          "building": null,
+          "access": "garden_gate"
+        },
+        {
+          "id": "24",
+          "name": "河岸安静露台",
+          "featured": true,
+          "building": null,
+          "access": "river_cafe"
+        },
+        {
+          "id": "25",
+          "name": "河岸小广场",
+          "featured": true,
+          "building": null,
+          "access": "river_w"
+        },
+        {
+          "id": "26",
+          "name": "西环渡口入口与候船处",
+          "featured": true,
+          "building": null,
+          "access": "river_w"
+        },
+        {
+          "id": "27",
+          "name": "河岸小摊",
+          "featured": true,
+          "building": "V-27",
+          "access": "river_cafe"
+        },
+        {
+          "id": "84",
+          "name": "滨水咖啡屋",
+          "featured": true,
+          "building": "V-84",
+          "access": "south"
+        },
+        {
+          "id": "85",
+          "name": "旧帆展屋",
+          "featured": true,
+          "building": "V-85",
+          "access": "river_w"
+        },
+        {
+          "id": "86",
+          "name": "河岸运动补给店",
+          "featured": true,
+          "building": "V-86",
+          "access": "south"
+        },
+        {
+          "id": "87",
+          "name": "桥畔轻食屋",
+          "featured": true,
+          "building": "V-87",
+          "access": "river_cafe"
+        },
+        {
+          "id": "88",
+          "name": "河岸共作亭",
+          "featured": true,
+          "building": null,
+          "access": "shore_w"
+        }
+      ],
+      "fixtures": []
+    },
+    {
+      "id": "B12",
+      "name": "山脚住宅与登高入口",
+      "buildings": 20,
+      "described": 20,
+      "arrived": 20,
+      "entries": 40,
+      "connected": 40,
+      "roads": 168,
+      "widths": 168,
+      "linked": 168,
+      "parcels": [
+        "P12-A",
+        "P12-B",
+        "P12-C",
+        "P12-D",
+        "P12-E"
+      ],
+      "buildingIds": [
+        "V-22",
+        "V-89",
+        "V-91",
+        "V-EF33",
+        "V-EF34",
+        "V-EF35",
+        "V-EF36",
+        "V-EF37",
+        "V-EF38",
+        "V-EF39",
+        "V-EF40",
+        "V-EF41",
+        "V-EF42",
+        "V-EF43",
+        "V-EF44",
+        "V-EF45",
+        "V-EF46",
+        "V-EF47",
+        "V-EF48",
+        "V-EF49"
+      ],
+      "entryMap": [
+        {
+          "building": "V-22",
+          "node": "fw_e_v_22_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            651,
+            836.901,
+            205.777778
+          ]
+        },
+        {
+          "building": "V-22",
+          "node": "fw_e_v_22_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            651,
+            836.901,
+            205.777778
+          ]
+        },
+        {
+          "building": "V-89",
+          "node": "fw_e_v_89_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            432,
+            614,
+            170
+          ]
+        },
+        {
+          "building": "V-89",
+          "node": "fw_e_v_89_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            432,
+            614,
+            170
+          ]
+        },
+        {
+          "building": "V-91",
+          "node": "fw_e_v_91_public0",
+          "role": "public",
+          "level": "1F",
+          "point": [
+            -40,
+            604,
+            150
+          ]
+        },
+        {
+          "building": "V-91",
+          "node": "fw_e_v_91_public0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -40,
+            604,
+            150
+          ]
+        },
+        {
+          "building": "V-EF33",
+          "node": "fw_e_v_ef33_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -15,
+            608,
+            150
+          ]
+        },
+        {
+          "building": "V-EF33",
+          "node": "fw_e_v_ef33_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -15,
+            608,
+            150
+          ]
+        },
+        {
+          "building": "V-EF34",
+          "node": "fw_e_v_ef34_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            13,
+            608,
+            150
+          ]
+        },
+        {
+          "building": "V-EF34",
+          "node": "fw_e_v_ef34_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            13,
+            608,
+            150
+          ]
+        },
+        {
+          "building": "V-EF35",
+          "node": "fw_e_v_ef35_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -40,
+            622,
+            150
+          ]
+        },
+        {
+          "building": "V-EF35",
+          "node": "fw_e_v_ef35_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -40,
+            622,
+            150
+          ]
+        },
+        {
+          "building": "V-EF36",
+          "node": "fw_e_v_ef36_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -12,
+            622,
+            150
+          ]
+        },
+        {
+          "building": "V-EF36",
+          "node": "fw_e_v_ef36_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -12,
+            622,
+            150
+          ]
+        },
+        {
+          "building": "V-EF37",
+          "node": "fw_e_v_ef37_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            16,
+            622,
+            150
+          ]
+        },
+        {
+          "building": "V-EF37",
+          "node": "fw_e_v_ef37_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            16,
+            622,
+            150
+          ]
+        },
+        {
+          "building": "V-EF38",
+          "node": "fw_e_v_ef38_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -40,
+            652,
+            150
+          ]
+        },
+        {
+          "building": "V-EF38",
+          "node": "fw_e_v_ef38_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -40,
+            652,
+            150
+          ]
+        },
+        {
+          "building": "V-EF39",
+          "node": "fw_e_v_ef39_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            -12,
+            652,
+            150
+          ]
+        },
+        {
+          "building": "V-EF39",
+          "node": "fw_e_v_ef39_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            -12,
+            652,
+            150
+          ]
+        },
+        {
+          "building": "V-EF40",
+          "node": "fw_e_v_ef40_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            16,
+            652,
+            150
+          ]
+        },
+        {
+          "building": "V-EF40",
+          "node": "fw_e_v_ef40_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            16,
+            652,
+            150
+          ]
+        },
+        {
+          "building": "V-EF41",
+          "node": "fw_e_v_ef41_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            469,
+            618,
+            170
+          ]
+        },
+        {
+          "building": "V-EF41",
+          "node": "fw_e_v_ef41_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            469,
+            618,
+            170
+          ]
+        },
+        {
+          "building": "V-EF42",
+          "node": "fw_e_v_ef42_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            503,
+            618,
+            170
+          ]
+        },
+        {
+          "building": "V-EF42",
+          "node": "fw_e_v_ef42_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            503,
+            618,
+            170
+          ]
+        },
+        {
+          "building": "V-EF43",
+          "node": "fw_e_v_ef43_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            496,
+            630,
+            170
+          ]
+        },
+        {
+          "building": "V-EF43",
+          "node": "fw_e_v_ef43_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            496,
+            630,
+            170
+          ]
+        },
+        {
+          "building": "V-EF44",
+          "node": "fw_e_v_ef44_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            524.5,
+            630,
+            170
+          ]
+        },
+        {
+          "building": "V-EF44",
+          "node": "fw_e_v_ef44_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            524.5,
+            630,
+            170
+          ]
+        },
+        {
+          "building": "V-EF45",
+          "node": "fw_e_v_ef45_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            463.5,
+            670,
+            172
+          ]
+        },
+        {
+          "building": "V-EF45",
+          "node": "fw_e_v_ef45_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            463.5,
+            670,
+            172
+          ]
+        },
+        {
+          "building": "V-EF46",
+          "node": "fw_e_v_ef46_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            492.5,
+            670,
+            172
+          ]
+        },
+        {
+          "building": "V-EF46",
+          "node": "fw_e_v_ef46_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            492.5,
+            670,
+            172
+          ]
+        },
+        {
+          "building": "V-EF47",
+          "node": "fw_e_v_ef47_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            524.5,
+            670,
+            172
+          ]
+        },
+        {
+          "building": "V-EF47",
+          "node": "fw_e_v_ef47_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            524.5,
+            670,
+            172
+          ]
+        },
+        {
+          "building": "V-EF48",
+          "node": "fw_e_v_ef48_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            467.5,
+            702,
+            174
+          ]
+        },
+        {
+          "building": "V-EF48",
+          "node": "fw_e_v_ef48_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            467.5,
+            702,
+            174
+          ]
+        },
+        {
+          "building": "V-EF49",
+          "node": "fw_e_v_ef49_resident0",
+          "role": "resident",
+          "level": "1F",
+          "point": [
+            496.5,
+            702,
+            174
+          ]
+        },
+        {
+          "building": "V-EF49",
+          "node": "fw_e_v_ef49_resident0",
+          "role": "service",
+          "level": "1F",
+          "point": [
+            496.5,
+            702,
+            174
+          ]
+        }
+      ],
+      "places": [
+        {
+          "id": "20",
+          "name": "山脚休息台",
+          "featured": true,
+          "building": null,
+          "access": "hillgate"
+        },
+        {
+          "id": "21",
+          "name": "林间缓坡",
+          "featured": false,
+          "building": null,
+          "access": "forest"
+        },
+        {
+          "id": "22",
+          "name": "小神龛",
+          "featured": true,
+          "building": "V-22",
+          "access": "shrine"
+        },
+        {
+          "id": "23",
+          "name": "摘星台",
+          "featured": true,
+          "building": null,
+          "access": "summit"
+        },
+        {
+          "id": "89",
+          "name": "山脚茶屋",
+          "featured": true,
+          "building": "V-89",
+          "access": "foothill_house_gate"
+        },
+        {
+          "id": "90",
+          "name": "林缘自然观察庭",
+          "featured": true,
+          "building": null,
+          "access": "foothill_west"
+        },
+        {
+          "id": "91",
+          "name": "登高用品租修店",
+          "featured": true,
+          "building": "V-91",
+          "access": "foothill_west"
+        }
+      ],
+      "fixtures": []
+    }
+  ],
+  "findings": [],
+  "scope": "Data coverage and source preservation only; runtime mesh, visual review, player collision and interior traversal require separate evidence"
+}

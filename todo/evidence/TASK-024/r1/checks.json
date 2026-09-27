@@ -1,0 +1,92 @@
+[
+  {
+    "command": "bun test tools/tests",
+    "result": "PASS",
+    "detail": "107 tests; first concurrent run timed out in one 5-second terrain test, sequential rerun passes; threshold unchanged",
+    "log": "bun-tests.log"
+  },
+  {
+    "command": "cargo test --manifest-path game/Cargo.toml --features viewer --locked -- --nocapture",
+    "result": "PASS",
+    "detail": "19 library + 4 Viewer; 148 extra environment instances",
+    "log": "rust-tests.log"
+  },
+  {
+    "command": "cargo clippy --manifest-path game/Cargo.toml --all-targets --features viewer --locked -- -D warnings",
+    "result": "PASS",
+    "detail": "Three newly added test iterator lints fixed and rechecked",
+    "log": "clippy.log"
+  },
+  {
+    "command": "cargo fmt --manifest-path game/Cargo.toml --check",
+    "result": "PASS",
+    "detail": "Rust formatting",
+    "log": ""
+  },
+  {
+    "command": "cargo build --manifest-path game/Cargo.toml --features viewer --locked",
+    "result": "PASS",
+    "detail": "Development Viewer",
+    "log": ""
+  },
+  {
+    "command": "game/target/debug/map_viewer --project-root . --validate",
+    "result": "PASS",
+    "detail": "1510 nodes, 854 roads, 231 buildings, 82 surfaces, 72 original tree points, 3213 meshes",
+    "log": "validate.log"
+  },
+  {
+    "command": "bun tools/export-environment.ts --check",
+    "result": "PASS",
+    "detail": "20 derived files, 28101642 bytes, exact match",
+    "log": ""
+  },
+  {
+    "command": "python3 -B -m unittest discover -s tools/tests -p 'test_asset*.py'",
+    "result": "PASS",
+    "detail": "5 asset tests",
+    "log": ""
+  },
+  {
+    "command": "python3 -B -m unittest discover -s tools/tests -p test_capture.py",
+    "result": "PASS",
+    "detail": "2 capture tests",
+    "log": ""
+  },
+  {
+    "command": "bun tools/terrain-shape.ts --check",
+    "result": "PASS",
+    "detail": "8367 source samples, no drift",
+    "log": ""
+  },
+  {
+    "command": "bun run check:types",
+    "result": "PASS",
+    "detail": "Bun TypeScript + actual Vue SFC",
+    "log": ""
+  },
+  {
+    "command": "bun run check:story-design",
+    "result": "PASS",
+    "detail": "91 places, 12 blocks, 37 characters, 22 quests",
+    "log": ""
+  },
+  {
+    "command": "bun run docs:build",
+    "result": "PASS",
+    "detail": "Player + developer builds and actual publication artifact checks",
+    "log": ""
+  },
+  {
+    "command": "bun test tools/tests/terrain-shape.test.ts tools/tests/road-width.test.ts",
+    "result": "PASS",
+    "detail": "5 tests, including final three landing boundaries and shared-junction negative cases",
+    "log": "geometry-recheck.log"
+  },
+  {
+    "command": "bun run check:docs && bun run tasks:check",
+    "result": "PASS",
+    "detail": "References, Skills and task source/generated board; repeated after final record update",
+    "log": ""
+  }
+]

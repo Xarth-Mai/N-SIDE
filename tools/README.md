@@ -58,6 +58,20 @@ bun run check:map
 python3 tools/capture.py --script game/capture/mountain-city.json --output output/capture/mountain-city
 ```
 
+## 道路实际宽度与路口高差
+
+`check-road-width.ts` 读取地图主数据，按 Viewer 的转角拼接、道路三角剖分和每级不超过 0.17 m 的水平台阶计算道路顶面候选。共享端点也参加检查；交叠面积大于 0.5 m² 且高差大于 0.35 m 时返回非零，阈值用于灰盒排查，不代表法规或玩家碰撞验收
+
+```fish
+bun tools/check-road-width.ts hill-short
+bun tools/check-road-width.ts all
+bun test tools/tests/road-width.test.ts
+```
+
+第一条检查 `hill-short` 的全部相邻路段与全城地面路带，包括小店至山脚的城市段；第二条检查全城并如实返回尚存候选，暂不并入总检查。输出 JSON 包含当前源 SHA-256、道路索引、节点、最大高差及共享节点，重定向可保存本轮证据；命令只读源文件
+
+计算排除室内、电梯及桥面／架空道路，不重建建筑与平台掩膜、挡墙或人物碰撞。候选需要结合实际场景复核；来源与范围不能替代画面、连续操作或桥下净空检查。窄回归同时覆盖共享节点失效、同高连接及选定路线与其他道路的交叉
+
 ## 真实运行与 Capture
 
 从需求和当前实现出发，完成适用测试，再按[运行验收](../docs/dev/validation/runtime.md)运行真实场景、检查状态与画面、修复并复验。当前入口复用 Viewer 的城市和自由镜头；配置字段、输入与范围见[游戏工程](../game/README.md)

@@ -1,0 +1,28 @@
+{
+  "base_commit": "fcf92ee799d94775fcd26812f930e9217ed9db3f",
+  "assets_commit": "44d879211bdde25a31dd28c10c7186ee2b0d7d3a",
+  "inputs": {
+    "game/Cargo.lock": "d90f8a806751b4af4c30ae6826715b9cc81faeb668e6315ccd8ea2d1b0e73dfa",
+    "game/Cargo.toml": "209637015e286c51a417905eafe1f6dca137e13d2ccf35875a540ec7bb59e252",
+    "game/assets/environment/manifest.json": "bbc927ff96aa06cefe95c63378b9bd5244dfd073c50b0e6d60363d5d5a61cf67",
+    "game/capture/city-graybox.json": "b289efb529c3fda71b325866e65b28f8989803bd949930b45e570af03c544f80",
+    "game/capture/mountain-city.json": "7f9b0307893f80b06bfc031fc0478cf886b0c388764ae544776fe7511b87949f",
+    "game/src/bin/map_viewer/capture.rs": "3fb69e1d40085e0ca6661eb9b53402fe23172457fec36c4bff0fca48bbde9000",
+    "game/src/bin/map_viewer.rs": "d45f5e4efc99470610117212c493e0aa8692df390bf139586754847f6e5799fc",
+    "game/src/lib.rs": "30bbd92bae8708f7f9846b807b26df98425e86000e4260dd14195a8606e0797b",
+    "game/src/main.rs": "ee4ff7403610379b9e2b84ed2a4a7afeff51f535807306f83567daf42425c1a0",
+    "game/src/world/assets.rs": "c2c54e4824b3d771401a85bbeecab0dbf6b3aca6294713764ad1399c65b8028c",
+    "game/src/world/geometry.rs": "e67df7b61d0818373f47c9660391997c3df763367c328522715917e7bb87e2ea",
+    "game/src/world/map.rs": "e4d40c901f5629399f0ea7b3fe42979c4b90c876c36f85c3d0b891507d3e7b21",
+    "game/src/world/mod.rs": "7d17cb699b0e9c32fbd6b48ad5dbd50b0518abf184beaffd2f08913089baa1b7",
+    "game/src/world/scene.rs": "8441b438decb86f7574377479d411e09edfd1eedd1b4fad1c363ceea2815de92",
+    "game/src/world/visual.rs": "110b5e02ba159c647630dc36f6af235c63e5eef79d9c90c30e5b5a3ffe56f121",
+    "source-assets/district-map/district.json": "49f46aed0e9d3a578304f0a99d7174864e7a9c2dcc9382c7ffcd1c2ca402acf0",
+    "source-assets/district-scene/appearance.json": "572b7c11f3d4ba138db9efbaaffca5c9d6ca406488b1a590e217df28464a8949",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/environment-kit/asset-manifest.json": "e2036cfe4f2e51f0aebadc557846c6ff930eb9db23f446917bc59b5b4deefb62"
+  },
+  "binary_sha256": "88b08e2693cada8f7b94e250ce27e71e7a294cbae12ac2bfe0744699620d00e5",
+  "input_set_sha256": "1d9cf4fba259e2734dcb2a3a74fc79e272538fda87ef63cb1b3dec76aa59bbf0",
+  "scope": "Actual world runtime, source district/appearance/daylight, asset manifests, capture scripts. Working tree implementation before final commit; source assets independently checked by export --check."
+}

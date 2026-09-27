@@ -7,8 +7,8 @@ use bevy::{
     prelude::*,
 };
 use geo::{
-    Area, BooleanOps, BoundingRect, Centroid, Closest, ClosestPoint, Contains, LineString,
-    MultiPolygon, Point, Polygon,
+    Area, BooleanOps, BoundingRect, Centroid, Closest, ClosestPoint, Contains, Intersects,
+    LineString, MultiPolygon, Point, Polygon,
 };
 use spade::{DelaunayTriangulation, FloatTriangulation, HasPosition, Point2, Triangulation};
 
@@ -435,7 +435,7 @@ fn subtract(poly: &Polygon, masks: &[Polygon]) -> MultiPolygon {
         })
 }
 
-fn road_offsets(points: &[[f64; 3]], width: f64) -> Vec<[f64; 2]> {
+pub(super) fn road_offsets(points: &[[f64; 3]], width: f64) -> Vec<[f64; 2]> {
     let normals: Vec<_> = points
         .windows(2)
         .map(|pair| {
@@ -462,7 +462,7 @@ fn road_offsets(points: &[[f64; 3]], width: f64) -> Vec<[f64; 2]> {
         .collect()
 }
 
-fn ribbon(a: [f64; 3], b: [f64; 3], start: [f64; 2], end: [f64; 2]) -> Polygon {
+pub(super) fn ribbon(a: [f64; 3], b: [f64; 3], start: [f64; 2], end: [f64; 2]) -> Polygon {
     polygon(&[
         [a[0] - start[0], a[1] - start[1]],
         [b[0] - end[0], b[1] - end[1]],
@@ -785,6 +785,149 @@ fn bridge_rail(mesh: &mut MeshData, a: [f64; 3], b: [f64; 3], source: &str) -> R
         box_geometry(mesh, [p[0], p[1]], 0.14, p[2], p[2] + 1.0, source)?;
     }
     Ok(())
+}
+
+fn fixture_height(map: &Map, ground: &Ground, p: [f64; 2], elevation: f64) -> f64 {
+    let point = Point::new(p[0], p[1]);
+    map.surfaces
+        .iter()
+        .map(|s| (&s.polygon, s.elevation))
+        .chain(map.buildings.iter().map(|b| (&b.polygon, b.elevation)))
+        .find(|(points, z)| (z - elevation).abs() < 0.1 && polygon(points).intersects(&point))
+        .map_or_else(|| ground.height(p), |(_, z)| z)
+}
+
+fn fixture_geometry(map: &Map, ground: &Ground) -> Result<Vec<GeometryPart>, String> {
+    let mut result = Vec::new();
+    for (a, architecture) in map.architectures.iter().enumerate() {
+        for (i, fixture) in architecture.fixtures.iter().enumerate() {
+            let source = format!(
+                "/architectures/{a} ({})/fixtures/{i} ({})",
+                architecture.id, fixture.name
+            );
+            let area = polygon(&fixture.polygon);
+            let bounds = area.bounding_rect().unwrap();
+            let center = [
+                (bounds.min().x + bounds.max().x) / 2.0,
+                (bounds.min().y + bounds.max().y) / 2.0,
+            ];
+            let along_x = bounds.width() >= bounds.height();
+            let length = bounds.width().max(bounds.height());
+            let depth = bounds.width().min(bounds.height());
+            let rectangle = |center: [f64; 2], length: f64, depth: f64| {
+                let [x, y] = if along_x {
+                    [length / 2.0, depth / 2.0]
+                } else {
+                    [depth / 2.0, length / 2.0]
+                };
+                polygon(&[
+                    [center[0] - x, center[1] - y],
+                    [center[0] + x, center[1] - y],
+                    [center[0] + x, center[1] + y],
+                    [center[0] - x, center[1] + y],
+                ])
+            };
+            let height = |p| fixture_height(map, ground, p, fixture.elevation);
+            let mut body = MeshData::default();
+            let mut supports = MeshData::default();
+            if fixture.kind == "drain" {
+                // Short cells follow the actual graded strip instead of its single label elevation
+                for x in 0..bounds.width().ceil() as usize {
+                    for y in 0..bounds.height().ceil() as usize {
+                        let lo = [bounds.min().x + x as f64, bounds.min().y + y as f64];
+                        let hi = [
+                            (lo[0] + 1.0).min(bounds.max().x),
+                            (lo[1] + 1.0).min(bounds.max().y),
+                        ];
+                        let cell = polygon(&[lo, [hi[0], lo[1]], hi, [lo[0], hi[1]]]);
+                        for piece in area.intersection(&cell) {
+                            body.polygon(&piece, |p| height(p) + 0.035, &source)?;
+                            body.walls(&piece, height, |p| height(p) + 0.035);
+                        }
+                    }
+                }
+            } else {
+                let count = if fixture.kind == "bench" {
+                    (length / 2.6).floor().max(1.0) as usize
+                } else {
+                    1
+                };
+                for slot in 0..count {
+                    let mut position = center;
+                    position[usize::from(!along_x)] +=
+                        length * ((slot as f64 + 0.5) / count as f64 - 0.5);
+                    let (width, depth, bottom, top) = match fixture.kind.as_str() {
+                        "bench" => (
+                            (length / count as f64 - 0.2).min(2.2),
+                            depth.min(0.55),
+                            0.43,
+                            0.52,
+                        ),
+                        "screen" => (length.min(1.1), depth.min(0.22), 1.1, 1.85),
+                        "locker" => (length.min(3.2), depth.min(0.65), 0.18, 1.9),
+                        _ => {
+                            return Err(format!(
+                                "{source}: unsupported fixture kind {}",
+                                fixture.kind
+                            ));
+                        }
+                    };
+                    let shape = rectangle(position, width, depth);
+                    if shape.difference(&area).unsigned_area() > 1e-6 {
+                        return Err(format!(
+                            "{source}: fixture body exceeds its authored placement polygon"
+                        ));
+                    }
+                    body.polygon(&shape, |_| fixture.elevation + top, &source)?;
+                    body.underside(&shape, |_| fixture.elevation + bottom, &source)?;
+                    body.walls(
+                        &shape,
+                        |_| fixture.elevation + bottom,
+                        |_| fixture.elevation + top,
+                    );
+                    let posts: Vec<_> = if fixture.kind == "screen" {
+                        vec![position]
+                    } else {
+                        rectangle(position, width - 0.24, depth - 0.2)
+                            .exterior()
+                            .0
+                            .iter()
+                            .take(4)
+                            .map(|p| [p.x, p.y])
+                            .collect()
+                    };
+                    for point in posts {
+                        let foot = height(point);
+                        if foot >= fixture.elevation + bottom - 0.02 {
+                            return Err(format!(
+                                "{source}: support at {point:?} intersects body; ground={foot} base={}",
+                                fixture.elevation
+                            ));
+                        }
+                        box_geometry(
+                            &mut supports,
+                            point,
+                            0.12,
+                            foot,
+                            fixture.elevation + bottom,
+                            &source,
+                        )?;
+                    }
+                }
+            }
+            body.finish(
+                source.clone(),
+                match fixture.kind.as_str() {
+                    "bench" => "trim",
+                    "screen" => "glass",
+                    _ => "metal",
+                },
+                &mut result,
+            );
+            supports.finish(format!("{source}/supports"), "metal", &mut result);
+        }
+    }
+    Ok(result)
 }
 
 pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
@@ -1110,6 +1253,7 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         );
         structure.finish(format!("{source}/structure"), "concrete", &mut result);
     }
+    result.extend(fixture_geometry(map, &ground)?);
     let height_range = map
         .terrain
         .samples
@@ -1131,6 +1275,138 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn authored_fixtures_render_supported_objects_and_graded_drains() {
+        let mut map = Map::load(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../source-assets/district-map/district.json"
+        ))
+        .unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let parts = fixture_geometry(&map, &ground).unwrap();
+        let mut count = 0;
+        for (a, architecture) in map.architectures.iter().enumerate() {
+            for (i, fixture) in architecture.fixtures.iter().enumerate() {
+                let source = format!(
+                    "/architectures/{a} ({})/fixtures/{i} ({})",
+                    architecture.id, fixture.name
+                );
+                let body = parts
+                    .iter()
+                    .find(|p| p.source == source)
+                    .expect("authored fixture has a visible body");
+                let positions = body
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap();
+                assert!(!positions.is_empty());
+                for part in parts.iter().filter(|p| p.source.starts_with(&source)) {
+                    let positions = part
+                        .mesh
+                        .attribute(Mesh::ATTRIBUTE_POSITION)
+                        .unwrap()
+                        .as_float3()
+                        .unwrap();
+                    assert!(
+                        positions.iter().flatten().all(|v| v.is_finite()),
+                        "{source}"
+                    );
+                    for triangle in positions.as_chunks::<3>().0 {
+                        let [a, b, c] = [triangle[0], triangle[1], triangle[2]].map(Vec3::from);
+                        assert!(
+                            (b - a).cross(c - a).length_squared() > 1e-12,
+                            "{source}: degenerate triangle"
+                        );
+                    }
+                }
+                if fixture.kind == "screen" {
+                    let min_x = positions.iter().map(|p| p[0]).fold(f32::INFINITY, f32::min);
+                    let max_x = positions
+                        .iter()
+                        .map(|p| p[0])
+                        .fold(f32::NEG_INFINITY, f32::max);
+                    let min_y = positions.iter().map(|p| p[2]).fold(f32::INFINITY, f32::min);
+                    let max_y = positions
+                        .iter()
+                        .map(|p| p[2])
+                        .fold(f32::NEG_INFINITY, f32::max);
+                    assert!(
+                        (max_x - min_x).max(max_y - min_y) <= 1.101,
+                        "{source}: placement area became a giant display"
+                    );
+                }
+                if fixture.kind != "drain" {
+                    let supports = parts
+                        .iter()
+                        .find(|p| p.source == format!("{source}/supports"))
+                        .expect("fixed fixture has supports");
+                    let vertices = supports
+                        .mesh
+                        .attribute(Mesh::ATTRIBUTE_POSITION)
+                        .unwrap()
+                        .as_float3()
+                        .unwrap();
+                    for post in vertices.as_chunks::<30>().0 {
+                        let (lo, hi) = post.iter().fold(
+                            (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                            |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
+                        );
+                        let center = [(lo.x + hi.x) as f64 / 2.0, -(lo.z + hi.z) as f64 / 2.0];
+                        assert!(
+                            (f64::from(lo.y)
+                                - fixture_height(&map, &ground, center, fixture.elevation))
+                            .abs()
+                                < 0.002,
+                            "{source}: floating support"
+                        );
+                    }
+                }
+                if fixture.name == "坡脚截水带" {
+                    let heights: Vec<_> = positions
+                        .iter()
+                        .map(|p| ground.height([f64::from(p[0]), -f64::from(p[2])]))
+                        .collect();
+                    let range = heights
+                        .iter()
+                        .copied()
+                        .fold([f64::INFINITY, f64::NEG_INFINITY], |r, h| {
+                            [r[0].min(h), r[1].max(h)]
+                        });
+                    assert!(
+                        range[1] - range[0] > 0.1,
+                        "slope fixture regression needs a genuinely graded strip"
+                    );
+                    for (p, h) in positions.iter().zip(heights) {
+                        assert!(
+                            (-0.002..=0.037).contains(&(f64::from(p[1]) - h)),
+                            "{source}: drain did not follow actual terrain"
+                        );
+                    }
+                    eprintln!("26m drain actual terrain range={range:?}");
+                }
+                count += 1;
+            }
+        }
+        assert_eq!(
+            count,
+            map.architectures
+                .iter()
+                .map(|a| a.fixtures.len())
+                .sum::<usize>()
+        );
+        assert!(count > 0);
+        eprintln!("authored fixtures rendered={count}");
+        map.architectures[0].fixtures[0].elevation -= 2.0;
+        assert!(
+            fixture_geometry(&map, &ground)
+                .err()
+                .unwrap()
+                .contains("intersects body")
+        );
+    }
 
     #[test]
     fn clipped_terrain_keeps_continuous_normals_without_moving_the_surface() {

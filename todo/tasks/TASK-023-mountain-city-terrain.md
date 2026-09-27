@@ -1,7 +1,7 @@
 ---
 id: TASK-023
 type: fix
-status: review
+status: active
 milestone: G1
 depends_on: []
 specs:
@@ -25,8 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-第4轮，步骤5/6 体验评审；已修复院落／道路边缘误切坡、平台承托和两处异高通路冲突，补入4处沿台阶停步台地，完成同机位对照与18秒真实Viewer录制。待判断街道层次和灰盒比例；裸坡、长台阶节奏与街坊密度仍未通过品质验收，下一轮继续本任务，不推进玩法路线图
+第5轮，步骤6/6 记录与后续修订；1.31km短登高路线及三处停步台已接入，整条路线的实际路幅高差候选为0。前两处停步台可回望城市，第三处+410m停步台的近坡遮住大部分城区，临城视线目标尚未通过，需要调整平台与坡面的关系。全城其余路幅问题由TASK-025接续；人物登山、最终美术与G1保持未验收
 
 ## 结果与证据
 
-本轮基线 `8ae11b3164d64e1c026980d9fcc2f3c1a267f3cc`，当前证据见 [r4交付与自查](../evidence/TASK-023/r4/review.md)，数值和源保护见 [geometry.json](../evidence/TASK-023/r4/geometry.json)，大体积运行产物归 `output/terrain/2026-09-27/r4/final-*`。旧 [r3城市参照](../evidence/TASK-023/r3/review.md)、[r2单峰方案](../evidence/TASK-023/r2/review.md)与 [r1双峰方案](../evidence/TASK-023/r1/review.md)保留历史范围；本轮没有人物通行、电梯交互或登山实玩验收，没有放行G1
+第5轮基线 `fcf92ee799d94775fcd26812f930e9217ed9db3f`，本轮证据见[r5源数据、运行与剩余问题](../evidence/TASK-023/r5/review.md)。第4轮基线 `8ae11b3164d64e1c026980d9fcc2f3c1a267f3cc`，历史证据见 [r4交付与自查](../evidence/TASK-023/r4/review.md)，数值和源保护见 [geometry.json](../evidence/TASK-023/r4/geometry.json)，大体积运行产物归 `output/terrain/2026-09-27/r4/final-*`。旧 [r3城市参照](../evidence/TASK-023/r3/review.md)、[r2单峰方案](../evidence/TASK-023/r2/review.md)与 [r1双峰方案](../evidence/TASK-023/r1/review.md)保留历史范围；本轮没有人物通行、电梯交互或登山实玩验收，没有放行G1

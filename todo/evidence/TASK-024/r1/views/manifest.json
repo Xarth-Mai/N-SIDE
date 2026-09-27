@@ -1,0 +1,268 @@
+{
+  "resolution": [
+    2560,
+    1440
+  ],
+  "views": [
+    {
+      "name": "ascent-overview",
+      "bytes": 3561397,
+      "sha256": "cce432f4adad618391a259eec9c054ab8e07e4822e06a26bc6691e1bb3793001"
+    },
+    {
+      "name": "block-B01",
+      "bytes": 4110153,
+      "sha256": "7097b4b09a5403b40a50aedfe5360b3abad6bd894b0c538d4ce4c467992d32ed"
+    },
+    {
+      "name": "block-B02",
+      "bytes": 3819372,
+      "sha256": "cd6085e94388fe64268177f694b58a2c2b0497760b2b4b7bcb0774954844d681"
+    },
+    {
+      "name": "block-B03",
+      "bytes": 4122250,
+      "sha256": "8858bdc8fe26dc94eb8193f5814c7186eb910ef2fc6bcf460927c7ffe3fc2d5b"
+    },
+    {
+      "name": "block-B04",
+      "bytes": 4327844,
+      "sha256": "09aa5fb9d6271b3eebbd60223ffedb2366d5cb7cedef73fe4e248d8deb3ac7ac"
+    },
+    {
+      "name": "block-B05",
+      "bytes": 4192340,
+      "sha256": "b040c53a3cdc96e53341453b7f34ce01c66fd28bb630985aef58130de00a5ef9"
+    },
+    {
+      "name": "block-B06",
+      "bytes": 3901033,
+      "sha256": "3f1a8fe504b1673abbc4e2cedb3e46d5f64561a0630b0fe83511650bae169c3b"
+    },
+    {
+      "name": "block-B07",
+      "bytes": 4233052,
+      "sha256": "c0b5e342383deb3066a69023799816c757058f38bd7c4b08b405100921d7da7f"
+    },
+    {
+      "name": "block-B08",
+      "bytes": 4033832,
+      "sha256": "6210aa946df9b7bbe00dd8ade006130726d1639425e28e2c48baf285ba3284f8"
+    },
+    {
+      "name": "block-B09",
+      "bytes": 4253852,
+      "sha256": "d0856ac057d8617447fefd86f3d487def45363a9f4e9918146b516438009b705"
+    },
+    {
+      "name": "block-B10",
+      "bytes": 4013951,
+      "sha256": "471806271c954a60487429e3199e9e457b48f0b652b9c2eb14cdfb761eac33e1"
+    },
+    {
+      "name": "block-B11",
+      "bytes": 3951858,
+      "sha256": "4fd8d307054c82861d436609578f85feb5e587a2af89d77fcc8bc157448a9b59"
+    },
+    {
+      "name": "block-B12",
+      "bytes": 3667061,
+      "sha256": "ca146b6ed310d01ac6d25696c6db9245c0411bd5de16abd2cb2957b894d86031"
+    },
+    {
+      "name": "bridge",
+      "bytes": 3327026,
+      "sha256": "59071fa455f11584839d1412b457d163782e292aa057c342b1e15578c5c25ee2"
+    },
+    {
+      "name": "campus",
+      "bytes": 3523101,
+      "sha256": "b1174a08d6d9b9a488e40044bca69f21d2df0dcd719fb354f8cd74051e686a14"
+    },
+    {
+      "name": "cinema",
+      "bytes": 4202814,
+      "sha256": "06481d6b84888ed1b540fbc9c0b5e0c4408e43cb7f9049fbd8bca51363d7c1ed"
+    },
+    {
+      "name": "city-overview",
+      "bytes": 3767958,
+      "sha256": "ff0e073268567ec4d3ebae21b2898127b860d5250fcab7d894c581ecce5e310f"
+    },
+    {
+      "name": "eye-ascent-1",
+      "bytes": 3971636,
+      "sha256": "dad7121eaf85e1c3c639a8bf5bb9a08a8e71773209ed2b8342b7d3cdbf11af2d"
+    },
+    {
+      "name": "eye-ascent-2",
+      "bytes": 3963530,
+      "sha256": "1a3ff000dfdc8685df399d943d62b0746101c44266e0a32ccf8e1e5cb55487cd"
+    },
+    {
+      "name": "eye-ascent-3",
+      "bytes": 3697660,
+      "sha256": "04bc1372b6496665fb6e87b849ae7b0cb3c1a052c5de2c910b98e6fa7ceb5e3f"
+    },
+    {
+      "name": "eye-cinema",
+      "bytes": 4100543,
+      "sha256": "eb2b3f156b017513ad8d4ffd782454b12f58efbbc3bc562702534e75e88ecc32"
+    },
+    {
+      "name": "eye-corner",
+      "bytes": 4273370,
+      "sha256": "f518a014c3c1cf2b9516893a3bb7760780515383940dd31efdbf2592ec3b2ffe"
+    },
+    {
+      "name": "eye-shade",
+      "bytes": 4348918,
+      "sha256": "a03b31b25fca6aedd3d00e45119aaa1f8c39dd08c11e601d9c798c24239f7e41"
+    },
+    {
+      "name": "eye-shop-mountain",
+      "bytes": 4066403,
+      "sha256": "8f165a460812f6ab18bc9fad619f09b81a1c30a44cf849824628d2022c0f13fe"
+    },
+    {
+      "name": "eye-shop-uphill",
+      "bytes": 3654087,
+      "sha256": "1d2235e9094d619faa05cac05747556f06c99c4cf4fcde197e1f5e68ad0272d2"
+    },
+    {
+      "name": "eye-shop",
+      "bytes": 4246893,
+      "sha256": "721aeea4d88e4c195d63d4e921a73e37891263ebc3b31a0f4e7720ed02b01467"
+    },
+    {
+      "name": "eye-slope-support",
+      "bytes": 3658661,
+      "sha256": "5fb4b458092d138541673116166df087f4614ee22410c7ad7a09a4dd7c6921c6"
+    },
+    {
+      "name": "eye-station",
+      "bytes": 4293079,
+      "sha256": "3db3a128fb2cd86afc6da1542efd4f5577b23d0301033d107b4235b18899d056"
+    },
+    {
+      "name": "eye-transfer-support",
+      "bytes": 3613632,
+      "sha256": "66b39fd9a0d1a1aea54b5d8e2bfcb0e17d06fd8ec090c0cf7c36b284070f6780"
+    },
+    {
+      "name": "fixture-P3-A1-01",
+      "bytes": 4702233,
+      "sha256": "bc4c75129866e3d152e71c4c4c8531191da5318d0657e98b4024fcd7eb1b69df"
+    },
+    {
+      "name": "fixture-P3-A1-02",
+      "bytes": 4134897,
+      "sha256": "98efb798b52699b2188a29887497570a408140d57ea176f83547b73f4ef583ac"
+    },
+    {
+      "name": "fixture-P3-A1-03",
+      "bytes": 4312212,
+      "sha256": "2b37439296da8e8f4c4c8aaefbb281dfb8d88034ccfceed7888ac38a05fda016"
+    },
+    {
+      "name": "fixture-P3-A1-04",
+      "bytes": 5346338,
+      "sha256": "2d5d1e2d04bb0cd33315cfe33160b0e574e6e30d4ebe55565c21d85e5822d3e3"
+    },
+    {
+      "name": "fixture-P3-A1-05",
+      "bytes": 4931438,
+      "sha256": "bcfe8e0682cd69566fb5431e4b6b3dcce158c3c8cc6b0a4b438c336304b4e992"
+    },
+    {
+      "name": "fixture-P3-A1-06",
+      "bytes": 4400805,
+      "sha256": "d7cbdb5d2e1459b938fd36e6604d72945792eac7091ca08e36a9467b33dbba1a"
+    },
+    {
+      "name": "fixture-P3-A1-07",
+      "bytes": 4122526,
+      "sha256": "20fcab2f715339610205525cc5fe51d3c979ff37009057d292d6418a3e7e77e0"
+    },
+    {
+      "name": "fixture-P3-A1-08",
+      "bytes": 4512067,
+      "sha256": "f66583b5d9f14d9aaf587f274ccc3e18f745b39d91573c99dcd18102c938f610"
+    },
+    {
+      "name": "fixture-P3-A1-09",
+      "bytes": 3304464,
+      "sha256": "1360794a011dabe39a0aed4453b007d871f18ecd72f49be235edb8bc29e6b3eb"
+    },
+    {
+      "name": "fixture-P3-A2-01",
+      "bytes": 4655246,
+      "sha256": "5c322fd9c0a885a241540be379eecff8c5a13a685773cddfb3ca9572545464c1"
+    },
+    {
+      "name": "fixture-P3-A2-02",
+      "bytes": 3934195,
+      "sha256": "1ccc3bd4419cce4fc4c1e3c377dfea4cf13bd7bd0da4a971b2edfe3dd8c2a424"
+    },
+    {
+      "name": "fixture-P3-A2-03",
+      "bytes": 4801977,
+      "sha256": "66c8c0cfc106450d3416423fc4be1a66ef77b9acecc92bcea97d1fbe43a23b46"
+    },
+    {
+      "name": "fixture-P3-A2-04",
+      "bytes": 3863888,
+      "sha256": "d53220f3b07496bb631b62b47c1532623ed5a6ac5599107605c07f5a53fb0084"
+    },
+    {
+      "name": "fixture-P3-A2-05",
+      "bytes": 3410201,
+      "sha256": "9f4085d051152f70dc5d3f09d8aed2f9170d3afed1ed3accf3d7accfec19004f"
+    },
+    {
+      "name": "fixture-P3-A2-06",
+      "bytes": 4260626,
+      "sha256": "bd61c2c66f3e1eed4e448f015fec19a4d95b623227d3f2ef755bc49122ec96b2"
+    },
+    {
+      "name": "fixture-P3-A2-07",
+      "bytes": 3642728,
+      "sha256": "0ca98f4a6a3135932772abbc8915f04d43ae251ee909de95d5189c5f5026e351"
+    },
+    {
+      "name": "fixture-P3-A2-08",
+      "bytes": 3938835,
+      "sha256": "c8ee2da64f7d74fdc64441de54b633516b7a8c08c2917c8422452438265739d3"
+    },
+    {
+      "name": "hillside",
+      "bytes": 3509675,
+      "sha256": "260b888fc0e2cfd06c54dd209c7bfb84402f97d448495e8e0643e76ca256aea7"
+    },
+    {
+      "name": "inspect-cinema-bearing",
+      "bytes": 3729765,
+      "sha256": "7c8ef8c2455da22bbcf69d5da3e0fc9613f4b297845024f150c689c3d3851fca"
+    },
+    {
+      "name": "mountain-profile",
+      "bytes": 3341013,
+      "sha256": "1abe2c8a35d5032bc16b8a5604d53152f914bb543349fd8e88cbad81d11d68d1"
+    },
+    {
+      "name": "overview",
+      "bytes": 3437303,
+      "sha256": "06d489ebcadba5e6e65ed6cc22fa65212aebc4643e74f8ae807305953e50a516"
+    },
+    {
+      "name": "shop",
+      "bytes": 4322146,
+      "sha256": "c035d425a93427cbd41df115baf3a2041adbd83ef6a6073f4c69614133805c32"
+    },
+    {
+      "name": "street",
+      "bytes": 4088425,
+      "sha256": "11d7d1fdd31ed31a67a5dfc6087bc705fd3120159f8d7980e9cd150907b3d08e"
+    }
+  ]
+}

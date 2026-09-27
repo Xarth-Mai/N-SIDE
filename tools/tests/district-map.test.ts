@@ -321,6 +321,29 @@ test('city framework records every building and reaches its same-level facade en
   assert.ok(reachableNodes(gate,'student').has('gate'))
 })
 
+test('city stairs retain short flights, level rests and full-size treads', () => {
+  let rests=0
+  for(const road of data.roads) {
+    if(road.kind==='steps')assert.ok(road.nodes.slice(1).reduce((sum,id,i)=>sum+Math.ceil(Math.abs(data.nodes[id][2]-data.nodes[road.nodes[i]][2])/.17),0)<=48,'bends do not reset an uninterrupted flight')
+    for(let i=1;i<road.nodes.length;i++) {
+      const a=data.nodes[road.nodes[i-1]],b=data.nodes[road.nodes[i]],run=Math.hypot(b[0]-a[0],b[1]-a[1]),rise=Math.abs(b[2]-a[2])
+      const label=road.nodes.slice(i-1,i+1).join(' → ')
+      if(road.kind==='steps'&&rise>1e-6) {
+        const count=Math.ceil(rise/.17)
+        assert.ok(count<=48,`${label}: ${count} uninterrupted risers`)
+        assert.ok(run/count>=.28-1e-6,`${label}: tread ${run/count}m below this graybox's 0.28m minimum`)
+      }
+      if(road.kind==='landing'&&road.nodes[i-1].startsWith('stair_')&&!road.nodes.some(id=>id.startsWith('pause_'))) {
+        rests++
+        assert.ok(rise<1e-6&&run>=2-1e-6,`${label}: rest must be level and at least 2m long`)
+      }
+    }
+  }
+  assert.ok(rests>0,'the uphill network actually contains level rests')
+  const platform=data.surfaces.find(s=>s.id==='slope_upper_platform')!
+  for(const fixture of data.architectures[0].fixtures.filter(f=>['平台状态屏','电梯维护位'].includes(f.name)))assert.equal(fixture.elevation,platform.elevation,'platform fixtures use the platform surface as their base')
+})
+
 test('ordinary streets keep their design grade and deliveries avoid stair-only approaches', async () => {
   const {routeProfile}=await import('../district-plan.ts')
   for(const r of data.roads.filter(r=>!['interior','lift','steps','trail','bridge','deck'].includes(r.kind)))for(const p of routeProfile(data.nodes,r.nodes).slice(1)){
@@ -583,7 +606,7 @@ test('shared stairs and separate apartments connect through shared circulation',
     assert.equal(seen.size,core.length,`${id}: shared circulation must not pass through a dwelling`)
     if(id==='V-57')for(const home of rooms!.filter(r=>r.kind==='home'))assert.ok(pairs.some(pair=>pair.includes(home)&&pair.some(r=>seen.has(r))),`${id} ${home.name}: independent access`)
   }
-  const crossing=sectionRoads(data,data.architectures.find(a=>a.id==='P3-A1')!.sections.find(s=>s.id==='B-B')!).find(r=>r.kind==='steps')
+  const crossing=sectionRoads(data,data.architectures.find(a=>a.id==='P3-A1')!.sections.find(s=>s.id==='B-B')!).find(r=>r.kind==='landing')
   assert.equal(crossing!.width,3)
   assert.equal(crossing!.elevation,data.nodes.shop_upper_junction[2],'the section crosses the real stair landing at its current elevation')
 })

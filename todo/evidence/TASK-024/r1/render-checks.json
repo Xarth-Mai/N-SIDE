@@ -1,0 +1,388 @@
+{
+  "result": "PASS",
+  "scope": "52 complete fixed-view PNGs checked independently; per-view 60 fps frame-interval budget, not actual gameplay/GPU timer/window performance",
+  "resolution": [
+    2560,
+    1440
+  ],
+  "profile": "dev",
+  "render": "Vulkan offscreen, MSAA4",
+  "batch_exit": 143,
+  "batch_completed_views": 47,
+  "batch_note": "Process terminated before final 5 fixtures, cause not established; original log retained. Five individual reruns exited 0. Aggregate artifact and per-view checks pass, not claiming interrupted batch exited 0.",
+  "views": [
+    {
+      "view": "overview",
+      "samples": 2455,
+      "mean_ms": 2.04,
+      "p95_ms": 3.11,
+      "fps": 490.7
+    },
+    {
+      "view": "shop",
+      "samples": 1376,
+      "mean_ms": 3.64,
+      "p95_ms": 5.02,
+      "fps": 275.0
+    },
+    {
+      "view": "street",
+      "samples": 1458,
+      "mean_ms": 3.43,
+      "p95_ms": 4.83,
+      "fps": 291.2
+    },
+    {
+      "view": "cinema",
+      "samples": 1316,
+      "mean_ms": 3.8,
+      "p95_ms": 5.22,
+      "fps": 262.9
+    },
+    {
+      "view": "bridge",
+      "samples": 2652,
+      "mean_ms": 1.89,
+      "p95_ms": 2.09,
+      "fps": 530.2
+    },
+    {
+      "view": "hillside",
+      "samples": 1764,
+      "mean_ms": 2.84,
+      "p95_ms": 4.16,
+      "fps": 352.5
+    },
+    {
+      "view": "campus",
+      "samples": 1650,
+      "mean_ms": 3.03,
+      "p95_ms": 4.34,
+      "fps": 329.8
+    },
+    {
+      "view": "eye-shop",
+      "samples": 1395,
+      "mean_ms": 3.59,
+      "p95_ms": 5.0,
+      "fps": 278.6
+    },
+    {
+      "view": "eye-corner",
+      "samples": 1592,
+      "mean_ms": 3.14,
+      "p95_ms": 4.48,
+      "fps": 318.2
+    },
+    {
+      "view": "eye-shade",
+      "samples": 1363,
+      "mean_ms": 3.67,
+      "p95_ms": 5.07,
+      "fps": 272.4
+    },
+    {
+      "view": "eye-slope-support",
+      "samples": 1545,
+      "mean_ms": 3.24,
+      "p95_ms": 4.55,
+      "fps": 308.9
+    },
+    {
+      "view": "eye-transfer-support",
+      "samples": 2508,
+      "mean_ms": 1.99,
+      "p95_ms": 2.35,
+      "fps": 501.5
+    },
+    {
+      "view": "inspect-cinema-bearing",
+      "samples": 1448,
+      "mean_ms": 3.46,
+      "p95_ms": 4.87,
+      "fps": 289.3
+    },
+    {
+      "view": "eye-shop-uphill",
+      "samples": 1558,
+      "mean_ms": 3.21,
+      "p95_ms": 4.53,
+      "fps": 311.4
+    },
+    {
+      "view": "eye-station",
+      "samples": 1236,
+      "mean_ms": 4.05,
+      "p95_ms": 5.45,
+      "fps": 247.1
+    },
+    {
+      "view": "eye-cinema",
+      "samples": 1351,
+      "mean_ms": 3.7,
+      "p95_ms": 5.07,
+      "fps": 269.9
+    },
+    {
+      "view": "eye-shop-mountain",
+      "samples": 1318,
+      "mean_ms": 3.8,
+      "p95_ms": 5.2,
+      "fps": 263.3
+    },
+    {
+      "view": "mountain-profile",
+      "samples": 2773,
+      "mean_ms": 1.8,
+      "p95_ms": 2.21,
+      "fps": 554.3
+    },
+    {
+      "view": "city-overview",
+      "samples": 1859,
+      "mean_ms": 2.69,
+      "p95_ms": 3.94,
+      "fps": 371.5
+    },
+    {
+      "view": "block-B01",
+      "samples": 1428,
+      "mean_ms": 3.5,
+      "p95_ms": 4.86,
+      "fps": 285.5
+    },
+    {
+      "view": "block-B02",
+      "samples": 1690,
+      "mean_ms": 2.96,
+      "p95_ms": 4.26,
+      "fps": 337.8
+    },
+    {
+      "view": "block-B03",
+      "samples": 1448,
+      "mean_ms": 3.46,
+      "p95_ms": 4.84,
+      "fps": 289.4
+    },
+    {
+      "view": "block-B04",
+      "samples": 1315,
+      "mean_ms": 3.81,
+      "p95_ms": 5.21,
+      "fps": 262.7
+    },
+    {
+      "view": "block-B05",
+      "samples": 1344,
+      "mean_ms": 3.72,
+      "p95_ms": 5.11,
+      "fps": 268.7
+    },
+    {
+      "view": "block-B06",
+      "samples": 1533,
+      "mean_ms": 3.26,
+      "p95_ms": 4.49,
+      "fps": 306.3
+    },
+    {
+      "view": "block-B07",
+      "samples": 1375,
+      "mean_ms": 3.64,
+      "p95_ms": 4.99,
+      "fps": 274.9
+    },
+    {
+      "view": "block-B08",
+      "samples": 1487,
+      "mean_ms": 3.36,
+      "p95_ms": 4.67,
+      "fps": 297.3
+    },
+    {
+      "view": "block-B09",
+      "samples": 1361,
+      "mean_ms": 3.68,
+      "p95_ms": 5.06,
+      "fps": 272.0
+    },
+    {
+      "view": "block-B10",
+      "samples": 1491,
+      "mean_ms": 3.36,
+      "p95_ms": 4.68,
+      "fps": 298.0
+    },
+    {
+      "view": "block-B11",
+      "samples": 1555,
+      "mean_ms": 3.22,
+      "p95_ms": 4.52,
+      "fps": 310.7
+    },
+    {
+      "view": "block-B12",
+      "samples": 1666,
+      "mean_ms": 3.0,
+      "p95_ms": 4.23,
+      "fps": 333.0
+    },
+    {
+      "view": "ascent-overview",
+      "samples": 1843,
+      "mean_ms": 2.71,
+      "p95_ms": 3.97,
+      "fps": 368.5
+    },
+    {
+      "view": "eye-ascent-1",
+      "samples": 1480,
+      "mean_ms": 3.38,
+      "p95_ms": 4.71,
+      "fps": 295.7
+    },
+    {
+      "view": "eye-ascent-2",
+      "samples": 1429,
+      "mean_ms": 3.5,
+      "p95_ms": 4.9,
+      "fps": 285.7
+    },
+    {
+      "view": "eye-ascent-3",
+      "samples": 1496,
+      "mean_ms": 3.34,
+      "p95_ms": 4.67,
+      "fps": 299.1
+    },
+    {
+      "view": "fixture-P3-A1-01",
+      "samples": 1576,
+      "mean_ms": 3.18,
+      "p95_ms": 4.43,
+      "fps": 314.9
+    },
+    {
+      "view": "fixture-P3-A1-02",
+      "samples": 1670,
+      "mean_ms": 3.0,
+      "p95_ms": 4.27,
+      "fps": 333.8
+    },
+    {
+      "view": "fixture-P3-A1-03",
+      "samples": 1618,
+      "mean_ms": 3.09,
+      "p95_ms": 4.27,
+      "fps": 323.1
+    },
+    {
+      "view": "fixture-P3-A1-04",
+      "samples": 1514,
+      "mean_ms": 3.31,
+      "p95_ms": 4.62,
+      "fps": 302.6
+    },
+    {
+      "view": "fixture-P3-A1-05",
+      "samples": 1553,
+      "mean_ms": 3.22,
+      "p95_ms": 4.53,
+      "fps": 310.5
+    },
+    {
+      "view": "fixture-P3-A1-06",
+      "samples": 1512,
+      "mean_ms": 3.31,
+      "p95_ms": 4.57,
+      "fps": 302.3
+    },
+    {
+      "view": "fixture-P3-A1-07",
+      "samples": 1582,
+      "mean_ms": 3.16,
+      "p95_ms": 4.48,
+      "fps": 316.1
+    },
+    {
+      "view": "fixture-P3-A1-08",
+      "samples": 1627,
+      "mean_ms": 3.07,
+      "p95_ms": 4.3,
+      "fps": 325.2
+    },
+    {
+      "view": "fixture-P3-A1-09",
+      "samples": 1747,
+      "mean_ms": 2.86,
+      "p95_ms": 4.11,
+      "fps": 349.2
+    },
+    {
+      "view": "fixture-P3-A2-01",
+      "samples": 1638,
+      "mean_ms": 3.05,
+      "p95_ms": 4.35,
+      "fps": 327.5
+    },
+    {
+      "view": "fixture-P3-A2-02",
+      "samples": 1746,
+      "mean_ms": 2.87,
+      "p95_ms": 4.15,
+      "fps": 348.8
+    },
+    {
+      "view": "fixture-P3-A2-03",
+      "samples": 1699,
+      "mean_ms": 2.94,
+      "p95_ms": 4.28,
+      "fps": 339.7
+    },
+    {
+      "view": "fixture-P3-A2-04",
+      "samples": 1812,
+      "mean_ms": 2.76,
+      "p95_ms": 3.93,
+      "fps": 362.2
+    },
+    {
+      "view": "fixture-P3-A2-05",
+      "samples": 1780,
+      "mean_ms": 2.81,
+      "p95_ms": 4.02,
+      "fps": 355.6
+    },
+    {
+      "view": "fixture-P3-A2-06",
+      "samples": 1616,
+      "mean_ms": 3.1,
+      "p95_ms": 4.38,
+      "fps": 323.1
+    },
+    {
+      "view": "fixture-P3-A2-07",
+      "samples": 1876,
+      "mean_ms": 2.67,
+      "p95_ms": 3.92,
+      "fps": 374.9
+    },
+    {
+      "view": "fixture-P3-A2-08",
+      "samples": 1696,
+      "mean_ms": 2.95,
+      "p95_ms": 4.27,
+      "fps": 338.9
+    }
+  ],
+  "maximum_mean_ms": 4.05,
+  "maximum_p95_ms": 5.45,
+  "ready": {
+    "meshes": 3213,
+    "model_instances": 260,
+    "dependencies": 25,
+    "failed": 0,
+    "degraded": 0
+  }
+}

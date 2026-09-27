@@ -19,6 +19,9 @@ pub struct Map {
     pub nodes: BTreeMap<String, [f64; 3]>,
     pub roads: Vec<Road>,
     pub buildings: Vec<Building>,
+    pub blocks: Vec<Block>,
+    pub parcels: Vec<Parcel>,
+    pub architectures: Vec<Architecture>,
     pub surfaces: Vec<Surface>,
     pub trees: Vec<[f64; 2]>,
     #[serde(rename = "elevatedNodes")]
@@ -55,11 +58,40 @@ pub struct Building {
     pub height: f64,
     pub kind: String,
     pub bank: String,
+    pub parcel: Option<String>,
     pub design: Option<Design>,
 }
 
 #[derive(Clone, Debug, Deserialize)]
+pub struct Block {
+    pub id: String,
+    pub polygon: Vec<[f64; 2]>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct Parcel {
+    pub id: String,
+    pub block: String,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct Architecture {
+    pub id: String,
+    pub fixtures: Vec<Fixture>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct Fixture {
+    pub name: String,
+    pub kind: String,
+    pub polygon: Vec<[f64; 2]>,
+    pub elevation: f64,
+}
+
+#[derive(Clone, Debug, Deserialize)]
 pub struct Design {
+    #[serde(rename = "type")]
+    pub kind: String,
     pub floors: Vec<Floor>,
     pub entries: Vec<Entry>,
     pub front: Option<[[f64; 2]; 2]>,
@@ -202,6 +234,38 @@ impl Map {
             }
             c.point(&p, point)?;
         }
+        let mut block_ids = BTreeSet::new();
+        for (i, block) in self.blocks.iter().enumerate() {
+            c.unique_id(&format!("/blocks/{i}/id"), &block.id, &mut block_ids)?;
+            c.polygon(&format!("/blocks/{i}/polygon"), &block.polygon)?;
+        }
+        let mut parcel_ids = BTreeSet::new();
+        for (i, parcel) in self.parcels.iter().enumerate() {
+            c.unique_id(&format!("/parcels/{i}/id"), &parcel.id, &mut parcel_ids)?;
+            c.reference(
+                &format!("/parcels/{i}/block"),
+                Some(&parcel.block),
+                &block_ids,
+            )?;
+        }
+        let mut architecture_ids = BTreeSet::new();
+        for (i, architecture) in self.architectures.iter().enumerate() {
+            let p = format!("/architectures/{i}");
+            c.unique_id(&format!("{p}/id"), &architecture.id, &mut architecture_ids)?;
+            for (j, fixture) in architecture.fixtures.iter().enumerate() {
+                let q = format!("{p}/fixtures/{j}");
+                c.choice(
+                    &format!("{q}/kind"),
+                    &fixture.kind,
+                    &["bench", "screen", "locker", "drain"],
+                )?;
+                c.polygon(&format!("{q}/polygon"), &fixture.polygon)?;
+                c.number(&format!("{q}/elevation"), fixture.elevation)?;
+                if fixture.name.trim().is_empty() {
+                    return Err(c.error(&format!("{q}/name"), "fixture name must not be empty"));
+                }
+            }
+        }
         let mut building_ids = BTreeSet::new();
         for (i, building) in self.buildings.iter().enumerate() {
             let p = format!("/buildings/{i}");
@@ -224,12 +288,44 @@ impl Map {
                 &building.bank,
                 &["district", "opposite"],
             )?;
+            c.reference(
+                &format!("{p}/parcel"),
+                building.parcel.as_deref(),
+                &parcel_ids,
+            )?;
+            if building.bank == "district" && building.parcel.is_none() {
+                return Err(c.error(
+                    &format!("{p}/parcel"),
+                    "district building requires its source parcel",
+                ));
+            }
             c.number(&format!("{p}/elevation"), building.elevation)?;
             c.positive(&format!("{p}/height"), building.height)?;
             c.number(&format!("{p}/height"), building.elevation + building.height)?;
             c.polygon(&format!("{p}/polygon"), &building.polygon)?;
             if let Some(design) = &building.design {
                 let p = format!("{p}/design");
+                c.choice(
+                    &format!("{p}/type"),
+                    &design.kind,
+                    &[
+                        "station",
+                        "row",
+                        "corner",
+                        "slope",
+                        "apartment",
+                        "mixed",
+                        "school",
+                        "maker",
+                        "civic",
+                        "shop",
+                        "interest",
+                        "public",
+                        "music",
+                        "cinema",
+                        "shrine",
+                    ],
+                )?;
                 if design.floors.is_empty() {
                     return Err(
                         c.error(&format!("{p}/floors"), "a building design requires floors")
@@ -643,6 +739,32 @@ mod tests {
             ),
             ("/units/horizontal", Value::from("cm"), "expected m"),
             ("/version", Value::from(999), "expected 7"),
+            ("/parcels/0/block", Value::from("absent"), "missing object"),
+            (
+                "/buildings/0/parcel",
+                Value::Null,
+                "requires its source parcel",
+            ),
+            (
+                "/buildings/0/design/type",
+                Value::from("unknown"),
+                "unsupported value",
+            ),
+            (
+                "/architectures/0/fixtures/0/kind",
+                Value::from("unknown"),
+                "unsupported value",
+            ),
+            (
+                "/architectures/0/fixtures/0/name",
+                Value::from(" "),
+                "must not be empty",
+            ),
+            (
+                "/architectures/0/fixtures/0/polygon",
+                serde_json::json!([[0, 0], [1, 1], [2, 2]]),
+                "area",
+            ),
             (
                 "/buildings/0/polygon",
                 serde_json::json!([[0, 0], [1, 1], [2, 2]]),
