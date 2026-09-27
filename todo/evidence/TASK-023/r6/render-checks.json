@@ -1,0 +1,120 @@
+[
+  {
+    "view": "inspect-road-school-east",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/inspect-road-school-east",
+      "--view",
+      "inspect-road-school-east"
+    ],
+    "exit_code": 0,
+    "seconds": 16.74099733598996
+  },
+  {
+    "view": "inspect-road-market-entry",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/inspect-road-market-entry",
+      "--view",
+      "inspect-road-market-entry"
+    ],
+    "exit_code": 0,
+    "seconds": 16.63806556700729
+  },
+  {
+    "view": "inspect-road-market-turn",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/inspect-road-market-turn",
+      "--view",
+      "inspect-road-market-turn"
+    ],
+    "exit_code": 0,
+    "seconds": 16.63905913894996
+  },
+  {
+    "view": "eye-ascent-3",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/eye-ascent-3",
+      "--view",
+      "eye-ascent-3"
+    ],
+    "exit_code": 0,
+    "seconds": 16.692942818976007
+  },
+  {
+    "view": "eye-ascent-1",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/eye-ascent-1",
+      "--view",
+      "eye-ascent-1"
+    ],
+    "exit_code": 0,
+    "seconds": 16.639544327976182
+  },
+  {
+    "view": "eye-ascent-2",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/eye-ascent-2",
+      "--view",
+      "eye-ascent-2"
+    ],
+    "exit_code": 0,
+    "seconds": 16.64021463895915
+  },
+  {
+    "view": "ascent-overview",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/ascent-overview",
+      "--view",
+      "ascent-overview"
+    ],
+    "exit_code": 0,
+    "seconds": 16.63874758797465
+  },
+  {
+    "view": "mountain-profile",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/terrain/2026-09-27/r6/views/mountain-profile",
+      "--view",
+      "mountain-profile"
+    ],
+    "exit_code": 0,
+    "seconds": 16.538721541990526
+  },
+  {
+    "view": "inspect-road-school-lower",
+    "command": "game/target/debug/map_viewer --project-root . --verify-headless output/terrain/2026-09-27/r6/views/inspect-road-school-lower --view inspect-road-school-lower",
+    "exit_code": 0,
+    "evidence": "shell && continued to capture; verify/view in retained log"
+  }
+]

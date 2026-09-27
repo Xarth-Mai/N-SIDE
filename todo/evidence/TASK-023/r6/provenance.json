@@ -1,0 +1,61 @@
+{
+  "first_eight_views": {
+    "game/target/debug/map_viewer": "c0ac3bfd3b01d28e5b38596ce735717b319ac00440a57197eafa1866084d67aa",
+    "game/src/bin/map_viewer.rs": "138641347c81f1393d99816597b234cf5a406ec3995876c15adbb032d7fd0631",
+    "source-assets/district-map/district.json": "058d871a151bb2694de5f1b6888b99fae5a86501668631e9fedd319276e8bb6c",
+    "game/src/world/geometry.rs": "fb86a856778e22edf048883958b982947e349d0103ae40010ac6806c91791ecd"
+  },
+  "supplement_and_capture": {
+    "source-assets/district-map/district.json": "058d871a151bb2694de5f1b6888b99fae5a86501668631e9fedd319276e8bb6c",
+    "game/src/bin/map_viewer.rs": "bd17bb9d6ab9da6ed1acc546e27bc7baaaef1ec5d8b27dabea4a793b7e36d0d0",
+    "game/capture/ascent-lookout.json": "3d4a09ff9131be9e831b98e60cbe453a64e655b3ffddb7d2896e91425a8c06b4",
+    "game/target/debug/map_viewer": "be5c169ec79ac499a5ef120cd528643d3a0128299613c3a1ff5265e5bad261b2"
+  },
+  "images": [
+    {
+      "png": "output/terrain/2026-09-27/r6/views/ascent-overview/ascent-overview.png",
+      "sha256": "b95459db795b586c8555660152969f978382071d48dd3332fc00f2308a135afe",
+      "webp": "todo/evidence/TASK-023/r6/views/ascent-overview.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/eye-ascent-1/eye-ascent-1.png",
+      "sha256": "9812394052b008eea265fb798a05d008602dc67090280e987655b1dd5645c874",
+      "webp": "todo/evidence/TASK-023/r6/views/eye-ascent-1.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/eye-ascent-2/eye-ascent-2.png",
+      "sha256": "da0781b0b3a1bf2991c914d4890d7a1d735308e1ac89df15e51b203ec5edc725",
+      "webp": "todo/evidence/TASK-023/r6/views/eye-ascent-2.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/eye-ascent-3/eye-ascent-3.png",
+      "sha256": "fc99a81996d2516e75565c49792c33638ef24c110fb3b7b324e4454ca9eb7710",
+      "webp": "todo/evidence/TASK-023/r6/views/eye-ascent-3.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/inspect-road-market-entry/inspect-road-market-entry.png",
+      "sha256": "65579ea9ba1118646b5b9e72388bfc6182209db6b6f69f4c590a373de2dad027",
+      "webp": "todo/evidence/TASK-025/r3/views/inspect-road-market-entry.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/inspect-road-market-turn/inspect-road-market-turn.png",
+      "sha256": "e56ad0d82ec6a1cc43f16af659fa0f8050aebf202e727a25a20d634fa50991ed",
+      "webp": "todo/evidence/TASK-025/r3/views/inspect-road-market-turn.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/inspect-road-school-east/inspect-road-school-east.png",
+      "sha256": "1bccdd01d217a0278cb1caa69fc41a08a63b9d24218c8bf1c686f05c806a63d8",
+      "webp": "todo/evidence/TASK-025/r3/views/inspect-road-school-east.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/inspect-road-school-lower/inspect-road-school-lower.png",
+      "sha256": "33c1b006e099a0707f3c1cccee3cf0c7c02c2dde3e962ca4a0ecb59a917a6aad",
+      "webp": "todo/evidence/TASK-025/r3/views/inspect-road-school-lower.webp"
+    },
+    {
+      "png": "output/terrain/2026-09-27/r6/views/mountain-profile/mountain-profile.png",
+      "sha256": "f7ff3a260ce4ff0deecb3da951f59fbd1bd116b16dee21e66e922fc5ca81a179",
+      "webp": "todo/evidence/TASK-023/r6/views/mountain-profile.webp"
+    }
+  ]
+}

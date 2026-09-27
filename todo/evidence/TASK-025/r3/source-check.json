@@ -1,0 +1,715 @@
+{
+  "baseline_commit": "2d6f374d8d41ba40cd992321e3f473ff13291cee",
+  "before_sha256": "77d5870f1d145d02ea353f2f6f351665261fe2735a2816916fb921a7e1501a8c",
+  "after_sha256": "19e1cb10a910bc749a834cc7f99c75bc78672686ce8cea49c346fbd373f63b6d",
+  "thresholds_unchanged": {
+    "overlapArea": 0.5,
+    "heightDelta": 0.35
+  },
+  "before_candidates": 98,
+  "after_candidates": 85,
+  "removed": [
+    {
+      "a": {
+        "road": 161,
+        "nodes": [
+          "fw_e_school_edge_top",
+          "east_n"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 558,
+        "nodes": [
+          "school_steps_east_rest",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "steps"
+      },
+      "area": 18.69398885422561,
+      "maxDelta": 3.3269642857142756,
+      "point": [
+        537.8626984126985,
+        351.5
+      ],
+      "sharedNodes": [
+        "fw_e_school_edge_top"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "area": 6.87208101316287,
+      "maxDelta": 1.622011920284839,
+      "point": [
+        6.142173382921186,
+        96.87245891022341
+      ],
+      "sharedNodes": [
+        "market_entry"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 736,
+        "nodes": [
+          "market_turn",
+          "market_service_high"
+        ],
+        "kind": "service"
+      },
+      "area": 25.319974180201598,
+      "maxDelta": 1.402101019260062,
+      "point": [
+        17.701686003130064,
+        139.25385372239157
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 192,
+        "nodes": [
+          "market_turn",
+          "v_a01_door_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 13.820153072165795,
+      "maxDelta": 1.3220105331381333,
+      "point": [
+        10.029912105266733,
+        143.52532357836998
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "square",
+          "market_entry"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "area": 1.6490062224609687,
+      "maxDelta": 1.258417956364962,
+      "point": [
+        6.856666471323148,
+        95.35687992114046
+      ],
+      "sharedNodes": [
+        "market_entry"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_turn",
+          "court"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 17,
+        "nodes": [
+          "market_turn",
+          "alley_corner"
+        ],
+        "kind": "lane"
+      },
+      "area": 77.73475216089173,
+      "maxDelta": 0.8567578840032404,
+      "point": [
+        36.06429792468529,
+        166.31589649653685
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 555,
+        "nodes": [
+          "fw_e_school_edge_low",
+          "school_steps_east_base"
+        ],
+        "kind": "landing"
+      },
+      "b": {
+        "road": 556,
+        "nodes": [
+          "school_steps_east_base",
+          "school_steps_east_mid"
+        ],
+        "kind": "steps"
+      },
+      "area": 2.25,
+      "maxDelta": 0.75,
+      "point": [
+        544,
+        331.24444444444447
+      ],
+      "sharedNodes": [
+        "school_steps_east_base"
+      ]
+    },
+    {
+      "a": {
+        "road": 557,
+        "nodes": [
+          "school_steps_east_mid",
+          "school_steps_east_rest"
+        ],
+        "kind": "landing"
+      },
+      "b": {
+        "road": 558,
+        "nodes": [
+          "school_steps_east_rest",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "steps"
+      },
+      "area": 1.2283902284543728,
+      "maxDelta": 0.5833333333333357,
+      "point": [
+        542.6809523809525,
+        346
+      ],
+      "sharedNodes": [
+        "school_steps_east_rest"
+      ]
+    },
+    {
+      "a": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 726,
+        "nodes": [
+          "v_a01_door_landing",
+          "v_51_door_landing"
+        ],
+        "kind": "lane"
+      },
+      "area": 1.1382392171738047,
+      "maxDelta": 0.5833333333333321,
+      "point": [
+        -3.0093261131167264,
+        100.57927196149217
+      ],
+      "sharedNodes": [
+        "v_51_door_landing"
+      ]
+    },
+    {
+      "a": {
+        "road": 259,
+        "nodes": [
+          "market_entry",
+          "v_51_door_landing"
+        ],
+        "kind": "steps"
+      },
+      "b": {
+        "road": 726,
+        "nodes": [
+          "v_51_door_landing",
+          "v_51_door"
+        ],
+        "kind": "lane"
+      },
+      "area": 0.720822929297384,
+      "maxDelta": 0.5833333333333321,
+      "point": [
+        -3.031504065040649,
+        100.53150406504065
+      ],
+      "sharedNodes": [
+        "v_51_door_landing"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 192,
+        "nodes": [
+          "bakery_front",
+          "market_turn"
+        ],
+        "kind": "lane"
+      },
+      "area": 5.809632537131165,
+      "maxDelta": 0.5282351476027891,
+      "point": [
+        10.708151745348632,
+        151.66419925935278
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 1,
+        "nodes": [
+          "market_entry",
+          "market_turn"
+        ],
+        "kind": "main"
+      },
+      "b": {
+        "road": 17,
+        "nodes": [
+          "west_market",
+          "market_turn"
+        ],
+        "kind": "lane"
+      },
+      "area": 15.565235418163866,
+      "maxDelta": 0.42623915894752074,
+      "point": [
+        11.358958633895167,
+        152.63041639437594
+      ],
+      "sharedNodes": [
+        "market_turn"
+      ]
+    },
+    {
+      "a": {
+        "road": 161,
+        "nodes": [
+          "school_n",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 558,
+        "nodes": [
+          "school_steps_east_rest",
+          "fw_e_school_edge_top"
+        ],
+        "kind": "steps"
+      },
+      "area": 0.723214285710128,
+      "maxDelta": 0.4166666666666643,
+      "point": [
+        530,
+        353.21678746673996
+      ],
+      "sharedNodes": [
+        "fw_e_school_edge_top"
+      ]
+    }
+  ],
+  "new_candidates": [],
+  "preserved_fields": {
+    "version": true,
+    "groups": true,
+    "buildings": true,
+    "trees": true,
+    "surfaces": true,
+    "blocks": true,
+    "units": true,
+    "parcels": true,
+    "connections": true,
+    "elevatedNodes": true,
+    "housingAssumptions": true,
+    "logistics": true
+  },
+  "path_consumers_only_insert_new_nodes": {
+    "places": true,
+    "routes": true,
+    "sections": true,
+    "architectures": true
+  },
+  "original_node_ids_preserved": true,
+  "short_ascent_unchanged": true,
+  "changed_nodes": [
+    {
+      "id": "school_steps_east_base",
+      "before": [
+        544,
+        330,
+        26
+      ],
+      "after": [
+        544,
+        311,
+        26
+      ]
+    },
+    {
+      "id": "school_steps_east_mid",
+      "before": [
+        544,
+        344,
+        33.5
+      ],
+      "after": [
+        544,
+        329,
+        33.5
+      ]
+    },
+    {
+      "id": "school_steps_east_rest",
+      "before": [
+        544,
+        346,
+        33.5
+      ],
+      "after": [
+        536,
+        334,
+        33.5
+      ]
+    }
+  ],
+  "added_nodes": {
+    "junction_school_stair_lower": [
+      544,
+      316,
+      26
+    ],
+    "junction_school_rest_east": [
+      544,
+      332,
+      33.5
+    ],
+    "junction_school_rest_west": [
+      536,
+      332,
+      33.5
+    ],
+    "junction_school_stair_upper": [
+      536,
+      347,
+      41
+    ],
+    "junction_school_stair_turn": [
+      536,
+      349,
+      41
+    ],
+    "junction_school_stair_top": [
+      530,
+      349,
+      41
+    ],
+    "junction_market_stair_base": [
+      1,
+      95,
+      14
+    ],
+    "junction_market_stair_lower": [
+      1,
+      97,
+      14
+    ],
+    "junction_market_stair_upper": [
+      1,
+      110,
+      20
+    ],
+    "junction_market_stair_turn": [
+      1,
+      112,
+      20
+    ],
+    "junction_market_front_walk": [
+      -4,
+      112,
+      20
+    ],
+    "junction_market_turn_west": [
+      3,
+      155,
+      20
+    ],
+    "junction_market_turn_east": [
+      27,
+      155,
+      20
+    ],
+    "junction_market_turn_north": [
+      15,
+      165,
+      20.5
+    ]
+  },
+  "road_count": {
+    "before": 858,
+    "after": 862
+  },
+  "flights": [
+    {
+      "nodes": [
+        "junction_school_stair_lower",
+        "school_steps_east_mid"
+      ],
+      "rise": 7.5,
+      "risers": 45,
+      "tread": 0.28888888888888886
+    },
+    {
+      "nodes": [
+        "school_steps_east_rest",
+        "junction_school_stair_upper"
+      ],
+      "rise": 7.5,
+      "risers": 45,
+      "tread": 0.28888888888888886
+    },
+    {
+      "nodes": [
+        "junction_market_stair_lower",
+        "junction_market_stair_upper"
+      ],
+      "rise": 6,
+      "risers": 36,
+      "tread": 0.3611111111111111
+    }
+  ],
+  "terrain": {
+    "recipe_unchanged": true,
+    "authored_prefix_unchanged": true,
+    "before_samples": 8359,
+    "after_samples": 8375,
+    "removed_coordinates": 32,
+    "added_coordinates": 48,
+    "shared_coordinates_changed_height": 11
+  },
+  "iterations": [
+    {
+      "attempt": 1,
+      "candidates": 86,
+      "new_candidates": [
+        {
+          "a": {
+            "road": 161,
+            "nodes": [
+              "fw_e_school_edge_top",
+              "junction_east_n_west"
+            ],
+            "kind": "lane"
+          },
+          "b": {
+            "road": 859,
+            "nodes": [
+              "junction_school_stair_upper",
+              "junction_school_stair_top"
+            ],
+            "kind": "landing"
+          },
+          "area": 10.5,
+          "maxDelta": 1.1875,
+          "point": [
+            539.5,
+            351.5
+          ],
+          "sharedNodes": []
+        },
+        {
+          "a": {
+            "road": 161,
+            "nodes": [
+              "fw_e_school_edge_top",
+              "junction_east_n_west"
+            ],
+            "kind": "lane"
+          },
+          "b": {
+            "road": 859,
+            "nodes": [
+              "junction_school_stair_top",
+              "fw_e_school_edge_top"
+            ],
+            "kind": "landing"
+          },
+          "area": 24,
+          "maxDelta": 1.1875,
+          "point": [
+            539.5,
+            356.5
+          ],
+          "sharedNodes": [
+            "fw_e_school_edge_top"
+          ]
+        },
+        {
+          "a": {
+            "road": 557,
+            "nodes": [
+              "school_steps_east_mid",
+              "school_steps_east_rest"
+            ],
+            "kind": "landing"
+          },
+          "b": {
+            "road": 558,
+            "nodes": [
+              "school_steps_east_rest",
+              "junction_school_stair_upper"
+            ],
+            "kind": "steps"
+          },
+          "area": 2.25,
+          "maxDelta": 0.75,
+          "point": [
+            539.5,
+            335.5
+          ],
+          "sharedNodes": [
+            "school_steps_east_rest"
+          ]
+        },
+        {
+          "a": {
+            "road": 556,
+            "nodes": [
+              "junction_school_stair_lower",
+              "school_steps_east_mid"
+            ],
+            "kind": "steps"
+          },
+          "b": {
+            "road": 557,
+            "nodes": [
+              "school_steps_east_mid",
+              "school_steps_east_rest"
+            ],
+            "kind": "landing"
+          },
+          "area": 2.25,
+          "maxDelta": 0.5833333333333357,
+          "point": [
+            544,
+            332.8666666666667
+          ],
+          "sharedNodes": [
+            "school_steps_east_mid"
+          ]
+        },
+        {
+          "a": {
+            "road": 51,
+            "nodes": [
+              "junction_east_n_south",
+              "housing_front"
+            ],
+            "kind": "lane"
+          },
+          "b": {
+            "road": 561,
+            "nodes": [
+              "housing_front",
+              "fw_e_hw_mid"
+            ],
+            "kind": "lane"
+          },
+          "area": 6.25,
+          "maxDelta": 0.4201388888888893,
+          "point": [
+            552.5,
+            262.5
+          ],
+          "sharedNodes": [
+            "housing_front"
+          ]
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "candidates": 86,
+      "new_candidates": [
+        {
+          "a": {
+            "road": 555,
+            "nodes": [
+              "fw_e_school_edge_low",
+              "school_steps_east_base"
+            ],
+            "kind": "landing"
+          },
+          "b": {
+            "road": 556,
+            "nodes": [
+              "junction_school_stair_lower",
+              "school_steps_east_mid"
+            ],
+            "kind": "steps"
+          },
+          "area": 0.9016272153676255,
+          "maxDelta": 0.75,
+          "point": [
+            542.6702423419449,
+            315.3333333333333
+          ],
+          "sharedNodes": []
+        }
+      ]
+    }
+  ],
+  "render": "NOT RUN by source-data subtask; parent owns actual capture and inspection"
+}

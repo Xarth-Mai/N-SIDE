@@ -1,0 +1,29 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/terrain-shape.test.ts:
+83 |   // This checks terrain only; buildings, trees and the rendered view remain separate evidence
+84 |   for(const {id,point} of targets) {
+85 |     const length=Math.hypot(point[0]-eye[0],point[1]-eye[1])
+86 |     for(let s=1;s<length-5;s+=.5) {
+87 |       const t=s/length,p=eye.map((v,i)=>v+(point[i]-v)*t)
+88 |       assert.ok(p[2]-ground.height(p[0],p[1])>.5,`${id}: terrain blocks the 1.7m eye at ${s}m`)
+                  ^
+AssertionError: home: terrain blocks the 1.7m eye at 3.5m
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/terrain-shape.test.ts:88:14
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) third short-ascent terrace clears terrain toward city landmarks [26.65ms]
+
+ 0 pass
+ 3 filtered out
+ 1 fail
+Ran 1 test across 1 file. [61.00ms]

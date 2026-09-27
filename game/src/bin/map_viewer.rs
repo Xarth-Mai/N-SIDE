@@ -539,6 +539,22 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
             "inspect-road-north",
             view([56., 560., 160.], [70., 577., 154.]),
         ),
+        (
+            "inspect-road-school-east",
+            view([564., 306., 49.], [536., 335., 34.]),
+        ),
+        (
+            "inspect-road-school-lower",
+            view([524., 304., 42.], [544., 323., 30.]),
+        ),
+        (
+            "inspect-road-market-entry",
+            view([31., 77., 26.], [2., 104., 19.]),
+        ),
+        (
+            "inspect-road-market-turn",
+            view([42., 172., 32.], [14., 151., 20.]),
+        ),
     ]);
     let mut views: Vec<_> = views
         .into_iter()

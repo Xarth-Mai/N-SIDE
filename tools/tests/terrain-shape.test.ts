@@ -71,3 +71,21 @@ test('terrain bake rejects invalid metadata and unsupported source formatting',(
   const text='  "terrain": {},'
   assert.equal(replaceTerrain(text,data.terrain),'  "terrain": '+JSON.stringify(data.terrain)+',')
 })
+
+test('third short-ascent terrace clears terrain toward city landmarks',()=>{
+  const ground=buildGround(data),rest=data.nodes.hill_short_rest3,home=data.nodes.home
+  // Same city-facing position as Viewer eye-ascent-3: 3m from center, 1.7m above the platform
+  const distance=Math.hypot(home[0]-rest[0],home[1]-rest[1])
+  const eye=[rest[0]+3*(home[0]-rest[0])/distance,rest[1]+3*(home[1]-rest[1])/distance,rest[2]+1.7]
+  const cinema=data.buildings.find(b=>b.id==='V-15')!
+  const roof=[0,1].map(axis=>cinema.polygon.reduce((sum,p)=>sum+p[axis],0)/cinema.polygon.length)
+  const targets=[...['home','station','upper'].map(id=>({id,point:data.nodes[id]})),{id:'V-15 roof',point:[...roof,cinema.elevation+cinema.height]}]
+  // This checks terrain only; buildings, trees and the rendered view remain separate evidence
+  for(const {id,point} of targets) {
+    const length=Math.hypot(point[0]-eye[0],point[1]-eye[1])
+    for(let s=1;s<length-5;s+=.5) {
+      const t=s/length,p=eye.map((v,i)=>v+(point[i]-v)*t)
+      assert.ok(p[2]-ground.height(p[0],p[1])>.5,`${id}: terrain blocks the 1.7m eye at ${s}m`)
+    }
+  }
+})

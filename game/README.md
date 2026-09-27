@@ -102,6 +102,12 @@ test $status -ne 0
 
 第一条录制 18 秒、640 × 360、30 fps 的真实输入过程，检查横移、转向、释放后停稳和恢复控制。第二条故意要求相机在短时间内移动 1000 m，必须产生 `FAIL` 及非零退出码；它用于验证断言没有失效
 
+`ascent-lookout.json` 从短登高第三停步台的既有1.7m人眼机位录制18秒环看，保持位置、通过同一自由相机转向并释放输入。它用于检查城市视线与近坡遮挡，不表示人物已经走完登山路线
+
+```fish
+python3 tools/capture.py --script game/capture/ascent-lookout.json --output output/capture/ascent-lookout --binary game/target/debug/map_viewer
+```
+
 每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 `district` 和 `ui-signal`，`view` 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/Shift/M/Escape/Tab/Enter/Up/Down/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角或结束时控制器启用状态
 
 资源依赖和场景实例就绪后预热 30 个渲染帧，再按 `1 / fps` 推进模拟；每张截图收到异步回调并成功落盘后才推进下一帧，等待期间模拟时间为零。固定输入与时间步改善同环境复现，不能保证跨平台、跨 GPU 的像素一致性；当前场景没有随机行为，`seed` 只作为证据记录，尚无随机系统消费它

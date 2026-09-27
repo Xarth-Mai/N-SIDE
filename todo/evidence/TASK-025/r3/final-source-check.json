@@ -1,0 +1,107 @@
+{
+  "baseline_commit": "2d6f374d8d41ba40cd992321e3f473ff13291cee",
+  "source_sha256": "058d871a151bb2694de5f1b6888b99fae5a86501668631e9fedd319276e8bb6c",
+  "old_controls_preserved": true,
+  "added_controls": [
+    [
+      320,
+      870,
+      402
+    ],
+    [
+      320,
+      810,
+      358
+    ],
+    [
+      260,
+      810,
+      350
+    ]
+  ],
+  "rest3_unchanged": true,
+  "summit": [
+    230,
+    950,
+    450
+  ],
+  "maximum_samples": [
+    [
+      230,
+      950,
+      450
+    ]
+  ],
+  "short_route_unchanged": true,
+  "unchanged_sections": [
+    "buildings",
+    "surfaces",
+    "parcels",
+    "trees",
+    "elevatedNodes",
+    "connections",
+    "logistics"
+  ],
+  "changed_nodes": {
+    "school_steps_east_base": {
+      "before": [
+        544,
+        330,
+        26
+      ],
+      "after": [
+        544,
+        311,
+        26
+      ]
+    },
+    "school_steps_east_mid": {
+      "before": [
+        544,
+        344,
+        33.5
+      ],
+      "after": [
+        544,
+        329,
+        33.5
+      ]
+    },
+    "school_steps_east_rest": {
+      "before": [
+        544,
+        346,
+        33.5
+      ],
+      "after": [
+        536,
+        334,
+        33.5
+      ]
+    }
+  },
+  "added_nodes": [
+    "junction_school_stair_lower",
+    "junction_school_rest_east",
+    "junction_school_rest_west",
+    "junction_school_stair_upper",
+    "junction_school_stair_turn",
+    "junction_school_stair_top",
+    "junction_market_stair_base",
+    "junction_market_stair_lower",
+    "junction_market_stair_upper",
+    "junction_market_stair_turn",
+    "junction_market_front_walk",
+    "junction_market_turn_west",
+    "junction_market_turn_east",
+    "junction_market_turn_north"
+  ],
+  "counts": {
+    "nodes": 1532,
+    "roads": 862,
+    "terrain_samples": 8375
+  },
+  "cleanup": "Removed bakery lane west -> market_turn -> west duplicate exact backtrack; 6m cross street preserves connection",
+  "short_route_horizontal_metres": 1213.9347168334766,
+  "short_route_spatial_metres": 1311.187344578521
+}

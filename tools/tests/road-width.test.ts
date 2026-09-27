@@ -42,3 +42,10 @@ test('upper-street and foothill junctions join at road width with usable stair t
   }
   assert.deepEqual(roadWidthConflicts(data,'hill-short'),[],'the previously checked short ascent remains clear')
 })
+
+test('campus stairs and market entrances meet the full road width at their own levels',()=>{
+  const junctions=new Set(['market_entry','market_turn','school_steps_east_base','school_steps_east_mid','school_steps_east_rest','fw_e_school_edge_top'])
+  const conflicts=roadWidthConflicts(source,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>/^junction_(school|market)_/.test(id)))
+  assert.deepEqual(conflicts,[],'approach landings must clear both neighboring roads and the next stair flight')
+  assert.ok(!source.roads.some(r=>r.nodes.some((id,i)=>id===r.nodes[i+2])),'an exact out-and-back road segment creates duplicate ribbons and an undefined turn')
+})
