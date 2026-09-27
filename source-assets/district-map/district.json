@@ -1534,7 +1534,11 @@
     "junction_market_front_walk": [-4,112,20],
     "junction_market_turn_west": [3,155,20],
     "junction_market_turn_east": [27,155,20],
-    "junction_market_turn_north": [15,165,20.5]
+    "junction_market_turn_north": [15,165,20.5],
+    "junction_music_delivery_low": [672,-20,8],
+    "junction_music_delivery_bend": [650,5,10.8],
+    "junction_music_delivery_top": [635,-12,12.666667],
+    "junction_music_west": [556,80,14]
   },
   "roads": [
     {"nodes":["station","square"],"kind":"main","width":10},
@@ -2212,8 +2216,8 @@
     {"nodes":["fw_w_upper_walk","fw_w_v-w07_door"],"kind":"lane","width":2,"access":"public"},
     {"nodes":["fw_w_upper_walk","fw_w_v-w08_door"],"kind":"lane","width":2,"access":"public"},
     {"nodes":["fw_w_upper_walk","fw_w_v-w09_door"],"kind":"lane","width":2,"access":"public"},
-    {"nodes":["music_west_walk","fw_w_music_mid"],"kind":"lane","width":4,"access":"public"},
-    {"nodes":["music_west_walk","fw_w_v-w10_door"],"kind":"lane","width":2,"access":"public"},
+    {"nodes":["music_west_walk","junction_music_west","fw_w_music_mid"],"kind":"lane","width":4,"access":"public"},
+    {"nodes":["fw_w_music_mid","fw_w_v-w10_door"],"kind":"lane","width":2,"access":"public"},
     {"nodes":["fw_w_music_mid","fw_w_v-w11_door"],"kind":"lane","width":2,"access":"public"},
     {"nodes":["fw_w_music_east_mid","fw_w_v-w12_door"],"kind":"lane","width":2,"access":"public"},
     {"nodes":["fw_w_v-w13_door","fw_w_music_north","fw_w_v-w15_door"],"kind":"lane","width":2,"access":"public"},
@@ -2227,7 +2231,7 @@
     {"nodes":["tea_front","fw_w_record_front"],"kind":"lane","width":3,"access":"public"},
     {"nodes":["fw_w_record_front","fw_w_record_door"],"kind":"lane","width":2,"access":"public"},
     {"nodes":["fw_w_music_delivery","live_loading"],"kind":"service","width":4,"access":"service"},
-    {"nodes":["music_cross","fw_w_audio_delivery","audio_loading"],"kind":"service","width":4,"access":"service"},
+    {"nodes":["fw_w_music_delivery","junction_music_delivery_low","junction_music_delivery_bend","junction_music_delivery_top","fw_w_audio_delivery","audio_loading"],"kind":"service","width":4,"access":"service"},
     {"nodes":["fw_w_bank_s","fw_w_bank_entry","fw_w_bank_mid","fw_w_bank_n","fw_w_bank_north_turn","fw_w_bank_garden_turn","fw_w_bank_sport_service","fw_w_bank_garden_w","fw_w_garden_w","fw_w_garden_center"],"kind":"lane","width":4,"access":"public"},
     {"nodes":["fw_w_cafe_door","fw_w_bank_mid","fw_w_sport_door"],"kind":"lane","width":2,"access":"public"},
     {"nodes":["fw_w_v-w19_door","fw_w_bank_entry","fw_w_v-w20_door"],"kind":"lane","width":2,"access":"public"},
@@ -2710,7 +2714,7 @@
     {"id":"74","name":"社区摄影工作室","block":"B09","space":"building","use":"家庭肖像、作品拍摄与后期服务","entry":"影院街安静侧巷入口","users":"家庭、创作者、街区商户","time":"白天预约与傍晚取件","activity":"拍一张家庭合照、查看成片","operations":"客户照片受控交付，器材从后门搬入","featured":true,"group":"B09","parcel":"P09-B","access":"cinema_upper","position":[302,311,47.632184],"building":"V-74","arrivals":{"public":{"label":"临街主要入口","nodes":["cinema_upper","stair_cinema_upper_fw_w_upper_turn_01_in","stair_cinema_upper_fw_w_upper_turn_01_out","fw_w_upper_turn","fw_w_upper_court","fw_w_photo_door"],"level":"1F"}}},
     {"id":"75","name":"共享工作室","block":"B09","space":"building","use":"小型创作、办公与预约会谈","entry":"综合体高街公共层独立门禁入口","users":"自由职业者、小团队、创作者","time":"白天至预约结束","activity":"在共享桌工作、带作品交流","operations":"租用与公共停留分区，设备维护走运营后场","parent":"15","featured":true,"group":"B09","parcel":"P09-A","position":[325,242,33],"access":"library_gate","building":"V-15"},
     {"id":"76","name":"街坊作品小展厅","block":"B09","space":"building","use":"轮换小型作品与制作过程展示","entry":"影院街独立公共入口","users":"居民、学生、手作者","time":"白天至晚间，布展时局部闭合","activity":"看一组作品、参加短时分享","operations":"展品经侧门搬入，展陈取得作者授权","featured":true,"group":"B09","parcel":"P09-D","access":"school_s","position":[392,111,23],"building":"V-76","arrivals":{"public":{"label":"临街主要入口","nodes":["school_s","fw_w_exhibition_turn","fw_w_gallery_front","fw_w_gallery_door"],"level":"1F"},"service":{"label":"后场收货入口","nodes":["school_s","fw_w_exhibition_turn","fw_w_gallery_back_turn","fw_w_gallery_service","fw_w_gallery_back"],"level":"1F"}}},
-    {"id":"77","name":"乐器音频店","block":"B10","space":"building","use":"乐器、耳机与音频器材试用调试","entry":"音乐街入口，器材取送从侧门到交接位","users":"音乐爱好者、演出者、普通听众","time":"白天至晚间","activity":"试耳机、听店员调一把琴","operations":"试音区封闭，贵重器材受控储存，搬运接后场","detail":true,"brief":{"space":"临街商品与调试台、封闭试音室、储藏和器材交接位","flow":"轻便顾客由主门进入，乐器与设备从侧门接后场","service":"与排练楼相邻，面向住户的墙面安排储物和服务带缓冲声音","public":"白天教学选购、晚间排练者取用与归还","reference":["R7"]},"featured":true,"group":"B10","parcel":"P10-A","access":"music_west","position":[580,17,12.666667],"building":"V-77","arrivals":{"public":{"label":"临街主要入口","nodes":["music_west","east_g","music_west_walk","rehearsal_walk","audio_walk","audio_entry"],"level":"1F"},"service":{"label":"后场收货入口","nodes":["music_west","east_g","east_s","cross_e","music_cross","fw_w_audio_delivery","audio_loading","audio_service_apron","audio_service_entry"],"level":"1F"}}},
+    {"id":"77","name":"乐器音频店","block":"B10","space":"building","use":"乐器、耳机与音频器材试用调试","entry":"音乐街入口，器材取送从侧门到交接位","users":"音乐爱好者、演出者、普通听众","time":"白天至晚间","activity":"试耳机、听店员调一把琴","operations":"试音区封闭，贵重器材受控储存，搬运接后场","detail":true,"brief":{"space":"临街商品与调试台、封闭试音室、储藏和器材交接位","flow":"轻便顾客由主门进入，乐器与设备从侧门接后场","service":"与排练楼相邻，面向住户的墙面安排储物和服务带缓冲声音","public":"白天教学选购、晚间排练者取用与归还","reference":["R7"]},"featured":true,"group":"B10","parcel":"P10-A","access":"music_west","position":[580,17,12.666667],"building":"V-77","arrivals":{"public":{"label":"临街主要入口","nodes":["music_west","east_g","music_west_walk","rehearsal_walk","audio_walk","audio_entry"],"level":"1F"},"service":{"label":"后场收货入口","nodes":["music_west","east_g","east_s","cross_e","music_cross","fw_w_music_delivery","junction_music_delivery_low","junction_music_delivery_bend","junction_music_delivery_top","fw_w_audio_delivery","audio_loading","audio_service_apron","audio_service_entry"],"level":"1F"}}},
     {"id":"78","name":"排练录音楼","block":"B10","space":"building","use":"分时排练、录音与设备交接","entry":"音乐街预约前台，器材后门接装卸位","users":"乐队、学生、小型创作者","time":"白天至晚间预约，夜间分批离场","activity":"调设备、排练一段、带器材回家","operations":"前台管理房间交接，隔声送风与减振进入建筑深化","detail":true,"brief":{"space":"预约前台、分组练习房、录音房、设备检查和受控储藏","flow":"人员由音乐街前台进入，器材经后门到可推行走廊","service":"公开房型只支撑活动组合；隔声、送风、减振与结构另行设计","public":"房间按时段交接，散场分批，员工最后检查设备","reference":["R7"]},"featured":true,"group":"B10","parcel":"P10-A","access":"music_west","position":[585.5,52,12.666667],"building":"V-78","arrivals":{"public":{"label":"临街主要入口","nodes":["music_west","east_g","music_west_walk","rehearsal_walk","rehearsal_entry"],"level":"1F"},"service":{"label":"后场收货入口","nodes":["music_west","music_loading_n","fw_w_music_north","fw_w_music_east_mid","fw_w_music_yard","rehearsal_loading","rehearsal_service_entry"],"level":"1F"}}},
     {"id":"79","name":"AFTER 9","block":"B10","space":"building","use":"小型现场演出与白天布场","entry":"音乐街沿东侧公共步行线接会合前场和北侧前厅；南侧后台由联络路装卸位进入","users":"听众、表演者、场务人员","time":"白天排演布场，演出夜间开放","activity":"排队入场、看演出、收场装车","operations":"售票检票与后台独立，散场朝夜食与交通节点疏散","detail":true,"brief":{"space":"票口与前厅、演出厅、后台准备、器材储藏和装卸组成完整场馆","flow":"观众沿东侧公共步行线到北侧会合前场入场，表演者与器材由南侧联络路装卸位进后台，出场分向交通与夜食","service":"体量位于联络路一侧，以服务空间隔开住宅；人数、疏散与声学在P3-P4核定","public":"白天布撤场与排演，演出夜间开放，散场后前场先恢复通行","reference":["R2","R7"]},"featured":true,"group":"B10","parcel":"P10-B","access":"music_east","position":[734,21,8.0],"building":"V-79","arrivals":{"public":{"label":"临街主要入口","nodes":["music_east","fw_w_junction_18","fw_w_live_north","fw_w_live_bypass_n","fw_w_live_bypass_s","live_approach","live_meeting","live_entry"],"level":"1F"},"service":{"label":"后场收货入口","nodes":["music_east","east_avenue","city_e","live_loading","live_service_entry"],"level":"1F"}}},
     {"id":"80","name":"唱片聆听店","block":"B10","space":"building","use":"唱片选购与低声试听","entry":"音乐街较安静的一侧店门","users":"听众、收藏者、路过居民","time":"午后至晚间","activity":"听一首歌、问店主一张唱片","operations":"试听耳机清洁维护，唱片分类防潮收存","featured":true,"group":"B10","parcel":"P10-B","access":"music_east","position":[767,11,8.0],"building":"V-80","arrivals":{"public":{"label":"临街主要入口","nodes":["music_east","fw_w_junction_18","fw_w_live_north","fw_w_live_bypass_n","fw_w_live_bypass_s","live_approach","tea_corner","tea_front","fw_w_record_front","fw_w_record_door"],"level":"1F"},"service":{"label":"后场收货入口","nodes":["music_east","east_avenue","city_e","live_loading","fw_w_record_loading","fw_w_record_back"],"level":"1F"}}},
@@ -3018,7 +3022,7 @@
   "logistics": [
     {"id":"shop-supply","place":"04","label":"小店实际补货","legs":[{"mode":"小型配送车","nodes":["city_w","station_west_cross","west_j","west_market_ramp_junction","west_market","service_j","loading"]},{"mode":"推车","nodes":["loading","yard","service_door","shop_service_turn","shop_service_apron","shop_rear_door"]}],"unloading":"shop-loading-bay","note":"车辆止于装卸位，最大支路坡度9.78%；车型、转弯和雨天作业进入工程专项"},
     {"id":"interest-equipment","name":"兴趣街设备与材料配送","unloading":"interest-loading-bay","legs":[{"mode":"小型配送车","nodes":["city_west","station_west","station_west_turn","station_interest_turn","interest_s","interest_loading","interest_unload"]},{"mode":"推车","nodes":["interest_unload","repair_service_apron","game_service_apron","game_service_entry"]}]},
-    {"id":"music-equipment","name":"音乐街器材配送","unloading":"fw_w_music_loading","legs":[{"mode":"小型配送车","nodes":["music_cross","fw_w_audio_delivery"]},{"mode":"推车","nodes":["fw_w_audio_delivery","audio_loading","rehearsal_loading","rehearsal_service_entry"]}]},
+    {"id":"music-equipment","name":"音乐街器材配送","unloading":"fw_w_music_loading","legs":[{"mode":"小型配送车","nodes":["music_cross","fw_w_music_delivery","junction_music_delivery_low","junction_music_delivery_bend","junction_music_delivery_top","fw_w_audio_delivery"]},{"mode":"推车","nodes":["fw_w_audio_delivery","audio_loading","rehearsal_loading","rehearsal_service_entry"]}]},
     {"id":"livehouse-backstage","name":"演出后台配送","unloading":"fw_w_live_loading","legs":[{"mode":"小型配送车","nodes":["city_e","live_loading"]},{"mode":"推车","nodes":["live_loading","live_service_entry"]}]}
   ],
   "architectures": [

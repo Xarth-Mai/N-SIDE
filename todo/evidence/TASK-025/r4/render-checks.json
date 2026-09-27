@@ -1,0 +1,30 @@
+[
+  {
+    "view": "inspect-road-music-delivery",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r4/inspect-road-music-delivery",
+      "--view",
+      "inspect-road-music-delivery"
+    ],
+    "exit_code": 0,
+    "seconds": 16.74104026600253
+  },
+  {
+    "view": "inspect-road-music-west",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--verify-headless",
+      "/home/lzzz/MyProjects/N-SIDE/output/roads/2026-09-27/r4/inspect-road-music-west",
+      "--view",
+      "inspect-road-music-west"
+    ],
+    "exit_code": 0,
+    "seconds": 16.74403218802763
+  }
+]

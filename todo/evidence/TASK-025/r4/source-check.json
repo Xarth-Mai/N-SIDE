@@ -1,0 +1,358 @@
+{
+  "baseline_commit": "37c9576e3c379a83e97c7081e8d349801e505f45",
+  "before_sha256": "058d871a151bb2694de5f1b6888b99fae5a86501668631e9fedd319276e8bb6c",
+  "after_sha256": "791ae5548dece4227ec7363c72c12b6ae189d39e0b42c75f3fe8cab26043c9db",
+  "before_candidates": 85,
+  "after_candidates": 83,
+  "removed": [
+    {
+      "a": {
+        "road": 173,
+        "nodes": [
+          "music_cross",
+          "cross_e"
+        ],
+        "kind": "avenue"
+      },
+      "b": {
+        "road": 690,
+        "nodes": [
+          "music_cross",
+          "fw_w_audio_delivery"
+        ],
+        "kind": "service"
+      },
+      "area": 79.80816635699921,
+      "maxDelta": 2.394392876416685,
+      "point": [
+        653.0397956607263,
+        -29
+      ],
+      "sharedNodes": [
+        "music_cross"
+      ]
+    },
+    {
+      "a": {
+        "road": 226,
+        "nodes": [
+          "east_g",
+          "music_west_walk"
+        ],
+        "kind": "lane"
+      },
+      "b": {
+        "road": 675,
+        "nodes": [
+          "music_west_walk",
+          "fw_w_music_mid"
+        ],
+        "kind": "lane"
+      },
+      "area": 25.439920264365355,
+      "maxDelta": 1.9511031498869276,
+      "point": [
+        551.5,
+        94.81997342145496
+      ],
+      "sharedNodes": [
+        "music_west_walk"
+      ]
+    }
+  ],
+  "new_candidates": [],
+  "thresholds_unchanged": {
+    "overlapArea": 0.5,
+    "heightDelta": 0.35
+  },
+  "preserved_fields": {
+    "version": true,
+    "groups": true,
+    "terrain": true,
+    "buildings": true,
+    "trees": true,
+    "surfaces": true,
+    "blocks": true,
+    "units": true,
+    "parcels": true,
+    "sections": true,
+    "routes": true,
+    "connections": true,
+    "elevatedNodes": true,
+    "housingAssumptions": true,
+    "architectures": true
+  },
+  "original_nodes_preserved": true,
+  "added_nodes": {
+    "junction_music_delivery_low": [
+      672,
+      -20,
+      8
+    ],
+    "junction_music_delivery_bend": [
+      650,
+      5,
+      10.8
+    ],
+    "junction_music_delivery_top": [
+      635,
+      -12,
+      12.666667
+    ],
+    "junction_music_west": [
+      556,
+      80,
+      14
+    ]
+  },
+  "counts": {
+    "nodes": {
+      "before": 1532,
+      "after": 1536
+    },
+    "roads": {
+      "before": 862,
+      "after": 862
+    },
+    "terrain_samples": {
+      "before": 8375,
+      "after": 8375
+    }
+  },
+  "changed_roads": [
+    {
+      "index": 675,
+      "before": {
+        "nodes": [
+          "music_west_walk",
+          "fw_w_music_mid"
+        ],
+        "kind": "lane",
+        "width": 4,
+        "access": "public"
+      },
+      "after": {
+        "nodes": [
+          "music_west_walk",
+          "junction_music_west",
+          "fw_w_music_mid"
+        ],
+        "kind": "lane",
+        "width": 4,
+        "access": "public"
+      }
+    },
+    {
+      "index": 676,
+      "before": {
+        "nodes": [
+          "music_west_walk",
+          "fw_w_v-w10_door"
+        ],
+        "kind": "lane",
+        "width": 2,
+        "access": "public"
+      },
+      "after": {
+        "nodes": [
+          "fw_w_music_mid",
+          "fw_w_v-w10_door"
+        ],
+        "kind": "lane",
+        "width": 2,
+        "access": "public"
+      }
+    },
+    {
+      "index": 690,
+      "before": {
+        "nodes": [
+          "music_cross",
+          "fw_w_audio_delivery",
+          "audio_loading"
+        ],
+        "kind": "service",
+        "width": 4,
+        "access": "service"
+      },
+      "after": {
+        "nodes": [
+          "fw_w_music_delivery",
+          "junction_music_delivery_low",
+          "junction_music_delivery_bend",
+          "junction_music_delivery_top",
+          "fw_w_audio_delivery",
+          "audio_loading"
+        ],
+        "kind": "service",
+        "width": 4,
+        "access": "service"
+      }
+    }
+  ],
+  "changed_places": [
+    {
+      "id": "77",
+      "before": {
+        "label": "后场收货入口",
+        "nodes": [
+          "music_west",
+          "east_g",
+          "east_s",
+          "cross_e",
+          "music_cross",
+          "fw_w_audio_delivery",
+          "audio_loading",
+          "audio_service_apron",
+          "audio_service_entry"
+        ],
+        "level": "1F"
+      },
+      "after": {
+        "label": "后场收货入口",
+        "nodes": [
+          "music_west",
+          "east_g",
+          "east_s",
+          "cross_e",
+          "music_cross",
+          "fw_w_music_delivery",
+          "junction_music_delivery_low",
+          "junction_music_delivery_bend",
+          "junction_music_delivery_top",
+          "fw_w_audio_delivery",
+          "audio_loading",
+          "audio_service_apron",
+          "audio_service_entry"
+        ],
+        "level": "1F"
+      },
+      "other_fields_unchanged": true
+    }
+  ],
+  "changed_logistics": [
+    {
+      "id": "music-equipment",
+      "before": {
+        "id": "music-equipment",
+        "name": "音乐街器材配送",
+        "unloading": "fw_w_music_loading",
+        "legs": [
+          {
+            "mode": "小型配送车",
+            "nodes": [
+              "music_cross",
+              "fw_w_audio_delivery"
+            ]
+          },
+          {
+            "mode": "推车",
+            "nodes": [
+              "fw_w_audio_delivery",
+              "audio_loading",
+              "rehearsal_loading",
+              "rehearsal_service_entry"
+            ]
+          }
+        ]
+      },
+      "after": {
+        "id": "music-equipment",
+        "name": "音乐街器材配送",
+        "unloading": "fw_w_music_loading",
+        "legs": [
+          {
+            "mode": "小型配送车",
+            "nodes": [
+              "music_cross",
+              "fw_w_music_delivery",
+              "junction_music_delivery_low",
+              "junction_music_delivery_bend",
+              "junction_music_delivery_top",
+              "fw_w_audio_delivery"
+            ]
+          },
+          {
+            "mode": "推车",
+            "nodes": [
+              "fw_w_audio_delivery",
+              "audio_loading",
+              "rehearsal_loading",
+              "rehearsal_service_entry"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "changed_segments": [
+    {
+      "nodes": [
+        "music_west_walk",
+        "junction_music_west"
+      ],
+      "grade_percent": 0,
+      "building_hits": []
+    },
+    {
+      "nodes": [
+        "junction_music_west",
+        "fw_w_music_mid"
+      ],
+      "grade_percent": -5.333331999999998,
+      "building_hits": []
+    },
+    {
+      "nodes": [
+        "fw_w_music_mid",
+        "fw_w_v-w10_door"
+      ],
+      "grade_percent": 0,
+      "building_hits": []
+    },
+    {
+      "nodes": [
+        "fw_w_music_delivery",
+        "junction_music_delivery_low"
+      ],
+      "grade_percent": 0,
+      "building_hits": []
+    },
+    {
+      "nodes": [
+        "junction_music_delivery_low",
+        "junction_music_delivery_bend"
+      ],
+      "grade_percent": 8.40799138953486,
+      "building_hits": []
+    },
+    {
+      "nodes": [
+        "junction_music_delivery_bend",
+        "junction_music_delivery_top"
+      ],
+      "grade_percent": 8.233515176239946,
+      "building_hits": []
+    },
+    {
+      "nodes": [
+        "junction_music_delivery_top",
+        "fw_w_audio_delivery"
+      ],
+      "grade_percent": 0,
+      "building_hits": []
+    },
+    {
+      "nodes": [
+        "fw_w_audio_delivery",
+        "audio_loading"
+      ],
+      "grade_percent": 0,
+      "building_hits": []
+    }
+  ],
+  "previous_delivery_grade_percent": 8.939712633948272,
+  "short_ascent_unchanged": true,
+  "runtime": "NOT RUN by source-data subtask; root owns actual render and observation",
+  "limit": "Road surface overlap and footprint/route checks do not validate vehicle turning radius, physics, collision or player experience"
+}

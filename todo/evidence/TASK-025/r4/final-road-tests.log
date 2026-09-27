@@ -1,0 +1,12 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [4.78ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [1.12ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1494.13ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [573.72ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [496.18ms]
+
+ 5 pass
+ 0 fail
+Ran 5 tests across 1 file. [2.61s]

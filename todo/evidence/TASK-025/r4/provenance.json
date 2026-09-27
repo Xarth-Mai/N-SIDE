@@ -1,0 +1,50 @@
+{
+  "source_sha256": "791ae5548dece4227ec7363c72c12b6ae189d39e0b42c75f3fe8cab26043c9db",
+  "binary_sha256": "b9b3224243e2a98fe1898d2384a02925bd31d2cd07de3313d729c04e77d7e110",
+  "viewer_sha256": "e1dc52b8a02651e455424be5c4a5afae7ff4b5112414177d7528ed5267349c40",
+  "geometry_sha256": "fb86a856778e22edf048883958b982947e349d0103ae40010ac6806c91791ecd",
+  "images": [
+    {
+      "source": "output/roads/2026-09-27/r4/inspect-road-music-delivery/inspect-road-music-delivery.png",
+      "source_sha256": "d066a9861977c2304a8c717ee6c798a0536cd95dd9e48d7f43bf74aab13b5c7f",
+      "file": "todo/evidence/TASK-025/r4/views/inspect-road-music-delivery.webp",
+      "sha256": "1eb44b2986d02c800c53f452100087f7bab33d29d8f105c80d57b5ce8cfe00aa",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r4/inspect-road-music-west/inspect-road-music-west.png",
+      "source_sha256": "fb3aaf6ec64b2a0998decb5303bbdc65a6f885708b1992d983d3e280a17fbbdf",
+      "file": "todo/evidence/TASK-025/r4/views/inspect-road-music-west.webp",
+      "sha256": "1bcc2e7d55d591a02ff62013351522e29d2e3580f31fb1dd16eacfa901ba9813",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r4/music-look/frames/frame00090.png",
+      "source_sha256": "bc46d4d278d5adc8195b54db8795dc348272e97ca46af26764df7dc5414f44f2",
+      "file": "todo/evidence/TASK-025/r4/capture/frame00090.webp",
+      "sha256": "b1d35b72cf5e966bb849166be7a05810218bf62cfee75855240225e0ca48d69c",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r4/music-look/frames/frame00091.png",
+      "source_sha256": "138ece498a8ce33e8e6b77d6f96efcfaeeaf3f3faf98cf706d2299f656a6269a",
+      "file": "todo/evidence/TASK-025/r4/capture/frame00091.webp",
+      "sha256": "bfe41e9245d458fa7128bfdba71a31772e1e5ddc32ea32a73b7f5ab288684fa0",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r4/music-look/frames/frame00149.png",
+      "source_sha256": "05590e8029e466f4d8eb04180c3b0ef47d8039ef8887ff0a63ebe6884335ba36",
+      "file": "todo/evidence/TASK-025/r4/capture/frame00149.webp",
+      "sha256": "08566473b566ec165222b0c32532829e4a2d9777cfa762d1438725ff222e6bf1",
+      "quality": 80
+    },
+    {
+      "source": "output/roads/2026-09-27/r4/music-look/frames/frame00359.png",
+      "source_sha256": "f3dda03fbc0a8e2068794d603a1e417cca8e37ce6e59c0ac4856f010519bd2e0",
+      "file": "todo/evidence/TASK-025/r4/capture/frame00359.webp",
+      "sha256": "5cf3f64dc1dffe0d0250437ccbdd30371aa540339cc593dd0b48e4590565b968",
+      "quality": 80
+    }
+  ]
+}

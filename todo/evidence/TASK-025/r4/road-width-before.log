@@ -1,0 +1,94 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [3.98ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.86ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1065.95ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [412.65ms]
+52 | })
+53 |
+54 | test('music street junctions clear their neighbors and equipment reaches the level unloading route',()=>{
+55 |   const junctions=new Set(['music_cross','music_west_walk','fw_w_music_delivery','fw_w_music_mid'])
+56 |   const conflicts=roadWidthConflicts(source,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>id.startsWith('junction_music_')))
+57 |   assert.deepEqual(conflicts,[],'the music approach must clear the avenue and public lane across their full widths')
+              ^
+AssertionError: the music approach must clear the avenue and public lane across their full widths
++ actual - expected
+
++ [
++   {
++     a: {
++       kind: 'avenue',
++       nodes: [
++         'music_cross',
++         'cross_e'
++       ],
++       road: 173
++     },
++     area: 79.80816635699921,
++     b: {
++       kind: 'service',
++       nodes: [
++         'music_cross',
++         'fw_w_audio_delivery'
++       ],
++       road: 690
++     },
++     maxDelta: 2.394392876416685,
++     point: [
++       653.0397956607263,
++       -29
++     ],
++     sharedNodes: [
++       'music_cross'
++     ]
++   },
++   {
++     a: {
++       kind: 'lane',
++       nodes: [
++         'east_g',
++         'music_west_walk'
++       ],
++       road: 226
++     },
++     area: 25.439920264365355,
++     b: {
++       kind: 'lane',
++       nodes: [
++         'music_west_walk',
++         'fw_w_music_mid'
++       ],
++       road: 675
++     },
++     maxDelta: 1.9511031498869276,
++     point: [
++       551.5,
++       94.81997342145496
++     ],
++     sharedNodes: [
++       'music_west_walk'
++     ]
++   }
++ ]
+- []
+
+ generatedMessage: false,
+     actual: [
+  [Object ...], [Object ...]
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/road-width.test.ts:57:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) music street junctions clear their neighbors and equipment reaches the level unloading route [402.25ms]
+
+ 4 pass
+ 1 fail
+Ran 5 tests across 1 file. [1.92s]

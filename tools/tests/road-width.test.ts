@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { roadWidthConflicts } from '../check-road-width.ts'
+import { pointInside, roadAllowed } from '../district-geometry.ts'
 import type { District } from '../district-types.ts'
 import source from '../../source-assets/district-map/district.json' with { type: 'json' }
 
@@ -48,4 +49,16 @@ test('campus stairs and market entrances meet the full road width at their own l
   const conflicts=roadWidthConflicts(source,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>/^junction_(school|market)_/.test(id)))
   assert.deepEqual(conflicts,[],'approach landings must clear both neighboring roads and the next stair flight')
   assert.ok(!source.roads.some(r=>r.nodes.some((id,i)=>id===r.nodes[i+2])),'an exact out-and-back road segment creates duplicate ribbons and an undefined turn')
+})
+
+test('music street junctions clear their neighbors and equipment reaches the level unloading route',()=>{
+  const data:District=source,junctions=new Set(['music_cross','music_west_walk','fw_w_music_delivery','fw_w_music_mid'])
+  const conflicts=roadWidthConflicts(data,'all').filter(c=>c.sharedNodes.some(id=>junctions.has(id))||[...c.a.nodes,...c.b.nodes].some(id=>id.startsWith('junction_music_')))
+  assert.deepEqual(conflicts,[],'the music approach must clear the avenue and public lane across their full widths')
+  const supply=data.logistics.find(l=>l.id==='music-equipment')!
+  for(const leg of supply.legs)for(let i=1;i<leg.nodes.length;i++)assert.ok(data.roads.some(r=>roadAllowed(r,'service')&&!['steps','trail','deck','lift'].includes(r.kind)&&r.nodes.some((id,j)=>j>0&&((id===leg.nodes[i]&&r.nodes[j-1]===leg.nodes[i-1])||(id===leg.nodes[i-1]&&r.nodes[j-1]===leg.nodes[i])))),`${leg.mode}: broken equipment approach ${leg.nodes[i-1]} -> ${leg.nodes[i]}`)
+  const [vehicle,trolley]=supply.legs,bay=data.surfaces.find(s=>s.id===supply.unloading)!
+  assert.equal(vehicle.nodes.at(-1),trolley.nodes[0],'vehicle and trolley must meet at the same unloading node')
+  assert.ok(pointInside(data.nodes[trolley.nodes[0]],bay.polygon),'equipment transfer must occur inside the unloading bay')
+  assert.ok(trolley.nodes.every(id=>data.nodes[id][2]===bay.elevation),'equipment trolley route must stay at the unloading level')
 })
