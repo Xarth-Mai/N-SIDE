@@ -82,6 +82,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True, help="fresh evidence directory")
     parser.add_argument("--binary", type=Path, help="use this prebuilt game or Viewer binary; otherwise build map_viewer with cargo --locked")
     parser.add_argument("--no-video", action="store_true", help="retain PNG evidence only")
+    parser.add_argument("--settings-dir", type=Path, help="explicit isolated user-settings directory for cross-process checks")
     args = parser.parse_args()
     try:
         import PIL
@@ -122,6 +123,10 @@ def main() -> int:
         command = [str(binary), "--project-root", str(ROOT), "--capture", str(output / "script.json"), "--output", str(output)]
         if script["scene"] == "walk-preview":
             command.append("--walk-preview")
+        if args.settings_dir is not None:
+            if script["scene"] not in ("walk-preview", "game-entry"):
+                raise ValueError("--settings-dir requires the formal game entry")
+            command.extend(["--settings-dir", str(args.settings_dir.resolve())])
         report["command"] = command
         code = run_logged(command, output / "runtime.log", timeout + 30)
         report["runtime_exit_code"] = code

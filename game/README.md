@@ -54,7 +54,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 `walk-gamepad.json` 录制18秒的断连、重连持键、键鼠接管和重入。`events.gamepad_connected` 仅用于正式游戏场景，省略时保持上一连接状态；脚本在PreUpdate发送 `GamepadConnectionEvent`，由Bevy InputPlugin实际移除／恢复Gamepad组件，再由正式入口决定是否暂停。`gamepad_connected`状态断言核对结束帧实际组件存在情况，运动及镜头冻结仍检查整个区间；模拟连接不证明USB、蓝牙或驱动行为
 
-标题或暂停中的「设置」直接调整正式入口文字与人物镜头，退出设置返回来源菜单的原焦点；可在公共观察暂停期间修改，再继续原观察。具体档位、会话保留、三种镜头输入、竖屏与HUD布局及自动路线倍率见[会话设置契约](../docs/dev/engineering/player-preview.md#会话设置)，不与下方Viewer的SignalUi样板状态混用
+标题或暂停中的「设置」直接调整正式入口文字与人物镜头，退出设置返回来源菜单的原焦点；可在公共观察暂停期间修改，再继续原观察。正式入口自动保存文字100%／125%与镜头100%／65%两项偏好，下次启动恢复；未接入任务或世界进度存档。用户目录、版本、备份、失败处理、三种镜头输入与布局见[会话设置契约](../docs/dev/engineering/player-preview.md#会话设置)，不与下方Viewer的SignalUi样板状态混用
 
 ```fish
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
@@ -63,6 +63,14 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 ```
 
 两份脚本分别声明20秒设置往返和26秒观察／设置整合路径，复验使用新的输出目录。实际执行结果与画面判断留在对应任务证据
+
+capture默认隔离真实用户设置。以下使用一组全新的输出目录与独立设置目录，先保存再以第二个进程验证恢复；正常启动也可用 `--settings-dir DIRECTORY` 覆盖用户目录，目录不可读写或文件损坏时页面保留失败提示，本次偏好仍可使用
+
+```fish
+cargo test --manifest-path game/Cargo.toml --locked --lib settings::tests
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-settings.json --output output/capture/settings-write --settings-dir output/capture/settings-user
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-settings-restore.json --output output/capture/settings-restore --settings-dir output/capture/settings-user
+```
 
 ## 人物尺度实验
 

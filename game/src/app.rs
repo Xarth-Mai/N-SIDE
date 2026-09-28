@@ -2,6 +2,7 @@ use crate::{
     capture::{self, CaptureInput, CaptureTarget},
     places::{self, Observation, PlaceCatalog},
     player::{self, PlayerState, WalkPreview},
+    settings::{self, SaveStatus, SettingsStore},
     ui::{FONT, Tokens, UiFont, UiInput, color},
     world::{
         collision::CollisionWorld,
@@ -156,6 +157,7 @@ type ShellSnapshot = (
     bool,
     bool,
     EntrySettings,
+    SaveStatus,
 );
 
 pub fn run() -> Result<AppExit, String> {
@@ -163,6 +165,7 @@ pub fn run() -> Result<AppExit, String> {
     let mut script = None;
     let mut walk = false;
     let mut output = None;
+    let mut settings_directory = None;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         match arg.as_str() {
@@ -170,6 +173,11 @@ pub fn run() -> Result<AppExit, String> {
                 root = PathBuf::from(args.next().ok_or("--project-root requires a directory")?)
             }
             "--walk-preview" => walk = true,
+            "--settings-dir" => {
+                settings_directory = Some(PathBuf::from(
+                    args.next().ok_or("--settings-dir requires a directory")?,
+                ))
+            }
             "--capture" => {
                 script = Some(PathBuf::from(
                     args.next().ok_or("--capture requires a script")?,
@@ -182,7 +190,7 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence\n--walk-preview  Neutral exterior movement experiment\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
+                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--walk-preview  Neutral exterior movement experiment\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
                 );
                 return Ok(AppExit::Success);
             }
@@ -254,6 +262,7 @@ pub fn run() -> Result<AppExit, String> {
     visual.install(&mut app);
     app.insert_resource(WalkPreview(walk));
     install_lifecycle(&mut app);
+    settings::install(&mut app, settings_directory, headless);
     player::install(&mut app);
     places::install(&mut app);
     app.add_systems(
@@ -616,6 +625,7 @@ fn entry_input(
             return;
         }
         let held = keys.any_pressed([KeyCode::KeyF, KeyCode::Escape])
+            || mouse.pressed(MouseButton::Left)
             || gamepads
                 .iter()
                 .any(|pad| pad.pressed(GamepadButton::South) || pad.pressed(GamepadButton::East));
@@ -715,6 +725,7 @@ fn draw_shell(
     walk: Res<WalkPreview>,
     observation: Res<Observation>,
     settings: Res<EntrySettings>,
+    store: Option<Res<SettingsStore>>,
 ) {
     let Ok((camera_id, camera)) = cameras.single() else {
         return;
@@ -724,6 +735,7 @@ fn draw_shell(
     };
     let page = *phase.get();
     let editing = ui.settings_open();
+    let save_status = store.map_or(SaveStatus::SessionOnly, |store| store.status);
     let key = (
         page,
         ui.gamepad,
@@ -732,6 +744,7 @@ fn draw_shell(
         observation.open,
         editing,
         *settings,
+        save_status,
     );
     if *prior == Some(key) {
         return;
@@ -810,7 +823,7 @@ fn draw_shell(
                 ))
                 .with_children(|panel| {
                     let (heading, description) = if editing {
-                        ("设置", "即时应用 · 当前会话有效")
+                        ("设置", save_status.message())
                     } else { match page {
                         GamePhase::Title => ("N:SIDE", "街区信号  :  生活仍在继续"),
                         GamePhase::Loading => ("正在进入街区", "正在准备街景与素材"),

@@ -1,0 +1,60 @@
+    Checking n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error: very complex type used. Consider factoring parts into `type` definitions
+   --> src/places/observation.rs:168:18
+    |
+168 |     mut buttons: Query<(&Hovered, &mut BorderColor), (With<ReturnButton>, Changed<Hovered>)>,
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#type_complexity
+    = note: `-D clippy::type-complexity` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: this `if` statement can be collapsed
+   --> src/settings.rs:153:5
+    |
+153 | /     if store.pending.is_none() && store.latest != store.attempted {
+154 | |         if let Some(path) = store.path.clone() {
+155 | |             let snapshot = store.latest;
+156 | |             store.attempted = snapshot;
+...   |
+161 | |     }
+    | |_____^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#collapsible_if
+    = note: `-D clippy::collapsible-if` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::collapsible_if)]`
+help: collapse nested if block
+    |
+153 ~     if store.pending.is_none() && store.latest != store.attempted
+154 ~         && let Some(path) = store.path.clone() {
+155 |             let snapshot = store.latest;
+...
+159 |                 Some(IoTaskPool::get().spawn(async move { write_file(&path, snapshot) }));
+160 ~         }
+    |
+
+error: this `if` statement can be collapsed
+   --> src/settings.rs:170:9
+    |
+170 | /         if self.latest != self.attempted {
+171 | |             if let Some(path) = self.path.clone() {
+172 | |                 let snapshot = self.latest;
+173 | |                 self.report(block_on(
+...   |
+177 | |         }
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#collapsible_if
+help: collapse nested if block
+    |
+170 ~         if self.latest != self.attempted
+171 ~             && let Some(path) = self.path.clone() {
+172 |                 let snapshot = self.latest;
+...
+175 |                 ));
+176 ~             }
+    |
+
+error: could not compile `n-side` (lib) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `n-side` (lib test) due to 3 previous errors

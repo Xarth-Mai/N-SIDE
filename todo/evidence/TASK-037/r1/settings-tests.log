@@ -1,0 +1,14 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 35.65s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 6 tests
+test settings::tests::restart_worker ... ignored, invoked in two isolated processes by preferences_restore_in_a_second_process
+test settings::tests::capture_is_isolated_unless_a_directory_is_explicit ... ok
+test settings::tests::write_failure_preserves_the_last_valid_file_and_reports_failure ... ok
+test settings::tests::exit_finishes_the_latest_change_and_keeps_a_valid_backup ... ok
+test settings::tests::invalid_or_future_files_are_preserved_even_after_changes ... ok
+test settings::tests::preferences_restore_in_a_second_process ... ok
+
+test result: ok. 5 passed; 0 failed; 1 ignored; 0 measured; 71 filtered out; finished in 0.02s
+

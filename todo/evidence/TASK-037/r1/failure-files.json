@@ -1,0 +1,16 @@
+[
+  {
+    "fixture": "bad",
+    "path": "output/settings/2026-09-28/r2/bad-user/settings.json",
+    "expected": "{broken",
+    "sha256": "be302461cda285db3ed2d45fb767b23e08ca8808b35a638009937df22b332d73",
+    "unchanged": true
+  },
+  {
+    "fixture": "unwritable",
+    "path": "output/settings/2026-09-28/r2/unwritable-user/settings.json",
+    "expected": "{\"version\":1,\"large_text\":false,\"slow_camera\":false}",
+    "sha256": "92c38d61eacaa4fbe357e8c8d9b6c6bdba754c9ea8bde078043e0a4338fcdf5b",
+    "unchanged": true
+  }
+]
