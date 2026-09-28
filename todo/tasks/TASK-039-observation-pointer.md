@@ -1,7 +1,11 @@
 ---
 id: TASK-039
 type: feature
-status: active
+status: done
+acceptance:
+  role: codex
+  revision: 5512fbccb72c143cf75305a97b0adcf34638460c566d5f2641d9c548e86fda3f
+  record: todo/evidence/TASK-039/r1/review.md
 milestone: G1
 depends_on: [TASK-035]
 specs:
@@ -21,8 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-第1轮，步骤3/6 制作；接续用户授权的五个交付节点，完成实现后进行适用检查与真实证据复验
+第1轮，步骤6/6 完成；1280×720与480×720／125%字号的20秒原生指针录制通过，空白误点反例按预期返回非零退出；鼠标、键盘和模拟手柄重开及暂停恢复继续使用同一门槛
 
 ## 结果与证据
 
-本轮证据归 todo/evidence/TASK-039/r1，尚未验收
+[公共观察鼠标返回验收](../evidence/TASK-039/r1/review.md)保留宽窄屏脚本、原始失败断言、连续帧自查与源码hash；仅公共观察返回按钮完成本次原生picking验收，其他Shell鼠标路径、Windows实机及作者体验另验

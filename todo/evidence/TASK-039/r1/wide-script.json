@@ -1,0 +1,283 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 600,
+  "seed": 0,
+  "timeout_seconds": 400,
+  "keyframes": [
+    189,
+    199,
+    229,
+    239,
+    259,
+    260,
+    261,
+    289,
+    319,
+    339,
+    349,
+    369,
+    409,
+    439,
+    440,
+    441,
+    489,
+    509,
+    599
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 146,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 150,
+      "end": 180,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 190,
+      "end": 191,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 220,
+      "end": 230,
+      "pointer": [
+        10,
+        10
+      ]
+    },
+    {
+      "start": 230,
+      "end": 231,
+      "pointer": [
+        10,
+        10
+      ],
+      "left_mouse": true
+    },
+    {
+      "start": 250,
+      "end": 260,
+      "pointer": [
+        380,
+        508
+      ]
+    },
+    {
+      "start": 260,
+      "end": 270,
+      "pointer": [
+        380,
+        508
+      ],
+      "left_mouse": true,
+      "keys": [
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 270,
+      "end": 290,
+      "keys": [
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 310,
+      "end": 320,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 320,
+      "end": 330,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 340,
+      "end": 341,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 360,
+      "end": 361,
+      "keys": [
+        "Tab"
+      ]
+    },
+    {
+      "start": 380,
+      "end": 381,
+      "pointer": [
+        380,
+        508
+      ],
+      "left_mouse": true
+    },
+    {
+      "start": 400,
+      "end": 401,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 430,
+      "end": 440,
+      "pointer": [
+        380,
+        508
+      ]
+    },
+    {
+      "start": 440,
+      "end": 441,
+      "pointer": [
+        380,
+        508
+      ],
+      "left_mouse": true
+    },
+    {
+      "start": 480,
+      "end": 481,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 500,
+      "end": 501,
+      "keys": [
+        "Escape"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 362,
+      "game_page": "paused"
+    },
+    {
+      "frame": 402,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "blank_click_does_not_close",
+      "from": 199,
+      "to": 239,
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04",
+      "max_player_distance": 0.001,
+      "max_rotation": 0.002
+    },
+    {
+      "name": "mouse_hits_visible_return",
+      "from": 261,
+      "to": 289,
+      "game_page": "world",
+      "observation_open": false,
+      "observation_visible": false,
+      "entry_device": "keyboard_mouse"
+    },
+    {
+      "name": "close_and_held_gameplay_do_not_leak",
+      "from": 259,
+      "to": 299,
+      "max_player_distance": 0.001,
+      "max_rotation": 0.002,
+      "max_player_resets": 0
+    },
+    {
+      "name": "fresh_movement_after_release",
+      "from": 309,
+      "to": 319,
+      "min_player_distance": 0.8,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "gamepad_can_reopen_same_place",
+      "from": 349,
+      "to": 359,
+      "observation_open": true,
+      "observation_selected": "04",
+      "entry_device": "gamepad"
+    },
+    {
+      "name": "pause_hides_observation",
+      "from": 369,
+      "to": 399,
+      "game_page": "paused",
+      "observation_open": true,
+      "observation_visible": false,
+      "max_player_distance": 0.001,
+      "max_rotation": 0.002
+    },
+    {
+      "name": "resume_preserves_open_observation",
+      "from": 409,
+      "to": 439,
+      "game_page": "world",
+      "observation_open": true,
+      "observation_visible": true
+    },
+    {
+      "name": "pointer_closes_after_resume",
+      "from": 441,
+      "to": 479,
+      "game_page": "world",
+      "observation_open": false,
+      "entry_device": "keyboard_mouse"
+    },
+    {
+      "name": "keyboard_reopens_after_mouse",
+      "from": 489,
+      "to": 499,
+      "observation_open": true
+    },
+    {
+      "name": "keyboard_returns_without_pause",
+      "from": 509,
+      "to": 599,
+      "game_page": "world",
+      "observation_open": false,
+      "player_grounded": true,
+      "max_player_resets": 0,
+      "max_player_distance": 0.001
+    }
+  ]
+}

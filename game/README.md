@@ -103,15 +103,18 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 靠近月台杂货公共入口或摘星台，转动镜头使目标在视野内，出现F／A提示后可打开现有用途、开放说明与到达方式。右摇杆只是转动镜头，查看信息需另按F／A；远处的「附近」标签不表示已经可以查看，公共信息也不是调查线索
 
-打开观察时人物与镜头停留原位；Esc／B关闭面板而不打开暂停，Tab／Start仍可暂停。断连或失焦保护暂时隐藏观察，明确继续后恢复原内容；回到标题清空。近距、高差、朝向、实际墙体遮挡和输入隔离的完整契约见[公共地点观察](../docs/dev/engineering/player-preview.md#公共地点观察)
+打开观察时人物与镜头停留原位；Esc／B或鼠标左键点击「返回街区」关闭面板而不打开暂停，空白点击不关闭，Tab／Start仍可暂停。关闭当帧及旧输入持有期间继续隔离玩法，释放后再操作。断连或失焦保护暂时隐藏观察，明确继续后恢复原内容；回到标题清空。近距、高差、朝向、实际墙体遮挡和输入隔离的完整契约见[公共地点观察](../docs/dev/engineering/player-preview.md#公共地点观察)
 
 ```fish
 cargo test --manifest-path game/Cargo.toml --locked --lib observation -- --nocapture
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation.json --output output/capture/walk-observation
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation-pointer.json --output output/capture/walk-observation-pointer
 ```
 
 该18秒脚本实际行走到小店入口，检查开关面板、持键隔离、模拟手柄断连恢复与标题重入；`observation_target`、`observation_selected`、`observation_open`、`observation_visible`记录真实目标、选定地点及面板状态，结合人物／镜头断言与实际看图复验，结果归本轮任务记录
+
+鼠标脚本录制20秒，通过 `pointer: [x, y]` 与 `left_mouse` 驱动原生PointerInput及图像目标上的UiPicking实际命中，覆盖空白点击、按钮关闭、持键、重新移动和暂停恢复；没有直接写Interaction或观察结果。坐标随画幅与布局变化调整，窄屏与放大字体需使用对应脚本检查命中和全文可读性；这项证据不代替标题、暂停等其他Shell按钮的鼠标验收
 
 ## 世界运行时
 

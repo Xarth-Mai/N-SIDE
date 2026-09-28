@@ -17,10 +17,15 @@ mod route;
 use bevy::camera_controller::free_camera::FreeCameraState;
 use bevy::{
     app::RunFixedMainLoopSystems,
+    camera::RenderTarget,
     input::{
         InputSystems,
         gamepad::{GamepadConnection, GamepadConnectionEvent},
         mouse::AccumulatedMouseMotion,
+    },
+    picking::{
+        PickingSystems,
+        pointer::{Location, PointerAction, PointerButton, PointerId, PointerInput},
     },
     prelude::*,
     render::view::screenshot::{Screenshot, ScreenshotCaptured},
@@ -77,6 +82,10 @@ pub struct InputSpan {
     keys: Vec<String>,
     #[serde(default)]
     right_mouse: bool,
+    #[serde(default)]
+    pointer: Option<[f32; 2]>,
+    #[serde(default)]
+    left_mouse: bool,
     #[serde(default)]
     gamepad: Vec<String>,
     #[serde(default)]
@@ -206,6 +215,18 @@ impl Script {
         }
         let mut previous_end = 0;
         for event in &self.events {
+            if event.left_mouse && event.pointer.is_none()
+                || event.pointer.is_some_and(|p| {
+                    !p[0].is_finite()
+                        || !p[1].is_finite()
+                        || p[0] < 0.0
+                        || p[0] >= self.width as f32
+                        || p[1] < 0.0
+                        || p[1] >= self.height as f32
+                })
+            {
+                return Err("pointer must be inside the capture canvas; left_mouse requires pointer coordinates".into());
+            }
             if event.focused.is_some() && !self.game_scene() {
                 return Err("focused input requires game-entry or walk-preview".into());
             }
@@ -845,6 +866,10 @@ pub fn install(app: &mut App, recording: Recording) {
         .add_systems(First, advance_clock.before(TimeSystems))
         .add_systems(PreUpdate, drive_connection.before(InputSystems))
         .add_systems(
+            PreUpdate,
+            drive_pointer.before(PickingSystems::ProcessInput),
+        )
+        .add_systems(
             RunFixedMainLoop,
             drive_input
                 .in_set(CaptureInput)
@@ -917,6 +942,60 @@ fn drive_connection(
             }
         }
     }
+}
+
+// Feed the native UI picking backend for the same image target used by the real camera
+// Unlike Interaction assignment, this exercises layout, clipping and pointer hit testing
+fn drive_pointer(
+    recording: Res<Recording>,
+    target: Res<CaptureTarget>,
+    mut events: MessageWriter<PointerInput>,
+    mut prior: Local<Option<(Vec2, bool)>>,
+) {
+    if !recording.tick {
+        return;
+    }
+    let frame = recording.samples.len() as u32;
+    let event = recording
+        .script
+        .events
+        .iter()
+        .find(|e| e.start <= frame && frame < e.end);
+    let position = event
+        .and_then(|e| e.pointer)
+        .map(Vec2::from_array)
+        .or_else(|| prior.map(|(position, _)| position));
+    let (Some(position), Some(image)) = (position, &target.0) else {
+        return;
+    };
+    let location = Location {
+        target: RenderTarget::Image(image.clone().into())
+            .normalize(None)
+            .unwrap(),
+        position,
+    };
+    let pressed = event.is_some_and(|e| e.left_mouse);
+    if prior.is_none_or(|(old, _)| old != position) {
+        events.write(PointerInput::new(
+            PointerId::Mouse,
+            location.clone(),
+            PointerAction::Move {
+                delta: prior.map_or(Vec2::ZERO, |(old, _)| position - old),
+            },
+        ));
+    }
+    if pressed != prior.is_some_and(|(_, pressed)| pressed) {
+        events.write(PointerInput::new(
+            PointerId::Mouse,
+            location,
+            if pressed {
+                PointerAction::Press(PointerButton::Primary)
+            } else {
+                PointerAction::Release(PointerButton::Primary)
+            },
+        ));
+    }
+    *prior = Some((position, pressed));
 }
 
 #[expect(
@@ -1032,6 +1111,11 @@ fn drive_input(
         buttons.press(MouseButton::Right);
     } else {
         buttons.release(MouseButton::Right);
+    }
+    if event.is_some_and(|e| e.left_mouse) {
+        buttons.press(MouseButton::Left);
+    } else {
+        buttons.release(MouseButton::Left);
     }
     if let Some((_, look)) = route_input {
         motion.delta = Vec2::from_array(look);
@@ -1485,6 +1569,8 @@ mod tests {
                 end: 1,
                 keys: vec!["R".into()],
                 right_mouse: false,
+                pointer: None,
+                left_mouse: false,
                 gamepad: vec!["Reset".into()],
                 look: [0.0; 2],
                 move_axis: [0.5, 1.0],
@@ -1520,6 +1606,15 @@ mod tests {
         let script: Script =
             serde_json::from_str(include_str!("../capture/viewer-tour.json")).unwrap();
         assert!(script.validate().is_ok());
+        let mut pointer = script.clone();
+        pointer.events[0].left_mouse = true;
+        assert!(pointer.validate().is_err());
+        for position in [[-1.0, 0.0], [640.0, 20.0], [20.0, 360.0], [f32::NAN, 10.0]] {
+            pointer.events[0].pointer = Some(position);
+            assert!(pointer.validate().is_err());
+        }
+        pointer.events[0].pointer = Some([320.0, 180.0]);
+        assert!(pointer.validate().is_ok());
         let ui_script: Script =
             serde_json::from_str(include_str!("../capture/ui-signal.json")).unwrap();
         assert!(ui_script.validate().is_ok());

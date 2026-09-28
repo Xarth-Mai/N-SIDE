@@ -1,0 +1,62 @@
+2026-09-28T09:07:09.709238Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.6-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-28T09:07:09.723477Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-28T09:07:09.796888Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-28T09:07:09.796916Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-28T09:07:09.797482Z  INFO n_side::app: [game/state] title
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-28T09:07:10.381295Z  INFO n_side::app: [game/state] loading
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-28T09:07:19.792428Z  INFO n_side::app: [player/collision] triangles=557829 sources=3301
+2026-09-28T09:07:19.834053Z  INFO n_side::world::scene: [world/ready] meshes=3302 model_instances=263 dependencies=25 failed=0 degraded=0 startup_seconds=0.038
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-28T09:07:27.396050Z  INFO n_side::capture: [capture/check] {"name":"required_assets_ready","passed":true}
+2026-09-28T09:07:27.396063Z  INFO n_side::capture: [capture/check] {"expected":300,"name":"all_frames_saved","passed":true,"saved":300}
+2026-09-28T09:07:27.396067Z  INFO n_side::capture: [capture/check] {"checked_frames":300,"name":"finite_transforms","passed":true}
+2026-09-28T09:07:27.396071Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"camera_sensitivity":null,"enabled":null,"entry_device":null,"entry_focus":null,"from":199,"game_page":null,"gamepad_connected":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":0.0010000000474974513,"max_player_height":null,"max_player_resets":null,"max_rotation":0.0020000000949949026,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"blank_click_does_not_close","observation_open":true,"observation_selected":"04","observation_target":null,"observation_visible":true,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_visible":null,"player_blocked":null,"player_grounded":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":239,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"blank_click_does_not_close","passed":true,"peak_rotation_radians":0.0,"rotation_radians":0.0}
+2026-09-28T09:07:27.396083Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"camera_sensitivity":null,"enabled":null,"entry_device":"keyboard_mouse","entry_focus":null,"from":261,"game_page":"world","gamepad_connected":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":null,"max_player_resets":null,"max_rotation":null,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"mouse_hits_visible_return","observation_open":false,"observation_selected":null,"observation_target":null,"observation_visible":false,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_visible":null,"player_blocked":null,"player_grounded":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":289,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"mouse_hits_visible_return","passed":false,"peak_rotation_radians":0.0,"rotation_radians":0.0}
+2026-09-28T09:07:27.396094Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"camera_sensitivity":null,"enabled":null,"entry_device":null,"entry_focus":null,"from":259,"game_page":null,"gamepad_connected":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":0.0010000000474974513,"max_player_height":null,"max_player_resets":0,"max_rotation":0.0020000000949949026,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"close_and_held_gameplay_do_not_leak","observation_open":null,"observation_selected":null,"observation_target":null,"observation_visible":null,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_visible":null,"player_blocked":null,"player_grounded":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":299,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"close_and_held_gameplay_do_not_leak","passed":true,"peak_rotation_radians":0.0,"rotation_radians":0.0}
+2026-09-28T09:07:27.396109Z  INFO n_side::capture: [capture/finished] status=FAIL saved=300 report=/home/lzzz/MyProjects/N-SIDE/output/observation/2026-09-28/r3/miss-failure/state.json

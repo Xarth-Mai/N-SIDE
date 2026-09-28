@@ -74,12 +74,17 @@ capture默认使用100%／100%的隔离会话，既不读取也不修改真实�
 
 右键拖动、Q E与右摇杆只负责转动镜头；F或手柄南键（A）才打开公共信息面板，没有可查看目标时不会打开。面板持有选定地点，打开当帧、阅读期间及关闭当帧隔离人物移动、镜头和复位，关闭后旧玩法输入需要释放再操作；同一次开关输入不会穿透到其他操作
 
-面板打开时Esc／东键（B）只关闭观察，保持World，不触发暂停；Tab／Start仍可保护性暂停，窗口失焦或设备断连沿用相同保护。暂停暂时隐藏面板，明确继续后恢复原选定地点的观察；回到标题、重新加载或失败清空观察状态与选定地点，关闭或隐藏时销毁面板实体
+面板打开时Esc／东键（B）或鼠标左键点击「返回街区」只关闭观察，保持World，不触发暂停；空白处点击不关闭。返回按钮使用原生 `Button` 与 `On<Pointer<Press>>`，悬停由 `Hovered` 更新边框；点击请求交给同一输入门槛，关闭帧及继续按住鼠标时仍消费输入，释放后才能重新操作。入口因失焦或暂停提前返回时，未消费的点击在该帧输入处理后清除，不在恢复时补执行
+
+Tab／Start仍可保护性暂停，窗口失焦或设备断连沿用相同保护。暂停暂时隐藏面板，明确继续后恢复原选定地点的观察；回到标题、重新加载或失败清空观察状态与选定地点，关闭或隐藏时销毁面板实体
 
 `walk-observation.json` 从真实小店出生点行走并转向公共入口，覆盖键盘打开／关闭、持键隔离、模拟手柄打开、断连暂停、键鼠继续恢复原观察、重连关闭、标题清理与再次进入。capture的 `observation_target`、`observation_selected`、`observation_open`、`observation_visible` 来自实际资源，声明这些断言的帧区间必须逐帧满足；距离、高差、背向和中间墙阻挡由CPU窄测覆盖，运行及画面结果另记任务证据
+
+`walk-observation-pointer.json` 验证空白点击、真实返回按钮命中、持键隔离、释放后移动、模拟手柄重开、暂停及恢复后的鼠标返回。`events.pointer` 是捕获画布内的像素坐标，左上为原点；`left_mouse` 声明左键持有区间并要求显式坐标。capture在PreUpdate原生picking处理前发送同一图像目标的 `PointerInput`，经 `UiPickingPlugin` 的实际布局、裁剪和命中生成Pointer事件，再由输入路由关闭面板；另更新普通鼠标按键资源以复用等待释放门槛，不写 `Interaction` 或面板结果。该入口只证明使用Pointer事件的实际控件，标题及暂停Shell的其他鼠标按钮需单独验收
 
 ```fish
 cargo test --manifest-path game/Cargo.toml --locked --lib observation -- --nocapture
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation.json --output output/capture/walk-observation
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation-pointer.json --output output/capture/walk-observation-pointer
 ```

@@ -9,6 +9,7 @@ use crate::{
 };
 use bevy::{
     app::RunFixedMainLoopSystems,
+    picking::hover::Hovered,
     prelude::*,
     text::{FontWeight, LineHeight},
 };
@@ -21,6 +22,7 @@ pub struct Observation {
     pub visible: bool,
     consumed: bool,
     wait_for_release: bool,
+    close_requested: bool,
 }
 
 impl Observation {
@@ -30,6 +32,7 @@ impl Observation {
 
     /// Called by the entry router after focus/disconnection protection, before menu actions
     pub fn handle_input(&mut self, open_pressed: bool, close_pressed: bool, held: bool) -> bool {
+        let close_pressed = std::mem::take(&mut self.close_requested) || close_pressed;
         if self.wait_for_release {
             self.wait_for_release = held;
             self.consumed = self.open || held;
@@ -82,12 +85,13 @@ pub(super) fn install(app: &mut App) {
     app.init_resource::<Observation>()
         .add_systems(
             RunFixedMainLoop,
-            update_target
-                .after(CaptureInput)
-                .before(UiInput)
+            (
+                update_target.after(CaptureInput).before(UiInput),
+                expire_pointer_request.after(UiInput),
+            )
                 .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop),
         )
-        .add_systems(Update, draw)
+        .add_systems(Update, (draw, style_return).chain())
         .add_systems(OnEnter(GamePhase::Title), reset)
         .add_systems(OnEnter(GamePhase::Loading), reset)
         .add_systems(OnEnter(GamePhase::Failed), reset);
@@ -95,6 +99,28 @@ pub(super) fn install(app: &mut App) {
 
 fn reset(mut observation: ResMut<Observation>) {
     *observation = Observation::default();
+}
+
+// Focus loss or pause can return from the entry router without consuming this frame's click
+fn expire_pointer_request(mut observation: ResMut<Observation>) {
+    observation.close_requested = false;
+}
+
+fn request_pointer_close(
+    mut press: On<Pointer<Press>>,
+    mut observation: ResMut<Observation>,
+    phase: Res<State<GamePhase>>,
+    next: Res<NextState<GamePhase>>,
+) {
+    if press.button == PointerButton::Primary
+        && observation.open
+        && observation.visible
+        && *phase.get() == GamePhase::World
+        && matches!(*next, NextState::Unchanged)
+    {
+        observation.close_requested = true;
+        press.propagate(false);
+    }
 }
 
 fn update_target(
@@ -133,6 +159,26 @@ fn update_target(
 
 #[derive(Component)]
 struct Panel;
+
+#[derive(Component)]
+struct ReturnButton;
+
+#[expect(
+    clippy::type_complexity,
+    reason = "Bevy query updates only hovered return buttons"
+)]
+fn style_return(
+    tokens: Res<Tokens>,
+    mut buttons: Query<(&Hovered, &mut BorderColor), (With<ReturnButton>, Changed<Hovered>)>,
+) {
+    for (hovered, mut border) in &mut buttons {
+        *border = BorderColor::all(color(if hovered.get() {
+            &tokens.colors.focus
+        } else {
+            &tokens.colors.secondary
+        }));
+    }
+}
 
 #[expect(
     clippy::too_many_arguments,
@@ -223,15 +269,6 @@ fn draw(
                         &tokens.colors.focus,
                     ),
                     (info.as_str(), tokens.body_size, &tokens.colors.text),
-                    (
-                        if entry.gamepad {
-                            "B 返回街区 · Start 暂停"
-                        } else {
-                            "Esc 返回街区 · Tab 暂停"
-                        },
-                        tokens.body_size,
-                        &tokens.colors.secondary,
-                    ),
                 ] {
                     panel.spawn((
                         Text::new(value),
@@ -250,6 +287,61 @@ fn draw(
                         },
                     ));
                 }
+                panel
+                    .spawn((Node {
+                        column_gap: px(24),
+                        row_gap: px(16),
+                        align_items: AlignItems::Center,
+                        flex_wrap: FlexWrap::Wrap,
+                        flex_shrink: 0.0,
+                        ..default()
+                    },))
+                    .with_children(|footer| {
+                        footer
+                            .spawn((
+                                Button,
+                                ReturnButton,
+                                Name::new("observation-return"),
+                                AccessibleLabel::new("返回街区"),
+                                Hovered::default(),
+                                Node {
+                                    padding: UiRect::axes(px(24), px(12)),
+                                    border: UiRect::all(px(3)),
+                                    border_radius: BorderRadius::all(px(tokens.button_radius)),
+                                    ..default()
+                                },
+                                BackgroundColor(color(&tokens.colors.raised)),
+                                BorderColor::all(color(&tokens.colors.secondary)),
+                            ))
+                            .observe(request_pointer_close)
+                            .with_children(|button| {
+                                button.spawn((
+                                    Text::new("返回街区"),
+                                    TextFont {
+                                        font: font.0.clone().into(),
+                                        font_size: FontSize::Px(
+                                            tokens.body_size * settings.text_scale(),
+                                        ),
+                                        weight: FontWeight(650),
+                                        ..default()
+                                    },
+                                    TextColor(color(&tokens.colors.text)),
+                                ));
+                            });
+                        footer.spawn((
+                            Text::new(if entry.gamepad {
+                                "B 返回 · Start 暂停"
+                            } else {
+                                "Esc 返回 · Tab 暂停"
+                            }),
+                            TextFont {
+                                font: font.0.clone().into(),
+                                font_size: FontSize::Px(tokens.body_size * settings.text_scale()),
+                                ..default()
+                            },
+                            TextColor(color(&tokens.colors.secondary)),
+                        ));
+                    });
             });
         });
 }
@@ -258,6 +350,100 @@ fn draw(
 mod tests {
     use super::*;
     use crate::world::{geometry::GeometryPart, map::map_to_world, scene::PreparedScene};
+    use bevy::{
+        camera::NormalizedRenderTarget,
+        ecs::system::RunSystemOnce,
+        picking::{
+            backend::HitData,
+            pointer::{Location, PointerId},
+        },
+    };
+
+    #[test]
+    fn pointer_request_uses_close_gate_and_expires_when_router_is_blocked() {
+        // This checks event handling and the input gate; GPU capture verifies native UI hit testing
+        let mut world = World::new();
+        world.insert_resource(Observation {
+            target: Some("04".into()),
+            selected: Some("04".into()),
+            open: true,
+            visible: true,
+            ..default()
+        });
+        world.insert_resource(State::new(GamePhase::World));
+        world.insert_resource(NextState::<GamePhase>::default());
+        let button = world.spawn_empty().observe(request_pointer_close).id();
+        let press = |button_kind| {
+            Pointer::new(
+                PointerId::Mouse,
+                Location {
+                    target: NormalizedRenderTarget::Image(Handle::<Image>::default().into()),
+                    position: Vec2::ZERO,
+                },
+                Press {
+                    button: button_kind,
+                    hit: HitData::new(Entity::PLACEHOLDER, 0.0, None, None),
+                    count: 1,
+                },
+                button,
+            )
+        };
+        world.trigger(press(PointerButton::Secondary));
+        assert!(!world.resource::<Observation>().close_requested);
+        world.trigger(press(PointerButton::Primary));
+        {
+            let mut state = world.resource_mut::<Observation>();
+            assert!(
+                state.open,
+                "pointer requests must pass the entry input gate"
+            );
+            assert!(state.close_requested);
+            assert!(state.handle_input(false, false, true));
+            assert!(!state.open && state.blocks_world());
+            assert!(!state.close_requested, "consume each request once");
+            state.consumed = false;
+            assert!(state.handle_input(true, false, true));
+            assert!(!state.open, "held mouse must not reopen or move the player");
+            assert!(!state.handle_input(false, false, false));
+            assert!(state.handle_input(true, false, true));
+            assert!(state.open);
+        }
+        world.trigger(press(PointerButton::Primary));
+        {
+            let mut state = world.resource_mut::<Observation>();
+            assert!(state.handle_input(false, false, true));
+            assert!(
+                state.open,
+                "opening input must release before pointer close"
+            );
+            assert!(state.handle_input(false, false, false));
+        }
+        world.trigger(press(PointerButton::Primary));
+        assert!(world.resource::<Observation>().close_requested);
+        world.run_system_once(expire_pointer_request).unwrap();
+        {
+            let mut state = world.resource_mut::<Observation>();
+            assert!(
+                !state.close_requested,
+                "blocked routers cannot leave stale clicks"
+            );
+            assert!(state.handle_input(false, false, false));
+            assert!(state.open);
+            state.visible = false;
+        }
+        world.trigger(press(PointerButton::Primary));
+        assert!(!world.resource::<Observation>().close_requested);
+        world.resource_mut::<Observation>().visible = true;
+        world.insert_resource(State::new(GamePhase::Paused));
+        world.trigger(press(PointerButton::Primary));
+        assert!(!world.resource::<Observation>().close_requested);
+        world.insert_resource(State::new(GamePhase::World));
+        world
+            .resource_mut::<NextState<GamePhase>>()
+            .set(GamePhase::Paused);
+        world.trigger(press(PointerButton::Primary));
+        assert!(!world.resource::<Observation>().close_requested);
+    }
 
     #[test]
     fn real_shop_recorded_approach_can_observe_its_public_entrance() {
