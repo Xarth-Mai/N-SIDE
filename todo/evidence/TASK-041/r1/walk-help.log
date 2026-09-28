@@ -1,0 +1,7 @@
+N:SIDE
+--project-root PATH  Project root (default .)
+--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)
+--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture
+--walk-preview  Neutral exterior movement experiment
+
+Arrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return

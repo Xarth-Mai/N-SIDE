@@ -1,0 +1,114 @@
+{
+  "archive": "/home/lzzz/MyProjects/N-SIDE/output/packages/n-side-linux-preview-2026-09-28.tar.gz",
+  "archive_bytes": 125634463,
+  "archive_sha256": "4fc3fd8ee5ddbf002f62ec11ba9ddc05731e344806f483ffec4533b850b27530",
+  "extracted": "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview",
+  "cwd": "/tmp",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "commands": [
+    {
+      "name": "game-help",
+      "command": [
+        "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview/run-game.sh",
+        "--help"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "walk-help",
+      "command": [
+        "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview/run-walk-preview.sh",
+        "--help"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "viewer-validate",
+      "command": [
+        "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview/run-viewer.sh",
+        "--validate"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "dependencies",
+      "command": [
+        "ldd",
+        "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview/game/n-side"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "package-check",
+      "command": [
+        "bun",
+        "/home/lzzz/MyProjects/N-SIDE/tools/package-preview.ts",
+        "--check",
+        "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_removed_for_runtime": [
+    "game/src",
+    "game/Cargo.toml",
+    "game/Cargo.lock"
+  ],
+  "negative_paths": {
+    "invalid-option": {
+      "command": [
+        "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview/run-walk-preview.sh",
+        "--expected-invalid-option"
+      ],
+      "exit_code": 1
+    },
+    "missing-map": {
+      "command": [
+        "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview/run-viewer.sh",
+        "--validate"
+      ],
+      "exit_code": 1
+    }
+  },
+  "restored_check": {
+    "command": [
+      "bun",
+      "/home/lzzz/MyProjects/N-SIDE/tools/package-preview.ts",
+      "--check",
+      "/tmp/n-side-relocated-nb9sgazg/N-SIDE Linux Preview"
+    ],
+    "exit_code": 0
+  },
+  "saved_preferences": {
+    "version": 1,
+    "large_text": true,
+    "slow_camera": true
+  },
+  "captures": {
+    "observation": {
+      "status": "PASS",
+      "checks": 13,
+      "frames": 600,
+      "seconds": 20.0,
+      "video": "PASS",
+      "launcher_sha256": "99faa39bc07168ac04a75c87b194df992823636d5533767644f4b2dc16056325"
+    },
+    "settings-write": {
+      "status": "PASS",
+      "checks": 17,
+      "frames": 600,
+      "seconds": 20.0,
+      "video": "PASS",
+      "launcher_sha256": "99faa39bc07168ac04a75c87b194df992823636d5533767644f4b2dc16056325"
+    },
+    "settings-restore": {
+      "status": "PASS",
+      "checks": 7,
+      "frames": 240,
+      "seconds": 8.0,
+      "video": "PASS",
+      "launcher_sha256": "99faa39bc07168ac04a75c87b194df992823636d5533767644f4b2dc16056325"
+    }
+  },
+  "package_binary_sha256": "0255f796339b1d93ffdc4539783b2e767cd6db1b97f78f3e4c72d10fc0f4215f"
+}

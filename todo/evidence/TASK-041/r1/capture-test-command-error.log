@@ -1,0 +1,15 @@
+E
+======================================================================
+ERROR: tests (unittest.loader._FailedTest.tests)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: tests
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 141, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'tools.tests'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

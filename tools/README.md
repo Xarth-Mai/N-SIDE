@@ -75,7 +75,7 @@ bun test tools/tests/road-width.test.ts
 
 ## 真实运行与 Capture
 
-从需求和当前实现出发，完成适用测试，再按[运行验收](../docs/dev/validation/runtime.md)运行真实场景、检查状态与画面、修复并复验。当前入口复用 Viewer 的城市和自由镜头；配置字段、输入与范围见[游戏工程](../game/README.md)
+从需求和当前实现出发，完成适用测试，再按[运行验收](../docs/dev/validation/runtime.md)运行真实场景、检查状态与画面、修复并复验。正式入口与Viewer复用世界运行时，分别验证人物操作和自由镜头；配置字段、输入与范围见[游戏工程](../game/README.md)
 
 ```fish
 python3 tools/capture.py --script game/capture/viewer-tour.json --output output/capture/my-run
@@ -85,6 +85,12 @@ python3 tools/capture.py --script game/capture/assertion-failure.json --output o
 输出目录必须尚不存在。第一条应退出 0，第二条故意要求一秒移动 1000 m，应退出 1，并在 `state.json` 留下失败条件。依次检查 `run.json`、`state.json`、`runtime.log`、`keyframes/` 和 `video.mp4` 或 `frames/`；另记实际看的帧与发现，机器报告不会替你填写视觉结论
 
 Capture 使用 Python 3.10+ 与 Pillow，Rust 按 `game/` 现有环境构建，运行需要 Vulkan。FFmpeg 可用时生成 H.264 视频，否则明确记录视频 NOT RUN，保留 PNG 序列。命令均可直接用于 fish；不要把模拟 18 秒的录制耗时当作游戏性能测量
+
+## Linux 本地预览打包
+
+`tools/package-preview.ts`接收当前编译的游戏与Viewer二进制，生成独立资源目录、启动脚本、项目源码和许可声明；新目录限制避免覆盖既有包，源资产唯一编辑位置不变。命令与范围见[游戏工程](../game/README.md#linux-本地预览包)，窄测为 `bun test tools/tests/package-preview.test.ts`
+
+`--check DIRECTORY`只读核对清单必需项、哈希、大小、权限和多余文件；这证明包内一致性，实际解压启动、设置恢复和图形行为仍需运行验证。Capture可通过 `--project-root DIRECTORY`指向解压资源；输出与独立设置目录放在包外，避免污染完整性检查
 
 ## 资产报告与实际尺寸预览
 

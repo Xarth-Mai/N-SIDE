@@ -1,0 +1,103 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 240,
+  "seed": 0,
+  "timeout_seconds": 450,
+  "keyframes": [
+    0,
+    49,
+    89,
+    139,
+    179,
+    239
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 40,
+      "end": 41,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 91,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 110,
+      "end": 111,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 120,
+      "end": 121,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 150,
+      "end": 180,
+      "keys": [
+        "E"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 124,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "saved_preferences_loaded_at_title",
+      "from": 0,
+      "to": 119,
+      "text_scale": 1.25,
+      "camera_sensitivity": 0.65,
+      "game_page": "title"
+    },
+    {
+      "name": "settings_menu_restores_saved_values",
+      "from": 49,
+      "to": 89,
+      "settings_open": true
+    },
+    {
+      "name": "restored_preferences_reach_real_world",
+      "from": 139,
+      "to": 239,
+      "game_page": "world",
+      "text_scale": 1.25,
+      "camera_sensitivity": 0.65,
+      "world_ready": true,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "restored_camera_really_uses_slow_setting",
+      "from": 149,
+      "to": 179,
+      "min_rotation": 1.0,
+      "max_rotation": 1.08,
+      "max_player_distance": 0.001
+    }
+  ]
+}

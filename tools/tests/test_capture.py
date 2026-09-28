@@ -21,13 +21,16 @@ class CaptureTests(unittest.TestCase):
                 script = root / f"{scene}.json"
                 script.write_text(json.dumps({"scene": scene, "timeout_seconds": 1}))
                 output = root / scene
-                args = ["capture.py", "--script", str(script), "--output", str(output), "--binary", str(binary), "--no-video"]
+                args = ["capture.py", "--script", str(script), "--output", str(output), "--binary", str(binary), "--project-root", str(root), "--settings-dir", str(root / "settings"), "--no-video"]
                 with patch.object(sys, "argv", args), patch("capture.run_logged", return_value=0) as run, patch("capture.verify_outputs", return_value={"checks": [{"passed": True}]}), patch("capture.command_output", return_value="test"):
                     self.assertEqual(main(), 0)
                 command = run.call_args.args[0]
                 self.assertEqual(command[0], str(binary))
                 self.assertEqual("--walk-preview" in command, scene == "walk-preview")
                 self.assertEqual(command[command.index("--capture") + 1], str(output / "script.json"))
+                self.assertEqual(command[command.index("--project-root") + 1], str(root))
+                self.assertEqual(command[command.index("--settings-dir") + 1], str(root / "settings"))
+                self.assertEqual(run.call_args.kwargs["cwd"], root)
 
     def test_evidence_gate(self):
         with tempfile.TemporaryDirectory() as directory:

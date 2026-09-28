@@ -9,6 +9,27 @@ cargo run --manifest-path game/Cargo.toml --locked --features viewer --bin map_v
 
 默认游戏入口提供标题、加载、固定镜头街区预览与返回标题；当前是人物尺度原型的运行基础。正式入口与 Map Viewer 读取 `source-assets/district-map/district.json`、`source-assets/district-scene/appearance.json` 与 `source-assets/district-scene/daylight.json`，运行素材来自 `game/assets/`；模型和材质随仓库提供，启动无需下载。地图、外观及光照配置修改后重启，Rust 修改由 Cargo 增量编译
 
+## Linux 本地预览包
+
+从已编译的正式入口和 Viewer 生成独立目录，运行资源、来源许可、项目源码与启动脚本共用当前资源布局。输出必须是新目录，`--strip` 只移除包内二进制副本的调试信息；清单记录源提交、相关未提交文件、输入二进制及包内文件hash，`--check`只读核对文件、权限与内容
+
+```fish
+cargo build --manifest-path game/Cargo.toml --locked --features viewer --bins
+bun tools/package-preview.ts --binary game/target/debug/n-side --viewer game/target/debug/map_viewer --output 'output/packages/N-SIDE Linux Preview' --strip
+bun tools/package-preview.ts --check 'output/packages/N-SIDE Linux Preview'
+tar -czf output/packages/n-side-linux-preview.tar.gz -C output/packages 'N-SIDE Linux Preview'
+```
+
+将包解压到新位置，从解压目录运行 `./run-walk-preview.sh`；可从其他工作目录使用脚本绝对路径，含空格路径需要引号。无需安装 Rust 或 Bun，宿主仍需兼容的Linux动态库与Vulkan驱动。玩家操作见[游玩指南](../docs/player/guide/index.md)
+
+验收使用实际解压根目录，capture与正常启动仍复用同一二进制、系统与资产；`--project-root`同时指定运行资源和子进程工作目录，外层记录工具仍来自仓库
+
+```fish
+python3 tools/capture.py --binary '/tmp/N-SIDE Linux Preview/game/n-side' --project-root '/tmp/N-SIDE Linux Preview' --script game/capture/walk-observation-pointer.json --output output/capture/package-observation
+```
+
+本入口交付本地预览，不构成完整Demo、跨Linux发行版兼容或公开发布放行。素材与Parry声明随包保留；公开分发前另核对所有链接依赖的许可、目标系统、发布渠道和完整流程
+
 ## GitHub Actions
 
 `CI` 在推送 main 和 Pull Request 时执行 Rust 格式、类型、文档、任务、叙事与工具测试，地图测试包含在工具测试中；自动检查不编译 Bevy、不构建 Wiki、不运行 GPU 验收

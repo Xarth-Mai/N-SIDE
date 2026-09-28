@@ -1,0 +1,603 @@
+{
+  "version": 1,
+  "kind": "n-side-linux-local-preview",
+  "stripped": true,
+  "source": {
+    "commit": "72eaf124e3f990858fb4244289613c1179cae164",
+    "worktree_changes": []
+  },
+  "inputs": {
+    "game": {
+      "bytes": 1970752112,
+      "sha256": "4b09b722f414f0c707092c78dcf96d44a4ccaeeb434ffdf1cd3a60676f34935e"
+    },
+    "viewer": {
+      "bytes": 1977353936,
+      "sha256": "8287e66ed3f3e0f1454b2039f62e14535eabaf614acd5ff82fbc8c341551855d"
+    }
+  },
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 16726,
+      "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "mode": 420
+    },
+    {
+      "path": "README.md",
+      "bytes": 1927,
+      "sha256": "12efd51cb9e8e5cbbc36b5b295ca4d7cc4e5459b8dc7e1e646fc382775b7dbc6",
+      "mode": 420
+    },
+    {
+      "path": "game/Cargo.lock",
+      "bytes": 158493,
+      "sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+      "mode": 420
+    },
+    {
+      "path": "game/Cargo.toml",
+      "bytes": 794,
+      "sha256": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/branding/n-logo.png",
+      "bytes": 50938,
+      "sha256": "d1325c44a05477fc1f3121048491e61526fbd26bb2022b7a4cf25edbf252e101",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/licenses/CC0-1.0.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/licenses/kenney-nature.txt",
+      "bytes": 611,
+      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/licenses/kenney-roads.txt",
+      "bytes": 703,
+      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/manifest.json",
+      "bytes": 3328,
+      "sha256": "bbc927ff96aa06cefe95c63378b9bd5244dfd073c50b0e6d60363d5d5a61cf67",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/materials/asphalt-color.dds",
+      "bytes": 5592532,
+      "sha256": "ca1fcba5b41cadbbe739af1cd8f8c11482ef831e6b25ba6083083754c120363c",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/materials/asphalt-normal.dds",
+      "bytes": 5592532,
+      "sha256": "aa2fe7f2c41a6e480294d6ac3d6cecb06d72644893f5bf71c4e20dc6856696c1",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/materials/concrete-color.dds",
+      "bytes": 2796332,
+      "sha256": "046654965c18f1553a0b0bc62afaea86916e9850cd07a2f436346403457c55e3",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/materials/concrete-normal.dds",
+      "bytes": 2796332,
+      "sha256": "7269b4e8210ea3667dcb40daf4a771ec919d24ae7e2ef801fdac949e34b34bb8",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/materials/paving-color.dds",
+      "bytes": 5592532,
+      "sha256": "8adc3c2350bc14b33a8d9715afb7577f891936e422e98cbd00364d78a9df2244",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/materials/paving-normal.dds",
+      "bytes": 5592532,
+      "sha256": "f68e5fab9ab37b54ff1b2c634d7dd8334cc53f22740701ea3dc0f8a753718153",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/flower_yellowA.glb",
+      "bytes": 7124,
+      "sha256": "e8fce787943bcdc42bd56fc5d821fab6ff21976879e40019af381608bd84af77",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/grass.glb",
+      "bytes": 11524,
+      "sha256": "dc974645ca521f28f9881f5190ef5ec739440ade12bd05aa449d16d4e089d1c1",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/plant_bushDetailed.glb",
+      "bytes": 10200,
+      "sha256": "5f95e15962a3e9d1b8ec73946bae5526f3e8fa91e1e0293d3b745c48cbdd11b7",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/rock_smallA.glb",
+      "bytes": 3072,
+      "sha256": "30498a034e71e79f4899f5ea5eed2564c7a8c90aec114467b80d38e53d9bd632",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/tree_cone_fall.glb",
+      "bytes": 10944,
+      "sha256": "52873f4e14fe249f6bb11a60f74abb9b2b1279ee2850c61e664a51508cd5ffa5",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/tree_detailed.glb",
+      "bytes": 31428,
+      "sha256": "e6446c35f85620872bee3afefb23336626095882d00155b3437b5b0eb60e7655",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/tree_oak.glb",
+      "bytes": 14676,
+      "sha256": "62faa0d2545f4e43c394378083fb26fb39da0236ad9bcc48eac3a6fbb9eab273",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/nature/tree_pineRoundA.glb",
+      "bytes": 14524,
+      "sha256": "5191f20721a9e7d91b4e04a0f5e3478a3656ab372f717875c71955cf8d7b9162",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/roads/Textures/colormap.png",
+      "bytes": 11428,
+      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/roads/light-curved.glb",
+      "bytes": 9544,
+      "sha256": "dce22a3390585e4a2a0467a7394dad07c713f261f65b2ceacda6fe768e5527f8",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/roads/road-sign-empty.glb",
+      "bytes": 6024,
+      "sha256": "38aaaee70b238f9490528f477b9b2447c69be10a1d67867cecc6ff28ab546587",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/bakery-display.png",
+      "bytes": 27941,
+      "sha256": "bfa568453a64d9264c49e11702d37ff7741b5e6fbd0cd97fc0fb2eaf74027ce1",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/bakery.png",
+      "bytes": 17845,
+      "sha256": "5c04422acce8d624e462752d81705e791302ad8a2e362e0102983a7e1abd16f2",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/cafe-display.png",
+      "bytes": 18359,
+      "sha256": "a9a96d67faf83df377545be5abf4c3d8b1ce1923bdd30bd72fb619f6264469c3",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/cafe.png",
+      "bytes": 17147,
+      "sha256": "67d7086e3bf41a022ce45f9e1a1d140c404b537dc967bddb6c127fae566c2d70",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/drygoods-display.png",
+      "bytes": 11575,
+      "sha256": "e58db384ffedb136ff334e24827885330d0843ae5f1e6bceacbf92f7fba82600",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/drygoods.png",
+      "bytes": 16280,
+      "sha256": "b2138e460f00434e1dde83bed3ce8b0c591b3044d3efb391830de52bb44b8ec4",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/grocer-display.png",
+      "bytes": 18847,
+      "sha256": "3aee9352b9a8b6fba24429ef2952b645a57cd1c386b45a4689689213cf7f4e22",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/grocer.png",
+      "bytes": 17646,
+      "sha256": "ce9db13aab85b9fefd5772650df7d1fe2a2cc27b0558082bdbaaa2b279c087d0",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/shop-display.png",
+      "bytes": 9657,
+      "sha256": "e7142c4645691f46bacd4df798d8e30022768fb1a3e06ea9e22955384b075b8d",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/environment/signs/shop.png",
+      "bytes": 15233,
+      "sha256": "644bac9879bb03e9a706e6b1a213835d20d029fe511c1c81ceb5e071a796dbe6",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/ui/fonts/NotoSansSC-VF.ttf",
+      "bytes": 17773132,
+      "sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/ui/licenses/COPYRIGHT.txt",
+      "bytes": 78,
+      "sha256": "d3e6aa5c6d3893ca46a34dd3d8b82b824503965e31704978c8ac0fdd8d57e937",
+      "mode": 420
+    },
+    {
+      "path": "game/assets/ui/licenses/OFL.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/ascent-lookout.json",
+      "bytes": 1057,
+      "sha256": "3d4a09ff9131be9e831b98e60cbe453a64e655b3ffddb7d2896e91425a8c06b4",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/assertion-failure.json",
+      "bytes": 527,
+      "sha256": "30229fc3c38fd9216822a205669eee17014d8c8c5164693e6cd72aab5869392d",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/city-graybox.json",
+      "bytes": 1834,
+      "sha256": "b289efb529c3fda71b325866e65b28f8989803bd949930b45e570af03c544f80",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/descent-cut.json",
+      "bytes": 653,
+      "sha256": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/game-entry.json",
+      "bytes": 3318,
+      "sha256": "8918cd2ebb4a6d66f4cbcc48d1db71a3d18dc73da5ea96a768a8c5f91efb5e80",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/mountain-city.json",
+      "bytes": 1836,
+      "sha256": "7f9b0307893f80b06bfc031fc0478cf886b0c388764ae544776fe7511b87949f",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/ui-signal.json",
+      "bytes": 6684,
+      "sha256": "c2eb78c271fabb88e82c5ba7192f092a479c6ad207fe591cc10677f54c667ae6",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/viewer-tour.json",
+      "bytes": 1377,
+      "sha256": "46a0133a8f319e1b7de4376fdf99f9a2d62a3171598a3ab066814e292c2238dd",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-ascent-entry.json",
+      "bytes": 2504,
+      "sha256": "126979a7944e5e06e2279d20862965cc4e922b8a1149a0c8775e3c9759affcfd",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-ascent-full.json",
+      "bytes": 1689,
+      "sha256": "ff8c467866f708363b9de72775f8fd44f45d8a8866b714be041134068f6ce544",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-focus.json",
+      "bytes": 5769,
+      "sha256": "027b8f4b1f486ecaa5b0b8deee8d46e00f5ed3ee2485a0c4d891722526953d07",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-gamepad.json",
+      "bytes": 5802,
+      "sha256": "ed3df2c312aa5567dd41015bd2e611518a63a72d0c1d5a6b92a687ee8f414553",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-observation-pointer.json",
+      "bytes": 4618,
+      "sha256": "f6105d6603353325f613b0433d072d5ed83861980dc8727a2cd3b9ebd66de41d",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-observation-settings.json",
+      "bytes": 7894,
+      "sha256": "c9ee900dde9ca07ed4f0e8d27b69e4273e2cd19193bc4d4333d353978578546f",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-observation.json",
+      "bytes": 5215,
+      "sha256": "ead8a805da1bf544a2332ca0bbc50942a957c948e63c553a804006c87fa1c6c8",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-pause.json",
+      "bytes": 5863,
+      "sha256": "06df008e028ba786c02d264d2cbc4698c038453d6b9db8bcdc4268d3d35539c6",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-places.json",
+      "bytes": 2582,
+      "sha256": "d580eae35ff9153d0b1eacd84a1ded204bef7462e6565d9f2d6b313f9a0572a1",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-preview.json",
+      "bytes": 4385,
+      "sha256": "16fd2fefe29b2e66af426d3c54dee736639b3b6328adf7860e728d56acda8c23",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-ramp-camera.json",
+      "bytes": 3833,
+      "sha256": "c8a14f797be4efa3f17ae713cd83e69d98e889cb83977610831e8d043e1f5675",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-round-trip.json",
+      "bytes": 1509,
+      "sha256": "d11e94599f3a9fe524e60a91c1d48561564f9c0ca71db84ec83235f22513fb7f",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-settings-restore.json",
+      "bytes": 1661,
+      "sha256": "431fb883368d8da641324addc224346f829924a063b9297778e9bd2ed6fe35e6",
+      "mode": 420
+    },
+    {
+      "path": "game/capture/walk-settings.json",
+      "bytes": 6854,
+      "sha256": "bbcd72bb66f84c0784c34bf0806c870fe4c573b1c4200d21ed53f61c9197c73c",
+      "mode": 420
+    },
+    {
+      "path": "game/map_viewer",
+      "bytes": 192112192,
+      "sha256": "797ba965dab548830caf8b9321c24832a60358243a1a15b1c07c5133dd7d2807",
+      "mode": 493
+    },
+    {
+      "path": "game/n-side",
+      "bytes": 193477512,
+      "sha256": "0255f796339b1d93ffdc4539783b2e767cd6db1b97f78f3e4c72d10fc0f4215f",
+      "mode": 493
+    },
+    {
+      "path": "game/src/app.rs",
+      "bytes": 94683,
+      "sha256": "b75cf6ef5c357d3a14dc36b951be223952a4f15ecd6bf25bf6acdfe2558c2e04",
+      "mode": 420
+    },
+    {
+      "path": "game/src/bin/map_viewer.rs",
+      "bytes": 45501,
+      "sha256": "d941f57e355aec1bd1ede943f2bf172c188e68ce9b97c0733d9e3b1a4770f7a7",
+      "mode": 420
+    },
+    {
+      "path": "game/src/capture/route.rs",
+      "bytes": 12605,
+      "sha256": "14de799e5aa4bcb03470da7ed9af8a87bee61830e4233850f1d21f0eb40e7f7c",
+      "mode": 420
+    },
+    {
+      "path": "game/src/capture.rs",
+      "bytes": 77610,
+      "sha256": "ae0f2a75e48355d553a06139118a519b5f16dbeefdd49dbc84df52c6cd528501",
+      "mode": 420
+    },
+    {
+      "path": "game/src/lib.rs",
+      "bytes": 114,
+      "sha256": "cbfb283683c5f2e35028fcbd2ba629bb902f529cad45de757497dd49856ee56f",
+      "mode": 420
+    },
+    {
+      "path": "game/src/main.rs",
+      "bytes": 214,
+      "sha256": "57195ef357165cc705984b6cf2999c56a7b7f83d64647136ba603b9b7b2d0ade",
+      "mode": 420
+    },
+    {
+      "path": "game/src/places/observation.rs",
+      "bytes": 21884,
+      "sha256": "654d08eef2461abcf6ebc0713f89ccfa5808395c0c4e1691225e967bb8cf6ba0",
+      "mode": 420
+    },
+    {
+      "path": "game/src/places.rs",
+      "bytes": 12244,
+      "sha256": "129e9f567f9b5a406e486fa07665ed8506a59b7739539ea326e8a4bc9b1e0c5e",
+      "mode": 420
+    },
+    {
+      "path": "game/src/player.rs",
+      "bytes": 37044,
+      "sha256": "8e20eb93a71e6afcaa7e17c6b50c5a80ccd5dc52da1fdbe81be365551c59c93f",
+      "mode": 420
+    },
+    {
+      "path": "game/src/settings.rs",
+      "bytes": 15027,
+      "sha256": "3ac1d2ae1bfa6da55909d2c429cac0283cde1c2efd913f95f75ce18f4460f5a9",
+      "mode": 420
+    },
+    {
+      "path": "game/src/ui.rs",
+      "bytes": 32863,
+      "sha256": "316dbd9beb0165a5720445bdde2a56161b035fdae297657c9468385554c66223",
+      "mode": 420
+    },
+    {
+      "path": "game/src/world/assets.rs",
+      "bytes": 25786,
+      "sha256": "c2c54e4824b3d771401a85bbeecab0dbf6b3aca6294713764ad1399c65b8028c",
+      "mode": 420
+    },
+    {
+      "path": "game/src/world/collision.rs",
+      "bytes": 14355,
+      "sha256": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+      "mode": 420
+    },
+    {
+      "path": "game/src/world/geometry.rs",
+      "bytes": 83887,
+      "sha256": "f3f8e859dd08ae11cc031eaba2fba9fcd584daa5a3b3290ded3de7cf3cfeb384",
+      "mode": 420
+    },
+    {
+      "path": "game/src/world/map.rs",
+      "bytes": 29937,
+      "sha256": "e4d40c901f5629399f0ea7b3fe42979c4b90c876c36f85c3d0b891507d3e7b21",
+      "mode": 420
+    },
+    {
+      "path": "game/src/world/mod.rs",
+      "bytes": 97,
+      "sha256": "573e20c25b4db126bfebe339ac4e1578d5096e3b01629328564272048d609fe9",
+      "mode": 420
+    },
+    {
+      "path": "game/src/world/scene.rs",
+      "bytes": 73740,
+      "sha256": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+      "mode": 420
+    },
+    {
+      "path": "game/src/world/visual.rs",
+      "bytes": 11610,
+      "sha256": "110b5e02ba159c647630dc36f6af235c63e5eef79d9c90c30e5b5a3ffe56f121",
+      "mode": 420
+    },
+    {
+      "path": "licenses/environment/CC0-1.0.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "mode": 420
+    },
+    {
+      "path": "licenses/environment/kenney-nature.txt",
+      "bytes": 611,
+      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
+      "mode": 420
+    },
+    {
+      "path": "licenses/environment/kenney-roads.txt",
+      "bytes": 703,
+      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498",
+      "mode": 420
+    },
+    {
+      "path": "licenses/environment-assets.json",
+      "bytes": 15718,
+      "sha256": "e2036cfe4f2e51f0aebadc557846c6ff930eb9db23f446917bc59b5b4deefb62",
+      "mode": 420
+    },
+    {
+      "path": "licenses/parry/LICENSE",
+      "bytes": 11347,
+      "sha256": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+      "mode": 420
+    },
+    {
+      "path": "licenses/parry/UPSTREAM.md",
+      "bytes": 1947,
+      "sha256": "5ee1fed8de5c976519480ce859c3aef932d548f8c07240cf11adec9f86fe0ea6",
+      "mode": 420
+    },
+    {
+      "path": "licenses/ui/COPYRIGHT.txt",
+      "bytes": 78,
+      "sha256": "d3e6aa5c6d3893ca46a34dd3d8b82b824503965e31704978c8ac0fdd8d57e937",
+      "mode": 420
+    },
+    {
+      "path": "licenses/ui/OFL.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "mode": 420
+    },
+    {
+      "path": "licenses/ui-assets.json",
+      "bytes": 1749,
+      "sha256": "25a589d8e8ee49cb6bc4421e455a3c141b644743f99c6c1dc353f767c6bc9d45",
+      "mode": 420
+    },
+    {
+      "path": "run-game.sh",
+      "bytes": 148,
+      "sha256": "8b33cac96ee35f3edbf0b768ed063e97405a75e73ede7be6d420b627b692023a",
+      "mode": 493
+    },
+    {
+      "path": "run-viewer.sh",
+      "bytes": 152,
+      "sha256": "637e3f832790ba4d373df3e8e36e40214907fccb4a5f0a39e1d44194dbe6267d",
+      "mode": 493
+    },
+    {
+      "path": "run-walk-preview.sh",
+      "bytes": 163,
+      "sha256": "99faa39bc07168ac04a75c87b194df992823636d5533767644f4b2dc16056325",
+      "mode": 493
+    },
+    {
+      "path": "source-assets/district-map/district.json",
+      "bytes": 699283,
+      "sha256": "9b2f675d12dfdd9583294c8d8571a8859a561024988c4777d2a7b96e5332e5c9",
+      "mode": 420
+    },
+    {
+      "path": "source-assets/district-scene/appearance.json",
+      "bytes": 8675,
+      "sha256": "572b7c11f3d4ba138db9efbaaffca5c9d6ca406488b1a590e217df28464a8949",
+      "mode": 420
+    },
+    {
+      "path": "source-assets/district-scene/daylight.json",
+      "bytes": 587,
+      "sha256": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+      "mode": 420
+    },
+    {
+      "path": "source-assets/ui-kit/tokens.json",
+      "bytes": 461,
+      "sha256": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426",
+      "mode": 420
+    }
+  ]
+}

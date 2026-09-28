@@ -36,9 +36,9 @@ def command_output(command: list[str]) -> str:
     return result.stdout.strip() if result.returncode == 0 else "unavailable"
 
 
-def run_logged(command: list[str], path: Path, timeout: float) -> int:
+def run_logged(command: list[str], path: Path, timeout: float, cwd: Path = ROOT) -> int:
     with path.open("w", encoding="utf-8") as log:
-        process = subprocess.Popen(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, start_new_session=os.name == "posix")
+        process = subprocess.Popen(command, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, start_new_session=os.name == "posix")
         try:
             return process.wait(timeout=timeout)
         except subprocess.TimeoutExpired:
@@ -83,12 +83,14 @@ def main() -> int:
     parser.add_argument("--binary", type=Path, help="use this prebuilt game or Viewer binary; otherwise build map_viewer with cargo --locked")
     parser.add_argument("--no-video", action="store_true", help="retain PNG evidence only")
     parser.add_argument("--settings-dir", type=Path, help="explicit isolated user-settings directory for cross-process checks")
+    parser.add_argument("--project-root", type=Path, default=ROOT, help="runtime resource root, including an extracted preview package")
     args = parser.parse_args()
     try:
         import PIL
     except ImportError:
         parser.error("Pillow is required; install .agents/skills/create-game-assets/scripts/requirements.txt")
     output = args.output.resolve()
+    project_root = args.project_root.resolve()
     try:
         script_path = args.script.resolve()
         script = json.loads(script_path.read_text(encoding="utf-8"))
@@ -96,6 +98,8 @@ def main() -> int:
         timeout = script["timeout_seconds"]
         if not isinstance(timeout, int) or not 1 <= timeout <= 3600:
             raise ValueError("timeout_seconds must be an integer in 1..3600")
+        if not project_root.is_dir():
+            raise ValueError(f"runtime project root is not a directory: {project_root}")
         output.mkdir(parents=True, exist_ok=False)
     except (OSError, ValueError, KeyError) as error:
         print(f"[capture/setup] {error}", file=sys.stderr)
@@ -107,6 +111,7 @@ def main() -> int:
         "cargo_lock_sha256": digest(ROOT / "game/Cargo.lock"),
         "platform": platform.platform(), "python": platform.python_version(), "pillow": PIL.__version__,
         "video": "NOT RUN", "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+        "runtime_project_root": str(project_root),
     }
     started = time.monotonic()
     exit_code = 1
@@ -120,7 +125,7 @@ def main() -> int:
             if code:
                 raise RuntimeError(f"cargo build exited {code}; see build.log")
         report["binary_sha256"] = digest(binary)
-        command = [str(binary), "--project-root", str(ROOT), "--capture", str(output / "script.json"), "--output", str(output)]
+        command = [str(binary), "--project-root", str(project_root), "--capture", str(output / "script.json"), "--output", str(output)]
         if script["scene"] == "walk-preview":
             command.append("--walk-preview")
         if args.settings_dir is not None:
@@ -128,7 +133,7 @@ def main() -> int:
                 raise ValueError("--settings-dir requires the formal game entry")
             command.extend(["--settings-dir", str(args.settings_dir.resolve())])
         report["command"] = command
-        code = run_logged(command, output / "runtime.log", timeout + 30)
+        code = run_logged(command, output / "runtime.log", timeout + 30, cwd=project_root)
         report["runtime_exit_code"] = code
         if code:
             raise RuntimeError(f"Native capture exited {code}; see runtime.log and state.json when available")
