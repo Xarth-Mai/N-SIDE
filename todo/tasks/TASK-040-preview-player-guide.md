@@ -1,7 +1,11 @@
 ---
 id: TASK-040
 type: document
-status: backlog
+status: done
+acceptance:
+  role: codex
+  revision: 887731362ea52ea63f3c8a5f5ca2397bdd80eeda162b748834c0eb8ceb01c0f6
+  record: todo/evidence/TASK-040/r1/review.md
 milestone: G1
 depends_on: [TASK-037, TASK-039]
 specs:
@@ -21,8 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-本轮已排定；前置交付通过后接入最终操作与资源，当前先核对既有输入
+第1轮，步骤6/6 完成；指南已按当前操作与地图核对，文档检查、54项地图测试及玩家/开发双站构建通过，实际产物含完整操作正文与10条章节搜索记录；后续由TASK-041完成独立预览包验收
 
 ## 结果与证据
 
-本轮证据归 todo/evidence/TASK-040/r1，尚未验收
+[游玩指南验收](../evidence/TASK-040/r1/review.md)保留输入hash、命令日志、实际HTML与搜索检查和空浏览器宿主清单；浏览器排版及真实阅读体验为NOT RUN，不据此宣称完整Demo发布或G1放行

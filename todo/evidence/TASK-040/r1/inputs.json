@@ -1,0 +1,46 @@
+{
+  "recorded_at": "2026-09-28T09:19:55.466760+00:00",
+  "head": "72eaf124e3f990858fb4244289613c1179cae164",
+  "files": [
+    {
+      "path": "docs/player/guide/index.md",
+      "sha256": "887731362ea52ea63f3c8a5f5ca2397bdd80eeda162b748834c0eb8ceb01c0f6",
+      "bytes": 6146
+    },
+    {
+      "path": "game/src/app.rs",
+      "sha256": "b75cf6ef5c357d3a14dc36b951be223952a4f15ecd6bf25bf6acdfe2558c2e04",
+      "bytes": 94683
+    },
+    {
+      "path": "game/src/player.rs",
+      "sha256": "8e20eb93a71e6afcaa7e17c6b50c5a80ccd5dc52da1fdbe81be365551c59c93f",
+      "bytes": 37044
+    },
+    {
+      "path": "game/src/places.rs",
+      "sha256": "129e9f567f9b5a406e486fa07665ed8506a59b7739539ea326e8a4bc9b1e0c5e",
+      "bytes": 12244
+    },
+    {
+      "path": "game/src/places/observation.rs",
+      "sha256": "654d08eef2461abcf6ebc0713f89ccfa5808395c0c4e1691225e967bb8cf6ba0",
+      "bytes": 21884
+    },
+    {
+      "path": "game/src/settings.rs",
+      "sha256": "3ac1d2ae1bfa6da55909d2c429cac0283cde1c2efd913f95f75ce18f4460f5a9",
+      "bytes": 15027
+    },
+    {
+      "path": "source-assets/district-map/district.json",
+      "sha256": "9b2f675d12dfdd9583294c8d8571a8859a561024988c4777d2a7b96e5332e5c9",
+      "bytes": 699283
+    },
+    {
+      "path": "tools/package-preview.ts",
+      "sha256": "2cae42ab55c5b52659a8260efdc4a26131fbe83bb5f411e028b75fe91e0d85f6",
+      "bytes": 13339
+    }
+  ]
+}

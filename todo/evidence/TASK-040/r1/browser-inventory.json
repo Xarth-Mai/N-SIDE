@@ -1,0 +1,9 @@
+{
+  "tool": "mcp__cua_repl.js",
+  "code": "await cua.getState();",
+  "result": {
+    "apps": [],
+    "browsers": []
+  },
+  "browser_validation": "NOT RUN"
+}

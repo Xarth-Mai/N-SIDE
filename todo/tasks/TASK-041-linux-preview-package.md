@@ -1,7 +1,7 @@
 ---
 id: TASK-041
 type: feature
-status: backlog
+status: active
 milestone: G1
 depends_on: [TASK-037, TASK-038, TASK-039, TASK-040]
 specs:
@@ -21,7 +21,7 @@ specs:
 
 ## 当前工作与下一步
 
-本轮已排定；前置交付通过后接入最终操作与资源，当前先核对既有输入
+第1轮，步骤4/6；打包工具及失败边界窄测通过，当前在仓库外解压并验证真实入口、交互及跨进程设置
 
 ## 结果与证据
 

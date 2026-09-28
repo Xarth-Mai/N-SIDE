@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "scope": "generated HTML main content, player links, and search records; no browser rendering",
+  "guide_search_records": [
+    "/player/guide/#游玩指南",
+    "/player/guide/#启动预览",
+    "/player/guide/#从源码启动",
+    "/player/guide/#从-linux-预览包启动",
+    "/player/guide/#基本操作",
+    "/player/guide/#看地名与查看地点",
+    "/player/guide/#暂停与恢复",
+    "/player/guide/#文字大小与镜头灵敏度",
+    "/player/guide/#第一次可以这样走",
+    "/player/guide/#预览与百科的范围"
+  ],
+  "outputs": [
+    {
+      "path": "docs/.vitepress/dist-player/player/guide/index.html",
+      "sha256": "b9a4b6bd25db935b7dfccc392458f2fee2dddee2b57595403fdbe15e6bba11b0"
+    },
+    {
+      "path": "docs/.vitepress/dist-player/assets/search-index.CdvTP2hn.json",
+      "sha256": "f6746376f74152bea6507177335f078c1f1782c835bf31ba1c9d5c03273704ca"
+    }
+  ]
+}
