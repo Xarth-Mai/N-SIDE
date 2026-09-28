@@ -1,0 +1,29 @@
+{
+  "base_commit": "c8c934b7c607ca621faa92a0e9f7285a5c3e70a5",
+  "inputs": {
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/Cargo.toml": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+    "game/capture/walk-places.json": "d580eae35ff9153d0b1eacd84a1ded204bef7462e6565d9f2d6b313f9a0572a1",
+    "game/src/app.rs": "4d086baeed7b1f4dd7e8a125b44726566258ed58e84ff43d54920575cf82223f",
+    "game/src/bin/map_viewer.rs": "613e77f5bedf7b0e725b7423ea64b6a51b45f8a05810e9185005164ada84095d",
+    "game/src/capture/route.rs": "6fbfc06b3941d24ca696fb0e588f118eef937e45ccfb786f14bbe58b3b0b8e08",
+    "game/src/capture.rs": "e5a85ffd1e651326f2f9b555e3d324b81b23fb36ba2128488bbd97b98ca11096",
+    "game/src/lib.rs": "3c80627ff533abb7d3ab4d4c57e0c5b5638c2de09fe7545e1216e9f89c700f56",
+    "game/src/main.rs": "57195ef357165cc705984b6cf2999c56a7b7f83d64647136ba603b9b7b2d0ade",
+    "game/src/places.rs": "a657045363c2403c6fa93d4f4dd4aa8d829d03f39b8b64f6006739969b950e07",
+    "game/src/player.rs": "1796118625b21555bc25c08ae369b339f816bc5e4dde310f5b2d9baa29f58756",
+    "game/src/ui.rs": "316dbd9beb0165a5720445bdde2a56161b035fdae297657c9468385554c66223",
+    "game/src/world/assets.rs": "c2c54e4824b3d771401a85bbeecab0dbf6b3aca6294713764ad1399c65b8028c",
+    "game/src/world/collision.rs": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+    "game/src/world/geometry.rs": "a4a2500dd754ab0ba0077bd6ed8c539a81c2dc5acf1c2197feef31c24ff5871b",
+    "game/src/world/map.rs": "e4d40c901f5629399f0ea7b3fe42979c4b90c876c36f85c3d0b891507d3e7b21",
+    "game/src/world/mod.rs": "573e20c25b4db126bfebe339ac4e1578d5096e3b01629328564272048d609fe9",
+    "game/src/world/scene.rs": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+    "game/src/world/visual.rs": "110b5e02ba159c647630dc36f6af235c63e5eef79d9c90c30e5b5a3ffe56f121",
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/ui-kit/tokens.json": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426",
+    "tools/capture.py": "4225a1755898159bd964377c8aa12e1548b61fe7276d9be3c96846369b3d4b26"
+  },
+  "input_revision": "add939ec976a999f4ad14c4ab6a37aa3720143a79b643fc32cdf35d345f3943c"
+}

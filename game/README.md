@@ -77,6 +77,12 @@ python3 tools/capture.py --script game/capture/walk-ascent-full.json --output ou
 
 完整路线脚本的 `route: {"id":"hill-short","start":60}` 从当前项目根读取地图路线，按真实脚点与相机朝向发摇杆及鼠标输入。节点必须有相连道路和真实可行走网格；到达检查水平距离、支撑高度、着地和零恢复。两秒无有效进展明确失败，终点释放输入；路线不得与同一时段的手写输入争用。`state.json` 的 `route_all_nodes_reached` 检查内保存 `route`每个实际到达节点与帧号，路线全部到达才通过。`round_trip: true` 在峰顶后按源节点逆序原路返回，峰顶只计一次；`walk-round-trip.json` 用同一会话验证259次节点到达和回店后的稳定状态
 
+人物入口左上显示地图公共入口附近的真实地名，左下显示当前键鼠／手柄操作提示。位置或高度超过判定范围时回退Null Site；进入暂停隐藏，继续后恢复。
+
+```fish
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-places.json --output output/capture/walk-places
+```
+
 ## 世界运行时
 
 `world::map` 负责 v7 数据和引用校验，唯一坐标转换为 `[x,y,h] → [x,h,-y]`，1 unit = 1 m。`world::geometry` 使用 f64 空间计算生成外部几何，`world::assets` 校验表现资产，`world::scene` 负责加载、材质和实例；`world::visual` 共享白天成像与照明，正式入口使用 Bevy States 管理标题、加载、街区、暂停和失败状态，Viewer 使用官方 [FreeCamera](https://docs.rs/bevy/0.19.1/bevy/camera_controller/free_camera/index.html)

@@ -1,0 +1,184 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 480,
+  "height": 720,
+  "fps": 30,
+  "frames": 720,
+  "seed": 0,
+  "timeout_seconds": 400,
+  "keyframes": [
+    29,
+    59,
+    149,
+    299,
+    329,
+    349,
+    369,
+    379,
+    449,
+    649,
+    669,
+    699,
+    719
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 330,
+      "move_axis": [
+        0.8,
+        0.6
+      ]
+    },
+    {
+      "start": 340,
+      "end": 341,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 350,
+      "end": 360,
+      "move_axis": [
+        0.8,
+        0.6
+      ]
+    },
+    {
+      "start": 370,
+      "end": 371,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 380,
+      "end": 650,
+      "move_axis": [
+        -0.8,
+        -0.6
+      ]
+    },
+    {
+      "start": 660,
+      "end": 665,
+      "keys": [
+        "Q"
+      ]
+    },
+    {
+      "start": 700,
+      "end": 701,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 703,
+      "end": 704,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 706,
+      "end": 707,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 709,
+      "game_page": "title"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "spawn identifies real public shop entrance",
+      "from": 59,
+      "to": 59,
+      "place_id": "04",
+      "place_name": "\u6708\u53f0\u6742\u8d27\u4e0e\u4f4f\u5bb6",
+      "place_visible": true,
+      "place_gamepad": false,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "analog movement switches the actual HUD hint",
+      "from": 149,
+      "to": 149,
+      "place_id": "04",
+      "place_gamepad": true,
+      "place_visible": true
+    },
+    {
+      "name": "leaving the entrance stops claiming the old location",
+      "from": 299,
+      "to": 329,
+      "place_name": "Null Site",
+      "place_visible": true,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "paused HUD is hidden and movement remains frozen",
+      "from": 349,
+      "to": 369,
+      "game_page": "paused",
+      "place_visible": false,
+      "max_player_distance": 0.001,
+      "max_player_resets": 0
+    },
+    {
+      "name": "resume restores HUD at the same route position",
+      "from": 379,
+      "to": 379,
+      "game_page": "world",
+      "place_name": "Null Site",
+      "place_visible": true
+    },
+    {
+      "name": "returning on foot reacquires the shop",
+      "from": 649,
+      "to": 649,
+      "place_id": "04",
+      "place_gamepad": true,
+      "place_visible": true,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "keyboard camera input replaces the gamepad hint",
+      "from": 669,
+      "to": 699,
+      "place_id": "04",
+      "place_gamepad": false,
+      "place_visible": true
+    },
+    {
+      "name": "title cleans location metadata and hides world HUD",
+      "from": 709,
+      "to": 719,
+      "game_page": "title",
+      "place_name": "Null Site",
+      "place_visible": false,
+      "max_world_entities": 0
+    }
+  ]
+}

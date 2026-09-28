@@ -1,7 +1,11 @@
 ---
 id: TASK-034
 type: feature
-status: backlog
+status: done
+acceptance:
+  role: codex
+  revision: 3f65baaefaf439bab1d882594c59331f08d6f90b61d6bb82e884bba16dd894fe
+  record: todo/evidence/TASK-034/r2/review.md
 milestone: G1
 depends_on: [TASK-028]
 specs:
@@ -21,8 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-第1轮，步骤1/6 定位；本轮连续五项交付的第3项，依前置结果推进
+第2轮，步骤6/6 完成；实际地点、高度与设备提示接入正式入口，宽窄屏各720帧、11项检查通过；继续就近查看与字号设置
 
 ## 结果与证据
 
-当前尚无完成证据，原始运行产物进入output，本轮摘要归对应任务evidence目录
+[技术与画面自查](../evidence/TASK-034/r2/review.md)；首轮记录保留在r1，最终代码复验在r2，窄屏字号放大由TASK-036接续

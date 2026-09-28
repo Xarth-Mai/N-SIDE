@@ -4,6 +4,7 @@
 //! N:SIDE implementation records real application input, state and rendered frames
 use crate::{
     app::{GameLoadError, GamePhase},
+    places::PlaceHud,
     player::PlayerState,
     ui::{SignalUi, UiFont, UiInput},
     world::{
@@ -124,6 +125,11 @@ pub struct Assertion {
     max_player_resets: Option<u32>,
     player_blocked: Option<String>,
     gamepad_connected: Option<bool>,
+    place_id: Option<String>,
+    place_name: Option<String>,
+    place_visible: Option<bool>,
+    place_gamepad: Option<bool>,
+    place_known: Option<bool>,
 }
 
 const GAME_PAGES: [&str; 5] = ["title", "loading", "world", "paused", "failed"];
@@ -280,9 +286,15 @@ impl Script {
                     && check.max_world_entities.is_none()
                     && check.same_world_entities.is_none()
                     && check.gamepad_connected.is_none()
+                    && !check.has_place_assertion()
                     && !check.has_player_assertion())
                 || (check.has_player_assertion() && self.scene != "walk-preview")
                 || (check.gamepad_connected.is_some() && !self.game_scene())
+                || (check.has_place_assertion() && self.scene != "walk-preview")
+                || [check.place_id.as_ref(), check.place_name.as_ref()]
+                    .into_iter()
+                    .flatten()
+                    .any(|value| value.trim().is_empty())
                 || check
                     .min_rotation
                     .zip(check.max_rotation)
@@ -338,6 +350,39 @@ impl Script {
 }
 
 impl Assertion {
+    fn has_place_assertion(&self) -> bool {
+        self.place_id.is_some()
+            || self.place_name.is_some()
+            || self.place_visible.is_some()
+            || self.place_gamepad.is_some()
+            || self.place_known.is_some()
+    }
+
+    fn check_place(&self, place: Option<&PlaceSample>) -> bool {
+        if !self.has_place_assertion() {
+            return true;
+        }
+        let Some(place) = place else {
+            return false;
+        };
+        self.place_id
+            .as_ref()
+            .is_none_or(|id| place.id.as_ref() == Some(id))
+            && self
+                .place_name
+                .as_ref()
+                .is_none_or(|name| place.name == *name)
+            && self
+                .place_visible
+                .is_none_or(|visible| place.visible == visible)
+            && self
+                .place_gamepad
+                .is_none_or(|gamepad| place.gamepad == gamepad)
+            && self
+                .place_known
+                .is_none_or(|known| place.id.is_some() == known)
+    }
+
     fn has_player_assertion(&self) -> bool {
         self.min_player_distance.is_some()
             || self.max_player_distance.is_some()
@@ -430,6 +475,14 @@ impl From<&PlayerState> for PlayerSample {
 }
 
 #[derive(Serialize)]
+struct PlaceSample {
+    id: Option<String>,
+    name: String,
+    visible: bool,
+    gamepad: bool,
+}
+
+#[derive(Serialize)]
 struct Sample {
     frame: u32,
     simulation_seconds: f64,
@@ -441,6 +494,7 @@ struct Sample {
     world_entities: usize,
     player: Option<PlayerSample>,
     ui: Option<serde_json::Value>,
+    place: Option<PlaceSample>,
     gamepad_connected: bool,
 }
 
@@ -544,6 +598,9 @@ impl Recording {
                         && assertion.check_player(
                             &self.samples[assertion.from as usize..=assertion.to as usize],
                         )
+                        && self.samples[assertion.from as usize..=assertion.to as usize]
+                            .iter()
+                            .all(|sample| assertion.check_place(sample.place.as_ref()))
                         && assertion.max_distance.is_none_or(|v| peak_distance <= v)
                         && assertion.min_rotation.is_none_or(|v| rotation >= v)
                         && assertion.max_rotation.is_none_or(|v| peak_rotation <= v)
@@ -879,10 +936,11 @@ fn record(
     transforms: Query<(Entity, &Transform)>,
     pads: Query<&Gamepad, With<ScriptGamepad>>,
     mut exit: MessageWriter<AppExit>,
-    ui: Option<Res<SignalUi>>,
+    ui_state: (Option<Res<SignalUi>>, Option<Res<PlaceHud>>),
     ui_font: Option<Res<UiFont>>,
     assets: Res<AssetServer>,
 ) {
+    let (ui, place) = ui_state;
     if recording.finished {
         return;
     }
@@ -979,6 +1037,12 @@ fn record(
         world_entities: world_entities.iter().count(),
         gamepad_connected: !pads.is_empty(),
         player: player.as_deref().map(PlayerSample::from),
+        place: place.as_ref().map(|hud| PlaceSample {
+            id: hud.current_id.clone(),
+            name: hud.name.clone(),
+            visible: hud.visible,
+            gamepad: hud.gamepad,
+        }),
         ui: ui
             .as_ref()
             .map(|ui| serde_json::to_value(&**ui).expect("finite UI state")),
@@ -1462,6 +1526,7 @@ mod tests {
                 world_entities: 1,
                 player: None,
                 ui: None,
+                place: None,
                 gamepad_connected: true,
             })
             .collect();
@@ -1497,6 +1562,39 @@ mod tests {
     }
 
     #[test]
+    fn place_assertions_require_real_hud_and_validate_fields() {
+        let mut script: Script =
+            serde_json::from_str(include_str!("../capture/walk-places.json")).unwrap();
+        assert!(script.validate().is_ok());
+        let mut check: Assertion = serde_json::from_value(serde_json::json!({
+            "name":"near shop", "from":0, "to":0,
+            "place_id":"04", "place_name":"月台杂货与住家", "place_visible":true,
+            "place_gamepad":false, "place_known":true
+        }))
+        .unwrap();
+        let mut place = PlaceSample {
+            id: Some("04".into()),
+            name: "月台杂货与住家".into(),
+            visible: true,
+            gamepad: false,
+        };
+        assert!(check.check_place(Some(&place)));
+        assert!(!check.check_place(None));
+        place.id = None;
+        assert!(!check.check_place(Some(&place)));
+        check.place_id = None;
+        check.place_known = Some(false);
+        assert!(check.check_place(Some(&place)));
+        place.gamepad = true;
+        assert!(!check.check_place(Some(&place)));
+        script.scene = "game-entry".into();
+        assert!(script.validate().is_err());
+        script.scene = "walk-preview".into();
+        script.assertions[0].place_id = Some(" ".into());
+        assert!(script.validate().is_err());
+    }
+
+    #[test]
     fn player_checks_require_real_snapshots_and_bound_the_whole_interval() {
         let assertion: Assertion = serde_json::from_value(serde_json::json!({
             "name": "wall approach", "from": 0, "to": 2,
@@ -1517,6 +1615,7 @@ mod tests {
             world_ready: true,
             world_entities: 1,
             ui: None,
+            place: None,
             gamepad_connected: true,
             player: Some(PlayerSample {
                 foot: [x, 28.0, 0.0],

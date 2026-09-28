@@ -1,0 +1,111 @@
+    Checking n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error[E0277]: `fn(..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ...) {record}` does not describe a valid system configuration
+   --> src/capture.rs:740:34
+    |
+740 |         .add_systems(PostUpdate, record);
+    |          -----------             ^^^^^^ invalid system configuration
+    |          |
+    |          required by a bound introduced by this call
+    |
+    = help: the trait `bevy::bevy_ecs::system::IntoSystem<(), (), _>` is not implemented for fn item `fn(..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ...) {record}`
+help: the following other types implement trait `bevy::bevy_ecs::system::IntoSystem<In, Out, Marker>`
+   --> /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_ecs-0.19.1/src/system/builder.rs:284:1
+    |
+284 | / impl<Marker, In, Out, Func, Builder> IntoSystem<In, Out, (IsBuilderSystem, Marker)>
+285 | |     for IntoBuilderSystem<Marker, In, Out, Func, Builder>
+286 | | where
+287 | |     Marker: 'static,
+...   |
+290 | |     Func: SystemParamFunction<Marker, In: FromInput<In>, Out: IntoResult<Out>>,
+291 | |     Builder: SystemParamBuilder<Func::Param> + Send + Sync + 'static,
+    | |_____________________________________________________________________^ `bevy::bevy_ecs::system::IntoBuilderSystem<Marker, In, Out, Func, Builder>` implements `IntoSystem<In, Out, (IsBuilderSystem, Marker)>`
+    |
+   ::: /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_ecs-0.19.1/src/system/adapter_system.rs:84:1
+    |
+ 84 | / impl<Func, S, I, O, M> IntoSystem<Func::In, Func::Out, (IsAdapterSystemMarker, I, O, M)>
+ 85 | |     for IntoAdapterSystem<Func, S>
+ 86 | | where
+ 87 | |     Func: Adapt<S::System>,
+ 88 | |     I: SystemInput,
+ 89 | |     S: IntoSystem<I, O, M>,
+    | |___________________________^ `bevy::bevy_ecs::system::IntoAdapterSystem<Func, S>` implements `IntoSystem<<Func as Adapt<...>>::In, ..., ...>`
+    |
+   ::: /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_ecs-0.19.1/src/system/combinator.rs:303:1
+    |
+303 | / impl<A, B, IA, OA, IB, OB, MA, MB> IntoSystem<IA, OB, (IsPipeSystemMarker, OA, IB, MA, MB)>
+304 | |     for IntoPipeSystem<A, B>
+305 | | where
+306 | |     IA: SystemInput,
+307 | |     A: IntoSystem<IA, OA, MA>,
+308 | |     B: IntoSystem<IB, OB, MB>,
+309 | |     for<'a> IB: SystemInput<Inner<'a> = OA>,
+    | |____________________________________________^ `bevy::bevy_ecs::system::IntoPipeSystem<A, B>` implements `IntoSystem<IA, OB, (IsPipeSystemMarker, OA, IB, MA, MB)>`
+    = note: required for `fn(..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ...) {record}` to implement `IntoScheduleConfigs<Box<dyn System<In = (), Out = ()>>, _>`
+note: required by a bound in `bevy::bevy_app::App::add_systems`
+   --> /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_app-0.19.1/src/app.rs:324:23
+    |
+321 |     pub fn add_systems<M>(
+    |            ----------- required by a bound in this associated function
+...
+324 |         systems: impl IntoScheduleConfigs<ScheduleSystem, M>,
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `App::add_systems`
+    = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c1a1537726e24fa3.long-type-17371385740353491688.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: `fn(..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ...) {record}` does not describe a valid system configuration
+   --> src/capture.rs:740:34
+    |
+740 |         .add_systems(PostUpdate, record);
+    |          -----------             ^^^^^^ invalid system configuration
+    |          |
+    |          required by a bound introduced by this call
+    |
+    = help: the trait `bevy::bevy_ecs::system::IntoSystem<(), (), _>` is not implemented for fn item `fn(..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ...) {record}`
+help: the following other types implement trait `bevy::bevy_ecs::system::IntoSystem<In, Out, Marker>`
+   --> /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_ecs-0.19.1/src/system/builder.rs:284:1
+    |
+284 | / impl<Marker, In, Out, Func, Builder> IntoSystem<In, Out, (IsBuilderSystem, Marker)>
+285 | |     for IntoBuilderSystem<Marker, In, Out, Func, Builder>
+286 | | where
+287 | |     Marker: 'static,
+...   |
+290 | |     Func: SystemParamFunction<Marker, In: FromInput<In>, Out: IntoResult<Out>>,
+291 | |     Builder: SystemParamBuilder<Func::Param> + Send + Sync + 'static,
+    | |_____________________________________________________________________^ `bevy::bevy_ecs::system::IntoBuilderSystem<Marker, In, Out, Func, Builder>` implements `IntoSystem<In, Out, (IsBuilderSystem, Marker)>`
+    |
+   ::: /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_ecs-0.19.1/src/system/adapter_system.rs:84:1
+    |
+ 84 | / impl<Func, S, I, O, M> IntoSystem<Func::In, Func::Out, (IsAdapterSystemMarker, I, O, M)>
+ 85 | |     for IntoAdapterSystem<Func, S>
+ 86 | | where
+ 87 | |     Func: Adapt<S::System>,
+ 88 | |     I: SystemInput,
+ 89 | |     S: IntoSystem<I, O, M>,
+    | |___________________________^ `bevy::bevy_ecs::system::IntoAdapterSystem<Func, S>` implements `IntoSystem<<Func as Adapt<...>>::In, ..., ...>`
+    |
+   ::: /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_ecs-0.19.1/src/system/combinator.rs:303:1
+    |
+303 | / impl<A, B, IA, OA, IB, OB, MA, MB> IntoSystem<IA, OB, (IsPipeSystemMarker, OA, IB, MA, MB)>
+304 | |     for IntoPipeSystem<A, B>
+305 | | where
+306 | |     IA: SystemInput,
+307 | |     A: IntoSystem<IA, OA, MA>,
+308 | |     B: IntoSystem<IB, OB, MB>,
+309 | |     for<'a> IB: SystemInput<Inner<'a> = OA>,
+    | |____________________________________________^ `bevy::bevy_ecs::system::IntoPipeSystem<A, B>` implements `IntoSystem<IA, OB, (IsPipeSystemMarker, OA, IB, MA, MB)>`
+    = note: required for `fn(..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ...) {record}` to implement `IntoScheduleConfigs<Box<dyn System<In = (), Out = ()>>, _>`
+note: required by a bound in `bevy::bevy_app::App::add_systems`
+   --> /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_app-0.19.1/src/app.rs:324:23
+    |
+321 |     pub fn add_systems<M>(
+    |            ----------- required by a bound in this associated function
+...
+324 |         systems: impl IntoScheduleConfigs<ScheduleSystem, M>,
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `App::add_systems`
+    = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c8cca609171f78ce.long-type-18209218412613781298.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `n-side` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `n-side` (lib test) due to 1 previous error

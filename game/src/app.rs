@@ -1,5 +1,6 @@
 use crate::{
     capture::{self, CaptureInput, CaptureTarget},
+    places::{self, PlaceCatalog},
     player::{self, PlayerState, WalkPreview},
     ui::{FONT, Tokens, UiFont, UiInput, color},
     world::{
@@ -62,11 +63,12 @@ struct Preparation(Task<Result<PreparedWorld, String>>);
 struct PreparedWorld {
     scene: PreparedScene,
     player: Option<(CollisionWorld, PlayerState)>,
+    places: Option<PlaceCatalog>,
 }
 #[derive(Resource, Default)]
-struct EntryUi {
+pub(crate) struct EntryUi {
     focus: usize,
-    gamepad: bool,
+    pub(crate) gamepad: bool,
     wait_for_release: bool,
     pause_after_loading: bool,
     gamepad_recovery: Option<bool>,
@@ -200,6 +202,7 @@ pub fn run() -> Result<AppExit, String> {
     app.insert_resource(WalkPreview(walk));
     install_lifecycle(&mut app);
     player::install(&mut app);
+    places::install(&mut app);
     app.add_systems(
         Startup,
         move |mut commands: Commands,
@@ -282,6 +285,7 @@ fn enter_title(world: &mut World) {
     world.remove_resource::<Preparation>();
     world.remove_resource::<GameLoadError>();
     player::clear(world);
+    world.remove_resource::<PlaceCatalog>();
     clear_scene(world);
     {
         let mut ui = world.resource_mut::<EntryUi>();
@@ -294,6 +298,7 @@ fn enter_title(world: &mut World) {
 
 fn begin_loading(world: &mut World) {
     player::clear(world);
+    world.remove_resource::<PlaceCatalog>();
     clear_scene(world);
     world.remove_resource::<GameLoadError>();
     {
@@ -320,7 +325,14 @@ fn begin_loading(world: &mut World) {
         } else {
             None
         };
-        Ok(PreparedWorld { scene, player })
+        let places = walk
+            .then(|| PlaceCatalog::load(&root.join("source-assets/district-map/district.json")))
+            .transpose()?;
+        Ok(PreparedWorld {
+            scene,
+            player,
+            places,
+        })
     })));
     info!("[game/state] loading");
 }
@@ -328,6 +340,7 @@ fn begin_loading(world: &mut World) {
 fn enter_failed(world: &mut World) {
     world.remove_resource::<Preparation>();
     player::clear(world);
+    world.remove_resource::<PlaceCatalog>();
     clear_scene(world);
     {
         let mut ui = world.resource_mut::<EntryUi>();
@@ -385,6 +398,9 @@ fn poll_preparation(
             if let Some((collision, player)) = prepared.player {
                 commands.insert_resource(collision);
                 commands.insert_resource(player);
+            }
+            if let Some(places) = prepared.places {
+                commands.insert_resource(places);
             }
             commands.insert_resource(SceneLoading::new(prepared.scene));
         }
