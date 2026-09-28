@@ -1,0 +1,91 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 960,
+  "height": 540,
+  "fps": 30,
+  "frames": 13500,
+  "seed": 0,
+  "timeout_seconds": 3600,
+  "keyframes": [
+    29,
+    59,
+    450,
+    900,
+    1800,
+    2700,
+    3600,
+    4500,
+    5400,
+    6300,
+    7200,
+    8100,
+    9000,
+    9900,
+    10800,
+    11700,
+    12600,
+    13499
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "route": {
+    "id": "hill-short",
+    "start": 60
+  },
+  "assertions": [
+    {
+      "name": "Start at the actual shop spawn",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "world_ready": true,
+      "min_player_height": 28,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "Continuous ascent stays finite and needs no automatic recovery",
+      "from": 59,
+      "to": 13499,
+      "same_world_entities": true,
+      "max_player_resets": 0,
+      "min_player_height": 27.9,
+      "max_player_height": 450.2
+    },
+    {
+      "name": "Reach the summit using movement input",
+      "from": 59,
+      "to": 13200,
+      "min_player_distance": 800,
+      "min_player_height": 28,
+      "max_player_height": 450.2,
+      "max_player_resets": 0
+    },
+    {
+      "name": "Stand on the summit after the complete route",
+      "from": 13200,
+      "to": 13499,
+      "min_player_height": 450,
+      "max_player_height": 450.2,
+      "player_grounded": true,
+      "max_player_resets": 0,
+      "max_player_distance": 0.001,
+      "game_page": "world"
+    }
+  ]
+}

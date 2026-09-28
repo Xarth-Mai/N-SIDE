@@ -1,0 +1,117 @@
+{
+  "status": "FAIL",
+  "script": {
+    "scene": "walk-preview",
+    "view": "shop",
+    "width": 960,
+    "height": 540,
+    "fps": 30,
+    "frames": 13500,
+    "seed": 0,
+    "timeout_seconds": 3600,
+    "keyframes": [
+      29,
+      59,
+      450,
+      900,
+      1800,
+      2700,
+      3600,
+      4500,
+      5400,
+      6300,
+      7200,
+      8100,
+      9000,
+      9900,
+      10800,
+      11700,
+      12600,
+      13499
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 31,
+        "keys": [
+          "Enter"
+        ]
+      }
+    ],
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "route": {
+      "id": "missing-route",
+      "start": 60
+    },
+    "assertions": [
+      {
+        "name": "Start at the actual shop spawn",
+        "from": 59,
+        "to": 59,
+        "game_page": "world",
+        "world_ready": true,
+        "min_player_height": 28,
+        "max_player_height": 28.15,
+        "player_grounded": true,
+        "max_player_resets": 0
+      },
+      {
+        "name": "Continuous ascent stays finite and needs no automatic recovery",
+        "from": 59,
+        "to": 13499,
+        "same_world_entities": true,
+        "max_player_resets": 0,
+        "min_player_height": 27.9,
+        "max_player_height": 450.2
+      },
+      {
+        "name": "Reach the summit using movement input",
+        "from": 59,
+        "to": 13200,
+        "min_player_distance": 800,
+        "min_player_height": 28,
+        "max_player_height": 450.2,
+        "max_player_resets": 0
+      },
+      {
+        "name": "Stand on the summit after the complete route",
+        "from": 13200,
+        "to": 13499,
+        "min_player_height": 450,
+        "max_player_height": 450.2,
+        "player_grounded": true,
+        "max_player_resets": 0,
+        "max_player_distance": 0.001,
+        "game_page": "world"
+      }
+    ]
+  },
+  "script_sha256": "8b237f6d53e391322672c694fff4c84e3b774e8bcf674ad476cc5bbfd73330fb",
+  "git_commit": "b0e69280caeb4990927c1d3578bead2a46bfdb5f",
+  "git_worktree": "M docs/dev/engineering/player-preview.md\n M game/README.md\n M game/src/app.rs\n M game/src/bin/map_viewer.rs\n M game/src/capture.rs\n M todo/README.md\n?? game/capture/walk-ascent-full.json\n?? game/capture/walk-places.json\n?? game/capture/walk-settings.json\n?? game/src/capture/\n?? game/src/places.rs\n?? todo/evidence/TASK-032/\n?? todo/tasks/TASK-032-ascent-runtime.md\n?? todo/tasks/TASK-033-descent-runtime.md\n?? todo/tasks/TASK-034-place-hud.md\n?? todo/tasks/TASK-035-place-observation.md\n?? todo/tasks/TASK-036-entry-settings.md",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "NOT RUN",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "4b2eb024228c199c387bc1f9db72c339fc0efa76e03b29d13454b6ecb88bbf07",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r1/missing-route/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r1/missing-route",
+    "--walk-preview"
+  ],
+  "runtime_exit_code": 1,
+  "error": "Native capture exited 1; see runtime.log and state.json when available",
+  "elapsed_wall_seconds": 6.697186172998045
+}

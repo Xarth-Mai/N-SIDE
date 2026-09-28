@@ -6,8 +6,12 @@ use crate::{
     app::{GameLoadError, GamePhase},
     player::PlayerState,
     ui::{SignalUi, UiFont, UiInput},
-    world::scene::{MapSource, SceneLoading},
+    world::{
+        collision::CollisionWorld,
+        scene::{MapSource, SceneLoading},
+    },
 };
+mod route;
 #[cfg(feature = "viewer")]
 use bevy::camera_controller::free_camera::FreeCameraState;
 use bevy::{
@@ -22,6 +26,7 @@ use bevy::{
     time::{TimeSystems, TimeUpdateStrategy},
     window::{PrimaryWindow, WindowFocused},
 };
+use route::{RouteDriver, RouteScript};
 use serde::{Deserialize, Serialize};
 use std::{
     fs,
@@ -50,6 +55,8 @@ pub struct Script {
     pub events: Vec<InputSpan>,
     #[serde(default)]
     pub waits: Vec<Wait>,
+    #[serde(default)]
+    pub route: Option<RouteScript>,
     pub assertions: Vec<Assertion>,
 }
 
@@ -212,6 +219,14 @@ impl Script {
             previous_end = event.end;
         }
         let mut wait_frames = std::collections::BTreeSet::new();
+        if let Some(route) = &self.route
+            && (self.scene != "walk-preview"
+                || route.id.trim().is_empty()
+                || route.start >= self.frames
+                || self.events.iter().any(|event| event.end > route.start))
+        {
+            return Err("route requires walk-preview, a nonempty id, start within frames and all manual input ending before its start".into());
+        }
         for wait in &self.waits {
             if !self.game_scene()
                 || wait.frame >= self.frames
@@ -402,6 +417,18 @@ struct PlayerSample {
     camera_distance: f32,
 }
 
+impl From<&PlayerState> for PlayerSample {
+    fn from(player: &PlayerState) -> Self {
+        Self {
+            foot: player.foot.to_array(),
+            grounded: player.grounded,
+            blocked: player.blocked.clone(),
+            resets: player.resets,
+            camera_distance: player.camera_distance,
+        }
+    }
+}
+
 #[derive(Serialize)]
 struct Sample {
     frame: u32,
@@ -428,13 +455,14 @@ pub struct Recording {
     saved: u32,
     transforms_checked: u32,
     world_ready_seen: bool,
+    route: Option<RouteDriver>,
     samples: Vec<Sample>,
     failure: Option<String>,
     finished: bool,
 }
 
 impl Recording {
-    pub fn load(path: &Path, output: PathBuf) -> Result<Self, String> {
+    pub fn load(path: &Path, output: PathBuf, project_root: &Path) -> Result<Self, String> {
         let bytes =
             fs::read(path).map_err(|e| format!("[capture/script] {}: {e}", path.display()))?;
         let script: Script = serde_json::from_slice(&bytes)
@@ -442,6 +470,11 @@ impl Recording {
         script
             .validate()
             .map_err(|e| format!("[capture/script] {e}"))?;
+        let route = script
+            .route
+            .as_ref()
+            .map(|route| RouteDriver::load(project_root, &route.id))
+            .transpose()?;
         if output.join("frames").exists() || output.join("state.json").exists() {
             return Err(
                 "[capture/output] use a fresh directory; frames/state.json already exist".into(),
@@ -460,6 +493,7 @@ impl Recording {
             saved: 0,
             transforms_checked: 0,
             world_ready_seen: false,
+            route,
             samples: vec![],
             failure: None,
             finished: false,
@@ -477,6 +511,9 @@ impl Recording {
             serde_json::json!({"name":"all_frames_saved", "passed":self.saved == self.script.frames, "saved":self.saved, "expected":self.script.frames}),
             serde_json::json!({"name":"finite_transforms", "passed":self.transforms_checked == self.script.frames, "checked_frames":self.transforms_checked}),
         ];
+        if let Some(route) = &self.route {
+            checks.push(serde_json::json!({"name":"route_all_nodes_reached", "passed":route.complete(), "route":route.report()}));
+        }
         for assertion in &self.script.assertions {
             let measured = self
                 .samples
@@ -577,7 +614,7 @@ impl Recording {
             "status":if passed {"PASS"} else {"FAIL"}, "script":self.script,
             "elapsed_wall_seconds":self.started.elapsed().as_secs_f64(), "error":self.failure,
             "checks":checks, "samples":self.samples,
-            "determinism":"Fixed simulated dt and explicit input sequence; scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+            "determinism":"Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
             "visual_review":"NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
             "scope":"Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. State checks and images do not establish author/player acceptance"
         });
@@ -711,14 +748,21 @@ fn drive_connection(
     }
 }
 
+#[expect(
+    clippy::too_many_arguments,
+    reason = "Capture observes player/collision/camera but only writes ordinary inputs"
+)]
 fn drive_input(
-    recording: Res<Recording>,
+    mut recording: ResMut<Recording>,
     mut keys: ResMut<ButtonInput<KeyCode>>,
     mut buttons: ResMut<ButtonInput<MouseButton>>,
     mut motion: ResMut<AccumulatedMouseMotion>,
     mut pad: Query<&mut Gamepad, With<ScriptGamepad>>,
     mut windows: Query<(Entity, &mut Window), With<ScriptFocusWindow>>,
     mut focus_events: MessageWriter<WindowFocused>,
+    player: Option<Res<PlayerState>>,
+    collision: Option<Res<CollisionWorld>>,
+    camera: Query<&Transform, With<Camera3d>>,
 ) {
     keys.clear();
     buttons.clear();
@@ -730,6 +774,36 @@ fn drive_input(
         return;
     }
     let frame = recording.samples.len() as u32;
+    let route_active = recording
+        .script
+        .route
+        .as_ref()
+        .is_some_and(|route| frame >= route.start);
+    let route_input = if route_active {
+        let fps = recording.script.fps;
+        let result = match (
+            recording.route.as_mut(),
+            player.as_deref(),
+            collision.as_deref(),
+            camera.single(),
+        ) {
+            (Some(route), Some(player), Some(collision), Ok(camera)) => {
+                route.input(frame, fps, &PlayerSample::from(player), camera, collision)
+            }
+            _ => Err(format!(
+                "[capture/route] frame={frame}: player, collision, camera or route unavailable"
+            )),
+        };
+        match result {
+            Ok(input) => Some(input),
+            Err(error) => {
+                recording.failure = Some(error);
+                return;
+            }
+        }
+    } else {
+        None
+    };
     let event = recording
         .script
         .events
@@ -747,7 +821,10 @@ fn drive_input(
         }
     }
     for mut gamepad in &mut pad {
-        let movement = event.map_or([0.0; 2], |event| event.move_axis);
+        let movement = route_input.map_or_else(
+            || event.map_or([0.0; 2], |event| event.move_axis),
+            |(movement, _)| movement,
+        );
         let look = event.map_or([0.0; 2], |event| event.look_axis);
         for (axis, value) in [
             (GamepadAxis::LeftStickX, movement[0]),
@@ -772,12 +849,14 @@ fn drive_input(
             keys.release(key);
         }
     }
-    if event.is_some_and(|e| e.right_mouse) {
+    if route_input.is_some() || event.is_some_and(|e| e.right_mouse) {
         buttons.press(MouseButton::Right);
     } else {
         buttons.release(MouseButton::Right);
     }
-    if let Some(event) = event {
+    if let Some((_, look)) = route_input {
+        motion.delta = Vec2::from_array(look);
+    } else if let Some(event) = event {
         motion.delta = Vec2::from_array(event.look);
     }
 }
@@ -899,13 +978,7 @@ fn record(
         world_ready,
         world_entities: world_entities.iter().count(),
         gamepad_connected: !pads.is_empty(),
-        player: player.as_ref().map(|player| PlayerSample {
-            foot: player.foot.to_array(),
-            grounded: player.grounded,
-            blocked: player.blocked.clone(),
-            resets: player.resets,
-            camera_distance: player.camera_distance,
-        }),
+        player: player.as_deref().map(PlayerSample::from),
         ui: ui
             .as_ref()
             .map(|ui| serde_json::to_value(&**ui).expect("finite UI state")),
@@ -986,6 +1059,7 @@ mod tests {
                 saved: 0,
                 transforms_checked: 0,
                 world_ready_seen: false,
+                route: None,
                 samples: vec![],
                 failure: None,
                 finished: false,
@@ -1074,6 +1148,7 @@ mod tests {
                 saved: 0,
                 transforms_checked: 0,
                 world_ready_seen: false,
+                route: None,
                 samples: vec![],
                 failure: None,
                 finished: false,
@@ -1154,6 +1229,7 @@ mod tests {
             saved: 0,
             transforms_checked: 0,
             world_ready_seen: false,
+            route: None,
             samples: vec![],
             failure: None,
             finished: false,
@@ -1296,6 +1372,14 @@ mod tests {
         let ascent_script: Script =
             serde_json::from_str(include_str!("../capture/walk-ascent-entry.json")).unwrap();
         assert!(ascent_script.validate().is_ok());
+        let mut full: Script =
+            serde_json::from_str(include_str!("../capture/walk-ascent-full.json")).unwrap();
+        assert!(full.validate().is_ok());
+        full.route.as_mut().unwrap().start = 30;
+        assert!(full.validate().is_err());
+        full.route.as_mut().unwrap().start = 60;
+        full.scene = "game-entry".into();
+        assert!(full.validate().is_err());
         let pause_script: Script =
             serde_json::from_str(include_str!("../capture/walk-pause.json")).unwrap();
         assert!(pause_script.validate().is_ok());
@@ -1387,6 +1471,7 @@ mod tests {
             saved: 3,
             transforms_checked: 3,
             world_ready_seen: true,
+            route: None,
             samples,
             failure: None,
             finished: false,

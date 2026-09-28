@@ -67,12 +67,15 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 碰撞从同一份渲染网格建立静态三角 BVH，覆盖地形、道路、建筑、平台及结构设施；道路台阶的踏面与立面均参与扫掠。Parry只负责空间查询，人物和镜头系统由 `player.rs` 维护；相机沿目标到期望位置作球体扫掠。参数、当前覆盖与失败处理见[人物尺度实验契约](../docs/dev/engineering/player-preview.md)
 
-短登高检查分为整段CPU移动探针和真实入口录制：前者从小店沿源路线逐点行走到摘星台，遇到停滞、异常恢复或超时返回失败；后者录制小店出发的缓坡和首段台阶。二者均不写入目标高度或传送角色，完整登山画面和人工体验另行记录
+短登高检查分为整段CPU移动探针和真实入口录制：前者从小店沿源路线逐点行走到摘星台，遇到停滞、异常恢复或超时返回失败；后者包含小店出发片段和完整上山脚本。二者均不写入目标高度或传送角色，人工体验另行记录
 
 ```fish
 cargo test --manifest-path game/Cargo.toml --locked --lib walks_complete_short_ascent -- --nocapture
 python3 tools/capture.py --script game/capture/walk-ascent-entry.json --output output/capture/walk-ascent-entry --binary game/target/debug/n-side
+python3 tools/capture.py --script game/capture/walk-ascent-full.json --output output/capture/walk-ascent-full --binary game/target/debug/n-side
 ```
+
+完整路线脚本的 `route: {"id":"hill-short","start":60}` 从当前项目根读取地图路线，按真实脚点与相机朝向发摇杆及鼠标输入。节点必须有相连道路和真实可行走网格；到达检查水平距离、支撑高度、着地和零恢复。两秒无有效进展明确失败，终点释放输入；路线不得与同一时段的手写输入争用。`state.json` 的 `route_all_nodes_reached` 检查内保存 `route`每个实际到达节点与帧号，路线全部到达才通过
 
 ## 世界运行时
 

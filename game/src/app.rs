@@ -138,7 +138,7 @@ pub fn run() -> Result<AppExit, String> {
         return Err("--capture and --output must be used together".into());
     }
     let recording = script
-        .map(|path| capture::Recording::load(&path, output.unwrap()))
+        .map(|path| capture::Recording::load(&path, output.unwrap(), &root))
         .transpose()?;
     if recording
         .as_ref()

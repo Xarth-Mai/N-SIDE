@@ -120,7 +120,7 @@ fn run() -> Result<AppExit, String> {
         return Err("--ui-preview uses --capture with scene ui-signal for font, input and UI state verification; fixed-view --verify is world-only".into());
     }
     let capture = capture_script
-        .map(|path| capture::Recording::load(&path, capture_output.unwrap()))
+        .map(|path| capture::Recording::load(&path, capture_output.unwrap(), &root))
         .transpose()?;
     if let Some(recording) = &capture {
         if matches!(

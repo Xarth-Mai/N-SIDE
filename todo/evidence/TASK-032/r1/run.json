@@ -1,0 +1,2668 @@
+{
+  "status": "PASS",
+  "script": {
+    "scene": "walk-preview",
+    "view": "shop",
+    "width": 960,
+    "height": 540,
+    "fps": 30,
+    "frames": 13500,
+    "seed": 0,
+    "timeout_seconds": 3600,
+    "keyframes": [
+      29,
+      59,
+      450,
+      900,
+      1800,
+      2700,
+      3600,
+      4500,
+      5400,
+      6300,
+      7200,
+      8100,
+      9000,
+      9900,
+      10800,
+      11700,
+      12600,
+      13499
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 31,
+        "keys": [
+          "Enter"
+        ]
+      }
+    ],
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "route": {
+      "id": "hill-short",
+      "start": 60
+    },
+    "assertions": [
+      {
+        "name": "Start at the actual shop spawn",
+        "from": 59,
+        "to": 59,
+        "game_page": "world",
+        "world_ready": true,
+        "min_player_height": 28,
+        "max_player_height": 28.15,
+        "player_grounded": true,
+        "max_player_resets": 0
+      },
+      {
+        "name": "Continuous ascent stays finite and needs no automatic recovery",
+        "from": 59,
+        "to": 13499,
+        "same_world_entities": true,
+        "max_player_resets": 0,
+        "min_player_height": 27.9,
+        "max_player_height": 450.2
+      },
+      {
+        "name": "Reach the summit using movement input",
+        "from": 59,
+        "to": 13200,
+        "min_player_distance": 800,
+        "min_player_height": 28,
+        "max_player_height": 450.2,
+        "max_player_resets": 0
+      },
+      {
+        "name": "Stand on the summit after the complete route",
+        "from": 13200,
+        "to": 13499,
+        "min_player_height": 450,
+        "max_player_height": 450.2,
+        "player_grounded": true,
+        "max_player_resets": 0,
+        "max_player_distance": 0.001,
+        "game_page": "world"
+      }
+    ]
+  },
+  "script_sha256": "ff8c467866f708363b9de72775f8fd44f45d8a8866b714be041134068f6ce544",
+  "git_commit": "b0e69280caeb4990927c1d3578bead2a46bfdb5f",
+  "git_worktree": "M docs/dev/engineering/player-preview.md\n M game/README.md\n M game/src/app.rs\n M game/src/bin/map_viewer.rs\n M game/src/capture.rs\n M todo/README.md\n?? game/capture/walk-ascent-full.json\n?? game/capture/walk-places.json\n?? game/capture/walk-settings.json\n?? game/src/capture/\n?? game/src/places.rs\n?? todo/evidence/TASK-032/\n?? todo/tasks/TASK-032-ascent-runtime.md\n?? todo/tasks/TASK-033-descent-runtime.md\n?? todo/tasks/TASK-034-place-hud.md\n?? todo/tasks/TASK-035-place-observation.md\n?? todo/tasks/TASK-036-entry-settings.md",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "PASS",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "4b2eb024228c199c387bc1f9db72c339fc0efa76e03b29d13454b6ecb88bbf07",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r1/full/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r1/full",
+    "--walk-preview"
+  ],
+  "runtime_exit_code": 0,
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 13500,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 13500
+    },
+    {
+      "checked_frames": 13500,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "name": "route_all_nodes_reached",
+      "passed": true,
+      "route": {
+        "expected_nodes": 130,
+        "reached_nodes": 130,
+        "visits": [
+          {
+            "distance": 0.0,
+            "foot": [
+              100.0,
+              28.045997619628906,
+              -255.0
+            ],
+            "frame": 59,
+            "grounded": true,
+            "height_error": 0.020998001098632812,
+            "node": "home",
+            "resets": 0,
+            "target": [
+              100.0,
+              28.0,
+              -255.0
+            ]
+          },
+          {
+            "distance": 0.01369018666446209,
+            "foot": [
+              108.78904724121094,
+              28.04582405090332,
+              -261.591796875
+            ],
+            "frame": 162,
+            "grounded": true,
+            "height_error": 0.020822525024414062,
+            "node": "flat_home_to_east_low_junction",
+            "resets": 0,
+            "target": [
+              108.80000305175781,
+              28.0,
+              -261.6000061035156
+            ]
+          },
+          {
+            "distance": 0.0019968035630881786,
+            "foot": [
+              114.99803161621094,
+              28.79599952697754,
+              -266.2496643066406
+            ],
+            "frame": 235,
+            "grounded": true,
+            "height_error": 0.020999908447265625,
+            "node": "east_low_junction",
+            "resets": 0,
+            "target": [
+              115.0,
+              28.75,
+              -266.25
+            ]
+          },
+          {
+            "distance": 0.028460701927542686,
+            "foot": [
+              115.93721771240234,
+              28.805660247802734,
+              -266.95294189453125
+            ],
+            "frame": 246,
+            "grounded": true,
+            "height_error": 0.02059173583984375,
+            "node": "flat_east_low_junction_to_east_mid_junction",
+            "resets": 0,
+            "target": [
+              115.95999908447266,
+              28.75,
+              -266.9700012207031
+            ]
+          },
+          {
+            "distance": 0.03776856139302254,
+            "foot": [
+              141.16976928710938,
+              31.94369888305664,
+              -285.8773498535156
+            ],
+            "frame": 542,
+            "grounded": true,
+            "height_error": 0.018701553344726562,
+            "node": "flat_east_mid_junction_from_east_low_junction",
+            "resets": 0,
+            "target": [
+              141.1999969482422,
+              31.899999618530273,
+              -285.8999938964844
+            ]
+          },
+          {
+            "distance": 0.01800537109375,
+            "foot": [
+              143.985595703125,
+              31.945663452148438,
+              -287.98919677734375
+            ],
+            "frame": 575,
+            "grounded": true,
+            "height_error": 0.020664215087890625,
+            "node": "east_mid_junction",
+            "resets": 0,
+            "target": [
+              144.0,
+              31.899999618530273,
+              -288.0
+            ]
+          },
+          {
+            "distance": 0.0468754880130291,
+            "foot": [
+              147.16236877441406,
+              32.025814056396484,
+              -290.3720397949219
+            ],
+            "frame": 613,
+            "grounded": true,
+            "height_error": 0.1008148193359375,
+            "node": "level_east_mid_junction_to_bend",
+            "resets": 0,
+            "target": [
+              147.1999969482422,
+              31.899999618530273,
+              -290.3999938964844
+            ]
+          },
+          {
+            "distance": 0.03516846522688866,
+            "foot": [
+              161.171875,
+              36.60771942138672,
+              -300.8788757324219
+            ],
+            "frame": 790,
+            "grounded": true,
+            "height_error": 0.10235977172851562,
+            "node": "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_in",
+            "resets": 0,
+            "target": [
+              161.1999969482422,
+              36.563636779785156,
+              -300.8999938964844
+            ]
+          },
+          {
+            "distance": 0.009424399584531784,
+            "foot": [
+              162.7925262451172,
+              36.69270706176758,
+              -302.0942687988281
+            ],
+            "frame": 810,
+            "grounded": true,
+            "height_error": 0.02079010009765625,
+            "node": "stair_level_east_mid_junction_to_bend_level_bend_from_east_mid_junction_01_out",
+            "resets": 0,
+            "target": [
+              162.8000030517578,
+              36.563636779785156,
+              -302.1000061035156
+            ]
+          },
+          {
+            "distance": 0.00772705115377903,
+            "foot": [
+              176.7938232421875,
+              41.273101806640625,
+              -312.5953674316406
+            ],
+            "frame": 986,
+            "grounded": true,
+            "height_error": 0.0208282470703125,
+            "node": "level_bend_from_east_mid_junction",
+            "resets": 0,
+            "target": [
+              176.8000030517578,
+              41.227272033691406,
+              -312.6000061035156
+            ]
+          },
+          {
+            "distance": 0.0,
+            "foot": [
+              180.0,
+              41.27289581298828,
+              -315.0
+            ],
+            "frame": 1024,
+            "grounded": true,
+            "height_error": 0.02062225341796875,
+            "node": "bend",
+            "resets": 0,
+            "target": [
+              180.0,
+              41.227272033691406,
+              -315.0
+            ]
+          },
+          {
+            "distance": 0.006100615952163935,
+            "foot": [
+              183.57225036621094,
+              41.35797882080078,
+              -316.7861328125
+            ],
+            "frame": 1062,
+            "grounded": true,
+            "height_error": 0.0209197998046875,
+            "node": "level_bend_to_bend-steps-rest-junction",
+            "resets": 0,
+            "target": [
+              183.5777130126953,
+              41.227272033691406,
+              -316.7888488769531
+            ]
+          },
+          {
+            "distance": 0.04774029925465584,
+            "foot": [
+              193.48513793945312,
+              46.86566162109375,
+              -321.7426452636719
+            ],
+            "frame": 1180,
+            "grounded": true,
+            "height_error": 0.0174560546875,
+            "node": "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_in",
+            "resets": 0,
+            "target": [
+              193.52786254882812,
+              46.82320785522461,
+              -321.7639465332031
+            ]
+          },
+          {
+            "distance": 0.009191872552037239,
+            "foot": [
+              195.30865478515625,
+              46.95363998413086,
+              -322.6539306640625
+            ],
+            "frame": 1200,
+            "grounded": true,
+            "height_error": 0.10543441772460938,
+            "node": "stair_level_bend_to_bend-steps-rest-junction_level_bend-steps-rest-junction_from_bend_01_out",
+            "resets": 0,
+            "target": [
+              195.31671142578125,
+              46.82320785522461,
+              -322.6583557128906
+            ]
+          },
+          {
+            "distance": 0.016788586974143982,
+            "foot": [
+              205.2517547607422,
+              52.464698791503906,
+              -327.6261291503906
+            ],
+            "frame": 1319,
+            "grounded": true,
+            "height_error": 0.045558929443359375,
+            "node": "level_bend-steps-rest-junction_from_bend",
+            "resets": 0,
+            "target": [
+              205.26687622070312,
+              52.41913986206055,
+              -327.6334228515625
+            ]
+          },
+          {
+            "distance": 0.0,
+            "foot": [
+              216.0,
+              52.464698791503906,
+              -333.0
+            ],
+            "frame": 1432,
+            "grounded": true,
+            "height_error": 0.02056121826171875,
+            "node": "bend-steps-rest-junction",
+            "resets": 0,
+            "target": [
+              216.0,
+              52.41913986206055,
+              -333.0
+            ]
+          },
+          {
+            "distance": 0.0056222788989543915,
+            "foot": [
+              226.72793579101562,
+              52.5479621887207,
+              -338.3644104003906
+            ],
+            "frame": 1545,
+            "grounded": true,
+            "height_error": 0.0209197998046875,
+            "node": "level_bend-steps-rest-junction_to_upper",
+            "resets": 0,
+            "target": [
+              226.73312377929688,
+              52.41913986206055,
+              -338.3665771484375
+            ]
+          },
+          {
+            "distance": 0.007424447685480118,
+            "foot": [
+              239.1155548095703,
+              59.0971794128418,
+              -344.5577697753906
+            ],
+            "frame": 1692,
+            "grounded": true,
+            "height_error": 0.020824432373046875,
+            "node": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_in",
+            "resets": 0,
+            "target": [
+              239.1221923828125,
+              59.05135726928711,
+              -344.56109619140625
+            ]
+          },
+          {
+            "distance": 0.05951998755335808,
+            "foot": [
+              240.85800170898438,
+              59.174644470214844,
+              -345.42852783203125
+            ],
+            "frame": 1711,
+            "grounded": true,
+            "height_error": 0.015384674072265625,
+            "node": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_01_out",
+            "resets": 0,
+            "target": [
+              240.91104125976562,
+              59.05135726928711,
+              -345.4555358886719
+            ]
+          },
+          {
+            "distance": 0.0038623730652034283,
+            "foot": [
+              253.29666137695312,
+              65.72941589355469,
+              -351.6483154296875
+            ],
+            "frame": 1859,
+            "grounded": true,
+            "height_error": 0.020843505859375,
+            "node": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_in",
+            "resets": 0,
+            "target": [
+              253.30010986328125,
+              65.6835708618164,
+              -351.6500549316406
+            ]
+          },
+          {
+            "distance": 0.05717095360159874,
+            "foot": [
+              255.03782653808594,
+              65.80731201171875,
+              -352.5188903808594
+            ],
+            "frame": 1878,
+            "grounded": true,
+            "height_error": 0.0987396240234375,
+            "node": "stair_level_bend-steps-rest-junction_to_upper_level_upper_from_bend-steps-rest-junction_02_out",
+            "resets": 0,
+            "target": [
+              255.08895874023438,
+              65.6835708618164,
+              -352.5444641113281
+            ]
+          },
+          {
+            "distance": 0.056229621171951294,
+            "foot": [
+              267.4278259277344,
+              72.35681915283203,
+              -358.71368408203125
+            ],
+            "frame": 2025,
+            "grounded": true,
+            "height_error": 0.01602935791015625,
+            "node": "level_upper_from_bend-steps-rest-junction",
+            "resets": 0,
+            "target": [
+              267.47802734375,
+              72.31578826904297,
+              -358.739013671875
+            ]
+          },
+          {
+            "distance": 0.0,
+            "foot": [
+              280.0,
+              72.36163330078125,
+              -365.0
+            ],
+            "frame": 2157,
+            "grounded": true,
+            "height_error": 0.020843505859375,
+            "node": "upper",
+            "resets": 0,
+            "target": [
+              280.0,
+              72.31578826904297,
+              -365.0
+            ]
+          },
+          {
+            "distance": 0.014360588043928146,
+            "foot": [
+              284.5358581542969,
+              72.4454116821289,
+              -378.22967529296875
+            ],
+            "frame": 2289,
+            "grounded": true,
+            "height_error": 0.020660400390625,
+            "node": "level_upper_to_slope_platform_bypass",
+            "resets": 0,
+            "target": [
+              284.54052734375,
+              72.31578826904297,
+              -378.2432556152344
+            ]
+          },
+          {
+            "distance": 0.04491528123617172,
+            "foot": [
+              290.6881103515625,
+              79.41124725341797,
+              -396.1737365722656
+            ],
+            "frame": 2486,
+            "grounded": true,
+            "height_error": 0.01782989501953125,
+            "node": "level_slope_platform_bypass_from_upper",
+            "resets": 0,
+            "target": [
+              290.70269775390625,
+              79.36842346191406,
+              -396.2162170410156
+            ]
+          },
+          {
+            "distance": 0.0,
+            "foot": [
+              292.0,
+              79.41412353515625,
+              -400.0
+            ],
+            "frame": 2524,
+            "grounded": true,
+            "height_error": 0.0207061767578125,
+            "node": "slope_platform_bypass",
+            "resets": 0,
+            "target": [
+              292.0,
+              79.36842346191406,
+              -400.0
+            ]
+          },
+          {
+            "distance": 0.021694757044315338,
+            "foot": [
+              295.8558349609375,
+              79.49732208251953,
+              -411.3407287597656
+            ],
+            "frame": 2637,
+            "grounded": true,
+            "height_error": 0.10390472412109375,
+            "node": "slope_junction_hill",
+            "resets": 0,
+            "target": [
+              295.8628234863281,
+              79.36842346191406,
+              -411.36126708984375
+            ]
+          },
+          {
+            "distance": 0.008926847949624062,
+            "foot": [
+              300.1612548828125,
+              86.96692657470703,
+              -424.0036315917969
+            ],
+            "frame": 2781,
+            "grounded": true,
+            "height_error": 0.0208740234375,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_01_in",
+            "resets": 0,
+            "target": [
+              300.16412353515625,
+              86.92105102539062,
+              -424.0120849609375
+            ]
+          },
+          {
+            "distance": 0.0027408115565776825,
+            "foot": [
+              300.8070373535156,
+              87.05094146728516,
+              -425.9030456542969
+            ],
+            "frame": 2801,
+            "grounded": true,
+            "height_error": 0.02097320556640625,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_01_out",
+            "resets": 0,
+            "target": [
+              300.80792236328125,
+              86.92105102539062,
+              -425.9056396484375
+            ]
+          },
+          {
+            "distance": 0.05901380628347397,
+            "foot": [
+              305.0902099609375,
+              94.51419830322266,
+              -438.50054931640625
+            ],
+            "frame": 2947,
+            "grounded": true,
+            "height_error": 0.01551055908203125,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_02_in",
+            "resets": 0,
+            "target": [
+              305.10919189453125,
+              94.47368621826172,
+              -438.5564270019531
+            ]
+          },
+          {
+            "distance": 0.01743878610432148,
+            "foot": [
+              305.74737548828125,
+              94.60304260253906,
+              -440.4334716796875
+            ],
+            "frame": 2967,
+            "grounded": true,
+            "height_error": 0.1043548583984375,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_02_out",
+            "resets": 0,
+            "target": [
+              305.75299072265625,
+              94.47368621826172,
+              -440.4499816894531
+            ]
+          },
+          {
+            "distance": 0.00485536502674222,
+            "foot": [
+              310.0528259277344,
+              102.07227325439453,
+              -453.0961608886719
+            ],
+            "frame": 3112,
+            "grounded": true,
+            "height_error": 0.1048736572265625,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_03_in",
+            "resets": 0,
+            "target": [
+              310.05426025390625,
+              102.02631378173828,
+              -453.1007995605469
+            ]
+          },
+          {
+            "distance": 0.03370971605181694,
+            "foot": [
+              310.687255859375,
+              102.1544418334961,
+              -454.9624328613281
+            ],
+            "frame": 3131,
+            "grounded": true,
+            "height_error": 0.0192108154296875,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_03_out",
+            "resets": 0,
+            "target": [
+              310.6980895996094,
+              102.02631378173828,
+              -454.9943542480469
+            ]
+          },
+          {
+            "distance": 0.005935256835073233,
+            "foot": [
+              314.9974365234375,
+              109.62489318847656,
+              -467.6395263671875
+            ],
+            "frame": 3277,
+            "grounded": true,
+            "height_error": 0.0459442138671875,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_04_in",
+            "resets": 0,
+            "target": [
+              314.9993591308594,
+              109.57894897460938,
+              -467.6451416015625
+            ]
+          },
+          {
+            "distance": 0.003908752463757992,
+            "foot": [
+              315.6418762207031,
+              109.70882415771484,
+              -469.5350036621094
+            ],
+            "frame": 3297,
+            "grounded": true,
+            "height_error": 0.02095794677734375,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_04_out",
+            "resets": 0,
+            "target": [
+              315.6431579589844,
+              109.57894897460938,
+              -469.5386962890625
+            ]
+          },
+          {
+            "distance": 0.026597360149025917,
+            "foot": [
+              319.93585205078125,
+              117.17648315429688,
+              -482.1643371582031
+            ],
+            "frame": 3441,
+            "grounded": true,
+            "height_error": 0.01990509033203125,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_05_in",
+            "resets": 0,
+            "target": [
+              319.9444274902344,
+              117.13157653808594,
+              -482.18951416015625
+            ]
+          },
+          {
+            "distance": 0.0051921154372394085,
+            "foot": [
+              320.5865478515625,
+              117.26141357421875,
+              -484.078125
+            ],
+            "frame": 3461,
+            "grounded": true,
+            "height_error": 0.10483551025390625,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_05_out",
+            "resets": 0,
+            "target": [
+              320.5882263183594,
+              117.13157653808594,
+              -484.0830383300781
+            ]
+          },
+          {
+            "distance": 0.01356883067637682,
+            "foot": [
+              324.8851623535156,
+              124.72992706298828,
+              -496.72100830078125
+            ],
+            "frame": 3608,
+            "grounded": true,
+            "height_error": 0.04571533203125,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_06_in",
+            "resets": 0,
+            "target": [
+              324.8895263671875,
+              124.68421173095703,
+              -496.7338562011719
+            ]
+          },
+          {
+            "distance": 0.003918152768164873,
+            "foot": [
+              325.5321044921875,
+              124.81407928466797,
+              -498.6236877441406
+            ],
+            "frame": 3628,
+            "grounded": true,
+            "height_error": 0.0209503173828125,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_06_out",
+            "resets": 0,
+            "target": [
+              325.5333251953125,
+              124.68421173095703,
+              -498.6274108886719
+            ]
+          },
+          {
+            "distance": 0.03151971101760864,
+            "foot": [
+              329.8243713378906,
+              132.28128051757812,
+              -511.2484130859375
+            ],
+            "frame": 3770,
+            "grounded": true,
+            "height_error": 0.019439697265625,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_07_in",
+            "resets": 0,
+            "target": [
+              329.8345947265625,
+              132.23684692382812,
+              -511.2782287597656
+            ]
+          },
+          {
+            "distance": 0.010384230874478817,
+            "foot": [
+              330.47503662109375,
+              132.36654663085938,
+              -513.1619262695312
+            ],
+            "frame": 3790,
+            "grounded": true,
+            "height_error": 0.104705810546875,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_07_out",
+            "resets": 0,
+            "target": [
+              330.4783935546875,
+              132.23684692382812,
+              -513.1717529296875
+            ]
+          },
+          {
+            "distance": 0.037386659532785416,
+            "foot": [
+              334.76763916015625,
+              139.83326721191406,
+              -525.7871704101562
+            ],
+            "frame": 3934,
+            "grounded": true,
+            "height_error": 0.1027069091796875,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_08_in",
+            "resets": 0,
+            "target": [
+              334.7796630859375,
+              139.7894744873047,
+              -525.8225708007812
+            ]
+          },
+          {
+            "distance": 0.009329598397016525,
+            "foot": [
+              335.4201965332031,
+              139.919189453125,
+              -527.7073974609375
+            ],
+            "frame": 3954,
+            "grounded": true,
+            "height_error": 0.0207977294921875,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_08_out",
+            "resets": 0,
+            "target": [
+              335.4234924316406,
+              139.7894744873047,
+              -527.7161254882812
+            ]
+          },
+          {
+            "distance": 0.04570559412240982,
+            "foot": [
+              339.7100524902344,
+              147.38482666015625,
+              -540.3236694335938
+            ],
+            "frame": 4097,
+            "grounded": true,
+            "height_error": 0.0177154541015625,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_09_in",
+            "resets": 0,
+            "target": [
+              339.7247619628906,
+              147.34210205078125,
+              -540.366943359375
+            ]
+          },
+          {
+            "distance": 0.037840284407138824,
+            "foot": [
+              340.35638427734375,
+              147.46975708007812,
+              -542.2246704101562
+            ],
+            "frame": 4116,
+            "grounded": true,
+            "height_error": 0.01873779296875,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_09_out",
+            "resets": 0,
+            "target": [
+              340.3685607910156,
+              147.34210205078125,
+              -542.260498046875
+            ]
+          },
+          {
+            "distance": 0.012246677652001381,
+            "foot": [
+              344.6658935546875,
+              154.9405059814453,
+              -554.8997192382812
+            ],
+            "frame": 4261,
+            "grounded": true,
+            "height_error": 0.0207672119140625,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_10_in",
+            "resets": 0,
+            "target": [
+              344.6698303222656,
+              154.8947296142578,
+              -554.9113159179688
+            ]
+          },
+          {
+            "distance": 0.004053212236613035,
+            "foot": [
+              345.3123474121094,
+              155.0246124267578,
+              -556.8009643554688
+            ],
+            "frame": 4281,
+            "grounded": true,
+            "height_error": 0.1048736572265625,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_10_out",
+            "resets": 0,
+            "target": [
+              345.3136291503906,
+              154.8947296142578,
+              -556.8048095703125
+            ]
+          },
+          {
+            "distance": 0.03230087831616402,
+            "foot": [
+              349.6045227050781,
+              162.49171447753906,
+              -569.425048828125
+            ],
+            "frame": 4427,
+            "grounded": true,
+            "height_error": 0.01934814453125,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_11_in",
+            "resets": 0,
+            "target": [
+              349.61492919921875,
+              162.44737243652344,
+              -569.4556274414062
+            ]
+          },
+          {
+            "distance": 0.008319608867168427,
+            "foot": [
+              350.25555419921875,
+              162.57716369628906,
+              -571.3414916992188
+            ],
+            "frame": 4447,
+            "grounded": true,
+            "height_error": 0.0208740234375,
+            "node": "stair_slope_junction_hill_hillgate_hill_landing_11_out",
+            "resets": 0,
+            "target": [
+              350.25872802734375,
+              162.44737243652344,
+              -571.3491821289062
+            ]
+          },
+          {
+            "distance": 0.05553048849105835,
+            "foot": [
+              354.54205322265625,
+              170.0410919189453,
+              -583.9474487304688
+            ],
+            "frame": 4592,
+            "grounded": true,
+            "height_error": 0.100006103515625,
+            "node": "hillgate_hill_landing",
+            "resets": 0,
+            "target": [
+              354.55999755859375,
+              170.0,
+              -584.0
+            ]
+          },
+          {
+            "distance": 0.0,
+            "foot": [
+              360.0,
+              170.04556274414062,
+              -600.0
+            ],
+            "frame": 4751,
+            "grounded": true,
+            "height_error": 0.02056884765625,
+            "node": "hillgate",
+            "resets": 0,
+            "target": [
+              360.0,
+              170.0,
+              -600.0
+            ]
+          },
+          {
+            "distance": 0.004601581487804651,
+            "foot": [
+              340.0042724609375,
+              170.12930297851562,
+              -607.998291015625
+            ],
+            "frame": 4954,
+            "grounded": true,
+            "height_error": 0.10430908203125,
+            "node": "hill_short_gate",
+            "resets": 0,
+            "target": [
+              340.0,
+              170.0,
+              -608.0
+            ]
+          },
+          {
+            "distance": 0.005695351865142584,
+            "foot": [
+              326.07647705078125,
+              177.54592895507812,
+              -613.5693969726562
+            ],
+            "frame": 5117,
+            "grounded": true,
+            "height_error": 0.1042633056640625,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_01_in",
+            "resets": 0,
+            "target": [
+              326.0711975097656,
+              177.5,
+              -613.571533203125
+            ]
+          },
+          {
+            "distance": 0.05820547044277191,
+            "foot": [
+              324.2682800292969,
+              177.62399291992188,
+              -614.292724609375
+            ],
+            "frame": 5136,
+            "grounded": true,
+            "height_error": 0.015655517578125,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_01_out",
+            "resets": 0,
+            "target": [
+              324.2142333984375,
+              177.5,
+              -614.3143310546875
+            ]
+          },
+          {
+            "distance": 0.04179958999156952,
+            "foot": [
+              310.3242492675781,
+              185.0432586669922,
+              -619.8703002929688
+            ],
+            "frame": 5297,
+            "grounded": true,
+            "height_error": 0.101593017578125,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_02_in",
+            "resets": 0,
+            "target": [
+              310.2854309082031,
+              185.0,
+              -619.8858032226562
+            ]
+          },
+          {
+            "distance": 0.007667446509003639,
+            "foot": [
+              308.4355773925781,
+              185.1292266845703,
+              -620.625732421875
+            ],
+            "frame": 5317,
+            "grounded": true,
+            "height_error": 0.0208892822265625,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_02_out",
+            "resets": 0,
+            "target": [
+              308.428466796875,
+              185.0,
+              -620.6286010742188
+            ]
+          },
+          {
+            "distance": 0.02662343531847,
+            "foot": [
+              294.5243835449219,
+              192.5448760986328,
+              -626.1902465820312
+            ],
+            "frame": 5479,
+            "grounded": true,
+            "height_error": 0.0198822021484375,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_03_in",
+            "resets": 0,
+            "target": [
+              294.4996643066406,
+              192.5,
+              -626.2001342773438
+            ]
+          },
+          {
+            "distance": 0.0038082220125943422,
+            "foot": [
+              292.646240234375,
+              192.6293182373047,
+              -626.9415283203125
+            ],
+            "frame": 5499,
+            "grounded": true,
+            "height_error": 0.0209808349609375,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_03_out",
+            "resets": 0,
+            "target": [
+              292.6427001953125,
+              192.5,
+              -626.9429321289062
+            ]
+          },
+          {
+            "distance": 0.006715600844472647,
+            "foot": [
+              278.72015380859375,
+              200.04591369628906,
+              -632.5120239257812
+            ],
+            "frame": 5662,
+            "grounded": true,
+            "height_error": 0.0209197998046875,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_04_in",
+            "resets": 0,
+            "target": [
+              278.7138977050781,
+              200.0,
+              -632.5144653320312
+            ]
+          },
+          {
+            "distance": 0.05473165959119797,
+            "foot": [
+              276.9078063964844,
+              200.12460327148438,
+              -633.2369384765625
+            ],
+            "frame": 5681,
+            "grounded": true,
+            "height_error": 0.099609375,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_04_out",
+            "resets": 0,
+            "target": [
+              276.8569641113281,
+              200.0,
+              -633.2572021484375
+            ]
+          },
+          {
+            "distance": 0.03481048345565796,
+            "foot": [
+              262.9257507324219,
+              207.5641632080078,
+              -638.7940063476562
+            ],
+            "frame": 5846,
+            "grounded": true,
+            "height_error": 0.0391693115234375,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_05_in",
+            "resets": 0,
+            "target": [
+              262.9281311035156,
+              207.5,
+              -638.8287353515625
+            ]
+          },
+          {
+            "distance": 0.00958295725286007,
+            "foot": [
+              261.080078125,
+              207.62905883789062,
+              -639.5679321289062
+            ],
+            "frame": 5865,
+            "grounded": true,
+            "height_error": 0.10406494140625,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_05_out",
+            "resets": 0,
+            "target": [
+              261.0711975097656,
+              207.5,
+              -639.571533203125
+            ]
+          },
+          {
+            "distance": 0.05827054753899574,
+            "foot": [
+              247.12193298339844,
+              215.05397033691406,
+              -645.0885009765625
+            ],
+            "frame": 6044,
+            "grounded": true,
+            "height_error": 0.0289764404296875,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_06_in",
+            "resets": 0,
+            "target": [
+              247.1423797607422,
+              215.0,
+              -645.14306640625
+            ]
+          },
+          {
+            "distance": 0.056129153817892075,
+            "foot": [
+              245.33731079101562,
+              215.12437438964844,
+              -645.8643798828125
+            ],
+            "frame": 6063,
+            "grounded": true,
+            "height_error": 0.0993804931640625,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_06_out",
+            "resets": 0,
+            "target": [
+              245.28543090820312,
+              215.0,
+              -645.8858032226562
+            ]
+          },
+          {
+            "distance": 0.05369739606976509,
+            "foot": [
+              231.40647888183594,
+              222.54147338867188,
+              -651.4373779296875
+            ],
+            "frame": 6222,
+            "grounded": true,
+            "height_error": 0.0998077392578125,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_07_in",
+            "resets": 0,
+            "target": [
+              231.35662841796875,
+              222.5,
+              -651.4573364257812
+            ]
+          },
+          {
+            "distance": 0.012983032502233982,
+            "foot": [
+              229.51171875,
+              222.6289825439453,
+              -652.1953125
+            ],
+            "frame": 6242,
+            "grounded": true,
+            "height_error": 0.1039886474609375,
+            "node": "stair_hill_short_gate_hill_short_rest1_arrival_07_out",
+            "resets": 0,
+            "target": [
+              229.49966430664062,
+              222.5,
+              -652.2001342773438
+            ]
+          },
+          {
+            "distance": 0.004765923600643873,
+            "foot": [
+              215.57528686523438,
+              230.04595947265625,
+              -657.7698974609375
+            ],
+            "frame": 6403,
+            "grounded": true,
+            "height_error": 0.020965576171875,
+            "node": "hill_short_rest1_arrival",
+            "resets": 0,
+            "target": [
+              215.57086181640625,
+              230.0,
+              -657.7716674804688
+            ]
+          },
+          {
+            "distance": 0.03173220902681351,
+            "foot": [
+              210.0294647216797,
+              230.04574584960938,
+              -659.9882202148438
+            ],
+            "frame": 6459,
+            "grounded": true,
+            "height_error": 0.020751953125,
+            "node": "hill_short_rest1",
+            "resets": 0,
+            "target": [
+              210.0,
+              230.0,
+              -660.0
+            ]
+          },
+          {
+            "distance": 0.025981340557336807,
+            "foot": [
+              205.77572631835938,
+              230.129150390625,
+              -664.2242431640625
+            ],
+            "frame": 6516,
+            "grounded": true,
+            "height_error": 0.104156494140625,
+            "node": "hill_short_rest1_departure",
+            "resets": 0,
+            "target": [
+              205.75735473632812,
+              230.0,
+              -664.2426147460938
+            ]
+          },
+          {
+            "distance": 0.013023043051362038,
+            "foot": [
+              196.10336303710938,
+              237.96237182617188,
+              -673.8966064453125
+            ],
+            "frame": 6663,
+            "grounded": true,
+            "height_error": 0.10491943359375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_01_in",
+            "resets": 0,
+            "target": [
+              196.0941619873047,
+              237.9166717529297,
+              -673.9058227539062
+            ]
+          },
+          {
+            "distance": 0.003895058063790202,
+            "foot": [
+              194.68270874023438,
+              238.04684448242188,
+              -675.3173217773438
+            ],
+            "frame": 6683,
+            "grounded": true,
+            "height_error": 0.0209503173828125,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_01_out",
+            "resets": 0,
+            "target": [
+              194.67994689941406,
+              237.9166717529297,
+              -675.320068359375
+            ]
+          },
+          {
+            "distance": 0.024945540353655815,
+            "foot": [
+              185.03439331054688,
+              245.87826538085938,
+              -684.9656372070312
+            ],
+            "frame": 6830,
+            "grounded": true,
+            "height_error": 0.019927978515625,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_02_in",
+            "resets": 0,
+            "target": [
+              185.01675415039062,
+              245.8333282470703,
+              -684.9832763671875
+            ]
+          },
+          {
+            "distance": 0.005912854801863432,
+            "foot": [
+              183.606689453125,
+              245.9634552001953,
+              -686.3932495117188
+            ],
+            "frame": 6850,
+            "grounded": true,
+            "height_error": 0.1051177978515625,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_02_out",
+            "resets": 0,
+            "target": [
+              183.6025390625,
+              245.8333282470703,
+              -686.3974609375
+            ]
+          },
+          {
+            "distance": 0.05707695335149765,
+            "foot": [
+              173.97972106933594,
+              253.79086303710938,
+              -696.0203247070312
+            ],
+            "frame": 6999,
+            "grounded": true,
+            "height_error": 0.015869140625,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_03_in",
+            "resets": 0,
+            "target": [
+              173.93934631347656,
+              253.75,
+              -696.0606689453125
+            ]
+          },
+          {
+            "distance": 0.022334467619657516,
+            "foot": [
+              172.54090881347656,
+              253.87942504882812,
+              -697.4590454101562
+            ],
+            "frame": 7019,
+            "grounded": true,
+            "height_error": 0.10443115234375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_03_out",
+            "resets": 0,
+            "target": [
+              172.52513122558594,
+              253.75,
+              -697.474853515625
+            ]
+          },
+          {
+            "distance": 0.04212257266044617,
+            "foot": [
+              162.89170837402344,
+              261.7098388671875,
+              -707.1082763671875
+            ],
+            "frame": 7167,
+            "grounded": true,
+            "height_error": 0.102386474609375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_04_in",
+            "resets": 0,
+            "target": [
+              162.86192321777344,
+              261.6666564941406,
+              -707.1380615234375
+            ]
+          },
+          {
+            "distance": 0.008610122837126255,
+            "foot": [
+              161.4537811279297,
+              261.7967224121094,
+              -708.5462036132812
+            ],
+            "frame": 7187,
+            "grounded": true,
+            "height_error": 0.020843505859375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_04_out",
+            "resets": 0,
+            "target": [
+              161.4477081298828,
+              261.6666564941406,
+              -708.5523071289062
+            ]
+          },
+          {
+            "distance": 0.00916037056595087,
+            "foot": [
+              151.79100036621094,
+              269.6291809082031,
+              -718.208984375
+            ],
+            "frame": 7337,
+            "grounded": true,
+            "height_error": 0.105072021484375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_05_in",
+            "resets": 0,
+            "target": [
+              151.78451538085938,
+              269.5833435058594,
+              -718.2154541015625
+            ]
+          },
+          {
+            "distance": 0.002665051259100437,
+            "foot": [
+              150.37217712402344,
+              269.71356201171875,
+              -719.6278076171875
+            ],
+            "frame": 7357,
+            "grounded": true,
+            "height_error": 0.02099609375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_05_out",
+            "resets": 0,
+            "target": [
+              150.37030029296875,
+              269.5833435058594,
+              -719.6296997070312
+            ]
+          },
+          {
+            "distance": 0.05728195980191231,
+            "foot": [
+              140.74758911132812,
+              277.5408020019531,
+              -729.2523803710938
+            ],
+            "frame": 7502,
+            "grounded": true,
+            "height_error": 0.01580810546875,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_06_in",
+            "resets": 0,
+            "target": [
+              140.7071075439453,
+              277.5,
+              -729.2929077148438
+            ]
+          },
+          {
+            "distance": 0.0034851888194680214,
+            "foot": [
+              139.29537963867188,
+              277.63018798828125,
+              -730.7046508789062
+            ],
+            "frame": 7522,
+            "grounded": true,
+            "height_error": 0.105194091796875,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_06_out",
+            "resets": 0,
+            "target": [
+              139.2928924560547,
+              277.5,
+              -730.7070922851562
+            ]
+          },
+          {
+            "distance": 0.00951644591987133,
+            "foot": [
+              129.63644409179688,
+              285.46246337890625,
+              -740.3635864257812
+            ],
+            "frame": 7668,
+            "grounded": true,
+            "height_error": 0.105010986328125,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_07_in",
+            "resets": 0,
+            "target": [
+              129.62969970703125,
+              285.4166564941406,
+              -740.3703002929688
+            ]
+          },
+          {
+            "distance": 0.059148553758859634,
+            "foot": [
+              128.25732421875,
+              285.5413818359375,
+              -741.7427368164062
+            ],
+            "frame": 7687,
+            "grounded": true,
+            "height_error": 0.0155029296875,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_07_out",
+            "resets": 0,
+            "target": [
+              128.21548461914062,
+              285.4166564941406,
+              -741.7845458984375
+            ]
+          },
+          {
+            "distance": 0.014128997921943665,
+            "foot": [
+              118.562255859375,
+              293.3790283203125,
+              -751.4376831054688
+            ],
+            "frame": 7833,
+            "grounded": true,
+            "height_error": 0.10491943359375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_08_in",
+            "resets": 0,
+            "target": [
+              118.55228424072266,
+              293.3333435058594,
+              -751.4476928710938
+            ]
+          },
+          {
+            "distance": 0.004332052078098059,
+            "foot": [
+              117.14114379882812,
+              293.4635314941406,
+              -752.85888671875
+            ],
+            "frame": 7853,
+            "grounded": true,
+            "height_error": 0.020965576171875,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_08_out",
+            "resets": 0,
+            "target": [
+              117.13806915283203,
+              293.3333435058594,
+              -752.8619384765625
+            ]
+          },
+          {
+            "distance": 0.004801478236913681,
+            "foot": [
+              107.4782485961914,
+              301.2959289550781,
+              -762.521728515625
+            ],
+            "frame": 7998,
+            "grounded": true,
+            "height_error": 0.02093505859375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_09_in",
+            "resets": 0,
+            "target": [
+              107.4748764038086,
+              301.25,
+              -762.525146484375
+            ]
+          },
+          {
+            "distance": 0.0530092716217041,
+            "foot": [
+              106.09815216064453,
+              301.3758544921875,
+              -763.90185546875
+            ],
+            "frame": 8017,
+            "grounded": true,
+            "height_error": 0.100860595703125,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_09_out",
+            "resets": 0,
+            "target": [
+              106.06066131591797,
+              301.25,
+              -763.9393310546875
+            ]
+          },
+          {
+            "distance": 0.011830789968371391,
+            "foot": [
+              96.40583038330078,
+              309.2124328613281,
+              -773.5941772460938
+            ],
+            "frame": 8161,
+            "grounded": true,
+            "height_error": 0.020751953125,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_10_in",
+            "resets": 0,
+            "target": [
+              96.3974609375,
+              309.1666564941406,
+              -773.6025390625
+            ]
+          },
+          {
+            "distance": 0.003830442437902093,
+            "foot": [
+              94.98597717285156,
+              309.2968444824219,
+              -775.0140380859375
+            ],
+            "frame": 8181,
+            "grounded": true,
+            "height_error": 0.10516357421875,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_10_out",
+            "resets": 0,
+            "target": [
+              94.98324584960938,
+              309.1666564941406,
+              -775.0167236328125
+            ]
+          },
+          {
+            "distance": 0.009748399257659912,
+            "foot": [
+              85.32694244384766,
+              317.129150390625,
+              -784.6730346679688
+            ],
+            "frame": 8326,
+            "grounded": true,
+            "height_error": 0.10504150390625,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_11_in",
+            "resets": 0,
+            "target": [
+              85.32005310058594,
+              317.0833435058594,
+              -784.679931640625
+            ]
+          },
+          {
+            "distance": 0.05777950584888458,
+            "foot": [
+              83.94696044921875,
+              317.2082824707031,
+              -786.0535888671875
+            ],
+            "frame": 8345,
+            "grounded": true,
+            "height_error": 0.015716552734375,
+            "node": "stair_hill_short_rest1_departure_hill_short_rest2_arrival_11_out",
+            "resets": 0,
+            "target": [
+              83.90583801269531,
+              317.0833435058594,
+              -786.0941772460938
+            ]
+          },
+          {
+            "distance": 0.02175181917846203,
+            "foot": [
+              74.25801849365234,
+              325.0452575683594,
+              -795.7420043945312
+            ],
+            "frame": 8494,
+            "grounded": true,
+            "height_error": 0.020263671875,
+            "node": "hill_short_rest2_arrival",
+            "resets": 0,
+            "target": [
+              74.24263763427734,
+              325.0,
+              -795.7573852539062
+            ]
+          },
+          {
+            "distance": 0.047814082354307175,
+            "foot": [
+              70.03380584716797,
+              325.0452575683594,
+              -799.9661865234375
+            ],
+            "frame": 8550,
+            "grounded": true,
+            "height_error": 0.020263671875,
+            "node": "hill_short_rest2",
+            "resets": 0,
+            "target": [
+              70.0,
+              325.0,
+              -800.0
+            ]
+          },
+          {
+            "distance": 0.007078306283801794,
+            "foot": [
+              75.7279052734375,
+              325.1298522949219,
+              -801.762451171875
+            ],
+            "frame": 8607,
+            "grounded": true,
+            "height_error": 0.0208740234375,
+            "node": "hill_short_rest2_departure",
+            "resets": 0,
+            "target": [
+              75.73467254638672,
+              325.0,
+              -801.7645263671875
+            ]
+          },
+          {
+            "distance": 0.005476358812302351,
+            "foot": [
+              96.5853500366211,
+              332.773193359375,
+              -808.1801147460938
+            ],
+            "frame": 8833,
+            "grounded": true,
+            "height_error": 0.10491943359375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_in",
+            "resets": 0,
+            "target": [
+              96.59059143066406,
+              332.7272644042969,
+              -808.1817016601562
+            ]
+          },
+          {
+            "distance": 0.054332245141267776,
+            "foot": [
+              98.45022583007812,
+              332.8526306152344,
+              -808.75390625
+            ],
+            "frame": 8852,
+            "grounded": true,
+            "height_error": 0.016357421875,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_out",
+            "resets": 0,
+            "target": [
+              98.50215148925781,
+              332.7272644042969,
+              -808.7698974609375
+            ]
+          },
+          {
+            "distance": 0.011058075353503227,
+            "foot": [
+              119.34748840332031,
+              340.5003662109375,
+              -815.183837890625
+            ],
+            "frame": 9080,
+            "grounded": true,
+            "height_error": 0.104827880859375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_in",
+            "resets": 0,
+            "target": [
+              119.35806274414062,
+              340.4545593261719,
+              -815.1870727539062
+            ]
+          },
+          {
+            "distance": 0.005254216026514769,
+            "foot": [
+              121.26459503173828,
+              340.58447265625,
+              -815.7737426757812
+            ],
+            "frame": 9100,
+            "grounded": true,
+            "height_error": 0.02093505859375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_out",
+            "resets": 0,
+            "target": [
+              121.26962280273438,
+              340.4545593261719,
+              -815.7752685546875
+            ]
+          },
+          {
+            "distance": 0.05337872728705406,
+            "foot": [
+              142.07449340820312,
+              348.2233581542969,
+              -822.1768188476562
+            ],
+            "frame": 9325,
+            "grounded": true,
+            "height_error": 0.10052490234375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_in",
+            "resets": 0,
+            "target": [
+              142.1255340576172,
+              348.18182373046875,
+              -822.1924438476562
+            ]
+          },
+          {
+            "distance": 0.012095783837139606,
+            "foot": [
+              144.02552795410156,
+              348.31146240234375,
+              -822.777099609375
+            ],
+            "frame": 9345,
+            "grounded": true,
+            "height_error": 0.020660400390625,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_out",
+            "resets": 0,
+            "target": [
+              144.03709411621094,
+              348.18182373046875,
+              -822.7806396484375
+            ]
+          },
+          {
+            "distance": 0.009073528461158276,
+            "foot": [
+              164.88433837890625,
+              355.9549560546875,
+              -829.1951904296875
+            ],
+            "frame": 9572,
+            "grounded": true,
+            "height_error": 0.1048583984375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_04_in",
+            "resets": 0,
+            "target": [
+              164.89300537109375,
+              355.9090881347656,
+              -829.1978759765625
+            ]
+          },
+          {
+            "distance": 0.0036920278798788786,
+            "foot": [
+              166.80104064941406,
+              356.0390625,
+              -829.784912109375
+            ],
+            "frame": 9592,
+            "grounded": true,
+            "height_error": 0.10498046875,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_04_out",
+            "resets": 0,
+            "target": [
+              166.8045654296875,
+              355.9090881347656,
+              -829.7860107421875
+            ]
+          },
+          {
+            "distance": 0.007679052650928497,
+            "foot": [
+              187.65313720703125,
+              363.6822509765625,
+              -836.2009887695312
+            ],
+            "frame": 9819,
+            "grounded": true,
+            "height_error": 0.104888916015625,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_05_in",
+            "resets": 0,
+            "target": [
+              187.6604766845703,
+              363.6363525390625,
+              -836.2032470703125
+            ]
+          },
+          {
+            "distance": 0.059742920100688934,
+            "foot": [
+              189.5149383544922,
+              363.7607727050781,
+              -836.7738037109375
+            ],
+            "frame": 9838,
+            "grounded": true,
+            "height_error": 0.099395751953125,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_05_out",
+            "resets": 0,
+            "target": [
+              189.57203674316406,
+              363.6363525390625,
+              -836.7913818359375
+            ]
+          },
+          {
+            "distance": 0.0055890511721372604,
+            "foot": [
+              210.42262268066406,
+              371.4095764160156,
+              -843.2069702148438
+            ],
+            "frame": 10067,
+            "grounded": true,
+            "height_error": 0.02093505859375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_06_in",
+            "resets": 0,
+            "target": [
+              210.42796325683594,
+              371.3636474609375,
+              -843.2086181640625
+            ]
+          },
+          {
+            "distance": 0.05799509212374687,
+            "foot": [
+              212.2841033935547,
+              371.48834228515625,
+              -843.7796630859375
+            ],
+            "frame": 10086,
+            "grounded": true,
+            "height_error": 0.015716552734375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_06_out",
+            "resets": 0,
+            "target": [
+              212.3395233154297,
+              371.3636474609375,
+              -843.7967529296875
+            ]
+          },
+          {
+            "distance": 0.011385643854737282,
+            "foot": [
+              233.18455505371094,
+              379.1366882324219,
+              -850.2106323242188
+            ],
+            "frame": 10314,
+            "grounded": true,
+            "height_error": 0.020782470703125,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_in",
+            "resets": 0,
+            "target": [
+              233.1954345703125,
+              379.0909118652344,
+              -850.2139892578125
+            ]
+          },
+          {
+            "distance": 0.05938617140054703,
+            "foot": [
+              235.05023193359375,
+              379.21533203125,
+              -850.78466796875
+            ],
+            "frame": 10333,
+            "grounded": true,
+            "height_error": 0.01544189453125,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_out",
+            "resets": 0,
+            "target": [
+              235.10699462890625,
+              379.0909118652344,
+              -850.8021240234375
+            ]
+          },
+          {
+            "distance": 0.004598772153258324,
+            "foot": [
+              255.95852661132812,
+              386.8641052246094,
+              -857.2179565429688
+            ],
+            "frame": 10563,
+            "grounded": true,
+            "height_error": 0.10491943359375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_08_in",
+            "resets": 0,
+            "target": [
+              255.96290588378906,
+              386.81817626953125,
+              -857.2193603515625
+            ]
+          },
+          {
+            "distance": 0.05453978851437569,
+            "foot": [
+              257.82232666015625,
+              386.9434814453125,
+              -857.79150390625
+            ],
+            "frame": 10582,
+            "grounded": true,
+            "height_error": 0.100311279296875,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_08_out",
+            "resets": 0,
+            "target": [
+              257.87445068359375,
+              386.81817626953125,
+              -857.8075561523438
+            ]
+          },
+          {
+            "distance": 0.05808258429169655,
+            "foot": [
+              278.67486572265625,
+              394.5861511230469,
+              -864.2076416015625
+            ],
+            "frame": 10810,
+            "grounded": true,
+            "height_error": 0.01568603515625,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_09_in",
+            "resets": 0,
+            "target": [
+              278.7303771972656,
+              394.5454406738281,
+              -864.2247314453125
+            ]
+          },
+          {
+            "distance": 0.010955980978906155,
+            "foot": [
+              280.6314697265625,
+              394.6752624511719,
+              -864.8096923828125
+            ],
+            "frame": 10830,
+            "grounded": true,
+            "height_error": 0.02081298828125,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_09_out",
+            "resets": 0,
+            "target": [
+              280.6419372558594,
+              394.5454406738281,
+              -864.8129272460938
+            ]
+          },
+          {
+            "distance": 0.004449395928531885,
+            "foot": [
+              301.4936218261719,
+              402.31866455078125,
+              -871.228759765625
+            ],
+            "frame": 11057,
+            "grounded": true,
+            "height_error": 0.02093505859375,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_10_in",
+            "resets": 0,
+            "target": [
+              301.49786376953125,
+              402.2727355957031,
+              -871.2301025390625
+            ]
+          },
+          {
+            "distance": 0.05966782197356224,
+            "foot": [
+              303.38555908203125,
+              402.4002380371094,
+              -871.7636108398438
+            ],
+            "frame": 11077,
+            "grounded": true,
+            "height_error": 0.018524169921875,
+            "node": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_10_out",
+            "resets": 0,
+            "target": [
+              303.409423828125,
+              402.2727355957031,
+              -871.8182983398438
+            ]
+          },
+          {
+            "distance": 0.011651521548628807,
+            "foot": [
+              324.2541809082031,
+              410.0457763671875,
+              -878.2320556640625
+            ],
+            "frame": 11306,
+            "grounded": true,
+            "height_error": 0.020782470703125,
+            "node": "hill_short_rest3_arrival",
+            "resets": 0,
+            "target": [
+              324.26531982421875,
+              410.0,
+              -878.2354736328125
+            ]
+          },
+          {
+            "distance": 0.037772636860609055,
+            "foot": [
+              329.9638977050781,
+              410.0457458496094,
+              -879.9888916015625
+            ],
+            "frame": 11362,
+            "grounded": true,
+            "height_error": 0.020751953125,
+            "node": "hill_short_rest3",
+            "resets": 0,
+            "target": [
+              330.0,
+              410.0,
+              -880.0
+            ]
+          },
+          {
+            "distance": 0.006152452901005745,
+            "foot": [
+              325.201904296875,
+              410.1295166015625,
+              -883.59228515625
+            ],
+            "frame": 11419,
+            "grounded": true,
+            "height_error": 0.02093505859375,
+            "node": "hill_short_rest3_departure",
+            "resets": 0,
+            "target": [
+              325.19696044921875,
+              410.0,
+              -883.595947265625
+            ]
+          },
+          {
+            "distance": 0.003881855169311166,
+            "foot": [
+              313.08929443359375,
+              417.7348937988281,
+              -892.6608276367188
+            ],
+            "frame": 11583,
+            "grounded": true,
+            "height_error": 0.02099609375,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_01_in",
+            "resets": 0,
+            "target": [
+              313.086181640625,
+              417.68890380859375,
+              -892.6631469726562
+            ]
+          },
+          {
+            "distance": 0.054064955562353134,
+            "foot": [
+              311.5284423828125,
+              417.8138732910156,
+              -893.829345703125
+            ],
+            "frame": 11602,
+            "grounded": true,
+            "height_error": 0.01641845703125,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_01_out",
+            "resets": 0,
+            "target": [
+              311.48516845703125,
+              417.68890380859375,
+              -893.8617553710938
+            ]
+          },
+          {
+            "distance": 0.01352672465145588,
+            "foot": [
+              299.3790588378906,
+              425.4305725097656,
+              -902.916259765625
+            ],
+            "frame": 11760,
+            "grounded": true,
+            "height_error": 0.027801513671875,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_02_in",
+            "resets": 0,
+            "target": [
+              299.3743896484375,
+              425.3777770996094,
+              -902.928955078125
+            ]
+          },
+          {
+            "distance": 0.0038574268110096455,
+            "foot": [
+              297.7764892578125,
+              425.50732421875,
+              -904.125244140625
+            ],
+            "frame": 11780,
+            "grounded": true,
+            "height_error": 0.10455322265625,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_02_out",
+            "resets": 0,
+            "target": [
+              297.7734069824219,
+              425.3777770996094,
+              -904.1275634765625
+            ]
+          },
+          {
+            "distance": 0.050816237926483154,
+            "foot": [
+              285.7005615234375,
+              433.1093444824219,
+              -913.1609497070312
+            ],
+            "frame": 11938,
+            "grounded": true,
+            "height_error": 0.10125732421875,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_03_in",
+            "resets": 0,
+            "target": [
+              285.6626281738281,
+              433.0666809082031,
+              -913.1947631835938
+            ]
+          },
+          {
+            "distance": 0.009607028216123581,
+            "foot": [
+              284.06927490234375,
+              433.196044921875,
+              -914.3876342773438
+            ],
+            "frame": 11958,
+            "grounded": true,
+            "height_error": 0.1043701171875,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_03_out",
+            "resets": 0,
+            "target": [
+              284.0616149902344,
+              433.0666809082031,
+              -914.3934326171875
+            ]
+          },
+          {
+            "distance": 0.03616945818066597,
+            "foot": [
+              271.97979736328125,
+              440.79949951171875,
+              -923.4389038085938
+            ],
+            "frame": 12118,
+            "grounded": true,
+            "height_error": 0.102508544921875,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_04_in",
+            "resets": 0,
+            "target": [
+              271.9508361816406,
+              440.75555419921875,
+              -923.4605712890625
+            ]
+          },
+          {
+            "distance": 0.027490239590406418,
+            "foot": [
+              270.371826171875,
+              440.88397216796875,
+              -924.6427612304688
+            ],
+            "frame": 12137,
+            "grounded": true,
+            "height_error": 0.103424072265625,
+            "node": "stair_hill_short_rest3_departure_hill_short_summit_wait_04_out",
+            "resets": 0,
+            "target": [
+              270.3498229980469,
+              440.75555419921875,
+              -924.6592407226562
+            ]
+          },
+          {
+            "distance": 0.029870646074414253,
+            "foot": [
+              258.2629699707031,
+              448.489013671875,
+              -933.70849609375
+            ],
+            "frame": 12298,
+            "grounded": true,
+            "height_error": 0.1031494140625,
+            "node": "hill_short_summit_wait",
+            "resets": 0,
+            "target": [
+              258.2390441894531,
+              448.4444580078125,
+              -933.7263793945312
+            ]
+          },
+          {
+            "distance": 0.03291017934679985,
+            "foot": [
+              251.86135864257812,
+              448.4900817871094,
+              -938.5012817382812
+            ],
+            "frame": 12373,
+            "grounded": true,
+            "height_error": 0.0206298828125,
+            "node": "hill_bend",
+            "resets": 0,
+            "target": [
+              251.8350067138672,
+              448.4444580078125,
+              -938.52099609375
+            ]
+          },
+          {
+            "distance": 0.00522842351347208,
+            "foot": [
+              250.06935119628906,
+              448.568115234375,
+              -939.44921875
+            ],
+            "frame": 12393,
+            "grounded": true,
+            "height_error": 0.020904541015625,
+            "node": "platform_summit_east_in",
+            "resets": 0,
+            "target": [
+              250.06472778320312,
+              448.4444580078125,
+              -939.45166015625
+            ]
+          },
+          {
+            "distance": 0.024735677987337112,
+            "foot": [
+              246.98863220214844,
+              450.0450439453125,
+              -941.0687866210938
+            ],
+            "frame": 12430,
+            "grounded": true,
+            "height_error": 0.097808837890625,
+            "node": "platform_summit_east_out",
+            "resets": 0,
+            "target": [
+              246.9667510986328,
+              450.0,
+              -941.080322265625
+            ]
+          },
+          {
+            "distance": 0.005541861057281494,
+            "foot": [
+              230.00491333007812,
+              450.0459289550781,
+              -949.9974365234375
+            ],
+            "frame": 12610,
+            "grounded": true,
+            "height_error": 0.02093505859375,
+            "node": "summit",
+            "resets": 0,
+            "target": [
+              230.0,
+              450.0,
+              -950.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 59,
+        "game_page": "world",
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": 28.149999618530273,
+        "max_player_resets": 0,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": 28.0,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Start at the actual shop spawn",
+        "player_blocked": null,
+        "player_grounded": true,
+        "same_world_entities": null,
+        "to": 59,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": true
+      },
+      "name": "Start at the actual shop spawn",
+      "passed": true,
+      "peak_rotation_radians": 0.0006905339541845024,
+      "rotation_radians": 0.0006905339541845024
+    },
+    {
+      "distance": 825.608642578125,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 59,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": 450.20001220703125,
+        "max_player_resets": 0,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": 27.899999618530273,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Continuous ascent stays finite and needs no automatic recovery",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": true,
+        "to": 13499,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "Continuous ascent stays finite and needs no automatic recovery",
+      "passed": true,
+      "peak_rotation_radians": 1.2744524478912354,
+      "rotation_radians": 1.0865414142608643
+    },
+    {
+      "distance": 825.608642578125,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 59,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": 450.20001220703125,
+        "max_player_resets": 0,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": 800.0,
+        "min_player_height": 28.0,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Reach the summit using movement input",
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 13200,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "Reach the summit using movement input",
+      "passed": true,
+      "peak_rotation_radians": 1.2744524478912354,
+      "rotation_radians": 1.0865414142608643
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 13200,
+        "game_page": "world",
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": 0.0010000000474974513,
+        "max_player_height": 450.20001220703125,
+        "max_player_resets": 0,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": 450.0,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Stand on the summit after the complete route",
+        "player_blocked": null,
+        "player_grounded": true,
+        "same_world_entities": null,
+        "to": 13499,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "Stand on the summit after the complete route",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    }
+  ],
+  "ffmpeg_version": "ffmpeg version n9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "video_command": [
+    "/usr/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-framerate",
+    "30",
+    "-i",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r1/full/frames/frame%05d.png",
+    "-frames:v",
+    "13500",
+    "-c:v",
+    "libx264",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r1/full/video.mp4"
+  ],
+  "elapsed_wall_seconds": 465.7024465520517
+}
