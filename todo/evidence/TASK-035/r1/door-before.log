@@ -1,0 +1,20 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 46.52s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+[observation/shop] horizontal=2.8266754 vertical=0.0457592 facing=0.9961512 sight=Some(CollisionHit { fraction: 0.975236, normal: Vec3(1.0, -0.0, -0.0), point: Vec3(88.05501, 29.351124, -254.99997), surface_normal: Vec3(1.0, 0.0, -0.0), source: "buildings[V-04]/derived-facade", triangle: 106651 })
+
+thread 'places::observation::tests::real_shop_recorded_approach_can_observe_its_public_entrance' (589) panicked at src/places/observation.rs:291:9:
+assertion failed: eligible(place, foot, &camera, &collision)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test places::observation::tests::real_shop_recorded_approach_can_observe_its_public_entrance ... FAILED
+
+failures:
+
+failures:
+    places::observation::tests::real_shop_recorded_approach_can_observe_its_public_entrance
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 66 filtered out; finished in 8.73s
+
+error: test failed, to rerun pass `--lib`

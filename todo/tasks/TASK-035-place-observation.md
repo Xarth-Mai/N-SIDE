@@ -1,7 +1,11 @@
 ---
 id: TASK-035
 type: feature
-status: backlog
+status: done
+acceptance:
+  role: codex
+  revision: 644718daf2d39095eb46492c0c98a4ffed049c724dd9524218a6219ce2d9b6ea
+  record: todo/evidence/TASK-035/r2/review.md
 milestone: G1
 depends_on: [TASK-034]
 specs:
@@ -21,8 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-第1轮，步骤1/6 定位；本轮连续五项交付的第4项，依前置结果推进
+第2轮，步骤6/6 完成；修正门立面终点厚度，宽窄屏各540帧17项检查通过，负例退出1；继续真实字号／镜头设置与综合回归
 
 ## 结果与证据
 
-当前尚无完成证据，原始运行产物进入output，本轮摘要归对应任务evidence目录
+[修复、实际录制与自查](../evidence/TASK-035/r2/review.md)；原始失败在r1，完整序列与视频在output/observation/2026-09-28/r2

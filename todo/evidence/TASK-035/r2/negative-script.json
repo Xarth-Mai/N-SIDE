@@ -1,0 +1,36 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 480,
+  "height": 720,
+  "fps": 30,
+  "frames": 60,
+  "seed": 0,
+  "timeout_seconds": 400,
+  "keyframes": [
+    59
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "missing observation must fail",
+      "from": 59,
+      "to": 59,
+      "observation_open": true
+    }
+  ]
+}

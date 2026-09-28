@@ -1,0 +1,29 @@
+    Checking n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error: very complex type used. Consider factoring parts into `type` definitions
+   --> src/capture.rs:994:15
+    |
+994 |       ui_state: (
+    |  _______________^
+995 | |         Option<Res<SignalUi>>,
+996 | |         Option<Res<PlaceHud>>,
+997 | |         Option<Res<Observation>>,
+998 | |     ),
+    | |_____^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#type_complexity
+    = note: `-D clippy::type-complexity` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: this lint expectation is unfulfilled
+   --> src/places.rs:166:5
+    |
+166 |     clippy::too_many_arguments,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: HUD reads current place, phase, input and observation ownership
+    = note: `-D unfulfilled-lint-expectations` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unfulfilled_lint_expectations)]`
+
+error: could not compile `n-side` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `n-side` (lib test) due to 2 previous errors

@@ -4,7 +4,7 @@
 //! N:SIDE implementation records real application input, state and rendered frames
 use crate::{
     app::{GameLoadError, GamePhase},
-    places::PlaceHud,
+    places::{Observation, PlaceHud},
     player::PlayerState,
     ui::{SignalUi, UiFont, UiInput},
     world::{
@@ -130,17 +130,22 @@ pub struct Assertion {
     place_visible: Option<bool>,
     place_gamepad: Option<bool>,
     place_known: Option<bool>,
+    observation_target: Option<String>,
+    observation_selected: Option<String>,
+    observation_open: Option<bool>,
+    observation_visible: Option<bool>,
 }
 
 const GAME_PAGES: [&str; 5] = ["title", "loading", "world", "paused", "failed"];
 
-const KEYS: [(&str, KeyCode); 16] = [
+const KEYS: [(&str, KeyCode); 17] = [
     ("W", KeyCode::KeyW),
     ("A", KeyCode::KeyA),
     ("S", KeyCode::KeyS),
     ("D", KeyCode::KeyD),
     ("Q", KeyCode::KeyQ),
     ("E", KeyCode::KeyE),
+    ("F", KeyCode::KeyF),
     ("R", KeyCode::KeyR),
     ("Shift", KeyCode::ShiftLeft),
     ("M", KeyCode::KeyM),
@@ -286,11 +291,20 @@ impl Script {
                     && check.max_world_entities.is_none()
                     && check.same_world_entities.is_none()
                     && check.gamepad_connected.is_none()
+                    && !check.has_observation_assertion()
                     && !check.has_place_assertion()
                     && !check.has_player_assertion())
                 || (check.has_player_assertion() && self.scene != "walk-preview")
                 || (check.gamepad_connected.is_some() && !self.game_scene())
                 || (check.has_place_assertion() && self.scene != "walk-preview")
+                || (check.has_observation_assertion() && self.scene != "walk-preview")
+                || [
+                    check.observation_target.as_ref(),
+                    check.observation_selected.as_ref(),
+                ]
+                .into_iter()
+                .flatten()
+                .any(|value| value.trim().is_empty())
                 || [check.place_id.as_ref(), check.place_name.as_ref()]
                     .into_iter()
                     .flatten()
@@ -350,6 +364,35 @@ impl Script {
 }
 
 impl Assertion {
+    fn has_observation_assertion(&self) -> bool {
+        self.observation_target.is_some()
+            || self.observation_selected.is_some()
+            || self.observation_open.is_some()
+            || self.observation_visible.is_some()
+    }
+
+    fn check_observation(&self, observation: Option<&ObservationSample>) -> bool {
+        if !self.has_observation_assertion() {
+            return true;
+        }
+        let Some(observation) = observation else {
+            return false;
+        };
+        self.observation_target
+            .as_ref()
+            .is_none_or(|target| observation.target.as_ref() == Some(target))
+            && self
+                .observation_selected
+                .as_ref()
+                .is_none_or(|selected| observation.selected.as_ref() == Some(selected))
+            && self
+                .observation_open
+                .is_none_or(|open| observation.open == open)
+            && self
+                .observation_visible
+                .is_none_or(|visible| observation.visible == visible)
+    }
+
     fn has_place_assertion(&self) -> bool {
         self.place_id.is_some()
             || self.place_name.is_some()
@@ -483,6 +526,14 @@ struct PlaceSample {
 }
 
 #[derive(Serialize)]
+struct ObservationSample {
+    target: Option<String>,
+    selected: Option<String>,
+    open: bool,
+    visible: bool,
+}
+
+#[derive(Serialize)]
 struct Sample {
     frame: u32,
     simulation_seconds: f64,
@@ -495,6 +546,7 @@ struct Sample {
     player: Option<PlayerSample>,
     ui: Option<serde_json::Value>,
     place: Option<PlaceSample>,
+    observation: Option<ObservationSample>,
     gamepad_connected: bool,
 }
 
@@ -600,7 +652,10 @@ impl Recording {
                         )
                         && self.samples[assertion.from as usize..=assertion.to as usize]
                             .iter()
-                            .all(|sample| assertion.check_place(sample.place.as_ref()))
+                            .all(|sample| {
+                                assertion.check_place(sample.place.as_ref())
+                                    && assertion.check_observation(sample.observation.as_ref())
+                            })
                         && assertion.max_distance.is_none_or(|v| peak_distance <= v)
                         && assertion.min_rotation.is_none_or(|v| rotation >= v)
                         && assertion.max_rotation.is_none_or(|v| peak_rotation <= v)
@@ -920,6 +975,7 @@ fn drive_input(
 
 #[expect(
     clippy::too_many_arguments,
+    clippy::type_complexity,
     reason = "Bevy injects recorder, world, UI and asset state for evidence"
 )]
 fn record(
@@ -936,11 +992,15 @@ fn record(
     transforms: Query<(Entity, &Transform)>,
     pads: Query<&Gamepad, With<ScriptGamepad>>,
     mut exit: MessageWriter<AppExit>,
-    ui_state: (Option<Res<SignalUi>>, Option<Res<PlaceHud>>),
+    ui_state: (
+        Option<Res<SignalUi>>,
+        Option<Res<PlaceHud>>,
+        Option<Res<Observation>>,
+    ),
     ui_font: Option<Res<UiFont>>,
     assets: Res<AssetServer>,
 ) {
-    let (ui, place) = ui_state;
+    let (ui, place, observation) = ui_state;
     if recording.finished {
         return;
     }
@@ -1037,6 +1097,12 @@ fn record(
         world_entities: world_entities.iter().count(),
         gamepad_connected: !pads.is_empty(),
         player: player.as_deref().map(PlayerSample::from),
+        observation: observation.as_ref().map(|observation| ObservationSample {
+            target: observation.target.clone(),
+            selected: observation.selected.clone(),
+            open: observation.open,
+            visible: observation.visible,
+        }),
         place: place.as_ref().map(|hud| PlaceSample {
             id: hud.current_id.clone(),
             name: hud.name.clone(),
@@ -1527,6 +1593,7 @@ mod tests {
                 player: None,
                 ui: None,
                 place: None,
+                observation: None,
                 gamepad_connected: true,
             })
             .collect();
@@ -1558,6 +1625,40 @@ mod tests {
         assert!(!recording.finish(None));
         recording.script.assertions[0].gamepad_connected = Some(true);
         assert!(recording.finish(None));
+        recording.script.scene = "walk-preview".into();
+        recording.script.assertions = vec![
+            serde_json::from_value(serde_json::json!({
+                "name":"observation remains open", "from":0, "to":2,
+                "observation_target":"04", "observation_selected":"04",
+                "observation_open":true, "observation_visible":true
+            }))
+            .unwrap(),
+        ];
+        assert!(recording.script.validate().is_ok());
+        for sample in &mut recording.samples {
+            sample.observation = Some(ObservationSample {
+                target: Some("04".into()),
+                selected: Some("04".into()),
+                open: true,
+                visible: true,
+            });
+        }
+        assert!(recording.finish(None));
+        recording.samples[1].observation.as_mut().unwrap().open = false;
+        assert!(
+            !recording.finish(None),
+            "middle-frame close must fail despite identical endpoints"
+        );
+        recording.samples[1].observation = None;
+        assert!(
+            !recording.finish(None),
+            "missing actual observation cannot pass"
+        );
+        recording.script.scene = "game-entry".into();
+        assert!(recording.script.validate().is_err());
+        recording.script.scene = "walk-preview".into();
+        recording.script.assertions[0].observation_target = Some(" ".into());
+        assert!(recording.script.validate().is_err());
         fs::remove_dir_all(output).unwrap();
     }
 
@@ -1616,6 +1717,7 @@ mod tests {
             world_entities: 1,
             ui: None,
             place: None,
+            observation: None,
             gamepad_connected: true,
             player: Some(PlayerSample {
                 foot: [x, 28.0, 0.0],

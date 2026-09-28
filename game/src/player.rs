@@ -2,6 +2,7 @@
 use crate::{
     app::GamePhase,
     capture::CaptureInput,
+    places::Observation,
     ui::UiInput,
     world::{
         collision::{CollisionHit, CollisionWorld},
@@ -273,8 +274,14 @@ pub fn install(app: &mut App) {
         );
 }
 
-fn gameplay_active(phase: Res<State<GamePhase>>, next: Res<NextState<GamePhase>>) -> bool {
-    *phase.get() == GamePhase::World && matches!(*next, NextState::Unchanged)
+fn gameplay_active(
+    phase: Res<State<GamePhase>>,
+    next: Res<NextState<GamePhase>>,
+    observation: Option<Res<Observation>>,
+) -> bool {
+    *phase.get() == GamePhase::World
+        && matches!(*next, NextState::Unchanged)
+        && observation.is_none_or(|observation| !observation.blocks_world())
 }
 
 pub fn clear(world: &mut World) {
@@ -340,9 +347,12 @@ fn read_input(
     next: Res<NextState<GamePhase>>,
     mut intent: ResMut<Intent>,
     mut orbit: ResMut<Orbit>,
+    observation: Option<Res<Observation>>,
 ) {
     intent.direction = Vec3::ZERO;
-    if !matches!(*next, NextState::Unchanged) {
+    if !matches!(*next, NextState::Unchanged)
+        || observation.is_some_and(|observation| observation.blocks_world())
+    {
         *intent = Intent {
             wait_for_release: true,
             ..default()

@@ -1,0 +1,114 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 240,
+  "seed": 0,
+  "timeout_seconds": 80,
+  "keyframes": [
+    59,
+    145,
+    179,
+    189,
+    199,
+    229,
+    239
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 51,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 146,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 150,
+      "end": 180,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 190,
+      "end": 210,
+      "keys": [
+        "F",
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 230,
+      "end": 231,
+      "keys": [
+        "Escape",
+        "W"
+      ]
+    },
+    {
+      "start": 231,
+      "end": 240,
+      "keys": [
+        "W"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "spawn is too far away to inspect the door",
+      "from": 59,
+      "to": 59,
+      "observation_open": false,
+      "observation_visible": false
+    },
+    {
+      "name": "walk to a visible public doorway",
+      "from": 189,
+      "to": 189,
+      "observation_target": "04",
+      "max_player_resets": 0
+    },
+    {
+      "name": "opening owns held movement and camera inputs",
+      "from": 190,
+      "to": 229,
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04",
+      "max_player_distance": 0.001,
+      "max_rotation": 0.001,
+      "max_player_resets": 0
+    },
+    {
+      "name": "opening frame does not leak movement or camera",
+      "from": 189,
+      "to": 229,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.001
+    }
+  ]
+}

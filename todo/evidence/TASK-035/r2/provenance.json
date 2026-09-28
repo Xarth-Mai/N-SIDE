@@ -1,0 +1,32 @@
+{
+  "base_commit": "fcebc839676f65ebe4d2ed2e3431ab6b969320fc",
+  "inputs": {
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/Cargo.toml": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+    "game/capture/walk-observation.json": "ead8a805da1bf544a2332ca0bbc50942a957c948e63c553a804006c87fa1c6c8",
+    "game/src/app.rs": "48883904ea10ba46fd41e80867aec9b476b1663cc1713ad4f941d13547cef68c",
+    "game/src/bin/map_viewer.rs": "d941f57e355aec1bd1ede943f2bf172c188e68ce9b97c0733d9e3b1a4770f7a7",
+    "game/src/capture/route.rs": "6fbfc06b3941d24ca696fb0e588f118eef937e45ccfb786f14bbe58b3b0b8e08",
+    "game/src/capture.rs": "8ee6e678db05b0532decffad2c601366c2d4ff4088a5c989b5ee719d0ef29999",
+    "game/src/lib.rs": "3c80627ff533abb7d3ab4d4c57e0c5b5638c2de09fe7545e1216e9f89c700f56",
+    "game/src/main.rs": "57195ef357165cc705984b6cf2999c56a7b7f83d64647136ba603b9b7b2d0ade",
+    "game/src/places/observation.rs": "32427297a778ce9d1a117d16f164322f5295301226502fd14053f7d8c1b98ddc",
+    "game/src/places.rs": "3a41255984be9a89af50d6926faff56458604711a639fc06c3fe0903f6509d08",
+    "game/src/player.rs": "a1ecf31964f179822b8c01b45df0e2b3195ff632f2f1dd3910bf2de9a0e3cd47",
+    "game/src/ui.rs": "316dbd9beb0165a5720445bdde2a56161b035fdae297657c9468385554c66223",
+    "game/src/world/assets.rs": "c2c54e4824b3d771401a85bbeecab0dbf6b3aca6294713764ad1399c65b8028c",
+    "game/src/world/collision.rs": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+    "game/src/world/geometry.rs": "f3f8e859dd08ae11cc031eaba2fba9fcd584daa5a3b3290ded3de7cf3cfeb384",
+    "game/src/world/map.rs": "e4d40c901f5629399f0ea7b3fe42979c4b90c876c36f85c3d0b891507d3e7b21",
+    "game/src/world/mod.rs": "573e20c25b4db126bfebe339ac4e1578d5096e3b01629328564272048d609fe9",
+    "game/src/world/scene.rs": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+    "game/src/world/visual.rs": "110b5e02ba159c647630dc36f6af235c63e5eef79d9c90c30e5b5a3ffe56f121",
+    "output/observation-narrow.json": "d902e8a6ba8ab2618850c61938b3c5da0676a846fa46fffa4a1829aca0c009b7",
+    "output/observation-negative.json": "ca73ead8f534ec1dbbbf23052c6eb6aa923bf5d0785bbd7e1211c675d467dde9",
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/ui-kit/tokens.json": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426",
+    "tools/capture.py": "4225a1755898159bd964377c8aa12e1548b61fe7276d9be3c96846369b3d4b26"
+  },
+  "input_revision": "644718daf2d39095eb46492c0c98a4ffed049c724dd9524218a6219ce2d9b6ea"
+}

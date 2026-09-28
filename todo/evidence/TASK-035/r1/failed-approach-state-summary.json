@@ -1,0 +1,587 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 240,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 240
+    },
+    {
+      "checked_frames": 240,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 59,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "spawn is too far away to inspect the door",
+        "observation_open": false,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": false,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 59,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "spawn is too far away to inspect the door",
+      "passed": true,
+      "peak_rotation_radians": 0.0006905339541845024,
+      "rotation_radians": 0.0006905339541845024
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 189,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": 0,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "walk to a visible public doorway",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": "04",
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 189,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "walk to a visible public doorway",
+      "passed": false,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 4.043548107147217,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 190,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": 0.0010000000474974513,
+        "max_player_height": null,
+        "max_player_resets": 0,
+        "max_rotation": 0.0010000000474974513,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "opening owns held movement and camera inputs",
+        "observation_open": true,
+        "observation_selected": "04",
+        "observation_target": null,
+        "observation_visible": true,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 229,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "opening owns held movement and camera inputs",
+      "passed": false,
+      "peak_rotation_radians": 1.0133320093154907,
+      "rotation_radians": 1.0133320093154907
+    },
+    {
+      "distance": 4.236363887786865,
+      "enabled": false,
+      "expected": {
+        "enabled": null,
+        "from": 189,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": 0.0010000000474974513,
+        "max_player_camera_distance": null,
+        "max_player_distance": 0.0010000000474974513,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_rotation": 0.0010000000474974513,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "opening frame does not leak movement or camera",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 229,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "opening frame does not leak movement or camera",
+      "passed": false,
+      "peak_rotation_radians": 1.066664457321167,
+      "rotation_radians": 1.066664457321167
+    }
+  ],
+  "determinism": "Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 27.443538919,
+  "error": null,
+  "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. State checks and images do not establish author/player acceptance",
+  "script": {
+    "assertions": [
+      {
+        "enabled": null,
+        "from": 59,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "spawn is too far away to inspect the door",
+        "observation_open": false,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": false,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 59,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      {
+        "enabled": null,
+        "from": 189,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": 0,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "walk to a visible public doorway",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": "04",
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 189,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      {
+        "enabled": null,
+        "from": 190,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": 0.0010000000474974513,
+        "max_player_height": null,
+        "max_player_resets": 0,
+        "max_rotation": 0.0010000000474974513,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "opening owns held movement and camera inputs",
+        "observation_open": true,
+        "observation_selected": "04",
+        "observation_target": null,
+        "observation_visible": true,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 229,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      {
+        "enabled": null,
+        "from": 189,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": 0.0010000000474974513,
+        "max_player_camera_distance": null,
+        "max_player_distance": 0.0010000000474974513,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_rotation": 0.0010000000474974513,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "opening frame does not leak movement or camera",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 229,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      }
+    ],
+    "events": [
+      {
+        "end": 31,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "Enter"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 51,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "F"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 50
+      },
+      {
+        "end": 146,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "A"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 60
+      },
+      {
+        "end": 180,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "E"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 150
+      },
+      {
+        "end": 210,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "F",
+          "W",
+          "E"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 190
+      },
+      {
+        "end": 231,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "Escape",
+          "W"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 230
+      },
+      {
+        "end": 240,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "W"
+        ],
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 231
+      }
+    ],
+    "fps": 30,
+    "frames": 240,
+    "height": 720,
+    "keyframes": [
+      59,
+      145,
+      179,
+      189,
+      199,
+      229,
+      239
+    ],
+    "route": null,
+    "scene": "walk-preview",
+    "seed": 0,
+    "timeout_seconds": 80,
+    "view": "shop",
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "width": 1280
+  },
+  "status": "FAIL",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality"
+}

@@ -1,6 +1,6 @@
 use crate::{
     capture::{self, CaptureInput, CaptureTarget},
-    places::{self, PlaceCatalog},
+    places::{self, Observation, PlaceCatalog},
     player::{self, PlayerState, WalkPreview},
     ui::{FONT, Tokens, UiFont, UiInput, color},
     world::{
@@ -103,7 +103,7 @@ struct ShellButton {
     phase: GamePhase,
     index: usize,
 }
-type ShellSnapshot = (GamePhase, bool, UVec2, Option<bool>);
+type ShellSnapshot = (GamePhase, bool, UVec2, Option<bool>, bool);
 
 pub fn run() -> Result<AppExit, String> {
     let mut root = PathBuf::from(".");
@@ -249,6 +249,7 @@ pub fn run() -> Result<AppExit, String> {
 fn install_lifecycle(app: &mut App) {
     app.init_state::<GamePhase>()
         .init_resource::<EntryUi>()
+        .init_resource::<Observation>()
         .add_message::<WindowFocused>()
         .add_message::<KeyboardInput>()
         .add_message::<GamepadConnectionEvent>()
@@ -448,6 +449,8 @@ fn entry_input(
     phase: Res<State<GamePhase>>,
     mut next: ResMut<NextState<GamePhase>>,
     mut ui: ResMut<EntryUi>,
+    mut observation: ResMut<Observation>,
+    player: Option<Res<PlayerState>>,
     mut exit: MessageWriter<AppExit>,
 ) {
     let repeated: Vec<_> = keyboard_events
@@ -546,6 +549,28 @@ fn entry_input(
     }) {
         ui.gamepad = true;
     }
+    if *phase.get() == GamePhase::World && player.is_some() {
+        // Pause and device recovery remain available while inspecting a place
+        if key_pressed(KeyCode::Tab) || pressed(GamepadButton::Start) {
+            (*next).set_if_neq(GamePhase::Paused);
+            return;
+        }
+        let held = keys.any_pressed([KeyCode::KeyF, KeyCode::Escape])
+            || gamepads
+                .iter()
+                .any(|pad| pad.pressed(GamepadButton::South) || pad.pressed(GamepadButton::East));
+        if observation.handle_input(
+            key_pressed(KeyCode::KeyF) || pressed(GamepadButton::South),
+            key_pressed(KeyCode::Escape) || pressed(GamepadButton::East),
+            held,
+        ) {
+            return;
+        }
+        // South belongs to place interaction even when no target is in reach
+        if pressed(GamepadButton::South) {
+            return;
+        }
+    }
     if key_pressed(KeyCode::Escape)
         || key_pressed(KeyCode::Tab)
         || pressed(GamepadButton::East)
@@ -609,6 +634,7 @@ fn draw_shell(
     mut scale: ResMut<UiScale>,
     mut prior: Local<Option<ShellSnapshot>>,
     walk: Res<WalkPreview>,
+    observation: Res<Observation>,
 ) {
     let Ok((camera_id, camera)) = cameras.single() else {
         return;
@@ -617,7 +643,13 @@ fn draw_shell(
         return;
     };
     let page = *phase.get();
-    let key = (page, ui.gamepad, size, ui.gamepad_recovery);
+    let key = (
+        page,
+        ui.gamepad,
+        size,
+        ui.gamepad_recovery,
+        observation.open,
+    );
     if *prior == Some(key) {
         return;
     }
@@ -627,6 +659,9 @@ fn draw_shell(
     }
     scale.0 = (size.y as f32 / 1080.0).min(size.x as f32 / 1440.0);
     let world = page == GamePhase::World;
+    if world && observation.open {
+        return;
+    }
     let text = |value: &str, size: f32, ink: Color| {
         (
             Text::new(value),
@@ -1115,6 +1150,126 @@ mod tests {
             .iter_mut(app.world_mut())
         {
             pad.digital_mut().clear();
+        }
+    }
+
+    #[test]
+    fn observation_owns_open_close_frames_and_allows_protective_pause() {
+        for fixed_ticks in [0, 1, 3] {
+            let (mut app, camera, pad) = walk_app();
+            enter_walk_fixture(&mut app);
+            app.world_mut().resource_mut::<Observation>().target = Some("04".into());
+            let foot = app.world().resource::<PlayerState>().foot;
+            let view = *app.world().get::<Transform>(camera).unwrap();
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(fixed_ticks));
+            for key in [KeyCode::KeyF, KeyCode::KeyD, KeyCode::KeyE] {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .press(key);
+            }
+            frame(&mut app);
+            assert!(app.world().resource::<Observation>().open);
+            assert_eq!(app.world().resource::<PlayerState>().foot, foot);
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .release(KeyCode::KeyF);
+            frame(&mut app);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::Escape);
+            frame(&mut app);
+            assert!(!app.world().resource::<Observation>().open);
+            for _ in 0..4 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+            assert_eq!(app.world().resource::<PlayerState>().foot, foot);
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .release(KeyCode::Escape);
+            for _ in 0..4 {
+                frame(&mut app);
+            }
+            assert_eq!(app.world().resource::<PlayerState>().foot, foot);
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .reset_all();
+            frame(&mut app);
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(1));
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyD);
+            frame(&mut app);
+            assert!(app.world().resource::<PlayerState>().foot.x > foot.x);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .reset_all();
+            app.world_mut().resource_mut::<Observation>().target = None;
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .press(GamepadButton::South);
+            frame(&mut app);
+            assert!(!app.world().resource::<Observation>().open);
+            assert!(matches!(
+                *app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .release(GamepadButton::South);
+            frame(&mut app);
+            app.world_mut().resource_mut::<Observation>().target = Some("04".into());
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .press(GamepadButton::South);
+            frame(&mut app);
+            assert!(app.world().resource::<Observation>().open);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .release(GamepadButton::South);
+            frame(&mut app);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .press(GamepadButton::Start);
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert!(app.world().resource::<Observation>().open);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .release(GamepadButton::Start);
+            frame(&mut app);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::Enter);
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+            assert!(app.world().resource::<Observation>().blocks_world());
         }
     }
 

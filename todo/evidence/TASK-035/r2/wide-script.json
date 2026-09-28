@@ -1,0 +1,288 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 540,
+  "seed": 0,
+  "timeout_seconds": 400,
+  "keyframes": [
+    59,
+    145,
+    179,
+    189,
+    199,
+    229,
+    239,
+    269,
+    289,
+    299,
+    319,
+    339,
+    359,
+    379,
+    419,
+    459,
+    539
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 51,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 146,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 150,
+      "end": 180,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 190,
+      "end": 210,
+      "keys": [
+        "F",
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 230,
+      "end": 231,
+      "keys": [
+        "Escape",
+        "W"
+      ]
+    },
+    {
+      "start": 231,
+      "end": 260,
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "start": 280,
+      "end": 281,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 290,
+      "end": 291,
+      "gamepad_connected": false
+    },
+    {
+      "start": 310,
+      "end": 311,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 330,
+      "end": 331,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 340,
+      "end": 341,
+      "gamepad_connected": true
+    },
+    {
+      "start": 350,
+      "end": 351,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 370,
+      "end": 371,
+      "gamepad": [
+        "Back"
+      ]
+    },
+    {
+      "start": 400,
+      "end": 401,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 403,
+      "end": 404,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 406,
+      "end": 407,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 430,
+      "end": 431,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 410,
+      "game_page": "title"
+    },
+    {
+      "frame": 434,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "spawn is too far away to inspect the door",
+      "from": 59,
+      "to": 59,
+      "observation_open": false,
+      "observation_visible": false
+    },
+    {
+      "name": "walk to a visible public doorway",
+      "from": 189,
+      "to": 189,
+      "observation_target": "04",
+      "max_player_resets": 0
+    },
+    {
+      "name": "opening owns held movement and camera inputs",
+      "from": 190,
+      "to": 229,
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04",
+      "max_player_distance": 0.001,
+      "max_rotation": 0.001,
+      "max_player_resets": 0
+    },
+    {
+      "name": "closing does not pause or leak held movement",
+      "from": 230,
+      "to": 269,
+      "observation_open": false,
+      "observation_visible": false,
+      "game_page": "world",
+      "max_player_distance": 0.001,
+      "max_player_resets": 0
+    },
+    {
+      "name": "gamepad opens the same public information",
+      "from": 289,
+      "to": 289,
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04"
+    },
+    {
+      "name": "disconnect hides observation behind protective pause",
+      "from": 299,
+      "to": 299,
+      "observation_open": true,
+      "observation_visible": false,
+      "game_page": "paused"
+    },
+    {
+      "name": "keyboard continuation restores the existing observation",
+      "from": 319,
+      "to": 319,
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04",
+      "game_page": "world"
+    },
+    {
+      "name": "keyboard closes observation",
+      "from": 339,
+      "to": 339,
+      "observation_open": false,
+      "game_page": "world"
+    },
+    {
+      "name": "reconnected controller can inspect again",
+      "from": 359,
+      "to": 359,
+      "observation_open": true,
+      "observation_visible": true
+    },
+    {
+      "name": "controller back closes only the observation",
+      "from": 379,
+      "to": 379,
+      "observation_open": false,
+      "game_page": "world"
+    },
+    {
+      "name": "returning to title closes observation and clears world",
+      "from": 419,
+      "to": 419,
+      "observation_open": false,
+      "observation_visible": false,
+      "game_page": "title",
+      "max_world_entities": 0
+    },
+    {
+      "name": "reentry does not keep an open observation",
+      "from": 459,
+      "to": 539,
+      "observation_open": false,
+      "observation_visible": false,
+      "game_page": "world",
+      "place_id": "04",
+      "max_player_resets": 0
+    },
+    {
+      "name": "opening frame does not leak movement or camera",
+      "from": 189,
+      "to": 229,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.001
+    },
+    {
+      "name": "closing frame does not leak held movement",
+      "from": 229,
+      "to": 269,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.001
+    }
+  ]
+}

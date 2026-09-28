@@ -56,7 +56,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 ## 人物尺度实验
 
-`--walk-preview` 复用正式入口和地图，在 `/nodes/home` 放置1.7m高、半径0.3m的中性胶囊代理。WASD／左摇杆移动，右键拖动／Q E／右摇杆转动镜头，R／Select返回起点，Esc／Tab／Start／东键暂停。当前为室外技术实验，不确定正式主控、角色造型或最终手感
+`--walk-preview` 复用正式入口和地图，在 `/nodes/home` 放置1.7m高、半径0.3m的中性胶囊代理。WASD／左摇杆移动，右键拖动／Q E／右摇杆转动镜头，F／南键A查看近处公共地点信息，R／Select返回起点；未打开观察面板时Esc／Tab／Start／东键B暂停。当前为室外技术实验，不确定正式主控、角色造型或最终手感
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked -- --project-root . --walk-preview
@@ -77,11 +77,23 @@ python3 tools/capture.py --script game/capture/walk-ascent-full.json --output ou
 
 完整路线脚本的 `route: {"id":"hill-short","start":60}` 从当前项目根读取地图路线，按真实脚点与相机朝向发摇杆及鼠标输入。节点必须有相连道路和真实可行走网格；到达检查水平距离、支撑高度、着地和零恢复。两秒无有效进展明确失败，终点释放输入；路线不得与同一时段的手写输入争用。`state.json` 的 `route_all_nodes_reached` 检查内保存 `route`每个实际到达节点与帧号，路线全部到达才通过。`round_trip: true` 在峰顶后按源节点逆序原路返回，峰顶只计一次；`walk-round-trip.json` 用同一会话验证259次节点到达和回店后的稳定状态
 
-人物入口左上显示地图公共入口附近的真实地名，左下显示当前键鼠／手柄操作提示。位置或高度超过判定范围时回退Null Site；进入暂停隐藏，继续后恢复。
+人物入口左上显示地图公共入口附近的真实地名，左下显示当前键鼠／手柄操作提示。位置或高度超过判定范围时回退Null Site；进入暂停隐藏，继续后恢复
 
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-places.json --output output/capture/walk-places
 ```
+
+靠近月台杂货公共入口或摘星台，转动镜头使目标在视野内，出现F／A提示后可打开现有用途、开放说明与到达方式。右摇杆只是转动镜头，查看信息需另按F／A；远处的「附近」标签不表示已经可以查看，公共信息也不是调查线索
+
+打开观察时人物与镜头停留原位；Esc／B关闭面板而不打开暂停，Tab／Start仍可暂停。断连或失焦保护暂时隐藏观察，明确继续后恢复原内容；回到标题清空。近距、高差、朝向、实际墙体遮挡和输入隔离的完整契约见[公共地点观察](../docs/dev/engineering/player-preview.md#公共地点观察)
+
+```fish
+cargo test --manifest-path game/Cargo.toml --locked --lib observation -- --nocapture
+cargo build --manifest-path game/Cargo.toml --locked --bin n-side
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation.json --output output/capture/walk-observation
+```
+
+该18秒脚本实际行走到小店入口，检查开关面板、持键隔离、模拟手柄断连恢复与标题重入；`observation_target`、`observation_selected`、`observation_open`、`observation_visible`记录真实目标、选定地点及面板状态，结合人物／镜头断言与实际看图复验，结果归本轮任务记录
 
 ## 世界运行时
 
@@ -168,7 +180,7 @@ test $status -ne 0
 python3 tools/capture.py --script game/capture/ascent-lookout.json --output output/capture/ascent-lookout --binary game/target/debug/map_viewer
 ```
 
-每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 Viewer 的 `district` / `ui-signal` 以及正式入口的 `game-entry` / `walk-preview`；正式入口 `view` 为 `shop`，Viewer 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/Shift/M/Escape/Tab/Enter/Up/Down/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角、整个区间最大转角或结束时控制器启用状态
+每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 Viewer 的 `district` / `ui-signal` 以及正式入口的 `game-entry` / `walk-preview`；正式入口 `view` 为 `shop`，Viewer 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/F/R/Shift/M/Escape/Tab/Enter/Up/Down/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角、整个区间最大转角或结束时控制器启用状态
 
 资源依赖和场景实例就绪后预热 30 个渲染帧，再按 `1 / fps` 推进模拟；每张截图收到异步回调并成功落盘后才推进下一帧，等待期间模拟时间为零。固定输入与时间步改善同环境复现，不能保证跨平台、跨 GPU 的像素一致性；当前场景没有随机行为，`seed` 只作为证据记录，尚无随机系统消费它
 

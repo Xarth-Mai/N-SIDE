@@ -1,4 +1,5 @@
 //! Nearby public places from the same district source as the rendered world
+mod observation;
 use crate::{
     app::{EntryUi, GamePhase},
     player::PlayerState,
@@ -6,6 +7,7 @@ use crate::{
     world::map::map_to_world,
 };
 use bevy::{prelude::*, text::FontWeight};
+pub use observation::Observation;
 use serde::Deserialize;
 use std::{collections::BTreeMap, path::Path};
 
@@ -17,6 +19,7 @@ pub struct Place {
     pub id: String,
     pub name: String,
     pub position: Vec3,
+    pub public_info: Option<String>,
 }
 
 #[derive(Resource, Debug)]
@@ -40,6 +43,12 @@ impl PlaceCatalog {
             id: String,
             name: String,
             position: [f64; 3],
+            #[serde(default, rename = "use")]
+            usage: String,
+            #[serde(default)]
+            time: String,
+            #[serde(default)]
+            entry: String,
             #[serde(default)]
             arrivals: BTreeMap<String, Arrival>,
         }
@@ -75,10 +84,28 @@ impl PlaceCatalog {
             if !position.is_finite() {
                 return Err(format!("/places/{}: invalid location position", place.id));
             }
+            let public_info = if matches!(place.id.as_str(), "04" | "23") {
+                if [&place.usage, &place.time, &place.entry]
+                    .iter()
+                    .any(|value| value.trim().is_empty())
+                {
+                    return Err(format!(
+                        "/places/{}: observation requires use, time and entry",
+                        place.id
+                    ));
+                }
+                Some(format!(
+                    "用途\n{}\n\n开放说明\n{}\n\n到达方式\n{}",
+                    place.usage, place.time, place.entry
+                ))
+            } else {
+                None
+            };
             places.push(Place {
                 id: place.id,
                 name: place.name,
                 position,
+                public_info,
             });
         }
         Ok(Self(places))
@@ -106,6 +133,7 @@ pub struct PlaceHud {
     pub name: String,
     pub gamepad: bool,
     pub visible: bool,
+    pub observation_hint: Option<String>,
 }
 
 impl Default for PlaceHud {
@@ -115,6 +143,7 @@ impl Default for PlaceHud {
             name: "Null Site".into(),
             gamepad: false,
             visible: false,
+            observation_hint: None,
         }
     }
 }
@@ -128,6 +157,7 @@ enum HudText {
 }
 
 pub fn install(app: &mut App) {
+    observation::install(app);
     app.init_resource::<PlaceHud>()
         .add_systems(Update, (update_location, draw_hud).chain());
 }
@@ -139,6 +169,7 @@ fn update_location(
     catalog: Option<Res<PlaceCatalog>>,
     input: Res<EntryUi>,
     mut hud: ResMut<PlaceHud>,
+    observation: Res<Observation>,
 ) {
     let place = player
         .as_ref()
@@ -148,19 +179,45 @@ fn update_location(
         current_id: place.map(|place| place.id.clone()),
         name: place.map_or_else(|| "Null Site".into(), |place| place.name.clone()),
         gamepad: input.gamepad,
+        observation_hint: if observation.open {
+            None
+        } else {
+            observation.target.as_ref().and_then(|id| {
+                catalog
+                    .as_ref()?
+                    .0
+                    .iter()
+                    .find(|place| &place.id == id)
+                    .map(|place| place.name.clone())
+            })
+        },
         visible: player.is_some()
             && catalog.is_some()
             && *phase.get() == GamePhase::World
-            && matches!(*next, NextState::Unchanged),
+            && matches!(*next, NextState::Unchanged)
+            && !observation.open,
     });
 }
 
 fn label(kind: &HudText, hud: &PlaceHud) -> String {
+    if matches!(kind, HudText::Inputs)
+        && let Some(name) = &hud.observation_hint
+    {
+        return format!(
+            "{} 查看：{name}\n{}",
+            if hud.gamepad { "A" } else { "F" },
+            if hud.gamepad {
+                "左摇杆 移动 · 右摇杆 镜头"
+            } else {
+                "W A S D 移动 · 右键拖动 / Q E 镜头"
+            }
+        );
+    }
     match kind {
         HudText::Location if hud.current_id.is_some() => format!("{} · 附近", hud.name),
         HudText::Location => hud.name.clone(),
-        HudText::Inputs if hud.gamepad => "左摇杆 移动   右摇杆 观察\nStart / B 暂停".into(),
-        HudText::Inputs => "W A S D 移动   右键拖动 / Q E 观察\nEsc / Tab 暂停".into(),
+        HudText::Inputs if hud.gamepad => "左摇杆 移动   右摇杆 镜头\nStart / B 暂停".into(),
+        HudText::Inputs => "W A S D 移动   右键拖动 / Q E 镜头\nEsc / Tab 暂停".into(),
     }
 }
 
