@@ -147,11 +147,17 @@ fn walkable_normal(collision: &CollisionWorld, hit: &CollisionHit<'_>) -> Option
     }
     // A rounded foot can contact the shared edge on the riser's triangle
     // Confirm the actual tread just inside that edge instead of accepting a wall as support
-    let inside = -Vec3::new(hit.normal.x, 0.0, hit.normal.z).normalize_or_zero() * 0.01;
-    collision
-        .support(hit.point + inside + Vec3::Y * 0.05, 0.1)
-        .filter(|support| support.surface_normal.y >= WALKABLE_Y)
-        .map(|support| support.surface_normal)
+    // An almost-vertical rounded contact has an unstable horizontal direction
+    // At a shared mesh edge, confirm both adjacent sides with the same short tread probe
+    [hit.normal, hit.surface_normal, -hit.surface_normal]
+        .into_iter()
+        .find_map(|normal| {
+            let inside = -Vec3::new(normal.x, 0.0, normal.z).normalize_or_zero() * 0.01;
+            collision
+                .support(hit.point + inside + Vec3::Y * 0.05, 0.1)
+                .filter(|support| support.surface_normal.y >= WALKABLE_Y)
+                .map(|support| support.surface_normal)
+        })
 }
 
 fn safe_fraction(delta: Vec3, fraction: f32) -> f32 {
@@ -756,7 +762,52 @@ mod tests {
     }
 
     #[test]
-    fn walks_complete_short_ascent() {
+    fn settles_after_descending_near_the_summit() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let prepared = crate::world::scene::PreparedScene::load(root).unwrap();
+        let collision = CollisionWorld::from_parts(&prepared.parts).unwrap();
+        // Real 448m/386m landings expose near-vertical contacts on opposite riser faces
+        for (node, start) in [
+            (
+                "hill_short_summit_wait",
+                Vec3::new(258.2358, 448.49008, -933.72894),
+            ),
+            (
+                "stair_hill_short_rest2_departure_hill_short_rest3_arrival_08_in",
+                Vec3::new(255.9629, 386.86414, -857.21936),
+            ),
+        ] {
+            let target = map_to_world(prepared.map.nodes[node]);
+            for dt in [1.0 / 64.0, 1.0 / 30.0] {
+                for vertical_speed in [-0.6, -36.000004] {
+                    let mut player = PlayerState::at(start);
+                    player.grounded = false;
+                    player.vertical_speed = vertical_speed;
+                    for _ in 0..60 {
+                        let horizontal =
+                            Vec3::new(target.x - player.foot.x, 0.0, target.z - player.foot.z);
+                        player.step(
+                            &collision,
+                            (horizontal / (SPEED * dt)).clamp_length_max(1.0),
+                            dt,
+                        );
+                        assert!(
+                            player.grounded,
+                            "node={node} dt={dt} initial_v={vertical_speed} foot={:?}",
+                            player.foot
+                        );
+                        assert_eq!(player.vertical_speed, 0.0);
+                        assert_eq!(player.resets, 0);
+                        assert!(player.foot.xz().distance(target.xz()) < 0.001);
+                        assert!((player.foot.y - start.y).abs() < 0.002);
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn walks_complete_short_ascent_and_return() {
         let started = std::time::Instant::now();
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let source: serde_json::Value = serde_json::from_str(
@@ -770,7 +821,7 @@ mod tests {
             .iter()
             .find(|route| route["id"] == "hill-short")
             .unwrap();
-        let nodes: Vec<&str> = route["nodes"]
+        let mut nodes: Vec<&str> = route["nodes"]
             .as_array()
             .unwrap()
             .iter()
@@ -778,6 +829,7 @@ mod tests {
             .collect();
         assert_eq!(nodes.first(), Some(&"home"));
         assert_eq!(nodes.last(), Some(&"summit"));
+        nodes.extend(nodes.clone().into_iter().rev().skip(1));
 
         let prepared = crate::world::scene::PreparedScene::load(root).unwrap();
         let collision = CollisionWorld::from_parts(&prepared.parts).unwrap();

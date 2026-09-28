@@ -1,0 +1,27 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 22.33s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+[clearance/probe] gap=0.02 hit=Some(CollisionHit { fraction: 0.0, normal: Vec3(0.0064829392, 0.9908487, 0.13482133), point: Vec3(89.999985, 28.030813, -255.04272), surface_normal: Vec3(-1.0, 0.0, 0.0), source: "/roads/135 (home -> shop_entry)/structure", triangle: 43139 }) triangle=Some(Triangle { a: Vec3(90.0, 28.433182, -258.0), b: Vec3(90.0, 28.0, -255.0), c: Vec3(90.0, 28.025, -255.0) })
+[clearance/probe] gap=0.021 hit=Some(CollisionHit { fraction: 0.0, normal: Vec3(0.0027797685, 0.9908666, 0.13481733), point: Vec3(90.0, 28.030836, -255.0429), surface_normal: Vec3(-1.0, 0.0, 0.0), source: "/roads/135 (home -> shop_entry)/structure", triangle: 43139 }) triangle=Some(Triangle { a: Vec3(90.0, 28.433182, -258.0), b: Vec3(90.0, 28.0, -255.0), c: Vec3(90.0, 28.025, -255.0) })
+[clearance/probe] gap=0.025 hit=Some(CollisionHit { fraction: 0.28733978, normal: Vec3(0.1058516, 0.9943819, -0.0), point: Vec3(88.50185, 28.034416, -255.0), surface_normal: Vec3(0.99999994, -0.0, 0.0), source: "/architectures/0 (P3-A1)/fixtures/5 (门前截水沟)", triangle: 104475 }) triangle=Some(Triangle { a: Vec3(88.5, 28.0, -255.0), b: Vec3(88.5, 28.035, -256.0), c: Vec3(88.5, 28.035, -255.0) })
+[clearance/probe] gap=0.03 hit=Some(CollisionHit { fraction: 0.33599854, normal: Vec3(1.0, -1.1263417e-6, 4.5053666e-6), point: Vec3(88.00001, 29.455093, -255.00002), surface_normal: Vec3(1.0, 0.0, 0.0), source: "/buildings/1 (V-04)", triangle: 15997 }) triangle=Some(Triangle { a: Vec3(88.0, 28.0, -247.0), b: Vec3(88.0, 28.0, -267.0), c: Vec3(88.0, 35.6, -267.0) })
+[clearance/probe] gap=0.04 hit=Some(CollisionHit { fraction: 0.33600312, normal: Vec3(1.0, -1.1345733e-6, -4.538293e-6), point: Vec3(88.0, 29.46659, -255.00186), surface_normal: Vec3(1.0, 0.0, 0.0), source: "/buildings/1 (V-04)", triangle: 15997 }) triangle=Some(Triangle { a: Vec3(88.0, 28.0, -247.0), b: Vec3(88.0, 28.0, -267.0), c: Vec3(88.0, 35.6, -267.0) })
+[clearance/probe] gap=0.06 hit=Some(CollisionHit { fraction: 0.33600157, normal: Vec3(1.0, -5.758743e-7, -4.6069945e-6), point: Vec3(88.0, 29.485073, -255.00056), surface_normal: Vec3(1.0, 0.0, 0.0), source: "/buildings/1 (V-04)", triangle: 15997 }) triangle=Some(Triangle { a: Vec3(88.0, 28.0, -247.0), b: Vec3(88.0, 28.0, -267.0), c: Vec3(88.0, 35.6, -267.0) })
+[clearance/probe] gap=0.1 hit=Some(CollisionHit { fraction: 0.33600006, normal: Vec3(1.0, -0.0, -0.0), point: Vec3(88.00001, 29.525002, -255.00058), surface_normal: Vec3(1.0, 0.0, 0.0), source: "/buildings/1 (V-04)", triangle: 15997 }) triangle=Some(Triangle { a: Vec3(88.0, 28.0, -247.0), b: Vec3(88.0, 28.0, -267.0), c: Vec3(88.0, 35.6, -267.0) })
+[clearance/probe] gap=0.2 hit=Some(CollisionHit { fraction: 0.33600616, normal: Vec3(1.0, 1.9342901e-6, -5.1581073e-6), point: Vec3(87.99999, 29.626785, -255.00182), surface_normal: Vec3(1.0, 0.0, 0.0), source: "/buildings/1 (V-04)", triangle: 15997 }) triangle=Some(Triangle { a: Vec3(88.0, 28.0, -247.0), b: Vec3(88.0, 28.0, -267.0), c: Vec3(88.0, 35.6, -267.0) })
+
+thread 'world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall' (593) panicked at src/world/collision.rs:357:9:
+CollisionHit { fraction: 0.0, normal: Vec3(0.0064829392, 0.9908487, 0.13482133), point: Vec3(89.999985, 28.030813, -255.04272), surface_normal: Vec3(-1.0, 0.0, 0.0), source: "/roads/135 (home -> shop_entry)/structure", triangle: 43139 }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall ... FAILED
+
+failures:
+
+failures:
+    world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 61 filtered out; finished in 8.10s
+
+error: test failed, to rerun pass `--lib`

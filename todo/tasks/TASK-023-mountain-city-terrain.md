@@ -31,4 +31,6 @@ specs:
 
 第6轮[近坡修复、连续运行与实际看图](../evidence/TASK-023/r6/review.md)保留源hash、修前失败、修后检查和机器／画面／试玩边界
 
+后续TASK-033完整往返暴露下山局部大褐色地形折面，挡墙蓝洞已独立修复，地形折面与坡阶视觉过渡留待本任务精修，见[往返画面与最终挡墙对照](../evidence/TASK-033/r1/review.md)，不改变本任务阶段与验收状态
+
 第5轮基线 `fcf92ee799d94775fcd26812f930e9217ed9db3f`，本轮证据见[r5源数据、运行与剩余问题](../evidence/TASK-023/r5/review.md)。第4轮基线 `8ae11b3164d64e1c026980d9fcc2f3c1a267f3cc`，历史证据见 [r4交付与自查](../evidence/TASK-023/r4/review.md)，数值和源保护见 [geometry.json](../evidence/TASK-023/r4/geometry.json)，大体积运行产物归 `output/terrain/2026-09-27/r4/final-*`。旧 [r3城市参照](../evidence/TASK-023/r3/review.md)、[r2单峰方案](../evidence/TASK-023/r2/review.md)与 [r1双峰方案](../evidence/TASK-023/r1/review.md)保留历史范围；本轮没有人物通行、电梯交互或登山实玩验收，没有放行G1

@@ -1,0 +1,172 @@
+{
+  "scope": "Evidence retention, not a new runtime execution",
+  "image_export": {
+    "format": "WebP",
+    "quality": 80,
+    "resize": false
+  },
+  "runs": [
+    {
+      "name": "round-trip",
+      "raw_directory": "output/ascent/2026-09-28/r2/round-trip",
+      "source_sha256": {
+        "run.json": "06dc2c1e224b197ad94523c3ea8aeb3aabf914a5cc9ba71525b0682c0be6cb56",
+        "script.json": "d11e94599f3a9fe524e60a91c1d48561564f9c0ca71db84ec83235f22513fb7f",
+        "state.json": "f5d19435e6ca54e5e7739b0f68e3eac654fe4c1f5896a93e4704a5f7fe73d8b9",
+        "runtime.log": "28a03f7cab131cc73176afad6674e52cf01b269b4ddbb276d7ed4c46c242f74d"
+      },
+      "archived_images": [
+        {
+          "source": "output/ascent/2026-09-28/r2/round-trip/frames/frame12602.png",
+          "source_sha256": "da4ef4e2069f67ee25b6eb15fa2600d3d44406c2da3fcaf5fdd7b90f07a6093e",
+          "archive": "todo/evidence/TASK-033/r1/frame12602.webp",
+          "archive_sha256": "e252c1a6f0e8927cf424cecde07d4f5f9a499fc77b1acbc804d1ff62645c0498"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/round-trip/frames/frame15000.png",
+          "source_sha256": "183d25381dd54d7975381991f3ea24d6f1e4dee397cccc909583f2e53f76583f",
+          "archive": "todo/evidence/TASK-033/r1/frame15000.webp",
+          "archive_sha256": "0d3a1277a802ed733348c8f828566600be26afe3958f98cc00add8bfd122e934"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/round-trip/frames/frame24034.png",
+          "source_sha256": "82609905281220354592f7927e0a1d07b41c515e05c0549b143058ff7fb17011",
+          "archive": "todo/evidence/TASK-033/r1/frame24034.webp",
+          "archive_sha256": "016dbed1c1ec15e37ba71628b8c2b2bfdbcf9ba25148fb16e854f114256b5a52"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/round-trip/frames/frame24035.png",
+          "source_sha256": "be9ae719b094445fdf058838c0a350bad87ad741627553d2583627d43ac5a52a",
+          "archive": "todo/evidence/TASK-033/r1/frame24035.webp",
+          "archive_sha256": "dfc227a502929776b08664d3930ee623304e74af1c47ff2c3907363950837df9"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/round-trip/frames/frame24036.png",
+          "source_sha256": "3de549d9169a3b60d9043ffc63b3e73e053df2663a4a3bd1470adf897038f9ac",
+          "archive": "todo/evidence/TASK-033/r1/frame24036.webp",
+          "archive_sha256": "670ada35a4690305ebbb76c2809773f76f1f7ebe61c6739c51ac261e33ee348d"
+        }
+      ]
+    },
+    {
+      "name": "wall-before",
+      "raw_directory": "output/ascent/2026-09-28/r2/wall-before",
+      "source_sha256": {
+        "run.json": "d006da5be909d3f43a3222a9190e10cc8d1753144f6740938a448a65e33d38a9",
+        "script.json": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+        "state.json": "82828d3325b7155700fec972c5bd74f0fa81a985eeae61ccdb3683209012c893",
+        "runtime.log": "317377560337ace875fc154efccd46ed5b4432a3bd56f5e6640e3785e366e534"
+      },
+      "archived_images": [
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-before/frames/frame00019.png",
+          "source_sha256": "703865ae5024fc0f9f7d0c1cd32209be086bde738d59d9693b5d93505b91b60c",
+          "archive": "todo/evidence/TASK-033/r1/wall-before/frame00019.webp",
+          "archive_sha256": "b37eb545a90e7e426ae39a0dadcf9745ebb26058cecd6212de9a72206f621797"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-before/frames/frame00020.png",
+          "source_sha256": "703865ae5024fc0f9f7d0c1cd32209be086bde738d59d9693b5d93505b91b60c",
+          "archive": "todo/evidence/TASK-033/r1/wall-before/frame00020.webp",
+          "archive_sha256": "b37eb545a90e7e426ae39a0dadcf9745ebb26058cecd6212de9a72206f621797"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-before/frames/frame00021.png",
+          "source_sha256": "703865ae5024fc0f9f7d0c1cd32209be086bde738d59d9693b5d93505b91b60c",
+          "archive": "todo/evidence/TASK-033/r1/wall-before/frame00021.webp",
+          "archive_sha256": "b37eb545a90e7e426ae39a0dadcf9745ebb26058cecd6212de9a72206f621797"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-before/frames/frame00044.png",
+          "source_sha256": "b328391ede3992687f61f7d3443ca3d4053d385f9fbf5feec3b36cb60ccbef09",
+          "archive": "todo/evidence/TASK-033/r1/wall-before/frame00044.webp",
+          "archive_sha256": "af460977c1eaa39101176cd36fab033dae7719e48c4aa98c6da5f10162565840"
+        }
+      ]
+    },
+    {
+      "name": "wall-after",
+      "raw_directory": "output/ascent/2026-09-28/r2/wall-after",
+      "source_sha256": {
+        "run.json": "8615c1f68e2a19c263ddb9ace32483203da804a0ed7f77969cf3e16c76b62dc2",
+        "script.json": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+        "state.json": "12e3f4df8cba9589d28c4ede4f87ffd178347df683d72047fa1a5b2c6ce11ef1",
+        "runtime.log": "5b278e83e511f78797ee44103eccbb10ed7e3a3378496624a0d2d310084945d9"
+      },
+      "archived_images": [
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-after/frames/frame00019.png",
+          "source_sha256": "9cf75ecedb8194cac83ea1ffdef960e8d5af3431047e2e0414d6110d6ca91957",
+          "archive": "todo/evidence/TASK-033/r1/wall-after/frame00019.webp",
+          "archive_sha256": "e166594bbfd0705bbcbd0b5873c685f6c53d262dcc23c12330aac4e3966ff34a"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-after/frames/frame00020.png",
+          "source_sha256": "9cf75ecedb8194cac83ea1ffdef960e8d5af3431047e2e0414d6110d6ca91957",
+          "archive": "todo/evidence/TASK-033/r1/wall-after/frame00020.webp",
+          "archive_sha256": "e166594bbfd0705bbcbd0b5873c685f6c53d262dcc23c12330aac4e3966ff34a"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-after/frames/frame00021.png",
+          "source_sha256": "9cf75ecedb8194cac83ea1ffdef960e8d5af3431047e2e0414d6110d6ca91957",
+          "archive": "todo/evidence/TASK-033/r1/wall-after/frame00021.webp",
+          "archive_sha256": "e166594bbfd0705bbcbd0b5873c685f6c53d262dcc23c12330aac4e3966ff34a"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-after/frames/frame00044.png",
+          "source_sha256": "471e6f55e5351139d1efdc88afc0b69507b18648f52bb88c671de140050f7a51",
+          "archive": "todo/evidence/TASK-033/r1/wall-after/frame00044.webp",
+          "archive_sha256": "8741b77e1bf69dc724bdcfa277171f639f034d790d3a3de78c33735ba10a2b5e"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-after/frames/frame00074.png",
+          "source_sha256": "76a5ccfc5957a378158071c5cc81eaa97799257669a3680d124c029af8f950f6",
+          "archive": "todo/evidence/TASK-033/r1/wall-after/frame00074.webp",
+          "archive_sha256": "3ddeee5a9078970bb45e6c152c552e8d3d89dc9c418a3ba03caf0d5095ab14d5"
+        }
+      ]
+    },
+    {
+      "name": "wall-final",
+      "raw_directory": "output/ascent/2026-09-28/r2/wall-final",
+      "source_sha256": {
+        "run.json": "6096f7237e0d278b6b6e4339db94754be00c602199874d10f34e01ccb5ffd561",
+        "script.json": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+        "state.json": "3d2e3db19553da94d2425b0202bccb44aa42ac4679e00323b9608b41f96921b3",
+        "runtime.log": "73670084dc4c5b98a717ed6dfd22ab5f5099f21a58b0dcd62a2c724d97ca6c59"
+      },
+      "archived_images": [
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-final/frames/frame00019.png",
+          "source_sha256": "a7e9751d1ace176f8d5ef57b6b03496dbe503a2ce9e0aa72dbfcb447cac80cfb",
+          "archive": "todo/evidence/TASK-033/r1/wall-final-00019.webp",
+          "archive_sha256": "c60356b0b5610e306e9e9d20f8f82f4a99fcf52e58160b8179975488e0793120"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-final/frames/frame00020.png",
+          "source_sha256": "a7e9751d1ace176f8d5ef57b6b03496dbe503a2ce9e0aa72dbfcb447cac80cfb",
+          "archive": "todo/evidence/TASK-033/r1/wall-final-00020.webp",
+          "archive_sha256": "c60356b0b5610e306e9e9d20f8f82f4a99fcf52e58160b8179975488e0793120"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-final/frames/frame00021.png",
+          "source_sha256": "a7e9751d1ace176f8d5ef57b6b03496dbe503a2ce9e0aa72dbfcb447cac80cfb",
+          "archive": "todo/evidence/TASK-033/r1/wall-final-00021.webp",
+          "archive_sha256": "c60356b0b5610e306e9e9d20f8f82f4a99fcf52e58160b8179975488e0793120"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-final/frames/frame00044.png",
+          "source_sha256": "de337179f5bcc6e2076dc89ba25843b6f5d5508f195ec0148ed2796ddae0a7c8",
+          "archive": "todo/evidence/TASK-033/r1/wall-final-00044.webp",
+          "archive_sha256": "4c86456fd762407aae962392682bfca797cebd379ec9267c5fe30940f4f85e5d"
+        },
+        {
+          "source": "output/ascent/2026-09-28/r2/wall-final/frames/frame00074.png",
+          "source_sha256": "b99779a181ed64852318eab5755c2df4ef6105d4ae78d0cd86d22bfcbf70848a",
+          "archive": "todo/evidence/TASK-033/r1/wall-final-00074.webp",
+          "archive_sha256": "585809dedab8b42701a989cbdf0ada57cc1b704538bf11a5b9728756bdd400c2"
+        }
+      ]
+    }
+  ]
+}

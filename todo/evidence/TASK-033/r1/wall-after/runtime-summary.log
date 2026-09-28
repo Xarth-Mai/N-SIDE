@@ -1,0 +1,2 @@
+2026-09-28T06:58:14.078062Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-28T06:58:31.946293Z  INFO n_side::capture: [capture/finished] status=PASS saved=90 report=/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r2/wall-after/state.json

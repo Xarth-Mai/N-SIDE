@@ -328,6 +328,20 @@ impl MeshData {
             [a[0], a[1], high[0]],
         ];
         let uv = [[0.0, low[0]], [len, low[1]], [len, high[1]], [0.0, high[0]]];
+        let gaps = [high[0] - low[0], high[1] - low[1]];
+        if gaps[0] * gaps[1] < 0.0 {
+            // Cut and fill meet here; an unsplit quad would overlap itself
+            let t = gaps[0] / (gaps[0] - gaps[1]);
+            let cross = [
+                a[0] + (b[0] - a[0]) * t,
+                a[1] + (b[1] - a[1]) * t,
+                low[0] + (low[1] - low[0]) * t,
+            ];
+            let cross_uv = [len * t, cross[2]];
+            self.triangle([p[0], cross, p[3]], [uv[0], cross_uv, uv[3]]);
+            self.triangle([cross, p[1], p[2]], [cross_uv, uv[1], uv[2]]);
+            return;
+        }
         self.triangle([p[0], p[1], p[2]], [uv[0], uv[1], uv[2]]);
         self.triangle([p[0], p[2], p[3]], [uv[0], uv[2], uv[3]]);
     }
@@ -390,7 +404,8 @@ impl MeshData {
             if steps && index % 2 == 1 {
                 continue;
             }
-            let mut edges = vec![(LineString::from(vec![edge[1], edge[0]]), None)];
+            // CCW ribbon edges expose fill walls outward and cut walls toward the road
+            let mut edges = vec![(LineString::from(vec![edge[0], edge[1]]), None)];
             for (other, levels) in neighbors {
                 let mut split = Vec::new();
                 for (edge, existing) in edges {
@@ -1468,6 +1483,59 @@ mod tests {
             (length(&partial) - 9.66).abs() < 1e-6,
             "only the at-grade part of the crossing opens: {partial:?}"
         );
+    }
+
+    #[test]
+    fn walls_split_where_ground_crosses_road_height() {
+        for ground in [[2., 0.], [0., 2.]] {
+            let mut walls = MeshData::default();
+            walls.wall([0., 0.], [10., 0.], ground, [1.; 2]);
+            let mut area = 0.;
+            for triangle in walls.positions.as_chunks::<3>().0 {
+                assert!(
+                    triangle.iter().all(|p| p[1] <= 1.) || triangle.iter().all(|p| p[1] >= 1.),
+                    "a triangle must not bridge cut and fill across their shared zero-height point: {triangle:?}"
+                );
+                let [a, b, c] = triangle.map(Vec3::from);
+                area += (b - a).cross(c - a).length() * 0.5;
+            }
+            assert!(
+                (area - 5.).abs() < 1e-5,
+                "overlapping retaining faces: {area}"
+            );
+        }
+    }
+
+    #[test]
+    fn road_retaining_faces_show_the_exposed_side_for_cuts_and_fills() {
+        let road = ribbon([0., 0., 10.], [10., 0., 10.], [0., 2.], [0., 2.]);
+        for ground_height in [5., 15.] {
+            let mut triangulation = DelaunayTriangulation::new();
+            for [x, y] in [[-20., -20.], [20., -20.], [20., 20.], [-20., 20.]] {
+                triangulation
+                    .insert(GroundPoint([x, y, ground_height]))
+                    .unwrap();
+            }
+            for steps in [false, true] {
+                let mut walls = MeshData::default();
+                walls.road_walls(&road, &Ground(triangulation.clone()), [10.; 2], steps, &[]);
+                assert!(!walls.positions.is_empty());
+                for triangle in walls.positions.as_chunks::<3>().0 {
+                    let [a, b, c] = triangle.map(Vec3::from);
+                    let normal = (b - a).cross(c - a);
+                    let towards_road = Vec3::new(5., 10., 0.) - (a + b + c) / 3.;
+                    let visible_side = normal.dot(towards_road);
+                    assert!(
+                        if ground_height > 10. {
+                            visible_side > 0.
+                        } else {
+                            visible_side < 0.
+                        },
+                        "ground={ground_height} steps={steps}: cuts face the road, fills face outwards; {triangle:?} normal={normal:?}"
+                    );
+                }
+            }
+        }
     }
 
     #[test]

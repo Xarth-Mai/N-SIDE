@@ -1,0 +1,263 @@
+{
+  "status": "PASS",
+  "script": {
+    "scene": "district",
+    "view": "eye-descent-cut",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 90,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      0,
+      29,
+      44,
+      59,
+      74,
+      89
+    ],
+    "events": [
+      {
+        "start": 0,
+        "end": 1,
+        "keys": [
+          "M"
+        ]
+      },
+      {
+        "start": 30,
+        "end": 45,
+        "look": [
+          5.0,
+          0.0
+        ]
+      },
+      {
+        "start": 60,
+        "end": 75,
+        "look": [
+          -5.0,
+          0.0
+        ]
+      }
+    ],
+    "assertions": [
+      {
+        "name": "same measured descent eye throughout",
+        "from": 0,
+        "to": 89,
+        "max_distance": 0.0001
+      },
+      {
+        "name": "look right across the cut",
+        "from": 29,
+        "to": 44,
+        "min_rotation": 0.07
+      },
+      {
+        "name": "look back across the cut",
+        "from": 59,
+        "to": 74,
+        "min_rotation": 0.07
+      }
+    ]
+  },
+  "script_sha256": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+  "git_commit": "c8c934b7c607ca621faa92a0e9f7285a5c3e70a5",
+  "git_worktree": "MM docs/dev/engineering/player-preview.md\nMM game/README.md\nA  game/capture/walk-round-trip.json\n M game/src/app.rs\n M game/src/bin/map_viewer.rs\nMM game/src/capture.rs\nM  game/src/capture/route.rs\n M game/src/lib.rs\nM  game/src/player.rs\n M game/src/world/geometry.rs\nM  todo/tasks/TASK-033-descent-runtime.md\n M todo/tasks/TASK-034-place-hud.md\n?? game/capture/descent-cut.json\n?? game/capture/walk-places.json\n?? game/capture/walk-settings.json\n?? game/src/places.rs\n?? todo/evidence/TASK-033/\n?? todo/evidence/TASK-034/",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "PASS",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "binary_sha256": "5d5889fa5ae54e47b3661fc36cac04c652635baaecb5a32a15507a804358f4e9",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/output/map_viewer-descent-cut-before",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r2/wall-before/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r2/wall-before"
+  ],
+  "runtime_exit_code": 0,
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 90,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 90
+    },
+    {
+      "checked_frames": 90,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 0,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": 9.999999747378752e-05,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "same measured descent eye throughout",
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 89,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "same measured descent eye throughout",
+      "passed": true,
+      "peak_rotation_radians": 0.07499969005584717,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 29,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": 0.07000000029802322,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "look right across the cut",
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 44,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "look right across the cut",
+      "passed": true,
+      "peak_rotation_radians": 0.07499969005584717,
+      "rotation_radians": 0.07499969005584717
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "enabled": null,
+        "from": 59,
+        "game_page": null,
+        "gamepad_connected": null,
+        "max_distance": null,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_resets": null,
+        "max_rotation": null,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_rotation": 0.07000000029802322,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "look back across the cut",
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "same_world_entities": null,
+        "to": 74,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": null
+      },
+      "name": "look back across the cut",
+      "passed": true,
+      "peak_rotation_radians": 0.07499969005584717,
+      "rotation_radians": 0.07499969005584717
+    }
+  ],
+  "ffmpeg_version": "ffmpeg version n9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "video_command": [
+    "/usr/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-framerate",
+    "30",
+    "-i",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r2/wall-before/frames/frame%05d.png",
+    "-frames:v",
+    "90",
+    "-c:v",
+    "libx264",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "/home/lzzz/MyProjects/N-SIDE/output/ascent/2026-09-28/r2/wall-before/video.mp4"
+  ],
+  "elapsed_wall_seconds": 16.350478206994012
+}

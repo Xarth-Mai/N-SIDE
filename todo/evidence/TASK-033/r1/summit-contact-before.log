@@ -1,0 +1,15 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 20.72s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+[summit/contact] fall=0.02 hit=Some(CollisionHit { fraction: 0.036621094, normal: Vec3(0.00011445163, 1.0, -0.00011445163), point: Vec3(258.23273, 448.46945, -933.7331), surface_normal: Vec3(0.0, 1.0, 0.0), source: "/roads/853 (hill_short_summit_wait -> hill_bend)", triangle: 102760 }) walkable=Some(Vec3(0.0, 1.0, 0.0))
+[summit/contact] fall=0.04 hit=Some(CollisionHit { fraction: 0.018310547, normal: Vec3(0.00011445163, 1.0, -0.00011445163), point: Vec3(258.23273, 448.46945, -933.7331), surface_normal: Vec3(0.0, 1.0, 0.0), source: "/roads/853 (hill_short_summit_wait -> hill_bend)", triangle: 102760 }) walkable=Some(Vec3(0.0, 1.0, 0.0))
+[summit/contact] fall=0.14 hit=Some(CollisionHit { fraction: 0.005231585, normal: Vec3(0.00011445163, 1.0, -0.00011445163), point: Vec3(258.23273, 448.46945, -933.7331), surface_normal: Vec3(0.0, 1.0, 0.0), source: "/roads/853 (hill_short_summit_wait -> hill_bend)", triangle: 102760 }) walkable=Some(Vec3(0.0, 1.0, 0.0))
+[summit/contact] fall=0.28 hit=Some(CollisionHit { fraction: 0.0026157924, normal: Vec3(0.00011445163, 1.0, -0.00011445163), point: Vec3(258.23273, 448.46945, -933.7331), surface_normal: Vec3(0.0, 1.0, 0.0), source: "/roads/853 (hill_short_summit_wait -> hill_bend)", triangle: 102760 }) walkable=Some(Vec3(0.0, 1.0, 0.0))
+[summit/contact] fall=1.2 hit=Some(CollisionHit { fraction: 0.00061035156, normal: Vec3(0.00011445163, 1.0, -0.00011445163), point: Vec3(258.23273, 448.46945, -933.7331), surface_normal: Vec3(0.0, 1.0, 0.0), source: "/roads/853 (hill_short_summit_wait -> hill_bend)", triangle: 102760 }) walkable=Some(Vec3(0.0, 1.0, 0.0))
+[summit/contact] fall=1.22 hit=Some(CollisionHit { fraction: 0.0006003458, normal: Vec3(0.00011445163, 1.0, -0.00011445163), point: Vec3(258.23273, 448.46945, -933.7331), surface_normal: Vec3(0.0, 1.0, 0.0), source: "/roads/853 (hill_short_summit_wait -> hill_bend)", triangle: 102760 }) walkable=Some(Vec3(0.0, 1.0, 0.0))
+[summit/after] foot=Vec3(258.2358, 448.49008, -933.72894) grounded=true vertical_speed=0
+test player::tests::settles_after_descending_near_the_summit ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 58 filtered out; finished in 8.65s

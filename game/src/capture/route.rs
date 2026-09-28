@@ -10,6 +10,8 @@ use std::{collections::BTreeMap, path::Path};
 pub struct RouteScript {
     pub id: String,
     pub start: u32,
+    #[serde(default)]
+    pub round_trip: bool,
 }
 
 #[derive(Deserialize)]
@@ -49,14 +51,14 @@ pub struct RouteDriver {
 }
 
 impl RouteDriver {
-    pub fn load(root: &Path, id: &str) -> Result<Self, String> {
+    pub fn load(root: &Path, id: &str, round_trip: bool) -> Result<Self, String> {
         let path = root.join("source-assets/district-map/district.json");
         let text = std::fs::read_to_string(&path)
             .map_err(|error| format!("[capture/route] {}: {error}", path.display()))?;
-        Self::parse(&text, id)
+        Self::parse(&text, id, round_trip)
     }
 
-    fn parse(text: &str, id: &str) -> Result<Self, String> {
+    fn parse(text: &str, id: &str, round_trip: bool) -> Result<Self, String> {
         let source: Source = serde_json::from_str(text)
             .map_err(|error| format!("[capture/route] district.json: {error}"))?;
         let matches: Vec<_> = source
@@ -82,7 +84,7 @@ impl RouteDriver {
                 ));
             }
         }
-        let nodes = route
+        let mut nodes: Vec<_> = route
             .nodes
             .iter()
             .map(|node| {
@@ -97,6 +99,10 @@ impl RouteDriver {
                 Ok((node.clone(), target))
             })
             .collect::<Result<_, _>>()?;
+        if round_trip {
+            let returning: Vec<_> = nodes.iter().rev().skip(1).cloned().collect();
+            nodes.extend(returning);
+        }
         Ok(Self {
             nodes,
             visits: vec![],
@@ -229,20 +235,20 @@ mod tests {
     #[test]
     fn route_rejects_bad_sources_and_stalls_then_records_real_arrival() {
         assert!(
-            RouteDriver::parse(SOURCE, "missing")
+            RouteDriver::parse(SOURCE, "missing", false)
                 .err()
                 .unwrap()
                 .contains("expected one route")
         );
         let broken = SOURCE.replace(r#""roads":[{"nodes":["a","b"]}]"#, r#""roads":[]"#);
-        assert!(RouteDriver::parse(&broken, "test").is_err());
+        assert!(RouteDriver::parse(&broken, "test", false).is_err());
         let collision = CollisionWorld::from_parts(&[GeometryPart {
             source: "/terrain".into(),
             material: "test".into(),
             mesh: Mesh::from(Cuboid::new(8.0, 1.0, 8.0)).translated_by(Vec3::Y * -0.5),
         }])
         .unwrap();
-        let mut route = RouteDriver::parse(SOURCE, "test").unwrap();
+        let mut route = RouteDriver::parse(SOURCE, "test", false).unwrap();
         let mut player = PlayerSample {
             foot: [0.0, 0.021, 0.0],
             grounded: true,
@@ -278,5 +284,39 @@ mod tests {
         assert_eq!(movement, [0.0; 2]);
         assert!(route.complete());
         assert_eq!(route.visits[1].frame, 121);
+        let mut returning = RouteDriver::parse(SOURCE, "test", true).unwrap();
+        assert_eq!(
+            returning
+                .nodes
+                .iter()
+                .map(|node| node.0.as_str())
+                .collect::<Vec<_>>(),
+            ["a", "b", "a"]
+        );
+        player.foot[2] = 0.0;
+        returning
+            .input(0, 30, &player, &camera, &collision)
+            .unwrap();
+        player.foot[2] = -2.0;
+        returning
+            .input(30, 30, &player, &camera, &collision)
+            .unwrap();
+        assert!(
+            !returning.complete(),
+            "outbound arrival must not complete a round trip"
+        );
+        assert_eq!(returning.visits.len(), 2);
+        assert!(
+            returning
+                .input(90, 30, &player, &camera, &collision)
+                .unwrap_err()
+                .contains("no 1cm progress")
+        );
+        player.foot[2] = 0.0;
+        returning
+            .input(91, 30, &player, &camera, &collision)
+            .unwrap();
+        assert!(returning.complete());
+        assert_eq!(returning.visits.len(), 3);
     }
 }

@@ -827,6 +827,16 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         eye[2] += 1.7;
         views.push((format!("eye-ascent-{i}"), view(eye, shop)));
     }
+    // TASK-033 round-trip frame 17000: measured camera at the 290m descent cut
+    // Keep the exact world-space pose for winding regression; revisit it after terrain edits
+    views.push((
+        "eye-descent-cut".into(),
+        Transform {
+            translation: Vec3::new(119.85376, 292.6301, -750.14526),
+            rotation: Quat::from_xyzw(0.042013165, 0.91828364, 0.10141955, -0.38040003),
+            ..default()
+        },
+    ));
     for architecture in &map.architectures {
         for (index, fixture) in architecture.fixtures.iter().enumerate() {
             let name = format!("fixture-{}-{:02}", architecture.id, index + 1);

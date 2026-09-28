@@ -70,12 +70,12 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 短登高检查分为整段CPU移动探针和真实入口录制：前者从小店沿源路线逐点行走到摘星台，遇到停滞、异常恢复或超时返回失败；后者包含小店出发片段和完整上山脚本。二者均不写入目标高度或传送角色，人工体验另行记录
 
 ```fish
-cargo test --manifest-path game/Cargo.toml --locked --lib walks_complete_short_ascent -- --nocapture
+cargo test --manifest-path game/Cargo.toml --locked --lib walks_complete_short_ascent_and_return -- --nocapture
 python3 tools/capture.py --script game/capture/walk-ascent-entry.json --output output/capture/walk-ascent-entry --binary game/target/debug/n-side
 python3 tools/capture.py --script game/capture/walk-ascent-full.json --output output/capture/walk-ascent-full --binary game/target/debug/n-side
 ```
 
-完整路线脚本的 `route: {"id":"hill-short","start":60}` 从当前项目根读取地图路线，按真实脚点与相机朝向发摇杆及鼠标输入。节点必须有相连道路和真实可行走网格；到达检查水平距离、支撑高度、着地和零恢复。两秒无有效进展明确失败，终点释放输入；路线不得与同一时段的手写输入争用。`state.json` 的 `route_all_nodes_reached` 检查内保存 `route`每个实际到达节点与帧号，路线全部到达才通过
+完整路线脚本的 `route: {"id":"hill-short","start":60}` 从当前项目根读取地图路线，按真实脚点与相机朝向发摇杆及鼠标输入。节点必须有相连道路和真实可行走网格；到达检查水平距离、支撑高度、着地和零恢复。两秒无有效进展明确失败，终点释放输入；路线不得与同一时段的手写输入争用。`state.json` 的 `route_all_nodes_reached` 检查内保存 `route`每个实际到达节点与帧号，路线全部到达才通过。`round_trip: true` 在峰顶后按源节点逆序原路返回，峰顶只计一次；`walk-round-trip.json` 用同一会话验证259次节点到达和回店后的稳定状态
 
 ## 世界运行时
 

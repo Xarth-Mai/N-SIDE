@@ -473,7 +473,7 @@ impl Recording {
         let route = script
             .route
             .as_ref()
-            .map(|route| RouteDriver::load(project_root, &route.id))
+            .map(|route| RouteDriver::load(project_root, &route.id, route.round_trip))
             .transpose()?;
         if output.join("frames").exists() || output.join("state.json").exists() {
             return Err(
@@ -1375,6 +1375,10 @@ mod tests {
         let mut full: Script =
             serde_json::from_str(include_str!("../capture/walk-ascent-full.json")).unwrap();
         assert!(full.validate().is_ok());
+        let round_trip: Script =
+            serde_json::from_str(include_str!("../capture/walk-round-trip.json")).unwrap();
+        assert!(round_trip.validate().is_ok());
+        assert!(round_trip.route.unwrap().round_trip);
         full.route.as_mut().unwrap().start = 30;
         assert!(full.validate().is_err());
         full.route.as_mut().unwrap().start = 60;

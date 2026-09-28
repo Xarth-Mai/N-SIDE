@@ -1,0 +1,82 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 640,
+  "height": 360,
+  "fps": 30,
+  "frames": 27000,
+  "seed": 0,
+  "timeout_seconds": 3600,
+  "keyframes": [
+    29,
+    59,
+    1800,
+    3600,
+    5400,
+    7200,
+    9000,
+    10800,
+    12600,
+    14400,
+    16200,
+    18000,
+    19800,
+    21600,
+    23400,
+    25200,
+    26999
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "route": {
+    "id": "hill-short",
+    "start": 60,
+    "round_trip": true
+  },
+  "assertions": [
+    {
+      "name": "Start at the actual shop spawn",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "world_ready": true,
+      "min_player_height": 28,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "Ascent and descent preserve one world and need no automatic recovery",
+      "from": 59,
+      "to": 26999,
+      "same_world_entities": true,
+      "max_player_resets": 0,
+      "min_player_height": 27.9,
+      "max_player_height": 450.2
+    },
+    {
+      "name": "Stand back at the shop after reaching every outward and returning node",
+      "from": 26400,
+      "to": 26999,
+      "min_player_height": 28,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 0,
+      "max_player_distance": 0.001,
+      "game_page": "world"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 1m 06s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+
+thread 'world::geometry::tests::road_retaining_faces_show_the_exposed_side_for_cuts_and_fills' (619) panicked at src/world/geometry.rs:1492:21:
+ground=5 steps=false: cuts face the road, fills face outwards; [[10.0, 5.0, 2.0], [0.0, 5.0, 2.0], [0.0, 10.025, 2.0]] normal=Vec3(0.0, 0.0, -50.249996)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::geometry::tests::road_retaining_faces_show_the_exposed_side_for_cuts_and_fills ... FAILED
+
+failures:
+
+failures:
+    world::geometry::tests::road_retaining_faces_show_the_exposed_side_for_cuts_and_fills
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 61 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

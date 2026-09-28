@@ -1,0 +1,19 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 24.62s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+
+thread 'world::geometry::tests::walls_split_where_ground_crosses_road_height' (602) panicked at src/world/geometry.rs:1481:17:
+a triangle must not bridge cut and fill across their shared zero-height point: [[0.0, 2.0, -0.0], [10.0, 0.0, -0.0], [10.0, 1.0, -0.0]]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::geometry::tests::walls_split_where_ground_crosses_road_height ... FAILED
+
+failures:
+
+failures:
+    world::geometry::tests::walls_split_where_ground_crosses_road_height
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 62 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`
