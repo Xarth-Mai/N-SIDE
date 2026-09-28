@@ -1,0 +1,15 @@
+$ bun run tasks:sync
+PASS: 26 task cards; sync
+$ bun run tasks:check
+PASS: 26 task cards; check
+$ sha256sum todo/README.md
+81856244c17d59865b9070f0d87ba4501fb126ef28e993a09b7838409076509f  todo/README.md
+$ bun run tasks:sync
+PASS: 26 task cards; sync
+$ sha256sum todo/README.md
+81856244c17d59865b9070f0d87ba4501fb126ef28e993a09b7838409076509f  todo/README.md
+$ bun run check:docs
+PASS: 321 Markdown files, 92 IDs
+PASS: 31 Skills; 25 recorded imports
+$ git diff --check
+exit 0

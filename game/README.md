@@ -43,11 +43,16 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-pause.json --output output/capture/walk-pause
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-focus.json --output output/capture/walk-focus
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-gamepad.json --output output/capture/walk-gamepad
 ```
 
 该20秒脚本在真实街区走动后，通过键盘和模拟手柄打开菜单、在暂停期间持续发送移动／观察／复位输入、恢复、返回标题并重入。`max_rotation` 检查整个断言区间的相机转角峰值，能检测转动后又回到原朝向的泄漏；检查采用0.002弧度的浮点容差，另与画面观察分别记录
 
 `walk-focus.json` 使用模拟窗口焦点验证加载期间失焦、回焦持键、显式继续与再次进入。`events.focused` 仅用于正式游戏场景，省略时保持上一次焦点值；仅含该字段的脚本创建没有Winit宿主的逻辑主窗口，仍向原离屏纹理渲染。输入按原生路径先更新 `Window.focused` 再发送 `WindowFocused`，不写游戏阶段或人物位置；这是焦点事件的渲染回归，桌面合成器切窗和物理设备另验
+
+当前手柄输入为聚合控制，任一手柄断开都会暂停并切回键鼠提示；暂停说明连接中断或已经重连，玩家释放旧输入后可用键鼠或手柄明确继续。加载期间断连仍完成资产准备，进入街区时暂停；返回标题、失败或重新加载清理本次连接恢复提示。初次接入设备不会主动暂停行走，连接变化当帧不接受菜单动作
+
+`walk-gamepad.json` 录制18秒的断连、重连持键、键鼠接管和重入。`events.gamepad_connected` 仅用于正式游戏场景，省略时保持上一连接状态；脚本在PreUpdate发送 `GamepadConnectionEvent`，由Bevy InputPlugin实际移除／恢复Gamepad组件，再由正式入口决定是否暂停。`gamepad_connected`状态断言核对结束帧实际组件存在情况，运动及镜头冻结仍检查整个区间；模拟连接不证明USB、蓝牙或驱动行为
 
 ## 人物尺度实验
 

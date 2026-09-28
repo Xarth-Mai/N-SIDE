@@ -1,0 +1,27 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 21.84s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 3 tests
+
+thread 'app::tests::gamepad_disconnect_during_loading_waits_for_explicit_resume_without_menu_navigation' (337) panicked at src/app.rs:1486:13:
+assertion failed: matches!(app.world().resource::<NextState<GamePhase>>(), NextState::Unchanged)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test app::tests::gamepad_disconnect_during_loading_waits_for_explicit_resume_without_menu_navigation ... FAILED
+[pad/disconnect] ticks=0 before=Vec3(101.400085, 27.512169, -255.0) after=Vec3(101.400085, 27.512169, -255.0) next=Unchanged
+
+thread 'app::tests::gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover' (338) panicked at src/app.rs:1402:13:
+assertion failed: matches!(app.world().resource::<NextState<GamePhase>>(),
+    NextState::PendingIfNeq(GamePhase::Paused))
+test app::tests::gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover ... FAILED
+test app::tests::gamepad_disconnect_reconnect_same_frame_rejects_held_confirm_and_start ... ok
+
+failures:
+
+failures:
+    app::tests::gamepad_disconnect_during_loading_waits_for_explicit_resume_without_menu_navigation
+    app::tests::gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover
+
+test result: FAILED. 1 passed; 2 failed; 0 ignored; 0 measured; 54 filtered out; finished in 0.10s
+
+error: test failed, to rerun pass `--lib`

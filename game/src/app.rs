@@ -13,7 +13,9 @@ use bevy::{
     app::{RunFixedMainLoopSystems, ScheduleRunnerPlugin},
     audio::AudioPlugin,
     camera::RenderTarget,
-    input::{keyboard::KeyboardInput, mouse::AccumulatedMouseMotion},
+    input::{
+        gamepad::GamepadConnectionEvent, keyboard::KeyboardInput, mouse::AccumulatedMouseMotion,
+    },
     input_focus::{FocusCause, InputFocus},
     prelude::*,
     render::{
@@ -66,6 +68,8 @@ struct EntryUi {
     focus: usize,
     gamepad: bool,
     wait_for_release: bool,
+    pause_after_loading: bool,
+    gamepad_recovery: Option<bool>,
 }
 #[derive(Clone, Copy)]
 enum Action {
@@ -97,6 +101,7 @@ struct ShellButton {
     phase: GamePhase,
     index: usize,
 }
+type ShellSnapshot = (GamePhase, bool, UVec2, Option<bool>);
 
 pub fn run() -> Result<AppExit, String> {
     let mut root = PathBuf::from(".");
@@ -243,12 +248,16 @@ fn install_lifecycle(app: &mut App) {
         .init_resource::<EntryUi>()
         .add_message::<WindowFocused>()
         .add_message::<KeyboardInput>()
+        .add_message::<GamepadConnectionEvent>()
         .add_plugins(WorldScenePlugin)
         .add_systems(OnEnter(GamePhase::Title), enter_title)
         .add_systems(OnEnter(GamePhase::Loading), begin_loading)
         .add_systems(OnEnter(GamePhase::Failed), enter_failed)
         .add_systems(OnEnter(GamePhase::World), |mut ui: ResMut<EntryUi>| {
-            ui.focus = 0
+            ui.focus = 0;
+            if !ui.pause_after_loading {
+                ui.gamepad_recovery = None;
+            }
         })
         .add_systems(OnEnter(GamePhase::Paused), |mut ui: ResMut<EntryUi>| {
             ui.focus = 0
@@ -274,7 +283,12 @@ fn enter_title(world: &mut World) {
     world.remove_resource::<GameLoadError>();
     player::clear(world);
     clear_scene(world);
-    world.resource_mut::<EntryUi>().focus = 0;
+    {
+        let mut ui = world.resource_mut::<EntryUi>();
+        ui.focus = 0;
+        ui.pause_after_loading = false;
+        ui.gamepad_recovery = None;
+    }
     info!("[game/state] title");
 }
 
@@ -282,7 +296,12 @@ fn begin_loading(world: &mut World) {
     player::clear(world);
     clear_scene(world);
     world.remove_resource::<GameLoadError>();
-    world.resource_mut::<EntryUi>().focus = 0;
+    {
+        let mut ui = world.resource_mut::<EntryUi>();
+        ui.focus = 0;
+        ui.pause_after_loading = false;
+        ui.gamepad_recovery = None;
+    }
     let root = world.resource::<ProjectRoot>().0.clone();
     let walk = world
         .get_resource::<WalkPreview>()
@@ -310,7 +329,12 @@ fn enter_failed(world: &mut World) {
     world.remove_resource::<Preparation>();
     player::clear(world);
     clear_scene(world);
-    world.resource_mut::<EntryUi>().focus = 0;
+    {
+        let mut ui = world.resource_mut::<EntryUi>();
+        ui.focus = 0;
+        ui.pause_after_loading = false;
+        ui.gamepad_recovery = None;
+    }
     info!("[game/state] failed");
 }
 
@@ -401,6 +425,7 @@ fn entry_input(
     motion: Res<AccumulatedMouseMotion>,
     mut keyboard_events: MessageReader<KeyboardInput>,
     mut focus_events: MessageReader<WindowFocused>,
+    mut connections: MessageReader<GamepadConnectionEvent>,
     gamepads: Query<&Gamepad>,
     buttons: Query<(&Interaction, &ShellButton), Changed<Interaction>>,
     windows: Query<(Entity, &Window), With<PrimaryWindow>>,
@@ -427,6 +452,23 @@ fn entry_input(
             lost_focus |= !event.focused;
         }
     }
+    let mut connection_changed = false;
+    let mut disconnected = false;
+    for event in connections.read() {
+        connection_changed = true;
+        disconnected |= event.disconnected();
+        if event.disconnected() {
+            ui.gamepad = false;
+        }
+        if matches!(
+            *phase.get(),
+            GamePhase::Loading | GamePhase::World | GamePhase::Paused
+        ) && (event.disconnected() || ui.gamepad_recovery.is_some())
+        {
+            ui.gamepad_recovery = Some(event.connected());
+        }
+    }
+    ui.pause_after_loading |= disconnected && *phase.get() == GamePhase::Loading;
     let unfocused = windows.iter().any(|(_, window)| !window.focused);
     if keys.any_just_pressed([KeyCode::Enter, KeyCode::Escape, KeyCode::Tab]) {
         debug!(
@@ -439,16 +481,17 @@ fn entry_input(
             repeated
         );
     }
-    if unfocused || focus_changed {
+    if unfocused || focus_changed || connection_changed {
         ui.wait_for_release = true;
     }
     if *phase.get() == GamePhase::World
-        && (unfocused || lost_focus)
+        && (unfocused || lost_focus || disconnected || ui.pause_after_loading)
         && matches!(*next, NextState::Unchanged)
     {
+        ui.pause_after_loading = false;
         (*next).set_if_neq(GamePhase::Paused);
     }
-    if unfocused || focus_changed || !matches!(*next, NextState::Unchanged) {
+    if unfocused || focus_changed || connection_changed || !matches!(*next, NextState::Unchanged) {
         return;
     }
     if ui.wait_for_release {
@@ -548,7 +591,7 @@ fn draw_shell(
     cameras: Query<(Entity, &Camera), With<Camera3d>>,
     roots: Query<Entity, With<ShellRoot>>,
     mut scale: ResMut<UiScale>,
-    mut prior: Local<Option<(GamePhase, bool, UVec2)>>,
+    mut prior: Local<Option<ShellSnapshot>>,
     walk: Res<WalkPreview>,
 ) {
     let Ok((camera_id, camera)) = cameras.single() else {
@@ -558,7 +601,7 @@ fn draw_shell(
         return;
     };
     let page = *phase.get();
-    let key = (page, ui.gamepad, size);
+    let key = (page, ui.gamepad, size, ui.gamepad_recovery);
     if *prior == Some(key) {
         return;
     }
@@ -635,7 +678,11 @@ fn draw_shell(
                         GamePhase::Title => ("N:SIDE", "街区信号  :  生活仍在继续"),
                         GamePhase::Loading => ("正在进入街区", "正在准备街景与素材"),
                         GamePhase::World => ("", ""),
-                        GamePhase::Paused => ("暂停", "继续当前行程，或返回标题"),
+                        GamePhase::Paused => ("暂停", match ui.gamepad_recovery {
+                            Some(false) => "手柄已断开，可重新连接或使用键鼠继续",
+                            Some(true) => "手柄已重新连接，确认后继续",
+                            None => "继续当前行程，或返回标题",
+                        }),
                         GamePhase::Failed => (
                             "暂时无法进入街区",
                             "街区资料或素材加载失败，请重试或返回标题",
@@ -775,6 +822,10 @@ mod tests {
     use std::time::{Duration, Instant};
 
     fn lifecycle_app() -> App {
+        lifecycle_app_with_input(false)
+    }
+
+    fn lifecycle_app_with_input(native_input: bool) -> App {
         let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("missing-entry-project");
         assert!(!root.exists());
         let mut app = App::new();
@@ -785,6 +836,9 @@ mod tests {
             .init_resource::<ButtonInput<MouseButton>>()
             .init_resource::<AccumulatedMouseMotion>()
             .insert_resource(ProjectRoot(root));
+        if native_input {
+            app.add_plugins(bevy::input::InputPlugin);
+        }
         app.insert_resource(WalkPreview(false));
         install_lifecycle(&mut app);
         app.finish();
@@ -1011,7 +1065,11 @@ mod tests {
     }
 
     fn walk_app() -> (App, Entity, Entity) {
-        let mut app = lifecycle_app();
+        walk_app_with_input(false)
+    }
+
+    fn walk_app_with_input(native_input: bool) -> (App, Entity, Entity) {
+        let mut app = lifecycle_app_with_input(native_input);
         app.init_resource::<Assets<Mesh>>()
             .init_resource::<Assets<StandardMaterial>>()
             .insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(1));
@@ -1304,6 +1362,312 @@ mod tests {
             .press(KeyCode::KeyD);
         frame(&mut app);
         assert!(app.world().resource::<PlayerState>().foot.x > before.x);
+    }
+
+    fn connect_pad(app: &mut App, pad: Entity, connected: bool) {
+        use bevy::input::gamepad::{GamepadConnection, GamepadConnectionEvent};
+        app.world_mut().write_message(GamepadConnectionEvent::new(
+            pad,
+            if connected {
+                GamepadConnection::Connected {
+                    name: "test controller".into(),
+                    vendor_id: None,
+                    product_id: None,
+                }
+            } else {
+                GamepadConnection::Disconnected
+            },
+        ));
+    }
+
+    fn pad_button(app: &mut App, pad: Entity, button: GamepadButton, value: f32) {
+        use bevy::input::gamepad::{RawGamepadButtonChangedEvent, RawGamepadEvent};
+        app.world_mut()
+            .write_message(RawGamepadEvent::Button(RawGamepadButtonChangedEvent::new(
+                pad, button, value,
+            )));
+    }
+
+    fn native_key(app: &mut App, key_code: KeyCode, pressed: bool) {
+        use bevy::input::{ButtonState, keyboard::Key};
+        app.world_mut().write_message(KeyboardInput {
+            key_code,
+            logical_key: Key::Unidentified(bevy::input::keyboard::NativeKey::Unidentified),
+            state: if pressed {
+                ButtonState::Pressed
+            } else {
+                ButtonState::Released
+            },
+            text: None,
+            repeat: false,
+            window: Entity::PLACEHOLDER,
+        });
+    }
+
+    fn connected_walk_app() -> (App, Entity, Entity) {
+        let (mut app, camera, pad) = walk_app_with_input(true);
+        connect_pad(&mut app, pad, true);
+        for _ in 0..3 {
+            frame(&mut app);
+        }
+        assert!(app.world().get::<Gamepad>(pad).is_some());
+        (app, camera, pad)
+    }
+
+    #[test]
+    fn gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover() {
+        use crate::world::geometry::GeometryPart;
+        for fixed_ticks in [0, 1, 3] {
+            let (mut app, camera, pad) = connected_walk_app();
+            let (map, child) = enter_walk_fixture(&mut app);
+            let body = app
+                .world_mut()
+                .query_filtered::<Entity, With<Mesh3d>>()
+                .single(app.world())
+                .unwrap();
+            let spawn = app.world().resource::<PlayerState>().foot;
+            app.insert_resource(
+                CollisionWorld::from_parts(&[GeometryPart {
+                    source: "/terrain".into(),
+                    material: "test".into(),
+                    mesh: Mesh::from(Cuboid::new(2.0, 1.0, 2.0))
+                        .translated_by(Vec3::new(spawn.x, 27.5, spawn.z)),
+                }])
+                .unwrap(),
+            );
+            native_key(&mut app, KeyCode::KeyD, true);
+            for _ in 0..80 {
+                frame(&mut app);
+                if !app.world().resource::<PlayerState>().grounded
+                    && app.world().resource::<PlayerState>().foot.y < spawn.y - 0.5
+                {
+                    break;
+                }
+            }
+            assert!(!app.world().resource::<PlayerState>().grounded);
+            let before = app.world().resource::<PlayerState>().foot;
+            let view = *app.world().get::<Transform>(camera).unwrap();
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(fixed_ticks));
+            native_key(&mut app, KeyCode::KeyE, true);
+            connect_pad(&mut app, pad, false);
+            frame(&mut app);
+            assert!(
+                app.world().get::<Gamepad>(pad).is_none(),
+                "InputPlugin must process disconnect"
+            );
+            eprintln!(
+                "[pad/disconnect] ticks={fixed_ticks} before={before:?} after={:?} next={:?}",
+                app.world().resource::<PlayerState>().foot,
+                app.world().resource::<NextState<GamePhase>>()
+            );
+            assert_eq!(
+                app.world().resource::<PlayerState>().foot,
+                before,
+                "disconnect frame must stop gravity and movement"
+            );
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::PendingIfNeq(GamePhase::Paused)
+            ));
+            native_key(&mut app, KeyCode::KeyR, true);
+            for _ in 0..240 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert_eq!(app.world().resource::<PlayerState>().foot, before);
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            assert_eq!(app.world().resource::<PlayerState>().resets, 0);
+            for entity in [map, child, body, camera, pad] {
+                assert!(
+                    app.world().get_entity(entity).is_ok(),
+                    "session entity must survive"
+                );
+            }
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(1));
+            native_key(&mut app, KeyCode::Enter, true);
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+            assert_eq!(app.world().resource::<PlayerState>().foot.xz(), before.xz());
+            assert_eq!(app.world().resource::<PlayerState>().resets, 0);
+            assert!(
+                app.world()
+                    .get::<Transform>(camera)
+                    .unwrap()
+                    .rotation
+                    .angle_between(view.rotation)
+                    < 0.001
+            );
+            for key in [KeyCode::KeyD, KeyCode::KeyE, KeyCode::KeyR, KeyCode::Enter] {
+                native_key(&mut app, key, false);
+            }
+            frame(&mut app);
+            native_key(&mut app, KeyCode::KeyR, true);
+            frame(&mut app);
+            assert_eq!(app.world().resource::<PlayerState>().resets, 1);
+            let recovered = app.world().resource::<PlayerState>().foot;
+            native_key(&mut app, KeyCode::KeyD, true);
+            frame(&mut app);
+            assert!(app.world().resource::<PlayerState>().foot.x > recovered.x);
+            assert_eq!(
+                app.world_mut()
+                    .query_filtered::<Entity, With<Mesh3d>>()
+                    .single(app.world())
+                    .unwrap(),
+                body
+            );
+        }
+    }
+
+    #[test]
+    fn gamepad_disconnect_reconnect_same_frame_rejects_held_confirm_and_start() {
+        for button in [GamepadButton::South, GamepadButton::Start] {
+            let (mut app, _, pad) = connected_walk_app();
+            let spare = app.world_mut().spawn_empty().id();
+            connect_pad(&mut app, spare, true);
+            frame(&mut app);
+            frame(&mut app);
+            enter_walk_fixture(&mut app);
+            connect_pad(&mut app, pad, false);
+            connect_pad(&mut app, pad, true);
+            frame(&mut app);
+            assert!(
+                matches!(
+                    app.world().resource::<NextState<GamePhase>>(),
+                    NextState::PendingIfNeq(GamePhase::Paused)
+                ),
+                "button-free round trip must pause"
+            );
+            frame(&mut app);
+            connect_pad(&mut app, pad, false);
+            frame(&mut app);
+            assert_eq!(
+                app.world().resource::<EntryUi>().gamepad_recovery,
+                Some(false)
+            );
+            assert!(!app.world().resource::<EntryUi>().gamepad);
+            frame(&mut app);
+            connect_pad(&mut app, pad, true);
+            pad_button(&mut app, pad, button, 1.0);
+            frame(&mut app);
+            assert!(app.world().get::<Gamepad>(pad).unwrap().pressed(button));
+            assert!(app.world().get::<Gamepad>(spare).is_some());
+            assert_eq!(
+                app.world().resource::<EntryUi>().gamepad_recovery,
+                Some(true)
+            );
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            for _ in 0..12 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            pad_button(&mut app, pad, button, 0.0);
+            frame(&mut app);
+            pad_button(&mut app, pad, button, 1.0);
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+        }
+    }
+
+    #[test]
+    fn gamepad_disconnect_during_loading_waits_for_explicit_resume_without_menu_navigation() {
+        let (mut app, _, pad) = connected_walk_app();
+        app.add_systems(
+            OnEnter(GamePhase::Loading),
+            (|mut commands: Commands| {
+                commands.insert_resource(Preparation(
+                    AsyncComputeTaskPool::get().spawn(std::future::pending()),
+                ));
+            })
+            .after(begin_loading),
+        );
+        for phase in [GamePhase::Title, GamePhase::Failed] {
+            app.world_mut()
+                .resource_mut::<NextState<GamePhase>>()
+                .set(phase);
+            connect_pad(&mut app, pad, false);
+            connect_pad(&mut app, pad, true);
+            pad_button(&mut app, pad, GamepadButton::South, 1.0);
+            frame(&mut app);
+            assert_eq!(*app.world().resource::<State<GamePhase>>().get(), phase);
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            pad_button(&mut app, pad, GamepadButton::South, 0.0);
+            frame(&mut app);
+        }
+        app.world_mut()
+            .resource_mut::<NextState<GamePhase>>()
+            .set(GamePhase::Loading);
+        connect_pad(&mut app, pad, false);
+        frame(&mut app);
+        for _ in 0..4 {
+            frame(&mut app);
+        }
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::Loading
+        );
+        assert!(matches!(
+            app.world().resource::<NextState<GamePhase>>(),
+            NextState::Unchanged
+        ));
+        app.world_mut().remove_resource::<Preparation>();
+        enter_walk_fixture(&mut app);
+        assert!(
+            matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::PendingIfNeq(GamePhase::Paused)
+            ),
+            "loading disconnect must survive until World"
+        );
+        frame(&mut app);
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::Paused
+        );
+        native_key(&mut app, KeyCode::Enter, true);
+        frame(&mut app);
+        frame(&mut app);
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::World
+        );
+        native_key(&mut app, KeyCode::Enter, false);
+        app.world_mut()
+            .resource_mut::<NextState<GamePhase>>()
+            .set(GamePhase::Title);
+        frame(&mut app);
+        enter_walk_fixture(&mut app);
+        assert!(
+            matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ),
+            "a prior disconnect must not pause a new session"
+        );
     }
 
     fn focus_window(app: &mut App, window: Entity, focused: bool) {

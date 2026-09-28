@@ -12,7 +12,11 @@ use crate::{
 use bevy::camera_controller::free_camera::FreeCameraState;
 use bevy::{
     app::RunFixedMainLoopSystems,
-    input::mouse::AccumulatedMouseMotion,
+    input::{
+        InputSystems,
+        gamepad::{GamepadConnection, GamepadConnectionEvent},
+        mouse::AccumulatedMouseMotion,
+    },
     prelude::*,
     render::view::screenshot::{Screenshot, ScreenshotCaptured},
     time::{TimeSystems, TimeUpdateStrategy},
@@ -75,6 +79,8 @@ pub struct InputSpan {
     look_axis: [f32; 2],
     #[serde(default)]
     focused: Option<bool>,
+    #[serde(default)]
+    gamepad_connected: Option<bool>,
 }
 
 #[derive(Clone, Deserialize, Serialize)]
@@ -110,6 +116,7 @@ pub struct Assertion {
     player_grounded: Option<bool>,
     max_player_resets: Option<u32>,
     player_blocked: Option<String>,
+    gamepad_connected: Option<bool>,
 }
 
 const GAME_PAGES: [&str; 5] = ["title", "loading", "world", "paused", "failed"];
@@ -178,6 +185,9 @@ impl Script {
         for event in &self.events {
             if event.focused.is_some() && !self.game_scene() {
                 return Err("focused input requires game-entry or walk-preview".into());
+            }
+            if event.gamepad_connected.is_some() && !self.game_scene() {
+                return Err("gamepad_connected input requires game-entry or walk-preview".into());
             }
             if event.start < previous_end
                 || event.start >= event.end
@@ -254,8 +264,10 @@ impl Script {
                     && check.min_world_entities.is_none()
                     && check.max_world_entities.is_none()
                     && check.same_world_entities.is_none()
+                    && check.gamepad_connected.is_none()
                     && !check.has_player_assertion())
                 || (check.has_player_assertion() && self.scene != "walk-preview")
+                || (check.gamepad_connected.is_some() && !self.game_scene())
                 || check
                     .min_rotation
                     .zip(check.max_rotation)
@@ -402,6 +414,7 @@ struct Sample {
     world_entities: usize,
     player: Option<PlayerSample>,
     ui: Option<serde_json::Value>,
+    gamepad_connected: bool,
 }
 
 #[derive(Resource)]
@@ -503,6 +516,9 @@ impl Recording {
                             .as_ref()
                             .is_none_or(|v| b.game_page.as_ref() == Some(v))
                         && assertion.world_ready.is_none_or(|v| b.world_ready == v)
+                        && assertion
+                            .gamepad_connected
+                            .is_none_or(|v| b.gamepad_connected == v)
                         && assertion
                             .min_world_entities
                             .is_none_or(|v| b.world_entities >= v)
@@ -616,8 +632,10 @@ pub fn install(app: &mut App, recording: Recording) {
     }
     app.insert_resource(Time::<Fixed>::from_hz(recording.script.fps as f64))
         .add_message::<WindowFocused>()
+        .add_message::<GamepadConnectionEvent>()
         .insert_resource(recording)
         .add_systems(First, advance_clock.before(TimeSystems))
+        .add_systems(PreUpdate, drive_connection.before(InputSystems))
         .add_systems(
             RunFixedMainLoop,
             drive_input
@@ -655,6 +673,42 @@ fn advance_clock(
     } else {
         Duration::ZERO
     });
+}
+
+fn drive_connection(
+    recording: Res<Recording>,
+    pads: Query<(Entity, Option<&Gamepad>), With<ScriptGamepad>>,
+    mut connections: MessageWriter<GamepadConnectionEvent>,
+) {
+    if !recording.tick {
+        return;
+    }
+    let frame = recording.samples.len() as u32;
+    let requested = recording
+        .script
+        .events
+        .iter()
+        .find(|event| event.start <= frame && frame < event.end)
+        .and_then(|event| event.gamepad_connected);
+    if let Some(connected) = requested {
+        for (entity, pad) in &pads {
+            if connected != pad.is_some() {
+                // InputPlugin owns inserting/removing Gamepad; never set gameplay results here
+                connections.write(GamepadConnectionEvent::new(
+                    entity,
+                    if connected {
+                        GamepadConnection::Connected {
+                            name: "Capture gamepad".into(),
+                            vendor_id: None,
+                            product_id: None,
+                        }
+                    } else {
+                        GamepadConnection::Disconnected
+                    },
+                ));
+            }
+        }
+    }
 }
 
 fn drive_input(
@@ -744,6 +798,7 @@ fn record(
     #[cfg(feature = "viewer")] controller: Query<&FreeCameraState, With<Camera3d>>,
     world_entities: Query<(), With<MapSource>>,
     transforms: Query<(Entity, &Transform)>,
+    pads: Query<&Gamepad, With<ScriptGamepad>>,
     mut exit: MessageWriter<AppExit>,
     ui: Option<Res<SignalUi>>,
     ui_font: Option<Res<UiFont>>,
@@ -843,6 +898,7 @@ fn record(
         game_page: phase.as_ref().map(|phase| phase.get().as_str().to_owned()),
         world_ready,
         world_entities: world_entities.iter().count(),
+        gamepad_connected: !pads.is_empty(),
         player: player.as_ref().map(|player| PlayerSample {
             foot: player.foot.to_array(),
             grounded: player.grounded,
@@ -895,6 +951,91 @@ fn record(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn connection_script_uses_input_plugin_and_preserves_disconnected_state() {
+        let mut script: Script =
+            serde_json::from_str(include_str!("../capture/game-entry.json")).unwrap();
+        assert!(
+            script
+                .events
+                .iter()
+                .all(|event| event.gamepad_connected.is_none())
+        );
+        script.events[0].gamepad_connected = Some(false);
+        assert!(script.validate().is_ok());
+        let mut viewer: Script =
+            serde_json::from_str(include_str!("../capture/viewer-tour.json")).unwrap();
+        viewer.events[0].gamepad_connected = Some(false);
+        assert!(viewer.validate().unwrap_err().contains("gamepad_connected"));
+        assert!(
+            serde_json::from_value::<InputSpan>(serde_json::json!({
+                "start": 0, "end": 1, "gamepad_connected": "false"
+            }))
+            .is_err()
+        );
+        let mut app = App::new();
+        app.add_plugins(bevy::input::InputPlugin)
+            .insert_resource(Recording {
+                script,
+                output: PathBuf::new(),
+                started: Instant::now(),
+                warmup: 0,
+                tick: true,
+                pending: false,
+                saved: 0,
+                transforms_checked: 0,
+                world_ready_seen: false,
+                samples: vec![],
+                failure: None,
+                finished: false,
+            })
+            .add_systems(PreUpdate, drive_connection.before(InputSystems));
+        let pad = app
+            .world_mut()
+            .spawn((ScriptGamepad, Gamepad::default()))
+            .id();
+        let mut cursor = app
+            .world()
+            .resource::<Messages<GamepadConnectionEvent>>()
+            .get_cursor();
+        for (requested, tick, connected, emitted) in [
+            (Some(false), false, true, None),
+            (Some(false), true, false, Some(false)),
+            (None, true, false, None),
+            (Some(false), true, false, None),
+            (Some(true), true, true, Some(true)),
+            (None, true, true, None),
+        ] {
+            let mut recording = app.world_mut().resource_mut::<Recording>();
+            recording.tick = tick;
+            recording.script.events = requested
+                .into_iter()
+                .map(|value| {
+                    serde_json::from_value(serde_json::json!({
+                        "start": 0, "end": 1, "gamepad_connected": value
+                    }))
+                    .unwrap()
+                })
+                .collect();
+            app.update();
+            assert_eq!(app.world().get::<Gamepad>(pad).is_some(), connected);
+            assert!(app.world().get_entity(pad).is_ok());
+            let events: Vec<_> = cursor
+                .read(app.world().resource::<Messages<GamepadConnectionEvent>>())
+                .map(|event| (event.gamepad, event.connected()))
+                .collect();
+            assert_eq!(
+                events,
+                emitted
+                    .into_iter()
+                    .map(|value| (pad, value))
+                    .collect::<Vec<_>>()
+            );
+        }
+        assert!(!app.world().contains_resource::<State<GamePhase>>());
+        assert!(!app.world().contains_resource::<PlayerState>());
+    }
 
     #[test]
     fn focus_input_is_game_only_and_does_not_change_legacy_scripts() {
@@ -1063,6 +1204,7 @@ mod tests {
                 move_axis: [0.5, 1.0],
                 look_axis: [-1.0, 0.25],
                 focused: None,
+                gamepad_connected: None,
             }];
         }
         app.update();
@@ -1160,6 +1302,9 @@ mod tests {
         let focus_script: Script =
             serde_json::from_str(include_str!("../capture/walk-focus.json")).unwrap();
         assert!(focus_script.validate().is_ok());
+        let pad_script: Script =
+            serde_json::from_str(include_str!("../capture/walk-gamepad.json")).unwrap();
+        assert!(pad_script.validate().is_ok());
         let mut invalid = script.clone();
         invalid.events[0].move_axis = [1.01, 0.0];
         assert!(invalid.validate().is_err());
@@ -1229,6 +1374,7 @@ mod tests {
                 world_entities: 1,
                 player: None,
                 ui: None,
+                gamepad_connected: true,
             })
             .collect();
         let mut recording = Recording {
@@ -1254,6 +1400,10 @@ mod tests {
         assert!(check["peak_rotation_radians"].as_f64().unwrap() > 0.49);
         recording.samples[1].rotation = Quat::IDENTITY.to_array();
         assert!(recording.finish(None));
+        recording.script.assertions[0].gamepad_connected = Some(false);
+        assert!(!recording.finish(None));
+        recording.script.assertions[0].gamepad_connected = Some(true);
+        assert!(recording.finish(None));
         fs::remove_dir_all(output).unwrap();
     }
 
@@ -1278,6 +1428,7 @@ mod tests {
             world_ready: true,
             world_entities: 1,
             ui: None,
+            gamepad_connected: true,
             player: Some(PlayerSample {
                 foot: [x, 28.0, 0.0],
                 grounded: true,

@@ -1,0 +1,60 @@
+{
+  "base_commit": "1926c318b8515dff442119613fc98ff4edd8723a",
+  "input_revision": "38b6d2a426d56234962728225c3178eec43da0cf1c763b3da6b26e003a6f6c57",
+  "input_revision_method": "sha256 of sorted compact JSON input_sha256 object",
+  "input_sha256": {
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/Cargo.toml": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+    "game/capture/walk-focus.json": "027b8f4b1f486ecaa5b0b8deee8d46e00f5ed3ee2485a0c4d891722526953d07",
+    "game/capture/walk-gamepad.json": "ed3df2c312aa5567dd41015bd2e611518a63a72d0c1d5a6b92a687ee8f414553",
+    "game/capture/walk-pause.json": "06df008e028ba786c02d264d2cbc4698c038453d6b9db8bcdc4268d3d35539c6",
+    "game/src/app.rs": "774fabde735651d6ba5b7acf5a61bbd0f1c1ff644e9d4532b6a3c2bf7d9c9b17",
+    "game/src/bin/map_viewer.rs": "12df10a13c1e616289cec1522f3a053e76e2af8cb0e771aeeaf7cce7cf1d01ae",
+    "game/src/capture.rs": "20d0922125830e7abb777d4232c79ad5d132a31af12ff643c1f36f2b2b7d0dbf",
+    "game/src/lib.rs": "879c9645eabc11afa5d93decb02f053f6d0a7eace39803e251ac45dabf8bb417",
+    "game/src/main.rs": "57195ef357165cc705984b6cf2999c56a7b7f83d64647136ba603b9b7b2d0ade",
+    "game/src/player.rs": "23a8914ce275c84e2d22edf62cbb2b8b7cae2ef05f5838ab9def80a181393ed7",
+    "game/src/ui.rs": "316dbd9beb0165a5720445bdde2a56161b035fdae297657c9468385554c66223",
+    "game/src/world/assets.rs": "c2c54e4824b3d771401a85bbeecab0dbf6b3aca6294713764ad1399c65b8028c",
+    "game/src/world/collision.rs": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+    "game/src/world/geometry.rs": "a4a2500dd754ab0ba0077bd6ed8c539a81c2dc5acf1c2197feef31c24ff5871b",
+    "game/src/world/map.rs": "e4d40c901f5629399f0ea7b3fe42979c4b90c876c36f85c3d0b891507d3e7b21",
+    "game/src/world/mod.rs": "573e20c25b4db126bfebe339ac4e1578d5096e3b01629328564272048d609fe9",
+    "game/src/world/scene.rs": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+    "game/src/world/visual.rs": "110b5e02ba159c647630dc36f6af235c63e5eef79d9c90c30e5b5a3ffe56f121",
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "source-assets/district-scene/appearance.json": "572b7c11f3d4ba138db9efbaaffca5c9d6ca406488b1a590e217df28464a8949",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/ui-kit/tokens.json": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426",
+    "tools/capture.py": "4225a1755898159bd964377c8aa12e1548b61fe7276d9be3c96846369b3d4b26"
+  },
+  "binary_sha256": "12c4c30c22c569e49b359b340be58564d6d1d68415e533a9d541235ad0b71b2c",
+  "scope": "production entry/player/world systems; GamepadConnectionEvent processed by real Bevy InputPlugin; simulated device input with actual GPU rendering",
+  "evidence_note": "JSON compacted; log trailing whitespace trimmed; viewed PNG archived as WebP quality80; originals in output/gamepad/2026-09-28/r1",
+  "visual_self_audit_frames": {
+    "gamepad": [
+      34,
+      89,
+      149,
+      150,
+      151,
+      239,
+      294,
+      329,
+      409,
+      499
+    ],
+    "focus": [
+      34,
+      234
+    ],
+    "pause": [
+      272,
+      419
+    ]
+  },
+  "physical_gamepad": "NOT RUN",
+  "windows": "NOT RUN",
+  "native_focus": "NOT RUN this round; previous limitation retained in TASK-030",
+  "author_acceptance": "NOT RUN"
+}
