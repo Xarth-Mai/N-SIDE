@@ -1,0 +1,94 @@
+{
+  "scope": "Evidence retention, not a new runtime execution",
+  "image_export": {
+    "format": "WebP",
+    "quality": 80,
+    "resize": false
+  },
+  "runs": [
+    {
+      "name": "before",
+      "raw_directory": "output/terrain/2026-09-28/r7/before",
+      "source_sha256": {
+        "run.json": "d205fa524a0cf761c403ea0eb8a095ddde5f10ab1018d939fd204ed0c62e47ec",
+        "script.json": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+        "state.json": "314006ce894222260fc9b1c449f9978669840c62501c1766325db45fec698cbb",
+        "runtime.log": "bf7d678c54c4f280e338d092a5ff1eb675785d1ed33e89a40f1110911648e529"
+      },
+      "archived_images": [
+        {
+          "source": "output/terrain/2026-09-28/r7/before/frames/frame00019.png",
+          "source_sha256": "a7e9751d1ace176f8d5ef57b6b03496dbe503a2ce9e0aa72dbfcb447cac80cfb",
+          "archive": "todo/evidence/TASK-038/r1/before/frame00019.webp",
+          "archive_sha256": "c60356b0b5610e306e9e9d20f8f82f4a99fcf52e58160b8179975488e0793120"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/before/frames/frame00020.png",
+          "source_sha256": "a7e9751d1ace176f8d5ef57b6b03496dbe503a2ce9e0aa72dbfcb447cac80cfb",
+          "archive": "todo/evidence/TASK-038/r1/before/frame00020.webp",
+          "archive_sha256": "c60356b0b5610e306e9e9d20f8f82f4a99fcf52e58160b8179975488e0793120"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/before/frames/frame00021.png",
+          "source_sha256": "a7e9751d1ace176f8d5ef57b6b03496dbe503a2ce9e0aa72dbfcb447cac80cfb",
+          "archive": "todo/evidence/TASK-038/r1/before/frame00021.webp",
+          "archive_sha256": "c60356b0b5610e306e9e9d20f8f82f4a99fcf52e58160b8179975488e0793120"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/before/frames/frame00044.png",
+          "source_sha256": "de337179f5bcc6e2076dc89ba25843b6f5d5508f195ec0148ed2796ddae0a7c8",
+          "archive": "todo/evidence/TASK-038/r1/before/frame00044.webp",
+          "archive_sha256": "4c86456fd762407aae962392682bfca797cebd379ec9267c5fe30940f4f85e5d"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/before/frames/frame00074.png",
+          "source_sha256": "b99779a181ed64852318eab5755c2df4ef6105d4ae78d0cd86d22bfcbf70848a",
+          "archive": "todo/evidence/TASK-038/r1/before/frame00074.webp",
+          "archive_sha256": "585809dedab8b42701a989cbdf0ada57cc1b704538bf11a5b9728756bdd400c2"
+        }
+      ]
+    },
+    {
+      "name": "final",
+      "raw_directory": "output/terrain/2026-09-28/r7/final",
+      "source_sha256": {
+        "run.json": "cc489e2f2409510771051429f772aa89e441a515a57cc503eaa19f40d4f79339",
+        "script.json": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+        "state.json": "523f6c16ee5c6824373cf216c32292119a79308ac0674a0c4df42f8eba944131",
+        "runtime.log": "5f079286c4a79f921b49bd14fadc5637452833fbed73f2de454ac985a14eec38"
+      },
+      "archived_images": [
+        {
+          "source": "output/terrain/2026-09-28/r7/final/frames/frame00019.png",
+          "source_sha256": "98969979e4d4b535ccb14d14660618c847658c7af7e4db49fe5ffbed34561175",
+          "archive": "todo/evidence/TASK-038/r1/frame00019.webp",
+          "archive_sha256": "e160b59b96c48b8c93f2b242c3b798ba516089d5a9e6838c35cdb39af953dbb9"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/final/frames/frame00020.png",
+          "source_sha256": "98969979e4d4b535ccb14d14660618c847658c7af7e4db49fe5ffbed34561175",
+          "archive": "todo/evidence/TASK-038/r1/frame00020.webp",
+          "archive_sha256": "e160b59b96c48b8c93f2b242c3b798ba516089d5a9e6838c35cdb39af953dbb9"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/final/frames/frame00021.png",
+          "source_sha256": "98969979e4d4b535ccb14d14660618c847658c7af7e4db49fe5ffbed34561175",
+          "archive": "todo/evidence/TASK-038/r1/frame00021.webp",
+          "archive_sha256": "e160b59b96c48b8c93f2b242c3b798ba516089d5a9e6838c35cdb39af953dbb9"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/final/frames/frame00044.png",
+          "source_sha256": "3611b5a7361f0fd972235fc61d82bbfce729c6d89f276cb80117d035b1cd8018",
+          "archive": "todo/evidence/TASK-038/r1/frame00044.webp",
+          "archive_sha256": "997e84c8855679d80cdb34690cc076b262a45db7388c0c98d17fa76e799bfbee"
+        },
+        {
+          "source": "output/terrain/2026-09-28/r7/final/frames/frame00074.png",
+          "source_sha256": "1865e0d619d20440a6c082024e126be661bf02520562dd8d61ceaa9ea5ed7bf5",
+          "archive": "todo/evidence/TASK-038/r1/frame00074.webp",
+          "archive_sha256": "b3b365650363641d79463b9ca99748831b4cae13cced9cb0dc143a39b98d4a1f"
+        }
+      ]
+    }
+  ]
+}

@@ -4,8 +4,37 @@ import source from '../../source-assets/district-map/district.json' with { type:
 import { bakeTerrain, mountainBase, replaceTerrain } from '../terrain-shape.ts'
 import type { District } from '../district-types.ts'
 import { buildGround } from '../district-map.ts'
+import { roadOffsets } from '../district-geometry.ts'
 
 const data:District=source
+
+test('second short-ascent leg meets terrain across stair and landing edges',{timeout:20_000},()=>{
+  const result=bakeTerrain(data),ground=buildGround(result),route=result.routes.find(r=>r.id==='hill-short')!
+  const nodes=new Set(route.nodes.slice(route.nodes.indexOf('hill_short_rest1_departure'),route.nodes.indexOf('hill_short_rest2_arrival')+1))
+  const roads=result.roads.filter(r=>r.nodes.every(id=>nodes.has(id)))
+  assert.equal(roads.length,23,'twelve flights and eleven landings remain covered')
+  for(const road of roads) {
+    const points=road.nodes.map(id=>result.nodes[id]),offsets=roadOffsets(points,road.width)
+    for(let i=1;i<points.length;i++)for(const t of [0,.25,.5,.75,1])for(const side of [-1,1]) {
+      const a=points[i-1],b=points[i],start=offsets[i-1],end=offsets[i]
+      const x=a[0]+(b[0]-a[0])*t+(start[0]+(end[0]-start[0])*t)*side
+      const y=a[1]+(b[1]-a[1])*t+(start[1]+(end[1]-start[1])*t)*side
+      const delta=ground.height(x,y)-(a[2]+(b[2]-a[2])*t)
+      assert.ok(Math.abs(delta)<.01,`${road.nodes.join(' -> ')} at ${t}/${side}: terrain differs from road grade by ${delta}m`)
+    }
+  }
+})
+
+test('descent eye-level slope uses local terrain detail instead of a 60m face',{timeout:20_000},()=>{
+  const ground=buildGround(bakeTerrain(data)),point=[160,740]
+  const triangle=ground.triangles.find(t=>t.every((a,i)=>{
+    const b=t[(i+1)%3]
+    return (b[0]-a[0])*(point[1]-a[1])-(b[1]-a[1])*(point[0]-a[0])>=-1e-9
+  }))!
+  assert.ok(triangle,'the actual descent camera slope remains inside terrain')
+  const longest=Math.max(...triangle.map((a,i)=>Math.hypot(a[0]-triangle[(i+1)%3][0],a[1]-triangle[(i+1)%3][1])))
+  assert.ok(longest<20,`the slope in eye-descent-cut still has a ${longest}m triangle edge`)
+})
 
 test('terrain bake preserves authored geometry and repeats without drift',{timeout:20_000},()=>{
   const result=bakeTerrain(data),count=data.terrain.bake!.authored

@@ -1,0 +1,29 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/terrain-shape.test.ts:
+18 |     for(let i=1;i<points.length;i++)for(const t of [0,.25,.5,.75,1])for(const side of [-1,1]) {
+19 |       const a=points[i-1],b=points[i],start=offsets[i-1],end=offsets[i]
+20 |       const x=a[0]+(b[0]-a[0])*t+(start[0]+(end[0]-start[0])*t)*side
+21 |       const y=a[1]+(b[1]-a[1])*t+(start[1]+(end[1]-start[1])*t)*side
+22 |       const delta=ground.height(x,y)-(a[2]+(b[2]-a[2])*t)
+23 |       assert.ok(Math.abs(delta)<.01,`${road.nodes.join(' -> ')} at ${t}/${side}: terrain differs from road grade by ${delta}m`)
+                  ^
+AssertionError: hill_short_rest1_departure -> stair_hill_short_rest1_departure_hill_short_rest2_arrival_01_in at 0/-1: terrain differs from road grade by 1.2288895047614687m
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/terrain-shape.test.ts:23:14
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:86)
+      at node:test:1591:20
+(fail) second short-ascent leg meets terrain across stair and landing edges [1530.54ms]
+
+ 0 pass
+ 4 filtered out
+ 1 fail
+Ran 1 test across 1 file. [1.63s]

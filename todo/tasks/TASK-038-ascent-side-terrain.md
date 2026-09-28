@@ -1,7 +1,11 @@
 ---
 id: TASK-038
 type: fix
-status: active
+status: done
+acceptance:
+  role: codex
+  revision: 5e1913554958518e73b7b81054eef38a31d7bdf3e963bc9c14c586e8179f7c2c
+  record: todo/evidence/TASK-038/r1/review.md
 milestone: G1
 depends_on: [TASK-033]
 specs:
@@ -21,8 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-第1轮，步骤4/6 检查；正在复核路缘、平台和实际画面，按本轮五项交付分项提交
+第1轮，步骤6/6 完成；23段路幅230个路缘点、局部邻坡与平台边缘已修复，地图54项回归与最终同机位录制通过；64Hz／30Hz完整259节点人物往返CPU通过，山体整体品质继续由TASK-023推进
 
 ## 结果与证据
 
-本轮证据归 todo/evidence/TASK-038/r1，收口后回写
+[路缘、邻坡与运行复验](../evidence/TASK-038/r1/review.md)保留实际失败、修复、源hash及前后画面；本轮技术交付完成，作者手感、最终美术与G1整体未放行

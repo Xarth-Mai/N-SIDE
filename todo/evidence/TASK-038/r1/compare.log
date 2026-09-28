@@ -1,0 +1,3 @@
+{"version":"before","samples":8334,"summit":[230,950,450],"roads":23,"edgeSamples":230,"minDelta":-3.3773601023291917,"maxDelta":1.9531276884906674,"above1cm":225,"slopeTriangleAt":[160,740],"slopeTriangleLongestEdge":60,"slopeTriangle":[[150.370304,719.629696,269.583333],[200,750,309.812],[140,750,291.89]]}
+{"version":"after","samples":8584,"summit":[230,950,450],"roads":23,"edgeSamples":230,"minDelta":-1.0240751180390362e-7,"maxDelta":1.0240751180390362e-7,"above1cm":0,"slopeTriangleAt":[160,740],"slopeTriangleLongestEdge":16.97056274847714,"slopeTriangle":[[156,744,292.634],[168,732,282.934],[168,744,299.557]]}
+PASS: non-terrain bytes and fields, authored terrain prefix, bake recipe, water, and stable IDs preserved

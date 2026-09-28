@@ -1,0 +1,29 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/terrain-shape.test.ts:
+31 |     const b=t[(i+1)%3]
+32 |     return (b[0]-a[0])*(point[1]-a[1])-(b[1]-a[1])*(point[0]-a[0])>=-1e-9
+33 |   }))!
+34 |   assert.ok(triangle,'the actual descent camera slope remains inside terrain')
+35 |   const longest=Math.max(...triangle.map((a,i)=>Math.hypot(a[0]-triangle[(i+1)%3][0],a[1]-triangle[(i+1)%3][1])))
+36 |   assert.ok(longest<20,`the slope in eye-descent-cut still has a ${longest}m triangle edge`)
+              ^
+AssertionError: the slope in eye-descent-cut still has a 60m triangle edge
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/terrain-shape.test.ts:36:10
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:86)
+      at node:test:1591:20
+(fail) descent eye-level slope uses local terrain detail instead of a 60m face [1429.52ms]
+
+ 0 pass
+ 5 filtered out
+ 1 fail
+Ran 1 test across 1 file. [1495.00ms]

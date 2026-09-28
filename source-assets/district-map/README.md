@@ -58,4 +58,6 @@ Viewer 从 `buildings.design.type`、楼层、轮廓与入口派生外部构件�
 
 先确定城区台地、摘星台最高点、道路与入口，再调整自然山形；生成器以多频起伏和方向性山脊细化自然区域，以道路和场地的距离约束减弱扰动，并锁定自然山面覆盖范围内地面平台与建筑的边界控制点；城市坡段补充整条台地边缘、道路中心与实际宽度两侧的样点，转角偏移与 Viewer 的有界 miter 一致，避免粗采样跨过边缘形成孤立护坡。结果烘焙回同一地图，Wiki 与 Viewer 均读取这些样点，运行时不再随机生成另一座山
 
+短登高路线 `hill_short_rest1_departure` 至 `hill_short_rest2_arrival` 沿用完整路幅控制，并在两侧30m内使用12m自然样点及平台边缘控制；沿途地形改动需同时检查路缘标高、平台落地和 `eye-descent-cut` 实际视角，局部加密不代表整座山的视觉品质已验收
+
 修改手工点、路线或参数后运行 `bun tools/terrain-shape.ts`、`bun tools/terrain-shape.ts --check` 和 `bun run check:map`，再按[运行验证](../../docs/dev/validation/runtime.md)检查街道视线、山脊、道路接缝与平台落地；参数正确不能代替实际看图。长折返路应沿连续山面布局，避免把相邻路径的巨大高差强压进很短的水平间距

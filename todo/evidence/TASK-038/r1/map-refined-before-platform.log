@@ -1,0 +1,92 @@
+$ bun test tools/tests/district-map.test.ts tools/tests/road-width.test.ts tools/tests/station-square.test.ts tools/tests/terrain-shape.test.ts
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [4.74ms]
+(pass) terrain colors follow ground elevation [0.24ms]
+(pass) map overview fits extended terrain on wide and narrow screens [203.64ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [49.08ms]
+(pass) mountain city keeps metre scale and usable graded route alternatives [6.79ms]
+(pass) overview terrain retains source controls and excludes elevated connections [3867.07ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.18ms]
+(pass) shopping stays local and public hillside routes remain connected [1.53ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.25ms]
+(pass) scene keeps platforms below volumes and geometry is finite [139.53ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [7.84ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [16.47ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [1.22ms]
+(pass) tree positions stay outside building footprints [7.05ms]
+(pass) all streets clear building volumes at their actual widths and elevations [372.80ms]
+(pass) district ground-road crossings share a junction and its elevation [337.16ms]
+(pass) city framework records every building and reaches its same-level facade entrances [13.85ms]
+(pass) city stairs retain short flights, level rests and full-size treads [1.09ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [1.79ms]
+(pass) public streets stay outside same-level resident and service courts [4.92ms]
+(pass) building volumes share boundaries without occupying the same space [27.19ms]
+(pass) detailed places connect street access to separate public and service entrances [15.50ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.67ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [4.81ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.38ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.17ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [66.05ms]
+(pass) public, residents, students and service users have separate access rights [13.12ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.56ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.85ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.79ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.47ms]
+(pass) shared stairs and separate apartments connect through shared circulation [1.08ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) second short-ascent leg meets terrain across stair and landing edges [1756.93ms]
+(pass) descent eye-level slope uses local terrain detail instead of a 60m face [1833.94ms]
+(pass) terrain bake preserves authored geometry and repeats without drift [3919.87ms]
+63 |   const result=bakeTerrain(data),ground=buildGround(result),rest=result.surfaces.find(s=>s.id==='fw-e-existing-20')!
+64 |   for(const id of ['fw-f-plateau-west-court','fw-f-plateau-east-court','hill-short-rest1','hill-short-rest2','hill-short-rest3']) {
+65 |     const area=result.surfaces.find(s=>s.id===id)!
+66 |     for(let i=0;i<area.polygon.length;i++)for(const t of [.25,.5,.75]) {
+67 |       const a=area.polygon[i],b=area.polygon[(i+1)%area.polygon.length]
+68 |       assert.ok(Math.abs(ground.height(a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1]))-area.elevation)<.01,`${id}: courtyard edge must not become a tall unsupported cut`)
+                  ^
+AssertionError: hill-short-rest1: courtyard edge must not become a tall unsupported cut
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/terrain-shape.test.ts:68:14
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:86)
+      at node:test:1591:20
+(fail) terrain noise protects complete road segments and footprints [6662.99ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [113.07ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [638.16ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [3.86ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [1.66ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [2054.50ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [498.64ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [485.35ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [527.77ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1231.35ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [2086.03ms]
+(pass) east terraces clear neighboring road ribbons and retain usable exterior approaches [729.15ms]
+(pass) west old housing clear neighboring road ribbons and retain usable exterior approaches [668.42ms]
+(pass) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [614.72ms]
+(pass) all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches [669.48ms]
+(pass) platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces [1.07ms]
+(pass) ground platforms meet adjacent road ribbons and stair treads at their own level [67.22ms]
+
+tools/tests/station-square.test.ts:
+(pass) station meeting court retains usable space with a level public arrival clear of sloping roads [653.15ms]
+
+1 tests failed:
+(fail) terrain noise protects complete road segments and footprints [6662.99ms]
+
+ 53 pass
+ 1 fail
+Ran 54 tests across 4 files. [30.52s]
+error: script "check:map" exited with code 1

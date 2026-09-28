@@ -1,0 +1,43 @@
+{
+  "base_commit": "0c1445e3b0337c09c524a12bddb5b67014ec537d",
+  "scope": "Terrain bake, source data and unchanged render-path inputs; other concurrent gameplay changes are outside this task",
+  "inputs": {
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/Cargo.toml": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+    "game/capture/descent-cut.json": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+    "game/src/bin/map_viewer.rs": "d941f57e355aec1bd1ede943f2bf172c188e68ce9b97c0733d9e3b1a4770f7a7",
+    "game/src/world/assets.rs": "c2c54e4824b3d771401a85bbeecab0dbf6b3aca6294713764ad1399c65b8028c",
+    "game/src/world/geometry.rs": "f3f8e859dd08ae11cc031eaba2fba9fcd584daa5a3b3290ded3de7cf3cfeb384",
+    "game/src/world/map.rs": "e4d40c901f5629399f0ea7b3fe42979c4b90c876c36f85c3d0b891507d3e7b21",
+    "game/src/world/scene.rs": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+    "game/src/world/visual.rs": "110b5e02ba159c647630dc36f6af235c63e5eef79d9c90c30e5b5a3ffe56f121",
+    "source-assets/district-map/README.md": "d75ba1bbebd16d22f177265f6caa944c16e95684096d7b8a6fb179a4b99ab061",
+    "source-assets/district-map/district.json": "9b2f675d12dfdd9583294c8d8571a8859a561024988c4777d2a7b96e5332e5c9",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "tools/district-geometry.ts": "2ce9663167eb760c114b5f89552ab7477e89337f0993b678824cfb0fe97c7080",
+    "tools/district-map.ts": "b47a558745022b43a13475c59c533c6eaf1f9e4d0a0fa081deefc6a53b2bc969",
+    "tools/district-types.ts": "5be3cb82aded8b46dde1b3b3955ef9b2f9bdfdb90026b26d6f2285fe0a9dd6b3",
+    "tools/terrain-shape.ts": "200232ca5172063c37166d7f374ff15fb69c62cfd091b802e2b30eade6ddca36",
+    "tools/tests/terrain-shape.test.ts": "2d5a4950b84ad1c0db5a2134fbe4aeff546566db4e374453535aa0469924b283"
+  },
+  "input_revision": "5e1913554958518e73b7b81054eef38a31d7bdf3e963bc9c14c586e8179f7c2c",
+  "before_terrain_sha256": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+  "before_samples": 8334,
+  "final_samples": 8584,
+  "source_diff": "Only terrain.samples changed; all bytes outside the compact terrain line, authored prefix, recipe, water and stable IDs matched",
+  "capture_binary_sha256": {
+    "before": "69c3fa5f21084bb7db27298737b064873f6e13e19facf01ae4e082a1d58128ce",
+    "final": "424af1862657de67a9773f915898805e403349f496cea9180c13a2db10ee28ab"
+  },
+  "final_capture_loaded_after_source_freeze": "Confirmed by root executor; final capture ran after the 8584-sample source was frozen",
+  "cpu_regression": {
+    "scope": "Final full test run includes real 259-node round trip at 64 Hz and 30 Hz; this adds execution evidence without changing the terrain input_revision",
+    "inputs": {
+      "game/src/player.rs": "8e20eb93a71e6afcaa7e17c6b50c5a80ccd5dc52da1fdbe81be365551c59c93f",
+      "game/src/world/collision.rs": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+      "game/src/world/scene.rs": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+      "source-assets/district-map/district.json": "9b2f675d12dfdd9583294c8d8571a8859a561024988c4777d2a7b96e5332e5c9",
+      "todo/evidence/TASK-038/r1/final-tests.log": "089b47f58ecf0b7ff6f316ff14a412cb1e29ec892706586fabe6326c0428b690"
+    }
+  }
+}
