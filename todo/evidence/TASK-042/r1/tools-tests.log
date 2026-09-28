@@ -1,0 +1,161 @@
+$ python3 -B -m unittest discover -s tools/tests -p 'test_*.py' && bun test tools/tests
+........................................................................................................
+----------------------------------------------------------------------
+Ran 104 tests in 2.028s
+
+OK
+[capture/PASS] /tmp/tmptkt5laqy/game-entry/run.json
+[capture/PASS] /tmp/tmptkt5laqy/walk-preview/run.json
+bun test v1.4.2 (744846f84)
+
+tools/tests/wiki.test.ts:
+(pass) sidebar follows audience and preserves story reading order [2.57ms]
+(pass) data export is fail-closed and dev-only, ignoring hidden files and symlinks [1.34ms]
+(pass) publication requires a known profile and an actual entry page [0.54ms]
+(pass) isolated player tree excludes developer pages/data/public and uses redirects [374.16ms]
+(pass) renamed pages resolve current, encyclopedia and original URLs directly with fragments [324.91ms]
+(pass) player imports and public data cannot bypass the publication boundary [4.99ms]
+(pass) map projection retains actual drawing/interaction and drops author fields [154.62ms]
+(pass) map display renaming preserves rendered geometry and stable place identity [277.43ms]
+(pass) artifact check detects injected developer raw data and search content [199.10ms]
+(pass) inline template placeholders remain literal Vue text [238.18ms]
+(pass) Vite module loading rejects source files outside the isolated tree [305.67ms]
+(pass) external search data remains inside the selected audience [194.20ms]
+(pass) real home includes the overview and audience navigation, with root-safe links [310.57ms]
+(pass) published logo is readable even when the source is private [157.40ms]
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [1.14ms]
+(pass) terrain colors follow ground elevation [0.12ms]
+(pass) map overview fits extended terrain on wide and narrow screens [147.38ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [110.79ms]
+(pass) mountain city keeps metre scale and usable graded route alternatives [5.56ms]
+(pass) overview terrain retains source controls and excludes elevated connections [4113.80ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.02ms]
+(pass) shopping stays local and public hillside routes remain connected [1.45ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.26ms]
+(pass) scene keeps platforms below volumes and geometry is finite [135.96ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [7.58ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [16.17ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [1.07ms]
+(pass) tree positions stay outside building footprints [5.74ms]
+(pass) all streets clear building volumes at their actual widths and elevations [349.25ms]
+(pass) district ground-road crossings share a junction and its elevation [288.55ms]
+(pass) city framework records every building and reaches its same-level facade entrances [15.14ms]
+(pass) city stairs retain short flights, level rests and full-size treads [1.21ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [2.01ms]
+(pass) public streets stay outside same-level resident and service courts [5.32ms]
+(pass) building volumes share boundaries without occupying the same space [26.08ms]
+(pass) detailed places connect street access to separate public and service entrances [15.47ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.62ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [4.74ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.32ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.21ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [67.78ms]
+(pass) public, residents, students and service users have separate access rights [12.06ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.55ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [0.88ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.82ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.48ms]
+(pass) shared stairs and separate apartments connect through shared circulation [1.12ms]
+
+tools/tests/validate-skills.test.ts:
+(pass) real Bun YAML, complete coverage and anchors pass [5.21ms]
+(pass) missing manifest [1.31ms]
+(pass) empty object [0.29ms]
+(pass) null manifest [0.26ms]
+(pass) bad JSON [0.34ms]
+(pass) unknown version [0.27ms]
+(pass) bad adoption schema [0.24ms]
+(pass) missing adoption target [0.52ms]
+(pass) empty sources [0.31ms]
+(pass) empty imports [0.30ms]
+(pass) empty policy [0.30ms]
+(pass) null skill [0.52ms]
+(pass) bad files type [0.51ms]
+(pass) null file record [0.46ms]
+(pass) bad source [0.44ms]
+(pass) bad fields [0.24ms]
+(pass) missing project entrypoint [0.45ms]
+(pass) empty skills directory [0.36ms]
+(pass) duplicate source [0.52ms]
+(pass) duplicate path [0.44ms]
+(pass) missing reference [0.40ms]
+(pass) altered source [0.40ms]
+(pass) unregistered script [0.78ms]
+(pass) missing command path [0.49ms]
+(pass) bad anchor [0.42ms]
+(pass) bad YAML metadata [0.48ms]
+(pass) bad metadata type [0.53ms]
+(pass) missing icon [0.46ms]
+(pass) missing license [0.37ms]
+(pass) optional links cannot exempt missing files [0.41ms]
+(pass) invalid nested fields [0.43ms]
+(pass) unavailable command [0.72ms]
+(pass) inactive upstream reference links are checked [0.63ms]
+(pass) local hashes alone explicitly do not prove upstream equality [0.42ms]
+(pass) Wiki anchors match the installed VitePress renderer while upstream keeps GitHub slugs [34.69ms]
+
+tools/tests/tasks.test.ts:
+(pass) real YAML supports a completed negative experiment and exact evidence anchors [1.71ms]
+(pass) schema, paths and state guardrails reject corrupt cards [8.04ms]
+(pass) dependencies are unique, real, acyclic, and cancellation does not satisfy a result [1.36ms]
+(pass) reopening removes current acceptance while old evidence stays in the body [0.40ms]
+(pass) check is read-only, sync deterministic, list read-only and stale output fails [0.91ms]
+(pass) empty task source or missing roadmap cannot pass [0.31ms]
+
+tools/tests/toolchain.test.ts:
+(pass) search adapter emits the original index and preserves the lazy loader contract [0.48ms]
+(pass) Vue checker reports errors inside a real SFC instead of silently skipping it [504.72ms]
+
+tools/tests/story-graph.test.ts:
+(pass) nested ALL/ANY keeps alternatives after partial satisfaction, never unlocks from one parent [0.20ms]
+(pass) all 22 stories validate; projection excludes narrative internals and design metadata [4.38ms]
+(pass) current story separates early history, later proof and optional life outcomes [1.01ms]
+(pass) unknown quests, self locks and invalid typed narrative targets fail explicitly [7.65ms]
+(pass) mandatory cycles with no entry fail, ANY external entry succeeds [2.16ms]
+(pass) optional side cannot be unavoidable, including a mandatory main stage; ANY main alternative is valid [2.74ms]
+(pass) outcomes cannot escape their required production stage in a cycle [1.15ms]
+(pass) recommendations and associations never block; mixed condition semantics are rejected [1.58ms]
+(pass) broken role, order, relation, schema and source references do not silently repair [7.37ms]
+(pass) single source owns all indexed story pages [0.56ms]
+(pass) removing an otherwise unreferenced story cannot silently drop a page [1.13ms]
+(pass) optional vignettes may depend on optional stories without blocking main completion [1.15ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) second short-ascent leg meets terrain across stair and landing edges [1547.62ms]
+(pass) descent eye-level slope uses local terrain detail instead of a 60m face [1574.28ms]
+(pass) terrain bake preserves authored geometry and repeats without drift [3123.64ms]
+(pass) terrain noise protects complete road segments and footprints [3252.84ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [48.78ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [368.09ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [1.54ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.65ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1170.46ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [444.03ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [434.97ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [411.70ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1050.94ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [1726.63ms]
+(pass) east terraces clear neighboring road ribbons and retain usable exterior approaches [420.55ms]
+(pass) west old housing clear neighboring road ribbons and retain usable exterior approaches [432.11ms]
+(pass) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [435.08ms]
+(pass) all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches [488.57ms]
+(pass) platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces [0.72ms]
+(pass) ground platforms meet adjacent road ribbons and stair treads at their own level [45.37ms]
+
+tools/tests/station-square.test.ts:
+(pass) station meeting court retains usable space with a level public arrival clear of sloping roads [415.67ms]
+
+tools/tests/package-preview.test.ts:
+(pass) packages explicit ELF binaries, sources and licenses; launchers handle cwd, spaces, argv and exit status [62.08ms]
+(pass) read-only check rejects missing, modified, additional and linked files plus broken manifests [27.00ms]
+(pass) creation refuses existing output, non-ELF and linked assets without changing inputs [12.39ms]
+(pass) explicit strip modifies only package copies and records resulting hashes [21.65ms]
+
+ 127 pass
+ 0 fail
+ 258 expect() calls
+Ran 127 tests across 10 files. [26.07s]

@@ -1,0 +1,8 @@
+checks	UNKNOWN STEP	2026-09-28T12:11:06.6521569Z (fail) overview terrain retains source controls and excludes elevated connections [5493.53ms]
+checks	UNKNOWN STEP	2026-09-28T12:11:06.6522511Z   ^ this test timed out after 5000ms, before its done callback was called. If a done callback was not intended, remove the last parameter from the test callback function
+checks	UNKNOWN STEP	2026-09-28T12:11:07.9950733Z (fail) overview terrain retains source controls and excludes elevated connections [5493.53ms]
+checks	UNKNOWN STEP	2026-09-28T12:11:07.9952062Z   ^ this test timed out after 5000ms, before its done callback was called. If a done callback was not intended, remove the last parameter from the test callback function
+checks	UNKNOWN STEP	2026-09-28T12:11:07.9953189Z  126 pass
+checks	UNKNOWN STEP	2026-09-28T12:11:07.9953462Z  1 fail
+checks	UNKNOWN STEP	2026-09-28T12:11:08.0197322Z error: script "test:tools" exited with code 1
+checks	UNKNOWN STEP	2026-09-28T12:11:08.0205951Z ##[error]Process completed with exit code 1.

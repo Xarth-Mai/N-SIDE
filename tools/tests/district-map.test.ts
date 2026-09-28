@@ -116,7 +116,8 @@ test('mountain city keeps metre scale and usable graded route alternatives', () 
   }
 })
 
-test('overview terrain retains source controls and excludes elevated connections', () => {
+// Exhaustively sample the expanded terrain; shared CI runners need more than the default 5 seconds
+test('overview terrain retains source controls and excludes elevated connections', {timeout:30_000}, () => {
   const ground=buildGround(data),scene=buildScene(data)
   const vertices=new Set(scene.terrain.flatMap(t=>t.d.match(/-?\d+\.\d+,-?\d+\.\d+/g)))
   for(const point of [...data.terrain.samples,...['fw_e_school_edge_low','slope_upper_landing','hill_bend','bridge_n'].map(id=>data.nodes[id])]) {

@@ -38,7 +38,9 @@ Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完�
 
 完整解压后双击 `run-game.cmd` 启动标题与街区预览，`run-walk-preview.cmd` 启动室外步行实验，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
 
-构建使用 `x86_64-pc-windows-msvc`、现有 release 配置和 Cargo.lock，上传前从打包目录执行 Viewer `--validate`；该检查验证地图、几何、素材绑定与光照数据，不证明 Windows 图形启动或视觉验收通过
+构建使用 `x86_64-pc-windows-msvc`、现有 release 配置和 Cargo.lock，以 `--features viewer --bins` 构建所有当前启用的可执行目标，并从本次 Cargo 产物消息收集程序，避免带入缓存里的旧 exe。完整清单在包内 `executables.txt` 和运行摘要中；当前为 `game/n-side.exe`、`game/map_viewer.exe`，`run-walk-preview.cmd` 只是正式入口的 `--walk-preview` 模式
+
+三个启动脚本均透传附加参数并保留退出码，例如 `run-viewer.cmd --validate`。上传前从包内执行 Viewer 数据校验、三个启动入口的 `--help` 和未知参数失败检查；这些检查验证资源和命令入口，不证明 Windows 图形启动或视觉验收通过
 
 两个 workflow 使用最新稳定系列的 Actions、`ubuntu-latest` / `windows-latest` runner 和最新稳定 Rust；CI 显式选择 Bun `latest`、Python `3.x` 并查询最新稳定版本。Action 跨主版本需要更新 workflow 引用，项目库依赖仍按锁文件安装，日志记录实际工具链版本
 
