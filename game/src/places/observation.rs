@@ -1,7 +1,7 @@
 //! Read public place information through the real player's reach and view
 use super::{Place, PlaceCatalog};
 use crate::{
-    app::{EntryUi, GamePhase},
+    app::{EntrySettings, EntryUi, GamePhase},
     capture::CaptureInput,
     player::PlayerState,
     ui::{Tokens, UiFont, UiInput, color},
@@ -136,6 +136,7 @@ struct Panel;
 
 #[expect(
     clippy::too_many_arguments,
+    clippy::type_complexity,
     reason = "Observation reads the real phase, metadata, shared UI resources and camera"
 )]
 fn draw(
@@ -146,10 +147,11 @@ fn draw(
     catalog: Option<Res<PlaceCatalog>>,
     entry: Res<EntryUi>,
     tokens: Res<Tokens>,
+    settings: Res<EntrySettings>,
     font: Res<UiFont>,
     camera: Query<Entity, With<Camera3d>>,
     roots: Query<Entity, With<Panel>>,
-    mut prior: Local<Option<(bool, Option<String>, bool)>>,
+    mut prior: Local<Option<(bool, Option<String>, bool, bool)>>,
 ) {
     observation.visible = observation.open
         && *phase.get() == GamePhase::World
@@ -158,6 +160,7 @@ fn draw(
         observation.visible,
         observation.selected.clone(),
         entry.gamepad,
+        settings.large_text,
     );
     if prior.as_ref() == Some(&key) {
         return;
@@ -234,7 +237,7 @@ fn draw(
                         Text::new(value),
                         TextFont {
                             font: font.0.clone().into(),
-                            font_size: FontSize::Px(size),
+                            font_size: FontSize::Px(size * settings.text_scale()),
                             weight: FontWeight(550),
                             ..default()
                         },

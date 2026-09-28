@@ -1,0 +1,33 @@
+{
+  "base_commit": "62f0a7c5c189595fc6c8d447e21774140b054679",
+  "inputs": {
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/Cargo.toml": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+    "game/capture/walk-observation-settings.json": "c9ee900dde9ca07ed4f0e8d27b69e4273e2cd19193bc4d4333d353978578546f",
+    "game/capture/walk-settings.json": "bbcd72bb66f84c0784c34bf0806c870fe4c573b1c4200d21ed53f61c9197c73c",
+    "game/src/app.rs": "b57a1aa95aa586a98565fcbad8573a796e18f48dd4cb31c70a9859bc10cd431b",
+    "game/src/bin/map_viewer.rs": "d941f57e355aec1bd1ede943f2bf172c188e68ce9b97c0733d9e3b1a4770f7a7",
+    "game/src/capture/route.rs": "14de799e5aa4bcb03470da7ed9af8a87bee61830e4233850f1d21f0eb40e7f7c",
+    "game/src/capture.rs": "eddfbbf99195e9aa46366f3668c932b6157038c77bb6f5f5f840efd95748ed65",
+    "game/src/lib.rs": "3c80627ff533abb7d3ab4d4c57e0c5b5638c2de09fe7545e1216e9f89c700f56",
+    "game/src/main.rs": "57195ef357165cc705984b6cf2999c56a7b7f83d64647136ba603b9b7b2d0ade",
+    "game/src/places/observation.rs": "689760ee4f830e49309c28eb262d13557a43d9a06dc21a8031357183a3862579",
+    "game/src/places.rs": "129e9f567f9b5a406e486fa07665ed8506a59b7739539ea326e8a4bc9b1e0c5e",
+    "game/src/player.rs": "8e20eb93a71e6afcaa7e17c6b50c5a80ccd5dc52da1fdbe81be365551c59c93f",
+    "game/src/ui.rs": "316dbd9beb0165a5720445bdde2a56161b035fdae297657c9468385554c66223",
+    "game/src/world/assets.rs": "c2c54e4824b3d771401a85bbeecab0dbf6b3aca6294713764ad1399c65b8028c",
+    "game/src/world/collision.rs": "d1633ae8af7c84e94edc90b34520a81958283c6a543a0af213b26e7196be98c8",
+    "game/src/world/geometry.rs": "f3f8e859dd08ae11cc031eaba2fba9fcd584daa5a3b3290ded3de7cf3cfeb384",
+    "game/src/world/map.rs": "e4d40c901f5629399f0ea7b3fe42979c4b90c876c36f85c3d0b891507d3e7b21",
+    "game/src/world/mod.rs": "573e20c25b4db126bfebe339ac4e1578d5096e3b01629328564272048d609fe9",
+    "game/src/world/scene.rs": "74004ac2c5e3725990ee251539d6ac895000a30cf275dd3457c71b57f90ba425",
+    "game/src/world/visual.rs": "110b5e02ba159c647630dc36f6af235c63e5eef79d9c90c30e5b5a3ffe56f121",
+    "output/walk-observation-settings-narrow.json": "80ef5741dd71393340a568a421b81f79c8fd8f9531d9c73bc270a16548b93edf",
+    "output/walk-settings-narrow.json": "0e994e66b6cb40036115bd050301532e736bdd9ff556cee7318130d9614fe83e",
+    "source-assets/district-map/district.json": "b5c85885cca75c521f6d1289e0b35c0d7632b85c99c93b0265cb64cc85ed7d7d",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/ui-kit/tokens.json": "576adfe25bebdf425b3e59f40fba5e540756856ebf63f442b85e8749599c3426",
+    "tools/capture.py": "4225a1755898159bd964377c8aa12e1548b61fe7276d9be3c96846369b3d4b26"
+  },
+  "input_revision": "c6d7e21c6d1c70dcff08e52074d359e11ae79b50c3aaebbe891c976b2e36c6a9"
+}

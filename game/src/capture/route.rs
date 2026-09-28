@@ -127,6 +127,7 @@ impl RouteDriver {
         player: &PlayerSample,
         camera: &Transform,
         collision: &CollisionWorld,
+        sensitivity: f32,
     ) -> Result<([f32; 2], [f32; 2]), String> {
         // Same support/arrival bounds as the complete-route controller test
         const HEIGHT_TOLERANCE: f32 = 0.191;
@@ -201,10 +202,9 @@ impl RouteDriver {
             let yaw = (-forward.x).atan2(-forward.z);
             let desired_yaw = (-horizontal.x).atan2(-horizontal.z);
             let delta = desired_yaw - yaw;
-            let turn = delta
-                .sin()
-                .atan2(delta.cos())
-                .clamp(-1.6 / fps as f32, 1.6 / fps as f32);
+            // Match the selected production camera speed before projecting movement axes
+            let max_turn = 1.6 * sensitivity / fps as f32;
+            let turn = delta.sin().atan2(delta.cos()).clamp(-max_turn, max_turn);
             let next_yaw = yaw + turn;
             let forward = Vec3::new(-next_yaw.sin(), 0.0, -next_yaw.cos());
             let right = Vec3::new(next_yaw.cos(), 0.0, -next_yaw.sin());
@@ -219,7 +219,7 @@ impl RouteDriver {
                 direction.dot(right) * magnitude,
                 direction.dot(forward) * magnitude,
             ];
-            return Ok((movement, [-turn / 0.003, 0.0]));
+            return Ok((movement, [-turn / (0.003 * sensitivity), 0.0]));
         }
         Ok(([0.0; 2], [0.0; 2]))
     }
@@ -257,30 +257,43 @@ mod tests {
             camera_distance: 3.8,
         };
         let camera = Transform::default();
-        let (movement, look) = route.input(60, 30, &player, &camera, &collision).unwrap();
+        let (movement, look) = route
+            .input(60, 30, &player, &camera, &collision, 1.0)
+            .unwrap();
         assert_eq!(movement, [0.0, 1.0]);
         assert_eq!(look, [0.0, 0.0]);
         assert_eq!(route.visits.len(), 1);
         assert!(
             route
-                .input(120, 30, &player, &camera, &collision)
+                .input(120, 30, &player, &camera, &collision, 1.0)
                 .unwrap_err()
                 .contains("no 1cm progress")
         );
         player.foot[2] = -1.92;
         let turned_camera = Transform::from_rotation(Quat::from_rotation_y(1.0));
-        let (movement, mouse) = route
-            .input(121, 30, &player, &turned_camera, &collision)
-            .unwrap();
-        let stick = Vec2::from_array(movement);
-        let decoded = stick.normalize() * ((stick.length() - 0.15) / 0.85);
-        let yaw = 1.0 - mouse[0] * 0.003;
-        let world = Vec3::new(yaw.cos(), 0.0, -yaw.sin()) * decoded.x
-            + Vec3::new(-yaw.sin(), 0.0, -yaw.cos()) * decoded.y;
-        assert!(world.distance(Vec3::new(0.0, 0.0, -0.75)) < 0.00001);
-        assert!(mouse[0].abs() * 0.003 <= 1.6 / 30.0 + 0.00001);
+        for sensitivity in [1.0, 0.65] {
+            let (movement, mouse) = route
+                .input(121, 30, &player, &turned_camera, &collision, sensitivity)
+                .unwrap();
+            let stick = Vec2::from_array(movement);
+            let decoded = stick.normalize() * ((stick.length() - 0.15) / 0.85);
+            let actual_turn = -mouse[0] * 0.003 * sensitivity;
+            let yaw = 1.0 + actual_turn;
+            let world = Vec3::new(yaw.cos(), 0.0, -yaw.sin()) * decoded.x
+                + Vec3::new(-yaw.sin(), 0.0, -yaw.cos()) * decoded.y;
+            assert!(
+                world.distance(Vec3::new(0.0, 0.0, -0.75)) < 0.00001,
+                "steering must follow the target with sensitivity {sensitivity}"
+            );
+            assert!(
+                (actual_turn.abs() - 1.6 * sensitivity / 30.0).abs() < 0.00001,
+                "turn rate must use the real camera setting {sensitivity}"
+            );
+        }
         player.foot[2] = -1.98;
-        let (movement, _) = route.input(122, 30, &player, &camera, &collision).unwrap();
+        let (movement, _) = route
+            .input(122, 30, &player, &camera, &collision, 1.0)
+            .unwrap();
         assert_eq!(movement, [0.0; 2]);
         assert!(route.complete());
         assert_eq!(route.visits[1].frame, 121);
@@ -295,11 +308,11 @@ mod tests {
         );
         player.foot[2] = 0.0;
         returning
-            .input(0, 30, &player, &camera, &collision)
+            .input(0, 30, &player, &camera, &collision, 1.0)
             .unwrap();
         player.foot[2] = -2.0;
         returning
-            .input(30, 30, &player, &camera, &collision)
+            .input(30, 30, &player, &camera, &collision, 1.0)
             .unwrap();
         assert!(
             !returning.complete(),
@@ -308,13 +321,13 @@ mod tests {
         assert_eq!(returning.visits.len(), 2);
         assert!(
             returning
-                .input(90, 30, &player, &camera, &collision)
+                .input(90, 30, &player, &camera, &collision, 1.0)
                 .unwrap_err()
                 .contains("no 1cm progress")
         );
         player.foot[2] = 0.0;
         returning
-            .input(91, 30, &player, &camera, &collision)
+            .input(91, 30, &player, &camera, &collision, 1.0)
             .unwrap();
         assert!(returning.complete());
         assert_eq!(returning.visits.len(), 3);

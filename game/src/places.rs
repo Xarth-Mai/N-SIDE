@@ -1,7 +1,7 @@
 //! Nearby public places from the same district source as the rendered world
 mod observation;
 use crate::{
-    app::{EntryUi, GamePhase},
+    app::{EntrySettings, EntryUi, GamePhase},
     player::PlayerState,
     ui::{Tokens, UiFont, color},
     world::map::map_to_world,
@@ -225,13 +225,14 @@ fn draw_hud(
     mut commands: Commands,
     hud: Res<PlaceHud>,
     font: Res<UiFont>,
-    tokens: Res<Tokens>,
+    style: (Res<Tokens>, Res<EntrySettings>),
     cameras: Query<Entity, With<Camera3d>>,
     mut roots: Query<&mut Visibility, With<HudRoot>>,
-    mut labels: Query<(&HudText, &mut Text)>,
+    mut labels: Query<(&HudText, &mut Text, &mut TextFont)>,
 ) {
+    let (tokens, settings) = style;
     if !roots.is_empty() {
-        if hud.is_changed() {
+        if hud.is_changed() || settings.is_changed() {
             for mut visibility in &mut roots {
                 *visibility = if hud.visible {
                     Visibility::Visible
@@ -239,8 +240,15 @@ fn draw_hud(
                     Visibility::Hidden
                 };
             }
-            for (kind, mut text) in &mut labels {
+            for (kind, mut text, mut font) in &mut labels {
                 text.0 = label(kind, &hud);
+                font.font_size = FontSize::Px(
+                    if matches!(kind, HudText::Location) {
+                        tokens.heading_size
+                    } else {
+                        tokens.body_size
+                    } * settings.text_scale(),
+                );
             }
         }
         return;
@@ -272,7 +280,8 @@ fn draw_hud(
                 root.spawn((
                     Node {
                         width: px(if location { 520.0 } else { 680.0 }),
-                        max_width: percent(100),
+                        // Reserve the opposite corner for the real pause action
+                        max_width: percent(if location { 55.0 } else { 100.0 }),
                         padding: UiRect::axes(px(24), px(16)),
                         border: UiRect::left(px(6)),
                         border_radius: BorderRadius::all(px(tokens.button_radius)),
@@ -286,11 +295,13 @@ fn draw_hud(
                         Text::new(label(&kind, &hud)),
                         TextFont {
                             font: font.0.clone().into(),
-                            font_size: FontSize::Px(if location {
-                                tokens.heading_size
-                            } else {
-                                tokens.body_size
-                            }),
+                            font_size: FontSize::Px(
+                                if location {
+                                    tokens.heading_size
+                                } else {
+                                    tokens.body_size
+                                } * settings.text_scale(),
+                            ),
                             weight: FontWeight(if location { 700 } else { 500 }),
                             ..default()
                         },

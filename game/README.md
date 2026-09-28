@@ -25,7 +25,7 @@ Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完�
 
 ## 正式入口与场景恢复
 
-标题提供「进入街区」和「退出」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的室外人物尺度实验；任务和存档仍由后续原型接入
+标题提供「进入街区」「退出」和「设置」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的室外人物尺度实验；任务和存档仍由后续原型接入
 
 场景准备在 Bevy 任务池中进行，标题输入和加载反馈保持响应；取消后丢弃旧准备结果。每次进入建立新的 `SceneLoading`，依次核对资产依赖和模型实例化，真实就绪才切换到街区。返回标题移除带 `MapSource` 的场景层级与加载资源，保留宿主镜头、灯光和 UI
 
@@ -38,7 +38,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 脚本的 `waits` 在指定帧等待真实 `game_page`，期间继续异步加载和渲染，暂停录制时间线；它不设置应用状态，墙钟超时仍有效。`game_page`、`world_ready`、`min_world_entities`、`max_world_entities` 和 `same_world_entities` 从实际 ECS 状态检查标题、加载、清理与重入；录制时长不代表真实加载耗时
 
-暂停复用街区信号的颜色、字体与焦点组件，显示继续及返回标题。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物与镜头，NPC、战斗、动画及声音尚未接入，不据此宣称其暂停行为已验证
+暂停复用街区信号的颜色、字体与焦点组件，显示继续、返回标题和设置。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物与镜头，NPC、战斗、动画及声音尚未接入，不据此宣称其暂停行为已验证
 
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-pause.json --output output/capture/walk-pause
@@ -53,6 +53,16 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 当前手柄输入为聚合控制，任一手柄断开都会暂停并切回键鼠提示；暂停说明连接中断或已经重连，玩家释放旧输入后可用键鼠或手柄明确继续。加载期间断连仍完成资产准备，进入街区时暂停；返回标题、失败或重新加载清理本次连接恢复提示。初次接入设备不会主动暂停行走，连接变化当帧不接受菜单动作
 
 `walk-gamepad.json` 录制18秒的断连、重连持键、键鼠接管和重入。`events.gamepad_connected` 仅用于正式游戏场景，省略时保持上一连接状态；脚本在PreUpdate发送 `GamepadConnectionEvent`，由Bevy InputPlugin实际移除／恢复Gamepad组件，再由正式入口决定是否暂停。`gamepad_connected`状态断言核对结束帧实际组件存在情况，运动及镜头冻结仍检查整个区间；模拟连接不证明USB、蓝牙或驱动行为
+
+标题或暂停中的「设置」直接调整正式入口文字与人物镜头，退出设置返回来源菜单的原焦点；可在公共观察暂停期间修改，再继续原观察。具体档位、会话保留、三种镜头输入、竖屏与HUD布局及自动路线倍率见[会话设置契约](../docs/dev/engineering/player-preview.md#会话设置)，不与下方Viewer的SignalUi样板状态混用
+
+```fish
+cargo build --manifest-path game/Cargo.toml --locked --bin n-side
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-settings.json --output output/capture/walk-settings
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation-settings.json --output output/capture/walk-observation-settings
+```
+
+两份脚本分别声明20秒设置往返和26秒观察／设置整合路径，复验使用新的输出目录。实际执行结果与画面判断留在对应任务证据
 
 ## 人物尺度实验
 

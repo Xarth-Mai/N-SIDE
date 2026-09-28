@@ -3,7 +3,7 @@
 //! Copyright 2026 Alex Ermolov, MIT; retained license: third_party/skills/godogen/LICENSE.md
 //! N:SIDE implementation records real application input, state and rendered frames
 use crate::{
-    app::{GameLoadError, GamePhase},
+    app::{EntrySettings, EntryUi, GameLoadError, GamePhase},
     places::{Observation, PlaceHud},
     player::PlayerState,
     ui::{SignalUi, UiFont, UiInput},
@@ -134,6 +134,11 @@ pub struct Assertion {
     observation_selected: Option<String>,
     observation_open: Option<bool>,
     observation_visible: Option<bool>,
+    settings_open: Option<bool>,
+    entry_focus: Option<usize>,
+    text_scale: Option<f32>,
+    camera_sensitivity: Option<f32>,
+    entry_device: Option<String>,
 }
 
 const GAME_PAGES: [&str; 5] = ["title", "loading", "world", "paused", "failed"];
@@ -292,6 +297,7 @@ impl Script {
                     && check.same_world_entities.is_none()
                     && check.gamepad_connected.is_none()
                     && !check.has_observation_assertion()
+                    && !check.has_entry_assertion()
                     && !check.has_place_assertion()
                     && !check.has_player_assertion())
                 || (check.has_player_assertion() && self.scene != "walk-preview")
@@ -305,6 +311,18 @@ impl Script {
                 .into_iter()
                 .flatten()
                 .any(|value| value.trim().is_empty())
+                || (check.has_entry_assertion() && !self.game_scene())
+                || check.entry_focus.is_some_and(|focus| focus > 2)
+                || check
+                    .text_scale
+                    .is_some_and(|scale| ![1.0, 1.25].contains(&scale))
+                || check
+                    .camera_sensitivity
+                    .is_some_and(|value| ![1.0, 0.65].contains(&value))
+                || check
+                    .entry_device
+                    .as_ref()
+                    .is_some_and(|device| !["keyboard_mouse", "gamepad"].contains(&device.as_str()))
                 || [check.place_id.as_ref(), check.place_name.as_ref()]
                     .into_iter()
                     .flatten()
@@ -391,6 +409,36 @@ impl Assertion {
             && self
                 .observation_visible
                 .is_none_or(|visible| observation.visible == visible)
+    }
+
+    fn has_entry_assertion(&self) -> bool {
+        self.settings_open.is_some()
+            || self.entry_focus.is_some()
+            || self.text_scale.is_some()
+            || self.camera_sensitivity.is_some()
+            || self.entry_device.is_some()
+    }
+
+    fn check_entry(&self, entry: Option<&EntrySample>) -> bool {
+        if !self.has_entry_assertion() {
+            return true;
+        }
+        let Some(entry) = entry else {
+            return false;
+        };
+        self.settings_open
+            .is_none_or(|open| entry.settings_open == open)
+            && self.entry_focus.is_none_or(|focus| entry.focus == focus)
+            && self
+                .text_scale
+                .is_none_or(|scale| entry.text_scale == scale)
+            && self
+                .camera_sensitivity
+                .is_none_or(|value| entry.camera_sensitivity == value)
+            && self
+                .entry_device
+                .as_ref()
+                .is_none_or(|device| entry.device == *device)
     }
 
     fn has_place_assertion(&self) -> bool {
@@ -534,6 +582,15 @@ struct ObservationSample {
 }
 
 #[derive(Serialize)]
+struct EntrySample {
+    settings_open: bool,
+    focus: usize,
+    text_scale: f32,
+    camera_sensitivity: f32,
+    device: &'static str,
+}
+
+#[derive(Serialize)]
 struct Sample {
     frame: u32,
     simulation_seconds: f64,
@@ -547,6 +604,7 @@ struct Sample {
     ui: Option<serde_json::Value>,
     place: Option<PlaceSample>,
     observation: Option<ObservationSample>,
+    entry: Option<EntrySample>,
     gamepad_connected: bool,
 }
 
@@ -655,6 +713,7 @@ impl Recording {
                             .all(|sample| {
                                 assertion.check_place(sample.place.as_ref())
                                     && assertion.check_observation(sample.observation.as_ref())
+                                    && assertion.check_entry(sample.entry.as_ref())
                             })
                         && assertion.max_distance.is_none_or(|v| peak_distance <= v)
                         && assertion.min_rotation.is_none_or(|v| rotation >= v)
@@ -875,6 +934,7 @@ fn drive_input(
     player: Option<Res<PlayerState>>,
     collision: Option<Res<CollisionWorld>>,
     camera: Query<&Transform, With<Camera3d>>,
+    settings: Option<Res<EntrySettings>>,
 ) {
     keys.clear();
     buttons.clear();
@@ -899,9 +959,16 @@ fn drive_input(
             collision.as_deref(),
             camera.single(),
         ) {
-            (Some(route), Some(player), Some(collision), Ok(camera)) => {
-                route.input(frame, fps, &PlayerSample::from(player), camera, collision)
-            }
+            (Some(route), Some(player), Some(collision), Ok(camera)) => route.input(
+                frame,
+                fps,
+                &PlayerSample::from(player),
+                camera,
+                collision,
+                settings
+                    .as_ref()
+                    .map_or(1.0, |settings| settings.camera_sensitivity()),
+            ),
             _ => Err(format!(
                 "[capture/route] frame={frame}: player, collision, camera or route unavailable"
             )),
@@ -996,11 +1063,13 @@ fn record(
         Option<Res<SignalUi>>,
         Option<Res<PlaceHud>>,
         Option<Res<Observation>>,
+        Option<Res<EntryUi>>,
+        Option<Res<EntrySettings>>,
     ),
     ui_font: Option<Res<UiFont>>,
     assets: Res<AssetServer>,
 ) {
-    let (ui, place, observation) = ui_state;
+    let (ui, place, observation, entry, settings) = ui_state;
     if recording.finished {
         return;
     }
@@ -1102,6 +1171,17 @@ fn record(
             selected: observation.selected.clone(),
             open: observation.open,
             visible: observation.visible,
+        }),
+        entry: entry.zip(settings).map(|(entry, settings)| EntrySample {
+            settings_open: entry.settings_open(),
+            focus: entry.focus(),
+            text_scale: settings.text_scale(),
+            camera_sensitivity: settings.camera_sensitivity(),
+            device: if entry.gamepad {
+                "gamepad"
+            } else {
+                "keyboard_mouse"
+            },
         }),
         place: place.as_ref().map(|hud| PlaceSample {
             id: hud.current_id.clone(),
@@ -1594,6 +1674,7 @@ mod tests {
                 ui: None,
                 place: None,
                 observation: None,
+                entry: None,
                 gamepad_connected: true,
             })
             .collect();
@@ -1663,6 +1744,57 @@ mod tests {
     }
 
     #[test]
+    fn settings_assertions_validate_ranges_and_reject_wrong_or_missing_evidence() {
+        let mut script: Script =
+            serde_json::from_str(include_str!("../capture/walk-settings.json")).unwrap();
+        assert!(script.validate().is_ok());
+        let expected = serde_json::json!({
+            "name":"current settings", "from":0, "to":0,
+            "settings_open":true, "entry_focus":1, "text_scale":1.25,
+            "camera_sensitivity":0.65, "entry_device":"gamepad"
+        });
+        let sample = EntrySample {
+            settings_open: true,
+            focus: 1,
+            text_scale: 1.25,
+            camera_sensitivity: 0.65,
+            device: "gamepad",
+        };
+        let check: Assertion = serde_json::from_value(expected.clone()).unwrap();
+        assert!(check.check_entry(Some(&sample)));
+        assert!(!check.check_entry(None));
+        script.assertions = vec![check];
+        script.waits.clear();
+        script.events.clear();
+        script.scene = "ui-signal".into();
+        assert!(script.validate().is_err());
+        script.scene = "game-entry".into();
+        assert!(script.validate().is_ok());
+        script.scene = "walk-preview".into();
+        for (field, wrong, valid) in [
+            ("settings_open", serde_json::json!(false), true),
+            ("entry_focus", serde_json::json!(2), true),
+            ("text_scale", serde_json::json!(1.0), true),
+            ("camera_sensitivity", serde_json::json!(1.0), true),
+            ("entry_device", serde_json::json!("keyboard_mouse"), true),
+            ("entry_focus", serde_json::json!(3), false),
+            ("text_scale", serde_json::json!(1.5), false),
+            ("camera_sensitivity", serde_json::json!(0.0), false),
+            ("entry_device", serde_json::json!("unknown"), false),
+        ] {
+            let mut candidate = expected.clone();
+            candidate[field] = wrong;
+            let check: Assertion = serde_json::from_value(candidate).unwrap();
+            assert!(!check.check_entry(Some(&sample)), "wrong {field} must fail");
+            script.assertions = vec![check];
+            assert_eq!(script.validate().is_ok(), valid, "{field} range");
+        }
+        script.assertions[0].entry_device = None;
+        script.assertions[0].text_scale = Some(f32::NAN);
+        assert!(script.validate().is_err());
+    }
+
+    #[test]
     fn place_assertions_require_real_hud_and_validate_fields() {
         let mut script: Script =
             serde_json::from_str(include_str!("../capture/walk-places.json")).unwrap();
@@ -1718,6 +1850,7 @@ mod tests {
             ui: None,
             place: None,
             observation: None,
+            entry: None,
             gamepad_connected: true,
             player: Some(PlayerSample {
                 foot: [x, 28.0, 0.0],

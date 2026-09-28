@@ -1,0 +1,69 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error[E0599]: no method named `gamepad` found for struct `bevy::bevy_ecs::change_detection::Res<'_, EntryUi>` in the current scope
+   --> src/app.rs:729:12
+    |
+729 |         ui.gamepad(),
+    |            ^^^^^^^-- help: remove the arguments
+    |            |
+    |            field, not a method
+
+error[E0599]: no method named `gamepad` found for struct `bevy::bevy_ecs::change_detection::Res<'_, EntryUi>` in the current scope
+   --> src/app.rs:883:35
+    |
+883 | ...                   if ui.gamepad() {
+    |                             ^^^^^^^-- help: remove the arguments
+    |                             |
+    |                             field, not a method
+
+error[E0599]: no method named `gamepad` found for struct `bevy::bevy_ecs::change_detection::Res<'_, EntryUi>` in the current scope
+   --> src/app.rs:888:50
+    |
+888 |                         } else { match (page, ui.gamepad()) {
+    |                                                  ^^^^^^^-- help: remove the arguments
+    |                                                  |
+    |                                                  field, not a method
+
+error[E0599]: no method named `gamepad` found for struct `bevy::bevy_ecs::change_detection::Res<'_, app::EntryUi>` in the current scope
+   --> src/app.rs:729:12
+    |
+729 |         ui.gamepad(),
+    |            ^^^^^^^-- help: remove the arguments
+    |            |
+    |            field, not a method
+
+error[E0599]: no method named `gamepad` found for struct `bevy::bevy_ecs::change_detection::Res<'_, app::EntryUi>` in the current scope
+   --> src/app.rs:883:35
+    |
+883 | ...                   if ui.gamepad() {
+    |                             ^^^^^^^-- help: remove the arguments
+    |                             |
+    |                             field, not a method
+
+error[E0599]: no method named `gamepad` found for struct `bevy::bevy_ecs::change_detection::Res<'_, app::EntryUi>` in the current scope
+   --> src/app.rs:888:50
+    |
+888 |                         } else { match (page, ui.gamepad()) {
+    |                                                  ^^^^^^^-- help: remove the arguments
+    |                                                  |
+    |                                                  field, not a method
+
+error[E0599]: no method named `gamepad` found for reference `&app::EntryUi` in the current scope
+    --> src/app.rs:1336:55
+     |
+1336 |             assert!(app.world().resource::<EntryUi>().gamepad());
+     |                                                       ^^^^^^^-- help: remove the arguments
+     |                                                       |
+     |                                                       field, not a method
+
+error[E0599]: no method named `gamepad` found for reference `&app::EntryUi` in the current scope
+    --> src/app.rs:1339:56
+     |
+1339 |             assert!(!app.world().resource::<EntryUi>().gamepad());
+     |                                                        ^^^^^^^-- help: remove the arguments
+     |                                                        |
+     |                                                        field, not a method
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `n-side` (lib) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `n-side` (lib test) due to 5 previous errors

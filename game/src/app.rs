@@ -72,6 +72,31 @@ pub(crate) struct EntryUi {
     wait_for_release: bool,
     pause_after_loading: bool,
     gamepad_recovery: Option<bool>,
+    settings_return: Option<usize>,
+}
+impl EntryUi {
+    pub(crate) fn settings_open(&self) -> bool {
+        self.settings_return.is_some()
+    }
+
+    pub(crate) fn focus(&self) -> usize {
+        self.focus
+    }
+}
+
+#[derive(Resource, Default, Clone, Copy, PartialEq, Eq)]
+pub(crate) struct EntrySettings {
+    pub(crate) large_text: bool,
+    pub(crate) slow_camera: bool,
+}
+impl EntrySettings {
+    pub(crate) fn text_scale(&self) -> f32 {
+        if self.large_text { 1.25 } else { 1.0 }
+    }
+
+    pub(crate) fn camera_sensitivity(&self) -> f32 {
+        if self.slow_camera { 0.65 } else { 1.0 }
+    }
 }
 #[derive(Clone, Copy)]
 enum Action {
@@ -80,14 +105,33 @@ enum Action {
     Resume,
     Title,
     Quit,
+    Settings,
+    TextSize,
+    CameraSensitivity,
+    Back,
 }
 
-fn actions(phase: GamePhase) -> &'static [(&'static str, Action)] {
+fn actions(phase: GamePhase, settings: bool) -> &'static [(&'static str, Action)] {
+    if settings {
+        return &[
+            ("文字大小", Action::TextSize),
+            ("镜头灵敏度", Action::CameraSensitivity),
+            ("返回", Action::Back),
+        ];
+    }
     match phase {
-        GamePhase::Title => &[("进入街区", Action::Enter), ("退出", Action::Quit)],
+        GamePhase::Title => &[
+            ("进入街区", Action::Enter),
+            ("退出", Action::Quit),
+            ("设置", Action::Settings),
+        ],
         GamePhase::Loading => &[("取消并返回标题", Action::Title)],
         GamePhase::World => &[("暂停", Action::Pause)],
-        GamePhase::Paused => &[("继续", Action::Resume), ("返回标题", Action::Title)],
+        GamePhase::Paused => &[
+            ("继续", Action::Resume),
+            ("返回标题", Action::Title),
+            ("设置", Action::Settings),
+        ],
         GamePhase::Failed => &[
             ("重试", Action::Enter),
             ("返回标题", Action::Title),
@@ -101,9 +145,18 @@ struct ShellRoot;
 #[derive(Component)]
 struct ShellButton {
     phase: GamePhase,
+    settings: bool,
     index: usize,
 }
-type ShellSnapshot = (GamePhase, bool, UVec2, Option<bool>, bool);
+type ShellSnapshot = (
+    GamePhase,
+    bool,
+    UVec2,
+    Option<bool>,
+    bool,
+    bool,
+    EntrySettings,
+);
 
 pub fn run() -> Result<AppExit, String> {
     let mut root = PathBuf::from(".");
@@ -250,6 +303,7 @@ fn install_lifecycle(app: &mut App) {
     app.init_state::<GamePhase>()
         .init_resource::<EntryUi>()
         .init_resource::<Observation>()
+        .init_resource::<EntrySettings>()
         .add_message::<WindowFocused>()
         .add_message::<KeyboardInput>()
         .add_message::<GamepadConnectionEvent>()
@@ -259,12 +313,14 @@ fn install_lifecycle(app: &mut App) {
         .add_systems(OnEnter(GamePhase::Failed), enter_failed)
         .add_systems(OnEnter(GamePhase::World), |mut ui: ResMut<EntryUi>| {
             ui.focus = 0;
+            ui.settings_return = None;
             if !ui.pause_after_loading {
                 ui.gamepad_recovery = None;
             }
         })
         .add_systems(OnEnter(GamePhase::Paused), |mut ui: ResMut<EntryUi>| {
-            ui.focus = 0
+            ui.focus = 0;
+            ui.settings_return = None;
         })
         .add_systems(
             RunFixedMainLoop,
@@ -293,6 +349,7 @@ fn enter_title(world: &mut World) {
         ui.focus = 0;
         ui.pause_after_loading = false;
         ui.gamepad_recovery = None;
+        ui.settings_return = None;
     }
     info!("[game/state] title");
 }
@@ -307,6 +364,7 @@ fn begin_loading(world: &mut World) {
         ui.focus = 0;
         ui.pause_after_loading = false;
         ui.gamepad_recovery = None;
+        ui.settings_return = None;
     }
     let root = world.resource::<ProjectRoot>().0.clone();
     let walk = world
@@ -348,6 +406,7 @@ fn enter_failed(world: &mut World) {
         ui.focus = 0;
         ui.pause_after_loading = false;
         ui.gamepad_recovery = None;
+        ui.settings_return = None;
     }
     info!("[game/state] failed");
 }
@@ -451,6 +510,7 @@ fn entry_input(
     mut ui: ResMut<EntryUi>,
     mut observation: ResMut<Observation>,
     player: Option<Res<PlayerState>>,
+    mut settings: ResMut<EntrySettings>,
     mut exit: MessageWriter<AppExit>,
 ) {
     let repeated: Vec<_> = keyboard_events
@@ -576,6 +636,11 @@ fn entry_input(
         || pressed(GamepadButton::East)
         || pressed(GamepadButton::Start)
     {
+        if let Some(focus) = ui.settings_return.take() {
+            ui.focus = focus;
+            ui.wait_for_release = true;
+            return;
+        }
         match *phase.get() {
             GamePhase::World => (*next).set_if_neq(GamePhase::Paused),
             GamePhase::Paused => (*next).set_if_neq(GamePhase::World),
@@ -584,7 +649,7 @@ fn entry_input(
         }
         return;
     }
-    let options = actions(*phase.get());
+    let options = actions(*phase.get(), ui.settings_open());
     if key_pressed(KeyCode::ArrowDown) || pressed(GamepadButton::DPadDown) {
         ui.focus = (ui.focus + 1) % options.len();
     }
@@ -593,7 +658,10 @@ fn entry_input(
     }
     let mut activate = key_pressed(KeyCode::Enter) || pressed(GamepadButton::South);
     for (interaction, button) in &buttons {
-        if *interaction == Interaction::Pressed && button.phase == *phase.get() {
+        if *interaction == Interaction::Pressed
+            && button.phase == *phase.get()
+            && button.settings == ui.settings_open()
+        {
             ui.focus = button.index;
             ui.gamepad = false;
             activate = true;
@@ -607,6 +675,17 @@ fn entry_input(
             Action::Title => (*next).set_if_neq(GamePhase::Title),
             Action::Quit => {
                 exit.write(AppExit::Success);
+            }
+            Action::Settings => {
+                ui.settings_return = Some(ui.focus);
+                ui.focus = 0;
+                ui.wait_for_release = true;
+            }
+            Action::TextSize => settings.large_text = !settings.large_text,
+            Action::CameraSensitivity => settings.slow_camera = !settings.slow_camera,
+            Action::Back => {
+                ui.focus = ui.settings_return.take().unwrap_or(0);
+                ui.wait_for_release = true;
             }
         }
     }
@@ -635,6 +714,7 @@ fn draw_shell(
     mut prior: Local<Option<ShellSnapshot>>,
     walk: Res<WalkPreview>,
     observation: Res<Observation>,
+    settings: Res<EntrySettings>,
 ) {
     let Ok((camera_id, camera)) = cameras.single() else {
         return;
@@ -643,12 +723,15 @@ fn draw_shell(
         return;
     };
     let page = *phase.get();
+    let editing = ui.settings_open();
     let key = (
         page,
         ui.gamepad,
         size,
         ui.gamepad_recovery,
         observation.open,
+        editing,
+        *settings,
     );
     if *prior == Some(key) {
         return;
@@ -657,7 +740,8 @@ fn draw_shell(
     for root in &roots {
         commands.entity(root).despawn();
     }
-    scale.0 = (size.y as f32 / 1080.0).min(size.x as f32 / 1440.0);
+    let canvas_width = if size.x < size.y { 720.0 } else { 1440.0 };
+    scale.0 = (size.y as f32 / 1080.0).min(size.x as f32 / canvas_width);
     let world = page == GamePhase::World;
     if world && observation.open {
         return;
@@ -667,7 +751,7 @@ fn draw_shell(
             Text::new(value),
             TextFont {
                 font: font.0.clone().into(),
-                font_size: FontSize::Px(size),
+                font_size: FontSize::Px(size * settings.text_scale()),
                 weight: FontWeight(650),
                 ..default()
             },
@@ -725,7 +809,9 @@ fn draw_shell(
                     BorderColor::all(color(&tokens.colors.raised)),
                 ))
                 .with_children(|panel| {
-                    let (heading, description) = match page {
+                    let (heading, description) = if editing {
+                        ("设置", "即时应用 · 当前会话有效")
+                    } else { match page {
                         GamePhase::Title => ("N:SIDE", "街区信号  :  生活仍在继续"),
                         GamePhase::Loading => ("正在进入街区", "正在准备街景与素材"),
                         GamePhase::World => ("", ""),
@@ -738,7 +824,7 @@ fn draw_shell(
                             "暂时无法进入街区",
                             "街区资料或素材加载失败，请重试或返回标题",
                         ),
-                    };
+                    }};
                     if !heading.is_empty() {
                         panel.spawn(text(
                         heading,
@@ -761,12 +847,17 @@ fn draw_shell(
                             color(&tokens.colors.text),
                         ));
                     }
-                    for (index, (label, _)) in actions(page).iter().enumerate() {
+                    for (index, (label, action)) in actions(page, editing).iter().enumerate() {
+                        let label = match action {
+                            Action::TextSize => format!("{label}  :  {:.0}%", settings.text_scale() * 100.0),
+                            Action::CameraSensitivity => format!("{label}  :  {:.0}%", settings.camera_sensitivity() * 100.0),
+                            _ => (*label).to_owned(),
+                        };
                         panel
                             .spawn((
                                 Button,
-                                AccessibleLabel::new(*label),
-                                ShellButton { phase: page, index },
+                                AccessibleLabel::new(label.clone()),
+                                ShellButton { phase: page, settings: editing, index },
                                 Node {
                                     width: percent(100),
                                     min_height: px(76),
@@ -781,14 +872,20 @@ fn draw_shell(
                             ))
                             .with_children(|button| {
                                 button.spawn(text(
-                                    label,
+                                    &label,
                                     tokens.body_size,
                                     color(&tokens.colors.text),
                                 ));
                             });
                     }
                     panel.spawn(text(
-                        match (page, ui.gamepad) {
+                        if editing {
+                            if ui.gamepad {
+                                "方向键选择 · A 切换 · B 返回\n字号 100 / 125% · 镜头 100 / 65%"
+                            } else {
+                                "↑ ↓ 选择 · Enter 切换 · Esc 返回\n字号 100 / 125% · 镜头 100 / 65%"
+                            }
+                        } else { match (page, ui.gamepad) {
                             (GamePhase::Title, false) => "↑ ↓ 选择 · Enter 确认",
                             (GamePhase::Title, true) => "方向键选择 · A 确认",
                             (GamePhase::World, false) => "Esc / Tab 暂停",
@@ -805,7 +902,7 @@ fn draw_shell(
                             (GamePhase::Loading, true) => "B 取消并返回",
                             (GamePhase::Failed, false) => "↑ ↓ 选择 · Enter 确认 · Esc 返回",
                             (GamePhase::Failed, true) => "方向键选择 · A 确认 · B 返回",
-                        },
+                        }},
                         tokens.body_size,
                         color(&tokens.colors.secondary),
                     ));
@@ -828,7 +925,7 @@ fn style_buttons(
     mut texts: Query<&mut TextColor>,
 ) {
     for (entity, button, interaction, children, mut background, mut border) in &mut buttons {
-        let active = ui.focus == button.index;
+        let active = ui.focus() == button.index;
         if active && focus.get() != Some(entity) {
             focus.set(entity, FocusCause::Navigated);
         }
@@ -966,6 +1063,7 @@ mod tests {
             Interaction::Pressed,
             ShellButton {
                 phase: GamePhase::Title,
+                settings: false,
                 index: 1,
             },
         ));
@@ -1054,6 +1152,7 @@ mod tests {
             Interaction::Pressed,
             ShellButton {
                 phase: GamePhase::Title,
+                settings: false,
                 index: 1,
             },
         ));
@@ -1150,6 +1249,220 @@ mod tests {
             .iter_mut(app.world_mut())
         {
             pad.digital_mut().clear();
+        }
+    }
+
+    fn tap(app: &mut App, key: KeyCode) {
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(key);
+        frame(app);
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .release(key);
+        frame(app);
+    }
+
+    #[test]
+    fn settings_apply_persist_and_return_to_the_same_menu_focus() {
+        for paused in [false, true] {
+            let (mut app, camera, pad) = walk_app();
+            enter_walk_fixture(&mut app);
+            if paused {
+                tap(&mut app, KeyCode::Escape);
+            } else {
+                app.world_mut()
+                    .resource_mut::<NextState<GamePhase>>()
+                    .set(GamePhase::Title);
+                frame(&mut app);
+            }
+            let phase = *app.world().resource::<State<GamePhase>>().get();
+            let foot = app
+                .world()
+                .get_resource::<PlayerState>()
+                .map(|player| player.foot);
+            let view = *app.world().get::<Transform>(camera).unwrap();
+            tap(&mut app, KeyCode::ArrowUp);
+            assert_eq!(app.world().resource::<EntryUi>().focus(), 2);
+            tap(&mut app, KeyCode::Enter);
+            assert!(app.world().resource::<EntryUi>().settings_open());
+            assert_eq!(app.world().resource::<EntryUi>().focus(), 0);
+            assert_eq!(app.world().resource::<EntrySettings>().text_scale(), 1.0);
+            // A stale menu button cannot act on the settings page after the view changes
+            let stale = app
+                .world_mut()
+                .spawn((
+                    Interaction::Pressed,
+                    ShellButton {
+                        phase,
+                        settings: false,
+                        index: 0,
+                    },
+                ))
+                .id();
+            frame(&mut app);
+            assert_eq!(app.world().resource::<EntrySettings>().text_scale(), 1.0);
+            assert!(matches!(
+                *app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            app.world_mut().despawn(stale);
+            tap(&mut app, KeyCode::Enter);
+            assert_eq!(app.world().resource::<EntrySettings>().text_scale(), 1.25);
+            tap(&mut app, KeyCode::ArrowDown);
+            tap(&mut app, KeyCode::Enter);
+            assert_eq!(
+                app.world().resource::<EntrySettings>().camera_sensitivity(),
+                0.65
+            );
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyD);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .analog_mut()
+                .set(GamepadAxis::RightStickX, 0.8);
+            for _ in 0..12 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                app.world()
+                    .get_resource::<PlayerState>()
+                    .map(|player| player.foot),
+                foot
+            );
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            assert!(app.world().resource::<EntryUi>().gamepad);
+            tap(&mut app, KeyCode::Escape);
+            assert!(!app.world().resource::<EntryUi>().settings_open());
+            assert!(!app.world().resource::<EntryUi>().gamepad);
+            assert_eq!(app.world().resource::<EntryUi>().focus(), 2);
+            assert_eq!(*app.world().resource::<State<GamePhase>>().get(), phase);
+            if paused {
+                tap(&mut app, KeyCode::Escape);
+                for _ in 0..5 {
+                    frame(&mut app);
+                }
+                assert_eq!(
+                    *app.world().resource::<State<GamePhase>>().get(),
+                    GamePhase::World
+                );
+                assert_eq!(app.world().resource::<PlayerState>().foot, foot.unwrap());
+                assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            }
+            app.world_mut()
+                .resource_mut::<NextState<GamePhase>>()
+                .set(GamePhase::Title);
+            frame(&mut app);
+            assert_eq!(app.world().resource::<EntrySettings>().text_scale(), 1.25);
+            assert_eq!(
+                app.world().resource::<EntrySettings>().camera_sensitivity(),
+                0.65
+            );
+            assert!(!app.world().resource::<EntryUi>().settings_open());
+        }
+    }
+
+    #[test]
+    fn settings_return_button_supports_gamepad_and_pointer() {
+        for pointer in [false, true] {
+            let mut app = lifecycle_app();
+            tap(&mut app, KeyCode::ArrowUp);
+            tap(&mut app, KeyCode::Enter);
+            if pointer {
+                app.world_mut().spawn((
+                    Interaction::Pressed,
+                    ShellButton {
+                        phase: GamePhase::Title,
+                        settings: true,
+                        index: 2,
+                    },
+                ));
+                frame(&mut app);
+            } else {
+                let pad = app.world_mut().spawn(Gamepad::default()).id();
+                app.world_mut()
+                    .get_mut::<Gamepad>(pad)
+                    .unwrap()
+                    .digital_mut()
+                    .press(GamepadButton::DPadUp);
+                frame(&mut app);
+                app.world_mut()
+                    .get_mut::<Gamepad>(pad)
+                    .unwrap()
+                    .digital_mut()
+                    .release(GamepadButton::DPadUp);
+                frame(&mut app);
+                assert_eq!(app.world().resource::<EntryUi>().focus(), 2);
+                app.world_mut()
+                    .get_mut::<Gamepad>(pad)
+                    .unwrap()
+                    .digital_mut()
+                    .press(GamepadButton::South);
+                frame(&mut app);
+            }
+            assert!(!app.world().resource::<EntryUi>().settings_open());
+            assert_eq!(app.world().resource::<EntryUi>().focus(), 2);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Title
+            );
+            assert!(app.should_exit().is_none());
+        }
+    }
+
+    #[test]
+    fn camera_setting_scales_real_keyboard_mouse_and_gamepad_look() {
+        for source in 0..3 {
+            let mut turns = Vec::new();
+            for slow in [false, true] {
+                let (mut app, camera, pad) = walk_app();
+                if slow {
+                    tap(&mut app, KeyCode::ArrowUp);
+                    tap(&mut app, KeyCode::Enter);
+                    tap(&mut app, KeyCode::ArrowDown);
+                    tap(&mut app, KeyCode::Enter);
+                    tap(&mut app, KeyCode::Escape);
+                }
+                enter_walk_fixture(&mut app);
+                let before = app.world().get::<Transform>(camera).unwrap().rotation;
+                for _ in 0..10 {
+                    match source {
+                        0 => app
+                            .world_mut()
+                            .resource_mut::<ButtonInput<KeyCode>>()
+                            .press(KeyCode::KeyE),
+                        1 => {
+                            app.world_mut()
+                                .get_mut::<Gamepad>(pad)
+                                .unwrap()
+                                .analog_mut()
+                                .set(GamepadAxis::RightStickX, 1.0);
+                        }
+                        _ => {
+                            app.world_mut()
+                                .resource_mut::<ButtonInput<MouseButton>>()
+                                .press(MouseButton::Right);
+                            app.world_mut()
+                                .resource_mut::<AccumulatedMouseMotion>()
+                                .delta = Vec2::new(-10.0, 0.0);
+                        }
+                    }
+                    frame(&mut app);
+                }
+                turns.push(
+                    before.angle_between(app.world().get::<Transform>(camera).unwrap().rotation),
+                );
+            }
+            assert!(
+                turns[0] > 0.1,
+                "input source {source} must turn the real camera"
+            );
+            assert!(
+                (turns[1] / turns[0] - 0.65).abs() < 0.003,
+                "input source {source}: turns={turns:?}"
+            );
         }
     }
 
@@ -1477,6 +1790,7 @@ mod tests {
                 Interaction::Pressed,
                 ShellButton {
                     phase: GamePhase::Paused,
+                    settings: false,
                     index: 0,
                 },
             ))
@@ -2145,6 +2459,7 @@ mod tests {
                     Interaction::Pressed,
                     ShellButton {
                         phase: GamePhase::Paused,
+                        settings: false,
                         index: 0,
                     },
                 ))

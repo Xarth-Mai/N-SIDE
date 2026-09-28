@@ -1,0 +1,37 @@
+[
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:sync"
+    ],
+    "exit": 0,
+    "output": "PASS: 31 task cards; sync\n$ bun tools/tasks.ts sync\n",
+    "board_unchanged": true
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:sync"
+    ],
+    "exit": 0,
+    "output": "PASS: 31 task cards; sync\n$ bun tools/tasks.ts sync\n",
+    "board_unchanged": true
+  },
+  {
+    "command": [
+      "bun",
+      "run",
+      "tasks:check"
+    ],
+    "exit": 0,
+    "output": "PASS: 31 task cards; check\n$ bun tools/tasks.ts check\n",
+    "todo_files_unchanged": 1655
+  },
+  {
+    "check": "final source hashes still match captured inputs",
+    "files": 27,
+    "status": "PASS"
+  }
+]

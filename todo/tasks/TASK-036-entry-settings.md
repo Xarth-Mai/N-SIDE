@@ -1,7 +1,11 @@
 ---
 id: TASK-036
 type: feature
-status: backlog
+status: done
+acceptance:
+  role: codex
+  revision: c6d7e21c6d1c70dcff08e52074d359e11ae79b50c3aaebbe891c976b2e36c6a9
+  record: todo/evidence/TASK-036/r1/review.md
 milestone: G1
 depends_on: [TASK-035]
 specs:
@@ -21,8 +25,8 @@ specs:
 
 ## 当前工作与下一步
 
-第1轮，步骤1/6 定位；本轮连续五项交付的第5项，依前置结果推进
+第1轮，步骤6/6 完成；字号和三类镜头输入实际生效，宽窄屏设置与观察综合流程4条GPU录制通过，71项库测试与3项Viewer测试通过；本轮五项技术交付收口
 
 ## 结果与证据
 
-当前尚无完成证据，原始运行产物进入output，本轮摘要归对应任务evidence目录
+[设置与综合恢复验收](../evidence/TASK-036/r1/review.md)；本会话保留设置，独立进程的持久化未实现；作者手感、Windows与物理手柄另验

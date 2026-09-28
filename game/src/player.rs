@@ -1,6 +1,6 @@
 //! Neutral exterior controller experiment; static mesh queries use the rendered world geometry
 use crate::{
-    app::GamePhase,
+    app::{EntrySettings, GamePhase},
     capture::CaptureInput,
     places::Observation,
     ui::UiInput,
@@ -239,6 +239,7 @@ impl Default for Orbit {
 
 pub fn install(app: &mut App) {
     app.init_resource::<WalkPreview>()
+        .init_resource::<EntrySettings>()
         .init_resource::<Intent>()
         .init_resource::<Orbit>()
         .add_systems(
@@ -348,6 +349,7 @@ fn read_input(
     mut intent: ResMut<Intent>,
     mut orbit: ResMut<Orbit>,
     observation: Option<Res<Observation>>,
+    settings: Res<EntrySettings>,
 ) {
     intent.direction = Vec3::ZERO;
     if !matches!(*next, NextState::Unchanged)
@@ -394,11 +396,12 @@ fn read_input(
             });
         return;
     }
-    orbit.yaw += look.x * 1.6 * time.delta_secs();
-    orbit.pitch -= look.y * 1.2 * time.delta_secs();
+    let sensitivity = settings.camera_sensitivity();
+    orbit.yaw += look.x * 1.6 * time.delta_secs() * sensitivity;
+    orbit.pitch -= look.y * 1.2 * time.delta_secs() * sensitivity;
     if buttons.pressed(MouseButton::Right) {
-        orbit.yaw -= motion.delta.x * 0.003;
-        orbit.pitch += motion.delta.y * 0.003;
+        orbit.yaw -= motion.delta.x * 0.003 * sensitivity;
+        orbit.pitch += motion.delta.y * 0.003 * sensitivity;
     }
     orbit.pitch = orbit.pitch.clamp(-0.12, 1.15);
     let forward = Vec3::new(-orbit.yaw.sin(), 0.0, -orbit.yaw.cos());
