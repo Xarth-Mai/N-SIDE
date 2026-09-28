@@ -38,13 +38,16 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 脚本的 `waits` 在指定帧等待真实 `game_page`，期间继续异步加载和渲染，暂停录制时间线；它不设置应用状态，墙钟超时仍有效。`game_page`、`world_ready`、`min_world_entities`、`max_world_entities` 和 `same_world_entities` 从实际 ECS 状态检查标题、加载、清理与重入；录制时长不代表真实加载耗时
 
-暂停复用街区信号的颜色、字体与焦点组件，显示继续及返回标题。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。当前暂停覆盖已实现的人物与镜头，NPC、战斗、动画及声音尚未接入，不据此宣称其暂停行为已验证
+暂停复用街区信号的颜色、字体与焦点组件，显示继续及返回标题。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物与镜头，NPC、战斗、动画及声音尚未接入，不据此宣称其暂停行为已验证
 
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-pause.json --output output/capture/walk-pause
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-focus.json --output output/capture/walk-focus
 ```
 
 该20秒脚本在真实街区走动后，通过键盘和模拟手柄打开菜单、在暂停期间持续发送移动／观察／复位输入、恢复、返回标题并重入。`max_rotation` 检查整个断言区间的相机转角峰值，能检测转动后又回到原朝向的泄漏；检查采用0.002弧度的浮点容差，另与画面观察分别记录
+
+`walk-focus.json` 使用模拟窗口焦点验证加载期间失焦、回焦持键、显式继续与再次进入。`events.focused` 仅用于正式游戏场景，省略时保持上一次焦点值；仅含该字段的脚本创建没有Winit宿主的逻辑主窗口，仍向原离屏纹理渲染。输入按原生路径先更新 `Window.focused` 再发送 `WindowFocused`，不写游戏阶段或人物位置；这是焦点事件的渲染回归，桌面合成器切窗和物理设备另验
 
 ## 人物尺度实验
 

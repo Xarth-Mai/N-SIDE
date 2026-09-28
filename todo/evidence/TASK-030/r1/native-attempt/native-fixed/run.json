@@ -1,0 +1,14 @@
+{
+  "status": "AUTOMATION_COMPLETE",
+  "visual_review": "NOT RUN until actual images reviewed",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--walk-preview"
+  ],
+  "binary_sha256": "82312ff9ca03fb699971f63e90bfcbb44e5fe96a6daefe303c0344a30ffe1dfa",
+  "game_exit_code": 0,
+  "video_exit_code": 0,
+  "scope": "native X11 focus and XTest keyboard; not physical keyboard/gamepad or cross-platform"
+}

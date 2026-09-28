@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/output/focus/2026-09-28/r1/window_probe.py", line 115, in <module>
+    if time.monotonic()>deadline:raise TimeoutError('game window creation')
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: game window creation

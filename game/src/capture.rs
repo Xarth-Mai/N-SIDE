@@ -16,6 +16,7 @@ use bevy::{
     prelude::*,
     render::view::screenshot::{Screenshot, ScreenshotCaptured},
     time::{TimeSystems, TimeUpdateStrategy},
+    window::{PrimaryWindow, WindowFocused},
 };
 use serde::{Deserialize, Serialize};
 use std::{
@@ -72,6 +73,8 @@ pub struct InputSpan {
     move_axis: [f32; 2],
     #[serde(default)]
     look_axis: [f32; 2],
+    #[serde(default)]
+    focused: Option<bool>,
 }
 
 #[derive(Clone, Deserialize, Serialize)]
@@ -142,6 +145,8 @@ const PAD: [(&str, GamepadButton); 8] = [
 ];
 #[derive(Component)]
 struct ScriptGamepad;
+#[derive(Component)]
+struct ScriptFocusWindow;
 
 impl Script {
     fn game_scene(&self) -> bool {
@@ -171,6 +176,9 @@ impl Script {
         }
         let mut previous_end = 0;
         for event in &self.events {
+            if event.focused.is_some() && !self.game_scene() {
+                return Err("focused input requires game-entry or walk-preview".into());
+            }
             if event.start < previous_end
                 || event.start >= event.end
                 || event.end > self.frames
@@ -588,7 +596,26 @@ pub fn install(app: &mut App, recording: Recording) {
         .resource_mut::<Time<Virtual>>()
         .set_max_delta(Duration::from_secs(1));
     app.world_mut().spawn((ScriptGamepad, Gamepad::default()));
+    if recording
+        .script
+        .events
+        .iter()
+        .any(|event| event.focused.is_some())
+    {
+        // Input-only window: the host disables Winit and keeps rendering to CaptureTarget
+        app.world_mut().spawn((
+            ScriptFocusWindow,
+            PrimaryWindow,
+            Window {
+                visible: false,
+                focused: true,
+                resolution: (recording.script.width, recording.script.height).into(),
+                ..default()
+            },
+        ));
+    }
     app.insert_resource(Time::<Fixed>::from_hz(recording.script.fps as f64))
+        .add_message::<WindowFocused>()
         .insert_resource(recording)
         .add_systems(First, advance_clock.before(TimeSystems))
         .add_systems(
@@ -636,6 +663,8 @@ fn drive_input(
     mut buttons: ResMut<ButtonInput<MouseButton>>,
     mut motion: ResMut<AccumulatedMouseMotion>,
     mut pad: Query<&mut Gamepad, With<ScriptGamepad>>,
+    mut windows: Query<(Entity, &mut Window), With<ScriptFocusWindow>>,
+    mut focus_events: MessageWriter<WindowFocused>,
 ) {
     keys.clear();
     buttons.clear();
@@ -652,6 +681,17 @@ fn drive_input(
         .events
         .iter()
         .find(|e| e.start <= frame && frame < e.end);
+    if let Some(focused) = event.and_then(|event| event.focused) {
+        for (entity, mut window) in &mut windows {
+            if window.focused != focused {
+                window.focused = focused;
+                focus_events.write(WindowFocused {
+                    window: entity,
+                    focused,
+                });
+            }
+        }
+    }
     for mut gamepad in &mut pad {
         let movement = event.map_or([0.0; 2], |event| event.move_axis);
         let look = event.map_or([0.0; 2], |event| event.look_axis);
@@ -857,6 +897,108 @@ mod tests {
     use super::*;
 
     #[test]
+    fn focus_input_is_game_only_and_does_not_change_legacy_scripts() {
+        let mut game: Script =
+            serde_json::from_str(include_str!("../capture/game-entry.json")).unwrap();
+        assert!(game.events.iter().all(|event| event.focused.is_none()));
+        game.events[0].focused = Some(false);
+        assert!(game.validate().is_ok());
+        game.scene = "walk-preview".into();
+        assert!(game.validate().is_ok());
+        let mut viewer: Script =
+            serde_json::from_str(include_str!("../capture/viewer-tour.json")).unwrap();
+        viewer.events[0].focused = Some(false);
+        assert!(viewer.validate().unwrap_err().contains("focused input"));
+        assert!(
+            serde_json::from_value::<InputSpan>(serde_json::json!({
+                "start": 0, "end": 1, "focused": "false"
+            }))
+            .is_err()
+        );
+    }
+
+    #[test]
+    fn focus_changes_are_persistent_and_emit_native_messages_only_when_ticking() {
+        for uses_focus in [false, true] {
+            let mut script: Script =
+                serde_json::from_str(include_str!("../capture/game-entry.json")).unwrap();
+            script.events[0].focused = uses_focus.then_some(false);
+            let recording = Recording {
+                script,
+                output: PathBuf::new(),
+                started: Instant::now(),
+                warmup: 0,
+                tick: true,
+                pending: false,
+                saved: 0,
+                transforms_checked: 0,
+                world_ready_seen: false,
+                samples: vec![],
+                failure: None,
+                finished: false,
+            };
+            let mut app = App::new();
+            app.init_resource::<Time<Virtual>>()
+                .init_resource::<ButtonInput<KeyCode>>()
+                .init_resource::<ButtonInput<MouseButton>>()
+                .init_resource::<AccumulatedMouseMotion>();
+            install(&mut app, recording);
+            let windows: Vec<_> = app
+                .world_mut()
+                .query_filtered::<Entity, With<PrimaryWindow>>()
+                .iter(app.world())
+                .collect();
+            assert_eq!(windows.len(), usize::from(uses_focus));
+            if !uses_focus {
+                app.world_mut().run_schedule(RunFixedMainLoop);
+                continue;
+            }
+            let window = windows[0];
+            assert!(app.world().get::<Window>(window).unwrap().focused);
+            assert!(!app.world().get::<Window>(window).unwrap().visible);
+            let mut cursor = app
+                .world()
+                .resource::<Messages<WindowFocused>>()
+                .get_cursor();
+            for (requested, tick, expected, emitted) in [
+                (Some(false), false, true, None),
+                (Some(false), true, false, Some(false)),
+                (None, true, false, None),
+                (Some(false), true, false, None),
+                (Some(true), true, true, Some(true)),
+                (None, true, true, None),
+            ] {
+                let mut recording = app.world_mut().resource_mut::<Recording>();
+                recording.tick = tick;
+                recording.script.events = requested
+                    .into_iter()
+                    .map(|focused| {
+                        serde_json::from_value(serde_json::json!({
+                            "start": 0, "end": 1, "focused": focused
+                        }))
+                        .unwrap()
+                    })
+                    .collect();
+                app.world_mut().run_schedule(RunFixedMainLoop);
+                let events: Vec<_> = cursor
+                    .read(app.world().resource::<Messages<WindowFocused>>())
+                    .map(|event| (event.window, event.focused))
+                    .collect();
+                assert_eq!(app.world().get::<Window>(window).unwrap().focused, expected);
+                assert_eq!(
+                    events,
+                    emitted
+                        .into_iter()
+                        .map(|focused| (window, focused))
+                        .collect::<Vec<_>>()
+                );
+            }
+            assert!(!app.world().contains_resource::<State<GamePhase>>());
+            assert!(!app.world().contains_resource::<PlayerState>());
+        }
+    }
+
+    #[test]
     fn waits_hold_the_clock_and_script_inputs_reach_real_gamepad_axes() {
         let mut script: Script =
             serde_json::from_str(include_str!("../capture/game-entry.json")).unwrap();
@@ -906,6 +1048,7 @@ mod tests {
         app.init_resource::<ButtonInput<KeyCode>>()
             .init_resource::<ButtonInput<MouseButton>>()
             .init_resource::<AccumulatedMouseMotion>()
+            .add_message::<WindowFocused>()
             .add_systems(Update, drive_input.after(advance_clock));
         {
             let mut recording = app.world_mut().resource_mut::<Recording>();
@@ -919,6 +1062,7 @@ mod tests {
                 look: [0.0; 2],
                 move_axis: [0.5, 1.0],
                 look_axis: [-1.0, 0.25],
+                focused: None,
             }];
         }
         app.update();
@@ -1013,6 +1157,9 @@ mod tests {
         let pause_script: Script =
             serde_json::from_str(include_str!("../capture/walk-pause.json")).unwrap();
         assert!(pause_script.validate().is_ok());
+        let focus_script: Script =
+            serde_json::from_str(include_str!("../capture/walk-focus.json")).unwrap();
+        assert!(focus_script.validate().is_ok());
         let mut invalid = script.clone();
         invalid.events[0].move_axis = [1.01, 0.0];
         assert!(invalid.validate().is_err());

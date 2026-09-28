@@ -1,0 +1,333 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 600,
+  "seed": 0,
+  "timeout_seconds": 400,
+  "keyframes": [
+    29,
+    34,
+    69,
+    99,
+    109,
+    129,
+    179,
+    180,
+    181,
+    209,
+    234,
+    249,
+    269,
+    299,
+    309,
+    339,
+    359,
+    409,
+    449,
+    459,
+    529,
+    559,
+    599
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 32,
+      "end": 33,
+      "focused": false
+    },
+    {
+      "start": 70,
+      "end": 100,
+      "focused": true,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 110,
+      "end": 111,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 130,
+      "end": 180,
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "start": 180,
+      "end": 210,
+      "focused": false,
+      "keys": [
+        "W",
+        "R",
+        "E"
+      ],
+      "move_axis": [
+        1,
+        0
+      ],
+      "look_axis": [
+        1,
+        1
+      ]
+    },
+    {
+      "start": 210,
+      "end": 235,
+      "focused": true,
+      "gamepad": [
+        "Confirm",
+        "Menu"
+      ],
+      "move_axis": [
+        1,
+        0
+      ],
+      "look_axis": [
+        1,
+        1
+      ]
+    },
+    {
+      "start": 250,
+      "end": 251,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 270,
+      "end": 300,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 300,
+      "end": 310,
+      "focused": false
+    },
+    {
+      "start": 310,
+      "end": 311,
+      "focused": true
+    },
+    {
+      "start": 340,
+      "end": 341,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 380,
+      "end": 410,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 430,
+      "end": 431,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 440,
+      "end": 441,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 450,
+      "end": 451,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 490,
+      "end": 491,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 530,
+      "end": 560,
+      "move_axis": [
+        0.341574,
+        0.939855
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "paused"
+    },
+    {
+      "frame": 112,
+      "game_page": "world"
+    },
+    {
+      "frame": 182,
+      "game_page": "paused"
+    },
+    {
+      "frame": 252,
+      "game_page": "world"
+    },
+    {
+      "frame": 302,
+      "game_page": "paused"
+    },
+    {
+      "frame": 342,
+      "game_page": "world"
+    },
+    {
+      "frame": 432,
+      "game_page": "paused"
+    },
+    {
+      "frame": 452,
+      "game_page": "title"
+    },
+    {
+      "frame": 492,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "loading_finishes_paused_while_unfocused",
+      "from": 34,
+      "to": 69,
+      "game_page": "paused",
+      "world_ready": true,
+      "same_world_entities": true,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.002,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "held_confirm_on_refocus_does_not_resume",
+      "from": 34,
+      "to": 109,
+      "game_page": "paused",
+      "world_ready": true,
+      "same_world_entities": true,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.002,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "explicit_continue_enables_movement",
+      "from": 129,
+      "to": 179,
+      "min_player_distance": 5,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "focus_loss_blocks_same_frame_motion_look_reset",
+      "from": 179,
+      "to": 209,
+      "game_page": "paused",
+      "world_ready": true,
+      "same_world_entities": true,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.002,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "held_gamepad_on_refocus_does_not_resume",
+      "from": 179,
+      "to": 249,
+      "game_page": "paused",
+      "world_ready": true,
+      "same_world_entities": true,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.002,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "fresh_gamepad_continue_enables_movement",
+      "from": 269,
+      "to": 299,
+      "min_player_distance": 3,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "refocus_without_input_stays_paused",
+      "from": 299,
+      "to": 339,
+      "game_page": "paused",
+      "world_ready": true,
+      "same_world_entities": true,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.002,
+      "max_player_resets": 0,
+      "player_grounded": true
+    },
+    {
+      "name": "fresh_escape_continue_enables_movement",
+      "from": 359,
+      "to": 409,
+      "min_player_distance": 3,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "title_clears_world",
+      "from": 452,
+      "to": 459,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0
+    },
+    {
+      "name": "reentry_restores_one_world",
+      "from": 34,
+      "to": 529,
+      "game_page": "world",
+      "world_ready": true,
+      "same_world_entities": true
+    },
+    {
+      "name": "reentry_accepts_new_input",
+      "from": 529,
+      "to": 559,
+      "min_player_distance": 3,
+      "player_grounded": true,
+      "max_player_resets": 0
+    }
+  ]
+}

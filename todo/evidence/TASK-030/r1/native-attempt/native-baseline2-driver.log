@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/output/focus/2026-09-28/r1/window_probe.py", line 153, in <module>
+    tap('Down');tap('Return');game.wait(timeout=15)
+                              ~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1279, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 2076, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side', '--project-root', '/home/lzzz/MyProjects/N-SIDE', '--walk-preview']' timed out after 15 seconds

@@ -1,0 +1,5 @@
+{
+  "compositor_focus_available": false,
+  "native_verification": "INCOMPLETE",
+  "reason": "X11 input focus did not ensure compositor activation; owned focus-window request did not produce is_focused state"
+}

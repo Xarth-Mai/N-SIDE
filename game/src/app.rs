@@ -13,7 +13,7 @@ use bevy::{
     app::{RunFixedMainLoopSystems, ScheduleRunnerPlugin},
     audio::AudioPlugin,
     camera::RenderTarget,
-    input::mouse::AccumulatedMouseMotion,
+    input::{keyboard::KeyboardInput, mouse::AccumulatedMouseMotion},
     input_focus::{FocusCause, InputFocus},
     prelude::*,
     render::{
@@ -23,7 +23,7 @@ use bevy::{
     },
     tasks::{AsyncComputeTaskPool, Task, futures::check_ready},
     text::{FontWeight, LineHeight},
-    window::{ExitCondition, PrimaryWindow},
+    window::{ExitCondition, PrimaryWindow, WindowFocused},
     winit::WinitPlugin,
 };
 use std::path::PathBuf;
@@ -65,6 +65,7 @@ struct PreparedWorld {
 struct EntryUi {
     focus: usize,
     gamepad: bool,
+    wait_for_release: bool,
 }
 #[derive(Clone, Copy)]
 enum Action {
@@ -240,6 +241,8 @@ pub fn run() -> Result<AppExit, String> {
 fn install_lifecycle(app: &mut App) {
     app.init_state::<GamePhase>()
         .init_resource::<EntryUi>()
+        .add_message::<WindowFocused>()
+        .add_message::<KeyboardInput>()
         .add_plugins(WorldScenePlugin)
         .add_systems(OnEnter(GamePhase::Title), enter_title)
         .add_systems(OnEnter(GamePhase::Loading), begin_loading)
@@ -396,17 +399,81 @@ fn entry_input(
     keys: Res<ButtonInput<KeyCode>>,
     mouse: Res<ButtonInput<MouseButton>>,
     motion: Res<AccumulatedMouseMotion>,
+    mut keyboard_events: MessageReader<KeyboardInput>,
+    mut focus_events: MessageReader<WindowFocused>,
     gamepads: Query<&Gamepad>,
     buttons: Query<(&Interaction, &ShellButton), Changed<Interaction>>,
-    windows: Query<&Window, With<PrimaryWindow>>,
+    windows: Query<(Entity, &Window), With<PrimaryWindow>>,
     phase: Res<State<GamePhase>>,
     mut next: ResMut<NextState<GamePhase>>,
     mut ui: ResMut<EntryUi>,
     mut exit: MessageWriter<AppExit>,
 ) {
-    if windows.iter().any(|window| !window.focused) || !matches!(*next, NextState::Unchanged) {
+    let repeated: Vec<_> = keyboard_events
+        .read()
+        .filter(|event| event.repeat)
+        .map(|event| event.key_code)
+        .collect();
+    let mut focus_changed = false;
+    let mut lost_focus = false;
+    for event in focus_events.read() {
+        if windows.contains(event.window) {
+            debug!(
+                "[game/focus] focused={} phase={:?}",
+                event.focused,
+                phase.get()
+            );
+            focus_changed = true;
+            lost_focus |= !event.focused;
+        }
+    }
+    let unfocused = windows.iter().any(|(_, window)| !window.focused);
+    if keys.any_just_pressed([KeyCode::Enter, KeyCode::Escape, KeyCode::Tab]) {
+        debug!(
+            "[game/input] phase={:?} next={:?} unfocused={} changed={} gate={} repeated={:?}",
+            phase.get(),
+            *next,
+            unfocused,
+            focus_changed,
+            ui.wait_for_release,
+            repeated
+        );
+    }
+    if unfocused || focus_changed {
+        ui.wait_for_release = true;
+    }
+    if *phase.get() == GamePhase::World
+        && (unfocused || lost_focus)
+        && matches!(*next, NextState::Unchanged)
+    {
+        (*next).set_if_neq(GamePhase::Paused);
+    }
+    if unfocused || focus_changed || !matches!(*next, NextState::Unchanged) {
         return;
     }
+    if ui.wait_for_release {
+        ui.wait_for_release = keys.any_pressed([
+            KeyCode::Escape,
+            KeyCode::Tab,
+            KeyCode::Enter,
+            KeyCode::ArrowUp,
+            KeyCode::ArrowDown,
+        ]) || mouse.pressed(MouseButton::Left)
+            || gamepads.iter().any(|pad| {
+                [
+                    GamepadButton::South,
+                    GamepadButton::East,
+                    GamepadButton::Start,
+                    GamepadButton::DPadUp,
+                    GamepadButton::DPadDown,
+                ]
+                .into_iter()
+                .any(|button| pad.pressed(button))
+            });
+        return;
+    }
+    // Focus loss clears Bevy's pressed keys; a late OS repeat must not become a fresh action
+    let key_pressed = |key| keys.just_pressed(key) && !repeated.contains(&key);
     let pressed = |button| gamepads.iter().any(|pad| pad.just_pressed(button));
     if keys.get_just_pressed().next().is_some()
         || mouse.get_just_pressed().next().is_some()
@@ -420,7 +487,8 @@ fn entry_input(
     }) {
         ui.gamepad = true;
     }
-    if keys.any_just_pressed([KeyCode::Escape, KeyCode::Tab])
+    if key_pressed(KeyCode::Escape)
+        || key_pressed(KeyCode::Tab)
         || pressed(GamepadButton::East)
         || pressed(GamepadButton::Start)
     {
@@ -433,13 +501,13 @@ fn entry_input(
         return;
     }
     let options = actions(*phase.get());
-    if keys.just_pressed(KeyCode::ArrowDown) || pressed(GamepadButton::DPadDown) {
+    if key_pressed(KeyCode::ArrowDown) || pressed(GamepadButton::DPadDown) {
         ui.focus = (ui.focus + 1) % options.len();
     }
-    if keys.just_pressed(KeyCode::ArrowUp) || pressed(GamepadButton::DPadUp) {
+    if key_pressed(KeyCode::ArrowUp) || pressed(GamepadButton::DPadUp) {
         ui.focus = (ui.focus + options.len() - 1) % options.len();
     }
-    let mut activate = keys.just_pressed(KeyCode::Enter) || pressed(GamepadButton::South);
+    let mut activate = key_pressed(KeyCode::Enter) || pressed(GamepadButton::South);
     for (interaction, button) in &buttons {
         if *interaction == Interaction::Pressed && button.phase == *phase.get() {
             ui.focus = button.index;
@@ -711,6 +779,8 @@ mod tests {
         assert!(!root.exists());
         let mut app = App::new();
         app.add_plugins((MinimalPlugins, StatesPlugin))
+            .add_message::<bevy::window::WindowFocused>()
+            .add_message::<bevy::input::keyboard::KeyboardInput>()
             .init_resource::<ButtonInput<KeyCode>>()
             .init_resource::<ButtonInput<MouseButton>>()
             .init_resource::<AccumulatedMouseMotion>()
@@ -748,6 +818,7 @@ mod tests {
         app.world_mut()
             .resource_mut::<ButtonInput<KeyCode>>()
             .clear();
+        app.update();
         app.world_mut()
             .resource_mut::<ButtonInput<KeyCode>>()
             .press(KeyCode::ArrowDown);
@@ -1233,5 +1304,362 @@ mod tests {
             .press(KeyCode::KeyD);
         frame(&mut app);
         assert!(app.world().resource::<PlayerState>().foot.x > before.x);
+    }
+
+    fn focus_window(app: &mut App, window: Entity, focused: bool) {
+        // Match Winit: update the component, then deliver the native focus notification
+        app.world_mut().get_mut::<Window>(window).unwrap().focused = focused;
+        app.world_mut()
+            .write_message(bevy::window::WindowFocused { window, focused });
+    }
+
+    #[test]
+    fn focus_loss_freezes_falling_session_and_requires_explicit_release_to_resume() {
+        use crate::world::geometry::GeometryPart;
+        for fixed_ticks in [1, 0, 3] {
+            let (mut app, camera, pad) = walk_app();
+            enter_walk_fixture(&mut app);
+            let window = app
+                .world_mut()
+                .spawn((Window::default(), PrimaryWindow))
+                .id();
+            let spawn = app.world().resource::<PlayerState>().foot;
+            // Walk off a small, real collision platform to obtain a falling state
+            app.insert_resource(
+                CollisionWorld::from_parts(&[GeometryPart {
+                    source: "/terrain".into(),
+                    material: "test".into(),
+                    mesh: Mesh::from(Cuboid::new(2.0, 1.0, 2.0))
+                        .translated_by(Vec3::new(spawn.x, 27.5, spawn.z)),
+                }])
+                .unwrap(),
+            );
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyD);
+            for _ in 0..80 {
+                frame(&mut app);
+                if !app.world().resource::<PlayerState>().grounded
+                    && app.world().resource::<PlayerState>().foot.y < spawn.y - 0.5
+                {
+                    break;
+                }
+            }
+            assert!(!app.world().resource::<PlayerState>().grounded);
+            assert_eq!(app.world().resource::<PlayerState>().resets, 0);
+            let before = app.world().resource::<PlayerState>().foot;
+            let view = *app.world().get::<Transform>(camera).unwrap();
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(fixed_ticks));
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyR);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .analog_mut()
+                .set(GamepadAxis::RightStickX, 0.8);
+            focus_window(&mut app, window, false);
+            frame(&mut app);
+            eprintln!(
+                "[focus/open] ticks={fixed_ticks} before={before:?} after={:?} resets={} next={:?}",
+                app.world().resource::<PlayerState>().foot,
+                app.world().resource::<PlayerState>().resets,
+                app.world().resource::<NextState<GamePhase>>()
+            );
+            assert_eq!(
+                app.world().resource::<PlayerState>().foot,
+                before,
+                "the focus-loss frame must not fall"
+            );
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::PendingIfNeq(GamePhase::Paused)
+            ));
+            // Long enough for the unpaused falling fixture to cross the recovery bounds
+            for _ in 0..240 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert_eq!(app.world().resource::<PlayerState>().foot, before);
+            assert_eq!(*app.world().get::<Transform>(camera).unwrap(), view);
+            assert_eq!(app.world().resource::<PlayerState>().resets, 0);
+            focus_window(&mut app, window, true);
+            for _ in 0..4 {
+                frame(&mut app);
+            }
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert_eq!(app.world().resource::<PlayerState>().foot, before);
+            app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(1));
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::Enter);
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+            assert_eq!(app.world().resource::<PlayerState>().foot.xz(), before.xz());
+            assert_eq!(app.world().resource::<PlayerState>().resets, 0);
+            assert!(
+                app.world()
+                    .get::<Transform>(camera)
+                    .unwrap()
+                    .rotation
+                    .angle_between(view.rotation)
+                    < 0.001
+            );
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .reset_all();
+            *app.world_mut().get_mut::<Gamepad>(pad).unwrap() = Gamepad::default();
+            frame(&mut app);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyR);
+            frame(&mut app);
+            assert_eq!(app.world().resource::<PlayerState>().resets, 1);
+            let recovered = app.world().resource::<PlayerState>().foot;
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .press(KeyCode::KeyD);
+            frame(&mut app);
+            assert!(app.world().resource::<PlayerState>().foot.x > recovered.x);
+        }
+    }
+
+    #[test]
+    fn focus_events_preserve_menu_loading_and_windowless_world() {
+        let mut app = lifecycle_app();
+        let window = app
+            .world_mut()
+            .spawn((Window::default(), PrimaryWindow))
+            .id();
+        app.add_systems(
+            OnEnter(GamePhase::Loading),
+            (|mut commands: Commands| {
+                commands.insert_resource(Preparation(
+                    AsyncComputeTaskPool::get().spawn(std::future::pending()),
+                ));
+            })
+            .after(begin_loading),
+        );
+        for phase in [GamePhase::Title, GamePhase::Failed, GamePhase::Loading] {
+            app.world_mut()
+                .resource_mut::<NextState<GamePhase>>()
+                .set(phase);
+            focus_window(&mut app, window, false);
+            frame(&mut app);
+            assert_eq!(*app.world().resource::<State<GamePhase>>().get(), phase);
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+        }
+        app.init_resource::<Assets<Mesh>>()
+            .init_resource::<Assets<StandardMaterial>>();
+        player::install(&mut app);
+        enter_walk_fixture(&mut app);
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::World
+        );
+        assert!(matches!(
+            app.world().resource::<NextState<GamePhase>>(),
+            NextState::PendingIfNeq(GamePhase::Paused)
+        ));
+        frame(&mut app);
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::Paused
+        );
+        assert_eq!(
+            app.world_mut().query::<&Mesh3d>().iter(app.world()).count(),
+            1
+        );
+
+        let (mut headless, _, _) = walk_app();
+        enter_walk_fixture(&mut headless);
+        let secondary = headless.world_mut().spawn(Window::default()).id();
+        focus_window(&mut headless, secondary, false);
+        let before = headless.world().resource::<PlayerState>().foot;
+        headless
+            .world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(KeyCode::KeyD);
+        for _ in 0..3 {
+            frame(&mut headless);
+        }
+        assert_eq!(
+            *headless.world().resource::<State<GamePhase>>().get(),
+            GamePhase::World
+        );
+        assert!(headless.world().resource::<PlayerState>().foot.x > before.x);
+    }
+
+    #[test]
+    fn focus_round_trip_without_input_still_pauses() {
+        let (mut app, _, _) = walk_app();
+        enter_walk_fixture(&mut app);
+        let window = app
+            .world_mut()
+            .spawn((Window::default(), PrimaryWindow))
+            .id();
+        focus_window(&mut app, window, false);
+        focus_window(&mut app, window, true);
+        frame(&mut app);
+        assert!(matches!(
+            app.world().resource::<NextState<GamePhase>>(),
+            NextState::PendingIfNeq(GamePhase::Paused)
+        ));
+        frame(&mut app);
+        assert_eq!(
+            *app.world().resource::<State<GamePhase>>().get(),
+            GamePhase::Paused
+        );
+    }
+
+    #[test]
+    fn focus_round_trip_rejects_same_frame_actions_and_late_keyboard_repeats() {
+        use bevy::input::{
+            ButtonState,
+            keyboard::{Key, KeyboardFocusLost, KeyboardInput, keyboard_input_system},
+        };
+        for (key_code, logical_key) in [
+            (KeyCode::Enter, Key::Enter),
+            (KeyCode::Escape, Key::Escape),
+            (KeyCode::Tab, Key::Tab),
+        ] {
+            let (mut app, _, pad) = walk_app();
+            enter_walk_fixture(&mut app);
+            app.init_resource::<ButtonInput<Key>>()
+                .add_message::<KeyboardFocusLost>()
+                .add_systems(PreUpdate, keyboard_input_system);
+            let window = app
+                .world_mut()
+                .spawn((Window::default(), PrimaryWindow))
+                .id();
+            let send_key = |app: &mut App, state, repeat| {
+                app.world_mut().write_message(KeyboardInput {
+                    key_code,
+                    logical_key: logical_key.clone(),
+                    state,
+                    text: None,
+                    repeat,
+                    window,
+                });
+            };
+            send_key(&mut app, ButtonState::Pressed, false);
+            focus_window(&mut app, window, false);
+            focus_window(&mut app, window, true);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .press(GamepadButton::South);
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .press(MouseButton::Left);
+            frame(&mut app);
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::PendingIfNeq(GamePhase::Paused)
+            ));
+            app.world_mut().write_message(KeyboardFocusLost);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            for _ in 0..3 {
+                frame(&mut app);
+            }
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .release(GamepadButton::South);
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .release(MouseButton::Left);
+            focus_window(&mut app, window, false);
+            frame(&mut app);
+            focus_window(&mut app, window, true);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .press(GamepadButton::South);
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .press(MouseButton::Left);
+            let button = app
+                .world_mut()
+                .spawn((
+                    Interaction::Pressed,
+                    ShellButton {
+                        phase: GamePhase::Paused,
+                        index: 0,
+                    },
+                ))
+                .id();
+            frame(&mut app);
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            app.world_mut().despawn(button);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .release(GamepadButton::South);
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .release(MouseButton::Left);
+            for _ in 0..3 {
+                frame(&mut app);
+            }
+            send_key(&mut app, ButtonState::Pressed, true);
+            frame(&mut app);
+            eprintln!(
+                "[focus/repeat] key={key_code:?} phase={:?} next={:?}",
+                app.world().resource::<State<GamePhase>>().get(),
+                app.world().resource::<NextState<GamePhase>>()
+            );
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert!(matches!(
+                app.world().resource::<NextState<GamePhase>>(),
+                NextState::Unchanged
+            ));
+            send_key(&mut app, ButtonState::Released, false);
+            frame(&mut app);
+            send_key(&mut app, ButtonState::Pressed, false);
+            frame(&mut app);
+            frame(&mut app);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+        }
     }
 }

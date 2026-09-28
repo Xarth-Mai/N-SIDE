@@ -1,0 +1,281 @@
+[
+  {
+    "elapsed_seconds": 0.001,
+    "event": "launch",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--walk-preview"
+    ],
+    "pid": 1968213
+  },
+  {
+    "elapsed_seconds": 0.303,
+    "event": "focus",
+    "target": "game",
+    "window": 8388610
+  },
+  {
+    "elapsed_seconds": 2.518,
+    "event": "screenshot",
+    "path": "01-title.png",
+    "sha256": "74ff62ffef838a14dc9a653cc4d6de03c4a267a4535965e3b49700ab95d2d2cf"
+  },
+  {
+    "elapsed_seconds": 2.518,
+    "event": "key",
+    "key_name": "Return",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 2.599,
+    "event": "key",
+    "key_name": "Return",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 3.3,
+    "event": "focus",
+    "target": "owned-sink",
+    "window": 6291457
+  },
+  {
+    "elapsed_seconds": 15.574,
+    "event": "screenshot",
+    "path": "02-loaded-unfocused.png",
+    "sha256": "660f5f6961c1b1f002315c0d438c9f509ff554c0e8924fa95bc3ab8bcf4a40d4"
+  },
+  {
+    "elapsed_seconds": 15.575,
+    "event": "key",
+    "key_name": "Return",
+    "down": true,
+    "target": "owned-sink"
+  },
+  {
+    "elapsed_seconds": 15.676,
+    "event": "focus",
+    "target": "game",
+    "window": 8388610
+  },
+  {
+    "elapsed_seconds": 17.191,
+    "event": "screenshot",
+    "path": "03-held-return-refocus.png",
+    "sha256": "002e9db9d6996cdefedf736d30b8b95f9d062767df8fef0a747b5615c1344628"
+  },
+  {
+    "elapsed_seconds": 17.192,
+    "event": "key",
+    "key_name": "Return",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 17.707,
+    "event": "screenshot",
+    "path": "04-released-still-paused.png",
+    "sha256": "002e9db9d6996cdefedf736d30b8b95f9d062767df8fef0a747b5615c1344628"
+  },
+  {
+    "elapsed_seconds": 17.707,
+    "event": "key",
+    "key_name": "Return",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 17.787,
+    "event": "key",
+    "key_name": "Return",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 18.288,
+    "event": "key",
+    "key_name": "w",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 19.503,
+    "event": "screenshot",
+    "path": "05-moving.png",
+    "sha256": "002e9db9d6996cdefedf736d30b8b95f9d062767df8fef0a747b5615c1344628"
+  },
+  {
+    "elapsed_seconds": 19.503,
+    "event": "focus",
+    "target": "owned-sink",
+    "window": 6291457
+  },
+  {
+    "elapsed_seconds": 20.004,
+    "event": "key",
+    "key_name": "w",
+    "down": false,
+    "target": "owned-sink"
+  },
+  {
+    "elapsed_seconds": 20.218,
+    "event": "screenshot",
+    "path": "06-lost-focus.png",
+    "sha256": "002e9db9d6996cdefedf736d30b8b95f9d062767df8fef0a747b5615c1344628"
+  },
+  {
+    "elapsed_seconds": 21.485,
+    "event": "screenshot",
+    "path": "07-unfocused-stable.png",
+    "sha256": "d0380cad838b44d621a006eb7fd22f94d6d034367012d507c076460025b4c37b"
+  },
+  {
+    "elapsed_seconds": 21.485,
+    "event": "focus",
+    "target": "game",
+    "window": 8388610
+  },
+  {
+    "elapsed_seconds": 22.301,
+    "event": "screenshot",
+    "path": "08-refocused-still-paused.png",
+    "sha256": "d0380cad838b44d621a006eb7fd22f94d6d034367012d507c076460025b4c37b"
+  },
+  {
+    "elapsed_seconds": 22.301,
+    "event": "key",
+    "key_name": "Return",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 22.382,
+    "event": "key",
+    "key_name": "Return",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 22.882,
+    "event": "key",
+    "key_name": "d",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 23.682,
+    "event": "key",
+    "key_name": "d",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 23.897,
+    "event": "screenshot",
+    "path": "09-resumed-movement.png",
+    "sha256": "372aef7f65c511e971936b9a5c5ef4d4d6837f313cf018ed0a4bfea74859f181"
+  },
+  {
+    "elapsed_seconds": 23.898,
+    "event": "focus",
+    "target": "owned-sink",
+    "window": 6291457
+  },
+  {
+    "elapsed_seconds": 23.898,
+    "event": "focus",
+    "target": "game",
+    "window": 8388610
+  },
+  {
+    "elapsed_seconds": 24.613,
+    "event": "screenshot",
+    "path": "10-fast-refocus-paused.png",
+    "sha256": "372aef7f65c511e971936b9a5c5ef4d4d6837f313cf018ed0a4bfea74859f181"
+  },
+  {
+    "elapsed_seconds": 24.613,
+    "event": "key",
+    "key_name": "Return",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 24.695,
+    "event": "key",
+    "key_name": "Return",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 25.195,
+    "event": "key",
+    "key_name": "Escape",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 25.276,
+    "event": "key",
+    "key_name": "Escape",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 25.576,
+    "event": "key",
+    "key_name": "Down",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 25.657,
+    "event": "key",
+    "key_name": "Down",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 25.657,
+    "event": "key",
+    "key_name": "Return",
+    "down": true,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 25.738,
+    "event": "key",
+    "key_name": "Return",
+    "down": false,
+    "target": "game"
+  },
+  {
+    "elapsed_seconds": 26.553,
+    "event": "screenshot",
+    "path": "11-title-cleanup.png",
+    "sha256": "372aef7f65c511e971936b9a5c5ef4d4d6837f313cf018ed0a4bfea74859f181"
+  },
+  {
+    "elapsed_seconds": 26.553,
+    "event": "actions_finished"
+  },
+  {
+    "elapsed_seconds": 35.834,
+    "event": "video_saved",
+    "path": "video.mp4"
+  },
+  {
+    "elapsed_seconds": 37.404,
+    "event": "normal_exit",
+    "exit_code": 0
+  },
+  {
+    "elapsed_seconds": 39.622,
+    "event": "focus",
+    "target": "owned-sink",
+    "window": 6291457
+  }
+]

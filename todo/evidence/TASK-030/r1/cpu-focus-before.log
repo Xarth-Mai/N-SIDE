@@ -1,0 +1,34 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 34.86s
+     Running unittests src/lib.rs (target/debug/deps/n_side-5e961ca7daca702b)
+
+running 3 tests
+test app::tests::focus_events_preserve_menu_loading_and_windowless_world ...
+thread 'app::tests::focus_events_preserve_menu_loading_and_windowless_world' (405) panicked at src/app.rs:1405:9:
+assertion failed: matches!(app.world().resource::<NextState<GamePhase>>(),
+    NextState::PendingIfNeq(GamePhase::Paused))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+test app::tests::focus_loss_freezes_falling_session_and_requires_explicit_release_to_resume ... [focus/open] ticks=1 before=Vec3(101.400085, 27.512169, -255.0) after=Vec3(101.400085, 27.492168, -255.0) resets=0 next=Unchanged
+
+thread 'app::tests::focus_loss_freezes_falling_session_and_requires_explicit_release_to_resume' (422) panicked at src/app.rs:1300:13:
+assertion `left == right` failed: the focus-loss frame must not fall
+  left: Vec3(101.400085, 27.492168, -255.0)
+ right: Vec3(101.400085, 27.512169, -255.0)
+FAILED
+test app::tests::focus_round_trip_rejects_same_frame_actions_and_late_keyboard_repeats ... [focus/repeat] key=Enter phase=Paused next=PendingIfNeq(World)
+
+thread 'app::tests::focus_round_trip_rejects_same_frame_actions_and_late_keyboard_repeats' (423) panicked at src/app.rs:1519:13:
+assertion failed: matches!(app.world().resource::<NextState<GamePhase>>(), NextState::Unchanged)
+FAILED
+
+failures:
+
+failures:
+    app::tests::focus_events_preserve_menu_loading_and_windowless_world
+    app::tests::focus_loss_freezes_falling_session_and_requires_explicit_release_to_resume
+    app::tests::focus_round_trip_rejects_same_frame_actions_and_late_keyboard_repeats
+
+test result: FAILED. 0 passed; 3 failed; 0 ignored; 0 measured; 47 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `--lib`

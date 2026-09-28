@@ -1,0 +1,18 @@
+$ bun run tasks:sync
+PASS: 25 task cards; sync
+$ bun run tasks:check
+PASS: 25 task cards; check
+$ sha256sum todo/README.md
+d5344e3ca4b6981616def925c6a2d260579495e222093a8195cb9773a6e9acea  todo/README.md
+$ bun run tasks:sync
+PASS: 25 task cards; sync
+$ sha256sum todo/README.md
+d5344e3ca4b6981616def925c6a2d260579495e222093a8195cb9773a6e9acea  todo/README.md
+$ bun run check:docs
+PASS: 319 Markdown files, 92 IDs
+PASS: 31 Skills; 25 recorded imports
+$ cargo fmt --manifest-path game/Cargo.toml --check
+exit 0
+$ git diff --check
+exit 0
+PASS: input revision and all 3 final runtime evidence fingerprints
