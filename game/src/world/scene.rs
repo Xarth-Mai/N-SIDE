@@ -971,6 +971,63 @@ fn add_residential_window(
     Ok(())
 }
 
+fn add_residential_screen(
+    batches: &mut BTreeMap<String, Mesh>,
+    center: Vec3,
+    opening: Vec2,
+    rotation: Quat,
+    outward: Vec3,
+    roller: bool,
+) -> Result<(), String> {
+    let along = rotation * Vec3::X;
+    if roller {
+        // One externally mounted fabric shade leaves the other sliding pane clear
+        let width = (opening.x - 0.06) / 2. - 0.04;
+        let side = -(opening.x + 0.06) / 4.;
+        let top = opening.y / 2. - 0.045;
+        add_box(
+            batches,
+            "awning",
+            center + along * side + Vec3::Y * (top - 0.5) + outward * 0.12,
+            Vec3::new(width, 1., 0.025),
+            rotation,
+        )?;
+        for height in [top + 0.015, top - 1.] {
+            add_box(
+                batches,
+                "metal",
+                center + along * side + Vec3::Y * height + outward * 0.12,
+                Vec3::new(width + 0.04, 0.05, 0.07),
+                rotation,
+            )?;
+        }
+    } else {
+        // Fixed upper louvers limit afternoon exposure without closing the window
+        for level in 0..4 {
+            add_box(
+                batches,
+                "wood_siding",
+                center + Vec3::Y * (opening.y / 2. - 0.10 - level as f32 * 0.18) + outward * 0.20,
+                Vec3::new(opening.x + 0.08, 0.035, 0.19),
+                rotation * Quat::from_rotation_x(25_f32.to_radians()),
+            )?;
+        }
+        for side in [-1., 1.] {
+            add_box(
+                batches,
+                "metal",
+                center
+                    + along * side * (opening.x + 0.02) / 2.
+                    + Vec3::Y * (opening.y / 2. - 0.37)
+                    + outward * 0.10,
+                Vec3::new(0.04, 0.68, 0.05),
+                rotation,
+            )?;
+        }
+    }
+    Ok(())
+}
+
 fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, String> {
     let mut parts = Vec::new();
     let ground = Ground::new(map)?;
@@ -1211,6 +1268,19 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                                 &design.kind,
                                 i,
                             )?;
+                            // Street-edge rooms get a partial privacy shade on the first home level
+                            let privacy = floor_index == 1 && (i == 0 || i + 1 == n);
+                            // Map +Y is north: west/south street faces receive fixed sun protection
+                            if privacy || normal[0] < -0.5 || normal[1] < -0.5 {
+                                add_residential_screen(
+                                    &mut residential,
+                                    map_to_world(p),
+                                    Vec2::new(width, height),
+                                    rotation,
+                                    map_to_world([normal[0], normal[1], 0.]),
+                                    privacy,
+                                )?;
+                            }
                         }
                     }
                     if !court && matches!(design.kind.as_str(), "station" | "music") {
@@ -2005,6 +2075,59 @@ fn vegetation_obstacles(map: &Map) -> Vec<geo::Polygon> {
     areas
 }
 
+fn vegetation_clearance(prop: &PropPlacement) -> f64 {
+    let tilt = (prop.transform.rotation * Vec3::Y).xz().length();
+    let height = match prop.model.as_str() {
+        "grass" => 0.35,
+        "rock" => 0.65,
+        _ => 0.0,
+    };
+    (vegetation_radius(&prop.model) + height * f64::from(tilt))
+        * f64::from(prop.transform.scale.max_element())
+}
+
+fn vegetation_space_clear(
+    map: &Map,
+    obstacles: &[geo::Polygon],
+    props: &[PropPlacement],
+    p: [f64; 2],
+    radius: f64,
+) -> bool {
+    use geo::{Distance, Euclidean, Point};
+    let point = Point::new(p[0], p[1]);
+    !obstacles
+        .iter()
+        .any(|area| Euclidean.distance(&point, area) < radius + 0.4)
+        && !map
+            .buildings
+            .iter()
+            .filter_map(|b| b.design.as_ref())
+            .flat_map(|d| &d.entries)
+            .any(|e| {
+                let door = map.nodes[&e.node];
+                (door[0] - p[0]).hypot(door[1] - p[1]) < radius + 2.0
+            })
+        && !props.iter().any(|prop| {
+            let q = prop.transform.translation;
+            (f64::from(q.x) - p[0]).hypot(-f64::from(q.z) - p[1])
+                < radius + vegetation_clearance(prop) + 0.25
+        })
+}
+
+fn summit_views_clear(map: &Map, p: [f64; 2], radius: f64, top: f64) -> bool {
+    let summit = map.nodes["summit"];
+    !["home", "station", "cinema_entry"].into_iter().any(|id| {
+        let target = map.nodes[id];
+        let d = [target[0] - summit[0], target[1] - summit[1]];
+        let t = (((p[0] - summit[0]) * d[0] + (p[1] - summit[1]) * d[1])
+            / (d[0] * d[0] + d[1] * d[1]))
+            .clamp(0.0, 1.0);
+        let line = [summit[0] + d[0] * t, summit[1] + d[1] * t];
+        let view_height = summit[2] + 1.7 + (target[2] - summit[2]) * t;
+        (p[0] - line[0]).hypot(p[1] - line[1]) < radius + 3.0 && top + 1.0 >= view_height
+    })
+}
+
 // Three authored B12 middle-distance stands; no global forest scatter
 const FOREST_GROUPS: [(&str, [f64; 2], f64, usize); 3] = [
     ("hill_short_rest2", [66.0, 48.0], 24.0, 14),
@@ -2202,28 +2325,7 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
         }
         let scale = forest.map_or(1.0, |(_, scale)| scale);
         let radius = vegetation_radius(model) * scale;
-        let point = Point::new(p[0], p[1]);
-        if obstacles
-            .iter()
-            .any(|area| Euclidean.distance(&point, area) < radius + 0.4)
-            || map
-                .buildings
-                .iter()
-                .filter_map(|b| b.design.as_ref())
-                .flat_map(|d| &d.entries)
-                .any(|e| {
-                    let door = map.nodes[&e.node];
-                    (door[0] - p[0]).hypot(door[1] - p[1]) < radius + 2.0
-                })
-            || props.iter().any(|prop| {
-                let q = prop.transform.translation;
-                (f64::from(q.x) - p[0]).hypot(-f64::from(q.z) - p[1])
-                    < radius
-                        + vegetation_radius(&prop.model)
-                            * f64::from(prop.transform.scale.max_element())
-                        + 0.25
-            })
-        {
+        if !vegetation_space_clear(map, &obstacles, props, p, radius) {
             continue;
         }
         let (foot, tolerance) = if forest.is_some() {
@@ -2261,18 +2363,7 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
         }
         let root = low - if forest.is_some() { 0.03 } else { 0.015 };
         if let Some((group, _)) = forest {
-            let summit = map.nodes["summit"];
-            if ["home", "station", "cinema_entry"].into_iter().any(|id| {
-                let target = map.nodes[id];
-                let d = [target[0] - summit[0], target[1] - summit[1]];
-                let t = (((p[0] - summit[0]) * d[0] + (p[1] - summit[1]) * d[1])
-                    / (d[0] * d[0] + d[1] * d[1]))
-                    .clamp(0.0, 1.0);
-                let line = [summit[0] + d[0] * t, summit[1] + d[1] * t];
-                let view_height = summit[2] + 1.7 + (target[2] - summit[2]) * t;
-                (p[0] - line[0]).hypot(p[1] - line[1]) < radius + 3.0
-                    && root + 6.5 * scale + 1.0 >= view_height
-            }) {
+            if !summit_views_clear(map, p, radius, root + 6.5 * scale) {
                 continue;
             }
             forest_counts[group] += 1;
@@ -2286,6 +2377,135 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
                 ))
                 .with_scale(Vec3::splat(scale as f32)),
         });
+    }
+    add_forest_understory(map, ground, &obstacles, initial, props);
+}
+
+fn add_forest_understory(
+    map: &Map,
+    ground: &Ground,
+    obstacles: &[geo::Polygon],
+    initial: usize,
+    props: &mut Vec<PropPlacement>,
+) {
+    for (group, (id, offset, extent, _)) in FOREST_GROUPS.iter().enumerate() {
+        let trees: Vec<_> = props
+            .iter()
+            .filter(|p| {
+                p.source
+                    .starts_with(&format!("nodes[{id}]/derived-vegetation[forest:"))
+            })
+            .collect();
+        if trees.is_empty() {
+            continue;
+        }
+        let center = trees
+            .iter()
+            .fold([0.0; 2], |a, tree| {
+                let p = tree.transform.translation;
+                [a[0] + f64::from(p.x), a[1] - f64::from(p.z)]
+            })
+            .map(|v| v / trees.len() as f64);
+        let anchor = map.nodes[*id];
+        let length = (center[0] - anchor[0]).hypot(center[1] - anchor[1]);
+        let toward = [
+            (center[0] - anchor[0]) / length,
+            (center[1] - anchor[1]) / length,
+        ];
+        // Two forest-edge lobes leave the arrival-facing six-metre opening unplanted
+        for (patch, side) in [-1.0, 1.0].into_iter().enumerate() {
+            let lobe = [
+                center[0] - toward[1] * extent * 0.65 * side + toward[0] * 2.0,
+                center[1] + toward[0] * extent * 0.65 * side + toward[1] * 2.0,
+            ];
+            let mut counts = [0; 3];
+            // Reserve the larger middle layer before ground cover competes for its gaps
+            for kind in [0, 2, 1] {
+                for slot in 0..80 {
+                    if [0, 1, 1, 2, 1][slot % 5] != kind {
+                        continue;
+                    }
+                    if props.len() - initial >= 280 {
+                        return;
+                    }
+                    let limit = [2, 6, if patch == 0 { 2 } else { 1 }][kind];
+                    if counts[kind] >= limit {
+                        continue;
+                    }
+                    let model = ["shrub", "grass", "rock"][kind];
+                    let phase = ((slot * 7 + group * 3 + patch * 5) % 9) as f64 / 8.0;
+                    let scale = [1.4 + phase * 0.4, 1.3 + phase * 0.7, 0.8 + phase * 0.3][kind];
+                    let angle = slot as f64 * 2.399963 + group as f64 * 0.6 + patch as f64;
+                    let distance = 6.0 * ((slot as f64 + 0.5) / 80.0).sqrt();
+                    let p = [
+                        lobe[0] + distance * angle.cos(),
+                        lobe[1] + distance * angle.sin(),
+                    ];
+                    let delta = [p[0] - center[0], p[1] - center[1]];
+                    if (p[0] - anchor[0] - offset[0]).hypot(p[1] - anchor[1] - offset[1]) > *extent
+                        || (delta[0] * toward[0] + delta[1] * toward[1] < 0.0
+                            && (delta[0] * toward[1] - delta[1] * toward[0]).abs() < 3.0)
+                    {
+                        continue;
+                    }
+                    let dx = (ground.height([p[0] + 0.35, p[1]])
+                        - ground.height([p[0] - 0.35, p[1]]))
+                        / 0.7;
+                    let dy = (ground.height([p[0], p[1] + 0.35])
+                        - ground.height([p[0], p[1] - 0.35]))
+                        / 0.7;
+                    let normal = Vec3::new(-dx as f32, 1.0, dy as f32).normalize();
+                    let align = if model == "shrub" {
+                        Quat::IDENTITY
+                    } else {
+                        Quat::from_rotation_arc(Vec3::Y, normal)
+                    };
+                    let rotation = align * Quat::from_rotation_y(angle as f32);
+                    let foot = if model == "shrub" {
+                        0.1
+                    } else {
+                        vegetation_radius(model)
+                    } * scale;
+                    let mut low = ground.height(p);
+                    let mut high = low;
+                    for i in 0..16 {
+                        let angle = i as f32 * std::f32::consts::TAU / 16.0;
+                        let q = rotation
+                            * Vec3::new(angle.cos() * foot as f32, 0.0, angle.sin() * foot as f32);
+                        let support = ground.height([p[0] + f64::from(q.x), p[1] - f64::from(q.z)])
+                            - f64::from(q.y);
+                        low = low.min(support);
+                        high = high.max(support);
+                    }
+                    if high - low > if model == "shrub" { 0.28 } else { 0.08 } {
+                        continue;
+                    }
+                    let root = low - 0.025;
+                    let prop = PropPlacement {
+                        source: format!(
+                            "nodes[{id}]/derived-vegetation[understory:{group}:{patch}:{slot}]"
+                        ),
+                        model: model.into(),
+                        transform: Transform::from_translation(map_to_world([p[0], p[1], root]))
+                            .with_rotation(rotation)
+                            .with_scale(Vec3::splat(scale as f32)),
+                    };
+                    let radius = vegetation_clearance(&prop);
+                    let axis = rotation * Vec3::Y;
+                    let top = root
+                        + scale
+                            * ([0.8, 0.35, 0.65][kind] * f64::from(axis.y)
+                                + vegetation_radius(model) * f64::from(axis.xz().length()));
+                    if !vegetation_space_clear(map, obstacles, props, p, radius)
+                        || !summit_views_clear(map, p, radius, top)
+                    {
+                        continue;
+                    }
+                    props.push(prop);
+                    counts[kind] += 1;
+                }
+            }
+        }
     }
 }
 
@@ -3151,7 +3371,7 @@ mod tests {
             .iter()
             .filter(|p| p.source.contains("/derived-vegetation["))
             .collect();
-        assert!(!additions.is_empty() && additions.len() <= 240);
+        assert!(!additions.is_empty() && additions.len() <= 280);
         assert!(additions.iter().any(|p| p.source.starts_with("surfaces[")));
         assert!(additions.iter().any(|p| p.source.starts_with("roads[")));
         let obstacles = vegetation_obstacles(&map);
@@ -3161,8 +3381,7 @@ mod tests {
             assert!(at.is_finite());
             let point = Point::new(f64::from(at.x), -f64::from(at.z));
             assert!(obstacles.iter().all(|area| Euclidean.distance(&point, area)
-                >= vegetation_radius(&p.model) * f64::from(p.transform.scale.max_element())
-                    + 0.399));
+                >= vegetation_clearance(p) + 0.399));
             let height = map
                 .surfaces
                 .iter()
@@ -3191,10 +3410,7 @@ mod tests {
                 let q = other.transform.translation;
                 assert!(
                     (at.x - q.x).hypot(at.z - q.z) as f64
-                        >= vegetation_radius(&p.model) * f64::from(p.transform.scale.max_element())
-                            + vegetation_radius(&other.model)
-                                * f64::from(other.transform.scale.max_element())
-                            + 0.249,
+                        >= vegetation_clearance(p) + vegetation_clearance(other) + 0.249,
                     "{} overlaps {}",
                     p.source,
                     other.source
@@ -3290,7 +3506,15 @@ mod tests {
         let mut original_map = map.clone();
         original_map.blocks.retain(|b| b.id != "B12");
         let original = props(&original_map, &appearance).unwrap();
-        assert_eq!(placements.len(), original.len() + forest.len());
+        assert_eq!(
+            placements.len(),
+            original.len()
+                + forest.len()
+                + placements
+                    .iter()
+                    .filter(|p| p.source.contains("[understory:"))
+                    .count()
+        );
         for (before, after) in original.iter().zip(&placements) {
             assert!(
                 before.source == after.source
@@ -3386,6 +3610,138 @@ mod tests {
         eprintln!(
             "forest accepted={counts:?} total={} maximum_actual_root_burial={maximum_root_burial:.6}m",
             counts.iter().sum::<usize>()
+        );
+    }
+
+    #[test]
+    fn understory_keeps_actual_roots_patch_openings_and_scene_clearance() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let placements = props(&map, &appearance).unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let mut models = BTreeMap::new();
+        for model in ["shrub", "grass", "rock"] {
+            let spec = &appearance.models[model];
+            let asset = gltf::Gltf::open(root.join("game/assets").join(&spec.file)).unwrap();
+            let mut points = Vec::new();
+            let mut triangles = 0;
+            for node in asset.scenes().nth(spec.scene).unwrap().nodes() {
+                assert!(node.children().next().is_none());
+                let matrix = Mat4::from_cols_array_2d(&node.transform().matrix());
+                for primitive in node.mesh().unwrap().primitives() {
+                    let reader = primitive.reader(|_| asset.blob.as_deref());
+                    triangles += reader.read_indices().unwrap().into_u32().count() / 3;
+                    points.extend(
+                        reader
+                            .read_positions()
+                            .unwrap()
+                            .map(|p| matrix.transform_point3(Vec3::from(p)) * spec.scale),
+                    );
+                }
+            }
+            assert!(points.iter().any(|p| p.y < 0.03));
+            models.insert(model, (points, triangles));
+        }
+        let mut counts = [[0; 3]; 3];
+        let mut root_burial = [0.0_f64; 3];
+        let mut triangle_total = 0;
+        for (group, (id, offset, extent, _)) in FOREST_GROUPS.iter().enumerate() {
+            let trees: Vec<_> = placements
+                .iter()
+                .filter(|p| {
+                    p.source
+                        .starts_with(&format!("nodes[{id}]/derived-vegetation[forest:"))
+                })
+                .collect();
+            let mean =
+                trees.iter().map(|p| p.transform.translation).sum::<Vec3>() / trees.len() as f32;
+            let anchor = map_to_world(map.nodes[*id]);
+            let direction = Vec2::new(mean.x - anchor.x, mean.z - anchor.z).normalize();
+            let mut patches = BTreeSet::new();
+            for p in placements.iter().filter(|p| {
+                p.source
+                    .starts_with(&format!("nodes[{id}]/derived-vegetation[understory:"))
+            }) {
+                let kind = ["shrub", "grass", "rock"]
+                    .iter()
+                    .position(|m| *m == p.model)
+                    .unwrap();
+                counts[group][kind] += 1;
+                patches.insert(p.source.split(':').nth(2).unwrap());
+                let at = p.transform.translation;
+                let delta = Vec2::new(at.x - mean.x, at.z - mean.z);
+                assert!(
+                    delta.dot(direction) >= 0.0 || delta.perp_dot(direction).abs() >= 2.999,
+                    "{} closes the arrival-facing opening",
+                    p.source
+                );
+                assert!(
+                    (f64::from(at.x) - map.nodes[*id][0] - offset[0])
+                        .hypot(-f64::from(at.z) - map.nodes[*id][1] - offset[1])
+                        <= extent + 0.001
+                );
+                let (points, triangles) = &models[p.model.as_str()];
+                triangle_total += triangles;
+                let mut radius = 0.0_f32;
+                let mut top = at.y;
+                for vertex in points {
+                    let actual = p.transform.transform_point(*vertex);
+                    radius = radius.max((actual.x - at.x).hypot(actual.z - at.z));
+                    top = top.max(actual.y);
+                    if vertex.y < 0.03 {
+                        let buried = ground.height([f64::from(actual.x), -f64::from(actual.z)])
+                            - f64::from(actual.y);
+                        assert!(
+                            (-0.004..if kind == 0 { 0.32 } else { 0.16 }).contains(&buried),
+                            "{} actual root unsupported/overburied {buried:.6}m",
+                            p.source
+                        );
+                        root_burial[kind] = root_burial[kind].max(buried);
+                    }
+                }
+                assert!(
+                    f64::from(radius) <= vegetation_clearance(p) + 0.001,
+                    "{} tilted exported geometry exceeds its horizontal clearance",
+                    p.source
+                );
+                let summit = map_to_world(map.nodes["summit"]) + Vec3::Y * 1.7;
+                for target in ["home", "station", "cinema_entry"] {
+                    let end = map_to_world(map.nodes[target]) + Vec3::Y * 1.7;
+                    let d = (end - summit).xz();
+                    let t = ((at - summit).xz().dot(d) / d.length_squared()).clamp(0.0, 1.0);
+                    let line = summit.lerp(end, t);
+                    if (at - line).xz().length() < radius + 3.0 {
+                        assert!(
+                            top + 1.0 < line.y,
+                            "{} interrupts summit->{target}",
+                            p.source
+                        );
+                    }
+                }
+                eprintln!(
+                    "understory {} model={} x={:.3} north={:.3} root={:.3} scale={:.3}",
+                    p.source, p.model, at.x, -at.z, at.y, p.transform.scale.x
+                );
+            }
+            assert_eq!(
+                patches.len(),
+                2,
+                "{id}: one intended edge lobe has no supported placements"
+            );
+            for (kind, limit) in [4, 12, 3].into_iter().enumerate() {
+                assert!(
+                    (1..=limit).contains(&counts[group][kind]),
+                    "{id}: missing layer or over budget: {:?}",
+                    counts[group]
+                );
+            }
+        }
+        assert!(triangle_total <= 74_784);
+        eprintln!(
+            "understory accepted={counts:?} total={} triangles={triangle_total} max_actual_root_burial_by_shrub_grass_rock={root_burial:?}",
+            counts.iter().flatten().sum::<usize>()
         );
     }
 
@@ -3756,6 +4112,96 @@ mod tests {
             covered.len(),
             panes / 2,
             panes / 2 * 7 * 12
+        );
+    }
+
+    #[test]
+    fn residential_screens_leave_partial_views_and_share_existing_batches() {
+        for (roller, angle) in [(false, 0.0), (true, 0.73)] {
+            let rotation = Quat::from_rotation_y(angle);
+            let center = Vec3::new(5., 8., -3.);
+            let mut batches = BTreeMap::new();
+            add_residential_screen(
+                &mut batches,
+                center,
+                Vec2::new(1.45, 1.67),
+                rotation,
+                rotation * Vec3::Z,
+                roller,
+            )
+            .unwrap();
+            assert_eq!(batches.len(), 2);
+            for (role, mesh) in &batches {
+                assert!(matches!(role.as_str(), "awning" | "wood_siding" | "metal"));
+                for point in mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap()
+                {
+                    let local = rotation.inverse() * (Vec3::from(*point) - center);
+                    assert!(local.is_finite());
+                    assert!(local.x.abs() < 0.83, "screen extends outside window frame");
+                    assert!(local.y > -0.25, "screen closes the lower view");
+                    assert!(local.y < 0.835, "screen overlaps drip hood");
+                    assert!(local.z > 0.07, "screen intersects recessed glass");
+                    assert!(local.z < 0.31, "screen exceeds existing facade strip");
+                }
+            }
+        }
+
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let parts = facades(&map, &appearance).unwrap();
+        let mut rollers = 0;
+        let mut slats = 0;
+        let mut materials = BTreeMap::<_, BTreeSet<_>>::new();
+        for part in parts
+            .iter()
+            .filter(|part| part.source.ends_with("/derived-facade/residential"))
+        {
+            assert!(appearance.materials.contains_key(&part.material));
+            assert!(
+                materials
+                    .entry(&part.source)
+                    .or_default()
+                    .insert(&part.material)
+            );
+            if part.material == "awning" {
+                rollers += part.mesh.count_vertices() / 24;
+            } else if part.material == "wood_siding" {
+                // Existing wooden skirts are 0.48m tall; only new tilted slats are under 0.2m
+                slats += part
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap()
+                    .as_chunks::<24>()
+                    .0
+                    .iter()
+                    .filter(|cube| {
+                        let low = cube.iter().map(|p| p[1]).fold(f32::INFINITY, f32::min);
+                        let high = cube.iter().map(|p| p[1]).fold(f32::NEG_INFINITY, f32::max);
+                        high - low < 0.2
+                    })
+                    .count();
+            }
+        }
+        assert!(
+            rollers > 0 && slats > 0,
+            "authored street faces need both treatments"
+        );
+        assert_eq!(slats % 4, 0);
+        assert_eq!(materials.len(), 10);
+        assert!(materials.values().all(|roles| roles.len() <= 5));
+        let louvers = slats / 4;
+        let boxes = rollers * 3 + louvers * 6;
+        eprintln!(
+            "residential screens: {rollers} partial rollers, {louvers} fixed louver sets; net +{boxes} boxes, +{} triangles; no new material definitions or per-window entities",
+            boxes * 12
         );
     }
 

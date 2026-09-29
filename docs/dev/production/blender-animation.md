@@ -2,7 +2,7 @@
 
 本页负责从可编辑模型到游戏内表现的交付，专业操作使用 `nside-blender-pipeline`，Bevy 播放接口按 `bevy-animation` 和当前 `game/Cargo.lock` 核对。资产身份、来源和派生关系归[资产管线](asset-pipeline.md)，风格归[美术方向](art-direction.md)
 
-现有 `source-assets/environment-kit/` 与 `game/assets/environment/` 提供静态 GLB 样板；`source-assets/characters/CHR-001/model/` 提供曜的可编辑灰阶骨骼研究，经 `--character-preview` 接入真实人物控制器。该候选尚未获得作者或美术验收，静态模型检查与动作播放均不等于正式人物已完成
+现有 `source-assets/environment-kit/` 与 `game/assets/environment/` 提供静态 GLB 样板；`source-assets/characters/CHR-001/model/` 与 `source-assets/characters/CHR-002/model/` 分别提供曜、玲的可编辑灰阶骨骼研究，接入同一真实人物控制器。两者保持 `needs_revision`，外观与配色未获批准，静态模型检查与动作播放均不等于正式人物已完成
 
 ## 输入与前提
 
@@ -47,15 +47,17 @@ cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_v
 
 角色导出后先运行[角色 GLB 预检](../../../tools/README.md#角色-glb-导出预检)，按该人物规格传入根骨名称、实际高度和必需 clip。它读取真实 accessor 检查四权重、inverse bind 还原、米制边界、嵌入纹理与 in-place 根通道，失败返回非零；两骨方体夹具证明 Blender 多动作导出与检查路径，不证明正式人物建模或动作已经完成
 
-曜的研究GLB使用具名 `Scene` 与 `Idle` / `Walk` / `Run`，米制 Y-up、+Z 前向、脚底原点，完整源与导出契约见[模型资产说明](../../../source-assets/characters/CHR-001/model/README.md)。`character.rs` 等待全部依赖并核对真实AnimationPlayer、蒙皮和clip目标后替换当前视觉代理；位置、朝向与碰撞仍由现有控制器负责，in-place动作按碰撞后实际速度切换。暂停沿控制器门禁，退出随玩家层级清理；加载失败或30秒超时保留胶囊并输出诊断，capture失败退出
+两份角色研究GLB共用具名 `Scene` 与 `Idle` / `Walk` / `Run`、米制 Y-up、+Z 前向和脚底原点，32骨与in-place动作按各自源工程导出。玲的当前模型约1.65m，骨架与平移曲线同比缩放，运行播放速率相应补偿步幅；修改模型尺度后同时复验DCC接地与真实控制器下的足滑。具体加载、失败处理、尺度与播放速率由[角色预览契约](../engineering/player-preview.md#灰阶角色动作预览)统一维护
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview
+cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview=CHR-002
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
 python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/walk-character.json --output output/capture/walk-character
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-002 --script game/capture/walk-character.json --output output/capture/walk-character-ling
 ```
 
-录制读取真实动画时间与切换、暂停状态，结合连续画面检查骨骼运动和接地；当前只实现Idle／Walk／Run直接切换，空中Idle占位，足滑校准、Jump与动作混合尚未完成。默认入口保留中性代理，详细生命周期见[角色预览契约](../engineering/player-preview.md#灰阶角色动作预览)，具体运行结果归TASK-047，不把候选技术接入作为造型批准
+原参数不带值仍选曜，玲使用原生参数的等号形式；capture包装脚本接受空格或等号传值。两模型复用同一录制脚本，分别读取真实动画时间与切换、暂停状态，结合连续画面检查骨骼运动和接地；当前只实现Idle／Walk／Run直接切换，空中Idle占位，足滑校准、Jump与动作混合尚未完成。默认入口保留中性代理，具体运行结果归TASK-047，不把候选技术接入作为造型批准
 
 缺失纹理、无效数值、错误场景或未解析动画目标直接退回接入检查；循环跳变和穿插记录具体帧与动作后修资产或控制器。无法播放时保留加载诊断，不用 DCC 预览冒充引擎验收。静态 GLB 检查失败时保留原件，从登记的源与导出参数重现
 

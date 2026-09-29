@@ -1,0 +1,63 @@
+{
+  "scene": "district",
+  "view": "inspect-forest-r1",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 90,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    0,
+    29,
+    44,
+    59,
+    74,
+    89
+  ],
+  "events": [
+    {
+      "start": 0,
+      "end": 1,
+      "keys": [
+        "M"
+      ]
+    },
+    {
+      "start": 30,
+      "end": 45,
+      "look": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "look": [
+        -5.0,
+        0.0
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "name": "fixed forest overview eye",
+      "from": 0,
+      "to": 89,
+      "max_distance": 0.0001
+    },
+    {
+      "name": "look right across the cut",
+      "from": 29,
+      "to": 44,
+      "min_rotation": 0.07
+    },
+    {
+      "name": "look back across the cut",
+      "from": 59,
+      "to": 74,
+      "min_rotation": 0.07
+    }
+  ]
+}

@@ -848,6 +848,10 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
             view([-141., 43., 27.], [-105., 67., 10.]),
         ),
         (
+            "inspect-understory-r1",
+            view([160., 823., 358.], [145., 835., 356.]),
+        ),
+        (
             "inspect-forest-root-r1",
             view([268., 776., 332.], [268.435, 785.643, 334.]),
         ),

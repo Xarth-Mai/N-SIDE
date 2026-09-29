@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Python AST for 4 owned scripts",
+    "source/runtime hashes match manifest and delivery",
+    "final render metadata references frozen master",
+    "local Markdown links resolve",
+    "owned Markdown has no trailing whitespace"
+  ],
+  "initial_failure": "A link to the not-yet-written root runtime review was detected; changed it to an explicitly pending path until root completes that record",
+  "files": [
+    {
+      "path": "source-assets/characters/CHR-002/model/build.py",
+      "sha256": "42b13cc9b6c8e94fb2673a46a144f65f0eae28b96c37d7860a13cab9a8f39c06"
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/check.py",
+      "sha256": "e7d5eb65e43f8d453d96db19c49fba8a8a0425644c1be4dc98e8748ee3dc6e2d"
+    },
+    {
+      "path": "todo/evidence/TASK-047/ling-model-r1/measure.py",
+      "sha256": "32187299b52bc7ab9b13151c0f77120077a018605ff8d22e9c7e1d83b7301cc1"
+    },
+    {
+      "path": "todo/evidence/TASK-047/ling-model-r1/render.py",
+      "sha256": "be2176e883782535d07984c22bf29bbc44f302c805d71c36f06337d51471f481"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "asset": "CHR-002 modelling candidate r1",
+  "scope": "DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 121,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.862645149230957e-09,
+      "max_stance_height_error_m": 0.001891976222395897
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 49,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.67269926377412e-08,
+      "max_stance_height_error_m": 1.5576799228256277e-07
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 41,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -8.792613215291567e-08,
+      "max_stance_height_error_m": 8.792613215291567e-08
+    }
+  ],
+  "facial_surface_gaps": {
+    "Mouth": {
+      "minimum_m": 0.0001927688717842102,
+      "maximum_m": 0.0010369494557380676
+    },
+    "Eye_White.L": {
+      "minimum_m": 0.0006147325038909912,
+      "maximum_m": 0.002684183418750763
+    },
+    "Eye_White.R": {
+      "minimum_m": 0.0006147474050521851,
+      "maximum_m": 0.002684161067008972
+    },
+    "Iris_hair.L": {
+      "minimum_m": 0.0010671615600585938,
+      "maximum_m": 0.00301428884267807
+    },
+    "Iris_hair.R": {
+      "minimum_m": 0.0010672733187675476,
+      "maximum_m": 0.0030143707990646362
+    },
+    "Iris_ink.L": {
+      "minimum_m": 0.0016908198595046997,
+      "maximum_m": 0.00330960750579834
+    },
+    "Iris_ink.R": {
+      "minimum_m": 0.0016909688711166382,
+      "maximum_m": 0.003318510949611664
+    },
+    "Eye_Glint.L": {
+      "minimum_m": 0.003085188567638397,
+      "maximum_m": 0.003482230007648468
+    },
+    "Eye_Glint.R": {
+      "minimum_m": 0.0032154619693756104,
+      "maximum_m": 0.0035267174243927
+    }
+  },
+  "nasal_profile": [
+    {
+      "height_m": 1.4549442235706376,
+      "projection_from_cheeks_m": 0.011835366487503052
+    },
+    {
+      "height_m": 1.4596742112935588,
+      "projection_from_cheeks_m": 0.012731730937957764
+    },
+    {
+      "height_m": 1.4681881891948176,
+      "projection_from_cheeks_m": 0.010164320468902588
+    },
+    {
+      "height_m": 1.4785941621852448,
+      "projection_from_cheeks_m": 0.0068852901458740234
+    }
+  ],
+  "hair_cap_min_clearance_m": 0.00624568585610627,
+  "back_crown_coverage_samples": 36,
+  "back_crown_min_coverage_m": 0.008583242398813917,
+  "top_crown_clearance_m": 0.013033747673034668,
+  "hair_uv_region": "PASS"
+}

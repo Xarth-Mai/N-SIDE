@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "path": "game/assets/characters/CHR-002/ling-grey-study.glb",
+  "sha256": "cac1b343e1bf9c1ea0c9f699146b3d7ff25a226993603462d4c42122a871530d",
+  "skins": 1,
+  "joints": 32,
+  "skinned_vertices": 18784,
+  "bind_bounds_m": [
+    [
+      -0.4488253891468048,
+      0.4488253891468048
+    ],
+    [
+      0.0,
+      1.6363718509674072
+    ],
+    [
+      -0.16305796802043915,
+      0.20622745156288147
+    ]
+  ],
+  "height_m": 1.6363718509674072,
+  "embedded_images": 1,
+  "animations": [
+    {
+      "name": "Idle",
+      "duration_seconds": 2.0,
+      "joint_channels": 96,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Run",
+      "duration_seconds": 0.6666666865348816,
+      "joint_channels": 96,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Walk",
+      "duration_seconds": 0.800000011920929,
+      "joint_channels": 96,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    }
+  ],
+  "scope": "exported data only; deformation, contact, loop quality and Bevy playback require runtime review"
+}

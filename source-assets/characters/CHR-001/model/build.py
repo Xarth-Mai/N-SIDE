@@ -16,7 +16,7 @@ from mathutils.bvhtree import BVHTree
 ROOT = Path(__file__).resolve().parents[4]
 SOURCE = Path(__file__).resolve().parent
 RUNTIME = ROOT / 'game/assets/characters/CHR-001'
-OUTPUT = ROOT / 'output/characters/CHR-001/model-r6'
+OUTPUT = ROOT / 'output/characters/CHR-001/material-r1/model-source'
 parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
@@ -95,14 +95,60 @@ image.file_format = 'PNG'
 image.save()
 image.pack()
 image.filepath='//grey-study.png'
+# Reuse the same padded islands for material response; no palette or UV change
+ROUGHNESS = {'skin': .64, 'hair': .52, 'jacket': .80, 'shirt': .88,
+             'pants': .76, 'shoe': .62, 'ink': .72, 'white': .86}
+surface_pixels, normal_pixels = [], []
+for y in range(SIZE):
+    for x in range(SIZE):
+        region = REGIONS[(y // 256) * 2 + x // 512]
+        u, v = x % 512, y % 256
+        roughness = ROUGHNESS[region]
+        nx = ny = 0.0
+        if region in ('jacket', 'shirt', 'pants'):
+            # Cloth variation lives in roughness, keeping distant silhouettes quiet
+            roughness += .012 * math.sin(u * math.pi / 8) * math.sin(v * math.pi / 8)
+        if region in ('jacket', 'pants', 'shoe'):
+            # A shallow ridge follows the existing atlas seam, not random scratches
+            dx, dy = (u - 26) / 4, (v - 26) / 4
+            nx = .045 * dx * math.exp(-dx * dx / 2)
+            ny = .045 * dy * math.exp(-dy * dy / 2)
+        length = math.sqrt(nx * nx + ny * ny + 1)
+        surface_pixels.extend((1, roughness, 0, 1))  # glTF: G roughness, B metalness
+        normal_pixels.extend((.5 + nx / length / 2, .5 + ny / length / 2, .5 + .5 / length, 1))
+def data_image(name, filename, pixels):
+    result = bpy.data.images.new(name, width=SIZE, height=SIZE, alpha=False)
+    result.colorspace_settings.name = 'Non-Color'
+    result.pixels.foreach_set(pixels)
+    result.filepath_raw = str(SOURCE / filename)
+    result.file_format = 'PNG'
+    result.save()
+    result.pack()
+    result.filepath = '//' + filename
+    return result
+surface = data_image('CHR001_GreyStudy_Surface', 'grey-study-surface.png', surface_pixels)
+normal = data_image('CHR001_GreyStudy_Normal', 'grey-study-normal.png', normal_pixels)
 material = bpy.data.materials.new('CHR001_GreyStudy_Atlas')
 material.use_nodes = True
 bsdf = material.node_tree.nodes.get('Principled BSDF')
-bsdf.inputs['Roughness'].default_value = .86
-bsdf.inputs['Specular IOR Level'].default_value = .12
+bsdf.inputs['Roughness'].default_value = 1
+bsdf.inputs['Specular IOR Level'].default_value = .24
 tex = material.node_tree.nodes.new('ShaderNodeTexImage')
 tex.image = image
 material.node_tree.links.new(tex.outputs['Color'], bsdf.inputs['Base Color'])
+surface_tex = material.node_tree.nodes.new('ShaderNodeTexImage')
+surface_tex.image = surface
+channels = material.node_tree.nodes.new('ShaderNodeSeparateColor')
+material.node_tree.links.new(surface_tex.outputs['Color'], channels.inputs['Color'])
+material.node_tree.links.new(channels.outputs['Green'], bsdf.inputs['Roughness'])
+material.node_tree.links.new(channels.outputs['Blue'], bsdf.inputs['Metallic'])
+normal_tex = material.node_tree.nodes.new('ShaderNodeTexImage')
+normal_tex.image = normal
+normal_map = material.node_tree.nodes.new('ShaderNodeNormalMap')
+# Bake the small amplitude into RGB: Bevy 0.19.1 glTF does not apply normal.scale
+normal_map.inputs['Strength'].default_value = 1
+material.node_tree.links.new(normal_tex.outputs['Color'], normal_map.inputs['Color'])
+material.node_tree.links.new(normal_map.outputs['Normal'], bsdf.inputs['Normal'])
 
 rig = bpy.data.objects.new('CHR001_Rig', bpy.data.armatures.new('CHR001_Skeleton'))
 bpy.context.collection.objects.link(rig)
@@ -630,7 +676,7 @@ cam.data.type='ORTHO';cam.data.ortho_scale=2.06
 scene.render.resolution_x=720;scene.render.resolution_y=960;scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
 export(rig,objects)
-report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r6','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
+report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r6','material_revision':'r1','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
 if args.render:
     for label,pos,clip,frame in [('front',(0,-4,1.0),'Idle',1),('three-quarter',(3,-4,1.3),'Idle',1),('back',(0,4,1.0),'Idle',1),('walk-contact',(3,-4,1.2),'Walk',8),('run-contact',(3,-4,1.2),'Run',6),('face',(0,-4,1.61),'Idle',1),('walk-lift',(3,-4,1.2),'Walk',1),('run-lift',(3,-4,1.2),'Run',1)]:
         rig.animation_data.action=bpy.data.actions[clip];scene.frame_set(frame)

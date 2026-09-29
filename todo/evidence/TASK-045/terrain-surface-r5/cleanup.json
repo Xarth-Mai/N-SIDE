@@ -1,0 +1,11 @@
+{
+  "utc": "2026-09-29T22:26:58.719785+00:00",
+  "removed_directory": "output/assets/terrain-r5-diagnostics",
+  "owned_regular_files": 70,
+  "owned_regular_bytes": 91420085,
+  "owned_symlinks": 30,
+  "reason": "all isolated GPU trials finished; formal shader selected and close-up/TAA-SSAO inspected",
+  "preserved": "source assets, runtime assets, shader, evidence scripts/patches/hashes, all root capture outputs",
+  "runtime_shader_sha256": "7d822216d8ba1930d91fd9a286503031da4e75cbb1f969dde881b50289006cb5",
+  "remaining_owned_diagnostic_bytes": 0
+}

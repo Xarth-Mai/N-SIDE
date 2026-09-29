@@ -4,7 +4,7 @@ document_id: DOC-PLAYER-PREVIEW
 
 # 人物尺度步行实验
 
-本入口验证人物在既有城市网格上的移动与观察，默认使用中性代理；显式 `--character-preview` 可接入曜的灰阶骨骼候选，正式造型及可达内容范围由对应设计任务决定。地图、建筑、道路与台阶继续使用 `source-assets/district-map/district.json`，输入设计见[输入与交互](../design/systems/input.md)，命令见仓库 `game/README.md`
+本入口验证人物在既有城市网格上的移动与观察，默认使用中性代理；显式角色预览可选择曜或玲的灰阶骨骼候选，正式造型及可达内容范围由对应设计任务决定。地图、建筑、道路与台阶继续使用 `source-assets/district-map/district.json`，输入设计见[输入与交互](../design/systems/input.md)，命令见仓库 `game/README.md`
 
 ## 运行契约
 
@@ -26,21 +26,28 @@ V-04的 `design.floors` 中1F `rooms` 与 `openings` 是房间范围和开口的
 
 ## 灰阶角色动作预览
 
-`--character-preview` 隐含 `--walk-preview`，复用同一地图、`PlayerState`、碰撞、输入和相机；默认步行入口继续使用胶囊。`character::install` 将 `game/assets/characters/CHR-001/yao-grey-study.glb` 挂到脚底视觉 root，米制 Y-up、局部 +Z 前向，移动后按实际碰撞结果转向；模型不提交世界位移
+`--character-preview` 默认选择曜，显式 `--character-preview=CHR-001` 与其相同，`--character-preview=CHR-002` 选择玲；未知ID启动失败。两者均隐含 `--walk-preview`，复用同一地图、`PlayerState`、碰撞、输入和相机；默认步行入口继续使用胶囊，启动参数只选择技术候选，不增加运行中的角色切换玩法。`character::install` 将选定GLB挂到脚底视觉 root，米制 Y-up、局部 +Z 前向，移动后按实际碰撞结果转向；模型不提交世界位移
+
+| 候选 | 运行资产 | 当前模型尺度与动作 |
+| --- | --- | --- |
+| 曜 `CHR-001` | `game/assets/characters/CHR-001/yao-grey-study.glb` | 约1.744m，32骨，Idle／Walk／Run均为in-place |
+| 玲 `CHR-002` | `game/assets/characters/CHR-002/ling-grey-study.glb` | 约1.636m（1.65m比例目标），32骨，Idle／Walk／Run均为in-place |
 
 加载等待 GLB 完整依赖，再按 `Scene` 及 `Idle` / `Walk` / `Run` 名称建立场景与 `AnimationGraph`。实例化后核对一个 AnimationPlayer、蒙皮以及全部 clip 目标，真实就绪后才显示模型并隐藏胶囊；缺文件、缺动作、依赖或目标失败均保留胶囊并记录明确错误，加载或实例化超过30秒同样失败。capture等待真实ready，错误产生非零退出码，不把代理回退算作角色成功
 
-停止时播放Idle，实际碰撞后水平速度决定Walk或Run；播放速率对应控制器速度，按住疾跑键但被完全挡住时不继续跑步动作。暂停、观察、失焦及待切状态使用与控制器相同的操作门禁暂停 AnimationPlayer，继续后恢复时间推进；返回标题沿玩家 root 递归清理，重入重新加载和核对。`CharacterStatus` 在动画系统之后读取实际ready、错误、当前动作、seek_time、elapsed、切换数、暂停和目标数量，capture不代写结果
+停止时播放Idle，实际碰撞后水平速度决定Walk或Run；播放速率对应控制器速度，按住疾跑键但被完全挡住时不继续跑步动作。玲的骨架与平移曲线按模型高度同比缩放，Walk／Run的自然步速分别使用 `3.2 × 1.65 / 1.7441906` 与 `5.6 × 1.65 / 1.7441906` m/s，播放倍率为实际速度除以对应自然步速，人物控制器的移动速度不变。暂停、观察、失焦及待切状态使用与控制器相同的操作门禁暂停 AnimationPlayer，继续后恢复时间推进；返回标题沿玩家 root 递归清理，重入重新加载和核对。`CharacterStatus` 在动画系统之后读取所选角色ID、实际ready、错误、当前动作、seek_time、elapsed、切换数、暂停和目标数量，capture不代写结果
 
-本入口是未获作者或美术验收的灰阶研究，不能默认替换正式人物。当前直接切换动作，尚未制作混合过渡；Walk / Run 步幅与真实速度的足滑校准仍需继续，空中仅以Idle占位，没有Jump动画
+两模型均为 `needs_revision` 灰阶研究，外观与配色未获作者或美术批准；上述高度是当前模型尺度，技术接入不表示角色美术已完成。当前直接切换动作，尚未制作混合过渡；步幅缩放只建立播放速度对应，Walk / Run 足滑与接地仍需逐模型实测，空中仅以Idle占位，没有Jump动画
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview
+cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview=CHR-002
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
 python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/walk-character.json --output output/capture/walk-character
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-002 --script game/capture/walk-character.json --output output/capture/walk-character-ling
 ```
 
-`walk-character.json` 检查真实Idle、Walk、两种疾跑输入、暂停与恢复，动作推进和暂停漂移断言与连续画面分别核对；角色制作与运行结果见[TASK-047](../../../todo/tasks/TASK-047-character-production-pipeline.md)。脚本输出目录需为新目录，不以编译、DCC循环或播放时间单独放行人物外观
+capture包装脚本对所有角色ready帧核对所请求的稳定ID，缺少ready帧或加载另一角色均失败，检查结果单独标为wrapper来源。capture包装脚本同时接受 `--character-preview CHR-002` 与等号形式，不带值仍选曜；原生游戏命令的角色值使用等号形式。两模型复用同一份 `walk-character.json` 检查真实Idle、Walk、两种疾跑输入、暂停与恢复，动作推进和暂停漂移断言与连续画面分别核对；各模型制作与运行结果见[TASK-047](../../../todo/tasks/TASK-047-character-production-pipeline.md)，一方通过不代替另一方运行证据。脚本输出目录需为新目录，不以编译、DCC循环或播放时间单独放行人物外观
 
 ## 本轮参数
 

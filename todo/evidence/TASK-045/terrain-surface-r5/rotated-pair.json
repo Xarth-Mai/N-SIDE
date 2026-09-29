@@ -1,0 +1,18 @@
+{
+  "status": "GPU PASS; visual REJECTED: repeating crosshatch",
+  "root": "output/assets/terrain-r5-diagnostics/rotated-pair",
+  "base_shader_sha256": "792a1a7a4c139f589f15c22a85963b294f9ffe33873749ed1ad7b4db2b6c5577",
+  "candidate_shader_sha256": "503620a999320f8f991dff070472a80e6c92fb9358067cd462a209206f183e0f",
+  "scale": 1.0,
+  "rotation_degrees": 37,
+  "phase": [
+    0.37,
+    0.71
+  ],
+  "mix": 0.5,
+  "sample_increase": "one ground color and one ground normal per visible surface; SSAO forward reuses the prepass normal",
+  "run": "output/capture/task045-ground-r5-rotated-pair/run.json",
+  "binary_sha256": "e7289d5c16638b4cf773ac187f45a43fdc29127d4758fd2319a15403219a3e90",
+  "frames": 90,
+  "checks_passed": 6
+}

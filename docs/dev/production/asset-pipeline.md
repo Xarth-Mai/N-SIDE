@@ -77,7 +77,7 @@ Logo 的 `205×205` 预览来自 `512×512` 图按 `0.4` 缩放的历史工具�
 
 Blender 源工程进入 `source-assets/`，运行交付仍使用项目已支持的 GLB。面数、贴图密度、碰撞代理和 LOD 依据[美术](art-direction.md)及实际镜头预算确定。绑定后的角色调整变换时，应同时核对 bind pose、inverse bind matrices、动画和附着点，不能沿用静态道具的批量清理方法
 
-当前 [CHR-001 灰阶技术候选](../../../source-assets/characters/CHR-001/model/README.md)已包含32关节与 `Idle`／`Walk`／`Run`，通过显式 `--character-preview` 接入真实人物入口；源文件与运行 GLB 由 `tools/validate_character.py` 及模型自身检查程序核对，实际播放使用 `game/capture/walk-character.json` 检查时长推进、暂停与动作切换。候选仍在造型迭代，技术接入不等于人物美术验收
+角色灰阶源工程分别归 `source-assets/characters/CHR-001/model/` 与 `source-assets/characters/CHR-002/model/`，身份、派生文件与制作状态继续由各自资产清单维护；两者均为32骨及in-place `Idle`／`Walk`／`Run`，保持 `needs_revision`，外观与配色未获批准。源文件与运行 GLB 由 `tools/validate_character.py` 及模型自身检查程序核对；同一真实角色管线的选择参数、尺度和播放速率见[角色预览契约](../engineering/player-preview.md#灰阶角色动作预览)，使用同一 `walk-character.json` 分别记录两模型的运行证据，技术接入不等于人物美术验收
 
 位移由控制器或 root motion 的一个明确责任方提交；现有候选采用 in-place，世界位移由人物控制器负责。脚接地、持物接触、攻击时机和相对速度按实际动作检查，并配合连续录制；尚未制作的动作保持未验证，不由基础走跑结果推定
 

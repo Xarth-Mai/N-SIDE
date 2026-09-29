@@ -1,0 +1,14 @@
+{
+  "status": "GPU PASS; adopted after overview and close-up TAA-SSAO self-audit",
+  "root": "output/assets/terrain-r5-diagnostics/local-angles",
+  "candidate_shader_sha256": "7d822216d8ba1930d91fd9a286503031da4e75cbb1f969dde881b50289006cb5",
+  "patch_metres": 2,
+  "texture_scale": 1,
+  "rotation": "continuous, fixed angle per lattice vertex",
+  "neighbours": 3,
+  "run": "output/capture/task045-ground-r5-local-angles/run.json",
+  "binary_sha256": "e7289d5c16638b4cf773ac187f45a43fdc29127d4758fd2319a15403219a3e90",
+  "frames": 90,
+  "checks_passed": 6,
+  "closeup_record": "closeup-review.json"
+}

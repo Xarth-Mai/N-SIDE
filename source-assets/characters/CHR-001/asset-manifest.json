@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "298da4644c90adf0551afb7178fdee0087a5b1d7fce2339693c520a43cbdac54",
-      "runtime_sha256": "5063920196cb1476e080f7d8acd6f8d16f0e55ab3cbfc94c30da9c1ad368a108",
+      "source_sha256": "30d4c3747abb27ebc70a8f27f83945bc934a3e6b4327b9738b9a9a1e50b3d3d2",
+      "runtime_sha256": "220370b6ee7a073a0c04edb1c865d9e70129d3f58b6163c07d81590ccecd68a0",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -116,15 +116,39 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "r6 final DCC/GLB checks PASS: continuous rear groups, covered crown and explicit hair UV; editable-master re-export byte-identical. Animation-r2 actual 120 FPS support tracks PASS; only Run upper-body, hand and swing-foot pose changes, Idle/Walk preserved. Runtime result recorded separately in todo/evidence/TASK-045/visual-r7/review.md; final Bevy character-preview PASS: 540 frames and 26 checks",
-        "visual": "needs_revision; connected rear hair groups replace isolated pieces, Run hands face inward with torso lean and swing-foot pitch; facial identity, hair tip variation, fingers, final palette and complete motion set remain unaccepted"
+        "technical": "Material-r1 DCC/GLB checks and byte-identical editable-master re-export PASS; geometry/UV/rig/all animation values and base-color PNG preserved against b948cab. In-engine check recorded separately in todo/evidence/TASK-045/visual-r8/review.md",
+        "visual": "needs_revision; grayscale surface response separates hair, cloth and shoes; facial identity, hair tip variation, fingers, final palette and complete motion set remain unaccepted"
       },
       "generation": {
         "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/model-r6/delivery.json"
+      "evidence": "todo/evidence/TASK-047/material-r1/delivery.json",
+      "data_textures": [
+        {
+          "path": "source-assets/characters/CHR-001/model/grey-study-surface.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "color_space": "linear Non-Color",
+          "embedded_in_glb": true,
+          "channels": "G roughness; B metallic=0; R unused; alpha=1",
+          "sha256": "639ae122a84b134f83afc8b0f43425ce1bc4c2b83e5c2b7c6dbbb38c636c317d"
+        },
+        {
+          "path": "source-assets/characters/CHR-001/model/grey-study-normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "color_space": "linear Non-Color",
+          "embedded_in_glb": true,
+          "channels": "OpenGL tangent-space RGB; scale=1",
+          "sha256": "e6a6686ddac6cb2a38cfdd8b725bf7fc02b7c932a5819fe3b212590f8de43cbb"
+        }
+      ]
     }
   ],
   "uses": [

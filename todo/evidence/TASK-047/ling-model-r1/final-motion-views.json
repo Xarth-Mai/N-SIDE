@@ -1,0 +1,260 @@
+{
+  "revision": "final",
+  "master_sha256": "83912572664e8fbc291b519ad2b80cd9a0ff2777cee05ffc9f6825a8ab4bdd65",
+  "engine": "CYCLES",
+  "device": "CPU",
+  "samples": 16,
+  "resolution": [
+    480,
+    640
+  ],
+  "views": [
+    {
+      "label": "walk-00",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-00.png"
+    },
+    {
+      "label": "walk-01",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 7,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-01.png"
+    },
+    {
+      "label": "walk-02",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 13,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-02.png"
+    },
+    {
+      "label": "walk-03",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 19,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-03.png"
+    },
+    {
+      "label": "walk-04",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 25,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-04.png"
+    },
+    {
+      "label": "walk-05",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 31,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-05.png"
+    },
+    {
+      "label": "walk-06",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 37,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-06.png"
+    },
+    {
+      "label": "walk-07",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Walk",
+      "frame": 43,
+      "file": "output/characters/CHR-002/ling-model-r1/final/walk-07.png"
+    },
+    {
+      "label": "run-00",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-00.png"
+    },
+    {
+      "label": "run-01",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 6,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-01.png"
+    },
+    {
+      "label": "run-02",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 11,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-02.png"
+    },
+    {
+      "label": "run-03",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 16,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-03.png"
+    },
+    {
+      "label": "run-04",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 21,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-04.png"
+    },
+    {
+      "label": "run-05",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 26,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-05.png"
+    },
+    {
+      "label": "run-06",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 31,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-06.png"
+    },
+    {
+      "label": "run-07",
+      "camera_position": [
+        4,
+        0,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 36,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-07.png"
+    },
+    {
+      "label": "run-front-01",
+      "camera_position": [
+        0,
+        -4,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-front-01.png"
+    },
+    {
+      "label": "run-front-07",
+      "camera_position": [
+        0,
+        -4,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 7,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-front-07.png"
+    },
+    {
+      "label": "run-front-13",
+      "camera_position": [
+        0,
+        -4,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Run",
+      "frame": 13,
+      "file": "output/characters/CHR-002/ling-model-r1/final/run-front-13.png"
+    }
+  ]
+}

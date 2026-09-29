@@ -1,0 +1,62 @@
+{
+  "variant": "candidate",
+  "master": "output/characters/CHR-001/material-r1/baseline/yao-grey-study.blend",
+  "backend": "Cycles CPU",
+  "threads": 2,
+  "samples": 32,
+  "size": [
+    720,
+    960
+  ],
+  "clip": "Idle",
+  "frame": 1,
+  "light": "unchanged master area lights and world",
+  "views": [
+    [
+      "whole",
+      [
+        2.5,
+        -4,
+        1.4
+      ],
+      [
+        0,
+        0,
+        0.9
+      ],
+      2.06
+    ],
+    [
+      "upper",
+      [
+        2,
+        -4,
+        1.6
+      ],
+      [
+        0,
+        0,
+        1.45
+      ],
+      0.73
+    ]
+  ],
+  "roughness_regions": {
+    "skin": 0.64,
+    "hair": 0.52,
+    "jacket": 0.8,
+    "shirt": 0.88,
+    "pants": 0.76,
+    "shoe": 0.62,
+    "ink": 0.72,
+    "white": 0.86
+  },
+  "specular_IOR_level": 0.24,
+  "sha256": {
+    "grey-study.png": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+    "grey-study-surface.png": "639ae122a84b134f83afc8b0f43425ce1bc4c2b83e5c2b7c6dbbb38c636c317d",
+    "grey-study-normal.png": "e6a6686ddac6cb2a38cfdd8b725bf7fc02b7c932a5819fe3b212590f8de43cbb",
+    "whole.png": "70db1caa7a56e9e27fe0353cd71e2e31d06f720e426cd9c5d15231e15598f5ea",
+    "upper.png": "37af64f4c5b1fd6394f0542a9a4ed8eebd23a7bfddc65e6ae57dde2cde2112cc"
+  }
+}

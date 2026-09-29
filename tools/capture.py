@@ -52,7 +52,7 @@ def run_logged(command: list[str], path: Path, timeout: float, cwd: Path = ROOT)
             return 124
 
 
-def verify_outputs(output: Path, script: dict) -> dict:
+def verify_outputs(output: Path, script: dict, character: str | None = None) -> dict:
     from PIL import Image
 
     state = json.loads((output / "state.json").read_text(encoding="utf-8"))
@@ -74,6 +74,13 @@ def verify_outputs(output: Path, script: dict) -> dict:
     if state["status"] != "PASS" or not state["checks"] or any(not check["passed"] for check in state["checks"]):
         failed = [check["name"] for check in state.get("checks", []) if not check["passed"]]
         raise ValueError(f"state assertions failed: {failed}; {state.get('error')}")
+    if character is not None:
+        loaded = [sample["character"].get("id") for sample in state.get("samples", [])
+                  if (sample.get("character") or {}).get("ready")]
+        if not loaded or any(actual != character for actual in loaded):
+            raise ValueError(f"requested character {character} was not verified: ready IDs {sorted(set(loaded), key=str)}")
+        state["checks"].append({"name": "requested_character_loaded", "passed": True,
+                                "source": "capture wrapper", "id": character, "checked_frames": len(loaded)})
     return state
 
 
@@ -90,7 +97,7 @@ def main() -> int:
     parser.add_argument("--script", type=Path, default=ROOT / "game/capture/viewer-tour.json")
     parser.add_argument("--output", type=Path, required=True, help="fresh evidence directory")
     parser.add_argument("--binary", type=Path, help="use this prebuilt game or Viewer binary; otherwise build map_viewer with cargo --locked")
-    parser.add_argument("--character-preview", action="store_true", help="enable the real grey character in a walk-preview script")
+    parser.add_argument("--character-preview", nargs="?", const="CHR-001", choices=("CHR-001", "CHR-002"), help="enable a real grey character in a walk-preview script; default CHR-001")
     parser.add_argument("--aa", choices=("msaa4", "taa", "taa-ssao"), help="district Viewer antialiasing/prepass mode")
     parser.add_argument("--no-video", action="store_true", help="retain PNG evidence only")
     parser.add_argument("--settings-dir", type=Path, help="explicit isolated user-settings directory for cross-process checks")
@@ -147,7 +154,7 @@ def main() -> int:
         if args.character_preview:
             if script["scene"] != "walk-preview":
                 raise ValueError("--character-preview requires a walk-preview script")
-            command.append("--character-preview")
+            command.append("--character-preview" if args.character_preview == "CHR-001" else f"--character-preview={args.character_preview}")
         if args.settings_dir is not None:
             if script["scene"] not in ("walk-preview", "game-entry"):
                 raise ValueError("--settings-dir requires the formal game entry")
@@ -162,7 +169,7 @@ def main() -> int:
         if code:
             raise RuntimeError(f"Native capture exited {code}; see runtime.log and state.json when available")
         verify_runtime_log(output / "runtime.log")
-        state = verify_outputs(output, script)
+        state = verify_outputs(output, script, args.character_preview)
         report["checks"] = state["checks"]
         ffmpeg = shutil.which("ffmpeg")
         if ffmpeg and not args.no_video:

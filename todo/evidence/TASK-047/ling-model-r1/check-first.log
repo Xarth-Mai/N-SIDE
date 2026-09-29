@@ -1,0 +1,11 @@
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-002/model/ling-grey-study.blend"
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-002/model/check.py", line 109, in <module>
+    assert cap_gaps and min(cap_gaps)>-.0003, f'Hair intersects the head after subdivision: {min(cap_gaps)} m'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Hair intersects the head after subdivision: -0.008828172022077252 m
+
+Error: script failed, file: 'source-assets/characters/CHR-002/model/check.py', exiting.
+
+Blender quit

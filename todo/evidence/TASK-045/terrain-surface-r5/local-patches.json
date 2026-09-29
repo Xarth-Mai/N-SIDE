@@ -1,0 +1,20 @@
+{
+  "status": "GPU PASS; visual REJECTED: repeating orthogonal blocks",
+  "root": "output/assets/terrain-r5-diagnostics/local-patches",
+  "base_shader_sha256": "792a1a7a4c139f589f15c22a85963b294f9ffe33873749ed1ad7b4db2b6c5577",
+  "candidate_shader_sha256": "e495f7b5b41c329c2ee55f9e69f6627366b1fce80c5b21ca2dcb216bfe8e3f10",
+  "patch_metres": 6,
+  "texture_scale": 1,
+  "rotations_degrees": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "neighbours": 3,
+  "seed": "fixed integer world-UV lattice hash",
+  "run": "output/capture/task045-ground-r5-local-patches/run.json",
+  "binary_sha256": "e7289d5c16638b4cf773ac187f45a43fdc29127d4758fd2319a15403219a3e90",
+  "frames": 90,
+  "checks_passed": 6
+}

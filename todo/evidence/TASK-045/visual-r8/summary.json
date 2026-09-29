@@ -1,0 +1,146 @@
+[
+  {
+    "name": "task045-ground-r5-baseline",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-ground-r5-no-normal",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-ground-r5-solid-color",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-ground-r5-rotated-pair",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-ground-r5-local-patches",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-ground-r5-local-angles",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 97
+  },
+  {
+    "name": "task049-understory-before-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 150,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 157
+  },
+  {
+    "name": "task049-residential-before-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 150,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 157
+  },
+  {
+    "name": "task047-material-before-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 240,
+    "native_checks": 9,
+    "wrapper_checks": 0,
+    "visual_files": 252
+  },
+  {
+    "name": "task049-understory-after-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 150,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 157
+  },
+  {
+    "name": "task049-residential-after-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 150,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 157
+  },
+  {
+    "name": "task047-material-after-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 240,
+    "native_checks": 9,
+    "wrapper_checks": 1,
+    "visual_files": 252
+  },
+  {
+    "name": "task047-material-motion-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 540,
+    "native_checks": 26,
+    "wrapper_checks": 1,
+    "visual_files": 558
+  },
+  {
+    "name": "task049-understory-detail-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 150,
+    "native_checks": 6,
+    "wrapper_checks": 0,
+    "visual_files": 157
+  },
+  {
+    "name": "task047-ling-motion-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 540,
+    "native_checks": 26,
+    "wrapper_checks": 1,
+    "visual_files": 558
+  },
+  {
+    "name": "task047-ling-orbit-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 240,
+    "native_checks": 9,
+    "wrapper_checks": 1,
+    "visual_files": 252
+  }
+]

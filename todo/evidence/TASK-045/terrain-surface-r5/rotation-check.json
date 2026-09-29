@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "source": "actual candidate shader constants",
+  "checks": [
+    "UV rotation preserves metric lengths and handedness",
+    "sampled normal xy uses transpose of UV rotation",
+    "289 positive/negative coordinates agree with independent finite-difference height gradient"
+  ],
+  "max_gradient_error": 2.4700941736455206e-08,
+  "runtime_scope": "GPU rendering and final normal/SSAO still require actual captures"
+}

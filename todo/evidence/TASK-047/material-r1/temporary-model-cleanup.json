@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "scope": "Own completed build backup and failed isolated probe; no active process from these commands remains",
+  "removed": [
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 4024245,
+      "sha256": "298da4644c90adf0551afb7178fdee0087a5b1d7fce2339693c520a43cbdac54"
+    },
+    {
+      "path": "output/characters/CHR-001/material-r1/bad-color-space.blend",
+      "bytes": 4065288,
+      "sha256": "0a7f26c477e7f9cbd9fb4065c4f33633adcf44d5750c1800758555ea2b37dad1"
+    }
+  ]
+}

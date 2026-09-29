@@ -117,16 +117,18 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-ramp-camera.json --output output/capture/walk-ramp-camera
 ```
 
-显式 `--character-preview` 隐含步行模式，将曜的灰阶骨骼候选挂到原人物视觉root，复用真实移动、碰撞和相机；模型、具名Idle／Walk／Run与所有动画目标就绪后才隐藏胶囊。动作依据实际碰撞后速度切换，暂停停止实际AnimationPlayer，返回标题递归清理；加载失败保留代理、输出错误，capture返回非零。该造型尚未获作者或美术验收，默认入口不替换代理；混合过渡、足滑校准和Jump动画仍未完成
+显式 `--character-preview` 默认选择曜，`--character-preview=CHR-002` 选择玲；两者均隐含步行模式，将选定灰阶骨骼候选挂到原人物视觉root，复用真实移动、碰撞和相机。模型、具名Idle／Walk／Run与所有动画目标就绪后才隐藏胶囊；动作依据实际碰撞后速度切换，暂停停止实际AnimationPlayer，返回标题递归清理，加载失败保留代理、输出错误，capture返回非零。两模型均为 `needs_revision` 灰阶候选，外观与配色未获批准，默认入口继续使用代理；选择模型不增加角色切换玩法，混合过渡、足滑校准和Jump动画仍未完成
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview
+cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview=CHR-002
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
 python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/walk-character.json --output output/capture/walk-character
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-002 --script game/capture/walk-character.json --output output/capture/walk-character-ling
 python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/character-orbit.json --output output/capture/character-orbit
 ```
 
-角色脚本核对实际Idle、Walk、Shift／右键Run、暂停及恢复的时间推进，须同时检查连续画面；`CharacterStatus` 提供ready、错误、动作与时间、切换数和暂停读数。完整接口与已知边界见[灰阶角色动作预览](../docs/dev/engineering/player-preview.md#灰阶角色动作预览)，结果记录于TASK-047
+capture包装脚本接受 `--character-preview CHR-002` 或 `--character-preview=CHR-002`，不带值仍选曜；原生游戏命令的角色值使用等号形式。两模型复用同一份 `walk-character.json`，核对实际Idle、Walk、Shift／右键Run、暂停及恢复的时间推进，须同时检查连续画面；`CharacterStatus` 提供角色ID、ready、错误、动作与时间、切换数和暂停读数。完整接口与已知边界见[灰阶角色动作预览](../docs/dev/engineering/player-preview.md#灰阶角色动作预览)，各模型的实际运行结果分别记录于TASK-047
 
 角色候选使用继承 StandardMaterial 的主光分段实验，保留真实骨骼、阴影、点光与雾；`character-orbit.json` 在人物静止并播放 Idle 时通过真实鼠标输入检查正、侧、背与三分之四视角。`shaded_meshes` 只计材质接入，GPU 编译还须核对运行日志和实际图像；此实验尚未建立正式脸部阴影图、轮廓线或已批准配色
 

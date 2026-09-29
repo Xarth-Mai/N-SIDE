@@ -1,0 +1,257 @@
+{
+  "scope": "Independent diagnostic inputs; runtime/GPU NOT RUN by this script",
+  "variants": {
+    "baseline": {
+      "project_root": "output/assets/terrain-r5-diagnostics/baseline",
+      "shader_sha256": "792a1a7a4c139f589f15c22a85963b294f9ffe33873749ed1ad7b4db2b6c5577"
+    },
+    "no-normal": {
+      "project_root": "output/assets/terrain-r5-diagnostics/no-normal",
+      "shader_sha256": "f7eacf0386e9785a199aacafc67972997df07492bb66bbad4b2fdc216846090e"
+    },
+    "solid-color": {
+      "project_root": "output/assets/terrain-r5-diagnostics/solid-color",
+      "shader_sha256": "cbf780d51e96ee2fc0bf794b7ae74deb5fe5eadae7bec17e7ab4c18899451f1e"
+    }
+  },
+  "frozen_files": [
+    {
+      "path": "game/assets/branding/n-logo.png",
+      "sha256": "d1325c44a05477fc1f3121048491e61526fbd26bb2022b7a4cf25edbf252e101"
+    },
+    {
+      "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "sha256": "5063920196cb1476e080f7d8acd6f8d16f0e55ab3cbfc94c30da9c1ad368a108"
+    },
+    {
+      "path": "game/assets/environment/licenses/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "game/assets/environment/licenses/kenney-nature.txt",
+      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d"
+    },
+    {
+      "path": "game/assets/environment/licenses/kenney-roads.txt",
+      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498"
+    },
+    {
+      "path": "game/assets/environment/manifest.json",
+      "sha256": "41e0bad05062863f5983ad99527ed454ba96f55c514a940f984df2ec1d236c80"
+    },
+    {
+      "path": "game/assets/environment/materials/asphalt-color.dds",
+      "sha256": "ca1fcba5b41cadbbe739af1cd8f8c11482ef831e6b25ba6083083754c120363c"
+    },
+    {
+      "path": "game/assets/environment/materials/asphalt-normal.dds",
+      "sha256": "aa2fe7f2c41a6e480294d6ac3d6cecb06d72644893f5bf71c4e20dc6856696c1"
+    },
+    {
+      "path": "game/assets/environment/materials/concrete-color.dds",
+      "sha256": "046654965c18f1553a0b0bc62afaea86916e9850cd07a2f436346403457c55e3"
+    },
+    {
+      "path": "game/assets/environment/materials/concrete-normal.dds",
+      "sha256": "7269b4e8210ea3667dcb40daf4a771ec919d24ae7e2ef801fdac949e34b34bb8"
+    },
+    {
+      "path": "game/assets/environment/materials/ground-color.dds",
+      "sha256": "4c3658ddd0866737f0e3931d05039b359632f9c78436394b5c8c0577bb9ba979"
+    },
+    {
+      "path": "game/assets/environment/materials/ground-normal.dds",
+      "sha256": "5991a884e2318dcd6a6384cd9ab964c7e0ec618488ccd8ec3fd5497d37a7d039"
+    },
+    {
+      "path": "game/assets/environment/materials/paving-color.dds",
+      "sha256": "8adc3c2350bc14b33a8d9715afb7577f891936e422e98cbd00364d78a9df2244"
+    },
+    {
+      "path": "game/assets/environment/materials/paving-normal.dds",
+      "sha256": "f68e5fab9ab37b54ff1b2c634d7dd8334cc53f22740701ea3dc0f8a753718153"
+    },
+    {
+      "path": "game/assets/environment/materials/plaster-color.dds",
+      "sha256": "4157c7864d215a1dd3a463400b76d047b566c737f38f68d2633652737464ed9a"
+    },
+    {
+      "path": "game/assets/environment/materials/plaster-normal.dds",
+      "sha256": "9a5d3409ad2e5cad8459d12e0b3b5a008d778e82a6527eda09fb64944720e4d0"
+    },
+    {
+      "path": "game/assets/environment/materials/rock-color.dds",
+      "sha256": "e864cbeb81d3f59c855186a5adbacef81a9dbe9f39154abf0cf538852a90f6b4"
+    },
+    {
+      "path": "game/assets/environment/materials/rock-normal.dds",
+      "sha256": "f7d0da332afbff8036572f0faa9eac3f8c2ccc61d80dc3d5adcc9e0a5d374324"
+    },
+    {
+      "path": "game/assets/environment/materials/wood-siding-color.dds",
+      "sha256": "0f194c329869a1f9d81fb1681ee688c1427a079647f749a57d7f3fd633b33185"
+    },
+    {
+      "path": "game/assets/environment/materials/wood-siding-normal.dds",
+      "sha256": "b8deb0645916ffdb6212d283f6031d6545e24fd7ce58accb630496ed77746633"
+    },
+    {
+      "path": "game/assets/environment/nature/flower_yellowA.glb",
+      "sha256": "e8fce787943bcdc42bd56fc5d821fab6ff21976879e40019af381608bd84af77"
+    },
+    {
+      "path": "game/assets/environment/nature/grass.glb",
+      "sha256": "dc974645ca521f28f9881f5190ef5ec739440ade12bd05aa449d16d4e089d1c1"
+    },
+    {
+      "path": "game/assets/environment/nature/plant_bushDetailed.glb",
+      "sha256": "5f95e15962a3e9d1b8ec73946bae5526f3e8fa91e1e0293d3b745c48cbdd11b7"
+    },
+    {
+      "path": "game/assets/environment/nature/rock_smallA.glb",
+      "sha256": "30498a034e71e79f4899f5ea5eed2564c7a8c90aec114467b80d38e53d9bd632"
+    },
+    {
+      "path": "game/assets/environment/nature/tree_cone_fall.glb",
+      "sha256": "52873f4e14fe249f6bb11a60f74abb9b2b1279ee2850c61e664a51508cd5ffa5"
+    },
+    {
+      "path": "game/assets/environment/nature/tree_detailed.glb",
+      "sha256": "e6446c35f85620872bee3afefb23336626095882d00155b3437b5b0eb60e7655"
+    },
+    {
+      "path": "game/assets/environment/nature/tree_oak.glb",
+      "sha256": "62faa0d2545f4e43c394378083fb26fb39da0236ad9bcc48eac3a6fbb9eab273"
+    },
+    {
+      "path": "game/assets/environment/nature/tree_pineRoundA.glb",
+      "sha256": "5191f20721a9e7d91b4e04a0f5e3478a3656ab372f717875c71955cf8d7b9162"
+    },
+    {
+      "path": "game/assets/environment/posters/anke-sunny.png",
+      "sha256": "06dc5c6f77d91573298bd0a6a6ccf98ba5c6dd67a8db86c447fbd62f6fe294fe"
+    },
+    {
+      "path": "game/assets/environment/roads/Textures/colormap.png",
+      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185"
+    },
+    {
+      "path": "game/assets/environment/roads/light-curved.glb",
+      "sha256": "dce22a3390585e4a2a0467a7394dad07c713f261f65b2ceacda6fe768e5527f8"
+    },
+    {
+      "path": "game/assets/environment/roads/road-sign-empty.glb",
+      "sha256": "38aaaee70b238f9490528f477b9b2447c69be10a1d67867cecc6ff28ab546587"
+    },
+    {
+      "path": "game/assets/environment/signs/after9.png",
+      "sha256": "901530ad220c802419a6fdaca08909e1ae7c0844e339e680ae845ffeb5ad22e0"
+    },
+    {
+      "path": "game/assets/environment/signs/bakery-display.png",
+      "sha256": "bfa568453a64d9264c49e11702d37ff7741b5e6fbd0cd97fc0fb2eaf74027ce1"
+    },
+    {
+      "path": "game/assets/environment/signs/bakery.png",
+      "sha256": "5c04422acce8d624e462752d81705e791302ad8a2e362e0102983a7e1abd16f2"
+    },
+    {
+      "path": "game/assets/environment/signs/byte-beat.png",
+      "sha256": "4128102d39542bb2283901d7e26c8d0b938feec3158593d3b2410b20d8e46f69"
+    },
+    {
+      "path": "game/assets/environment/signs/cafe-display.png",
+      "sha256": "a9a96d67faf83df377545be5abf4c3d8b1ce1923bdd30bd72fb619f6264469c3"
+    },
+    {
+      "path": "game/assets/environment/signs/cafe.png",
+      "sha256": "67d7086e3bf41a022ce45f9e1a1d140c404b537dc967bddb6c127fae566c2d70"
+    },
+    {
+      "path": "game/assets/environment/signs/drygoods-display.png",
+      "sha256": "e58db384ffedb136ff334e24827885330d0843ae5f1e6bceacbf92f7fba82600"
+    },
+    {
+      "path": "game/assets/environment/signs/drygoods.png",
+      "sha256": "b2138e460f00434e1dde83bed3ce8b0c591b3044d3efb391830de52bb44b8ec4"
+    },
+    {
+      "path": "game/assets/environment/signs/frame.png",
+      "sha256": "a6723a7e555ef9be996f2688e989c55f8cd2e7d5f82a2ab57114885326eb75b0"
+    },
+    {
+      "path": "game/assets/environment/signs/grocer-display.png",
+      "sha256": "3aee9352b9a8b6fba24429ef2952b645a57cd1c386b45a4689689213cf7f4e22"
+    },
+    {
+      "path": "game/assets/environment/signs/grocer.png",
+      "sha256": "ce9db13aab85b9fefd5772650df7d1fe2a2cc27b0558082bdbaaa2b279c087d0"
+    },
+    {
+      "path": "game/assets/environment/signs/playroom.png",
+      "sha256": "2363e5e4b9d41734b627b16c7041f034af4515306bcfef4fb7aed59ad0f19bf4"
+    },
+    {
+      "path": "game/assets/environment/signs/shop-display.png",
+      "sha256": "e7142c4645691f46bacd4df798d8e30022768fb1a3e06ea9e22955384b075b8d"
+    },
+    {
+      "path": "game/assets/environment/signs/shop.png",
+      "sha256": "7227f42c7174162c670e2309d4b91fe915b96e6b02b27676931f6899883b6d62"
+    },
+    {
+      "path": "game/assets/environment/signs/station.png",
+      "sha256": "1b21302a1c6541c29ef75fcaa4f8a4212745a69d1157c08ca455b6a21a117032"
+    },
+    {
+      "path": "game/assets/environment/vegetation/pine-street.glb",
+      "sha256": "510e7b0699a13605c19182985cffdd2163db25751bfef628bab4b0826aeddef5"
+    },
+    {
+      "path": "game/assets/environment/vegetation/shrub-courtyard.glb",
+      "sha256": "24c0b97da3d4b64297cb75d4b5920d15c61fea0d1bb033c9be197c20bb8384ee"
+    },
+    {
+      "path": "game/assets/environment/vegetation/street-tree.glb",
+      "sha256": "cad77ce1246fd7f7eba08fd773c0b62fd5029332f597ceb67a5a36d472598243"
+    },
+    {
+      "path": "game/assets/shaders/character-ink.wgsl",
+      "sha256": "2c50ce340514d714f145be19730c4657f62a083191e3ee46f4ac2b97f77d952d"
+    },
+    {
+      "path": "game/assets/shaders/terrain-slope.wgsl",
+      "sha256": "792a1a7a4c139f589f15c22a85963b294f9ffe33873749ed1ad7b4db2b6c5577"
+    },
+    {
+      "path": "game/assets/ui/fonts/NotoSansSC-VF.ttf",
+      "sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964"
+    },
+    {
+      "path": "game/assets/ui/licenses/COPYRIGHT.txt",
+      "sha256": "d3e6aa5c6d3893ca46a34dd3d8b82b824503965e31704978c8ac0fdd8d57e937"
+    },
+    {
+      "path": "game/assets/ui/licenses/OFL.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "path": "source-assets/district-map/district.json",
+      "sha256": "58423556559f791d046544d4a5b6c2e756e8cba64abebcf5798ab8ec055ff2f1"
+    },
+    {
+      "path": "source-assets/district-scene/appearance.json",
+      "sha256": "1b5f5b1f972b35bd23b3ce6bc6b26edd50ac209c333792d64cbbfac741eae9c5"
+    },
+    {
+      "path": "source-assets/district-scene/daylight.json",
+      "sha256": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3"
+    }
+  ],
+  "baseline_revision": "b948cabe717c1c6081055267a4b0c063b7de855d",
+  "baseline_archive_comparison": {
+    "status": "PASS",
+    "compared_files": 58,
+    "mismatches": []
+  }
+}

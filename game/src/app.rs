@@ -257,7 +257,7 @@ pub fn run() -> Result<AppExit, String> {
     let mut root = PathBuf::from(".");
     let mut script = None;
     let mut walk = false;
-    let mut character = false;
+    let mut character = None;
     let mut output = None;
     let mut settings_directory = None;
     let mut progress_directory = None;
@@ -270,7 +270,13 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--walk-preview" => walk = true,
             "--character-preview" => {
-                character = true;
+                character = Some(crate::character::CharacterPreview::Yao);
+                walk = true;
+            }
+            option if option.starts_with("--character-preview=") => {
+                character = Some(crate::character::CharacterPreview::parse(
+                    option.trim_start_matches("--character-preview="),
+                )?);
                 walk = true;
             }
             "--reset-graphics" => reset_graphics = true,
@@ -296,7 +302,7 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--progress-dir DIRECTORY  Override handoff progress directory, also enables persistence in capture\n--walk-preview  Movement and saved prologue handoff fragment\n--character-preview  Unaccepted grey character with real Idle/Walk/Run (implies --walk-preview)\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
+                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--progress-dir DIRECTORY  Override handoff progress directory, also enables persistence in capture\n--walk-preview  Movement and saved prologue handoff fragment\n--character-preview[=CHR-001|CHR-002]  Unaccepted grey character with real Idle/Walk/Run; defaults to CHR-001 (implies --walk-preview)\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
                 );
                 return Ok(AppExit::Success);
             }

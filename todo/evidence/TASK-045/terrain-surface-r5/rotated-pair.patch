@@ -1,0 +1,60 @@
+--- a/game/assets/shaders/terrain-slope.wgsl
++++ b/game/assets/shaders/terrain-slope.wgsl
+@@ -23,6 +23,25 @@
+ @group(#{MATERIAL_BIND_GROUP}) @binding(102) var rock_color_sampler: sampler;
+ @group(#{MATERIAL_BIND_GROUP}) @binding(103) var rock_normal: texture_2d<f32>;
+ @group(#{MATERIAL_BIND_GROUP}) @binding(104) var rock_normal_sampler: sampler;
++
++// Equal metric scale, one fixed rotation and phase break the source's repeated column bands
++fn varied_uv(uv: vec2<f32>) -> vec2<f32> {
++    return vec2(0.7986355 * uv.x - 0.601815 * uv.y,
++                0.601815 * uv.x + 0.7986355 * uv.y) + vec2(0.37, 0.71);
++}
++
++fn varied_ground_normal(uv: vec2<f32>, normal: vec3<f32>, tangent: vec4<f32>,
++    original_normal: vec3<f32>) -> vec3<f32> {
++    let sampled = textureSampleBias(pbr_bindings::normal_map_texture,
++        pbr_bindings::normal_map_sampler, varied_uv(uv), view.mip_bias).rgb * 2.0 - 1.0;
++    // UVs rotate by R; tangent-space gradients rotate back by transpose(R)
++    let nt = vec3(0.7986355 * sampled.x + 0.601815 * sampled.y,
++                 -0.601815 * sampled.x + 0.7986355 * sampled.y, sampled.z);
++    let rotated_normal = pbr_functions::apply_normal_mapping(0u,
++        pbr_functions::calculate_tbn_mikktspace(normal, tangent), false, true,
++        nt * 0.5 + vec3(0.5));
++    return normalize(mix(original_normal, rotated_normal, 0.5));
++}
+ 
+ fn rock_weight(world_normal: vec3<f32>) -> f32 {
+     return 1.0 - smoothstep(terrain.slope_uv.x, terrain.slope_uv.y,
+@@ -50,8 +69,9 @@
+         pbr_bindings::normal_map_sampler, uv, view.mip_bias).rgb;
+     let ground_n = pbr_functions::apply_normal_mapping(pbr_bindings::material.flags,
+         pbr_functions::calculate_tbn_mikktspace(in.world_normal, in.world_tangent), false, is_front, nt);
++    let varied_n = varied_ground_normal(uv, in.world_normal, in.world_tangent, ground_n);
+     let normal = blend_normal(in.uv, in.world_normal, in.world_tangent,
+-        ground_n, rock_weight(in.world_normal));
++        varied_n, rock_weight(in.world_normal));
+     out.normal = vec4(normal * 0.5 + vec3(0.5), 1.0);
+ #endif
+ #ifdef MOTION_VECTOR_PREPASS
+@@ -74,10 +94,19 @@
+     let weight = rock_weight(in.world_normal);
+     let color = textureSampleBias(rock_color, rock_color_sampler,
+         in.uv * terrain.slope_uv.zw, view.mip_bias).rgb * terrain.color_roughness.rgb;
+-    pbr.material.base_color = vec4(mix(pbr.material.base_color.rgb, color, weight), 1.0);
++    let ground_uv = (pbr_bindings::material.uv_transform * vec3(in.uv, 1.0)).xy;
++    var varied_color = textureSampleBias(pbr_bindings::base_color_texture,
++        pbr_bindings::base_color_sampler, varied_uv(ground_uv), view.mip_bias).rgb
++        * pbr_bindings::material.base_color.rgb;
++#ifdef VERTEX_COLORS
++    varied_color *= in.color.rgb;
++#endif
++    let ground_color = mix(pbr.material.base_color.rgb, varied_color, 0.5);
++    pbr.material.base_color = vec4(mix(ground_color, color, weight), 1.0);
+     pbr.material.perceptual_roughness = mix(pbr.material.perceptual_roughness,
+         terrain.color_roughness.w, weight);
+ #ifndef LOAD_PREPASS_NORMALS
++    pbr.N = varied_ground_normal(ground_uv, pbr.world_normal, in.world_tangent, pbr.N);
+     pbr.N = blend_normal(in.uv, pbr.world_normal, in.world_tangent, pbr.N, weight);
+ #endif
+     var out: FragmentOutput;

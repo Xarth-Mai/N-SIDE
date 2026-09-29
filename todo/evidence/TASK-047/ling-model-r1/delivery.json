@@ -1,0 +1,89 @@
+{
+  "asset_id": "AST-009",
+  "character_id": "CHR-002",
+  "status": "needs_revision",
+  "baseline_commit": "b948cabe717c1c6081055267a4b0c063b7de855d",
+  "source": {
+    "path": "source-assets/characters/CHR-002/model/ling-grey-study.blend",
+    "sha256": "83912572664e8fbc291b519ad2b80cd9a0ff2777cee05ffc9f6825a8ab4bdd65",
+    "bytes": 3883668
+  },
+  "runtime": {
+    "path": "game/assets/characters/CHR-002/ling-grey-study.glb",
+    "sha256": "5e17542d3fb12d44070f2eec2942f7f9117d9dd3a080de1a74e102a7d4bb37ea",
+    "bytes": 1444032
+  },
+  "atlas": {
+    "path": "source-assets/characters/CHR-002/model/grey-study.png",
+    "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+    "bytes": 25965
+  },
+  "metrics": {
+    "editable_meshes": 72,
+    "source_vertices": 6266,
+    "export_vertices": 20886,
+    "export_triangles": 39676,
+    "primitives": 1,
+    "materials": 1,
+    "joints": 32,
+    "height_m": 1.6363718509674072,
+    "height_ratio_from_base": 0.9459975445842896
+  },
+  "clips": {
+    "Idle": {
+      "seconds": 2.0,
+      "fps": 60,
+      "in_place": true
+    },
+    "Walk": {
+      "seconds": 0.8,
+      "fps": 60,
+      "in_place": true
+    },
+    "Run": {
+      "seconds": 0.6666666666666666,
+      "fps": 60,
+      "in_place": true
+    }
+  },
+  "natural_speeds_m_s": {
+    "Walk": 3.027192142669727,
+    "Run": 5.297586249672022
+  },
+  "checks": {
+    "dcc": "PASS",
+    "gltf": "PASS",
+    "actual_gltf_120fps_foot_tracks": "PASS",
+    "max_stance_drift_m": {
+      "Idle": 0.0,
+      "Run": 0.0006068216435008026,
+      "Walk": 0.00026785239469493685
+    },
+    "export_existing": "PASS byte-identical SHA256 5e17542d3fb12d44070f2eec2942f7f9117d9dd3a080de1a74e102a7d4bb37ea before and after",
+    "cpu_visual_self_audit": "6 static + 19 motion images actually inspected; model worker, root and art_review scope in review.md; needs_revision",
+    "runtime": "PASS motion 540 frames (26 native + character_id wrapper); root inspected actual CHR-002 frame159/209; orbit recording still pending, final status in runtime_evidence",
+    "author_acceptance": "NOT RUN",
+    "source_and_metadata": "PASS source-check.json",
+    "complexity_review": "Lean already. Ship. (implementation complexity only)"
+  },
+  "visual_evidence": [
+    "final-views.json",
+    "final-motion-views.json",
+    "review.md"
+  ],
+  "limits": [
+    "outfit, stature and palette unapproved",
+    "generic facial identity, long neck and broad shoulders",
+    "regular curtain hair and visible root seams",
+    "rigid geometric clip and hands",
+    "Head/Chest skinning only; no secondary hair physics",
+    "no full action set or artistic age acceptance"
+  ],
+  "runtime_evidence": "todo/evidence/TASK-045/visual-r8/review.md",
+  "cleanup": {
+    "record": "todo/evidence/TASK-047/ling-model-r1/cleanup.json",
+    "removed_bytes": 26358566,
+    "remaining_bytes": 857,
+    "remaining_images": 0
+  }
+}

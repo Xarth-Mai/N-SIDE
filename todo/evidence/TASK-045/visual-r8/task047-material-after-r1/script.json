@@ -1,0 +1,26 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 240,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [29, 59, 74, 89, 109, 139, 159, 184, 204, 219, 239],
+  "events": [
+    {"start": 30, "end": 31, "keys": ["Enter"]},
+    {"start": 60, "end": 90, "look": [17.45329252, 0.0]},
+    {"start": 110, "end": 140, "look": [17.45329252, 0.0]},
+    {"start": 160, "end": 205, "look": [-17.45329252, 0.0]}
+  ],
+  "waits": [{"frame": 34, "game_page": "world"}],
+  "assertions": [
+    {"name": "real world and idle character ready before orbit", "from": 50, "to": 59, "game_page": "world", "world_ready": true, "pointer_locked": true, "player_grounded": true, "character": {"ready": true, "clip": "Idle", "paused": false, "min_advance": 0.28}},
+    {"name": "locked mouse rotates from front to profile", "from": 59, "to": 89, "pointer_locked": true, "min_rotation": 1.5, "max_rotation": 1.65, "max_player_distance": 0.001},
+    {"name": "locked mouse reaches the back after half a turn", "from": 59, "to": 139, "pointer_locked": true, "min_rotation": 3.05, "max_rotation": 3.15, "max_player_distance": 0.001},
+    {"name": "return orbit exposes the front three-quarter view", "from": 159, "to": 204, "pointer_locked": true, "min_rotation": 2.3, "max_rotation": 2.4, "max_player_distance": 0.001},
+    {"name": "idle animation advances while the grounded actor stays put", "from": 50, "to": 239, "game_page": "world", "player_grounded": true, "max_player_distance": 0.001, "max_player_resets": 0, "max_player_jumps": 0, "min_player_camera_distance": 0.8, "character": {"ready": true, "clip": "Idle", "paused": false, "min_advance": 6.25}},
+    {"name": "final idle view is stable after releasing mouse input", "from": 219, "to": 239, "pointer_locked": true, "max_rotation": 0.0001, "max_distance": 0.0001, "max_player_distance": 0.001}
+  ]
+}

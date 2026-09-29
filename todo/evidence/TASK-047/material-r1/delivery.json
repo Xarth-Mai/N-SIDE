@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "reexport_bytes_identical": true,
+  "files": {
+    "source-assets/characters/CHR-001/model/yao-grey-study.blend": {
+      "sha256": "30d4c3747abb27ebc70a8f27f83945bc934a3e6b4327b9738b9a9a1e50b3d3d2",
+      "bytes": 4093844
+    },
+    "game/assets/characters/CHR-001/yao-grey-study.glb": {
+      "sha256": "220370b6ee7a073a0c04edb1c865d9e70129d3f58b6163c07d81590ccecd68a0",
+      "bytes": 1470596
+    },
+    "source-assets/characters/CHR-001/model/grey-study.png": {
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+      "bytes": 25965
+    },
+    "source-assets/characters/CHR-001/model/grey-study-surface.png": {
+      "sha256": "639ae122a84b134f83afc8b0f43425ce1bc4c2b83e5c2b7c6dbbb38c636c317d",
+      "bytes": 34126
+    },
+    "source-assets/characters/CHR-001/model/grey-study-normal.png": {
+      "sha256": "e6a6686ddac6cb2a38cfdd8b725bf7fc02b7c932a5819fe3b212590f8de43cbb",
+      "bytes": 17628
+    }
+  }
+}

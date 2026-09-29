@@ -17,10 +17,10 @@ class CaptureTests(unittest.TestCase):
             root = Path(directory)
             binary = root / "native-game"
             binary.write_bytes(b"unused native binary for command construction")
-            for scene in ("game-entry", "walk-preview", "district"):
+            for scene, character in (("game-entry", None), ("walk-preview", None), ("district", None), ("walk-preview", "CHR-001"), ("walk-preview", "CHR-002")):
                 script = root / f"{scene}.json"
                 script.write_text(json.dumps({"scene": scene, "timeout_seconds": 1}))
-                output = root / scene
+                output = root / f"{scene}-{character}"
                 args = ["capture.py", "--script", str(script), "--output", str(output), "--binary", str(binary), "--project-root", str(root), "--no-video"]
                 if scene == "district":
                     args.extend(["--aa", "taa-ssao"])
@@ -28,6 +28,10 @@ class CaptureTests(unittest.TestCase):
                     args.extend(["--settings-dir", str(root / "settings")])
                 if scene == "walk-preview":
                     args.extend(["--progress-dir", str(root / "progress")])
+                if character:
+                    args.append("--character-preview")
+                    if character != "CHR-001":
+                        args.append(character)
                 def native_run(command, path, timeout, **kwargs):
                     path.write_text("INFO n_side: capture complete\n")
                     return 0
@@ -36,6 +40,8 @@ class CaptureTests(unittest.TestCase):
                 command = run.call_args.args[0]
                 self.assertEqual(command[0], str(binary))
                 self.assertEqual("--walk-preview" in command, scene == "walk-preview")
+                selected = [arg for arg in command if arg.startswith("--character-preview")]
+                self.assertEqual(selected, [] if character is None else ["--character-preview" if character == "CHR-001" else "--character-preview=CHR-002"])
                 self.assertEqual(command[command.index("--capture") + 1], str(output / "script.json"))
                 self.assertEqual(command[command.index("--project-root") + 1], str(root))
                 if scene == "district":
@@ -68,6 +74,15 @@ class CaptureTests(unittest.TestCase):
             for relative in ["frames/frame00000.png", "frames/frame00001.png", "keyframes/frame00000.png"]:
                 Image.new("RGB", (640, 360), "orange").save(output / relative)
             self.assertEqual(verify_outputs(output, script)["status"], "PASS")
+            with self.assertRaisesRegex(ValueError, "requested character CHR-002"):
+                verify_outputs(output, script, "CHR-002")
+            state["samples"] = [{"character": {"ready": True, "id": "CHR-001"}}]
+            (output / "state.json").write_text(json.dumps(state))
+            with self.assertRaisesRegex(ValueError, "requested character CHR-002"):
+                verify_outputs(output, script, "CHR-002")
+            state["samples"][0]["character"]["id"] = "CHR-002"
+            (output / "state.json").write_text(json.dumps(state))
+            self.assertEqual(verify_outputs(output, script, "CHR-002")["checks"][-1]["id"], "CHR-002")
             state["checks"][0]["passed"] = False
             (output / "state.json").write_text(json.dumps(state))
             with self.assertRaisesRegex(ValueError, "movement"):

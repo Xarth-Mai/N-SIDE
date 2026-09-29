@@ -1,0 +1,51 @@
+{
+  "variant": "baseline",
+  "master": "output/characters/CHR-001/material-r1/baseline/yao-grey-study.blend",
+  "backend": "Cycles CPU",
+  "threads": 2,
+  "samples": 32,
+  "size": [
+    720,
+    960
+  ],
+  "clip": "Idle",
+  "frame": 1,
+  "light": "unchanged master area lights and world",
+  "views": [
+    [
+      "whole",
+      [
+        2.5,
+        -4,
+        1.4
+      ],
+      [
+        0,
+        0,
+        0.9
+      ],
+      2.06
+    ],
+    [
+      "upper",
+      [
+        2,
+        -4,
+        1.6
+      ],
+      [
+        0,
+        0,
+        1.45
+      ],
+      0.73
+    ]
+  ],
+  "roughness_regions": null,
+  "specular_IOR_level": 0.12,
+  "sha256": {
+    "grey-study.png": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+    "whole.png": "078412a687e69572b58214ed7b65ac213b85ae2753707ce18351752fda8ac269",
+    "upper.png": "202b360a9b96445235c0b7b4930b468204c586fcf5da1bb93fd2607e7173eb2e"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "scope": "CPU lattice continuity, partition of unity and tangent gradient rotation; GPU and appearance separate",
+  "boundary_pairs": 1215,
+  "max_cross_boundary_delta": 6.003716675834214e-06,
+  "quarter_turn_checks": 16,
+  "max_gradient_error": 6.505063154804702e-09,
+  "patch_metres": 6.0
+}

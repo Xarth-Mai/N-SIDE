@@ -1,0 +1,50 @@
+{
+  "variant": "final",
+  "master": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+  "backend": "Cycles CPU",
+  "threads": 2,
+  "samples": 32,
+  "size": [
+    720,
+    960
+  ],
+  "clip": "Idle",
+  "frame": 1,
+  "light": "unchanged master area lights and world",
+  "views": [
+    [
+      "whole",
+      [
+        2.5,
+        -4,
+        1.4
+      ],
+      [
+        0,
+        0,
+        0.9
+      ],
+      2.06
+    ],
+    [
+      "upper",
+      [
+        2,
+        -4,
+        1.6
+      ],
+      [
+        0,
+        0,
+        1.45
+      ],
+      0.73
+    ]
+  ],
+  "roughness_regions": null,
+  "specular_IOR_level": 0.23999999463558197,
+  "sha256": {
+    "whole.png": "8b8f93e994f9ac70d87c5fd9568d84918fbaad8036433558f46ee15e625fe076",
+    "upper.png": "da05b8ebe0cb436428b7445465c4ec5a97e84a3143c48c335378698a835b7dc5"
+  }
+}

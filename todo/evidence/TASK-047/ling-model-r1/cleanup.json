@@ -1,0 +1,310 @@
+{
+  "status": "PASS",
+  "reason": "Model worker reviewed all final six static, 19 motion images and sheets; art_review independently viewed six static, two complete sheets and three run fronts; root viewed final portrait/hair/sheet and authorized cleanup; no owned Blender process active",
+  "removed": [
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/first/body-front.png",
+      "bytes": 576237,
+      "sha256": "7859583f1f42f5e173c849a7413229b4834bf1e190fcce503ed85ea753e4d90a"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/first/body-quarter.png",
+      "bytes": 589192,
+      "sha256": "ae8525fa612ae3bf81cde49c0e7d495f7dda1d0a4a14f45340ff6ee3e0c10b38"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/first/body-side.png",
+      "bytes": 560561,
+      "sha256": "b65c016a6aa1d53e127edc5febd02f0597b2516fc28a627b85cab3c6e81ba781"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/first/body-back.png",
+      "bytes": 594246,
+      "sha256": "d1f22bcba56040372dc9920c4013f6a4a02c191c2970f48b86865c90c387fc87"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/first/face-front.png",
+      "bytes": 678787,
+      "sha256": "361b520e01a2bc5f372caee7e5615b981ca9eea8150320910d0a6efce3ec0b32"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/first/hair-quarter.png",
+      "bytes": 638019,
+      "sha256": "49094b35ad432f9850c2c9751120f2f7ed302371b2cde5b6e7abcd82edde6e26"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/second/body-front.png",
+      "bytes": 575693,
+      "sha256": "3915dcc444df90936ddf9554f00862bf65098eda237bcbf82abc4386a2fa5bca"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/second/body-quarter.png",
+      "bytes": 587888,
+      "sha256": "63143e64c89da40373fc75d8ee6472bd35e0a679cd29d58841255a980a87d3f7"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/second/body-side.png",
+      "bytes": 558026,
+      "sha256": "26485de0019c3a63acdf9d1e9365f7e006ac5919e64269dca9a6e6f399346d06"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/second/body-back.png",
+      "bytes": 585939,
+      "sha256": "9e4c862829759dd1d36f0a5922138becb798bb8c03a4eea215d193dc933df86a"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/second/face-front.png",
+      "bytes": 701262,
+      "sha256": "37f9fff5a66bd10406d11571a6c7202c2326a188ee19183f64077c0cedfeea9e"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/second/hair-quarter.png",
+      "bytes": 603319,
+      "sha256": "31bf525c802f12d813ada2faf256d95f6a8a855099ec41b91639206bbff1ac13"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-00.png",
+      "bytes": 283525,
+      "sha256": "be5e5b0ed0a354e46d7a95ef8b2fc58bcbefe944cd09e7bed904537e95f5141b"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-01.png",
+      "bytes": 276392,
+      "sha256": "acc3c99cd71c1248f97e62afee5d69c3abf385c4bd90371768ce916de5401d13"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-02.png",
+      "bytes": 281750,
+      "sha256": "709568579b3a7eff42eb0f9e795c271f92627d7f96fc056a1278d7e4383642f2"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-03.png",
+      "bytes": 286595,
+      "sha256": "63715c2ee89efb8f4198d80aaabd1475cfe859e3801daf3464fcb5d72ec482aa"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-04.png",
+      "bytes": 282333,
+      "sha256": "46444feba2936b4904d514861cf73fb691b4e352c81756a29d9d04769a641224"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-05.png",
+      "bytes": 275059,
+      "sha256": "3da2f820d66320eeb9f6c023a39f820be12b1f9a948aee1265ced41860926eb1"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-06.png",
+      "bytes": 282578,
+      "sha256": "2e82920c8cc0ca97148ca99b291d948253bf1bbcd3dbf2681035347597bb141d"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/walk-07.png",
+      "bytes": 287299,
+      "sha256": "f039b3123a2b13c73c40a9f7ab69a863ad8ef24dc9b8e1d1ddfd39ada63babec"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-00.png",
+      "bytes": 286505,
+      "sha256": "6c90537952d24c7a0b57978c560352cba21c4430f603e2d724dc6e8c1c7fdb1f"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-01.png",
+      "bytes": 286779,
+      "sha256": "b6f3b1315fe8aba8b30e1f1cae5ae5de1e1719fe7e42a831a18f85a3bfca0f5d"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-02.png",
+      "bytes": 290705,
+      "sha256": "902cf524ea469f38c82d0c4f0c7dff03374660fb6d6be46e4ac1939bf4f05275"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-03.png",
+      "bytes": 289391,
+      "sha256": "7a1d5bb1cd3090c8ac0cefb581c7bf93e95ce6be0d10e1e989ac25e141d60a19"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-04.png",
+      "bytes": 283821,
+      "sha256": "d5b12c815e1ec31bff52d1feeb483ed3d20afd5631a467a6524a277a928c814a"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-05.png",
+      "bytes": 291063,
+      "sha256": "e10f3eecd573853f47e14eea5b3a9ee1bc6c584c16aae5bffbfea5c81dfb02fc"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-06.png",
+      "bytes": 294433,
+      "sha256": "c4491825b42f3995e5b5dd64eb7a24a8070eff74fbc334d4ad723dfca0041a53"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-07.png",
+      "bytes": 292369,
+      "sha256": "b54abf91e15d345b4e7eac33693fa000ff29bff11f6be84494a2b4ab2c58a010"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-front-01.png",
+      "bytes": 290370,
+      "sha256": "7a44a53d7d3d5b8e5eae48a18e6b9e0cf37f5b21e39d22fa62af6ef26358aade"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-front-07.png",
+      "bytes": 288951,
+      "sha256": "72f425bb099784229c5ce77e5a04b9a3bc2907abd6915e836eb64416d36e00ec"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/third/run-front-13.png",
+      "bytes": 289469,
+      "sha256": "2165bd40a6a62d84ff9360bb3e412d5a90f6f31c8e61d0b0a16b64c7be67cba2"
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/ling-grey-study.blend1",
+      "bytes": 3883668,
+      "sha256": "d64ce929fd40e1b58fb2abe897f48da9f1424e1aec2e2180ff071a460dbafe2b"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/walk-sheet.png",
+      "bytes": 354778,
+      "sha256": "c6f8cd65c6398b37f7a8500a463b4eabe6a4c000cb97cb15b4ac46807f7ebe1b"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/run-sheet.png",
+      "bytes": 377985,
+      "sha256": "c17dd9351c0db9348d097c16b3b18f662fd4b98b67ab5ee48917af8ea278b37e"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-00.png",
+      "bytes": 283442,
+      "sha256": "d81b3354a34898f03ce8968655d6a6fa534e9f56e7f216c460e078c3d5a2271b"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-01.png",
+      "bytes": 276578,
+      "sha256": "f05605126aee42411b34ed8e5059072bdad3552e7b9cd40023e1e1eab24ad3af"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-02.png",
+      "bytes": 281556,
+      "sha256": "f578973cda7450517aa29327d709a8aaf5d7703eca6bd2922ee3e69b8dd2a03d"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-03.png",
+      "bytes": 286874,
+      "sha256": "6782b537587fb8fbfa7be4789e866e1cbaab8f2fe432c969cbf61adb5d8375b5"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-04.png",
+      "bytes": 282220,
+      "sha256": "126ea50ee79e55f84d49616aba1561c3f9035809d5150716ca2e26144750121e"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-05.png",
+      "bytes": 275029,
+      "sha256": "0b49d97fc2ae42fd99cdb47f91dcf20e3b1c9828d7cd790032a002125c0bc854"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-06.png",
+      "bytes": 282587,
+      "sha256": "eb8b5d688156de651d74e3d216469d1f1e739971aefd16111d4a4a724b257c52"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/walk-07.png",
+      "bytes": 286762,
+      "sha256": "49d2dc0bf08382f8a75409f9e5980adc39fa14982a1202cb977e3ff1f3fa17b4"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-00.png",
+      "bytes": 285929,
+      "sha256": "b55c0f2c36c8c8c63f6c1a546ec0a2b736eb33ef4f3a2e1ef8f6eef5704e38b3"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-01.png",
+      "bytes": 286618,
+      "sha256": "86384a3e5f0088cb96e6695b4fc4eeff7dd247d29bc047764a2038bd2a2ac82f"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-02.png",
+      "bytes": 291310,
+      "sha256": "4844fd12204e4ffe49664d00ba53218b22af56f5050a4343a62b1438fe095352"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-03.png",
+      "bytes": 288726,
+      "sha256": "cdecf11e45d447681ea4dfe73ce485cad550bf408e41fab828dd8881d8d08d97"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-04.png",
+      "bytes": 283556,
+      "sha256": "542261639333aebae172f9468350ba8d56d1993f952f92aebc1a02a6d14f2b3e"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-05.png",
+      "bytes": 291226,
+      "sha256": "f246e2292fc6668bdb31d8723d5bad0b3aa62e4a3a23ed348f2cb6c64b1b6adf"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-06.png",
+      "bytes": 294593,
+      "sha256": "651b982af7becd3cf49bf80dc9dcc769df65ec633fbe94f525243231feec1837"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-07.png",
+      "bytes": 292391,
+      "sha256": "b1802dbe0f7921f9575f3432c8b5415e177659b20831fac370b0d22eb35f7171"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-front-01.png",
+      "bytes": 290145,
+      "sha256": "7dd5dddd2ecae1b5db514b5f50f9d155b5207eae6dc036c64d769cfaba9a102e"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-front-07.png",
+      "bytes": 289220,
+      "sha256": "3f93ab3af34d74862c42d32259f7690c4a18553726d13d646af544a175911fca"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/run-front-13.png",
+      "bytes": 289429,
+      "sha256": "7ebba9ac7f90330662d548800f4a420084176fa614bcb55df38b08e918d0cf6e"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/body-front.png",
+      "bytes": 576372,
+      "sha256": "8a9a2f43177796d582c82e374bb137feaefa6f2e46b6388034a0636a82185bdc"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/body-quarter.png",
+      "bytes": 588819,
+      "sha256": "fdf4a20a2a6b09a9006dabea1dd6979bde01490499eb8471cd5f4f589da76fb4"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/body-side.png",
+      "bytes": 558112,
+      "sha256": "74e8fc75406af1ab0b4a011c822ab43a0985e6e9ee3d4dfdf20be19ac36a762c"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/body-back.png",
+      "bytes": 585999,
+      "sha256": "d1291bf06977772604685ca5f65576553698b417584215e41981e024d272a4d2"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/face-front.png",
+      "bytes": 702789,
+      "sha256": "36957052f64e492098c4b64aefea4befba5abdc24624314f20137eadc204c948"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/final/hair-quarter.png",
+      "bytes": 603297,
+      "sha256": "fd70c70984611158a3db522c7a6e0fa0dc3c5778535d222a59de41ba2506325b"
+    }
+  ],
+  "removed_bytes": 26358566,
+  "remaining_images": [],
+  "remaining_files": [
+    {
+      "path": "output/characters/CHR-002/ling-model-r1/model-report.json",
+      "bytes": 857
+    }
+  ],
+  "remaining_bytes": 857
+}

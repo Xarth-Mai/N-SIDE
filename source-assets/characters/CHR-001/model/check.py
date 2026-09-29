@@ -4,7 +4,9 @@ blender -b --python source-assets/characters/CHR-001/model/check.py
 """
 import json
 import math
+import argparse
 from pathlib import Path
+import sys
 
 import bpy
 from mathutils import Vector
@@ -12,10 +14,51 @@ from mathutils.bvhtree import BVHTree
 
 source = Path(__file__).resolve().parent
 root = source.parents[3]
-bpy.ops.wm.open_mainfile(filepath=str(source / 'yao-grey-study.blend'))
+parser = argparse.ArgumentParser()
+parser.add_argument('--master', type=Path, default=source / 'yao-grey-study.blend')
+parser.add_argument('--output', type=Path, default=root / 'todo/evidence/TASK-047/material-r1/dcc-check.json')
+args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
+bpy.ops.wm.open_mainfile(filepath=str(args.master))
 rig = bpy.data.objects['CHR001_Rig']
 scene = bpy.context.scene
 results = []
+meshes = [obj for obj in rig.children if obj.type == 'MESH']
+assert all(len(obj.material_slots) == 1 for obj in meshes), 'Every character part must use one material slot'
+materials = {obj.material_slots[0].material for obj in meshes}
+assert len(materials) == 1, 'Character must retain one shared material'
+material = next(iter(materials))
+bsdf = material.node_tree.nodes.get('Principled BSDF')
+def upstream(socket, node_type, output):
+    assert len(socket.links) == 1, f'{socket.name}: expected one material input'
+    link = socket.links[0]
+    assert link.from_node.type == node_type and link.from_socket.name == output, f'{socket.name}: wrong material channel'
+    return link.from_node
+base = upstream(bsdf.inputs['Base Color'], 'TEX_IMAGE', 'Color').image
+channels = upstream(bsdf.inputs['Roughness'], 'SEPARATE_COLOR', 'Green')
+assert upstream(bsdf.inputs['Metallic'], 'SEPARATE_COLOR', 'Blue') == channels, 'Metallic must use the same packed map'
+surface = upstream(channels.inputs['Color'], 'TEX_IMAGE', 'Color').image
+normal_node = upstream(bsdf.inputs['Normal'], 'NORMAL_MAP', 'Normal')
+assert normal_node.space == 'TANGENT' and normal_node.inputs['Strength'].default_value == 1, 'Normal amplitude must be baked into tangent RGB'
+normal = upstream(normal_node.inputs['Color'], 'TEX_IMAGE', 'Color').image
+assert base.colorspace_settings.name == 'sRGB', 'Base color must remain sRGB'
+for image in (surface, normal):
+    assert image.colorspace_settings.name == 'Non-Color', f'{image.name}: data texture must be linear'
+for image in (base, surface, normal):
+    assert tuple(image.size) == (1024, 1024) and image.packed_file, f'{image.name}: missing packed 1K image'
+assert abs(bsdf.inputs['Specular IOR Level'].default_value - .24) < 1e-6, 'Unexpected candidate dielectric specular level'
+pixels = list(surface.pixels)
+assert all(abs(value) < 1e-6 for value in pixels[2::4]), 'Packed metallic B must be zero for all regions'
+regions = [('skin', .64), ('hair', .52), ('jacket', .80), ('shirt', .88), ('pants', .76), ('shoe', .62), ('ink', .72), ('white', .86)]
+surface_ranges = {}
+for index, (name, expected) in enumerate(regions):
+    x0, y0 = (index % 2) * 512, (index // 2) * 256
+    samples = [pixels[(y * 1024 + x) * 4 + 1] for y in range(y0, y0 + 256) for x in range(x0, x0 + 512)]
+    assert expected - .016 <= min(samples) <= max(samples) <= expected + .016, f'{name}: packed roughness values outside candidate range'
+    surface_ranges[name] = {'minimum': min(samples), 'maximum': max(samples)}
+pixels = list(normal.pixels)
+assert max(abs(value - .5) for value in pixels[0::4] + pixels[1::4]) < .018, 'Seam normal exceeds the shallow candidate amplitude'
+assert min(pixels[2::4]) > .99, 'Tangent normal must face outward'
+material_check = {'status': 'PASS', 'slots': 1, 'embedded_source_images': 3, 'surface_channels': 'G roughness, B metallic zero', 'roughness_ranges': surface_ranges, 'normal': 'linear tangent +Y; small seam-only slopes; scale 1'}
 assert scene.render.fps == 60, 'Character action source must use 60 FPS'
 for name, period in (('Idle', 120), ('Walk', 48), ('Run', 40)):
     rig.animation_data.action = bpy.data.actions[name]
@@ -125,6 +168,6 @@ top_origin=Vector((0,.018,1.85))
 top_hair=hair_surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
 top_head=surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
 assert top_hair is not None and top_head is not None and top_hair.z>top_head.z+.001, 'Open crown exposes the head from above'
-report = {'status':'PASS','asset':'CHR-001 modelling candidate r6','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS'}
+report = {'status':'PASS','asset':'CHR-001 modelling candidate r6 / material r1','scope':'DCC material channels and color space, joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance','material':material_check,'clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS'}
 print(json.dumps(report,indent=2))
-(root/'todo/evidence/TASK-047/model-r6/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
+args.output.write_text(json.dumps(report,indent=2)+'\n')

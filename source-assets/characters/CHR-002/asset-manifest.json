@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "owner_id": "CHR-002",
+  "assets": [
+    {
+      "id": "AST-009",
+      "kind": "skinned-character-study",
+      "state": "technical-preview",
+      "source_path": "source-assets/characters/CHR-002/model/ling-grey-study.blend",
+      "runtime_path": "game/assets/characters/CHR-002/ling-grey-study.glb",
+      "provenance": "Original CHR-002 face, long hair, clip and clothing authored for N:SIDE; adapted project-owned CHR-001 32-joint rig, gray atlas authoring and basic gait calculations at b948cabe717c1c6081055267a4b0c063b7de855d; no third-party mesh or motion imported",
+      "license_status": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
+      "license_note": "Project-authored model and fixed project-source reuse; reference imagery retains its own provenance and does not become a runtime texture",
+      "source_sha256": "83912572664e8fbc291b519ad2b80cd9a0ff2777cee05ffc9f6825a8ab4bdd65",
+      "runtime_sha256": "5e17542d3fb12d44070f2eec2942f7f9117d9dd3a080de1a74e102a7d4bb37ea",
+      "references": [
+        "docs/player/characters/sister.md",
+        "source-assets/area-previews/cinema-music-street.png"
+      ],
+      "base_source": {
+        "commit": "b948cabe717c1c6081055267a4b0c063b7de855d",
+        "path": "source-assets/characters/CHR-001/model/build.py",
+        "scope": "Project-owned rig, helper geometry, grayscale atlas, export and basic animation code; distinct CHR-002 model lives independently"
+      },
+      "texture": {
+        "path": "source-assets/characters/CHR-002/model/grey-study.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB",
+        "alpha": false,
+        "embedded_in_glb": true,
+        "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf"
+      },
+      "dimensions": {
+        "height_m": 1.6363718509674072,
+        "units": "meters",
+        "up_axis": "+Y",
+        "forward_axis": "+Z",
+        "pivot": "feet at origin"
+      },
+      "scene": "Scene",
+      "root_bone": "Root",
+      "joints": 32,
+      "clips": [
+        {
+          "name": "Idle",
+          "duration_seconds": 2,
+          "source_fps": 60
+        },
+        {
+          "name": "Walk",
+          "duration_seconds": 0.8,
+          "source_fps": 60,
+          "natural_speed_m_s": 3.027192142669727
+        },
+        {
+          "name": "Run",
+          "duration_seconds": 0.6666666666666666,
+          "source_fps": 60,
+          "natural_speed_m_s": 5.297586249672022
+        }
+      ],
+      "world_motion_owner": "real player controller, in-place animation; playback scales to actual velocity / natural speed",
+      "actual_age": 19,
+      "appearance_age": 17,
+      "palette_status": "undecided grayscale values only",
+      "acceptance": {
+        "technical": "DCC/GLB, actual 120 FPS exported foot tracks and edited-master re-export pass; CPU six views and both full gait cycles actually inspected; Bevy evidence belongs to root integration",
+        "visual": "needs_revision; no author costume, color, stature or character-design acceptance"
+      },
+      "generation": {
+        "tool": "Blender 4.5.14 LTS Python authoring",
+        "external_generation_service": null,
+        "service_cost": null
+      },
+      "evidence": "todo/evidence/TASK-047/ling-model-r1/delivery.json"
+    }
+  ],
+  "uses": [
+    "AST-AREA-PREVIEWS"
+  ]
+}

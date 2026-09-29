@@ -1,0 +1,91 @@
+{
+  "revision": "first",
+  "master_sha256": "acb04d8c2f0f8b31e1b415ba3c6113531cdc71c02484ace4c805bba31e773877",
+  "engine": "CYCLES",
+  "device": "CPU",
+  "samples": 24,
+  "resolution": [
+    720,
+    960
+  ],
+  "views": [
+    {
+      "label": "body-front",
+      "camera_position": [
+        0,
+        -4,
+        0.95
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/first/body-front.png"
+    },
+    {
+      "label": "body-quarter",
+      "camera_position": [
+        3,
+        -4,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/first/body-quarter.png"
+    },
+    {
+      "label": "body-side",
+      "camera_position": [
+        4,
+        0,
+        0.95
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/first/body-side.png"
+    },
+    {
+      "label": "body-back",
+      "camera_position": [
+        0,
+        4,
+        0.95
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/first/body-back.png"
+    },
+    {
+      "label": "face-front",
+      "camera_position": [
+        0,
+        -4,
+        1.52
+      ],
+      "target_height": 1.515,
+      "ortho_scale": 0.38,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/first/face-front.png"
+    },
+    {
+      "label": "hair-quarter",
+      "camera_position": [
+        3,
+        4,
+        1.43
+      ],
+      "target_height": 1.43,
+      "ortho_scale": 0.62,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/first/hair-quarter.png"
+    }
+  ]
+}

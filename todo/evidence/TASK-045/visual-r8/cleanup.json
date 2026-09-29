@@ -1,0 +1,115 @@
+{
+  "visuals_reviewed_before_cleanup": true,
+  "captures": [
+    {
+      "capture": "task045-ground-r5-baseline",
+      "removed_visual_files": 97,
+      "removed_bytes": 105428826,
+      "remaining_bytes": 109469
+    },
+    {
+      "capture": "task045-ground-r5-no-normal",
+      "removed_visual_files": 97,
+      "removed_bytes": 103955182,
+      "remaining_bytes": 109567
+    },
+    {
+      "capture": "task045-ground-r5-solid-color",
+      "removed_visual_files": 97,
+      "removed_bytes": 90684479,
+      "remaining_bytes": 109573
+    },
+    {
+      "capture": "task045-ground-r5-rotated-pair",
+      "removed_visual_files": 97,
+      "removed_bytes": 100302417,
+      "remaining_bytes": 109658
+    },
+    {
+      "capture": "task045-ground-r5-local-patches",
+      "removed_visual_files": 97,
+      "removed_bytes": 101420392,
+      "remaining_bytes": 110022
+    },
+    {
+      "capture": "task045-ground-r5-local-angles",
+      "removed_visual_files": 97,
+      "removed_bytes": 102089248,
+      "remaining_bytes": 110471
+    },
+    {
+      "capture": "task049-understory-before-r1",
+      "removed_visual_files": 157,
+      "removed_bytes": 270666009,
+      "remaining_bytes": 168815
+    },
+    {
+      "capture": "task049-residential-before-r2",
+      "removed_visual_files": 157,
+      "removed_bytes": 156534244,
+      "remaining_bytes": 168696
+    },
+    {
+      "capture": "task047-material-before-r1",
+      "removed_visual_files": 252,
+      "removed_bytes": 231954944,
+      "remaining_bytes": 643411
+    },
+    {
+      "capture": "task049-understory-after-r1",
+      "removed_visual_files": 157,
+      "removed_bytes": 254234216,
+      "remaining_bytes": 169384
+    },
+    {
+      "capture": "task049-residential-after-r2",
+      "removed_visual_files": 157,
+      "removed_bytes": 156096966,
+      "remaining_bytes": 169185
+    },
+    {
+      "capture": "task047-material-after-r1",
+      "removed_visual_files": 252,
+      "removed_bytes": 228727387,
+      "remaining_bytes": 649918
+    },
+    {
+      "capture": "task047-material-motion-r1",
+      "removed_visual_files": 558,
+      "removed_bytes": 577867818,
+      "remaining_bytes": 1558282
+    },
+    {
+      "capture": "task049-understory-detail-r1",
+      "removed_visual_files": 157,
+      "removed_bytes": 212496926,
+      "remaining_bytes": 169178
+    },
+    {
+      "capture": "task047-ling-motion-r1",
+      "removed_visual_files": 558,
+      "removed_bytes": 578586480,
+      "remaining_bytes": 1558250
+    },
+    {
+      "capture": "task047-ling-orbit-r1",
+      "removed_visual_files": 252,
+      "removed_bytes": 229119533,
+      "remaining_bytes": 649969
+    }
+  ],
+  "additional_owned_reviewed_images": [
+    {
+      "path": "output/characters/CHR-001/material-r1/final/upper.png",
+      "bytes": 624979
+    },
+    {
+      "path": "output/characters/CHR-001/material-r1/final/whole.png",
+      "bytes": 609914
+    }
+  ],
+  "retained": "Source models, runtime assets, references, reproduce scripts, logs, run/state JSON, hashes and written reviews",
+  "total_removed_capture_files": 3239,
+  "total_removed_bytes": 3501399960,
+  "remaining_capture_bytes": 6563848
+}

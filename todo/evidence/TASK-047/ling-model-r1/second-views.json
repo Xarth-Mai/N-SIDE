@@ -1,0 +1,91 @@
+{
+  "revision": "second",
+  "master_sha256": "86d7c4813ad3dc34cc5fe42a141a6605b802eaab2a4078b3652b86f559e06c74",
+  "engine": "CYCLES",
+  "device": "CPU",
+  "samples": 24,
+  "resolution": [
+    720,
+    960
+  ],
+  "views": [
+    {
+      "label": "body-front",
+      "camera_position": [
+        0,
+        -4,
+        0.95
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/second/body-front.png"
+    },
+    {
+      "label": "body-quarter",
+      "camera_position": [
+        3,
+        -4,
+        1.05
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/second/body-quarter.png"
+    },
+    {
+      "label": "body-side",
+      "camera_position": [
+        4,
+        0,
+        0.95
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/second/body-side.png"
+    },
+    {
+      "label": "body-back",
+      "camera_position": [
+        0,
+        4,
+        0.95
+      ],
+      "target_height": 0.82,
+      "ortho_scale": 1.88,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/second/body-back.png"
+    },
+    {
+      "label": "face-front",
+      "camera_position": [
+        0,
+        -4,
+        1.52
+      ],
+      "target_height": 1.515,
+      "ortho_scale": 0.38,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/second/face-front.png"
+    },
+    {
+      "label": "hair-quarter",
+      "camera_position": [
+        3,
+        4,
+        1.43
+      ],
+      "target_height": 1.43,
+      "ortho_scale": 0.62,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-002/ling-model-r1/second/hair-quarter.png"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "baseline": "b948cab",
+  "scope": "stable copy for CHR002 authoring and CHR001 material comparison",
+  "files": [
+    {
+      "source": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+      "copy": "output/characters/CHR-001/material-r1/baseline/yao-grey-study.blend",
+      "sha256": "298da4644c90adf0551afb7178fdee0087a5b1d7fce2339693c520a43cbdac54"
+    },
+    {
+      "source": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "copy": "output/characters/CHR-001/material-r1/baseline/yao-grey-study.glb",
+      "sha256": "5063920196cb1476e080f7d8acd6f8d16f0e55ab3cbfc94c30da9c1ad368a108"
+    },
+    {
+      "source": "source-assets/characters/CHR-001/model/grey-study.png",
+      "copy": "output/characters/CHR-001/material-r1/baseline/grey-study.png",
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf"
+    }
+  ]
+}

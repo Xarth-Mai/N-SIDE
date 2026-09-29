@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "expected_exit": 1,
+  "actual_exit": 1,
+  "injected_failure": "sRGB assigned to packed metallic-roughness data image in private copy",
+  "actual_diagnostic": "CHR001_GreyStudy_Surface: data texture must be linear",
+  "scope": "Actual Blender check.py, no mutation to formal master",
+  "formal_files_unchanged": true
+}

@@ -1,4 +1,4 @@
-//! Opt-in CHR-001 grey study on the real controller; this is not an accepted character design
+//! Opt-in grey studies on the real controller; these are not accepted character designs
 use crate::player::{self, PlayerBody, PlayerPresentation, PlayerProxy, PlayerState};
 use bevy::{
     animation::{AnimatedBy, AnimationTargetId},
@@ -16,7 +16,46 @@ use bevy::{
 use serde::Serialize;
 use std::time::{Duration, Instant};
 
-pub const MODEL: &str = "characters/CHR-001/yao-grey-study.glb";
+#[derive(Resource, Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CharacterPreview {
+    Yao,
+    Ling,
+}
+
+impl CharacterPreview {
+    pub fn parse(id: &str) -> Result<Self, String> {
+        match id {
+            "CHR-001" => Ok(Self::Yao),
+            "CHR-002" => Ok(Self::Ling),
+            _ => Err(format!(
+                "unknown character preview {id:?}; use CHR-001 or CHR-002"
+            )),
+        }
+    }
+
+    fn id(self) -> &'static str {
+        match self {
+            Self::Yao => "CHR-001",
+            Self::Ling => "CHR-002",
+        }
+    }
+
+    fn model(self) -> &'static str {
+        match self {
+            Self::Yao => "characters/CHR-001/yao-grey-study.glb",
+            Self::Ling => "characters/CHR-002/ling-grey-study.glb",
+        }
+    }
+
+    fn stride_scale(self) -> f32 {
+        match self {
+            Self::Yao => 1.0,
+            // The shared in-place rig and translation curves were scaled with Ling's body
+            Self::Ling => 1.65 / 1.744_190_6,
+        }
+    }
+}
+
 const SHADER: &str = "shaders/character-ink.wgsl";
 const CLIPS: [&str; 3] = ["Idle", "Walk", "Run"];
 
@@ -40,8 +79,6 @@ fn ink_material(base: &StandardMaterial) -> InkMaterial {
         base: StandardMaterial {
             // This fragment extension requires forward lighting; the standard shadow/prepass stays intact
             opaque_render_method: OpaqueRendererMethod::Forward,
-            perceptual_roughness: 0.9,
-            reflectance: 0.15,
             ..base.clone()
         },
         extension: CharacterInk {
@@ -53,6 +90,7 @@ fn ink_material(base: &StandardMaterial) -> InkMaterial {
 /// Capture reads actual asset/animation state, without influencing playback
 #[derive(Resource, Default, Clone, Serialize)]
 pub struct CharacterStatus {
+    pub id: Option<&'static str>,
     pub ready: bool,
     pub error: Option<String>,
     pub clip: Option<&'static str>,
@@ -87,11 +125,10 @@ struct CharacterAnimation {
     current: usize,
 }
 
-pub fn install(app: &mut App, enabled: bool) {
-    if !enabled {
-        return;
-    }
+pub fn install(app: &mut App, preview: Option<CharacterPreview>) {
+    let Some(preview) = preview else { return };
     app.add_plugins(MaterialPlugin::<InkMaterial>::default())
+        .insert_resource(preview)
         .init_resource::<CharacterStatus>()
         .add_systems(
             Update,
@@ -117,6 +154,7 @@ fn begin_loading(
     bodies: Query<(), With<PlayerBody>>,
     loading: Option<Res<CharacterLoad>>,
     mut status: ResMut<CharacterStatus>,
+    preview: Res<CharacterPreview>,
 ) {
     if bodies.is_empty() {
         if loading.is_some() {
@@ -125,19 +163,23 @@ fn begin_loading(
         }
     } else if loading.is_none() {
         *status = CharacterStatus::default();
+        status.id = Some(preview.id());
         commands.insert_resource(CharacterLoad {
-            gltf: assets.load(MODEL),
+            gltf: assets.load(preview.model()),
             shader: assets.load(SHADER),
             started: Instant::now(),
             spawned: false,
         });
-        info!("[character/load] {MODEL}");
+        info!("[character/load] {}", preview.model());
     }
 }
 
 fn fail(status: &mut CharacterStatus, message: impl Into<String>) {
     let message = message.into();
-    error!("[character/load] {MODEL}: {message}; retaining neutral proxy");
+    error!(
+        "[character/load] {:?}: {message}; retaining neutral proxy",
+        status.id
+    );
     status.ready = false;
     status.error = Some(message);
 }
@@ -210,7 +252,7 @@ fn poll_loading(
     let (graph, nodes) = AnimationGraph::from_clips(clips.iter().cloned());
     commands
         .spawn((
-            Name::new("CHR-001 grey study (unaccepted)"),
+            Name::new(format!("{} grey study (unaccepted)", status.id.unwrap())),
             WorldAssetRoot(scene.clone()),
             Transform::default(),
             Visibility::Hidden,
@@ -336,7 +378,8 @@ fn scene_ready(
     status.shaded_meshes = skin_count;
     status.animated_targets = target_ids.len();
     info!(
-        "[character/ready] {MODEL}: {skin_count} skins with ink material, {} targets, clips {:?}",
+        "[character/ready] {:?}: {skin_count} skins with ink material, {} targets, clips {:?}",
+        status.id,
         target_ids.len(),
         CLIPS
     );
@@ -355,6 +398,7 @@ fn desired_clip(speed: f32, grounded: bool) -> usize {
 fn animate(
     In(active): In<bool>,
     state: Option<Res<PlayerState>>,
+    preview: Res<CharacterPreview>,
     mut players: Query<(&mut AnimationPlayer, &mut CharacterAnimation)>,
     mut status: ResMut<CharacterStatus>,
 ) {
@@ -376,8 +420,8 @@ fn animate(
         }
         if let Some(playing) = player.animation_mut(animation.nodes[desired]) {
             playing.set_speed(match desired {
-                1 => speed / 3.2,
-                2 => speed / 5.6,
+                1 => speed / (3.2 * preview.stride_scale()),
+                2 => speed / (5.6 * preview.stride_scale()),
                 _ => 1.0,
             });
         }
@@ -408,12 +452,20 @@ mod tests {
         let texture = images.add(Image::default());
         let base = StandardMaterial {
             base_color_texture: Some(texture.clone()),
+            metallic_roughness_texture: Some(texture.clone()),
+            normal_map_texture: Some(texture.clone()),
+            perceptual_roughness: 0.73,
+            reflectance: 0.21,
             base_color: Color::srgb(0.6, 0.6, 0.6),
             double_sided: true,
             ..default()
         };
         let ink = ink_material(&base);
-        assert_eq!(ink.base.base_color_texture, Some(texture));
+        assert_eq!(ink.base.base_color_texture, Some(texture.clone()));
+        assert_eq!(ink.base.metallic_roughness_texture, Some(texture.clone()));
+        assert_eq!(ink.base.normal_map_texture, Some(texture));
+        assert_eq!(ink.base.perceptual_roughness, base.perceptual_roughness);
+        assert_eq!(ink.base.reflectance, base.reflectance);
         assert_eq!(ink.base.base_color, base.base_color);
         assert_eq!(ink.base.alpha_mode, base.alpha_mode);
         assert_eq!(ink.base.double_sided, base.double_sided);
@@ -426,6 +478,22 @@ mod tests {
             CharacterInk::prepass_vertex_shader(),
             ShaderRef::Default
         ));
+    }
+
+    #[test]
+    fn character_selection_rejects_unknown_ids_and_adjusts_smaller_stride() {
+        assert_eq!(
+            CharacterPreview::parse("CHR-001"),
+            Ok(CharacterPreview::Yao)
+        );
+        assert_eq!(
+            CharacterPreview::parse("CHR-002"),
+            Ok(CharacterPreview::Ling)
+        );
+        assert!(CharacterPreview::parse("../other.glb").is_err());
+        assert!(CharacterPreview::parse("").is_err());
+        assert_eq!(CharacterPreview::Yao.stride_scale(), 1.0);
+        assert!((CharacterPreview::Ling.stride_scale() - 0.946).abs() < 0.001);
     }
 
     #[test]

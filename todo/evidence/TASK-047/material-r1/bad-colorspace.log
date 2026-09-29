@@ -1,0 +1,18 @@
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/material-r1/bad-color-space.blend"
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-047/material-r1/repro-bad-colorspace.py", line 15, in <module>
+    runpy.run_path(str(source / 'check.py'), run_name='__main__')
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/check.py", line 45, in <module>
+    assert image.colorspace_settings.name == 'Non-Color', f'{image.name}: data texture must be linear'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: CHR001_GreyStudy_Surface: data texture must be linear
+Info: Saved as "bad-color-space.blend"
+
+Error: script failed, file: 'todo/evidence/TASK-047/material-r1/repro-bad-colorspace.py', exiting.
+
+Blender quit
