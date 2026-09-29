@@ -1,0 +1,25 @@
+{
+  "source": "vegetation/pine-street.glb",
+  "output": "vegetation/pine-street.glb",
+  "sha256": "510e7b0699a13605c19182985cffdd2163db25751bfef628bab4b0826aeddef5",
+  "bytes": 855836,
+  "triangles": 6510,
+  "vertices": 17134,
+  "author": "N:SIDE original, authored with Blender",
+  "license": "MPL-2.0",
+  "source_master": "vegetation/pine-street.blend",
+  "provenance": "Original trunk, boughs and geometric needle sprays; reuses original N:SIDE bark-color.png; no third-party geometry or generation service",
+  "units": "meters",
+  "up_axis": "+Y",
+  "ground_pivot": true,
+  "height_m": 6.5,
+  "radius_m": 1.6900000594959679,
+  "source_texture": "vegetation/bark-color.png",
+  "texture_dimensions": [
+    256,
+    512
+  ],
+  "texture_color_space": "sRGB",
+  "texture_sha256": "ffc18a18a15fba174fb44b055054c2b2f96a6b19e33263386ced0b58e946a2e2",
+  "needle_blades": 5112
+}

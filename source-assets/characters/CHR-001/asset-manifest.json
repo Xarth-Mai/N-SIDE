@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "ceac68fa7f122f851bfa70607f3a6d11c0827a2a504186d588f6ee7d0bf093dd",
-      "runtime_sha256": "0f16676224ab425aac27bcc6db05b068b0016dd3f862387674d26d9961fa42aa",
+      "source_sha256": "76b93aefb0b3ec9360ccde21cbb7771edad4c3944ed1e2e1efd8451548201861",
+      "runtime_sha256": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -97,15 +97,18 @@
       "clips": [
         {
           "name": "Idle",
-          "duration_seconds": 2.0
+          "duration_seconds": 2.0,
+          "source_fps": 60
         },
         {
           "name": "Walk",
-          "duration_seconds": 1.0
+          "duration_seconds": 0.8,
+          "source_fps": 60
         },
         {
           "name": "Run",
-          "duration_seconds": 0.6666666666666666
+          "duration_seconds": 0.6666666666666666,
+          "source_fps": 60
         }
       ],
       "world_motion_owner": "real player controller, in-place animation",
@@ -113,15 +116,15 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "r4 DCC/GLB and rig, bind, animation, material and atlas preservation checks PASS; editable-master re-export byte-identical; final Bevy shader/orbit/walk validation handled separately by root",
-        "visual": "needs_revision; r4 continuous nose and shallow eye surfaces remove the sharp nose patch and centered round-iris look, rear hairline is no longer a straight cut; face personality, large rear clumps, clothing detail and real engine cel shading need further review; author not accepted"
+        "technical": "r5 final DCC/GLB checks PASS after animation-r1: 211 source frames, loops, 5 mm sole limit, facial fit and subdivided hair-cap clearance; editable-master re-export byte-identical; animation-r1 owns actual trajectory and preserved-static-geometry checks; final Bevy walk-character runtime PASS: 540 frames and 26 checks, see todo/evidence/TASK-045/visual-r6/review.md",
+        "visual": "needs_revision; r5 nose/forehead, lip and jaw profiles improved, mouth projection seam corrected and rear-cap penetration removed; rear groups still read as pieces on a broad cap and facial identity needs refinement; author not accepted"
       },
       "generation": {
         "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/model-r4/delivery.json"
+      "evidence": "todo/evidence/TASK-047/model-r5/delivery.json"
     }
   ],
   "uses": [

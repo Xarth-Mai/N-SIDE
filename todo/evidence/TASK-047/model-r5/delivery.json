@@ -1,0 +1,37 @@
+{
+  "revision": "model-r5",
+  "source_revision": "e6b398b5fac899ac4639dc90fae08c4274da7aaf",
+  "status": "technical-candidate",
+  "scope": "r5 shape plus separately authored animation-r1 integrated into the same source and GLB",
+  "shape_freeze": {
+    "timestamp": "2026-09-29T20:10:06.388873+00:00",
+    "scope": "Final r5 shape before a separately authorized gait revision; animations here still match e6b398b",
+    "hashes": {
+      "source-assets/characters/CHR-001/model/build.py": "3cd3d8a4f4c919311ca0e25366d95bc32368242e8ed4f1a426e22e41f32d1134",
+      "source-assets/characters/CHR-001/model/check.py": "e5d39b9cdb677fcd51eb3a22a8d5a6f0f73c109a536c262a6bd4c00a11fee6e3",
+      "source-assets/characters/CHR-001/model/grey-study.png": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+      "source-assets/characters/CHR-001/model/yao-grey-study.blend": "3319eb992ab05a52ca063bc570a82da16ad0254ed8a3a3b2962b6c44be9f6b96",
+      "game/assets/characters/CHR-001/yao-grey-study.glb": "1b0a31692a21098e6556115e73aa458c146d9298155bdfbc3e03eff1520b04b8",
+      "source-assets/characters/CHR-001/model/yao-grey-study.blend1": "17ee6985e8e89d9967770ead2cd6d7fc277b73f84795a9b85399f283058e0445"
+    }
+  },
+  "dcc_check": "PASS",
+  "glb_check": "PASS",
+  "preserved_contract": "shape-only freeze matched r4; animation-r1/preserved-geometry.json verifies static geometry, material, bind and atlas preserved through the later gait revision",
+  "export_existing_byte_identical": true,
+  "visual_acceptance": "needs_revision",
+  "author_acceptance": "NOT RUN",
+  "bevy_runtime": "NOT RUN by this subtask",
+  "images": "20 reviewed by model author; final four reviewed by root/art_review, cleaned",
+  "cleanup_removed_bytes": 19900446,
+  "final_hashes": {
+    "source-assets/characters/CHR-001/model/yao-grey-study.blend": "76b93aefb0b3ec9360ccde21cbb7771edad4c3944ed1e2e1efd8451548201861",
+    "game/assets/characters/CHR-001/yao-grey-study.glb": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f",
+    "source-assets/characters/CHR-001/model/build.py": "dc75539fe5c0420d8e5170468da648503a3423703db5c51ab047a0715a4dbeb6",
+    "source-assets/characters/CHR-001/model/check.py": "609d8d71ddc8e1d296923c1049ec52d1b7182fa16f1237683147f151f014ce85",
+    "source-assets/characters/CHR-001/model/grey-study.png": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf"
+  },
+  "final_dcc_sampled_frames": 211,
+  "source_fps": 60,
+  "motion_evidence": "todo/evidence/TASK-047/animation-r1"
+}

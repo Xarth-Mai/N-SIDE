@@ -1,0 +1,28 @@
+{
+  "scope": "Final geometry preservation against r5 shape freeze",
+  "glb_sha256": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f",
+  "nodes_sha256": "2abff7c4400098403d77ac8e4b33e5a54035eed47b9fff2e12da8581117fd2c4",
+  "materials_sha256": "808c62b193563d750b2a90358e8191806b55aafb064163882bd52f6af87ad17a",
+  "inverse_bind_sha256": "21aefbdd24d0db8cd5b90d914fee188adb56b1a96cf6cd80687e9036b9356f6a",
+  "geometry": [
+    {
+      "POSITION": "5f7a92e49c55e38411047ee5f940c3dd69296617858d0955097307515f7af80e",
+      "NORMAL": "3c1b82cdda690d57f5a4449472cf435ebfaa861f45af52a846be82dfe30bdb39",
+      "TEXCOORD_0": "85ca3ed4290d12b2368ba5d09eef850813c599ef107ec653da436ec6d85750c0",
+      "JOINTS_0": "0796c05e896431c898370dbf5fe1a6e46c10cb91d476a81d653f356b8aae8ab5",
+      "WEIGHTS_0": "3fd2bd0befa2a14b935397f5da4f7f38b6298ed4529a4c5a1b7663742d6ce98a",
+      "indices": "eb3857f5d4c09254a4ebd805573ae8a52dcbc9034a41436cdce75de82d56f255"
+    }
+  ],
+  "images": [
+    "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf"
+  ],
+  "checks": {
+    "nodes_sha256": true,
+    "materials_sha256": true,
+    "inverse_bind_sha256": true,
+    "geometry": true,
+    "images": true
+  },
+  "status": "PASS"
+}

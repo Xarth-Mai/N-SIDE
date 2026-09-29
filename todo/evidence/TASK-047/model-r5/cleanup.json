@@ -1,0 +1,147 @@
+{
+  "timestamp": "2026-09-29T20:17:42.306636+00:00",
+  "review": "All 20 CPU views inspected by model author; final four also by root and independent art_review",
+  "visual_acceptance": "needs_revision; author acceptance NOT RUN",
+  "removed": [
+    {
+      "path": "output/characters/CHR-001/model-r5/before/face-front.png",
+      "bytes": 683735,
+      "sha256": "edee2b953fc000bf556253a121852e6ac6b1fc8f8713485f8c50da11d467d4ee"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/before/face-quarter.png",
+      "bytes": 685680,
+      "sha256": "05c006f16277c69f122fa7863505e455903b16dffddefb7116e0da921f7e338e"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/before/face-side.png",
+      "bytes": 660050,
+      "sha256": "b97ee695442208961930c457434f2527caa7588b1124518fde48b0fdb3bf1d90"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/before/head-back.png",
+      "bytes": 644626,
+      "sha256": "63e758fd251f6ab5bcd28ec5ddeb8088505ef4d71402851eb9f7632eae9a4897"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/cap-probe/face-front.png",
+      "bytes": 681114,
+      "sha256": "fc97e8d48fd621c48743defb3ee665ef21d3231a7c29d4be9ec7a23b8b15c84f"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/cap-probe/face-quarter.png",
+      "bytes": 685476,
+      "sha256": "3dc4aaec373c36579f491a3dca675392927dadb64361b6904e1d02277c2a8d59"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/cap-probe/face-side.png",
+      "bytes": 666879,
+      "sha256": "1eeb91bfef16e93ecc5d8959fbe37809bece14e92a297474f2d628b9028536c1"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/cap-probe/head-back.png",
+      "bytes": 643740,
+      "sha256": "ac6fe4615dba3e5624b451be2f74772d8d2b565abfe7f6ff107484939c9dd274"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/final/face-front.png",
+      "bytes": 681151,
+      "sha256": "eb56d66bf4306646052e2e01e40533de2e8f25054c53a0e18b61a0cb85e21899"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/final/face-quarter.png",
+      "bytes": 685946,
+      "sha256": "d9701340a32debad73209f3f7801e2534dbb35d16c5726bf03d11f5d1ce68c0a"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/final/face-side.png",
+      "bytes": 664615,
+      "sha256": "f01326e4063d4ca4fa5657f9e4b19a451ce4e25fd2a55cf95a741206d27d416c"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/final/head-back.png",
+      "bytes": 639421,
+      "sha256": "23317d9213790bdcc904f7c6c7e7a6668f9c30c70f6f9479c70bfe694d1d19ba"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/first/face-front.png",
+      "bytes": 680747,
+      "sha256": "f654ccc58a9b3094180d8b9782ec98a45e269bc3681f4c8249e69673415a8acb"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/first/face-quarter.png",
+      "bytes": 684758,
+      "sha256": "48cea19f3c2ef283ef7fc7f164603b432ad8f06e833788c7171f2ed49e420bad"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/first/face-side.png",
+      "bytes": 666572,
+      "sha256": "1f79002be39cd93c4f81fece6fadc32e34ca2374d1dc7a1dc4a99ab9430dfd23"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/first/head-back.png",
+      "bytes": 646056,
+      "sha256": "647cd0d234d613719f815c06ba56d12f0c5bec748b19a0748acc600c93d3d563"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/second/face-front.png",
+      "bytes": 681401,
+      "sha256": "d61b0fe97a1d1b56399265c63f7952be88053d9464e006496bf53e53d9703b04"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/second/face-quarter.png",
+      "bytes": 685671,
+      "sha256": "61352acf97cd10fb98272f967fe921e839377d06855e2e6536f4e8326dc20e08"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/second/face-side.png",
+      "bytes": 668953,
+      "sha256": "ae8b11d612a47ec2399e1e66672d1a817f853841c4af3fe276023ac71b6b6384"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/second/head-back.png",
+      "bytes": 643874,
+      "sha256": "da9dc5eb819a38017b8a934eb4beb0313148b9031ebf17954a1f96ce581f9e3d"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/baseline.blend",
+      "bytes": 3246307,
+      "sha256": "ceac68fa7f122f851bfa70607f3a6d11c0827a2a504186d588f6ee7d0bf093dd"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 3261403,
+      "sha256": "17ee6985e8e89d9967770ead2cd6d7fc277b73f84795a9b85399f283058e0445"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/probe-mouth.py",
+      "bytes": 5587,
+      "sha256": "f9ef9273bb9e6274b7a8afa897796d97eaf3cd06e800aa470505dd6544ee8ab0",
+      "kind": "temporary debug duplicate of retained check.py; canonical reproduction scripts preserved"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/probe-cap.py",
+      "bytes": 6684,
+      "sha256": "28477e35707b89231458305319a9739faaacbfa7b049d4f83d931fa83a3815a5",
+      "kind": "temporary debug duplicate of retained check.py; canonical reproduction scripts preserved"
+    }
+  ],
+  "removed_bytes": 19900446,
+  "skipped": [],
+  "remaining_output": [
+    {
+      "path": "output/characters/CHR-001/model-r5/before-reexport.sha256",
+      "bytes": 116
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/final-before-reexport.sha256",
+      "bytes": 116
+    },
+    {
+      "path": "output/characters/CHR-001/model-r5/model-report.json",
+      "bytes": 734
+    }
+  ],
+  "remaining_output_bytes": 966,
+  "final_sweep_timestamp": "2026-09-29T20:38:26.296361+00:00"
+}

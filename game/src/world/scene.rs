@@ -798,6 +798,51 @@ fn residential_sample(id: &str) -> bool {
     )
 }
 
+fn add_residential_glazing(
+    batches: &mut BTreeMap<String, Mesh>,
+    center: Vec3,
+    opening: Vec2,
+    rotation: Quat,
+    outward: Vec3,
+    variant: usize,
+) -> Result<(), String> {
+    // Glass stays outside the shell but behind the frame, with a clear sill lip
+    add_frame(batches, center + outward * 0.10, opening, rotation, true)?;
+    add_box(
+        batches,
+        "metal",
+        center + outward * 0.10,
+        Vec3::new(0.06, opening.y, 0.16),
+        rotation,
+    )?;
+    for pane in 0..2 {
+        // Uniform, low-contrast pane tints are not painted environment reflections
+        let tint = 0.86 + ((variant + pane) % 3) as f32 * 0.055;
+        let mut colors = match batches
+            .get_mut("window_glass")
+            .and_then(|mesh| mesh.remove_attribute(Mesh::ATTRIBUTE_COLOR))
+        {
+            Some(bevy::mesh::VertexAttributeValues::Float32x4(colors)) => colors,
+            None => Vec::new(),
+            _ => unreachable!("residential glazing uses Float32x4 colors"),
+        };
+        add_box(
+            batches,
+            "window_glass",
+            center
+                + rotation * Vec3::X * (pane as f32 - 0.5) * (opening.x + 0.06) / 2.
+                + outward * 0.015,
+            Vec3::new((opening.x - 0.06) / 2., opening.y, 0.025),
+            rotation,
+        )?;
+        let mesh = batches.get_mut("window_glass").unwrap();
+        // add_box merges uncoloured cuboids; preserve one colour per appended vertex
+        colors.resize(mesh.count_vertices(), [tint, tint, tint, 1.]);
+        mesh.insert_attribute(Mesh::ATTRIBUTE_COLOR, colors);
+    }
+    Ok(())
+}
+
 fn add_residential_window(
     batches: &mut BTreeMap<String, Mesh>,
     origin: Vec3,
@@ -817,17 +862,7 @@ fn add_residential_window(
             rotation,
         )
     };
-    // The sliding-frame mullions sit in front of the existing glass pane
-    piece("trim", 0., 1.65, 0.25, Vec3::new(0.055, 1.62, 0.055))?;
-    piece("trim", 0., 1.94, 0.25, Vec3::new(width, 0.045, 0.055))?;
-    // A projecting sill and drip hood surround the existing upper-storey window
-    piece(
-        "concrete",
-        0.,
-        0.74,
-        0.25,
-        Vec3::new(width + 0.35, 0.10, 0.46),
-    )?;
+    // A drip hood complements the recessed frame and sill in the facade batch
     piece(
         if kind == "slope" { "roof" } else { "metal" },
         0.,
@@ -1071,22 +1106,8 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             p[1] + normal[1] * interior_clearance,
                             p[2],
                         ];
-                        add_box(
-                            &mut batches,
-                            "trim",
-                            map_to_world(p),
-                            Vec3::new(width + 0.16, height + 0.18, 0.12),
-                            rotation,
-                        )?;
-                        let p = [p[0] + normal[0] * 0.07, p[1] + normal[1] * 0.07, p[2]];
-                        add_box(
-                            &mut batches,
-                            "glass",
-                            map_to_world(p),
-                            Vec3::new(width, height, 0.025),
-                            rotation,
-                        )?;
-                        if residential_face
+                        let detailed_window = !court
+                            && residential_sample(&building.id)
                             && floor_index > 0
                             && window_exposed(
                                 map,
@@ -1100,8 +1121,34 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                                 f64::from(width) / 2.0 + 0.25,
                                 floor.z - 2.5,
                                 normal,
-                            )
-                        {
+                            );
+                        if detailed_window {
+                            add_residential_glazing(
+                                &mut batches,
+                                map_to_world(p),
+                                Vec2::new(width, height),
+                                rotation,
+                                map_to_world([normal[0], normal[1], 0.]),
+                                floor_index + i,
+                            )?;
+                        } else {
+                            add_box(
+                                &mut batches,
+                                "trim",
+                                map_to_world(p),
+                                Vec3::new(width + 0.16, height + 0.18, 0.12),
+                                rotation,
+                            )?;
+                            let p = [p[0] + normal[0] * 0.07, p[1] + normal[1] * 0.07, p[2]];
+                            add_box(
+                                &mut batches,
+                                "glass",
+                                map_to_world(p),
+                                Vec3::new(width, height, 0.025),
+                                rotation,
+                            )?;
+                        }
+                        if residential_face && detailed_window {
                             add_residential_window(
                                 &mut residential,
                                 map_to_world([a[0] + dx * t, a[1] + dy * t, floor.z]),
@@ -3315,6 +3362,110 @@ mod tests {
     }
 
     #[test]
+    fn residential_glazing_is_recessed_batched_and_keeps_walk_envelope() {
+        let mut batches = BTreeMap::new();
+        for (index, angle) in [0., 0.73].into_iter().enumerate() {
+            let rotation = Quat::from_rotation_y(angle);
+            let outward = rotation * Vec3::Z;
+            let center = Vec3::new(index as f32 * 5., 4., 0.);
+            add_residential_glazing(
+                &mut batches,
+                center,
+                Vec2::new(1.45, 1.67),
+                rotation,
+                outward,
+                index,
+            )
+            .unwrap();
+            let glass = &batches["window_glass"];
+            let vertices = glass
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            let pair = &vertices[index * 48..(index + 1) * 48];
+            for point in pair {
+                let local = rotation.inverse() * (Vec3::from(*point) - center);
+                assert!(local.z > 0., "pane must remain outside the shell");
+                assert!(local.z < 0.04, "pane must remain behind the frame");
+                assert!(local.x.abs() >= 0.029, "pane intersects central mullion");
+                assert!(local.x.abs() <= 0.726, "pane overlaps side frame");
+            }
+            let bevy::mesh::VertexAttributeValues::Float32x4(colors) =
+                glass.attribute(Mesh::ATTRIBUTE_COLOR).unwrap()
+            else {
+                panic!("missing pane colors")
+            };
+            assert_eq!(colors.len(), vertices.len(), "merge lost pane colors");
+            assert_ne!(colors[index * 48], colors[index * 48 + 24]);
+        }
+        assert_eq!(batches.len(), 3, "window parts must share material batches");
+
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let parts = facades(&map, &appearance).unwrap();
+        let mut covered = BTreeSet::new();
+        let mut panes = 0;
+        for part in parts.iter().filter(|part| part.material == "window_glass") {
+            let building = map
+                .buildings
+                .iter()
+                .find(|b| part.source == format!("buildings[{}]/derived-facade", b.id))
+                .unwrap();
+            assert!(residential_sample(&building.id));
+            assert!(
+                covered.insert(building.id.as_str()),
+                "duplicate glass batch"
+            );
+            let vertices = part
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            assert_eq!(vertices.len() % 48, 0, "window must retain both panes");
+            assert_eq!(part.mesh.indices().unwrap().len(), vertices.len() / 24 * 36);
+            let bevy::mesh::VertexAttributeValues::Float32x4(colors) =
+                part.mesh.attribute(Mesh::ATTRIBUTE_COLOR).unwrap()
+            else {
+                panic!("{}: missing colors", part.source)
+            };
+            assert_eq!(colors.len(), vertices.len());
+            assert!(
+                colors
+                    .iter()
+                    .flatten()
+                    .all(|v| v.is_finite() && *v > 0. && *v <= 1.)
+            );
+            for point in vertices {
+                assert!(point.iter().all(|v| v.is_finite()));
+                let position = [f64::from(point[0]), -f64::from(point[2])];
+                assert!(!contains(position, &building.polygon), "pane inside shell");
+                assert!(f64::from(point[1]) - ground.height(position) > 2.5);
+                assert!(f64::from(point[1]) < building.elevation + building.height);
+            }
+            panes += vertices.len() / 24;
+        }
+        assert_eq!(
+            covered,
+            map.buildings
+                .iter()
+                .filter(|b| residential_sample(&b.id))
+                .map(|b| b.id.as_str())
+                .collect()
+        );
+        eprintln!(
+            "residential glazing: {} shared glass batches, {} windows, {} shell triangles (before existing facade accessory removal)",
+            covered.len(),
+            panes / 2,
+            panes / 2 * 7 * 12
+        );
+    }
+
+    #[test]
     fn residential_details_keep_headroom_entries_shells_and_collision() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
@@ -3357,7 +3508,7 @@ mod tests {
                 .iter()
                 .filter(|p| {
                     p.source == format!("buildings[{}]/derived-facade", building.id)
-                        && p.material == "glass"
+                        && matches!(p.material.as_str(), "glass" | "window_glass")
                 })
                 .flat_map(|p| {
                     p.mesh
@@ -3619,10 +3770,12 @@ mod tests {
         let glass_vertices = |parts: &[GeometryPart]| {
             parts
                 .iter()
-                .find(|p| p.source == "buildings[V-04]/derived-facade" && p.material == "glass")
-                .unwrap()
-                .mesh
-                .count_vertices()
+                .filter(|p| {
+                    p.source == "buildings[V-04]/derived-facade"
+                        && matches!(p.material.as_str(), "glass" | "window_glass")
+                })
+                .map(|p| p.mesh.count_vertices())
+                .sum::<usize>()
         };
         let mut neighbour = building.clone();
         neighbour.id = "test-occluding-neighbour".into();

@@ -163,6 +163,30 @@
       "bytes": 5592532,
       "sha256": "5991a884e2318dcd6a6384cd9ab964c7e0ec618488ccd8ec3fd5497d37a7d039",
       "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/rock-color.dds",
+      "bytes": 5592532,
+      "sha256": "e864cbeb81d3f59c855186a5adbacef81a9dbe9f39154abf0cf538852a90f6b4",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/rock-normal.dds",
+      "bytes": 5592532,
+      "sha256": "f7d0da332afbff8036572f0faa9eac3f8c2ccc61d80dc3d5adcc9e0a5d374324",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "vegetation/pine-street.glb",
+      "bytes": 855836,
+      "sha256": "510e7b0699a13605c19182985cffdd2163db25751bfef628bab4b0826aeddef5",
+      "license": "MPL-2.0"
+    },
+    {
+      "file": "vegetation/shrub-courtyard.glb",
+      "bytes": 670752,
+      "sha256": "24c0b97da3d4b64297cb75d4b5920d15c61fea0d1bb033c9be197c20bb8384ee",
+      "license": "MPL-2.0"
     }
   ]
 }

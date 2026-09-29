@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "removed_png_files": 12,
+  "removed_bytes": 7378312,
+  "root": "output/assets/task049-shrub-r1",
+  "remaining_visual_files": [],
+  "blender_processes_at_cleanup": [],
+  "retained": "source .blend/.glb/scripts/readme; runtime GLB; evidence logs, hashes, JSON and prose"
+}

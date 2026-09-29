@@ -1,0 +1,456 @@
+{
+  "runs": [
+    {
+      "run": "task045-cut-before-r3",
+      "status": "PASS",
+      "frames": 90,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 20.080598420998285,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.039207051
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          },
+          "last_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          },
+          "peak_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 89,
+          "max": 63.19476500000043,
+          "mean": 37.44737076404495,
+          "p50": 36.47471000000024,
+          "p95": 45.45559499999996,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 582,
+          "max": 44.207914,
+          "mean": 5.791385307560138,
+          "p50": 2.602742,
+          "p95": 22.477342,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task049-windows-before-r1",
+      "status": "PASS",
+      "frames": 150,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 23.693446173001576,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.044189435
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          },
+          "last_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          },
+          "peak_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 149,
+          "max": 45.584175000000116,
+          "mean": 34.8718112013423,
+          "p50": 34.874749000000094,
+          "p95": 38.35245099999973,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 917,
+          "max": 26.638805,
+          "mean": 5.708249694656484,
+          "p50": 2.563981,
+          "p95": 22.028612,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task049-garden-before-r2",
+      "status": "PASS",
+      "frames": 150,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 22.075120286001038,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.102130176
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          },
+          "last_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          },
+          "peak_ready": {
+            "entities": 5066,
+            "images": 43,
+            "materials": 51,
+            "meshes": 3365
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 149,
+          "max": 40.639781999999514,
+          "mean": 31.02676527516776,
+          "p50": 30.686936999998693,
+          "p95": 34.96126900000007,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 895,
+          "max": 24.399183,
+          "mean": 5.201733042458102,
+          "p50": 2.294651,
+          "p95": 20.133771000000003,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task049-planting-before-r1",
+      "status": "PASS",
+      "frames": 150,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 22.94474255199748,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.114606353
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5068,
+            "images": 45,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "last_ready": {
+            "entities": 5068,
+            "images": 45,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "peak_ready": {
+            "entities": 5068,
+            "images": 45,
+            "materials": 53,
+            "meshes": 3367
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 149,
+          "max": 41.82991299999905,
+          "mean": 32.633930711409384,
+          "p50": 32.806228000000104,
+          "p95": 36.127900000000324,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 962,
+          "max": 26.452015,
+          "mean": 5.093940527027024,
+          "p50": 2.365011,
+          "p95": 20.106721,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task049-planting-after-r1",
+      "status": "PASS",
+      "frames": 150,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 22.69423333499435,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.104015517
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "last_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "peak_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 149,
+          "max": 42.99420300000101,
+          "mean": 32.662524959731556,
+          "p50": 33.05945800000032,
+          "p95": 36.435019999998985,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 959,
+          "max": 27.853704999999998,
+          "mean": 5.116551836287801,
+          "p50": 2.372122,
+          "p95": 20.238741,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task045-cut-after-r3",
+      "status": "PASS",
+      "frames": 90,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 18.950703262002207,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.114439363
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "last_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "peak_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 89,
+          "max": 45.2358540000013,
+          "mean": 35.12509320224718,
+          "p50": 35.08951899999957,
+          "p95": 39.41215200000059,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 608,
+          "max": 28.359036,
+          "mean": 5.2015826233552644,
+          "p50": 2.3508410000000004,
+          "p95": 21.576772000000002,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task049-windows-after-r1",
+      "status": "PASS",
+      "frames": 150,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 22.729522053996334,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.102558116
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "last_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "peak_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 149,
+          "max": 44.160114000000306,
+          "mean": 34.08103808724833,
+          "p50": 34.37421900000004,
+          "p95": 37.740210999999135,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 988,
+          "max": 25.765204,
+          "mean": 5.176529498987855,
+          "p50": 2.339671,
+          "p95": 21.185651999999997,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task049-garden-after-r2",
+      "status": "PASS",
+      "frames": 150,
+      "checks": 6,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 22.84740647899889,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.137494915
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "last_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          },
+          "peak_ready": {
+            "entities": 5068,
+            "images": 46,
+            "materials": 53,
+            "meshes": 3367
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 149,
+          "max": 42.01937300000047,
+          "mean": 33.369259637583895,
+          "p50": 33.26311799999715,
+          "p95": 36.933819999999784,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 884,
+          "max": 25.326974,
+          "mean": 5.664532325791853,
+          "p50": 2.644942,
+          "p95": 20.960931,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    {
+      "run": "task047-gait-r1",
+      "status": "PASS",
+      "frames": 540,
+      "checks": 26,
+      "native_exit": 0,
+      "elapsed_wall_seconds": 43.78570012000273,
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.065192205
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5153,
+            "images": 51,
+            "materials": 55,
+            "meshes": 3369
+          },
+          "last_ready": {
+            "entities": 5153,
+            "images": 51,
+            "materials": 55,
+            "meshes": 3369
+          },
+          "peak_ready": {
+            "entities": 5159,
+            "images": 51,
+            "materials": 55,
+            "meshes": 3369
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 433,
+          "max": 75.03412099999984,
+          "mean": 33.0523539237875,
+          "p50": 33.64994800000076,
+          "p95": 37.17580100000184,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 2731,
+          "max": 223.238732,
+          "mean": 5.365735766019767,
+          "p50": 2.6317519999999996,
+          "p95": 19.264611000000002,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    }
+  ],
+  "capture_frames": 1620,
+  "scope": "capture throughput and loaded resource counts, not native FPS or GPU time"
+}

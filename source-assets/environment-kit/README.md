@@ -5,8 +5,8 @@
 | 资产 ID | `AST-003` |
 | 状态 | `exported`，已生成运行派生物；加载与渲染结果见本轮任务证据，样板美术验收待作者确认 |
 | 主文件 | 本目录中的 GLB、JPG、道路色板和原始许可文件，逐文件见 [asset-manifest.json](asset-manifest.json) |
-| 作者 | Kenney、ambientCG；模型米制归一、植物材质调整与原创街树由 N:SIDE 制作 |
-| 许可 | 第三方素材为 CC0 1.0，原创街树沿用项目 MPL-2.0，逐文件见清单；保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
+| 作者 | Kenney、ambientCG；模型米制归一、植物材质调整与原创街树、松树及灌木由 N:SIDE 制作 |
+| 许可 | 第三方素材为 CC0 1.0，原创植物沿用项目 MPL-2.0，逐文件见清单；保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
 | 获取日期 | 第三方素材取得与原创资产制作日期逐项见清单 |
 | 使用位置 | 正式入口与 3D Map Viewer 共用的街树、灌木、公园与登高路旁植物土石、街灯、铺装与墙面；导视空杆已导出、尚未放置 |
 | 运行派生物 | `game/assets/environment/`，由导出命令生成，运行期间无需联网 |
@@ -83,12 +83,20 @@ bun tools/export-environment.ts --check
 
 新增 ambientCG [Plaster001](https://ambientcg.com/view?id=Plaster001) 和 [WoodSiding009](https://ambientcg.com/view?id=WoodSiding009) 的 Color / NormalGL，按[官方 CC0 许可](https://docs.ambientcg.com/license/)使用。此次完整取得 1K-JPG ZIP，核对 ZIP CRC 与每个原件 SHA-256；整包 SHA、文件 SHA、尺寸、来源与获取日期记录于现有 asset-manifest.json，不沿用早期分段下载的完整包哈希缺失说明
 
-林缘坡地使用 ambientCG [Ground037](https://ambientcg.com/view?id=Ground037) 的原始 1K-JPG Color／NormalGL，稀疏苔草与裸土共同形成地表，按官方约 2.1×2.1m 周期导出 DDS。完整 ZIP 的 CRC 与原件 SHA 已核对，来源、许可、尺寸与获取日期保存在同一清单；颜色和法线分别按 sRGB 与线性数据加载。地形位置与法线保留，UV 按三角面的主轴投影到世界米制平面，避免顶视投影在陡坡压缩成条纹；同主轴共享坐标，主轴切换处有纹理方向边界，不是无缝三向混合。固定世界坐标色斑及坡度调色补充远景层次；这是共用苔土地表，不代表独立裸岩材质或植被模型已覆盖所有山坡，平铺重复与投影交界通过真实近景检查
+林缘坡地使用 ambientCG [Ground037](https://ambientcg.com/view?id=Ground037) 的原始 1K-JPG Color／NormalGL，稀疏苔草与裸土共同形成地表，按官方约 2.1×2.1m 周期导出 DDS。完整 ZIP 的 CRC 与原件 SHA 已核对，来源、许可、尺寸与获取日期保存在同一清单；颜色和法线分别按 sRGB 与线性数据加载。地形位置与法线保留，UV 按三角面的主轴投影到世界米制平面，避免顶视投影在陡坡压缩成条纹；同主轴共享坐标，主轴切换处有纹理方向边界，不是无缝三向混合。固定世界坐标色斑及坡度调色补充远景层次；这是缓坡苔土地表，陡面由下述裸岩材质分工；两者尚未覆盖完整山林制作，平铺重复与投影交界通过真实近景检查
 
 Plaster001 供米白与青灰外墙使用；WoodSiding009 供样板店外侧木饰板使用。源图分别为 1024×1024 与 1024×512，运行 DDS 保留原尺寸和完整 mip 链。当前以 2×2m 和 2×1m 作为视觉试排周期，官网没有提供米制覆盖范围；比例需在真实街景与近处镜头校准
 
 ## 原创街树样板
 
-新增[初秋街树](vegetation/README.md)，以真实分枝与 1,089 片阔叶替换 `tree_a` 的块状冠，6m 高、11,686 三角、2 个材质与一张内嵌树皮纹理，保持既有树点、根部枢轴与放置半径。可编辑 Blender 主文件与源码在同目录，GLB 通过既有导出器复制；项目原创来源与 MPL-2.0 单独登记，原 CC0 素材的许可保持不变。全城植被、风动与 LOD 尚未完成，运行成本与实机观感按任务证据验证
+新增[初秋街树](vegetation/README.md)，以真实分枝与 1,452 片阔叶替换 `tree_a` 的块状冠，6m 高、11,686 三角、2 个材质与一张内嵌树皮纹理，保持既有树点、根部枢轴与放置半径。可编辑 Blender 主文件与源码在同目录，GLB 通过既有导出器复制；项目原创来源与 MPL-2.0 单独登记，原 CC0 素材的许可保持不变。全城植被、风动与 LOD 尚未完成，运行成本与实机观感按任务证据验证
 
-当前清单列出 25 个运行文件，包含 3 份许可文件，并非新增 25 种素材；原创街树单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
+当前清单列出 31 个运行文件，包含 3 份许可文件，并非新增 31 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
+
+## 陡坡岩面与原创植物
+
+ambientCG [Rock043L](https://ambientcg.com/view?id=Rock043L) 的 1K-JPG Color／NormalGL 用于超过 45° 的自然地形三角面，按官方约 `1.8 × 1.8 m` 尺度导出，CC0 许可、完整 ZIP 校验和及原件 hash 沿用同一清单。原三角面位置、法线与来源保留，分组计算在存储的顶点上使用双精度，避免道路裁切产生的细长三角在单精度叉积中误分类。岩面采用中性色调和同一主轴 UV 规则，缓坡继续使用 Ground037；分组边缘是材质硬边，连续移动需检查三角拼块及投影接缝，不能视为已实现地表混合或全山覆盖
+
+[原创松树](vegetation/pine-README.md) 与[院落灌木](vegetation/shrub-readme.md) 分别绑定 `tree_pine`、`shrub`，保留既有植物位置及安全包络。松树高 6.5 m、6,510 三角、两材质，复用原创树皮纹理；灌木高 0.8 m、5,824 三角、单材质，以 1,022 片不透明几何叶片组成。两者提供真实分枝与叶间空隙，Blender 主文件、制作程序、GLB 与独立检查位于同一目录。源材质、顶点颜色与主文件一致，运行模型由统一导出器复制，不建立第二份资产清单
+
+这些近景植物尚无 LOD 或风动；替换后的全城实例成本、叶片在距离变化中的表现和场景遮挡由真实 Viewer 检查，几何细化不等于完整植被品质验收

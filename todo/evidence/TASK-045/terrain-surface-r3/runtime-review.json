@@ -1,0 +1,119 @@
+{
+  "task": "TASK-045",
+  "round": "terrain-surface-r3",
+  "capture_run": "output/capture/task045-cut-after-r3/run.json",
+  "state": "output/capture/task045-cut-after-r3/state.json",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-cut-after-r3/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-cut-after-r3"
+  ],
+  "git_commit": "e6b398b5fac899ac4639dc90fae08c4274da7aaf",
+  "worktree": "modified; full listing retained in capture run.json",
+  "binary_sha256": "2d0c1349a4bbf6230cb3675d58b4dbda71eac2f459383c0c7ca61b2c3b5529c9",
+  "script_sha256": "8dd12e2f617c13a90158e71aa280fafc65e5e73254300237dac9969928a2d28f",
+  "scene": "district",
+  "view": "eye-descent-cut",
+  "size": [
+    1280,
+    720
+  ],
+  "fps": 30,
+  "frames": 90,
+  "machine_status": "PASS",
+  "runtime_exit_code": 0,
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 90
+    },
+    {
+      "checked_frames": 90,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "name": "same measured descent eye throughout",
+      "passed": true,
+      "peak_rotation_radians": 0.07500171661376953,
+      "rotation_radians": 6.143906006172983e-08
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "name": "look right across the cut",
+      "passed": true,
+      "peak_rotation_radians": 0.07500171661376953,
+      "rotation_radians": 0.07500171661376953
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "name": "look back across the cut",
+      "passed": true,
+      "peak_rotation_radians": 0.07500170916318893,
+      "rotation_radians": 0.07500170916318893
+    }
+  ],
+  "visual_review": {
+    "method": "self-audit of actual keyframes and consecutive frames through view_image",
+    "status": "material improvement observed; overall terrain quality needs revision",
+    "reviewed": [
+      {
+        "path": "output/capture/task045-cut-before-r3/keyframes/frame00044.png",
+        "sha256": "9c88d6463cdc5fd61950650e21afa03c0aa7abe4f264125cb41011a6da554503"
+      },
+      {
+        "path": "output/capture/task045-cut-after-r3/keyframes/frame00029.png",
+        "sha256": "83ac4268bc6457eff53f10c4886f6a4c3299e8e4b462b1fea70cdd1166a098db"
+      },
+      {
+        "path": "output/capture/task045-cut-after-r3/keyframes/frame00044.png",
+        "sha256": "b42d8eaea7f362dadb16c5d089b98b7f263586f589e739cefaa6acbec98ac85f"
+      },
+      {
+        "path": "output/capture/task045-cut-after-r3/keyframes/frame00059.png",
+        "sha256": "b42d8eaea7f362dadb16c5d089b98b7f263586f589e739cefaa6acbec98ac85f"
+      },
+      {
+        "path": "output/capture/task045-cut-after-r3/frames/frame00040.png",
+        "sha256": "ccb09cbdb47c727d24a58ce0fb457cccaefafe119f3a3c6073c3964f56cb9a43"
+      },
+      {
+        "path": "output/capture/task045-cut-after-r3/frames/frame00041.png",
+        "sha256": "6dcc5d244210096a6087bf1a8ca5205ea4df9c6841bb76c9e2ce71d8ee096a6c"
+      },
+      {
+        "path": "output/capture/task045-cut-after-r3/frames/frame00042.png",
+        "sha256": "1cf3161b207df3f425d8b26d0347dc37a9d5bae1088322abfdc960af10549172"
+      },
+      {
+        "path": "output/capture/task045-cut-after-r3/frames/frame00043.png",
+        "sha256": "da0290eaeced9f9fcfb2383310484988375c97db39f83c6c0f0674b46c1c945b"
+      }
+    ],
+    "improvement": "Grey rock replaces conspicuous directional green turf stripes on the left steep face",
+    "motion_sample": "No material pop, boundary jump or new hole observed in frames 40-44",
+    "remaining": [
+      "Large smooth wedge and almost straight ridge silhouette",
+      "Angular triangle grass/rock boundary and narrow green triangle at its foot",
+      "Directional/repeating grass still visible on gentler foreground slope"
+    ],
+    "next": "Resolve actual slope/cut form, material transition and planting volume together; texture parameters alone cannot fix silhouette or triangle boundaries",
+    "author_acceptance": "NOT RUN",
+    "video_playback": "NOT RUN: encoding PASS; visual review used actual frame images",
+    "scope": "Only descent-view material behavior; no full natural-mountain, city visual, performance or gameplay acceptance"
+  },
+  "cleanup": "Capture owner root will remove temporary visual files after review; hashes, scripts, state, logs and source assets retained"
+}

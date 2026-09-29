@@ -1,0 +1,97 @@
+{
+  "task": "TASK-045",
+  "round": "terrain-surface-r3",
+  "checked_utc": "2026-09-29T20:05:21.677288+00:00",
+  "status": "source-reviewed; runtime prototype checked; overall terrain quality needs revision",
+  "asset_id": "Rock043L",
+  "source": "ambientCG",
+  "creator": "Lennart Demes",
+  "creator_basis": "ambientCG official legal/imprint names Lennart Demes; asset page does not list a separate author",
+  "asset_page": "https://ambientcg.com/view?id=Rock043L",
+  "asset_page_verified_via": "direct HTTPS urllib read because web tool returned inaccessible; official API independently agrees",
+  "api": "https://ambientcg.com/api/v2/full_json?category=Rock&include=downloadsData,dimensions&limit=100",
+  "license": {
+    "identifier": "CC0-1.0",
+    "url": "https://docs.ambientcg.com/license/",
+    "legal": "https://docs.ambientcg.com/legal/",
+    "scope": "downloadable asset files and preview renders",
+    "commercial_use_and_redistribution": true,
+    "charge": 0
+  },
+  "physical_dimensions_m": [
+    1.8,
+    1.8
+  ],
+  "dimensions_basis": "official asset page says ca. 1.8 m × 1.8 m; official API dimensionX=180 and dimensionY=180",
+  "creation_method": "PBRPhotogrammetry",
+  "released": "2021-10-10 00:00:00",
+  "download": {
+    "url": "https://ambientcg.com/get?file=Rock043L_1K-JPG.zip",
+    "resolved_url": "https://acg-download.struffelproductions.com/file/ambientCG-Web/download/Rock043L_iprGZ5JR/Rock043L_1K-JPG.zip",
+    "local_path": "output/assets/terrain-r3/references/Rock043L_1K-JPG.zip",
+    "bytes": 9053679,
+    "sha256": "9e12bfe61f1ec7f17c703c05d03d4771f3c4a6669dce83ae3eeedba3f7d0c230",
+    "sha1": "a108275b8615dbdd9e995016e24f038666c29dea",
+    "server_sha1": "a108275b8615dbdd9e995016e24f038666c29dea",
+    "zip_crc": "PASS",
+    "fetch_method": "curl HTTPS direct URL after official 302; initial urllib redirect received HTTP 403"
+  },
+  "extracted_members": [
+    {
+      "member": "Rock043L_1K-JPG_Color.jpg",
+      "local_path": "output/assets/terrain-r3/references/Rock043L_1K-JPG_Color.jpg",
+      "sha256": "9cb2d1c33c73790bc50cf552ab2e1fec90f1de51a3b81e6c8f59bc4a4e6625f1",
+      "bytes": 1526620,
+      "dimensions_px": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "visually_inspected": true,
+      "source_path": "source-assets/environment-kit/materials/Rock043L_1K-JPG_Color.jpg"
+    },
+    {
+      "member": "Rock043L_1K-JPG_NormalGL.jpg",
+      "local_path": "output/assets/terrain-r3/references/Rock043L_1K-JPG_NormalGL.jpg",
+      "sha256": "051c11a47b16a120a81ac9d377389fd4ce2894a873ab5be4ad42e9d43c747f2c",
+      "bytes": 2172269,
+      "dimensions_px": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "visually_inspected": true,
+      "source_path": "source-assets/environment-kit/materials/Rock043L_1K-JPG_NormalGL.jpg"
+    }
+  ],
+  "review": {
+    "method": "view_image of official Color previews for Rock045, Rock044, Rock043L, then actual selected 1K Color and NormalGL members",
+    "recommended": "Rock043L",
+    "why": "Neutral grey with warm brown patches, irregular chunk/crack structure, low directional bias compared with rejected candidates; no brick courses or marble bands",
+    "alternatives": [
+      {
+        "id": "Rock045",
+        "reason_not_selected": "Stronger green-grey lichen speckles and coherent angled ridges"
+      },
+      {
+        "id": "Rock044",
+        "reason_not_selected": "More soil/grass and visible lateral rock ledges; higher directional streak risk"
+      }
+    ],
+    "limits": "Source review alone does not prove runtime quality; descent capture now confirms improvement and records remaining slope-form/grass-rock boundary limitations in runtime-review.json"
+  },
+  "checks": {
+    "color_decode": "PASS 1024x1024 RGB",
+    "normal_gl_decode": "PASS 1024x1024 RGB",
+    "server_zip_hash": "PASS",
+    "manifest_changed": false,
+    "appearance_changed": false,
+    "cargo_gpu": "NOT RUN delegated to root"
+  },
+  "cleanup": {
+    "comparison_previews": "removed after visual review",
+    "download_zip_and_member_copies": "removed after CRC/hash verification and byte-identical promotion to source-assets; source files retained",
+    "kept": "official source text snapshots in output/assets/terrain-r3/references; registered originals in source-assets/environment-kit/materials"
+  },
+  "runtime_review": "runtime-review.json"
+}

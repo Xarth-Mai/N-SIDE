@@ -1,0 +1,36 @@
+{
+  "scope": "Delaunator source ground before road/plot clipping, including boundary skirt",
+  "source_sha256": "a4ab861f756037206520258725a32232de40a96dc1a8da380d26a1de33c9e45a",
+  "ranges": [
+    {
+      "from": 0,
+      "to": 20,
+      "triangles": 15469,
+      "area_m2": 3650908.737324552
+    },
+    {
+      "from": 20,
+      "to": 35,
+      "triangles": 2660,
+      "area_m2": 1180318.3404210098
+    },
+    {
+      "from": 35,
+      "to": 45,
+      "triangles": 922,
+      "area_m2": 501304.4651600958
+    },
+    {
+      "from": 45,
+      "to": 60,
+      "triangles": 788,
+      "area_m2": 813465.7958369886
+    },
+    {
+      "from": 60,
+      "to": 90,
+      "triangles": 547,
+      "area_m2": 141227.99751100637
+    }
+  ]
+}

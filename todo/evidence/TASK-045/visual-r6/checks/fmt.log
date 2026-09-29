@@ -1,0 +1,118 @@
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/geometry.rs:576:
+             let normal = (b - a).cross(c - a);
+             let rock = normal.x * normal.x + normal.z * normal.z > normal.y * normal.y;
+             let part = &mut parts[usize::from(rock)];
+-            part.positions.extend_from_slice(&self.positions[index..index + 3]);
+-            part.normals.extend_from_slice(&self.normals[index..index + 3]);
++            part.positions
++                .extend_from_slice(&self.positions[index..index + 3]);
++            part.normals
++                .extend_from_slice(&self.normals[index..index + 3]);
+             part.uvs.extend_from_slice(&self.uvs[index..index + 3]);
+         }
+         parts
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/geometry.rs:2389:
+         let original_normals = terrain.normals.clone();
+         let original_uvs = terrain.uvs.clone();
+         let parts = terrain.split_ground();
+-        assert_eq!(parts[0].positions.len(), 6, "flat summit and 40-degree slope keep ground cover");
+-        assert_eq!(parts[1].positions.len(), 6, "both low and high 55-degree faces expose rock");
+-        assert_eq!(parts.iter().flat_map(|p| &p.positions).copied().collect::<Vec<_>>(), original_positions);
+-        assert_eq!(parts.iter().flat_map(|p| &p.normals).copied().collect::<Vec<_>>(), original_normals);
+-        assert_eq!(parts.iter().flat_map(|p| &p.uvs).copied().collect::<Vec<_>>(), original_uvs);
++        assert_eq!(
++            parts[0].positions.len(),
++            6,
++            "flat summit and 40-degree slope keep ground cover"
++        );
++        assert_eq!(
++            parts[1].positions.len(),
++            6,
++            "both low and high 55-degree faces expose rock"
++        );
++        assert_eq!(
++            parts
++                .iter()
++                .flat_map(|p| &p.positions)
++                .copied()
++                .collect::<Vec<_>>(),
++            original_positions
++        );
++        assert_eq!(
++            parts
++                .iter()
++                .flat_map(|p| &p.normals)
++                .copied()
++                .collect::<Vec<_>>(),
++            original_normals
++        );
++        assert_eq!(
++            parts
++                .iter()
++                .flat_map(|p| &p.uvs)
++                .copied()
++                .collect::<Vec<_>>(),
++            original_uvs
++        );
+         let mut rendered = Vec::new();
+         let [grass, rock] = parts;
+         grass.finish("/terrain".into(), "terrain", &mut rendered);
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/geometry.rs:2400:
+         rock.finish("/terrain/rock".into(), "terrain_rock", &mut rendered);
+         let collision = super::super::collision::CollisionWorld::from_parts(&rendered).unwrap();
+         for height in [0.0, 500.0] {
+-            let hit = collision.support(Vec3::new(0.5, height + 6.0, -1.0), 10.0).unwrap();
+-            assert_eq!(hit.source, "/terrain/rock", "new material source remains structural");
+-            assert!((hit.point.y - height - 55.0_f32.to_radians().tan()).abs() < 0.0001,
+-                "same triangle remains under the ray after material partition");
++            let hit = collision
++                .support(Vec3::new(0.5, height + 6.0, -1.0), 10.0)
++                .unwrap();
++            assert_eq!(
++                hit.source, "/terrain/rock",
++                "new material source remains structural"
++            );
++            assert!(
++                (hit.point.y - height - 55.0_f32.to_radians().tan()).abs() < 0.0001,
++                "same triangle remains under the ray after material partition"
++            );
+         }
+     }
+ 
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/geometry.rs:2763:
+         let rendered_range = parts
+             .iter()
+             .filter(|part| matches!(part.source.as_str(), "/terrain" | "/terrain/rock"))
+-            .flat_map(|part| part.mesh.attribute(Mesh::ATTRIBUTE_POSITION).unwrap().as_float3().unwrap())
++            .flat_map(|part| {
++                part.mesh
++                    .attribute(Mesh::ATTRIBUTE_POSITION)
++                    .unwrap()
++                    .as_float3()
++                    .unwrap()
++            })
+             .fold([f32::INFINITY, f32::NEG_INFINITY], |range, p| {
+                 [range[0].min(p[1]), range[1].max(p[1])]
+             });
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/geometry.rs:2869:
+                         } else {
+                             up >= std::f64::consts::FRAC_1_SQRT_2 - 0.00001
+                         };
+-                        assert!(slope_matches, "{}: incorrect slope material, up={up}", part.source);
++                        assert!(
++                            slope_matches,
++                            "{}: incorrect slope material, up={up}",
++                            part.source
++                        );
+                     }
+                 }
+                 if matches!(part.source.as_str(), "/terrain" | "/terrain/rock") {
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/geometry.rs:2876:
+                     eprintln!(
+                         "{} triangles={} minimum_uv_area_ratio={minimum}",
+-                        part.material, indices.len() / 3
++                        part.material,
++                        indices.len() / 3
+                     );
+                 }
+             }

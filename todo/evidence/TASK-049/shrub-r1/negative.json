@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "case": "actual GLB altered to BLEND is rejected",
+  "exit_code": 1,
+  "stderr": "FAIL: shrub must be opaque",
+  "fixture_cleaned": true
+}

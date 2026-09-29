@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "sha256": "510e7b0699a13605c19182985cffdd2163db25751bfef628bab4b0826aeddef5",
+  "bytes": 855836,
+  "triangles": 6510,
+  "vertices": 17134,
+  "primitives": 2,
+  "bounds": [
+    [
+      -1.4731868505477905,
+      0.0,
+      -1.5900219678878784
+    ],
+    [
+      1.6899731159210205,
+      6.5,
+      1.5045928955078125
+    ]
+  ],
+  "radius_m": 1.6900000594959679,
+  "bark_sha256": "ffc18a18a15fba174fb44b055054c2b2f96a6b19e33263386ced0b58e946a2e2",
+  "alpha": "OPAQUE; double-sided geometric needles",
+  "animations": "none"
+}

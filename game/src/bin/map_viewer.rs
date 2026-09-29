@@ -578,6 +578,11 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         "inspect-plateau-garden",
         view([218., 494., 102.4], [190., 502., 103.]),
     ));
+    // The garden's northern edge separates the pine from both existing autumn-tree envelopes
+    views.push((
+        "inspect-plateau-planting",
+        view([212., 508., 102.4], [189.5, 500.5, 103.3]),
+    ));
     // South of shop-site, clear of V-A07 to the west and the main road to the east
     let eye = [82., 238., ground.height([82., 238.]) + 1.7];
     let target = [80., 245., 27.65];

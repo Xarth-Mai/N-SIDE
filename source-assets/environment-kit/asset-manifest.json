@@ -716,6 +716,110 @@
       "generation": null,
       "cost": 0,
       "license": "CC0-1.0"
+    },
+    {
+      "source": "materials/Rock043L_1K-JPG_Color.jpg",
+      "output": "materials/rock-color.dds",
+      "sha256": "9cb2d1c33c73790bc50cf552ab2e1fec90f1de51a3b81e6c8f59bc4a4e6625f1",
+      "bytes": 1526620,
+      "archive": "https://ambientcg.com/get?file=Rock043L_1K-JPG.zip",
+      "archive_member": "Rock043L_1K-JPG_Color.jpg",
+      "archive_sha256": "9e12bfe61f1ec7f17c703c05d03d4771f3c4a6669dce83ae3eeedba3f7d0c230",
+      "retrieved": "2026-09-30",
+      "source_page": "https://ambientcg.com/view?id=Rock043L",
+      "purpose": "自然地形陡面的裸岩土，依据真实三角坡度分区",
+      "tile_meters": [
+        1.8,
+        1.8
+      ],
+      "tile_basis": "official asset page says ca. 1.8 m × 1.8 m; official API dimensionX=180 and dimensionY=180",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0",
+      "author": "Lennart Demes / ambientCG"
+    },
+    {
+      "source": "materials/Rock043L_1K-JPG_NormalGL.jpg",
+      "output": "materials/rock-normal.dds",
+      "sha256": "051c11a47b16a120a81ac9d377389fd4ce2894a873ab5be4ad42e9d43c747f2c",
+      "bytes": 2172269,
+      "archive": "https://ambientcg.com/get?file=Rock043L_1K-JPG.zip",
+      "archive_member": "Rock043L_1K-JPG_NormalGL.jpg",
+      "archive_sha256": "9e12bfe61f1ec7f17c703c05d03d4771f3c4a6669dce83ae3eeedba3f7d0c230",
+      "retrieved": "2026-09-30",
+      "source_page": "https://ambientcg.com/view?id=Rock043L",
+      "purpose": "自然地形陡面的裸岩土，依据真实三角坡度分区",
+      "tile_meters": [
+        1.8,
+        1.8
+      ],
+      "tile_basis": "official asset page says ca. 1.8 m × 1.8 m; official API dimensionX=180 and dimensionY=180",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "linear",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0",
+      "author": "Lennart Demes / ambientCG"
+    },
+    {
+      "source": "vegetation/pine-street.glb",
+      "output": "vegetation/pine-street.glb",
+      "sha256": "510e7b0699a13605c19182985cffdd2163db25751bfef628bab4b0826aeddef5",
+      "bytes": 855836,
+      "triangles": 6510,
+      "vertices": 17134,
+      "author": "N:SIDE original, authored with Blender",
+      "license": "MPL-2.0",
+      "source_master": "vegetation/pine-street.blend",
+      "provenance": "Original trunk, boughs and geometric needle sprays; reuses original N:SIDE bark-color.png; no third-party geometry or generation service",
+      "units": "meters",
+      "up_axis": "+Y",
+      "ground_pivot": true,
+      "height_m": 6.5,
+      "radius_m": 1.6900000594959679,
+      "source_texture": "vegetation/bark-color.png",
+      "texture_dimensions": [
+        256,
+        512
+      ],
+      "texture_color_space": "sRGB",
+      "texture_sha256": "ffc18a18a15fba174fb44b055054c2b2f96a6b19e33263386ced0b58e946a2e2",
+      "needle_blades": 5112
+    },
+    {
+      "sha256": "24c0b97da3d4b64297cb75d4b5920d15c61fea0d1bb033c9be197c20bb8384ee",
+      "bytes": 670752,
+      "triangles": 5824,
+      "author": "N:SIDE; original geometry and vertex colors authored with Blender",
+      "license": "MPL-2.0",
+      "radius_m": 0.5685245748216307,
+      "leaves": 1022,
+      "source": "vegetation/shrub-courtyard.glb",
+      "output": "vegetation/shrub-courtyard.glb",
+      "source_master": "vegetation/shrub-courtyard.blend",
+      "provenance": "Original branched broadleaf shrub, vertex colors, seed 49031; no third-party geometry, bitmap, or generation service",
+      "units": "meters",
+      "up_axis": "+Y",
+      "ground_pivot": true,
+      "height_m": 0.8
     }
   ],
   "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"

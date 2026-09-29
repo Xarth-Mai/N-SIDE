@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "sha256": "24c0b97da3d4b64297cb75d4b5920d15c61fea0d1bb033c9be197c20bb8384ee",
+  "bytes": 670752,
+  "bounds": [
+    [
+      -0.49175697565078735,
+      0.0,
+      -0.5050787329673767
+    ],
+    [
+      0.5081077814102173,
+      0.800000011920929,
+      0.5207170248031616
+    ]
+  ],
+  "radius_m": 0.5685245748216307,
+  "triangles": 5824,
+  "primitives": 1,
+  "materials": 1,
+  "images": 0,
+  "alpha": "OPAQUE vertex-colored geometry; double sided; no cutout",
+  "animations": "none",
+  "source": "source-assets/environment-kit/vegetation/shrub-courtyard.glb",
+  "runtime": "game/assets/environment/vegetation/shrub-courtyard.glb",
+  "master": "source-assets/environment-kit/vegetation/shrub-courtyard.blend",
+  "master_sha256": "e3b9e0f20e5a324e5be324cd8e612659d51f5f10cc61dcf30a38757193eec6dd",
+  "license": "MPL-2.0",
+  "author": "N:SIDE; original geometry and vertex colors authored with Blender",
+  "seed": 49031,
+  "leaves": 1022,
+  "replaced_model": "game/assets/environment/nature/plant_bushDetailed.glb",
+  "replaced_height_m": 0.8,
+  "replaced_radius_m": 0.6693389645732142,
+  "triangles_added_per_instance": 5720,
+  "suggested_binding": "appearance.models.shrub.file -> environment/vegetation/shrub-courtyard.glb",
+  "runtime_binding_changed": false,
+  "manifest_changed": false,
+  "runtime_status": "NOT RUN: root integrates and captures"
+}

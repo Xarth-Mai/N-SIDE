@@ -489,6 +489,22 @@
       ],
       "color_texture": "environment/materials/wood-siding-color.dds",
       "normal_texture": "environment/materials/wood-siding-normal.dds"
+    },
+    "window_glass": {
+      "color": [0.38, 0.52, 0.56, 1],
+      "roughness": 0.24,
+      "metallic": 0.12,
+      "tile_meters": [1, 1],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "terrain_rock": {
+      "color": [1, 1, 1, 1],
+      "roughness": 0.96,
+      "metallic": 0,
+      "tile_meters": [1.8, 1.8],
+      "color_texture": "environment/materials/rock-color.dds",
+      "normal_texture": "environment/materials/rock-normal.dds"
     }
   },
   "models": {
@@ -508,12 +524,12 @@
       "scale": 1
     },
     "shrub": {
-      "file": "environment/nature/plant_bushDetailed.glb",
+      "file": "environment/vegetation/shrub-courtyard.glb",
       "scene": 0,
       "scale": 1
     },
     "tree_pine": {
-      "file": "environment/nature/tree_pineRoundA.glb",
+      "file": "environment/vegetation/pine-street.glb",
       "scene": 0,
       "scale": 1
     },

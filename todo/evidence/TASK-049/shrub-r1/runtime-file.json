@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "sha256": "24c0b97da3d4b64297cb75d4b5920d15c61fea0d1bb033c9be197c20bb8384ee",
+  "bytes": 670752,
+  "bounds": [
+    [
+      -0.49175697565078735,
+      0.0,
+      -0.5050787329673767
+    ],
+    [
+      0.5081077814102173,
+      0.800000011920929,
+      0.5207170248031616
+    ]
+  ],
+  "radius_m": 0.5685245748216307,
+  "triangles": 5824,
+  "primitives": 1,
+  "materials": 1,
+  "images": 0,
+  "alpha": "OPAQUE vertex-colored geometry; double sided; no cutout",
+  "animations": "none"
+}

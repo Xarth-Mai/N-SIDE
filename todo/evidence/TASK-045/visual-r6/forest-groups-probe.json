@@ -1,0 +1,1201 @@
+{
+  "scope": "source Ground-equivalent sampling only, not native support/placement or canopy visibility approval; 6m probes estimate capacity and are not a final grid layout",
+  "baseline": "e6b398b",
+  "current_derived_count": 176,
+  "current_limit": 200,
+  "groups": [
+    {
+      "anchor": "hill_short_rest1",
+      "offset": [
+        12,
+        12
+      ],
+      "radius": 14,
+      "want": 8,
+      "center": [
+        222,
+        672
+      ],
+      "points": [
+        {
+          "p": [
+            214,
+            670,
+            230.4451543195958
+          ],
+          "slope": 4.02628367899731,
+          "support_span_m": 0.03576913608085874,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 48.732022256890644
+        },
+        {
+          "p": [
+            220,
+            670,
+            230.628125
+          ],
+          "slope": 4.444519699716636,
+          "support_span_m": 0.04187500000000455,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 49.20747033930087
+        },
+        {
+          "p": [
+            220,
+            676,
+            232.729
+          ],
+          "slope": 26.195120948246274,
+          "support_span_m": 0.21049999999999613,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 50.62660334050102
+        },
+        {
+          "p": [
+            220,
+            682,
+            235.6976666666667
+          ],
+          "slope": 26.806427363765373,
+          "support_span_m": 0.22036666666673455,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 51.17794467503455
+        },
+        {
+          "p": [
+            226,
+            676,
+            232.96716666666669
+          ],
+          "slope": 26.806427363765373,
+          "support_span_m": 0.22036666666670612,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 51.0468554366488
+        },
+        {
+          "p": [
+            226,
+            682,
+            235.98516666666666
+          ],
+          "slope": 26.806427363769217,
+          "support_span_m": 0.22036666666670612,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 51.54886343784898
+        }
+      ],
+      "sample_count": 6,
+      "height_range": [
+        230.4451543195958,
+        235.98516666666666
+      ],
+      "slope_range": [
+        4.02628367899731,
+        26.806427363769217
+      ],
+      "urban_count": 6,
+      "minimum_summit_centerline_clearance": 48.732022256890644
+    },
+    {
+      "anchor": "hill_short_rest2",
+      "offset": [
+        66,
+        48
+      ],
+      "radius": 24,
+      "want": 16,
+      "center": [
+        136,
+        848
+      ],
+      "points": [
+        {
+          "p": [
+            112,
+            848,
+            349.3959868028818
+          ],
+          "slope": 20.043474148022703,
+          "support_span_m": 0.19626569449314957,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 23.014974841364847
+        },
+        {
+          "p": [
+            118,
+            836,
+            346.48821596809
+          ],
+          "slope": 20.043474148022703,
+          "support_span_m": 0.19626569449314957,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 19.541148436570666
+        },
+        {
+          "p": [
+            118,
+            842,
+            348.4388013854859
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449303588,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 21.110571020375005
+        },
+        {
+          "p": [
+            118,
+            848,
+            350.38938680288175
+          ],
+          "slope": 20.04347414803225,
+          "support_span_m": 0.19626569449314957,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 22.679993604179288
+        },
+        {
+          "p": [
+            118,
+            854,
+            352.3399722202776
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449314957,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 24.249416187983627
+        },
+        {
+          "p": [
+            118,
+            860,
+            354.29055763767354
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449309272,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 25.818838771787853
+        },
+        {
+          "p": [
+            124,
+            830,
+            345.53103055069414
+          ],
+          "slope": 20.043474148019442,
+          "support_span_m": 0.19626569449314957,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 17.636744615580824
+        },
+        {
+          "p": [
+            124,
+            836,
+            347.48161596809
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449303588,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 19.206167199385106
+        },
+        {
+          "p": [
+            124,
+            842,
+            349.4322013854859
+          ],
+          "slope": 20.043474148025847,
+          "support_span_m": 0.19626569449309272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 20.77558978318939
+        },
+        {
+          "p": [
+            124,
+            848,
+            351.38278680288175
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449309272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 22.34501236699373
+        },
+        {
+          "p": [
+            124,
+            854,
+            353.3333722202776
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449314957,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 23.91443495079801
+        },
+        {
+          "p": [
+            124,
+            860,
+            355.28395763767355
+          ],
+          "slope": 20.04347414801618,
+          "support_span_m": 0.19626569449314957,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 25.483857534602294
+        },
+        {
+          "p": [
+            124,
+            866,
+            357.2345430550694
+          ],
+          "slope": 20.043474148025847,
+          "support_span_m": 0.19626569449314957,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 27.053280118406576
+        },
+        {
+          "p": [
+            130,
+            830,
+            346.97247990402775
+          ],
+          "slope": 21.86495199726565,
+          "support_span_m": 0.22700133324474336,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 16.853714025061606
+        },
+        {
+          "p": [
+            130,
+            836,
+            348.6797772569985
+          ],
+          "slope": 21.864951997270595,
+          "support_span_m": 0.2270013332448002,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 18.66642467329109
+        },
+        {
+          "p": [
+            130,
+            842,
+            350.42560138548583
+          ],
+          "slope": 20.043474148025847,
+          "support_span_m": 0.19626569449303588,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 20.440608546003887
+        },
+        {
+          "p": [
+            130,
+            848,
+            352.37618680288176
+          ],
+          "slope": 20.0434741480163,
+          "support_span_m": 0.19626569449309272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 22.010031129808112
+        },
+        {
+          "p": [
+            130,
+            854,
+            354.3267722202777
+          ],
+          "slope": 20.043474148019442,
+          "support_span_m": 0.19626569449314957,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 23.579453713612395
+        },
+        {
+          "p": [
+            130,
+            860,
+            356.27735763767356
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449309272,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 25.148876297416678
+        },
+        {
+          "p": [
+            130,
+            866,
+            358.22794305506943
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449309272,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 26.718298881221017
+        },
+        {
+          "p": [
+            136,
+            830,
+            348.6702025497284
+          ],
+          "slope": 21.864951997270627,
+          "support_span_m": 0.22700133324474336,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 15.814410142175348
+        },
+        {
+          "p": [
+            136,
+            836,
+            350.377499902699
+          ],
+          "slope": 21.864951997270595,
+          "support_span_m": 0.2270013332448002,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 17.627120790404945
+        },
+        {
+          "p": [
+            136,
+            842,
+            352.08479725566974
+          ],
+          "slope": 21.864951997275544,
+          "support_span_m": 0.22700133324474336,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 19.439831438634428
+        },
+        {
+          "p": [
+            136,
+            848,
+            353.79209460864047
+          ],
+          "slope": 21.86495199726565,
+          "support_span_m": 0.2270013332448002,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 21.252542086863855
+        },
+        {
+          "p": [
+            136,
+            854,
+            355.49939196161114
+          ],
+          "slope": 21.86495199726565,
+          "support_span_m": 0.22700133324474336,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 23.06525273509334
+        },
+        {
+          "p": [
+            136,
+            860,
+            357.27075763767357
+          ],
+          "slope": 20.043474148029105,
+          "support_span_m": 0.19626569449309272,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 24.81389506023112
+        },
+        {
+          "p": [
+            136,
+            866,
+            359.2213430550695
+          ],
+          "slope": 20.043474148022703,
+          "support_span_m": 0.19626569449309272,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 26.383317644035344
+        },
+        {
+          "p": [
+            142,
+            830,
+            350.286933154215
+          ],
+          "slope": 15.68008868154028,
+          "support_span_m": 0.14034102857004882,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.85609830050322
+        },
+        {
+          "p": [
+            142,
+            836,
+            351.8967271073099
+          ],
+          "slope": 15.680088681528627,
+          "support_span_m": 0.14034102857010566,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 16.766312348608437
+        },
+        {
+          "p": [
+            142,
+            842,
+            353.5065210604049
+          ],
+          "slope": 15.680088681516416,
+          "support_span_m": 0.1403410285701625,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 18.676526396713655
+        },
+        {
+          "p": [
+            142,
+            848,
+            355.15930215751996
+          ],
+          "slope": 19.94583379123518,
+          "support_span_m": 0.19566045808096533,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 20.543753300798812
+        },
+        {
+          "p": [
+            142,
+            854,
+            356.95428719682184
+          ],
+          "slope": 22.229942934616208,
+          "support_span_m": 0.23104846294546633,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 22.268776262697088
+        },
+        {
+          "p": [
+            142,
+            860,
+            358.74927223612366
+          ],
+          "slope": 22.229942934611813,
+          "support_span_m": 0.23104846294540948,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 23.99379922459542
+        },
+        {
+          "p": [
+            142,
+            866,
+            360.5442572754254
+          ],
+          "slope": 22.229942934616567,
+          "support_span_m": 0.23104846294546633,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 25.718822186493867
+        },
+        {
+          "p": [
+            148,
+            830,
+            351.44508894449433
+          ],
+          "slope": 22.229942934611458,
+          "support_span_m": 0.23104846294535264,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.356361273038317
+        },
+        {
+          "p": [
+            148,
+            836,
+            353.24007398379615
+          ],
+          "slope": 22.229942934616567,
+          "support_span_m": 0.23104846294540948,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 16.08138423493665
+        },
+        {
+          "p": [
+            148,
+            842,
+            355.035059023098
+          ],
+          "slope": 22.229942934611458,
+          "support_span_m": 0.23104846294552317,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 17.806407196834982
+        },
+        {
+          "p": [
+            148,
+            848,
+            356.8300440623998
+          ],
+          "slope": 22.229942934611458,
+          "support_span_m": 0.23104846294546633,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 19.53143015873337
+        },
+        {
+          "p": [
+            148,
+            854,
+            358.62502910170156
+          ],
+          "slope": 22.229942934616567,
+          "support_span_m": 0.23104846294540948,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 21.256453120631818
+        },
+        {
+          "p": [
+            148,
+            860,
+            360.2378935692693
+          ],
+          "slope": 22.61401688393349,
+          "support_span_m": 0.2350955860324575,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 23.16359665426421
+        },
+        {
+          "p": [
+            154,
+            836,
+            354.9108158886759
+          ],
+          "slope": 22.229942934616567,
+          "support_span_m": 0.23104846294552317,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 15.069061092871323
+        },
+        {
+          "p": [
+            154,
+            842,
+            356.70580092797775
+          ],
+          "slope": 22.229942934611813,
+          "support_span_m": 0.23104846294540948,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 16.794084054769655
+        },
+        {
+          "p": [
+            154,
+            848,
+            358.3204779947191
+          ],
+          "slope": 6.497044641180818,
+          "support_span_m": 0.05693552738239305,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 18.699414989228444
+        },
+        {
+          "p": [
+            154,
+            854,
+            359.9989819255028
+          ],
+          "slope": 22.614016883932827,
+          "support_span_m": 0.2350955860324575,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 20.540919059644978
+        },
+        {
+          "p": [
+            160,
+            848,
+            359.7600702817363
+          ],
+          "slope": 22.614016883937392,
+          "support_span_m": 0.23509558603240066,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 17.918241465025687
+        }
+      ],
+      "sample_count": 45,
+      "height_range": [
+        345.53103055069414,
+        360.5442572754254
+      ],
+      "slope_range": [
+        6.497044641180818,
+        22.614016883937392
+      ],
+      "urban_count": 28,
+      "minimum_summit_centerline_clearance": 14.356361273038317
+    },
+    {
+      "anchor": "hill_short_rest3",
+      "offset": [
+        -58,
+        -90
+      ],
+      "radius": 26,
+      "want": 16,
+      "center": [
+        272,
+        790
+      ],
+      "points": [
+        {
+          "p": [
+            264,
+            770,
+            332.3086666666667
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 11.022132953276298
+        },
+        {
+          "p": [
+            264,
+            776,
+            335.0423666666667
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 11.80844095447651
+        },
+        {
+          "p": [
+            264,
+            782,
+            337.7760666666667
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.594748955676664
+        },
+        {
+          "p": [
+            264,
+            788,
+            340.5097666666667
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 13.381056956876819
+        },
+        {
+          "p": [
+            264,
+            794,
+            343.2434666666667
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.16736495807703
+        },
+        {
+          "p": [
+            264,
+            800,
+            345.9771666666667
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.953672959277185
+        },
+        {
+          "p": [
+            264,
+            806,
+            348.7108666666667
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 15.739980960477396
+        },
+        {
+          "p": [
+            270,
+            770,
+            333.1086666666667
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 10.880551716090679
+        },
+        {
+          "p": [
+            270,
+            776,
+            335.8423666666667
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 11.66685971729089
+        },
+        {
+          "p": [
+            270,
+            782,
+            338.57606666666663
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.453167718491159
+        },
+        {
+          "p": [
+            270,
+            788,
+            341.30976666666663
+          ],
+          "slope": 25.394885559429696,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 13.239475719691313
+        },
+        {
+          "p": [
+            270,
+            794,
+            344.04346666666675
+          ],
+          "slope": 25.394885559427053,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.025783720891354
+        },
+        {
+          "p": [
+            270,
+            800,
+            346.7771666666667
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.23558000000008406,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.812091722091623
+        },
+        {
+          "p": [
+            270,
+            806,
+            349.5108666666667
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 15.598399723291777
+        },
+        {
+          "p": [
+            276,
+            770,
+            333.9086666666667
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 10.738970478905117
+        },
+        {
+          "p": [
+            276,
+            776,
+            336.6423666666667
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 11.525278480105271
+        },
+        {
+          "p": [
+            276,
+            782,
+            339.37606666666665
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.31158648130554
+        },
+        {
+          "p": [
+            276,
+            788,
+            342.10976666666664
+          ],
+          "slope": 25.394885559433426,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 13.097894482505751
+        },
+        {
+          "p": [
+            276,
+            794,
+            344.8434666666667
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 13.884202483705849
+        },
+        {
+          "p": [
+            276,
+            800,
+            347.57716666666664
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.23558000000008406,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.67051048490606
+        },
+        {
+          "p": [
+            276,
+            806,
+            350.3108666666667
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.23558000000008406,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 15.456818486106215
+        },
+        {
+          "p": [
+            282,
+            776,
+            337.44236666666666
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.23558000000008406,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 11.383697242919766
+        },
+        {
+          "p": [
+            282,
+            782,
+            340.17606666666666
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.17000524411992
+        },
+        {
+          "p": [
+            282,
+            788,
+            342.90976666666666
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.956313245320132
+        },
+        {
+          "p": [
+            282,
+            794,
+            345.6434666666667
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 13.742621246520287
+        },
+        {
+          "p": [
+            282,
+            800,
+            348.37716666666665
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.528929247720498
+        },
+        {
+          "p": [
+            282,
+            806,
+            351.11086666666665
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 15.315237248920653
+        },
+        {
+          "p": [
+            288,
+            782,
+            340.97606666666667
+          ],
+          "slope": 25.394885559425187,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.028424006934358
+        },
+        {
+          "p": [
+            288,
+            788,
+            343.70976666666667
+          ],
+          "slope": 25.394885559427053,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.814732008134513
+        },
+        {
+          "p": [
+            288,
+            794,
+            346.4434666666667
+          ],
+          "slope": 25.394885559431565,
+          "support_span_m": 0.2355800000000272,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 13.601040009334668
+        },
+        {
+          "p": [
+            288,
+            800,
+            349.17716666666666
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.23558000000008406,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.387348010534936
+        },
+        {
+          "p": [
+            288,
+            806,
+            351.91086666666666
+          ],
+          "slope": 25.394885559425187,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 15.17365601173509
+        },
+        {
+          "p": [
+            294,
+            788,
+            344.5097666666666
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 12.673150770949007
+        },
+        {
+          "p": [
+            294,
+            794,
+            347.24346666666673
+          ],
+          "slope": 25.39488555943794,
+          "support_span_m": 0.23557999999997037,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 13.459458772149048
+        },
+        {
+          "p": [
+            294,
+            800,
+            349.97716666666673
+          ],
+          "slope": 25.394885559436073,
+          "support_span_m": 0.23558000000008406,
+          "urban": true,
+          "summit_centerline_height_minus_tree_top": 14.24576677334926
+        }
+      ],
+      "sample_count": 35,
+      "height_range": [
+        332.3086666666667,
+        351.91086666666666
+      ],
+      "slope_range": [
+        25.394885559425187,
+        25.39488555943794
+      ],
+      "urban_count": 35,
+      "minimum_summit_centerline_clearance": 10.738970478905117
+    },
+    {
+      "anchor": "hill_east_curve_08",
+      "offset": [
+        20,
+        -6
+      ],
+      "radius": 24,
+      "want": 12,
+      "center": [
+        319.607,
+        915.08
+      ],
+      "points": [
+        {
+          "p": [
+            307.607,
+            927.08,
+            432.0584628438306
+          ],
+          "slope": 17.325581183184852,
+          "support_span_m": 0.13162830204487364,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 8.211424079207859
+        },
+        {
+          "p": [
+            307.607,
+            933.08,
+            431.8626001289116
+          ],
+          "slope": 22.193164553317203,
+          "support_span_m": 0.2249837295324255,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 11.927294795327043
+        },
+        {
+          "p": [
+            313.607,
+            903.08,
+            420.4069794515021
+          ],
+          "slope": 25.02827611751242,
+          "support_span_m": 0.22331018471999187,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 6.441294229550067
+        },
+        {
+          "p": [
+            313.607,
+            933.08,
+            429.7899672149411
+          ],
+          "slope": 22.193164553323115,
+          "support_span_m": 0.22498372953225498,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 14.658346472111987
+        },
+        {
+          "p": [
+            319.607,
+            897.08,
+            417.6115577100247
+          ],
+          "slope": 21.823230246393226,
+          "support_span_m": 0.2234284398388695,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 6.375126732641661
+        },
+        {
+          "p": [
+            319.607,
+            903.08,
+            419.5671835735825
+          ],
+          "slope": 21.823230246394864,
+          "support_span_m": 0.22342843983881266,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 7.939508870284101
+        },
+        {
+          "p": [
+            319.607,
+            909.08,
+            421.5228094371403
+          ],
+          "slope": 21.82323024639894,
+          "support_span_m": 0.22342843983881266,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 9.503891007926427
+        },
+        {
+          "p": [
+            319.607,
+            915.08,
+            423.47843530069815
+          ],
+          "slope": 21.8232302463973,
+          "support_span_m": 0.22342843983881266,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 11.06827314556881
+        },
+        {
+          "p": [
+            319.607,
+            921.08,
+            425.434061164256
+          ],
+          "slope": 21.823230246393226,
+          "support_span_m": 0.2234284398388695,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 12.632655283211136
+        },
+        {
+          "p": [
+            319.607,
+            927.08,
+            427.3896870278138
+          ],
+          "slope": 20.371471436027516,
+          "support_span_m": 0.1860339789355976,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 14.197037420853519
+        },
+        {
+          "p": [
+            325.607,
+            897.08,
+            416.2157569760003
+          ],
+          "slope": 21.823230246404652,
+          "support_span_m": 0.22342843983881266,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 8.42934622948053
+        },
+        {
+          "p": [
+            325.607,
+            903.08,
+            418.1713828395582
+          ],
+          "slope": 21.8232302463973,
+          "support_span_m": 0.2234284398388695,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 9.993728367122799
+        },
+        {
+          "p": [
+            325.607,
+            909.08,
+            420.127008703116
+          ],
+          "slope": 21.82323024639894,
+          "support_span_m": 0.22342843983881266,
+          "urban": false,
+          "summit_centerline_height_minus_tree_top": 11.558110504765182
+        }
+      ],
+      "sample_count": 13,
+      "height_range": [
+        416.2157569760003,
+        432.0584628438306
+      ],
+      "slope_range": [
+        17.325581183184852,
+        25.02827611751242
+      ],
+      "urban_count": 0,
+      "minimum_summit_centerline_clearance": 6.375126732641661
+    }
+  ]
+}

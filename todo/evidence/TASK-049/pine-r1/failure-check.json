@@ -1,0 +1,14 @@
+[
+  {
+    "fixture": "bad-color",
+    "exit_code": 1,
+    "stderr": "FAIL: needle palette must remain evergreen",
+    "status": "PASS"
+  },
+  {
+    "fixture": "alpha",
+    "exit_code": 1,
+    "stderr": "FAIL: pine must use opaque materials",
+    "status": "PASS"
+  }
+]

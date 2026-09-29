@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "scope": "only this agent task049-pine-r1 CPU PNGs and pine blend1 backups; no root capture changes",
+  "process_check": "ps -C blender -o pid=,comm= found no running Blender before cleanup",
+  "review": "author viewed before 0/1 and after 0/1/2; root viewed before 0 and after 0/1; art_review viewed before 0 and after 0/1/2, as root confirmed",
+  "removed_count": 12,
+  "removed_bytes": 8381333,
+  "removed_files": [
+    {
+      "path": "output/assets/task049-pine-r1/after/pine-0.png",
+      "bytes": 737503,
+      "sha256": "6a3bd77a665f4a7b096ee7517c1b1d626d683a768dfbf0298a5457df642f50d7"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/after/pine-1.png",
+      "bytes": 729184,
+      "sha256": "e72804e8e75d66d0e70f27d9069b386ed184e666289da531d18519bd9a6738b8"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/after/pine-2.png",
+      "bytes": 695845,
+      "sha256": "648a04f62597c80fcd849b09dfa72786ffe671bb72d046badc1456f5f1faed64"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/before/pine-0.png",
+      "bytes": 621026,
+      "sha256": "ba9eda8369e4e8fab2d479eff758cbf8e213b7cdf9396f1174954f35e7580a65"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/before/pine-1.png",
+      "bytes": 621164,
+      "sha256": "3bf9a8296ee37b97fc6f2886d062f120cf164683c825e7bd6ac7981508c73a83"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/before/pine-2.png",
+      "bytes": 631493,
+      "sha256": "ee27af9f946bf9c99b5ec1b11537f492b30db382d0330e06cf581a9004320b64"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/iteration1/pine-0.png",
+      "bytes": 743847,
+      "sha256": "7e52b62c1ba023b568a9e81f98748c4094fcf224220f533cbfd00a5cacf934b9"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/iteration1/pine-1.png",
+      "bytes": 745581,
+      "sha256": "3a9803931406100d517f40b4109c88f06b06a7689c7b58bdbad5b0014f1b3c9f"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/iteration1/pine-2.png",
+      "bytes": 711580,
+      "sha256": "9daaf4ddb5b913e188ae492538c1e7216460a1414945e88e22ab36cc148e0b86"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/iteration2/pine-0.png",
+      "bytes": 725505,
+      "sha256": "4d80acd0bc86a29390bc982d3336f35678796e5dbed1b8a1cd8a5a2a0fa04ba9"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/iteration2/pine-1.png",
+      "bytes": 727756,
+      "sha256": "e026cd0bc3f165144b82193b7311fc4e22763a60d43bef9bd726d299a50e08e6"
+    },
+    {
+      "path": "output/assets/task049-pine-r1/iteration2/pine-2.png",
+      "bytes": 690849,
+      "sha256": "4ef14f21fdda54bef232ed3a488a9353425f55cac0a5a84c379f617d76096d55"
+    }
+  ],
+  "remaining_bytes": 83173,
+  "remaining_files": [
+    {
+      "path": "output/assets/task049-pine-r1/before-render.log",
+      "bytes": 15975
+    },
+    {
+      "path": "output/assets/task049-pine-r1/build1.log",
+      "bytes": 16577
+    },
+    {
+      "path": "output/assets/task049-pine-r1/build2.log",
+      "bytes": 16577
+    },
+    {
+      "path": "output/assets/task049-pine-r1/build3.log",
+      "bytes": 16682
+    },
+    {
+      "path": "output/assets/task049-pine-r1/export-check.log",
+      "bytes": 680
+    },
+    {
+      "path": "output/assets/task049-pine-r1/final-build.log",
+      "bytes": 16682
+    }
+  ],
+  "preserved": "formal source blend/glb, shared bark, build/export/check/repro scripts, logs, JSON, hashes and review"
+}

@@ -1,0 +1,78 @@
+{
+  "outputs": [
+    {
+      "path": "output/assets/task049-shrub-r1/before/shrub-front.png",
+      "bytes": 536411,
+      "sha256": "00429fded4980ef2811959ab56b44f37302453e62aaeb2d5d7b317f6b3d5ea5e",
+      "actually_viewed_by_authoring_agent": true
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/before/shrub-quarter.png",
+      "bytes": 541725,
+      "sha256": "dd610f0c7156dff72a65b069e63901e5422ee8259faa349a07ae33233bcf6f42",
+      "actually_viewed_by_authoring_agent": true
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/before/shrub-side.png",
+      "bytes": 525445,
+      "sha256": "4082892ac449faf43042e1a92adde952306a9e306e20e3acf203b21982d349ec",
+      "actually_viewed_by_authoring_agent": false
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/before/shrub-top.png",
+      "bytes": 555540,
+      "sha256": "43910371b9e3ab4da34beda2d051b9cacc45a3406dc5e25bd86438543339da55",
+      "actually_viewed_by_authoring_agent": false
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r1/shrub-front.png",
+      "bytes": 634873,
+      "sha256": "9854b85f35bfc567f79b1415c2b2461284c4bda3bac9ac287bb534375d3a8bec",
+      "actually_viewed_by_authoring_agent": true
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r1/shrub-quarter.png",
+      "bytes": 638520,
+      "sha256": "31d9b779613d8cff0a5c8e275d8f08b0cb75adcdf1a42fd60fc7a599a44b5038",
+      "actually_viewed_by_authoring_agent": false
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r1/shrub-side.png",
+      "bytes": 634640,
+      "sha256": "f108a328cfc17e50c42fe1828cf00f97119e61958382f9db7ec3ff034d50e60b",
+      "actually_viewed_by_authoring_agent": false
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r1/shrub-top.png",
+      "bytes": 685802,
+      "sha256": "541fc8542df3b18d47c4e7c4848e6b30ce6d023f4ec1fe6f0e429fb475838131",
+      "actually_viewed_by_authoring_agent": false
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r2/shrub-front.png",
+      "bytes": 647160,
+      "sha256": "083d7a62df9c271066ff5c3b523c38cc0ec9b4bbbd896fdbc9d8ad0f3d4709dd",
+      "actually_viewed_by_authoring_agent": true
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r2/shrub-quarter.png",
+      "bytes": 652663,
+      "sha256": "70927717b759da175b0edfdf20e42930568a1c4f9dd0578a608b6da272581f44",
+      "actually_viewed_by_authoring_agent": true
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r2/shrub-side.png",
+      "bytes": 641454,
+      "sha256": "8568940dba8aef760604649d9974dc4abddd7a9cf048cb69fa1caf3f89a91707",
+      "actually_viewed_by_authoring_agent": true
+    },
+    {
+      "path": "output/assets/task049-shrub-r1/r2/shrub-top.png",
+      "bytes": 684079,
+      "sha256": "65181cb12485836144f822eb5db574b55ff9f2b2d593a698859506b8b895ce9e",
+      "actually_viewed_by_authoring_agent": true
+    }
+  ],
+  "renderer": "Blender Cycles CPU; 24 samples; 720x720; AgX; fixed area lamp and orthographic cameras",
+  "cleanup": "complete after root and art review; 12 CPU PNGs removed; logs/hashes/source/runtime retained"
+}

@@ -1,0 +1,72 @@
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1638 roads=904 buildings=231 surfaces=82 trees=72 meshes=3348 elapsed_seconds=11.903
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-upper-bridge anchor=level_upper_to_slope_platform_bypass eye=[284.540541, 378.243243, 74.015789] target=[280.0, 365.0, 74.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=inspect-street-tree-detail source=trees[68] support=shop-steps-low eye=[127.75, 325.0, 46.827273000000005] target=[136.0, 321.0, 48.127273] fov=55
+[visual/view] name=inspect-residential-detail source=buildings[V-A13] eye=[144.0, 288.0, 33.6] target=[161.0, 282.5, 38.536364] fov=55
+[visual/view] name=inspect-shop-retaining eye=[82.0, 238.0, 28.453727902275368] target=[80.0, 245.0, 27.65] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25
+2026-09-29T20:29:13.615162Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.8-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-29T20:29:13.630693Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-29T20:29:13.731481Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-29T20:29:13.731556Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-29T20:29:13.746778Z  INFO bevy_camera_controller::free_camera: 
+Freecamera Controls:
+    Mouse	- Move camera orientation
+    Scroll	- Adjust movement speed
+    Right	- Hold to grab cursor
+    KeyM	- Toggle cursor grab
+    KeyW & KeyS	- Fly forward & backwards
+    KeyA & KeyD	- Fly sideways left & right
+    KeyE & KeyQ	- Fly up & down
+    ShiftLeft	- Fly faster while held
+    [ControlLeft + ]Numpad7	- Snap to Up (+Y)/Down (-Y)
+    [ControlLeft + ]Numpad3	- Snap to Right (+X)/Left (-X)
+    [ControlLeft + ]Numpad1	- Snap to Front (-Z)/Back (+Z)
+2026-09-29T20:29:13.858017Z  INFO n_side::world::scene: [world/ready] meshes=3348 model_instances=287 dependencies=39 failed=0 degraded=0 startup_seconds=0.111
+2026-09-29T20:29:19.521389Z  INFO n_side::capture: [capture/check] {"name":"required_assets_ready","passed":true}
+2026-09-29T20:29:19.521401Z  INFO n_side::capture: [capture/check] {"expected":150,"name":"all_frames_saved","passed":true,"saved":150}
+2026-09-29T20:29:19.521406Z  INFO n_side::capture: [capture/check] {"checked_frames":150,"name":"finite_transforms","passed":true}
+2026-09-29T20:29:19.521410Z  INFO n_side::capture: [capture/check] {"distance":2.086519241333008,"enabled":true,"expected":{"camera_sensitivity":null,"character":null,"configured_borderless":null,"configured_resolution":null,"display_pending":null,"enabled":null,"entry_device":null,"entry_focus":null,"from":29,"game_page":null,"gamepad_connected":null,"graphics":null,"graphics_page":null,"graphics_tab":null,"handoff":null,"inside_room":null,"max_distance":3.0,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":null,"max_player_jumps":null,"max_player_resets":null,"max_rotation":null,"max_ui_scroll":null,"max_world_entities":null,"min_distance":1.0,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_player_jumps":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"real_camera_approach","observation_open":null,"observation_selected":null,"observation_target":null,"observation_visible":null,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_room":null,"place_visible":null,"player_blocked":null,"player_grounded":null,"player_sprinting":null,"pointer_locked":null,"progress_status":null,"restart_pending":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":49,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"real_camera_approach","passed":true,"peak_rotation_radians":0.0,"rotation_radians":0.0}
+2026-09-29T20:29:19.521428Z  INFO n_side::capture: [capture/check] {"distance":2.0864973068237305,"enabled":true,"expected":{"camera_sensitivity":null,"character":null,"configured_borderless":null,"configured_resolution":null,"display_pending":null,"enabled":null,"entry_device":null,"entry_focus":null,"from":59,"game_page":null,"gamepad_connected":null,"graphics":null,"graphics_page":null,"graphics_tab":null,"handoff":null,"inside_room":null,"max_distance":3.0,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":null,"max_player_jumps":null,"max_player_resets":null,"max_rotation":null,"max_ui_scroll":null,"max_world_entities":null,"min_distance":1.0,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_player_jumps":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"real_camera_strafe","observation_open":null,"observation_selected":null,"observation_target":null,"observation_visible":null,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_room":null,"place_visible":null,"player_blocked":null,"player_grounded":null,"player_sprinting":null,"pointer_locked":null,"progress_status":null,"restart_pending":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":79,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"real_camera_strafe","passed":true,"peak_rotation_radians":0.0,"rotation_radians":0.0}
+2026-09-29T20:29:19.521444Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"camera_sensitivity":null,"character":null,"configured_borderless":null,"configured_resolution":null,"display_pending":null,"enabled":false,"entry_device":null,"entry_focus":null,"from":130,"game_page":null,"gamepad_connected":null,"graphics":null,"graphics_page":null,"graphics_tab":null,"handoff":null,"inside_room":null,"max_distance":0.00009999999747378752,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":null,"max_player_jumps":null,"max_player_resets":null,"max_rotation":null,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_player_jumps":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"released_camera_stable","observation_open":null,"observation_selected":null,"observation_target":null,"observation_visible":null,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_room":null,"place_visible":null,"player_blocked":null,"player_grounded":null,"player_sprinting":null,"pointer_locked":null,"progress_status":null,"restart_pending":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":149,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"released_camera_stable","passed":true,"peak_rotation_radians":0.0,"rotation_radians":0.0}
+2026-09-29T20:29:19.521462Z  INFO n_side::capture: [capture/finished] status=PASS saved=150 report=/home/lzzz/MyProjects/N-SIDE/output/capture/task049-windows-after-r1/state.json

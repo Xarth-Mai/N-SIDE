@@ -1,0 +1,355 @@
+{
+  "timestamp_utc": "2026-09-29T20:36:53.219771+00:00",
+  "scope": "Owned animation-r1 visual output, temporary GLBs, this build backup and Python bytecode; root confirmed review before deletion",
+  "reviewed": "root and art_review viewed initial six poses plus all 24 Walk / 20 Run side-cycle frames in contact sheets; author acceptance not inferred",
+  "removed_files": [
+    {
+      "path": "output/characters/CHR-001/animation-r1/yao-grey-study.glb",
+      "bytes": 1251100,
+      "sha256": "b31a243a6c461e0d0d9e357fb8727f307a17b55f10982de3f059886cbb9cebf5"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/walk-01.png",
+      "bytes": 622200,
+      "sha256": "efc534b4ed854799c6e19d02a1b080fb2ab0abf2abeb82ce775a6af7985f62a8"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/walk-05.png",
+      "bytes": 622672,
+      "sha256": "c025b5c5d15f70871dfeeab2457bb4039ebb8d40f7fbb52c598e5548485b3b92"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/walk-09.png",
+      "bytes": 613031,
+      "sha256": "7efc2eb2d82548a75d89cdddf808d693b7ecf0a89e8d5b3e1209b3c1c1ce888b"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/walk-11.png",
+      "bytes": 614189,
+      "sha256": "94738af12009adcb4a5dc48cec97b0552cb71c5db4537f57e3090c90f3f416fc"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/run-01.png",
+      "bytes": 625313,
+      "sha256": "ea668d1d320f5416bad269947d779c73daa624096d5100e059f41a9fc8357a70"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/run-03.png",
+      "bytes": 625404,
+      "sha256": "c5266466fd3a150ebe3da64010931306359c82a4b4c8d304ed9f8c42205c75d5"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/run-05.png",
+      "bytes": 621429,
+      "sha256": "a0ac0a093390e03c5cf1c2e9eb1d8f51f1f46f1014a4e3d3805d491582e3ab22"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/run-08.png",
+      "bytes": 621769,
+      "sha256": "6b4a54641d4b252102f68ff87266b5a350a887bd722e6ac06557f7ae11ba3da6"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/yao-grey-study.glb",
+      "bytes": 1261732,
+      "sha256": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/walk-01.png",
+      "bytes": 622201,
+      "sha256": "98ed07bfda72ab0c091122999a1061d674a4495f21e61455f1307ef4d6fc5b5e"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/walk-09.png",
+      "bytes": 622673,
+      "sha256": "fc26a97dd5e7ffd2a13f2a63eb00d9fbe0d76c9945e07939489eddb24b85a5a7"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/walk-17.png",
+      "bytes": 613032,
+      "sha256": "2ec88292a27b81dd61b51ebe23e461dd494b48f399cca229b2d4a0bfa182f786"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/walk-21.png",
+      "bytes": 614190,
+      "sha256": "9bfcc5efb5dbeb8820a71b992d4475fd530091ab8e018be1dad0b5a2fd3775ff"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/run-01.png",
+      "bytes": 625314,
+      "sha256": "521e46fba8e55080c8fee7112abcc351a782d324ee3d836c1da663187092d09f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/run-05.png",
+      "bytes": 625405,
+      "sha256": "a47c99254532989786d61dbc87b977962d164d42aa341cf948106e55e86136f4"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/run-09.png",
+      "bytes": 621430,
+      "sha256": "160a215b12a25026bae7d47e0b74711fa0b793442fd0814ab45bf33a0069b3e9"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/refined/run-15.png",
+      "bytes": 621770,
+      "sha256": "158dbb63eeb1747e0f1e51ccc8bd4d8abc633c6df75de9f06a9d11977f38db7c"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/yao-grey-study.glb",
+      "bytes": 1261732,
+      "sha256": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk-cycle.png",
+      "bytes": 2300703,
+      "sha256": "f26e1b4010fd61f5ed47fac2b0727bbef0912109a3f304d2aaa5d10ba2ce3fef"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run-cycle.png",
+      "bytes": 2036975,
+      "sha256": "00890b213d133a9f1404145855b3c357501f7ff404150b745f5dad9443eb8a87"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/000.png",
+      "bytes": 179777,
+      "sha256": "0fe61edde3e4e694f920f43778368dc36474af6f05eb428cf05e4e0b395e4513"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/001.png",
+      "bytes": 178251,
+      "sha256": "225ed1982fe30c88c14c3a4b5784a618b8e300949cafbccb934ba43129b726f3"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/002.png",
+      "bytes": 176161,
+      "sha256": "b7b212c486acfb08c5d65312ec764983d9a9b859f46bb52d6f850027ab52f138"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/003.png",
+      "bytes": 173686,
+      "sha256": "e1ba3021cce5472b2c07163f5560e2a210a7f34b00f313325be6c9e8030cd1c2"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/004.png",
+      "bytes": 173330,
+      "sha256": "03a673d782d1f2fd7e3898a88360f33535f5825a108b2673e46c22d4566a8366"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/005.png",
+      "bytes": 176744,
+      "sha256": "b3fe85afe135e97d46c8c10b3ef893ed288662d15c1b857d402e1294648324f4"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/006.png",
+      "bytes": 177804,
+      "sha256": "2ed9ebb098d71b35b44a6944f6d9dca171159d4b3317c4a7bbdebae0c5703ad0"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/007.png",
+      "bytes": 179166,
+      "sha256": "6f6108ddca920b7346e2ef36e1abee01ba6e6d4fca8547031740c4b087f6db83"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/008.png",
+      "bytes": 180281,
+      "sha256": "92a1cdc3730347123dd6de61a3c4d7133d22ad97282a89ea1bfa9bea4799478f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/009.png",
+      "bytes": 180867,
+      "sha256": "4bd2f40410ef3b454b907700f8671f6ad643e38ffbb68918b304f03ccd7cc991"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/010.png",
+      "bytes": 181385,
+      "sha256": "7200bb21f32844ae471f4f21b20e013f0f5c99581dda049784505999c72b88b5"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/011.png",
+      "bytes": 180626,
+      "sha256": "f6ba6cc4bfcf4b6ad9250a9468bf7fa7b20df0afdf5638141f1dd27b57e2061b"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/012.png",
+      "bytes": 179857,
+      "sha256": "cff317793e528d0a1e0b5f2f32620af3c4e2bb4b2bcefbee044e3b0d71422929"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/013.png",
+      "bytes": 178233,
+      "sha256": "012c00213405f7fa3ea298ea4e2f6f51f4778a86951cb71783d06654cd95a154"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/014.png",
+      "bytes": 177399,
+      "sha256": "639268d706d7d36da351841464f66d18b17651d0ddb3e243daa44c8776a61414"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/015.png",
+      "bytes": 174037,
+      "sha256": "d4dc7d0204efa137ffbbf8a6eb8f701d831246823da22eef10fce05c08ecad37"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/016.png",
+      "bytes": 173760,
+      "sha256": "9bd2b61ff0cef00bf578ced009e6691e6aed89a42ce5dbe5baaecce5fa91df6f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/017.png",
+      "bytes": 176631,
+      "sha256": "53c3b7b46c9c6ccb77e6afb3f6d56bd0e3273f51f4d49d103a56307c04f25ac0"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/018.png",
+      "bytes": 178175,
+      "sha256": "1fd2834270776927624aa553fb74558764566636158ac1b106e1af52390f3a08"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/019.png",
+      "bytes": 178510,
+      "sha256": "fb4e17c7e72fd7b259459b1474fd9708f4f273dbf2d6b8c6df4435e5106b2c77"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/020.png",
+      "bytes": 179159,
+      "sha256": "1b8a8b4258b3498d0107f78ce71e337c8ca8262f065d4c328e94dfc19b584938"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/021.png",
+      "bytes": 179997,
+      "sha256": "798ef6e2c1596b792c3e2fb687bee6eb40900162d9694e0634aaf9c8b7b742e4"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/022.png",
+      "bytes": 181043,
+      "sha256": "f7ba6f0596cbb7eef47297589fdfb5ae89ad999c81ed25f4272716f507969c9a"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/walk/023.png",
+      "bytes": 179997,
+      "sha256": "03997d65666eac9eb4408760e32934f0ace28847b94401a44aa0d56738cf6bfb"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/000.png",
+      "bytes": 179993,
+      "sha256": "9d6500b86d162eda7df6acac19d97a3a686ff736424d3b1667c5cd55bd570b15"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/001.png",
+      "bytes": 177793,
+      "sha256": "4fb5d81fb2d009403f7543aa6ff4e6d784e711e83adb8da82c13f756f5552318"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/002.png",
+      "bytes": 177186,
+      "sha256": "7262766fc0110f2b343f9167dbcb383ee5e94a843f21ec2aa98279585af1113a"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/003.png",
+      "bytes": 181798,
+      "sha256": "d663d6759f5cb2f8dcf408b2d5396f1782dea5850b5277776323376c58f3429c"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/004.png",
+      "bytes": 181588,
+      "sha256": "be1ddeb382f599dc02a68c2dd47ac957000829d832d26fdda98bbb955a86a52a"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/005.png",
+      "bytes": 182256,
+      "sha256": "506d59ac82eaf30486f206c667b1697eeabfc6f3e576205bc2b5dd8d84f2ff22"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/006.png",
+      "bytes": 182523,
+      "sha256": "f0c2a2bc94fafd36ae9f0403492bb2f3abe64b6ef5f3fe76aa253aa4db61f0b8"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/007.png",
+      "bytes": 183158,
+      "sha256": "3de0f3273221203925976ad80c6eaa051c413e13b8642d69473d67eb0c890c61"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/008.png",
+      "bytes": 182065,
+      "sha256": "aeb5bb0cedde96d5b39d501c521f87b1bf8671488964af7aac67edc2f9adf09e"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/009.png",
+      "bytes": 181279,
+      "sha256": "678d08be4637a94dc7fe69ed6d7ca6ad267fc073b33496872e376b978a44243a"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/010.png",
+      "bytes": 179815,
+      "sha256": "d77cd050752c7529b3233bc4e86e8a821e0c2e269046d0b8d9495dad04350fa7"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/011.png",
+      "bytes": 178919,
+      "sha256": "ec34ff9c1488671373d4fb1cc59e92835b4e87bd3690ec54e225a5561cdef871"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/012.png",
+      "bytes": 177311,
+      "sha256": "25531d758450dfe2be7109f2799ef85881376b483633aeb9e96249aa04448733"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/013.png",
+      "bytes": 182199,
+      "sha256": "99f2c7dc6abc3aef1edc1bab60e4f10a4b4be07df96c46def417919e56b233b6"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/014.png",
+      "bytes": 181089,
+      "sha256": "81d27b546ac6517060d3fb995ce12d0033563f5b6a7d22e8f13d47c5888e4951"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/015.png",
+      "bytes": 180890,
+      "sha256": "8d65d697847dbe1863ad1a4b3cfb23657a3cdd44fb6adebf1495f89f0fbfffa0"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/016.png",
+      "bytes": 181048,
+      "sha256": "e49fa08d65067b136d6a9a44424ea2b4e57375deb897df08bc4cd4ceb1e273d7"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/017.png",
+      "bytes": 182039,
+      "sha256": "ee5065175becc3f6cea1c4771027f0747d01d6c74784a54464f34fe53ea9cae2"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/018.png",
+      "bytes": 180707,
+      "sha256": "69b13b756921625848244d5246115b187fa8a1b296130b517ae8d754d245f6c2"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r1/linear/run/019.png",
+      "bytes": 180982,
+      "sha256": "1b12c8c610e3328ceaa7aa927e1f17607e334564f8fc55c24f74437513c3fe06"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 3261403,
+      "sha256": "3319eb992ab05a52ca063bc570a82da16ad0254ed8a3a3b2962b6c44be9f6b96"
+    },
+    {
+      "path": "todo/evidence/TASK-047/animation-r1/__pycache__/measure.cpython-314.pyc",
+      "bytes": 15422,
+      "sha256": "9dca335eb709e1d8f2b0dacf827206f4cd7b1cd1c9dc6c9c8a420c518091983f"
+    },
+    {
+      "path": "todo/evidence/TASK-047/animation-r1/__pycache__/prototype.cpython-314.pyc",
+      "bytes": 9274,
+      "sha256": "2e6ed224b8e888c123cbb0b7588c57c7fa5f5e65377e52f56b08c94058956afd"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/__pycache__/build.cpython-314.pyc",
+      "bytes": 77016,
+      "sha256": "0b2e5a17b685704f67a6bf73e4552364be428b0332d26d4ab1da16980f05f644"
+    }
+  ],
+  "bytes_removed": 29296893,
+  "remaining_visual_files": [],
+  "retained": "formal source/GLB/atlas; source parameters; reproduction scripts; source and exported numerical tracks; logs; root capture excluded"
+}

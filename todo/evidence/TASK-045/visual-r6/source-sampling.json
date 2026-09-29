@@ -1,0 +1,511 @@
+{
+  "baseline": "e6b398b",
+  "scope": "read-only source map and existing runtime GLB envelopes; not GPU visibility approval",
+  "map_sha256": "a4ab861f756037206520258725a32232de40a96dc1a8da380d26a1de33c9e45a",
+  "baseline_asset_envelopes": {
+    "tree_pine": {
+      "file": "game/assets/environment/nature/tree_pineRoundA.glb",
+      "sha256": "5191f20721a9e7d91b4e04a0f5e3478a3656ab372f717875c71955cf8d7b9162",
+      "min": [
+        -1.4675472544802486,
+        -7.400309279474196e-24,
+        -1.6945777457860214
+      ],
+      "max": [
+        1.4675472544802486,
+        6.499999984452405,
+        1.6945777457860214
+      ],
+      "horizontal_radius_m": 1.6945777457860214
+    },
+    "shrub": {
+      "file": "game/assets/environment/nature/plant_bushDetailed.glb",
+      "sha256": "5f95e15962a3e9d1b8ec73946bae5526f3e8fa91e1e0293d3b745c48cbdd11b7",
+      "min": [
+        -0.6687296784635435,
+        0.0,
+        -0.6687296784635435
+      ],
+      "max": [
+        0.6687296784635435,
+        0.7999999993922411,
+        0.6687296784635435
+      ],
+      "horizontal_radius_m": 0.6693389645732142
+    },
+    "tree_autumn": {
+      "file": "game/assets/environment/nature/tree_cone_fall.glb",
+      "sha256": "52873f4e14fe249f6bb11a60f74abb9b2b1279ee2850c61e664a51508cd5ffa5",
+      "min": [
+        -0.9257700190300254,
+        0.0,
+        -0.9257700190300254
+      ],
+      "max": [
+        0.9257700190300254,
+        4.9999999995956825,
+        0.9257700190300254
+      ],
+      "horizontal_radius_m": 0.9257700541340192
+    }
+  },
+  "flat_surface": {
+    "id": "fw-f-plateau-east-court",
+    "name": "东组住宅共享花园",
+    "polygon": [
+      [
+        175,
+        488
+      ],
+      [
+        219,
+        488
+      ],
+      [
+        219,
+        509
+      ],
+      [
+        175,
+        509
+      ]
+    ],
+    "elevation": 100.678571,
+    "kind": "park",
+    "access": "resident"
+  },
+  "target_plants": [
+    {
+      "source": "surfaces[50]/derived-vegetation[edge-group:0:0]",
+      "model": "tree_pine",
+      "foot": [
+        189.08,
+        502.07,
+        100.663571
+      ]
+    },
+    {
+      "source": "surfaces[50]/derived-vegetation[edge-group:0:1]",
+      "model": "shrub",
+      "foot": [
+        192.68,
+        502.67,
+        100.663571
+      ]
+    },
+    {
+      "source": "surfaces[50]/derived-vegetation[edge-group:0:2]",
+      "model": "grass",
+      "foot": [
+        193.58,
+        500.77,
+        100.663571
+      ]
+    },
+    {
+      "source": "surfaces[50]/derived-vegetation[edge-group:0:3]",
+      "model": "rock",
+      "foot": [
+        185.28,
+        502.46999999999997,
+        100.663571
+      ]
+    },
+    {
+      "source": "surfaces[50]/derived-vegetation[edge-group:0:4]",
+      "model": "shrub",
+      "foot": [
+        189.48000000000002,
+        497.57,
+        100.663571
+      ]
+    },
+    {
+      "source": "surfaces[50]/derived-vegetation[edge-group:0:5]",
+      "model": "grass",
+      "foot": [
+        191.48000000000002,
+        498.27,
+        100.663571
+      ]
+    }
+  ],
+  "nearby_authored_tree": {
+    "source": "trees[11]",
+    "model": "tree_autumn",
+    "foot": [
+      205,
+      495,
+      100.678571
+    ]
+  },
+  "garden_view": {
+    "eye": [
+      212.0,
+      508.0,
+      102.4
+    ],
+    "target": [
+      189.5,
+      500.5,
+      103.3
+    ],
+    "eye_above_park_m": 1.7214290000000005,
+    "sampled_camera_positions": {
+      "0": [
+        212.0,
+        508.0,
+        102.4
+      ],
+      "59": [
+        210.02200766525482,
+        507.3406692217517,
+        102.47911969338976
+      ],
+      "89": [
+        210.681812990888,
+        505.3612532448523,
+        102.47911969338976
+      ],
+      "119": [
+        210.02200766525482,
+        507.3406692217517,
+        102.47911969338976
+      ],
+      "149": [
+        210.02200766525482,
+        507.3406692217517,
+        102.47911969338976
+      ]
+    },
+    "sampled_building_volume_occlusions": [],
+    "pine_and_shrub_conservative_frustum_bounds": [
+      {
+        "frame": 0,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:0]",
+        "ndc_max_abs": [
+          0.1814582792050503,
+          0.35322126084152466
+        ]
+      },
+      {
+        "frame": 0,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:1]",
+        "ndc_max_abs": [
+          0.0951465981403244,
+          0.24642683108953423
+        ]
+      },
+      {
+        "frame": 0,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:4]",
+        "ndc_max_abs": [
+          0.1529264352473602,
+          0.21267296782907782
+        ]
+      },
+      {
+        "frame": 59,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:0]",
+        "ndc_max_abs": [
+          0.19934910255356147,
+          0.3912033864392968
+        ]
+      },
+      {
+        "frame": 59,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:1]",
+        "ndc_max_abs": [
+          0.10632475084757788,
+          0.2764081024267888
+        ]
+      },
+      {
+        "frame": 59,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:4]",
+        "ndc_max_abs": [
+          0.16714378084851253,
+          0.2330328521410073
+        ]
+      },
+      {
+        "frame": 89,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:0]",
+        "ndc_max_abs": [
+          0.3071582247199458,
+          0.3912033864392953
+        ]
+      },
+      {
+        "frame": 89,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:1]",
+        "ndc_max_abs": [
+          0.23327180403054504,
+          0.27640810242678804
+        ]
+      },
+      {
+        "frame": 89,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:4]",
+        "ndc_max_abs": [
+          0.06668641030895088,
+          0.2330328521410068
+        ]
+      },
+      {
+        "frame": 119,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:0]",
+        "ndc_max_abs": [
+          0.19934910255356147,
+          0.3912033864392968
+        ]
+      },
+      {
+        "frame": 119,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:1]",
+        "ndc_max_abs": [
+          0.10632475084757788,
+          0.2764081024267888
+        ]
+      },
+      {
+        "frame": 119,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:4]",
+        "ndc_max_abs": [
+          0.16714378084851253,
+          0.2330328521410073
+        ]
+      },
+      {
+        "frame": 149,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:0]",
+        "ndc_max_abs": [
+          0.19934910255356147,
+          0.3912033864392968
+        ]
+      },
+      {
+        "frame": 149,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:1]",
+        "ndc_max_abs": [
+          0.10632475084757788,
+          0.2764081024267888
+        ]
+      },
+      {
+        "frame": 149,
+        "source": "surfaces[50]/derived-vegetation[edge-group:0:4]",
+        "ndc_max_abs": [
+          0.16714378084851253,
+          0.2330328521410073
+        ]
+      }
+    ],
+    "scope": "native-speed and friction arithmetic estimates, 101 sightline samples per object; excludes actual leaf self-occlusion and nonbuilding fixtures",
+    "autumn_tree_versus_pine_angular_envelopes": [
+      {
+        "frame": 0,
+        "source": "trees[11]",
+        "horizontal_envelope_clearance_degrees": 36.37225315611794
+      },
+      {
+        "frame": 0,
+        "source": "surfaces[50]/derived-vegetation[4] candidate",
+        "horizontal_envelope_clearance_degrees": 22.854308174568576
+      },
+      {
+        "frame": 59,
+        "source": "trees[11]",
+        "horizontal_envelope_clearance_degrees": 41.800048971421525
+      },
+      {
+        "frame": 59,
+        "source": "surfaces[50]/derived-vegetation[4] candidate",
+        "horizontal_envelope_clearance_degrees": 25.1853615633702
+      },
+      {
+        "frame": 89,
+        "source": "trees[11]",
+        "horizontal_envelope_clearance_degrees": 39.9959303745181
+      },
+      {
+        "frame": 89,
+        "source": "surfaces[50]/derived-vegetation[4] candidate",
+        "horizontal_envelope_clearance_degrees": 25.106246620005855
+      },
+      {
+        "frame": 119,
+        "source": "trees[11]",
+        "horizontal_envelope_clearance_degrees": 41.800048971421525
+      },
+      {
+        "frame": 119,
+        "source": "surfaces[50]/derived-vegetation[4] candidate",
+        "horizontal_envelope_clearance_degrees": 25.1853615633702
+      },
+      {
+        "frame": 149,
+        "source": "trees[11]",
+        "horizontal_envelope_clearance_degrees": 41.800048971421525
+      },
+      {
+        "frame": 149,
+        "source": "surfaces[50]/derived-vegetation[4] candidate",
+        "horizontal_envelope_clearance_degrees": 25.1853615633702
+      }
+    ]
+  },
+  "slope_samples": [
+    {
+      "pixel": [
+        80,
+        160
+      ],
+      "slope_degrees": 55.40290278964871,
+      "position_world": [
+        171.49339893373795,
+        295.1624314352149,
+        -739.7492959931161
+      ],
+      "view_normal_dot": 0.05541548591609596
+    },
+    {
+      "pixel": [
+        120,
+        260
+      ],
+      "slope_degrees": 52.99044126173327,
+      "position_world": [
+        156.46181318947347,
+        290.3072849263489,
+        -741.9762869607184
+      ],
+      "view_normal_dot": 0.1329323073428509
+    },
+    {
+      "pixel": [
+        220,
+        350
+      ],
+      "slope_degrees": 53.562820750957115,
+      "position_world": [
+        155.4545987488949,
+        285.9906934780773,
+        -738.9150264090035
+      ],
+      "view_normal_dot": 0.1740735176064656
+    },
+    {
+      "pixel": [
+        200,
+        480
+      ],
+      "slope_degrees": 37.21429414019857,
+      "position_world": [
+        133.12998817719284,
+        287.91576398300265,
+        -746.5453873393723
+      ],
+      "view_normal_dot": 0.24269064719823757
+    },
+    {
+      "pixel": [
+        300,
+        550
+      ],
+      "slope_degrees": 36.581462596714324,
+      "position_world": [
+        129.25513977295606,
+        287.90661124782486,
+        -746.5177228521761
+      ],
+      "view_normal_dot": 0.09491258759915899
+    }
+  ],
+  "slope_sampling_source": "todo/evidence/TASK-045/terrain-surface-r2/ray-probe.json; source map hash matched, diagnostic was uncut source triangulation and may differ from actual GPU surface masks",
+  "residential_view": {
+    "view": "inspect-residential-detail",
+    "building": {
+      "id": "V-A13",
+      "bank": "district",
+      "parcel": "P05-J",
+      "polygon": [
+        [
+          161,
+          274
+        ],
+        [
+          181,
+          274
+        ],
+        [
+          181,
+          291
+        ],
+        [
+          161,
+          291
+        ]
+      ],
+      "elevation": 32.136364,
+      "height": 12.8,
+      "kind": "apartment",
+      "design": {
+        "type": "apartment",
+        "status": "schematic",
+        "floors": [
+          {
+            "name": "1F",
+            "z": 32.136364,
+            "use": "转弯处小型公寓"
+          },
+          {
+            "name": "2F",
+            "z": 35.336364,
+            "use": "普通住家"
+          },
+          {
+            "name": "3F",
+            "z": 38.536364,
+            "use": "普通住家"
+          },
+          {
+            "name": "4F",
+            "z": 41.736364,
+            "use": "普通住家"
+          }
+        ],
+        "entries": [
+          {
+            "node": "v_a13_door",
+            "role": "resident",
+            "level": "1F"
+          }
+        ],
+        "front": [
+          [
+            161,
+            291
+          ],
+          [
+            161,
+            274
+          ]
+        ],
+        "canopy": 0.9
+      }
+    },
+    "eye": [
+      144,
+      288,
+      33.6
+    ],
+    "target": [
+      161,
+      282.5,
+      38.536364
+    ],
+    "center_distance_m": 18.53692772658123,
+    "neighbor_exclusion": "V-A12 ends at y270; sightline stays y282.5..288; no other building occupies the pre-facade segment"
+  }
+}

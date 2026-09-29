@@ -16,7 +16,8 @@ bpy.ops.wm.open_mainfile(filepath=str(source / 'yao-grey-study.blend'))
 rig = bpy.data.objects['CHR001_Rig']
 scene = bpy.context.scene
 results = []
-for name, period in (('Idle', 60), ('Walk', 30), ('Run', 20)):
+assert scene.render.fps == 60, 'Character action source must use 60 FPS'
+for name, period in (('Idle', 120), ('Walk', 48), ('Run', 40)):
     rig.animation_data.action = bpy.data.actions[name]
     loop_matrices = []
     contact_errors = []
@@ -30,19 +31,19 @@ for name, period in (('Idle', 60), ('Walk', 30), ('Run', 20)):
         if frame in (1, period+1):
             loop_matrices.append([x for bone in rig.pose.bones for row in bone.matrix for x in row])
         graph = bpy.context.evaluated_depsgraph_get()
-        phase = (frame-1)/period*math.tau
-        for side, offset in (('L',0), ('R',math.pi)):
+        phase = (frame-1)/period
+        for side, offset in (('L',0), ('R',.5)):
             shoe = bpy.data.objects['Sneaker_Sole.'+side].evaluated_get(graph)
             evaluated = shoe.to_mesh()
             minimum = min((shoe.matrix_world @ vertex.co).z for vertex in evaluated.vertices)
             shoe.to_mesh_clear()
             floor_min = min(floor_min, minimum)
-            if name == 'Idle' or math.cos(phase+offset) <= 1e-7:
+            if name == 'Idle' or (phase+offset) % 1 <= (1/3 if name == 'Walk' else .2) + 1e-7:
                 contact_errors.append(abs(minimum))
     loop_error = max(abs(a-b) for a,b in zip(*loop_matrices))
     assert loop_error < .00001, f'{name}: loop joint matrix mismatch {loop_error}'
-    assert floor_min > -.015, f'{name}: floor penetration {floor_min} m'
-    assert max(contact_errors) < .015, f'{name}: stance-foot ground distance {max(contact_errors)} m'
+    assert floor_min > -.005, f'{name}: floor penetration {floor_min} m'
+    assert max(contact_errors) < .005, f'{name}: stance-foot ground distance {max(contact_errors)} m'
     results.append({'clip': name, 'sampled_frames': period+1, 'loop_matrix_max_delta': loop_error, 'minimum_sole_height_m': floor_min, 'max_stance_height_error_m': max(contact_errors)})
 rig.animation_data.action = bpy.data.actions['Idle']
 scene.frame_set(1)
@@ -52,8 +53,7 @@ for name in ('Mouth', 'Eye_White.L', 'Eye_White.R', 'Iris_hair.L', 'Iris_hair.R'
     gaps = []
     data = bpy.data.objects[name].data
     samples = [v.co for v in data.vertices]
-    if name != 'Mouth':
-        samples += [sum((data.vertices[i].co for i in polygon.vertices), Vector()) / len(polygon.vertices) for polygon in data.polygons]
+    samples += [sum((data.vertices[i].co for i in polygon.vertices), Vector()) / len(polygon.vertices) for polygon in data.polygons]
     for point in samples:
         hit, _, _, _ = surface.ray_cast(Vector((point.x, -1, point.z)), Vector((0, 1, 0)))
         assert hit is not None, f'{name}: feature misses face surface'
@@ -88,6 +88,21 @@ for z in (1.538, 1.543, 1.552, 1.563):
     assert all(point is not None for point in points), 'Nasal profile missed head mesh'
     nasal_profile.append({'height_m': z, 'projection_from_cheeks_m': (points[0].y + points[2].y) / 2 - points[1].y})
 assert .004 < nasal_profile[1]['projection_from_cheeks_m'] < .018, 'Integrated nose projection outside this candidate range'
-report = {'status':'PASS','asset':'CHR-001 modelling candidate r4','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage and continuous nasal profile; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile}
+# Subdivision can pull the low hairline through the head even when its control
+# points are outside; compare actual evaluated vertices and face centres
+cap = bpy.data.objects['Hair_Cap'].evaluated_get(bpy.context.evaluated_depsgraph_get())
+cap_mesh = cap.to_mesh()
+cap_points = [v.co.copy() for v in cap_mesh.vertices]
+cap_points += [sum((cap_mesh.vertices[i].co for i in p.vertices), Vector()) / len(p.vertices) for p in cap_mesh.polygons]
+cap_gaps = []
+for point in cap_points:
+    origin = Vector((0, .018, point.z))
+    direction = (point - origin).normalized()
+    hit, _, _, _ = surface.ray_cast(origin, direction)
+    if hit is not None:
+        cap_gaps.append((point-origin).length - (hit-origin).length)
+cap.to_mesh_clear()
+assert cap_gaps and min(cap_gaps) > -.0003, f'Hair cap intersects the head after subdivision: {min(cap_gaps)} m'
+report = {'status':'PASS','asset':'CHR-001 modelling candidate r5','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage and continuous nasal profile; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps)}
 print(json.dumps(report,indent=2))
-(root/'todo/evidence/TASK-047/model-r4/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
+(root/'todo/evidence/TASK-047/model-r5/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
