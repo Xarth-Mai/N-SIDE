@@ -728,7 +728,7 @@
             "type": "information",
             "value": "confirmed",
             "label": "岸线资料补齐历史缺项，当前风险不能照搬历史等待",
-            "source": "player/story/main/river-did-not-reverse.md#局部有效还不够",
+            "source": "player/story/main/river-did-not-reverse.md#返回的路线",
             "gate": "主线判断"
           }
         ],
@@ -833,7 +833,7 @@
         "act": 3,
         "display_order": 8,
         "placement": "第三幕准备",
-        "summary": "减少接单、撤回恢复如初版面、明确新歌档期，以真实演练和安全回退建立协作",
+        "summary": "兄妹分别承担代报时段的后果、缩小首版并明确新歌档期，以真实演练和安全回退建立协作",
         "required": [
           {
             "scope": "start",
@@ -896,14 +896,14 @@
             "type": "state",
             "value": true,
             "label": "演练验证两项现实确认、本轮标记、梦内窗口与接入监测互相对应",
-            "source": "player/story/main/bring-today-back.md#这一次的“好了”"
+            "source": "player/story/main/bring-today-back.md#一起停下来，再一起开始"
           },
           {
             "id": "joint-plan",
             "type": "state",
             "value": true,
             "label": "后场有效连接、独立职责、B方案与回退A的停止安排已经验证",
-            "source": "player/story/main/bring-today-back.md#这一次的“好了”"
+            "source": "player/story/main/bring-today-back.md#一起停下来，再一起开始"
           }
         ],
         "review": {
@@ -960,7 +960,7 @@
         "act": 3,
         "display_order": 9,
         "placement": "第三幕行动",
-        "summary": "玲保持处理窗口并拒绝旧完成信号，曜依据独立信息判断，现实团队拆开新增联系",
+        "summary": "拆后归返重叠迫使玲放弃原拟保留的檐段，梦内窗口与现实双侧确认共同完成新增联系处置",
         "required": [
           {
             "scope": "start",
@@ -2170,7 +2170,7 @@
         "act": 2,
         "display_order": 7.8,
         "placement": "第六章失约与改道之后；若已过终章，按当前开放道路与既有交付继续",
-        "summary": "从未结清的维修单到双方确认的改约，顾客决定物件去向，阿东和唐惠按实际路线重新安排工作",
+        "summary": "继承顾客已选的退款或转修，完成物件和费用交接；阿东与唐惠按当前路线安排，失信的代价保留",
         "required": [
           {
             "scope": "start",
@@ -2425,7 +2425,7 @@
         "act": 2,
         "display_order": 6.8,
         "placement": "第五章会谈后另约；书面折页或小型远程交流均可交付",
-        "summary": "两份不同的读后感不必合成一致结论，维恩与遥保留已约的普通日程，交付自己的阅读折页",
+        "summary": "两份不同的读后感按许可编入折页；维恩与遥各自放下追加工作，轮流听完约好的两首歌",
         "required": [
           {
             "scope": "start",

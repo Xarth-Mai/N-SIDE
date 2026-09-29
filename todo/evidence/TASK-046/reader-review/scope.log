@@ -1,0 +1,11 @@
+PASS: 74 input SHA-256 values match inputs.json
+PASS: 27 story quest_id, black_cases and explicit anchors match narrative baseline
+PASS: scoped git diff --check (42 tracked paths)
+Content revision: dab934f781f4901cbd08da81a5069ae441c65fd8b1f14d57aed83cbafa41e381
+PASS: committed projection check:docs and tasks sync/check
+PASS: projected todo/README.md equals HEAD; shared working board is not staged
+PASS: 60 staged files are scoped (42 tracked documents/catalog/task + 18 evidence files)
+PASS: all 74 content hashes match the staged index
+PASS: exact staged projection check:docs (366 Markdown, 102 IDs, 31 Skills) and tasks:check (41 cards)
+PASS: git diff --cached --check
+PASS: owned temporary nside-task046-index projection removed

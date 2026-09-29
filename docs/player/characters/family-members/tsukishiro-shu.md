@@ -22,6 +22,8 @@ depends_on: []
 
 在[一次维修与配送交接](../../story/world/rain-shelter-route.md)中，他按约定结束帮班去赴自己的约，曜接好留下的店务。帮助孩子与继续自己的生活同时成立
 
+他在[历史展签核对](../../story/world/names-returned.md)中提供能证明自家那次送货的进货材料，同意按有限范围匿名使用，却不接受“守住通路的人”的称呼。他知道那晚还有别人做了自己没看见的工作
+
 ## 关系与活动
 
 与[陆成](../neighbors/lu-cheng.md)、[郑文良](../neighbors/zheng-wen-liang.md)是旧街坊；与[陈美惠](chen-mei-hui.md)共同维护家庭联系

@@ -1,0 +1,4 @@
+$ bun tools/tasks.ts sync
+PASS: 45 task cards; sync
+$ bun tools/tasks.ts check
+PASS: 45 task cards; check

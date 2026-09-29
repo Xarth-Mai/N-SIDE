@@ -1,0 +1,4 @@
+Input: committed HEAD plus TASK-046 scoped documents and evidence only
+Command: bun run tasks:sync
+$ bun tools/tasks.ts sync
+PASS: 41 task cards; sync

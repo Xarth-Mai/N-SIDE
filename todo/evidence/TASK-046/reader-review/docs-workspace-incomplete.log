@@ -1,0 +1,8 @@
+$ python3 -B tools/validate_docs.py --root . && bun run check:skills
+FAIL: 400 Markdown files, 102 IDs
+source-assets/district-scene/README.md:41: 链接目标缺失：../../todo/evidence/TASK-049/runtime-r2/review.md
+source-assets/district-scene/README.md:63: 链接目标缺失：../../todo/evidence/TASK-045/runtime-r2/review.md
+source-assets/environment-kit/README.md:92: 链接目标缺失：../../todo/evidence/TASK-045/runtime-r2/review.md
+todo/tasks/TASK-045-shop-street-material-lighting.md:39: 链接目标缺失：../evidence/TASK-045/runtime-r2/review.md
+todo/tasks/TASK-049-city-exterior-families.md:35: 链接目标缺失：../evidence/TASK-049/runtime-r2/review.md
+error: script "check:docs" exited with code 1
