@@ -1,0 +1,43 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 640,
+  "height": 360,
+  "fps": 30,
+  "frames": 90,
+  "seed": 0,
+  "timeout_seconds": 150,
+  "keyframes": [
+    29,
+    59,
+    89
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "intentional failure: ten seconds of animation cannot elapse in this interval",
+      "from": 40,
+      "to": 59,
+      "character": {
+        "ready": true,
+        "clip": "Idle",
+        "paused": false,
+        "min_advance": 10.0
+      }
+    }
+  ]
+}

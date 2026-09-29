@@ -1,0 +1,425 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 540,
+  "seed": 0,
+  "timeout_seconds": 450,
+  "keyframes": [
+    29,
+    59,
+    66,
+    69,
+    89,
+    109,
+    129,
+    159,
+    209,
+    259,
+    289,
+    314,
+    359,
+    409,
+    449,
+    499,
+    539
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "start": 68,
+      "end": 95,
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "start": 100,
+      "end": 125,
+      "gamepad": [
+        "Jump"
+      ]
+    },
+    {
+      "start": 130,
+      "end": 160,
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "start": 165,
+      "end": 166,
+      "keys": [
+        "R"
+      ]
+    },
+    {
+      "start": 180,
+      "end": 195,
+      "keys": [
+        "W",
+        "Shift"
+      ]
+    },
+    {
+      "start": 195,
+      "end": 210,
+      "keys": [
+        "W",
+        "ShiftRight"
+      ]
+    },
+    {
+      "start": 215,
+      "end": 216,
+      "keys": [
+        "R"
+      ]
+    },
+    {
+      "start": 230,
+      "end": 260,
+      "keys": [
+        "W"
+      ],
+      "right_mouse": true
+    },
+    {
+      "start": 265,
+      "end": 266,
+      "keys": [
+        "R"
+      ]
+    },
+    {
+      "start": 270,
+      "end": 271,
+      "keys": [
+        "M"
+      ]
+    },
+    {
+      "start": 275,
+      "end": 290,
+      "look": [
+        10,
+        0
+      ]
+    },
+    {
+      "start": 295,
+      "end": 296,
+      "keys": [
+        "M"
+      ]
+    },
+    {
+      "start": 300,
+      "end": 315,
+      "look": [
+        10,
+        0
+      ]
+    },
+    {
+      "start": 330,
+      "end": 360,
+      "keys": [
+        "Escape",
+        "W",
+        "Space"
+      ],
+      "right_mouse": true,
+      "look": [
+        10,
+        0
+      ]
+    },
+    {
+      "start": 370,
+      "end": 371,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 380,
+      "end": 381,
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "start": 430,
+      "end": 431,
+      "focused": false,
+      "keys": [
+        "W",
+        "Space"
+      ],
+      "right_mouse": true
+    },
+    {
+      "start": 440,
+      "end": 441,
+      "focused": true
+    },
+    {
+      "start": 460,
+      "end": 461,
+      "keys": [
+        "Escape"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 332,
+      "game_page": "paused"
+    },
+    {
+      "frame": 372,
+      "game_page": "world"
+    },
+    {
+      "frame": 432,
+      "game_page": "paused"
+    },
+    {
+      "frame": 462,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "title_releases_pointer",
+      "from": 0,
+      "to": 29,
+      "game_page": "title",
+      "pointer_locked": false
+    },
+    {
+      "name": "world_starts_grounded_and_locks_pointer",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "player_grounded": true,
+      "pointer_locked": true,
+      "max_player_jumps": 0,
+      "max_player_resets": 0
+    },
+    {
+      "name": "space_rises_above_real_ground",
+      "from": 68,
+      "to": 71,
+      "min_player_height": 28.7,
+      "max_player_height": 29.2,
+      "player_grounded": false,
+      "min_player_jumps": 1,
+      "max_player_jumps": 1
+    },
+    {
+      "name": "air_press_and_held_space_cannot_double_jump",
+      "from": 60,
+      "to": 95,
+      "max_player_height": 29.2,
+      "player_grounded": true,
+      "min_player_jumps": 1,
+      "max_player_jumps": 1,
+      "max_player_resets": 0
+    },
+    {
+      "name": "gamepad_jump_uses_same_grounded_rule",
+      "from": 108,
+      "to": 112,
+      "min_player_height": 28.7,
+      "max_player_height": 29.2,
+      "player_grounded": false,
+      "min_player_jumps": 2,
+      "max_player_jumps": 2
+    },
+    {
+      "name": "gamepad_hold_lands_without_rejump",
+      "from": 129,
+      "to": 129,
+      "player_grounded": true,
+      "min_player_height": 28.0,
+      "max_player_height": 28.15,
+      "max_player_jumps": 2
+    },
+    {
+      "name": "walking_reference_distance",
+      "from": 129,
+      "to": 159,
+      "min_player_distance": 3.0,
+      "max_player_distance": 3.4
+    },
+    {
+      "name": "shift_sprint_moves_faster",
+      "from": 179,
+      "to": 209,
+      "min_player_distance": 5.3,
+      "max_player_distance": 5.9
+    },
+    {
+      "name": "both_shift_keys_keep_sprinting",
+      "from": 181,
+      "to": 209,
+      "player_sprinting": true
+    },
+    {
+      "name": "right_button_sprint_moves_faster",
+      "from": 229,
+      "to": 259,
+      "min_player_distance": 5.3,
+      "max_player_distance": 5.9
+    },
+    {
+      "name": "right_sprint_held",
+      "from": 231,
+      "to": 259,
+      "player_sprinting": true
+    },
+    {
+      "name": "m_unlocks_and_raw_mouse_does_not_turn",
+      "from": 274,
+      "to": 289,
+      "pointer_locked": false,
+      "max_rotation": 0.001,
+      "max_player_distance": 0.001
+    },
+    {
+      "name": "locked_mouse_turns_without_drag",
+      "from": 299,
+      "to": 314,
+      "pointer_locked": true,
+      "min_rotation": 0.4,
+      "max_rotation": 0.5,
+      "max_player_distance": 0.001
+    },
+    {
+      "name": "pause_releases_pointer_and_blocks_jump_sprint_look",
+      "from": 334,
+      "to": 359,
+      "game_page": "paused",
+      "pointer_locked": false,
+      "max_player_distance": 0.001,
+      "max_rotation": 0.001,
+      "max_player_jumps": 2
+    },
+    {
+      "name": "resume_relocks_and_jump_still_works",
+      "from": 388,
+      "to": 391,
+      "game_page": "world",
+      "pointer_locked": true,
+      "min_player_jumps": 3,
+      "max_player_jumps": 3,
+      "player_grounded": false,
+      "min_player_height": 28.7
+    },
+    {
+      "name": "focus_loss_releases_and_does_not_jump",
+      "from": 432,
+      "to": 449,
+      "game_page": "paused",
+      "pointer_locked": false,
+      "max_player_distance": 0.001,
+      "max_player_jumps": 3
+    },
+    {
+      "name": "focus_restore_requires_explicit_resume",
+      "from": 499,
+      "to": 539,
+      "game_page": "world",
+      "pointer_locked": true,
+      "player_grounded": true,
+      "player_sprinting": false,
+      "max_player_distance": 0.001,
+      "min_player_jumps": 3,
+      "max_player_jumps": 3,
+      "max_player_resets": 3
+    },
+    {
+      "name": "loaded real skinned idle advances",
+      "from": 50,
+      "to": 59,
+      "character": {
+        "ready": true,
+        "clip": "Idle",
+        "min_clip_elapsed": 0.1
+      }
+    },
+    {
+      "name": "actual walking selects Walk",
+      "from": 140,
+      "to": 155,
+      "character": {
+        "ready": true,
+        "clip": "Walk",
+        "min_clip_elapsed": 0.1
+      }
+    },
+    {
+      "name": "actual shift running selects Run",
+      "from": 190,
+      "to": 205,
+      "character": {
+        "ready": true,
+        "clip": "Run",
+        "min_clip_elapsed": 0.1
+      }
+    },
+    {
+      "name": "actual right mouse running selects Run",
+      "from": 240,
+      "to": 255,
+      "character": {
+        "ready": true,
+        "clip": "Run",
+        "min_clip_elapsed": 0.1
+      }
+    },
+    {
+      "name": "pause stops actual animation",
+      "from": 340,
+      "to": 359,
+      "character": {
+        "ready": true,
+        "paused": true
+      }
+    },
+    {
+      "name": "resumed idle advances after real transitions",
+      "from": 490,
+      "to": 539,
+      "character": {
+        "ready": true,
+        "clip": "Idle",
+        "paused": false,
+        "min_clip_elapsed": 0.1,
+        "min_transitions": 6
+      }
+    }
+  ]
+}

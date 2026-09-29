@@ -81,6 +81,7 @@ def main() -> int:
     parser.add_argument("--script", type=Path, default=ROOT / "game/capture/viewer-tour.json")
     parser.add_argument("--output", type=Path, required=True, help="fresh evidence directory")
     parser.add_argument("--binary", type=Path, help="use this prebuilt game or Viewer binary; otherwise build map_viewer with cargo --locked")
+    parser.add_argument("--character-preview", action="store_true", help="enable the real grey character in a walk-preview script")
     parser.add_argument("--no-video", action="store_true", help="retain PNG evidence only")
     parser.add_argument("--settings-dir", type=Path, help="explicit isolated user-settings directory for cross-process checks")
     parser.add_argument("--project-root", type=Path, default=ROOT, help="runtime resource root, including an extracted preview package")
@@ -128,6 +129,10 @@ def main() -> int:
         command = [str(binary), "--project-root", str(project_root), "--capture", str(output / "script.json"), "--output", str(output)]
         if script["scene"] == "walk-preview":
             command.append("--walk-preview")
+        if args.character_preview:
+            if script["scene"] != "walk-preview":
+                raise ValueError("--character-preview requires a walk-preview script")
+            command.append("--character-preview")
         if args.settings_dir is not None:
             if script["scene"] not in ("walk-preview", "game-entry"):
                 raise ValueError("--settings-dir requires the formal game entry")

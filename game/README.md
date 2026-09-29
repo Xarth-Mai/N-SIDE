@@ -48,7 +48,7 @@ Viewer 自由相机使用右键按住观察，M 切换鼠标捕获，WASD 移动
 
 ## 正式入口与场景恢复
 
-标题提供「进入街区」「退出」和「设置」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的人物尺度实验；任务和存档仍由后续原型接入
+标题提供「进入街区」「退出」和「设置」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的人物尺度实验；会话内门前交接观察已接入，任务存档与完整序章仍由后续原型完成
 
 场景准备在 Bevy 任务池中进行，标题输入和加载反馈保持响应；取消后丢弃旧准备结果。每次进入建立新的 `SceneLoading`，依次核对资产依赖和模型实例化，真实就绪才切换到街区。返回标题移除带 `MapSource` 的场景层级与加载资源，保留宿主镜头、灯光和 UI
 
@@ -61,7 +61,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 脚本的 `waits` 在指定帧等待真实 `game_page`，期间继续异步加载和渲染，暂停录制时间线；它不设置应用状态，墙钟超时仍有效。`game_page`、`world_ready`、`min_world_entities`、`max_world_entities` 和 `same_world_entities` 从实际 ECS 状态检查标题、加载、清理与重入；录制时长不代表真实加载耗时
 
-暂停复用街区信号的颜色、字体与焦点组件，显示继续、返回标题和设置。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物与镜头，NPC、战斗、动画及声音尚未接入，不据此宣称其暂停行为已验证
+暂停复用街区信号的颜色、字体与焦点组件，显示继续、返回标题和设置。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物、镜头和显式角色预览的Idle／Walk／Run；NPC、战斗及声音尚未接入，不据此宣称其暂停行为已验证
 
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-pause.json --output output/capture/walk-pause
@@ -117,6 +117,16 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-ramp-camera.json --output output/capture/walk-ramp-camera
 ```
 
+显式 `--character-preview` 隐含步行模式，将曜的灰阶骨骼候选挂到原人物视觉root，复用真实移动、碰撞和相机；模型、具名Idle／Walk／Run与所有动画目标就绪后才隐藏胶囊。动作依据实际碰撞后速度切换，暂停停止实际AnimationPlayer，返回标题递归清理；加载失败保留代理、输出错误，capture返回非零。该造型尚未获作者或美术验收，默认入口不替换代理；混合过渡、足滑校准和Jump动画仍未完成
+
+```fish
+cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview
+cargo build --manifest-path game/Cargo.toml --locked --bin n-side
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/walk-character.json --output output/capture/walk-character
+```
+
+角色脚本核对实际Idle、Walk、Shift／右键Run、暂停及恢复的时间推进，须同时检查连续画面；`CharacterStatus` 提供ready、错误、动作与时间、切换数和暂停读数。完整接口与已知边界见[灰阶角色动作预览](../docs/dev/engineering/player-preview.md#灰阶角色动作预览)，结果记录于TASK-047
+
 碰撞从同一份渲染网格建立静态三角 BVH，覆盖地形、道路、建筑、平台及结构设施；道路台阶的踏面与立面均参与扫掠。Parry只负责空间查询，人物和镜头系统由 `player.rs` 维护；相机沿目标到期望位置作球体扫掠。参数、当前覆盖与失败处理见[人物尺度实验契约](../docs/dev/engineering/player-preview.md)
 
 小店V-04首层的接待与陈列、主题陈列和预约洽谈开放直接行走。房间和门洞来自地图 `design.floors` 的1F `rooms`／`openings`，地板、墙、天花和门头进入相同渲染及碰撞路径；后场、私人内梯和楼上继续封闭。通过WASD／左摇杆从街道进入、穿过内门并原路返回，不使用F传送或场景切换，F仍负责公共信息观察
@@ -143,7 +153,11 @@ python3 tools/capture.py --script game/capture/walk-ascent-full.json --output ou
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-places.json --output output/capture/walk-places
 ```
 
-靠近月台杂货公共入口或摘星台，转动镜头使目标在视野内，出现F／A提示后可打开现有用途、开放说明与到达方式。右摇杆只是转动镜头，查看信息需另按F／A；远处的「附近」标签不表示已经可以查看，公共信息也不是调查线索
+靠近月台杂货公共入口（04）、摘星台（23）、店侧台阶（29）或货运侧院（28），转动镜头使目标在视野内，出现F／A提示后可打开现有用途、开放说明与到达方式。右摇杆只是转动镜头，查看信息需另按F／A；远处的「附近」标签不表示已经可以查看；实际记录范围见下方门前交接契约
+
+TASK-050将04／29／28的实际观察记录在本次会话，顺序不限、重复查看不重复登记；三点齐备后，在28面板显式选择配送走货运侧院或店侧台阶。上下方向键／手柄方向键切换，F／A或点击确认；台阶选项给出修订反馈，侧院选项只提交一次。返回标题、重新加载或失败清空会话，暂停保留，尚无任务存档
+
+面板正文支持滚轮、PageUp／PageDown和右摇杆滚动，标题、路线选项与返回按钮保持固定；同一次打开输入不会提交选择。当前GPU证据仅覆盖04观察片段，完整三点路线与两种选择尚未实机验收，详见[TASK-050](../todo/tasks/TASK-050-prologue-handoff-runtime.md)
 
 打开观察时人物与镜头停留原位；Esc／B或鼠标左键点击「返回街区」关闭面板而不打开暂停，空白点击不关闭，Tab／Start仍可暂停。关闭当帧及旧输入持有期间继续隔离玩法，释放后再操作。断连或失焦保护暂时隐藏观察，明确继续后恢复原内容；回到标题清空。近距、高差、朝向、实际墙体遮挡和输入隔离的完整契约见[公共地点观察](../docs/dev/engineering/player-preview.md#公共地点观察)
 
@@ -225,7 +239,7 @@ python3 tools/capture.py --script game/capture/city-graybox.json --output output
 
 ## 连续操作 capture
 
-`map_viewer --capture` 使用上面的世界、材质、相机与控制器，通过输入资源驱动已有的 WASD、鼠标观察、M 捕获和 Esc 释放。当前首个场景是小店外的自由相机操作，不包含尚未实现的人物碰撞、任务或动画验收
+`map_viewer --capture` 使用上面的世界、材质、相机与控制器，通过输入资源驱动已有的 WASD、鼠标观察、M 捕获和 Esc 释放。当前首个场景是小店外的自由相机操作，只覆盖Viewer已有的自由相机控制与渲染；人物碰撞、交接观察和角色动画分别使用正式入口的对应脚本
 
 脚本使用 Python 3.10+ 与资产流程共享的 Pillow 依赖，安装声明见 [create-game-assets requirements](../.agents/skills/create-game-assets/scripts/requirements.txt)。以下命令可直接在 fish 中执行；输出目录必须是新的，默认先构建 debug Viewer，已有构建可加 `--binary game/target/debug/map_viewer`
 

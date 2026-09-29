@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "asset": "CHR-001 modelling candidate",
+  "scope": "DCC joint transforms, loop endpoints and sole ground distance; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 61,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.983777360389468e-09,
+      "max_stance_height_error_m": 0.001999971689656377
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 31,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.214263485546326e-08,
+      "max_stance_height_error_m": 9.214263485546326e-08
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 21,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.0573883457709599e-07,
+      "max_stance_height_error_m": 1.068477573085147e-07
+    }
+  ]
+}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+
+Blender quit

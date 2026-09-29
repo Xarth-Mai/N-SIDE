@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "generator": "tools/tests/create_character_fixture.py",
+  "blender": "4.5.14 LTS",
+  "fixture": "tools/tests/fixtures/character.glb",
+  "bytes": 7040,
+  "sha256": "28982e8b0e23319e5e00f1d7d0ffd9d048cfed8ecbc274edb3d97c450669db5d",
+  "identical_rebuild": true,
+  "asset_identity": "tool regression fixture only"
+}

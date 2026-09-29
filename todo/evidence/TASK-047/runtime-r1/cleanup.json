@@ -1,0 +1,23 @@
+{
+  "policy": "After actual observation and completed processes, remove only this run visual intermediates; retain logs, state, script, source and formal assets",
+  "runs": [
+    {
+      "run": "output/capture/task047-character-r2",
+      "files_removed": 558,
+      "bytes_removed": 419785788,
+      "remaining_visual_files": 0
+    },
+    {
+      "run": "output/capture/task047-character-r3",
+      "files_removed": 559,
+      "bytes_removed": 420595409,
+      "remaining_visual_files": 0
+    },
+    {
+      "run": "output/capture/task047-character-negative",
+      "files_removed": 93,
+      "bytes_removed": 14305275,
+      "remaining_visual_files": 0
+    }
+  ]
+}

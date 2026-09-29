@@ -1,0 +1,231 @@
+{
+  "status": "PASS",
+  "rule": "appearance_age = actual_age - 2; null human age stays null",
+  "source": "docs/dev/design/catalogs/characters.json",
+  "source_sha256": "e8b356db56e485f835422721202823bff89d9eb2f136586e3755dfc98b329e20",
+  "scope": "Derived production targets, not changes to story ages and not visual acceptance",
+  "characters": [
+    {
+      "id": "CHR-001",
+      "name": "月城曜",
+      "actual_age": 20,
+      "appearance_age": 18
+    },
+    {
+      "id": "CHR-002",
+      "name": "月城玲",
+      "actual_age": 19,
+      "appearance_age": 17
+    },
+    {
+      "id": "CHR-003",
+      "name": "巧克力",
+      "actual_age": null,
+      "appearance_age": null
+    },
+    {
+      "id": "CHR-004",
+      "name": "月城修",
+      "actual_age": 48,
+      "appearance_age": 46
+    },
+    {
+      "id": "CHR-005",
+      "name": "陈美惠",
+      "actual_age": 47,
+      "appearance_age": 45
+    },
+    {
+      "id": "CHR-006",
+      "name": "维恩",
+      "actual_age": 43,
+      "appearance_age": 41
+    },
+    {
+      "id": "CHR-007",
+      "name": "遥",
+      "actual_age": 42,
+      "appearance_age": 40
+    },
+    {
+      "id": "CHR-008",
+      "name": "陆成",
+      "actual_age": 35,
+      "appearance_age": 33
+    },
+    {
+      "id": "CHR-009",
+      "name": "米娜 / Mina",
+      "actual_age": 18,
+      "appearance_age": 16
+    },
+    {
+      "id": "CHR-010",
+      "name": "苏弥",
+      "actual_age": 19,
+      "appearance_age": 17
+    },
+    {
+      "id": "CHR-011",
+      "name": "阿杰",
+      "actual_age": 27,
+      "appearance_age": 25
+    },
+    {
+      "id": "CHR-012",
+      "name": "凯文",
+      "actual_age": 26,
+      "appearance_age": 24
+    },
+    {
+      "id": "CHR-013",
+      "name": "周然",
+      "actual_age": 30,
+      "appearance_age": 28
+    },
+    {
+      "id": "CHR-014",
+      "name": "宋美香",
+      "actual_age": 32,
+      "appearance_age": 30
+    },
+    {
+      "id": "CHR-015",
+      "name": "唐惠",
+      "actual_age": 31,
+      "appearance_age": 29
+    },
+    {
+      "id": "CHR-016",
+      "name": "何芸",
+      "actual_age": 45,
+      "appearance_age": 43
+    },
+    {
+      "id": "CHR-017",
+      "name": "梁素",
+      "actual_age": 54,
+      "appearance_age": 52
+    },
+    {
+      "id": "CHR-018",
+      "name": "郑文良",
+      "actual_age": 58,
+      "appearance_age": 56
+    },
+    {
+      "id": "CHR-019",
+      "name": "艾玛",
+      "actual_age": 34,
+      "appearance_age": 32
+    },
+    {
+      "id": "CHR-020",
+      "name": "陈知夏",
+      "actual_age": 17,
+      "appearance_age": 15
+    },
+    {
+      "id": "CHR-021",
+      "name": "魏航",
+      "actual_age": 29,
+      "appearance_age": 27
+    },
+    {
+      "id": "CHR-022",
+      "name": "程嘉",
+      "actual_age": 39,
+      "appearance_age": 37
+    },
+    {
+      "id": "CHR-023",
+      "name": "叶真",
+      "actual_age": 33,
+      "appearance_age": 31
+    },
+    {
+      "id": "CHR-024",
+      "name": "乔伊",
+      "actual_age": 31,
+      "appearance_age": 29
+    },
+    {
+      "id": "CHR-025",
+      "name": "诺拉",
+      "actual_age": 27,
+      "appearance_age": 25
+    },
+    {
+      "id": "CHR-026",
+      "name": "悠真",
+      "actual_age": 24,
+      "appearance_age": 22
+    },
+    {
+      "id": "CHR-027",
+      "name": "贺佳",
+      "actual_age": 36,
+      "appearance_age": 34
+    },
+    {
+      "id": "CHR-028",
+      "name": "邱立",
+      "actual_age": 41,
+      "appearance_age": 39
+    },
+    {
+      "id": "CHR-029",
+      "name": "老钟",
+      "actual_age": 46,
+      "appearance_age": 44
+    },
+    {
+      "id": "CHR-030",
+      "name": "顾文珍",
+      "actual_age": 67,
+      "appearance_age": 65
+    },
+    {
+      "id": "CHR-031",
+      "name": "郑拓",
+      "actual_age": 28,
+      "appearance_age": 26
+    },
+    {
+      "id": "CHR-032",
+      "name": "小满",
+      "actual_age": 24,
+      "appearance_age": 22
+    },
+    {
+      "id": "CHR-033",
+      "name": "罗宾",
+      "actual_age": 30,
+      "appearance_age": 28
+    },
+    {
+      "id": "CHR-034",
+      "name": "邵敏",
+      "actual_age": 40,
+      "appearance_age": 38
+    },
+    {
+      "id": "CHR-035",
+      "name": "阿东",
+      "actual_age": 23,
+      "appearance_age": 21
+    },
+    {
+      "id": "CHR-036",
+      "name": "安可",
+      "actual_age": 19,
+      "appearance_age": 17
+    },
+    {
+      "id": "CHR-037",
+      "name": "塞拉",
+      "actual_age": 27,
+      "appearance_age": 25
+    }
+  ]
+}

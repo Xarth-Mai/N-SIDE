@@ -1,0 +1,60 @@
+{
+  "status": "complete",
+  "reason": "Final 8 DCC renders were viewed by asset author; root independently reviewed three-quarter, face and walk-contact; no render process remains active",
+  "removed": [
+    {
+      "path": "output/characters/CHR-001/model-r1/back.png",
+      "bytes": 580611,
+      "sha256": "7fd8947e974a15394a544a129b1dccd7d21d3c9267188b04d03dd07316725032"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r1/face.png",
+      "bytes": 700268,
+      "sha256": "9c6ee2ecea630b27435a0bc4e3b95a190d7f3566d8e56d4863c24b4c45bd5655"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r1/front.png",
+      "bytes": 577695,
+      "sha256": "3d66f45317798c63897844540d55d3c829f40bbd830dc7598d9936232e3d024e"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r1/run-contact.png",
+      "bytes": 602136,
+      "sha256": "6149ff1d3402ae8edd11f9f753dac8eaca844270f260152062a2df2797b4ff31"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r1/run-lift.png",
+      "bytes": 607805,
+      "sha256": "6c88e8b8f06436b3068728902a08f9c1928c8cf20c516655700d315ea1939de8"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r1/three-quarter.png",
+      "bytes": 615975,
+      "sha256": "4c26e3c6d637ea2b3374d508adb200711b096fa1e469ea5a3353f68c318a4701"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r1/walk-contact.png",
+      "bytes": 595218,
+      "sha256": "62923ccc46d6893aa0ecb6cb8d6d342bdc6d307d91bf342d4a7760ed6bbd657c"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r1/walk-lift.png",
+      "bytes": 604162,
+      "sha256": "299adecb003b4dc2b1b91dde0f1491cb2b2de598de46624d8a55b487cafb0d9b"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 3153972
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/__pycache__/build.cpython-314.pyc",
+      "bytes": 56375
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/__pycache__/check.cpython-314.pyc",
+      "bytes": 5550
+    }
+  ],
+  "removed_bytes": 8099767,
+  "retained": "Source .blend, source PNG atlas, runtime GLB, build/check scripts, logs, hashes and JSON"
+}

@@ -41,6 +41,8 @@ pub struct PlayerState {
     pub camera_distance: f32,
     pub jumps: u32,
     pub sprinting: bool,
+    /// Actual collision-resolved velocity; visual animation never submits movement
+    pub velocity: Vec3,
     spawn: Vec3,
     vertical_speed: f32,
     ground_normal: Vec3,
@@ -70,6 +72,7 @@ impl PlayerState {
             camera_distance: CAMERA_LENGTH,
             jumps: 0,
             sprinting: false,
+            velocity: Vec3::ZERO,
             spawn: foot,
             vertical_speed: 0.0,
             ground_normal: Vec3::Y,
@@ -83,6 +86,7 @@ impl PlayerState {
         self.grounded = true;
         self.blocked = None;
         self.sprinting = false;
+        self.velocity = Vec3::ZERO;
         self.resets += 1;
     }
 
@@ -145,6 +149,11 @@ impl PlayerState {
         } else {
             self.foot += vertical;
         }
+        self.velocity = if dt > 0.0 {
+            (self.foot - start) / dt
+        } else {
+            Vec3::ZERO
+        };
         let (min, max) = collision.bounds();
         if !self.foot.is_finite()
             || self.foot.y < min.y - 15.0
@@ -239,7 +248,11 @@ fn step_up(collision: &CollisionWorld, foot: Vec3, horizontal: Vec3) -> Option<V
 }
 
 #[derive(Component)]
-struct PlayerBody;
+pub(crate) struct PlayerBody;
+#[derive(Component)]
+pub(crate) struct PlayerProxy;
+#[derive(SystemSet, Debug, Clone, PartialEq, Eq, Hash)]
+pub(crate) struct PlayerPresentation;
 #[derive(Resource, Default)]
 struct Intent {
     direction: Vec3,
@@ -311,12 +324,13 @@ pub fn install(app: &mut App) {
         .add_systems(
             Update,
             show_player
+                .in_set(PlayerPresentation)
                 .run_if(gameplay_active)
                 .run_if(resource_exists::<PlayerState>),
         );
 }
 
-fn gameplay_active(
+pub(crate) fn gameplay_active(
     phase: Res<State<GamePhase>>,
     next: Res<NextState<GamePhase>>,
     observation: Option<Res<Observation>>,
@@ -361,13 +375,19 @@ fn spawn_body(
     }
     commands.spawn((
         PlayerBody,
-        Mesh3d(meshes.add(Capsule3d::new(RADIUS, HEIGHT - RADIUS * 2.0))),
-        MeshMaterial3d(materials.add(StandardMaterial {
-            base_color: Color::srgb(0.84, 0.95, 0.27),
-            perceptual_roughness: 0.8,
-            ..default()
-        })),
-        Transform::from_translation(player.foot + Vec3::Y * HEIGHT * 0.5),
+        Name::new("PlayerVisual"),
+        Transform::from_translation(player.foot),
+        Visibility::Inherited,
+        children![(
+            PlayerProxy,
+            Mesh3d(meshes.add(Capsule3d::new(RADIUS, HEIGHT - RADIUS * 2.0))),
+            MeshMaterial3d(materials.add(StandardMaterial {
+                base_color: Color::srgb(0.84, 0.95, 0.27),
+                perceptual_roughness: 0.8,
+                ..default()
+            })),
+            Transform::from_translation(Vec3::Y * HEIGHT * 0.5),
+        )],
     ));
 }
 
@@ -549,8 +569,13 @@ fn show_player(
         .map_or(1.0, |hit| hit.fraction);
     player.camera_distance = CAMERA_LENGTH * distance;
     if let Ok((mut body, mut visibility)) = body.single_mut() {
-        body.translation = player.foot + Vec3::Y * HEIGHT * 0.5;
-        // The neutral proxy must not cover the viewport when a wall forces the camera inside it
+        body.translation = player.foot;
+        let velocity = player.velocity.xz();
+        if velocity.length_squared() > 0.0016 {
+            // Imported characters face local +Z; rotate the visual, never the collision capsule
+            body.rotation = Quat::from_rotation_y(velocity.x.atan2(velocity.y));
+        }
+        // The player visual must not cover the viewport when a wall forces the camera inside it
         *visibility = if player.camera_distance < 0.8 {
             Visibility::Hidden
         } else {
@@ -960,6 +985,33 @@ mod tests {
             player.foot
         );
         assert_eq!(player.resets, 0);
+    }
+
+    #[test]
+    fn visual_root_tracks_feet_and_cleanup_removes_its_children() {
+        let mut app = App::new();
+        let foot = Vec3::new(2.0, 0.021, -3.0);
+        app.insert_resource(PlayerState::at(foot))
+            .init_resource::<Assets<Mesh>>()
+            .init_resource::<Assets<StandardMaterial>>()
+            .add_systems(Update, spawn_body);
+        app.update();
+        let world = app.world_mut();
+        let (root, transform) = world
+            .query_filtered::<(Entity, &Transform), With<PlayerBody>>()
+            .single(world)
+            .unwrap();
+        assert_eq!(transform.translation, foot);
+        let (parent, transform) = world
+            .query_filtered::<(&ChildOf, &Transform), With<PlayerProxy>>()
+            .single(world)
+            .unwrap();
+        assert_eq!(parent.parent(), root);
+        assert_eq!(transform.translation, Vec3::Y * HEIGHT * 0.5);
+        clear(world);
+        assert_eq!(world.query::<&Mesh3d>().iter(world).count(), 0);
+        assert_eq!(world.query::<&PlayerBody>().iter(world).count(), 0);
+        assert!(!world.contains_resource::<PlayerState>());
     }
 
     #[test]

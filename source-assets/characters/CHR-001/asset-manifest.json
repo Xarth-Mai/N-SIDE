@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "owner_id": "CHR-001",
+  "assets": [
+    {
+      "id": "AST-006",
+      "kind": "character-silhouette-reference",
+      "state": "concept",
+      "source_path": "source-assets/characters/CHR-001/silhouette-r3.png",
+      "runtime_path": null,
+      "provenance": "Original r3 generated in built-in OpenAI image_gen from a new text brief after author rejected r1/r2; historical prompts retained unchanged",
+      "license_status": "review_required",
+      "generation_record": "source-assets/characters/CHR-001/generation-r3.json",
+      "source_sha256": "a0aab39880836b8cd0e14fadc91c1c0609f6d91eea9edeb06ceb5eb8bbad8b2e",
+      "width": 1024,
+      "height": 1536,
+      "color_space": "sRGB assumed; no embedded ICC profile returned",
+      "alpha": false,
+      "display_use": "Uncolored full-body face and silhouette proposal; not a turnaround, runtime texture or final palette",
+      "candidate_dimensions": {
+        "standing_height_m": null,
+        "heads_tall_prompt": 6.7,
+        "heads_tall_measured": null
+      },
+      "acceptance": {
+        "technical": "source PNG decoded, dimensions and hashes checked",
+        "visual": "r3 self-audit; author acceptance pending",
+        "runtime": "not integrated",
+        "modeling": "separate AST-008 grey study authored; concept and finished model aesthetics remain unaccepted",
+        "render_style": "not accepted; future coloring follows the existing cinema character-poster treatment"
+      },
+      "history": [
+        {
+          "revision": "r1",
+          "source_path": "source-assets/characters/CHR-001/turnaround-r1.png",
+          "generation_record": "source-assets/characters/CHR-001/generation-r1.json",
+          "sha256": "d7064962e30a011c6e963b27c86ad2c92e4acc1e8d782032bcdacbb6fbc6d2c4",
+          "status": "rejected",
+          "reason": "Rejected after user required young fashionable anime appearance; heavy workwear silhouette and prior palette withdrawn"
+        },
+        {
+          "revision": "r2",
+          "source_path": "source-assets/characters/CHR-001/turnaround-r2.png",
+          "generation_record": "source-assets/characters/CHR-001/generation-r2.json",
+          "sha256": "7ea442c1c4ba890dec0a7f756ae4b672a8c5a5e2642eb723804f30ea0d3739d5",
+          "status": "rejected",
+          "reason": "User: 图片这一版曜都装扮也太土了 像30岁 / 不要这些配色啊 / 人物也应该是少年 不是中年"
+        }
+      ],
+      "active_candidate": "r3",
+      "actual_age": 20,
+      "appearance_age": 18,
+      "age_rule_source": "docs/dev/production/art-direction.md#外观年龄与造型",
+      "palette_status": "undecided; r1/r2 color proposals withdrawn",
+      "next_stage_style_reference": {
+        "asset_id": "AST-AREA-PREVIEWS",
+        "path": "source-assets/area-previews/cinema-music-street.png",
+        "region": "left vertical character poster",
+        "purpose": "future color illustration linework and cel shading; not r3 image input",
+        "rights_record": "source-assets/area-previews/README.md"
+      }
+    },
+    {
+      "id": "AST-008",
+      "kind": "skinned-character-study",
+      "state": "technical-preview",
+      "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+      "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "source_sha256": "08ca74410089127249e8fbcf78bdb8f10b27488ce67fae1754a97c97312384c8",
+      "runtime_sha256": "fee9414871bfbc7d82fdd0ad8eac78a8be37cf5c3f65936e9dc7baebf60b0d61",
+      "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
+      "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
+      "references": [
+        "source-assets/characters/CHR-001/silhouette-r3.png",
+        "source-assets/area-previews/cinema-music-street.png"
+      ],
+      "texture": {
+        "path": "source-assets/characters/CHR-001/model/grey-study.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB",
+        "alpha": false,
+        "embedded_in_glb": true
+      },
+      "dimensions": {
+        "height_m": 1.7440556287765503,
+        "units": "meters",
+        "up_axis": "+Y",
+        "forward_axis": "+Z",
+        "pivot": "feet at origin"
+      },
+      "scene": "Scene",
+      "root_bone": "Root",
+      "joints": 32,
+      "clips": [
+        {
+          "name": "Idle",
+          "duration_seconds": 2.0
+        },
+        {
+          "name": "Walk",
+          "duration_seconds": 1.0
+        },
+        {
+          "name": "Run",
+          "duration_seconds": 0.6666666666666666
+        }
+      ],
+      "world_motion_owner": "real player controller, in-place animation",
+      "actual_age": 20,
+      "appearance_age": 18,
+      "palette_status": "undecided grayscale values only",
+      "acceptance": {
+        "technical": "DCC and GLB checks PASS; actual Bevy preview PASS, see TASK-047 runtime-r1",
+        "visual": "needs_revision; author not accepted; face, fabric and anime render style pending"
+      },
+      "generation": {
+        "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
+        "external_generation_service": null,
+        "service_cost": null
+      },
+      "evidence": "todo/evidence/TASK-047/model-r1/delivery.json"
+    }
+  ],
+  "uses": [
+    "AST-AREA-PREVIEWS"
+  ]
+}

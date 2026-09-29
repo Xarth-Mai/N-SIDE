@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "asset_id": "AST-006",
+  "owner_id": "CHR-001",
+  "date": "2026-09-29",
+  "revision": "r3",
+  "tool": "OpenAI built-in image_gen",
+  "mode": "built-in",
+  "use_case": "stylized-concept",
+  "model": null,
+  "model_version": null,
+  "seed": null,
+  "request_id": null,
+  "actual_cost": null,
+  "cost_currency": null,
+  "tool_returned_metadata": [
+    "image_url",
+    "output_hint"
+  ],
+  "tool_arguments": {
+    "prompt": "Use case: stylized-concept\nAsset type: original UNCOLORED character silhouette and face exploration for an anime urban RPG, one full-body design, proposed CHR-001 Yuecheng Yao for N:SIDE\nPrimary request: Create a COMPLETELY NEW youthful anime male character design. In the story he is 20, but his APPEARANCE should be approximately 18. He must read immediately as a fresh, lively late-teen-looking young man, NOT a mature adult repairman. This is a black-and-white shape design only: no final costume palette is decided\nStyle: beautiful clean expressive anime production drawing, crisp varied line weight and very restrained light-gray cel shadows, pure white paper background. STRICT GRAYSCALE. Mostly white uncolored clothing with gray hatching/shadow to show construction, not a locked black-and-white outfit palette. No colored pixels, color swatches or palette chart\nFace: recognizably youthful late-teen appearance, soft short jaw and small rounded chin, fresh slightly rounded cheeks, lively large anime eyes, delicately defined eyebrows, tiny understated nose, light subtle friendly grin. Short slender neck, narrow relaxed shoulders. No long angular face, no pronounced jawline, no neck muscles, no cheek/nasolabial lines or stubble. Clear face fully readable, no heavy facial shadows. Not a small child or chibi\nHair: fluffy airy short-to-medium anime hair with broad flowing curved locks, soft volume around forehead and crown, gently asymmetrical parted fringe, visible eyes, lightly flicked nape. Energetic and soft rather than slicked-back or stiff military spikes. It is an uncolored hair design with light gray volume only\nBody and stance: slim light-footed youthful build, approximately 6.7 heads tall, head intentionally a little larger than a realistic adult, lean arms and legs, not muscular. Casual standing pose seen nearly from front with a slight natural 3/4 angle, one hand casually at the trouser pocket and the other loose beside his body. A small shift of weight suggests youthful ease, not a rigid catalog pose. Keep both shoes, both hands and all hair inside frame\nClothing silhouette: modern loose youth streetwear, clean and specific rather than a service uniform. A short boxy lightweight zip jacket with a soft hood, dropped shoulders, relaxed sleeves ending at narrow cuffs, a naturally open front and a subtly asymmetric hem. Under it a simple slightly longer loose T-shirt with ONE small original abstract pair-of-dots and a short bar graphic, no words. The short jacket and stepped T-shirt create a clear lively top silhouette. Relaxed straight tapered casual trousers with only subtle panel seams and normal concealed pockets, a clean break above the shoes. Comfortable chunky contemporary sneakers with an unmistakable sculpted sole and simple broad upper panels. One small key loop at the waist is enough to hint at an ordinary shop-going city life\nDesign discipline: NO shirt-style folded collar, work jacket, large patch pockets, tool belt, utility pouch, mechanic uniform, safety gear, military/tactical details, long coat, excessive dangling straps, jewelry collection or repeated decoration. No tracksuit side stripes. Fashionable youth through proportion, drape and silhouette, not arbitrary ornaments. Everyday urban clothes, no combat or fantasy equipment\nComposition: one full-body character only, portrait page, figure about 85% of height, generous blank margin, large enough face to read. No additional views or head inserts in this image. Even neutral light, clean edges, minimal soft ground contact mark. No background city, no explanatory labels, no titles, no watermark\nIdentity: this is an original design, no resemblance to a named existing character or franchise. The design is for a young co-owner of a neighborhood variety store, but his clothes express an eighteen-looking urban young adult rather than a job uniform. Do not infer personality or change story",
+    "transparent_background": false
+  },
+  "image_inputs": [],
+  "user_direction": [
+    "图片这一版曜都装扮也太土了 像30岁",
+    "不要这些配色啊",
+    "人物也应该是少年 不是中年",
+    "做成大约18岁的样子 所有角色外观年龄设置为实际年龄-2"
+  ],
+  "actual_age": 20,
+  "appearance_age": 18,
+  "age_rule_source": "docs/dev/production/art-direction.md#外观年龄与造型",
+  "changes_from_rejected_candidates": [
+    "New generation without r1/r2 image conditioning",
+    "Uncolored face and silhouette study; all prior color proposals withdrawn",
+    "Soft short jaw, expressive anime eyes, slender neck/shoulders and fluffy flowing hair",
+    "Loose short hooded jacket and casual silhouette; remove workwear collar, patch pockets and tool pouch"
+  ],
+  "original_workspace_copy": "source-assets/characters/CHR-001/silhouette-r3.png",
+  "original_sha256": "a0aab39880836b8cd0e14fadc91c1c0609f6d91eea9edeb06ceb5eb8bbad8b2e",
+  "modifications": [],
+  "output": {
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGB",
+    "format": "PNG",
+    "bytes": 1290818,
+    "metadata_keys": [],
+    "max_rgb_channel_difference": 12
+  },
+  "palette_status": "Undecided. Near-neutral grayscale illustration only, RGB source contains small channel differences; no hair or costume color was selected",
+  "rights": {
+    "source": "Generated with built-in tool from a new text brief at the user's request",
+    "license": null,
+    "usage_scope": "Project-local silhouette and face design candidate",
+    "external_reference_images": [],
+    "release_review": "Applicable generation-service terms and final asset distribution must be checked before external asset distribution; no CC0 or third-party license is asserted"
+  },
+  "checks": {
+    "machine_report": "todo/evidence/TASK-047/character-design-r3/asset-report.json",
+    "visual_review": "todo/evidence/TASK-047/character-design-r3/review.md"
+  }
+}

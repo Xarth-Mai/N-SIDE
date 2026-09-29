@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "path": "tools/tests/fixtures/character.glb",
+  "sha256": "28982e8b0e23319e5e00f1d7d0ffd9d048cfed8ecbc274edb3d97c450669db5d",
+  "skins": 1,
+  "joints": 2,
+  "skinned_vertices": 24,
+  "bind_bounds_m": [
+    [
+      -0.20000000298023224,
+      0.20000000298023224
+    ],
+    [
+      0.0,
+      1.7000000476837158
+    ],
+    [
+      -0.10000000149011612,
+      0.10000000149011612
+    ]
+  ],
+  "height_m": 1.7000000476837158,
+  "embedded_images": 1,
+  "animations": [
+    {
+      "name": "Idle",
+      "duration_seconds": 1.0,
+      "joint_channels": 6,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Sway",
+      "duration_seconds": 1.0,
+      "joint_channels": 6,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    }
+  ],
+  "scope": "exported data only; deformation, contact, loop quality and Bevy playback require runtime review"
+}

@@ -1,0 +1,6 @@
+{
+  "removed": "output/tools/blender-download/blender-4.5.14-linux-x64.tar.xz",
+  "bytes": 378045212,
+  "reason": "Official checksum verified and extraction completed; portable Blender retained for ongoing source modeling",
+  "retained": "output/tools/blender-4.5.14-linux-x64/; checksum file and blender-tool.json"
+}

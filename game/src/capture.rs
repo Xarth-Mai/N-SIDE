@@ -4,9 +4,11 @@
 //! N:SIDE implementation records real application input, state and rendered frames
 use crate::{
     app::{EntrySettings, EntryUi, GameLoadError, GamePhase},
+    character::CharacterStatus,
     graphics::GraphicsEvidence,
     places::{Observation, PlaceHud},
     player::{PlayerState, PointerLock},
+    story::ShopHandoff,
     ui::{SignalUi, UiFont, UiInput},
     world::{
         collision::CollisionWorld,
@@ -153,6 +155,8 @@ pub struct Assertion {
     observation_selected: Option<String>,
     observation_open: Option<bool>,
     observation_visible: Option<bool>,
+    handoff: Option<HandoffCheck>,
+    character: Option<CharacterCheck>,
     settings_open: Option<bool>,
     graphics_tab: Option<bool>,
     graphics_page: Option<usize>,
@@ -164,6 +168,116 @@ pub struct Assertion {
     text_scale: Option<f32>,
     camera_sensitivity: Option<f32>,
     entry_device: Option<String>,
+}
+
+#[derive(Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct CharacterCheck {
+    ready: bool,
+    clip: Option<String>,
+    min_clip_elapsed: Option<f32>,
+    min_advance: Option<f32>,
+    max_drift: Option<f32>,
+    paused: Option<bool>,
+    min_transitions: Option<u32>,
+}
+
+impl CharacterCheck {
+    fn valid(&self) -> bool {
+        self.clip
+            .as_deref()
+            .is_none_or(|v| ["Idle", "Walk", "Run"].contains(&v))
+            && [self.min_clip_elapsed, self.min_advance, self.max_drift]
+                .into_iter()
+                .flatten()
+                .all(|v| v.is_finite() && v >= 0.0)
+    }
+
+    fn matches_range(&self, samples: &[Sample]) -> bool {
+        if !samples.iter().all(|s| self.matches(s.character.as_ref())) {
+            return false;
+        }
+        if self.min_advance.is_none() && self.max_drift.is_none() {
+            return true;
+        }
+        let Some(first) = samples.first().and_then(|s| s.character.as_ref()) else {
+            return false;
+        };
+        let last = samples.last().unwrap().character.as_ref().unwrap();
+        self.min_advance.is_none_or(|v| {
+            last.clip_elapsed - first.clip_elapsed >= v
+                && (v == 0.0
+                    || samples.iter().any(|s| {
+                        (s.character.as_ref().unwrap().clip_time - first.clip_time).abs() > 0.00001
+                    }))
+        }) && samples.iter().all(|s| {
+            let actual = s.character.as_ref().unwrap();
+            actual.clip == first.clip
+                && actual.transitions == first.transitions
+                && self.max_drift.is_none_or(|v| {
+                    (actual.clip_elapsed - first.clip_elapsed).abs() <= v
+                        && (actual.clip_time - first.clip_time).abs() <= v
+                })
+        })
+    }
+
+    fn matches(&self, actual: Option<&CharacterStatus>) -> bool {
+        let Some(actual) = actual else { return false };
+        actual.error.is_none()
+            && actual.clip_elapsed.is_finite()
+            && actual.clip_time.is_finite()
+            && actual.ready == self.ready
+            && self.clip.as_deref().is_none_or(|v| actual.clip == Some(v))
+            && self
+                .min_clip_elapsed
+                .is_none_or(|v| actual.clip_elapsed >= v)
+            && self.paused.is_none_or(|v| actual.paused == v)
+            && self.min_transitions.is_none_or(|v| actual.transitions >= v)
+    }
+}
+
+#[derive(Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct HandoffCheck {
+    stage: Option<String>,
+    observed_places: Option<Vec<String>>,
+    confirmation_count: Option<u32>,
+    rejected_choices: Option<u32>,
+}
+
+impl HandoffCheck {
+    fn valid(&self) -> bool {
+        (self.stage.is_some()
+            || self.observed_places.is_some()
+            || self.confirmation_count.is_some()
+            || self.rejected_choices.is_some())
+            && self
+                .stage
+                .as_deref()
+                .is_none_or(|v| ["observing", "awaiting_choice", "confirmed"].contains(&v))
+            && self.observed_places.as_ref().is_none_or(|ids| {
+                ids.iter()
+                    .all(|id| crate::story::HANDOFF_PLACES.contains(&id.as_str()))
+                    && ids.iter().collect::<std::collections::BTreeSet<_>>().len() == ids.len()
+            })
+    }
+
+    fn matches(&self, actual: Option<&ShopHandoff>) -> bool {
+        let Some(actual) = actual else { return false };
+        self.stage
+            .as_deref()
+            .is_none_or(|v| v == actual.stage().as_str())
+            && self.observed_places.as_ref().is_none_or(|ids| {
+                ids.iter().collect::<std::collections::BTreeSet<_>>()
+                    == actual.observed_places.iter().collect()
+            })
+            && self
+                .confirmation_count
+                .is_none_or(|v| v == actual.confirmation_count)
+            && self
+                .rejected_choices
+                .is_none_or(|v| v == actual.rejected_choices)
+    }
 }
 
 #[derive(Clone, Deserialize, Serialize)]
@@ -373,10 +487,20 @@ impl Script {
                     && check.gamepad_connected.is_none()
                     && check.pointer_locked.is_none()
                     && check.graphics.is_none()
+                    && check.handoff.is_none()
+                    && check.character.is_none()
                     && !check.has_observation_assertion()
                     && !check.has_entry_assertion()
                     && !check.has_place_assertion()
                     && !check.has_player_assertion())
+                || check
+                    .handoff
+                    .as_ref()
+                    .is_some_and(|v| self.scene != "walk-preview" || !v.valid())
+                || check
+                    .character
+                    .as_ref()
+                    .is_some_and(|v| self.scene != "walk-preview" || !v.valid())
                 || (check.has_player_assertion() && self.scene != "walk-preview")
                 || (check.gamepad_connected.is_some() && !self.game_scene())
                 || (check.pointer_locked.is_some() && self.scene != "walk-preview")
@@ -732,10 +856,69 @@ struct EntrySample {
     device: &'static str,
 }
 
+#[derive(Clone, Copy, Serialize)]
+struct ResourceCounts {
+    entities: usize,
+    meshes: usize,
+    images: usize,
+    materials: usize,
+}
+
+#[derive(Default)]
+struct RuntimeMetrics {
+    last_update: Option<Instant>,
+    last_world_active: bool,
+    world_update_intervals_ms: Vec<f64>,
+    load_started: Option<Instant>,
+    observed_load_seconds: Vec<f64>,
+}
+
+impl RuntimeMetrics {
+    fn observe(&mut self, now: Instant, loading: Option<bool>, world_active: bool) {
+        if let Some(previous) = self.last_update.replace(now)
+            && world_active
+            && self.last_world_active
+        {
+            self.world_update_intervals_ms
+                .push(now.duration_since(previous).as_secs_f64() * 1000.0);
+        }
+        self.last_world_active = world_active;
+        match loading {
+            Some(false) => {
+                self.load_started.get_or_insert(now);
+            }
+            Some(true) => {
+                if let Some(started) = self.load_started.take() {
+                    self.observed_load_seconds
+                        .push(now.duration_since(started).as_secs_f64());
+                }
+            }
+            None => self.load_started = None,
+        }
+    }
+}
+
+// Capture intervals include screenshot scheduling, readback waits and PNG saves
+// Native frame timing and GPU timings require separate profiling
+fn interval_summary(mut values: Vec<f64>) -> serde_json::Value {
+    if values.is_empty() {
+        return serde_json::Value::Null;
+    }
+    values.sort_unstable_by(f64::total_cmp);
+    let percentile = |fraction: f64| values[(values.len() as f64 * fraction).ceil() as usize - 1];
+    serde_json::json!({
+        "count": values.len(), "mean": values.iter().sum::<f64>() / values.len() as f64,
+        "p50": percentile(0.5), "p95": percentile(0.95), "max": values.last(),
+        "percentile_method": "nearest_rank"
+    })
+}
+
 #[derive(Serialize)]
 struct Sample {
     frame: u32,
     simulation_seconds: f64,
+    wall_elapsed_seconds: f64,
+    resources: Option<ResourceCounts>,
     position: [f32; 3],
     rotation: [f32; 4],
     enabled: bool,
@@ -746,6 +929,8 @@ struct Sample {
     ui: Option<serde_json::Value>,
     place: Option<PlaceSample>,
     observation: Option<ObservationSample>,
+    handoff: Option<ShopHandoff>,
+    character: Option<CharacterStatus>,
     entry: Option<EntrySample>,
     gamepad_connected: bool,
     pointer_locked: Option<bool>,
@@ -757,6 +942,7 @@ pub struct Recording {
     pub script: Script,
     output: PathBuf,
     started: Instant,
+    metrics: RuntimeMetrics,
     warmup: u32,
     tick: bool,
     pending: bool,
@@ -795,6 +981,7 @@ impl Recording {
             script,
             output,
             started: Instant::now(),
+            metrics: RuntimeMetrics::default(),
             warmup: 30,
             tick: false,
             pending: false,
@@ -852,11 +1039,20 @@ impl Recording {
                         && assertion.check_player(
                             &self.samples[assertion.from as usize..=assertion.to as usize],
                         )
+                        && assertion.character.as_ref().is_none_or(|v| {
+                            v.matches_range(
+                                &self.samples[assertion.from as usize..=assertion.to as usize],
+                            )
+                        })
                         && self.samples[assertion.from as usize..=assertion.to as usize]
                             .iter()
                             .all(|sample| {
                                 assertion.check_place(sample.place.as_ref())
                                     && assertion.check_observation(sample.observation.as_ref())
+                                    && assertion
+                                        .handoff
+                                        .as_ref()
+                                        .is_none_or(|v| v.matches(sample.handoff.as_ref()))
                                     && assertion.check_entry(sample.entry.as_ref())
                                     && assertion
                                         .pointer_locked
@@ -935,9 +1131,27 @@ impl Recording {
             "status":if passed {"PASS"} else {"FAIL"}, "script":self.script,
             "elapsed_wall_seconds":self.started.elapsed().as_secs_f64(), "error":self.failure,
             "checks":checks, "samples":self.samples,
+            "performance": {
+                "world_update_interval_ms": interval_summary(self.metrics.world_update_intervals_ms.clone()),
+                "world_capture_frame_interval_ms": interval_summary(self.samples.windows(2)
+                    .filter(|pair| pair.iter().all(|sample| sample.world_ready && sample.game_page.as_deref().is_none_or(|page| page == "world")))
+                    .map(|pair| (pair[1].wall_elapsed_seconds - pair[0].wall_elapsed_seconds) * 1000.0).collect()),
+                "observed_scene_load_seconds": self.metrics.observed_load_seconds,
+                "resource_counts": {
+                    "first_ready": self.samples.iter().find_map(|sample| sample.resources),
+                    "last_ready": self.samples.iter().rev().find_map(|sample| sample.resources),
+                    "peak_ready": {
+                        "entities": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.entities)).max(),
+                        "meshes": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.meshes)).max(),
+                        "images": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.images)).max(),
+                        "materials": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.materials)).max()
+                    }
+                },
+                "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time."
+            },
             "determinism":"Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
             "visual_review":"NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
-            "scope":"Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
+            "scope":"Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
         });
         let written = serde_json::to_vec_pretty(&report)
             .map_err(|e| e.to_string())
@@ -1015,6 +1229,7 @@ fn advance_clock(
     mut strategy: ResMut<TimeUpdateStrategy>,
     ui_font: Option<Res<UiFont>>,
     assets: Res<AssetServer>,
+    character: Option<Res<CharacterStatus>>,
 ) {
     recording.tick = ui_font
         .as_ref()
@@ -1025,6 +1240,12 @@ fn advance_clock(
                 || phase
                     .as_ref()
                     .is_some_and(|phase| phase.get().as_str() == wait.game_page)
+        })
+        && character.as_ref().is_none_or(|c| {
+            !phase
+                .as_ref()
+                .is_some_and(|p| matches!(p.get(), GamePhase::World | GamePhase::Paused))
+                || c.ready
         })
         && recording.warmup == 0
         && !recording.pending
@@ -1280,20 +1501,44 @@ fn record(
         Option<Res<EntrySettings>>,
         Option<Res<PointerLock>>,
         Option<Res<GraphicsEvidence>>,
+        Option<Res<ShopHandoff>>,
+        Option<Res<CharacterStatus>>,
     ),
     ui_font: Option<Res<UiFont>>,
-    assets: Res<AssetServer>,
+    assets: (
+        Res<AssetServer>,
+        Query<Entity>,
+        Res<Assets<Mesh>>,
+        Res<Assets<Image>>,
+        Res<Assets<StandardMaterial>>,
+    ),
 ) {
-    let (ui, place, observation, entry, settings, pointer_lock, graphics) = ui_state;
+    let (ui, place, observation, entry, settings, pointer_lock, graphics, handoff, character) =
+        ui_state;
+    let (asset_server, entities, meshes, images, materials) = assets;
     if recording.finished {
         return;
     }
     if let Some(font) = &ui_font
-        && let Some(bevy::asset::LoadState::Failed(error)) = assets.get_load_state(font.0.id())
+        && let Some(bevy::asset::LoadState::Failed(error)) =
+            asset_server.get_load_state(font.0.id())
     {
         recording.failure = Some(format!("UI font loading failed: {error}"));
     }
+    if let Some(error) = character.as_ref().and_then(|c| c.error.as_ref()) {
+        recording.failure = Some(format!("character loading: {error}"));
+    }
     let world_ready = loading.as_ref().is_some_and(|loading| loading.ready);
+    let capture_warmed_up = recording.warmup == 0;
+    recording.metrics.observe(
+        Instant::now(),
+        loading.as_ref().map(|loading| loading.ready),
+        world_ready
+            && capture_warmed_up
+            && phase
+                .as_ref()
+                .is_none_or(|phase| phase.get().as_str() == "world"),
+    );
     recording.world_ready_seen |= world_ready;
     if let Some(error) = load_error {
         recording.failure = Some(format!("game loading: {}", error.0));
@@ -1370,9 +1615,17 @@ fn record(
     let enabled = controller.single().is_ok_and(|state| state.enabled);
     #[cfg(not(feature = "viewer"))]
     let enabled = false;
+    let wall_elapsed_seconds = recording.started.elapsed().as_secs_f64();
     recording.samples.push(Sample {
         frame,
         simulation_seconds,
+        wall_elapsed_seconds,
+        resources: world_ready.then(|| ResourceCounts {
+            entities: entities.iter().len(),
+            meshes: meshes.len(),
+            images: images.len(),
+            materials: materials.len(),
+        }),
         position: transform.translation.to_array(),
         rotation: transform.rotation.to_array(),
         enabled,
@@ -1383,6 +1636,8 @@ fn record(
         pointer_locked: pointer_lock.as_ref().map(|pointer| pointer.active),
         graphics: graphics.as_ref().map(|graphics| (**graphics).clone()),
         player: player.as_deref().map(PlayerSample::from),
+        handoff: handoff.as_deref().cloned(),
+        character: character.as_deref().cloned(),
         observation: observation.as_ref().map(|observation| ObservationSample {
             target: observation.target.clone(),
             selected: observation.selected.clone(),
@@ -1459,6 +1714,92 @@ mod tests {
     use super::*;
 
     #[test]
+    fn character_evidence_rejects_absent_failed_or_unplayed_assets() {
+        let check: CharacterCheck = serde_json::from_value(serde_json::json!({
+            "ready":true,"clip":"Walk","min_clip_elapsed":0.2,"paused":false
+        }))
+        .unwrap();
+        assert!(check.valid());
+        assert!(!check.matches(None));
+        let mut actual = CharacterStatus::default();
+        assert!(!check.matches(Some(&actual)));
+        actual.ready = true;
+        actual.clip = Some("Walk");
+        actual.clip_elapsed = 0.3;
+        assert!(check.matches(Some(&actual)));
+        actual.error = Some("missing texture".into());
+        assert!(!check.matches(Some(&actual)));
+        for bad in [
+            serde_json::json!({"ready":true,"clip":"Jump"}),
+            serde_json::json!({"ready":true,"min_clip_elapsed":-1.0}),
+        ] {
+            assert!(
+                !serde_json::from_value::<CharacterCheck>(bad)
+                    .unwrap()
+                    .valid()
+            );
+        }
+    }
+
+    #[test]
+    fn handoff_assertions_require_measured_state_and_reject_invalid_contracts() {
+        let mut check: HandoffCheck = serde_json::from_value(serde_json::json!({
+            "stage":"observing", "observed_places":[], "confirmation_count":0, "rejected_choices":0
+        }))
+        .unwrap();
+        assert!(check.valid());
+        assert!(!check.matches(None));
+        let mut actual = ShopHandoff::default();
+        assert!(check.matches(Some(&actual)));
+        actual.observed_places.insert("04".into());
+        assert!(!check.matches(Some(&actual)));
+        check.observed_places = Some(vec!["04".into()]);
+        assert!(check.matches(Some(&actual)));
+        actual.confirmation_count = 1;
+        assert!(!check.matches(Some(&actual)));
+        for bad in [
+            serde_json::json!({}),
+            serde_json::json!({"stage":"done"}),
+            serde_json::json!({"observed_places":["04","04"]}),
+            serde_json::json!({"observed_places":["99"]}),
+        ] {
+            assert!(!serde_json::from_value::<HandoffCheck>(bad).unwrap().valid());
+        }
+    }
+
+    #[test]
+    fn capture_metrics_measure_wall_time_and_exclude_load_and_pause_boundaries() {
+        let start = Instant::now();
+        let mut metrics = RuntimeMetrics::default();
+        for (ms, ready, active) in [
+            (0, false, false),
+            (100, false, false),
+            (300, true, true),
+            (320, true, true),
+            (360, true, true),
+            (500, true, false),
+            (600, true, true),
+            (660, true, true),
+        ] {
+            metrics.observe(start + Duration::from_millis(ms), Some(ready), active);
+        }
+        assert_eq!(metrics.observed_load_seconds, [0.3]);
+        assert_eq!(metrics.world_update_intervals_ms, [20.0, 40.0, 60.0]);
+        let summary = interval_summary(metrics.world_update_intervals_ms);
+        assert_eq!(summary["count"], 3);
+        assert_eq!(summary["mean"], 40.0);
+        assert_eq!(summary["p50"], 40.0);
+        assert_eq!(summary["p95"], 60.0);
+        assert_eq!(summary["max"], 60.0);
+        assert!(interval_summary(vec![]).is_null());
+        let single = interval_summary(vec![7.0]);
+        for key in ["mean", "p50", "p95", "max"] {
+            assert_eq!(single[key], 7.0);
+        }
+        assert_eq!(single["count"], 1);
+    }
+
+    #[test]
     fn connection_script_uses_input_plugin_and_preserves_disconnected_state() {
         let mut script: Script =
             serde_json::from_str(include_str!("../capture/game-entry.json")).unwrap();
@@ -1486,6 +1827,7 @@ mod tests {
                 script,
                 output: PathBuf::new(),
                 started: Instant::now(),
+                metrics: RuntimeMetrics::default(),
                 warmup: 0,
                 tick: true,
                 pending: false,
@@ -1575,6 +1917,7 @@ mod tests {
                 script,
                 output: PathBuf::new(),
                 started: Instant::now(),
+                metrics: RuntimeMetrics::default(),
                 warmup: 0,
                 tick: true,
                 pending: false,
@@ -1656,6 +1999,7 @@ mod tests {
             script,
             output: PathBuf::new(),
             started: Instant::now(),
+            metrics: RuntimeMetrics::default(),
             warmup: 0,
             tick: false,
             pending: false,
@@ -1926,6 +2270,8 @@ mod tests {
             .map(|(frame, angle)| Sample {
                 frame: frame as u32,
                 simulation_seconds: frame as f64 / 30.0,
+                wall_elapsed_seconds: frame as f64 / 30.0,
+                resources: None,
                 position: [0.; 3],
                 rotation: Quat::from_rotation_y(angle).to_array(),
                 enabled: false,
@@ -1936,6 +2282,8 @@ mod tests {
                 ui: None,
                 place: None,
                 observation: None,
+                handoff: None,
+                character: None,
                 entry: None,
                 gamepad_connected: true,
                 pointer_locked: Some(false),
@@ -1946,6 +2294,7 @@ mod tests {
             script,
             output: output.clone(),
             started: Instant::now(),
+            metrics: RuntimeMetrics::default(),
             warmup: 0,
             tick: false,
             pending: false,
@@ -2184,6 +2533,8 @@ mod tests {
         let sample = |x| Sample {
             frame: 0,
             simulation_seconds: 0.0,
+            wall_elapsed_seconds: 0.0,
+            resources: None,
             position: [0.0; 3],
             rotation: [0.0, 0.0, 0.0, 1.0],
             enabled: false,
@@ -2193,6 +2544,8 @@ mod tests {
             ui: None,
             place: None,
             observation: None,
+            handoff: None,
+            character: None,
             entry: None,
             gamepad_connected: true,
             pointer_locked: Some(true),
@@ -2233,5 +2586,47 @@ mod tests {
         assert!(!assertion.check_player(&samples));
         samples[1].player = None;
         assert!(!assertion.check_player(&samples));
+
+        let mut check: CharacterCheck = serde_json::from_value(serde_json::json!({
+            "ready": true, "clip":"Walk", "paused":false, "min_advance":0.4
+        }))
+        .unwrap();
+        for sample in &mut samples {
+            sample.character = Some(CharacterStatus {
+                ready: true,
+                clip: Some("Walk"),
+                clip_elapsed: 0.2,
+                ..default()
+            });
+        }
+        assert!(!check.matches_range(&samples), "frozen animation must fail");
+        samples[1].character.as_mut().unwrap().clip_elapsed = 0.5;
+        samples[2].character.as_mut().unwrap().clip_elapsed = 0.7;
+        assert!(
+            !check.matches_range(&samples),
+            "speed zero must fail despite elapsed growth"
+        );
+        samples[1].character.as_mut().unwrap().clip_time = 0.3;
+        assert!(check.matches_range(&samples));
+        check.min_advance = None;
+        check.max_drift = Some(0.001);
+        assert!(!check.matches_range(&samples), "pause cannot advance");
+        samples[2].character.as_mut().unwrap().clip_elapsed = 0.2;
+        assert!(
+            !check.matches_range(&samples),
+            "middle-frame drift must fail"
+        );
+        samples[1].character.as_mut().unwrap().clip_elapsed = 0.2;
+        assert!(
+            !check.matches_range(&samples),
+            "seek-time drift cannot hide behind constant elapsed"
+        );
+        samples[1].character.as_mut().unwrap().clip_time = 0.0;
+        assert!(check.matches_range(&samples));
+        samples[1].character.as_mut().unwrap().transitions = 1;
+        assert!(
+            !check.matches_range(&samples),
+            "clip restarts invalidate elapsed comparisons"
+        );
     }
 }

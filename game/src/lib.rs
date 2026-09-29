@@ -1,8 +1,10 @@
 pub mod app;
 pub mod capture;
+pub mod character;
 pub(crate) mod graphics;
 pub mod places;
 pub mod player;
 pub(crate) mod settings;
+pub mod story;
 pub mod ui;
 pub mod world;

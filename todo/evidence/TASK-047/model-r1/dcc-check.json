@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "asset": "CHR-001 modelling candidate",
+  "scope": "DCC joint transforms, loop endpoints and sole ground distance; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 61,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.983777360389468e-09,
+      "max_stance_height_error_m": 0.001999971689656377
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 31,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.214263485546326e-08,
+      "max_stance_height_error_m": 9.214263485546326e-08
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 21,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.0573883457709599e-07,
+      "max_stance_height_error_m": 1.068477573085147e-07
+    }
+  ]
+}

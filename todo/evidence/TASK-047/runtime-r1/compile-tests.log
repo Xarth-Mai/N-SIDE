@@ -1,0 +1,10 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 31.80s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 2 tests
+test character::tests::resolved_motion_selects_clips_and_airborne_does_not_fake_a_jump_clip ... ok
+test capture::tests::character_evidence_rejects_absent_failed_or_unplayed_assets ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 108 filtered out; finished in 0.00s
+

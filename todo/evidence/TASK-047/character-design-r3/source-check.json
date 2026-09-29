@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "owner_id": "CHR-001",
+  "active_candidate": "r3",
+  "actual_age": 20,
+  "appearance_age": 18,
+  "history_status": "r1 and r2 rejected",
+  "checks": [
+    {
+      "source": "source-assets/characters/CHR-001/silhouette-r3.png",
+      "sha256": "a0aab39880836b8cd0e14fadc91c1c0609f6d91eea9edeb06ceb5eb8bbad8b2e",
+      "generation": "source-assets/characters/CHR-001/generation-r3.json",
+      "result": "PASS"
+    },
+    {
+      "source": "source-assets/characters/CHR-001/turnaround-r1.png",
+      "sha256": "d7064962e30a011c6e963b27c86ad2c92e4acc1e8d782032bcdacbb6fbc6d2c4",
+      "generation": "source-assets/characters/CHR-001/generation-r1.json",
+      "result": "PASS"
+    },
+    {
+      "source": "source-assets/characters/CHR-001/turnaround-r2.png",
+      "sha256": "7ea442c1c4ba890dec0a7f756ae4b672a8c5a5e2642eb723804f30ea0d3739d5",
+      "generation": "source-assets/characters/CHR-001/generation-r2.json",
+      "result": "PASS"
+    }
+  ]
+}

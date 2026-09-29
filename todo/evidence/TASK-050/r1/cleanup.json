@@ -1,0 +1,17 @@
+{
+  "policy": "After actual observation and completed processes, remove only this run visual intermediates; retain logs, state, script, source and formal assets",
+  "runs": [
+    {
+      "run": "output/capture/task050-handoff-r1",
+      "files_removed": 558,
+      "bytes_removed": 378383553,
+      "remaining_visual_files": 0
+    },
+    {
+      "run": "output/capture/task050-character-large-reentry",
+      "files_removed": 805,
+      "bytes_removed": 527554376,
+      "remaining_visual_files": 0
+    }
+  ]
+}

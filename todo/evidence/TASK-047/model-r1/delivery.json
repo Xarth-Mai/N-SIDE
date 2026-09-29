@@ -1,0 +1,61 @@
+{
+  "status": "technical-preview-candidate",
+  "visual_status": "needs_revision",
+  "author_accepted": false,
+  "source_master": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+  "rebuild_script": "source-assets/characters/CHR-001/model/build.py",
+  "blender_version": "4.5.14 LTS",
+  "scene": "Scene",
+  "root_bone": "Root",
+  "forward_axis": "+Z",
+  "up_axis": "+Y",
+  "height_m": 1.7440556287765503,
+  "mesh_count": 1,
+  "primitive_count": 1,
+  "material_count": 1,
+  "triangle_count": 28838,
+  "joint_count": 32,
+  "animation_names": [
+    "Idle",
+    "Run",
+    "Walk"
+  ],
+  "source_provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
+  "reference_paths": [
+    "source-assets/characters/CHR-001/silhouette-r3.png",
+    "source-assets/area-previews/cinema-music-street.png"
+  ],
+  "palette_status": "undecided grayscale values only",
+  "bevy_runtime": "NOT RUN by asset author; explicit preview integration handled separately",
+  "files": [
+    {
+      "path": "source-assets/characters/CHR-001/model/build.py",
+      "bytes": 30030,
+      "sha256": "d0329d7685234db5217238e1e66f4433de5d468264aeaed85d5112212f869a7c"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/check.py",
+      "bytes": 2587,
+      "sha256": "41282ee9b4e7cee08ce27cc92ff81cf124c325373df314e0ec45fbf1142e1fd7"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+      "bytes": 3153588,
+      "sha256": "08ca74410089127249e8fbcf78bdb8f10b27488ce67fae1754a97c97312384c8"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/grey-study.png",
+      "bytes": 25965,
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf"
+    },
+    {
+      "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "bytes": 1066124,
+      "sha256": "fee9414871bfbc7d82fdd0ad8eac78a8be37cf5c3f65936e9dc7baebf60b0d61"
+    }
+  ],
+  "export_repeatable": true,
+  "dcc_result": "dcc-check.json",
+  "glb_result": "glb-check.json",
+  "texture_result": "texture-check.json"
+}

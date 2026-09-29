@@ -104,15 +104,30 @@ python3 .agents/skills/create-game-assets/scripts/build_preview_sheet.py game/as
 bun tools/export-district-scene.ts --check
 bun tools/export-environment.ts --check
 bun tools/export-ui.ts --check
+bun source-assets/star-posters/export.mjs --check
 ```
 
 预览保留原件，用三种对比底色检查边缘；`--require-cutout` 只用于需要透明区域的素材，招牌实底和 Logo 不必抠图。资产检查、预览、capture 均写入忽略的 `output/`，不混入运行资产。工具取舍与后续采用条件见[资产工具审查](../docs/dev/decisions/asset-tools.md)
 
 UI 字体及完整声明由 `bun tools/export-ui.ts` 从[UI 资产包](../source-assets/ui-kit/README.md)原样导出；`--check` 校验源哈希、大小与运行副本，只读失败报告不自动覆盖。试验 tokens 由 UI 模块编译时读取，避免每个页面各自维护颜色与动效
 
+## 角色 GLB 导出预检
+
+`validate_character.py` 使用 Python 与已有 Pillow，对待接入的米制、四权重、in-place 角色检查三角形索引、实际蒙皮数据、骨骼与默认场景归属、inverse bind 还原、静止高度与落地基准、嵌入图片和 UV、具名动作及根位移。指定根必须是所有 skin joint 的祖先；选 armature 对象时同时检查实际顶层骨根及中间节点。根层级使用单位缩放，动画位移与转角相对 rest TRS 检查，避免恒定错位或无关同名空节点被当成原地动作；世界位置与朝向由控制器负责。`--height` 与 `--clip` 来自该角色制作约定，不采用通用人物高度或固定动作表
+
+```fish
+python3 -B tools/validate_character.py tools/tests/fixtures/character.glb --root-node Root --height 1.7 --clip Idle --clip Sway --require-texture
+python3 -B -m unittest discover -s tools/tests -p test_validate_character.py
+python3 -B -m unittest discover -s tools/tests -p test_asset_environment.py
+```
+
+第一条使用 Blender 4.5.14 真实导出的两骨方体技术夹具，包含各一秒的 Idle、Sway 两个动作，只有工具回归身份，不是人物模型或已接受的外观。生成源为 `tools/tests/create_character_fixture.py`，通过 `blender -b --python tools/tests/create_character_fixture.py -- tools/tests/fixtures/character.glb` 重建；普通回归读取小型夹具，不依赖安装 Blender。`glb.py` 同时服务已有静态环境回归，支持 strided 与 normalized accessors，明确拒绝 sparse、压缩 accessor、超过四权重与 morph 动画的未验证路径
+
+命令输出 JSON，失败退出 `1`；`--max-root-travel` 默认容差为 `0.001 m`，根旋转变化上限为 `0.1°`，属于 in-place 接入检查而非最终动作审美预算。图片检查覆盖嵌入、签名、引用以及 Pillow 的 `verify()` 和完整 `load()`，拒绝只有 PNG/JPEG 头部或损坏像素的数据；Bevy 材质加载仍需运行核验。数据 PASS 不能代替关节变形、循环接缝、脚接地或实际播放检查，后续按[Blender 与动画](../docs/dev/production/blender-animation.md)继续接入
+
 ## CI
 
-仓库当前未配置 GitHub Actions 工作流；Wiki 自动发布使用 [Wiki 发布手册](../docs/dev/handbook/wiki.md)中的构建与部署命令。工具、Rust 与渲染检查按上面的入口运行，未实际调度的检查记录为 NOT RUN
+GitHub Actions 的 [CI](../.github/workflows/ci.yml)在推送和 PR 运行格式、类型、文档、任务、叙事与工具检查；[Windows 构建](../.github/workflows/build-windows.yml)由手动触发，构建全部可执行目标并打包。真实 GPU capture 仍按运行验收在具备图形能力的环境执行，不由 CPU 门禁代替；本地未调度的远端检查记录为 NOT RUN。Wiki 发布使用 [Wiki 发布手册](../docs/dev/handbook/wiki.md)中的构建与部署命令
 
 ## Skills 来源与补丁复验
 

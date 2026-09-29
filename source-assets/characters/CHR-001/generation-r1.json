@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "asset_id": "AST-006",
+  "owner_id": "CHR-001",
+  "date": "2026-09-29",
+  "tool": "OpenAI built-in image_gen",
+  "mode": "built-in",
+  "use_case": "stylized-concept",
+  "model": null,
+  "model_version": null,
+  "seed": null,
+  "request_id": null,
+  "actual_cost": null,
+  "cost_currency": null,
+  "tool_returned_metadata": [
+    "image_url",
+    "output_hint"
+  ],
+  "tool_arguments": {
+    "prompt": "Use case: stylized-concept\nAsset type: ORIGINAL human character turnaround sheet for a 3D game artist, design candidate CHR-001 for N:SIDE, not a gameplay screenshot and not a 3D model\nPrimary request: Create ONE clean wide 3-view full-body modeling reference sheet of exactly the SAME 20-year-old adult man, shown front, exact left profile facing left, and exact back. All three at identical scale, identical outfit and anatomy, aligned head top, shoulders, hips, knees and soles. Use orthographic-looking views without perspective distortion. Leave space between figures; all hands, hair and feet entirely visible\nSubject: a young neighborhood variety-shop co-owner and small-device repair technician in a present-day hillside city. Approachable, observant, capable, slightly earnest, calm face. Slim healthy average build, approximately 7.25 heads tall and 1.76m design scale. Short dark brown hair, softly separated chunky anime hair locks, slightly uneven side part and tidy nape; muted blue-green eyes, ordinary human ears, no facial hair\nClothes: hip-length cream-gray cotton work jacket worn open over a muted dark-teal crew-neck shirt. Jacket has dark desaturated teal shoulder yoke and sleeve panels, rolled cuffs ending above wrists, two useful front patch pockets, clean visible side seams, small warm orange rectangular zipper pull at the left chest pocket. No hood, no cape. Straight slightly tapered graphite work trousers with relaxed knees and one simple thigh patch pocket on the wearer's right. Dark charcoal low-top walking shoes with warm off-white rubber sole and a tiny matching orange heel tab. One compact sand-gray fabric tool pouch on the wearer's left belt at the side, closed with a plain flap, not a weapon. Empty bare hands. No backpack, gloves or loose hanging cables\nPose: front and back use the same relaxed modeling A-pose with arms about 15 degrees from body, straight but not stiff legs, feet shoulder-width apart, fingers relaxed and separated enough to read. Profile preserves pose and garment dimensions, reads as genuine side elevation rather than 3/4\nStyle/medium: polished contemporary anime game concept drawing with restrained cel shading, clean readable contour and large carefully organized color shapes, credible ordinary urban clothing construction. Clear face, simplified folds around joints, no excessive texture noise or tiny tactical accessories. No imitation of named franchises or artists\nScene/backdrop: plain warm light-gray studio background, a very faint baseline under shoes, neutral soft even light, minimal contact shadows only. No city, no props off the character, no vignette\nComposition/framing: wide landscape sheet, three equal columns, 10% outer margins. Figure bodies occupy most of height. No close-up inserts or extra portraits. Clear front, side and back silhouette\nConstraints: this is an original proposed appearance, do not copy an anonymous person from any city preview. Maintain identical hair length, jacket panel map, trouser pockets, shoe shape and pouch location across views. Pouch must stay anatomically on his LEFT side (screen right in front view, screen left in back view). Keep jacket front open but jacket back a continuous cloth panel\nAvoid: text, labels, watermark, brand logos, weapons, armor, glowing machinery, fantasy ornaments, exaggerated muscles, child proportions, giant eyes, photorealism, dynamic poses, multiple different identities, incomplete feet, perspective camera",
+    "transparent_background": false
+  },
+  "image_inputs": [],
+  "reference_documents": [
+    "docs/player/characters/brother.md",
+    "docs/player/characters/sister.md",
+    "docs/dev/production/art-direction.md"
+  ],
+  "inspected_project_reference": "source-assets/area-previews/shop-street.png",
+  "reference_use": "Read project spatial and visual goals only; no image was passed to the generator; preview's anonymous characters are not the character design authority",
+  "original_workspace_copy": "source-assets/characters/CHR-001/turnaround-r1.png",
+  "original_sha256": "d7064962e30a011c6e963b27c86ad2c92e4acc1e8d782032bcdacbb6fbc6d2c4",
+  "modifications": [],
+  "output": {
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGB",
+    "format": "PNG",
+    "bytes": 1699566,
+    "metadata_keys": []
+  },
+  "rights": {
+    "source": "Generated in this Codex session at the user's request",
+    "license": null,
+    "usage_scope": "Project-local visual design reference and modeling candidate",
+    "external_reference_images": [],
+    "third_party_clearance": "No third-party character or artist named; no supplied reference pixels used",
+    "release_review": "Applicable generation-service terms and final asset distribution must be checked before external asset distribution; no CC0 or third-party license is asserted"
+  },
+  "checks": {
+    "machine_report": "todo/evidence/TASK-047/character-design-r1/asset-report.json",
+    "visual_review": "todo/evidence/TASK-047/character-design-r1/review.md"
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "frames": [
+      50,
+      59
+    ],
+    "clip": "Idle",
+    "elapsed_delta": 0.2999997138977051,
+    "max_seek_drift": 0.2999997138977051,
+    "max_elapsed_drift": 0.2999997138977051,
+    "all_paused": false
+  },
+  {
+    "frames": [
+      140,
+      155
+    ],
+    "clip": "Walk",
+    "elapsed_delta": 0.49999967217445374,
+    "max_seek_drift": 0.49996379017829895,
+    "max_elapsed_drift": 0.49999967217445374,
+    "all_paused": false
+  },
+  {
+    "frames": [
+      190,
+      205
+    ],
+    "clip": "Run",
+    "elapsed_delta": 0.49999967217445374,
+    "max_seek_drift": 0.3666515350341797,
+    "max_elapsed_drift": 0.49999967217445374,
+    "all_paused": false
+  },
+  {
+    "frames": [
+      240,
+      255
+    ],
+    "clip": "Run",
+    "elapsed_delta": 0.49999967217445374,
+    "max_seek_drift": 0.3666515350341797,
+    "max_elapsed_drift": 0.49999967217445374,
+    "all_paused": false
+  },
+  {
+    "frames": [
+      340,
+      359
+    ],
+    "clip": "Idle",
+    "elapsed_delta": 0.0,
+    "max_seek_drift": 0.0,
+    "max_elapsed_drift": 0.0,
+    "all_paused": true
+  },
+  {
+    "frames": [
+      490,
+      539
+    ],
+    "clip": "Idle",
+    "elapsed_delta": 1.6333317756652832,
+    "max_seek_drift": 1.266667366027832,
+    "max_elapsed_drift": 1.6333317756652832,
+    "all_paused": false
+  }
+]

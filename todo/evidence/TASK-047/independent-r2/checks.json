@@ -1,0 +1,53 @@
+{
+  "timestamp_utc": "2026-09-29T16:27:35.681969+00:00",
+  "head": "4801b81bc3c91b5b4eebe04ebd86aa1f245b52c3",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "files": {
+    "tools/validate_character.py": "fb353dc2251a004063b4c430a591000ddd09db756806834026696564b7fbc0bb",
+    "tools/glb.py": "c7b5e81cbadb6c957a64394590585ee89fae6ff68892427b387ef22f127126e1",
+    "tools/tests/test_validate_character.py": "d31c98a6d815d76649d5f967bf75ab61d37d48fa15f885ea2488f46d67f9442b",
+    "tools/tests/fixtures/character.glb": "28982e8b0e23319e5e00f1d7d0ffd9d048cfed8ecbc274edb3d97c450669db5d"
+  },
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-p",
+        "test_validate_character.py"
+      ],
+      "exit_code": 0,
+      "log": "character-tests.log"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-p",
+        "test_asset_environment.py"
+      ],
+      "exit_code": 0,
+      "log": "environment-tests.log"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "todo/evidence/TASK-047/independent-r2/probe.py"
+      ],
+      "exit_code": 0,
+      "log": "independent-probe.log"
+    }
+  ]
+}

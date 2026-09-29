@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "assets": [
+    {
+      "path": "source-assets/characters/CHR-001/turnaround-r2.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1757089,
+      "color_count": 49958,
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_pixels": 0,
+      "content_bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "problems": []
+    }
+  ]
+}

@@ -3,6 +3,7 @@ mod observation;
 use crate::{
     app::{EntrySettings, EntryUi, GamePhase},
     player::PlayerState,
+    story::ShopHandoff,
     ui::{Tokens, UiFont, color},
     world::map::{Building, map_to_world},
 };
@@ -95,20 +96,25 @@ impl PlaceCatalog {
             if !position.is_finite() {
                 return Err(format!("/places/{}: invalid location position", place.id));
             }
-            let public_info = if matches!(place.id.as_str(), "04" | "23") {
-                if [&place.usage, &place.time, &place.entry]
+            let public_info = if matches!(place.id.as_str(), "04" | "23" | "28" | "29") {
+                if [&place.usage, &place.entry]
                     .iter()
                     .any(|value| value.trim().is_empty())
+                    || (matches!(place.id.as_str(), "04" | "23") && place.time.trim().is_empty())
                 {
                     return Err(format!(
                         "/places/{}: observation requires use, time and entry",
                         place.id
                     ));
                 }
-                Some(format!(
-                    "用途\n{}\n\n开放说明\n{}\n\n到达方式\n{}",
-                    place.usage, place.time, place.entry
-                ))
+                Some(if place.time.trim().is_empty() {
+                    format!("用途\n{}\n\n到达方式\n{}", place.usage, place.entry)
+                } else {
+                    format!(
+                        "用途\n{}\n\n开放说明\n{}\n\n到达方式\n{}",
+                        place.usage, place.time, place.entry
+                    )
+                })
             } else {
                 None
             };
@@ -187,6 +193,7 @@ pub struct PlaceHud {
     pub gamepad: bool,
     pub visible: bool,
     pub observation_hint: Option<String>,
+    pub objective: String,
 }
 
 impl Default for PlaceHud {
@@ -198,6 +205,7 @@ impl Default for PlaceHud {
             gamepad: false,
             visible: false,
             observation_hint: None,
+            objective: String::new(),
         }
     }
 }
@@ -224,6 +232,7 @@ fn update_location(
     input: Res<EntryUi>,
     mut hud: ResMut<PlaceHud>,
     observation: Res<Observation>,
+    story: Res<ShopHandoff>,
 ) {
     let place = player
         .as_ref()
@@ -238,6 +247,7 @@ fn update_location(
             .and_then(|(player, catalog)| catalog.room_at(player.foot))
             .map(str::to_owned),
         gamepad: input.gamepad,
+        objective: story.objective().into(),
         observation_hint: if observation.open {
             None
         } else {
@@ -263,7 +273,8 @@ fn label(kind: &HudText, hud: &PlaceHud) -> String {
         && let Some(name) = &hud.observation_hint
     {
         return format!(
-            "{} 查看：{name}\n{}",
+            "门前交接 · {}\n{} 查看：{name}\n{}",
+            hud.objective,
             if hud.gamepad { "A" } else { "F" },
             if hud.gamepad {
                 "左摇杆 移动 / 按下疾跑 · 西键 跳跃"
@@ -278,12 +289,14 @@ fn label(kind: &HudText, hud: &PlaceHud) -> String {
         }
         HudText::Location if hud.current_id.is_some() => format!("{} · 附近", hud.name),
         HudText::Location => hud.name.clone(),
-        HudText::Inputs if hud.gamepad => {
-            "左摇杆 移动 / 按下疾跑\n右摇杆 镜头 · 西键 跳跃 · Start / B 暂停".into()
-        }
-        HudText::Inputs => {
-            "WASD 移动 · Shift / 右键 疾跑\n空格 跳跃 · M 锁鼠 · Q/E 镜头\nEsc / Tab 暂停".into()
-        }
+        HudText::Inputs if hud.gamepad => format!(
+            "门前交接 · {}\n左摇杆 移动 / 按下疾跑\n右摇杆 镜头 · 西键 跳跃 · Start / B 暂停",
+            hud.objective
+        ),
+        HudText::Inputs => format!(
+            "门前交接 · {}\nWASD 移动 · Shift / 右键 疾跑\n空格 跳跃 · M 锁鼠 · Q/E 镜头\nEsc / Tab 暂停",
+            hud.objective
+        ),
     }
 }
 

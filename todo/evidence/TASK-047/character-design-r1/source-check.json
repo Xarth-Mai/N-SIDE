@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "owner_id": "CHR-001",
+  "active_candidate": "r2",
+  "checks": [
+    {
+      "source": "source-assets/characters/CHR-001/turnaround-r2.png",
+      "sha256": "7ea442c1c4ba890dec0a7f756ae4b672a8c5a5e2642eb723804f30ea0d3739d5",
+      "generation": "source-assets/characters/CHR-001/generation-r2.json",
+      "result": "PASS"
+    },
+    {
+      "source": "source-assets/characters/CHR-001/turnaround-r1.png",
+      "sha256": "d7064962e30a011c6e963b27c86ad2c92e4acc1e8d782032bcdacbb6fbc6d2c4",
+      "generation": "source-assets/characters/CHR-001/generation-r1.json",
+      "result": "PASS"
+    }
+  ]
+}

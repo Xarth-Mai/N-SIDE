@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "assets": [
+    {
+      "path": "source-assets/characters/CHR-001/silhouette-r3.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1290818,
+      "color_count": 8680,
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_pixels": 0,
+      "content_bounds": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "problems": []
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "fixture_sha256": "28982e8b0e23319e5e00f1d7d0ffd9d048cfed8ecbc274edb3d97c450669db5d",
+  "command": "python3 -B tools/validate_character.py <mutated-file> --root-node Root --height 1.7 --clip Idle --clip Sway --require-texture",
+  "results": [
+    {
+      "case": "valid",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "status": "PASS",
+      "error": null,
+      "passed": true
+    },
+    {
+      "case": "index_range",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "status": "FAIL",
+      "error": "node 2: triangle index out of vertex range",
+      "passed": true
+    },
+    {
+      "case": "index_type",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "status": "FAIL",
+      "error": "node 2: triangle indices must be unnormalized unsigned SCALAR",
+      "passed": true
+    },
+    {
+      "case": "index_count",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "status": "FAIL",
+      "error": "node 2: triangle index count must be a multiple of 3",
+      "passed": true
+    },
+    {
+      "case": "broken_png",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "status": "FAIL",
+      "error": "image 0: embedded image decoding failed: cannot identify image file <_io.BytesIO object at 0x7f8ba66e8860>",
+      "passed": true
+    },
+    {
+      "case": "root_first_key",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "status": "FAIL",
+      "error": "Idle: root translation bound 0.100000 m exceeds in-place limit 0.001 m",
+      "passed": true
+    },
+    {
+      "case": "fake_root",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "status": "FAIL",
+      "error": "root-motion node 'Root' is not an ancestor of skin 0 joint 1",
+      "passed": true
+    },
+    {
+      "case": "normal_type",
+      "expected_exit": 1,
+      "exit_code": 0,
+      "status": "PASS",
+      "error": null,
+      "passed": false
+    },
+    {
+      "case": "normal_zero",
+      "expected_exit": 1,
+      "exit_code": 0,
+      "status": "PASS",
+      "error": null,
+      "passed": false
+    },
+    {
+      "case": "uv_count",
+      "expected_exit": 1,
+      "exit_code": 0,
+      "status": "PASS",
+      "error": null,
+      "passed": false
+    },
+    {
+      "case": "uv_type",
+      "expected_exit": 1,
+      "exit_code": 0,
+      "status": "PASS",
+      "error": null,
+      "passed": false
+    }
+  ],
+  "temporary_files_removed": true
+}

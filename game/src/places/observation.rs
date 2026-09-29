@@ -4,11 +4,13 @@ use crate::{
     app::{EntrySettings, EntryUi, GamePhase},
     capture::CaptureInput,
     player::PlayerState,
+    story::{DeliveryRoute, HANDOFF_PLACES, ShopHandoff},
     ui::{Tokens, UiFont, UiInput, color},
     world::collision::CollisionWorld,
 };
 use bevy::{
     app::RunFixedMainLoopSystems,
+    input::mouse::{MouseScrollUnit, MouseWheel},
     picking::hover::Hovered,
     prelude::*,
     text::{FontWeight, LineHeight},
@@ -23,9 +25,50 @@ pub struct Observation {
     consumed: bool,
     wait_for_release: bool,
     close_requested: bool,
+    route_focus: DeliveryRoute,
+    route_requested: Option<DeliveryRoute>,
+    scroll: f32,
 }
 
 impl Observation {
+    pub(crate) fn handle_story_input(
+        &mut self,
+        story: &mut ShopHandoff,
+        open_pressed: bool,
+        close_pressed: bool,
+        change_choice: bool,
+        held: bool,
+    ) -> bool {
+        let was_open = self.open;
+        let can_choose = self.open
+            && !self.wait_for_release
+            && !close_pressed
+            && !self.close_requested
+            && story.can_choose_at(self.selected.as_deref());
+        let clicked = self.route_requested.take();
+        let consumed = self.handle_input(open_pressed, close_pressed, held);
+        if !was_open && self.open {
+            if let Some(place) = &self.selected {
+                story.observe(place);
+            }
+        } else if can_choose && self.open {
+            if change_choice {
+                self.route_focus = match self.route_focus {
+                    DeliveryRoute::ServiceYard => DeliveryRoute::PublicSteps,
+                    DeliveryRoute::PublicSteps => DeliveryRoute::ServiceYard,
+                };
+            }
+            if clicked.is_some() || open_pressed {
+                story.choose(
+                    self.selected.as_deref(),
+                    clicked.unwrap_or(self.route_focus),
+                );
+                self.wait_for_release = true;
+            }
+        }
+        consumed
+    }
+
     pub fn blocks_world(&self) -> bool {
         self.open || self.consumed
     }
@@ -48,6 +91,7 @@ impl Observation {
         }
         if open_pressed && !close_pressed && self.target.is_some() {
             self.selected.clone_from(&self.target);
+            self.scroll = 0.0;
             self.open = true;
             self.wait_for_release = true;
             self.consumed = true;
@@ -91,7 +135,7 @@ pub(super) fn install(app: &mut App) {
             )
                 .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop),
         )
-        .add_systems(Update, (draw, style_return).chain())
+        .add_systems(Update, (draw, style_return, scroll_record).chain())
         .add_systems(OnEnter(GamePhase::Title), reset)
         .add_systems(OnEnter(GamePhase::Loading), reset)
         .add_systems(OnEnter(GamePhase::Failed), reset);
@@ -104,6 +148,28 @@ fn reset(mut observation: ResMut<Observation>) {
 // Focus loss or pause can return from the entry router without consuming this frame's click
 fn expire_pointer_request(mut observation: ResMut<Observation>) {
     observation.close_requested = false;
+    observation.route_requested = None;
+}
+
+fn request_route(
+    mut press: On<Pointer<Press>>,
+    mut observation: ResMut<Observation>,
+    story: Res<ShopHandoff>,
+    phase: Res<State<GamePhase>>,
+    next: Res<NextState<GamePhase>>,
+    buttons: Query<&RouteButton>,
+) {
+    if press.button == PointerButton::Primary
+        && observation.open
+        && observation.visible
+        && story.can_choose_at(observation.selected.as_deref())
+        && *phase.get() == GamePhase::World
+        && matches!(*next, NextState::Unchanged)
+        && let Ok(button) = buttons.get(press.entity)
+    {
+        observation.route_requested = Some(button.0);
+        press.propagate(false);
+    }
 }
 
 fn request_pointer_close(
@@ -163,6 +229,64 @@ struct Panel;
 #[derive(Component)]
 struct ReturnButton;
 
+#[derive(Component)]
+struct RouteButton(DeliveryRoute);
+
+#[derive(Component)]
+struct RecordBody;
+
+#[expect(
+    clippy::too_many_arguments,
+    reason = "Real input scrolls only the active observation's reading area"
+)]
+fn scroll_record(
+    mut wheel: MessageReader<MouseWheel>,
+    keys: Res<ButtonInput<KeyCode>>,
+    pads: Query<&Gamepad>,
+    time: Res<Time>,
+    scale: Res<UiScale>,
+    phase: Res<State<GamePhase>>,
+    next: Res<NextState<GamePhase>>,
+    mut observation: ResMut<Observation>,
+    mut panels: Query<(&ComputedNode, &mut ScrollPosition), With<RecordBody>>,
+) {
+    let wheel_delta: f32 = wheel
+        .read()
+        .map(|event| match event.unit {
+            MouseScrollUnit::Line => -event.y * 56.0,
+            MouseScrollUnit::Pixel => -event.y / scale.0.max(0.01),
+        })
+        .sum();
+    if !observation.visible
+        || *phase.get() != GamePhase::World
+        || !matches!(*next, NextState::Unchanged)
+    {
+        return;
+    }
+    let page_delta = 240.0
+        * (f32::from(keys.just_pressed(KeyCode::PageDown))
+            - f32::from(keys.just_pressed(KeyCode::PageUp)));
+    let stick: f32 = pads
+        .iter()
+        .map(|pad| {
+            let y = pad.right_stick().y;
+            if y.abs() > 0.15 { -y } else { 0.0 }
+        })
+        .sum();
+    for (computed, mut scroll) in &mut panels {
+        if computed.size().y <= 0.0 {
+            continue;
+        }
+        let max = ((computed.content_size().y - computed.size().y)
+            * computed.inverse_scale_factor())
+        .max(0.0);
+        observation.scroll =
+            (observation.scroll + wheel_delta + page_delta + stick * 480.0 * time.delta_secs())
+                .clamp(0.0, max);
+        scroll.y = observation.scroll;
+    }
+}
+
 #[expect(
     clippy::type_complexity,
     reason = "Bevy query updates only hovered return buttons"
@@ -192,12 +316,13 @@ fn draw(
     next: Res<NextState<GamePhase>>,
     catalog: Option<Res<PlaceCatalog>>,
     entry: Res<EntryUi>,
+    story: Res<ShopHandoff>,
     tokens: Res<Tokens>,
     settings: Res<EntrySettings>,
     font: Res<UiFont>,
     camera: Query<Entity, With<Camera3d>>,
     roots: Query<Entity, With<Panel>>,
-    mut prior: Local<Option<(bool, Option<String>, bool, bool)>>,
+    mut prior: Local<Option<(bool, Option<String>, bool, bool, ShopHandoff, DeliveryRoute)>>,
 ) {
     observation.visible = observation.open
         && *phase.get() == GamePhase::World
@@ -207,6 +332,8 @@ fn draw(
         observation.selected.clone(),
         entry.gamepad,
         settings.large_text,
+        story.clone(),
+        observation.route_focus,
     );
     if prior.as_ref() == Some(&key) {
         return;
@@ -229,6 +356,11 @@ fn draw(
     let (Some(info), Ok(camera)) = (&place.public_info, camera.single()) else {
         return;
     };
+    let info = if HANDOFF_PLACES.contains(&place.id.as_str()) {
+        format!("{info}\n\n{}", story.record())
+    } else {
+        info.clone()
+    };
     commands
         .spawn((
             Panel,
@@ -250,6 +382,7 @@ fn draw(
                 Node {
                     width: px(1000),
                     max_width: percent(100),
+                    height: percent(100),
                     max_height: percent(100),
                     padding: UiRect::all(px(32)),
                     row_gap: px(24),
@@ -262,30 +395,105 @@ fn draw(
                 BorderColor::all(color(&tokens.colors.focus)),
             ))
             .with_children(|panel| {
-                for (value, size, ink) in [
-                    (
-                        place.name.as_str(),
-                        tokens.heading_size,
-                        &tokens.colors.focus,
-                    ),
-                    (info.as_str(), tokens.body_size, &tokens.colors.text),
-                ] {
-                    panel.spawn((
-                        Text::new(value),
-                        TextFont {
-                            font: font.0.clone().into(),
-                            font_size: FontSize::Px(size * settings.text_scale()),
-                            weight: FontWeight(550),
-                            ..default()
-                        },
-                        TextColor(color(ink)),
-                        LineHeight::RelativeToFont(tokens.line_height),
+                panel.spawn((
+                    Text::new(&place.name),
+                    TextFont {
+                        font: font.0.clone().into(),
+                        font_size: FontSize::Px(tokens.heading_size * settings.text_scale()),
+                        weight: FontWeight(550),
+                        ..default()
+                    },
+                    TextColor(color(&tokens.colors.focus)),
+                    LineHeight::RelativeToFont(tokens.line_height),
+                    Node {
+                        width: percent(100),
+                        flex_shrink: 0.0,
+                        ..default()
+                    },
+                ));
+                panel
+                    .spawn((
+                        RecordBody,
+                        ScrollPosition(Vec2::new(0.0, observation.scroll)),
                         Node {
                             width: percent(100),
-                            flex_shrink: 0.0,
+                            min_height: px(0),
+                            flex_grow: 1.0,
+                            overflow: Overflow::scroll_y(),
                             ..default()
                         },
-                    ));
+                    ))
+                    .with_children(|body| {
+                        body.spawn((
+                            Text::new(&info),
+                            TextFont {
+                                font: font.0.clone().into(),
+                                font_size: FontSize::Px(tokens.body_size * settings.text_scale()),
+                                weight: FontWeight(550),
+                                ..default()
+                            },
+                            TextColor(color(&tokens.colors.text)),
+                            LineHeight::RelativeToFont(tokens.line_height),
+                            Node {
+                                width: percent(100),
+                                flex_shrink: 0.0,
+                                ..default()
+                            },
+                        ));
+                    });
+                if story.can_choose_at(Some(&place.id)) {
+                    panel
+                        .spawn(Node {
+                            column_gap: px(16),
+                            row_gap: px(12),
+                            flex_wrap: FlexWrap::Wrap,
+                            flex_shrink: 0.0,
+                            ..default()
+                        })
+                        .with_children(|choices| {
+                            for route in [DeliveryRoute::ServiceYard, DeliveryRoute::PublicSteps] {
+                                let focused = route == observation.route_focus;
+                                choices
+                                    .spawn((
+                                        Button,
+                                        RouteButton(route),
+                                        AccessibleLabel::new(route.label()),
+                                        Node {
+                                            padding: UiRect::axes(px(20), px(12)),
+                                            border: UiRect::all(px(3)),
+                                            border_radius: BorderRadius::all(px(
+                                                tokens.button_radius
+                                            )),
+                                            ..default()
+                                        },
+                                        BackgroundColor(color(if focused {
+                                            &tokens.colors.focus
+                                        } else {
+                                            &tokens.colors.raised
+                                        })),
+                                        BorderColor::all(color(&tokens.colors.focus)),
+                                    ))
+                                    .observe(request_route)
+                                    .with_children(|button| {
+                                        button.spawn((
+                                            Text::new(route.label()),
+                                            TextFont {
+                                                font: font.0.clone().into(),
+                                                font_size: FontSize::Px(
+                                                    tokens.body_size * settings.text_scale(),
+                                                ),
+                                                weight: FontWeight(650),
+                                                ..default()
+                                            },
+                                            TextColor(color(if focused {
+                                                &tokens.colors.base
+                                            } else {
+                                                &tokens.colors.text
+                                            })),
+                                        ));
+                                    });
+                            }
+                        });
                 }
                 panel
                     .spawn((Node {
@@ -329,10 +537,14 @@ fn draw(
                                 ));
                             });
                         footer.spawn((
-                            Text::new(if entry.gamepad {
-                                "B 返回 · Start 暂停"
+                            Text::new(if story.can_choose_at(Some(&place.id)) && entry.gamepad {
+                                "方向键 选择 · A 确认 · B 返回\n右摇杆 滚动记录"
+                            } else if story.can_choose_at(Some(&place.id)) {
+                                "↑↓ 选择 · F 确认 · Esc 返回\n滚轮 / PageUp / PageDown 滚动记录"
+                            } else if entry.gamepad {
+                                "B 返回 · Start 暂停 · 右摇杆 滚动"
                             } else {
-                                "Esc 返回 · Tab 暂停"
+                                "Esc 返回 · Tab 暂停\n滚轮 / PageUp / PageDown 滚动记录"
                             }),
                             TextFont {
                                 font: font.0.clone().into(),
@@ -358,6 +570,44 @@ mod tests {
             pointer::{Location, PointerId},
         },
     };
+
+    #[test]
+    fn opening_and_held_inputs_never_confirm_a_route() {
+        let mut story = ShopHandoff::default();
+        story.observe("04");
+        story.observe("29");
+        let mut observation = Observation {
+            target: Some("28".into()),
+            ..default()
+        };
+        assert!(observation.handle_story_input(&mut story, true, false, false, true));
+        assert_eq!(story.observed_places.len(), 3);
+        assert_eq!(story.confirmation_count, 0);
+        assert!(observation.handle_story_input(&mut story, true, false, false, true));
+        assert_eq!(story.confirmation_count, 0);
+        observation.handle_story_input(&mut story, false, false, false, false);
+        observation.handle_story_input(&mut story, false, false, true, true);
+        observation.handle_story_input(&mut story, true, false, false, true);
+        assert_eq!(story.rejected_choices, 1);
+        assert_eq!(story.confirmation_count, 0);
+        observation.handle_story_input(&mut story, true, false, false, true);
+        assert_eq!(
+            story.rejected_choices, 1,
+            "held confirm cannot repeat rejection"
+        );
+        observation.handle_story_input(&mut story, false, false, false, false);
+        observation.handle_story_input(&mut story, false, true, false, true);
+        observation.handle_story_input(&mut story, false, false, false, false);
+        observation.handle_story_input(&mut story, true, false, false, true);
+        assert_eq!(story.confirmation_count, 0, "reopening must not submit");
+        observation.handle_story_input(&mut story, false, false, false, false);
+        observation.handle_story_input(&mut story, false, false, true, true);
+        observation.handle_story_input(&mut story, true, false, false, true);
+        assert_eq!(story.confirmation_count, 1);
+        observation.handle_story_input(&mut story, false, false, false, false);
+        observation.handle_story_input(&mut story, true, false, false, true);
+        assert_eq!(story.confirmation_count, 1);
+    }
 
     #[test]
     fn pointer_request_uses_close_gate_and_expires_when_router_is_blocked() {

@@ -4,6 +4,7 @@ use crate::{
     places::{self, Observation, PlaceCatalog},
     player::{self, PlayerState, WalkPreview},
     settings::{self, SaveStatus, SettingsStore},
+    story::ShopHandoff,
     ui::{FONT, Tokens, UiFont, UiInput, color},
     world::{
         collision::CollisionWorld,
@@ -220,6 +221,7 @@ pub fn run() -> Result<AppExit, String> {
     let mut root = PathBuf::from(".");
     let mut script = None;
     let mut walk = false;
+    let mut character = false;
     let mut output = None;
     let mut settings_directory = None;
     let mut reset_graphics = false;
@@ -230,6 +232,10 @@ pub fn run() -> Result<AppExit, String> {
                 root = PathBuf::from(args.next().ok_or("--project-root requires a directory")?)
             }
             "--walk-preview" => walk = true,
+            "--character-preview" => {
+                character = true;
+                walk = true;
+            }
             "--reset-graphics" => reset_graphics = true,
             "--settings-dir" => {
                 settings_directory = Some(PathBuf::from(
@@ -248,7 +254,7 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--walk-preview  Neutral movement with shop public interior experiment\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
+                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--walk-preview  Movement and session-only prologue handoff experiment\n--character-preview  Unaccepted grey character with real Idle/Walk/Run (implies --walk-preview)\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
                 );
                 return Ok(AppExit::Success);
             }
@@ -326,6 +332,7 @@ pub fn run() -> Result<AppExit, String> {
     }
     graphics::install(&mut app, visual.clone());
     player::install(&mut app);
+    crate::character::install(&mut app, character);
     places::install(&mut app);
     app.add_systems(
         Startup,
@@ -374,6 +381,7 @@ fn install_lifecycle(app: &mut App) {
     app.init_state::<GamePhase>()
         .init_resource::<EntryUi>()
         .init_resource::<Observation>()
+        .init_resource::<ShopHandoff>()
         .init_resource::<EntrySettings>()
         .init_resource::<DisplayTrial>()
         .add_message::<WindowFocused>()
@@ -416,6 +424,7 @@ fn enter_title(world: &mut World) {
     world.remove_resource::<GameLoadError>();
     player::clear(world);
     world.remove_resource::<PlaceCatalog>();
+    *world.resource_mut::<ShopHandoff>() = ShopHandoff::default();
     clear_scene(world);
     {
         let mut ui = world.resource_mut::<EntryUi>();
@@ -430,6 +439,7 @@ fn enter_title(world: &mut World) {
 fn begin_loading(world: &mut World) {
     player::clear(world);
     world.remove_resource::<PlaceCatalog>();
+    *world.resource_mut::<ShopHandoff>() = ShopHandoff::default();
     clear_scene(world);
     world.remove_resource::<GameLoadError>();
     {
@@ -585,7 +595,7 @@ fn entry_input(
     phase: Res<State<GamePhase>>,
     mut next: ResMut<NextState<GamePhase>>,
     mut ui: ResMut<EntryUi>,
-    mut observation: ResMut<Observation>,
+    (mut observation, mut story): (ResMut<Observation>, ResMut<ShopHandoff>),
     player: Option<Res<PlayerState>>,
     (mut settings, mut display_trial): (ResMut<EntrySettings>, ResMut<DisplayTrial>),
     mut exit: MessageWriter<AppExit>,
@@ -720,14 +730,30 @@ fn entry_input(
             (*next).set_if_neq(GamePhase::Paused);
             return;
         }
-        let held = keys.any_pressed([KeyCode::KeyF, KeyCode::Escape])
-            || mouse.pressed(MouseButton::Left)
-            || gamepads
-                .iter()
-                .any(|pad| pad.pressed(GamepadButton::South) || pad.pressed(GamepadButton::East));
-        if observation.handle_input(
+        let held = keys.any_pressed([
+            KeyCode::KeyF,
+            KeyCode::Escape,
+            KeyCode::ArrowUp,
+            KeyCode::ArrowDown,
+        ]) || mouse.pressed(MouseButton::Left)
+            || gamepads.iter().any(|pad| {
+                [
+                    GamepadButton::South,
+                    GamepadButton::East,
+                    GamepadButton::DPadUp,
+                    GamepadButton::DPadDown,
+                ]
+                .into_iter()
+                .any(|button| pad.pressed(button))
+            });
+        if observation.handle_story_input(
+            &mut story,
             key_pressed(KeyCode::KeyF) || pressed(GamepadButton::South),
             key_pressed(KeyCode::Escape) || pressed(GamepadButton::East),
+            key_pressed(KeyCode::ArrowUp)
+                || key_pressed(KeyCode::ArrowDown)
+                || pressed(GamepadButton::DPadUp)
+                || pressed(GamepadButton::DPadDown),
             held,
         ) {
             return;
@@ -1023,6 +1049,7 @@ fn draw_shell(
                         GamePhase::Paused => ("暂停", match ui.gamepad_recovery {
                             Some(false) => "手柄已断开，可重新连接或使用键鼠继续",
                             Some(true) => "手柄已重新连接，确认后继续",
+                            None if walk.0 => "继续当前行程；返回标题将重开本次交接片段",
                             None => "继续当前行程，或返回标题",
                         }),
                         GamePhase::Failed => (
@@ -1818,6 +1845,91 @@ mod tests {
             assert!(
                 (turns[1] / turns[0] - 0.65).abs() < 0.003,
                 "input source {source}: turns={turns:?}"
+            );
+        }
+    }
+
+    #[test]
+    fn observation_story_progress_survives_pause_and_revisit_but_title_restarts_it() {
+        fn action(app: &mut App, pad: Entity, key: KeyCode, use_pad: bool) {
+            if !use_pad {
+                tap(app, key);
+                return;
+            }
+            let button = match key {
+                KeyCode::KeyF | KeyCode::Enter => GamepadButton::South,
+                KeyCode::Escape => GamepadButton::East,
+                KeyCode::Tab => GamepadButton::Start,
+                KeyCode::ArrowDown => GamepadButton::DPadDown,
+                KeyCode::ArrowUp => GamepadButton::DPadUp,
+                _ => unreachable!(),
+            };
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .press(button);
+            frame(app);
+            app.world_mut()
+                .get_mut::<Gamepad>(pad)
+                .unwrap()
+                .digital_mut()
+                .release(button);
+            frame(app);
+        }
+        for use_pad in [false, true] {
+            let (mut app, _, pad) = walk_app();
+            enter_walk_fixture(&mut app);
+            // Reach/visibility are tested with real map geometry in observation; this fixture
+            // exercises the production input router, pause lifecycle and explicit choices
+            for place in ["04", "29", "28"] {
+                app.world_mut().resource_mut::<Observation>().target = Some(place.into());
+                action(&mut app, pad, KeyCode::KeyF, use_pad);
+                assert!(
+                    app.world()
+                        .resource::<ShopHandoff>()
+                        .observed_places
+                        .contains(place)
+                );
+                assert_eq!(app.world().resource::<ShopHandoff>().confirmation_count, 0);
+                action(&mut app, pad, KeyCode::Escape, use_pad);
+            }
+            action(&mut app, pad, KeyCode::KeyF, use_pad);
+            action(&mut app, pad, KeyCode::Tab, use_pad);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Paused
+            );
+            assert_eq!(
+                app.world().resource::<ShopHandoff>().observed_places.len(),
+                3
+            );
+            action(&mut app, pad, KeyCode::Enter, use_pad);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::World
+            );
+            assert!(app.world().resource::<Observation>().open);
+            assert_eq!(app.world().resource::<ShopHandoff>().confirmation_count, 0);
+            action(&mut app, pad, KeyCode::ArrowDown, use_pad);
+            action(&mut app, pad, KeyCode::KeyF, use_pad);
+            assert_eq!(app.world().resource::<ShopHandoff>().rejected_choices, 1);
+            assert_eq!(app.world().resource::<ShopHandoff>().confirmation_count, 0);
+            action(&mut app, pad, KeyCode::ArrowUp, use_pad);
+            action(&mut app, pad, KeyCode::KeyF, use_pad);
+            action(&mut app, pad, KeyCode::Escape, use_pad);
+            action(&mut app, pad, KeyCode::KeyF, use_pad);
+            assert_eq!(app.world().resource::<ShopHandoff>().confirmation_count, 1);
+            action(&mut app, pad, KeyCode::Tab, use_pad);
+            action(&mut app, pad, KeyCode::ArrowDown, use_pad);
+            action(&mut app, pad, KeyCode::Enter, use_pad);
+            assert_eq!(
+                *app.world().resource::<State<GamePhase>>().get(),
+                GamePhase::Title
+            );
+            assert_eq!(
+                *app.world().resource::<ShopHandoff>(),
+                ShopHandoff::default()
             );
         }
     }

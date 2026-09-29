@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "assets": [
+    {
+      "path": "source-assets/characters/CHR-001/model/grey-study.png",
+      "format": "PNG",
+      "mode": "RGB",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 25965,
+      "color_count": 16,
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_pixels": 0,
+      "content_bounds": [
+        0,
+        0,
+        1024,
+        1024
+      ],
+      "problems": []
+    }
+  ]
+}

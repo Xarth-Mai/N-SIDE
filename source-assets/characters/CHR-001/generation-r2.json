@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "asset_id": "AST-006",
+  "owner_id": "CHR-001",
+  "date": "2026-09-29",
+  "revision": "r2",
+  "tool": "OpenAI built-in image_gen",
+  "mode": "built-in",
+  "use_case": "identity-preserve",
+  "model": null,
+  "model_version": null,
+  "seed": null,
+  "request_id": null,
+  "actual_cost": null,
+  "cost_currency": null,
+  "tool_returned_metadata": [
+    "image_url",
+    "output_hint"
+  ],
+  "tool_arguments": {
+    "prompt": "Use case: identity-preserve\nAsset type: r2 original 3-view ANIME GAME CHARACTER design candidate for CHR-001, contemporary urban RPG lead, not a 3D model\nInput image: the existing CHR-001 turnaround-r1.png is the EDIT TARGET. Keep the same young male identity, exactly 20 years old, dark-brown short hair, blue-green eyes, ordinary human, and the front / true left-profile / back three-view layout\nPrimary change: the user requires youthful fashionable anime characters, NOT a mature or dowdy repairman. The current heavy cotton service jacket with big symmetrical patch pockets looks too ordinary and older. Redesign the clothing silhouette decisively as contemporary urban youth streetwear, with a playful but controlled anime protagonist identity. The job only appears as one tiny accessory, not as a uniform\nFace and body: lean youthful healthy adult, clean youthful anime face with clearer expressive blue-green eyes, relaxed self-assured smile, no facial creases, not photorealistic; about 7.25 heads tall, proposed 1.76m design scale. Give the short dark-brown hair more deliberate broad layered locks, swept fringe with two separated locks above one eye, no excessive spiky hair. Keep a 20-year-old adult, not a small child\nOutfit: cropped waist-length lightweight athletic bomber/track jacket, warm off-white torso, desaturated deep-teal shoulder and outer-arm panels, a short stand collar, clean black zipper piping, cuffs lightly pushed up to show wrists, one small asymmetric burnt-orange geometric chest tab. No big patch pockets. Jacket open so a charcoal-blue crew-neck top is visible, with a second warm-white T-shirt hem peeking below as a short layered step. A narrow orange woven tab at the jacket's lower left creates a recognizable small swing detail\nBottom: clean graphite tapered ankle-length urban trousers, a discreet deep-teal lateral stripe, one low-profile side zipper, no bulky utility pockets, no bunched heavy fabric at ankles. Clearly separated sneakers: modern high-volume but wearable off-white and deep-teal athletic shoes, black sole details, small orange heel accent. Small flat charcoal tool/card pouch tucked at the anatomical LEFT waist only; it must be an unobtrusive personal detail. Empty hands, no weapon, no gloves, no backpack or loose cable\nGraphic language: big readable two-tone shapes and purposeful asymmetric accents, cropped top vs slim legs, youthful clean proportions, enough character to be recognized from the back in a city street. Restrained original graphic marks only; no brands, no letters, no franchised motifs\nStyle: polished expressive 2D anime character production art, clean flowing contours, smooth cel shading, controlled warm/cool contrast, clear simplified fabric folds. It should feel like a fashion-conscious twenty-year-old who happens to repair things, not an employee catalog or realistic middle-aged handyman\nKeep: exactly three same-scale complete full-body views, aligned crown/shoulders/hips/knees/soles, neutral relaxed A-pose in front/back, left profile looking left, no perspective distortion. Same outfit construction, panel boundaries, fringe, shoe thickness and pouch location across all views; left pouch appears screen-right from front and screen-left from back. Entire hands and shoes visible\nBackdrop: plain warm-gray design-sheet background, subtle shared baseline, flat clear studio light, no scenery, no extra portraits, no text, no watermark. Do not paste labels. This is an original character candidate rather than imitation of any existing character",
+    "referenced_image_paths": [
+      "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/turnaround-r1.png"
+    ],
+    "transparent_background": false
+  },
+  "image_inputs": [
+    {
+      "role": "edit_target",
+      "path": "source-assets/characters/CHR-001/turnaround-r1.png",
+      "sha256": "d7064962e30a011c6e963b27c86ad2c92e4acc1e8d782032bcdacbb6fbc6d2c4"
+    }
+  ],
+  "user_direction": "主要人物都是比较年轻潮流的二次元形象，不要做老气了",
+  "changes_from_r1": [
+    "Replace heavy service jacket and big patch pockets with short lightweight athletic jacket",
+    "Add layered inner hem, restrained geometric accents and slim trousers with side color bands",
+    "Replace plain work shoes with youth-oriented two-tone sneakers",
+    "Keep candidate identity, age, three-view layout and anatomical-left pouch"
+  ],
+  "original_workspace_copy": "source-assets/characters/CHR-001/turnaround-r2.png",
+  "original_sha256": "7ea442c1c4ba890dec0a7f756ae4b672a8c5a5e2642eb723804f30ea0d3739d5",
+  "modifications": [],
+  "output": {
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGB",
+    "format": "PNG",
+    "bytes": 1757089,
+    "metadata_keys": []
+  },
+  "rights": {
+    "source": "Edited in the built-in tool from this project's generated r1 at the user's request",
+    "license": null,
+    "usage_scope": "Project-local visual design reference and modeling candidate",
+    "external_reference_images": [],
+    "release_review": "Applicable generation-service terms and final asset distribution must be checked before external asset distribution; no CC0 or third-party license is asserted"
+  },
+  "checks": {
+    "machine_report": "todo/evidence/TASK-047/character-design-r1/asset-report-r2.json",
+    "visual_review": "todo/evidence/TASK-047/character-design-r1/review.md"
+  }
+}

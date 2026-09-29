@@ -1,0 +1,8 @@
+{
+  "version": "4.5.14 LTS",
+  "source": "https://download.blender.org/release/Blender4.5/blender-4.5.14-linux-x64.tar.xz",
+  "sha256": "9ba871ff2ecd36526b77432745980b7e6664ecd0c7ca11c48849073dcfe06da3",
+  "checksum_verified": true,
+  "local_binary": "output/tools/blender-4.5.14-linux-x64/blender",
+  "scope": "Local development tool; not distributed with the game"
+}

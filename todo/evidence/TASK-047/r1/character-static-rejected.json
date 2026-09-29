@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "tools/validate_character.py",
+    "source-assets/environment-kit/nature/tree_oak.glb",
+    "--root-node",
+    "Root",
+    "--height",
+    "1.7"
+  ],
+  "exit_code": 1,
+  "report": {
+    "status": "FAIL",
+    "path": "source-assets/environment-kit/nature/tree_oak.glb",
+    "error": "character has no skins; static props are not animated character assets"
+  }
+}

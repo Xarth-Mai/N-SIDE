@@ -1,0 +1,431 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 780,
+  "seed": 0,
+  "timeout_seconds": 500,
+  "keyframes": [
+    59,
+    145,
+    179,
+    189,
+    209,
+    229,
+    239,
+    259,
+    279,
+    299,
+    319,
+    339,
+    379,
+    409,
+    429,
+    469,
+    509,
+    539,
+    569,
+    599,
+    629,
+    679,
+    729,
+    779
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 146,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 150,
+      "end": 180,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 190,
+      "end": 210,
+      "keys": [
+        "F",
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 230,
+      "end": 231,
+      "keys": [
+        "Tab"
+      ]
+    },
+    {
+      "start": 240,
+      "end": 241,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 250,
+      "end": 251,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 270,
+      "end": 271,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 280,
+      "end": 281,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 290,
+      "end": 291,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 310,
+      "end": 311,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 330,
+      "end": 331,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 350,
+      "end": 380,
+      "keys": [
+        "W",
+        "E"
+      ],
+      "look_axis": [
+        1,
+        0
+      ]
+    },
+    {
+      "start": 390,
+      "end": 391,
+      "keys": [
+        "Escape",
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 391,
+      "end": 420,
+      "keys": [
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 440,
+      "end": 470,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 490,
+      "end": 491,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 500,
+      "end": 510,
+      "look_axis": [
+        1,
+        0
+      ]
+    },
+    {
+      "start": 520,
+      "end": 521,
+      "gamepad": [
+        "Back"
+      ]
+    },
+    {
+      "start": 550,
+      "end": 551,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 580,
+      "end": 581,
+      "gamepad": [
+        "Menu"
+      ]
+    },
+    {
+      "start": 600,
+      "end": 601,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 610,
+      "end": 611,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 650,
+      "end": 651,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 700,
+      "end": 730,
+      "keys": [
+        "E"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 232,
+      "game_page": "paused"
+    },
+    {
+      "frame": 332,
+      "game_page": "world"
+    },
+    {
+      "frame": 582,
+      "game_page": "paused"
+    },
+    {
+      "frame": 614,
+      "game_page": "title"
+    },
+    {
+      "frame": 654,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "real doorway target before opening",
+      "from": 189,
+      "to": 189,
+      "observation_target": "04",
+      "observation_open": false
+    },
+    {
+      "name": "open observation owns input",
+      "from": 190,
+      "to": 229,
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04",
+      "game_page": "world"
+    },
+    {
+      "name": "tab pauses without discarding observation",
+      "from": 232,
+      "to": 249,
+      "game_page": "paused",
+      "observation_open": true,
+      "observation_visible": false,
+      "settings_open": false
+    },
+    {
+      "name": "settings opens from pause",
+      "from": 259,
+      "to": 259,
+      "game_page": "paused",
+      "settings_open": true,
+      "entry_focus": 0,
+      "text_scale": 1,
+      "camera_sensitivity": 1,
+      "observation_open": true,
+      "observation_visible": false
+    },
+    {
+      "name": "text size becomes 125 percent",
+      "from": 279,
+      "to": 279,
+      "settings_open": true,
+      "entry_focus": 0,
+      "text_scale": 1.25
+    },
+    {
+      "name": "camera sensitivity becomes 65 percent",
+      "from": 299,
+      "to": 299,
+      "settings_open": true,
+      "entry_focus": 1,
+      "text_scale": 1.25,
+      "camera_sensitivity": 0.65
+    },
+    {
+      "name": "settings returns to original pause focus",
+      "from": 319,
+      "to": 319,
+      "game_page": "paused",
+      "settings_open": false,
+      "entry_focus": 2,
+      "observation_open": true,
+      "observation_visible": false
+    },
+    {
+      "name": "resume restores the same observation with large text",
+      "from": 339,
+      "to": 379,
+      "game_page": "world",
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04",
+      "settings_open": false,
+      "text_scale": 1.25,
+      "camera_sensitivity": 0.65
+    },
+    {
+      "name": "close owns its frame and returns only to world",
+      "from": 390,
+      "to": 429,
+      "game_page": "world",
+      "observation_open": false,
+      "observation_visible": false
+    },
+    {
+      "name": "open menus and held close never move player or camera",
+      "from": 189,
+      "to": 429,
+      "max_player_distance": 0.001,
+      "max_distance": 0.001,
+      "max_rotation": 0.002,
+      "max_player_resets": 0,
+      "player_grounded": true,
+      "same_world_entities": true
+    },
+    {
+      "name": "fresh keyboard look uses changed sensitivity",
+      "from": 439,
+      "to": 469,
+      "min_rotation": 1,
+      "max_rotation": 1.08,
+      "max_player_distance": 0.001,
+      "max_player_resets": 0,
+      "player_grounded": true,
+      "camera_sensitivity": 0.65
+    },
+    {
+      "name": "large observation reopens and uses gamepad hint",
+      "from": 509,
+      "to": 509,
+      "game_page": "world",
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04",
+      "entry_device": "gamepad",
+      "text_scale": 1.25
+    },
+    {
+      "name": "controller closes observation without pausing",
+      "from": 539,
+      "to": 539,
+      "game_page": "world",
+      "observation_open": false,
+      "observation_visible": false
+    },
+    {
+      "name": "controller confirms the same public place",
+      "from": 569,
+      "to": 569,
+      "game_page": "world",
+      "observation_open": true,
+      "observation_visible": true,
+      "observation_selected": "04"
+    },
+    {
+      "name": "controller menu pauses before returning to title",
+      "from": 599,
+      "to": 599,
+      "game_page": "paused",
+      "observation_open": true,
+      "observation_visible": false
+    },
+    {
+      "name": "title clears scene and closes observation while retaining settings",
+      "from": 629,
+      "to": 629,
+      "game_page": "title",
+      "observation_open": false,
+      "observation_visible": false,
+      "settings_open": false,
+      "text_scale": 1.25,
+      "camera_sensitivity": 0.65,
+      "world_ready": false,
+      "max_world_entities": 0
+    },
+    {
+      "name": "new scene keeps session settings",
+      "from": 679,
+      "to": 679,
+      "game_page": "world",
+      "observation_open": false,
+      "observation_visible": false,
+      "text_scale": 1.25,
+      "camera_sensitivity": 0.65,
+      "world_ready": true,
+      "max_player_resets": 0,
+      "place_id": "04"
+    },
+    {
+      "name": "reentry camera still uses the selected sensitivity",
+      "from": 699,
+      "to": 729,
+      "min_rotation": 1,
+      "max_rotation": 1.08,
+      "max_player_distance": 0.001,
+      "max_player_resets": 0,
+      "player_grounded": true,
+      "camera_sensitivity": 0.65
+    }
+  ]
+}
