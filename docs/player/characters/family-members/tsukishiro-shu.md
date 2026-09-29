@@ -20,6 +20,8 @@ depends_on: []
 
 他认真安排接店之后的出门生活。愿意帮忙时，会先问清具体负责哪一段，与孩子约好时间，不随时回来接管小店
 
+在[一次维修与配送交接](../../story/world/rain-shelter-route.md)中，他按约定结束帮班去赴自己的约，曜接好留下的店务。帮助孩子与继续自己的生活同时成立
+
 ## 关系与活动
 
 与[陆成](../neighbors/lu-cheng.md)、[郑文良](../neighbors/zheng-wen-liang.md)是旧街坊；与[陈美惠](chen-mei-hui.md)共同维护家庭联系

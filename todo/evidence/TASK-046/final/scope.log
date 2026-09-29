@@ -1,0 +1,3 @@
+git diff --cached --check (TASK-046 staged content)
+exit_code=0
+PASS: all 72 worktree and staged content hashes match inputs.json

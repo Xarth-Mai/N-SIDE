@@ -7,7 +7,9 @@
 | QST-009 回声之后 | [任务说明](QST-009/README.md)、[终章行动与恢复](QST-009/development.md) |
 | QST-002 最后的玩具 | [任务说明](QST-002/README.md)、[Demo 范围](QST-002/demo-scope.md)、[行动与恢复](QST-002/development.md)、[信息与节点](QST-002/narrative.json) |
 
-[跨章因果与状态](../story-continuity.md)维护十六条铺垫及各案保留边界，[人物场景样稿](scenes.md)承接六段关系对白
+[跨章因果与状态](../story-continuity.md)维护跨章铺垫、世界任务回收及各案保留边界，[人物场景样稿](scenes.md)以十一段场景覆盖每章关键行动；[五条世界任务规格](world-stories.md)补充选择、交付与重访
+
+[全主线分场](campaign-sequences.md)逐段记录玩家目标、阻力、信息变化、后果与下一段承接；[首发任务体量与长度](pacing.md)给出二十七条任务的分项预算、参考资料和试玩调整口径
 
 [故事索引](../catalogs/quests.json)维护章节与角色、场所关联；具体任务按下列目录维护可执行结构，索引与引擎实现分别验证
 

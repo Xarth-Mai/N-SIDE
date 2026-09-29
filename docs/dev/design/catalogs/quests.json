@@ -1240,6 +1240,18 @@
             "type": "character_continuation",
             "description": "月城玲与凯文参与不同制作合作，未规定合作先后",
             "source": "player/story/daily/unfinished-window.md"
+          },
+          {
+            "quest_id": "QST-106",
+            "type": "clue_setup",
+            "description": "试版样片或尚未试穿的尺寸草图，把书中出发与母亲当前使用需要联系起来",
+            "source": "player/story/daily/ways-to-read.md"
+          },
+          {
+            "quest_id": "QST-027",
+            "type": "clue_setup",
+            "description": "已完成的口袋样片提醒先看新桌宽，未改衣时直接以米娜当前需求比较",
+            "source": "player/story/world/new-address.md"
           }
         ],
         "outcomes": [],
@@ -1329,6 +1341,12 @@
             "type": "character_continuation",
             "description": "唐惠、悠真的用餐与收场体现不同作息",
             "source": "player/story/daily/after-the-late-show.md"
+          },
+          {
+            "quest_id": "QST-023",
+            "type": "character_continuation",
+            "description": "两段饭局的备料经验进入改道后的新安排，未聚餐时直接按当前营业协调",
+            "source": "player/story/world/rain-shelter-route.md"
           }
         ],
         "outcomes": [],
@@ -1414,6 +1432,12 @@
             "type": "thematic_echo",
             "description": "同一兴趣街的普通创作与异常排查各自成立",
             "source": "player/story/main/extra-applause.md"
+          },
+          {
+            "quest_id": "QST-027",
+            "type": "clue_setup",
+            "description": "说明卡小夹在新任务重新比较夹口和底座，不把旧用途直接套给米娜",
+            "source": "player/story/world/new-address.md"
           }
         ],
         "outcomes": [],
@@ -1481,6 +1505,12 @@
             "type": "thematic_echo",
             "description": "核对当前信息可以解决误解，并非一切都由异常引起",
             "source": "player/story/main/no-school-bell.md"
+          },
+          {
+            "quest_id": "QST-023",
+            "type": "thematic_echo",
+            "description": "做完、可领和交到谁手里分别确认，旧取衣牌不成为异常媒介",
+            "source": "player/story/world/rain-shelter-route.md"
           }
         ],
         "outcomes": [],
@@ -1549,7 +1579,7 @@
           {
             "quest_id": "QST-108",
             "type": "character_continuation",
-            "description": "陈知夏把今天的使用者放入记录",
+            "description": "按许可保留的人像或空椅子照片用于比较通路，未参与时直接观察当下",
             "source": "player/story/daily/photograph-today.md"
           }
         ],
@@ -1710,6 +1740,12 @@
             "type": "character_continuation",
             "description": "悠真有新的演出与普通下班生活",
             "source": "player/story/main/extra-applause.md"
+          },
+          {
+            "quest_id": "QST-020",
+            "type": "character_continuation",
+            "description": "两次借用有各自日期与归还，先完成晚场不取消试听的新借约",
+            "source": "player/story/daily/unfinished-second-song.md"
           }
         ],
         "outcomes": [],
@@ -1814,6 +1850,12 @@
             "type": "location_change",
             "description": "河岸继续发生普通维护与使用变化，取景不等于险情已经解除",
             "source": "player/story/main/river-did-not-reverse.md"
+          },
+          {
+            "quest_id": "QST-024",
+            "type": "thematic_echo",
+            "description": "照片用途和背面可证明的说明，延伸为展签的出处、授权与未知边界",
+            "source": "player/story/world/names-returned.md"
           }
         ],
         "outcomes": [],
@@ -1869,6 +1911,12 @@
             "type": "character_continuation",
             "description": "安可仍想让名字大一点，但尊重工作信息与修改边界",
             "source": "player/story/main/epilogue.md"
+          },
+          {
+            "quest_id": "QST-020",
+            "type": "clue_setup",
+            "description": "废样背面继续记录两个副歌版本，反序参与时保留已有笔迹",
+            "source": "player/story/daily/unfinished-second-song.md"
           }
         ],
         "outcomes": [
@@ -2060,8 +2108,14 @@
           {
             "quest_id": "QST-010",
             "type": "character_continuation",
-            "description": "巧克力作品留在小店，继续共同营业而非用受损换取关注",
+            "description": "家人轮换与巧克力自己的作品继续，未做活动时不假定已经有手作成品",
             "source": "player/story/main/epilogue.md"
+          },
+          {
+            "quest_id": "QST-103",
+            "type": "thematic_echo",
+            "description": "作品与拆改过程分别展示，先后顺序不生成未完成的游戏作品",
+            "source": "player/story/daily/unfinished-window.md"
           }
         ],
         "outcomes": [
@@ -2078,6 +2132,433 @@
           "finding": "人物选择与重访结果已有正文，保持可选，不承担主线唯一信息",
           "pending": [
             "具体预约、选择保存与错过后承接尚待场景实现"
+          ]
+        }
+      }
+    },
+    {
+      "id": "QST-023",
+      "chapter_label": "世界任务",
+      "title": "雨棚下的第二条路",
+      "type": "daily",
+      "black_cases": [],
+      "reality_receiver": null,
+      "status": "draft",
+      "source_file": "player/story/world/rain-shelter-route.md",
+      "associated_place_ids": [
+        "03",
+        "04",
+        "11",
+        "28",
+        "32"
+      ],
+      "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-003",
+        "CHR-004",
+        "CHR-008",
+        "CHR-015",
+        "CHR-034",
+        "CHR-035"
+      ],
+      "diver": null,
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 2,
+        "display_order": 7.8,
+        "placement": "第六章失约与改道之后；若已过终章，按当前开放道路与既有交付继续",
+        "summary": "从未结清的维修单到双方确认的改约，顾客决定物件去向，阿东和唐惠按实际路线重新安排工作",
+        "required": [
+          {
+            "scope": "start",
+            "label": "承接已经发生的故事",
+            "condition": {
+              "type": "quest",
+              "quest_id": "QST-007",
+              "target": "QST-007",
+              "value": true,
+              "reason": "这次请求承接该章已发生的现实后果，不能提前冒称已经失约、核对或完成会谈"
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-001",
+            "type": "clue_payoff",
+            "description": "序章阿东的配送表与未完成交接，在改道后成为必须重新答复的承诺",
+            "source": "player/story/main/prologue.md"
+          },
+          {
+            "quest_id": "QST-008",
+            "type": "character_continuation",
+            "description": "第七章减单转交与本任务共用同一交接事实，先做任一场景都保留已有结果",
+            "source": "player/story/main/bring-today-back.md"
+          },
+          {
+            "quest_id": "QST-010",
+            "type": "clue_payoff",
+            "description": "完成时尾声按实际交付回扣，未做时保留普通生活与之后续接",
+            "source": "player/story/main/epilogue.md"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "handoff-settled",
+            "type": "state",
+            "value": true,
+            "label": "物件去向、费用与剩余责任按当事人决定交接，配送和备料各自确认",
+            "source": "player/story/world/rain-shelter-route.md"
+          }
+        ],
+        "review": {
+          "basis": "player/story/world/rain-shelter-route.md",
+          "finding": "请求、行动、当事人决定、实际交付与较晚续接已有正文，保持可选，不提供主线唯一钥匙",
+          "pending": [
+            "场景输入、当事人决定保存、晚接与重访对白、交付前后读档尚待实现"
+          ]
+        }
+      }
+    },
+    {
+      "id": "QST-024",
+      "chapter_label": "世界任务",
+      "title": "名字写回去以后",
+      "type": "daily",
+      "black_cases": [],
+      "reality_receiver": null,
+      "status": "draft",
+      "source_file": "player/story/world/names-returned.md",
+      "associated_place_ids": [
+        "04",
+        "57",
+        "67",
+        "85"
+      ],
+      "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-004",
+        "CHR-005",
+        "CHR-018",
+        "CHR-020",
+        "CHR-023",
+        "CHR-029"
+      ],
+      "diver": null,
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 4.8,
+        "placement": "第三章照片订正后可开始；父母旧路回忆可先在本任务取得或第五章后重看",
+        "summary": "旧票、照片和交接资料补回能确认的署名，兄妹重新理解童年的绕路，未知来源仍保留未知",
+        "required": [
+          {
+            "scope": "start",
+            "label": "承接已经发生的故事",
+            "condition": {
+              "type": "quest",
+              "quest_id": "QST-004",
+              "target": "QST-004",
+              "value": true,
+              "reason": "这次请求承接该章已发生的现实后果，不能提前冒称已经失约、核对或完成会谈"
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-004",
+            "type": "aftermath",
+            "description": "从完整底片的边缘继续核对旧站章与普通工作，不再制造单一英雄说明",
+            "source": "player/story/main/no-school-bell.md"
+          },
+          {
+            "quest_id": "QST-006",
+            "type": "historical_context",
+            "description": "家庭进货记录与临时通路从生活尺度补充历史，先取得时第五章承认已有认识",
+            "source": "player/story/main/still-together.md"
+          },
+          {
+            "quest_id": "QST-010",
+            "type": "clue_payoff",
+            "description": "完成时尾声按实际交付回扣，未做时保留普通生活与之后续接",
+            "source": "player/story/main/epilogue.md"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "caption-revised",
+            "type": "state",
+            "value": true,
+            "label": "这组材料的说明与授权核对完成，署名或匿名展签已交付，旧版保留订正来路",
+            "source": "player/story/world/names-returned.md"
+          }
+        ],
+        "review": {
+          "basis": "player/story/world/names-returned.md",
+          "finding": "请求、行动、当事人决定、实际交付与较晚续接已有正文，保持可选，不提供主线唯一钥匙",
+          "pending": [
+            "场景输入、当事人决定保存、晚接与重访对白、交付前后读档尚待实现"
+          ]
+        }
+      }
+    },
+    {
+      "id": "QST-025",
+      "chapter_label": "世界任务",
+      "title": "空着的一格",
+      "type": "daily",
+      "black_cases": [],
+      "reality_receiver": null,
+      "status": "draft",
+      "source_file": "player/story/world/empty-planter.md",
+      "associated_place_ids": [
+        "60",
+        "72",
+        "90"
+      ],
+      "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-019",
+        "CHR-024",
+        "CHR-030",
+        "CHR-033"
+      ],
+      "diver": null,
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 2,
+        "display_order": 5.8,
+        "placement": "第四章局部稳定后；错过首批可参与下一轮真实补种",
+        "summary": "受损苗架引出公共种植与连续观察的不同需要，照料者按能承担的数量决定，空位与日期留下",
+        "required": [
+          {
+            "scope": "start",
+            "label": "承接已经发生的故事",
+            "condition": {
+              "type": "quest",
+              "quest_id": "QST-005",
+              "target": "QST-005",
+              "value": true,
+              "reason": "这次请求承接该章已发生的现实后果，不能提前冒称已经失约、核对或完成会谈"
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-005",
+            "type": "aftermath",
+            "description": "受损苗牌与交换约定延伸为实际补种，不抹去已发生的损失",
+            "source": "player/story/main/beyond-autumn.md"
+          },
+          {
+            "quest_id": "QST-108",
+            "type": "thematic_echo",
+            "description": "玲按实际数量画苗牌，摄影仍需另一次参与和授权",
+            "source": "player/story/daily/photograph-today.md"
+          },
+          {
+            "quest_id": "QST-010",
+            "type": "clue_payoff",
+            "description": "完成时尾声按实际交付回扣，未做时保留普通生活与之后续接",
+            "source": "player/story/main/epilogue.md"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "planting-handoff",
+            "type": "state",
+            "value": true,
+            "label": "现存苗安置、首批补种、旧承诺答复和照料交接完成，生长留待后续时段",
+            "source": "player/story/world/empty-planter.md"
+          }
+        ],
+        "review": {
+          "basis": "player/story/world/empty-planter.md",
+          "finding": "请求、行动、当事人决定、实际交付与较晚续接已有正文，保持可选，不提供主线唯一钥匙",
+          "pending": [
+            "场景输入、当事人决定保存、晚接与重访对白、交付前后读档尚待实现"
+          ]
+        }
+      }
+    },
+    {
+      "id": "QST-026",
+      "chapter_label": "世界任务",
+      "title": "不是备用的那一天",
+      "type": "daily",
+      "black_cases": [],
+      "reality_receiver": null,
+      "status": "draft",
+      "source_file": "player/story/world/a-day-of-their-own.md",
+      "associated_place_ids": [
+        "34",
+        "73",
+        "75"
+      ],
+      "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-006",
+        "CHR-007",
+        "CHR-025",
+        "CHR-032"
+      ],
+      "diver": null,
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 2,
+        "display_order": 6.8,
+        "placement": "第五章会谈后另约；书面折页或小型远程交流均可交付",
+        "summary": "两份不同的读后感不必合成一致结论，维恩与遥保留已约的普通日程，交付自己的阅读折页",
+        "required": [
+          {
+            "scope": "start",
+            "label": "承接已经发生的故事",
+            "condition": {
+              "type": "quest",
+              "quest_id": "QST-006",
+              "target": "QST-006",
+              "value": true,
+              "reason": "这次请求承接该章已发生的现实后果，不能提前冒称已经失约、核对或完成会谈"
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-006",
+            "type": "character_continuation",
+            "description": "从历史会谈里另留的日程走向两人自己的工作，不再重新验证遥的身份",
+            "source": "player/story/main/still-together.md"
+          },
+          {
+            "quest_id": "QST-106",
+            "type": "thematic_echo",
+            "description": "版次书签用于核对引文，同一版仍有不同理解；反序时先用当下样书",
+            "source": "player/story/daily/ways-to-read.md"
+          },
+          {
+            "quest_id": "QST-010",
+            "type": "clue_payoff",
+            "description": "完成时尾声按实际交付回扣，未做时保留普通生活与之后续接",
+            "source": "player/story/main/epilogue.md"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "reading-leaflet-delivered",
+            "type": "state",
+            "value": true,
+            "label": "作者确认的阅读折页交付书店，公开范围和参与形式明确，本次约定完成",
+            "source": "player/story/world/a-day-of-their-own.md"
+          }
+        ],
+        "review": {
+          "basis": "player/story/world/a-day-of-their-own.md",
+          "finding": "请求、行动、当事人决定、实际交付与较晚续接已有正文，保持可选，不提供主线唯一钥匙",
+          "pending": [
+            "场景输入、当事人决定保存、晚接与重访对白、交付前后读档尚待实现"
+          ]
+        }
+      }
+    },
+    {
+      "id": "QST-027",
+      "chapter_label": "世界任务",
+      "title": "寄往新地址",
+      "type": "daily",
+      "black_cases": [],
+      "reality_receiver": null,
+      "status": "draft",
+      "source_file": "player/story/world/new-address.md",
+      "associated_place_ids": [
+        "04",
+        "37",
+        "39"
+      ],
+      "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
+        "CHR-003",
+        "CHR-009",
+        "CHR-010",
+        "CHR-013"
+      ],
+      "diver": null,
+      "max_simultaneous_sibling_divers": 0,
+      "story": {
+        "role": "side",
+        "optional": true,
+        "act": 1,
+        "display_order": 2.8,
+        "placement": "米娜离城并主动分享近况之后；晚接时重新确认她当下的小需求",
+        "summary": "按米娜的新桌面需要寄送小物或提供当地制作资料，留下的人继续新一局，巧克力按约参加家庭活动",
+        "required": [
+          {
+            "scope": "start",
+            "label": "承接已经发生的故事",
+            "condition": {
+              "type": "beat",
+              "quest_id": "QST-002",
+              "target": "QST-002-B016",
+              "value": true,
+              "reason": "米娜已离城并主动分享近况，寄送仍需本任务重新确认需求与收件信息"
+            },
+            "required_for_completion": true
+          }
+        ],
+        "recommended": [],
+        "related": [
+          {
+            "quest_id": "QST-002",
+            "type": "clue_payoff",
+            "description": "由米娜确认今天的新需要，选择寄物时才确认新地址；只发资料也能延续联系",
+            "source": "player/story/main/last-toy.md"
+          },
+          {
+            "quest_id": "QST-022",
+            "type": "character_continuation",
+            "description": "兄妹分担交付让巧克力参加活动；只有已做手作才认出观众图标的来历",
+            "source": "player/story/daily/chocolate-off-duty.md"
+          },
+          {
+            "quest_id": "QST-010",
+            "type": "clue_payoff",
+            "description": "完成时尾声按实际交付回扣，未做时保留普通生活与之后续接",
+            "source": "player/story/main/epilogue.md"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "new-request-delivered",
+            "type": "state",
+            "value": true,
+            "label": "米娜选定的物件或资料已收到并给出使用回应，公开照片仅在另获同意时展示",
+            "source": "player/story/world/new-address.md"
+          }
+        ],
+        "review": {
+          "basis": "player/story/world/new-address.md",
+          "finding": "请求、行动、当事人决定、实际交付与较晚续接已有正文，保持可选，不提供主线唯一钥匙",
+          "pending": [
+            "场景输入、当事人决定保存、晚接与重访对白、交付前后读档尚待实现"
           ]
         }
       }

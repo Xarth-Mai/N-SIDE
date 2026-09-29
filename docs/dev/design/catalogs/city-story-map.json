@@ -74,7 +74,8 @@
       "quest_ids": [
         "QST-001",
         "QST-008",
-        "QST-102"
+        "QST-102",
+        "QST-023"
       ],
       "narrative_role": "通路与生活",
       "daily_activity": "买菜、看橱窗、沿雨棚回家",
@@ -113,7 +114,10 @@
         "QST-019",
         "QST-021",
         "QST-022",
-        "QST-101"
+        "QST-101",
+        "QST-023",
+        "QST-024",
+        "QST-027"
       ],
       "narrative_role": "核心主线与家",
       "daily_activity": "经营、创作、吃饭、休息和接待",
@@ -304,7 +308,8 @@
         "QST-002",
         "QST-007",
         "QST-008",
-        "QST-103"
+        "QST-103",
+        "QST-023"
       ],
       "narrative_role": "主线与生活",
       "daily_activity": "送修、试机、学习维护",
@@ -775,7 +780,8 @@
       "quest_ids": [
         "QST-001",
         "QST-008",
-        "QST-009"
+        "QST-009",
+        "QST-023"
       ],
       "narrative_role": "后勤与生活",
       "daily_activity": "验收、储物转运、夜间交接",
@@ -881,7 +887,8 @@
         "QST-007",
         "QST-008",
         "QST-009",
-        "QST-107"
+        "QST-107",
+        "QST-023"
       ],
       "narrative_role": "现实协作",
       "daily_activity": "人工换乘咨询、交通卡服务",
@@ -932,7 +939,8 @@
       "quest_ids": [
         "QST-006",
         "QST-010",
-        "QST-106"
+        "QST-106",
+        "QST-026"
       ],
       "narrative_role": "关系与阅读",
       "daily_activity": "通勤翻书、交换推荐",
@@ -1010,7 +1018,8 @@
       ],
       "quest_ids": [
         "QST-103",
-        "QST-107"
+        "QST-107",
+        "QST-027"
       ],
       "narrative_role": "关系生活",
       "daily_activity": "围桌试玩、朋友约局",
@@ -1065,7 +1074,8 @@
       "quest_ids": [
         "QST-003",
         "QST-020",
-        "QST-103"
+        "QST-103",
+        "QST-027"
       ],
       "narrative_role": "关系与创作",
       "daily_activity": "试玩原创小作品、看更新板",
@@ -1539,7 +1549,8 @@
         "QST-004",
         "QST-008",
         "QST-010",
-        "QST-108"
+        "QST-108",
+        "QST-024"
       ],
       "narrative_role": "主线证据与生活",
       "daily_activity": "冲印、相册、装裱",
@@ -1619,7 +1630,8 @@
       "quest_ids": [
         "QST-005",
         "QST-008",
-        "QST-108"
+        "QST-108",
+        "QST-025"
       ],
       "narrative_role": "核心主线观察",
       "daily_activity": "育苗、交换、种植小课",
@@ -1803,7 +1815,8 @@
         "QST-008",
         "QST-009",
         "QST-104",
-        "QST-105"
+        "QST-105",
+        "QST-024"
       ],
       "narrative_role": "协作与公共服务",
       "daily_activity": "事务办理、预约活动、整合求助",
@@ -1933,7 +1946,8 @@
       "quest_ids": [
         "QST-005",
         "QST-010",
-        "QST-108"
+        "QST-108",
+        "QST-025"
       ],
       "narrative_role": "主线观察与休息",
       "daily_activity": "看城、走花园、等朋友",
@@ -1961,7 +1975,8 @@
       "quest_ids": [
         "QST-006",
         "QST-010",
-        "QST-106"
+        "QST-106",
+        "QST-026"
       ],
       "narrative_role": "主线人物与阅读",
       "daily_activity": "翻电影书、讨论小型出版",
@@ -2018,7 +2033,8 @@
       "quest_ids": [
         "QST-005",
         "QST-006",
-        "QST-008"
+        "QST-008",
+        "QST-026"
       ],
       "narrative_role": "核心主线会谈",
       "daily_activity": "创作、研究会面、预约远程参与",
@@ -2300,7 +2316,8 @@
         "QST-004",
         "QST-007",
         "QST-008",
-        "QST-010"
+        "QST-010",
+        "QST-024"
       ],
       "narrative_role": "核心历史地点",
       "daily_activity": "旧船票、照片、小型展览",
@@ -2437,7 +2454,8 @@
       ],
       "quest_ids": [
         "QST-005",
-        "QST-108"
+        "QST-108",
+        "QST-025"
       ],
       "narrative_role": "自然观察",
       "daily_activity": "看叶片、画熟悉的树",

@@ -28,6 +28,8 @@ depends_on: []
 
 第八章由她潜梦。出口已经出现，旧记录给出熟悉的“好了”，她仍依据尚未到齐的当下证据保持处理窗口。她拒绝让看似完整的梦中结局替现实提前结束，并亲自承担继续行动的判断
 
+后来的作品留下不同样子：[育苗牌](../story/world/empty-planter.md)画出真实空位，[历史说明](../story/world/names-returned.md)让不同来源各自署名，[寄给米娜的小物](../story/world/new-address.md)先依据朋友今天的需要决定。她继续创作动人的东西，也让当事人决定自己怎样进入作品
+
 ## 关系与认知
 
 [月城曜](brother.md)与她轮换潜梦和现实接应；[乔伊](neighbors/joey.md)邀请她参与《今天的街坊》，[米娜](neighbors/mina.md)和[苏弥](neighbors/su-mi.md)是日常朋友；[安可](neighbors/anke.md)与她合作音乐视觉，两人能谈报酬、修改次数和署名，也会在不谈工作的晚上挑新品。她与[凯文](neighbors/kevin.md)、[梁素](neighbors/liang-su.md)一起制作图案、模型和包装，作品会进入橱窗，也会被人们实际使用

@@ -120,4 +120,4 @@ UI 字体及完整声明由 `bun tools/export-ui.ts` 从[UI 资产包](../source
 
 已缓存独立 Git checkout 时可向 `tools/check_skill_upstream.py` 传入 `--checkouts` JSON（来源 ID 到 checkout 路径）；工具仍以清单中完整 commit 读取 Git 对象，不信工作区文件。Codex 发现命令 `python3 tools/probe_skills.py --output output/skills/discovery.json` 只证明发现；真实显式/隐式模型行为单独保存会话记录
 
-`bun run check:story-graph` 校验 quests catalog 的故事身份、条件树、成果引用、可进入性和可选支线边界；`check:story-design` 包含此检查。十八篇关系审查与 Wiki 页面由 catalog 自动投影，维护规则见[故事关系](../docs/dev/design/story-graph.md)
+`bun run check:story-graph` 校验 quests catalog 的故事身份、条件树、成果引用、可进入性和可选支线边界；`check:story-design` 包含此检查。逐篇关系审查与 Wiki 页面由 catalog 自动投影，维护规则见[故事关系](../docs/dev/design/story-graph.md)

@@ -1,0 +1,2 @@
+$ python3 -B tools/validate_narrative.py --root .
+PASS: 1 narrative files, 22 states

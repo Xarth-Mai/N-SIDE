@@ -1,0 +1,295 @@
+{
+  "base_commit": "f7357e68220756da3f855cbd12427a554008cf98",
+  "revision": "2aacc98740f5c4dd2f7f0c8634fc6a887e040c85d19d3d8152d21d69b51ac86c",
+  "hash_method": "SHA-256 of sorted UTF-8 sha256 + two spaces + path + LF lines",
+  "files": [
+    {
+      "path": "docs/dev/design/catalogs/city-story-map.json",
+      "sha256": "c3495958c10745ae14f53407a7413aecbb3642da8772b6abe52620c86fc734ab"
+    },
+    {
+      "path": "docs/dev/design/catalogs/quests.json",
+      "sha256": "8309f4ce70db6cee061d8db077f80d497356b96ea16cf7a28f4908e18083aeee"
+    },
+    {
+      "path": "docs/dev/design/characters/narrative.md",
+      "sha256": "fe7cecf3f331f9c7704dc11247a761322e8a02bff64652d63d705e7b0c5d065d"
+    },
+    {
+      "path": "docs/dev/design/quests/campaign-sequences.md",
+      "sha256": "771966283ef08abd56cb08f6348d368301eef9eb871e9581b068cd3d4554143c"
+    },
+    {
+      "path": "docs/dev/design/quests/index.md",
+      "sha256": "1b1d093511aafb03c6994eb314fbe69293892621a63d5e5a9cb6a925fc2bd9ad"
+    },
+    {
+      "path": "docs/dev/design/quests/pacing.md",
+      "sha256": "c4d2479e4c306e323ba4db1b4410a079223482ba6b8513a1a72cdedbf661b54f"
+    },
+    {
+      "path": "docs/dev/design/quests/scenes.md",
+      "sha256": "8c8bb532fbc4981fd4b9a4d3e013c5eb7740197d8f7dcfd22a7d0e8d326e85d0"
+    },
+    {
+      "path": "docs/dev/design/quests/world-stories.md",
+      "sha256": "6e83c6d46cdcf7c4b34b07e8caf5016eefdee66cd570ce49a529f2be2a2d25f7"
+    },
+    {
+      "path": "docs/dev/design/story-continuity.md",
+      "sha256": "9f88c991390832b0aa6e7f5a7d7965af2f4a0b67a4a01b91de81b0c08342506b"
+    },
+    {
+      "path": "docs/dev/design/story-graph.md",
+      "sha256": "d31882fe38d25eae03cf8b3a9a10a611eefb4178c096442b19c6d0b884e741a9"
+    },
+    {
+      "path": "docs/dev/production/narrative.md",
+      "sha256": "3e7fb22b05f1d8436ce391a84251847d475f83fc3543172614f5014a43b2c2a0"
+    },
+    {
+      "path": "docs/player/characters/agent.md",
+      "sha256": "9a881633dd6af23d715d7d433a717672ddcdf9fe866073f0fe5c31cf0eaac992"
+    },
+    {
+      "path": "docs/player/characters/brother.md",
+      "sha256": "849014d04149bf24695cb731faa4f02246bc3f5df06493a58266faa9700578ca"
+    },
+    {
+      "path": "docs/player/characters/family-members/tsukishiro-shu.md",
+      "sha256": "3da736a9d225ad59599c39e6173c85bd87486a7836d355a3bbc2d6ec5275c0d6"
+    },
+    {
+      "path": "docs/player/characters/neighbors/a-dong.md",
+      "sha256": "7eafcf4df3f3c7562b68d734723e98ca112431aa302d7c0bfa781899b1aab7be"
+    },
+    {
+      "path": "docs/player/characters/neighbors/chen-zhi-xia.md",
+      "sha256": "ad16b2f2131d559a4ce55c32354f1a538e5c724ba1c463bdad1aea16ef71204b"
+    },
+    {
+      "path": "docs/player/characters/neighbors/emma.md",
+      "sha256": "b497face4f99ae11105890369d277d2778f985a1dc72b0787189c2866ea88d5c"
+    },
+    {
+      "path": "docs/player/characters/neighbors/gu-wen-zhen.md",
+      "sha256": "d1aa6749c4933b8c33d6c04af5d4c193a2926490b948073fdfe6a0a2392c3071"
+    },
+    {
+      "path": "docs/player/characters/neighbors/lao-zhong.md",
+      "sha256": "3ed4b27d464642d4c823438a33f39c24c5e7cd9c0e92b8240c3eb9632bc2b86a"
+    },
+    {
+      "path": "docs/player/characters/neighbors/lu-cheng.md",
+      "sha256": "f09608fcce60be2ca8469df2859f6ef0bacc1fead5cc6e4d1f7288e95c384c3d"
+    },
+    {
+      "path": "docs/player/characters/neighbors/mina.md",
+      "sha256": "6f476573baee960bf583c913462ef00d7070b6d252a5fe2f8e65f459f47ef0d2"
+    },
+    {
+      "path": "docs/player/characters/neighbors/robin.md",
+      "sha256": "b27cac1ba7ab12cdb50df2f6ec47f6eff6a7973f2bb3c4e7219b1b132d838a3e"
+    },
+    {
+      "path": "docs/player/characters/neighbors/su-mi.md",
+      "sha256": "32c0cd8ceb613d84ae39c843e47a05ad343be9960fe1983e56059d268aa81ce2"
+    },
+    {
+      "path": "docs/player/characters/neighbors/ye-zhen.md",
+      "sha256": "ad69f04348af7ddc8df4b6c317a43c8d4b96443783deb9ffdbbc42dc740790ef"
+    },
+    {
+      "path": "docs/player/characters/neighbors/zheng-wen-liang.md",
+      "sha256": "5e44adb615300dc7ba1379bb9d17bc680b137d5b1284cbac4b1d625f71ca4b13"
+    },
+    {
+      "path": "docs/player/characters/neighbors/zhou-ran.md",
+      "sha256": "6296a8b6486ff72ef1364ffeaaefeada392ad53e8877c1124f283bd8c01120d8"
+    },
+    {
+      "path": "docs/player/characters/shared-dreams/haruka.md",
+      "sha256": "6ae8584847c40bfc3ab225f32bf482486c3f33a67ef840580c01955b7cd18f34"
+    },
+    {
+      "path": "docs/player/characters/shared-dreams/wien.md",
+      "sha256": "de6488ca33bc8d001109c1c7a61640252b8ba4fcd06ecefc2769d179ab151f34"
+    },
+    {
+      "path": "docs/player/characters/sister.md",
+      "sha256": "5c26876abab7d3a6e66a1cc6ffb71ac74f14b8be837b33e2440fa2795c609ef6"
+    },
+    {
+      "path": "docs/player/locations/places/b01.md",
+      "sha256": "4b2b205f3d222f53372204c4ba72d739082c941b20404b285425da6da32e750c"
+    },
+    {
+      "path": "docs/player/locations/places/b02.md",
+      "sha256": "592712bef9cde6f31b81b233db176d983b4e4dbfcc7cb990ca732ba961b4ab4a"
+    },
+    {
+      "path": "docs/player/locations/places/b03.md",
+      "sha256": "58ad122b762d3f9df4d82f1ec9835d2cba0f34052a08d6a6e508ad5474103c28"
+    },
+    {
+      "path": "docs/player/locations/places/b04.md",
+      "sha256": "08155fee22efb8f66b2ac63b8060bf4062648f987e6ce27cf659daf5c888ea37"
+    },
+    {
+      "path": "docs/player/locations/places/b05.md",
+      "sha256": "93bb047138eda265143553c4908dbeb5fe657b124d1a9ebcfdd2a99ccc03ffb6"
+    },
+    {
+      "path": "docs/player/locations/places/b06.md",
+      "sha256": "8780cba451517c4382fad32187104735b5ad16fa57a1c00d7aed27fe44a2b109"
+    },
+    {
+      "path": "docs/player/locations/places/b08.md",
+      "sha256": "73479f373f418bb5d405692b3c967a6261511aae1201721c1685301d368a8157"
+    },
+    {
+      "path": "docs/player/locations/places/b09.md",
+      "sha256": "462a7cc69ed10b2a01225848b7b262e4a535997a99900a55317fbd3c869cb683"
+    },
+    {
+      "path": "docs/player/locations/places/b11.md",
+      "sha256": "6a9918f08921c6a76e174fc90c61ffa1326bad99451928e177a447ee5cc21c4d"
+    },
+    {
+      "path": "docs/player/locations/places/b12.md",
+      "sha256": "f02667dbfdcdf13274d9c356c8a30198439f1520b24c4b358a31ac51cad902ce"
+    },
+    {
+      "path": "docs/player/story/daily/after-the-late-show.md",
+      "sha256": "8d374d876033b043b60f731d31829675e1c2167cfd4039ea3675bba95ac5f3b1"
+    },
+    {
+      "path": "docs/player/story/daily/chocolate-off-duty.md",
+      "sha256": "831632b6695cb3568325d200a04fb18d986a08975484bc23053d0f83582583f7"
+    },
+    {
+      "path": "docs/player/story/daily/collect-after-rain.md",
+      "sha256": "8465f24175feb216ed7493e50c5c2ae6ecbf594c6715296bcb7715a9b107f714"
+    },
+    {
+      "path": "docs/player/story/daily/courtside-chair.md",
+      "sha256": "ba57127709c3ff808f09058005477e379d1c00992751794820d5cc5ca3b8336f"
+    },
+    {
+      "path": "docs/player/story/daily/different-dinners.md",
+      "sha256": "cd4cf83c1c4752602e2dddeb25e875440dc0a497b56372e1d8eeb77fe51fe262"
+    },
+    {
+      "path": "docs/player/story/daily/index.md",
+      "sha256": "55479ae5baa5c6058d996f34ce2952d26d97e7985058ed536828c17f0451f683"
+    },
+    {
+      "path": "docs/player/story/daily/lend-you-an-umbrella.md",
+      "sha256": "93b94414eb57c319359ebdefe0ddeee06a8636cd6ba8bde9a50c4e5af6f8c3a8"
+    },
+    {
+      "path": "docs/player/story/daily/make-my-name-bigger.md",
+      "sha256": "f116cf5ed5f3b5a09093fef8152ef7e54e15f3c24e576aafe955ea0e710bed18"
+    },
+    {
+      "path": "docs/player/story/daily/new-pocket.md",
+      "sha256": "0d97001ce2a6b3b522b4f1c50e1caa044d08fdf7c433627d73ad51930c7d8bce"
+    },
+    {
+      "path": "docs/player/story/daily/photograph-today.md",
+      "sha256": "ae874d1bd5a21c7f8292e81246baf542d9e4c265d20f91968173917b8896bc46"
+    },
+    {
+      "path": "docs/player/story/daily/unfinished-second-song.md",
+      "sha256": "267c2bad1c3ebe07957956b398ce591e92511a9e2062caee176cb6e59d7df1c7"
+    },
+    {
+      "path": "docs/player/story/daily/unfinished-window.md",
+      "sha256": "c0a9d7523d055cfd624ba1d45aa9b975a0c7cfbaead3e1642ac77df75f51f8eb"
+    },
+    {
+      "path": "docs/player/story/daily/ways-to-read.md",
+      "sha256": "a186194726aed979736b5fdef7561d708af447a86886f6eb3b8c5f79c56a094e"
+    },
+    {
+      "path": "docs/player/story/index.md",
+      "sha256": "1a7978827d7a0b31d9050f1d42300c65e6cb66ebd864dbe5ab67236f4a44c1e7"
+    },
+    {
+      "path": "docs/player/story/main/after-echoes.md",
+      "sha256": "d701ef381d40da22999670e0045f9eed08b436c8f4b7b18ef61296246519344e"
+    },
+    {
+      "path": "docs/player/story/main/beyond-autumn.md",
+      "sha256": "b529dcbf5e0c12308bbae109ec7c18825c6c16fa8cc47759cd807af662cef9f5"
+    },
+    {
+      "path": "docs/player/story/main/bring-today-back.md",
+      "sha256": "d10706f558b2832d4429f9f644cf624b6b057f0fa3113025d7005722e5f3a8ec"
+    },
+    {
+      "path": "docs/player/story/main/epilogue.md",
+      "sha256": "fde7cb911aca4a37aa557dbc3c1d06e66ceb77ab0f8c15d8372852e20183b1f0"
+    },
+    {
+      "path": "docs/player/story/main/extra-applause.md",
+      "sha256": "8a514ce34c0b033d45853bebc32ddca4a0dc09674cabb8c6e51e275318656d98"
+    },
+    {
+      "path": "docs/player/story/main/index.md",
+      "sha256": "6ad0fb91a4c64b15b35d31ef56fe32cef5ff36f413259f41a3154b68d8a61e1a"
+    },
+    {
+      "path": "docs/player/story/main/last-toy.md",
+      "sha256": "0d3edc2c39b817792ab64e780c5d9005023e04f1d801ee518649b9c325cbb2e9"
+    },
+    {
+      "path": "docs/player/story/main/no-school-bell.md",
+      "sha256": "e66db33d816713cf0ca693a24e027e05eb6b219240a35ddb1b042ecddede4897"
+    },
+    {
+      "path": "docs/player/story/main/prologue.md",
+      "sha256": "1b1db211c9eb24a0f6aacbc0ba52a958ab8cdfc7c5750102c118c1a997b7a129"
+    },
+    {
+      "path": "docs/player/story/main/river-did-not-reverse.md",
+      "sha256": "c4dc31b2f465bd2ae4594a9f718ba70a5f9ec393373af5beb263b637619a7d00"
+    },
+    {
+      "path": "docs/player/story/main/still-together.md",
+      "sha256": "c7072059f6409f6195993f36826b67101538f5fd397e22cf1c1f46db9a5a805f"
+    },
+    {
+      "path": "docs/player/story/world/a-day-of-their-own.md",
+      "sha256": "f19f79cf3e9e95153a796510693ddeeaf2f7913cbe0e2dae701adea65a3bee16"
+    },
+    {
+      "path": "docs/player/story/world/empty-planter.md",
+      "sha256": "f7c760c9d1055d433a0e39427d33a0aca2b54c613bb0a69d28cd40a7acb4ac7c"
+    },
+    {
+      "path": "docs/player/story/world/index.md",
+      "sha256": "da65213cf7b89c54d9ec05d6f711f7af9c2fba6535aa42b4115900792a2f3212"
+    },
+    {
+      "path": "docs/player/story/world/names-returned.md",
+      "sha256": "4c2a0cb33fea86081b5fbeb38653c4de276e44aa80f19252121fff4228dbd4ad"
+    },
+    {
+      "path": "docs/player/story/world/new-address.md",
+      "sha256": "3cc91c2b2fab40714b8379a2021eb6a9e4ad9d7b6cb77f0014b1be6972f64104"
+    },
+    {
+      "path": "docs/player/story/world/rain-shelter-route.md",
+      "sha256": "aad6165cf3950cf6d0df8b7ff1e3d9895224947e70dba8069b207e6179256b6d"
+    },
+    {
+      "path": "docs/player/world/history.md",
+      "sha256": "c4018092a154a1647d34dcd6b5504ae933bd711332ff014a15b82933a10c9f1d"
+    },
+    {
+      "path": "docs/player/world/null-city.md",
+      "sha256": "0527400e3d82e536acf4c0ed6fd8afda820283a89538ea8adfc3bb1833900ed0"
+    }
+  ]
+}
