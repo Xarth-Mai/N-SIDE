@@ -3,40 +3,13 @@
 import json
 import math
 from pathlib import Path
-import struct
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "source-assets/environment-kit"
-
-
-def read_glb(path):
-    data = path.read_bytes()
-    magic, version, length, json_size, kind = struct.unpack_from("<5I", data)
-    assert magic == 0x46546C67 and version == 2 and length == len(data), f"{path}: invalid GLB header"
-    assert kind == 0x4E4F534A, f"{path}: JSON must be the first chunk"
-    document = json.loads(data[20:20 + json_size])
-    binary_size, binary_kind = struct.unpack_from("<2I", data, 20 + json_size)
-    assert binary_kind == 0x004E4942, f"{path}: expected embedded binary chunk"
-    binary = data[28 + json_size:]
-    assert len(binary) == binary_size, f"{path}: truncated binary chunk"
-    return document, binary
-
-
-def values(document, binary, accessor):
-    assert "sparse" not in accessor, "static environment fixtures do not use sparse accessors"
-    view = document["bufferViews"][accessor["bufferView"]]
-    assert view["buffer"] == 0, "static environment fixtures have one embedded buffer"
-    count = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4}[accessor["type"]]
-    code = {5120: "b", 5121: "B", 5122: "h", 5123: "H", 5125: "I", 5126: "f"}[accessor["componentType"]]
-    format_ = "<" + code * count
-    size = struct.calcsize(format_)
-    start = view.get("byteOffset", 0) + accessor.get("byteOffset", 0)
-    stride = view.get("byteStride", size)
-    assert stride >= size and accessor["count"] > 0, "invalid vertex stride/count"
-    end = start + stride * (accessor["count"] - 1) + size
-    assert end <= view.get("byteOffset", 0) + view["byteLength"] <= len(binary), "accessor exceeds its buffer view"
-    return [struct.unpack_from(format_, binary, start + i * stride) for i in range(accessor["count"])]
+sys.path.insert(0, str(ROOT / "tools"))
+from glb import read_glb, values
 
 
 class AssetEnvironmentTests(unittest.TestCase):
