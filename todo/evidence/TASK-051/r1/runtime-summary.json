@@ -1,0 +1,2937 @@
+[
+  {
+    "directory": "output/capture/task051-write-r1",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-write-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-write-r1",
+      "--walk-preview",
+      "--progress-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/progress/task051-live"
+    ],
+    "binary_sha256": "e138c1b0b44ad880b19440aa48173bcee869878b9c1060a56855e7050fe94c5b",
+    "script_sha256": "22c70c6c5bcfd2d3cf070d162254507326aaf714f8b6d5bd68485898f166f7b6",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "frames": 300,
+      "seed": 0,
+      "timeout_seconds": 400,
+      "keyframes": [
+        29,
+        189,
+        229,
+        259,
+        289
+      ],
+      "events": [
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 50,
+          "end": 51,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 146,
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "start": 150,
+          "end": 180,
+          "keys": [
+            "E"
+          ]
+        },
+        {
+          "start": 190,
+          "end": 210,
+          "keys": [
+            "F",
+            "W",
+            "E"
+          ]
+        },
+        {
+          "start": 230,
+          "end": 231,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 260,
+          "end": 261,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 263,
+          "end": 264,
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "start": 266,
+          "end": 267,
+          "keys": [
+            "Enter"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        },
+        {
+          "frame": 270,
+          "game_page": "title"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "Fresh slot starts without observations",
+          "from": 29,
+          "to": 29,
+          "game_page": "title",
+          "progress_status": "ready",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Real shop observation is durably saved",
+          "from": 229,
+          "to": 229,
+          "game_page": "world",
+          "observation_visible": true,
+          "observation_selected": "04",
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Return to title keeps saved acquired information",
+          "from": 289,
+          "to": 289,
+          "game_page": "title",
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 300,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 300
+      },
+      {
+        "checked_frames": 300,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 29,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Fresh slot starts without observations",
+          "progress_status": "ready",
+          "to": 29
+        },
+        "name": "Fresh slot starts without observations",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 229,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Real shop observation is durably saved",
+          "observation_selected": "04",
+          "observation_visible": true,
+          "progress_status": "saved",
+          "to": 229
+        },
+        "name": "Real shop observation is durably saved",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 289,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Return to title keeps saved acquired information",
+          "progress_status": "saved",
+          "to": 289
+        },
+        "name": "Return to title keeps saved acquired information",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.066534176
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5051,
+          "images": 44,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "last_ready": {
+          "entities": 5059,
+          "images": 47,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "peak_ready": {
+          "entities": 5059,
+          "images": 47,
+          "materials": 52,
+          "meshes": 3417
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 226,
+        "max": 56.626010999998755,
+        "mean": 31.16176806194692,
+        "p50": 30.460336000000865,
+        "p95": 39.428721000000166,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 1307,
+        "max": 200.87589,
+        "mean": 5.542021019127778,
+        "p50": 2.574082,
+        "p95": 18.751549999999998,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "9958da90d80bd5c1d9336ab08e37c769c7d89fbd0c6b75eecd58d41502dd16f1",
+      "state.json": "359fd1efa16a423545bed66a9f7c1aafc705e37ccbdab25e33f50ada01b0071c",
+      "runtime.log": "1841c0472ccb8d24bb15aca9d286afc7d3775df068962baa32d80f06f5672865"
+    },
+    "keyframe_hashes": {
+      "frame00029.png": "9fa3adab86e3aca7da1412050cb35f10a94bde66e85b9d0d0581d53040e79d74",
+      "frame00189.png": "71d4eed128999862a4444295c20f5e950797005a9ebf5d5d18db0a7d3f145030",
+      "frame00229.png": "8f30b4d1ad808ce09f0dd0df3d45c105c0b6a4ae7b7f72f12d994f0aa4305525",
+      "frame00259.png": "ee0639f195fdf06618462cecaf89b4d6dbd421fc9111452d0f4df244b2650251",
+      "frame00289.png": "ddac06198044788de7565171c87052ab02668381d3f1534f2a9942c95d38f13f"
+    }
+  },
+  {
+    "directory": "output/capture/task051-restore-r1",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-restore-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-restore-r1",
+      "--walk-preview",
+      "--progress-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/progress/task051-live"
+    ],
+    "binary_sha256": "e138c1b0b44ad880b19440aa48173bcee869878b9c1060a56855e7050fe94c5b",
+    "script_sha256": "3ef9be4e5da8d225d3a73fcd910e47b9426690e6faab4a72ba814366a11b1dd5",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "seed": 0,
+      "frames": 150,
+      "timeout_seconds": 300,
+      "keyframes": [
+        9,
+        18,
+        29,
+        59,
+        91,
+        106,
+        139
+      ],
+      "events": [
+        {
+          "start": 10,
+          "end": 11,
+          "keys": [
+            "Up"
+          ]
+        },
+        {
+          "start": 14,
+          "end": 20,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 22,
+          "end": 23,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 26,
+          "end": 27,
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 80,
+          "end": 81,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 84,
+          "end": 85,
+          "keys": [
+            "Up"
+          ]
+        },
+        {
+          "start": 88,
+          "end": 89,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 94,
+          "end": 95,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 100,
+          "end": 101,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 104,
+          "end": 105,
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "start": 108,
+          "end": 109,
+          "keys": [
+            "Enter"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        },
+        {
+          "frame": 112,
+          "game_page": "world"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "Separate process loads only the previously observed shop",
+          "from": 9,
+          "to": 9,
+          "game_page": "title",
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Held confirm opens restart with keep selected and cannot erase facts",
+          "from": 18,
+          "to": 18,
+          "game_page": "title",
+          "restart_pending": true,
+          "entry_focus": 0,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Cancel keeps observations and returns title focus",
+          "from": 25,
+          "to": 25,
+          "game_page": "title",
+          "restart_pending": false,
+          "entry_focus": 3,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Continue rebuilds a grounded player with saved facts and closed observation",
+          "from": 59,
+          "to": 59,
+          "game_page": "world",
+          "player_grounded": true,
+          "max_player_resets": 0,
+          "observation_open": false,
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Paused restart also defaults to keeping current progress",
+          "from": 91,
+          "to": 91,
+          "game_page": "paused",
+          "restart_pending": true,
+          "entry_focus": 0,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Confirming keep cancels restart",
+          "from": 97,
+          "to": 97,
+          "game_page": "paused",
+          "restart_pending": false,
+          "entry_focus": 3,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Destructive confirmation requires a separate deliberate choice",
+          "from": 106,
+          "to": 106,
+          "game_page": "paused",
+          "restart_pending": true,
+          "entry_focus": 1,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Confirmed restart clears progress and saves a fresh safe checkpoint",
+          "from": 139,
+          "to": 139,
+          "game_page": "world",
+          "player_grounded": true,
+          "observation_open": false,
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 150,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 150
+      },
+      {
+        "checked_frames": 150,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 9,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Separate process loads only the previously observed shop",
+          "progress_status": "saved",
+          "to": 9
+        },
+        "name": "Separate process loads only the previously observed shop",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "entry_focus": 0,
+          "from": 18,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Held confirm opens restart with keep selected and cannot erase facts",
+          "restart_pending": true,
+          "to": 18
+        },
+        "name": "Held confirm opens restart with keep selected and cannot erase facts",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "entry_focus": 3,
+          "from": 25,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Cancel keeps observations and returns title focus",
+          "restart_pending": false,
+          "to": 25
+        },
+        "name": "Cancel keeps observations and returns title focus",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 59,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "max_player_resets": 0,
+          "name": "Continue rebuilds a grounded player with saved facts and closed observation",
+          "observation_open": false,
+          "player_grounded": true,
+          "progress_status": "saved",
+          "to": 59
+        },
+        "name": "Continue rebuilds a grounded player with saved facts and closed observation",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "entry_focus": 0,
+          "from": 91,
+          "game_page": "paused",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Paused restart also defaults to keeping current progress",
+          "restart_pending": true,
+          "to": 91
+        },
+        "name": "Paused restart also defaults to keeping current progress",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "entry_focus": 3,
+          "from": 97,
+          "game_page": "paused",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Confirming keep cancels restart",
+          "restart_pending": false,
+          "to": 97
+        },
+        "name": "Confirming keep cancels restart",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "entry_focus": 1,
+          "from": 106,
+          "game_page": "paused",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Destructive confirmation requires a separate deliberate choice",
+          "restart_pending": true,
+          "to": 106
+        },
+        "name": "Destructive confirmation requires a separate deliberate choice",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 139,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Confirmed restart clears progress and saves a fresh safe checkpoint",
+          "observation_open": false,
+          "player_grounded": true,
+          "progress_status": "saved",
+          "to": 139
+        },
+        "name": "Confirmed restart clears progress and saves a fresh safe checkpoint",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.061384903,
+        0.050886208
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5051,
+          "images": 45,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "last_ready": {
+          "entities": 5051,
+          "images": 45,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "peak_ready": {
+          "entities": 5059,
+          "images": 45,
+          "materials": 52,
+          "meshes": 3417
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 83,
+        "max": 60.74949299999943,
+        "mean": 30.09264843373497,
+        "p50": 29.397546000001995,
+        "p95": 32.093568000000516,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 497,
+        "max": 203.255232,
+        "mean": 5.647699213279676,
+        "p50": 2.441751,
+        "p95": 18.31212,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "53cbb81cf75e6fd0506e11207b094b636bff15d770436424ca03b6239007614c",
+      "state.json": "ea308b5ab0f13d34d28b5a8458ae9fe73250abdf5679151b649f4f0d82b64e5b",
+      "runtime.log": "539dcfbf97279524b2dee6871dee1c9c58e31332306fa60ccf8be277a9e172a7"
+    },
+    "keyframe_hashes": {
+      "frame00009.png": "ddac06198044788de7565171c87052ab02668381d3f1534f2a9942c95d38f13f",
+      "frame00018.png": "ea330a7908134aa1f08ce2444571e6495c195eef82baa80702d631cac044a8f8",
+      "frame00029.png": "ddac06198044788de7565171c87052ab02668381d3f1534f2a9942c95d38f13f",
+      "frame00059.png": "2db0a22bd9b70e97f1cd42471091c8f7ffdd340a96e3edb664e9b44d04b0bd4e",
+      "frame00091.png": "47418998bf104ee6d2c7ce8695cb486011f515d2a0a2088d8210e03713f26d66",
+      "frame00106.png": "96262a26e6ac910f7ca3ebaed0b645bbf016c91201f1bdcc62edb6fa3e9c4fa0",
+      "frame00139.png": "25c194b4bd155a3cd6fbf12452d80f27ee82ba2d4eebe9cbb90731a87074fe62"
+    }
+  },
+  {
+    "directory": "output/capture/task051-write-failure-r1",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-write-failure-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-write-failure-r1",
+      "--walk-preview",
+      "--progress-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/progress/task051-write-failure"
+    ],
+    "binary_sha256": "e138c1b0b44ad880b19440aa48173bcee869878b9c1060a56855e7050fe94c5b",
+    "script_sha256": "c490b4fe51863fc75056e49564b1495701d94c4f42cd74d769c03c2c30bb5a35",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "frames": 300,
+      "seed": 0,
+      "timeout_seconds": 400,
+      "keyframes": [
+        29,
+        189,
+        229,
+        259,
+        289
+      ],
+      "events": [
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 50,
+          "end": 51,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 146,
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "start": 150,
+          "end": 180,
+          "keys": [
+            "E"
+          ]
+        },
+        {
+          "start": 190,
+          "end": 210,
+          "keys": [
+            "F",
+            "W",
+            "E"
+          ]
+        },
+        {
+          "start": 230,
+          "end": 231,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 260,
+          "end": 261,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 263,
+          "end": 264,
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "start": 266,
+          "end": 267,
+          "keys": [
+            "Enter"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        },
+        {
+          "frame": 270,
+          "game_page": "title"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "Valid empty slot loads before the backup destination fails",
+          "from": 29,
+          "to": 29,
+          "game_page": "title",
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Real observation remains in session after save failure",
+          "from": 229,
+          "to": 229,
+          "game_page": "world",
+          "observation_visible": true,
+          "observation_selected": "04",
+          "progress_status": "write_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Title exposes the save failure and retains session facts",
+          "from": 289,
+          "to": 289,
+          "game_page": "title",
+          "progress_status": "write_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 300,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 300
+      },
+      {
+        "checked_frames": 300,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 29,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Valid empty slot loads before the backup destination fails",
+          "progress_status": "saved",
+          "to": 29
+        },
+        "name": "Valid empty slot loads before the backup destination fails",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 229,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Real observation remains in session after save failure",
+          "observation_selected": "04",
+          "observation_visible": true,
+          "progress_status": "write_failed",
+          "to": 229
+        },
+        "name": "Real observation remains in session after save failure",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 289,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Title exposes the save failure and retains session facts",
+          "progress_status": "write_failed",
+          "to": 289
+        },
+        "name": "Title exposes the save failure and retains session facts",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.040482363
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5051,
+          "images": 45,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "last_ready": {
+          "entities": 5059,
+          "images": 48,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "peak_ready": {
+          "entities": 5059,
+          "images": 48,
+          "materials": 52,
+          "meshes": 3417
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 226,
+        "max": 55.111200999999,
+        "mean": 29.668734146017705,
+        "p50": 29.60816699999924,
+        "p95": 32.7229580000008,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 1350,
+        "max": 212.309846,
+        "mean": 5.1240238466666606,
+        "p50": 2.434001,
+        "p95": 18.34847,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "26dfa3d5f6282ebadc23af55faa8e8b1a8598f279e6c7b0951a2ec9a290d2fa8",
+      "state.json": "89d2207017c516fcfc3408edd93bc5ec4082dcd4a619a368b495c9a040ae7c56",
+      "runtime.log": "2852a08be5b71d21599c102937de42ccf73aacc23aaa5ff1b4e628662a6956d8"
+    },
+    "keyframe_hashes": {
+      "frame00029.png": "a35d557219204e9a6445d4fcd125410f425c94b6311cae4d90131cf4b9522190",
+      "frame00189.png": "f4a2600e17181395460e4f2e156a9e1129dbb53c28d07faed52573c91285d9ba",
+      "frame00229.png": "8f30b4d1ad808ce09f0dd0df3d45c105c0b6a4ae7b7f72f12d994f0aa4305525",
+      "frame00259.png": "f002d842a59ca2a9788258241d9c974aa5c1ef8fbd3db9d5ecf39a54afceea0f",
+      "frame00289.png": "95c58944d51e9bcad685182c98d7919a787fefb0ed0292c66076b2b5d87dcc4c"
+    }
+  },
+  {
+    "directory": "output/capture/task051-corrupt-r1",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-corrupt-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-corrupt-r1",
+      "--walk-preview",
+      "--progress-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/progress/task051-corrupt"
+    ],
+    "binary_sha256": "e138c1b0b44ad880b19440aa48173bcee869878b9c1060a56855e7050fe94c5b",
+    "script_sha256": "acf4de5c338f15887d75dcad15ea49705298ee0bc4fe7dab48bcfcbd3283299d",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "frames": 300,
+      "seed": 0,
+      "timeout_seconds": 400,
+      "keyframes": [
+        29,
+        189,
+        229,
+        259,
+        289
+      ],
+      "events": [
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 50,
+          "end": 51,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 146,
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "start": 150,
+          "end": 180,
+          "keys": [
+            "E"
+          ]
+        },
+        {
+          "start": 190,
+          "end": 210,
+          "keys": [
+            "F",
+            "W",
+            "E"
+          ]
+        },
+        {
+          "start": 230,
+          "end": 231,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 260,
+          "end": 261,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 263,
+          "end": 264,
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "start": 266,
+          "end": 267,
+          "keys": [
+            "Enter"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        },
+        {
+          "frame": 270,
+          "game_page": "title"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "Unreadable original slot is preserved",
+          "from": 29,
+          "to": 29,
+          "game_page": "title",
+          "progress_status": "read_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Real observation remains in session after save failure",
+          "from": 229,
+          "to": 229,
+          "game_page": "world",
+          "observation_visible": true,
+          "observation_selected": "04",
+          "progress_status": "read_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Title exposes the save failure and retains session facts",
+          "from": 289,
+          "to": 289,
+          "game_page": "title",
+          "progress_status": "read_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 300,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 300
+      },
+      {
+        "checked_frames": 300,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 29,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Unreadable original slot is preserved",
+          "progress_status": "read_failed",
+          "to": 29
+        },
+        "name": "Unreadable original slot is preserved",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 229,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Real observation remains in session after save failure",
+          "observation_selected": "04",
+          "observation_visible": true,
+          "progress_status": "read_failed",
+          "to": 229
+        },
+        "name": "Real observation remains in session after save failure",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 289,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Title exposes the save failure and retains session facts",
+          "progress_status": "read_failed",
+          "to": 289
+        },
+        "name": "Title exposes the save failure and retains session facts",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.05462528
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5051,
+          "images": 45,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "last_ready": {
+          "entities": 5059,
+          "images": 48,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "peak_ready": {
+          "entities": 5059,
+          "images": 48,
+          "materials": 52,
+          "meshes": 3417
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 226,
+        "max": 54.490150000001236,
+        "mean": 29.934867654867283,
+        "p50": 29.86660699999888,
+        "p95": 32.9434880000008,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 1345,
+        "max": 201.481161,
+        "mean": 5.179750119702605,
+        "p50": 2.492771,
+        "p95": 18.457459999999998,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "b5906b24525b6c0196548479cbb3dd30a274ec87c4e23a63d6a876a30c9c88b7",
+      "state.json": "ff7656eb43a25554f2a7e70586ba007b5aaa2f4283c1fa4665096d3c0e2af940",
+      "runtime.log": "895f611d7864abd75c47f0ae0769aba400fc51691bf84583def71fc125222e64"
+    },
+    "keyframe_hashes": {
+      "frame00029.png": "aee7a453e60c157b960d9a996351bc3c57e9083a09ba813392e55f033f7f8689",
+      "frame00189.png": "ec6173382a9c3ee5b5b374eed102a1b8778e16985f94558346482779bbd5d86b",
+      "frame00229.png": "8f30b4d1ad808ce09f0dd0df3d45c105c0b6a4ae7b7f72f12d994f0aa4305525",
+      "frame00259.png": "a9c982296f4c32df5721dbfbe608b9ab08635ab699fdbbab8e7e3790301b6965",
+      "frame00289.png": "68fc11deaa8dbe71825efdb266a350e9abc13a4d76a00af9a72ca74c3f29ec3e"
+    }
+  },
+  {
+    "directory": "output/capture/task051-portrait-r1",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-portrait-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-portrait-r1",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/settings/task051-large",
+      "--progress-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/progress/task051-corrupt"
+    ],
+    "binary_sha256": "e138c1b0b44ad880b19440aa48173bcee869878b9c1060a56855e7050fe94c5b",
+    "script_sha256": "7006abd8a3a43af4faaf1098c2d2b107f8eb8980bf3ae0e8d452fb9b144534de",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "frames": 300,
+      "seed": 0,
+      "timeout_seconds": 400,
+      "keyframes": [
+        29,
+        189,
+        229,
+        259,
+        289
+      ],
+      "events": [
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 50,
+          "end": 51,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 146,
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "start": 150,
+          "end": 180,
+          "keys": [
+            "E"
+          ]
+        },
+        {
+          "start": 190,
+          "end": 210,
+          "keys": [
+            "F",
+            "W",
+            "E"
+          ]
+        },
+        {
+          "start": 230,
+          "end": 231,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 260,
+          "end": 261,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 263,
+          "end": 264,
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "start": 266,
+          "end": 267,
+          "keys": [
+            "Enter"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        },
+        {
+          "frame": 270,
+          "game_page": "title"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "Unreadable original slot is preserved",
+          "from": 29,
+          "to": 29,
+          "game_page": "title",
+          "progress_status": "read_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          },
+          "text_scale": 1.25
+        },
+        {
+          "name": "Real observation remains in session after save failure",
+          "from": 229,
+          "to": 229,
+          "game_page": "world",
+          "observation_visible": true,
+          "observation_selected": "04",
+          "progress_status": "read_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Title exposes the save failure and retains session facts",
+          "from": 289,
+          "to": 289,
+          "game_page": "title",
+          "progress_status": "read_failed",
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 300,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 300
+      },
+      {
+        "checked_frames": 300,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 29,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Unreadable original slot is preserved",
+          "progress_status": "read_failed",
+          "text_scale": 1.25,
+          "to": 29
+        },
+        "name": "Unreadable original slot is preserved",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 229,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Real observation remains in session after save failure",
+          "observation_selected": "04",
+          "observation_visible": true,
+          "progress_status": "read_failed",
+          "to": 229
+        },
+        "name": "Real observation remains in session after save failure",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 289,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "Title exposes the save failure and retains session facts",
+          "progress_status": "read_failed",
+          "to": 289
+        },
+        "name": "Title exposes the save failure and retains session facts",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.061022853
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5051,
+          "images": 45,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "last_ready": {
+          "entities": 5059,
+          "images": 48,
+          "materials": 52,
+          "meshes": 3417
+        },
+        "peak_ready": {
+          "entities": 5059,
+          "images": 48,
+          "materials": 52,
+          "meshes": 3417
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 226,
+        "max": 38.71329100000054,
+        "mean": 29.6915325221239,
+        "p50": 29.85071699999864,
+        "p95": 33.365107999998145,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 1457,
+        "max": 186.167742,
+        "mean": 4.733325945092654,
+        "p50": 2.5742819999999997,
+        "p95": 16.94604,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "1f3db14da60094ace971530f1d3ac4a93af579afbe6639d413dbf87a4bab6484",
+      "state.json": "192afa9b0eda99c31bd75dc2caec22b261be9a672232ead797b4011e2824d811",
+      "runtime.log": "9d7eab639dac26f829a25eacd92eabc38315a11585a0a83a61a7dc001eee4b43"
+    },
+    "keyframe_hashes": {
+      "frame00029.png": "1da40ccedf2dfe68f7c7dc3e1148b555ddc59f92ce87be2bda18ca754581fa08",
+      "frame00189.png": "7a1626bca971676ce8e1f0df29fa76a2541f3b0766e22befb12ee183cce2124f",
+      "frame00229.png": "bb7879de26bef18724c94e17209e10ecbd2fa6248b3b641ba4e5a72d38881084",
+      "frame00259.png": "c4e43b8c048c9efadbfe8910b611bd94b0a20b653674ccf7716c7313ec2b6fc7",
+      "frame00289.png": "d72205d7526ecf66755943df2742116be0ae51dc26569ac80d54e4c5e5a7f772"
+    }
+  },
+  {
+    "directory": "output/capture/task051-complete-route-r1",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-complete-route-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-complete-route-r1",
+      "--walk-preview",
+      "--character-preview",
+      "--progress-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/progress/task051-complete"
+    ],
+    "binary_sha256": "692befb774cfdcf8e686b8c253d76b96d8c9351dac5a5ade1ac7eb6451526c11",
+    "script_sha256": "87f396199b6eb2133ac691cfeeefa05fbecdc5649562fccce74f590f748aa68f",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "frames": 2672,
+      "seed": 0,
+      "timeout_seconds": 1800,
+      "keyframes": [
+        59,
+        155,
+        188,
+        290,
+        396,
+        501,
+        527,
+        553,
+        648,
+        674,
+        700,
+        854,
+        894,
+        924,
+        934,
+        1088,
+        1114,
+        1140,
+        1235,
+        1261,
+        1287,
+        1392,
+        1498,
+        1594,
+        1682,
+        1877,
+        1983,
+        2060,
+        2184,
+        2515,
+        2545,
+        2578,
+        2611,
+        2626,
+        2671
+      ],
+      "events": [
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 154,
+          "move_axis": [
+            -0.9977393617021276,
+            0
+          ]
+        },
+        {
+          "start": 156,
+          "end": 157,
+          "look": [
+            -523.5987755982989,
+            0
+          ]
+        },
+        {
+          "start": 159,
+          "end": 160,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 189,
+          "end": 190,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 192,
+          "end": 193,
+          "look": [
+            523.5987755982989,
+            0
+          ]
+        },
+        {
+          "start": 195,
+          "end": 289,
+          "move_axis": [
+            0.9977393617021276,
+            0
+          ]
+        },
+        {
+          "start": 291,
+          "end": 395,
+          "move_axis": [
+            0.33916879888787543,
+            0.9331199560929025
+          ]
+        },
+        {
+          "start": 397,
+          "end": 500,
+          "move_axis": [
+            0.3412299994423164,
+            0.9387907101383779
+          ]
+        },
+        {
+          "start": 502,
+          "end": 526,
+          "move_axis": [
+            0.33480644229459505,
+            0.9211177841934276
+          ]
+        },
+        {
+          "start": 528,
+          "end": 552,
+          "move_axis": [
+            0.3348821012356914,
+            0.9210903335108
+          ]
+        },
+        {
+          "start": 554,
+          "end": 647,
+          "move_axis": [
+            0.3410034670196158,
+            0.9379269828370693
+          ]
+        },
+        {
+          "start": 649,
+          "end": 673,
+          "move_axis": [
+            0.3348821012356914,
+            0.9210903335108
+          ]
+        },
+        {
+          "start": 675,
+          "end": 699,
+          "move_axis": [
+            0.33514045564116973,
+            0.920996262004117
+          ]
+        },
+        {
+          "start": 701,
+          "end": 853,
+          "move_axis": [
+            0.34090149295003935,
+            0.9368285151698906
+          ]
+        },
+        {
+          "start": 855,
+          "end": 893,
+          "move_axis": [
+            0.32378577204985204,
+            0.8897954044402152
+          ]
+        },
+        {
+          "start": 895,
+          "end": 896,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 925,
+          "end": 926,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 928,
+          "end": 933,
+          "move_axis": [
+            -0.32378577204985204,
+            -0.8897954044402152
+          ]
+        },
+        {
+          "start": 935,
+          "end": 1087,
+          "move_axis": [
+            -0.34090149295003935,
+            -0.9368285151698906
+          ]
+        },
+        {
+          "start": 1089,
+          "end": 1113,
+          "move_axis": [
+            -0.33514045564116973,
+            -0.920996262004117
+          ]
+        },
+        {
+          "start": 1115,
+          "end": 1139,
+          "move_axis": [
+            -0.3348821012356914,
+            -0.9210903335108
+          ]
+        },
+        {
+          "start": 1141,
+          "end": 1234,
+          "move_axis": [
+            -0.3410034670196158,
+            -0.9379269828370693
+          ]
+        },
+        {
+          "start": 1236,
+          "end": 1260,
+          "move_axis": [
+            -0.3348821012356914,
+            -0.9210903335108
+          ]
+        },
+        {
+          "start": 1262,
+          "end": 1286,
+          "move_axis": [
+            -0.33480644229459505,
+            -0.9211177841934276
+          ]
+        },
+        {
+          "start": 1288,
+          "end": 1391,
+          "move_axis": [
+            -0.3412299994423164,
+            -0.9387907101383779
+          ]
+        },
+        {
+          "start": 1393,
+          "end": 1497,
+          "move_axis": [
+            -0.33916879888787543,
+            -0.9331199560929025
+          ]
+        },
+        {
+          "start": 1499,
+          "end": 1593,
+          "move_axis": [
+            -0.9977393617021276,
+            0
+          ]
+        },
+        {
+          "start": 1595,
+          "end": 1681,
+          "move_axis": [
+            -0.16364967367719896,
+            -0.9818980420631938
+          ]
+        },
+        {
+          "start": 1683,
+          "end": 1876,
+          "move_axis": [
+            -0.9964216321243523,
+            0
+          ]
+        },
+        {
+          "start": 1878,
+          "end": 1982,
+          "move_axis": [
+            0,
+            0.9928485576923077
+          ]
+        },
+        {
+          "start": 1984,
+          "end": 2059,
+          "move_axis": [
+            -1,
+            0
+          ]
+        },
+        {
+          "start": 2061,
+          "end": 2183,
+          "move_axis": [
+            0,
+            0.9991290983606556
+          ]
+        },
+        {
+          "start": 2185,
+          "end": 2514,
+          "move_axis": [
+            -0.9977393617021277,
+            0
+          ]
+        },
+        {
+          "start": 2516,
+          "end": 2517,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 2546,
+          "end": 2547,
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "start": 2549,
+          "end": 2550,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 2579,
+          "end": 2580,
+          "keys": [
+            "Up"
+          ]
+        },
+        {
+          "start": 2582,
+          "end": 2583,
+          "keys": [
+            "F"
+          ]
+        },
+        {
+          "start": 2612,
+          "end": 2613,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 2627,
+          "end": 2628,
+          "gamepad": [
+            "Confirm"
+          ]
+        },
+        {
+          "start": 2642,
+          "end": 2643,
+          "gamepad": [
+            "Confirm"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "The real spawn starts with no acquired handoff observations",
+          "from": 59,
+          "to": 59,
+          "game_page": "world",
+          "world_ready": true,
+          "observation_open": false,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Approach the shared shop doorway and face it before inspecting",
+          "from": 158,
+          "to": 158,
+          "observation_target": "04",
+          "observation_open": false,
+          "player_grounded": true
+        },
+        {
+          "name": "Observe 04 through the real player and public information window",
+          "from": 161,
+          "to": 188,
+          "observation_target": "04",
+          "observation_selected": "04",
+          "observation_open": true,
+          "observation_visible": true,
+          "max_player_distance": 0.001,
+          "max_rotation": 0.001,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Reach the public steps through the actual rising stair mesh",
+          "from": 894,
+          "to": 894,
+          "observation_target": "29",
+          "observation_open": false,
+          "player_grounded": true,
+          "min_player_height": 39.4,
+          "max_player_height": 39.9,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Observe 29 through the real player and public information window",
+          "from": 897,
+          "to": 924,
+          "observation_target": "29",
+          "observation_selected": "29",
+          "observation_open": true,
+          "observation_visible": true,
+          "max_player_distance": 0.001,
+          "max_rotation": 0.001,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04",
+              "29"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Reach the receiving yard through the shop exterior without opening private rooms",
+          "from": 2515,
+          "to": 2515,
+          "observation_target": "28",
+          "observation_open": false,
+          "player_grounded": true,
+          "min_player_height": 27.9,
+          "max_player_height": 28.2,
+          "handoff": {
+            "stage": "observing",
+            "observed_places": [
+              "04",
+              "29"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Observe 28 through the real player and public information window",
+          "from": 2518,
+          "to": 2545,
+          "observation_target": "28",
+          "observation_selected": "28",
+          "observation_open": true,
+          "observation_visible": true,
+          "max_player_distance": 0.001,
+          "max_rotation": 0.001,
+          "handoff": {
+            "stage": "awaiting_choice",
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Choosing public steps rejects cart delivery and permits revision",
+          "from": 2551,
+          "to": 2578,
+          "observation_selected": "28",
+          "observation_open": true,
+          "observation_visible": true,
+          "handoff": {
+            "stage": "awaiting_choice",
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "confirmation_count": 0,
+            "rejected_choices": 1
+          }
+        },
+        {
+          "name": "The explicit service-yard choice commits exactly once",
+          "from": 2584,
+          "to": 2611,
+          "observation_selected": "28",
+          "observation_open": true,
+          "observation_visible": true,
+          "handoff": {
+            "stage": "confirmed",
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "confirmation_count": 1,
+            "rejected_choices": 1
+          }
+        },
+        {
+          "name": "Closing the observation keeps the confirmed session result",
+          "from": 2614,
+          "to": 2626,
+          "observation_open": false,
+          "game_page": "world",
+          "handoff": {
+            "stage": "confirmed",
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "confirmation_count": 1,
+            "rejected_choices": 1
+          }
+        },
+        {
+          "name": "Controller reopen and repeated confirmation preserve one committed result",
+          "from": 2645,
+          "to": 2671,
+          "observation_selected": "28",
+          "observation_open": true,
+          "observation_visible": true,
+          "handoff": {
+            "stage": "confirmed",
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "confirmation_count": 1,
+            "rejected_choices": 1
+          }
+        },
+        {
+          "name": "The same real player follows the full route without reset or jump",
+          "from": 59,
+          "to": 2671,
+          "game_page": "world",
+          "same_world_entities": true,
+          "max_player_resets": 0,
+          "max_player_jumps": 0,
+          "min_player_height": 27.8,
+          "max_player_height": 39.9
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 2672,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 2672
+      },
+      {
+        "checked_frames": 2672,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 59,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "name": "The real spawn starts with no acquired handoff observations",
+          "observation_open": false,
+          "to": 59,
+          "world_ready": true
+        },
+        "name": "The real spawn starts with no acquired handoff observations",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 158,
+          "name": "Approach the shared shop doorway and face it before inspecting",
+          "observation_open": false,
+          "observation_target": "04",
+          "player_grounded": true,
+          "to": 158
+        },
+        "name": "Approach the shared shop doorway and face it before inspecting",
+        "passed": true,
+        "peak_rotation_radians": 0.0009765624417923391,
+        "rotation_radians": 0.0009765624417923391
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 161,
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "max_player_distance": 0.0010000000474974513,
+          "max_rotation": 0.0010000000474974513,
+          "name": "Observe 04 through the real player and public information window",
+          "observation_open": true,
+          "observation_selected": "04",
+          "observation_target": "04",
+          "observation_visible": true,
+          "to": 188
+        },
+        "name": "Observe 04 through the real player and public information window",
+        "passed": true,
+        "peak_rotation_radians": 0.0009765624417923391,
+        "rotation_radians": 0.0009765624417923391
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 894,
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "max_player_height": 39.900001525878906,
+          "min_player_height": 39.400001525878906,
+          "name": "Reach the public steps through the actual rising stair mesh",
+          "observation_open": false,
+          "observation_target": "29",
+          "player_grounded": true,
+          "to": 894
+        },
+        "name": "Reach the public steps through the actual rising stair mesh",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 897,
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04",
+              "29"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "max_player_distance": 0.0010000000474974513,
+          "max_rotation": 0.0010000000474974513,
+          "name": "Observe 29 through the real player and public information window",
+          "observation_open": true,
+          "observation_selected": "29",
+          "observation_target": "29",
+          "observation_visible": true,
+          "to": 924
+        },
+        "name": "Observe 29 through the real player and public information window",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 2515,
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04",
+              "29"
+            ],
+            "rejected_choices": 0,
+            "stage": "observing"
+          },
+          "max_player_height": 28.200000762939453,
+          "min_player_height": 27.899999618530273,
+          "name": "Reach the receiving yard through the shop exterior without opening private rooms",
+          "observation_open": false,
+          "observation_target": "28",
+          "player_grounded": true,
+          "to": 2515
+        },
+        "name": "Reach the receiving yard through the shop exterior without opening private rooms",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 2518,
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "rejected_choices": 0,
+            "stage": "awaiting_choice"
+          },
+          "max_player_distance": 0.0010000000474974513,
+          "max_rotation": 0.0010000000474974513,
+          "name": "Observe 28 through the real player and public information window",
+          "observation_open": true,
+          "observation_selected": "28",
+          "observation_target": "28",
+          "observation_visible": true,
+          "to": 2545
+        },
+        "name": "Observe 28 through the real player and public information window",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 2551,
+          "handoff": {
+            "confirmation_count": 0,
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "rejected_choices": 1,
+            "stage": "awaiting_choice"
+          },
+          "name": "Choosing public steps rejects cart delivery and permits revision",
+          "observation_open": true,
+          "observation_selected": "28",
+          "observation_visible": true,
+          "to": 2578
+        },
+        "name": "Choosing public steps rejects cart delivery and permits revision",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 2584,
+          "handoff": {
+            "confirmation_count": 1,
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "rejected_choices": 1,
+            "stage": "confirmed"
+          },
+          "name": "The explicit service-yard choice commits exactly once",
+          "observation_open": true,
+          "observation_selected": "28",
+          "observation_visible": true,
+          "to": 2611
+        },
+        "name": "The explicit service-yard choice commits exactly once",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 2614,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 1,
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "rejected_choices": 1,
+            "stage": "confirmed"
+          },
+          "name": "Closing the observation keeps the confirmed session result",
+          "observation_open": false,
+          "to": 2626
+        },
+        "name": "Closing the observation keeps the confirmed session result",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 2645,
+          "handoff": {
+            "confirmation_count": 1,
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "rejected_choices": 1,
+            "stage": "confirmed"
+          },
+          "name": "Controller reopen and repeated confirmation preserve one committed result",
+          "observation_open": true,
+          "observation_selected": "28",
+          "observation_visible": true,
+          "to": 2671
+        },
+        "name": "Controller reopen and repeated confirmation preserve one committed result",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 76.1432876586914,
+        "enabled": false,
+        "expected": {
+          "from": 59,
+          "game_page": "world",
+          "max_player_height": 39.900001525878906,
+          "max_player_jumps": 0,
+          "max_player_resets": 0,
+          "min_player_height": 27.799999237060547,
+          "name": "The same real player follows the full route without reset or jump",
+          "same_world_entities": true,
+          "to": 2671
+        },
+        "name": "The same real player follows the full route without reset or jump",
+        "passed": true,
+        "peak_rotation_radians": 1.5707964897155762,
+        "rotation_radians": 0.0006905339541845024
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.069688588
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5017,
+          "images": 46,
+          "materials": 53,
+          "meshes": 3344
+        },
+        "last_ready": {
+          "entities": 5021,
+          "images": 49,
+          "materials": 53,
+          "meshes": 3344
+        },
+        "peak_ready": {
+          "entities": 5028,
+          "images": 49,
+          "materials": 53,
+          "meshes": 3344
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 2637,
+        "max": 75.4122009999989,
+        "mean": 29.859014447098982,
+        "p50": 30.234146999998046,
+        "p95": 34.53110899999956,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 15692,
+        "max": 199.05123899999998,
+        "mean": 5.034052956729545,
+        "p50": 2.568692,
+        "p95": 18.63259,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "dcb39a7f20eb535565cf21dd78773d2446327920f31c2bc4b679836500ee5a39",
+      "state.json": "b6ca0efb0716f779a41c89ab7524104ce9b6b7aae1dafdc9a3ee4be72b58ce8b",
+      "runtime.log": "668490f3f6af01a63da7201af13e22be87b67ddf644992df59c3c58d18b2707e"
+    },
+    "keyframe_hashes": {
+      "frame00059.png": "3a92f68b63d60a9b22b3ea71e00bc2bb3baee492394cd034fc8d282b0716cfc5",
+      "frame00155.png": "f543f65d360a6e31b634d7938e99cfd13fe4284401f477279fb313c959b50f7a",
+      "frame00188.png": "c2eda76dd4d6ec7bf16679ae39c5c4e090c831ef2e22ee71177b8818bbe55162",
+      "frame00290.png": "f47acf408416b958f65c9538832db58dc870430de2f534d4b12fb81f6604aba7",
+      "frame00396.png": "ffbbee7f822af50036fdbf350ac80285a6d45dbb440294f1ed34a2defb463627",
+      "frame00501.png": "a3ec00c66a78a3500f0ac66b070665eefee0ca74013dcdfa58dfe03f247dffd1",
+      "frame00527.png": "2d245bb4e6d4b32f52733427186ffac604435211f1ce0b711c987d31bad687c4",
+      "frame00553.png": "dea2fb6b481e305e5da1882ef14d468d38307b76afe451b5f99ec12dd7ca56e4",
+      "frame00648.png": "847eb7489c4b322aefd305d6083ecf957c32fb18eda132976a664c87b0f6ae3a",
+      "frame00674.png": "510875c99b417496cacf206776dc99953e6c92f9b87e59f5a0ea34be286e7719",
+      "frame00700.png": "5ff5bed427898d153d276350d384d7953cb27b17df74c2fb388f577de4a67a64",
+      "frame00854.png": "6f4ba199a4f2b436dfc8b103a425f2459534135686dc6a265417dc1b7ed339fa",
+      "frame00894.png": "5a8428f24f9ead77a9c05d4aac9cbeafda543ca53a5263dd498f4f153e2bca33",
+      "frame00924.png": "b75fa9054ba10058b0091a097aaaba1b8e1b35ab84095223e55610e866c9484c",
+      "frame00934.png": "170a70ae6a3409f2208436cd9642afd2880790c4934e689a2ec97cc88adff0a8",
+      "frame01088.png": "fa93d1903726de613002df89aca69675d12c8796c02cb7b8a9eca364af18c393",
+      "frame01114.png": "f8a3adf14bac7ba915a95318c8e078a6d1b1106a2e0c3ab8be72e85f94d14b90",
+      "frame01140.png": "b3b5ce417530d6594370f9775604f36ce954de0b646e4325cb75d69d62de45c8",
+      "frame01235.png": "a804303f06f1f8ca9d7db408f66207d1e8c9266e02b6deb30604382d3e44d051",
+      "frame01261.png": "50c895aca34ae7a35871d5196d082d0a4d0d8775281184440d349a993eda55c5",
+      "frame01287.png": "543e32589c8b6369cfa196d64487a6368d3e0374e1bc4a9fd687af59f6f6bf69",
+      "frame01392.png": "9c7a18ddae85095a3148323395fd5047308ffdbe02ec7c8b8206eca3ea782980",
+      "frame01498.png": "1ddc9d18d6354a6fcb30f9b22acf086413209e2660e2e1bbc3ca3acae5fc80bb",
+      "frame01594.png": "052065cf7a4b09123a835588ebc7ed74f0a09e83081b5e0b3dfad9df7c6e26c2",
+      "frame01682.png": "fac17cf4a33374ab2e1c0bc588dd3c8f304656d1c5c529e5ddae6e4a083c74ba",
+      "frame01877.png": "c2552ae2336f99bab0fdbaa7a970a2c0d379a07271be2b186073568815ac64ed",
+      "frame01983.png": "c2ede91a5da8c749cb2cbaeab64386c76b70de720fbf4ccc205d9b37423e9306",
+      "frame02060.png": "521534e2a123c374bed7a64971d08b675b6f2ca6f41d6b3cb74b14459f05a7f9",
+      "frame02184.png": "aea09bc86f22cb4d1cc254c927dc97ebecf9dbeb5f6b425647f21f05c6ee13c2",
+      "frame02515.png": "cc47192095b62b2939e3e191842e114bc7241abc974ac4a807064616df2b3c68",
+      "frame02545.png": "d97775e1bbd8c14462df7e26b23cc012508c4fafdb6e8ec18aa8331fee07bc9d",
+      "frame02578.png": "e2804b42fd3ddd2a1f98522a7f75a7113c72898c8cc0787ffa1c86a0f6d2cbac",
+      "frame02611.png": "3109eea04f75b45753fee16dfbb0d1d190f82e33d9602d83f0560ff5020d42f2",
+      "frame02626.png": "82ee7b2877c067e5e23b0590cf4f175b6321cbeff22089275607c7cfd59fccec",
+      "frame02671.png": "c090c70ced4b6578c081e59e4d12d741bf0b131f92248b9fdf490c195ca044e5"
+    }
+  },
+  {
+    "directory": "output/capture/task051-confirmed-r1",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-confirmed-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task051-confirmed-r1",
+      "--walk-preview",
+      "--character-preview",
+      "--progress-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/progress/task051-complete"
+    ],
+    "binary_sha256": "7b9a2b117cfb6a8324d596aaa29b105308a3c1274406f87e6209c42c4e26a6ef",
+    "script_sha256": "37ad3603af7ef66a2969df03483bbf336938fb2fb44a2f3a0c8cb8f7d0ef8467",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "seed": 0,
+      "frames": 90,
+      "timeout_seconds": 250,
+      "keyframes": [
+        29,
+        59,
+        89
+      ],
+      "events": [
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "Confirmed route survives a separate process without retaining failed attempts",
+          "from": 29,
+          "to": 29,
+          "game_page": "title",
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "confirmed",
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "confirmation_count": 1,
+            "rejected_choices": 0
+          }
+        },
+        {
+          "name": "Continue does not recommit the delivery route",
+          "from": 89,
+          "to": 89,
+          "game_page": "world",
+          "player_grounded": true,
+          "observation_open": false,
+          "progress_status": "saved",
+          "handoff": {
+            "stage": "confirmed",
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "confirmation_count": 1,
+            "rejected_choices": 0
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 90,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 90
+      },
+      {
+        "checked_frames": 90,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 29,
+          "game_page": "title",
+          "handoff": {
+            "confirmation_count": 1,
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "rejected_choices": 0,
+            "stage": "confirmed"
+          },
+          "name": "Confirmed route survives a separate process without retaining failed attempts",
+          "progress_status": "saved",
+          "to": 29
+        },
+        "name": "Confirmed route survives a separate process without retaining failed attempts",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 89,
+          "game_page": "world",
+          "handoff": {
+            "confirmation_count": 1,
+            "observed_places": [
+              "04",
+              "29",
+              "28"
+            ],
+            "rejected_choices": 0,
+            "stage": "confirmed"
+          },
+          "name": "Continue does not recommit the delivery route",
+          "observation_open": false,
+          "player_grounded": true,
+          "progress_status": "saved",
+          "to": 89
+        },
+        "name": "Continue does not recommit the delivery route",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.053855929
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5017,
+          "images": 46,
+          "materials": 53,
+          "meshes": 3344
+        },
+        "last_ready": {
+          "entities": 5017,
+          "images": 46,
+          "materials": 53,
+          "meshes": 3344
+        },
+        "peak_ready": {
+          "entities": 5017,
+          "images": 46,
+          "materials": 53,
+          "meshes": 3344
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 55,
+        "max": 68.02345700000068,
+        "mean": 31.010098818181806,
+        "p50": 30.58356699999898,
+        "p95": 33.01435799999908,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 339,
+        "max": 217.539539,
+        "mean": 5.838423436578171,
+        "p50": 2.557081,
+        "p95": 17.98507,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "1e1d79e2b34284c9186d73c76ad936ac20a7338c324f2f87a84071411f3ea09e",
+      "state.json": "b552bcd1d4c8e387ffb3269fdfa3f8dc891b2f80a29250befb0da6183d3fa3c7",
+      "runtime.log": "295438bf0759aefd508c8b0e5c85e073b8a8a00e0481cb8ce54e4201c23e5ad8"
+    },
+    "keyframe_hashes": {
+      "frame00029.png": "ddac06198044788de7565171c87052ab02668381d3f1534f2a9942c95d38f13f",
+      "frame00059.png": "5d6fd76ac7bf4d4721f212e02fc20a3881b65a0e22d666ade6428391f6a86fdd",
+      "frame00089.png": "7146c2aae9f63b58647913b7318b804744704d3a13fbf3cbfbd9ab5f8714b6fe"
+    }
+  }
+]

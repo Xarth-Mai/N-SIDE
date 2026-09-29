@@ -1,0 +1,12 @@
+Info: Saved as "street-tree.blend"
+INFO Draco mesh compression is available, use library at /home/lzzz/MyProjects/N-SIDE/output/tools/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+01:51:19 | INFO: Starting glTF 2.0 export
+01:51:19 | INFO: Extracting primitive: StreetTreeEarlyAutumn
+01:51:19 | WARNING: The active Vertex Color will not be exported, as it is not used in the node tree of the material
+01:51:19 | INFO: Primitives created: 2
+01:51:19 | INFO: Finished glTF 2.0 export in 0.019240140914916992 s
+
+TREE vertices=11554 triangles=11686 height_m=6 seed=45019
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

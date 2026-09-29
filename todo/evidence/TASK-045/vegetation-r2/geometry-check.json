@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "sha256": "e928de4fe4e8f64af7d4bf4b08173484608e4255c367a9f2ed864323b85309b2",
+  "bytes": 709372,
+  "triangles": 11686,
+  "primitives": 2,
+  "bounds": [
+    [
+      -2.9352283477783203,
+      0.0,
+      -2.8391952514648438
+    ],
+    [
+      2.780834197998047,
+      6.0,
+      2.68683123588562
+    ]
+  ],
+  "radius_m": 2.9928433842998494,
+  "bark_image": {
+    "dimensions": [
+      256,
+      512
+    ],
+    "embedded_bytes": 60358,
+    "color_space": "sRGB"
+  },
+  "alpha": "OPAQUE; geometric gaps; no cutout textures",
+  "animations": "none"
+}

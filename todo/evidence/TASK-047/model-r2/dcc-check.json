@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "asset": "CHR-001 modelling candidate r2",
+  "scope": "DCC joint transforms, loop endpoints, sole ground distance and seated facial feature vertices; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 61,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.983777360389468e-09,
+      "max_stance_height_error_m": 0.001999971689656377
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 31,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.214263485546326e-08,
+      "max_stance_height_error_m": 9.214263485546326e-08
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 21,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.0573883457709599e-07,
+      "max_stance_height_error_m": 1.068477573085147e-07
+    }
+  ],
+  "facial_surface_gaps": {
+    "Mouth": {
+      "minimum_m": 0.0002155005931854248,
+      "maximum_m": 0.0012969821691513062
+    },
+    "Nose": {
+      "minimum_m": 0.00028464198112487793,
+      "maximum_m": 0.004710882902145386
+    },
+    "Eye_White.L": {
+      "minimum_m": 0.0005827844142913818,
+      "maximum_m": 0.0009027644991874695
+    },
+    "Eye_White.R": {
+      "minimum_m": 0.0005829483270645142,
+      "maximum_m": 0.0009001791477203369
+    },
+    "Eye_Glint.L": {
+      "minimum_m": 0.0018998831510543823,
+      "maximum_m": 0.0019005686044692993
+    },
+    "Eye_Glint.R": {
+      "minimum_m": 0.0018993616104125977,
+      "maximum_m": 0.0019001811742782593
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "task051-write-failure": {
+    "before_sha256": "a70f6219ff0b99fa415a99ac32ed5510d4a6c3f4919afddbd5d9adcc232319f9",
+    "before_content": "{\n  \"version\": 1,\n  \"quest\": \"QST-001\",\n  \"checkpoint\": \"home\",\n  \"observed_places\": [],\n  \"confirmed_route\": null\n}",
+    "fixture_source": "real second-process restart result",
+    "after_sha256": "a70f6219ff0b99fa415a99ac32ed5510d4a6c3f4919afddbd5d9adcc232319f9",
+    "unchanged": true
+  },
+  "task051-corrupt": {
+    "before_sha256": "be302461cda285db3ed2d45fb767b23e08ca8808b35a638009937df22b332d73",
+    "before_content": "{broken",
+    "fixture_source": "intentionally corrupt isolated slot",
+    "after_sha256": "be302461cda285db3ed2d45fb767b23e08ca8808b35a638009937df22b332d73",
+    "unchanged": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "original_master_reexport_byte_identical": true,
+  "original_glb_sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
+  "uncommitted_source_changes_before_work": false,
+  "original_generator_rebuild_byte_identical": true,
+  "manual_mesh_or_material_changes_detected": false,
+  "baseline_source_commit": "450613ce91dddeeb04d3778d3b139aadcd9a6830",
+  "baseline_rebuild_log": "baseline-rebuild.log",
+  "baseline_master_export_log": "before-render.log"
+}

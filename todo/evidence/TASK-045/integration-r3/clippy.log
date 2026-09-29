@@ -1,0 +1,538 @@
+   Compiling unicode-ident v1.0.26
+    Checking cfg-if v1.0.5
+    Checking log v0.4.34
+    Checking smallvec v1.16.1
+    Checking pin-project-lite v0.2.17
+    Checking foldhash v0.2.0
+    Checking serde_core v1.0.229
+    Checking libm v0.2.16
+    Checking libc v0.2.189
+   Compiling equivalent v1.0.2
+    Checking allocator-api2 v0.2.21
+    Checking arrayvec v0.7.8
+   Compiling indexmap v2.14.2
+    Checking parking v2.2.1
+    Checking once_cell v1.21.4
+   Compiling proc-macro2 v1.0.107
+    Checking hashbrown v0.17.1
+    Checking futures-core v0.3.34
+    Checking crossbeam-utils v0.8.23
+    Checking futures-io v0.3.34
+    Checking fastrand v2.5.0
+    Checking event-listener v5.4.2
+    Checking slab v0.4.12
+    Checking raw-window-handle v0.6.2
+    Checking foldhash v0.1.5
+    Checking futures-lite v2.6.1
+    Checking rand_core v0.10.1
+    Checking hashbrown v0.15.5
+    Checking event-listener-strategy v0.5.4
+    Checking typewit v1.15.2
+    Checking rand v0.10.3
+    Checking linux-raw-sys v0.12.1
+    Checking concurrent-queue v2.5.0
+   Compiling quote v1.0.47
+    Checking async-channel v2.5.0
+    Checking const_panic v0.2.17
+    Checking spin v0.10.1
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling toml_edit v0.25.15+spec-1.1.0
+    Checking typeid v1.0.3
+    Checking thread_local v1.1.10
+    Checking fixedbitset v0.5.7
+    Checking num-traits v0.2.19
+    Checking downcast-rs v2.0.2
+    Checking disqualified v1.1.0
+    Checking async-task v4.7.1
+    Checking atomic-waker v1.1.2
+    Checking inventory v0.3.24
+    Checking bevy_ptr v0.19.1
+    Checking memchr v2.8.3
+    Checking async-executor v1.14.0
+    Checking slotmap v1.1.1
+    Checking crossbeam-queue v0.3.14
+    Checking nonmax v0.5.5
+    Checking bumpalo v3.20.3
+    Checking getrandom v0.4.3
+    Checking tracing-core v0.1.36
+    Checking either v1.18.0
+    Checking byteorder v1.5.0
+    Checking crossbeam-channel v0.5.17
+    Checking rand_distr v0.6.0
+    Checking piper v0.2.5
+    Checking sysinfo v0.38.4
+    Checking itertools v0.14.0
+    Checking blocking v1.7.0
+    Checking async-lock v3.4.2
+    Checking libloading v0.8.9
+    Checking futures-task v0.3.34
+    Checking hashbrown v0.16.1
+    Checking uuid v1.26.1
+    Checking erased-serde v0.4.10
+    Checking const-fnv1a-hash v1.1.0
+    Checking cpufeatures v0.3.1
+    Checking constant_time_eq v0.4.2
+    Checking stackfuture v0.3.1
+    Checking async-fs v2.2.0
+    Checking async-broadcast v0.7.2
+    Checking blake3 v1.8.7
+    Checking atomicow v1.2.0
+    Checking simd-adler32 v0.3.10
+    Checking adler2 v2.0.1
+    Checking aho-corasick v1.1.5
+    Checking stable_deref_trait v1.2.1
+    Checking regex-syntax v0.8.11
+    Checking crc32fast v1.5.2
+   Compiling syn v1.0.109
+    Checking miniz_oxide v0.9.1
+    Checking miniz_oxide v0.8.9
+    Checking fdeflate v0.3.7
+    Checking const_soft_float v0.1.4
+    Checking pxfm v0.1.30
+    Checking zune-core v0.5.3
+    Checking constgebra v0.1.4
+    Checking euclid v0.22.14
+    Checking flate2 v1.1.10
+    Checking zune-jpeg v0.5.15
+    Checking twox-hash v2.1.4
+    Checking byteorder-lite v0.1.0
+    Checking svg_fmt v0.4.5
+    Checking ruzstd v0.8.3
+    Checking lazy_static v1.5.0
+    Checking rectangle-pack v0.4.2
+    Checking bevy_mikktspace v1.0.0
+    Checking sharded-slab v0.1.7
+    Checking tracing-log v0.2.0
+    Checking nu-ansi-term v0.50.3
+    Checking unicode-width v0.2.2
+    Checking termcolor v1.4.1
+    Checking guillotiere v0.6.2
+    Checking bit-vec v0.9.1
+    Checking rustc-hash v1.1.0
+    Checking hexf-parse v0.2.1
+    Checking writeable v0.6.4
+    Checking codespan-reporting v0.13.1
+    Checking dlib v0.5.3
+    Checking litemap v0.8.3
+    Checking bit-set v0.9.1
+    Checking memmap2 v0.9.11
+    Checking scopeguard v1.2.0
+    Checking lock_api v0.4.14
+    Checking wayland-sys v0.31.11
+    Checking parking_lot_core v0.9.12
+    Checking ash v0.38.0+1.3.281
+    Checking ordered-float v5.5.0
+    Checking utf8_iter v1.0.4
+    Checking scoped-tls v1.0.1
+    Checking presser v0.3.1
+    Checking regex-automata v0.4.18
+    Checking downcast-rs v1.2.1
+    Checking parking_lot v0.12.5
+    Checking codespan-reporting v0.12.0
+    Checking renderdoc-sys v1.1.0
+    Checking profiling v1.0.18
+    Checking data-encoding v2.11.1
+    Checking icu_properties_data v2.3.0
+    Checking icu_locale_fallback_data v2.3.0
+    Checking static_assertions v1.1.0
+    Checking icu_segmenter_data v2.3.0
+    Checking icu_normalizer_data v2.3.0
+    Checking core_maths v0.1.1
+    Checking parlance v0.1.0
+    Checking linebender_resource_handle v0.1.1
+    Checking offset-allocator v0.2.0
+   Compiling quick-xml v0.41.0
+    Checking weak-table v0.3.2
+    Checking linux-raw-sys v0.4.15
+    Checking yazi v0.2.1
+    Checking zeno v0.3.3
+    Checking approx v0.5.1
+   Compiling bevy_macro_utils v0.19.1
+   Compiling encase_derive_impl v0.12.1
+    Checking moxcms v0.8.1
+   Compiling bevy_ecs_macro_logic v0.19.1
+   Compiling synstructure v0.14.0
+    Checking matchers v0.2.0
+    Checking regex v1.13.1
+    Checking sys-locale v0.3.2
+    Checking itoa v1.0.18
+    Checking zmij v1.0.23
+   Compiling wayland-scanner v0.31.11
+    Checking accesskit v0.24.1
+    Checking xcursor v0.3.11
+    Checking percent-encoding v2.3.2
+    Checking arrayref v0.3.9
+    Checking ttf-parser v0.25.1
+    Checking xkeysym v0.2.1
+    Checking cursor-icon v1.2.0
+    Checking strict-num v0.1.1
+    Checking radsort v0.1.1
+    Checking serde_json v1.0.151
+    Checking ab_glyph_rasterizer v0.1.10
+    Checking alsa-sys v0.4.0
+    Checking inotify-sys v0.1.8
+    Checking getrandom v0.3.4
+    Checking hash32 v0.3.1
+    Checking num-integer v0.1.47
+    Checking grid v1.0.1
+    Checking x11rb-protocol v0.13.2
+    Checking as-raw-xcb-connection v1.0.1
+    Checking num-bigint v0.4.8
+    Checking owned_ttf_parser v0.25.1
+    Checking ab_glyph v0.2.32
+    Checking taffy v0.10.1
+    Checking heapless v0.8.0
+    Checking libudev-sys v0.1.4
+    Checking x11-dl v2.21.0
+    Checking ogg v0.8.0
+    Checking tinyvec v1.13.3
+    Checking vec_map v0.8.2
+    Checking dpi v0.1.2
+    Checking base64 v0.22.1
+    Checking dasp_sample v0.11.0
+    Checking lewton v0.10.2
+    Checking num-rational v0.4.2
+    Checking fnv v1.0.7
+    Checking num-complex v0.4.6
+    Checking i_float v1.16.0
+    Checking rstar v0.12.2
+    Checking i_shape v1.18.0
+    Checking glam v0.33.11
+    Checking i_tree v0.18.0
+    Checking robust v1.2.0
+    Checking i_key_sort v0.10.3
+    Checking i_overlay v4.5.2
+    Checking rstar v0.13.0
+    Checking itertools v0.11.0
+    Checking geographiclib-rs v0.2.7
+    Checking rand_pcg v0.10.2
+    Checking ena v0.14.4
+    Checking float_next_after v2.0.0
+    Checking sif-itree v0.4.1
+    Checking spade v2.15.1
+    Checking serde_path_to_error v0.1.20
+    Checking earcutr v0.4.3
+   Compiling enum-primitive-derive v0.2.2
+   Compiling encase_derive v0.12.1
+   Compiling derive_more-impl v2.1.1
+   Compiling bevy_reflect_derive v0.19.1
+   Compiling variadics_please v1.1.0
+   Compiling assert_type_match v0.1.1
+   Compiling bevy_ecs_macros v0.19.1
+   Compiling bevy_derive v0.19.1
+   Compiling tracing-attributes v0.1.31
+   Compiling zerocopy-derive v0.8.57
+   Compiling bevy_asset_macros v0.19.1
+   Compiling bytemuck_derive v1.12.1
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.20
+   Compiling futures-macro v0.3.34
+   Compiling bevy_encase_derive v0.19.1
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.3
+   Compiling zerovec-derive v0.11.6
+    Checking futures-util v0.3.34
+    Checking bytemuck v1.25.2
+    Checking bitflags v2.13.2
+    Checking rustix v1.1.5
+    Checking nix v0.31.3
+    Checking ctrlc v3.5.2
+    Checking png v0.18.1
+    Checking tracing v0.1.44
+    Checking ddsfile v0.5.2
+    Checking image v0.25.10
+    Checking ktx2 v0.5.0
+    Checking tracing-subscriber v0.3.23
+    Checking zerocopy v0.8.57
+    Checking polling v3.11.0
+    Checking spirv v0.4.0+sdk-1.4.341.0
+   Compiling displaydoc v0.2.7
+    Checking async-io v2.6.0
+    Checking gpu-descriptor-types v0.2.0
+    Checking wayland-backend v0.3.17
+    Checking gpu-descriptor v0.3.2
+    Checking font-types v0.11.3
+    Checking font-types v0.12.5
+    Checking read-fonts v0.39.2
+   Compiling bevy_material_macros v0.19.1
+    Checking wayland-client v0.31.15
+   Compiling bevy_gizmos_macros v0.19.1
+    Checking thiserror v2.0.20
+    Checking encase v0.12.1
+    Checking glam v0.32.1
+    Checking gpu-allocator v0.28.0
+    Checking read-fonts v0.41.0
+   Compiling thiserror-impl v1.0.69
+    Checking half v2.7.1
+    Checking naga v29.0.4
+   Compiling bevy_render_macros v0.19.1
+    Checking serde v1.0.229
+    Checking wgpu-types v29.0.4
+    Checking bevy_platform v0.19.1
+    Checking smol_str v0.2.2
+    Checking bevy_utils v0.19.1
+    Checking petgraph v0.8.3
+    Checking ron v0.12.2
+    Checking harfrust v0.6.2
+    Checking fontique v0.9.0
+    Checking skrifa v0.42.1
+    Checking wayland-protocols v0.32.13
+    Checking rustix v0.38.44
+    Checking skrifa v0.44.0
+    Checking hexasphere v18.0.0
+    Checking wayland-cursor v0.31.14
+    Checking wayland-csd-frame v0.3.0
+    Checking tiny-skia-path v0.11.4
+   Compiling gltf-derive v1.4.1
+    Checking gethostname v1.1.0
+   Compiling bevy_animation_macros v0.19.1
+    Checking tiny-skia v0.11.4
+    Checking zerofrom v0.1.8
+    Checking yoke v0.8.3
+    Checking x11rb v0.13.2
+    Checking zerovec v0.11.8
+    Checking zerotrie v0.2.5
+    Checking wgpu-naga-bridge v29.0.4
+    Checking wgpu-hal v29.0.4
+    Checking naga_oil v0.22.0
+    Checking swash v0.2.10
+    Checking tinystr v0.8.4
+    Checking icu_locale_core v2.3.0
+    Checking derive_more v2.1.1
+    Checking bevy_reflect v0.19.1
+    Checking bevy_tasks v0.19.1
+    Checking potential_utf v0.1.6
+    Checking ahash v0.8.12
+    Checking icu_collections v2.3.0
+    Checking xkbcommon-dl v0.4.2
+    Checking inotify v0.11.5
+    Checking alsa v0.11.0
+    Checking safe_arch v1.2.0
+    Checking gilrs-core v0.6.8
+    Checking icu_provider v2.3.1
+    Checking gilrs v0.11.2
+    Checking wide v1.7.1
+    Checking icu_locale_fallback v2.3.0
+    Checking icu_properties v2.3.0
+    Checking wgpu-core-deps-windows-linux-android v29.0.4
+    Checking wgpu-core v29.0.4
+    Checking icu_segmenter v2.3.0
+    Checking icu_normalizer v2.3.0
+    Checking wayland-protocols-wlr v0.3.12
+    Checking gltf-json v1.4.1
+    Checking wayland-protocols-plasma v0.3.12
+    Checking cpal v0.17.3
+   Compiling bevy_state_macros v0.19.1
+    Checking rodio v0.22.2
+    Checking parley_data v0.9.0
+    Checking parley v0.9.0
+   Compiling bevy_scene_macros v0.19.1
+    Checking geo-types v0.7.20
+   Compiling num-derive v0.4.2
+    Checking geo v0.33.1
+    Checking thiserror v1.0.69
+    Checking gltf v1.4.1
+    Checking calloop v0.13.0
+    Checking calloop-wayland-source v0.3.0
+    Checking smithay-client-toolkit v0.19.2
+    Checking bevy_ecs v0.19.1
+    Checking bevy_math v0.19.1
+    Checking sctk-adwaita v0.10.1
+    Checking wgpu v29.0.4
+    Checking winit v0.30.13
+    Checking simba v0.10.2
+    Checking accesskit_winit v0.32.2
+    Checking bevy_color v0.19.1
+    Checking glamx v0.3.1
+    Checking parry3d v0.30.2
+    Checking bevy_app v0.19.1
+    Checking bevy_time v0.19.1
+    Checking bevy_transform v0.19.1
+    Checking bevy_input v0.19.1
+    Checking bevy_log v0.19.1
+    Checking bevy_a11y v0.19.1
+    Checking bevy_state v0.19.1
+    Checking bevy_clipboard v0.19.1
+    Checking bevy_diagnostic v0.19.1
+    Checking bevy_asset v0.19.1
+    Checking bevy_gilrs v0.19.1
+    Checking bevy_mesh v0.19.1
+    Checking bevy_image v0.19.1
+    Checking bevy_shader v0.19.1
+    Checking bevy_scene v0.19.1
+    Checking bevy_audio v0.19.1
+    Checking bevy_window v0.19.1
+    Checking bevy_text v0.19.1
+    Checking bevy_material v0.19.1
+    Checking bevy_animation v0.19.1
+    Checking bevy_camera v0.19.1
+    Checking bevy_gizmos v0.19.1
+    Checking bevy_picking v0.19.1
+    Checking bevy_render v0.19.1
+    Checking bevy_world_serialization v0.19.1
+    Checking bevy_light v0.19.1
+    Checking bevy_sprite v0.19.1
+    Checking bevy_input_focus v0.19.1
+    Checking bevy_camera_controller v0.19.1
+    Checking bevy_winit v0.19.1
+    Checking bevy_ui v0.19.1
+    Checking bevy_gltf v0.19.1
+    Checking bevy_ui_widgets v0.19.1
+    Checking bevy_core_pipeline v0.19.1
+    Checking bevy_sprite_render v0.19.1
+    Checking bevy_pbr v0.19.1
+    Checking bevy_anti_alias v0.19.1
+    Checking bevy_post_process v0.19.1
+    Checking bevy_ui_render v0.19.1
+    Checking bevy_gizmos_render v0.19.1
+    Checking bevy_internal v0.19.1
+    Checking bevy v0.19.1
+    Checking n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error: this function has too many arguments (8/7)
+   --> src/places.rs:227:1
+    |
+227 | / fn update_location(
+228 | |     phase: Res<State<GamePhase>>,
+229 | |     next: Res<NextState<GamePhase>>,
+230 | |     player: Option<Res<PlayerState>>,
+...   |
+235 | |     story: Res<ShopHandoff>,
+236 | | ) {
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#too_many_arguments
+    = note: `-D clippy::too-many-arguments` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::too_many_arguments)]`
+
+error: manual implementation of `.is_multiple_of()`
+   --> src/world/scene.rs:833:15
+    |
+833 |     } else if bay % 2 == 0 {
+    |               ^^^^^^^^^^^^ help: replace with: `bay.is_multiple_of(2)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#manual_is_multiple_of
+    = note: `-D clippy::manual-is-multiple-of` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::manual_is_multiple_of)]`
+
+error: could not compile `n-side` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2004:22
+     |
+2004 |                     .chunks_exact(24)
+     |                      ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<24>().0.iter()`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+     = note: `-D clippy::chunks-exact-to-as-chunks` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::chunks_exact_to_as_chunks)]`
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2026:40
+     |
+2026 |             for (face, uv) in vertices.chunks_exact(4).zip(uvs.chunks_exact(4)) {
+     |                                        ^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<4>().0.iter()`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2026:64
+     |
+2026 |             for (face, uv) in vertices.chunks_exact(4).zip(uvs.chunks_exact(4)) {
+     |                                                                ^^^^^^^^^^^^^^^
+     |
+help: consider using `as_chunks::<4>()` instead
+    --> src/world/scene.rs:2026:64
+     |
+2026 |             for (face, uv) in vertices.chunks_exact(4).zip(uvs.chunks_exact(4)) {
+     |                                                                ^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2038:34
+     |
+2038 |             for cube in vertices.chunks_exact(24) {
+     |                                  ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<24>().0`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2224:22
+     |
+2224 |                     .chunks_exact(24)
+     |                      ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<24>().0`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: the borrowed expression implements the required traits
+    --> src/world/scene.rs:2252:29
+     |
+2252 |         let map = Map::load(&root.join("source-assets/district-map/district.json")).unwrap();
+     |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: change this to: `root.join("source-assets/district-map/district.json")`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#needless_borrows_for_generic_args
+     = note: `-D clippy::needless-borrows-for-generic-args` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::needless_borrows_for_generic_args)]`
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2374:49
+     |
+2374 |                     for (face, uv) in positions.chunks_exact(4).zip(uvs.chunks_exact(4)) {
+     |                                                 ^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<4>().0.iter()`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2374:73
+     |
+2374 |                     for (face, uv) in positions.chunks_exact(4).zip(uvs.chunks_exact(4)) {
+     |                                                                         ^^^^^^^^^^^^^^^
+     |
+help: consider using `as_chunks::<4>()` instead
+    --> src/world/scene.rs:2374:73
+     |
+2374 |                     for (face, uv) in positions.chunks_exact(4).zip(uvs.chunks_exact(4)) {
+     |                                                                         ^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2765:26
+     |
+2765 |                         .chunks_exact(24)
+     |                          ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<24>().0.iter()`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2784:38
+     |
+2784 |                 for cube in vertices.chunks_exact(24) {
+     |                                      ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<24>().0`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2903:26
+     |
+2903 |                         .chunks_exact(24)
+     |                          ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<24>().0.iter()`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2922:38
+     |
+2922 |                 for cube in vertices.chunks_exact(24) {
+     |                                      ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<24>().0`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: using `chunks_exact` with a constant chunk size
+   --> src/world/visual.rs:453:18
+    |
+453 |                 .chunks_exact(4)
+    |                  ^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<4>().0.iter()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+
+error: could not compile `n-side` (lib test) due to 15 previous errors

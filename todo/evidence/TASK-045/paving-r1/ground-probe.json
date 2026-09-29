@@ -1,0 +1,50 @@
+{
+  "tool": "tools/district-map.ts buildGround",
+  "scope": "same ground controls as Rust; Delaunator rather than Spade",
+  "platform": 28,
+  "roadDeck": 28.025,
+  "probes": [
+    {
+      "x": 88,
+      "y": 256,
+      "ground": 28.13960738950276,
+      "protrusionAboveRoad": 0.11460738950276195
+    },
+    {
+      "x": 89,
+      "y": 256,
+      "ground": 28.144393928571432,
+      "protrusionAboveRoad": 0.1193939285714336
+    },
+    {
+      "x": 90,
+      "y": 256,
+      "ground": 28.14439392857143,
+      "protrusionAboveRoad": 0.11939392857143005
+    },
+    {
+      "x": 90,
+      "y": 258,
+      "ground": 28.433181785714286,
+      "protrusionAboveRoad": 0.4081817857142873
+    },
+    {
+      "x": 92,
+      "y": 258,
+      "ground": 28.433181785714286,
+      "protrusionAboveRoad": 0.4081817857142873
+    },
+    {
+      "x": 94,
+      "y": 258,
+      "ground": 28.433181785714286,
+      "protrusionAboveRoad": 0.4081817857142873
+    },
+    {
+      "x": 94,
+      "y": 256,
+      "ground": 28.14439392857143,
+      "protrusionAboveRoad": 0.11939392857143005
+    }
+  ]
+}

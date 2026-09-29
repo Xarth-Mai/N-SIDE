@@ -1,7 +1,7 @@
 """Author N:SIDE's early-autumn street tree with Blender 4.5 LTS, without add-ons.
 
 Run from the repository root to regenerate the authored form.
-The saved .blend is editable; the fixed-seed script preserves the first authored form.
+The saved .blend is editable; the fixed-seed script preserves the current authored form.
 """
 
 import math
@@ -13,17 +13,22 @@ from mathutils import Vector
 
 SOURCE = Path(__file__).resolve().parent
 RNG = random.Random(45019)
-VERTS, FACES, SLOTS, SMOOTH = [], [], [], []
+VERTS, FACES, SLOTS, SMOOTH, UVS = [], [], [], [], []
 
 
-def face(indices, slot=0, smooth=True):
+def face(indices, slot=0, smooth=True, uv=None):
     FACES.append(indices)
     SLOTS.append(slot)
     SMOOTH.append(smooth)
+    UVS.append(uv)
 
 
 def branch(points, radii, sides=7):
     start = len(VERTS)
+    distances = [0]
+    for a, b in zip(points, points[1:]):
+        distances.append(distances[-1] + (b - a).length / 0.85)
+    repeats = max(0.2, math.tau * max(radii) / 0.65)
     for index, point in enumerate(points):
         direction = (points[min(index + 1, len(points) - 1)] - points[max(0, index - 1)]).normalized()
         u = direction.cross(Vector((0, 1, 0))).normalized()
@@ -31,17 +36,21 @@ def branch(points, radii, sides=7):
         for side in range(sides):
             angle = side * math.tau / sides
             VERTS.append(tuple(point + radii[index] * (math.cos(angle) * u + math.sin(angle) * v)))
-    face(tuple(start + side for side in reversed(range(sides))))
+    cap_uv = [(0.5 + math.cos(side * math.tau / sides) * 0.5,
+               0.5 + math.sin(side * math.tau / sides) * 0.5) for side in range(sides)]
+    face(tuple(start + side for side in reversed(range(sides))), uv=list(reversed(cap_uv)))
     for index in range(len(points) - 1):
         for side in range(sides):
             a = start + index * sides + side
             b = start + index * sides + (side + 1) % sides
-            face((a, b, b + sides, a + sides))
-    face(tuple(start + (len(points) - 1) * sides + side for side in range(sides)))
+            u0, u1 = side / sides * repeats, (side + 1) / sides * repeats
+            face((a, b, b + sides, a + sides), uv=[(u0, distances[index]), (u1, distances[index]),
+                 (u1, distances[index + 1]), (u0, distances[index + 1])])
+    face(tuple(start + (len(points) - 1) * sides + side for side in range(sides)), uv=cap_uv)
 
 
 def leaf(base, direction, length):
-    # Curved opaque geometry: a central ridge catches light, no cutout texture/alpha.
+    # Broad curved blade, with a rounded shoulder and a gently drooping tip
     direction.normalize()
     sideways = direction.cross(Vector((0, 0, 1)))
     if sideways.length < 0.01:
@@ -50,18 +59,17 @@ def leaf(base, direction, length):
     normal = sideways.cross(direction).normalized()
     width = length * RNG.uniform(0.27, 0.39)
     start = len(VERTS)
-    VERTS.extend(tuple(p) for p in (
-        base,
-        base + direction * length * 0.25 + sideways * width * 0.76,
-        base + direction * length * 0.68 + sideways * width,
-        base + direction * length,
-        base + direction * length * 0.68 - sideways * width,
-        base + direction * length * 0.25 - sideways * width * 0.76,
-        base + direction * length * 0.48 + normal * length * 0.045,
-    ))
+    outline = [(0, 0), (0.23, 0.66), (0.51, 1), (0.79, 0.70),
+               (1, 0), (0.79, -0.70), (0.51, -1), (0.23, -0.66)]
+    for along, across in outline:
+        VERTS.append(tuple(base + direction * length * along + sideways * width * across
+                           - normal * length * 0.07 * along * along))
+    VERTS.append(tuple(base + direction * length * 0.48 + normal * length * 0.045))
     slot = RNG.choices([1, 2, 3, 4], [41, 31, 22, 6])[0]
-    for index in range(6):
-        face((start + index, start + (index + 1) % 6, start + 6), slot, True)
+    leaf_uv = [(0.5 + across * 0.5, along) for along, across in outline] + [(0.5, 0.48)]
+    for index in range(8):
+        indices = [index, (index + 1) % 8, 8]
+        face(tuple(start + i for i in indices), slot, True, [leaf_uv[i] for i in indices])
 
 
 bpy.ops.object.select_all(action="SELECT")
@@ -81,20 +89,20 @@ for index, endpoint in enumerate(BOUGHS):
     branch([start, middle, end], [0.075 - index * 0.003, 0.038, 0.009])
     for twig in range(11):
         angle = twig * 2.39996 + index * 0.7
-        radial = RNG.uniform(0.30, 0.87)
+        radial = RNG.uniform(0.32, 0.78)
         tip = end + Vector((math.cos(angle) * radial, math.sin(angle) * radial,
                             RNG.uniform(-0.65, 0.50)))
         base = middle.lerp(end, RNG.uniform(0.46, 0.94))
         bend = base.lerp(tip, 0.55) + Vector((0, 0, 0.08))
-        branch([base, bend, tip], [0.014, 0.009, 0.0035], 5)
+        branch([base, bend, tip], [0.014, 0.009, 0.0035], 4)
         along = (tip - base).normalized()
         side = Vector((-along.y, along.x, 0)).normalized()
-        for pair in range(3):
-            position = bend.lerp(tip, 0.12 + pair * 0.30)
+        for pair in range(4):
             for sign in [-1, 1]:
+                position = bend.lerp(tip, 0.03 + pair * 0.22 + (sign + 1) * 0.025)
                 direction = along * RNG.uniform(0.20, 0.65) + side * sign + Vector((0, 0, RNG.uniform(-0.16, 0.65)))
-                leaf(position, direction, RNG.uniform(0.30, 0.46))
-        leaf(tip, along + Vector((0, 0, 0.23)), 0.35)
+                leaf(position, direction, RNG.uniform(0.28, 0.40))
+        leaf(tip, along + Vector((0, 0, 0.23)), 0.31)
 
 bottom = min(p[2] for p in VERTS)
 height = max(p[2] for p in VERTS) - bottom
@@ -114,28 +122,50 @@ for name, color in [("Bark", colors[0]), ("EarlyAutumnLeaves", (1, 1, 1, 1))]:
     shader.inputs["Base Color"].default_value = color
     shader.inputs["Roughness"].default_value = 0.92
     material.use_backface_culling = name == "Bark"
-    if name != "Bark":
+    if name == "Bark":
+        # Original tileable, low-contrast grain; no photographed or third-party bitmap
+        bark = bpy.data.images.new("StreetTreeBark", width=256, height=512, alpha=False)
+        pixels = []
+        for y in range(512):
+            v = y / 512 * math.tau
+            for x in range(256):
+                u = x / 256 * math.tau
+                grain = math.sin(u * 13 + 0.65 * math.sin(v * 2) + 0.25 * math.sin(v * 5))
+                fissure = max(0, grain) ** 12
+                patch = math.sin(u * 4 + math.sin(v)) * math.sin(v * 3 + 0.5 * math.sin(u * 2))
+                value = 1 - 0.26 * fissure + 0.10 * patch + 0.035 * math.sin(u * 41 + math.sin(v * 4))
+                # Image pixels are sRGB encoded; material factors above are linear
+                pixels.extend(1.055 * (channel * value) ** (1 / 2.4) - 0.055 for channel in (0.115, 0.079, 0.050))
+                pixels.append(1)
+        bark.pixels.foreach_set(pixels)
+        bark.filepath_raw = str(SOURCE / "bark-color.png")
+        bark.file_format = "PNG"
+        bark.save()
+        bark.pack()
+        bark.filepath = "//bark-color.png"
+        texture = material.node_tree.nodes.new("ShaderNodeTexImage")
+        texture.image = bark
+        material.node_tree.links.new(texture.outputs["Color"], shader.inputs["Base Color"])
+    else:
         vertex_color = material.node_tree.nodes.new("ShaderNodeVertexColor")
         vertex_color.layer_name = "LeafColor"
         material.node_tree.links.new(vertex_color.outputs["Color"], shader.inputs["Base Color"])
     mesh.materials.append(material)
 leaf_colors = mesh.color_attributes.new(name="LeafColor", type="FLOAT_COLOR", domain="CORNER")
-for polygon, slot, smooth in zip(mesh.polygons, SLOTS, SMOOTH):
+uv = mesh.uv_layers.new(name="UVMap")
+for polygon, slot, smooth, face_uv in zip(mesh.polygons, SLOTS, SMOOTH, UVS):
     polygon.material_index = min(slot, 1)
     polygon.use_smooth = smooth
-    for loop in polygon.loop_indices:
-        leaf_colors.data[loop].color = colors[slot] if slot else (1, 1, 1, 1)
-# A usable source UV layer; no bitmap is currently needed for these material colors.
-uv = mesh.uv_layers.new(name="UVMap")
-for polygon in mesh.polygons:
-    for loop in polygon.loop_indices:
-        p = mesh.vertices[mesh.loops[loop].vertex_index].co
-        uv.data[loop].uv = (p.x * 0.5, p.z * 0.5)
+    for loop, (u, v) in zip(polygon.loop_indices, face_uv):
+        tone = 0.9 + 0.16 * v if slot else 1
+        leaf_colors.data[loop].color = tuple(channel * tone for channel in colors[slot][:3]) + (1,) if slot else (1, 1, 1, 1)
+        uv.data[loop].uv = (u, v)
 bpy.context.view_layer.objects.active = tree
 tree.select_set(True)
 bpy.context.scene.unit_settings.system = "METRIC"
 bpy.context.scene.unit_settings.scale_length = 1
 bpy.context.scene.render.fps = 30
+bpy.context.preferences.filepaths.save_version = 0
 bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE / "street-tree.blend"))
 bpy.ops.export_scene.gltf(filepath=str(SOURCE / "street-tree.glb"), export_format="GLB",
     use_selection=True, export_animations=False, export_yup=True, export_cameras=False,

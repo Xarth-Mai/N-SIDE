@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "08ca74410089127249e8fbcf78bdb8f10b27488ce67fae1754a97c97312384c8",
-      "runtime_sha256": "fee9414871bfbc7d82fdd0ad8eac78a8be37cf5c3f65936e9dc7baebf60b0d61",
+      "source_sha256": "c5ee2907a5653b994b28d7e9f85502d1f94d1ac12be399661572a351d6023c58",
+      "runtime_sha256": "ee2d3d862264558ea51460ca54f7956230b55fcc16c836ac7879397e4e213957",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -113,15 +113,15 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "DCC and GLB checks PASS; actual Bevy preview PASS, see TASK-047 runtime-r1",
-        "visual": "needs_revision; author not accepted; face, fabric and anime render style pending"
+        "technical": "r2 DCC and GLB checks PASS; current Bevy 540-frame real movement/animation/pause run PASS (26 checks); see model-r2/runtime-summary.json",
+        "visual": "needs_revision; r2 jaw/neck separation and seated nose/mouth improved in self-audit and root review; 18-year-old anime likeness not established; author not accepted; face personality, hair, fabric and render style pending"
       },
       "generation": {
         "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/model-r1/delivery.json"
+      "evidence": "todo/evidence/TASK-047/model-r2/delivery.json"
     }
   ],
   "uses": [

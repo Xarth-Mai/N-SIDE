@@ -1,0 +1,32 @@
+{
+  "status": "REJECTED",
+  "reason": "9 clusters expose larger branch gaps; bark sRGB pixel values too dark",
+  "triangles": 9662,
+  "leaves": 891,
+  "views": [
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/bark-detail.png",
+      "sha256": "8a48bb3e59facb153c82c4b4f7c0ec5d56b38a58068387c6b5ea6e67f710f836",
+      "bytes": 574650,
+      "viewed": true
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/tree-0.png",
+      "sha256": "72cca323b69fa3f9dadf27acd73f87e3a502506f72570585cbdf195e5033f1ea",
+      "bytes": 759980,
+      "viewed": true
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/tree-1.png",
+      "sha256": "36efdd4a859b288a703307feeae6cc15fe84946fad456db29025ba076410aed5",
+      "bytes": 766959,
+      "viewed": true
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/tree-2.png",
+      "sha256": "45dd471c579ae10b3966ea3a0742adf6f41d83615eef2a6679455849c49f3928",
+      "bytes": 762873,
+      "viewed": true
+    }
+  ]
+}

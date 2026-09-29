@@ -1,0 +1,57 @@
+{
+  "status": "technical-preview-candidate",
+  "revision": "r2 face and neck refinement",
+  "visual_status": "needs_revision",
+  "author_accepted": false,
+  "appearance_age_goal": 18,
+  "appearance_age_achieved": false,
+  "source_master": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+  "blender_version": "4.5.14 LTS",
+  "height_m": 1.7440556287765503,
+  "mesh_count": 1,
+  "primitive_count": 1,
+  "material_count": 1,
+  "embedded_images": 1,
+  "triangle_count": 29182,
+  "joint_count": 32,
+  "animation_names": [
+    "Idle",
+    "Run",
+    "Walk"
+  ],
+  "palette_status": "undecided grayscale values only",
+  "export_existing_identical_to_build": true,
+  "runtime": "PASS: 540 frames at 30 Hz, 26 checks; runtime-summary.json; root inspected frames 141/142/159/209/314, DCC before/final face views; self-audit only",
+  "dcc_result": "dcc-check.json",
+  "glb_result": "glb-check.json",
+  "preserved_contract": "preserved-contract.json",
+  "files": [
+    {
+      "path": "source-assets/characters/CHR-001/model/build.py",
+      "bytes": 30701,
+      "sha256": "27533baeb57ed524c39e1e92cf03642540486d3a474eb72f6120db0ffef09340"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/check.py",
+      "bytes": 3886,
+      "sha256": "5e967c799955af5306790f28c029a3a7fbee6e71369ad1e2f7ab6a63984b7e97"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+      "bytes": 3178660,
+      "sha256": "c5ee2907a5653b994b28d7e9f85502d1f94d1ac12be399661572a351d6023c58"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/grey-study.png",
+      "bytes": 25965,
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf"
+    },
+    {
+      "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "bytes": 1076976,
+      "sha256": "ee2d3d862264558ea51460ca54f7956230b55fcc16c836ac7879397e4e213957"
+    }
+  ],
+  "visual_observation": "review.md",
+  "image_cleanup": "Complete; root viewed local DCC comparisons and real runtime frames before cleanup; see TASK-045/integration-r3/cleanup.json"
+}

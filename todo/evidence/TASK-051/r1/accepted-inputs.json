@@ -1,0 +1,16 @@
+{
+  "revision": "80303d076675a25494985e304b90a1061a0a2682ba5ec7fde997693a9c80e533",
+  "hash_rule": "SHA256(json.dumps(files, sort_keys=True).encode())",
+  "files": {
+    "game/src/app.rs": "93766302d5b9e9a63962d881e3a83ecd01106a4d1b1ab2522527a1367b735fdb",
+    "game/src/progress.rs": "14bc878fe2d4e4ab305c1b70b0d7ea33d26730389adbf3e3d689eee025b577e9",
+    "game/src/story.rs": "2331505ac634513e90ed415967e3625f21373b7f4fda005b2a23c441f291777b",
+    "game/src/settings.rs": "c14bf37702aef351976078681fc9dec66220405da5e4dfa72cd3a80887b21bbf",
+    "game/src/capture.rs": "697096439eb0dc62c40b30daaf8f5961c92ca4e74bdab9a002f821517ebd9f4c",
+    "game/src/lib.rs": "67132b2ced69afabe5037310576fcb2d32af38066a8b6cbde75a01ac5fbfb4e0",
+    "game/src/places.rs": "d448898a0d03545667d1e1d0820d55fa29c3b5db0183f543776a9cf76ab4532e",
+    "tools/capture.py": "f29ccb6f549af8c2c2c0762f90fb870c5648e024125104239b0ffc45e02365b1",
+    "tools/tests/test_capture.py": "6584268ec79653a39cf18e65f9c510af8989d399414ec9da3f72c50890b2699c",
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87"
+  }
+}

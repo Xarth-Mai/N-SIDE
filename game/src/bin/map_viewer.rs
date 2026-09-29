@@ -174,6 +174,13 @@ fn run() -> Result<AppExit, String> {
             .count()
     );
     if validate {
+        let mut model_counts = std::collections::BTreeMap::new();
+        for prop in &prepared.props {
+            *model_counts.entry(prop.model.as_str()).or_insert(0usize) += 1;
+        }
+        for (model, instances) in model_counts {
+            println!("[model/instances] model={model} instances={instances}");
+        }
         for warning in &prepared.warnings {
             eprintln!("WARNING {warning}");
         }

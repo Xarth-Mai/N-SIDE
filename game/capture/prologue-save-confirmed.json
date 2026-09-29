@@ -1,0 +1,68 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "seed": 0,
+  "frames": 90,
+  "timeout_seconds": 250,
+  "keyframes": [
+    29,
+    59,
+    89
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "Confirmed route survives a separate process without retaining failed attempts",
+      "from": 29,
+      "to": 29,
+      "game_page": "title",
+      "progress_status": "saved",
+      "handoff": {
+        "stage": "confirmed",
+        "observed_places": [
+          "04",
+          "29",
+          "28"
+        ],
+        "confirmation_count": 1,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Continue does not recommit the delivery route",
+      "from": 89,
+      "to": 89,
+      "game_page": "world",
+      "player_grounded": true,
+      "observation_open": false,
+      "progress_status": "saved",
+      "handoff": {
+        "stage": "confirmed",
+        "observed_places": [
+          "04",
+          "29",
+          "28"
+        ],
+        "confirmation_count": 1,
+        "rejected_choices": 0
+      }
+    }
+  ]
+}

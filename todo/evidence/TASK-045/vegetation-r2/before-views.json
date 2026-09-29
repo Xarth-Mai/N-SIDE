@@ -1,0 +1,26 @@
+{
+  "status": "viewed",
+  "kind": "CPU self-audit",
+  "views": [
+    {
+      "path": "output/assets/task045-vegetation-r2/before/bark-detail.png",
+      "bytes": 582018,
+      "sha256": "ca0ebebd3004c9ac2a3be0b9b8af378155767938186de1b0399484fb3e991924"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/before/tree-0.png",
+      "bytes": 784633,
+      "sha256": "d268f5fbe35f5117cd0da52c9ad3e23c030a26fb32123fcd67d7ca1ea0754fe5"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/before/tree-1.png",
+      "bytes": 788463,
+      "sha256": "4ce8cd591098455dd430318bb29f214a666b6f49aa24df4d7356693b910964dd"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/before/tree-2.png",
+      "bytes": 773464,
+      "sha256": "7b0a7764e7486f646fa8d0d5e1f9529e2e7ec60473ca97d8531d975b50e959d8"
+    }
+  ]
+}

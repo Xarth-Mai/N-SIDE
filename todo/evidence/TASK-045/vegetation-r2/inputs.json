@@ -1,0 +1,77 @@
+{
+  "source-assets/environment-kit/vegetation/build_street_tree.py": {
+    "sha256": "f3802544485e7da8f53c3f978e0b8f00abe548788bbfce45619bd64c3f5143e2",
+    "bytes": 6757
+  },
+  "source-assets/environment-kit/vegetation/street-tree.glb": {
+    "sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
+    "bytes": 409052
+  },
+  "source-assets/environment-kit/vegetation/check_street_tree.py": {
+    "sha256": "d0edd565ba38ced2ada140bae3f198ba9bb9350b89a44c7a8c57adb7a0d1d614",
+    "bytes": 4295
+  },
+  "source-assets/environment-kit/vegetation/export_street_tree.py": {
+    "sha256": "1c11a02369c4765d05ae6d43bd68c39a55ff5d4945f7e7ea378428b88e9463b5",
+    "bytes": 2305
+  },
+  "source-assets/environment-kit/vegetation/street-tree.blend": {
+    "sha256": "c9f95dbd5d7f20deee5188072003cb1d2c9855211dbb8c28ba86da11c8b6419c",
+    "bytes": 1484701
+  },
+  "source-assets/environment-kit/vegetation/README.md": {
+    "sha256": "0737fc836d5bb94e8bab14a4f64ceb1ab9b7019509ed12db750df662a1d13a54",
+    "bytes": 3028
+  },
+  "render_settings": {
+    "engine": "Cycles",
+    "device": "CPU",
+    "blender": "4.5.14 LTS",
+    "threads": 4,
+    "samples": 24,
+    "resolution": [
+      720,
+      840
+    ],
+    "world_color": [
+      0.35,
+      0.35,
+      0.35
+    ],
+    "view_transform": "AgX",
+    "area_light": {
+      "position": [
+        4,
+        -5,
+        9
+      ],
+      "energy": 1800,
+      "size": 5
+    },
+    "views": {
+      "crown_angles_deg": [
+        0,
+        120,
+        240
+      ],
+      "crown_ortho_scale": 7.6,
+      "crown_eye_height": 5.1,
+      "crown_target": [
+        0,
+        0,
+        3
+      ],
+      "bark_eye": [
+        3,
+        -4,
+        2.4
+      ],
+      "bark_target": [
+        0,
+        0,
+        1.3
+      ],
+      "bark_ortho_scale": 2.4
+    }
+  }
+}

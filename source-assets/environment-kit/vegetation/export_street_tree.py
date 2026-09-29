@@ -1,6 +1,7 @@
 """Export the editable .blend master through Blender, without regenerating the tree."""
 
 from pathlib import Path
+import argparse
 import math
 import sys
 from mathutils import Vector
@@ -16,8 +17,12 @@ bpy.ops.export_scene.gltf(filepath=str(source / "street-tree.glb"), export_forma
     use_selection=True, export_animations=False, export_yup=True, export_cameras=False,
     export_lights=False, export_materials="EXPORT", export_extras=False)
 
-OUT = source.parents[2] / "output/assets/task045-vegetation-r1"
-if "--render" in sys.argv:
+parser = argparse.ArgumentParser()
+parser.add_argument("--render", action="store_true")
+parser.add_argument("--render-dir", type=Path, default=source.parents[2] / "output/assets/task045-vegetation-r2/after")
+args = parser.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else [])
+if args.render:
+    OUT = args.render_dir
     OUT.mkdir(parents=True, exist_ok=True)
     scene = bpy.context.scene
     scene.render.engine = "CYCLES"
@@ -50,3 +55,8 @@ if "--render" in sys.argv:
         camera.rotation_euler = (Vector((0, 0, 3)) - camera.location).to_track_quat("-Z", "Y").to_euler()
         scene.render.filepath = str(OUT / f"tree-{index}.png")
         bpy.ops.render.render(write_still=True)
+    camera.data.ortho_scale = 2.4
+    camera.location = (3, -4, 2.4)
+    camera.rotation_euler = (Vector((0, 0, 1.3)) - camera.location).to_track_quat("-Z", "Y").to_euler()
+    scene.render.filepath = str(OUT / "bark-detail.png")
+    bpy.ops.render.render(write_still=True)

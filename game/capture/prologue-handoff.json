@@ -322,12 +322,14 @@
       }
     },
     {
-      "name": "title explicitly restarts the session handoff",
+      "name": "returning to title retains the actually observed shop",
       "from": 419,
       "to": 419,
       "handoff": {
         "stage": "observing",
-        "observed_places": [],
+        "observed_places": [
+          "04"
+        ],
         "confirmation_count": 0,
         "rejected_choices": 0
       }
@@ -338,7 +340,9 @@
       "to": 539,
       "handoff": {
         "stage": "observing",
-        "observed_places": [],
+        "observed_places": [
+          "04"
+        ],
         "confirmation_count": 0,
         "rejected_choices": 0
       }

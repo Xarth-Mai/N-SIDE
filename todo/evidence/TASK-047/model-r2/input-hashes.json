@@ -1,0 +1,41 @@
+{
+  "source_before_edit": [
+    {
+      "path": "source-assets/characters/CHR-001/model/build.py",
+      "sha256": "d0329d7685234db5217238e1e66f4433de5d468264aeaed85d5112212f869a7c",
+      "bytes": 30030,
+      "matches_committed": true
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+      "sha256": "08ca74410089127249e8fbcf78bdb8f10b27488ce67fae1754a97c97312384c8",
+      "bytes": 3153588,
+      "matches_committed": true
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/grey-study.png",
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+      "bytes": 25965,
+      "matches_committed": true
+    },
+    {
+      "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "sha256": "fee9414871bfbc7d82fdd0ad8eac78a8be37cf5c3f65936e9dc7baebf60b0d61",
+      "bytes": 1066124,
+      "matches_committed": true
+    },
+    {
+      "path": "source-assets/characters/CHR-001/silhouette-r3.png",
+      "sha256": "a0aab39880836b8cd0e14fadc91c1c0609f6d91eea9edeb06ceb5eb8bbad8b2e",
+      "bytes": 1290818,
+      "matches_committed": true
+    },
+    {
+      "path": "source-assets/area-previews/cinema-music-street.png",
+      "sha256": "0997197f95ee0cd2d63836c6aafdfc09b42e25e4078ec8a59cb95cfbc3b7eb68",
+      "bytes": 2783934,
+      "matches_committed": true
+    }
+  ],
+  "manual_edit_guard": "All six inputs byte-identical to HEAD; no uncommitted .blend manual edits"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "blend_reexport_byte_identical": true,
+  "sha256": "e928de4fe4e8f64af7d4bf4b08173484608e4255c367a9f2ed864323b85309b2",
+  "negative_cases": [
+    {
+      "case": "leaf-alpha",
+      "exit_code": 1,
+      "stderr": "FAIL: tree must use opaque materials",
+      "status": "PASS: invalid sample rejected"
+    },
+    {
+      "case": "collapsed-bark-uv",
+      "exit_code": 1,
+      "stderr": "FAIL: bark has degenerate UV triangle",
+      "status": "PASS: invalid sample rejected"
+    }
+  ]
+}

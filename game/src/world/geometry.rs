@@ -448,13 +448,14 @@ impl MeshData {
         }
     }
 
-    fn road_walls(
+    fn paving_walls(
         &mut self,
         poly: &Polygon,
         ground: &Ground,
         heights: [f64; 2],
         steps: bool,
         neighbors: &[(&Polygon, [f64; 2])],
+        covering_surfaces: &[&Polygon],
     ) {
         for (index, edge) in poly.exterior().0.windows(2).enumerate() {
             // Stair cross-edges are actual risers; only the two side edges retain earth
@@ -463,6 +464,16 @@ impl MeshData {
             }
             // CCW ribbon edges expose fill walls outward and cut walls toward the road
             let mut edges = vec![(LineString::from(vec![edge[0], edge[1]]), None)];
+            for surface in covering_surfaces {
+                edges = surface
+                    .clip(
+                        &MultiLineString(edges.into_iter().map(|(line, _)| line).collect()),
+                        true,
+                    )
+                    .into_iter()
+                    .map(|line| (line, None))
+                    .collect();
+            }
             for (other, levels) in neighbors {
                 let mut split = Vec::new();
                 for (edge, existing) in edges {
@@ -502,7 +513,7 @@ impl MeshData {
                                 ribbon_height(poly, p, heights[0], heights[1]) + 0.025
                             }
                         };
-                        // Terrain is already cut away inside another road. Keep its real
+                        // Terrain is already cut away inside another paved area. Keep its real
                         // height difference, rather than erecting a wall to absent earth
                         let low = |p| {
                             neighbor.map_or_else(
@@ -717,6 +728,9 @@ pub(super) fn ribbon(a: [f64; 3], b: [f64; 3], start: [f64; 2], end: [f64; 2]) -
 }
 
 fn ribbon_height(poly: &Polygon, p: [f64; 2], start: f64, end: f64) -> f64 {
+    if start == end {
+        return start;
+    }
     let pnts: Vec<_> = poly.exterior().0[..4].iter().map(|c| [c.x, c.y]).collect();
     for (indices, heights) in [
         ([0, 1, 2], [start, end, end]),
@@ -1245,10 +1259,10 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         .surfaces
         .iter()
         .filter(|s| !s.elevated)
-        .map(|s| polygon(&s.polygon))
+        .map(|s| (polygon(&s.polygon), s))
         .collect();
     let mut terrain_masks = footprints.clone();
-    terrain_masks.extend(ground_surfaces.iter().cloned());
+    terrain_masks.extend(ground_surfaces.iter().map(|(poly, _)| poly.clone()));
     terrain_masks.push(polygon(&map.terrain.water));
     let mut road_masks = Vec::new();
     for (road_index, road) in map.roads.iter().enumerate() {
@@ -1431,7 +1445,20 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                 );
             }
         } else {
-            base.retaining_walls(&poly, &ground, |_| surface.elevation, true);
+            let neighbors: Vec<_> = road_masks
+                .iter()
+                .filter(|(other, _, _)| overlap(&poly, other))
+                .map(|(poly, levels, _)| (poly, *levels))
+                .collect();
+            // Paving walls use road datums; platform tops have no 25 mm deck offset
+            base.paving_walls(
+                &poly,
+                &ground,
+                [surface.elevation - 0.025; 2],
+                false,
+                &neighbors,
+                &[],
+            );
         }
         base.finish(format!("{source}/structure"), "concrete", &mut result);
     }
@@ -1475,6 +1502,12 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                 .iter()
                 .filter(|(other, _, id)| *id != (index, segment) && overlap(&footprint, other))
                 .map(|(poly, levels, _)| (poly, *levels))
+                .chain(
+                    ground_surfaces
+                        .iter()
+                        .filter(|(other, _)| !elevated && overlap(&footprint, other))
+                        .map(|(poly, surface)| (poly, [surface.elevation - 0.025; 2])),
+                )
                 .collect();
             let steps = if road.kind == "steps" {
                 ((b[2] - a[2]).abs() / 0.17).ceil().max(1.0) as usize
@@ -1503,6 +1536,21 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                     }
                 };
                 let mut masks = footprints.clone();
+                // The authored platform owns paving at the same datum; a second road
+                // deck would leave a visible 25 mm strip through the finished surface
+                let covering_surfaces: Vec<_> = ground_surfaces
+                    .iter()
+                    .filter(|(area, surface)| {
+                        !elevated
+                            && road.kind != "steps"
+                            && surface.kind != "park"
+                            && overlap(&poly, area)
+                            && (from[2] - surface.elevation).abs() < 0.001
+                            && (to[2] - surface.elevation).abs() < 0.001
+                    })
+                    .map(|(poly, _)| poly)
+                    .collect();
+                masks.extend(covering_surfaces.iter().map(|poly| (*poly).clone()));
                 for (previous, levels) in &previous_roads {
                     if !overlap(&poly, previous) {
                         continue;
@@ -1538,12 +1586,13 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                         structure.underside(&piece, |p| height(p) - thickness, &source)?;
                     }
                 } else {
-                    structure.road_walls(
+                    structure.paving_walls(
                         &poly,
                         &ground,
                         [from[2], to[2]],
                         road.kind == "steps",
                         &neighbors,
+                        &covering_surfaces,
                     );
                     if road.kind == "steps" {
                         let p = &poly.exterior().0;
@@ -1798,7 +1847,14 @@ mod tests {
             }
             for steps in [false, true] {
                 let mut walls = MeshData::default();
-                walls.road_walls(&road, &Ground(triangulation.clone()), [10.; 2], steps, &[]);
+                walls.paving_walls(
+                    &road,
+                    &Ground(triangulation.clone()),
+                    [10.; 2],
+                    steps,
+                    &[],
+                    &[],
+                );
                 assert!(!walls.positions.is_empty());
                 for triangle in walls.positions.as_chunks::<3>().0 {
                     let [a, b, c] = triangle.map(Vec3::from);
@@ -1829,7 +1885,14 @@ mod tests {
         let crossing = ribbon([5., -5., 10.], [5., 5., 10.], [-1., 0.], [-1., 0.]);
         for height in [10., 12.] {
             let mut walls = MeshData::default();
-            walls.road_walls(&road, &ground, [10.; 2], false, &[(&crossing, [height; 2])]);
+            walls.paving_walls(
+                &road,
+                &ground,
+                [10.; 2],
+                false,
+                &[(&crossing, [height; 2])],
+                &[],
+            );
             let internal: Vec<_> = walls
                 .positions
                 .as_chunks::<3>()
@@ -1930,6 +1993,130 @@ mod tests {
                     );
                 }
             }
+        }
+    }
+
+    #[test]
+    fn shop_paving_walls_do_not_retain_earth_removed_by_neighboring_paving() {
+        let map = Map::parse(
+            include_str!("../../../source-assets/district-map/district.json"),
+            "district.json",
+        )
+        .unwrap();
+        let platform = map
+            .surfaces
+            .iter()
+            .find(|s| s.id.as_deref() == Some("shop-site"))
+            .unwrap();
+        let area = polygon(&platform.polygon);
+        let ground = Ground::new(&map).unwrap();
+        assert!(ground.height([92., 258.]) > platform.elevation + 0.4);
+        let parts = generate(&map).unwrap();
+        for route in ["home -> shop_entry", "shop_entry -> shop_front_door"] {
+            for part in parts
+                .iter()
+                .filter(|p| p.source.contains(&format!("({route})")))
+            {
+                let positions = part
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap();
+                for triangle in positions.as_chunks::<3>().0 {
+                    let center = triangle.iter().map(|p| Vec3::from(*p)).sum::<Vec3>() / 3.;
+                    assert!(
+                        !area.contains(&Point::new(f64::from(center.x), -f64::from(center.z))),
+                        "{route}: a duplicate deck or retaining side remains inside the platform: {triangle:?}"
+                    );
+                }
+                if !part.source.ends_with("/structure") {
+                    assert!(
+                        positions.iter().all(|p| (p[1] - 28.025).abs() < 0.001),
+                        "road tops outside the platform retain their original height"
+                    );
+                }
+            }
+        }
+        let collision = super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
+        for point in [[89., 254.2, 29.], [92., 252.2, 29.], [93., 256., 29.]] {
+            let hit = collision.support(map_to_world(point), 2.).unwrap();
+            assert!(
+                hit.source.ends_with("(shop-site)"),
+                "platform must support the approach without a duplicate road deck: {hit:?}"
+            );
+            assert!((hit.point.y - 28.).abs() < 0.001);
+        }
+        let base = parts
+            .iter()
+            .find(|p| p.source.ends_with("(shop-site)/structure"))
+            .unwrap();
+        let positions = base
+            .mesh
+            .attribute(Mesh::ATTRIBUTE_POSITION)
+            .unwrap()
+            .as_float3()
+            .unwrap();
+        let crossing: Vec<_> = positions
+            .as_chunks::<3>()
+            .0
+            .iter()
+            .filter(|triangle| {
+                let center = triangle.iter().map(|p| Vec3::from(*p)).sum::<Vec3>() / 3.;
+                (center.x - 94.).abs() < 0.001 && (-center.z > 254. && -center.z < 257.9)
+            })
+            .collect();
+        assert!(
+            !crossing.is_empty(),
+            "platform edge still closes against the road"
+        );
+        assert!(
+            crossing
+                .iter()
+                .flat_map(|tri| tri.iter())
+                .all(|p| p[1] <= 28.026)
+        );
+        assert!(
+            positions.iter().any(|p| p[1] > 28.5),
+            "exposed terrain cuts outside roads remain"
+        );
+    }
+
+    #[test]
+    fn park_ground_keeps_its_authored_paved_garden_paths() {
+        let map = Map::parse(
+            include_str!("../../../source-assets/district-map/district.json"),
+            "district.json",
+        )
+        .unwrap();
+        let parts = generate(&map).unwrap();
+        let collision = super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
+        for [from, to] in [
+            ["fw_w_garden_w", "fw_w_garden_center"],
+            ["garden_entry", "fw_w_garden_center"],
+            ["fw_w_garden_center", "fw_w_garden_e"],
+            ["fw_w_garden_center", "fw_w_garden_n"],
+            ["fw_w_garden_center", "fw_w_garden_s"],
+        ] {
+            let index = map
+                .roads
+                .iter()
+                .position(|road| road.nodes.windows(2).any(|pair| pair == [from, to]))
+                .unwrap();
+            let source = format!("/roads/{index} ({})", map.roads[index].nodes.join(" -> "));
+            let deck = parts.iter().find(|part| part.source == source).unwrap();
+            assert_eq!(deck.material, "paving");
+            let mut point = lerp(map.nodes[from], map.nodes[to], 0.5);
+            assert!(map.surfaces.iter().any(|surface| surface.kind == "park"
+                && polygon(&surface.polygon).contains(&Point::new(point[0], point[1]))));
+            let height = point[2] + 0.025;
+            point[2] += 1.;
+            let hit = collision.support(map_to_world(point), 2.).unwrap();
+            assert_eq!(
+                hit.source, source,
+                "grass must not replace the paved garden path"
+            );
+            assert!((f64::from(hit.point.y) - height).abs() < 0.001);
         }
     }
 

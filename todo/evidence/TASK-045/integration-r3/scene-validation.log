@@ -1,0 +1,13 @@
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=vsync
+[map/validated] schema=7 nodes=1638 roads=904 buildings=231 surfaces=82 trees=72 meshes=3323 elapsed_seconds=18.556
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[model/instances] model=flowers instances=36
+[model/instances] model=grass instances=22
+[model/instances] model=rock instances=22
+[model/instances] model=shrub instances=7
+[model/instances] model=streetlight instances=32
+[model/instances] model=tree_a instances=16
+[model/instances] model=tree_autumn instances=11
+[model/instances] model=tree_b instances=21
+[model/instances] model=tree_pine instances=96
+[validate/pass] CPU geometry and bindings; asynchronous image decoding and GPU rendering require normal launch or --verify

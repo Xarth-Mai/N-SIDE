@@ -636,18 +636,25 @@
     {
       "source": "vegetation/street-tree.glb",
       "output": "vegetation/street-tree.glb",
-      "sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
-      "bytes": 409052,
-      "triangles": 8782,
+      "sha256": "e928de4fe4e8f64af7d4bf4b08173484608e4255c367a9f2ed864323b85309b2",
+      "bytes": 709372,
+      "triangles": 11686,
       "author": "N:SIDE original, authored with Blender",
       "license": "MPL-2.0",
       "source_master": "vegetation/street-tree.blend",
-      "provenance": "Original topology and vertex-colored materials; no third-party geometry, bitmap, or generation service",
+      "provenance": "Original topology, vertex-colored foliage and procedural bark color image; no third-party geometry, bitmap, or generation service",
       "units": "meters",
       "up_axis": "+Y",
       "ground_pivot": true,
       "height_m": 6,
-      "radius_m": 3.155431353796452
+      "radius_m": 2.9928433842998494,
+      "source_texture": "vegetation/bark-color.png",
+      "texture_dimensions": [
+        256,
+        512
+      ],
+      "texture_color_space": "sRGB",
+      "texture_sha256": "ffc18a18a15fba174fb44b055054c2b2f96a6b19e33263386ced0b58e946a2e2"
     }
   ],
   "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"

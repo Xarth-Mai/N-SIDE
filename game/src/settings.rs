@@ -208,7 +208,7 @@ fn decode(bytes: &[u8]) -> Result<EntrySettings, String> {
     })
 }
 
-fn read_file(path: &Path) -> Result<Option<Vec<u8>>, String> {
+pub(crate) fn read_file(path: &Path) -> Result<Option<Vec<u8>>, String> {
     let file = match fs::File::open(path) {
         Ok(file) => file,
         Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(None),
@@ -243,7 +243,7 @@ fn write_file(path: &Path, settings: EntrySettings) -> Result<(), String> {
     atomic_write(path, &bytes)
 }
 
-fn atomic_write(path: &Path, bytes: &[u8]) -> Result<(), String> {
+pub(crate) fn atomic_write(path: &Path, bytes: &[u8]) -> Result<(), String> {
     let temporary = path.with_extension(format!("{}.tmp", std::process::id()));
     let mut file = OpenOptions::new()
         .write(true)

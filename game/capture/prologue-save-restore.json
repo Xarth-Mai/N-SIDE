@@ -1,0 +1,245 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "seed": 0,
+  "frames": 150,
+  "timeout_seconds": 300,
+  "keyframes": [
+    9,
+    18,
+    29,
+    59,
+    91,
+    106,
+    139
+  ],
+  "events": [
+    {
+      "start": 10,
+      "end": 11,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 14,
+      "end": 20,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 22,
+      "end": 23,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 26,
+      "end": 27,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 80,
+      "end": 81,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 84,
+      "end": 85,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 88,
+      "end": 89,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 94,
+      "end": 95,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 100,
+      "end": 101,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 104,
+      "end": 105,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 108,
+      "end": 109,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 112,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "Separate process loads only the previously observed shop",
+      "from": 9,
+      "to": 9,
+      "game_page": "title",
+      "progress_status": "saved",
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Held confirm opens restart with keep selected and cannot erase facts",
+      "from": 18,
+      "to": 18,
+      "game_page": "title",
+      "restart_pending": true,
+      "entry_focus": 0,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Cancel keeps observations and returns title focus",
+      "from": 25,
+      "to": 25,
+      "game_page": "title",
+      "restart_pending": false,
+      "entry_focus": 3,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Continue rebuilds a grounded player with saved facts and closed observation",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "player_grounded": true,
+      "max_player_resets": 0,
+      "observation_open": false,
+      "progress_status": "saved",
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Paused restart also defaults to keeping current progress",
+      "from": 91,
+      "to": 91,
+      "game_page": "paused",
+      "restart_pending": true,
+      "entry_focus": 0,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Confirming keep cancels restart",
+      "from": 97,
+      "to": 97,
+      "game_page": "paused",
+      "restart_pending": false,
+      "entry_focus": 3,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Destructive confirmation requires a separate deliberate choice",
+      "from": 106,
+      "to": 106,
+      "game_page": "paused",
+      "restart_pending": true,
+      "entry_focus": 1,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Confirmed restart clears progress and saves a fresh safe checkpoint",
+      "from": 139,
+      "to": 139,
+      "game_page": "world",
+      "player_grounded": true,
+      "observation_open": false,
+      "progress_status": "saved",
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    }
+  ]
+}

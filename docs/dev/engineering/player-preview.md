@@ -75,7 +75,7 @@ R／Select执行显式回到已验证出生点；越出静态世界边界或出�
 
 ## 会话设置
 
-标题和暂停菜单均提供「设置」，使用方向键／手柄方向键选择，Enter／南键A或点击按钮切换。通用页提供文字大小100%／125%与镜头灵敏度100%／65%，画质页按[画质契约](graphics-settings.md)提供19项渲染与窗口选项；变化立即生效，返回标题、场景清理和再次进入保留选择，正常启动通过独立用户文件在下次运行恢复。该文件只保存显示与操作偏好，任务与世界进度仍未接入存档
+标题和暂停菜单均提供「设置」，使用方向键／手柄方向键选择，Enter／南键A或点击按钮切换。通用页提供文字大小100%／125%与镜头灵敏度100%／65%，画质页按[画质契约](graphics-settings.md)提供19项渲染与窗口选项；变化立即生效，返回标题、场景清理和再次进入保留选择，正常启动通过独立用户文件在下次运行恢复。该文件只保存显示与操作偏好，已实现的门前交接另用下文的进度文件
 
 `settings::SettingsStore` 使用版本2的 `settings.json`，字段为 `version`、`large_text`、`slow_camera` 与 `graphics`，版本1自动补入默认画质。Linux优先使用绝对路径的 `$XDG_CONFIG_HOME/N-SIDE/settings.json`，否则使用 `$HOME/.config/N-SIDE/settings.json`；Windows使用 `%LOCALAPPDATA%/N-SIDE/settings.json`。`--settings-dir DIRECTORY` 可显式指定目录，源目录与运行素材不作为默认写入位置
 
@@ -101,7 +101,7 @@ capture默认使用100%／100%的隔离会话，既不读取也不修改真实�
 
 `places::observation` 在人物入口提供近距离查看，当前开放月台杂货（地点ID `04`）、摘星台（`23`）、店侧台阶（`29`）与货运侧院（`28`）。名称、用途、开放说明与到达方式直接读取同一地图的 `name`、`use`、`time`、`entry`；用途和到达说明必填，04／23另要求开放说明，28／29没有独立开放时段时不虚构内容。信息缺失沿用加载失败诊断；查看公共信息不表示已进入室内
 
-TASK-050的门前交接通过 `ShopHandoff` 记录当前会话实际打开的04／29／28，允许任意观察顺序并去重；23仍是普通公共观察。三个地点都已观察后，在28面板明确选择配送路线，经过地点或打开面板本身不自动确认。选择货运侧院提交一次；选择店侧台阶显示推车无法通过的修订反馈，保持待选并可重试。记录只包含实际已观察的条目，HUD提示下一目标；返回标题、重新加载或失败重置，暂停保留，本轮未接任务存档或完整序章结果
+门前交接通过 `ShopHandoff` 记录实际打开的04／29／28，允许任意观察顺序并去重；23仍是普通公共观察。三个地点都已观察后，在28面板明确选择配送路线，经过地点或打开面板本身不自动确认。选择货运侧院提交一次；选择店侧台阶显示推车无法通过的修订反馈，保持待选并可重试。记录只包含实际已观察的条目，HUD提示下一目标；返回标题、重新加载、场景失败与暂停均保留交接事实，跨进程恢复按下文执行，完整序章结果尚未实现
 
 可选时上下方向键／手柄方向键切换，F／南键A确认，或点击对应按钮；首次打开、旧输入未释放或不在28时不能提交。标题、选项和返回控件固定在面板内，正文单独裁剪滚动，滚轮、PageUp／PageDown或右摇杆可回看长文本；正文滚动不带走路线选项。改变字号或画幅后按实际布局计算滚动范围
 
@@ -113,7 +113,7 @@ TASK-050的门前交接通过 `ShopHandoff` 记录当前会话实际打开的04�
 
 面板打开时Esc／东键（B）或鼠标左键点击「返回街区」只关闭观察，保持World，不触发暂停；空白处点击不关闭。返回按钮使用原生 `Button` 与 `On<Pointer<Press>>`，悬停由 `Hovered` 更新边框；点击请求交给同一输入门槛，关闭帧及继续按住鼠标时仍消费输入，释放后才能重新操作。入口因失焦或暂停提前返回时，未消费的点击在该帧输入处理后清除，不在恢复时补执行
 
-Tab／Start仍可保护性暂停，窗口失焦或设备断连沿用相同保护。暂停暂时隐藏面板，明确继续后恢复原选定地点的观察；回到标题、重新加载或失败清空观察状态与选定地点，关闭或隐藏时销毁面板实体
+Tab／Start仍可保护性暂停，窗口失焦或设备断连沿用相同保护。暂停暂时隐藏面板，明确继续后恢复原选定地点的观察；回到标题、重新加载或失败清空瞬时观察状态与选定地点，关闭或隐藏时销毁面板实体，`ShopHandoff` 中已取得的信息与确认结果保留
 
 `walk-observation.json` 从真实小店出生点行走并转向公共入口，覆盖键盘打开／关闭、持键隔离、模拟手柄打开、断连暂停、键鼠继续恢复原观察、重连关闭、标题清理与再次进入。capture的 `observation_target`、`observation_selected`、`observation_open`、`observation_visible` 来自实际资源，声明这些断言的帧区间必须逐帧满足；距离、高差、背向和中间墙阻挡由CPU窄测覆盖，运行及画面结果另记任务证据
 
@@ -125,3 +125,15 @@ cargo build --manifest-path game/Cargo.toml --locked --bin n-side
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation.json --output output/capture/walk-observation
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-observation-pointer.json --output output/capture/walk-observation-pointer
 ```
+
+## 交接进度保存
+
+`progress::ProgressStore` 只持久化当前门前交接的版本1检查点：`quest` 为 `QST-001`，`checkpoint` 为 `home`，`observed_places` 为不重复的04／29／28子集，`confirmed_route` 仅允许空值或三点齐备后的 `service_yard`。阶段由事实推导，确认计数恢复为0或1，错误选择次数仅属会话；人物坐标、镜头、观察面板、完整委托与世界状态不写入该文件
+
+正常 `--walk-preview` 与隐含步行模式的 `--character-preview` 从用户目录读取 `progress.json`：Linux使用绝对路径的 `$XDG_DATA_HOME/N-SIDE/progress.json`，否则回退 `$HOME/.local/share/N-SIDE/progress.json`；Windows使用 `%LOCALAPPDATA%/N-SIDE/progress.json`。`--progress-dir DIRECTORY` 显式覆盖目录。固定镜头模式不读写交接进度；capture默认只有隔离会话，只有显式 `--progress-dir` 启用文件持久化，`--settings-dir` 不改变这一规则
+
+首次无文件时从空检查点开始，实际观察或路线确认改变事实后在 `Last` 提交I/O任务，正常退出等待已启动的写入并保存随后产生的最新事实。复用设置文件的4096字节读取上限与原子写入：替换前校验旧文件，将合法旧值备份为 `progress.json.bak`，临时文件独占创建、同步后重命名。读取失败、未知字段或版本、非法地点及矛盾结果保留原文件，本次禁用进度写入；写失败保留旧文件与当前会话，状态明确显示失败，不在事实未变化时逐帧重试。两类失败都应在退出后核对文件、备份及目录，修复后重新启动；不自动从备份覆盖原文件
+
+标题按事实显示「开始门前交接」或「继续门前交接」，每次进入都从 `/nodes/home` 的实际支撑点重新创建人物；暂停的「继续」则保留当前人物与观察位置。已有观察时，标题和暂停增加「重新开始交接」：确认页默认「保留当前进度」，取消回到原焦点，持有进入确认页的输入不会继续提交；另选「确认重新开始」才清除事实、自动保存新检查点并重建场景。读取失败时重新开始仅清除当前会话，不覆盖受保护的原文件
+
+复验使用真实观察产生的独立测试存档，`prologue-save-write.json` 与第二进程的 `prologue-save-restore.json` 覆盖单点保存、继续、取消与确认重开；完整路线生成的存档交给 `prologue-save-confirmed.json` 检查三点结果及幂等。损坏与写入失败脚本必须先按对应任务证据准备专用目录，不能操作真实用户文件或注入已完成的游戏事实。执行命令见[工程入口](../../../game/README.md)，本轮运行结果与环境限制见[TASK-051](../../../todo/tasks/TASK-051-prologue-progress-save.md)

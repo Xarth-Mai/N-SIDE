@@ -225,8 +225,7 @@ pub fn install(app: &mut App) {
 }
 
 fn update_location(
-    phase: Res<State<GamePhase>>,
-    next: Res<NextState<GamePhase>>,
+    (phase, next): (Res<State<GamePhase>>, Res<NextState<GamePhase>>),
     player: Option<Res<PlayerState>>,
     catalog: Option<Res<PlaceCatalog>>,
     input: Res<EntryUi>,

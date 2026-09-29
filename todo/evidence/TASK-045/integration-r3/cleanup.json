@@ -1,0 +1,124 @@
+{
+  "ownership": "Only directories created by root in this iteration; no render/video/Blender processes remained",
+  "records": [
+    {
+      "directory": "output/capture/task045-shop-r3-before",
+      "files_removed": 459,
+      "bytes_removed": 391762667,
+      "file_digest_list_sha256": "f630e85b4da580d7428f27d22bb91acc483a74a1f9f551037d327a16f5435b1f",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 998376
+    },
+    {
+      "directory": "output/capture/task045-shop-r3-after",
+      "files_removed": 459,
+      "bytes_removed": 396741555,
+      "file_digest_list_sha256": "feabbd708bafa0ef04fa49bdfea726198897027eac6afaf01dade07d5b5c5746",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 1036288
+    },
+    {
+      "directory": "output/capture/task045-shop-r3-final",
+      "files_removed": 459,
+      "bytes_removed": 396094333,
+      "file_digest_list_sha256": "ef6fa9301261439f3a83e74507037cab563f16350a2be981fafa1b421af1dd26",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 1036442
+    },
+    {
+      "directory": "output/capture/task045-tree-r2-before",
+      "files_removed": 157,
+      "bytes_removed": 154834067,
+      "file_digest_list_sha256": "c3712fabc260af6d81797d9b95de2f0c6fdac60cc01ba67ca6eb018706c45284",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 167977
+    },
+    {
+      "directory": "output/capture/task045-tree-r2-after",
+      "files_removed": 157,
+      "bytes_removed": 154880247,
+      "file_digest_list_sha256": "45ccd989970720d26e1e3db64ce00b1d226ff8e351978ef326e850e5b18ee16c",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 169994
+    },
+    {
+      "directory": "output/capture/task047-model-r2-runtime",
+      "files_removed": 558,
+      "bytes_removed": 421277243,
+      "file_digest_list_sha256": "ed64dd83af72c8d51d036d9b4d0db1cd0203eeac2fb753da85db02cefb2d576f",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 1531931
+    },
+    {
+      "directory": "output/capture/task051-write-r1",
+      "files_removed": 306,
+      "bytes_removed": 189246708,
+      "file_digest_list_sha256": "a0811c601bcf07e0c9e38ea698e5037fde63dfa567ad282c705e34d9d990be6d",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 679769
+    },
+    {
+      "directory": "output/capture/task051-restore-r1",
+      "files_removed": 158,
+      "bytes_removed": 94618709,
+      "file_digest_list_sha256": "b70a66e73dc3c3b069e62bd176d122dd890c122ca6dc3f41003225e4e54d379c",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 416288
+    },
+    {
+      "directory": "output/capture/task051-write-failure-r1",
+      "files_removed": 306,
+      "bytes_removed": 188809649,
+      "file_digest_list_sha256": "05130700e370440c8527b737e3d25302c9c155097f81e4d3a442092954f26ef1",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 681803
+    },
+    {
+      "directory": "output/capture/task051-corrupt-r1",
+      "files_removed": 306,
+      "bytes_removed": 189334175,
+      "file_digest_list_sha256": "1a710609be51f63a63cbbba7b4df52b8d7b2af0b9e4d9d071c0876b36616f9f1",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 682774
+    },
+    {
+      "directory": "output/capture/task051-portrait-r1",
+      "files_removed": 306,
+      "bytes_removed": 132507248,
+      "file_digest_list_sha256": "b45b7ee54b71bb7eaec3ab42ea77004cdaf0e0cdfcc0287fc7b785b903e3fa6c",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 683328
+    },
+    {
+      "directory": "output/capture/task051-complete-route-r1",
+      "files_removed": 2708,
+      "bytes_removed": 1766765045,
+      "file_digest_list_sha256": "11dd5421002ce619156ce4cefc83ff4ca7e22c320d55a93aac5455bdddaeaace",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 6745003
+    },
+    {
+      "directory": "output/capture/task051-confirmed-r1",
+      "files_removed": 94,
+      "bytes_removed": 52167393,
+      "file_digest_list_sha256": "a2210984551a11d93afd72cf5e3043acefdb283c5e6cae51522fc9b4ddd6b565",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 239792
+    },
+    {
+      "directory": "output/characters/CHR-001/model-r2",
+      "files_removed": 12,
+      "bytes_removed": 7864041,
+      "file_digest_list_sha256": "714c8d9406da543ef4be23eeda8e0a517d3f9bc2a0bc4b091217f96e693e75d0",
+      "keyframes_retained_as_hashes": true,
+      "retained_bytes": 769
+    },
+    {
+      "directory": "output/reference-task045-r3",
+      "bytes_removed": 66758566,
+      "reason": "Own temporary git archive of 24468bb game/assets, source-assets/district-map and district-scene; original source retained in git"
+    }
+  ],
+  "removed_bytes": 4603661646,
+  "scope": "Source assets, references, installed tools, release packages, scripts, logs, state JSON and summaries retained"
+}

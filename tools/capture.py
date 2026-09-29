@@ -84,6 +84,7 @@ def main() -> int:
     parser.add_argument("--character-preview", action="store_true", help="enable the real grey character in a walk-preview script")
     parser.add_argument("--no-video", action="store_true", help="retain PNG evidence only")
     parser.add_argument("--settings-dir", type=Path, help="explicit isolated user-settings directory for cross-process checks")
+    parser.add_argument("--progress-dir", type=Path, help="explicit isolated handoff-progress directory for cross-process checks")
     parser.add_argument("--project-root", type=Path, default=ROOT, help="runtime resource root, including an extracted preview package")
     args = parser.parse_args()
     try:
@@ -137,6 +138,10 @@ def main() -> int:
             if script["scene"] not in ("walk-preview", "game-entry"):
                 raise ValueError("--settings-dir requires the formal game entry")
             command.extend(["--settings-dir", str(args.settings_dir.resolve())])
+        if args.progress_dir is not None:
+            if script["scene"] != "walk-preview":
+                raise ValueError("--progress-dir requires a walk-preview script")
+            command.extend(["--progress-dir", str(args.progress_dir.resolve())])
         report["command"] = command
         code = run_logged(command, output / "runtime.log", timeout + 30, cwd=project_root)
         report["runtime_exit_code"] = code

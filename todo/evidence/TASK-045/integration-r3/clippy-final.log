@@ -1,0 +1,187 @@
+    Checking n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error[E0631]: type mismatch in closure arguments
+    --> src/world/scene.rs:2007:26
+     |
+1988 |         let bounds = |vertices: &[[f32; 3]]| {
+     |                      ----------------------- found signature defined here
+...
+2007 |                     .map(bounds)
+     |                      --- ^^^^^^ expected due to this
+     |                      |
+     |                      required by a bound introduced by this call
+     |
+     = note: expected closure signature `fn(&[[f32; 3]; 24]) -> _`
+                found closure signature `fn(&[[f32; 3]]) -> _`
+note: required by a bound in `std::iter::Iterator::map`
+    --> library/core/src/iter/traits/iterator.rs:831:4
+help: consider wrapping the function in a closure
+     |
+2007 |                     .map(|arg0: &[[f32; 3]; 24]| bounds(/* &[[f32; 3]] */))
+     |                          +++++++++++++++++++++++       +++++++++++++++++++
+
+error[E0631]: type mismatch in closure arguments
+    --> src/world/scene.rs:1998:14
+     |
+1988 |         let bounds = |vertices: &[[f32; 3]]| {
+     |                      ----------------------- found signature defined here
+...
+1998 |             .flat_map(|p| {
+     |              ^^^^^^^^ expected due to this
+     |
+     = note: expected closure signature `fn(&[[f32; 3]; 24]) -> _`
+                found closure signature `fn(&[[f32; 3]]) -> _`
+     = note: required for `Map<Iter<'_, [[f32; 3]; 24]>, {closure@scene.rs:1988:22}>` to implement `std::iter::Iterator`
+     = note: required for `Map<Iter<'_, [[f32; 3]; 24]>, {closure@scene.rs:1988:22}>` to implement `std::iter::IntoIterator`
+note: required by a bound in `std::iter::Iterator::flat_map`
+    --> library/core/src/iter/traits/iterator.rs:1533:4
+     = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c1a1537726e24fa3.long-type-17594736778661819065.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0599]: the method `collect` exists for struct `FlatMap<Filter<Filter<Iter<'_, GeometryPart>, ...>, ...>, ..., ...>`, but its trait bounds were not satisfied
+    --> src/world/scene.rs:2009:14
+     |
+1994 |           let existing: Vec<_> = parts
+     |  ________________________________-
+1995 | |             .iter()
+1996 | |             .filter(|p| p.source == "buildings[V-04]/derived-facade")
+1997 | |             .filter(|p| !appearance.displays.values().any(|role| role == &p.material))
+...    |
+2008 | |             })
+2009 | |             .collect();
+     | |             -^^^^^^^ method cannot be called due to unsatisfied trait bounds
+     | |_____________|
+     |
+     |
+     = note: the following trait bounds were not satisfied:
+             `std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:1988:22: 1988:45}>: std::iter::IntoIterator`
+             which is required by `std::iter::FlatMap<std::iter::Filter<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:1996:21: 1996:24}>, {closure@src/world/scene.rs:1997:21: 1997:24}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:1988:22: 1988:45}>, {closure@src/world/scene.rs:1998:23: 1998:26}>: std::iter::Iterator`
+             `std::iter::FlatMap<std::iter::Filter<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:1996:21: 1996:24}>, {closure@src/world/scene.rs:1997:21: 1997:24}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:1988:22: 1988:45}>, {closure@src/world/scene.rs:1998:23: 1998:26}>: std::iter::Iterator`
+             which is required by `&mut std::iter::FlatMap<std::iter::Filter<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:1996:21: 1996:24}>, {closure@src/world/scene.rs:1997:21: 1997:24}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:1988:22: 1988:45}>, {closure@src/world/scene.rs:1998:23: 1998:26}>: std::iter::Iterator`
+     = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c1a1537726e24fa3.long-type-8556132433239454828.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0631]: type mismatch in closure arguments
+    --> src/world/scene.rs:2782:30
+     |
+2746 |         let bounds = |vertices: &[[f32; 3]]| {
+     |                      ----------------------- found signature defined here
+...
+2782 |                         .map(bounds)
+     |                          --- ^^^^^^ expected due to this
+     |                          |
+     |                          required by a bound introduced by this call
+     |
+     = note: expected closure signature `fn(&[[f32; 3]; 24]) -> _`
+                found closure signature `fn(&[[f32; 3]]) -> _`
+note: required by a bound in `std::iter::Iterator::map`
+    --> library/core/src/iter/traits/iterator.rs:831:4
+help: consider wrapping the function in a closure
+     |
+2782 |                         .map(|arg0: &[[f32; 3]; 24]| bounds(/* &[[f32; 3]] */))
+     |                              +++++++++++++++++++++++       +++++++++++++++++++
+
+error[E0631]: type mismatch in closure arguments
+    --> src/world/scene.rs:2773:18
+     |
+2746 |         let bounds = |vertices: &[[f32; 3]]| {
+     |                      ----------------------- found signature defined here
+...
+2773 |                 .flat_map(|part| {
+     |                  ^^^^^^^^ expected due to this
+     |
+     = note: expected closure signature `fn(&[[f32; 3]; 24]) -> _`
+                found closure signature `fn(&[[f32; 3]]) -> _`
+     = note: required for `Map<Iter<'_, [[f32; 3]; 24]>, {closure@scene.rs:2746:22}>` to implement `std::iter::Iterator`
+     = note: required for `Map<Iter<'_, [[f32; 3]; 24]>, {closure@scene.rs:2746:22}>` to implement `std::iter::IntoIterator`
+note: required by a bound in `std::iter::Iterator::flat_map`
+    --> library/core/src/iter/traits/iterator.rs:1533:4
+     = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c1a1537726e24fa3.long-type-10142566903164141405.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0599]: the method `collect` exists for struct `FlatMap<Filter<Iter<'_, GeometryPart>, {closure@...}>, ..., ...>`, but its trait bounds were not satisfied
+    --> src/world/scene.rs:2784:18
+     |
+2767 |               let glass: Vec<_> = parts
+     |  _________________________________-
+2768 | |                 .iter()
+2769 | |                 .filter(|part| {
+2770 | |                     part.source == format!("buildings[{}]/derived-facade", building.id)
+...    |
+2783 | |                 })
+2784 | |                 .collect();
+     | |                 -^^^^^^^ method cannot be called due to unsatisfied trait bounds
+     | |_________________|
+     |
+     |
+     = note: the following trait bounds were not satisfied:
+             `std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2746:22: 2746:45}>: std::iter::IntoIterator`
+             which is required by `std::iter::FlatMap<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:2769:25: 2769:31}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2746:22: 2746:45}>, {closure@src/world/scene.rs:2773:27: 2773:33}>: std::iter::Iterator`
+             `std::iter::FlatMap<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:2769:25: 2769:31}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2746:22: 2746:45}>, {closure@src/world/scene.rs:2773:27: 2773:33}>: std::iter::Iterator`
+             which is required by `&mut std::iter::FlatMap<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:2769:25: 2769:31}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2746:22: 2746:45}>, {closure@src/world/scene.rs:2773:27: 2773:33}>: std::iter::Iterator`
+     = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c1a1537726e24fa3.long-type-12945259866259524310.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0631]: type mismatch in closure arguments
+    --> src/world/scene.rs:2922:30
+     |
+2885 |         let bounds = |vertices: &[[f32; 3]]| {
+     |                      ----------------------- found signature defined here
+...
+2922 |                         .map(bounds)
+     |                          --- ^^^^^^ expected due to this
+     |                          |
+     |                          required by a bound introduced by this call
+     |
+     = note: expected closure signature `fn(&[[f32; 3]; 24]) -> _`
+                found closure signature `fn(&[[f32; 3]]) -> _`
+note: required by a bound in `std::iter::Iterator::map`
+    --> library/core/src/iter/traits/iterator.rs:831:4
+help: consider wrapping the function in a closure
+     |
+2922 |                         .map(|arg0: &[[f32; 3]; 24]| bounds(/* &[[f32; 3]] */))
+     |                              +++++++++++++++++++++++       +++++++++++++++++++
+
+error[E0631]: type mismatch in closure arguments
+    --> src/world/scene.rs:2913:18
+     |
+2885 |         let bounds = |vertices: &[[f32; 3]]| {
+     |                      ----------------------- found signature defined here
+...
+2913 |                 .flat_map(|p| {
+     |                  ^^^^^^^^ expected due to this
+     |
+     = note: expected closure signature `fn(&[[f32; 3]; 24]) -> _`
+                found closure signature `fn(&[[f32; 3]]) -> _`
+     = note: required for `Map<Iter<'_, [[f32; 3]; 24]>, {closure@scene.rs:2885:22}>` to implement `std::iter::Iterator`
+     = note: required for `Map<Iter<'_, [[f32; 3]; 24]>, {closure@scene.rs:2885:22}>` to implement `std::iter::IntoIterator`
+note: required by a bound in `std::iter::Iterator::flat_map`
+    --> library/core/src/iter/traits/iterator.rs:1533:4
+     = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c1a1537726e24fa3.long-type-4300362217217962480.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0599]: the method `collect` exists for struct `FlatMap<Filter<Iter<'_, GeometryPart>, {closure@...}>, ..., ...>`, but its trait bounds were not satisfied
+    --> src/world/scene.rs:2924:18
+     |
+2907 |               let glass: Vec<_> = parts
+     |  _________________________________-
+2908 | |                 .iter()
+2909 | |                 .filter(|p| {
+2910 | |                     p.source == format!("buildings[{}]/derived-facade", building.id)
+...    |
+2923 | |                 })
+2924 | |                 .collect();
+     | |                 -^^^^^^^ method cannot be called due to unsatisfied trait bounds
+     | |_________________|
+     |
+     |
+     = note: the following trait bounds were not satisfied:
+             `std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2885:22: 2885:45}>: std::iter::IntoIterator`
+             which is required by `std::iter::FlatMap<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:2909:25: 2909:28}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2885:22: 2885:45}>, {closure@src/world/scene.rs:2913:27: 2913:30}>: std::iter::Iterator`
+             `std::iter::FlatMap<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:2909:25: 2909:28}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2885:22: 2885:45}>, {closure@src/world/scene.rs:2913:27: 2913:30}>: std::iter::Iterator`
+             which is required by `&mut std::iter::FlatMap<std::iter::Filter<std::slice::Iter<'_, world::geometry::GeometryPart>, {closure@src/world/scene.rs:2909:25: 2909:28}>, std::iter::Map<std::slice::Iter<'_, [[f32; 3]; 24]>, {closure@src/world/scene.rs:2885:22: 2885:45}>, {closure@src/world/scene.rs:2913:27: 2913:30}>: std::iter::Iterator`
+     = note: the full name for the type has been written to '/home/lzzz/MyProjects/N-SIDE/game/target/debug/deps/n_side-c1a1537726e24fa3.long-type-1907518278049103607.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+Some errors have detailed explanations: E0599, E0631.
+For more information about an error, try `rustc --explain E0599`.
+error: could not compile `n-side` (lib test) due to 9 previous errors

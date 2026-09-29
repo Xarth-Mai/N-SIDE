@@ -3,6 +3,7 @@ use crate::{
     graphics::{self, DisplayTrial, GraphicsNotice, GraphicsSettings},
     places::{self, Observation, PlaceCatalog},
     player::{self, PlayerState, WalkPreview},
+    progress::{self, ProgressStatus, ProgressStore},
     settings::{self, SaveStatus, SettingsStore},
     story::ShopHandoff,
     ui::{FONT, Tokens, UiFont, UiInput, color},
@@ -78,8 +79,13 @@ pub(crate) struct EntryUi {
     settings_return: Option<usize>,
     display_return: Option<usize>,
     graphics_tab: bool,
+    restart_return: Option<usize>,
 }
 impl EntryUi {
+    pub(crate) fn restart_pending(&self) -> bool {
+        self.restart_return.is_some()
+    }
+
     pub(crate) fn settings_open(&self) -> bool {
         self.settings_return.is_some()
     }
@@ -123,6 +129,9 @@ impl EntrySettings {
 #[derive(Clone, Copy)]
 enum Action {
     Enter,
+    Restart,
+    ConfirmRestart,
+    CancelRestart,
     Pause,
     Resume,
     Title,
@@ -137,7 +146,18 @@ enum Action {
     Back,
 }
 
-fn shell_actions(phase: GamePhase, ui: &EntryUi) -> Vec<(&'static str, Action)> {
+fn shell_actions(
+    phase: GamePhase,
+    ui: &EntryUi,
+    walk: bool,
+    story: &ShopHandoff,
+) -> Vec<(&'static str, Action)> {
+    if ui.restart_pending() {
+        return vec![
+            ("保留当前进度", Action::CancelRestart),
+            ("确认重新开始", Action::ConfirmRestart),
+        ];
+    }
     if ui.display_return.is_some() {
         return vec![
             ("保留显示设置", Action::KeepDisplay),
@@ -155,7 +175,22 @@ fn shell_actions(phase: GamePhase, ui: &EntryUi) -> Vec<(&'static str, Action)> 
             ])
             .collect();
     }
-    actions(phase, ui.settings_open()).to_vec()
+    let mut options = actions(phase, ui.settings_open()).to_vec();
+    if walk && !ui.settings_open() {
+        if phase == GamePhase::Title {
+            options[0].0 = if story.observed_places.is_empty() {
+                "开始门前交接"
+            } else {
+                "继续门前交接"
+            };
+        }
+        if matches!(phase, GamePhase::Title | GamePhase::Paused)
+            && !story.observed_places.is_empty()
+        {
+            options.push(("重新开始交接", Action::Restart));
+        }
+    }
+    options
 }
 
 fn actions(phase: GamePhase, settings: bool) -> &'static [(&'static str, Action)] {
@@ -194,6 +229,7 @@ struct ShellButton {
     phase: GamePhase,
     settings: bool,
     graphics: bool,
+    restart: bool,
     index: usize,
 }
 #[derive(Component)]
@@ -214,7 +250,7 @@ type ShellSnapshot = (
     bool,
     usize,
     String,
-    Option<u32>,
+    (Option<u32>, bool, ProgressStatus, bool),
 );
 
 pub fn run() -> Result<AppExit, String> {
@@ -224,6 +260,7 @@ pub fn run() -> Result<AppExit, String> {
     let mut character = false;
     let mut output = None;
     let mut settings_directory = None;
+    let mut progress_directory = None;
     let mut reset_graphics = false;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
@@ -237,6 +274,11 @@ pub fn run() -> Result<AppExit, String> {
                 walk = true;
             }
             "--reset-graphics" => reset_graphics = true,
+            "--progress-dir" => {
+                progress_directory = Some(PathBuf::from(
+                    args.next().ok_or("--progress-dir requires a directory")?,
+                ))
+            }
             "--settings-dir" => {
                 settings_directory = Some(PathBuf::from(
                     args.next().ok_or("--settings-dir requires a directory")?,
@@ -254,7 +296,7 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--walk-preview  Movement and session-only prologue handoff experiment\n--character-preview  Unaccepted grey character with real Idle/Walk/Run (implies --walk-preview)\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
+                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--progress-dir DIRECTORY  Override handoff progress directory, also enables persistence in capture\n--walk-preview  Movement and saved prologue handoff fragment\n--character-preview  Unaccepted grey character with real Idle/Walk/Run (implies --walk-preview)\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
                 );
                 return Ok(AppExit::Success);
             }
@@ -327,6 +369,7 @@ pub fn run() -> Result<AppExit, String> {
     app.insert_resource(WalkPreview(walk));
     install_lifecycle(&mut app);
     settings::install(&mut app, settings_directory, headless);
+    progress::install(&mut app, progress_directory, headless, walk);
     if reset_graphics {
         settings::reset_graphics(&mut app);
     }
@@ -424,7 +467,6 @@ fn enter_title(world: &mut World) {
     world.remove_resource::<GameLoadError>();
     player::clear(world);
     world.remove_resource::<PlaceCatalog>();
-    *world.resource_mut::<ShopHandoff>() = ShopHandoff::default();
     clear_scene(world);
     {
         let mut ui = world.resource_mut::<EntryUi>();
@@ -432,6 +474,7 @@ fn enter_title(world: &mut World) {
         ui.pause_after_loading = false;
         ui.gamepad_recovery = None;
         ui.settings_return = None;
+        ui.restart_return = None;
     }
     info!("[game/state] title");
 }
@@ -439,7 +482,6 @@ fn enter_title(world: &mut World) {
 fn begin_loading(world: &mut World) {
     player::clear(world);
     world.remove_resource::<PlaceCatalog>();
-    *world.resource_mut::<ShopHandoff>() = ShopHandoff::default();
     clear_scene(world);
     world.remove_resource::<GameLoadError>();
     {
@@ -448,6 +490,7 @@ fn begin_loading(world: &mut World) {
         ui.pause_after_loading = false;
         ui.gamepad_recovery = None;
         ui.settings_return = None;
+        ui.restart_return = None;
     }
     let root = world.resource::<ProjectRoot>().0.clone();
     let walk = world
@@ -490,6 +533,7 @@ fn enter_failed(world: &mut World) {
         ui.pause_after_loading = false;
         ui.gamepad_recovery = None;
         ui.settings_return = None;
+        ui.restart_return = None;
     }
     info!("[game/state] failed");
 }
@@ -596,7 +640,7 @@ fn entry_input(
     mut next: ResMut<NextState<GamePhase>>,
     mut ui: ResMut<EntryUi>,
     (mut observation, mut story): (ResMut<Observation>, ResMut<ShopHandoff>),
-    player: Option<Res<PlayerState>>,
+    (player, walk): (Option<Res<PlayerState>>, Res<WalkPreview>),
     (mut settings, mut display_trial): (ResMut<EntrySettings>, ResMut<DisplayTrial>),
     mut exit: MessageWriter<AppExit>,
 ) {
@@ -768,6 +812,11 @@ fn entry_input(
         || pressed(GamepadButton::East)
         || pressed(GamepadButton::Start)
     {
+        if let Some(focus) = ui.restart_return.take() {
+            ui.focus = focus;
+            ui.wait_for_release = true;
+            return;
+        }
         if let Some(focus) = ui.display_return.take() {
             display_trial.revert(&mut settings.graphics);
             ui.focus = focus;
@@ -831,7 +880,7 @@ fn entry_input(
             return;
         }
     }
-    let options = shell_actions(*phase.get(), &ui);
+    let options = shell_actions(*phase.get(), &ui, walk.0, &story);
     if key_pressed(KeyCode::ArrowDown) || pressed(GamepadButton::DPadDown) {
         ui.focus = (ui.focus + 1) % options.len();
     }
@@ -851,6 +900,7 @@ fn entry_input(
             && button.phase == *phase.get()
             && button.settings == ui.settings_open()
             && button.graphics == ui.graphics_tab()
+            && button.restart == ui.restart_pending()
             && (!ui.graphics_tab() || button.index / 4 == ui.graphics_page())
         {
             ui.focus = button.index;
@@ -861,6 +911,22 @@ fn entry_input(
     if activate {
         match options[ui.focus].1 {
             Action::Enter => (*next).set_if_neq(GamePhase::Loading),
+            Action::Restart => {
+                ui.restart_return = Some(ui.focus);
+                ui.focus = 0;
+                ui.wait_for_release = true;
+            }
+            Action::CancelRestart => {
+                ui.focus = ui.restart_return.take().unwrap_or(0);
+                ui.wait_for_release = true;
+            }
+            Action::ConfirmRestart => {
+                *story = ShopHandoff::default();
+                ui.restart_return = None;
+                ui.focus = 0;
+                ui.wait_for_release = true;
+                (*next).set_if_neq(GamePhase::Loading);
+            }
             Action::Pause => (*next).set_if_neq(GamePhase::Paused),
             Action::Resume => (*next).set_if_neq(GamePhase::World),
             Action::Title => (*next).set_if_neq(GamePhase::Title),
@@ -932,7 +998,11 @@ fn draw_shell(
     walk: Res<WalkPreview>,
     observation: Res<Observation>,
     settings: Res<EntrySettings>,
-    store: Option<Res<SettingsStore>>,
+    (store, progress, story): (
+        Option<Res<SettingsStore>>,
+        Option<Res<ProgressStore>>,
+        Res<ShopHandoff>,
+    ),
     graphics_notice: Option<Res<GraphicsNotice>>,
     display_trial: Res<DisplayTrial>,
 ) {
@@ -945,6 +1015,7 @@ fn draw_shell(
     let page = *phase.get();
     let editing = ui.settings_open();
     let save_status = store.map_or(SaveStatus::SessionOnly, |store| store.status);
+    let progress_status = progress.map_or(ProgressStatus::SessionOnly, |store| store.status);
     let key = (
         page,
         ui.gamepad,
@@ -959,7 +1030,12 @@ fn draw_shell(
         graphics_notice
             .as_ref()
             .map_or(String::new(), |notice| notice.0.clone()),
-        ui.display_return.map(|_| display_trial.seconds()),
+        (
+            ui.display_return.map(|_| display_trial.seconds()),
+            ui.restart_pending(),
+            progress_status,
+            story.observed_places.is_empty(),
+        ),
     );
     if prior.as_ref() == Some(&key) {
         return;
@@ -1038,7 +1114,9 @@ fn draw_shell(
                 ))
                 .with_children(|panel| {
                     let display_message = format!("请确认画面可用，{} 秒后自动恢复\n未确认的窗口设置不会保存", display_trial.seconds());
-                    let (heading, description) = if ui.display_return.is_some() {
+                    let (heading, description) = if ui.restart_pending() {
+                        ("重新开始门前交接？", "将清除已观察的信息与确认路线，从家门口重新开始")
+                    } else if ui.display_return.is_some() {
                         ("保留显示设置？", display_message.as_str())
                     } else if editing {
                         ("设置", save_status.message())
@@ -1049,7 +1127,7 @@ fn draw_shell(
                         GamePhase::Paused => ("暂停", match ui.gamepad_recovery {
                             Some(false) => "手柄已断开，可重新连接或使用键鼠继续",
                             Some(true) => "手柄已重新连接，确认后继续",
-                            None if walk.0 => "继续当前行程；返回标题将重开本次交接片段",
+                            None if walk.0 => "返回标题保留交接进度；再次继续从家门口出发",
                             None => "继续当前行程，或返回标题",
                         }),
                         GamePhase::Failed => (
@@ -1089,7 +1167,10 @@ fn draw_shell(
                             }
                         });
                     }
-                    for (index, (label, action)) in shell_actions(page, &ui).iter().enumerate() {
+                    if walk.0 && !editing && page != GamePhase::Loading {
+                        panel.spawn(text(progress_status.message(), tokens.body_size, color(if matches!(progress_status, ProgressStatus::ReadFailed | ProgressStatus::WriteFailed) { &tokens.colors.warning } else { &tokens.colors.secondary })));
+                    }
+                    for (index, (label, action)) in shell_actions(page, &ui, walk.0, &story).iter().enumerate() {
                         if ui.graphics_tab() && index / 4 != ui.graphics_page() { continue; }
                         let label = match action {
                             Action::TextSize => format!("{label}  :  {:.0}%", settings.text_scale() * 100.0),
@@ -1101,7 +1182,7 @@ fn draw_shell(
                             .spawn((
                                 Button,
                                 AccessibleLabel::new(label.clone()),
-                                ShellButton { phase: page, settings: editing, graphics: ui.graphics_tab(), index },
+                                ShellButton { phase: page, settings: editing, graphics: ui.graphics_tab(), restart: ui.restart_pending(), index },
                                 Node {
                                     width: percent(100),
                                     min_height: px(if editing { 64.0 } else { 76.0 }),
@@ -1134,7 +1215,9 @@ SSAO 开启时切至 TAA；MSAA 关闭 SSAO", ui.graphics_page()+1,(graphics::LA
                         if let Some(notice) = graphics_notice.as_ref() && !notice.0.is_empty() { panel.spawn(text(&notice.0, tokens.body_size, color(&tokens.colors.warning))); }
                     }
                     panel.spawn(text(
-                        if ui.display_return.is_some() {
+                        if ui.restart_pending() {
+                            if ui.gamepad { "方向键选择 · A 确认 · B 保留进度" } else { "↑ ↓ 选择 · Enter 确认 · Esc 保留进度" }
+                        } else if ui.display_return.is_some() {
                             if ui.gamepad { "方向键选择 · A 确认 · B 恢复" }
                             else { "↑ ↓ 选择 · Enter 确认 · Esc 恢复" }
                         } else if editing {
@@ -1323,6 +1406,7 @@ mod tests {
                 phase: GamePhase::Title,
                 settings: false,
                 graphics: false,
+                restart: false,
                 index: 1,
             },
         ));
@@ -1413,6 +1497,7 @@ mod tests {
                 phase: GamePhase::Title,
                 settings: false,
                 graphics: false,
+                restart: false,
                 index: 1,
             },
         ));
@@ -1557,6 +1642,7 @@ mod tests {
                         phase,
                         settings: false,
                         graphics: false,
+                        restart: false,
                         index: 0,
                     },
                 ))
@@ -1759,6 +1845,7 @@ mod tests {
                         phase: GamePhase::Title,
                         settings: true,
                         graphics: false,
+                        restart: false,
                         index: 2,
                     },
                 ));
@@ -1850,7 +1937,7 @@ mod tests {
     }
 
     #[test]
-    fn observation_story_progress_survives_pause_and_revisit_but_title_restarts_it() {
+    fn observation_story_progress_survives_pause_revisit_and_return_to_title() {
         fn action(app: &mut App, pad: Entity, key: KeyCode, use_pad: bool) {
             if !use_pad {
                 tap(app, key);
@@ -1927,10 +2014,69 @@ mod tests {
                 *app.world().resource::<State<GamePhase>>().get(),
                 GamePhase::Title
             );
+            assert_eq!(app.world().resource::<ShopHandoff>().confirmation_count, 1);
+            assert_eq!(
+                app.world().resource::<ShopHandoff>().observed_places.len(),
+                3
+            );
+        }
+    }
+
+    #[test]
+    fn restart_confirmation_defaults_to_keep_and_focus_loss_cannot_clear_progress() {
+        for phase in [GamePhase::Title, GamePhase::Paused] {
+            let mut app = lifecycle_app();
+            app.world_mut().resource_mut::<WalkPreview>().0 = true;
+            app.world_mut()
+                .resource_mut::<NextState<GamePhase>>()
+                .set(phase);
+            frame(&mut app);
+            app.world_mut().resource_mut::<ShopHandoff>().observe("04");
+            app.world_mut().resource_mut::<EntryUi>().focus = 3;
+            tap(&mut app, KeyCode::Enter);
+            assert!(app.world().resource::<EntryUi>().restart_pending());
+            assert_eq!(app.world().resource::<EntryUi>().focus(), 0);
+            tap(&mut app, KeyCode::Enter);
+            assert!(!app.world().resource::<EntryUi>().restart_pending());
+            assert!(
+                app.world()
+                    .resource::<ShopHandoff>()
+                    .observed_places
+                    .contains("04")
+            );
+            tap(&mut app, KeyCode::Enter);
+            tap(&mut app, KeyCode::Escape);
+            assert!(!app.world().resource::<EntryUi>().restart_pending());
+            assert_eq!(*app.world().resource::<State<GamePhase>>().get(), phase);
+            tap(&mut app, KeyCode::Enter);
+            tap(&mut app, KeyCode::ArrowDown);
+            let window = app
+                .world_mut()
+                .spawn((
+                    Window {
+                        focused: false,
+                        ..default()
+                    },
+                    PrimaryWindow,
+                ))
+                .id();
+            tap(&mut app, KeyCode::Enter);
+            assert!(app.world().resource::<EntryUi>().restart_pending());
+            assert!(
+                app.world()
+                    .resource::<ShopHandoff>()
+                    .observed_places
+                    .contains("04")
+            );
+            app.world_mut().despawn(window);
+            frame(&mut app);
+            tap(&mut app, KeyCode::Enter);
+            assert!(!app.world().resource::<EntryUi>().restart_pending());
             assert_eq!(
                 *app.world().resource::<ShopHandoff>(),
                 ShopHandoff::default()
             );
+            assert!(!app.world().contains_resource::<PlayerState>());
         }
     }
 
@@ -2260,6 +2406,7 @@ mod tests {
                     phase: GamePhase::Paused,
                     settings: false,
                     graphics: false,
+                    restart: false,
                     index: 0,
                 },
             ))
@@ -2930,6 +3077,7 @@ mod tests {
                         phase: GamePhase::Paused,
                         settings: false,
                         graphics: false,
+                        restart: false,
                         index: 0,
                     },
                 ))

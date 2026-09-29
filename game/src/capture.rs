@@ -8,6 +8,7 @@ use crate::{
     graphics::GraphicsEvidence,
     places::{Observation, PlaceHud},
     player::{PlayerState, PointerLock},
+    progress::{ProgressStatus, ProgressStore},
     story::ShopHandoff,
     ui::{SignalUi, UiFont, UiInput},
     world::{
@@ -158,6 +159,8 @@ pub struct Assertion {
     handoff: Option<HandoffCheck>,
     character: Option<CharacterCheck>,
     settings_open: Option<bool>,
+    progress_status: Option<ProgressStatus>,
+    restart_pending: Option<bool>,
     graphics_tab: Option<bool>,
     graphics_page: Option<usize>,
     display_pending: Option<bool>,
@@ -629,6 +632,8 @@ impl Assertion {
 
     fn has_entry_assertion(&self) -> bool {
         self.settings_open.is_some()
+            || self.progress_status.is_some()
+            || self.restart_pending.is_some()
             || self.graphics_tab.is_some()
             || self.graphics_page.is_some()
             || self.display_pending.is_some()
@@ -649,6 +654,12 @@ impl Assertion {
         };
         self.settings_open
             .is_none_or(|open| entry.settings_open == open)
+            && self
+                .progress_status
+                .is_none_or(|status| entry.progress_status == Some(status))
+            && self
+                .restart_pending
+                .is_none_or(|pending| entry.restart_pending == pending)
             && self
                 .graphics_tab
                 .is_none_or(|value| entry.graphics_tab == value)
@@ -845,6 +856,8 @@ struct ObservationSample {
 #[derive(Serialize)]
 struct EntrySample {
     settings_open: bool,
+    progress_status: Option<ProgressStatus>,
+    restart_pending: bool,
     graphics_tab: bool,
     graphics_page: usize,
     display_pending: bool,
@@ -1503,6 +1516,7 @@ fn record(
         Option<Res<GraphicsEvidence>>,
         Option<Res<ShopHandoff>>,
         Option<Res<CharacterStatus>>,
+        Option<Res<ProgressStore>>,
     ),
     ui_font: Option<Res<UiFont>>,
     assets: (
@@ -1513,8 +1527,18 @@ fn record(
         Res<Assets<StandardMaterial>>,
     ),
 ) {
-    let (ui, place, observation, entry, settings, pointer_lock, graphics, handoff, character) =
-        ui_state;
+    let (
+        ui,
+        place,
+        observation,
+        entry,
+        settings,
+        pointer_lock,
+        graphics,
+        handoff,
+        character,
+        progress,
+    ) = ui_state;
     let (asset_server, entities, meshes, images, materials) = assets;
     if recording.finished {
         return;
@@ -1646,6 +1670,8 @@ fn record(
         }),
         entry: entry.zip(settings).map(|(entry, settings)| EntrySample {
             settings_open: entry.settings_open(),
+            progress_status: progress.as_ref().map(|store| store.status),
+            restart_pending: entry.restart_pending(),
             graphics_tab: entry.graphics_tab(),
             graphics_page: entry.graphics_page(),
             display_pending: entry.display_pending(),
@@ -2423,10 +2449,13 @@ mod tests {
         let expected = serde_json::json!({
             "name":"current settings", "from":0, "to":0,
             "settings_open":true, "entry_focus":1, "text_scale":1.25,
-            "camera_sensitivity":0.65, "entry_device":"gamepad"
+            "camera_sensitivity":0.65, "entry_device":"gamepad",
+            "progress_status":"saved", "restart_pending":false
         });
         let sample = EntrySample {
             settings_open: true,
+            progress_status: Some(ProgressStatus::Saved),
+            restart_pending: false,
             graphics_tab: false,
             graphics_page: 0,
             display_pending: false,
@@ -2450,6 +2479,8 @@ mod tests {
         script.scene = "walk-preview".into();
         for (field, wrong, valid) in [
             ("settings_open", serde_json::json!(false), true),
+            ("progress_status", serde_json::json!("write_failed"), true),
+            ("restart_pending", serde_json::json!(true), true),
             ("entry_focus", serde_json::json!(2), true),
             ("display_pending", serde_json::json!(true), true),
             ("configured_resolution", serde_json::json!(1), true),

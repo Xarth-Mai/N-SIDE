@@ -1,0 +1,941 @@
+[
+  {
+    "directory": "output/capture/task047-model-r2-runtime",
+    "status": "PASS",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-model-r2-runtime/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-model-r2-runtime",
+      "--walk-preview",
+      "--character-preview"
+    ],
+    "binary_sha256": "e138c1b0b44ad880b19440aa48173bcee869878b9c1060a56855e7050fe94c5b",
+    "script_sha256": "8a5b5ee9bfb12de7258fa37a86a080e33a5d7b41ca883318f93de4a099e04a65",
+    "script": {
+      "scene": "walk-preview",
+      "view": "shop",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "frames": 540,
+      "seed": 0,
+      "timeout_seconds": 450,
+      "keyframes": [
+        29,
+        59,
+        66,
+        69,
+        89,
+        109,
+        129,
+        159,
+        209,
+        259,
+        289,
+        314,
+        359,
+        409,
+        449,
+        499,
+        539
+      ],
+      "events": [
+        {
+          "start": 30,
+          "end": 31,
+          "keys": [
+            "Enter"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 61,
+          "keys": [
+            "Space"
+          ]
+        },
+        {
+          "start": 68,
+          "end": 95,
+          "keys": [
+            "Space"
+          ]
+        },
+        {
+          "start": 100,
+          "end": 125,
+          "gamepad": [
+            "Jump"
+          ]
+        },
+        {
+          "start": 130,
+          "end": 160,
+          "keys": [
+            "W"
+          ]
+        },
+        {
+          "start": 165,
+          "end": 166,
+          "keys": [
+            "R"
+          ]
+        },
+        {
+          "start": 180,
+          "end": 195,
+          "keys": [
+            "W",
+            "Shift"
+          ]
+        },
+        {
+          "start": 195,
+          "end": 210,
+          "keys": [
+            "W",
+            "ShiftRight"
+          ]
+        },
+        {
+          "start": 215,
+          "end": 216,
+          "keys": [
+            "R"
+          ]
+        },
+        {
+          "start": 230,
+          "end": 260,
+          "keys": [
+            "W"
+          ],
+          "right_mouse": true
+        },
+        {
+          "start": 265,
+          "end": 266,
+          "keys": [
+            "R"
+          ]
+        },
+        {
+          "start": 270,
+          "end": 271,
+          "keys": [
+            "M"
+          ]
+        },
+        {
+          "start": 275,
+          "end": 290,
+          "look": [
+            10,
+            0
+          ]
+        },
+        {
+          "start": 295,
+          "end": 296,
+          "keys": [
+            "M"
+          ]
+        },
+        {
+          "start": 300,
+          "end": 315,
+          "look": [
+            10,
+            0
+          ]
+        },
+        {
+          "start": 330,
+          "end": 360,
+          "keys": [
+            "Escape",
+            "W",
+            "Space"
+          ],
+          "right_mouse": true,
+          "look": [
+            10,
+            0
+          ]
+        },
+        {
+          "start": 370,
+          "end": 371,
+          "keys": [
+            "Escape"
+          ]
+        },
+        {
+          "start": 380,
+          "end": 381,
+          "keys": [
+            "Space"
+          ]
+        },
+        {
+          "start": 430,
+          "end": 431,
+          "focused": false,
+          "keys": [
+            "W",
+            "Space"
+          ],
+          "right_mouse": true
+        },
+        {
+          "start": 440,
+          "end": 441,
+          "focused": true
+        },
+        {
+          "start": 460,
+          "end": 461,
+          "keys": [
+            "Escape"
+          ]
+        }
+      ],
+      "waits": [
+        {
+          "frame": 34,
+          "game_page": "world"
+        },
+        {
+          "frame": 332,
+          "game_page": "paused"
+        },
+        {
+          "frame": 372,
+          "game_page": "world"
+        },
+        {
+          "frame": 432,
+          "game_page": "paused"
+        },
+        {
+          "frame": 462,
+          "game_page": "world"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "title_releases_pointer",
+          "from": 0,
+          "to": 29,
+          "game_page": "title",
+          "pointer_locked": false
+        },
+        {
+          "name": "world_starts_grounded_and_locks_pointer",
+          "from": 59,
+          "to": 59,
+          "game_page": "world",
+          "player_grounded": true,
+          "pointer_locked": true,
+          "max_player_jumps": 0,
+          "max_player_resets": 0
+        },
+        {
+          "name": "space_rises_above_real_ground",
+          "from": 68,
+          "to": 71,
+          "min_player_height": 28.7,
+          "max_player_height": 29.2,
+          "player_grounded": false,
+          "min_player_jumps": 1,
+          "max_player_jumps": 1
+        },
+        {
+          "name": "air_press_and_held_space_cannot_double_jump",
+          "from": 60,
+          "to": 95,
+          "max_player_height": 29.2,
+          "player_grounded": true,
+          "min_player_jumps": 1,
+          "max_player_jumps": 1,
+          "max_player_resets": 0
+        },
+        {
+          "name": "gamepad_jump_uses_same_grounded_rule",
+          "from": 108,
+          "to": 112,
+          "min_player_height": 28.7,
+          "max_player_height": 29.2,
+          "player_grounded": false,
+          "min_player_jumps": 2,
+          "max_player_jumps": 2
+        },
+        {
+          "name": "gamepad_hold_lands_without_rejump",
+          "from": 129,
+          "to": 129,
+          "player_grounded": true,
+          "min_player_height": 28.0,
+          "max_player_height": 28.15,
+          "max_player_jumps": 2
+        },
+        {
+          "name": "walking_reference_distance",
+          "from": 129,
+          "to": 159,
+          "min_player_distance": 3.0,
+          "max_player_distance": 3.4
+        },
+        {
+          "name": "shift_sprint_moves_faster",
+          "from": 179,
+          "to": 209,
+          "min_player_distance": 5.3,
+          "max_player_distance": 5.9
+        },
+        {
+          "name": "both_shift_keys_keep_sprinting",
+          "from": 181,
+          "to": 209,
+          "player_sprinting": true
+        },
+        {
+          "name": "right_button_sprint_moves_faster",
+          "from": 229,
+          "to": 259,
+          "min_player_distance": 5.3,
+          "max_player_distance": 5.9
+        },
+        {
+          "name": "right_sprint_held",
+          "from": 231,
+          "to": 259,
+          "player_sprinting": true
+        },
+        {
+          "name": "m_unlocks_and_raw_mouse_does_not_turn",
+          "from": 274,
+          "to": 289,
+          "pointer_locked": false,
+          "max_rotation": 0.001,
+          "max_player_distance": 0.001
+        },
+        {
+          "name": "locked_mouse_turns_without_drag",
+          "from": 299,
+          "to": 314,
+          "pointer_locked": true,
+          "min_rotation": 0.4,
+          "max_rotation": 0.5,
+          "max_player_distance": 0.001
+        },
+        {
+          "name": "pause_releases_pointer_and_blocks_jump_sprint_look",
+          "from": 334,
+          "to": 359,
+          "game_page": "paused",
+          "pointer_locked": false,
+          "max_player_distance": 0.001,
+          "max_rotation": 0.001,
+          "max_player_jumps": 2
+        },
+        {
+          "name": "resume_relocks_and_jump_still_works",
+          "from": 388,
+          "to": 391,
+          "game_page": "world",
+          "pointer_locked": true,
+          "min_player_jumps": 3,
+          "max_player_jumps": 3,
+          "player_grounded": false,
+          "min_player_height": 28.7
+        },
+        {
+          "name": "focus_loss_releases_and_does_not_jump",
+          "from": 432,
+          "to": 449,
+          "game_page": "paused",
+          "pointer_locked": false,
+          "max_player_distance": 0.001,
+          "max_player_jumps": 3
+        },
+        {
+          "name": "focus_restore_requires_explicit_resume",
+          "from": 499,
+          "to": 539,
+          "game_page": "world",
+          "pointer_locked": true,
+          "player_grounded": true,
+          "player_sprinting": false,
+          "max_player_distance": 0.001,
+          "min_player_jumps": 3,
+          "max_player_jumps": 3,
+          "max_player_resets": 3
+        },
+        {
+          "name": "loaded real skinned idle advances",
+          "from": 50,
+          "to": 59,
+          "character": {
+            "ready": true,
+            "clip": "Idle",
+            "min_clip_elapsed": 0.1,
+            "paused": false,
+            "min_advance": 0.285
+          }
+        },
+        {
+          "name": "actual walking selects Walk",
+          "from": 140,
+          "to": 155,
+          "character": {
+            "ready": true,
+            "clip": "Walk",
+            "min_clip_elapsed": 0.1,
+            "paused": false,
+            "min_advance": 0.475
+          }
+        },
+        {
+          "name": "actual shift running selects Run",
+          "from": 190,
+          "to": 205,
+          "character": {
+            "ready": true,
+            "clip": "Run",
+            "min_clip_elapsed": 0.1,
+            "paused": false,
+            "min_advance": 0.475
+          }
+        },
+        {
+          "name": "actual right mouse running selects Run",
+          "from": 240,
+          "to": 255,
+          "character": {
+            "ready": true,
+            "clip": "Run",
+            "min_clip_elapsed": 0.1,
+            "paused": false,
+            "min_advance": 0.475
+          }
+        },
+        {
+          "name": "pause stops actual animation",
+          "from": 340,
+          "to": 359,
+          "character": {
+            "ready": true,
+            "paused": true,
+            "max_drift": 1e-05
+          }
+        },
+        {
+          "name": "resumed idle advances after real transitions",
+          "from": 490,
+          "to": 539,
+          "character": {
+            "ready": true,
+            "clip": "Idle",
+            "paused": false,
+            "min_clip_elapsed": 0.1,
+            "min_transitions": 6,
+            "min_advance": 1.5516666666666665
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "expected": 540,
+        "name": "all_frames_saved",
+        "passed": true,
+        "saved": 540
+      },
+      {
+        "checked_frames": 540,
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 0,
+          "game_page": "title",
+          "name": "title_releases_pointer",
+          "pointer_locked": false,
+          "to": 29
+        },
+        "name": "title_releases_pointer",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 59,
+          "game_page": "world",
+          "max_player_jumps": 0,
+          "max_player_resets": 0,
+          "name": "world_starts_grounded_and_locks_pointer",
+          "player_grounded": true,
+          "pointer_locked": true,
+          "to": 59
+        },
+        "name": "world_starts_grounded_and_locks_pointer",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.060001373291015625,
+        "enabled": false,
+        "expected": {
+          "from": 68,
+          "max_player_height": 29.200000762939453,
+          "max_player_jumps": 1,
+          "min_player_height": 28.700000762939453,
+          "min_player_jumps": 1,
+          "name": "space_rises_above_real_ground",
+          "player_grounded": false,
+          "to": 71
+        },
+        "name": "space_rises_above_real_ground",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.18000030517578125,
+        "enabled": false,
+        "expected": {
+          "from": 60,
+          "max_player_height": 29.200000762939453,
+          "max_player_jumps": 1,
+          "max_player_resets": 0,
+          "min_player_jumps": 1,
+          "name": "air_press_and_held_space_cannot_double_jump",
+          "player_grounded": true,
+          "to": 95
+        },
+        "name": "air_press_and_held_space_cannot_double_jump",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.12000083923339844,
+        "enabled": false,
+        "expected": {
+          "from": 108,
+          "max_player_height": 29.200000762939453,
+          "max_player_jumps": 2,
+          "min_player_height": 28.700000762939453,
+          "min_player_jumps": 2,
+          "name": "gamepad_jump_uses_same_grounded_rule",
+          "player_grounded": false,
+          "to": 112
+        },
+        "name": "gamepad_jump_uses_same_grounded_rule",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 129,
+          "max_player_height": 28.149999618530273,
+          "max_player_jumps": 2,
+          "min_player_height": 28.0,
+          "name": "gamepad_hold_lands_without_rejump",
+          "player_grounded": true,
+          "to": 129
+        },
+        "name": "gamepad_hold_lands_without_rejump",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 3.199920654296875,
+        "enabled": false,
+        "expected": {
+          "from": 129,
+          "max_player_distance": 3.4000000953674316,
+          "min_player_distance": 3.0,
+          "name": "walking_reference_distance",
+          "to": 159
+        },
+        "name": "walking_reference_distance",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 5.59726095199585,
+        "enabled": false,
+        "expected": {
+          "from": 179,
+          "max_player_distance": 5.900000095367432,
+          "min_player_distance": 5.300000190734863,
+          "name": "shift_sprint_moves_faster",
+          "to": 209
+        },
+        "name": "shift_sprint_moves_faster",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 5.224408149719238,
+        "enabled": false,
+        "expected": {
+          "from": 181,
+          "name": "both_shift_keys_keep_sprinting",
+          "player_sprinting": true,
+          "to": 209
+        },
+        "name": "both_shift_keys_keep_sprinting",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 5.59726095199585,
+        "enabled": false,
+        "expected": {
+          "from": 229,
+          "max_player_distance": 5.900000095367432,
+          "min_player_distance": 5.300000190734863,
+          "name": "right_button_sprint_moves_faster",
+          "to": 259
+        },
+        "name": "right_button_sprint_moves_faster",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 5.224408149719238,
+        "enabled": false,
+        "expected": {
+          "from": 231,
+          "name": "right_sprint_held",
+          "player_sprinting": true,
+          "to": 259
+        },
+        "name": "right_sprint_held",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 274,
+          "max_player_distance": 0.0010000000474974513,
+          "max_rotation": 0.0010000000474974513,
+          "name": "m_unlocks_and_raw_mouse_does_not_turn",
+          "pointer_locked": false,
+          "to": 289
+        },
+        "name": "m_unlocks_and_raw_mouse_does_not_turn",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 1.654736042022705,
+        "enabled": false,
+        "expected": {
+          "from": 299,
+          "max_player_distance": 0.0010000000474974513,
+          "max_rotation": 0.5,
+          "min_rotation": 0.4000000059604645,
+          "name": "locked_mouse_turns_without_drag",
+          "pointer_locked": true,
+          "to": 314
+        },
+        "name": "locked_mouse_turns_without_drag",
+        "passed": true,
+        "peak_rotation_radians": 0.4499990940093994,
+        "rotation_radians": 0.4499990940093994
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 334,
+          "game_page": "paused",
+          "max_player_distance": 0.0010000000474974513,
+          "max_player_jumps": 2,
+          "max_rotation": 0.0010000000474974513,
+          "name": "pause_releases_pointer_and_blocks_jump_sprint_look",
+          "pointer_locked": false,
+          "to": 359
+        },
+        "name": "pause_releases_pointer_and_blocks_jump_sprint_look",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.060001373291015625,
+        "enabled": false,
+        "expected": {
+          "from": 388,
+          "game_page": "world",
+          "max_player_jumps": 3,
+          "min_player_height": 28.700000762939453,
+          "min_player_jumps": 3,
+          "name": "resume_relocks_and_jump_still_works",
+          "player_grounded": false,
+          "pointer_locked": true,
+          "to": 391
+        },
+        "name": "resume_relocks_and_jump_still_works",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 432,
+          "game_page": "paused",
+          "max_player_distance": 0.0010000000474974513,
+          "max_player_jumps": 3,
+          "name": "focus_loss_releases_and_does_not_jump",
+          "pointer_locked": false,
+          "to": 449
+        },
+        "name": "focus_loss_releases_and_does_not_jump",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "from": 499,
+          "game_page": "world",
+          "max_player_distance": 0.0010000000474974513,
+          "max_player_jumps": 3,
+          "max_player_resets": 3,
+          "min_player_jumps": 3,
+          "name": "focus_restore_requires_explicit_resume",
+          "player_grounded": true,
+          "player_sprinting": false,
+          "pointer_locked": true,
+          "to": 539
+        },
+        "name": "focus_restore_requires_explicit_resume",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "character": {
+            "clip": "Idle",
+            "min_advance": 0.2849999964237213,
+            "min_clip_elapsed": 0.10000000149011612,
+            "paused": false,
+            "ready": true
+          },
+          "from": 50,
+          "name": "loaded real skinned idle advances",
+          "to": 59
+        },
+        "name": "loaded real skinned idle advances",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 1.599884033203125,
+        "enabled": false,
+        "expected": {
+          "character": {
+            "clip": "Walk",
+            "min_advance": 0.4749999940395355,
+            "min_clip_elapsed": 0.10000000149011612,
+            "paused": false,
+            "ready": true
+          },
+          "from": 140,
+          "name": "actual walking selects Walk",
+          "to": 155
+        },
+        "name": "actual walking selects Walk",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 2.808933973312378,
+        "enabled": false,
+        "expected": {
+          "character": {
+            "clip": "Run",
+            "min_advance": 0.4749999940395355,
+            "min_clip_elapsed": 0.10000000149011612,
+            "paused": false,
+            "ready": true
+          },
+          "from": 190,
+          "name": "actual shift running selects Run",
+          "to": 205
+        },
+        "name": "actual shift running selects Run",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 2.808933973312378,
+        "enabled": false,
+        "expected": {
+          "character": {
+            "clip": "Run",
+            "min_advance": 0.4749999940395355,
+            "min_clip_elapsed": 0.10000000149011612,
+            "paused": false,
+            "ready": true
+          },
+          "from": 240,
+          "name": "actual right mouse running selects Run",
+          "to": 255
+        },
+        "name": "actual right mouse running selects Run",
+        "passed": true,
+        "peak_rotation_radians": 0.0006905339541845024,
+        "rotation_radians": 0.0006905339541845024
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "character": {
+            "max_drift": 9.999999747378752e-06,
+            "paused": true,
+            "ready": true
+          },
+          "from": 340,
+          "name": "pause stops actual animation",
+          "to": 359
+        },
+        "name": "pause stops actual animation",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      },
+      {
+        "distance": 0.0,
+        "enabled": false,
+        "expected": {
+          "character": {
+            "clip": "Idle",
+            "min_advance": 1.5516666173934937,
+            "min_clip_elapsed": 0.10000000149011612,
+            "min_transitions": 6,
+            "paused": false,
+            "ready": true
+          },
+          "from": 490,
+          "name": "resumed idle advances after real transitions",
+          "to": 539
+        },
+        "name": "resumed idle advances after real transitions",
+        "passed": true,
+        "peak_rotation_radians": 0.0,
+        "rotation_radians": 0.0
+      }
+    ],
+    "performance": {
+      "observed_scene_load_seconds": [
+        0.044110455
+      ],
+      "resource_counts": {
+        "first_ready": {
+          "entities": 5092,
+          "images": 46,
+          "materials": 53,
+          "meshes": 3418
+        },
+        "last_ready": {
+          "entities": 5092,
+          "images": 46,
+          "materials": 53,
+          "meshes": 3418
+        },
+        "peak_ready": {
+          "entities": 5098,
+          "images": 46,
+          "materials": 53,
+          "meshes": 3418
+        }
+      },
+      "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+      "world_capture_frame_interval_ms": {
+        "count": 433,
+        "max": 75.379572000001,
+        "mean": 31.28235689838337,
+        "p50": 31.71207700000167,
+        "p95": 33.90192800000058,
+        "percentile_method": "nearest_rank"
+      },
+      "world_update_interval_ms": {
+        "count": 2682,
+        "max": 203.159401,
+        "mean": 5.1684922639821,
+        "p50": 2.616441,
+        "p95": 18.32274,
+        "percentile_method": "nearest_rank"
+      }
+    },
+    "report_hashes": {
+      "run.json": "e68d82606448e00f6e5da59974cc5d7cdeb695f28e453778ab202d3d7736c327",
+      "state.json": "d6dc5920f1d85df87292e3284b9120a7c1c1a22154bd6d1402c3b2158dc58b1a",
+      "runtime.log": "ae574d36f76fa0a4a62fc64a41163768af8a82e9d106066065a42879fcb3d962"
+    },
+    "keyframe_hashes": {
+      "frame00029.png": "c981d39cafc879f20b9c636fe192f56b1ca4d461f5f70abcacb5aaa746541cbb",
+      "frame00059.png": "e7588144a400802d912010968ca283b9be7fbd0e8aabfedabba4b1aecdba0ecc",
+      "frame00066.png": "207e13a7b1cc5129d07ee52972b07ab50c2d3344d49452dfefbe5b6d45820aa9",
+      "frame00069.png": "ec32ad92fb180594a8203bb8f1aaccc9069225de7b324866b2a7293dabc93e81",
+      "frame00089.png": "fea9db96cfda69a887b144a68d0ad657b9dbd5054c93199eff295afffc9c2118",
+      "frame00109.png": "c72e8c7e9d77f4635e5bfe577f578b8077455df93b66cbe51e3fef22e7031519",
+      "frame00129.png": "451924379342cd9dffad064e35c24feaffb0cd9c9f2240eb7f817e44a8ed03e1",
+      "frame00159.png": "59c91bf2e53bf4d7762cbde7aaf7b9c57cbc018ac3b7e4227ed5398993d725ba",
+      "frame00209.png": "2b8ba67a52c38c0d2aeb3980845413eabea401e803ff69c60b24bb72737cc3b8",
+      "frame00259.png": "2b8ba67a52c38c0d2aeb3980845413eabea401e803ff69c60b24bb72737cc3b8",
+      "frame00289.png": "c0a33bf5c8a8c59627368e73e05700b63fed5683fec113c1ef8f05ec65fe7977",
+      "frame00314.png": "b53c0a606d5233b4d1d466581d5b908965eea4a717ba25fe09bf8291adece165",
+      "frame00359.png": "d1b89cff69aec0761101df35c2560446ff263d2ba5d82704dd90bfcb98b001b4",
+      "frame00409.png": "5f14460a71e4ae8cd6a8b6f2db4fb2c332ae4973ae18fe1c2448aa9991c3b962",
+      "frame00449.png": "d1b89cff69aec0761101df35c2560446ff263d2ba5d82704dd90bfcb98b001b4",
+      "frame00499.png": "0379b9e4bf146c8d297155c39138c5e2305a00c771548be85da4877197701f4f",
+      "frame00539.png": "5342aecc9950f0e4e46f89cbd85c1ac4bf4bbc9e8b037fe0663ed8740645383f"
+    }
+  }
+]

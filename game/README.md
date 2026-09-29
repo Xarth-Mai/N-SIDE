@@ -48,7 +48,7 @@ Viewer 自由相机使用右键按住观察，M 切换鼠标捕获，WASD 移动
 
 ## 正式入口与场景恢复
 
-标题提供「进入街区」「退出」和「设置」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的人物尺度实验；会话内门前交接观察已接入，任务存档与完整序章仍由后续原型完成
+标题提供「进入街区」「退出」和「设置」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的人物尺度实验，标题改为「开始门前交接」或「继续门前交接」，已观察的信息与确认路线支持自动保存；完整序章尚未实现
 
 场景准备在 Bevy 任务池中进行，标题输入和加载反馈保持响应；取消后丢弃旧准备结果。每次进入建立新的 `SceneLoading`，依次核对资产依赖和模型实例化，真实就绪才切换到街区。返回标题移除带 `MapSource` 的场景层级与加载资源，保留宿主镜头、灯光和 UI
 
@@ -61,7 +61,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 脚本的 `waits` 在指定帧等待真实 `game_page`，期间继续异步加载和渲染，暂停录制时间线；它不设置应用状态，墙钟超时仍有效。`game_page`、`world_ready`、`min_world_entities`、`max_world_entities` 和 `same_world_entities` 从实际 ECS 状态检查标题、加载、清理与重入；录制时长不代表真实加载耗时
 
-暂停复用街区信号的颜色、字体与焦点组件，显示继续、返回标题和设置。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物、镜头和显式角色预览的Idle／Walk／Run；NPC、战斗及声音尚未接入，不据此宣称其暂停行为已验证
+暂停复用街区信号的颜色、字体与焦点组件，显示继续、返回标题和设置；步行模式已有交接观察时另有「重新开始交接」，需单独确认。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物、镜头和显式角色预览的Idle／Walk／Run；NPC、战斗及声音尚未接入，不据此宣称其暂停行为已验证
 
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-pause.json --output output/capture/walk-pause
@@ -77,7 +77,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 `walk-gamepad.json` 录制18秒的断连、重连持键、键鼠接管和重入。`events.gamepad_connected` 仅用于正式游戏场景，省略时保持上一连接状态；脚本在PreUpdate发送 `GamepadConnectionEvent`，由Bevy InputPlugin实际移除／恢复Gamepad组件，再由正式入口决定是否暂停。`gamepad_connected`状态断言核对结束帧实际组件存在情况，运动及镜头冻结仍检查整个区间；模拟连接不证明USB、蓝牙或驱动行为
 
-标题或暂停中的「设置」提供通用与画质两页签，退出设置返回来源菜单的原焦点；可在公共观察暂停期间修改，再继续原观察。正式入口自动保存文字100%／125%、镜头100%／65%及已确认的画质设置，下次启动恢复；未接入任务或世界进度存档。用户目录、版本、备份、失败处理、三种镜头输入与布局见[会话设置契约](../docs/dev/engineering/player-preview.md#会话设置)，19项画质及显示确认见[画质契约](../docs/dev/engineering/graphics-settings.md)，不与下方Viewer的SignalUi样板状态混用
+标题或暂停中的「设置」提供通用与画质两页签，退出设置返回来源菜单的原焦点；可在公共观察暂停期间修改，再继续原观察。正式入口自动保存文字100%／125%、镜头100%／65%及已确认的画质设置，下次启动恢复；交接进度使用独立文件。用户目录、版本、备份、失败处理、三种镜头输入与布局见[会话设置契约](../docs/dev/engineering/player-preview.md#会话设置)，19项画质及显示确认见[画质契约](../docs/dev/engineering/graphics-settings.md)，不与下方Viewer的SignalUi样板状态混用
 
 改变窗口模式或分辨率会试用15秒，默认选中恢复，只有主动选择保留才接受新值；Esc、失焦、手柄断开或倒计时结束恢复原显示设置，未确认值不写入设置文件。其他画质即时应用，显示恢复不会回退字号、镜头或其他画质项
 
@@ -155,7 +155,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 靠近月台杂货公共入口（04）、摘星台（23）、店侧台阶（29）或货运侧院（28），转动镜头使目标在视野内，出现F／A提示后可打开现有用途、开放说明与到达方式。右摇杆只是转动镜头，查看信息需另按F／A；远处的「附近」标签不表示已经可以查看；实际记录范围见下方门前交接契约
 
-TASK-050将04／29／28的实际观察记录在本次会话，顺序不限、重复查看不重复登记；三点齐备后，在28面板显式选择配送走货运侧院或店侧台阶。上下方向键／手柄方向键切换，F／A或点击确认；台阶选项给出修订反馈，侧院选项只提交一次。返回标题、重新加载或失败清空会话，暂停保留，尚无任务存档
+门前交接记录04／29／28的实际观察，顺序不限、重复查看不重复登记；三点齐备后，在28面板显式选择配送走货运侧院或店侧台阶。上下方向键／手柄方向键切换，F／A或点击确认；台阶选项给出修订反馈，侧院选项只提交一次。返回标题、重新加载或场景失败保留交接事实，正常步行启动还会自动保存到用户目录；暂停保留当前人物位置，重新进入则从家门口出发
 
 面板正文支持滚轮、PageUp／PageDown和右摇杆滚动，标题、路线选项与返回按钮保持固定；同一次打开输入不会提交选择。完整三点路线使用下方 `prologue-route.json`，本轮结果及体验边界见[TASK-050](../todo/tasks/TASK-050-prologue-handoff-runtime.md)
 
@@ -166,7 +166,20 @@ python3 tools/capture.py --binary game/target/debug/n-side --character-preview -
 
 路线从真实出生点连续到店门、台阶并返回店外绕行至货运侧院，检查三项观察、错误选项修订和幂等确认；没有传送或任务状态注入。脚本的固定输入时序须随移动或几何修改复验，不能为通过检查扩大观察距离
 
-打开观察时人物与镜头停留原位；Esc／B或鼠标左键点击「返回街区」关闭面板而不打开暂停，空白点击不关闭，Tab／Start仍可暂停。关闭当帧及旧输入持有期间继续隔离玩法，释放后再操作。断连或失焦保护暂时隐藏观察，明确继续后恢复原内容；回到标题清空。近距、高差、朝向、实际墙体遮挡和输入隔离的完整契约见[公共地点观察](../docs/dev/engineering/player-preview.md#公共地点观察)
+保存范围仅为这段交接实际取得的信息与路线结果。标题和暂停里的「重新开始交接」默认选择「保留当前进度」，取消不变；另选「确认重新开始」才清除交接事实、写入新检查点并从家门口重建场景。保存或读取失败会显示状态，保留原文件与当前可玩的会话；修复文件或目录后重新启动，路径、字段及备份边界见[交接进度保存](../docs/dev/engineering/player-preview.md#交接进度保存)
+
+capture默认不读取或修改真实用户进度，`--settings-dir` 也不启用进度写入。以下使用一组新的目录，两个进程先实际观察保存，再验证继续、取消重开与确认重开；`--progress-dir DIRECTORY` 同样可用于正常步行启动，固定镜头入口不保存交接
+
+```fish
+cargo test --manifest-path game/Cargo.toml --locked --lib progress::tests
+cargo build --manifest-path game/Cargo.toml --locked --bin n-side
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/prologue-save-write.json --progress-dir output/progress/handoff-check --output output/capture/handoff-write
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/prologue-save-restore.json --progress-dir output/progress/handoff-check --output output/capture/handoff-restore
+```
+
+上述恢复脚本最后确认重新开始，只能用于独立测试目录；完整确认恢复、损坏文件与写入失败分别使用 `prologue-save-confirmed.json`、`prologue-save-corrupt.json` 和 `prologue-save-write-failure.json`，准备条件与实际执行结果见[TASK-051](../todo/tasks/TASK-051-prologue-progress-save.md)
+
+打开观察时人物与镜头停留原位；Esc／B或鼠标左键点击「返回街区」关闭面板而不打开暂停，空白点击不关闭，Tab／Start仍可暂停。关闭当帧及旧输入持有期间继续隔离玩法，释放后再操作。断连或失焦保护暂时隐藏观察，明确继续后恢复原内容；回到标题清空瞬时面板与选定地点，已取得的交接事实保留。近距、高差、朝向、实际墙体遮挡和输入隔离的完整契约见[公共地点观察](../docs/dev/engineering/player-preview.md#公共地点观察)
 
 ```fish
 cargo test --manifest-path game/Cargo.toml --locked --lib observation -- --nocapture

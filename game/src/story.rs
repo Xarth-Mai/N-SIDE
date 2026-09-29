@@ -1,11 +1,11 @@
 //! The prologue's exterior handoff check, driven by real place observations
 use bevy::prelude::*;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeSet;
 
 pub const HANDOFF_PLACES: [&str; 3] = ["04", "29", "28"];
 
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Deserialize, Serialize)]
 #[serde(rename_all = "snake_case")]
 pub enum DeliveryRoute {
     #[default]

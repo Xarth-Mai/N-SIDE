@@ -1,0 +1,141 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 300,
+  "seed": 0,
+  "timeout_seconds": 400,
+  "keyframes": [
+    29,
+    189,
+    229,
+    259,
+    289
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 51,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 146,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 150,
+      "end": 180,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 190,
+      "end": 210,
+      "keys": [
+        "F",
+        "W",
+        "E"
+      ]
+    },
+    {
+      "start": 230,
+      "end": 231,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 260,
+      "end": 261,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 263,
+      "end": 264,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 266,
+      "end": 267,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 270,
+      "game_page": "title"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "Valid empty slot loads before the backup destination fails",
+      "from": 29,
+      "to": 29,
+      "game_page": "title",
+      "progress_status": "saved",
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Real observation remains in session after save failure",
+      "from": 229,
+      "to": 229,
+      "game_page": "world",
+      "observation_visible": true,
+      "observation_selected": "04",
+      "progress_status": "write_failed",
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Title exposes the save failure and retains session facts",
+      "from": 289,
+      "to": 289,
+      "game_page": "title",
+      "progress_status": "write_failed",
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    }
+  ]
+}

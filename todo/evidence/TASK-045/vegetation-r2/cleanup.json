@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "visual_self_audit_complete": true,
+  "root_viewed": [
+    "before/tree-0.png",
+    "before/bark-detail.png",
+    "after/tree-0.png",
+    "after/bark-detail.png"
+  ],
+  "open_handles_before_cleanup": [],
+  "deleted_visual_files": [
+    {
+      "path": "output/assets/task045-vegetation-r2/before/bark-detail.png",
+      "bytes": 582018,
+      "sha256": "ca0ebebd3004c9ac2a3be0b9b8af378155767938186de1b0399484fb3e991924"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/before/tree-0.png",
+      "bytes": 784633,
+      "sha256": "d268f5fbe35f5117cd0da52c9ad3e23c030a26fb32123fcd67d7ca1ea0754fe5"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/before/tree-1.png",
+      "bytes": 788463,
+      "sha256": "4ce8cd591098455dd430318bb29f214a666b6f49aa24df4d7356693b910964dd"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/before/tree-2.png",
+      "bytes": 773464,
+      "sha256": "7b0a7764e7486f646fa8d0d5e1f9529e2e7ec60473ca97d8531d975b50e959d8"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/bark-detail.png",
+      "bytes": 574650,
+      "sha256": "8a48bb3e59facb153c82c4b4f7c0ec5d56b38a58068387c6b5ea6e67f710f836"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/tree-0.png",
+      "bytes": 759980,
+      "sha256": "72cca323b69fa3f9dadf27acd73f87e3a502506f72570585cbdf195e5033f1ea"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/tree-1.png",
+      "bytes": 766959,
+      "sha256": "36efdd4a859b288a703307feeae6cc15fe84946fad456db29025ba076410aed5"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/iteration-1/tree-2.png",
+      "bytes": 762873,
+      "sha256": "45dd471c579ae10b3966ea3a0742adf6f41d83615eef2a6679455849c49f3928"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/after/bark-detail.png",
+      "bytes": 582877,
+      "sha256": "d83e8206be6a7cdc51b4d0db93f1285d3f8399953e6ee8404204af8a4bcba200"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/after/tree-0.png",
+      "bytes": 790708,
+      "sha256": "361e3ee771fb65318530a90893b1117a4bbb73f156c0cb2064c2597e1a892d07"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/after/tree-1.png",
+      "bytes": 780586,
+      "sha256": "e7b3b91a2f542f26e60b87ce55617c0c3bd2566826c764901a7464d5701b6825"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/after/tree-2.png",
+      "bytes": 772776,
+      "sha256": "0e63871bb39feda2a7d9d1b1d816f2c84b2548118d0981568ffdb0c1905a3fb6"
+    }
+  ],
+  "deleted_visual_count": 12,
+  "deleted_visual_bytes": 8719987,
+  "deleted_baseline_copies": [
+    {
+      "path": "output/assets/task045-vegetation-r2/baseline/build_street_tree.py",
+      "bytes": 6757
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/baseline/street-tree.glb",
+      "bytes": 409052
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/baseline/check_street_tree.py",
+      "bytes": 4295
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/baseline/export_street_tree.py",
+      "bytes": 2844
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/baseline/README.md",
+      "bytes": 3028
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/baseline/street-tree.blend1",
+      "bytes": 1484701
+    },
+    {
+      "path": "output/assets/task045-vegetation-r2/baseline/street-tree.blend",
+      "bytes": 1484701
+    }
+  ],
+  "deleted_baseline_bytes": 3395378,
+  "remaining_output_files": [],
+  "remaining_output_bytes": 0,
+  "retained": [
+    "source .blend and bark-color.png",
+    "source and runtime GLB",
+    "source code and original source commit",
+    "logs, JSON hashes, check results and review"
+  ]
+}
