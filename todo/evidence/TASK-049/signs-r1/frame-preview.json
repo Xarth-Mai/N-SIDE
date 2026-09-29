@@ -1,0 +1,32 @@
+{
+  "path": "game/assets/environment/signs/frame.png",
+  "format": "PNG",
+  "mode": "P",
+  "width": 1024,
+  "height": 256,
+  "bytes": 6882,
+  "color_count": 248,
+  "has_alpha": false,
+  "alpha_min": 255,
+  "alpha_max": 255,
+  "transparent_pixels": 0,
+  "content_bounds": [
+    0,
+    0,
+    1024,
+    256
+  ],
+  "ok": true,
+  "source_sha256": "a6723a7e555ef9be996f2688e989c55f8cd2e7d5f82a2ab57114885326eb75b0",
+  "preview": "output/assets/task049-signs-r1/frame-contrast.png",
+  "display_box": [
+    384,
+    96
+  ],
+  "fitted_size": [
+    384,
+    96
+  ],
+  "filter": "lanczos",
+  "visual_review": "NOT RUN: inspect the preview and the actual game separately"
+}

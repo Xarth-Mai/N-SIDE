@@ -1,0 +1,104 @@
+[
+  {
+    "asset": "Plaster001",
+    "archive": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
+    "archive_bytes": 7414156,
+    "archive_sha256": "944b4831016e42ace4a89422e4e7190912ca2f7fed6f561354c48ec7bb54d3a4",
+    "extracted_members": [
+      "Plaster001_1K-JPG_Color.jpg",
+      "Plaster001_1K-JPG_NormalGL.jpg"
+    ],
+    "selected_member_crc": "PASS (Python zipfile.read)",
+    "date": "2026-09-29",
+    "all_member_crc": "PASS (Python ZipFile.testzip)",
+    "source_page": "https://ambientcg.com/view?id=Plaster001",
+    "license_page": "https://docs.ambientcg.com/license/",
+    "license": "CC0-1.0",
+    "observed": "Viewed color and NormalGL originals before import; plaster is low-contrast light render, siding has horizontal planks and grain",
+    "tile_meters": [
+      2,
+      2
+    ],
+    "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
+    "files": [
+      {
+        "source": "materials/Plaster001_1K-JPG_Color.jpg",
+        "sha256": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+        "bytes": 828790,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB"
+      },
+      {
+        "source": "materials/Plaster001_1K-JPG_NormalGL.jpg",
+        "sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "bytes": 2091491,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "linear"
+      }
+    ],
+    "source_review": "PASS: original color and NormalGL inspected; runtime appearance awaits scene capture",
+    "checks": {
+      "full_archive_crc": "PASS",
+      "source_and_runtime_export_check": "PASS: bun tools/export-environment.ts --check; 24 files; 44879370 bytes",
+      "environment_glb_regression": "PASS: python3 -B -m unittest discover -s tools/tests -p test_asset_environment.py; 1 test"
+    },
+    "cleanup": "Temporary ZIP archives and duplicate JPG review files removed after inspection; selected original JPGs retained under source-assets/environment-kit/materials"
+  },
+  {
+    "asset": "WoodSiding009",
+    "archive": "https://ambientcg.com/get?file=WoodSiding009_1K-JPG.zip",
+    "archive_bytes": 4257092,
+    "archive_sha256": "58512fc4df9b7ff0d9adb49bb562e8e7f65b510de6231afadf124505b6274de4",
+    "extracted_members": [
+      "WoodSiding009_1K-JPG_Color.jpg",
+      "WoodSiding009_1K-JPG_NormalGL.jpg"
+    ],
+    "selected_member_crc": "PASS (Python zipfile.read)",
+    "date": "2026-09-29",
+    "all_member_crc": "PASS (Python ZipFile.testzip)",
+    "source_page": "https://ambientcg.com/view?id=WoodSiding009",
+    "license_page": "https://docs.ambientcg.com/license/",
+    "license": "CC0-1.0",
+    "observed": "Viewed color and NormalGL originals before import; plaster is low-contrast light render, siding has horizontal planks and grain",
+    "tile_meters": [
+      2,
+      1
+    ],
+    "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
+    "files": [
+      {
+        "source": "materials/WoodSiding009_1K-JPG_Color.jpg",
+        "sha256": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41",
+        "bytes": 744688,
+        "dimensions": [
+          1024,
+          512
+        ],
+        "color_space": "sRGB"
+      },
+      {
+        "source": "materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+        "sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+        "bytes": 795284,
+        "dimensions": [
+          1024,
+          512
+        ],
+        "color_space": "linear"
+      }
+    ],
+    "source_review": "PASS: original color and NormalGL inspected; runtime appearance awaits scene capture",
+    "checks": {
+      "full_archive_crc": "PASS",
+      "source_and_runtime_export_check": "PASS: bun tools/export-environment.ts --check; 24 files; 44879370 bytes",
+      "environment_glb_regression": "PASS: python3 -B -m unittest discover -s tools/tests -p test_asset_environment.py; 1 test"
+    },
+    "cleanup": "Temporary ZIP archives and duplicate JPG review files removed after inspection; selected original JPGs retained under source-assets/environment-kit/materials"
+  }
+]

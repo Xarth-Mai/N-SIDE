@@ -1,0 +1,200 @@
+{
+  "checks": [
+    {
+      "source": "materials/Plaster001_1K-JPG_Color.jpg",
+      "status": "PASS",
+      "verified": [
+        "sha256",
+        "bytes",
+        "image-decode",
+        "dimensions"
+      ]
+    },
+    {
+      "source": "materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "status": "PASS",
+      "verified": [
+        "sha256",
+        "bytes",
+        "image-decode",
+        "dimensions"
+      ]
+    },
+    {
+      "source": "materials/WoodSiding009_1K-JPG_Color.jpg",
+      "status": "PASS",
+      "verified": [
+        "sha256",
+        "bytes",
+        "image-decode",
+        "dimensions"
+      ]
+    },
+    {
+      "source": "materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+      "status": "PASS",
+      "verified": [
+        "sha256",
+        "bytes",
+        "image-decode",
+        "dimensions"
+      ]
+    },
+    {
+      "scope": "24 runtime environment files",
+      "status": "PASS",
+      "verified": [
+        "sha256",
+        "bytes"
+      ]
+    },
+    {
+      "source": "game/assets/environment/posters/anke-sunny.png",
+      "status": "PASS",
+      "verified": [
+        "decode",
+        "1600x900",
+        "opaque"
+      ],
+      "sha256": "06dc5c6f77d91573298bd0a6a6ccf98ba5c6dd67a8db86c447fbd62f6fe294fe"
+    },
+    {
+      "scope": "district.json against HEAD4801b81",
+      "status": "PASS",
+      "verified": [
+        "nodes/roads/buildings/terrain/places unchanged"
+      ],
+      "excluded_concurrent_changes": [
+        "sections"
+      ],
+      "note": "section label cleanup started after review snapshot; no geometry edits"
+    },
+    {
+      "scope": "revised exterior script",
+      "sha256": "057d3f4870916d2651be013a62a6097d1167dabd4e1fc3f64e6adbf5d4925ab6",
+      "status": "PASS (static)",
+      "verified": [
+        "default removal preserves all input spans",
+        "3 positive displacement checks reject stationary pose",
+        "thresholds include actual previous measured movements"
+      ],
+      "runtime": "NOT RUN; new assertions require fresh capture"
+    }
+  ],
+  "stationary_witness": {
+    "scope": "Pure predicate audit of authored fields; not game execution or mutated evidence",
+    "state_source": "output/capture/task045-r1-exterior-final/state.json",
+    "frame": 59,
+    "sample": {
+      "enabled": false,
+      "entry": {
+        "camera_sensitivity": 1.0,
+        "configured_borderless": false,
+        "configured_resolution": 0,
+        "device": "keyboard_mouse",
+        "display_pending": false,
+        "focus": 0,
+        "graphics_page": 0,
+        "graphics_tab": false,
+        "settings_open": false,
+        "text_scale": 1.0
+      },
+      "frame": 59,
+      "game_page": "world",
+      "gamepad_connected": true,
+      "graphics": {
+        "aa": "msaa4",
+        "bloom": false,
+        "contact_shadows": false,
+        "exposure_ev100": 9.699999809265137,
+        "far": 7000.0,
+        "fog": true,
+        "fov_degrees": 55.0,
+        "shadow_map_size": 4096,
+        "shadows": true,
+        "ssao": "off"
+      },
+      "observation": {
+        "open": false,
+        "selected": null,
+        "target": null,
+        "visible": false
+      },
+      "place": {
+        "gamepad": false,
+        "id": "04",
+        "name": "月台杂货与住家",
+        "room": null,
+        "visible": true
+      },
+      "player": {
+        "blocked": null,
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "jumps": 0,
+        "resets": 0,
+        "sprinting": false
+      },
+      "pointer_locked": true,
+      "position": [
+        103.70841217041016,
+        30.225271224975586,
+        -255.0
+      ],
+      "resources": {
+        "entities": 4982,
+        "images": 37,
+        "materials": 47,
+        "meshes": 3337
+      },
+      "rotation": [
+        -0.07762500643730164,
+        0.7028330564498901,
+        0.07762500643730164,
+        0.7028330564498901
+      ],
+      "simulation_seconds": 2.0,
+      "ui": null,
+      "wall_elapsed_seconds": 10.909495052,
+      "world_entities": 4586,
+      "world_ready": true
+    },
+    "assertions": [
+      {
+        "name": "outside_south_window",
+        "constant_start_pose_satisfies_all_authored_fields": true,
+        "conditions": {
+          "game_page": true,
+          "inside_room": true,
+          "place_id": true
+        }
+      },
+      {
+        "name": "return_to_public_street",
+        "constant_start_pose_satisfies_all_authored_fields": true,
+        "conditions": {
+          "game_page": true,
+          "inside_room": true,
+          "max_player_resets": true
+        }
+      },
+      {
+        "name": "supported_exterior_route",
+        "constant_start_pose_satisfies_all_authored_fields": true,
+        "conditions": {
+          "min_player_height": true,
+          "max_player_height": true,
+          "max_player_resets": true,
+          "min_player_camera_distance": true,
+          "max_player_camera_distance": true,
+          "graphics": true
+        }
+      }
+    ]
+  }
+}

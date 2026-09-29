@@ -1,0 +1,11 @@
+{
+  "policy": "After actual observation and completed processes, remove only this run visual intermediates; retain logs, state, script, source and formal assets",
+  "runs": [
+    {
+      "run": "output/capture/task049-r2-station-sky",
+      "files_removed": 307,
+      "bytes_removed": 271413074,
+      "remaining_visual_files": 0
+    }
+  ]
+}

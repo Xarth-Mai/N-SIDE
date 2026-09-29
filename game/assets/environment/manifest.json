@@ -1,106 +1,156 @@
 {
   "source": "source-assets/environment-kit/asset-manifest.json",
-  "license": "CC0-1.0",
+  "license": "CC0-1.0 AND MPL-2.0",
   "files": [
     {
       "file": "licenses/kenney-nature.txt",
       "bytes": 611,
-      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d"
+      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/tree_detailed.glb",
       "bytes": 31428,
-      "sha256": "e6446c35f85620872bee3afefb23336626095882d00155b3437b5b0eb60e7655"
+      "sha256": "e6446c35f85620872bee3afefb23336626095882d00155b3437b5b0eb60e7655",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/tree_oak.glb",
       "bytes": 14676,
-      "sha256": "62faa0d2545f4e43c394378083fb26fb39da0236ad9bcc48eac3a6fbb9eab273"
+      "sha256": "62faa0d2545f4e43c394378083fb26fb39da0236ad9bcc48eac3a6fbb9eab273",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/plant_bushDetailed.glb",
       "bytes": 10200,
-      "sha256": "5f95e15962a3e9d1b8ec73946bae5526f3e8fa91e1e0293d3b745c48cbdd11b7"
+      "sha256": "5f95e15962a3e9d1b8ec73946bae5526f3e8fa91e1e0293d3b745c48cbdd11b7",
+      "license": "CC0-1.0"
     },
     {
       "file": "licenses/kenney-roads.txt",
       "bytes": 703,
-      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498"
+      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498",
+      "license": "CC0-1.0"
     },
     {
       "file": "roads/light-curved.glb",
       "bytes": 9544,
-      "sha256": "dce22a3390585e4a2a0467a7394dad07c713f261f65b2ceacda6fe768e5527f8"
+      "sha256": "dce22a3390585e4a2a0467a7394dad07c713f261f65b2ceacda6fe768e5527f8",
+      "license": "CC0-1.0"
     },
     {
       "file": "roads/road-sign-empty.glb",
       "bytes": 6024,
-      "sha256": "38aaaee70b238f9490528f477b9b2447c69be10a1d67867cecc6ff28ab546587"
+      "sha256": "38aaaee70b238f9490528f477b9b2447c69be10a1d67867cecc6ff28ab546587",
+      "license": "CC0-1.0"
     },
     {
       "file": "roads/Textures/colormap.png",
       "bytes": 11428,
-      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185"
+      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185",
+      "license": "CC0-1.0"
     },
     {
       "file": "materials/concrete-color.dds",
       "bytes": 2796332,
-      "sha256": "046654965c18f1553a0b0bc62afaea86916e9850cd07a2f436346403457c55e3"
+      "sha256": "046654965c18f1553a0b0bc62afaea86916e9850cd07a2f436346403457c55e3",
+      "license": "CC0-1.0"
     },
     {
       "file": "materials/concrete-normal.dds",
       "bytes": 2796332,
-      "sha256": "7269b4e8210ea3667dcb40daf4a771ec919d24ae7e2ef801fdac949e34b34bb8"
+      "sha256": "7269b4e8210ea3667dcb40daf4a771ec919d24ae7e2ef801fdac949e34b34bb8",
+      "license": "CC0-1.0"
     },
     {
       "file": "materials/paving-color.dds",
       "bytes": 5592532,
-      "sha256": "8adc3c2350bc14b33a8d9715afb7577f891936e422e98cbd00364d78a9df2244"
+      "sha256": "8adc3c2350bc14b33a8d9715afb7577f891936e422e98cbd00364d78a9df2244",
+      "license": "CC0-1.0"
     },
     {
       "file": "materials/paving-normal.dds",
       "bytes": 5592532,
-      "sha256": "f68e5fab9ab37b54ff1b2c634d7dd8334cc53f22740701ea3dc0f8a753718153"
+      "sha256": "f68e5fab9ab37b54ff1b2c634d7dd8334cc53f22740701ea3dc0f8a753718153",
+      "license": "CC0-1.0"
     },
     {
       "file": "materials/asphalt-color.dds",
       "bytes": 5592532,
-      "sha256": "ca1fcba5b41cadbbe739af1cd8f8c11482ef831e6b25ba6083083754c120363c"
+      "sha256": "ca1fcba5b41cadbbe739af1cd8f8c11482ef831e6b25ba6083083754c120363c",
+      "license": "CC0-1.0"
     },
     {
       "file": "materials/asphalt-normal.dds",
       "bytes": 5592532,
-      "sha256": "aa2fe7f2c41a6e480294d6ac3d6cecb06d72644893f5bf71c4e20dc6856696c1"
+      "sha256": "aa2fe7f2c41a6e480294d6ac3d6cecb06d72644893f5bf71c4e20dc6856696c1",
+      "license": "CC0-1.0"
     },
     {
       "file": "licenses/CC0-1.0.txt",
       "bytes": 7048,
-      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/tree_pineRoundA.glb",
       "bytes": 14524,
-      "sha256": "5191f20721a9e7d91b4e04a0f5e3478a3656ab372f717875c71955cf8d7b9162"
+      "sha256": "5191f20721a9e7d91b4e04a0f5e3478a3656ab372f717875c71955cf8d7b9162",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/tree_cone_fall.glb",
       "bytes": 10944,
-      "sha256": "52873f4e14fe249f6bb11a60f74abb9b2b1279ee2850c61e664a51508cd5ffa5"
+      "sha256": "52873f4e14fe249f6bb11a60f74abb9b2b1279ee2850c61e664a51508cd5ffa5",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/rock_smallA.glb",
       "bytes": 3072,
-      "sha256": "30498a034e71e79f4899f5ea5eed2564c7a8c90aec114467b80d38e53d9bd632"
+      "sha256": "30498a034e71e79f4899f5ea5eed2564c7a8c90aec114467b80d38e53d9bd632",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/grass.glb",
       "bytes": 11524,
-      "sha256": "dc974645ca521f28f9881f5190ef5ec739440ade12bd05aa449d16d4e089d1c1"
+      "sha256": "dc974645ca521f28f9881f5190ef5ec739440ade12bd05aa449d16d4e089d1c1",
+      "license": "CC0-1.0"
     },
     {
       "file": "nature/flower_yellowA.glb",
       "bytes": 7124,
-      "sha256": "e8fce787943bcdc42bd56fc5d821fab6ff21976879e40019af381608bd84af77"
+      "sha256": "e8fce787943bcdc42bd56fc5d821fab6ff21976879e40019af381608bd84af77",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/plaster-color.dds",
+      "bytes": 5592532,
+      "sha256": "4157c7864d215a1dd3a463400b76d047b566c737f38f68d2633652737464ed9a",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/plaster-normal.dds",
+      "bytes": 5592532,
+      "sha256": "9a5d3409ad2e5cad8459d12e0b3b5a008d778e82a6527eda09fb64944720e4d0",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/wood-siding-color.dds",
+      "bytes": 2796332,
+      "sha256": "0f194c329869a1f9d81fb1681ee688c1427a079647f749a57d7f3fd633b33185",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/wood-siding-normal.dds",
+      "bytes": 2796332,
+      "sha256": "b8deb0645916ffdb6212d283f6031d6545e24fd7ce58accb630496ed77746633",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "vegetation/street-tree.glb",
+      "bytes": 409052,
+      "sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
+      "license": "MPL-2.0"
     }
   ]
 }

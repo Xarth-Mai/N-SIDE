@@ -1,0 +1,1843 @@
+diff --git a/game/assets/environment/manifest.json b/game/assets/environment/manifest.json
+index c5b7029..78e2413 100644
+--- a/game/assets/environment/manifest.json
++++ b/game/assets/environment/manifest.json
+@@ -101,6 +101,26 @@
+       "file": "nature/flower_yellowA.glb",
+       "bytes": 7124,
+       "sha256": "e8fce787943bcdc42bd56fc5d821fab6ff21976879e40019af381608bd84af77"
++    },
++    {
++      "file": "materials/plaster-color.dds",
++      "bytes": 5592532,
++      "sha256": "4157c7864d215a1dd3a463400b76d047b566c737f38f68d2633652737464ed9a"
++    },
++    {
++      "file": "materials/plaster-normal.dds",
++      "bytes": 5592532,
++      "sha256": "9a5d3409ad2e5cad8459d12e0b3b5a008d778e82a6527eda09fb64944720e4d0"
++    },
++    {
++      "file": "materials/wood-siding-color.dds",
++      "bytes": 2796332,
++      "sha256": "0f194c329869a1f9d81fb1681ee688c1427a079647f749a57d7f3fd633b33185"
++    },
++    {
++      "file": "materials/wood-siding-normal.dds",
++      "bytes": 2796332,
++      "sha256": "b8deb0645916ffdb6212d283f6031d6545e24fd7ce58accb630496ed77746633"
+     }
+   ]
+ }
+diff --git a/game/src/bin/map_viewer.rs b/game/src/bin/map_viewer.rs
+index b12b5c1..3114a3d 100644
+--- a/game/src/bin/map_viewer.rs
++++ b/game/src/bin/map_viewer.rs
+@@ -528,6 +528,28 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
+     );
+     views.push(("mountain-profile", view(profile_eye, center)));
+     views.extend([
++        (
++            "poster-station",
++            view(
++                [
++                    map.nodes["square"][0],
++                    map.nodes["square"][1],
++                    map.nodes["square"][2] + 1.7,
++                ],
++                [-30., 25., 18.7125],
++            ),
++        ),
++        (
++            "poster-live",
++            view(
++                [
++                    map.nodes["live_meeting"][0],
++                    map.nodes["live_meeting"][1],
++                    map.nodes["live_meeting"][2] + 1.7,
++                ],
++                [734., 38., 23.15],
++            ),
++        ),
+         (
+             "inspect-road-old-home",
+             view([-8., 318., 52.], [0., 340., 47.]),
+diff --git a/game/src/capture.rs b/game/src/capture.rs
+index 4c76280..d63cdfe 100644
+--- a/game/src/capture.rs
++++ b/game/src/capture.rs
+@@ -732,10 +732,69 @@ struct EntrySample {
+     device: &'static str,
+ }
+ 
++#[derive(Clone, Copy, Serialize)]
++struct ResourceCounts {
++    entities: usize,
++    meshes: usize,
++    images: usize,
++    materials: usize,
++}
++
++#[derive(Default)]
++struct RuntimeMetrics {
++    last_update: Option<Instant>,
++    last_world_active: bool,
++    world_update_intervals_ms: Vec<f64>,
++    load_started: Option<Instant>,
++    observed_load_seconds: Vec<f64>,
++}
++
++impl RuntimeMetrics {
++    fn observe(&mut self, now: Instant, loading: Option<bool>, world_active: bool) {
++        if let Some(previous) = self.last_update.replace(now)
++            && world_active
++            && self.last_world_active
++        {
++            self.world_update_intervals_ms
++                .push(now.duration_since(previous).as_secs_f64() * 1000.0);
++        }
++        self.last_world_active = world_active;
++        match loading {
++            Some(false) => {
++                self.load_started.get_or_insert(now);
++            }
++            Some(true) => {
++                if let Some(started) = self.load_started.take() {
++                    self.observed_load_seconds
++                        .push(now.duration_since(started).as_secs_f64());
++                }
++            }
++            None => self.load_started = None,
++        }
++    }
++}
++
++// Capture intervals include screenshot scheduling, readback waits and PNG saves
++// Native frame timing and GPU timings require separate profiling
++fn interval_summary(mut values: Vec<f64>) -> serde_json::Value {
++    if values.is_empty() {
++        return serde_json::Value::Null;
++    }
++    values.sort_unstable_by(f64::total_cmp);
++    let percentile = |fraction: f64| values[(values.len() as f64 * fraction).ceil() as usize - 1];
++    serde_json::json!({
++        "count": values.len(), "mean": values.iter().sum::<f64>() / values.len() as f64,
++        "p50": percentile(0.5), "p95": percentile(0.95), "max": values.last(),
++        "percentile_method": "nearest_rank"
++    })
++}
++
+ #[derive(Serialize)]
+ struct Sample {
+     frame: u32,
+     simulation_seconds: f64,
++    wall_elapsed_seconds: f64,
++    resources: Option<ResourceCounts>,
+     position: [f32; 3],
+     rotation: [f32; 4],
+     enabled: bool,
+@@ -757,6 +816,7 @@ pub struct Recording {
+     pub script: Script,
+     output: PathBuf,
+     started: Instant,
++    metrics: RuntimeMetrics,
+     warmup: u32,
+     tick: bool,
+     pending: bool,
+@@ -795,6 +855,7 @@ impl Recording {
+             script,
+             output,
+             started: Instant::now(),
++            metrics: RuntimeMetrics::default(),
+             warmup: 30,
+             tick: false,
+             pending: false,
+@@ -935,6 +996,24 @@ impl Recording {
+             "status":if passed {"PASS"} else {"FAIL"}, "script":self.script,
+             "elapsed_wall_seconds":self.started.elapsed().as_secs_f64(), "error":self.failure,
+             "checks":checks, "samples":self.samples,
++            "performance": {
++                "world_update_interval_ms": interval_summary(self.metrics.world_update_intervals_ms.clone()),
++                "world_capture_frame_interval_ms": interval_summary(self.samples.windows(2)
++                    .filter(|pair| pair.iter().all(|sample| sample.world_ready && sample.game_page.as_deref().is_none_or(|page| page == "world")))
++                    .map(|pair| (pair[1].wall_elapsed_seconds - pair[0].wall_elapsed_seconds) * 1000.0).collect()),
++                "observed_scene_load_seconds": self.metrics.observed_load_seconds,
++                "resource_counts": {
++                    "first_ready": self.samples.iter().find_map(|sample| sample.resources),
++                    "last_ready": self.samples.iter().rev().find_map(|sample| sample.resources),
++                    "peak_ready": {
++                        "entities": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.entities)).max(),
++                        "meshes": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.meshes)).max(),
++                        "images": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.images)).max(),
++                        "materials": self.samples.iter().filter_map(|sample| sample.resources.map(|counts| counts.materials)).max()
++                    }
++                },
++                "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time."
++            },
+             "determinism":"Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+             "visual_review":"NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
+             "scope":"Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
+@@ -1282,18 +1361,36 @@ fn record(
+         Option<Res<GraphicsEvidence>>,
+     ),
+     ui_font: Option<Res<UiFont>>,
+-    assets: Res<AssetServer>,
++    assets: (
++        Res<AssetServer>,
++        Query<Entity>,
++        Res<Assets<Mesh>>,
++        Res<Assets<Image>>,
++        Res<Assets<StandardMaterial>>,
++    ),
+ ) {
+     let (ui, place, observation, entry, settings, pointer_lock, graphics) = ui_state;
++    let (asset_server, entities, meshes, images, materials) = assets;
+     if recording.finished {
+         return;
+     }
+     if let Some(font) = &ui_font
+-        && let Some(bevy::asset::LoadState::Failed(error)) = assets.get_load_state(font.0.id())
++        && let Some(bevy::asset::LoadState::Failed(error)) =
++            asset_server.get_load_state(font.0.id())
+     {
+         recording.failure = Some(format!("UI font loading failed: {error}"));
+     }
+     let world_ready = loading.as_ref().is_some_and(|loading| loading.ready);
++    let capture_warmed_up = recording.warmup == 0;
++    recording.metrics.observe(
++        Instant::now(),
++        loading.as_ref().map(|loading| loading.ready),
++        world_ready
++            && capture_warmed_up
++            && phase
++                .as_ref()
++                .is_none_or(|phase| phase.get().as_str() == "world"),
++    );
+     recording.world_ready_seen |= world_ready;
+     if let Some(error) = load_error {
+         recording.failure = Some(format!("game loading: {}", error.0));
+@@ -1370,9 +1467,17 @@ fn record(
+     let enabled = controller.single().is_ok_and(|state| state.enabled);
+     #[cfg(not(feature = "viewer"))]
+     let enabled = false;
++    let wall_elapsed_seconds = recording.started.elapsed().as_secs_f64();
+     recording.samples.push(Sample {
+         frame,
+         simulation_seconds,
++        wall_elapsed_seconds,
++        resources: world_ready.then(|| ResourceCounts {
++            entities: entities.iter().len(),
++            meshes: meshes.len(),
++            images: images.len(),
++            materials: materials.len(),
++        }),
+         position: transform.translation.to_array(),
+         rotation: transform.rotation.to_array(),
+         enabled,
+@@ -1458,6 +1563,38 @@ fn record(
+ mod tests {
+     use super::*;
+ 
++    #[test]
++    fn capture_metrics_measure_wall_time_and_exclude_load_and_pause_boundaries() {
++        let start = Instant::now();
++        let mut metrics = RuntimeMetrics::default();
++        for (ms, ready, active) in [
++            (0, false, false),
++            (100, false, false),
++            (300, true, true),
++            (320, true, true),
++            (360, true, true),
++            (500, true, false),
++            (600, true, true),
++            (660, true, true),
++        ] {
++            metrics.observe(start + Duration::from_millis(ms), Some(ready), active);
++        }
++        assert_eq!(metrics.observed_load_seconds, [0.3]);
++        assert_eq!(metrics.world_update_intervals_ms, [20.0, 40.0, 60.0]);
++        let summary = interval_summary(metrics.world_update_intervals_ms);
++        assert_eq!(summary["count"], 3);
++        assert_eq!(summary["mean"], 40.0);
++        assert_eq!(summary["p50"], 40.0);
++        assert_eq!(summary["p95"], 60.0);
++        assert_eq!(summary["max"], 60.0);
++        assert!(interval_summary(vec![]).is_null());
++        let single = interval_summary(vec![7.0]);
++        for key in ["mean", "p50", "p95", "max"] {
++            assert_eq!(single[key], 7.0);
++        }
++        assert_eq!(single["count"], 1);
++    }
++
+     #[test]
+     fn connection_script_uses_input_plugin_and_preserves_disconnected_state() {
+         let mut script: Script =
+@@ -1486,6 +1623,7 @@ mod tests {
+                 script,
+                 output: PathBuf::new(),
+                 started: Instant::now(),
++                metrics: RuntimeMetrics::default(),
+                 warmup: 0,
+                 tick: true,
+                 pending: false,
+@@ -1575,6 +1713,7 @@ mod tests {
+                 script,
+                 output: PathBuf::new(),
+                 started: Instant::now(),
++                metrics: RuntimeMetrics::default(),
+                 warmup: 0,
+                 tick: true,
+                 pending: false,
+@@ -1656,6 +1795,7 @@ mod tests {
+             script,
+             output: PathBuf::new(),
+             started: Instant::now(),
++            metrics: RuntimeMetrics::default(),
+             warmup: 0,
+             tick: false,
+             pending: false,
+@@ -1926,6 +2066,8 @@ mod tests {
+             .map(|(frame, angle)| Sample {
+                 frame: frame as u32,
+                 simulation_seconds: frame as f64 / 30.0,
++                wall_elapsed_seconds: frame as f64 / 30.0,
++                resources: None,
+                 position: [0.; 3],
+                 rotation: Quat::from_rotation_y(angle).to_array(),
+                 enabled: false,
+@@ -1946,6 +2088,7 @@ mod tests {
+             script,
+             output: output.clone(),
+             started: Instant::now(),
++            metrics: RuntimeMetrics::default(),
+             warmup: 0,
+             tick: false,
+             pending: false,
+@@ -2184,6 +2327,8 @@ mod tests {
+         let sample = |x| Sample {
+             frame: 0,
+             simulation_seconds: 0.0,
++            wall_elapsed_seconds: 0.0,
++            resources: None,
+             position: [0.0; 3],
+             rotation: [0.0, 0.0, 0.0, 1.0],
+             enabled: false,
+diff --git a/game/src/world/scene.rs b/game/src/world/scene.rs
+index d07960f..9c94ee3 100644
+--- a/game/src/world/scene.rs
++++ b/game/src/world/scene.rs
+@@ -55,6 +55,7 @@ impl PreparedScene {
+         let mut parts = geometry::generate(&map)
+             .map_err(|e| format!("[geometry] {}: {e}", map_path.display()))?;
+         parts.extend(facades(&map, &appearance)?);
++        parts.extend(star_screens(&map)?);
+         for part in &mut parts {
+             if appearance
+                 .materials
+@@ -500,8 +501,34 @@ fn add_box(
+     size: Vec3,
+     rotation: Quat,
+ ) -> Result<(), String> {
+-    let mesh = Mesh::from(Cuboid::from_size(size))
+-        .transformed_by(Transform::from_translation(position).with_rotation(rotation));
++    let mut mesh = Mesh::from(Cuboid::from_size(size));
++    // Bevy's cuboid maps each face to 0..1; material tiling is defined in metres
++    let normals = mesh
++        .attribute(Mesh::ATTRIBUTE_NORMAL)
++        .unwrap()
++        .as_float3()
++        .unwrap();
++    let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
++        mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
++    else {
++        unreachable!("Cuboid UVs are Float32x2")
++    };
++    let uvs: Vec<_> = uvs
++        .iter()
++        .zip(normals)
++        .map(|(uv, normal)| {
++            let scale = if normal[0].abs() > 0.5 {
++                [size.y, size.z]
++            } else if normal[1].abs() > 0.5 {
++                [size.x, size.z]
++            } else {
++                [size.x, size.y]
++            };
++            [uv[0] * scale[0], uv[1] * scale[1]]
++        })
++        .collect();
++    mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, uvs);
++    let mesh = mesh.transformed_by(Transform::from_translation(position).with_rotation(rotation));
+     if let Some(batch) = batches.get_mut(role) {
+         batch
+             .merge(&mesh)
+@@ -512,6 +539,80 @@ fn add_box(
+     Ok(())
+ }
+ 
++fn add_shop_canopy(
++    batches: &mut BTreeMap<String, Mesh>,
++    origin: Vec3,
++    width: f32,
++    depth: f32,
++    outward: Vec3,
++) -> Result<(), String> {
++    if depth == 0. {
++        return Ok(());
++    }
++    // Keep the 1.5 m detail proportions; shallow canopies shrink in section
++    let section_scale = (depth / 1.5).min(1.);
++    let design_depth = depth.max(1.5);
++    let along = Vec3::Y.cross(outward);
++    let run = design_depth - 0.08;
++    let slope = outward * run - Vec3::Y * 0.30;
++    let rotation = Quat::from_mat3(&Mat3::from_cols(
++        along,
++        slope.normalize().cross(along),
++        slope.normalize(),
++    ));
++    let center = origin + outward * (depth / 2.) + Vec3::Y * 2.90;
++    add_box(
++        batches,
++        "awning",
++        center,
++        Vec3::new(width, 0.12 * section_scale, slope.length() * section_scale),
++        rotation,
++    )?;
++    for side in [-1., 1.] {
++        add_box(
++            batches,
++            "metal",
++            center + along * side * (width / 2. - 0.025),
++            Vec3::new(0.05, 0.14 * section_scale, slope.length() * section_scale),
++            rotation,
++        )?;
++    }
++    let flat = Quat::from_mat3(&Mat3::from_cols(along, Vec3::Y, outward));
++    add_box(
++        batches,
++        "awning",
++        origin
++            + outward * (depth - 0.04 * section_scale)
++            + Vec3::Y * (2.66 + 0.24 * (1. - section_scale)),
++        Vec3::new(width, 0.20 * section_scale, 0.07 * section_scale),
++        flat,
++    )?;
++    let supports = (width / 3.8).ceil() as usize;
++    for index in 0..=supports {
++        let offset = along * (-width / 2. + 0.25 + (width - 0.5) * index as f32 / supports as f32);
++        let root = origin
++            + offset
++            + outward * (0.07 * section_scale)
++            + Vec3::Y * (2.60 + 0.30 * (1. - section_scale));
++        let diagonal = outward * (design_depth - 0.17) + Vec3::Y * 0.11;
++        add_box(
++            batches,
++            "metal",
++            root + diagonal * (section_scale / 2.),
++            Vec3::new(0.07, 0.07, diagonal.length()) * section_scale,
++            Quat::from_rotation_arc(Vec3::Z, diagonal.normalize()),
++        )?;
++        add_box(
++            batches,
++            "metal",
++            root + Vec3::Y * (0.20 * section_scale),
++            Vec3::new(0.11, 0.46 * section_scale, 0.08 * section_scale),
++            flat,
++        )?;
++    }
++    Ok(())
++}
++
+ fn add_sign(
+     batches: &mut BTreeMap<String, Mesh>,
+     role: &str,
+@@ -638,6 +739,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
+             continue;
+         };
+         let mut batches = BTreeMap::new();
++        let mut skin = BTreeMap::new();
+         let top = building.elevation + building.height;
+         // Keep deep sills and bands outside the shell of the publicly enterable shop
+         let interior_clearance = if building.shop_floor().is_some() {
+@@ -708,7 +810,9 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
+                         (5.0, 1.4, 0.7, (ceiling - floor.z - 0.7).max(1.7))
+                     } else if design.kind == "school" {
+                         (3.8, 2.6, 1.6, 1.8)
+-                    } else if commercial && matches!(design.kind.as_str(), "station" | "cinema") {
++                    } else if (design.kind == "station" && floor_index == 0)
++                        || (commercial && design.kind == "cinema")
++                    {
+                         (
+                             4.2,
+                             3.1,
+@@ -766,6 +870,18 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
+                                 rotation,
+                                 true,
+                             )?;
++                            // Timber skirt stays outside the authored wall and below the display
++                            add_box(
++                                &mut batches,
++                                "wood_siding",
++                                map_to_world([
++                                    p[0] + normal[0] * 0.07,
++                                    p[1] + normal[1] * 0.07,
++                                    floor.z + 0.42,
++                                ]),
++                                Vec3::new(width + 0.16, 0.64, 0.10),
++                                rotation,
++                            )?;
+                             // Shallow display boxes keep the original building envelope intact
+                             add_sign(&mut batches, material, map_to_world(p), width, 1.67, normal)?;
+                             add_box(
+@@ -805,6 +921,73 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
+                             rotation,
+                         )?;
+                     }
++                    if !court && matches!(design.kind.as_str(), "station" | "music") {
++                        let at = |t: f64, outward: f64, z: f64| {
++                            map_to_world([
++                                a[0] + dx * t + normal[0] * outward,
++                                a[1] + dy * t + normal[1] * outward,
++                                z,
++                            ])
++                        };
++                        if design.kind == "station" {
++                            // Piers share the window grid; doorway bays remain unobstructed
++                            for i in 1..n {
++                                let t = i as f64 / n as f64;
++                                if design.entries.iter().any(|entry| {
++                                    let p = map.nodes[&entry.node];
++                                    on_edge([p[0], p[1]])
++                                        && (p[2] - floor.z).abs() < 0.3
++                                        && (p[0] - a[0] - dx * t).hypot(p[1] - a[1] - dy * t)
++                                            < f64::from(entry_opening(&design.kind, &entry.role).x)
++                                                / 2.0
++                                                + 0.35
++                                }) {
++                                    continue;
++                                }
++                                add_box(
++                                    &mut skin,
++                                    "concrete",
++                                    at(t, 0.10, (floor.z + ceiling - 0.25) / 2.0),
++                                    Vec3::new(0.32, (ceiling - floor.z - 0.25) as f32, 0.24),
++                                    rotation,
++                                )?;
++                            }
++                            add_box(
++                                &mut skin,
++                                "metal",
++                                at(0.5, 0.06, ceiling - 0.22),
++                                Vec3::new((length - 0.32) as f32, 0.24, 0.16),
++                                rotation,
++                            )?;
++                        } else {
++                            // Rainscreen panels fill opaque auditorium walls below clerestories
++                            let bottom = floor.z + if floor_index == 0 { 3.0 } else { 0.35 };
++                            let upper = ceiling - 1.2;
++                            if upper - bottom >= 0.25 {
++                                add_box(
++                                    &mut skin,
++                                    "metal",
++                                    at(0.5, 0.06, (bottom + upper) / 2.0),
++                                    Vec3::new(
++                                        (length - 0.32) as f32,
++                                        (upper - bottom) as f32,
++                                        0.10,
++                                    ),
++                                    rotation,
++                                )?;
++                                let panels = (length / 2.4).ceil() as usize;
++                                for i in 1..panels {
++                                    add_box(
++                                        &mut skin,
++                                        "trim",
++                                        at(i as f64 / panels as f64, 0.115, (bottom + upper) / 2.0),
++                                        Vec3::new(0.065, (upper - bottom) as f32, 0.03),
++                                        rotation,
++                                    )?;
++                                }
++                            }
++                        }
++                    }
+                     if floor_index > 0 {
+                         let p = [
+                             (a[0] + b[0]) / 2.0 + normal[0] * (0.04 + interior_clearance),
+@@ -1006,32 +1189,47 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
+                 normal = [-normal[0], -normal[1]];
+             }
+             if let Some(depth) = design.canopy {
++                if appearance.shopfronts.contains_key(&building.id) {
++                    add_shop_canopy(
++                        &mut batches,
++                        map_to_world([mid[0], mid[1], building.elevation]),
++                        len as f32,
++                        depth as f32,
++                        map_to_world([normal[0], normal[1], 0.]),
++                    )?;
++                } else {
++                    add_box(
++                        &mut batches,
++                        "awning",
++                        map_to_world([
++                            mid[0] + normal[0] * depth / 2.0,
++                            mid[1] + normal[1] * depth / 2.0,
++                            building.elevation + 3.0,
++                        ]),
++                        Vec3::new(len as f32, 0.16, depth as f32),
++                        rotation,
++                    )?;
++                }
++            }
++            if let Some(role) = appearance.shopfronts.get(&building.id) {
++                let sign_width = (len * 0.65).min(9.0) as f32;
+                 add_box(
+                     &mut batches,
+-                    "awning",
++                    "trim",
+                     map_to_world([
+-                        mid[0] + normal[0] * depth / 2.0,
+-                        mid[1] + normal[1] * depth / 2.0,
+-                        building.elevation + 3.0,
++                        mid[0] + normal[0] * 0.14,
++                        mid[1] + normal[1] * 0.14,
++                        building.elevation + 3.55,
+                     ]),
+-                    Vec3::new(len as f32, 0.16, depth as f32),
++                    Vec3::new(sign_width + 0.20, 1.02, 0.18),
+                     rotation,
+                 )?;
+-            }
+-            if let Some(role) = appearance.shopfronts.get(&building.id) {
+                 let p = [
+                     mid[0] + normal[0] * 0.24,
+                     mid[1] + normal[1] * 0.24,
+                     building.elevation + 3.55,
+                 ];
+-                add_sign(
+-                    &mut batches,
+-                    role,
+-                    map_to_world(p),
+-                    (len * 0.65).min(9.0) as f32,
+-                    0.9,
+-                    normal,
+-                )?;
++                add_sign(&mut batches, role, map_to_world(p), sign_width, 0.9, normal)?;
+                 // Original small street-life details stay alongside, clear of the source doorway
+                 for p in planter_positions(map, building) {
+                     add_box(
+@@ -1056,12 +1254,14 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
+                 )?;
+             }
+         }
+-        for (material, mesh) in batches {
+-            parts.push(GeometryPart {
+-                source: format!("buildings[{}]/derived-facade", building.id),
+-                material,
+-                mesh,
+-            });
++        for (suffix, batches) in [("derived-facade", batches), ("derived-facade/skin", skin)] {
++            for (material, mesh) in batches {
++                parts.push(GeometryPart {
++                    source: format!("buildings[{}]/{suffix}", building.id),
++                    material,
++                    mesh,
++                });
++            }
+         }
+     }
+     Ok(parts)
+@@ -1083,6 +1283,82 @@ fn contains(p: [f64; 2], polygon: &[[f64; 2]]) -> bool {
+     inside
+ }
+ 
++fn star_screens(map: &Map) -> Result<Vec<GeometryPart>, String> {
++    let mut parts = Vec::new();
++    for building in &map.buildings {
++        // Public station / music venue roofs face their northern arrival courts
++        let width = match building.id.as_str() {
++            "V-01" => 10.0,
++            "V-79" => 8.0,
++            _ => continue,
++        };
++        let height = width * 9.0 / 16.0;
++        let west = building
++            .polygon
++            .iter()
++            .map(|p| p[0])
++            .fold(f64::INFINITY, f64::min);
++        let east = building
++            .polygon
++            .iter()
++            .map(|p| p[0])
++            .fold(f64::NEG_INFINITY, f64::max);
++        let north = building
++            .polygon
++            .iter()
++            .map(|p| p[1])
++            .fold(f64::NEG_INFINITY, f64::max);
++        let roof = (building.elevation + building.height) as f32;
++        let center = map_to_world([(west + east) / 2., north - 1., roof as f64])
++            + Vec3::Y * (0.9 + height / 2.);
++        let mut batches = BTreeMap::new();
++        // The solid back box gives a visible bezel while the image is a one-sided front
++        add_box(
++            &mut batches,
++            "trim",
++            center,
++            Vec3::new(width + 0.32, height + 0.32, 0.30),
++            Quat::IDENTITY,
++        )?;
++        add_sign(
++            &mut batches,
++            "poster_anke",
++            center + Vec3::NEG_Z * 0.155,
++            width,
++            height,
++            [0., 1.],
++        )?;
++        for side in [-1., 1.] {
++            let foot = Vec3::new(center.x + side * width * 0.32, roof, center.z + 0.55);
++            add_box(
++                &mut batches,
++                "metal",
++                foot + Vec3::Y * 0.06,
++                Vec3::new(0.65, 0.12, 1.4),
++                Quat::IDENTITY,
++            )?;
++            let top = Vec3::new(foot.x, center.y + height * 0.3, center.z + 0.22);
++            let root = foot + Vec3::Y * 0.14;
++            let diagonal = top - root;
++            add_box(
++                &mut batches,
++                "metal",
++                (top + root) / 2.,
++                Vec3::new(0.20, 0.20, diagonal.length()),
++                Quat::from_rotation_arc(Vec3::Z, diagonal.normalize()),
++            )?;
++        }
++        for (material, mesh) in batches {
++            parts.push(GeometryPart {
++                source: format!("buildings[{}]/star-screen", building.id),
++                material,
++                mesh,
++            });
++        }
++    }
++    Ok(parts)
++}
++
+ fn planter_positions(map: &Map, building: &Building) -> Vec<[f64; 3]> {
+     let Some(design) = &building.design else {
+         return vec![];
+@@ -1410,6 +1686,156 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
+ mod tests {
+     use super::*;
+ 
++    #[test]
++    fn star_screens_have_correct_public_facing_and_roof_supports() {
++        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
++        let map = Map::load(&root.join("source-assets/district-map/district.json")).unwrap();
++        let parts = star_screens(&map).unwrap();
++        assert_eq!(
++            parts
++                .iter()
++                .filter(|part| part.material == "poster_anke")
++                .count(),
++            2
++        );
++        for id in ["V-01", "V-79"] {
++            let building = map
++                .buildings
++                .iter()
++                .find(|building| building.id == id)
++                .unwrap();
++            let roof = (building.elevation + building.height) as f32;
++            let source = format!("buildings[{id}]/star-screen");
++            let mut supported = false;
++            for part in parts.iter().filter(|part| part.source == source) {
++                let vertices = part
++                    .mesh
++                    .attribute(Mesh::ATTRIBUTE_POSITION)
++                    .unwrap()
++                    .as_float3()
++                    .unwrap();
++                for &position in vertices {
++                    assert!(
++                        position[1] >= roof - 0.001,
++                        "{id}: below the roof / obscures facade"
++                    );
++                    assert!(
++                        contains([position[0] as f64, -position[2] as f64], &building.polygon),
++                        "{id}: outside roof footprint"
++                    );
++                    supported |= (position[1] - roof).abs() < 0.001;
++                }
++                if part.material == "poster_anke" {
++                    assert_eq!(vertices.len(), 4);
++                    let a = Vec3::from(vertices[0]);
++                    let b = Vec3::from(vertices[1]);
++                    let c = Vec3::from(vertices[2]);
++                    assert!(
++                        (b - a).cross(c - a).normalize().dot(Vec3::NEG_Z) > 0.999,
++                        "{id}: poster back faces public north court"
++                    );
++                    assert!(((b - a).length() / (c - b).length() - 16. / 9.).abs() < 0.001);
++                }
++            }
++            assert!(supported, "{id}: screen must be anchored to source roof");
++        }
++        let appearance =
++            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
++        let poster = &appearance.materials["poster_anke"];
++        assert!(poster.unlit);
++        assert!(
++            root.join("game/assets")
++                .join(poster.color_texture.as_ref().unwrap())
++                .is_file()
++        );
++    }
++
++    #[test]
++    fn shop_canopies_keep_slope_depth_headroom_and_metre_uvs() {
++        let mut empty = BTreeMap::new();
++        add_shop_canopy(&mut empty, Vec3::ZERO, 20., 0., Vec3::X).unwrap();
++        assert!(
++            empty.is_empty(),
++            "zero canopy depth must not generate fixtures"
++        );
++        for outward in [Vec3::X, Vec3::NEG_X, Vec3::Z, Vec3::NEG_Z] {
++            for depth in [0.0001, 0.01, 0.08, 0.2, 0.9, 1.5, 3.0] {
++                let mut batches = BTreeMap::new();
++                add_shop_canopy(&mut batches, Vec3::ZERO, 20., depth, outward).unwrap();
++                let parts: Vec<_> = batches
++                    .into_iter()
++                    .map(|(material, mesh)| GeometryPart {
++                        source: "buildings[test]/derived-facade".into(),
++                        material,
++                        mesh,
++                    })
++                    .collect();
++                let mut sloped_face = false;
++                for part in &parts {
++                    let positions = part
++                        .mesh
++                        .attribute(Mesh::ATTRIBUTE_POSITION)
++                        .unwrap()
++                        .as_float3()
++                        .unwrap();
++                    let normals = part
++                        .mesh
++                        .attribute(Mesh::ATTRIBUTE_NORMAL)
++                        .unwrap()
++                        .as_float3()
++                        .unwrap();
++                    let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
++                        part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
++                    else {
++                        panic!("UVs unavailable")
++                    };
++                    assert!(normals.iter().flatten().all(|value| value.is_finite()));
++                    assert!(
++                        uvs.iter()
++                            .flatten()
++                            .all(|value| value.is_finite() && *value >= 0.)
++                    );
++                    for position in positions {
++                        let p = Vec3::from(*position);
++                        let tolerance = (depth * 0.00001).max(0.0000001);
++                        assert!(
++                            (-tolerance..=depth + tolerance).contains(&p.dot(outward)),
++                            "outside source canopy depth {depth}: {p:?}"
++                        );
++                        assert!(p.y >= 2.5 && p.y <= 3.2, "canopy must keep headroom: {p:?}");
++                        assert!(p.dot(Vec3::Y.cross(outward)).abs() <= 10.001);
++                    }
++                    if part.material == "awning" {
++                        sloped_face |= normals
++                            .iter()
++                            .map(|n| Vec3::from(*n))
++                            .any(|n| n.y > 0.9 && n.dot(outward) > 0.1);
++                    }
++                    for (face, uv) in positions.chunks_exact(4).zip(uvs.chunks_exact(4)) {
++                        for i in 0..4 {
++                            let j = (i + 1) % 4;
++                            let metres = Vec3::from(face[i]).distance(Vec3::from(face[j]));
++                            let uv_metres = Vec2::from(uv[i]).distance(Vec2::from(uv[j]));
++                            assert!(
++                                (metres - uv_metres).abs() < 0.0001,
++                                "UV edge {uv_metres} differs from geometry edge {metres}"
++                            );
++                        }
++                    }
++                }
++                assert!(sloped_face, "canopy roof must fall toward its street edge");
++                let collision =
++                    super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
++                assert!(
++                    collision
++                        .capsule_cast(outward * 3., 1.7, 0.3, outward * -3., 0.02)
++                        .is_none(),
++                    "fixtures block the route under the canopy"
++                );
++            }
++        }
++    }
++
+     fn lifecycle_scene() -> PreparedScene {
+         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+         let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+@@ -1736,6 +2162,142 @@ mod tests {
+         );
+     }
+ 
++    #[test]
++    fn public_building_skins_stay_attached_and_clear_of_windows_and_entries() {
++        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
++        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
++        let appearance =
++            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
++        let parts = facades(&map, &appearance).unwrap();
++        let bounds = |vertices: &[[f32; 3]]| {
++            vertices.iter().fold(
++                (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
++                |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
++            )
++        };
++        let overlaps = |a: (Vec3, Vec3), b: (Vec3, Vec3)| {
++            (a.1.min(b.1) - a.0.max(b.0))
++                .cmpgt(Vec3::splat(0.001))
++                .all()
++        };
++        let mut covered = BTreeSet::new();
++        let mut boxes = 0;
++        for building in &map.buildings {
++            let source = format!("buildings[{}]/derived-facade/skin", building.id);
++            let skins: Vec<_> = parts.iter().filter(|part| part.source == source).collect();
++            if skins.is_empty() {
++                continue;
++            }
++            covered.insert(building.id.as_str());
++            let design = building.design.as_ref().unwrap();
++            let glass: Vec<_> = parts
++                .iter()
++                .filter(|part| {
++                    part.source == format!("buildings[{}]/derived-facade", building.id)
++                        && part.material == "glass"
++                })
++                .flat_map(|part| {
++                    part.mesh
++                        .attribute(Mesh::ATTRIBUTE_POSITION)
++                        .unwrap()
++                        .as_float3()
++                        .unwrap()
++                        .chunks_exact(24)
++                        .map(bounds)
++                })
++                .collect();
++            for part in skins {
++                let vertices = part
++                    .mesh
++                    .attribute(Mesh::ATTRIBUTE_POSITION)
++                    .unwrap()
++                    .as_float3()
++                    .unwrap();
++                assert!(vertices.iter().flatten().all(|v| v.is_finite()));
++                let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
++                    part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
++                else {
++                    panic!("missing UVs")
++                };
++                assert!(uvs.iter().flatten().all(|v| v.is_finite() && *v >= 0.0));
++                assert_eq!(vertices.len() % 24, 0);
++                for cube in vertices.chunks_exact(24) {
++                    boxes += 1;
++                    let (lo, hi) = bounds(cube);
++                    assert!(
++                        (hi - lo).cmpgt(Vec3::ZERO).all(),
++                        "{source}: degenerate box"
++                    );
++                    assert!(lo.y >= building.elevation as f32 - 0.001);
++                    assert!(hi.y <= (building.elevation + building.height) as f32 + 0.001);
++                    let attached = building
++                        .polygon
++                        .iter()
++                        .zip(building.polygon.iter().cycle().skip(1))
++                        .take(building.polygon.len())
++                        .any(|(a, b)| {
++                            let a = Vec2::new(a[0] as f32, -a[1] as f32);
++                            let b = Vec2::new(b[0] as f32, -b[1] as f32);
++                            let tangent = (b - a).normalize();
++                            let normal = Vec2::new(-tangent.y, tangent.x);
++                            cube.iter().all(|p| {
++                                let offset = Vec2::new(p[0], p[2]) - a;
++                                offset.dot(normal).abs() <= 0.25
++                                    && offset.dot(tangent) >= -0.001
++                                    && offset.dot(tangent) <= (b - a).length() + 0.001
++                            })
++                        });
++                    assert!(attached, "{source}: panel disconnected from source wall");
++                    assert!(
++                        glass.iter().all(|window| !overlaps((lo, hi), *window)),
++                        "{source}: skin overlaps a window"
++                    );
++                    for entry in &design.entries {
++                        let door = map_to_world(map.nodes[&entry.node]);
++                        let opening = entry_opening(&design.kind, &entry.role);
++                        let edge = building
++                            .polygon
++                            .iter()
++                            .zip(building.polygon.iter().cycle().skip(1))
++                            .take(building.polygon.len())
++                            .find(|(a, b)| {
++                                let a = Vec2::new(a[0] as f32, -a[1] as f32);
++                                let b = Vec2::new(b[0] as f32, -b[1] as f32);
++                                ((Vec2::new(door.x, door.z) - a).perp_dot(b - a)).abs() < 0.01
++                            })
++                            .unwrap();
++                        let along_x = (edge.1[0] - edge.0[0]).abs() > 0.01;
++                        let half = if along_x {
++                            Vec3::new(opening.x / 2.0 + 0.1, 0.0, 0.4)
++                        } else {
++                            Vec3::new(0.4, 0.0, opening.x / 2.0 + 0.1)
++                        };
++                        assert!(
++                            !overlaps(
++                                (lo, hi),
++                                (door - half, door + half + Vec3::Y * (opening.y + 0.1))
++                            ),
++                            "{source}: blocks entry {}",
++                            entry.node
++                        );
++                    }
++                }
++            }
++        }
++        assert_eq!(covered, BTreeSet::from(["V-01", "V-32", "V-78", "V-79"]));
++        let skins: Vec<_> = parts
++            .into_iter()
++            .filter(|part| part.source.ends_with("/derived-facade/skin"))
++            .collect();
++        let collision = super::super::collision::CollisionWorld::from_parts(&skins).unwrap();
++        assert_eq!(collision.triangle_count(), boxes * 12);
++        eprintln!(
++            "public facade skins: {} buildings, {boxes} attached boxes, {} collision triangles",
++            covered.len(),
++            collision.triangle_count()
++        );
++    }
++
+     #[test]
+     fn all_authored_facades_cover_entries_courts_and_keep_roofs_clear() {
+         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+diff --git a/source-assets/district-scene/appearance.json b/source-assets/district-scene/appearance.json
+index 22c3007..1d9118d 100644
+--- a/source-assets/district-scene/appearance.json
++++ b/source-assets/district-scene/appearance.json
+@@ -1,6 +1,15 @@
+ {
+   "version": 1,
+   "materials": {
++    "poster_anke": {
++      "color": [1, 1, 1, 1],
++      "roughness": 0.85,
++      "metallic": 0,
++      "tile_meters": [1, 1],
++      "color_texture": "environment/posters/anke-sunny.png",
++      "normal_texture": null,
++      "unlit": true
++    },
+     "concrete": {
+       "color": [
+         0.7,
+@@ -27,11 +36,11 @@
+       "roughness": 0.88,
+       "metallic": 0,
+       "tile_meters": [
+-        1.1,
+-        0.55
++        2,
++        2
+       ],
+-      "color_texture": "environment/materials/concrete-color.dds",
+-      "normal_texture": "environment/materials/concrete-normal.dds"
++      "color_texture": "environment/materials/plaster-color.dds",
++      "normal_texture": "environment/materials/plaster-normal.dds"
+     },
+     "wall_sand": {
+       "color": [
+@@ -59,11 +68,11 @@
+       "roughness": 0.88,
+       "metallic": 0,
+       "tile_meters": [
+-        1.1,
+-        0.55
++        2,
++        2
+       ],
+-      "color_texture": "environment/materials/concrete-color.dds",
+-      "normal_texture": "environment/materials/concrete-normal.dds"
++      "color_texture": "environment/materials/plaster-color.dds",
++      "normal_texture": "environment/materials/plaster-normal.dds"
+     },
+     "wall_brick": {
+       "color": [
+@@ -424,6 +433,22 @@
+       ],
+       "color_texture": "environment/signs/drygoods-display.png",
+       "normal_texture": null
++    },
++    "wood_siding": {
++      "color": [
++        0.65,
++        0.58,
++        0.42,
++        1
++      ],
++      "roughness": 0.78,
++      "metallic": 0,
++      "tile_meters": [
++        2,
++        1
++      ],
++      "color_texture": "environment/materials/wood-siding-color.dds",
++      "normal_texture": "environment/materials/wood-siding-normal.dds"
+     }
+   },
+   "models": {
+diff --git a/source-assets/district-scene/shop.svg b/source-assets/district-scene/shop.svg
+index a454d06..34e2852 100644
+--- a/source-assets/district-scene/shop.svg
++++ b/source-assets/district-scene/shop.svg
+@@ -1 +1,9 @@
+-<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="128" viewBox="0 0 1024 128"><rect width="1024" height="128" rx="3" fill="#194b48"/><rect x="12" y="12" width="1000" height="104" fill="none" stroke="#f8d869" stroke-width="3"/><path d="M40 30h34v65H40z M82 30h8v65h-8z" fill="#f8d869"/><text x="120" y="73" font-family="DejaVu Sans" font-weight="bold" font-size="59" letter-spacing="3" fill="#f8d869">N:SIDE</text><text x="122" y="101" font-family="DejaVu Sans" font-size="17" letter-spacing="4" fill="#f8d869">DAILY GOODS  /  OPEN EVERY DAY</text></svg>
++<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="128" viewBox="0 0 1024 128">
++  <rect width="1024" height="128" rx="3" fill="#194b48"/>
++  <rect x="12" y="12" width="1000" height="104" fill="none" stroke="#f8d869" stroke-width="3"/>
++  <path d="M40 30h34v65H40z M82 30h8v65h-8z" fill="#f8d869"/>
++  <text x="124" y="89" font-family="Noto Sans SC" font-weight="700" font-size="72" letter-spacing="8" fill="#f5eed6">月台杂货</text>
++  <path d="M481 33v62" stroke="#f8d869" stroke-width="2"/>
++  <text x="520" y="66" font-family="DejaVu Sans" font-weight="bold" font-size="32" letter-spacing="3" fill="#f8d869">DAILY GOODS</text>
++  <text x="523" y="94" font-family="DejaVu Sans" font-size="16" letter-spacing="4" fill="#f5eed6">OPEN EVERY DAY</text>
++</svg>
+diff --git a/source-assets/environment-kit/asset-manifest.json b/source-assets/environment-kit/asset-manifest.json
+index 563ff94..ac3bf0b 100644
+--- a/source-assets/environment-kit/asset-manifest.json
++++ b/source-assets/environment-kit/asset-manifest.json
+@@ -12,7 +12,7 @@
+     "https://kenney.nl/assets/city-kit-roads",
+     "https://docs.ambientcg.com/license/"
+   ],
+-  "source_archives": "Selected members fetched by HTTP Range and verified by ZIP CRC; complete archive hashes are not available",
++  "source_archives": "2026-09-25/27 selected members fetched by HTTP Range and verified by ZIP CRC; complete hashes unavailable for those archives. 2026-09-29 material additions fetched as complete archives, all ZIP CRCs verified, archive SHA-256 recorded per file",
+   "units": "meter",
+   "up_axis": "+Y",
+   "export_command": "bun tools/export-environment.ts",
+@@ -491,6 +491,122 @@
+       },
+       "generation": null,
+       "cost": 0
++    },
++    {
++      "source": "materials/Plaster001_1K-JPG_Color.jpg",
++      "output": "materials/plaster-color.dds",
++      "sha256": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
++      "bytes": 828790,
++      "archive": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
++      "archive_member": "Plaster001_1K-JPG_Color.jpg",
++      "archive_sha256": "944b4831016e42ace4a89422e4e7190912ca2f7fed6f561354c48ec7bb54d3a4",
++      "retrieved": "2026-09-29",
++      "source_page": "https://ambientcg.com/view?id=Plaster001",
++      "purpose": "奶油色与青绿色外立面的细灰泥",
++      "tile_meters": [
++        2,
++        2
++      ],
++      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
++      "image": {
++        "dimensions": [
++          1024,
++          1024
++        ],
++        "color_space": "sRGB",
++        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
++        "mip_levels": 11,
++        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
++      },
++      "generation": null,
++      "cost": 0
++    },
++    {
++      "source": "materials/Plaster001_1K-JPG_NormalGL.jpg",
++      "output": "materials/plaster-normal.dds",
++      "sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
++      "bytes": 2091491,
++      "archive": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
++      "archive_member": "Plaster001_1K-JPG_NormalGL.jpg",
++      "archive_sha256": "944b4831016e42ace4a89422e4e7190912ca2f7fed6f561354c48ec7bb54d3a4",
++      "retrieved": "2026-09-29",
++      "source_page": "https://ambientcg.com/view?id=Plaster001",
++      "purpose": "奶油色与青绿色外立面的细灰泥",
++      "tile_meters": [
++        2,
++        2
++      ],
++      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
++      "image": {
++        "dimensions": [
++          1024,
++          1024
++        ],
++        "color_space": "linear",
++        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
++        "mip_levels": 11,
++        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
++      },
++      "generation": null,
++      "cost": 0
++    },
++    {
++      "source": "materials/WoodSiding009_1K-JPG_Color.jpg",
++      "output": "materials/wood-siding-color.dds",
++      "sha256": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41",
++      "bytes": 744688,
++      "archive": "https://ambientcg.com/get?file=WoodSiding009_1K-JPG.zip",
++      "archive_member": "WoodSiding009_1K-JPG_Color.jpg",
++      "archive_sha256": "58512fc4df9b7ff0d9adb49bb562e8e7f65b510de6231afadf124505b6274de4",
++      "retrieved": "2026-09-29",
++      "source_page": "https://ambientcg.com/view?id=WoodSiding009",
++      "purpose": "小店局部外檐与窗台的横向木饰面",
++      "tile_meters": [
++        2,
++        1
++      ],
++      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
++      "image": {
++        "dimensions": [
++          1024,
++          512
++        ],
++        "color_space": "sRGB",
++        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
++        "mip_levels": 11,
++        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
++      },
++      "generation": null,
++      "cost": 0
++    },
++    {
++      "source": "materials/WoodSiding009_1K-JPG_NormalGL.jpg",
++      "output": "materials/wood-siding-normal.dds",
++      "sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
++      "bytes": 795284,
++      "archive": "https://ambientcg.com/get?file=WoodSiding009_1K-JPG.zip",
++      "archive_member": "WoodSiding009_1K-JPG_NormalGL.jpg",
++      "archive_sha256": "58512fc4df9b7ff0d9adb49bb562e8e7f65b510de6231afadf124505b6274de4",
++      "retrieved": "2026-09-29",
++      "source_page": "https://ambientcg.com/view?id=WoodSiding009",
++      "purpose": "小店局部外檐与窗台的横向木饰面",
++      "tile_meters": [
++        2,
++        1
++      ],
++      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
++      "image": {
++        "dimensions": [
++          1024,
++          512
++        ],
++        "color_space": "linear",
++        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
++        "mip_levels": 11,
++        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
++      },
++      "generation": null,
++      "cost": 0
+     }
+   ],
+   "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"
+diff --git a/tools/export-district-scene.ts b/tools/export-district-scene.ts
+index 5955dca..d60403e 100644
+--- a/tools/export-district-scene.ts
++++ b/tools/export-district-scene.ts
+@@ -6,12 +6,17 @@ const check = process.argv.includes('--check')
+ const root = resolve(import.meta.dir, '..')
+ const temporary = await mkdtemp(join(tmpdir(), 'nside-signs-'))
+ try {
++  // Use the project font for editable Chinese SVG text without installing it system-wide
++  if (!await Bun.file(join(root, 'source-assets/ui-kit/fonts/NotoSansSC-VF.ttf')).exists()) throw new Error('Missing project font: source-assets/ui-kit/fonts/NotoSansSC-VF.ttf')
++  const fontconfig = join(temporary, 'fonts.conf')
++  const fontDirectory = join(root, 'source-assets/ui-kit/fonts').replaceAll('&', '&amp;').replaceAll('<', '&lt;')
++  await Bun.write(fontconfig, `<fontconfig><include ignore_missing="yes">/etc/fonts/fonts.conf</include><dir>${fontDirectory}</dir><cachedir>${temporary}/font-cache</cachedir></fontconfig>`)
+   const output = join(root, 'game/assets/environment/signs')
+   if (!check) await mkdir(output, { recursive: true })
+   const names = ['shop', 'grocer', 'cafe', 'bakery', 'drygoods'].flatMap(name => [name, `${name}-display`])
+   for (const name of names) {
+     const generated = join(temporary, `${name}.png`)
+-    const process = Bun.spawn(['magick', '-background', 'none', join(root, `source-assets/district-scene/${name}.svg`), '-define', 'png:exclude-chunks=date,time', generated], { stdout: 'inherit', stderr: 'inherit' })
++    const process = Bun.spawn(['magick', '-background', 'none', join(root, `source-assets/district-scene/${name}.svg`), '-define', 'png:exclude-chunks=date,time', generated], { stdout: 'inherit', stderr: 'inherit', env: name === 'shop' ? { ...Bun.env, FONTCONFIG_FILE: fontconfig, XDG_CACHE_HOME: temporary } : Bun.env })
+     if (await process.exited !== 0) throw new Error(`Sign export failed: ${name}`)
+     const bytes = await readFile(generated)
+     const destination = join(output, `${name}.png`)
+diff --git a/tools/tests/test_asset_environment.py b/tools/tests/test_asset_environment.py
+index fa7f4c8..c365c5f 100644
+--- a/tools/tests/test_asset_environment.py
++++ b/tools/tests/test_asset_environment.py
+@@ -3,40 +3,13 @@
+ import json
+ import math
+ from pathlib import Path
+-import struct
++import sys
+ import unittest
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+ SOURCE = ROOT / "source-assets/environment-kit"
+-
+-
+-def read_glb(path):
+-    data = path.read_bytes()
+-    magic, version, length, json_size, kind = struct.unpack_from("<5I", data)
+-    assert magic == 0x46546C67 and version == 2 and length == len(data), f"{path}: invalid GLB header"
+-    assert kind == 0x4E4F534A, f"{path}: JSON must be the first chunk"
+-    document = json.loads(data[20:20 + json_size])
+-    binary_size, binary_kind = struct.unpack_from("<2I", data, 20 + json_size)
+-    assert binary_kind == 0x004E4942, f"{path}: expected embedded binary chunk"
+-    binary = data[28 + json_size:]
+-    assert len(binary) == binary_size, f"{path}: truncated binary chunk"
+-    return document, binary
+-
+-
+-def values(document, binary, accessor):
+-    assert "sparse" not in accessor, "static environment fixtures do not use sparse accessors"
+-    view = document["bufferViews"][accessor["bufferView"]]
+-    assert view["buffer"] == 0, "static environment fixtures have one embedded buffer"
+-    count = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4}[accessor["type"]]
+-    code = {5120: "b", 5121: "B", 5122: "h", 5123: "H", 5125: "I", 5126: "f"}[accessor["componentType"]]
+-    format_ = "<" + code * count
+-    size = struct.calcsize(format_)
+-    start = view.get("byteOffset", 0) + accessor.get("byteOffset", 0)
+-    stride = view.get("byteStride", size)
+-    assert stride >= size and accessor["count"] > 0, "invalid vertex stride/count"
+-    end = start + stride * (accessor["count"] - 1) + size
+-    assert end <= view.get("byteOffset", 0) + view["byteLength"] <= len(binary), "accessor exceeds its buffer view"
+-    return [struct.unpack_from(format_, binary, start + i * stride) for i in range(accessor["count"])]
++sys.path.insert(0, str(ROOT / "tools"))
++from glb import read_glb, values
+ 
+ 
+ class AssetEnvironmentTests(unittest.TestCase):
+--- /dev/null
++++ b/source-assets/star-posters/export.mjs
+@@ -0,0 +1,35 @@
++import { mkdtemp, readFile, mkdir, rm } from 'node:fs/promises'
++import { tmpdir } from 'node:os'
++import { dirname, join, resolve } from 'node:path'
++import { fileURLToPath } from 'node:url'
++
++const source = dirname(fileURLToPath(import.meta.url))
++const root = resolve(source, '../..')
++const output = join(root, 'game/assets/environment/posters/anke-sunny.png')
++const temporary = await mkdtemp(join(tmpdir(), 'nside-star-poster-'))
++try {
++  const font = join(root, 'source-assets/ui-kit/fonts/NotoSansSC-VF.ttf')
++  if (!await Bun.file(font).exists()) throw new Error(`Missing project font: ${font}`)
++  const fontconfig = join(temporary, 'fonts.conf')
++  const fontDirectory = dirname(font).replaceAll('&', '&amp;').replaceAll('<', '&lt;')
++  await Bun.write(fontconfig, `<fontconfig><include ignore_missing="yes">/etc/fonts/fonts.conf</include><dir>${fontDirectory}</dir><cachedir>${temporary}/font-cache</cachedir></fontconfig>`)
++  const generated = join(temporary, 'anke-sunny.png')
++  // librsvg blocks external image references; embed the retained source at export time
++  const svg = (await Bun.file(join(source, 'anke-sunny.svg')).text()).replace('anke-portrait.png', `data:image/png;base64,${(await readFile(join(source, 'anke-portrait.png'))).toString('base64')}`)
++  const embedded = join(temporary, 'anke-sunny.svg')
++  await Bun.write(embedded, svg)
++  const child = Bun.spawn(['magick', '-background', 'none', embedded, '-define', 'png:exclude-chunks=date,time', generated], {
++    cwd: source, stdout: 'inherit', stderr: 'inherit', env: { ...Bun.env, FONTCONFIG_FILE: fontconfig, XDG_CACHE_HOME: temporary },
++  })
++  if (await child.exited !== 0) throw new Error('Anke poster export failed')
++  const bytes = await readFile(generated)
++  if (process.argv.includes('--check')) {
++    if (!bytes.equals(await readFile(output))) throw new Error(`Stale poster: ${output}`)
++  } else {
++    await mkdir(dirname(output), { recursive: true })
++    await Bun.write(output, bytes)
++  }
++  console.log(`${process.argv.includes('--check') ? 'Verified' : 'Exported'} Anke poster: 1600 × 900`)
++} finally {
++  await rm(temporary, { recursive: true, force: true })
++}
+--- /dev/null
++++ b/source-assets/star-posters/README.md
+@@ -0,0 +1,54 @@
++# 城市明星海报
++
++| 项目 | 内容 |
++| --- | --- |
++| 资产 ID | `AST-007` |
++| 所属角色 | [安可 `CHR-036`](../../docs/player/characters/neighbors/anke.md) |
++| 主文件 | [anke-portrait.png](anke-portrait.png) 原创画像、[anke-sunny.svg](anke-sunny.svg) 可编辑文字与图形排版 |
++| 作者与来源 | Codex 当前内置 `image_gen` 生成原创画像；N:SIDE 原创 SVG 排版与屏幕几何 |
++| 来源记录 | [prompt.md](prompt.md)，r2 于 2026-09-30 按镜厅预览图的角色海报画法重绘；生成工具未返回模型版本、种子与实际成本，均记为未知 |
++| 许可状态 | 项目生成资产，按所用 OpenAI 服务适用条款管理；未另行引用第三方人物画或商标，不登记为 CC0；字形沿用 [AST-005](../ui-kit/README.md) 的 Noto Sans SC 与原 OFL 许可 |
++| 运行文件 | `game/assets/environment/posters/anke-sunny.png` |
++| 状态 | `exported`，r2 源图和最终排版已自查，尚无作者接受；r1 画风已被作者否定，历史记录保留；真实 GPU 场景检查与结论归 [TASK-048](../../todo/tasks/TASK-048-star-city-screens.md) |
++
++## 视觉与内容
++
++本海报将安可作为城市内已有知名度的歌手呈现，粉色长发、白色布质发夹、琥珀眼、短外套、麦克风来自正式人物设定，采用年轻、明亮的都市二次元形象。服装配色、镜头与排版为本海报制作选择，未锁定角色最终模型或三视图
++
++实际年龄保持 19 岁，外观按作者规定的实际年龄减 2、约 17 岁组织。r2 参考[镜厅预览图](../area-previews/cinema-music-street.png)左上竖版角色海报的清楚轮廓、概括五官、成组发束、平涂主色和少量硬边阴影；参考对象是海报中的二维角色画法，不把外围写实街景光照用于人物画像，也不复制预览中的匿名角色
++
++r1 的柔光绘画、细碎发丝和半写实渐变已被作者明确否定，原件保存在 [rejected/anke-portrait-r1.png](rejected/anke-portrait-r1.png)，原始生成提示词保存在 [rejected/prompt-r1.md](rejected/prompt-r1.md)。r2 保留既定身份、排版用途与城市安装位置，重新绘制画像；新图的制作自查不等于作者接受，r1 的场景运行证据也不替代 r2 画面复验
++
++主标题为「安可」，辅助罗马字 `ENCORE` 是海报图形字，不新增法定姓名；曲名采用已经存在的成名曲《下一站晴天》。不为尚未完成的新歌、演出、售票或商业合作编造发布日期、票价和成功状态
++
++画像为右侧人物、左侧深色留白，文字用暖白和淡黄粗体构成远距离识别；人物面部与中文主标题是屏幕缩小后的优先信息。完整提示词保存一次，源图保留工具实际生成的原始字节
++
++## 导出与纹理
++
++当前 r2 画像原始尺寸 `1672 × 941`、sRGB、PNG，SHA-256 为 `82f06776ef641489aea19913c82d5d5c6eec258fe05c499c078fdedc16484689`。SVG 是 `1600 × 900` 画布，通过相对路径引用原图，保持可编辑字形。导出器为 librsvg 将图像临时内嵌，解决默认阻止外部图片的问题；临时 SVG、Fontconfig 与字体缓存使用完即清理
++
++```fish
++bun source-assets/star-posters/export.mjs
++bun source-assets/star-posters/export.mjs --check
++python3 -B .agents/skills/create-game-assets/scripts/asset_report.py game/assets/environment/posters/anke-sunny.png --expect-size 1600x900 --json
++```
++
++导出依赖已有 Bun、ImageMagick 和项目 Noto Sans SC 源字体，不安装新系统字体。`--check` 在临时目录重算并比较运行文件字节，文件漂移会非零退出；图像尺寸检查不能代替图像内容和实际显示检查
++
++## 场景安装
++
++`world::scene::star_screens` 只在两个现有公共建筑的北侧屋顶安装一面海报屏，屏幕中心平面位于北边界向内 `1 m`，底缘距源屋顶 `0.9 m`。黑色背箱与金属双支架使用现有材质，脚座落于屋顶，没有在门口、步行道路或住宅窗前放置支柱。屋顶和建筑稳定 ID 继续来自 `district.json`
++
++| 源对象 | 展示尺寸 | 屏面中心，地图 `[x, north, elevation]` | 公共观察位置 |
++| --- | --- | --- | --- |
++| `V-01` Null Station | `10 × 5.625 m` | `[-30, 25, 18.7125]` | `square` 站前广场，向西南上看 |
++| `V-79` AFTER 9 | `8 × 4.5 m` | `[734, 38, 23.15]` | `live_meeting` 北侧会合庭，向南上看 |
++
++屏面法线朝地图北向 `[0, 1]`，图形使用单位 UV、背面剔除，源图保持 `16:9`。`poster_anke` 通过现有 `unlit` 标准材质呈现屏幕图形；框体与支架受光。本实现没有对周围街道投射屏幕光，白天可读性由实际曝光、观察距离和 GPU 画面核实
++
++```fish
++python3 tools/capture.py --binary game/target/debug/map_viewer --script game/capture/poster-station.json --output output/capture/poster-station
++python3 tools/capture.py --binary game/target/debug/map_viewer --script game/capture/poster-live.json --output output/capture/poster-live
++```
++
++两份脚本各 `10 s`、`1280 × 720`、固定 `30 Hz`，从真实公共地图节点初始化观察镜头，用现有 Viewer 的 W/A/D 控制器作小幅接近与侧移，最后解除输入。它们验证真实场景与画面，不将自由相机操作计作角色行走或玩法通过
+--- /dev/null
++++ b/source-assets/star-posters/anke-sunny.svg
+@@ -0,0 +1,18 @@
++<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
++  <image xlink:href="anke-portrait.png" width="1600" height="900" preserveAspectRatio="xMidYMid slice"/>
++  <defs>
++    <linearGradient id="reading"><stop stop-color="#151722" stop-opacity=".35"/><stop offset="1" stop-color="#151722" stop-opacity="0"/></linearGradient>
++  </defs>
++  <rect width="670" height="900" fill="url(#reading)"/>
++  <g fill="#fff7ed" font-family="Noto Sans SC">
++    <rect x="66" y="78" width="12" height="42" rx="2" fill="#ffe07b"/>
++    <text x="96" y="109" font-size="24" font-weight="700" letter-spacing="3">NULL SITE / MUSIC</text>
++    <text x="60" y="346" font-size="148" font-weight="900" letter-spacing="5">安可</text>
++    <text x="70" y="401" font-size="39" font-weight="800" letter-spacing="8">ENCORE</text>
++    <path d="M72 456H360" stroke="#ffe07b" stroke-width="8"/>
++    <text x="68" y="536" font-size="45" font-weight="800">下一站晴天</text>
++    <text x="73" y="582" font-size="23" font-weight="500" letter-spacing="2">SINGER / SONGWRITER</text>
++    <text x="72" y="821" font-size="23" font-weight="700" letter-spacing="3">N:SIDE</text>
++    <path d="M330 806h52m-26-26v52" stroke="#ffe07b" stroke-width="5"/>
++  </g>
++</svg>
+--- /dev/null
++++ b/source-assets/star-posters/prompt.md
+@@ -0,0 +1,18 @@
++# 安可海报 r2 生成记录
++
++工具：当前 Codex 内置 `image_gen`，2026-09-30，`transparent_background: false`，修改模式，未调用独立付费 API
++
++作者要求整体日漫感，指定仓库镜厅预览图左上竖版角色海报作为画法基准。两张输入图均已实际打开：第一张仅参考其中角色海报的画法，第二张保留安可的身份特征与构图，不保留被否定的柔光画法
++
++| 输入 | 用途 | SHA-256 |
++| --- | --- | --- |
++| `source-assets/area-previews/cinema-music-street.png` | 画法参考，左上角色竖海报 | `0997197f95ee0cd2d63836c6aafdfc09b42e25e4078ec8a59cb95cfbc3b7eb68` |
++| r1 原图，现为 `rejected/anke-portrait-r1.png` | 身份和构图参考、重绘目标 | `4e999ad07a35cfa81bf9c7ac9fa97e11bdd2e0df5bb6f03903a4315703cf70a2` |
++
++生成结果文件：`exec-96de1adc-725c-4798-a458-37cfc62b61b3.png`，选定原件复制为本目录 `anke-portrait.png`，实际输出 `1672 × 941`。模型版本、种子、收费、生成服务任务 ID 未返回；文件名不是服务任务 ID。生成图像不含文字，文字由 `anke-sunny.svg` 管理
++
++以下为实际提交提示词
++
++```text
++Use case: style-transfer. Redraw image 2 from scratch into clean Japanese 2D anime promotional art. Image 1 is STYLE REFERENCE ONLY: look specifically at the big vertical anime character poster at the far upper LEFT of the cinema facade, above the sidewalk poster cases. That poster has visible dark contour lines, a simplified angular anime face, grouped graphic hair shapes, broad flat color areas and sparse crisp cel-shadow shapes. Match that hand-drawn anime poster approach, NOT the realistic lighting, buildings or city scene around it. Do not copy the anonymous dark-haired character or any text in image 1. Image 2 is the EDIT TARGET and the composition/identity reference only; its soft painterly semi-realistic rendering was rejected. Completely remove its airbrushed skin gradients, soft bloom rim lighting, many fine hair strands, detailed glossy eyes, photographic bokeh and elaborate clothing texture. Retain this original fictional singer Anke: pink waist-length hair in large clean grouped locks, a simple white fabric hair clip on one side, amber anime eyes, cheerful lively smile, microphone in one hand, normal modest youthful urban performance clothes, ivory cropped jacket with charcoal crewneck top and subtle coral accents. She is actually 19; the user wants a youthful late-teen visual design around 17, nonsexualized. Visible dark ink contours on face, hair and clothing; small simple nose and mouth, one flat skin base plus one clean shadow tone, solid hair base plus one shadow tone with a few graphic highlights. Eyes should be recognizable 2D anime eyes with simple iris color, not gem-like detailed shading. Hair silhouette graphic and readable, very few loose strands. Jacket folds as a handful of clear outlined shapes. It should look like finished anime key animation / illustrated movie poster art, not a painting, not 3D, not a beauty portrait, not a cel-shading filter over image 2. Preserve a wide 16:9 composition with the character mainly on the right two thirds and plenty of completely usable dark graphic negative space on the left third for later typography. Replace background bokeh with sparse flat coral/pink and charcoal abstract graphic shapes and minimal music-poster accents. No letters, text, numbers, logos, watermarks, date, tickets, buildings or billboard mockup. Keep full head and hand within frame. Output only flat final poster artwork.
++```
+--- /dev/null
++++ b/game/capture/poster-live.json
+@@ -0,0 +1,78 @@
++{
++  "scene": "district",
++  "view": "poster-live",
++  "width": 1280,
++  "height": 720,
++  "fps": 30,
++  "frames": 300,
++  "seed": 0,
++  "timeout_seconds": 300,
++  "keyframes": [
++    0,
++    59,
++    119,
++    179,
++    239,
++    299
++  ],
++  "events": [
++    {
++      "start": 0,
++      "end": 1,
++      "keys": [
++        "M"
++      ]
++    },
++    {
++      "start": 60,
++      "end": 66,
++      "keys": [
++        "W"
++      ]
++    },
++    {
++      "start": 120,
++      "end": 126,
++      "keys": [
++        "A"
++      ]
++    },
++    {
++      "start": 180,
++      "end": 186,
++      "keys": [
++        "D"
++      ]
++    },
++    {
++      "start": 240,
++      "end": 241,
++      "keys": [
++        "Escape"
++      ]
++    }
++  ],
++  "assertions": [
++    {
++      "name": "real_camera_approach",
++      "from": 59,
++      "to": 89,
++      "min_distance": 1.5,
++      "max_distance": 4.0
++    },
++    {
++      "name": "real_camera_strafe",
++      "from": 119,
++      "to": 149,
++      "min_distance": 1.5,
++      "max_distance": 4.0
++    },
++    {
++      "name": "released_camera_stable",
++      "from": 270,
++      "to": 299,
++      "max_distance": 0.0001,
++      "enabled": false
++    }
++  ]
++}
+--- /dev/null
++++ b/game/capture/poster-station.json
+@@ -0,0 +1,78 @@
++{
++  "scene": "district",
++  "view": "poster-station",
++  "width": 1280,
++  "height": 720,
++  "fps": 30,
++  "frames": 300,
++  "seed": 0,
++  "timeout_seconds": 300,
++  "keyframes": [
++    0,
++    59,
++    119,
++    179,
++    239,
++    299
++  ],
++  "events": [
++    {
++      "start": 0,
++      "end": 1,
++      "keys": [
++        "M"
++      ]
++    },
++    {
++      "start": 60,
++      "end": 66,
++      "keys": [
++        "W"
++      ]
++    },
++    {
++      "start": 120,
++      "end": 126,
++      "keys": [
++        "A"
++      ]
++    },
++    {
++      "start": 180,
++      "end": 186,
++      "keys": [
++        "D"
++      ]
++    },
++    {
++      "start": 240,
++      "end": 241,
++      "keys": [
++        "Escape"
++      ]
++    }
++  ],
++  "assertions": [
++    {
++      "name": "real_camera_approach",
++      "from": 59,
++      "to": 89,
++      "min_distance": 1.5,
++      "max_distance": 4.0
++    },
++    {
++      "name": "real_camera_strafe",
++      "from": 119,
++      "to": 149,
++      "min_distance": 1.5,
++      "max_distance": 4.0
++    },
++    {
++      "name": "released_camera_stable",
++      "from": 270,
++      "to": 299,
++      "max_distance": 0.0001,
++      "enabled": false
++    }
++  ]
++}
+--- /dev/null
++++ b/game/capture/walk-shop-exterior.json
+@@ -0,0 +1,210 @@
++{
++  "assertions": [
++    {
++      "from": 210,
++      "game_page": "world",
++      "inside_room": false,
++      "name": "outside_south_window",
++      "place_id": "04",
++      "to": 225
++    },
++    {
++      "name": "return_to_public_street",
++      "from": 420,
++      "to": 449,
++      "game_page": "world",
++      "inside_room": false,
++      "max_player_resets": 0
++    },
++    {
++      "name": "supported_exterior_route",
++      "from": 59,
++      "to": 449,
++      "min_player_height": 27.5,
++      "max_player_height": 28.2,
++      "max_player_resets": 0,
++      "min_player_camera_distance": 0.01,
++      "max_player_camera_distance": 3.81,
++      "graphics": {
++        "aa": "msaa4",
++        "ssao": "off",
++        "bloom": false,
++        "shadows": true
++      }
++    }
++  ],
++  "events": [
++    {
++      "end": 31,
++      "gamepad": [],
++      "keys": [
++        "Enter"
++      ],
++      "left_mouse": false,
++      "look": [
++        0.0,
++        0.0
++      ],
++      "look_axis": [
++        0.0,
++        0.0
++      ],
++      "move_axis": [
++        0.0,
++        0.0
++      ],
++      "right_mouse": false,
++      "start": 30
++    },
++    {
++      "end": 51,
++      "gamepad": [],
++      "keys": [],
++      "left_mouse": false,
++      "look": [
++        -523.5988159179688,
++        0.0
++      ],
++      "look_axis": [
++        0.0,
++        0.0
++      ],
++      "move_axis": [
++        0.0,
++        0.0
++      ],
++      "right_mouse": false,
++      "start": 50
++    },
++    {
++      "end": 120,
++      "gamepad": [],
++      "keys": [
++        "W"
++      ],
++      "left_mouse": false,
++      "look": [
++        0.0,
++        0.0
++      ],
++      "look_axis": [
++        0.0,
++        0.0
++      ],
++      "move_axis": [
++        0.0,
++        0.0
++      ],
++      "right_mouse": false,
++      "start": 60
++    },
++    {
++      "end": 193,
++      "gamepad": [],
++      "keys": [
++        "A"
++      ],
++      "left_mouse": false,
++      "look": [
++        0.0,
++        0.0
++      ],
++      "look_axis": [
++        0.0,
++        0.0
++      ],
++      "move_axis": [
++        0.0,
++        0.0
++      ],
++      "right_mouse": false,
++      "start": 135
++    },
++    {
++      "end": 316,
++      "gamepad": [],
++      "keys": [],
++      "left_mouse": false,
++      "look": [
++        100.0,
++        -30.0
++      ],
++      "look_axis": [
++        0.0,
++        0.0
++      ],
++      "move_axis": [
++        0.0,
++        0.0
++      ],
++      "right_mouse": false,
++      "start": 315
++    },
++    {
++      "end": 341,
++      "gamepad": [],
++      "keys": [],
++      "left_mouse": false,
++      "look": [
++        -100.0,
++        30.0
++      ],
++      "look_axis": [
++        0.0,
++        0.0
++      ],
++      "move_axis": [
++        0.0,
++        0.0
++      ],
++      "right_mouse": false,
++      "start": 340
++    },
++    {
++      "end": 408,
++      "gamepad": [],
++      "keys": [
++        "D"
++      ],
++      "left_mouse": false,
++      "look": [
++        0.0,
++        0.0
++      ],
++      "look_axis": [
++        0.0,
++        0.0
++      ],
++      "move_axis": [
++        0.0,
++        0.0
++      ],
++      "right_mouse": false,
++      "start": 350
++    }
++  ],
++  "fps": 30,
++  "frames": 450,
++  "height": 720,
++  "keyframes": [
++    59,
++    125,
++    199,
++    222,
++    275,
++    330,
++    445,
++    449
++  ],
++  "scene": "walk-preview",
++  "seed": 0,
++  "timeout_seconds": 600,
++  "view": "shop",
++  "waits": [
++    {
++      "frame": 34,
++      "game_page": "world"
++    }
++  ],
++  "width": 1280
++}

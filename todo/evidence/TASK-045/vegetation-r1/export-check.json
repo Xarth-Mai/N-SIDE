@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "blend_reexport_byte_identical": true,
+  "sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
+  "negative_alpha_case": {
+    "exit_code": 1,
+    "stderr": "FAIL: tree must use opaque materials"
+  }
+}

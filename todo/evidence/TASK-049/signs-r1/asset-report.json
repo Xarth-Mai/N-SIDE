@@ -1,0 +1,183 @@
+{
+  "status": "PASS",
+  "existing_unchanged_count": 10,
+  "reports": [
+    {
+      "name": "station",
+      "source_sha256": "bf4e64e709841f8ca3936e8c2429a605a731fe96f910502305bdde1cfb5aa6fb",
+      "runtime_sha256": "1b21302a1c6541c29ef75fcaa4f8a4212745a69d1157c08ca455b6a21a117032",
+      "report": {
+        "ok": true,
+        "assets": [
+          {
+            "path": "game/assets/environment/signs/station.png",
+            "format": "PNG",
+            "mode": "P",
+            "width": 1200,
+            "height": 256,
+            "bytes": 8747,
+            "color_count": 256,
+            "has_alpha": false,
+            "alpha_min": 255,
+            "alpha_max": 255,
+            "transparent_pixels": 0,
+            "content_bounds": [
+              0,
+              0,
+              1200,
+              256
+            ],
+            "problems": []
+          }
+        ]
+      },
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "rgba_uncompressed_bytes": 1228800
+    },
+    {
+      "name": "byte-beat",
+      "source_sha256": "913548802b2db5237519e1b652bcef23747dc02550d0ac9e251e8458a27009fc",
+      "runtime_sha256": "4128102d39542bb2283901d7e26c8d0b938feec3158593d3b2410b20d8e46f69",
+      "report": {
+        "ok": true,
+        "assets": [
+          {
+            "path": "game/assets/environment/signs/byte-beat.png",
+            "format": "PNG",
+            "mode": "P",
+            "width": 1024,
+            "height": 256,
+            "bytes": 6120,
+            "color_count": 250,
+            "has_alpha": false,
+            "alpha_min": 255,
+            "alpha_max": 255,
+            "transparent_pixels": 0,
+            "content_bounds": [
+              0,
+              0,
+              1024,
+              256
+            ],
+            "problems": []
+          }
+        ]
+      },
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "rgba_uncompressed_bytes": 1048576
+    },
+    {
+      "name": "frame",
+      "source_sha256": "d57de91abe313faafbab49c1e4fcad8d1c68e7c59b448240e9e2f4300ea60e0d",
+      "runtime_sha256": "a6723a7e555ef9be996f2688e989c55f8cd2e7d5f82a2ab57114885326eb75b0",
+      "report": {
+        "ok": true,
+        "assets": [
+          {
+            "path": "game/assets/environment/signs/frame.png",
+            "format": "PNG",
+            "mode": "P",
+            "width": 1024,
+            "height": 256,
+            "bytes": 6882,
+            "color_count": 248,
+            "has_alpha": false,
+            "alpha_min": 255,
+            "alpha_max": 255,
+            "transparent_pixels": 0,
+            "content_bounds": [
+              0,
+              0,
+              1024,
+              256
+            ],
+            "problems": []
+          }
+        ]
+      },
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "rgba_uncompressed_bytes": 1048576
+    },
+    {
+      "name": "playroom",
+      "source_sha256": "fb361ac577d95f4876f530b0176bc74fe4c29e3d118f62d5606427cf42f1558a",
+      "runtime_sha256": "2363e5e4b9d41734b627b16c7041f034af4515306bcfef4fb7aed59ad0f19bf4",
+      "report": {
+        "ok": true,
+        "assets": [
+          {
+            "path": "game/assets/environment/signs/playroom.png",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1024,
+            "height": 256,
+            "bytes": 16699,
+            "color_count": 263,
+            "has_alpha": true,
+            "alpha_min": 255,
+            "alpha_max": 255,
+            "transparent_pixels": 0,
+            "content_bounds": [
+              0,
+              0,
+              1024,
+              256
+            ],
+            "problems": []
+          }
+        ]
+      },
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "rgba_uncompressed_bytes": 1048576
+    },
+    {
+      "name": "after9",
+      "source_sha256": "b2d281f8b920eaf99a7958654d3058e9865205ec692917c2fb182187013e68e1",
+      "runtime_sha256": "901530ad220c802419a6fdaca08909e1ae7c0844e339e680ae845ffeb5ad22e0",
+      "report": {
+        "ok": true,
+        "assets": [
+          {
+            "path": "game/assets/environment/signs/after9.png",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1024,
+            "height": 320,
+            "bytes": 20745,
+            "color_count": 486,
+            "has_alpha": true,
+            "alpha_min": 255,
+            "alpha_max": 255,
+            "transparent_pixels": 0,
+            "content_bounds": [
+              0,
+              0,
+              1024,
+              320
+            ],
+            "problems": []
+          }
+        ]
+      },
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "rgba_uncompressed_bytes": 1310720
+    }
+  ],
+  "total_png_bytes": 59193,
+  "total_rgba_uncompressed_bytes": 5685248
+}

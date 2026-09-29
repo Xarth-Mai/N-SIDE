@@ -1,0 +1,171 @@
+{
+  "base_commit": "4801b81bc3c91b5b4eebe04ebd86aa1f245b52c3",
+  "source": "source-assets/district-map/district.json",
+  "before_sha256": "430dd72272c9be08bdbc44ebca851153976a86d4a6a3400088fbbec797276ac1",
+  "after_file_sha256": "a4ab861f756037206520258725a32232de40a96dc1a8da380d26a1de33c9e45a",
+  "unchanged_outside_section_labels": true,
+  "changes": [
+    {
+      "section": "S1",
+      "node": "hillgate",
+      "before": "山脚",
+      "after": "林缘入口",
+      "node_elevation": 170,
+      "stale_elevation": false
+    },
+    {
+      "section": "S6",
+      "node": "school_service_approach",
+      "before": "校园侧路 +26",
+      "after": "校园侧路",
+      "node_elevation": 26,
+      "stale_elevation": false
+    },
+    {
+      "section": "S6",
+      "node": "fw_e_school_edge_low",
+      "before": "北缘下平台 +26",
+      "after": "北缘下平台",
+      "node_elevation": 26,
+      "stale_elevation": false
+    },
+    {
+      "section": "S6",
+      "node": "fw_e_school_edge_top",
+      "before": "上街 +41",
+      "after": "上街",
+      "node_elevation": 41,
+      "stale_elevation": false
+    },
+    {
+      "section": "S7",
+      "node": "fw_e_he_s",
+      "before": "下街 +9",
+      "after": "下街",
+      "node_elevation": 9.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S7",
+      "node": "fw_e_he_n",
+      "before": "住宅台地 +15",
+      "after": "住宅台地",
+      "node_elevation": 15,
+      "stale_elevation": false
+    },
+    {
+      "section": "S7",
+      "node": "fw_e_east_lift_top",
+      "before": "上街 +41",
+      "after": "上街",
+      "node_elevation": 41,
+      "stale_elevation": false
+    },
+    {
+      "section": "S4",
+      "node": "bridge_cross",
+      "before": "桥面 +10",
+      "after": "桥面",
+      "node_elevation": 10.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S5",
+      "node": "fw_w_garden_center",
+      "before": "花园 +8",
+      "after": "花园",
+      "node_elevation": 8.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S5",
+      "node": "fw_w_garden_cross",
+      "before": "过街 +8",
+      "after": "过街",
+      "node_elevation": 8.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S5",
+      "node": "fw_w_garden_shore",
+      "before": "上层河岸 +6",
+      "after": "上层河岸",
+      "node_elevation": 6.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S5",
+      "node": "dock_low",
+      "before": "登船 +2",
+      "after": "登船",
+      "node_elevation": 2.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S5",
+      "node": "dock_tip",
+      "before": "浮桥接续 +1.5",
+      "after": "浮桥接续",
+      "node_elevation": 1.5,
+      "stale_elevation": false
+    },
+    {
+      "section": "S8",
+      "node": "river_e",
+      "before": "上层岸线 +6",
+      "after": "上层岸线",
+      "node_elevation": 6.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S8",
+      "node": "under_bridge",
+      "before": "桥下 +6",
+      "after": "桥下",
+      "node_elevation": 6.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S8",
+      "node": "shore_e",
+      "before": "东侧岸线 +6",
+      "after": "东侧岸线",
+      "node_elevation": 6.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S9",
+      "node": "home",
+      "before": "小店 +28",
+      "after": "小店",
+      "node_elevation": 28.0,
+      "stale_elevation": false
+    },
+    {
+      "section": "S9",
+      "node": "steps_mid",
+      "before": "台阶平台 +32",
+      "after": "台阶平台",
+      "node_elevation": 39.636364,
+      "stale_elevation": true
+    },
+    {
+      "section": "S9",
+      "node": "upper_homes",
+      "before": "住宅路 +39.2",
+      "after": "住宅路",
+      "node_elevation": 61.6,
+      "stale_elevation": true
+    },
+    {
+      "section": "S9",
+      "node": "homes_entry",
+      "before": "住宅入口 +42",
+      "after": "住宅入口",
+      "node_elevation": 72.315789,
+      "stale_elevation": true
+    }
+  ],
+  "stale_height_count": 3,
+  "consumer": "docs/.vitepress/components/DistrictPlan.vue: directly displays sample.height beneath each label"
+}

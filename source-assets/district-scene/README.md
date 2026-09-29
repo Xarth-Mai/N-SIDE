@@ -3,15 +3,15 @@
 | 项目 | 内容 |
 | --- | --- |
 | 资产 ID | `AST-004` |
-| 主文件 | [appearance.json](appearance.json)、[daylight.json](daylight.json)、本目录五个招牌与五个橱窗 SVG |
+| 主文件 | [appearance.json](appearance.json)、[daylight.json](daylight.json)、本目录十个招牌与五个橱窗 SVG |
 | 作者与来源 | N:SIDE 原创外观绑定、招牌和橱窗图形；公开环境素材来源见[环境素材包](../environment-kit/README.md) |
 | 使用位置 | `world::scene` 生成的外墙、道路、店面、绿植和 V-04 公共室内 |
 | 派生文件 | `game/assets/environment/signs/*.png` |
-| 状态 | `exported`，真实镜头检查记录于 Viewer 任务 |
+| 状态 | `exported`，实际接入与镜头覆盖见 TASK-045、TASK-049 证据，作者美术验收待完成 |
 
 `appearance.json` 通过材质角色、模型 ID 和地图建筑 ID 绑定表现，不复制空间坐标。颜色使用 sRGB，颜色纹理按 sRGB 加载，OpenGL 法线纹理按线性数据加载，`tile_meters` 定义纹理一周期的实际米数。所有材质与贴图为必需资源；只有模型显式标记 `optional: true` 时允许带 Warning 省略
 
-`shopfronts` 对应小店、烘焙、生鲜、早餐和干货店，建筑用途来自地图；新招牌只修改 SVG 主文件。字形使用系统 DejaVu Sans 栅格化，源 SVG 保持可编辑，项目不分发字体文件
+`shopfronts` 对应小店、烘焙、生鲜、早餐和干货店，建筑用途来自地图；新招牌只修改 SVG 主文件。小店主招牌使用正式名称「月台杂货」，字形使用 [AST-005](../ui-kit/README.md) 已有 Noto Sans SC；导出器在临时 Fontconfig 中加载源字体，按原 OFL 许可使用，无需系统安装。其余店招仍使用系统 DejaVu Sans，源 SVG 保持可编辑
 
 `displays` 将同五栋建筑绑定到原创橱窗图形：杯子与文具、面包托盘、蔬果、早餐与茶、干货罐和纸袋。图形作为首层临街窗格的浅景，沿既有立面与窗框生成，保留门口和楼上住宅窗；侧后立面继续使用普通窗及独立入口
 
@@ -22,19 +22,23 @@ bun tools/export-district-scene.ts
 bun tools/export-district-scene.ts --check
 ```
 
-导出依赖 Bun、ImageMagick 与 DejaVu Sans，运行 Viewer 只使用已导出的 PNG。脚本以固定画布栅格化并排除 PNG 时间元数据，`--check` 在临时目录重算并比较字节；招牌为 1024 × 128，橱窗为 640 × 448
+导出依赖 Bun、ImageMagick、系统 DejaVu Sans 与项目 Noto Sans SC 源字体，运行 Viewer 只使用已导出的 PNG。脚本以固定画布栅格化并排除 PNG 时间元数据，`--check` 在临时目录重算并比较字节；原五店招牌为 1024 × 128，橱窗为 640 × 448
+
+新增 `station`、`byte-beat`、`frame`、`playroom`、`after9` 五个原创 SVG，均使用项目 Noto Sans SC 并沿用同一导出器；N站画布为 1200 × 256，兴趣街三牌为 1024 × 256，AFTER 9 为 1024 × 320，具体源图、比例与设计关系见[经营标识制作](signage-production.md)。五牌由 `appearance.materials` 对应槽与场景 `business_signs` 绑定真实公共门上方，保留原图比例；它们与原五店 8:1 门楣、屋顶人物宣传屏分别生成，15 张运行 PNG 的导出检查记录见[本轮来源与导出](../../todo/evidence/TASK-049/signs-r1/review.md)
 
 ## 招牌检查 brief
 
-小店 shop.svg 与 shop.png 属于同一原创招牌家族，保留深绿色底、金色字形和边框；尺寸检查以导出画布 1024 × 128 为准，512 × 64 用作保留 8:1 比例的半尺寸阅读样本。缩放预览不能代替场景透视下的覆盖像素和牌面比例检查
+小店 shop.svg 与 shop.png 属于同一原创招牌家族，采用深绿色底、暖白正式店名和金色边框；尺寸检查以导出画布 1024 × 128 为准，512 × 64 用作保留 8:1 比例的半尺寸阅读样本。缩放预览不能代替场景透视下的覆盖像素和牌面比例检查
 
 使用 asset_report 核对尺寸、alpha 通道及已批准的颜色预算；未设定色数限制时只记录实测颜色数。使用 asset_preview 生成明、暗、洋红底对照，检查边缘、裁切和小字。源 SVG 与运行 PNG 保持不变，对比图进入 output；具体结果与 hash 归对应任务证据
 
 ## 规则生成的构件
 
-外墙、天井、入口、楼层和道路采用地图原值。窗格、檐口、雨棚、门框、花盆和空调简体按建筑立面与入口推导，花盆避开入口 1.6 m；它们属于外观规则，后续可由美术替换。每个生成网格和模型实体保留源对象路径
+外墙、天井、入口、楼层和道路采用地图原值。窗格、檐口、雨棚、门框、花盆和空调简体按建筑立面与入口推导，花盆避开入口 1.6 m；它们属于外观规则，后续可由美术替换。五处样板店面使用有坡度的雨棚、金属斜撑与封边、厚招牌底盒；支架底部不低于 2.5 m，保留源雨棚投影深度和入口通路。立方体构件 UV 按各面实际米数生成，材质再按 tile_meters 重复。每个生成网格和模型实体保留源对象路径
 
 小店样板的花盆搭配已归一为 0.8 m 的公开灌木模型
+
+站厅与音乐楼的外皮从已有 `design.type` 生成，共覆盖 V-01、V-32、V-78、V-79；8 栋住宅 V-A08、V-A09、V-A13、V-A14、V-W08、V-13、V-A15、V-A16 复用原楼层与窗格派生窗台、窗檐、护窗栏、窗下裙板或带支架设备，按住宅类型分别组合。构件复用现有材质，来源标在 `buildings[ID]/derived-facade/`，护窗栏不产生可进入阳台，原门窗、屋顶和通路由源对象继续控制；各批检查和未覆盖镜头见[城市外观证据](../../todo/evidence/TASK-049/runtime-r2/review.md)
 
 ### 小店公共室内材质
 
@@ -56,6 +60,14 @@ V-04 首层的接待与陈列、预约洽谈、主题陈列三处公共房间分
 
 `daylight.json` 是 N:SIDE 原创的固定白天配置，由 `world::visual` 直接读取，负责太阳、三色天空与环境光、曝光、距离雾、阴影和局部 Bloom 开关。颜色为 sRGB，距离为米，`sun_position` 使用 Bevy 世界轴 `[x,h,-y]` 表示指向原点的光照方向，不表示一处地图设施
 
-环境贴图由 Bevy 的 `EnvironmentMapLight::hemispherical_gradient` 从配置颜色生成，天空与环境照明使用同一贴图，无外部天空素材或派生文件。它是简化的方向照明基线，后续精细天空和局部反射按实际样板需求替换；普通建筑与街面材质继续使用标准 PBR
+可见天空由 `world::visual` 使用现有天顶、地平、地面颜色及太阳方向生成 128 × 128 × 6 的立方图，在线性空间插值后保存为 sRGB，使用线性采样；太阳方向附近加入克制辉光。环境补光仍沿用 Bevy 的 `EnvironmentMapLight::hemispherical_gradient` 六面近似，天空与补光共享配置颜色但使用不同贴图，无外部天空素材或磁盘派生文件。当前没有物理大气、动态云、天气或局部反射，普通建筑与街面材质继续使用标准 PBR；实现和实际镜头边界见[天空制作记录](../../todo/evidence/TASK-045/sky-r1/review.md)与[实机自查](../../todo/evidence/TASK-045/runtime-r2/review.md)
 
 自然地形在原有控制网及高程上插值连续法线和坡度颜色，道路裁切不改变坡面受光；平台、挡墙和建筑保留硬边
+
+## 室外材质家族
+
+`wall_cream`、`wall_teal` 使用 AST-003 的 ambientCG Plaster001，暖色与青灰漆面共享低噪声灰泥结构；其他混凝土墙面保留 Concrete034，避免整城只是同一孔洞纹理换色。五店橱窗下方的外饰板使用 WoodSiding009 的颜色和 OpenGL 法线，材质角色 `wood_siding`，保留玻璃、金属边框、原雨棚与外墙之间的区别
+
+灰泥一周期暂取 `2 × 2 m`，木饰板取 `2 × 1 m`，均为当前视觉制作参数，官方页面未提供物理尺寸。颜色图按 sRGB、法线图按线性加载；原尺寸、哈希、完整 ZIP 的校验和、CC0 许可与来源由[环境素材清单](../environment-kit/asset-manifest.json)维护，运行 DDS 包含完整 mip 链。机器尺度检查与实机近远对照共同判断纹理频率
+
+本批属于室外立面制作，未更改室内、剧情或玩法；当前画面差距与后续资产生产按 TASK-045 记录

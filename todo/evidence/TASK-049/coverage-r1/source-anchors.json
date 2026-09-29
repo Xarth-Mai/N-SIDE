@@ -1,0 +1,622 @@
+{
+  "scope": "Read-only source audit; candidate facades use existing entry nodes and footprint edges, not new doors; runtime visibility NOT RUN",
+  "recorded_at": "2026-09-29T16:14:22.086228+00:00",
+  "head": "f7357e68220756da3f855cbd12427a554008cf98",
+  "sha256": {
+    "source-assets/district-map/district.json": "9b2f675d12dfdd9583294c8d8571a8859a561024988c4777d2a7b96e5332e5c9",
+    "source-assets/district-scene/appearance.json": "212d9683cc1ca849beac0e1a49e52a3a8998e361a1e49d5729a57a2204127770",
+    "game/src/world/scene.rs": "ecb75f14f384df5a65a99162d8323fad92b62259dca426592a39c0716a90f1ee",
+    "game/src/world/geometry.rs": "96d142d8892f97c90e7846d5df9f94fb67e815f3c65fad9c7325829fac0f88fd",
+    "docs/dev/production/art-direction.md": "56ae68a56032904d4a53893fb32327d3e885df2a874fb093fdb935274b1738b2"
+  },
+  "summary": {
+    "places": 91,
+    "buildings": 231,
+    "district_buildings": 224,
+    "opposite_buildings": 7,
+    "places_with_building": 67,
+    "distinct_named_buildings": 64,
+    "district_design_types": {
+      "apartment": 74,
+      "cinema": 1,
+      "civic": 6,
+      "corner": 2,
+      "interest": 3,
+      "maker": 6,
+      "mixed": 85,
+      "music": 2,
+      "public": 2,
+      "row": 10,
+      "school": 6,
+      "shop": 3,
+      "shrine": 1,
+      "slope": 21,
+      "station": 2
+    },
+    "district_buildings_with_front": 48,
+    "named_buildings_with_front": 21,
+    "shopfront_bindings": 5,
+    "display_bindings": 5
+  },
+  "candidates": [
+    {
+      "place_id": "01",
+      "name": "Null Station",
+      "building_id": "V-01",
+      "family": "station",
+      "source_front": [
+        [
+          -46,
+          26
+        ],
+        [
+          -14,
+          26
+        ]
+      ],
+      "entry": {
+        "node": "station_entry",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        -14,
+        10,
+        8.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            -14,
+            -6
+          ],
+          [
+            -14,
+            26
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "station"
+      ],
+      "proposed_work": "Null Station 正式站名、入口侧导向与海报朝向核对",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "35",
+      "name": "BYTE BEAT",
+      "building_id": "V-35",
+      "family": "interest",
+      "source_front": [
+        [
+          -402,
+          153
+        ],
+        [
+          -370,
+          153
+        ]
+      ],
+      "entry": {
+        "node": "game_entry",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        -386,
+        153,
+        12.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            -370,
+            153
+          ],
+          [
+            -402,
+            153
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "game_front_court"
+      ],
+      "proposed_work": "BYTE BEAT 经营图形与机器浅景",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "36",
+      "name": "FRAME",
+      "building_id": "V-36",
+      "family": "maker",
+      "source_front": [
+        [
+          -297,
+          137
+        ],
+        [
+          -273,
+          137
+        ]
+      ],
+      "entry": {
+        "node": "models_entry",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        -285,
+        137,
+        12.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            -273,
+            137
+          ],
+          [
+            -297,
+            137
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "models_front_court"
+      ],
+      "proposed_work": "FRAME 作品橱窗与模型展示底座",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "39",
+      "name": "PLAYROOM",
+      "building_id": "V-39",
+      "family": "interest",
+      "source_front": [
+        [
+          -366,
+          156
+        ],
+        [
+          -348,
+          156
+        ]
+      ],
+      "entry": {
+        "node": "st_39_door",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        -357,
+        156,
+        12.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            -348,
+            156
+          ],
+          [
+            -366,
+            156
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "st_39_front"
+      ],
+      "proposed_work": "PLAYROOM 试玩窗口与可更新作品牌",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "34",
+      "name": "白页书店",
+      "building_id": "V-34",
+      "family": "mixed",
+      "source_front": [
+        [
+          86,
+          4
+        ],
+        [
+          104,
+          4
+        ]
+      ],
+      "entry": {
+        "node": "st_34_door",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        95,
+        4,
+        8.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            104,
+            4
+          ],
+          [
+            86,
+            4
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "st_34_front"
+      ],
+      "proposed_work": "白页书店主招牌与书脊色块",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "15",
+      "name": "镜厅",
+      "building_id": "V-15",
+      "family": "cinema",
+      "source_front": null,
+      "entry": {
+        "node": "cinema_entry",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        306,
+        220,
+        25
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            300,
+            220
+          ],
+          [
+            340,
+            220
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "fw_w_cinema_front"
+      ],
+      "proposed_work": "镜厅低街门楣、海报框与公共上行导向",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "79",
+      "name": "AFTER 9",
+      "building_id": "V-79",
+      "family": "music",
+      "source_front": null,
+      "entry": {
+        "node": "live_entry",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        734,
+        39,
+        8.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            755,
+            39
+          ],
+          [
+            713,
+            39
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "live_meeting"
+      ],
+      "proposed_work": "AFTER 9 场所字标、票口边框与前场大屏",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "82",
+      "name": "LATE BITE",
+      "building_id": "V-82",
+      "family": "mixed",
+      "source_front": null,
+      "entry": {
+        "node": "tea_entry",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        788,
+        19,
+        8.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            797,
+            19
+          ],
+          [
+            779,
+            19
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "tea_front"
+      ],
+      "proposed_work": "LATE BITE 名称、菜单与檐下等候界面",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "73",
+      "name": "MONO",
+      "building_id": "V-73",
+      "family": "mixed",
+      "source_front": null,
+      "entry": {
+        "node": "fw_w_book_door",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        311,
+        111,
+        23
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            311,
+            103
+          ],
+          [
+            311,
+            119
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "fw_w_book_front"
+      ],
+      "proposed_work": "MONO 书店标识与临街展窗",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "57",
+      "name": "FLASHBACK",
+      "building_id": "V-57",
+      "family": "apartment",
+      "source_front": [
+        [
+          51,
+          319
+        ],
+        [
+          33,
+          319
+        ]
+      ],
+      "entry": {
+        "node": "v_57_door",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        42,
+        319,
+        45.841176
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            51,
+            319
+          ],
+          [
+            33,
+            319
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "v_57_door_landing"
+      ],
+      "proposed_work": "FLASHBACK 冲印标识与取件界面",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "60",
+      "name": "四季温室",
+      "building_id": "V-60",
+      "family": "civic",
+      "source_front": null,
+      "entry": {
+        "node": "fw_f_v_60_public",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        155.5,
+        458,
+        90.285714
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            151,
+            458
+          ],
+          [
+            169,
+            458
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "junction_homes_greenhouse_upper"
+      ],
+      "proposed_work": "四季温室外露框架与面向公共路径的名牌",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "19",
+      "name": "星见学园",
+      "building_id": "V-19",
+      "family": "school",
+      "source_front": null,
+      "entry": {
+        "node": "school_building_entry",
+        "role": "student",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        440,
+        269,
+        26
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            420,
+            269
+          ],
+          [
+            500,
+            269
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "school_forecourt"
+      ],
+      "proposed_work": "星见学园校门与楼体身份",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "67",
+      "name": "Null Site 服务中心",
+      "building_id": "V-67",
+      "family": "mixed",
+      "source_front": null,
+      "entry": {
+        "node": "fw_e_v_67_public0",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        582,
+        204,
+        29.0
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            591,
+            204
+          ],
+          [
+            573,
+            204
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "fw_e_v_67_public0_via0"
+      ],
+      "proposed_work": "Null Site 服务中心入口牌与公开办事信息",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "89",
+      "name": "山脚茶屋",
+      "building_id": "V-89",
+      "family": "mixed",
+      "source_front": null,
+      "entry": {
+        "node": "fw_e_v_89_public0",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        432,
+        614,
+        170
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            441,
+            614
+          ],
+          [
+            423,
+            614
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "fw_e_v_89_public0_via0"
+      ],
+      "proposed_work": "山脚茶屋雨棚、菜单与山路信息",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    },
+    {
+      "place_id": "91",
+      "name": "登高用品租修店",
+      "building_id": "V-91",
+      "family": "mixed",
+      "source_front": null,
+      "entry": {
+        "node": "fw_e_v_91_public0",
+        "role": "public",
+        "level": "1F"
+      },
+      "entry_xyz": [
+        -40,
+        604,
+        150
+      ],
+      "existing_entry_edges": [
+        [
+          [
+            -31,
+            604
+          ],
+          [
+            -49,
+            604
+          ]
+        ]
+      ],
+      "road_neighbors": [
+        "fw_e_v_ef35_resident0_via0"
+      ],
+      "proposed_work": "登高用品租修店户外用品浅景与租修牌",
+      "current_shopfront_material": null,
+      "current_display_material": null
+    }
+  ]
+}

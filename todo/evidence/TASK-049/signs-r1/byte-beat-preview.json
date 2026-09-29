@@ -1,0 +1,32 @@
+{
+  "path": "game/assets/environment/signs/byte-beat.png",
+  "format": "PNG",
+  "mode": "P",
+  "width": 1024,
+  "height": 256,
+  "bytes": 6120,
+  "color_count": 250,
+  "has_alpha": false,
+  "alpha_min": 255,
+  "alpha_max": 255,
+  "transparent_pixels": 0,
+  "content_bounds": [
+    0,
+    0,
+    1024,
+    256
+  ],
+  "ok": true,
+  "source_sha256": "4128102d39542bb2283901d7e26c8d0b938feec3158593d3b2410b20d8e46f69",
+  "preview": "output/assets/task049-signs-r1/byte-beat-contrast.png",
+  "display_box": [
+    384,
+    96
+  ],
+  "fitted_size": [
+    384,
+    96
+  ],
+  "filter": "lanczos",
+  "visual_review": "NOT RUN: inspect the preview and the actual game separately"
+}

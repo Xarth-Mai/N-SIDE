@@ -1,0 +1,16 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.19s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 9 tests
+test places::observation::tests::opening_and_held_inputs_never_confirm_a_route ... ok
+test places::observation::tests::observation_requires_reach_facing_and_clear_sight_then_owns_open_close_input ... ok
+test story::tests::observations_are_order_independent_and_choice_is_explicit_guarded_and_idempotent ... ok
+test places::observation::tests::pointer_request_uses_close_gate_and_expires_when_router_is_blocked ... ok
+test player::tests::lock_controls_camera_and_releases_for_observation_pause_and_focus ... ok
+test app::tests::observation_story_progress_survives_pause_and_revisit_but_title_restarts_it ... ok
+test app::tests::observation_owns_open_close_frames_and_allows_protective_pause ... ok
+test places::observation::tests::real_summit_public_entry_is_observable_from_its_walkable_platform ... ok
+test places::observation::tests::real_shop_recorded_approach_can_observe_its_public_entrance ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 98 filtered out; finished in 8.82s
+

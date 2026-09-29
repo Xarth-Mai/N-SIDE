@@ -1,0 +1,24 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 20.78s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 12 tests
+test world::scene::tests::shop_canopies_keep_slope_depth_headroom_and_metre_uvs ... ok
+test world::scene::tests::star_screens_have_correct_public_facing_and_roof_supports ... ok
+test world::scene::tests::lifecycle_clear_removes_map_roots_and_descendants_only ... ok
+test world::scene::tests::lifecycle_failure_is_reported_without_exiting_the_host ... ok
+test world::scene::tests::lifecycle_waits_for_a_scene_and_starts_each_scene_once ... ok
+test world::scene::tests::displays_stay_on_ground_floor_front_windows ... ok
+public facade skins: 4 buildings, 378 attached boxes, 4536 collision triangles
+test world::scene::tests::sample_frames_leave_recessed_displays_and_doorways_clear ... ok
+test world::scene::tests::public_building_skins_stay_attached_and_clear_of_windows_and_entries ... ok
+building facade coverage: buildings=224 types=15 unique doorways=342 lightwells=5
+test world::scene::tests::all_authored_facades_cover_entries_courts_and_keep_roofs_clear ... ok
+test world::scene::tests::slope_and_neighbour_occlusion_remove_windows_without_hiding_entries ... ok
+vegetation additions=152 added={"flowers": 36, "grass": 22, "rock": 22, "tree_autumn": 6, "tree_pine": 66} parks=57 trails_or_uphill=95 model counts={"flowers": 36, "grass": 22, "rock": 22, "shrub": 7, "streetlight": 32, "tree_a": 16, "tree_autumn": 11, "tree_b": 21, "tree_pine": 96}
+test world::scene::tests::vegetation_uses_real_assets_and_keeps_public_space_clear ... ok
+shop shell: /buildings/1 (V-04)/foundation maximum=28 floor=28; facade intrusions=0 examples=[]
+test world::scene::tests::shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 88 filtered out; finished in 8.67s
+

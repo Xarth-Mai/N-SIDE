@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "assets": [
+    {
+      "path": "game/assets/environment/posters/anke-sunny.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1600,
+      "height": 900,
+      "bytes": 1583999,
+      "color_count": ">65535",
+      "has_alpha": true,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_pixels": 0,
+      "content_bounds": [
+        0,
+        0,
+        1600,
+        900
+      ],
+      "problems": []
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "head": "4801b81bc3c91b5b4eebe04ebd86aa1f245b52c3",
+  "map_sha256": "9b2f675d12dfdd9583294c8d8571a8859a561024988c4777d2a7b96e5332e5c9",
+  "scope": "Upper residential facade additions; source footprint, openings, elevation and roof routes retained",
+  "buildings": [
+    {
+      "id": "V-A08",
+      "family": "row",
+      "use": "小店北邻商住",
+      "polygon": [
+        [
+          70,
+          271
+        ],
+        [
+          88,
+          271
+        ],
+        [
+          88,
+          284
+        ],
+        [
+          70,
+          284
+        ]
+      ],
+      "elevation": 30.021515,
+      "height": 10.4,
+      "front": [
+        [
+          88,
+          271
+        ],
+        [
+          88,
+          284
+        ]
+      ],
+      "floors": [
+        {
+          "name": "1F",
+          "z": 30.021515
+        },
+        {
+          "name": "2F",
+          "z": 34.021515
+        },
+        {
+          "name": "3F",
+          "z": 37.221515
+        }
+      ],
+      "entries": [
+        {
+          "node": "v_a08_door",
+          "role": "public",
+          "level": "1F",
+          "position": [
+            88,
+            277.5,
+            30.021515
+          ]
+        },
+        {
+          "node": "v_a08_door_resident",
+          "role": "resident",
+          "level": "1F",
+          "position": [
+            88,
+            273,
+            30.021515
+          ]
+        },
+        {
+          "node": "v_a08_service",
+          "role": "service",
+          "level": "1F",
+          "position": [
+            70,
+            277,
+            30.021515
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-A09",
+      "family": "apartment",
+      "use": "台阶旁普通住宅",
+      "polygon": [
+        [
+          70,
+          285
+        ],
+        [
+          88,
+          285
+        ],
+        [
+          88,
+          298
+        ],
+        [
+          70,
+          298
+        ]
+      ],
+      "elevation": 34.317273,
+      "height": 12.8,
+      "front": [
+        [
+          88,
+          285
+        ],
+        [
+          88,
+          298
+        ]
+      ],
+      "floors": [
+        {
+          "name": "1F",
+          "z": 34.317273
+        },
+        {
+          "name": "2F",
+          "z": 37.517273
+        },
+        {
+          "name": "3F",
+          "z": 40.717273
+        },
+        {
+          "name": "4F",
+          "z": 43.917273
+        }
+      ],
+      "entries": [
+        {
+          "node": "v_a09_door",
+          "role": "resident",
+          "level": "1F",
+          "position": [
+            88,
+            291.5,
+            34.317273
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-A13",
+      "family": "apartment",
+      "use": "转弯处小型公寓",
+      "polygon": [
+        [
+          161,
+          274
+        ],
+        [
+          181,
+          274
+        ],
+        [
+          181,
+          291
+        ],
+        [
+          161,
+          291
+        ]
+      ],
+      "elevation": 32.136364,
+      "height": 12.8,
+      "front": [
+        [
+          161,
+          291
+        ],
+        [
+          161,
+          274
+        ]
+      ],
+      "floors": [
+        {
+          "name": "1F",
+          "z": 32.136364
+        },
+        {
+          "name": "2F",
+          "z": 35.336364
+        },
+        {
+          "name": "3F",
+          "z": 38.536364
+        },
+        {
+          "name": "4F",
+          "z": 41.736364
+        }
+      ],
+      "entries": [
+        {
+          "node": "v_a13_door",
+          "role": "resident",
+          "level": "1F",
+          "position": [
+            161,
+            282.5,
+            32.136364
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-A14",
+      "family": "apartment",
+      "use": "上坡街角住宅",
+      "polygon": [
+        [
+          191,
+          296
+        ],
+        [
+          213,
+          296
+        ],
+        [
+          213,
+          312
+        ],
+        [
+          191,
+          312
+        ]
+      ],
+      "elevation": 40.127273,
+      "height": 12.8,
+      "front": [
+        [
+          191,
+          312
+        ],
+        [
+          191,
+          296
+        ]
+      ],
+      "floors": [
+        {
+          "name": "1F",
+          "z": 40.127273
+        },
+        {
+          "name": "2F",
+          "z": 43.327273
+        },
+        {
+          "name": "3F",
+          "z": 46.527273
+        },
+        {
+          "name": "4F",
+          "z": 49.727273
+        }
+      ],
+      "entries": [
+        {
+          "node": "v_a14_door",
+          "role": "resident",
+          "level": "1F",
+          "position": [
+            191,
+            304,
+            40.127273
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-W08",
+      "family": "apartment",
+      "use": "小型公寓",
+      "polygon": [
+        [
+          293,
+          326
+        ],
+        [
+          311,
+          326
+        ],
+        [
+          311,
+          341
+        ],
+        [
+          293,
+          341
+        ]
+      ],
+      "elevation": 47.632184,
+      "height": 14.4,
+      "front": null,
+      "floors": [
+        {
+          "name": "1F",
+          "z": 47.632184
+        },
+        {
+          "name": "2F",
+          "z": 51.232184
+        },
+        {
+          "name": "3F",
+          "z": 54.832184
+        },
+        {
+          "name": "4F",
+          "z": 58.432184
+        }
+      ],
+      "entries": [
+        {
+          "node": "fw_w_v-w08_door",
+          "role": "public",
+          "level": "1F",
+          "position": [
+            302,
+            326,
+            47.632184
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-13",
+      "family": "slope",
+      "use": "住宅低街门厅与住家",
+      "polygon": [
+        [
+          176,
+          398
+        ],
+        [
+          194,
+          398
+        ],
+        [
+          194,
+          414
+        ],
+        [
+          176,
+          414
+        ]
+      ],
+      "elevation": 72.315789,
+      "height": 12,
+      "front": [
+        [
+          176,
+          398
+        ],
+        [
+          194,
+          398
+        ]
+      ],
+      "floors": [
+        {
+          "name": "1F",
+          "z": 72.315789
+        },
+        {
+          "name": "2F",
+          "z": 75.315789
+        },
+        {
+          "name": "3F",
+          "z": 78.315789
+        },
+        {
+          "name": "4F",
+          "z": 81.315789
+        }
+      ],
+      "entries": [
+        {
+          "node": "homes_entry",
+          "role": "resident",
+          "level": "1F",
+          "position": [
+            185,
+            398,
+            72.315789
+          ]
+        },
+        {
+          "node": "v_13_upper",
+          "role": "resident",
+          "level": "2F",
+          "position": [
+            185,
+            414,
+            75.315789
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-A15",
+      "family": "slope",
+      "use": "双入口坡地住宅",
+      "polygon": [
+        [
+          196,
+          398
+        ],
+        [
+          214,
+          398
+        ],
+        [
+          214,
+          414
+        ],
+        [
+          196,
+          414
+        ]
+      ],
+      "elevation": 72.315789,
+      "height": 12,
+      "front": [
+        [
+          196,
+          398
+        ],
+        [
+          214,
+          398
+        ]
+      ],
+      "floors": [
+        {
+          "name": "1F",
+          "z": 72.315789
+        },
+        {
+          "name": "2F",
+          "z": 75.315789
+        },
+        {
+          "name": "3F",
+          "z": 78.315789
+        },
+        {
+          "name": "4F",
+          "z": 81.315789
+        }
+      ],
+      "entries": [
+        {
+          "node": "v_a15_door",
+          "role": "resident",
+          "level": "1F",
+          "position": [
+            205,
+            398,
+            72.315789
+          ]
+        },
+        {
+          "node": "v_a15_upper",
+          "role": "resident",
+          "level": "2F",
+          "position": [
+            205,
+            414,
+            75.315789
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-A16",
+      "family": "slope",
+      "use": "双入口坡地住宅",
+      "polygon": [
+        [
+          216,
+          398
+        ],
+        [
+          234,
+          398
+        ],
+        [
+          234,
+          414
+        ],
+        [
+          216,
+          414
+        ]
+      ],
+      "elevation": 72.315789,
+      "height": 12,
+      "front": [
+        [
+          216,
+          398
+        ],
+        [
+          234,
+          398
+        ]
+      ],
+      "floors": [
+        {
+          "name": "1F",
+          "z": 72.315789
+        },
+        {
+          "name": "2F",
+          "z": 75.315789
+        },
+        {
+          "name": "3F",
+          "z": 78.315789
+        },
+        {
+          "name": "4F",
+          "z": 81.315789
+        }
+      ],
+      "entries": [
+        {
+          "node": "v_a16_door",
+          "role": "resident",
+          "level": "1F",
+          "position": [
+            225,
+            398,
+            72.315789
+          ]
+        },
+        {
+          "node": "v_a16_upper",
+          "role": "resident",
+          "level": "2F",
+          "position": [
+            225,
+            414,
+            75.315789
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "deleted_count": 615,
+  "deleted_bytes": 541507237,
+  "scope": [
+    "output/capture/task049-station-facades-r1",
+    "output/capture/task049-live-facades-r1",
+    "output/capture/task049-facades-review"
+  ],
+  "retained": "scripts, logs, state and run JSON; source art retained"
+}

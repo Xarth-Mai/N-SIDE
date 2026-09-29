@@ -1,0 +1,32 @@
+{
+  "path": "game/assets/environment/signs/after9.png",
+  "format": "PNG",
+  "mode": "RGBA",
+  "width": 1024,
+  "height": 320,
+  "bytes": 20745,
+  "color_count": 486,
+  "has_alpha": true,
+  "alpha_min": 255,
+  "alpha_max": 255,
+  "transparent_pixels": 0,
+  "content_bounds": [
+    0,
+    0,
+    1024,
+    320
+  ],
+  "ok": true,
+  "source_sha256": "901530ad220c802419a6fdaca08909e1ae7c0844e339e680ae845ffeb5ad22e0",
+  "preview": "output/assets/task049-signs-r1/after9-contrast.png",
+  "display_box": [
+    384,
+    120
+  ],
+  "fitted_size": [
+    384,
+    120
+  ],
+  "filter": "lanczos",
+  "visual_review": "NOT RUN: inspect the preview and the actual game separately"
+}

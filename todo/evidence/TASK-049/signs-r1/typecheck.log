@@ -1,0 +1,2 @@
+tools/tests/district-map.test.ts(244,55): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.

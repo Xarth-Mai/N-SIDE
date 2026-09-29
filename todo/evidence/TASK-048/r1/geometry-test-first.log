@@ -1,0 +1,19 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 21.61s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+
+thread 'world::scene::tests::star_screens_have_correct_public_facing_and_roof_supports' (314) panicked at src/world/scene.rs:1635:21:
+V-01: below the roof / obscures facade
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::scene::tests::star_screens_have_correct_public_facing_and_roof_supports ... FAILED
+
+failures:
+
+failures:
+    world::scene::tests::star_screens_have_correct_public_facing_and_roof_supports
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 98 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `--lib`

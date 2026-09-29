@@ -1,0 +1,35 @@
+{
+  "visuals_viewed": true,
+  "images": [
+    {
+      "path": "output/assets/task045-vegetation-r1/tree-0.png",
+      "bytes": 784629,
+      "sha256": "bcc7b84be20d28a9c1b0064be7611ddf4e2fca8979be18f69fab5de3acec7fba"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r1/tree-1.png",
+      "bytes": 788459,
+      "sha256": "374f0d382374e004e60e6998d84462939c21811aab9480a0c2df8c4c70b6cee5"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r1/tree-2.png",
+      "bytes": 773460,
+      "sha256": "d834d21000e37f6254eb9bfeeb0eecc4d89e4fc31caa889589fc2dd8807386b7"
+    }
+  ],
+  "deleted_visual_count": 3,
+  "deleted_visual_bytes": 2346548,
+  "deleted_local_blender_backups": [
+    "source-assets/environment-kit/vegetation/street-tree.blend1"
+  ],
+  "retained": [
+    "editable .blend",
+    "original GLB and runtime GLB",
+    "creation/export/check scripts",
+    "logs",
+    "geometry-check.json",
+    "export-check.json",
+    "review.md"
+  ],
+  "remaining_output_bytes": 0
+}

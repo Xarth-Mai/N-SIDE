@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "reason": "Viewed self-audit contact sheets and contrast previews; formal source/runtime assets retained",
+  "removed_count": 7,
+  "removed_bytes": 612744,
+  "removed": [
+    {
+      "path": "output/assets/task049-signs-r1/after9-contrast.png",
+      "bytes": 18893,
+      "sha256": "7ace032f5b624984469113a8864c1a08da408ab41895c321efd4cdfd4ee3327f"
+    },
+    {
+      "path": "output/assets/task049-signs-r1/byte-beat-contrast.png",
+      "bytes": 13161,
+      "sha256": "5c3c174f720f44277e37d1f932f1dd142074979259cacc0fe3f02313bdf0c2c7"
+    },
+    {
+      "path": "output/assets/task049-signs-r1/contact-small.png",
+      "bytes": 190678,
+      "sha256": "95dcb0215ff3de7fb7fcd47f134ccba5789b42353972f210c6f2a9bfb7b522e5"
+    },
+    {
+      "path": "output/assets/task049-signs-r1/contact.png",
+      "bytes": 344627,
+      "sha256": "4035fc28e852055d405b09eff24b8205fa3f11ebc17ca7b324aa68a2b14c2a95"
+    },
+    {
+      "path": "output/assets/task049-signs-r1/frame-contrast.png",
+      "bytes": 13681,
+      "sha256": "384b493eda44cb2cfcc0bf22331316c9cac1542a78baf3e3beb25d09656fd616"
+    },
+    {
+      "path": "output/assets/task049-signs-r1/playroom-contrast.png",
+      "bytes": 15942,
+      "sha256": "67b187b5668e92052b2a4d824812986e2e425a9f90ec425a1463210a195c7701"
+    },
+    {
+      "path": "output/assets/task049-signs-r1/station-contrast.png",
+      "bytes": 15762,
+      "sha256": "45492b62953c5bf8319a70191d1f7b476ea5b4fe9a6ad6d513e0b92792602528"
+    }
+  ],
+  "remaining_visual_outputs": []
+}

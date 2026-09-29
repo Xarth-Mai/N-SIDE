@@ -2,12 +2,18 @@ use std::{path::Path, str::FromStr};
 
 use bevy::{
     anti_alias::taa::TemporalAntiAliasing,
+    asset::RenderAssetUsages,
     camera::{Exposure, Hdr},
+    color::{ColorToComponents, ColorToPacked},
     core_pipeline::tonemapping::Tonemapping,
+    image::ImageSampler,
     light::{CascadeShadowConfigBuilder, DirectionalLightShadowMap, Skybox},
     pbr::{ContactShadows, ScreenSpaceAmbientOcclusion, ScreenSpaceAmbientOcclusionQualityLevel},
     post_process::bloom::Bloom,
     prelude::*,
+    render::render_resource::{
+        Extent3d, TextureDimension, TextureFormat, TextureViewDescriptor, TextureViewDimension,
+    },
 };
 use serde::Deserialize;
 
@@ -170,7 +176,7 @@ impl DaylightSettings {
         images: &mut Assets<Image>,
         mode: Antialiasing,
     ) {
-        // ponytail: three sky colors omit local reflections; replace with filtered sky assets when the sample needs them
+        // ponytail: coarse diffuse/specular fill omits local reflections; use filtered probes when reflection content needs them
         let mut environment = EnvironmentMapLight::hemispherical_gradient(
             images,
             Color::srgb_from_array(self.sky_top),
@@ -179,7 +185,7 @@ impl DaylightSettings {
         );
         environment.intensity = self.environment_intensity;
         let skybox = Skybox {
-            image: Some(environment.specular_map.clone()),
+            image: Some(images.add(self.sky_image())),
             brightness: self.sky_brightness,
             ..default()
         };
@@ -229,6 +235,70 @@ impl DaylightSettings {
             });
         }
     }
+
+    fn sky_image(&self) -> Image {
+        // The built-in hemispherical environment is six 1px faces, useful for fill but flat when viewed horizontally
+        const SIZE: u32 = 128;
+        let mut data = Vec::with_capacity((SIZE * SIZE * 6 * 4) as usize);
+        for face in 0..6 {
+            for y in 0..SIZE {
+                for x in 0..SIZE {
+                    let u = (x as f32 + 0.5) * 2.0 / SIZE as f32 - 1.0;
+                    let v = (y as f32 + 0.5) * 2.0 / SIZE as f32 - 1.0;
+                    let color = self.sky_color(sky_direction(face, u, v));
+                    data.extend(Srgba::from(LinearRgba::from_vec3(color)).to_u8_array());
+                }
+            }
+        }
+        let mut image = Image::new(
+            Extent3d {
+                width: SIZE,
+                height: SIZE,
+                depth_or_array_layers: 6,
+            },
+            TextureDimension::D2,
+            data,
+            TextureFormat::Rgba8UnormSrgb,
+            RenderAssetUsages::default(),
+        );
+        image.texture_view_descriptor = Some(TextureViewDescriptor {
+            dimension: Some(TextureViewDimension::Cube),
+            ..default()
+        });
+        image.sampler = ImageSampler::linear();
+        image
+    }
+
+    fn sky_color(&self, direction: Vec3) -> Vec3 {
+        let linear = |color| Color::srgb_from_array(color).to_linear().to_vec3();
+        let horizon = linear(self.sky_horizon);
+        if direction.y < 0.0 {
+            return horizon.lerp(linear(self.sky_ground), (-direction.y).sqrt());
+        }
+        let elevation = direction.y.sqrt();
+        let sky = horizon.lerp(linear(self.sky_top), elevation);
+        // A broad sun-facing haze uses the existing light direction; the horizon stays matched to DistanceFog
+        // ponytail: art-directed clear sky, not a physical atmosphere or weather simulation
+        let toward_sun = direction
+            .dot(Vec3::from_array(self.sun_position).normalize())
+            .max(0.0);
+        let haze = toward_sun.powi(32) * elevation * 0.22;
+        sky.lerp(linear(self.sun_color), haze)
+    }
+}
+
+fn sky_direction(face: u32, u: f32, v: f32) -> Vec3 {
+    let cube = match face {
+        0 => Vec3::new(1.0, -v, -u),
+        1 => Vec3::new(-1.0, -v, u),
+        2 => Vec3::new(u, 1.0, v),
+        3 => Vec3::new(u, -1.0, -v),
+        4 => Vec3::new(u, -v, 1.0),
+        5 => Vec3::new(-u, -v, -1.0),
+        _ => unreachable!("a cubemap has six faces"),
+    };
+    // Bevy's skybox shader flips Z when sampling its left-handed cubemap
+    (cube * Vec3::new(1.0, 1.0, -1.0)).normalize()
 }
 
 #[cfg(test)]
@@ -307,10 +377,11 @@ mod tests {
                 mode == Antialiasing::TaaSsao
             );
             let environment = entity.get::<EnvironmentMapLight>().unwrap();
-            assert_eq!(
-                entity.get::<Skybox>().unwrap().image.as_ref(),
-                Some(&environment.specular_map)
-            );
+            let sky = images
+                .get(entity.get::<Skybox>().unwrap().image.as_ref().unwrap())
+                .unwrap();
+            assert_eq!(sky.texture_descriptor.size.width, 128);
+            assert_eq!(sky.texture_descriptor.size.depth_or_array_layers, 6);
             assert_eq!(
                 images
                     .get(&environment.diffuse_map)
@@ -321,5 +392,66 @@ mod tests {
                 6
             );
         }
+    }
+
+    #[test]
+    fn directional_sky_is_continuous_and_uses_the_scene_sun() {
+        let settings = settings();
+        for (face, expected) in [
+            Vec3::X,
+            Vec3::NEG_X,
+            Vec3::Y,
+            Vec3::NEG_Y,
+            Vec3::NEG_Z,
+            Vec3::Z,
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            assert_eq!(sky_direction(face as u32, 0.0, 0.0), expected);
+        }
+        // Every face edge has a matching direction on another face, including the vertical faces
+        for face in 0..6 {
+            for t in [-1.0, -0.5, 0.0, 0.5, 1.0] {
+                for (u, v) in [(-1.0, t), (1.0, t), (t, -1.0), (t, 1.0)] {
+                    let direction = sky_direction(face, u, v);
+                    assert!(
+                        (0..6).filter(|other| *other != face).any(|other| {
+                            [
+                                (-1.0, t),
+                                (1.0, t),
+                                (t, -1.0),
+                                (t, 1.0),
+                                (-1.0, -t),
+                                (1.0, -t),
+                                (-t, -1.0),
+                                (-t, 1.0),
+                            ]
+                            .into_iter()
+                            .any(|(a, b)| direction.distance(sky_direction(other, a, b)) < 1e-6)
+                        }),
+                        "sky face {face} edge ({u}, {v}) has no continuous neighbour"
+                    );
+                }
+            }
+        }
+        let horizon = Color::srgb_from_array(settings.sky_horizon)
+            .to_linear()
+            .to_vec3();
+        assert!(settings.sky_color(Vec3::X).distance(horizon) < 1e-6);
+        assert!(settings.sky_color(Vec3::Y).distance(horizon) > 0.1);
+        let sun = Vec3::from_array(settings.sun_position).normalize();
+        let away = Vec3::new(-sun.x, sun.y, -sun.z);
+        assert!(settings.sky_color(sun).element_sum() > settings.sky_color(away).element_sum());
+        let image = settings.sky_image();
+        assert_eq!(image.data.as_ref().unwrap().len(), 128 * 128 * 6 * 4);
+        assert!(
+            image
+                .data
+                .as_ref()
+                .unwrap()
+                .chunks_exact(4)
+                .all(|pixel| pixel[3] == 255)
+        );
     }
 }

@@ -1,0 +1,30 @@
+{
+  "exit_code": 1,
+  "report": {
+    "ok": false,
+    "assets": [
+      {
+        "path": "game/assets/environment/signs/station.png",
+        "format": "PNG",
+        "mode": "P",
+        "width": 1200,
+        "height": 256,
+        "bytes": 8747,
+        "color_count": 256,
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_pixels": 0,
+        "content_bounds": [
+          0,
+          0,
+          1200,
+          256
+        ],
+        "problems": [
+          "size is 1200x256; expected 1024x256"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.31s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 3 tests
+test world::visual::tests::daylight_input_rejects_invalid_render_parameters ... ok
+test world::visual::tests::directional_sky_is_continuous_and_uses_the_scene_sun ... ok
+test world::visual::tests::camera_aa_modes_use_compatible_prepasses_and_matching_sky ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 103 filtered out; finished in 0.03s
+

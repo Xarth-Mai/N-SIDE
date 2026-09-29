@@ -529,6 +529,28 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
     views.push(("mountain-profile", view(profile_eye, center)));
     views.extend([
         (
+            "poster-station",
+            view(
+                [
+                    map.nodes["square"][0],
+                    map.nodes["square"][1],
+                    map.nodes["square"][2] + 1.7,
+                ],
+                [-30., 25., 18.7125],
+            ),
+        ),
+        (
+            "poster-live",
+            view(
+                [
+                    map.nodes["live_meeting"][0],
+                    map.nodes["live_meeting"][1],
+                    map.nodes["live_meeting"][2] + 1.7,
+                ],
+                [734., 38., 23.15],
+            ),
+        ),
+        (
             "inspect-road-old-home",
             view([-8., 318., 52.], [0., 340., 47.]),
         ),

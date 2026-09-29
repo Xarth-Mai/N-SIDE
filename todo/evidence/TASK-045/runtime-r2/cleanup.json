@@ -1,0 +1,11 @@
+{
+  "policy": "After actual observation and completed processes, remove only this run visual intermediates; retain logs, state, script, source and formal assets",
+  "runs": [
+    {
+      "run": "output/capture/task045-r2-sky-tree-shop",
+      "files_removed": 459,
+      "bytes_removed": 391759119,
+      "remaining_visual_files": 0
+    }
+  ]
+}

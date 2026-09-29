@@ -1,0 +1,16 @@
+{
+  "source": "vegetation/street-tree.glb",
+  "output": "vegetation/street-tree.glb",
+  "sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
+  "bytes": 409052,
+  "triangles": 8782,
+  "author": "N:SIDE original, authored with Blender",
+  "license": "MPL-2.0 (project-original; see repository LICENSE)",
+  "source_master": "vegetation/street-tree.blend",
+  "provenance": "Original topology and vertex-colored materials; no third-party geometry, bitmap, or generation service",
+  "units": "meters",
+  "up_axis": "+Y",
+  "ground_pivot": true,
+  "height_m": 6,
+  "radius_m": 3.155431353796452
+}

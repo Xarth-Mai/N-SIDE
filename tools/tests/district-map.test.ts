@@ -237,6 +237,14 @@ test('sections follow connected routes and distinguish a lift from a slope', asy
   assert.ok(stepFree.has('upper'),'the uphill street still requires a public step-free route, including its real lift and platforms')
 })
 
+test('section labels name shared nodes without duplicating their displayed elevation', () => {
+  for(const section of data.sections)for(const [id,label] of Object.entries(section.labels)) {
+    assert.ok(section.nodes.includes(id)&&data.nodes[id],`${section.id}/${id}: label must refer to a node on this section`)
+    assert.ok(typeof label==='string'&&label.trim(),`${section.id}/${id}: label must name the location`)
+    assert.ok(!/\s[+＋−-]\d+(?:\.\d+)?(?:\s*m)?$/.test(label),`${section.id}/${id}: the profile already renders elevation from nodes; remove the handwritten value`)
+  }
+})
+
 test('geometry handles concave boundaries, shared walls, road width and local elevation', () => {
   const square=[[0,0],[2,0],[2,2],[0,2]],concave=[[0,0],[4,0],[4,1],[1,1],[1,4],[0,4]]
   assert.equal(intersectionArea(square,square),4)

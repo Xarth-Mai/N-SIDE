@@ -1,0 +1,29 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+239 | 
+240 | test('section labels name shared nodes without duplicating their displayed elevation', () => {
+241 |   for(const section of data.sections)for(const [id,label] of Object.entries(section.labels)) {
+242 |     assert.ok(section.nodes.includes(id)&&data.nodes[id],`${section.id}/${id}: label must refer to a node on this section`)
+243 |     assert.ok(label?.trim(),`${section.id}/${id}: label must name the location`)
+244 |     assert.ok(!/[+＋−-]\d/.test(label),`${section.id}/${id}: the profile already renders elevation from nodes; remove the handwritten value`)
+                 ^
+AssertionError: S6/school_service_approach: the profile already renders elevation from nodes; remove the handwritten value
+ generatedMessage: false,
+     actual: false,
+   expected: true,
+   operator: "==",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /home/lzzz/MyProjects/N-SIDE/tools/tests/district-map.test.ts:244:12
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:45)
+      at node:test:1591:20
+(fail) section labels name shared nodes without duplicating their displayed elevation [2.19ms]
+
+ 0 pass
+ 33 filtered out
+ 1 fail
+Ran 1 test across 1 file. [54.00ms]

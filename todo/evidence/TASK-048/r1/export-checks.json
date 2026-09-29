@@ -1,0 +1,17 @@
+{
+  "results": [
+    {
+      "case": "runtime bytes differ",
+      "expected_exit": "nonzero",
+      "actual_exit": 1,
+      "diagnostic": "22 |     cwd: source, stdout: 'inherit', stderr: 'inherit', env: { ...Bun.env, FONTCONFIG_FILE: fontconfig, XDG_CACHE_HOME: temporary },\n23 |   })\n24 |   if (await child.exited !== 0) throw new Error('Anke poster export failed')\n25 |   const bytes = await readFile(generated)\n26 |   if (process.argv.includes('--check')) {\n27 |     if (!bytes.equals(await readFile(output))) throw new Error(`Stale poster: ${output}`)\n                                                              ^\nerror: Stale poster: /home/lzzz/MyProjects/N-SIDE/game/assets/environment/posters/anke-sunny.png\n      at /home/lzzz/MyProjects/N-SIDE/source-assets/star-posters/export.mjs:27:58\n\nBun v1.4.2 (Linux x64)"
+    },
+    {
+      "case": "restored original runtime bytes",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "diagnostic": "Verified Anke poster: 1600 × 900"
+    }
+  ],
+  "restored_sha256": "2774c2ced3dffaf46bf41888f01b559d1b0659cef06a9c12d5c17e26c35b6f87"
+}

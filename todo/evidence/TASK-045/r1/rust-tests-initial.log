@@ -1,0 +1,27 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error[E0608]: cannot index into a value of type `&world::map::Opening`
+    --> src/world/scene.rs:1114:14
+     |
+1114 |         (door[0][0] + door[1][0]) / 2.0,
+     |              ^^^
+
+error[E0608]: cannot index into a value of type `&world::map::Opening`
+    --> src/world/scene.rs:1114:27
+     |
+1114 |         (door[0][0] + door[1][0]) / 2.0,
+     |                           ^^^
+
+error[E0608]: cannot index into a value of type `&world::map::Opening`
+    --> src/world/scene.rs:1115:14
+     |
+1115 |         (door[0][1] + door[1][1]) / 2.0,
+     |              ^^^
+
+error[E0608]: cannot index into a value of type `&world::map::Opening`
+    --> src/world/scene.rs:1115:27
+     |
+1115 |         (door[0][1] + door[1][1]) / 2.0,
+     |                           ^^^
+
+For more information about this error, try `rustc --explain E0608`.
+error: could not compile `n-side` (lib test) due to 4 previous errors

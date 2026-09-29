@@ -1,0 +1,85 @@
+{
+  "review_type": "self-audit",
+  "method": "Actual view_image inspection of original PNG keyframes and consecutive frames; no video playback or human playtest",
+  "reviewer": "Codex environment_handoff",
+  "keyframes": [
+    119,
+    239
+  ],
+  "consecutive_frames": [
+    [
+      120,
+      121,
+      122,
+      123,
+      124
+    ]
+  ],
+  "images": [
+    {
+      "frame": 119,
+      "path": "output/capture/task049-r2-station-sky/frames/frame00119.png",
+      "bytes": 883978,
+      "sha256": "a38fa72fce66f48163c59627062657fd1304a5a064dae825df38f1d83a5ee5b2"
+    },
+    {
+      "frame": 239,
+      "path": "output/capture/task049-r2-station-sky/frames/frame00239.png",
+      "bytes": 883978,
+      "sha256": "a38fa72fce66f48163c59627062657fd1304a5a064dae825df38f1d83a5ee5b2"
+    },
+    {
+      "frame": 120,
+      "path": "output/capture/task049-r2-station-sky/frames/frame00120.png",
+      "bytes": 883983,
+      "sha256": "6c62c84d9fe3dcff57c8c1ca0aa13a9f4f6cd1db1f19533725578ecbac559b2d"
+    },
+    {
+      "frame": 121,
+      "path": "output/capture/task049-r2-station-sky/frames/frame00121.png",
+      "bytes": 884200,
+      "sha256": "bfffc061889a6af5f7bd499179abf2bdaa0aa8da268b3c3743efdeed8119ac44"
+    },
+    {
+      "frame": 122,
+      "path": "output/capture/task049-r2-station-sky/frames/frame00122.png",
+      "bytes": 883825,
+      "sha256": "262faf49de3b91d19ae1b1f2eee13c3613bc91dd61bf91f7807953dbbbd494bd"
+    },
+    {
+      "frame": 123,
+      "path": "output/capture/task049-r2-station-sky/frames/frame00123.png",
+      "bytes": 883452,
+      "sha256": "41b73db8b5339a3022b7db228e16df932dd7726bdc4b82f7874017d6d7798176"
+    },
+    {
+      "frame": 124,
+      "path": "output/capture/task049-r2-station-sky/frames/frame00124.png",
+      "bytes": 883170,
+      "sha256": "d92aa51d5010ed2c04733d89a4310690f783dd02ceb49403b87b591db97d80b7"
+    }
+  ],
+  "visual_cleanup": "Pending root coordination; no visual files deleted by this reviewer",
+  "raw_records": {
+    "run.json": {
+      "bytes": 14135,
+      "sha256": "940d8d0d8efaa116027abb63a0470275a12674af1bce07986e1e4cf84395ccf5"
+    },
+    "state.json": {
+      "bytes": 263226,
+      "sha256": "913a45b2d414c4fb1d9ce18af0cf49281de8a11074d765249d4e26e36b424bee"
+    },
+    "script.json": {
+      "bytes": 1121,
+      "sha256": "1f533ab098aca9a26253048eb076a16fcabe98ced08ce3b54807c18d526df97c"
+    },
+    "runtime.log": {
+      "bytes": 12019,
+      "sha256": "f48070d8d0ef027fc3a84d353668e774b71bc2623004354b3024d50bf87895b0"
+    },
+    "ffmpeg.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

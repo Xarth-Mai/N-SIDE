@@ -1,0 +1,32 @@
+{
+  "path": "game/assets/environment/signs/station.png",
+  "format": "PNG",
+  "mode": "P",
+  "width": 1200,
+  "height": 256,
+  "bytes": 8747,
+  "color_count": 256,
+  "has_alpha": false,
+  "alpha_min": 255,
+  "alpha_max": 255,
+  "transparent_pixels": 0,
+  "content_bounds": [
+    0,
+    0,
+    1200,
+    256
+  ],
+  "ok": true,
+  "source_sha256": "1b21302a1c6541c29ef75fcaa4f8a4212745a69d1157c08ca455b6a21a117032",
+  "preview": "output/assets/task049-signs-r1/station-contrast.png",
+  "display_box": [
+    450,
+    96
+  ],
+  "fitted_size": [
+    450,
+    96
+  ],
+  "filter": "lanczos",
+  "visual_review": "NOT RUN: inspect the preview and the actual game separately"
+}

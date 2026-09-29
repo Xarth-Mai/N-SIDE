@@ -1,0 +1,9 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) section labels name shared nodes without duplicating their displayed elevation [1.63ms]
+
+ 1 pass
+ 33 filtered out
+ 0 fail
+Ran 1 test across 1 file. [89.00ms]

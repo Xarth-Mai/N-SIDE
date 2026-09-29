@@ -55,6 +55,8 @@ impl PreparedScene {
         let mut parts = geometry::generate(&map)
             .map_err(|e| format!("[geometry] {}: {e}", map_path.display()))?;
         parts.extend(facades(&map, &appearance)?);
+        parts.extend(star_screens(&map)?);
+        parts.extend(business_signs(&map)?);
         for part in &mut parts {
             if appearance
                 .materials
@@ -500,14 +502,114 @@ fn add_box(
     size: Vec3,
     rotation: Quat,
 ) -> Result<(), String> {
-    let mesh = Mesh::from(Cuboid::from_size(size))
-        .transformed_by(Transform::from_translation(position).with_rotation(rotation));
+    let mut mesh = Mesh::from(Cuboid::from_size(size));
+    // Bevy's cuboid maps each face to 0..1; material tiling is defined in metres
+    let normals = mesh
+        .attribute(Mesh::ATTRIBUTE_NORMAL)
+        .unwrap()
+        .as_float3()
+        .unwrap();
+    let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
+        mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+    else {
+        unreachable!("Cuboid UVs are Float32x2")
+    };
+    let uvs: Vec<_> = uvs
+        .iter()
+        .zip(normals)
+        .map(|(uv, normal)| {
+            let scale = if normal[0].abs() > 0.5 {
+                [size.y, size.z]
+            } else if normal[1].abs() > 0.5 {
+                [size.x, size.z]
+            } else {
+                [size.x, size.y]
+            };
+            [uv[0] * scale[0], uv[1] * scale[1]]
+        })
+        .collect();
+    mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, uvs);
+    let mesh = mesh.transformed_by(Transform::from_translation(position).with_rotation(rotation));
     if let Some(batch) = batches.get_mut(role) {
         batch
             .merge(&mesh)
             .map_err(|e| format!("facade mesh merge: {e}"))?;
     } else {
         batches.insert(role.to_string(), mesh);
+    }
+    Ok(())
+}
+
+fn add_shop_canopy(
+    batches: &mut BTreeMap<String, Mesh>,
+    origin: Vec3,
+    width: f32,
+    depth: f32,
+    outward: Vec3,
+) -> Result<(), String> {
+    if depth == 0. {
+        return Ok(());
+    }
+    // Keep the 1.5 m detail proportions; shallow canopies shrink in section
+    let section_scale = (depth / 1.5).min(1.);
+    let design_depth = depth.max(1.5);
+    let along = Vec3::Y.cross(outward);
+    let run = design_depth - 0.08;
+    let slope = outward * run - Vec3::Y * 0.30;
+    let rotation = Quat::from_mat3(&Mat3::from_cols(
+        along,
+        slope.normalize().cross(along),
+        slope.normalize(),
+    ));
+    let center = origin + outward * (depth / 2.) + Vec3::Y * 2.90;
+    add_box(
+        batches,
+        "awning",
+        center,
+        Vec3::new(width, 0.12 * section_scale, slope.length() * section_scale),
+        rotation,
+    )?;
+    for side in [-1., 1.] {
+        add_box(
+            batches,
+            "metal",
+            center + along * side * (width / 2. - 0.025),
+            Vec3::new(0.05, 0.14 * section_scale, slope.length() * section_scale),
+            rotation,
+        )?;
+    }
+    let flat = Quat::from_mat3(&Mat3::from_cols(along, Vec3::Y, outward));
+    add_box(
+        batches,
+        "awning",
+        origin
+            + outward * (depth - 0.04 * section_scale)
+            + Vec3::Y * (2.66 + 0.24 * (1. - section_scale)),
+        Vec3::new(width, 0.20 * section_scale, 0.07 * section_scale),
+        flat,
+    )?;
+    let supports = (width / 3.8).ceil() as usize;
+    for index in 0..=supports {
+        let offset = along * (-width / 2. + 0.25 + (width - 0.5) * index as f32 / supports as f32);
+        let root = origin
+            + offset
+            + outward * (0.07 * section_scale)
+            + Vec3::Y * (2.60 + 0.30 * (1. - section_scale));
+        let diagonal = outward * (design_depth - 0.17) + Vec3::Y * 0.11;
+        add_box(
+            batches,
+            "metal",
+            root + diagonal * (section_scale / 2.),
+            Vec3::new(0.07, 0.07, diagonal.length()) * section_scale,
+            Quat::from_rotation_arc(Vec3::Z, diagonal.normalize()),
+        )?;
+        add_box(
+            batches,
+            "metal",
+            root + Vec3::Y * (0.20 * section_scale),
+            Vec3::new(0.11, 0.46 * section_scale, 0.08 * section_scale),
+            flat,
+        )?;
     }
     Ok(())
 }
@@ -630,6 +732,95 @@ fn window_exposed(
     })
 }
 
+// A small authored batch along the home-to-hill streets; no random facade dressing
+fn residential_sample(id: &str) -> bool {
+    matches!(
+        id,
+        "V-A08" | "V-A09" | "V-A13" | "V-A14" | "V-W08" | "V-13" | "V-A15" | "V-A16"
+    )
+}
+
+fn add_residential_window(
+    batches: &mut BTreeMap<String, Mesh>,
+    origin: Vec3,
+    rotation: Quat,
+    outward: Vec3,
+    width: f32,
+    kind: &str,
+    bay: usize,
+) -> Result<(), String> {
+    let along = rotation * Vec3::X;
+    let mut piece = |material, x, y, depth, size| {
+        add_box(
+            batches,
+            material,
+            origin + along * x + Vec3::Y * y + outward * depth,
+            size,
+            rotation,
+        )
+    };
+    // A projecting sill and drip hood surround the existing upper-storey window
+    piece(
+        "concrete",
+        0.,
+        0.74,
+        0.25,
+        Vec3::new(width + 0.35, 0.10, 0.46),
+    )?;
+    piece(
+        if kind == "slope" { "roof" } else { "metal" },
+        0.,
+        2.59,
+        0.31,
+        Vec3::new(width + 0.40, 0.10, 0.58),
+    )?;
+    if kind == "row" {
+        piece(
+            "wood_siding",
+            0.,
+            0.44,
+            0.06,
+            Vec3::new(width + 0.16, 0.48, 0.08),
+        )?;
+    } else if bay % 2 == 0 {
+        // Window guards, not accessible balconies: the source has no balcony doors
+        let rail_width = width + 0.28;
+        for height in [0.80, 1.32] {
+            piece(
+                "metal",
+                0.,
+                height,
+                0.54,
+                Vec3::new(rail_width, 0.045, 0.045),
+            )?;
+        }
+        let gaps = (rail_width / 0.28).ceil() as usize;
+        for i in 0..=gaps {
+            let x = rail_width * (i as f32 / gaps as f32 - 0.5);
+            piece("metal", x, 1.06, 0.54, Vec3::new(0.035, 0.56, 0.035))?;
+        }
+        for side in [-1., 1.] {
+            piece(
+                "metal",
+                side * rail_width / 2.,
+                1.30,
+                0.32,
+                Vec3::new(0.045, 0.045, 0.46),
+            )?;
+        }
+    } else {
+        // Outdoor condenser below a window, with wall brackets and an exposed grille
+        piece("trim", 0., 0.44, 0.25, Vec3::new(0.84, 0.46, 0.42))?;
+        for y in [0.33, 0.44, 0.55] {
+            piece("metal", 0., y, 0.465, Vec3::new(0.66, 0.035, 0.025))?;
+        }
+        for x in [-0.28, 0.28] {
+            piece("metal", x, 0.18, 0.25, Vec3::new(0.06, 0.06, 0.48))?;
+        }
+    }
+    Ok(())
+}
+
 fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, String> {
     let mut parts = Vec::new();
     let ground = Ground::new(map)?;
@@ -638,6 +829,8 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
             continue;
         };
         let mut batches = BTreeMap::new();
+        let mut skin = BTreeMap::new();
+        let mut residential = BTreeMap::new();
         let top = building.elevation + building.height;
         // Keep deep sills and bands outside the shell of the publicly enterable shop
         let interior_clearance = if building.shop_floor().is_some() {
@@ -680,6 +873,17 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         let p = map.nodes[&e.node];
                         matches!(e.role.as_str(), "public" | "student") && on_edge([p[0], p[1]])
                     });
+                let residential_face = !court
+                    && residential_sample(&building.id)
+                    && design.front.map_or_else(
+                        || {
+                            design.entries.iter().any(|e| {
+                                let p = map.nodes[&e.node];
+                                on_edge([p[0], p[1]])
+                            })
+                        },
+                        |front| front.into_iter().all(on_edge),
+                    );
                 let display = appearance
                     .displays
                     .get(&building.id)
@@ -708,7 +912,9 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         (5.0, 1.4, 0.7, (ceiling - floor.z - 0.7).max(1.7))
                     } else if design.kind == "school" {
                         (3.8, 2.6, 1.6, 1.8)
-                    } else if commercial && matches!(design.kind.as_str(), "station" | "cinema") {
+                    } else if (design.kind == "station" && floor_index == 0)
+                        || (commercial && design.kind == "cinema")
+                    {
                         (
                             4.2,
                             3.1,
@@ -766,6 +972,18 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                                 rotation,
                                 true,
                             )?;
+                            // Timber skirt stays outside the authored wall and below the display
+                            add_box(
+                                &mut batches,
+                                "wood_siding",
+                                map_to_world([
+                                    p[0] + normal[0] * 0.07,
+                                    p[1] + normal[1] * 0.07,
+                                    floor.z + 0.42,
+                                ]),
+                                Vec3::new(width + 0.16, 0.64, 0.10),
+                                rotation,
+                            )?;
                             // Shallow display boxes keep the original building envelope intact
                             add_sign(&mut batches, material, map_to_world(p), width, 1.67, normal)?;
                             add_box(
@@ -804,6 +1022,99 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             Vec3::new(width, height, 0.025),
                             rotation,
                         )?;
+                        if residential_face
+                            && floor_index > 0
+                            && window_exposed(
+                                map,
+                                &ground,
+                                building,
+                                [
+                                    a[0] + dx * t + normal[0] * 0.4,
+                                    a[1] + dy * t + normal[1] * 0.4,
+                                    floor.z + 1.4,
+                                ],
+                                f64::from(width) / 2.0 + 0.25,
+                                floor.z - 2.5,
+                                normal,
+                            )
+                        {
+                            add_residential_window(
+                                &mut residential,
+                                map_to_world([a[0] + dx * t, a[1] + dy * t, floor.z]),
+                                rotation,
+                                map_to_world([normal[0], normal[1], 0.]),
+                                width,
+                                &design.kind,
+                                i,
+                            )?;
+                        }
+                    }
+                    if !court && matches!(design.kind.as_str(), "station" | "music") {
+                        let at = |t: f64, outward: f64, z: f64| {
+                            map_to_world([
+                                a[0] + dx * t + normal[0] * outward,
+                                a[1] + dy * t + normal[1] * outward,
+                                z,
+                            ])
+                        };
+                        if design.kind == "station" {
+                            // Piers share the window grid; doorway bays remain unobstructed
+                            for i in 1..n {
+                                let t = i as f64 / n as f64;
+                                if design.entries.iter().any(|entry| {
+                                    let p = map.nodes[&entry.node];
+                                    on_edge([p[0], p[1]])
+                                        && (p[2] - floor.z).abs() < 0.3
+                                        && (p[0] - a[0] - dx * t).hypot(p[1] - a[1] - dy * t)
+                                            < f64::from(entry_opening(&design.kind, &entry.role).x)
+                                                / 2.0
+                                                + 0.35
+                                }) {
+                                    continue;
+                                }
+                                add_box(
+                                    &mut skin,
+                                    "concrete",
+                                    at(t, 0.10, (floor.z + ceiling - 0.25) / 2.0),
+                                    Vec3::new(0.32, (ceiling - floor.z - 0.25) as f32, 0.24),
+                                    rotation,
+                                )?;
+                            }
+                            add_box(
+                                &mut skin,
+                                "metal",
+                                at(0.5, 0.06, ceiling - 0.22),
+                                Vec3::new((length - 0.32) as f32, 0.24, 0.16),
+                                rotation,
+                            )?;
+                        } else {
+                            // Rainscreen panels fill opaque auditorium walls below clerestories
+                            let bottom = floor.z + if floor_index == 0 { 3.0 } else { 0.35 };
+                            let upper = ceiling - 1.2;
+                            if upper - bottom >= 0.25 {
+                                add_box(
+                                    &mut skin,
+                                    "metal",
+                                    at(0.5, 0.06, (bottom + upper) / 2.0),
+                                    Vec3::new(
+                                        (length - 0.32) as f32,
+                                        (upper - bottom) as f32,
+                                        0.10,
+                                    ),
+                                    rotation,
+                                )?;
+                                let panels = (length / 2.4).ceil() as usize;
+                                for i in 1..panels {
+                                    add_box(
+                                        &mut skin,
+                                        "trim",
+                                        at(i as f64 / panels as f64, 0.115, (bottom + upper) / 2.0),
+                                        Vec3::new(0.065, (upper - bottom) as f32, 0.03),
+                                        rotation,
+                                    )?;
+                                }
+                            }
+                        }
                     }
                     if floor_index > 0 {
                         let p = [
@@ -1006,32 +1317,47 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                 normal = [-normal[0], -normal[1]];
             }
             if let Some(depth) = design.canopy {
-                add_box(
-                    &mut batches,
-                    "awning",
-                    map_to_world([
-                        mid[0] + normal[0] * depth / 2.0,
-                        mid[1] + normal[1] * depth / 2.0,
-                        building.elevation + 3.0,
-                    ]),
-                    Vec3::new(len as f32, 0.16, depth as f32),
-                    rotation,
-                )?;
+                if appearance.shopfronts.contains_key(&building.id) {
+                    add_shop_canopy(
+                        &mut batches,
+                        map_to_world([mid[0], mid[1], building.elevation]),
+                        len as f32,
+                        depth as f32,
+                        map_to_world([normal[0], normal[1], 0.]),
+                    )?;
+                } else {
+                    add_box(
+                        &mut batches,
+                        "awning",
+                        map_to_world([
+                            mid[0] + normal[0] * depth / 2.0,
+                            mid[1] + normal[1] * depth / 2.0,
+                            building.elevation + 3.0,
+                        ]),
+                        Vec3::new(len as f32, 0.16, depth as f32),
+                        rotation,
+                    )?;
+                }
             }
             if let Some(role) = appearance.shopfronts.get(&building.id) {
+                let sign_width = (len * 0.65).min(9.0) as f32;
+                add_box(
+                    &mut batches,
+                    "trim",
+                    map_to_world([
+                        mid[0] + normal[0] * 0.14,
+                        mid[1] + normal[1] * 0.14,
+                        building.elevation + 3.55,
+                    ]),
+                    Vec3::new(sign_width + 0.20, 1.02, 0.18),
+                    rotation,
+                )?;
                 let p = [
                     mid[0] + normal[0] * 0.24,
                     mid[1] + normal[1] * 0.24,
                     building.elevation + 3.55,
                 ];
-                add_sign(
-                    &mut batches,
-                    role,
-                    map_to_world(p),
-                    (len * 0.65).min(9.0) as f32,
-                    0.9,
-                    normal,
-                )?;
+                add_sign(&mut batches, role, map_to_world(p), sign_width, 0.9, normal)?;
                 // Original small street-life details stay alongside, clear of the source doorway
                 for p in planter_positions(map, building) {
                     add_box(
@@ -1056,12 +1382,18 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                 )?;
             }
         }
-        for (material, mesh) in batches {
-            parts.push(GeometryPart {
-                source: format!("buildings[{}]/derived-facade", building.id),
-                material,
-                mesh,
-            });
+        for (suffix, batches) in [
+            ("derived-facade", batches),
+            ("derived-facade/skin", skin),
+            ("derived-facade/residential", residential),
+        ] {
+            for (material, mesh) in batches {
+                parts.push(GeometryPart {
+                    source: format!("buildings[{}]/{suffix}", building.id),
+                    material,
+                    mesh,
+                });
+            }
         }
     }
     Ok(parts)
@@ -1081,6 +1413,162 @@ fn contains(p: [f64; 2], polygon: &[[f64; 2]]) -> bool {
         }
     }
     inside
+}
+
+fn business_signs(map: &Map) -> Result<Vec<GeometryPart>, String> {
+    let mut parts = Vec::new();
+    // These five names belong above the real arrival doors, not the generic shop fascia
+    for (id, entry, material, width, height, rise) in [
+        ("V-01", "station_entry", "sign_station", 7.5, 1.6, 5.65),
+        ("V-35", "game_entry", "sign_byte_beat", 6.0, 1.5, 4.0),
+        ("V-36", "models_entry", "sign_frame", 6.0, 1.5, 4.0),
+        ("V-39", "st_39_door", "sign_playroom", 6.0, 1.5, 4.0),
+        ("V-79", "live_entry", "sign_after9", 8.0, 2.5, 4.4),
+    ] {
+        let building = map
+            .buildings
+            .iter()
+            .find(|b| b.id == id)
+            .ok_or_else(|| format!("[geometry/sign] {id}: missing source building"))?;
+        let p = map
+            .nodes
+            .get(entry)
+            .ok_or_else(|| format!("[geometry/sign] {id}: missing entry {entry}"))?;
+        if !building.design.as_ref().is_some_and(|d| {
+            d.entries
+                .iter()
+                .any(|e| e.node == entry && e.role == "public")
+        }) {
+            return Err(format!(
+                "[geometry/sign] {id}:{entry}: not this building's public entry"
+            ));
+        }
+        let (a, b) = building
+            .polygon
+            .iter()
+            .zip(building.polygon.iter().cycle().skip(1))
+            .take(building.polygon.len())
+            .find(|(a, b)| {
+                let d = Vec2::new((b[0] - a[0]) as f32, (b[1] - a[1]) as f32);
+                let offset = Vec2::new((p[0] - a[0]) as f32, (p[1] - a[1]) as f32);
+                let along = offset.dot(d.normalize());
+                offset.perp_dot(d).abs() / d.length() < 0.02
+                    && along > width / 2.0 + 0.1
+                    && along < d.length() - width / 2.0 - 0.1
+            })
+            .ok_or_else(|| format!("[geometry/sign] {id}:{entry}: no source wall wide enough"))?;
+        let length = (b[0] - a[0]).hypot(b[1] - a[1]);
+        let mut normal = [(b[1] - a[1]) / length, -(b[0] - a[0]) / length];
+        if contains(
+            [p[0] + normal[0] * 0.1, p[1] + normal[1] * 0.1],
+            &building.polygon,
+        ) {
+            normal = [-normal[0], -normal[1]];
+        }
+        let outward = map_to_world([normal[0], normal[1], 0.]);
+        let rotation = Quat::from_mat3(&Mat3::from_cols(Vec3::Y.cross(outward), Vec3::Y, outward));
+        let center = map_to_world(*p) + Vec3::Y * rise;
+        let mut batches = BTreeMap::new();
+        add_box(
+            &mut batches,
+            "trim",
+            center + outward * 0.24,
+            Vec3::new(width + 0.16, height + 0.16, 0.24),
+            rotation,
+        )?;
+        add_sign(
+            &mut batches,
+            material,
+            center + outward * 0.365,
+            width,
+            height,
+            normal,
+        )?;
+        for (material, mesh) in batches {
+            parts.push(GeometryPart {
+                source: format!("buildings[{id}]/derived-facade/name-sign"),
+                material,
+                mesh,
+            });
+        }
+    }
+    Ok(parts)
+}
+
+fn star_screens(map: &Map) -> Result<Vec<GeometryPart>, String> {
+    let mut parts = Vec::new();
+    for building in &map.buildings {
+        // Public station / music venue roofs face their northern arrival courts
+        let width = match building.id.as_str() {
+            "V-01" => 10.0,
+            "V-79" => 8.0,
+            _ => continue,
+        };
+        let height = width * 9.0 / 16.0;
+        let west = building
+            .polygon
+            .iter()
+            .map(|p| p[0])
+            .fold(f64::INFINITY, f64::min);
+        let east = building
+            .polygon
+            .iter()
+            .map(|p| p[0])
+            .fold(f64::NEG_INFINITY, f64::max);
+        let north = building
+            .polygon
+            .iter()
+            .map(|p| p[1])
+            .fold(f64::NEG_INFINITY, f64::max);
+        let roof = (building.elevation + building.height) as f32;
+        let center = map_to_world([(west + east) / 2., north - 1., roof as f64])
+            + Vec3::Y * (0.9 + height / 2.);
+        let mut batches = BTreeMap::new();
+        // The solid back box gives a visible bezel while the image is a one-sided front
+        add_box(
+            &mut batches,
+            "trim",
+            center,
+            Vec3::new(width + 0.32, height + 0.32, 0.30),
+            Quat::IDENTITY,
+        )?;
+        add_sign(
+            &mut batches,
+            "poster_anke",
+            center + Vec3::NEG_Z * 0.155,
+            width,
+            height,
+            [0., 1.],
+        )?;
+        for side in [-1., 1.] {
+            let foot = Vec3::new(center.x + side * width * 0.32, roof, center.z + 0.55);
+            add_box(
+                &mut batches,
+                "metal",
+                foot + Vec3::Y * 0.06,
+                Vec3::new(0.65, 0.12, 1.4),
+                Quat::IDENTITY,
+            )?;
+            let top = Vec3::new(foot.x, center.y + height * 0.3, center.z + 0.22);
+            let root = foot + Vec3::Y * 0.14;
+            let diagonal = top - root;
+            add_box(
+                &mut batches,
+                "metal",
+                (top + root) / 2.,
+                Vec3::new(0.20, 0.20, diagonal.length()),
+                Quat::from_rotation_arc(Vec3::Z, diagonal.normalize()),
+            )?;
+        }
+        for (material, mesh) in batches {
+            parts.push(GeometryPart {
+                source: format!("buildings[{}]/star-screen", building.id),
+                material,
+                mesh,
+            });
+        }
+    }
+    Ok(parts)
 }
 
 fn planter_positions(map: &Map, building: &Building) -> Vec<[f64; 3]> {
@@ -1410,6 +1898,285 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
 mod tests {
     use super::*;
 
+    #[test]
+    fn business_signs_keep_source_aspect_arrival_direction_and_openings() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let signs = business_signs(&map).unwrap();
+        let facades = facades(&map, &appearance).unwrap();
+        let bounds = |vertices: &[[f32; 3]]| {
+            vertices.iter().fold(
+                (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
+            )
+        };
+        let overlaps = |a: (Vec3, Vec3), b: (Vec3, Vec3)| {
+            (a.1.min(b.1) - a.0.max(b.0))
+                .cmpgt(Vec3::splat(0.001))
+                .all()
+        };
+        assert_eq!(signs.len(), 10);
+        for (id, entry, normal) in [
+            ("V-01", "station_entry", Vec3::X),
+            ("V-35", "game_entry", Vec3::NEG_Z),
+            ("V-36", "models_entry", Vec3::NEG_Z),
+            ("V-39", "st_39_door", Vec3::NEG_Z),
+            ("V-79", "live_entry", Vec3::NEG_Z),
+        ] {
+            let building = map.buildings.iter().find(|b| b.id == id).unwrap();
+            let source = format!("buildings[{id}]/derived-facade/name-sign");
+            let image = signs
+                .iter()
+                .find(|p| p.source == source && p.material.starts_with("sign_"))
+                .unwrap();
+            let frame = signs
+                .iter()
+                .find(|p| p.source == source && p.material == "trim")
+                .unwrap();
+            let positions = image
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            let normals = image
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_NORMAL)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            assert!(
+                normals
+                    .iter()
+                    .all(|n| Vec3::from(*n).distance(normal) < 0.001)
+            );
+            let [a, b, c, _]: [Vec3; 4] = positions
+                .iter()
+                .copied()
+                .map(Vec3::from)
+                .collect::<Vec<_>>()
+                .try_into()
+                .unwrap();
+            assert!(
+                (b - a).cross(c - a).normalize().distance(normal) < 0.001,
+                "{id}: winding"
+            );
+            let material = &appearance.materials[&image.material];
+            assert_eq!(material.tile_meters, [1., 1.]);
+            let path = root
+                .join("game/assets")
+                .join(material.color_texture.as_ref().unwrap());
+            let png = std::fs::read(path).unwrap();
+            assert_eq!(&png[..8], b"\x89PNG\r\n\x1a\n");
+            let w = u32::from_be_bytes(png[16..20].try_into().unwrap()) as f32;
+            let h = u32::from_be_bytes(png[20..24].try_into().unwrap()) as f32;
+            assert!(
+                ((b - a).length() / (c - b).length() - w / h).abs() < 0.001,
+                "{id}: stretched source graphic"
+            );
+            let door = map_to_world(map.nodes[entry]);
+            let (lo, hi) = bounds(positions);
+            let center = (lo + hi) / 2.0;
+            assert!((center - door - normal * 0.365).xz().length() < 0.001);
+            let frame_bounds = bounds(
+                frame
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap(),
+            );
+            assert!(
+                frame_bounds.0.y > door.y + 2.8
+                    && frame_bounds.1.y < (building.elevation + building.height) as f32
+            );
+            for part in facades.iter().filter(|p| {
+                p.source == format!("buildings[{id}]/derived-facade")
+                    && matches!(p.material.as_str(), "glass" | "awning")
+            }) {
+                for cube in part
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap()
+                    .chunks_exact(24)
+                {
+                    assert!(
+                        !overlaps(frame_bounds, bounds(cube)),
+                        "{id}: sign blocks source window or canopy"
+                    );
+                }
+            }
+        }
+        assert_eq!(
+            super::super::collision::CollisionWorld::from_parts(&signs)
+                .unwrap()
+                .triangle_count(),
+            70
+        );
+        let mut detached = map.clone();
+        detached.nodes.get_mut("station_entry").unwrap()[0] += 1.0;
+        assert!(
+            business_signs(&detached)
+                .err()
+                .unwrap()
+                .contains("no source wall wide enough")
+        );
+    }
+
+    #[test]
+    fn star_screens_have_correct_public_facing_and_roof_supports() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(&root.join("source-assets/district-map/district.json")).unwrap();
+        let parts = star_screens(&map).unwrap();
+        assert_eq!(
+            parts
+                .iter()
+                .filter(|part| part.material == "poster_anke")
+                .count(),
+            2
+        );
+        for id in ["V-01", "V-79"] {
+            let building = map
+                .buildings
+                .iter()
+                .find(|building| building.id == id)
+                .unwrap();
+            let roof = (building.elevation + building.height) as f32;
+            let source = format!("buildings[{id}]/star-screen");
+            let mut supported = false;
+            for part in parts.iter().filter(|part| part.source == source) {
+                let vertices = part
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap();
+                for &position in vertices {
+                    assert!(
+                        position[1] >= roof - 0.001,
+                        "{id}: below the roof / obscures facade"
+                    );
+                    assert!(
+                        contains([position[0] as f64, -position[2] as f64], &building.polygon),
+                        "{id}: outside roof footprint"
+                    );
+                    supported |= (position[1] - roof).abs() < 0.001;
+                }
+                if part.material == "poster_anke" {
+                    assert_eq!(vertices.len(), 4);
+                    let a = Vec3::from(vertices[0]);
+                    let b = Vec3::from(vertices[1]);
+                    let c = Vec3::from(vertices[2]);
+                    assert!(
+                        (b - a).cross(c - a).normalize().dot(Vec3::NEG_Z) > 0.999,
+                        "{id}: poster back faces public north court"
+                    );
+                    assert!(((b - a).length() / (c - b).length() - 16. / 9.).abs() < 0.001);
+                }
+            }
+            assert!(supported, "{id}: screen must be anchored to source roof");
+        }
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let poster = &appearance.materials["poster_anke"];
+        assert!(poster.unlit);
+        assert!(
+            root.join("game/assets")
+                .join(poster.color_texture.as_ref().unwrap())
+                .is_file()
+        );
+    }
+
+    #[test]
+    fn shop_canopies_keep_slope_depth_headroom_and_metre_uvs() {
+        let mut empty = BTreeMap::new();
+        add_shop_canopy(&mut empty, Vec3::ZERO, 20., 0., Vec3::X).unwrap();
+        assert!(
+            empty.is_empty(),
+            "zero canopy depth must not generate fixtures"
+        );
+        for outward in [Vec3::X, Vec3::NEG_X, Vec3::Z, Vec3::NEG_Z] {
+            for depth in [0.0001, 0.01, 0.08, 0.2, 0.9, 1.5, 3.0] {
+                let mut batches = BTreeMap::new();
+                add_shop_canopy(&mut batches, Vec3::ZERO, 20., depth, outward).unwrap();
+                let parts: Vec<_> = batches
+                    .into_iter()
+                    .map(|(material, mesh)| GeometryPart {
+                        source: "buildings[test]/derived-facade".into(),
+                        material,
+                        mesh,
+                    })
+                    .collect();
+                let mut sloped_face = false;
+                for part in &parts {
+                    let positions = part
+                        .mesh
+                        .attribute(Mesh::ATTRIBUTE_POSITION)
+                        .unwrap()
+                        .as_float3()
+                        .unwrap();
+                    let normals = part
+                        .mesh
+                        .attribute(Mesh::ATTRIBUTE_NORMAL)
+                        .unwrap()
+                        .as_float3()
+                        .unwrap();
+                    let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
+                        part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+                    else {
+                        panic!("UVs unavailable")
+                    };
+                    assert!(normals.iter().flatten().all(|value| value.is_finite()));
+                    assert!(
+                        uvs.iter()
+                            .flatten()
+                            .all(|value| value.is_finite() && *value >= 0.)
+                    );
+                    for position in positions {
+                        let p = Vec3::from(*position);
+                        let tolerance = (depth * 0.00001).max(0.0000001);
+                        assert!(
+                            (-tolerance..=depth + tolerance).contains(&p.dot(outward)),
+                            "outside source canopy depth {depth}: {p:?}"
+                        );
+                        assert!(p.y >= 2.5 && p.y <= 3.2, "canopy must keep headroom: {p:?}");
+                        assert!(p.dot(Vec3::Y.cross(outward)).abs() <= 10.001);
+                    }
+                    if part.material == "awning" {
+                        sloped_face |= normals
+                            .iter()
+                            .map(|n| Vec3::from(*n))
+                            .any(|n| n.y > 0.9 && n.dot(outward) > 0.1);
+                    }
+                    for (face, uv) in positions.chunks_exact(4).zip(uvs.chunks_exact(4)) {
+                        for i in 0..4 {
+                            let j = (i + 1) % 4;
+                            let metres = Vec3::from(face[i]).distance(Vec3::from(face[j]));
+                            let uv_metres = Vec2::from(uv[i]).distance(Vec2::from(uv[j]));
+                            assert!(
+                                (metres - uv_metres).abs() < 0.0001,
+                                "UV edge {uv_metres} differs from geometry edge {metres}"
+                            );
+                        }
+                    }
+                }
+                assert!(sloped_face, "canopy roof must fall toward its street edge");
+                let collision =
+                    super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
+                assert!(
+                    collision
+                        .capsule_cast(outward * 3., 1.7, 0.3, outward * -3., 0.02)
+                        .is_none(),
+                    "fixtures block the route under the canopy"
+                );
+            }
+        }
+    }
+
     fn lifecycle_scene() -> PreparedScene {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
@@ -1733,6 +2500,289 @@ mod tests {
         assert!(
             leaks.is_empty(),
             "facade boxes project behind the shell into the public rooms"
+        );
+    }
+
+    #[test]
+    fn public_building_skins_stay_attached_and_clear_of_windows_and_entries() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let parts = facades(&map, &appearance).unwrap();
+        let bounds = |vertices: &[[f32; 3]]| {
+            vertices.iter().fold(
+                (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
+            )
+        };
+        let overlaps = |a: (Vec3, Vec3), b: (Vec3, Vec3)| {
+            (a.1.min(b.1) - a.0.max(b.0))
+                .cmpgt(Vec3::splat(0.001))
+                .all()
+        };
+        let mut covered = BTreeSet::new();
+        let mut boxes = 0;
+        for building in &map.buildings {
+            let source = format!("buildings[{}]/derived-facade/skin", building.id);
+            let skins: Vec<_> = parts.iter().filter(|part| part.source == source).collect();
+            if skins.is_empty() {
+                continue;
+            }
+            covered.insert(building.id.as_str());
+            let design = building.design.as_ref().unwrap();
+            let glass: Vec<_> = parts
+                .iter()
+                .filter(|part| {
+                    part.source == format!("buildings[{}]/derived-facade", building.id)
+                        && part.material == "glass"
+                })
+                .flat_map(|part| {
+                    part.mesh
+                        .attribute(Mesh::ATTRIBUTE_POSITION)
+                        .unwrap()
+                        .as_float3()
+                        .unwrap()
+                        .chunks_exact(24)
+                        .map(bounds)
+                })
+                .collect();
+            for part in skins {
+                let vertices = part
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap();
+                assert!(vertices.iter().flatten().all(|v| v.is_finite()));
+                let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
+                    part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+                else {
+                    panic!("missing UVs")
+                };
+                assert!(uvs.iter().flatten().all(|v| v.is_finite() && *v >= 0.0));
+                assert_eq!(vertices.len() % 24, 0);
+                for cube in vertices.chunks_exact(24) {
+                    boxes += 1;
+                    let (lo, hi) = bounds(cube);
+                    assert!(
+                        (hi - lo).cmpgt(Vec3::ZERO).all(),
+                        "{source}: degenerate box"
+                    );
+                    assert!(lo.y >= building.elevation as f32 - 0.001);
+                    assert!(hi.y <= (building.elevation + building.height) as f32 + 0.001);
+                    let attached = building
+                        .polygon
+                        .iter()
+                        .zip(building.polygon.iter().cycle().skip(1))
+                        .take(building.polygon.len())
+                        .any(|(a, b)| {
+                            let a = Vec2::new(a[0] as f32, -a[1] as f32);
+                            let b = Vec2::new(b[0] as f32, -b[1] as f32);
+                            let tangent = (b - a).normalize();
+                            let normal = Vec2::new(-tangent.y, tangent.x);
+                            cube.iter().all(|p| {
+                                let offset = Vec2::new(p[0], p[2]) - a;
+                                offset.dot(normal).abs() <= 0.25
+                                    && offset.dot(tangent) >= -0.001
+                                    && offset.dot(tangent) <= (b - a).length() + 0.001
+                            })
+                        });
+                    assert!(attached, "{source}: panel disconnected from source wall");
+                    assert!(
+                        glass.iter().all(|window| !overlaps((lo, hi), *window)),
+                        "{source}: skin overlaps a window"
+                    );
+                    for entry in &design.entries {
+                        let door = map_to_world(map.nodes[&entry.node]);
+                        let opening = entry_opening(&design.kind, &entry.role);
+                        let edge = building
+                            .polygon
+                            .iter()
+                            .zip(building.polygon.iter().cycle().skip(1))
+                            .take(building.polygon.len())
+                            .find(|(a, b)| {
+                                let a = Vec2::new(a[0] as f32, -a[1] as f32);
+                                let b = Vec2::new(b[0] as f32, -b[1] as f32);
+                                ((Vec2::new(door.x, door.z) - a).perp_dot(b - a)).abs() < 0.01
+                            })
+                            .unwrap();
+                        let along_x = (edge.1[0] - edge.0[0]).abs() > 0.01;
+                        let half = if along_x {
+                            Vec3::new(opening.x / 2.0 + 0.1, 0.0, 0.4)
+                        } else {
+                            Vec3::new(0.4, 0.0, opening.x / 2.0 + 0.1)
+                        };
+                        assert!(
+                            !overlaps(
+                                (lo, hi),
+                                (door - half, door + half + Vec3::Y * (opening.y + 0.1))
+                            ),
+                            "{source}: blocks entry {}",
+                            entry.node
+                        );
+                    }
+                }
+            }
+        }
+        assert_eq!(covered, BTreeSet::from(["V-01", "V-32", "V-78", "V-79"]));
+        let skins: Vec<_> = parts
+            .into_iter()
+            .filter(|part| part.source.ends_with("/derived-facade/skin"))
+            .collect();
+        let collision = super::super::collision::CollisionWorld::from_parts(&skins).unwrap();
+        assert_eq!(collision.triangle_count(), boxes * 12);
+        eprintln!(
+            "public facade skins: {} buildings, {boxes} attached boxes, {} collision triangles",
+            covered.len(),
+            collision.triangle_count()
+        );
+    }
+
+    #[test]
+    fn residential_details_keep_headroom_entries_shells_and_collision() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let parts = facades(&map, &appearance).unwrap();
+        let bounds = |vertices: &[[f32; 3]]| {
+            vertices.iter().fold(
+                (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
+            )
+        };
+        let overlap = |a: (Vec3, Vec3), b: (Vec3, Vec3)| {
+            (a.1.min(b.1) - a.0.max(b.0))
+                .cmpgt(Vec3::splat(0.001))
+                .all()
+        };
+        let mut covered = BTreeSet::new();
+        let mut boxes = 0;
+        for building in &map.buildings {
+            let source = format!("buildings[{}]/derived-facade/residential", building.id);
+            let details: Vec<_> = parts.iter().filter(|p| p.source == source).collect();
+            if details.is_empty() {
+                continue;
+            }
+            assert!(residential_sample(&building.id));
+            covered.insert(building.id.as_str());
+            let design = building.design.as_ref().unwrap();
+            let glass: Vec<_> = parts
+                .iter()
+                .filter(|p| {
+                    p.source == format!("buildings[{}]/derived-facade", building.id)
+                        && p.material == "glass"
+                })
+                .flat_map(|p| {
+                    p.mesh
+                        .attribute(Mesh::ATTRIBUTE_POSITION)
+                        .unwrap()
+                        .as_float3()
+                        .unwrap()
+                        .chunks_exact(24)
+                        .map(bounds)
+                })
+                .collect();
+            for part in details {
+                let vertices = part
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap();
+                assert!(vertices.iter().flatten().all(|p| p.is_finite()));
+                let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
+                    part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+                else {
+                    panic!("missing UVs")
+                };
+                assert!(uvs.iter().flatten().all(|v| v.is_finite() && *v >= 0.));
+                assert_eq!(vertices.len() % 24, 0);
+                for cube in vertices.chunks_exact(24) {
+                    boxes += 1;
+                    let (lo, hi) = bounds(cube);
+                    assert!((hi - lo).cmpgt(Vec3::ZERO).all(), "{source}: zero volume");
+                    assert!(
+                        hi.y < (building.elevation + building.height) as f32,
+                        "{source}: roof intrusion"
+                    );
+                    for vertex in cube {
+                        let p = [f64::from(vertex[0]), -f64::from(vertex[2])];
+                        assert!(
+                            !contains(p, &building.polygon),
+                            "{source}: inside authored shell"
+                        );
+                        assert!(
+                            f64::from(lo.y) - ground.height(p) >= 2.5,
+                            "{source}: headroom under 2.5m"
+                        );
+                        assert!(
+                            !map.buildings.iter().any(|other| other.id != building.id
+                                && contains(p, &other.polygon)
+                                && hi.y > other.elevation as f32
+                                && lo.y < (other.elevation + other.height) as f32),
+                            "{source}: neighbour intersection"
+                        );
+                    }
+                    let attached = building
+                        .polygon
+                        .iter()
+                        .zip(building.polygon.iter().cycle().skip(1))
+                        .take(building.polygon.len())
+                        .any(|(a, b)| {
+                            let a = Vec2::new(a[0] as f32, -a[1] as f32);
+                            let b = Vec2::new(b[0] as f32, -b[1] as f32);
+                            let tangent = (b - a).normalize();
+                            let normal = Vec2::new(-tangent.y, tangent.x);
+                            cube.iter().all(|p| {
+                                let offset = Vec2::new(p[0], p[2]) - a;
+                                offset.dot(normal).abs() < 0.61
+                                    && offset.dot(tangent) >= 0.
+                                    && offset.dot(tangent) <= (b - a).length()
+                            })
+                        });
+                    assert!(attached, "{source}: outside 0.60m facade strip");
+                    assert!(
+                        glass.iter().all(|pane| !overlap((lo, hi), *pane)),
+                        "{source}: blocked window"
+                    );
+                    for entry in &design.entries {
+                        let p = map_to_world(map.nodes[&entry.node]);
+                        let opening = entry_opening(&design.kind, &entry.role);
+                        let radius = opening.x / 2. + 0.2;
+                        assert!(
+                            !overlap(
+                                (lo, hi),
+                                (
+                                    p - Vec3::new(radius, 0., radius),
+                                    p + Vec3::new(radius, opening.y + 0.1, radius)
+                                )
+                            ),
+                            "{source}: blocked entry {}",
+                            entry.node
+                        );
+                    }
+                }
+            }
+        }
+        assert_eq!(
+            covered,
+            BTreeSet::from([
+                "V-A08", "V-A09", "V-A13", "V-A14", "V-W08", "V-13", "V-A15", "V-A16"
+            ])
+        );
+        let residential: Vec<_> = parts
+            .into_iter()
+            .filter(|p| p.source.ends_with("/derived-facade/residential"))
+            .collect();
+        let collision = super::super::collision::CollisionWorld::from_parts(&residential).unwrap();
+        assert_eq!(collision.triangle_count(), boxes * 12);
+        eprintln!(
+            "residential facades: {} buildings, {boxes} boxes, {} collision triangles",
+            covered.len(),
+            collision.triangle_count()
         );
     }
 

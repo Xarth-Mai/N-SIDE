@@ -1,0 +1,12 @@
+{
+  "count": 922,
+  "bytes": 818992939,
+  "roots": [
+    "output/capture/task048-r1-station",
+    "output/capture/task048-r2-station",
+    "output/capture/task048-r2-live"
+  ],
+  "reason": "Source images and real frames inspected, runtime-review.md and capture-runs.json retained; no renderer/encoder process remains",
+  "retained": "source assets, runtime poster, rejected source history, logs, state.json, run.json",
+  "remaining_visual_files": 0
+}

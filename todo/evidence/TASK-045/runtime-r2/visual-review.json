@@ -1,0 +1,136 @@
+{
+  "review_type": "self-audit",
+  "method": "Actual view_image inspection of original PNG keyframes and consecutive frames; no video playback or human playtest",
+  "reviewer": "Codex environment_handoff",
+  "keyframes": [
+    125,
+    199,
+    330,
+    445
+  ],
+  "consecutive_frames": [
+    [
+      136,
+      137,
+      138,
+      139,
+      140
+    ],
+    [
+      315,
+      316,
+      317,
+      318,
+      319
+    ]
+  ],
+  "images": [
+    {
+      "frame": 125,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00125.png",
+      "bytes": 880302,
+      "sha256": "7b67c3859d5ba2a86399166d508843660a7df6e0ccad69ffab2f8178d0d1819a"
+    },
+    {
+      "frame": 199,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00199.png",
+      "bytes": 943607,
+      "sha256": "744cd1c82badb8bd4639d7637d1dcf21136c9876ccd42f9dae70928f8620f1c1"
+    },
+    {
+      "frame": 330,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00330.png",
+      "bytes": 934269,
+      "sha256": "9490a0f8359502d9a569c63ef0d90cb3aaa1dffc687cd8452fc2a747b3bf9cd5"
+    },
+    {
+      "frame": 445,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00445.png",
+      "bytes": 880581,
+      "sha256": "eb938ae7b79bc3ac029d6f819164d4be4a56febbd71ead30ad8ac1fdea7aec21"
+    },
+    {
+      "frame": 136,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00136.png",
+      "bytes": 891500,
+      "sha256": "8ee1c7bfad020c206f333eb2d29342bdf167c9b28c0973180206f18730f236e7"
+    },
+    {
+      "frame": 137,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00137.png",
+      "bytes": 897706,
+      "sha256": "48508d2eea88f3a40f5f309f753c2fb4c1d3ab4c91b3f5f5ad88a5b49a20575e"
+    },
+    {
+      "frame": 138,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00138.png",
+      "bytes": 901725,
+      "sha256": "d7660d10799755472e5d9ef394f33fdada141d42859c1521a1b32ecb5f079545"
+    },
+    {
+      "frame": 139,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00139.png",
+      "bytes": 905465,
+      "sha256": "466d9666186d684937b93e9dc7c03e0c0ef24b031cd2c1ac3cd36ade5eb84150"
+    },
+    {
+      "frame": 140,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00140.png",
+      "bytes": 909261,
+      "sha256": "839f33b4ac8c344aa741c7eeda2b77f057c5c1142ce3c290e5cbca5fb0441187"
+    },
+    {
+      "frame": 315,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00315.png",
+      "bytes": 934269,
+      "sha256": "9490a0f8359502d9a569c63ef0d90cb3aaa1dffc687cd8452fc2a747b3bf9cd5"
+    },
+    {
+      "frame": 316,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00316.png",
+      "bytes": 934271,
+      "sha256": "b7aaa592d73bf777e6500c41495605a67b6ac8c25f305d984044fb4749ba6a3e"
+    },
+    {
+      "frame": 317,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00317.png",
+      "bytes": 934269,
+      "sha256": "9490a0f8359502d9a569c63ef0d90cb3aaa1dffc687cd8452fc2a747b3bf9cd5"
+    },
+    {
+      "frame": 318,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00318.png",
+      "bytes": 934271,
+      "sha256": "b7aaa592d73bf777e6500c41495605a67b6ac8c25f305d984044fb4749ba6a3e"
+    },
+    {
+      "frame": 319,
+      "path": "output/capture/task045-r2-sky-tree-shop/frames/frame00319.png",
+      "bytes": 934269,
+      "sha256": "9490a0f8359502d9a569c63ef0d90cb3aaa1dffc687cd8452fc2a747b3bf9cd5"
+    }
+  ],
+  "visual_cleanup": "Pending root coordination; no visual files deleted by this reviewer",
+  "raw_records": {
+    "run.json": {
+      "bytes": 22069,
+      "sha256": "8f96bf0d3bd5bd772745470a82415d9b0fdd7dde23e97fa50fa45a444824dca1"
+    },
+    "state.json": {
+      "bytes": 953769,
+      "sha256": "c88d5d700bf6c71d52151070b00de3506cb0842615ad180fb43ca72a61e09565"
+    },
+    "script.json": {
+      "bytes": 2302,
+      "sha256": "057d3f4870916d2651be013a62a6097d1167dabd4e1fc3f64e6adbf5d4925ab6"
+    },
+    "runtime.log": {
+      "bytes": 12958,
+      "sha256": "f00d9f607d93aaae7de791c020c58bda56c2f46cac376bbd661a087178a70aef"
+    },
+    "ffmpeg.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

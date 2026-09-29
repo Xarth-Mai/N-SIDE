@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
+  <image xlink:href="anke-portrait.png" width="1600" height="900" preserveAspectRatio="xMidYMid slice"/>
+  <defs>
+    <linearGradient id="reading"><stop stop-color="#151722" stop-opacity=".35"/><stop offset="1" stop-color="#151722" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="670" height="900" fill="url(#reading)"/>
+  <g fill="#fff7ed" font-family="Noto Sans SC">
+    <rect x="66" y="78" width="12" height="42" rx="2" fill="#ffe07b"/>
+    <text x="96" y="109" font-size="24" font-weight="700" letter-spacing="3">NULL SITE / MUSIC</text>
+    <text x="60" y="346" font-size="148" font-weight="900" letter-spacing="5">安可</text>
+    <text x="70" y="401" font-size="39" font-weight="800" letter-spacing="8">ENCORE</text>
+    <path d="M72 456H360" stroke="#ffe07b" stroke-width="8"/>
+    <text x="68" y="536" font-size="45" font-weight="800">下一站晴天</text>
+    <text x="73" y="582" font-size="23" font-weight="500" letter-spacing="2">SINGER / SONGWRITER</text>
+    <text x="72" y="821" font-size="23" font-weight="700" letter-spacing="3">N:SIDE</text>
+    <path d="M330 806h52m-26-26v52" stroke="#ffe07b" stroke-width="5"/>
+  </g>
+</svg>

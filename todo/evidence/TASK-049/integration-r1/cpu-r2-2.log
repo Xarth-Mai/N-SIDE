@@ -1,0 +1,9 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.19s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 2 tests
+test story::tests::observations_are_order_independent_and_choice_is_explicit_guarded_and_idempotent ... ok
+test app::tests::observation_story_progress_survives_pause_and_revisit_but_title_restarts_it ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 104 filtered out; finished in 0.03s
+

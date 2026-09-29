@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
+  "bytes": 409052,
+  "triangles": 8782,
+  "primitives": 2,
+  "bounds": [
+    [
+      -2.937866687774658,
+      0.0,
+      -2.9723799228668213
+    ],
+    [
+      2.6713602542877197,
+      6.0,
+      3.0353987216949463
+    ]
+  ],
+  "radius_m": 3.155431353796452,
+  "alpha": "OPAQUE; geometric gaps; no cutout textures",
+  "animations": "none"
+}

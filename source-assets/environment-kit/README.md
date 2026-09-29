@@ -5,10 +5,10 @@
 | 资产 ID | `AST-003` |
 | 状态 | `exported`，已生成运行派生物；加载与渲染结果见本轮任务证据，样板美术验收待作者确认 |
 | 主文件 | 本目录中的 GLB、JPG、道路色板和原始许可文件，逐文件见 [asset-manifest.json](asset-manifest.json) |
-| 作者 | Kenney、ambientCG；模型米制归一与植物材质调整由 N:SIDE 制作 |
-| 许可 | CC0 1.0，保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
-| 获取日期 | 2026-09-25；同家族植物补充为2026-09-27 |
-| 使用位置 | 3D Map Viewer 的街树、灌木、公园与登高路旁植物土石、街灯、铺装与墙面；导视空杆已导出、尚未放置 |
+| 作者 | Kenney、ambientCG；模型米制归一、植物材质调整与原创街树由 N:SIDE 制作 |
+| 许可 | 第三方素材为 CC0 1.0，原创街树沿用项目 MPL-2.0，逐文件见清单；保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
+| 获取日期 | 第三方素材取得与原创资产制作日期逐项见清单 |
+| 使用位置 | 正式入口与 3D Map Viewer 共用的街树、灌木、公园与登高路旁植物土石、街灯、铺装与墙面；导视空杆已导出、尚未放置 |
 | 运行派生物 | `game/assets/environment/`，由导出命令生成，运行期间无需联网 |
 
 ## 来源与取得范围
@@ -78,3 +78,15 @@ bun tools/export-environment.ts --check
 已有植树点按海拔和有限的秋色比例使用变体；新增自然小簇放在公园与登高路线两侧，按实际模型范围避让楼体、路面、水体与公共平台，保留停步和看景空间。空间与外观生成沿用现有主数据和 `world::scene`，不把装饰植被另存为一份城市地图
 
 这里的用途与尺寸是预览制作规格，运行与看图按[运行验证](../../docs/dev/validation/runtime.md)记录在对应任务；灰盒资产的风格适配不代表最终美术已获作者验收
+
+## 墙面与外饰板补充
+
+新增 ambientCG [Plaster001](https://ambientcg.com/view?id=Plaster001) 和 [WoodSiding009](https://ambientcg.com/view?id=WoodSiding009) 的 Color / NormalGL，按[官方 CC0 许可](https://docs.ambientcg.com/license/)使用。此次完整取得 1K-JPG ZIP，核对 ZIP CRC 与每个原件 SHA-256；整包 SHA、文件 SHA、尺寸、来源与获取日期记录于现有 asset-manifest.json，不沿用早期分段下载的完整包哈希缺失说明
+
+Plaster001 供米白与青灰外墙使用；WoodSiding009 供样板店外侧木饰板使用。源图分别为 1024×1024 与 1024×512，运行 DDS 保留原尺寸和完整 mip 链。当前以 2×2m 和 2×1m 作为视觉试排周期，官网没有提供米制覆盖范围；比例需在真实街景与近处镜头校准
+
+## 原创街树样板
+
+新增[初秋街树](vegetation/README.md)，以真实分枝与 847 片阔叶替换 `tree_a` 的块状冠，6m 高、8,782 三角、2 个材质，保持既有树点、根部枢轴与放置半径。可编辑 Blender 主文件与源码在同目录，GLB 通过既有导出器复制；项目原创来源与 MPL-2.0 单独登记，原 CC0 素材的许可保持不变。全城植被、风动与 LOD 尚未完成，运行成本与实机观感按任务证据验证
+
+当前清单列出 25 个运行文件，包含 3 份许可文件，并非新增 25 种素材；原创街树单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)

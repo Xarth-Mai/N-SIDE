@@ -1,0 +1,138 @@
+{
+  "assertions": [
+    {
+      "from": 210,
+      "game_page": "world",
+      "inside_room": false,
+      "name": "outside_south_window",
+      "place_id": "04",
+      "to": 225
+    },
+    {
+      "name": "return_to_public_street",
+      "from": 420,
+      "to": 449,
+      "game_page": "world",
+      "inside_room": false,
+      "max_player_resets": 0
+    },
+    {
+      "name": "supported_exterior_route",
+      "from": 59,
+      "to": 449,
+      "min_player_height": 27.5,
+      "max_player_height": 28.2,
+      "max_player_resets": 0,
+      "min_player_camera_distance": 0.01,
+      "max_player_camera_distance": 3.81,
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off",
+        "bloom": false,
+        "shadows": true
+      }
+    },
+    {
+      "name": "approach_shop",
+      "from": 59,
+      "to": 125,
+      "min_player_distance": 5.0,
+      "max_player_distance": 7.0,
+      "max_player_resets": 0
+    },
+    {
+      "name": "sidestep_to_window",
+      "from": 134,
+      "to": 199,
+      "min_player_distance": 5.0,
+      "max_player_distance": 7.0,
+      "max_player_resets": 0
+    },
+    {
+      "name": "return_from_window",
+      "from": 349,
+      "to": 420,
+      "min_player_distance": 5.0,
+      "max_player_distance": 7.0,
+      "max_player_resets": 0
+    }
+  ],
+  "events": [
+    {
+      "end": 31,
+      "keys": [
+        "Enter"
+      ],
+      "start": 30
+    },
+    {
+      "end": 51,
+      "look": [
+        -523.5988159179688,
+        0.0
+      ],
+      "start": 50
+    },
+    {
+      "end": 120,
+      "keys": [
+        "W"
+      ],
+      "start": 60
+    },
+    {
+      "end": 193,
+      "keys": [
+        "A"
+      ],
+      "start": 135
+    },
+    {
+      "end": 316,
+      "look": [
+        100.0,
+        -30.0
+      ],
+      "start": 315
+    },
+    {
+      "end": 341,
+      "look": [
+        -100.0,
+        30.0
+      ],
+      "start": 340
+    },
+    {
+      "end": 408,
+      "keys": [
+        "D"
+      ],
+      "start": 350
+    }
+  ],
+  "fps": 30,
+  "frames": 450,
+  "height": 720,
+  "keyframes": [
+    59,
+    125,
+    199,
+    222,
+    275,
+    330,
+    445,
+    449
+  ],
+  "scene": "walk-preview",
+  "seed": 0,
+  "timeout_seconds": 600,
+  "view": "shop",
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "width": 1280
+}

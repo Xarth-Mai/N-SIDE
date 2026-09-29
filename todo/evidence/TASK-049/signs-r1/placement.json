@@ -1,0 +1,81 @@
+{
+  "map_sha256": "a4ab861f756037206520258725a32232de40a96dc1a8da380d26a1de33c9e45a",
+  "source_ownership": "Original source SVG/export provenance belongs to city_signage agent; this file records geometry/material placement only",
+  "signs": [
+    {
+      "building": "V-01",
+      "entry": "station_entry",
+      "entry_xyz": [
+        -14,
+        10,
+        8.0
+      ],
+      "width_m": 7.5,
+      "height_m": 1.6,
+      "sign_center_elevation_m": 13.65,
+      "texture": "game/assets/environment/signs/station.png",
+      "texture_sha256": "1b21302a1c6541c29ef75fcaa4f8a4212745a69d1157c08ca455b6a21a117032",
+      "mesh_source": "buildings[V-01]/derived-facade/name-sign"
+    },
+    {
+      "building": "V-35",
+      "entry": "game_entry",
+      "entry_xyz": [
+        -386,
+        153,
+        12.0
+      ],
+      "width_m": 6,
+      "height_m": 1.5,
+      "sign_center_elevation_m": 16.0,
+      "texture": "game/assets/environment/signs/byte-beat.png",
+      "texture_sha256": "4128102d39542bb2283901d7e26c8d0b938feec3158593d3b2410b20d8e46f69",
+      "mesh_source": "buildings[V-35]/derived-facade/name-sign"
+    },
+    {
+      "building": "V-36",
+      "entry": "models_entry",
+      "entry_xyz": [
+        -285,
+        137,
+        12.0
+      ],
+      "width_m": 6,
+      "height_m": 1.5,
+      "sign_center_elevation_m": 16.0,
+      "texture": "game/assets/environment/signs/frame.png",
+      "texture_sha256": "a6723a7e555ef9be996f2688e989c55f8cd2e7d5f82a2ab57114885326eb75b0",
+      "mesh_source": "buildings[V-36]/derived-facade/name-sign"
+    },
+    {
+      "building": "V-39",
+      "entry": "st_39_door",
+      "entry_xyz": [
+        -357,
+        156,
+        12.0
+      ],
+      "width_m": 6,
+      "height_m": 1.5,
+      "sign_center_elevation_m": 16.0,
+      "texture": "game/assets/environment/signs/playroom.png",
+      "texture_sha256": "2363e5e4b9d41734b627b16c7041f034af4515306bcfef4fb7aed59ad0f19bf4",
+      "mesh_source": "buildings[V-39]/derived-facade/name-sign"
+    },
+    {
+      "building": "V-79",
+      "entry": "live_entry",
+      "entry_xyz": [
+        734,
+        39,
+        8.0
+      ],
+      "width_m": 8,
+      "height_m": 2.5,
+      "sign_center_elevation_m": 12.4,
+      "texture": "game/assets/environment/signs/after9.png",
+      "texture_sha256": "901530ad220c802419a6fdaca08909e1ae7c0844e339e680ae845ffeb5ad22e0",
+      "mesh_source": "buildings[V-79]/derived-facade/name-sign"
+    }
+  ]
+}

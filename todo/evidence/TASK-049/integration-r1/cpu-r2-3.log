@@ -1,0 +1,12 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.19s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 5 tests
+test places::observation::tests::observation_requires_reach_facing_and_clear_sight_then_owns_open_close_input ... ok
+test places::observation::tests::opening_and_held_inputs_never_confirm_a_route ... ok
+test places::observation::tests::pointer_request_uses_close_gate_and_expires_when_router_is_blocked ... ok
+test places::observation::tests::real_shop_recorded_approach_can_observe_its_public_entrance ... ok
+test places::observation::tests::real_summit_public_entry_is_observable_from_its_walkable_platform ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 101 filtered out; finished in 8.84s
+

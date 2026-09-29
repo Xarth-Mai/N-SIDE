@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-09-29T16:26:39.613201+00:00",
+  "head": "4801b81bc3c91b5b4eebe04ebd86aa1f245b52c3",
+  "patch_sha256": "e449dcffb89f864b490a3f72c139a2b38b81a4f5b0a282d58fc8955d0f8ec0cc",
+  "files": {
+    "game/src/world/scene.rs": "ecb75f14f384df5a65a99162d8323fad92b62259dca426592a39c0716a90f1ee",
+    "game/src/bin/map_viewer.rs": "c3c794256370308a53726a18070ed9f16ada93884712f1ef39b2be6f50250463",
+    "game/src/capture.rs": "0c17c10af5d41794294a9906342f0df35ffd297d9485a4779806557d2602fd62",
+    "source-assets/district-scene/appearance.json": "212d9683cc1ca849beac0e1a49e52a3a8998e361a1e49d5729a57a2204127770",
+    "source-assets/district-scene/shop.svg": "1a2925051513022012fca32fce64fbe0a34e2059b81238681bd43f52ee2874e9",
+    "tools/export-district-scene.ts": "107a7a237eafce8432078ab650bcee0948fd8f9a04f087c4ce24966e54dc408e",
+    "source-assets/environment-kit/asset-manifest.json": "a7fda6681b3382e28d7961fcc35d6d6e62785ec91d05b14fa57082d4a1af697e",
+    "game/assets/environment/manifest.json": "07ab6922bf1f5fced2b78d2785d1960813019c0ffd32606b3cd3c01c0a23cdc6",
+    "tools/tests/test_asset_environment.py": "1c9d0aa4d49724dfba1878468e24b359e66bb645333c18fc753805d25819b3eb",
+    "source-assets/star-posters/export.mjs": "dd8060c270c3885437bef65b53596adc0b55396ce42a4cacf66761731b7d3a9c",
+    "source-assets/star-posters/README.md": "4d861bb86ffc4786ce832531ff3c5d91c043495b1429be04137e65baef3c3334",
+    "source-assets/star-posters/anke-sunny.svg": "a15e5f1b02a7f3bab1ad9729dae2ed647a88cab2c9a3c42b55f0027ca25ad7ef",
+    "source-assets/star-posters/prompt.md": "6c5dc49c99ab629a594db6ee1d4679271705ee350f60b91566f891ee610ed8da",
+    "game/capture/poster-live.json": "24a473a65fbd1a78b981a352f816f7bc1aa5807ea9804e5fa5b29707b60f2779",
+    "game/capture/poster-station.json": "1f533ab098aca9a26253048eb076a16fcabe98ced08ce3b54807c18d526df97c",
+    "game/capture/walk-shop-exterior.json": "bc6fd8f721802fcb961bfba029cca7b0a6caa9e8ef925535138032ec5dd06551"
+  },
+  "excluded": [
+    "AGENTS.md",
+    "docs/dev/validation/runtime.md",
+    "TASK-046 story work",
+    "residential/sky follow-up edits after this snapshot"
+  ],
+  "scope": "Static independent integration review only; no Cargo or GPU execution"
+}

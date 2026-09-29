@@ -1,0 +1,15 @@
+{
+  "scope": "TASK-045 only; actual viewing and review.md completed before removal",
+  "count": 4823,
+  "bytes": 3214513740,
+  "directories": [
+    "output/capture/task045-r1-baseline",
+    "output/capture/task045-r1-window-baseline",
+    "output/capture/task045-r1-window-baseline-2",
+    "output/capture/task045-r1-window-after-1",
+    "output/capture/task045-r1-interior-after-1",
+    "output/capture/task045-r1-exterior-final"
+  ],
+  "retained": "run.json, state.json, scripts, runtime/encode logs, source assets, existing release packages",
+  "remaining_visual_files": 0
+}

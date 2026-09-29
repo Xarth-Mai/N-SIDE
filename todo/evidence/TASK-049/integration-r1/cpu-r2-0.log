@@ -1,0 +1,21 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 40.93s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 13 tests
+test world::scene::tests::shop_canopies_keep_slope_depth_headroom_and_metre_uvs ... ok
+test world::scene::tests::star_screens_have_correct_public_facing_and_roof_supports ... ok
+test world::scene::tests::lifecycle_clear_removes_map_roots_and_descendants_only ... ok
+test world::scene::tests::lifecycle_failure_is_reported_without_exiting_the_host ... ok
+test world::scene::tests::lifecycle_waits_for_a_scene_and_starts_each_scene_once ... ok
+test world::scene::tests::all_authored_facades_cover_entries_courts_and_keep_roofs_clear ... ok
+test world::scene::tests::displays_stay_on_ground_floor_front_windows ... ok
+test world::scene::tests::public_building_skins_stay_attached_and_clear_of_windows_and_entries ... ok
+test world::scene::tests::sample_frames_leave_recessed_displays_and_doorways_clear ... ok
+test world::scene::tests::residential_details_keep_headroom_entries_shells_and_collision ... ok
+test world::scene::tests::vegetation_uses_real_assets_and_keeps_public_space_clear ... ok
+test world::scene::tests::slope_and_neighbour_occlusion_remove_windows_without_hiding_entries ... ok
+test world::scene::tests::shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 93 filtered out; finished in 9.68s
+

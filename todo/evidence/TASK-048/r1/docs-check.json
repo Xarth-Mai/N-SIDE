@@ -1,0 +1,17 @@
+{
+  "files": 370,
+  "records": 101,
+  "issues": [
+    {
+      "file": "docs/dev/design/quests/pacing.md",
+      "line": 47,
+      "message": "链接目标缺失：campaign-sequences.md"
+    },
+    {
+      "file": "docs/dev/production/narrative.md",
+      "line": 59,
+      "message": "链接目标缺失：../design/quests/campaign-sequences.md"
+    }
+  ],
+  "ok": false
+}

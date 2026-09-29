@@ -1,0 +1,17 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error[E0599]: no method named `ray_cast` found for struct `collision::CollisionWorld` in the current scope
+    --> src/world/scene.rs:1658:18
+     |
+1657 | /             collision
+1658 | |                 .ray_cast(Vec3::new(86., 29.8, -251.), -Vec3::X, 3.)
+     | |                 -^^^^^^^^ method not found in `collision::CollisionWorld`
+     | |_________________|
+     |
+     |
+    ::: src/world/collision.rs:19:1
+     |
+  19 |   pub struct CollisionWorld {
+     |   ------------------------- method `ray_cast` not found for this struct
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `n-side` (lib test) due to 1 previous error

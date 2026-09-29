@@ -2,17 +2,18 @@
   "id": "AST-003",
   "status": "exported",
   "retrieved": "2026-09-25",
-  "license": "CC0-1.0",
+  "license": "CC0-1.0 AND MPL-2.0",
   "author": [
     "Kenney",
-    "ambientCG"
+    "ambientCG",
+    "N:SIDE project contributors"
   ],
   "license_sources": [
     "https://kenney.nl/assets/nature-kit",
     "https://kenney.nl/assets/city-kit-roads",
     "https://docs.ambientcg.com/license/"
   ],
-  "source_archives": "Selected members fetched by HTTP Range and verified by ZIP CRC; complete archive hashes are not available",
+  "source_archives": "2026-09-25/27 selected members fetched by HTTP Range and verified by ZIP CRC; complete hashes unavailable for those archives. 2026-09-29 material additions fetched as complete archives, all ZIP CRCs verified, archive SHA-256 recorded per file",
   "units": "meter",
   "up_axis": "+Y",
   "export_command": "bun tools/export-environment.ts",
@@ -23,7 +24,8 @@
       "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
       "bytes": 611,
       "archive": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
-      "archive_member": "License.txt"
+      "archive_member": "License.txt",
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/tree_detailed.glb",
@@ -70,7 +72,8 @@
             ]
           }
         }
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/tree_oak.glb",
@@ -107,7 +110,8 @@
             ]
           }
         }
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/plant_bushDetailed.glb",
@@ -134,7 +138,8 @@
             ]
           }
         }
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "licenses/kenney-roads.txt",
@@ -142,7 +147,8 @@
       "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498",
       "bytes": 703,
       "archive": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
-      "archive_member": "License.txt"
+      "archive_member": "License.txt",
+      "license": "CC0-1.0"
     },
     {
       "source": "roads/light-curved.glb",
@@ -157,7 +163,8 @@
         "height_m": 4.5,
         "ground_pivot": true,
         "axis": "Y-up"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "roads/road-sign-empty.glb",
@@ -172,7 +179,8 @@
         "height_m": 2.3,
         "ground_pivot": true,
         "axis": "Y-up"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "roads/Textures/colormap.png",
@@ -180,7 +188,8 @@
       "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185",
       "bytes": 11428,
       "archive": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
-      "archive_member": "Models/GLB format/Textures/colormap.png"
+      "archive_member": "Models/GLB format/Textures/colormap.png",
+      "license": "CC0-1.0"
     },
     {
       "source": "materials/Concrete034_1K-JPG_Color.jpg",
@@ -198,7 +207,8 @@
         "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
         "mip_levels": 11,
         "mip_filter": "ImageMagick DDS default; no colorspace conversion"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "materials/Concrete034_1K-JPG_NormalGL.jpg",
@@ -216,7 +226,8 @@
         "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
         "mip_levels": 11,
         "mip_filter": "ImageMagick DDS default; no colorspace conversion"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "materials/PavingStones092_1K-JPG_Color.jpg",
@@ -234,7 +245,8 @@
         "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
         "mip_levels": 11,
         "mip_filter": "ImageMagick DDS default; no colorspace conversion"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "materials/PavingStones092_1K-JPG_NormalGL.jpg",
@@ -252,7 +264,8 @@
         "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
         "mip_levels": 11,
         "mip_filter": "ImageMagick DDS default; no colorspace conversion"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "materials/Asphalt012_1K-JPG_Color.jpg",
@@ -270,7 +283,8 @@
         "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
         "mip_levels": 11,
         "mip_filter": "ImageMagick DDS default; no colorspace conversion"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "materials/Asphalt012_1K-JPG_NormalGL.jpg",
@@ -288,14 +302,16 @@
         "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
         "mip_levels": 11,
         "mip_filter": "ImageMagick DDS default; no colorspace conversion"
-      }
+      },
+      "license": "CC0-1.0"
     },
     {
       "source": "licenses/CC0-1.0.txt",
       "output": "licenses/CC0-1.0.txt",
       "bytes": 7048,
       "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
-      "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt",
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/tree_pineRoundA.glb",
@@ -336,7 +352,8 @@
         }
       },
       "generation": null,
-      "cost": 0
+      "cost": 0,
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/tree_cone_fall.glb",
@@ -377,7 +394,8 @@
         }
       },
       "generation": null,
-      "cost": 0
+      "cost": 0,
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/rock_smallA.glb",
@@ -418,7 +436,8 @@
         }
       },
       "generation": null,
-      "cost": 0
+      "cost": 0,
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/grass.glb",
@@ -449,7 +468,8 @@
         }
       },
       "generation": null,
-      "cost": 0
+      "cost": 0,
+      "license": "CC0-1.0"
     },
     {
       "source": "nature/flower_yellowA.glb",
@@ -490,7 +510,144 @@
         }
       },
       "generation": null,
-      "cost": 0
+      "cost": 0,
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "materials/Plaster001_1K-JPG_Color.jpg",
+      "output": "materials/plaster-color.dds",
+      "sha256": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+      "bytes": 828790,
+      "archive": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
+      "archive_member": "Plaster001_1K-JPG_Color.jpg",
+      "archive_sha256": "944b4831016e42ace4a89422e4e7190912ca2f7fed6f561354c48ec7bb54d3a4",
+      "retrieved": "2026-09-29",
+      "source_page": "https://ambientcg.com/view?id=Plaster001",
+      "purpose": "奶油色与青绿色外立面的细灰泥",
+      "tile_meters": [
+        2,
+        2
+      ],
+      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "output": "materials/plaster-normal.dds",
+      "sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "bytes": 2091491,
+      "archive": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
+      "archive_member": "Plaster001_1K-JPG_NormalGL.jpg",
+      "archive_sha256": "944b4831016e42ace4a89422e4e7190912ca2f7fed6f561354c48ec7bb54d3a4",
+      "retrieved": "2026-09-29",
+      "source_page": "https://ambientcg.com/view?id=Plaster001",
+      "purpose": "奶油色与青绿色外立面的细灰泥",
+      "tile_meters": [
+        2,
+        2
+      ],
+      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "linear",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "materials/WoodSiding009_1K-JPG_Color.jpg",
+      "output": "materials/wood-siding-color.dds",
+      "sha256": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41",
+      "bytes": 744688,
+      "archive": "https://ambientcg.com/get?file=WoodSiding009_1K-JPG.zip",
+      "archive_member": "WoodSiding009_1K-JPG_Color.jpg",
+      "archive_sha256": "58512fc4df9b7ff0d9adb49bb562e8e7f65b510de6231afadf124505b6274de4",
+      "retrieved": "2026-09-29",
+      "source_page": "https://ambientcg.com/view?id=WoodSiding009",
+      "purpose": "小店局部外檐与窗台的横向木饰面",
+      "tile_meters": [
+        2,
+        1
+      ],
+      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
+      "image": {
+        "dimensions": [
+          1024,
+          512
+        ],
+        "color_space": "sRGB",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+      "output": "materials/wood-siding-normal.dds",
+      "sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+      "bytes": 795284,
+      "archive": "https://ambientcg.com/get?file=WoodSiding009_1K-JPG.zip",
+      "archive_member": "WoodSiding009_1K-JPG_NormalGL.jpg",
+      "archive_sha256": "58512fc4df9b7ff0d9adb49bb562e8e7f65b510de6231afadf124505b6274de4",
+      "retrieved": "2026-09-29",
+      "source_page": "https://ambientcg.com/view?id=WoodSiding009",
+      "purpose": "小店局部外檐与窗台的横向木饰面",
+      "tile_meters": [
+        2,
+        1
+      ],
+      "tile_basis": "N:SIDE initial visual scale; official page gives no physical dimensions",
+      "image": {
+        "dimensions": [
+          1024,
+          512
+        ],
+        "color_space": "linear",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "vegetation/street-tree.glb",
+      "output": "vegetation/street-tree.glb",
+      "sha256": "bcf0c94df78f5ebdd6215386d194b8d1f49307cbb9ce5d4b2ddad4e94b7deaf9",
+      "bytes": 409052,
+      "triangles": 8782,
+      "author": "N:SIDE original, authored with Blender",
+      "license": "MPL-2.0",
+      "source_master": "vegetation/street-tree.blend",
+      "provenance": "Original topology and vertex-colored materials; no third-party geometry, bitmap, or generation service",
+      "units": "meters",
+      "up_axis": "+Y",
+      "ground_pivot": true,
+      "height_m": 6,
+      "radius_m": 3.155431353796452
     }
   ],
   "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"

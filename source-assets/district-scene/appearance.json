@@ -1,6 +1,15 @@
 {
   "version": 1,
   "materials": {
+    "poster_anke": {
+      "color": [1, 1, 1, 1],
+      "roughness": 0.85,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": "environment/posters/anke-sunny.png",
+      "normal_texture": null,
+      "unlit": true
+    },
     "concrete": {
       "color": [
         0.7,
@@ -27,11 +36,11 @@
       "roughness": 0.88,
       "metallic": 0,
       "tile_meters": [
-        1.1,
-        0.55
+        2,
+        2
       ],
-      "color_texture": "environment/materials/concrete-color.dds",
-      "normal_texture": "environment/materials/concrete-normal.dds"
+      "color_texture": "environment/materials/plaster-color.dds",
+      "normal_texture": "environment/materials/plaster-normal.dds"
     },
     "wall_sand": {
       "color": [
@@ -59,11 +68,11 @@
       "roughness": 0.88,
       "metallic": 0,
       "tile_meters": [
-        1.1,
-        0.55
+        2,
+        2
       ],
-      "color_texture": "environment/materials/concrete-color.dds",
-      "normal_texture": "environment/materials/concrete-normal.dds"
+      "color_texture": "environment/materials/plaster-color.dds",
+      "normal_texture": "environment/materials/plaster-normal.dds"
     },
     "wall_brick": {
       "color": [
@@ -265,6 +274,46 @@
       "color_texture": null,
       "normal_texture": null
     },
+    "sign_station": {
+      "color": [1, 1, 1, 1],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": "environment/signs/station.png",
+      "normal_texture": null
+    },
+    "sign_byte_beat": {
+      "color": [1, 1, 1, 1],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": "environment/signs/byte-beat.png",
+      "normal_texture": null
+    },
+    "sign_frame": {
+      "color": [1, 1, 1, 1],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": "environment/signs/frame.png",
+      "normal_texture": null
+    },
+    "sign_playroom": {
+      "color": [1, 1, 1, 1],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": "environment/signs/playroom.png",
+      "normal_texture": null
+    },
+    "sign_after9": {
+      "color": [1, 1, 1, 1],
+      "roughness": 0.88,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": "environment/signs/after9.png",
+      "normal_texture": null
+    },
     "sign_shop": {
       "color": [
         1,
@@ -424,11 +473,27 @@
       ],
       "color_texture": "environment/signs/drygoods-display.png",
       "normal_texture": null
+    },
+    "wood_siding": {
+      "color": [
+        0.65,
+        0.58,
+        0.42,
+        1
+      ],
+      "roughness": 0.78,
+      "metallic": 0,
+      "tile_meters": [
+        2,
+        1
+      ],
+      "color_texture": "environment/materials/wood-siding-color.dds",
+      "normal_texture": "environment/materials/wood-siding-normal.dds"
     }
   },
   "models": {
     "tree_a": {
-      "file": "environment/nature/tree_detailed.glb",
+      "file": "environment/vegetation/street-tree.glb",
       "scene": 0,
       "scale": 1
     },

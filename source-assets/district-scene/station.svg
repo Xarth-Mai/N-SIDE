@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="256" viewBox="0 0 1200 256">
+  <title>Null Station / N站</title>
+  <rect width="1200" height="256" fill="#202830"/>
+  <path d="M0 0h280v256H0z" fill="#f1ede1"/>
+  <path d="M34 32h212v192H34z" fill="none" stroke="#202830" stroke-width="8"/>
+  <text x="140" y="164" text-anchor="middle" font-family="Noto Sans SC" font-size="94" font-weight="900" fill="#202830">N站</text>
+  <text x="326" y="157" font-family="Noto Sans SC" font-size="88" font-weight="900" letter-spacing="1" fill="#f1ede1">Null Station</text>
+  <path d="M326 199h506" stroke="#f1ede1" stroke-width="5"/>
+  <path d="M868 199h168" stroke="#f5b94d" stroke-width="7"/>
+  <path d="M1060 192h14v14h-14zm30 0h14v14h-14z" fill="#f5b94d"/>
+  <path d="M1178 0h22v256h-22z" fill="#f5b94d"/>
+</svg>

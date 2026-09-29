@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../', import.meta.url))
 const source = resolve(root, 'source-assets/environment-kit')
 const destination = resolve(root, 'game/assets/environment')
-const manifest: { files: {source: string; output: string; sha256: string; transform?: Transform; image?: Image}[] } = JSON.parse(await readFile(resolve(source, 'asset-manifest.json'), 'utf8'))
+const manifest: { license: string; files: {source: string; output: string; sha256: string; license: string; transform?: Transform; image?: Image}[] } = JSON.parse(await readFile(resolve(source, 'asset-manifest.json'), 'utf8'))
 const check = process.argv.includes('--check')
 assert(process.argv.slice(2).every(arg => arg === '--check'), 'Usage: bun tools/export-environment.ts [--check]')
 const sha256 = (data: Uint8Array) => createHash('sha256').update(data).digest('hex')
@@ -88,7 +88,8 @@ for (const file of manifest.files) {
   const input = await readFile(sourcePath)
   assert.equal(sha256(input), file.sha256, `Source checksum differs: ${file.source}`)
   const output = file.transform ? exportGlb(input, file.transform) : file.image ? exportDds(sourcePath, file.image) : input
-  outputs.push({ file: file.output, bytes: output.length, sha256: sha256(output) })
+  assert(['CC0-1.0', 'MPL-2.0'].includes(file.license), `Missing or unsupported license: ${file.source}`)
+  outputs.push({ file: file.output, bytes: output.length, sha256: sha256(output), license: file.license })
   const path = resolve(destination, file.output)
   if (check) {
     assert(output.equals(await readFile(path)), `Export differs: ${file.output}`)
@@ -97,7 +98,7 @@ for (const file of manifest.files) {
     await writeFile(path, output)
   }
 }
-const generated = Buffer.from(`${JSON.stringify({ source: 'source-assets/environment-kit/asset-manifest.json', license: 'CC0-1.0', files: outputs }, null, 2)}\n`)
+const generated = Buffer.from(`${JSON.stringify({ source: 'source-assets/environment-kit/asset-manifest.json', license: manifest.license, files: outputs }, null, 2)}\n`)
 const generatedPath = resolve(destination, 'manifest.json')
 if (check) assert(generated.equals(await readFile(generatedPath)), 'Runtime manifest differs')
 else await writeFile(generatedPath, generated)
