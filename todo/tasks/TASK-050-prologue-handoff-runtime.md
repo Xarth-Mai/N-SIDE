@@ -1,7 +1,7 @@
 ---
 id: TASK-050
 type: feature
-status: active
+status: done
 milestone: G1
 depends_on: [TASK-035]
 specs:
@@ -9,6 +9,10 @@ specs:
   - docs/dev/design/quests/campaign-sequences.md
   - docs/dev/design/systems/state-and-recovery.md
   - docs/dev/engineering/player-preview.md
+acceptance:
+  role: codex
+  revision: e92802ffd39daf5b7c990306ab23eeb1a78de821
+  record: todo/evidence/TASK-050/route-r1/runtime-review.md
 ---
 
 # 序章门前交接路线的真实操作片段
@@ -31,10 +35,10 @@ specs:
 
 ## 当前工作与下一步
 
-第 1 轮，步骤 4/6：运行内状态、观察记录、显式路线选择、HUD 与可滚动正文已接入；CPU 状态与输入检查通过，18 秒店前片段 22 项、26 秒大字和重入 21 项真实 GPU 检查通过，画面已实际查看。外部叙事新提交 `1bfc1cf` 未改变所实现的第三分场职责
+第 1 轮，步骤 6/6：会话内三点观察、显式选择、修订、HUD与正文滚动技术验收完成。连续生产碰撞测试在30／64Hz通过；约89秒真实入口录制2672帧、15项检查通过并实际看图，整条路线无传送、重置或跳跃。外部叙事新提交 `1bfc1cf` 未改变第三分场职责
 
-下一步沿[已分析的243.67m候选](../evidence/TASK-050/route-r1/analysis.md)连续验证真实碰撞与三点观察／选择，补长记录、错误选择修订和幂等的完整运行证据；不用直接设置目标补任务结果
+下一步接入这个片段的独立进度保存与明确继续／重开；当前任务只完成既定会话内操作，不把路线确认当作实物交付或完整序章。作者体验、完整叙事演出及里程碑放行仍未取得
 
 ## 结果与证据
 
-[实现、窄测日志与证据范围](../evidence/TASK-050/r1/implementation.md)、[实际运行与画面自查](../evidence/TASK-050/r1/runtime-review.md)。完整三点运行、作者体验、完整序章与任务存档均未验收，不因 CPU 测试通过标记本项完成
+[实现与窄测](../evidence/TASK-050/r1/implementation.md)、[店前与大字运行](../evidence/TASK-050/r1/runtime-review.md)、[完整三点路线验收](../evidence/TASK-050/route-r1/runtime-review.md)及[独立评审](../evidence/TASK-050/route-r1/independent-review.md)。保留首次输入时长不足的真实失败与沙箱GPU不可用记录，最终复验未放宽观察条件；技术验收不替作者、陌生玩家或完整游戏签署通过

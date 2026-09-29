@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-30",
+  "basis": "Actual frame inspection and evidence hashes recorded before cleanup; no native capture/ffmpeg/Blender process active",
+  "retention": "Source, formal assets, binaries, original JSON, logs, scripts and written conclusions retained",
+  "runs": [
+    {
+      "directory": "output/capture/task049-tree-detail-r1",
+      "deleted_files": 157,
+      "deleted_bytes": 154834067,
+      "deleted_names_sha256": "8aabee663f4c1dbfad426d4b6d5d81d5055202072e545a5a88ade5938cd4c613",
+      "retained_files": [
+        "ffmpeg.log",
+        "run.json",
+        "runtime.log",
+        "script.json",
+        "state.json"
+      ],
+      "remaining_bytes": 167875
+    },
+    {
+      "directory": "output/capture/task049-residential-detail-r1",
+      "deleted_files": 157,
+      "deleted_bytes": 146739999,
+      "deleted_names_sha256": "8aabee663f4c1dbfad426d4b6d5d81d5055202072e545a5a88ade5938cd4c613",
+      "retained_files": [
+        "ffmpeg.log",
+        "run.json",
+        "runtime.log",
+        "script.json",
+        "state.json"
+      ],
+      "remaining_bytes": 167636
+    }
+  ]
+}

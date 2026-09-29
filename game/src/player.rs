@@ -1193,6 +1193,102 @@ mod tests {
     }
 
     #[test]
+    fn walks_prologue_handoff_places_continuously() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let scene = crate::world::scene::PreparedScene::load(root).unwrap();
+        let collision = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let ascent = [
+            "home",
+            "level_home_to_shop_north_junction",
+            "level_shop_north_junction_from_home",
+            "shop_north_junction",
+            "level_shop_north_junction_to_shop_upper_junction",
+            "level_shop_upper_junction_from_shop_north_junction",
+            "shop_upper_junction",
+            "level_shop_upper_junction_to_steps_mid",
+            "pause_steps_mid_level_shop_upper_junction_to_steps_mid",
+            "steps_mid",
+        ];
+        let mut stops: Vec<_> = std::iter::once("shop_entry")
+            .chain(ascent)
+            .chain(ascent.into_iter().rev().skip(1))
+            .chain(std::iter::once("shop_entry"))
+            .map(|name| (name, map_to_world(scene.map.nodes[name])))
+            .collect();
+        stops.extend([
+            ("shop_south_corner", map_to_world([88.5, 246., 28.])),
+            ("shop_south_walk", map_to_world([68., 246., 28.])),
+            ("shop_west_walk", map_to_world([68., 257., 28.])),
+            (
+                "shop_service_apron",
+                map_to_world(scene.map.nodes["shop_service_apron"]),
+            ),
+            (
+                "shop_service_turn",
+                map_to_world(scene.map.nodes["shop_service_turn"]),
+            ),
+            ("yard", map_to_world(scene.map.nodes["yard"])),
+        ]);
+        for dt in [1. / 64., 1. / 30.] {
+            let mut player = PlayerState::from_map(&scene.map, &collision).unwrap();
+            let mut tick = 0;
+            for (index, (name, target)) in stops.iter().enumerate() {
+                let support = [Vec3::ZERO, Vec3::X, -Vec3::X, Vec3::Z, -Vec3::Z]
+                    .into_iter()
+                    .filter_map(|offset| collision.support(*target + Vec3::Y * 0.7 + offset * 0.01, 1.5))
+                    .find(|hit| hit.surface_normal.y >= WALKABLE_Y && (hit.point.y - target.y).abs() <= 0.195)
+                    .unwrap_or_else(|| panic!("[handoff/support] segment={index} node={name} target={target:?}: no actual walkable mesh"));
+                let mut best = f32::INFINITY;
+                let mut progress_tick = tick;
+                loop {
+                    let horizontal = (*target - player.foot) * Vec3::new(1., 0., 1.);
+                    let distance = horizontal.length();
+                    let height_error = (player.foot.y - support.point.y).abs();
+                    let remaining = distance + (height_error - (0.17 + SKIN + SEPARATION)).max(0.);
+                    if best - remaining >= 0.01 {
+                        best = remaining;
+                        progress_tick = tick;
+                    }
+                    let reached = distance < 0.06
+                        && height_error <= 0.17 + SKIN + SEPARATION
+                        && player.grounded;
+                    let stalled = (tick - progress_tick) as f32 * dt >= 2.;
+                    let failed = stalled || player.resets != 0 || tick as f32 * dt >= 180.;
+                    if reached || failed {
+                        eprintln!(
+                            "[handoff/walk] dt={dt} segment={index} node={name} seconds={} foot={:?} target={target:?} distance={distance} height_error={height_error} grounded={} blocked={:?} resets={} support={support:?} reached={reached}",
+                            tick as f32 * dt,
+                            player.foot,
+                            player.grounded,
+                            player.blocked,
+                            player.resets
+                        );
+                    }
+                    assert!(
+                        !failed,
+                        "[handoff/blocked] segment={index} node={name} foot={:?} blocked={:?} stalled={stalled} down={:?}",
+                        player.foot,
+                        player.blocked,
+                        collision.support(player.foot + Vec3::Y * 0.7, 1.5)
+                    );
+                    if reached {
+                        break;
+                    }
+                    // Only horizontal movement intent changes the continuously simulated player
+                    player.step(
+                        &collision,
+                        (horizontal / (SPEED * dt)).clamp_length_max(1.),
+                        dt,
+                    );
+                    tick += 1;
+                }
+            }
+            assert_eq!(player.resets, 0);
+            assert_eq!(player.jumps, 0);
+        }
+    }
+
+    #[test]
     fn walks_shop_public_rooms_and_returns_without_opening_private_rooms() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let scene = crate::world::scene::PreparedScene::load(root).unwrap();

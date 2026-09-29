@@ -527,6 +527,45 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         "[visual/view] name=mountain-profile eye={profile_eye:?} target={center:?} terrain_peak={peak:?} fov=55"
     );
     views.push(("mountain-profile", view(profile_eye, center)));
+    // The tree is the existing trees[68] instance on the public low stair landing
+    let tree = map
+        .trees
+        .get(68)
+        .ok_or("[viewer/view] missing trees[68] inspection anchor")?;
+    let terrace = map
+        .surfaces
+        .iter()
+        .find(|s| s.id.as_deref() == Some("shop-steps-low"))
+        .ok_or("[viewer/view] missing shop-steps-low tree support")?;
+    let approach = map.nodes["shop-steps-low-junction"];
+    let entrance = map.nodes["shop-steps-low-entry"];
+    let eye = [
+        approach[0] + (entrance[0] - approach[0]) * 0.3,
+        approach[1] + (entrance[1] - approach[1]) * 0.3,
+        approach[2] + (entrance[2] - approach[2]) * 0.3 + 1.7,
+    ];
+    let target = [tree[0], tree[1], terrace.elevation + 3.0];
+    println!(
+        "[visual/view] name=inspect-street-tree-detail source=trees[68] support=shop-steps-low eye={eye:?} target={target:?} fov=55"
+    );
+    views.push(("inspect-street-tree-detail", view(eye, target)));
+    let residence = map
+        .buildings
+        .iter()
+        .find(|b| b.id == "V-A13")
+        .ok_or("[viewer/view] missing V-A13 residential inspection anchor")?;
+    let doorway = map.nodes["v_a13_door"];
+    let mut eye = map.nodes["east_mid_junction"];
+    eye[2] += 1.7;
+    let target = [
+        doorway[0],
+        doorway[1],
+        residence.elevation + residence.height / 2.0,
+    ];
+    println!(
+        "[visual/view] name=inspect-residential-detail source=buildings[V-A13] eye={eye:?} target={target:?} fov=55"
+    );
+    views.push(("inspect-residential-detail", view(eye, target)));
     views.extend([
         (
             "poster-station",

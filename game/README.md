@@ -157,7 +157,14 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 TASK-050将04／29／28的实际观察记录在本次会话，顺序不限、重复查看不重复登记；三点齐备后，在28面板显式选择配送走货运侧院或店侧台阶。上下方向键／手柄方向键切换，F／A或点击确认；台阶选项给出修订反馈，侧院选项只提交一次。返回标题、重新加载或失败清空会话，暂停保留，尚无任务存档
 
-面板正文支持滚轮、PageUp／PageDown和右摇杆滚动，标题、路线选项与返回按钮保持固定；同一次打开输入不会提交选择。当前GPU证据仅覆盖04观察片段，完整三点路线与两种选择尚未实机验收，详见[TASK-050](../todo/tasks/TASK-050-prologue-handoff-runtime.md)
+面板正文支持滚轮、PageUp／PageDown和右摇杆滚动，标题、路线选项与返回按钮保持固定；同一次打开输入不会提交选择。完整三点路线使用下方 `prologue-route.json`，本轮结果及体验边界见[TASK-050](../todo/tasks/TASK-050-prologue-handoff-runtime.md)
+
+```fish
+cargo test --manifest-path game/Cargo.toml --locked --lib walks_prologue_handoff_places_continuously -- --nocapture
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/prologue-route.json --output output/capture/prologue-route
+```
+
+路线从真实出生点连续到店门、台阶并返回店外绕行至货运侧院，检查三项观察、错误选项修订和幂等确认；没有传送或任务状态注入。脚本的固定输入时序须随移动或几何修改复验，不能为通过检查扩大观察距离
 
 打开观察时人物与镜头停留原位；Esc／B或鼠标左键点击「返回街区」关闭面板而不打开暂停，空白点击不关闭，Tab／Start仍可暂停。关闭当帧及旧输入持有期间继续隔离玩法，释放后再操作。断连或失焦保护暂时隐藏观察，明确继续后恢复原内容；回到标题清空。近距、高差、朝向、实际墙体遮挡和输入隔离的完整契约见[公共地点观察](../docs/dev/engineering/player-preview.md#公共地点观察)
 
@@ -215,6 +222,13 @@ cargo run --release --manifest-path game/Cargo.toml --features viewer --locked -
 山城灰盒使用 `eye-station`、`eye-cinema`、`eye-shop-mountain` 核对站前、镜厅前街公共路口与小店门前的山体视线，均取源道路节点上方 1.7m，以55°视场水平望向山顶方向；近山峰顶可以超出水平视场，保留该真实结果；`eye-shop-uphill` 在同一眼高明确仰视20°核对山顶，`hillside` 从小店起坡段侧看山腹，`mountain-profile` 从侧向检查河岸至后山的比例。摘星台位于最高点，山体与城区沿用源数据的米制比例，`overview` 随完整地形范围取景
 
 `eye-upper-bridge` 从登高接入路回看上街桥口，检查护栏与道路交会；`eye-slope-support` 从上街实际节点观察平台，`eye-transfer-support` 从镜厅低层公共连廊的3/4位置、上方1.7m看换层平台底面；两者朝向目标的仰角不作为水平街景视角。`inspect-cinema-bearing` 是镜厅屋顶连接旁的自由检查机位，用于近看短梁搭接，不代表行人位置
+
+`inspect-street-tree-detail` 从店侧低台阶平台来路观察既有树实例，`inspect-residential-detail` 从东侧公共节点观察 V-A13 西立面；二者随源节点及建筑标高取景。以下脚本检查接近、横移和释放后的真实相机与画面，不验证人物碰撞或建筑可进入性
+
+```fish
+python3 tools/capture.py --binary game/target/debug/map_viewer --script game/capture/street-tree-detail.json --output output/capture/street-tree-detail
+python3 tools/capture.py --binary game/target/debug/map_viewer --script game/capture/exterior-details.json --output output/capture/exterior-details
+```
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_viewer -- --project-root . --view eye-station

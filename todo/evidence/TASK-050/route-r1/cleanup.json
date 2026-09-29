@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-30",
+  "basis": "Actual frame inspection and evidence hashes recorded before cleanup; no native capture/ffmpeg/Blender process active",
+  "retention": "Source, formal assets, binaries, original JSON, logs, scripts and written conclusions retained",
+  "runs": [
+    {
+      "directory": "output/capture/task050-full-route-r1",
+      "deleted_files": 2674,
+      "deleted_bytes": 1041212402,
+      "deleted_names_sha256": "716c4f5acd1a07b25f4f131c2f02707f1f3188b662f7ccb218970aebde7f9b66",
+      "retained_files": [
+        "run.json",
+        "runtime.log",
+        "script.json",
+        "state.json"
+      ],
+      "remaining_bytes": 6384620
+    },
+    {
+      "directory": "output/capture/task050-full-route-r2",
+      "deleted_files": 0,
+      "deleted_bytes": 0,
+      "deleted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retained_files": [
+        "run.json",
+        "runtime.log",
+        "script.json"
+      ],
+      "remaining_bytes": 25573
+    },
+    {
+      "directory": "output/capture/task050-full-route-r2-native",
+      "deleted_files": 2708,
+      "deleted_bytes": 1780164594,
+      "deleted_names_sha256": "ab5cb5b76b8aecfccc378a23911b218baf3358510a7cd3c090a93789eee3c9e8",
+      "retained_files": [
+        "ffmpeg.log",
+        "run.json",
+        "runtime.log",
+        "script.json",
+        "state.json"
+      ],
+      "remaining_bytes": 6550996
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 2672,
+  "seed": 0,
+  "timeout_seconds": 1800,
+  "keyframes": [
+    59,
+    155,
+    188,
+    290,
+    396,
+    501,
+    527,
+    553,
+    648,
+    674,
+    700,
+    854,
+    894,
+    924,
+    934,
+    1088,
+    1114,
+    1140,
+    1235,
+    1261,
+    1287,
+    1392,
+    1498,
+    1594,
+    1682,
+    1877,
+    1983,
+    2060,
+    2184,
+    2515,
+    2545,
+    2578,
+    2611,
+    2626,
+    2671
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 154,
+      "move_axis": [
+        -0.9977393617021276,
+        0
+      ]
+    },
+    {
+      "start": 156,
+      "end": 157,
+      "look": [
+        -523.5987755982989,
+        0
+      ]
+    },
+    {
+      "start": 159,
+      "end": 160,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 189,
+      "end": 190,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 192,
+      "end": 193,
+      "look": [
+        523.5987755982989,
+        0
+      ]
+    },
+    {
+      "start": 195,
+      "end": 289,
+      "move_axis": [
+        0.9977393617021276,
+        0
+      ]
+    },
+    {
+      "start": 291,
+      "end": 395,
+      "move_axis": [
+        0.33916879888787543,
+        0.9331199560929025
+      ]
+    },
+    {
+      "start": 397,
+      "end": 500,
+      "move_axis": [
+        0.3412299994423164,
+        0.9387907101383779
+      ]
+    },
+    {
+      "start": 502,
+      "end": 526,
+      "move_axis": [
+        0.33480644229459505,
+        0.9211177841934276
+      ]
+    },
+    {
+      "start": 528,
+      "end": 552,
+      "move_axis": [
+        0.3348821012356914,
+        0.9210903335108
+      ]
+    },
+    {
+      "start": 554,
+      "end": 647,
+      "move_axis": [
+        0.3410034670196158,
+        0.9379269828370693
+      ]
+    },
+    {
+      "start": 649,
+      "end": 673,
+      "move_axis": [
+        0.3348821012356914,
+        0.9210903335108
+      ]
+    },
+    {
+      "start": 675,
+      "end": 699,
+      "move_axis": [
+        0.33514045564116973,
+        0.920996262004117
+      ]
+    },
+    {
+      "start": 701,
+      "end": 853,
+      "move_axis": [
+        0.34090149295003935,
+        0.9368285151698906
+      ]
+    },
+    {
+      "start": 855,
+      "end": 893,
+      "move_axis": [
+        0.32378577204985204,
+        0.8897954044402152
+      ]
+    },
+    {
+      "start": 895,
+      "end": 896,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 925,
+      "end": 926,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 928,
+      "end": 933,
+      "move_axis": [
+        -0.32378577204985204,
+        -0.8897954044402152
+      ]
+    },
+    {
+      "start": 935,
+      "end": 1087,
+      "move_axis": [
+        -0.34090149295003935,
+        -0.9368285151698906
+      ]
+    },
+    {
+      "start": 1089,
+      "end": 1113,
+      "move_axis": [
+        -0.33514045564116973,
+        -0.920996262004117
+      ]
+    },
+    {
+      "start": 1115,
+      "end": 1139,
+      "move_axis": [
+        -0.3348821012356914,
+        -0.9210903335108
+      ]
+    },
+    {
+      "start": 1141,
+      "end": 1234,
+      "move_axis": [
+        -0.3410034670196158,
+        -0.9379269828370693
+      ]
+    },
+    {
+      "start": 1236,
+      "end": 1260,
+      "move_axis": [
+        -0.3348821012356914,
+        -0.9210903335108
+      ]
+    },
+    {
+      "start": 1262,
+      "end": 1286,
+      "move_axis": [
+        -0.33480644229459505,
+        -0.9211177841934276
+      ]
+    },
+    {
+      "start": 1288,
+      "end": 1391,
+      "move_axis": [
+        -0.3412299994423164,
+        -0.9387907101383779
+      ]
+    },
+    {
+      "start": 1393,
+      "end": 1497,
+      "move_axis": [
+        -0.33916879888787543,
+        -0.9331199560929025
+      ]
+    },
+    {
+      "start": 1499,
+      "end": 1593,
+      "move_axis": [
+        -0.9977393617021276,
+        0
+      ]
+    },
+    {
+      "start": 1595,
+      "end": 1681,
+      "move_axis": [
+        -0.16364967367719896,
+        -0.9818980420631938
+      ]
+    },
+    {
+      "start": 1683,
+      "end": 1876,
+      "move_axis": [
+        -0.9964216321243523,
+        0
+      ]
+    },
+    {
+      "start": 1878,
+      "end": 1982,
+      "move_axis": [
+        0,
+        0.9928485576923077
+      ]
+    },
+    {
+      "start": 1984,
+      "end": 2059,
+      "move_axis": [
+        -1,
+        0
+      ]
+    },
+    {
+      "start": 2061,
+      "end": 2183,
+      "move_axis": [
+        0,
+        0.9991290983606556
+      ]
+    },
+    {
+      "start": 2185,
+      "end": 2514,
+      "move_axis": [
+        -0.9977393617021277,
+        0
+      ]
+    },
+    {
+      "start": 2516,
+      "end": 2517,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 2546,
+      "end": 2547,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 2549,
+      "end": 2550,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 2579,
+      "end": 2580,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 2582,
+      "end": 2583,
+      "keys": [
+        "F"
+      ]
+    },
+    {
+      "start": 2612,
+      "end": 2613,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 2627,
+      "end": 2628,
+      "gamepad": [
+        "Confirm"
+      ]
+    },
+    {
+      "start": 2642,
+      "end": 2643,
+      "gamepad": [
+        "Confirm"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "The real spawn starts with no acquired handoff observations",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "world_ready": true,
+      "observation_open": false,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Approach the shared shop doorway and face it before inspecting",
+      "from": 158,
+      "to": 158,
+      "observation_target": "04",
+      "observation_open": false,
+      "player_grounded": true
+    },
+    {
+      "name": "Observe 04 through the real player and public information window",
+      "from": 161,
+      "to": 188,
+      "observation_target": "04",
+      "observation_selected": "04",
+      "observation_open": true,
+      "observation_visible": true,
+      "max_player_distance": 0.001,
+      "max_rotation": 0.001,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Reach the public steps through the actual rising stair mesh",
+      "from": 894,
+      "to": 894,
+      "observation_target": "29",
+      "observation_open": false,
+      "player_grounded": true,
+      "min_player_height": 39.4,
+      "max_player_height": 39.9,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Observe 29 through the real player and public information window",
+      "from": 897,
+      "to": 924,
+      "observation_target": "29",
+      "observation_selected": "29",
+      "observation_open": true,
+      "observation_visible": true,
+      "max_player_distance": 0.001,
+      "max_rotation": 0.001,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04",
+          "29"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Reach the receiving yard through the shop exterior without opening private rooms",
+      "from": 2515,
+      "to": 2515,
+      "observation_target": "28",
+      "observation_open": false,
+      "player_grounded": true,
+      "min_player_height": 27.9,
+      "max_player_height": 28.2,
+      "handoff": {
+        "stage": "observing",
+        "observed_places": [
+          "04",
+          "29"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Observe 28 through the real player and public information window",
+      "from": 2518,
+      "to": 2545,
+      "observation_target": "28",
+      "observation_selected": "28",
+      "observation_open": true,
+      "observation_visible": true,
+      "max_player_distance": 0.001,
+      "max_rotation": 0.001,
+      "handoff": {
+        "stage": "awaiting_choice",
+        "observed_places": [
+          "04",
+          "29",
+          "28"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 0
+      }
+    },
+    {
+      "name": "Choosing public steps rejects cart delivery and permits revision",
+      "from": 2551,
+      "to": 2578,
+      "observation_selected": "28",
+      "observation_open": true,
+      "observation_visible": true,
+      "handoff": {
+        "stage": "awaiting_choice",
+        "observed_places": [
+          "04",
+          "29",
+          "28"
+        ],
+        "confirmation_count": 0,
+        "rejected_choices": 1
+      }
+    },
+    {
+      "name": "The explicit service-yard choice commits exactly once",
+      "from": 2584,
+      "to": 2611,
+      "observation_selected": "28",
+      "observation_open": true,
+      "observation_visible": true,
+      "handoff": {
+        "stage": "confirmed",
+        "observed_places": [
+          "04",
+          "29",
+          "28"
+        ],
+        "confirmation_count": 1,
+        "rejected_choices": 1
+      }
+    },
+    {
+      "name": "Closing the observation keeps the confirmed session result",
+      "from": 2614,
+      "to": 2626,
+      "observation_open": false,
+      "game_page": "world",
+      "handoff": {
+        "stage": "confirmed",
+        "observed_places": [
+          "04",
+          "29",
+          "28"
+        ],
+        "confirmation_count": 1,
+        "rejected_choices": 1
+      }
+    },
+    {
+      "name": "Controller reopen and repeated confirmation preserve one committed result",
+      "from": 2645,
+      "to": 2671,
+      "observation_selected": "28",
+      "observation_open": true,
+      "observation_visible": true,
+      "handoff": {
+        "stage": "confirmed",
+        "observed_places": [
+          "04",
+          "29",
+          "28"
+        ],
+        "confirmation_count": 1,
+        "rejected_choices": 1
+      }
+    },
+    {
+      "name": "The same real player follows the full route without reset or jump",
+      "from": 59,
+      "to": 2671,
+      "game_page": "world",
+      "same_world_entities": true,
+      "max_player_resets": 0,
+      "max_player_jumps": 0,
+      "min_player_height": 27.8,
+      "max_player_height": 39.9
+    }
+  ]
+}

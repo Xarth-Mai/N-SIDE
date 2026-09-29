@@ -28,10 +28,10 @@ specs:
 
 ## 当前工作与下一步
 
-第 2 轮已接入站厅与音乐楼两类共 4 栋公共外壳、8 栋住宅细部和 N站／BYTE BEAT／FRAME／PLAYROOM／AFTER 9 五处经营标识；当前全城覆盖仍按源对象逐批推进。N站新构建录制 300 帧、6 项机器检查 PASS，关键帧及连续横移已自查；下一步按真实来路检查 N站东门、兴趣街三店、AFTER 9 门前与 8 栋住宅，补足专项视角后继续站前铺装、生活物件和不同建筑家族层次，任务保持 active
+第 2 轮已接入站厅与音乐楼两类共 4 栋公共外壳、8 栋住宅细部和 N站／BYTE BEAT／FRAME／PLAYROOM／AFTER 9 五处经营标识；当前全城覆盖仍按源对象逐批推进。N站录制 300 帧、6 项机器检查 PASS；新增 V-A13 住宅专项近景录制 150 帧、6 项机器检查 PASS，关键帧 59 与连续横移 60–63 帧已自查，窗檐、护窗栏和设备支架可辨。下一步按真实来路检查 N站东门、兴趣街三店、AFTER 9 门前、其余住宅与背侧入口，继续站前铺装、生活物件和建筑家族层次，任务保持 active
 
 ## 结果与证据
 
-[全城覆盖核对](../evidence/TASK-049/coverage-r1/review.md)记录制作前的源对象与缺口；[公共外壳](../evidence/TASK-049/facades-r1/review.md)、[住宅外皮](../evidence/TASK-049/residential-r1/review.md)及[五处标识](../evidence/TASK-049/signs-r1/geometry-review.md)记录各批实际改动，[第 2 轮运行自查](../evidence/TASK-049/runtime-r2/review.md)承接当前 N站录制与检查日志
+[全城覆盖核对](../evidence/TASK-049/coverage-r1/review.md)记录制作前的源对象与缺口；[公共外壳](../evidence/TASK-049/facades-r1/review.md)、[住宅外皮](../evidence/TASK-049/residential-r1/review.md)及[五处标识](../evidence/TASK-049/signs-r1/geometry-review.md)记录各批实际改动，[第 2 轮运行自查](../evidence/TASK-049/runtime-r2/review.md)承接 N站录制；[住宅与街树专项自查](../evidence/TASK-049/residential-r1/runtime-review.md)保存本轮机位、真实输入、状态摘要、hash 和实际观察边界
 
-实际画面可辨 N站立柱、檐带、门楣标识和屋顶海报，连续横移未见这些构件突然跳位；站前仍有大片浅色空地，远景窗格重复，天空层次偏弱。当前机位不是东侧真实到达路线，其他新招牌和住宅专项近景未覆盖；全城外观、真人手感、作者审美和增量性能比较尚未验收，不计作 G2 品质放行
+实际画面可辨 N站立柱、檐带、门楣标识和屋顶海报；V-A13 的三层住宅细部在短横移中未见整体跳位或明显互穿，首层门与小路可见。站前仍有大片浅色空地，住宅窗面平整深暗、构件重复，天空层次偏弱；住宅专项只覆盖 V-A13 正面，未验证人物碰撞与背侧入口。N站东侧真实到达路线、其他新招牌、其余住宅、全城外观、真人手感、作者审美和增量性能比较尚未验收，不计作 G2 品质放行
