@@ -1,5 +1,6 @@
 pub mod app;
 pub mod capture;
+pub(crate) mod graphics;
 pub mod places;
 pub mod player;
 pub(crate) mod settings;

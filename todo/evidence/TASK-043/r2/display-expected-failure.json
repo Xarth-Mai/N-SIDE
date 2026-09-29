@@ -1,0 +1,49 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 120,
+  "seed": 0,
+  "timeout_seconds": 450,
+  "keyframes": [
+    29,
+    79,
+    119
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 32,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "intentional_wrong_resolution_is_rejected",
+      "from": 59,
+      "to": 119,
+      "game_page": "world",
+      "display_pending": false,
+      "configured_resolution": 2,
+      "configured_borderless": false,
+      "player_grounded": true,
+      "text_scale": 1.25,
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off",
+        "shadows": true,
+        "bloom": false
+      }
+    }
+  ]
+}

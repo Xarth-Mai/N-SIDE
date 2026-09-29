@@ -252,6 +252,8 @@ mod tests {
         let mut player = PlayerSample {
             foot: [0.0, 0.021, 0.0],
             grounded: true,
+            jumps: 0,
+            sprinting: false,
             blocked: None,
             resets: 0,
             camera_distance: 3.8,

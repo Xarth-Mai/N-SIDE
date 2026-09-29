@@ -639,6 +639,12 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
         };
         let mut batches = BTreeMap::new();
         let top = building.elevation + building.height;
+        // Keep deep sills and bands outside the shell of the publicly enterable shop
+        let interior_clearance = if building.shop_floor().is_some() {
+            0.065
+        } else {
+            0.0
+        };
         // Inner-court normals face the opening, independent of authored polygon winding
         for (polygon, court) in std::iter::once((&building.polygon, false))
             .chain(design.lightwell.iter().map(|p| (p, true)))
@@ -749,8 +755,8 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             && let Some(material) = display
                         {
                             let center = map_to_world([
-                                p[0] + normal[0] * 0.105,
-                                p[1] + normal[1] * 0.105,
+                                p[0] + normal[0] * (0.105 + interior_clearance),
+                                p[1] + normal[1] * (0.105 + interior_clearance),
                                 p[2],
                             ]);
                             add_frame(
@@ -778,6 +784,11 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             )?;
                             continue;
                         }
+                        let p = [
+                            p[0] + normal[0] * interior_clearance,
+                            p[1] + normal[1] * interior_clearance,
+                            p[2],
+                        ];
                         add_box(
                             &mut batches,
                             "trim",
@@ -796,15 +807,15 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                     }
                     if floor_index > 0 {
                         let p = [
-                            (a[0] + b[0]) / 2.0 + normal[0] * 0.04,
-                            (a[1] + b[1]) / 2.0 + normal[1] * 0.04,
+                            (a[0] + b[0]) / 2.0 + normal[0] * (0.04 + interior_clearance),
+                            (a[1] + b[1]) / 2.0 + normal[1] * (0.04 + interior_clearance),
                             floor.z,
                         ];
                         add_box(
                             &mut batches,
                             "trim",
                             map_to_world(p),
-                            Vec3::new(length as f32, 0.13, 0.18),
+                            Vec3::new((length - interior_clearance * 2.0) as f32, 0.13, 0.18),
                             rotation,
                         )?;
                     }
@@ -846,7 +857,15 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             p[2]
                         ));
                     }
-                    if display.is_some() && (p[2] - building.elevation).abs() < 0.3 {
+                    let public_shop_door = building.shop_door(&map.nodes).filter(|door| {
+                        (0..2).all(|axis| {
+                            ((door.line[0][axis] + door.line[1][axis]) * 0.5 - p[axis]).abs() < 0.01
+                        })
+                    });
+                    if display.is_some()
+                        && public_shop_door.is_none()
+                        && (p[2] - building.elevation).abs() < 0.3
+                    {
                         let center = map_to_world([
                             p[0] + normal[0] * 0.16,
                             p[1] + normal[1] * 0.16,
@@ -887,7 +906,17 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         .find(|f| f.z > p[2] + 0.1)
                         .map_or(top, |f| f.z)
                         - p[2];
-                    let requested = entry_opening(&design.kind, &entry.role);
+                    let requested = public_shop_door.map_or_else(
+                        || entry_opening(&design.kind, &entry.role),
+                        |door| {
+                            Vec2::new(
+                                (door.line[1][0] - door.line[0][0])
+                                    .hypot(door.line[1][1] - door.line[0][1])
+                                    as f32,
+                                geometry::SHOP_DOOR_HEIGHT as f32,
+                            )
+                        },
+                    );
                     let opening = Vec2::new(
                         requested
                             .x
@@ -906,17 +935,19 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         p[2] + f64::from(opening.y) / 2.0,
                     ]);
                     add_frame(&mut batches, center, opening, rotation, false)?;
-                    add_box(
-                        &mut batches,
-                        if matches!(entry.role.as_str(), "public" | "student") {
-                            "glass"
-                        } else {
-                            "metal"
-                        },
-                        center - map_to_world([normal[0] * 0.08, normal[1] * 0.08, 0.0]),
-                        Vec3::new(opening.x, opening.y, 0.03),
-                        rotation,
-                    )?;
+                    if public_shop_door.is_none() {
+                        add_box(
+                            &mut batches,
+                            if matches!(entry.role.as_str(), "public" | "student") {
+                                "glass"
+                            } else {
+                                "metal"
+                            },
+                            center - map_to_world([normal[0] * 0.08, normal[1] * 0.08, 0.0]),
+                            Vec3::new(opening.x, opening.y, 0.03),
+                            rotation,
+                        )?;
+                    }
                     if opening.x > 1.8 {
                         add_box(
                             &mut batches,
@@ -1640,6 +1671,72 @@ mod tests {
     }
 
     #[test]
+    fn shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let prepared = PreparedScene::load(root).unwrap();
+        let building = prepared
+            .map
+            .buildings
+            .iter()
+            .find(|building| building.id == "V-04")
+            .unwrap();
+        let floor = building.shop_floor().unwrap();
+        let foundation = prepared
+            .parts
+            .iter()
+            .find(|part| part.source.contains("(V-04)") && part.source.ends_with("/foundation"))
+            .unwrap();
+        let highest_foundation = foundation
+            .mesh
+            .attribute(Mesh::ATTRIBUTE_POSITION)
+            .unwrap()
+            .as_float3()
+            .unwrap()
+            .iter()
+            .map(|point| point[1])
+            .fold(f32::NEG_INFINITY, f32::max);
+        let mut leaks = Vec::new();
+        for part in prepared
+            .parts
+            .iter()
+            .filter(|part| part.source == "buildings[V-04]/derived-facade")
+        {
+            for point in part
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap()
+            {
+                if point[1] > floor.z as f32 + 0.1
+                    && point[1] < 32.2
+                    && floor.public_rooms().any(|(_, room)| {
+                        contains([f64::from(point[0]), -f64::from(point[2])], &room.polygon)
+                    })
+                {
+                    leaks.push((part.material.as_str(), *point));
+                }
+            }
+        }
+        eprintln!(
+            "shop shell: {} maximum={} floor={}; facade intrusions={} examples={:?}",
+            foundation.source,
+            highest_foundation,
+            floor.z,
+            leaks.len(),
+            leaks.iter().take(6).collect::<Vec<_>>()
+        );
+        assert!(
+            highest_foundation <= floor.z as f32 + 0.001,
+            "foundation cut faces overlap the finished interior walls"
+        );
+        assert!(
+            leaks.is_empty(),
+            "facade boxes project behind the shell into the public rooms"
+        );
+    }
+
+    #[test]
     fn all_authored_facades_cover_entries_courts_and_keep_roofs_clear() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
@@ -1710,9 +1807,11 @@ mod tests {
                     })
                     .count();
                 assert_eq!(
-                    count, 1,
-                    "{}:{} missing or duplicated doorway",
-                    building.id, entry.node
+                    count,
+                    usize::from(!(building.shop_floor().is_some() && entry.role == "public")),
+                    "{}:{} expected closed door panel, or clear playable shop entrance",
+                    building.id,
+                    entry.node
                 );
                 entries += 1;
             }

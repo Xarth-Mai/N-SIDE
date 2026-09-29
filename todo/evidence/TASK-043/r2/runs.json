@@ -1,0 +1,130 @@
+[
+  {
+    "label": "confirm",
+    "output": "output/capture/task043-display-confirm",
+    "run": "output/capture/task043-display-confirm/run.json",
+    "state": "output/capture/task043-display-confirm/state.json",
+    "runtime_log": "output/capture/task043-display-confirm/runtime.log",
+    "status": "PASS",
+    "frames": 880,
+    "checks": 13,
+    "failed": [],
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-confirm/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-confirm",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-settings"
+    ],
+    "binary_sha256": "f1669d54a575a9ee3120d576624a62aaf6daf5387778c24147d0a09557a9564e",
+    "video": "PASS",
+    "expected_exit": 0
+  },
+  {
+    "label": "options",
+    "output": "output/capture/task043-display-options",
+    "run": "output/capture/task043-display-options/run.json",
+    "state": "output/capture/task043-display-options/state.json",
+    "runtime_log": "output/capture/task043-display-options/runtime.log",
+    "status": "PASS",
+    "frames": 660,
+    "checks": 4,
+    "failed": [],
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-options/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-options",
+      "--walk-preview"
+    ],
+    "binary_sha256": "f1669d54a575a9ee3120d576624a62aaf6daf5387778c24147d0a09557a9564e",
+    "video": "PASS",
+    "expected_exit": 0
+  },
+  {
+    "label": "package-restore",
+    "output": "output/capture/task043-display-package-restore",
+    "run": "output/capture/task043-display-package-restore/run.json",
+    "state": "output/capture/task043-display-package-restore/state.json",
+    "runtime_log": "output/capture/task043-display-package-restore/runtime.log",
+    "status": "PASS",
+    "frames": 120,
+    "checks": 4,
+    "failed": [],
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/output/packages/N-SIDE Linux Preview 2026-09-29/game/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/packages/N-SIDE Linux Preview 2026-09-29",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-package-restore/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-package-restore",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-settings"
+    ],
+    "binary_sha256": "6e1688926ba9d0b9b3103843ab5619df86c174eb2f28c7c115ae7b1049cb53c6",
+    "video": "PASS",
+    "expected_exit": 0
+  },
+  {
+    "label": "reset",
+    "output": "output/capture/task043-display-reset",
+    "run": "output/capture/task043-display-reset/run.json",
+    "state": "output/capture/task043-display-reset/state.json",
+    "runtime_log": "output/capture/task043-display-reset/runtime.log",
+    "status": "PASS",
+    "frames": 120,
+    "checks": 4,
+    "failed": [],
+    "command": [
+      "output/packages/N-SIDE Linux Preview 2026-09-29/run-walk-preview.sh",
+      "--reset-graphics",
+      "--capture",
+      "todo/evidence/TASK-043/r2/display-reset.json",
+      "--output",
+      "output/capture/task043-display-reset",
+      "--settings-dir",
+      "output/capture/task043-display-settings"
+    ],
+    "binary_sha256": "6e1688926ba9d0b9b3103843ab5619df86c174eb2f28c7c115ae7b1049cb53c6",
+    "video": "NOT RUN: continuous PNGs inspected",
+    "expected_exit": 0
+  },
+  {
+    "label": "expected-failure",
+    "output": "output/capture/task043-display-expected-failure",
+    "run": "output/capture/task043-display-expected-failure/run.json",
+    "state": "output/capture/task043-display-expected-failure/state.json",
+    "runtime_log": "output/capture/task043-display-expected-failure/runtime.log",
+    "status": "FAIL",
+    "frames": 120,
+    "checks": 4,
+    "failed": [
+      "intentional_wrong_resolution_is_rejected"
+    ],
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/output/packages/N-SIDE Linux Preview 2026-09-29/game/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/packages/N-SIDE Linux Preview 2026-09-29",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-expected-failure/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-expected-failure",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-display-settings"
+    ],
+    "binary_sha256": "6e1688926ba9d0b9b3103843ab5619df86c174eb2f28c7c115ae7b1049cb53c6",
+    "video": "NOT RUN",
+    "expected_exit": 1
+  }
+]

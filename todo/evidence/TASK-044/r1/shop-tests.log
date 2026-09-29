@@ -1,0 +1,34 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 33.05s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 5 tests
+[collision/probe] triangles=106081 source_ranges=2514 mesh_bytes=16146040 bounds=(Vec3(-820.0, -2.0, -2040.0), Vec3(1320.0, 450.025, 580.0)) geometry=8.550966059s bvh=34.509008ms support_1000=581.33µs support=CollisionHit { fraction: 0.49687502, normal: Vec3(0.0, 1.0, 0.0), point: Vec3(90.0, 28.025, -255.0), surface_normal: Vec3(0.0, 0.99999994, 0.0), source: "/roads/135 (home -> shop_entry)", triangle: 43475 } doorstep=CollisionHit { fraction: 0.28388673, normal: Vec3(0.29946688, 0.95410675, -0.0), point: Vec3(88.49905, 28.035103, -255.00002), surface_normal: Vec3(0.99999994, -0.0, 0.0), source: "/architectures/0 (P3-A1)/fixtures/5 (门前截水沟)", triangle: 104930 } wall=CollisionHit { fraction: 0.33600006, normal: Vec3(1.0, 7.386219e-5, 3.2792577e-5), point: Vec3(88.0, 29.362198, -251.99994), surface_normal: Vec3(-1.0, 0.0, 0.0), source: "/buildings/1 (V-04)/design/floors/0/rooms/3/walls", triangle: 16350 }
+test world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall ... ok
+
+thread 'world::geometry::tests::shop_public_rooms_share_rendered_doors_support_and_private_boundaries' (551) panicked at src/world/geometry.rs:1661:13:
+source doorway blocks [90.0, 255.0, 28.04] -> [85.0, 255.0, 28.04]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::geometry::tests::shop_public_rooms_share_rendered_doors_support_and_private_boundaries ... FAILED
+
+thread 'player::tests::walks_shop_public_rooms_and_returns_without_opening_private_rooms' (549) panicked at src/player.rs:1160:13:
+target=Vec3(86.0, 28.0, -255.0) foot=Vec3(88.376, 28.055874, -255.0) blocked=Some("buildings[V-04]/derived-facade")
+[player/steps] foot=Vec3(106.39795, 29.47776, -272.60678) grounded=true blocked=None
+[player/ramp] foot=Vec3(117.16086, 27.191568, -246.41336) grounded=true blocked=None
+[observation/shop] horizontal=2.8266754 vertical=0.0457592 facing=0.9961512 endpoint_distance=Some(0.07000896) sight=Some(CollisionHit { fraction: 0.975236, normal: Vec3(1.0, -0.0, -0.0), point: Vec3(88.05501, 29.351124, -254.99997), surface_normal: Vec3(1.0, 0.0, -0.0), source: "buildings[V-04]/derived-facade", triangle: 107116 })
+test player::tests::walks_shop_public_rooms_and_returns_without_opening_private_rooms ... FAILED
+test places::observation::tests::real_shop_recorded_approach_can_observe_its_public_entrance ... ok
+[player/wall] foot=Vec3(88.681, 28.020378, -249.96959) grounded=true blocked=Some("buildings[V-04]/derived-facade")
+[player/ascent-entry] dt=0.015625 foot=Vec3(186.50272, 43.392944, -320.0075) grounded=true blocked=None resets=0
+[player/ascent-entry] dt=0.033333335 foot=Vec3(186.9143, 43.689213, -320.3123) grounded=true blocked=None resets=0
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... ok
+
+failures:
+
+failures:
+    player::tests::walks_shop_public_rooms_and_returns_without_opening_private_rooms
+    world::geometry::tests::shop_public_rooms_share_rendered_doors_support_and_private_boundaries
+
+test result: FAILED. 3 passed; 2 failed; 0 ignored; 0 measured; 90 filtered out; finished in 9.19s
+
+error: test failed, to rerun pass `--lib`

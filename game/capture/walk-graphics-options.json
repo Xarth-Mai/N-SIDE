@@ -1,0 +1,396 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 660,
+  "seed": 0,
+  "timeout_seconds": 600,
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 70,
+      "end": 71,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 80,
+      "end": 81,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 91,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 120,
+      "end": 121,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 140,
+      "end": 141,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 144,
+      "end": 145,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 164,
+      "end": 165,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 168,
+      "end": 169,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 188,
+      "end": 189,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 192,
+      "end": 193,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 212,
+      "end": 213,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 216,
+      "end": 217,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 236,
+      "end": 237,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 240,
+      "end": 241,
+      "keys": [
+        "Left"
+      ]
+    },
+    {
+      "start": 260,
+      "end": 261,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 264,
+      "end": 265,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 284,
+      "end": 285,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 288,
+      "end": 289,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 308,
+      "end": 309,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 312,
+      "end": 313,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 332,
+      "end": 333,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 336,
+      "end": 337,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 356,
+      "end": 357,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 360,
+      "end": 361,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 380,
+      "end": 381,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 384,
+      "end": 385,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 404,
+      "end": 405,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 408,
+      "end": 409,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 428,
+      "end": 429,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 432,
+      "end": 433,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 452,
+      "end": 453,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 456,
+      "end": 457,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 476,
+      "end": 477,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 480,
+      "end": 481,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 500,
+      "end": 501,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 504,
+      "end": 505,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 524,
+      "end": 525,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 528,
+      "end": 529,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 534,
+      "end": 535,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 540,
+      "end": 541,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 548,
+      "end": 549,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 552,
+      "end": 553,
+      "keys": [
+        "Right"
+      ]
+    },
+    {
+      "start": 558,
+      "end": 559,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 564,
+      "end": 565,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 590,
+      "end": 591,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 610,
+      "end": 611,
+      "keys": [
+        "Escape"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 32,
+      "game_page": "world"
+    }
+  ],
+  "keyframes": [
+    59,
+    136,
+    160,
+    184,
+    208,
+    232,
+    256,
+    280,
+    304,
+    328,
+    352,
+    376,
+    400,
+    424,
+    448,
+    472,
+    496,
+    520,
+    544,
+    568,
+    649
+  ],
+  "assertions": [
+    {
+      "name": "all_rows_drive_real_camera_and_return",
+      "from": 639,
+      "to": 659,
+      "game_page": "world",
+      "settings_open": false,
+      "graphics": {
+        "aa": "taa",
+        "ssao": "low",
+        "bloom": true,
+        "shadows": false
+      },
+      "pointer_locked": true,
+      "display_pending": false,
+      "configured_resolution": 1,
+      "configured_borderless": true
+    }
+  ]
+}

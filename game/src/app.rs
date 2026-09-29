@@ -1,5 +1,6 @@
 use crate::{
     capture::{self, CaptureInput, CaptureTarget},
+    graphics::{self, DisplayTrial, GraphicsNotice, GraphicsSettings},
     places::{self, Observation, PlaceCatalog},
     player::{self, PlayerState, WalkPreview},
     settings::{self, SaveStatus, SettingsStore},
@@ -74,10 +75,28 @@ pub(crate) struct EntryUi {
     pause_after_loading: bool,
     gamepad_recovery: Option<bool>,
     settings_return: Option<usize>,
+    display_return: Option<usize>,
+    graphics_tab: bool,
 }
 impl EntryUi {
     pub(crate) fn settings_open(&self) -> bool {
         self.settings_return.is_some()
+    }
+
+    pub(crate) fn graphics_tab(&self) -> bool {
+        self.settings_open() && self.display_return.is_none() && self.graphics_tab
+    }
+
+    pub(crate) fn graphics_page(&self) -> usize {
+        if self.graphics_tab() {
+            self.focus / 4
+        } else {
+            0
+        }
+    }
+
+    pub(crate) fn display_pending(&self) -> bool {
+        self.display_return.is_some()
     }
 
     pub(crate) fn focus(&self) -> usize {
@@ -89,6 +108,7 @@ impl EntryUi {
 pub(crate) struct EntrySettings {
     pub(crate) large_text: bool,
     pub(crate) slow_camera: bool,
+    pub(crate) graphics: GraphicsSettings,
 }
 impl EntrySettings {
     pub(crate) fn text_scale(&self) -> f32 {
@@ -109,7 +129,32 @@ enum Action {
     Settings,
     TextSize,
     CameraSensitivity,
+    Graphics(usize),
+    ResetGraphics,
+    KeepDisplay,
+    RevertDisplay,
     Back,
+}
+
+fn shell_actions(phase: GamePhase, ui: &EntryUi) -> Vec<(&'static str, Action)> {
+    if ui.display_return.is_some() {
+        return vec![
+            ("保留显示设置", Action::KeepDisplay),
+            ("恢复原显示设置", Action::RevertDisplay),
+        ];
+    }
+    if ui.graphics_tab() {
+        return graphics::LABELS
+            .iter()
+            .enumerate()
+            .map(|(i, label)| (*label, Action::Graphics(i)))
+            .chain([
+                ("恢复默认画质", Action::ResetGraphics),
+                ("返回", Action::Back),
+            ])
+            .collect();
+    }
+    actions(phase, ui.settings_open()).to_vec()
 }
 
 fn actions(phase: GamePhase, settings: bool) -> &'static [(&'static str, Action)] {
@@ -147,8 +192,15 @@ struct ShellRoot;
 struct ShellButton {
     phase: GamePhase,
     settings: bool,
+    graphics: bool,
     index: usize,
 }
+#[derive(Component)]
+enum ShellNavigation {
+    Tab(bool),
+    Page(bool),
+}
+
 type ShellSnapshot = (
     GamePhase,
     bool,
@@ -158,6 +210,10 @@ type ShellSnapshot = (
     bool,
     EntrySettings,
     SaveStatus,
+    bool,
+    usize,
+    String,
+    Option<u32>,
 );
 
 pub fn run() -> Result<AppExit, String> {
@@ -166,6 +222,7 @@ pub fn run() -> Result<AppExit, String> {
     let mut walk = false;
     let mut output = None;
     let mut settings_directory = None;
+    let mut reset_graphics = false;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         match arg.as_str() {
@@ -173,6 +230,7 @@ pub fn run() -> Result<AppExit, String> {
                 root = PathBuf::from(args.next().ok_or("--project-root requires a directory")?)
             }
             "--walk-preview" => walk = true,
+            "--reset-graphics" => reset_graphics = true,
             "--settings-dir" => {
                 settings_directory = Some(PathBuf::from(
                     args.next().ok_or("--settings-dir requires a directory")?,
@@ -190,7 +248,7 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--walk-preview  Neutral exterior movement experiment\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
+                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--walk-preview  Neutral movement with shop public interior experiment\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
                 );
                 return Ok(AppExit::Success);
             }
@@ -263,6 +321,10 @@ pub fn run() -> Result<AppExit, String> {
     app.insert_resource(WalkPreview(walk));
     install_lifecycle(&mut app);
     settings::install(&mut app, settings_directory, headless);
+    if reset_graphics {
+        settings::reset_graphics(&mut app);
+    }
+    graphics::install(&mut app, visual.clone());
     player::install(&mut app);
     places::install(&mut app);
     app.add_systems(
@@ -313,6 +375,7 @@ fn install_lifecycle(app: &mut App) {
         .init_resource::<EntryUi>()
         .init_resource::<Observation>()
         .init_resource::<EntrySettings>()
+        .init_resource::<DisplayTrial>()
         .add_message::<WindowFocused>()
         .add_message::<KeyboardInput>()
         .add_message::<GamepadConnectionEvent>()
@@ -333,7 +396,8 @@ fn install_lifecycle(app: &mut App) {
         })
         .add_systems(
             RunFixedMainLoop,
-            entry_input
+            (graphics::expire_display_trial, entry_input)
+                .chain()
                 .after(CaptureInput)
                 .in_set(UiInput)
                 .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop),
@@ -502,6 +566,7 @@ fn poll_scene(
 
 #[expect(
     clippy::too_many_arguments,
+    clippy::type_complexity,
     reason = "Bevy injects the real input, window and state resources"
 )]
 fn entry_input(
@@ -512,14 +577,17 @@ fn entry_input(
     mut focus_events: MessageReader<WindowFocused>,
     mut connections: MessageReader<GamepadConnectionEvent>,
     gamepads: Query<&Gamepad>,
-    buttons: Query<(&Interaction, &ShellButton), Changed<Interaction>>,
+    buttons: Query<
+        (&Interaction, Option<&ShellButton>, Option<&ShellNavigation>),
+        Changed<Interaction>,
+    >,
     windows: Query<(Entity, &Window), With<PrimaryWindow>>,
     phase: Res<State<GamePhase>>,
     mut next: ResMut<NextState<GamePhase>>,
     mut ui: ResMut<EntryUi>,
     mut observation: ResMut<Observation>,
     player: Option<Res<PlayerState>>,
-    mut settings: ResMut<EntrySettings>,
+    (mut settings, mut display_trial): (ResMut<EntrySettings>, ResMut<DisplayTrial>),
     mut exit: MessageWriter<AppExit>,
 ) {
     let repeated: Vec<_> = keyboard_events
@@ -558,6 +626,15 @@ fn entry_input(
     }
     ui.pause_after_loading |= disconnected && *phase.get() == GamePhase::Loading;
     let unfocused = windows.iter().any(|(_, window)| !window.focused);
+    if ui.display_return.is_some() && (unfocused || lost_focus || disconnected) {
+        display_trial.revert(&mut settings.graphics);
+    }
+    if !display_trial.pending()
+        && let Some(focus) = ui.display_return.take()
+    {
+        ui.focus = focus;
+        ui.wait_for_release = true;
+    }
     if keys.any_just_pressed([KeyCode::Enter, KeyCode::Escape, KeyCode::Tab]) {
         debug!(
             "[game/input] phase={:?} next={:?} unfocused={} changed={} gate={} repeated={:?}",
@@ -583,6 +660,7 @@ fn entry_input(
         return;
     }
     if ui.wait_for_release {
+        // Menu gating owns menu keys; held movement controls remain the player's recovery concern
         ui.wait_for_release = keys.any_pressed([
             KeyCode::Escape,
             KeyCode::Tab,
@@ -590,6 +668,15 @@ fn entry_input(
             KeyCode::ArrowUp,
             KeyCode::ArrowDown,
         ]) || mouse.pressed(MouseButton::Left)
+            || (ui.settings_open()
+                && keys.any_pressed([
+                    KeyCode::ArrowLeft,
+                    KeyCode::ArrowRight,
+                    KeyCode::KeyQ,
+                    KeyCode::KeyE,
+                    KeyCode::PageUp,
+                    KeyCode::PageDown,
+                ]))
             || gamepads.iter().any(|pad| {
                 [
                     GamepadButton::South,
@@ -600,6 +687,15 @@ fn entry_input(
                 ]
                 .into_iter()
                 .any(|button| pad.pressed(button))
+                    || (ui.settings_open()
+                        && [
+                            GamepadButton::DPadLeft,
+                            GamepadButton::DPadRight,
+                            GamepadButton::LeftTrigger,
+                            GamepadButton::RightTrigger,
+                        ]
+                        .into_iter()
+                        .any(|button| pad.pressed(button)))
             });
         return;
     }
@@ -646,6 +742,12 @@ fn entry_input(
         || pressed(GamepadButton::East)
         || pressed(GamepadButton::Start)
     {
+        if let Some(focus) = ui.display_return.take() {
+            display_trial.revert(&mut settings.graphics);
+            ui.focus = focus;
+            ui.wait_for_release = true;
+            return;
+        }
         if let Some(focus) = ui.settings_return.take() {
             ui.focus = focus;
             ui.wait_for_release = true;
@@ -659,18 +761,71 @@ fn entry_input(
         }
         return;
     }
-    let options = actions(*phase.get(), ui.settings_open());
+    if ui.settings_open() && ui.display_return.is_none() {
+        let mut change_tab = key_pressed(KeyCode::KeyQ)
+            || key_pressed(KeyCode::KeyE)
+            || pressed(GamepadButton::LeftTrigger)
+            || pressed(GamepadButton::RightTrigger);
+        let mut selected_tab = !ui.graphics_tab;
+        let mut page_change = if key_pressed(KeyCode::PageDown) {
+            Some(false)
+        } else if key_pressed(KeyCode::PageUp) {
+            Some(true)
+        } else {
+            None
+        };
+        for (interaction, _, navigation) in &buttons {
+            if *interaction != Interaction::Pressed {
+                continue;
+            }
+            match navigation {
+                Some(ShellNavigation::Tab(tab)) => {
+                    selected_tab = *tab;
+                    change_tab = true;
+                    ui.gamepad = false;
+                }
+                Some(ShellNavigation::Page(reverse)) if ui.graphics_tab() => {
+                    page_change = Some(*reverse);
+                    ui.gamepad = false;
+                }
+                _ => {}
+            }
+        }
+        if change_tab {
+            ui.graphics_tab = selected_tab;
+            ui.focus = 0;
+            ui.wait_for_release = true;
+            return;
+        }
+        if let Some(reverse) = page_change
+            && ui.graphics_tab()
+        {
+            let pages = (graphics::LABELS.len() + 2).div_ceil(4);
+            ui.focus = ((ui.graphics_page() + if reverse { pages - 1 } else { 1 }) % pages) * 4;
+            return;
+        }
+    }
+    let options = shell_actions(*phase.get(), &ui);
     if key_pressed(KeyCode::ArrowDown) || pressed(GamepadButton::DPadDown) {
         ui.focus = (ui.focus + 1) % options.len();
     }
     if key_pressed(KeyCode::ArrowUp) || pressed(GamepadButton::DPadUp) {
         ui.focus = (ui.focus + options.len() - 1) % options.len();
     }
-    let mut activate = key_pressed(KeyCode::Enter) || pressed(GamepadButton::South);
-    for (interaction, button) in &buttons {
+    let reverse = key_pressed(KeyCode::ArrowLeft) || pressed(GamepadButton::DPadLeft);
+    let mut activate = key_pressed(KeyCode::Enter)
+        || pressed(GamepadButton::South)
+        || (matches!(options[ui.focus].1, Action::Graphics(_))
+            && (reverse || key_pressed(KeyCode::ArrowRight) || pressed(GamepadButton::DPadRight)));
+    for (interaction, button, _) in &buttons {
+        let Some(button) = button else {
+            continue;
+        };
         if *interaction == Interaction::Pressed
             && button.phase == *phase.get()
             && button.settings == ui.settings_open()
+            && button.graphics == ui.graphics_tab()
+            && (!ui.graphics_tab() || button.index / 4 == ui.graphics_page())
         {
             ui.focus = button.index;
             ui.gamepad = false;
@@ -688,11 +843,37 @@ fn entry_input(
             }
             Action::Settings => {
                 ui.settings_return = Some(ui.focus);
+                ui.graphics_tab = false;
                 ui.focus = 0;
                 ui.wait_for_release = true;
             }
             Action::TextSize => settings.large_text = !settings.large_text,
             Action::CameraSensitivity => settings.slow_camera = !settings.slow_camera,
+            action @ (Action::Graphics(_) | Action::ResetGraphics) => {
+                let previous = settings.graphics;
+                if let Action::Graphics(row) = action {
+                    settings.graphics.adjust(row, reverse);
+                } else {
+                    settings.graphics = GraphicsSettings::default();
+                }
+                if (previous.borderless, previous.resolution)
+                    != (settings.graphics.borderless, settings.graphics.resolution)
+                {
+                    display_trial.start(previous);
+                    ui.display_return = Some(ui.focus);
+                    ui.focus = 1;
+                    ui.wait_for_release = true;
+                }
+            }
+            Action::KeepDisplay | Action::RevertDisplay => {
+                if matches!(options[ui.focus].1, Action::KeepDisplay) {
+                    display_trial.confirm();
+                } else {
+                    display_trial.revert(&mut settings.graphics);
+                }
+                ui.focus = ui.display_return.take().unwrap_or(0);
+                ui.wait_for_release = true;
+            }
             Action::Back => {
                 ui.focus = ui.settings_return.take().unwrap_or(0);
                 ui.wait_for_release = true;
@@ -726,6 +907,8 @@ fn draw_shell(
     observation: Res<Observation>,
     settings: Res<EntrySettings>,
     store: Option<Res<SettingsStore>>,
+    graphics_notice: Option<Res<GraphicsNotice>>,
+    display_trial: Res<DisplayTrial>,
 ) {
     let Ok((camera_id, camera)) = cameras.single() else {
         return;
@@ -745,8 +928,14 @@ fn draw_shell(
         editing,
         *settings,
         save_status,
+        ui.graphics_tab(),
+        ui.graphics_page(),
+        graphics_notice
+            .as_ref()
+            .map_or(String::new(), |notice| notice.0.clone()),
+        ui.display_return.map(|_| display_trial.seconds()),
     );
-    if *prior == Some(key) {
+    if prior.as_ref() == Some(&key) {
         return;
     }
     *prior = Some(key);
@@ -809,10 +998,10 @@ fn draw_shell(
             parent
                 .spawn((
                     Node {
-                        width: px(if world { 280.0 } else { 720.0 }),
+                        width: px(if world { 280.0 } else if editing { 860.0 } else { 720.0 }),
                         max_width: percent(100),
-                        padding: UiRect::all(px(if world { 16.0 } else { 32.0 })),
-                        row_gap: px(if world { 12.0 } else { 24.0 }),
+                        padding: UiRect::all(px(if world || editing { 16.0 } else { 32.0 })),
+                        row_gap: px(if world || editing { 12.0 } else { 24.0 }),
                         flex_direction: FlexDirection::Column,
                         border: UiRect::all(px(3)),
                         border_radius: BorderRadius::all(px(tokens.panel_radius)),
@@ -822,7 +1011,10 @@ fn draw_shell(
                     BorderColor::all(color(&tokens.colors.raised)),
                 ))
                 .with_children(|panel| {
-                    let (heading, description) = if editing {
+                    let display_message = format!("请确认画面可用，{} 秒后自动恢复\n未确认的窗口设置不会保存", display_trial.seconds());
+                    let (heading, description) = if ui.display_return.is_some() {
+                        ("保留显示设置？", display_message.as_str())
+                    } else if editing {
                         ("设置", save_status.message())
                     } else { match page {
                         GamePhase::Title => ("N:SIDE", "街区信号  :  生活仍在继续"),
@@ -844,7 +1036,7 @@ fn draw_shell(
                         if world {
                             tokens.heading_size
                         } else {
-                            tokens.title_size
+                            if editing { tokens.heading_size } else { tokens.title_size }
                         },
                         color(if page == GamePhase::Failed {
                             &tokens.colors.warning
@@ -860,9 +1052,21 @@ fn draw_shell(
                             color(&tokens.colors.text),
                         ));
                     }
-                    for (index, (label, action)) in actions(page, editing).iter().enumerate() {
+                    if editing && ui.display_return.is_none() {
+                        panel.spawn(Node { width: percent(100), column_gap:px(12), ..default() }).with_children(|tabs| {
+                            for (label, selected) in [("通用", false), ("画质", true)] {
+                                tabs.spawn((Button, ShellNavigation::Tab(selected), AccessibleLabel::new(label),
+                                    Node { flex_grow:1.0, min_height:px(56), padding:UiRect::all(px(8)), border:UiRect::all(px(3)), ..default() },
+                                    BackgroundColor(color(if ui.graphics_tab() == selected { &tokens.colors.focus } else { &tokens.colors.raised })), BorderColor::all(color(&tokens.colors.secondary))))
+                                    .with_children(|tab| { tab.spawn(text(label, tokens.body_size, color(if ui.graphics_tab() == selected { &tokens.colors.base } else { &tokens.colors.text }))); });
+                            }
+                        });
+                    }
+                    for (index, (label, action)) in shell_actions(page, &ui).iter().enumerate() {
+                        if ui.graphics_tab() && index / 4 != ui.graphics_page() { continue; }
                         let label = match action {
                             Action::TextSize => format!("{label}  :  {:.0}%", settings.text_scale() * 100.0),
+                            Action::Graphics(row) => format!("{label}  :  {}", settings.graphics.value(*row)),
                             Action::CameraSensitivity => format!("{label}  :  {:.0}%", settings.camera_sensitivity() * 100.0),
                             _ => (*label).to_owned(),
                         };
@@ -870,11 +1074,11 @@ fn draw_shell(
                             .spawn((
                                 Button,
                                 AccessibleLabel::new(label.clone()),
-                                ShellButton { phase: page, settings: editing, index },
+                                ShellButton { phase: page, settings: editing, graphics: ui.graphics_tab(), index },
                                 Node {
                                     width: percent(100),
-                                    min_height: px(76),
-                                    padding: UiRect::axes(px(24), px(14)),
+                                    min_height: px(if editing { 64.0 } else { 76.0 }),
+                                    padding: UiRect::axes(px(20), px(if editing { 8.0 } else { 14.0 })),
                                     border: UiRect::all(px(3)),
                                     border_radius: BorderRadius::all(px(tokens.button_radius)),
                                     align_items: AlignItems::Center,
@@ -891,12 +1095,26 @@ fn draw_shell(
                                 ));
                             });
                     }
+                    if ui.graphics_tab() {
+                        panel.spawn(Node {width:percent(100), column_gap:px(12), ..default()}).with_children(|pages| {
+                            for (label, reverse) in [("‹ 上一页", true), ("下一页 ›", false)] {
+                                pages.spawn((Button, ShellNavigation::Page(reverse), AccessibleLabel::new(label), Node {flex_grow:1.0,min_height:px(52),padding:UiRect::all(px(6)),..default()},BackgroundColor(color(&tokens.colors.raised))))
+                                    .with_children(|button| {button.spawn(text(label,tokens.body_size,color(&tokens.colors.text)));});
+                            }
+                        });
+                        panel.spawn(text(&format!("第 {} / {} 页 · 左右调整
+SSAO 开启时切至 TAA；MSAA 关闭 SSAO", ui.graphics_page()+1,(graphics::LABELS.len()+2).div_ceil(4)), tokens.body_size, color(&tokens.colors.secondary)));
+                        if let Some(notice) = graphics_notice.as_ref() && !notice.0.is_empty() { panel.spawn(text(&notice.0, tokens.body_size, color(&tokens.colors.warning))); }
+                    }
                     panel.spawn(text(
-                        if editing {
+                        if ui.display_return.is_some() {
+                            if ui.gamepad { "方向键选择 · A 确认 · B 恢复" }
+                            else { "↑ ↓ 选择 · Enter 确认 · Esc 恢复" }
+                        } else if editing {
                             if ui.gamepad {
-                                "方向键选择 · A 切换 · B 返回\n字号 100 / 125% · 镜头 100 / 65%"
+                                "方向键选择 · A 调整 · B 返回\nLB / RB 切换通用与画质"
                             } else {
-                                "↑ ↓ 选择 · Enter 切换 · Esc 返回\n字号 100 / 125% · 镜头 100 / 65%"
+                                "↑ ↓ 选择 · Enter 调整 · Esc 返回\nQ / E 切页签 · PgUp / PgDn 翻页"
                             }
                         } else { match (page, ui.gamepad) {
                             (GamePhase::Title, false) => "↑ ↓ 选择 · Enter 确认",
@@ -904,10 +1122,10 @@ fn draw_shell(
                             (GamePhase::World, false) => "Esc / Tab 暂停",
                             (GamePhase::World, true) => "Start / B 暂停",
                             (GamePhase::Paused, false) if walk.0 => {
-                                "↑ ↓ 选择 · Enter 确认 · Esc 继续\nWASD 移动 · 右键 / Q E 镜头 · R 回到起点"
+                                "↑ ↓ 选择 · Enter 确认 · Esc 继续\nWASD 移动 · 空格跳跃 · Shift / 右键疾跑\n鼠标 / Q E 镜头 · M 锁定鼠标 · R 回到起点"
                             }
                             (GamePhase::Paused, true) if walk.0 => {
-                                "方向键选择 · A 确认 · B 继续\n左摇杆移动 · 右摇杆镜头 · Select 回到起点"
+                                "方向键选择 · A 确认 · B 继续\n左摇杆移动 · 按下左摇杆疾跑 · X 跳跃\n右摇杆镜头 · Select 回到起点"
                             }
                             (GamePhase::Paused, false) => "↑ ↓ 选择 · Enter 确认 · Esc 继续",
                             (GamePhase::Paused, true) => "方向键选择 · A 确认 · B 继续",
@@ -1077,6 +1295,7 @@ mod tests {
             ShellButton {
                 phase: GamePhase::Title,
                 settings: false,
+                graphics: false,
                 index: 1,
             },
         ));
@@ -1166,6 +1385,7 @@ mod tests {
             ShellButton {
                 phase: GamePhase::Title,
                 settings: false,
+                graphics: false,
                 index: 1,
             },
         ));
@@ -1309,6 +1529,7 @@ mod tests {
                     ShellButton {
                         phase,
                         settings: false,
+                        graphics: false,
                         index: 0,
                     },
                 ))
@@ -1378,6 +1599,127 @@ mod tests {
     }
 
     #[test]
+    fn graphics_tab_pages_and_real_settings_follow_keyboard_and_gamepad() {
+        let mut app = lifecycle_app();
+        tap(&mut app, KeyCode::ArrowUp);
+        tap(&mut app, KeyCode::Enter);
+        tap(&mut app, KeyCode::KeyE);
+        assert!(app.world().resource::<EntryUi>().graphics_tab());
+        tap(&mut app, KeyCode::ArrowDown);
+        tap(&mut app, KeyCode::ArrowDown);
+        tap(&mut app, KeyCode::Enter);
+        assert_eq!(app.world().resource::<EntrySettings>().graphics.ssao, 1);
+        assert_eq!(
+            app.world()
+                .resource::<EntrySettings>()
+                .graphics
+                .antialiasing,
+            6
+        );
+        tap(&mut app, KeyCode::PageDown);
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 4);
+        assert_eq!(app.world().resource::<EntryUi>().graphics_page(), 1);
+        tap(&mut app, KeyCode::ArrowLeft);
+        assert!(!app.world().resource::<EntrySettings>().graphics.shadows);
+        let pad = app.world_mut().spawn(Gamepad::default()).id();
+        app.world_mut()
+            .get_mut::<Gamepad>(pad)
+            .unwrap()
+            .digital_mut()
+            .press(GamepadButton::LeftTrigger);
+        frame(&mut app);
+        assert!(!app.world().resource::<EntryUi>().graphics_tab());
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 0);
+        app.world_mut()
+            .get_mut::<Gamepad>(pad)
+            .unwrap()
+            .digital_mut()
+            .release(GamepadButton::LeftTrigger);
+        frame(&mut app);
+        tap(&mut app, KeyCode::KeyE);
+        for _ in 0..5 {
+            tap(&mut app, KeyCode::PageDown);
+        }
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 20);
+        tap(&mut app, KeyCode::ArrowLeft);
+        assert!(app.world().resource::<EntryUi>().settings_open());
+        tap(&mut app, KeyCode::Enter);
+        assert!(!app.world().resource::<EntryUi>().settings_open());
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 2);
+    }
+
+    #[test]
+    fn display_preview_requires_confirmation_and_returns_to_its_row() {
+        let mut app = lifecycle_app();
+        for key in [
+            KeyCode::ArrowUp,
+            KeyCode::Enter,
+            KeyCode::KeyE,
+            KeyCode::PageDown,
+            KeyCode::PageDown,
+            KeyCode::PageDown,
+            KeyCode::PageDown,
+            KeyCode::ArrowDown,
+            KeyCode::ArrowDown,
+            KeyCode::Enter,
+        ] {
+            tap(&mut app, key);
+        }
+        assert!(app.world().resource::<DisplayTrial>().pending());
+        assert_eq!(
+            app.world().resource::<EntrySettings>().graphics.resolution,
+            1
+        );
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 1);
+        // Escape reverts just the preview and keeps the settings page and source row
+        tap(&mut app, KeyCode::Escape);
+        assert!(!app.world().resource::<DisplayTrial>().pending());
+        assert_eq!(
+            app.world().resource::<EntrySettings>().graphics.resolution,
+            0
+        );
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 18);
+        assert!(app.world().resource::<EntryUi>().graphics_tab());
+        tap(&mut app, KeyCode::Enter);
+        tap(&mut app, KeyCode::ArrowUp);
+        tap(&mut app, KeyCode::Enter);
+        assert!(!app.world().resource::<DisplayTrial>().pending());
+        assert_eq!(
+            app.world().resource::<EntrySettings>().graphics.resolution,
+            1
+        );
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 18);
+        tap(&mut app, KeyCode::Enter);
+        app.insert_resource(bevy::time::TimeUpdateStrategy::ManualDuration(
+            std::time::Duration::from_secs(16),
+        ));
+        frame(&mut app);
+        assert!(!app.world().resource::<DisplayTrial>().pending());
+        assert_eq!(
+            app.world().resource::<EntrySettings>().graphics.resolution,
+            1
+        );
+        assert_eq!(app.world().resource::<EntryUi>().focus(), 18);
+        assert!(app.world().resource::<EntryUi>().settings_open());
+        app.insert_resource(bevy::time::TimeUpdateStrategy::FixedTimesteps(1));
+        frame(&mut app);
+        tap(&mut app, KeyCode::Enter);
+        app.world_mut().spawn((
+            PrimaryWindow,
+            Window {
+                focused: false,
+                ..default()
+            },
+        ));
+        frame(&mut app);
+        assert!(!app.world().resource::<DisplayTrial>().pending());
+        assert_eq!(
+            app.world().resource::<EntrySettings>().graphics.resolution,
+            1
+        );
+    }
+
+    #[test]
     fn settings_return_button_supports_gamepad_and_pointer() {
         for pointer in [false, true] {
             let mut app = lifecycle_app();
@@ -1389,6 +1731,7 @@ mod tests {
                     ShellButton {
                         phase: GamePhase::Title,
                         settings: true,
+                        graphics: false,
                         index: 2,
                     },
                 ));
@@ -1804,6 +2147,7 @@ mod tests {
                 ShellButton {
                     phase: GamePhase::Paused,
                     settings: false,
+                    graphics: false,
                     index: 0,
                 },
             ))
@@ -2473,6 +2817,7 @@ mod tests {
                     ShellButton {
                         phase: GamePhase::Paused,
                         settings: false,
+                        graphics: false,
                         index: 0,
                     },
                 ))

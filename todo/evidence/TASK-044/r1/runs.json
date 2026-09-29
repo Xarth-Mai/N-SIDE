@@ -1,0 +1,905 @@
+[
+  {
+    "output": "output/capture/task044-shop-r1",
+    "result": "PASS",
+    "runtime_exit_code": 0,
+    "expected_failure": false,
+    "binary_sha256": "fb9924c58ce3370bfa65f5808ecd35af503b7b02bd5b7570b69f153a4d01449d",
+    "script_sha256": "c0223b6f71d654249e5328a87473c395587988a26b6e5fb2b20fd7f8f9677e47",
+    "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task044-shop-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task044-shop-r1",
+      "--walk-preview"
+    ],
+    "frames": 840,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "enter_public_shop",
+        "passed": true
+      },
+      {
+        "name": "reach_consultation",
+        "passed": true
+      },
+      {
+        "name": "resume_same_room",
+        "passed": true
+      },
+      {
+        "name": "reach_display",
+        "passed": true
+      },
+      {
+        "name": "back_at_front_room",
+        "passed": true
+      },
+      {
+        "name": "pause_keeps_indoor_position",
+        "passed": true
+      },
+      {
+        "name": "walk_back_to_street",
+        "passed": true
+      },
+      {
+        "name": "continuous_supported_walk_without_recovery",
+        "passed": true
+      }
+    ],
+    "video": "PASS",
+    "elapsed_wall_seconds": 38.873788457000046,
+    "summary": {
+      "min_height": 28.020360946655273,
+      "max_height": 28.05599021911621,
+      "min_camera_distance": 1.787892460823059,
+      "max_camera_distance": 3.799999952316284,
+      "all_sampled_grounded": true,
+      "max_resets": 0
+    },
+    "key_states": [
+      {
+        "frame": 59,
+        "position": [
+          103.70841217041016,
+          30.225271224975586,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            100.0,
+            28.045997619628906,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": null,
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 200,
+        "position": [
+          89.74353790283203,
+          30.19986915588379,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            86.03512573242188,
+            28.02059555053711,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "接待与陈列",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 304,
+        "position": [
+          84.73020935058594,
+          30.199735641479492,
+          -259.0531921386719
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            81.02179718017578,
+            28.020462036132812,
+            -259.0531921386719
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "预约洽谈",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 319,
+        "position": [
+          84.73020935058594,
+          30.199735641479492,
+          -259.0531921386719
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            81.02179718017578,
+            28.020462036132812,
+            -259.0531921386719
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "预约洽谈",
+          "visible": false
+        },
+        "game_page": "paused",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 330,
+        "position": [
+          84.73020935058594,
+          30.199735641479492,
+          -259.0531921386719
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            81.02179718017578,
+            28.020462036132812,
+            -259.0531921386719
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "预约洽谈",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 505,
+        "position": [
+          83.77998352050781,
+          29.59197235107422,
+          -262.0967102050781
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.168117046356201,
+          "foot": [
+            81.02179718017578,
+            28.0203857421875,
+            -263.6395263671875
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "主题陈列",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 668,
+        "position": [
+          89.74353790283203,
+          30.199634552001953,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            86.03512573242188,
+            28.020360946655273,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "接待与陈列",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 839,
+        "position": [
+          103.79711151123047,
+          30.22482681274414,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            100.08869934082031,
+            28.04555320739746,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": null,
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task044-wrong-room-r1",
+    "result": "FAIL",
+    "runtime_exit_code": 1,
+    "expected_failure": true,
+    "binary_sha256": "fb9924c58ce3370bfa65f5808ecd35af503b7b02bd5b7570b69f153a4d01449d",
+    "script_sha256": "5636c2cae74eef09365bf3a4f7f16a709af8d551befd673260731e2001bcb968",
+    "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task044-wrong-room-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task044-wrong-room-r1",
+      "--walk-preview"
+    ],
+    "frames": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "wrong_room_must_fail",
+        "passed": false
+      }
+    ],
+    "video": "NOT RUN",
+    "elapsed_wall_seconds": 11.883733096001379,
+    "summary": {
+      "min_height": 28.045997619628906,
+      "max_height": 28.045997619628906,
+      "min_camera_distance": 3.799999952316284,
+      "max_camera_distance": 3.799999952316284,
+      "all_sampled_grounded": true,
+      "max_resets": 0
+    },
+    "key_states": [
+      {
+        "frame": 59,
+        "position": [
+          103.70841217041016,
+          30.225271224975586,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            100.0,
+            28.045997619628906,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": null,
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task044-shop-r2",
+    "result": "PASS",
+    "runtime_exit_code": 0,
+    "expected_failure": false,
+    "binary_sha256": "5737c4f7909ce92bb8167a4f332b54161c286adbcbc63606b0c950c1f937b340",
+    "script_sha256": "0c9c7bb94c084d0913f914d0df47a491c195cafbb4567237a377611e135ed556",
+    "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE/output/packages/N-SIDE Shop Preview 2026-09-29",
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/output/packages/N-SIDE Shop Preview 2026-09-29/game/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/packages/N-SIDE Shop Preview 2026-09-29",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task044-shop-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task044-shop-r2",
+      "--walk-preview"
+    ],
+    "frames": 840,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "enter_public_shop",
+        "passed": true
+      },
+      {
+        "name": "reach_consultation",
+        "passed": true
+      },
+      {
+        "name": "resume_same_room",
+        "passed": true
+      },
+      {
+        "name": "reach_display",
+        "passed": true
+      },
+      {
+        "name": "back_at_front_room",
+        "passed": true
+      },
+      {
+        "name": "pause_keeps_indoor_position",
+        "passed": true
+      },
+      {
+        "name": "walk_back_to_street",
+        "passed": true
+      },
+      {
+        "name": "continuous_supported_walk_without_recovery",
+        "passed": true
+      }
+    ],
+    "video": "PASS",
+    "elapsed_wall_seconds": 37.391673474001436,
+    "summary": {
+      "min_height": 28.020360946655273,
+      "max_height": 28.05599021911621,
+      "min_camera_distance": 1.787892460823059,
+      "max_camera_distance": 3.799999952316284,
+      "all_sampled_grounded": true,
+      "max_resets": 0
+    },
+    "key_states": [
+      {
+        "frame": 59,
+        "position": [
+          103.70841217041016,
+          30.225271224975586,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            100.0,
+            28.045997619628906,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": null,
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 200,
+        "position": [
+          89.74353790283203,
+          30.19986915588379,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            86.03512573242188,
+            28.02059555053711,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "接待与陈列",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 304,
+        "position": [
+          84.73020935058594,
+          30.199735641479492,
+          -259.0531921386719
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            81.02179718017578,
+            28.020462036132812,
+            -259.0531921386719
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "预约洽谈",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 319,
+        "position": [
+          84.73020935058594,
+          30.199735641479492,
+          -259.0531921386719
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            81.02179718017578,
+            28.020462036132812,
+            -259.0531921386719
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "预约洽谈",
+          "visible": false
+        },
+        "game_page": "paused",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 330,
+        "position": [
+          84.73020935058594,
+          30.199735641479492,
+          -259.0531921386719
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            81.02179718017578,
+            28.020462036132812,
+            -259.0531921386719
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "预约洽谈",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 505,
+        "position": [
+          83.77998352050781,
+          29.59197235107422,
+          -262.0967102050781
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.168117046356201,
+          "foot": [
+            81.02179718017578,
+            28.0203857421875,
+            -263.6395263671875
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "主题陈列",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 668,
+        "position": [
+          89.74353790283203,
+          30.199634552001953,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            86.03512573242188,
+            28.020360946655273,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": "接待与陈列",
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      },
+      {
+        "frame": 839,
+        "position": [
+          103.79711151123047,
+          30.22482681274414,
+          -255.0
+        ],
+        "player": {
+          "blocked": null,
+          "camera_distance": 3.799999952316284,
+          "foot": [
+            100.08869934082031,
+            28.04555320739746,
+            -255.0
+          ],
+          "grounded": true,
+          "jumps": 0,
+          "resets": 0,
+          "sprinting": false
+        },
+        "place": {
+          "gamepad": false,
+          "id": "04",
+          "name": "月台杂货与住家",
+          "room": null,
+          "visible": true
+        },
+        "game_page": "world",
+        "graphics": {
+          "aa": "msaa4",
+          "bloom": false,
+          "contact_shadows": false,
+          "exposure_ev100": 9.699999809265137,
+          "far": 7000.0,
+          "fog": true,
+          "fov_degrees": 55.0,
+          "shadow_map_size": 4096,
+          "shadows": true,
+          "ssao": "off"
+        }
+      }
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-//! Metre-based exterior geometry; every mesh keeps its authoritative source path
+//! Metre-based world geometry; every mesh keeps its authoritative source path
 use std::collections::BTreeSet;
 
 use bevy::{
@@ -12,7 +12,9 @@ use geo::{
 };
 use spade::{DelaunayTriangulation, FloatTriangulation, HasPosition, Point2, Triangulation};
 
-use super::map::{Map, Surface, map_to_world};
+use super::map::{Building, Map, Opening, Surface, map_to_world};
+
+pub(super) const SHOP_DOOR_HEIGHT: f64 = 2.35;
 
 pub struct GeometryPart {
     pub source: String,
@@ -346,6 +348,38 @@ impl MeshData {
         self.triangle([p[0], p[2], p[3]], [uv[0], uv[2], uv[3]]);
     }
 
+    fn wall_with_doors(
+        &mut self,
+        a: [f64; 2],
+        b: [f64; 2],
+        bottom: f64,
+        top: f64,
+        doors: &[&Opening],
+    ) {
+        let mut spans: Vec<_> = doors
+            .iter()
+            .filter_map(|door| opening_span(a, b, door.line))
+            .collect();
+        spans.sort_by(|left, right| left[0].total_cmp(&right[0]));
+        let point = |t: f64| [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+        let mut cursor: f64 = 0.0;
+        for [start, end] in spans {
+            if start > cursor {
+                self.wall(point(cursor), point(start), [bottom; 2], [top; 2]);
+            }
+            self.wall(
+                point(start.max(cursor)),
+                point(end),
+                [bottom + SHOP_DOOR_HEIGHT; 2],
+                [top; 2],
+            );
+            cursor = cursor.max(end);
+        }
+        if cursor < 1.0 {
+            self.wall(point(cursor), b, [bottom; 2], [top; 2]);
+        }
+    }
+
     fn walls(
         &mut self,
         poly: &Polygon,
@@ -368,7 +402,13 @@ impl MeshData {
         }
     }
 
-    fn retaining_walls(&mut self, poly: &Polygon, ground: &Ground, high: impl Fn([f64; 2]) -> f64) {
+    fn retaining_walls(
+        &mut self,
+        poly: &Polygon,
+        ground: &Ground,
+        high: impl Fn([f64; 2]) -> f64,
+        include_cut: bool,
+    ) {
         for (index, ring) in std::iter::once(poly.exterior())
             .chain(poly.interiors())
             .enumerate()
@@ -379,13 +419,30 @@ impl MeshData {
             }
             for edge in points.windows(2) {
                 for segment in ground.edge_points(edge[0], edge[1]).windows(2) {
-                    let [a, b] = [segment[0], segment[1]];
-                    self.wall(
-                        a,
-                        b,
-                        [ground.height(a), ground.height(b)],
-                        [high(a), high(b)],
-                    );
+                    let [mut a, mut b] = [segment[0], segment[1]];
+                    let mut low = [ground.height(a), ground.height(b)];
+                    let mut top = [high(a), high(b)];
+                    if !include_cut {
+                        let gap = [top[0] - low[0], top[1] - low[1]];
+                        if gap[0] <= 0.0 && gap[1] <= 0.0 {
+                            continue;
+                        }
+                        if gap[0] * gap[1] < 0.0 {
+                            let t = gap[0] / (gap[0] - gap[1]);
+                            let cross = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+                            let z = top[0] + (top[1] - top[0]) * t;
+                            if gap[0] < 0.0 {
+                                a = cross;
+                                low[0] = z;
+                                top[0] = z;
+                            } else {
+                                b = cross;
+                                low[1] = z;
+                                top[1] = z;
+                            }
+                        }
+                    }
+                    self.wall(a, b, low, top);
                 }
             }
         }
@@ -497,6 +554,111 @@ fn signed_area(p: &[[f64; 2]]) -> f64 {
         .map(|e| e[0][0] * e[1][1] - e[1][0] * e[0][1])
         .sum::<f64>()
         / 2.0
+}
+
+fn opening_span(a: [f64; 2], b: [f64; 2], line: [[f64; 2]; 2]) -> Option<[f64; 2]> {
+    let d = [b[0] - a[0], b[1] - a[1]];
+    let length = d[0].hypot(d[1]);
+    if length < 1e-6 {
+        return None;
+    }
+    let mut span = [0.0; 2];
+    for (index, point) in line.into_iter().enumerate() {
+        let p = [point[0] - a[0], point[1] - a[1]];
+        span[index] = (p[0] * d[0] + p[1] * d[1]) / (length * length);
+        if (p[0] * d[1] - p[1] * d[0]).abs() / length > 0.01
+            || !(-0.001..=1.001).contains(&span[index])
+        {
+            return None;
+        }
+    }
+    span.sort_by(f64::total_cmp);
+    Some(span.map(|t| t.clamp(0.0, 1.0)))
+}
+
+fn shop_interior(
+    map: &Map,
+    building: &Building,
+    source: &str,
+    parts: &mut Vec<GeometryPart>,
+) -> Result<(), String> {
+    let Some(floor) = building.shop_floor() else {
+        return Ok(());
+    };
+    let front = building.shop_door(&map.nodes).ok_or_else(|| {
+        format!("{source}: public shop entry requires its authored floor opening")
+    })?;
+    let top = building
+        .design
+        .as_ref()
+        .unwrap()
+        .floors
+        .iter()
+        .find(|next| next.z > floor.z)
+        .ok_or_else(|| format!("{source}: shop ceiling requires the next floor"))?
+        .z;
+    if top - floor.z < SHOP_DOOR_HEIGHT + 0.1 {
+        return Err(format!("{source}: shop ceiling is below doorway clearance"));
+    }
+    let rooms: Vec<_> = floor.public_rooms().collect();
+    let boundary = |points: &[[f64; 2]], opening: &Opening| {
+        points
+            .iter()
+            .zip(points.iter().cycle().skip(1))
+            .take(points.len())
+            .any(|(&a, &b)| opening_span(a, b, opening.line).is_some())
+    };
+    if !boundary(&building.polygon, front)
+        || !rooms.iter().any(|(_, room)| boundary(&room.polygon, front))
+    {
+        return Err(format!(
+            "{source}: public shop doorway must join the exterior and a public room"
+        ));
+    }
+    // Only links between public rooms and the public street entrance open; service doors stay solid
+    let doors: Vec<_> = floor
+        .openings
+        .iter()
+        .filter(|opening| opening.kind == "door")
+        .filter(|opening| {
+            std::ptr::eq(*opening, front)
+                || rooms
+                    .iter()
+                    .filter(|(_, room)| boundary(&room.polygon, opening))
+                    .count()
+                    == 2
+        })
+        .collect();
+    let footprint = polygon(&building.polygon);
+    for (index, room) in rooms {
+        let room_source = format!("{source}/design/floors/0/rooms/{index}");
+        let poly = polygon(&room.polygon);
+        if poly.difference(&footprint).unsigned_area() > 0.001 {
+            return Err(format!(
+                "{room_source}: public room is outside its building footprint"
+            ));
+        }
+        let mut ground = MeshData::default();
+        ground.polygon(&poly, |_| floor.z, &room_source)?;
+        ground.finish(format!("{room_source}/floor"), "shop_floor", parts);
+        let mut ceiling = MeshData::default();
+        ceiling.underside(&poly, |_| top, &room_source)?;
+        ceiling.finish(format!("{room_source}/ceiling"), "shop_ceiling", parts);
+        let mut walls = MeshData::default();
+        let mut points = room.polygon.clone();
+        if signed_area(&points) > 0.0 {
+            points.reverse();
+        }
+        for (&a, &b) in points
+            .iter()
+            .zip(points.iter().cycle().skip(1))
+            .take(points.len())
+        {
+            walls.wall_with_doors(a, b, floor.z, top, &doors);
+        }
+        walls.finish(format!("{room_source}/walls"), "shop_wall", parts);
+    }
+    Ok(())
 }
 
 fn overlap(a: &Polygon, b: &Polygon) -> bool {
@@ -1162,7 +1324,22 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         let poly = Polygon::new(footprints[index].exterior().clone(), holes);
         let top = building.elevation + building.height;
         let mut walls = MeshData::default();
-        walls.walls(&poly, |_| building.elevation, |_| top);
+        if let Some(door) = building.shop_door(&map.nodes) {
+            for (index, ring) in std::iter::once(poly.exterior())
+                .chain(poly.interiors())
+                .enumerate()
+            {
+                let mut points: Vec<_> = ring.0.iter().map(|p| [p.x, p.y]).collect();
+                if (signed_area(&points) > 0.0) != (index == 0) {
+                    points.reverse();
+                }
+                for edge in points.windows(2) {
+                    walls.wall_with_doors(edge[0], edge[1], building.elevation, top, &[door]);
+                }
+            }
+        } else {
+            walls.walls(&poly, |_| building.elevation, |_| top);
+        }
         let material = match building.kind.as_str() {
             "home" => "wall_cream",
             "shop" => "wall_sand",
@@ -1184,11 +1361,18 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         }
         roof.finish(format!("{source}/roof"), "roof", &mut result);
         let mut foundation = MeshData::default();
-        foundation.retaining_walls(&poly, &ground, |_| building.elevation);
+        // The open shop's exterior shell already retains terrain above its finished floor
+        foundation.retaining_walls(
+            &poly,
+            &ground,
+            |_| building.elevation,
+            building.shop_floor().is_none(),
+        );
         if let Some(hole) = building.design.as_ref().and_then(|d| d.lightwell.as_ref()) {
             foundation.polygon(&polygon(hole), |_| building.elevation, &source)?;
         }
         foundation.finish(format!("{source}/foundation"), "concrete", &mut result);
+        shop_interior(map, building, &source, &mut result)?;
     }
 
     for (index, surface) in map.surfaces.iter().enumerate() {
@@ -1247,7 +1431,7 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                 );
             }
         } else {
-            base.retaining_walls(&poly, &ground, |_| surface.elevation);
+            base.retaining_walls(&poly, &ground, |_| surface.elevation, true);
         }
         base.finish(format!("{source}/structure"), "concrete", &mut result);
     }
@@ -1455,6 +1639,102 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn shop_public_rooms_share_rendered_doors_support_and_private_boundaries() {
+        let map = Map::parse(
+            include_str!("../../../source-assets/district-map/district.json"),
+            "district.json",
+        )
+        .unwrap();
+        let shop = map
+            .buildings
+            .iter()
+            .find(|building| building.id == "V-04")
+            .unwrap();
+        assert_eq!(
+            shop.shop_floor()
+                .unwrap()
+                .public_rooms()
+                .map(|(_, room)| room.name.as_str())
+                .collect::<Vec<_>>(),
+            ["接待与陈列", "预约洽谈", "主题陈列"]
+        );
+        let parts = generate(&map).unwrap();
+        let interiors: Vec<_> = parts
+            .iter()
+            .filter(|part| part.source.contains("(V-04)/design/floors/0/rooms/"))
+            .collect();
+        assert_eq!(interiors.len(), 9);
+        for part in &interiors {
+            let normals = part
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_NORMAL)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            if part.source.ends_with("/floor") {
+                assert!(normals.iter().all(|normal| normal[1] > 0.99));
+            }
+            if part.source.ends_with("/ceiling") {
+                assert!(normals.iter().all(|normal| normal[1] < -0.99));
+            }
+        }
+        let collision = super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
+        for (from, to) in [
+            // Clear the shallow approach drain; the real player test covers grounded stepping over it
+            ([90., 255., 28.10], [85., 255., 28.10]),
+            ([85., 259.1, 28.04], [81., 259.1, 28.04]),
+            ([85., 263.6, 28.04], [81., 263.6, 28.04]),
+        ] {
+            let start = map_to_world(from);
+            let hit = collision.capsule_cast(start, 1.7, 0.3, map_to_world(to) - start, 0.01);
+            assert!(
+                hit.is_none(),
+                "source doorway blocks {from:?} -> {to:?}: {hit:?}"
+            );
+        }
+        for from in [[85., 255.9, 28.04], [81., 263.6, 28.04]] {
+            assert!(
+                collision
+                    .capsule_cast(map_to_world(from), 1.7, 0.3, -Vec3::X * 5.0, 0.01)
+                    .is_some(),
+                "private area must remain closed: {from:?}"
+            );
+        }
+        for point in [[86., 255., 29.], [81., 259., 29.], [81., 264., 29.]] {
+            let hit = collision.support(map_to_world(point), 2.).unwrap();
+            assert!(
+                hit.source.contains("(V-04)/design/floors/0/rooms/")
+                    && hit.source.ends_with("/floor"),
+                "{hit:?}"
+            );
+            assert!((hit.point.y - 28.).abs() < 0.001);
+            let ceiling = collision
+                .sphere_cast(map_to_world(point), 0.15, Vec3::Y * 5., 0.)
+                .unwrap();
+            assert!(ceiling.source.ends_with("/ceiling"), "{ceiling:?}");
+            assert!((ceiling.point.y - 32.2).abs() < 0.001);
+        }
+        let mut broken = map.clone();
+        broken
+            .buildings
+            .iter_mut()
+            .find(|building| building.id == "V-04")
+            .unwrap()
+            .design
+            .as_mut()
+            .unwrap()
+            .floors[0]
+            .openings
+            .retain(|opening| opening.line[0][0] != 88.);
+        assert!(
+            generate(&broken)
+                .err()
+                .unwrap()
+                .contains("public shop entry requires")
+        );
+    }
 
     #[test]
     fn bridge_rails_open_at_grade_and_keep_protection_above_lower_roads() {

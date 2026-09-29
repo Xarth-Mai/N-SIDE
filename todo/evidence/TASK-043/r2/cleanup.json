@@ -1,0 +1,42 @@
+{
+  "processes": "All build/capture/ffmpeg tool sessions completed; final process-name check found none",
+  "removed": [
+    {
+      "output": "output/capture/task043-display-confirm",
+      "files_removed": 893,
+      "bytes_freed": 529331033,
+      "remaining_bytes": 1631687
+    },
+    {
+      "output": "output/capture/task043-display-options",
+      "files_removed": 682,
+      "bytes_freed": 456503282,
+      "remaining_bytes": 1224957
+    },
+    {
+      "output": "output/capture/task043-display-package-restore",
+      "files_removed": 124,
+      "bytes_freed": 75553137,
+      "remaining_bytes": 210086
+    },
+    {
+      "output": "output/capture/task043-display-reset",
+      "files_removed": 123,
+      "bytes_freed": 75383576,
+      "remaining_bytes": 207175
+    },
+    {
+      "output": "output/capture/task043-display-expected-failure",
+      "files_removed": 123,
+      "bytes_freed": 75383575,
+      "remaining_bytes": 207800
+    }
+  ],
+  "bytes_freed": 1212154603,
+  "temporary_source_snapshots_removed": [
+    "app-before.rs.txt",
+    "capture-before.rs.txt"
+  ],
+  "retained": "release directory/archive, source, scripts, logs, settings, state and provenance JSON",
+  "remaining_visual_files": []
+}

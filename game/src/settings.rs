@@ -1,4 +1,4 @@
-use crate::app::EntrySettings;
+use crate::{app::EntrySettings, graphics::DisplayTrial};
 use bevy::{
     prelude::*,
     tasks::{IoTaskPool, Task, block_on, futures::check_ready},
@@ -19,6 +19,8 @@ struct Preferences {
     version: u32,
     large_text: bool,
     slow_camera: bool,
+    #[serde(default)]
+    graphics: Option<crate::graphics::GraphicsSettings>,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
@@ -59,6 +61,10 @@ pub(crate) fn install(app: &mut App, directory: Option<PathBuf>, capture: bool) 
     app.insert_resource(settings)
         .insert_resource(store)
         .add_systems(Last, save_changes);
+}
+
+pub(crate) fn reset_graphics(app: &mut App) {
+    app.world_mut().resource_mut::<EntrySettings>().graphics = default();
 }
 
 fn settings_path(directory: Option<PathBuf>, capture: bool) -> Result<Option<PathBuf>, String> {
@@ -144,8 +150,12 @@ impl SettingsStore {
     }
 }
 
-fn save_changes(settings: Res<EntrySettings>, mut store: ResMut<SettingsStore>) {
-    store.latest = *settings;
+fn save_changes(
+    settings: Res<EntrySettings>,
+    trial: Option<Res<DisplayTrial>>,
+    mut store: ResMut<SettingsStore>,
+) {
+    store.latest = trial.map_or(*settings, |trial| trial.persisted(*settings));
     if let Some(result) = store.pending.as_mut().and_then(check_ready) {
         store.pending = None;
         store.report(result);
@@ -180,15 +190,21 @@ impl Drop for SettingsStore {
 
 fn decode(bytes: &[u8]) -> Result<EntrySettings, String> {
     let data: Preferences = serde_json::from_slice(bytes).map_err(|error| error.to_string())?;
-    if data.version != 1 {
+    if ![1, 2].contains(&data.version) {
         return Err(format!(
-            "unsupported settings version {} (expected 1)",
+            "unsupported settings version {} (expected 1 or 2)",
             data.version
         ));
     }
+    if data.version == 2 && data.graphics.is_none() {
+        return Err("version 2 requires graphics settings".into());
+    }
+    let graphics = data.graphics.unwrap_or_default();
+    graphics.validate()?;
     Ok(EntrySettings {
         large_text: data.large_text,
         slow_camera: data.slow_camera,
+        graphics,
     })
 }
 
@@ -209,6 +225,7 @@ fn read_file(path: &Path) -> Result<Option<Vec<u8>>, String> {
 }
 
 fn write_file(path: &Path, settings: EntrySettings) -> Result<(), String> {
+    settings.graphics.validate()?;
     let parent = path.parent().ok_or("settings path has no parent")?;
     fs::create_dir_all(parent).map_err(|error| format!("{}: {error}", parent.display()))?;
     // Recheck before replacement: a newer application or external edit may have changed the file
@@ -217,9 +234,10 @@ fn write_file(path: &Path, settings: EntrySettings) -> Result<(), String> {
         atomic_write(&path.with_extension("json.bak"), &previous)?;
     }
     let bytes = serde_json::to_vec_pretty(&Preferences {
-        version: 1,
+        version: 2,
         large_text: settings.large_text,
         slow_camera: settings.slow_camera,
+        graphics: Some(settings.graphics),
     })
     .map_err(|error| error.to_string())?;
     atomic_write(path, &bytes)
@@ -286,7 +304,95 @@ mod tests {
         EntrySettings {
             large_text: true,
             slow_camera: true,
+            ..default()
         }
+    }
+
+    #[test]
+    fn pending_display_choices_are_not_saved_on_exit_but_confirmation_is() {
+        for confirm in [false, true] {
+            let directory = Directory::new();
+            let mut expected = changed();
+            expected.graphics.vsync = false;
+            {
+                let mut app = app(Some(directory.0.clone()));
+                app.init_resource::<DisplayTrial>();
+                let previous = app.world().resource::<EntrySettings>().graphics;
+                app.world_mut()
+                    .resource_mut::<DisplayTrial>()
+                    .start(previous);
+                *app.world_mut().resource_mut::<EntrySettings>() = expected;
+                {
+                    let mut settings = app.world_mut().resource_mut::<EntrySettings>();
+                    settings.graphics.borderless = true;
+                    settings.graphics.resolution = 2;
+                }
+                app.update();
+                assert!(app.world().resource::<SettingsStore>().latest == expected);
+                if confirm {
+                    app.world_mut().resource_mut::<DisplayTrial>().confirm();
+                    expected.graphics.borderless = true;
+                    expected.graphics.resolution = 2;
+                    app.update();
+                }
+            }
+            assert!(decode(&fs::read(directory.file()).unwrap()).unwrap() == expected);
+        }
+    }
+
+    #[test]
+    fn graphics_reset_preserves_accessibility_and_cannot_overwrite_a_bad_file() {
+        let directory = Directory::new();
+        let mut settings = changed();
+        settings.graphics.resolution = 3;
+        settings.graphics.borderless = true;
+        settings.graphics.vsync = false;
+        write_file(&directory.file(), settings).unwrap();
+        {
+            let mut app = app(Some(directory.0.clone()));
+            reset_graphics(&mut app);
+            app.update();
+        }
+        assert!(decode(&fs::read(directory.file()).unwrap()).unwrap() == changed());
+        let broken = b"{broken";
+        fs::write(directory.file(), broken).unwrap();
+        {
+            let mut app = app(Some(directory.0.clone()));
+            app.world_mut().resource_mut::<EntrySettings>().graphics = settings.graphics;
+            reset_graphics(&mut app);
+            app.update();
+            assert_eq!(
+                app.world().resource::<EntrySettings>().graphics,
+                crate::graphics::GraphicsSettings::default()
+            );
+            assert_eq!(
+                app.world().resource::<SettingsStore>().status,
+                SaveStatus::ReadFailed
+            );
+        }
+        assert_eq!(fs::read(directory.file()).unwrap(), broken);
+    }
+
+    #[test]
+    fn version_one_migrates_and_graphics_boundaries_preserve_files() {
+        let legacy = decode(br#"{"version":1,"large_text":true,"slow_camera":false}"#).unwrap();
+        assert!(legacy.large_text);
+        assert_eq!(
+            legacy.graphics,
+            crate::graphics::GraphicsSettings::default()
+        );
+        let directory = Directory::new();
+        let mut settings = legacy;
+        settings.graphics.adjust(2, false);
+        write_file(&directory.file(), settings).unwrap();
+        assert!(decode(&fs::read(directory.file()).unwrap()).unwrap() == settings);
+        let mut invalid: serde_json::Value =
+            serde_json::from_slice(&fs::read(directory.file()).unwrap()).unwrap();
+        invalid["graphics"]["antialiasing"] = serde_json::json!(255);
+        let bytes = serde_json::to_vec(&invalid).unwrap();
+        fs::write(directory.file(), &bytes).unwrap();
+        assert!(write_file(&directory.file(), legacy).is_err());
+        assert_eq!(fs::read(directory.file()).unwrap(), bytes);
     }
 
     #[test]

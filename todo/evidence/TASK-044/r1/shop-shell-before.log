@@ -1,0 +1,20 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 22.72s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+shop shell: /buildings/1 (V-04)/foundation maximum=29.67529 floor=28; facade intrusions=54 examples=[("metal", [87.96001, 28.814999, -247.685]), ("metal", [87.96001, 28.814999, -250.315]), ("metal", [87.96001, 28.715, -250.315]), ("metal", [87.96001, 28.715, -247.685]), ("metal", [87.96001, 28.715, -250.315]), ("metal", [87.96001, 28.814999, -250.315])]
+
+thread 'world::scene::tests::shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms' (723) panicked at src/world/scene.rs:1718:9:
+foundation cut faces overlap the finished interior walls
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::scene::tests::shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms ... FAILED
+
+failures:
+
+failures:
+    world::scene::tests::shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 95 filtered out; finished in 8.66s
+
+error: test failed, to rerun pass `--lib`

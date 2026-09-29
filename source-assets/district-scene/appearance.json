@@ -81,6 +81,30 @@
       "color_texture": "environment/materials/concrete-color.dds",
       "normal_texture": "environment/materials/concrete-normal.dds"
     },
+    "shop_floor": {
+      "color": [0.84, 0.82, 0.76, 1],
+      "roughness": 0.78,
+      "metallic": 0,
+      "tile_meters": [1.1, 0.55],
+      "color_texture": "environment/materials/concrete-color.dds",
+      "normal_texture": "environment/materials/concrete-normal.dds"
+    },
+    "shop_wall": {
+      "color": [0.87, 0.84, 0.76, 1],
+      "roughness": 0.9,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "shop_ceiling": {
+      "color": [0.93, 0.93, 0.87, 1],
+      "roughness": 1,
+      "metallic": 0,
+      "tile_meters": [1, 1],
+      "color_texture": null,
+      "normal_texture": null
+    },
     "terrain": {
       "color": [
         1,

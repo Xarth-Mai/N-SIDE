@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "large_text": true,
+  "slow_camera": false,
+  "graphics": {
+    "antialiasing": 2,
+    "post_aa_quality": 2,
+    "ssao": 0,
+    "sharpening": 0,
+    "shadows": true,
+    "shadow_resolution": 2,
+    "shadow_distance": 3,
+    "shadow_filter": 1,
+    "contact_shadows": false,
+    "bloom": 0,
+    "fog": true,
+    "exposure": 2,
+    "tonemapping": 0,
+    "deband": false,
+    "view_distance": 3,
+    "fov": 1,
+    "vsync": true,
+    "borderless": false,
+    "resolution": 1
+  }
+}

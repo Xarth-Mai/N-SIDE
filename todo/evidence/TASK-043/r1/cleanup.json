@@ -1,0 +1,109 @@
+{
+  "process_check": "No n-side, Xvfb, ffmpeg, cargo or rustc processes before cleanup",
+  "paths": [
+    {
+      "path": "output/capture/task043-controls",
+      "removed_visual_files": 558,
+      "removed_bytes": 405409167,
+      "remaining_bytes": 1008664
+    },
+    {
+      "path": "output/capture/task043-current-build-smoke",
+      "removed_visual_files": 186,
+      "removed_bytes": 100715057,
+      "remaining_bytes": 305978
+    },
+    {
+      "path": "output/capture/task043-expected-failure",
+      "removed_visual_files": 122,
+      "removed_bytes": 74186195,
+      "remaining_bytes": 195022
+    },
+    {
+      "path": "output/capture/task043-final-controls",
+      "removed_visual_files": 0,
+      "removed_bytes": 0,
+      "remaining_bytes": 16637
+    },
+    {
+      "path": "output/capture/task043-graphics",
+      "removed_visual_files": 472,
+      "removed_bytes": 252038402,
+      "remaining_bytes": 88657
+    },
+    {
+      "path": "output/capture/task043-graphics-r2",
+      "removed_visual_files": 834,
+      "removed_bytes": 469657069,
+      "remaining_bytes": 1535467
+    },
+    {
+      "path": "output/capture/task043-large",
+      "removed_visual_files": 307,
+      "removed_bytes": 23743324,
+      "remaining_bytes": 445235
+    },
+    {
+      "path": "output/capture/task043-options",
+      "removed_visual_files": 682,
+      "removed_bytes": 452054579,
+      "remaining_bytes": 1147764
+    },
+    {
+      "path": "output/capture/task043-restore",
+      "removed_visual_files": 186,
+      "removed_bytes": 100715057,
+      "remaining_bytes": 305912
+    },
+    {
+      "path": "output/capture/task043-user",
+      "removed_visual_files": 0,
+      "removed_bytes": 0,
+      "remaining_bytes": 994
+    },
+    {
+      "path": "output/capture/task043-user-r2",
+      "removed_visual_files": 0,
+      "removed_bytes": 0,
+      "remaining_bytes": 996
+    },
+    {
+      "path": "output/capture/task043-verified-controls",
+      "removed_visual_files": 558,
+      "removed_bytes": 405409156,
+      "remaining_bytes": 1008831
+    },
+    {
+      "path": "output/capture/task043-verified-graphics",
+      "removed_visual_files": 834,
+      "removed_bytes": 469780130,
+      "remaining_bytes": 1535503
+    },
+    {
+      "path": "output/capture/task043-verified-large",
+      "removed_visual_files": 399,
+      "removed_bytes": 80139374,
+      "remaining_bytes": 604286
+    },
+    {
+      "path": "output/capture/task043-verified-portrait",
+      "removed_visual_files": 399,
+      "removed_bytes": 64590464,
+      "remaining_bytes": 604298
+    },
+    {
+      "path": "output/capture/task043-verified-restore",
+      "removed_visual_files": 186,
+      "removed_bytes": 100715059,
+      "remaining_bytes": 305962
+    },
+    {
+      "path": "output/capture/task043-verified-user",
+      "removed_visual_files": 0,
+      "removed_bytes": 0,
+      "remaining_bytes": 996
+    }
+  ],
+  "temporary_probe_binaries": "none created",
+  "retained": "source, reference, release packages, scripts, JSON state/settings, logs"
+}

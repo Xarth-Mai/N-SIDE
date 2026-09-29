@@ -5,7 +5,7 @@
 | 资产 ID | `AST-004` |
 | 主文件 | [appearance.json](appearance.json)、[daylight.json](daylight.json)、本目录五个招牌与五个橱窗 SVG |
 | 作者与来源 | N:SIDE 原创外观绑定、招牌和橱窗图形；公开环境素材来源见[环境素材包](../environment-kit/README.md) |
-| 使用位置 | `world::scene` 生成的外墙、道路、店面和绿植 |
+| 使用位置 | `world::scene` 生成的外墙、道路、店面、绿植和 V-04 公共室内 |
 | 派生文件 | `game/assets/environment/signs/*.png` |
 | 状态 | `exported`，真实镜头检查记录于 Viewer 任务 |
 
@@ -18,8 +18,8 @@
 导出和核对：
 
 ```sh
-bun tools/export-district-scene.mjs
-bun tools/export-district-scene.mjs --check
+bun tools/export-district-scene.ts
+bun tools/export-district-scene.ts --check
 ```
 
 导出依赖 Bun、ImageMagick 与 DejaVu Sans，运行 Viewer 只使用已导出的 PNG。脚本以固定画布栅格化并排除 PNG 时间元数据，`--check` 在临时目录重算并比较字节；招牌为 1024 × 128，橱窗为 640 × 448
@@ -35,6 +35,18 @@ bun tools/export-district-scene.mjs --check
 外墙、天井、入口、楼层和道路采用地图原值。窗格、檐口、雨棚、门框、花盆和空调简体按建筑立面与入口推导，花盆避开入口 1.6 m；它们属于外观规则，后续可由美术替换。每个生成网格和模型实体保留源对象路径
 
 小店样板的花盆搭配已归一为 0.8 m 的公开灌木模型
+
+### 小店公共室内材质
+
+V-04 首层的接待与陈列、预约洽谈、主题陈列三处公共房间分别使用 `shop_floor`、`shop_wall`、`shop_ceiling`，由 `world::geometry` 将真实房间地面、内墙和顶面绑定到 `world::scene` 的共用材质加载路径。UV 沿用几何中的米制坐标，再由 `tile_meters` 换算纹理重复次数。地面复用 `AST-003` 的 CC0 Concrete034 颜色与 OpenGL 法线图，原件、许可、导出、mipmap 和色彩空间继续由[环境素材包](../environment-kit/README.md)维护，不新增运行纹理副本
+
+| 材质 | 表现与初始参数 |
+| --- | --- |
+| `shop_floor` | 暖灰混凝土，sRGB `[0.84, 0.82, 0.76]`，粗糙度 `0.78`，一周期 `1.1 × 0.55 m` |
+| `shop_wall` | 暖白漆面，sRGB `[0.87, 0.84, 0.76]`，粗糙度 `0.90`，无纹理 |
+| `shop_ceiling` | 近白哑光顶面，sRGB `[0.93, 0.93, 0.87]`，粗糙度 `1.0`，无纹理 |
+
+三者均为非金属、受光的标准 PBR 材质；地面颜色乘数与源纹理共同决定最终颜色。墙和顶保留安静大面，临街红砖铺装继续用于室外，这组三种室内材质中仅地面采用混凝土纹理。首轮沿用固定白天曝光与太阳配置，从店外、门槛、室内转身和返回街道的真实路线检查纹理尺度、门框遮挡与阴影可读性，参数按实际画面收敛。木、金属、玻璃与店窗实际陈列纵深尚待后续样板制作，三种基础材质不代表预览图目标品质已经达成
 
 五种样板店面的首层前窗采用分离窗框、窗台和浅搁板，商品图形位于框后；入口采用三边门框与门把，窗格按实际宽度避让入口。原建筑轮廓与楼层标高继续控制外壳
 

@@ -4,9 +4,10 @@ use crate::{
     app::{EntrySettings, EntryUi, GamePhase},
     player::PlayerState,
     ui::{Tokens, UiFont, color},
-    world::map::map_to_world,
+    world::map::{Building, map_to_world},
 };
 use bevy::{prelude::*, text::FontWeight};
+use geo::{Intersects, LineString, Point, Polygon};
 pub use observation::Observation;
 use serde::Deserialize;
 use std::{collections::BTreeMap, path::Path};
@@ -23,7 +24,15 @@ pub struct Place {
 }
 
 #[derive(Resource, Debug)]
-pub struct PlaceCatalog(pub Vec<Place>);
+pub struct PlaceCatalog(pub Vec<Place>, Vec<RoomRegion>);
+
+#[derive(Debug)]
+struct RoomRegion {
+    name: String,
+    polygon: Polygon<f64>,
+    floor: f32,
+    ceiling: f32,
+}
 
 impl PlaceCatalog {
     pub fn load(path: &Path) -> Result<Self, String> {
@@ -37,6 +46,8 @@ impl PlaceCatalog {
         struct Source {
             nodes: BTreeMap<String, [f64; 3]>,
             places: Vec<SourcePlace>,
+            #[serde(default)]
+            buildings: Vec<Building>,
         }
         #[derive(Deserialize)]
         struct SourcePlace {
@@ -108,7 +119,48 @@ impl PlaceCatalog {
                 public_info,
             });
         }
-        Ok(Self(places))
+        let mut rooms = Vec::new();
+        for building in &source.buildings {
+            if let Some(floor) = building.shop_floor() {
+                for (_, room) in floor.public_rooms() {
+                    rooms.push(RoomRegion {
+                        name: room.name.clone(),
+                        polygon: Polygon::new(
+                            LineString::from(
+                                room.polygon
+                                    .iter()
+                                    .map(|p| (p[0], p[1]))
+                                    .collect::<Vec<_>>(),
+                            ),
+                            vec![],
+                        ),
+                        floor: floor.z as f32,
+                        ceiling: building
+                            .design
+                            .as_ref()
+                            .and_then(|design| {
+                                design.floors.iter().find(|candidate| candidate.z > floor.z)
+                            })
+                            .map_or(building.elevation + building.height, |floor| floor.z)
+                            as f32,
+                    });
+                }
+            }
+        }
+        Ok(Self(places, rooms))
+    }
+
+    pub(crate) fn room_at(&self, foot: Vec3) -> Option<&str> {
+        self.1
+            .iter()
+            .find(|room| {
+                foot.y >= room.floor - 0.2
+                    && foot.y < room.ceiling
+                    && room
+                        .polygon
+                        .intersects(&Point::new(foot.x as f64, -foot.z as f64))
+            })
+            .map(|room| room.name.as_str())
     }
 
     pub fn nearest(&self, foot: Vec3) -> Option<&Place> {
@@ -131,6 +183,7 @@ impl PlaceCatalog {
 pub struct PlaceHud {
     pub current_id: Option<String>,
     pub name: String,
+    pub room: Option<String>,
     pub gamepad: bool,
     pub visible: bool,
     pub observation_hint: Option<String>,
@@ -141,6 +194,7 @@ impl Default for PlaceHud {
         Self {
             current_id: None,
             name: "Null Site".into(),
+            room: None,
             gamepad: false,
             visible: false,
             observation_hint: None,
@@ -178,6 +232,11 @@ fn update_location(
     hud.set_if_neq(PlaceHud {
         current_id: place.map(|place| place.id.clone()),
         name: place.map_or_else(|| "Null Site".into(), |place| place.name.clone()),
+        room: player
+            .as_ref()
+            .zip(catalog.as_ref())
+            .and_then(|(player, catalog)| catalog.room_at(player.foot))
+            .map(str::to_owned),
         gamepad: input.gamepad,
         observation_hint: if observation.open {
             None
@@ -207,17 +266,24 @@ fn label(kind: &HudText, hud: &PlaceHud) -> String {
             "{} 查看：{name}\n{}",
             if hud.gamepad { "A" } else { "F" },
             if hud.gamepad {
-                "左摇杆 移动 · 右摇杆 镜头"
+                "左摇杆 移动 / 按下疾跑 · 西键 跳跃"
             } else {
-                "W A S D 移动 · 右键拖动 / Q E 镜头"
+                "WASD 移动 · Shift / 右键 疾跑\n空格 跳跃 · M 锁鼠 · Esc / Tab 暂停"
             }
         );
     }
     match kind {
+        HudText::Location if hud.room.is_some() => {
+            format!("{}\n{}", hud.name, hud.room.as_deref().unwrap())
+        }
         HudText::Location if hud.current_id.is_some() => format!("{} · 附近", hud.name),
         HudText::Location => hud.name.clone(),
-        HudText::Inputs if hud.gamepad => "左摇杆 移动   右摇杆 镜头\nStart / B 暂停".into(),
-        HudText::Inputs => "W A S D 移动   右键拖动 / Q E 镜头\nEsc / Tab 暂停".into(),
+        HudText::Inputs if hud.gamepad => {
+            "左摇杆 移动 / 按下疾跑\n右摇杆 镜头 · 西键 跳跃 · Start / B 暂停".into()
+        }
+        HudText::Inputs => {
+            "WASD 移动 · Shift / 右键 疾跑\n空格 跳跃 · M 锁鼠 · Q/E 镜头\nEsc / Tab 暂停".into()
+        }
     }
 }
 
@@ -315,6 +381,32 @@ fn draw_hud(
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn room_labels_use_authored_public_polygons_and_floor_height() {
+        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .parent()
+            .unwrap();
+        let catalog =
+            super::PlaceCatalog::load(&root.join("source-assets/district-map/district.json"))
+                .unwrap();
+        for (x, y, z, expected) in [
+            (86., 255., 28.05, Some("接待与陈列")),
+            (81., 259., 28.05, Some("预约洽谈")),
+            (81., 264., 29.0, Some("主题陈列")),
+            (84., 259.1, 28.05, Some("接待与陈列")),
+            (84., 263.6, 28.05, Some("接待与陈列")),
+            (86., 255., 32.3, None),
+            (86., 255., 27.5, None),
+            (76., 253., 28.05, None),
+            (90., 255., 28.05, None),
+        ] {
+            assert_eq!(
+                catalog.room_at(bevy::prelude::Vec3::new(x, z, -y)),
+                expected
+            );
+        }
+    }
+
     use super::*;
 
     #[test]

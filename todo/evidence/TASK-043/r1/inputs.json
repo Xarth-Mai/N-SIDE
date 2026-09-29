@@ -1,0 +1,28 @@
+{
+  "base_commit": "8d24201a98f11f07c3b74bfeef7b528ab9560664",
+  "files": {
+    "game/src/app.rs": "25e453981e87739a70273bae1bdc63059385cdb6cd545ad60bef784c16adacab",
+    "game/src/capture.rs": "d666b883722846fbe94fdf01827d69204b54e496dac5857b312ae29fecfd3cbe",
+    "game/src/capture/route.rs": "a8e192208e275b8e3c5b3a4a408aed81cf9dfb199ce859d5abf23fc3973e0196",
+    "game/src/lib.rs": "bf05c3961fbe3cf820b661d9a7acc195dc598e284f30cffea42b3aa074568e53",
+    "game/src/places.rs": "6ae0ad60b5f237ecf9fc105e0cbc3df8df1d541a78bdb842d231a144c11d0be9",
+    "game/src/player.rs": "0c370eac485f43a2c19f6e8c096834ca9034106699d6e607a5d8f96c81aa610f",
+    "game/src/settings.rs": "943b3478c157fa128bd3cf7ba37c2523684a7da96f30540bc43b6dc45f436c24",
+    "game/src/graphics.rs": "20b25dc9a947c469c4df000515001b2ff357d11accbcd9a4d1ead099cec79fbb",
+    "game/Cargo.toml": "0654a76100e48caeb53128d1aa6a0c0ee3bf47d4960920e28303f3e7c22e8ac6",
+    "game/Cargo.lock": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "game/README.md": "a732ba9fa0db621c0af81566239308d05b50a4d8809ae0321592bd357fbbe659",
+    "docs/dev/design/systems/input.md": "7ada07a4f64f7b3df564f29ac3dedd6e3201fc6c62244b660a82667195c8e409",
+    "docs/dev/engineering/player-preview.md": "b757e29f506aa96f4d2779dd56e3324ac83de87e5c14af479932984eb020165b",
+    "docs/dev/engineering/graphics-settings.md": "43396f9d3044662781e685f3dafa4d4482e31b9ad346edb9e4e2e8c133679e66",
+    "docs/player/guide/index.md": "19cb0beeb5cdfd26f12ac5500f38f7ad00c9a0a069b2acaaf82bca55e9bb5e19",
+    "game/capture/walk-graphics-large.json": "8ef619a3cc0dcb98e30479e2dab3ee5bfa8d7ee70a1131ef17d8f167359e758e",
+    "game/capture/walk-graphics-options.json": "711f8167e7db92e75c8e5f99094ca6ec28d9c86fc7a4ae84cb12ce8ae58766e4",
+    "game/capture/walk-graphics-restore.json": "823ad264e88b3f2037fdda8be9d049bd386e9e72fd6becaa8c7fc77018c93b4b",
+    "game/capture/walk-graphics.json": "c89d5610894f2be37101974ecdce2d238ccebab24acd79da77d96a11ff3d49ad",
+    "game/capture/walk-controls.json": "ad53588fdd8031453ebeaa74d84eacfb5d2e4f5ffe2fd77bbfc839f7d465206c",
+    "game/capture/walk-settings.json": "9e750a211b0c2263a2cf963d91bac5b8305140c3c6fffc8ae84f8a9d08cbbece"
+  },
+  "revision": "8edfa799dea1c5148a0bf151b1f428d089e8d8b708e59eb135f5d543c24d54f8",
+  "binary_sha256": "e286fab0d1d452291691183785aafbe7a93c0255bee13e636b4752a72684ca79"
+}

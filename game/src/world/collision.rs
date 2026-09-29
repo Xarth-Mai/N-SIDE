@@ -350,10 +350,10 @@ mod tests {
             .unwrap();
         assert!(doorstep.source.contains("/fixtures/"), "{doorstep:?}");
         assert!(doorstep.point.y > ground.point.y, "{doorstep:?}");
-        // Probe the closed wall above the actual shallow entrance drain, without skipping it in queries
+        // The public door is open; probe the adjacent closed wall above the entrance drain
         let wall = world
             .capsule_cast(
-                Vec3::new(90., ground.point.y + 0.2, -255.),
+                Vec3::new(90., ground.point.y + 0.2, -252.),
                 1.7,
                 0.3,
                 -Vec3::X * 5.,

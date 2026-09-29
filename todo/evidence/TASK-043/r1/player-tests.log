@@ -1,0 +1,19 @@
+    Blocking waiting for file lock on build directory
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized] target(s) in 13.12s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-47fd0e81cd53eb56)
+
+running 11 tests
+test player::tests::body_stops_at_wall_can_leave_and_does_not_climb_tall_obstacle ... ok
+test player::tests::steps_need_headroom_and_a_supported_landing ... ok
+test player::tests::close_camera_hides_proxy_and_clear_view_restores_it ... ok
+test player::tests::lock_controls_camera_and_releases_for_observation_pause_and_focus ... ok
+test player::tests::steep_face_cannot_be_climbed_by_repeated_edge_contacts ... ok
+test player::tests::jump_is_one_press_lands_and_stops_at_ceiling ... ok
+test player::tests::sprint_bindings_are_equivalent_and_diagonal_speed_is_normalized ... ok
+test player::tests::ramp_contacts_keep_moving_without_passing_a_wall_or_tall_step ... ok
+test player::tests::settles_after_descending_near_the_summit ... ok
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... ok
+test player::tests::walks_complete_short_ascent_and_return ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 75 filtered out; finished in 12.46s

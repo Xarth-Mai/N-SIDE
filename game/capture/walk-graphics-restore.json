@@ -1,0 +1,96 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 180,
+  "seed": 0,
+  "timeout_seconds": 450,
+  "keyframes": [
+    29,
+    59,
+    99,
+    139,
+    179
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 91,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 100,
+      "end": 101,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 110,
+      "end": 111,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 120,
+      "end": 121,
+      "keys": [
+        "E"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 92,
+      "game_page": "paused"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "saved_graphics_apply_to_new_world_camera",
+      "from": 59,
+      "to": 89,
+      "game_page": "world",
+      "player_grounded": true,
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off",
+        "shadows": false,
+        "bloom": true
+      }
+    },
+    {
+      "name": "restored_values_visible_in_quality_tab",
+      "from": 139,
+      "to": 179,
+      "game_page": "paused",
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 0,
+      "entry_focus": 0,
+      "pointer_locked": false,
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off",
+        "shadows": false,
+        "bloom": true
+      }
+    }
+  ]
+}

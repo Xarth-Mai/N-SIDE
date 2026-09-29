@@ -1,0 +1,12 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/package-preview.test.ts:
+(pass) packages explicit ELF binaries, sources and licenses; launchers handle cwd, spaces, argv and exit status [70.82ms]
+(pass) read-only check rejects missing, modified, additional and linked files plus broken manifests [24.71ms]
+(pass) creation refuses existing output, non-ELF and linked assets without changing inputs [12.48ms]
+(pass) explicit strip modifies only package copies and records resulting hashes [20.60ms]
+
+ 4 pass
+ 0 fail
+ 37 expect() calls
+Ran 4 tests across 1 file. [184.00ms]

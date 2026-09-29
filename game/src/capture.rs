@@ -4,8 +4,9 @@
 //! N:SIDE implementation records real application input, state and rendered frames
 use crate::{
     app::{EntrySettings, EntryUi, GameLoadError, GamePhase},
+    graphics::GraphicsEvidence,
     places::{Observation, PlaceHud},
-    player::PlayerState,
+    player::{PlayerState, PointerLock},
     ui::{SignalUi, UiFont, UiInput},
     world::{
         collision::CollisionWorld,
@@ -45,6 +46,9 @@ pub struct CaptureTarget(pub Option<Handle<Image>>);
 
 #[derive(SystemSet, Debug, Clone, PartialEq, Eq, Hash)]
 pub struct CaptureInput;
+
+#[derive(SystemSet, Debug, Clone, PartialEq, Eq, Hash)]
+pub(crate) struct CaptureRecord;
 
 #[derive(Clone, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -131,10 +135,16 @@ pub struct Assertion {
     min_player_camera_distance: Option<f32>,
     max_player_camera_distance: Option<f32>,
     player_grounded: Option<bool>,
+    min_player_jumps: Option<u32>,
+    max_player_jumps: Option<u32>,
+    player_sprinting: Option<bool>,
+    pointer_locked: Option<bool>,
     max_player_resets: Option<u32>,
     player_blocked: Option<String>,
     gamepad_connected: Option<bool>,
     place_id: Option<String>,
+    place_room: Option<String>,
+    inside_room: Option<bool>,
     place_name: Option<String>,
     place_visible: Option<bool>,
     place_gamepad: Option<bool>,
@@ -144,15 +154,51 @@ pub struct Assertion {
     observation_open: Option<bool>,
     observation_visible: Option<bool>,
     settings_open: Option<bool>,
+    graphics_tab: Option<bool>,
+    graphics_page: Option<usize>,
+    display_pending: Option<bool>,
+    configured_resolution: Option<u8>,
+    configured_borderless: Option<bool>,
+    graphics: Option<GraphicsCheck>,
     entry_focus: Option<usize>,
     text_scale: Option<f32>,
     camera_sensitivity: Option<f32>,
     entry_device: Option<String>,
 }
 
+#[derive(Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct GraphicsCheck {
+    aa: Option<String>,
+    ssao: Option<String>,
+    bloom: Option<bool>,
+    shadows: Option<bool>,
+}
+
+impl GraphicsCheck {
+    fn valid(&self) -> bool {
+        (self.aa.is_some() || self.ssao.is_some() || self.bloom.is_some() || self.shadows.is_some())
+            && self.aa.as_deref().is_none_or(|value| {
+                ["off", "msaa2", "msaa4", "msaa8", "fxaa", "smaa", "taa"].contains(&value)
+            })
+            && self
+                .ssao
+                .as_deref()
+                .is_none_or(|value| ["off", "low", "medium", "high", "ultra"].contains(&value))
+    }
+
+    fn matches(&self, actual: Option<&GraphicsEvidence>) -> bool {
+        let Some(actual) = actual else { return false };
+        self.aa.as_ref().is_none_or(|value| actual.aa == *value)
+            && self.ssao.as_ref().is_none_or(|value| actual.ssao == *value)
+            && self.bloom.is_none_or(|value| actual.bloom == value)
+            && self.shadows.is_none_or(|value| actual.shadows == value)
+    }
+}
+
 const GAME_PAGES: [&str; 5] = ["title", "loading", "world", "paused", "failed"];
 
-const KEYS: [(&str, KeyCode); 17] = [
+const KEYS: [(&str, KeyCode); 21] = [
     ("W", KeyCode::KeyW),
     ("A", KeyCode::KeyA),
     ("S", KeyCode::KeyS),
@@ -162,17 +208,21 @@ const KEYS: [(&str, KeyCode); 17] = [
     ("F", KeyCode::KeyF),
     ("R", KeyCode::KeyR),
     ("Shift", KeyCode::ShiftLeft),
+    ("ShiftRight", KeyCode::ShiftRight),
     ("M", KeyCode::KeyM),
     ("Escape", KeyCode::Escape),
     ("Tab", KeyCode::Tab),
     ("Enter", KeyCode::Enter),
+    ("Space", KeyCode::Space),
+    ("Left", KeyCode::ArrowLeft),
+    ("Right", KeyCode::ArrowRight),
     ("Down", KeyCode::ArrowDown),
     ("Up", KeyCode::ArrowUp),
     ("PageDown", KeyCode::PageDown),
     ("PageUp", KeyCode::PageUp),
 ];
 
-const PAD: [(&str, GamepadButton); 8] = [
+const PAD: [(&str, GamepadButton); 12] = [
     ("Down", GamepadButton::DPadDown),
     ("Up", GamepadButton::DPadUp),
     ("Confirm", GamepadButton::South),
@@ -181,6 +231,10 @@ const PAD: [(&str, GamepadButton); 8] = [
     ("Reset", GamepadButton::Select),
     ("ScrollDown", GamepadButton::RightTrigger),
     ("ScrollUp", GamepadButton::LeftTrigger),
+    ("Jump", GamepadButton::West),
+    ("Sprint", GamepadButton::LeftThumb),
+    ("Left", GamepadButton::DPadLeft),
+    ("Right", GamepadButton::DPadRight),
 ];
 #[derive(Component)]
 struct ScriptGamepad;
@@ -317,12 +371,19 @@ impl Script {
                     && check.max_world_entities.is_none()
                     && check.same_world_entities.is_none()
                     && check.gamepad_connected.is_none()
+                    && check.pointer_locked.is_none()
+                    && check.graphics.is_none()
                     && !check.has_observation_assertion()
                     && !check.has_entry_assertion()
                     && !check.has_place_assertion()
                     && !check.has_player_assertion())
                 || (check.has_player_assertion() && self.scene != "walk-preview")
                 || (check.gamepad_connected.is_some() && !self.game_scene())
+                || (check.pointer_locked.is_some() && self.scene != "walk-preview")
+                || check
+                    .min_player_jumps
+                    .zip(check.max_player_jumps)
+                    .is_some_and(|(min, max)| min > max)
                 || (check.has_place_assertion() && self.scene != "walk-preview")
                 || (check.has_observation_assertion() && self.scene != "walk-preview")
                 || [
@@ -333,7 +394,13 @@ impl Script {
                 .flatten()
                 .any(|value| value.trim().is_empty())
                 || (check.has_entry_assertion() && !self.game_scene())
-                || check.entry_focus.is_some_and(|focus| focus > 2)
+                || check.entry_focus.is_some_and(|focus| focus > 20)
+                || check.graphics_page.is_some_and(|page| page > 5)
+                || check.configured_resolution.is_some_and(|value| value > 3)
+                || check
+                    .graphics
+                    .as_ref()
+                    .is_some_and(|graphics| !self.game_scene() || !graphics.valid())
                 || check
                     .text_scale
                     .is_some_and(|scale| ![1.0, 1.25].contains(&scale))
@@ -344,10 +411,14 @@ impl Script {
                     .entry_device
                     .as_ref()
                     .is_some_and(|device| !["keyboard_mouse", "gamepad"].contains(&device.as_str()))
-                || [check.place_id.as_ref(), check.place_name.as_ref()]
-                    .into_iter()
-                    .flatten()
-                    .any(|value| value.trim().is_empty())
+                || [
+                    check.place_id.as_ref(),
+                    check.place_name.as_ref(),
+                    check.place_room.as_ref(),
+                ]
+                .into_iter()
+                .flatten()
+                .any(|value| value.trim().is_empty())
                 || check
                     .min_rotation
                     .zip(check.max_rotation)
@@ -434,6 +505,11 @@ impl Assertion {
 
     fn has_entry_assertion(&self) -> bool {
         self.settings_open.is_some()
+            || self.graphics_tab.is_some()
+            || self.graphics_page.is_some()
+            || self.display_pending.is_some()
+            || self.configured_resolution.is_some()
+            || self.configured_borderless.is_some()
             || self.entry_focus.is_some()
             || self.text_scale.is_some()
             || self.camera_sensitivity.is_some()
@@ -449,6 +525,21 @@ impl Assertion {
         };
         self.settings_open
             .is_none_or(|open| entry.settings_open == open)
+            && self
+                .graphics_tab
+                .is_none_or(|value| entry.graphics_tab == value)
+            && self
+                .graphics_page
+                .is_none_or(|value| entry.graphics_page == value)
+            && self
+                .display_pending
+                .is_none_or(|value| entry.display_pending == value)
+            && self
+                .configured_resolution
+                .is_none_or(|value| entry.configured_resolution == value)
+            && self
+                .configured_borderless
+                .is_none_or(|value| entry.configured_borderless == value)
             && self.entry_focus.is_none_or(|focus| entry.focus == focus)
             && self
                 .text_scale
@@ -464,6 +555,8 @@ impl Assertion {
 
     fn has_place_assertion(&self) -> bool {
         self.place_id.is_some()
+            || self.place_room.is_some()
+            || self.inside_room.is_some()
             || self.place_name.is_some()
             || self.place_visible.is_some()
             || self.place_gamepad.is_some()
@@ -485,6 +578,13 @@ impl Assertion {
                 .as_ref()
                 .is_none_or(|name| place.name == *name)
             && self
+                .place_room
+                .as_ref()
+                .is_none_or(|room| place.room.as_ref() == Some(room))
+            && self
+                .inside_room
+                .is_none_or(|inside| place.room.is_some() == inside)
+            && self
                 .place_visible
                 .is_none_or(|visible| place.visible == visible)
             && self
@@ -503,6 +603,9 @@ impl Assertion {
             || self.min_player_camera_distance.is_some()
             || self.max_player_camera_distance.is_some()
             || self.player_grounded.is_some()
+            || self.min_player_jumps.is_some()
+            || self.max_player_jumps.is_some()
+            || self.player_sprinting.is_some()
             || self.max_player_resets.is_some()
             || self.player_blocked.is_some()
     }
@@ -524,6 +627,12 @@ impl Assertion {
             let Some(player) = &sample.player else {
                 return false;
             };
+            if self
+                .player_sprinting
+                .is_some_and(|expected| player.sprinting != expected)
+            {
+                return false;
+            }
             peak_distance = peak_distance
                 .max(Vec3::from_array(start.foot).distance(Vec3::from_array(player.foot)));
             min_height = min_height.min(player.foot[1]);
@@ -558,6 +667,8 @@ impl Assertion {
             && self
                 .player_grounded
                 .is_none_or(|expected| end.grounded == expected)
+            && self.min_player_jumps.is_none_or(|limit| end.jumps >= limit)
+            && self.max_player_jumps.is_none_or(|limit| end.jumps <= limit)
             && self
                 .max_player_resets
                 .is_none_or(|limit| end.resets <= limit)
@@ -569,6 +680,8 @@ impl Assertion {
 struct PlayerSample {
     foot: [f32; 3],
     grounded: bool,
+    jumps: u32,
+    sprinting: bool,
     blocked: Option<String>,
     resets: u32,
     camera_distance: f32,
@@ -579,6 +692,8 @@ impl From<&PlayerState> for PlayerSample {
         Self {
             foot: player.foot.to_array(),
             grounded: player.grounded,
+            jumps: player.jumps,
+            sprinting: player.sprinting,
             blocked: player.blocked.clone(),
             resets: player.resets,
             camera_distance: player.camera_distance,
@@ -589,6 +704,7 @@ impl From<&PlayerState> for PlayerSample {
 #[derive(Serialize)]
 struct PlaceSample {
     id: Option<String>,
+    room: Option<String>,
     name: String,
     visible: bool,
     gamepad: bool,
@@ -605,6 +721,11 @@ struct ObservationSample {
 #[derive(Serialize)]
 struct EntrySample {
     settings_open: bool,
+    graphics_tab: bool,
+    graphics_page: usize,
+    display_pending: bool,
+    configured_resolution: u8,
+    configured_borderless: bool,
     focus: usize,
     text_scale: f32,
     camera_sensitivity: f32,
@@ -627,6 +748,8 @@ struct Sample {
     observation: Option<ObservationSample>,
     entry: Option<EntrySample>,
     gamepad_connected: bool,
+    pointer_locked: Option<bool>,
+    graphics: Option<GraphicsEvidence>,
 }
 
 #[derive(Resource)]
@@ -735,6 +858,12 @@ impl Recording {
                                 assertion.check_place(sample.place.as_ref())
                                     && assertion.check_observation(sample.observation.as_ref())
                                     && assertion.check_entry(sample.entry.as_ref())
+                                    && assertion
+                                        .pointer_locked
+                                        .is_none_or(|value| sample.pointer_locked == Some(value))
+                                    && assertion.graphics.as_ref().is_none_or(|expected| {
+                                        expected.matches(sample.graphics.as_ref())
+                                    })
                             })
                         && assertion.max_distance.is_none_or(|v| peak_distance <= v)
                         && assertion.min_rotation.is_none_or(|v| rotation >= v)
@@ -808,7 +937,7 @@ impl Recording {
             "checks":checks, "samples":self.samples,
             "determinism":"Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
             "visual_review":"NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
-            "scope":"Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. State checks and images do not establish author/player acceptance"
+            "scope":"Real game entry, world assets, Viewer camera and opt-in UI/walking experiments; sample records are not quest state. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
         });
         let written = serde_json::to_vec_pretty(&report)
             .map_err(|e| e.to_string())
@@ -876,7 +1005,7 @@ pub fn install(app: &mut App, recording: Recording) {
                 .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop)
                 .before(UiInput),
         )
-        .add_systems(PostUpdate, record);
+        .add_systems(PostUpdate, record.in_set(CaptureRecord));
 }
 
 fn advance_clock(
@@ -1107,7 +1236,7 @@ fn drive_input(
             keys.release(key);
         }
     }
-    if route_input.is_some() || event.is_some_and(|e| e.right_mouse) {
+    if event.is_some_and(|e| e.right_mouse) {
         buttons.press(MouseButton::Right);
     } else {
         buttons.release(MouseButton::Right);
@@ -1149,11 +1278,13 @@ fn record(
         Option<Res<Observation>>,
         Option<Res<EntryUi>>,
         Option<Res<EntrySettings>>,
+        Option<Res<PointerLock>>,
+        Option<Res<GraphicsEvidence>>,
     ),
     ui_font: Option<Res<UiFont>>,
     assets: Res<AssetServer>,
 ) {
-    let (ui, place, observation, entry, settings) = ui_state;
+    let (ui, place, observation, entry, settings, pointer_lock, graphics) = ui_state;
     if recording.finished {
         return;
     }
@@ -1249,6 +1380,8 @@ fn record(
         world_ready,
         world_entities: world_entities.iter().count(),
         gamepad_connected: !pads.is_empty(),
+        pointer_locked: pointer_lock.as_ref().map(|pointer| pointer.active),
+        graphics: graphics.as_ref().map(|graphics| (**graphics).clone()),
         player: player.as_deref().map(PlayerSample::from),
         observation: observation.as_ref().map(|observation| ObservationSample {
             target: observation.target.clone(),
@@ -1258,6 +1391,11 @@ fn record(
         }),
         entry: entry.zip(settings).map(|(entry, settings)| EntrySample {
             settings_open: entry.settings_open(),
+            graphics_tab: entry.graphics_tab(),
+            graphics_page: entry.graphics_page(),
+            display_pending: entry.display_pending(),
+            configured_resolution: settings.graphics.resolution,
+            configured_borderless: settings.graphics.borderless,
             focus: entry.focus(),
             text_scale: settings.text_scale(),
             camera_sensitivity: settings.camera_sensitivity(),
@@ -1269,6 +1407,7 @@ fn record(
         }),
         place: place.as_ref().map(|hud| PlaceSample {
             id: hud.current_id.clone(),
+            room: hud.room.clone(),
             name: hud.name.clone(),
             visible: hud.visible,
             gamepad: hud.gamepad,
@@ -1567,8 +1706,14 @@ mod tests {
             recording.script.events = vec![InputSpan {
                 start: 0,
                 end: 1,
-                keys: vec!["R".into()],
-                right_mouse: false,
+                keys: vec![
+                    "R".into(),
+                    "Space".into(),
+                    "Shift".into(),
+                    "ShiftRight".into(),
+                    "M".into(),
+                ],
+                right_mouse: true,
                 pointer: None,
                 left_mouse: false,
                 gamepad: vec!["Reset".into()],
@@ -1583,6 +1728,23 @@ mod tests {
         let gamepad = app.world().get::<Gamepad>(pad).unwrap();
         assert_eq!(gamepad.left_stick(), Vec2::new(0.5, 1.0));
         assert_eq!(gamepad.right_stick(), Vec2::new(-1.0, 0.25));
+        for key in [
+            KeyCode::Space,
+            KeyCode::ShiftLeft,
+            KeyCode::ShiftRight,
+            KeyCode::KeyM,
+        ] {
+            assert!(
+                app.world()
+                    .resource::<ButtonInput<KeyCode>>()
+                    .just_pressed(key)
+            );
+        }
+        assert!(
+            app.world()
+                .resource::<ButtonInput<MouseButton>>()
+                .pressed(MouseButton::Right)
+        );
         assert!(gamepad.just_pressed(GamepadButton::Select));
         assert!(
             app.world()
@@ -1599,6 +1761,11 @@ mod tests {
         assert_eq!(gamepad.left_stick(), Vec2::ZERO);
         assert_eq!(gamepad.right_stick(), Vec2::ZERO);
         assert!(!gamepad.pressed(GamepadButton::Select));
+        assert!(
+            !app.world()
+                .resource::<ButtonInput<MouseButton>>()
+                .pressed(MouseButton::Right)
+        );
     }
 
     #[test]
@@ -1771,6 +1938,8 @@ mod tests {
                 observation: None,
                 entry: None,
                 gamepad_connected: true,
+                pointer_locked: Some(false),
+                graphics: None,
             })
             .collect();
         let mut recording = Recording {
@@ -1801,6 +1970,13 @@ mod tests {
         assert!(!recording.finish(None));
         recording.script.assertions[0].gamepad_connected = Some(true);
         assert!(recording.finish(None));
+        recording.script.assertions[0].pointer_locked = Some(true);
+        assert!(!recording.finish(None));
+        recording.script.assertions[0].pointer_locked = Some(false);
+        assert!(recording.finish(None));
+        recording.samples[1].pointer_locked = None;
+        assert!(!recording.finish(None));
+        recording.samples[1].pointer_locked = Some(false);
         recording.script.scene = "walk-preview".into();
         recording.script.assertions = vec![
             serde_json::from_value(serde_json::json!({
@@ -1839,6 +2015,58 @@ mod tests {
     }
 
     #[test]
+    fn controls_and_graphics_assertions_require_measured_values() {
+        let mut controls: Script =
+            serde_json::from_str(include_str!("../capture/walk-controls.json")).unwrap();
+        assert!(controls.validate().is_ok());
+        for source in [
+            include_str!("../capture/walk-graphics.json"),
+            include_str!("../capture/walk-graphics-restore.json"),
+            include_str!("../capture/walk-display-confirm.json"),
+            include_str!("../capture/walk-display-restore.json"),
+        ] {
+            assert!(
+                serde_json::from_str::<Script>(source)
+                    .unwrap()
+                    .validate()
+                    .is_ok()
+            );
+        }
+        controls.scene = "game-entry".into();
+        assert!(controls.validate().is_err());
+        let check: GraphicsCheck = serde_json::from_value(serde_json::json!({
+            "aa":"fxaa", "ssao":"medium", "bloom":false, "shadows":false
+        }))
+        .unwrap();
+        assert!(check.valid());
+        let actual = GraphicsEvidence {
+            aa: "fxaa".into(),
+            ssao: "medium".into(),
+            ..default()
+        };
+        assert!(check.matches(Some(&actual)));
+        assert!(!check.matches(None));
+        for field in ["aa", "ssao", "bloom", "shadows"] {
+            let mut wrong = actual.clone();
+            match field {
+                "aa" => wrong.aa = "msaa4".into(),
+                "ssao" => wrong.ssao = "off".into(),
+                "bloom" => wrong.bloom = true,
+                _ => wrong.shadows = true,
+            }
+            assert!(!check.matches(Some(&wrong)), "wrong {field} must fail");
+        }
+        for invalid in [
+            serde_json::json!({}),
+            serde_json::json!({"aa":"unknown"}),
+            serde_json::json!({"ssao":"automatic"}),
+        ] {
+            let check: GraphicsCheck = serde_json::from_value(invalid).unwrap();
+            assert!(!check.valid());
+        }
+    }
+
+    #[test]
     fn settings_assertions_validate_ranges_and_reject_wrong_or_missing_evidence() {
         let mut script: Script =
             serde_json::from_str(include_str!("../capture/walk-settings.json")).unwrap();
@@ -1850,6 +2078,11 @@ mod tests {
         });
         let sample = EntrySample {
             settings_open: true,
+            graphics_tab: false,
+            graphics_page: 0,
+            display_pending: false,
+            configured_resolution: 0,
+            configured_borderless: false,
             focus: 1,
             text_scale: 1.25,
             camera_sensitivity: 0.65,
@@ -1869,10 +2102,14 @@ mod tests {
         for (field, wrong, valid) in [
             ("settings_open", serde_json::json!(false), true),
             ("entry_focus", serde_json::json!(2), true),
+            ("display_pending", serde_json::json!(true), true),
+            ("configured_resolution", serde_json::json!(1), true),
+            ("configured_borderless", serde_json::json!(true), true),
+            ("configured_resolution", serde_json::json!(4), false),
             ("text_scale", serde_json::json!(1.0), true),
             ("camera_sensitivity", serde_json::json!(1.0), true),
             ("entry_device", serde_json::json!("keyboard_mouse"), true),
-            ("entry_focus", serde_json::json!(3), false),
+            ("entry_focus", serde_json::json!(21), false),
             ("text_scale", serde_json::json!(1.5), false),
             ("camera_sensitivity", serde_json::json!(0.0), false),
             ("entry_device", serde_json::json!("unknown"), false),
@@ -1902,12 +2139,23 @@ mod tests {
         .unwrap();
         let mut place = PlaceSample {
             id: Some("04".into()),
+            room: None,
             name: "月台杂货与住家".into(),
             visible: true,
             gamepad: false,
         };
         assert!(check.check_place(Some(&place)));
         assert!(!check.check_place(None));
+        check.place_room = Some("接待与陈列".into());
+        assert!(!check.check_place(Some(&place)));
+        place.room = Some("接待与陈列".into());
+        assert!(check.check_place(Some(&place)));
+        check.inside_room = Some(false);
+        assert!(!check.check_place(Some(&place)));
+        check.inside_room = Some(true);
+        assert!(check.check_place(Some(&place)));
+        check.place_room = None;
+        check.inside_room = None;
         place.id = None;
         assert!(!check.check_place(Some(&place)));
         check.place_id = None;
@@ -1930,7 +2178,7 @@ mod tests {
             "min_player_height": 28.0, "max_player_height": 28.5,
             "min_player_camera_distance": 4.0, "max_player_camera_distance": 7.0,
             "player_grounded": true, "max_player_resets": 0,
-            "player_blocked": "V-04"
+            "player_blocked": "V-04", "max_player_jumps":0, "player_sprinting":false
         }))
         .unwrap();
         let sample = |x| Sample {
@@ -1947,9 +2195,13 @@ mod tests {
             observation: None,
             entry: None,
             gamepad_connected: true,
+            pointer_locked: Some(true),
+            graphics: None,
             player: Some(PlayerSample {
                 foot: [x, 28.0, 0.0],
                 grounded: true,
+                jumps: 0,
+                sprinting: false,
                 blocked: None,
                 resets: 0,
                 camera_distance: 6.0,
@@ -1958,6 +2210,12 @@ mod tests {
         let mut samples = [sample(0.0), sample(3.0), sample(4.0)];
         samples[1].player.as_mut().unwrap().blocked = Some("/buildings/V-04/wall".into());
         assert!(assertion.check_player(&samples));
+        samples[2].player.as_mut().unwrap().jumps = 1;
+        assert!(!assertion.check_player(&samples));
+        samples[2].player.as_mut().unwrap().jumps = 0;
+        samples[1].player.as_mut().unwrap().sprinting = true;
+        assert!(!assertion.check_player(&samples));
+        samples[1].player.as_mut().unwrap().sprinting = false;
         samples[1].player.as_mut().unwrap().camera_distance = 8.0;
         assert!(!assertion.check_player(&samples));
         samples[1].player.as_mut().unwrap().camera_distance = 3.0;

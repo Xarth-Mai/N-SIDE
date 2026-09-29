@@ -10,8 +10,10 @@ use crate::{
     },
 };
 use bevy::{
-    app::RunFixedMainLoopSystems, input::mouse::AccumulatedMouseMotion, prelude::*,
-    window::PrimaryWindow,
+    app::RunFixedMainLoopSystems,
+    input::{keyboard::KeyboardInput, mouse::AccumulatedMouseMotion},
+    prelude::*,
+    window::{CursorGrabMode, CursorOptions, PrimaryWindow},
 };
 
 const HEIGHT: f32 = 1.7;
@@ -22,6 +24,9 @@ const SEPARATION: f32 = 0.001;
 const STEP: f32 = 0.26;
 const WALKABLE_Y: f32 = 0.70710677;
 const SPEED: f32 = 3.2;
+const SPRINT_SPEED: f32 = 5.6;
+const JUMP_SPEED: f32 = 6.0;
+const GRAVITY: f32 = 18.0;
 const CAMERA_LENGTH: f32 = 3.8;
 
 #[derive(Resource, Default)]
@@ -34,6 +39,8 @@ pub struct PlayerState {
     pub blocked: Option<String>,
     pub resets: u32,
     pub camera_distance: f32,
+    pub jumps: u32,
+    pub sprinting: bool,
     spawn: Vec3,
     vertical_speed: f32,
     ground_normal: Vec3,
@@ -61,6 +68,8 @@ impl PlayerState {
             blocked: None,
             resets: 0,
             camera_distance: CAMERA_LENGTH,
+            jumps: 0,
+            sprinting: false,
             spawn: foot,
             vertical_speed: 0.0,
             ground_normal: Vec3::Y,
@@ -73,13 +82,23 @@ impl PlayerState {
         self.ground_normal = Vec3::Y;
         self.grounded = true;
         self.blocked = None;
+        self.sprinting = false;
         self.resets += 1;
+    }
+
+    fn jump(&mut self) {
+        if self.grounded {
+            self.vertical_speed = JUMP_SPEED;
+            self.grounded = false;
+            self.jumps += 1;
+        }
     }
 
     fn step(&mut self, collision: &CollisionWorld, direction: Vec3, dt: f32) {
         self.blocked = None;
         let was_grounded = self.grounded;
-        let mut delta = direction.clamp_length_max(1.0) * SPEED * dt;
+        let speed = if self.sprinting { SPRINT_SPEED } else { SPEED };
+        let mut delta = direction.clamp_length_max(1.0) * speed * dt;
         if was_grounded {
             // Keep the requested horizontal speed while following a walkable ramp
             delta.y = -self.ground_normal.dot(delta) / self.ground_normal.y.max(WALKABLE_Y);
@@ -98,29 +117,33 @@ impl PlayerState {
                 self.blocked = None;
             }
         }
-        self.vertical_speed = if was_grounded {
-            0.0
+        let vertical = if was_grounded {
+            -Vec3::Y * (STEP + SKIN)
         } else {
-            self.vertical_speed - 18.0 * dt
+            self.vertical_speed -= GRAVITY * dt;
+            Vec3::Y
+                * if self.vertical_speed > 0.0 {
+                    self.vertical_speed * dt
+                } else {
+                    (self.vertical_speed * dt).min(-SKIN)
+                }
         };
-        let fall = if was_grounded {
-            STEP + SKIN
-        } else {
-            (-self.vertical_speed * dt).max(SKIN)
-        };
-        let down = -Vec3::Y * fall;
         self.grounded = false;
-        if let Some(hit) = collision.capsule_cast(self.foot, HEIGHT, RADIUS, down, SKIN) {
-            if let Some(normal) = walkable_normal(collision, &hit) {
-                self.foot += down * safe_fraction(down, hit.fraction);
+        if let Some(hit) = collision.capsule_cast(self.foot, HEIGHT, RADIUS, vertical, SKIN) {
+            if vertical.y > 0.0 {
+                self.foot += vertical * safe_fraction(vertical, hit.fraction);
+                self.vertical_speed = 0.0;
+                self.blocked = Some(hit.source.to_owned());
+            } else if let Some(normal) = walkable_normal(collision, &hit) {
+                self.foot += vertical * safe_fraction(vertical, hit.fraction);
                 self.grounded = true;
                 self.ground_normal = normal;
                 self.vertical_speed = 0.0;
             } else {
-                self.foot = slide(collision, self.foot, down).0;
+                self.foot = slide(collision, self.foot, vertical).0;
             }
         } else {
-            self.foot += down;
+            self.foot += vertical;
         }
         let (min, max) = collision.bounds();
         if !self.foot.is_finite()
@@ -221,8 +244,26 @@ struct PlayerBody;
 struct Intent {
     direction: Vec3,
     reset: bool,
+    jump: bool,
+    sprint: bool,
     wait_for_release: bool,
 }
+/// Gameplay lock intent; the window backend applies CursorOptions when a window exists
+#[derive(Resource)]
+pub(crate) struct PointerLock {
+    pub requested: bool,
+    pub active: bool,
+}
+
+impl Default for PointerLock {
+    fn default() -> Self {
+        Self {
+            requested: true,
+            active: false,
+        }
+    }
+}
+
 #[derive(Resource)]
 struct Orbit {
     yaw: f32,
@@ -242,6 +283,7 @@ pub fn install(app: &mut App) {
         .init_resource::<EntrySettings>()
         .init_resource::<Intent>()
         .init_resource::<Orbit>()
+        .init_resource::<PointerLock>()
         .add_systems(
             OnEnter(GamePhase::World),
             spawn_body.run_if(resource_exists::<PlayerState>),
@@ -254,12 +296,11 @@ pub fn install(app: &mut App) {
         })
         .add_systems(
             RunFixedMainLoop,
-            read_input
+            (read_input, sync_pointer)
+                .chain()
                 .after(CaptureInput)
                 .after(UiInput)
-                .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop)
-                .run_if(in_state(GamePhase::World))
-                .run_if(resource_exists::<PlayerState>),
+                .in_set(RunFixedMainLoopSystems::BeforeFixedMainLoop),
         )
         .add_systems(
             FixedUpdate,
@@ -279,10 +320,12 @@ fn gameplay_active(
     phase: Res<State<GamePhase>>,
     next: Res<NextState<GamePhase>>,
     observation: Option<Res<Observation>>,
+    windows: Query<&Window, With<PrimaryWindow>>,
 ) -> bool {
     *phase.get() == GamePhase::World
         && matches!(*next, NextState::Unchanged)
         && observation.is_none_or(|observation| !observation.blocks_world())
+        && windows.iter().all(|window| window.focused)
 }
 
 pub fn clear(world: &mut World) {
@@ -295,6 +338,9 @@ pub fn clear(world: &mut World) {
     }
     world.remove_resource::<PlayerState>();
     world.remove_resource::<CollisionWorld>();
+    if let Some(mut pointer) = world.get_resource_mut::<PointerLock>() {
+        *pointer = PointerLock::default();
+    }
     if let Some(mut intent) = world.get_resource_mut::<Intent>() {
         *intent = Intent::default();
     }
@@ -340,29 +386,43 @@ fn stick(value: Vec2) -> Vec2 {
 )]
 fn read_input(
     keys: Res<ButtonInput<KeyCode>>,
+    mut keyboard_events: MessageReader<KeyboardInput>,
     buttons: Res<ButtonInput<MouseButton>>,
     motion: Res<AccumulatedMouseMotion>,
     pads: Query<&Gamepad>,
     windows: Query<&Window, With<PrimaryWindow>>,
     time: Res<Time<Virtual>>,
     next: Res<NextState<GamePhase>>,
+    phase: Res<State<GamePhase>>,
+    mut player: Option<ResMut<PlayerState>>,
+    mut pointer: ResMut<PointerLock>,
     mut intent: ResMut<Intent>,
     mut orbit: ResMut<Orbit>,
     observation: Option<Res<Observation>>,
     settings: Res<EntrySettings>,
 ) {
+    let repeated: Vec<_> = keyboard_events
+        .read()
+        .filter(|event| event.repeat)
+        .map(|event| event.key_code)
+        .collect();
+    let pressed = |key| keys.just_pressed(key) && !repeated.contains(&key);
     intent.direction = Vec3::ZERO;
-    if !matches!(*next, NextState::Unchanged)
+    intent.sprint = false;
+    pointer.active = false;
+    if let Some(player) = player.as_deref_mut() {
+        player.sprinting = false;
+    }
+    if *phase.get() != GamePhase::World
+        || player.is_none()
+        || windows.iter().any(|window| !window.focused)
+        || !matches!(*next, NextState::Unchanged)
         || observation.is_some_and(|observation| observation.blocks_world())
     {
         *intent = Intent {
             wait_for_release: true,
             ..default()
         };
-        return;
-    }
-    if windows.iter().any(|window| !window.focused) {
-        intent.reset = false;
         return;
     }
     let mut movement = Vec2::new(
@@ -376,10 +436,10 @@ fn read_input(
     for pad in &pads {
         movement += stick(pad.left_stick());
         look += stick(pad.right_stick());
-        intent.reset |= pad.just_pressed(GamepadButton::Select);
     }
     if intent.wait_for_release {
         intent.reset = false;
+        intent.jump = false;
         intent.wait_for_release = keys.any_pressed([
             KeyCode::KeyW,
             KeyCode::KeyA,
@@ -388,18 +448,29 @@ fn read_input(
             KeyCode::KeyQ,
             KeyCode::KeyE,
             KeyCode::KeyR,
-        ]) || buttons.pressed(MouseButton::Right)
+            KeyCode::KeyM,
+            KeyCode::Space,
+            KeyCode::ShiftLeft,
+            KeyCode::ShiftRight,
+        ]) || buttons
+            .any_pressed([MouseButton::Left, MouseButton::Right])
             || pads.iter().any(|pad| {
                 pad.left_stick().length() > 0.15
                     || pad.right_stick().length() > 0.15
                     || pad.pressed(GamepadButton::Select)
+                    || pad.pressed(GamepadButton::West)
+                    || pad.pressed(GamepadButton::LeftThumb)
             });
         return;
     }
+    if pressed(KeyCode::KeyM) {
+        pointer.requested = !pointer.requested;
+    }
+    pointer.active = pointer.requested;
     let sensitivity = settings.camera_sensitivity();
     orbit.yaw += look.x * 1.6 * time.delta_secs() * sensitivity;
     orbit.pitch -= look.y * 1.2 * time.delta_secs() * sensitivity;
-    if buttons.pressed(MouseButton::Right) {
+    if pointer.active || buttons.pressed(MouseButton::Left) {
         orbit.yaw -= motion.delta.x * 0.003 * sensitivity;
         orbit.pitch += motion.delta.y * 0.003 * sensitivity;
     }
@@ -408,7 +479,34 @@ fn read_input(
     let right = Vec3::new(orbit.yaw.cos(), 0.0, -orbit.yaw.sin());
     movement = movement.clamp_length_max(1.0);
     intent.direction = right * movement.x + forward * movement.y;
-    intent.reset |= keys.just_pressed(KeyCode::KeyR);
+    intent.reset |= pressed(KeyCode::KeyR)
+        || pads
+            .iter()
+            .any(|pad| pad.just_pressed(GamepadButton::Select));
+    intent.jump |=
+        pressed(KeyCode::Space) || pads.iter().any(|pad| pad.just_pressed(GamepadButton::West));
+    intent.sprint = keys.any_pressed([KeyCode::ShiftLeft, KeyCode::ShiftRight])
+        || buttons.pressed(MouseButton::Right)
+        || pads.iter().any(|pad| pad.pressed(GamepadButton::LeftThumb));
+}
+
+fn sync_pointer(
+    pointer: Res<PointerLock>,
+    mut windows: Query<&mut CursorOptions, With<PrimaryWindow>>,
+) {
+    for mut cursor in &mut windows {
+        if cursor.visible == pointer.active {
+            cursor.visible = !pointer.active;
+        }
+        let grab_mode = if pointer.active {
+            CursorGrabMode::Locked
+        } else {
+            CursorGrabMode::None
+        };
+        if cursor.grab_mode != grab_mode {
+            cursor.grab_mode = grab_mode;
+        }
+    }
 }
 
 fn move_player(
@@ -420,7 +518,12 @@ fn move_player(
     if intent.reset {
         player.reset();
         intent.reset = false;
+        intent.jump = false;
     }
+    if std::mem::take(&mut intent.jump) {
+        player.jump();
+    }
+    player.sprinting = intent.sprint && intent.direction.length_squared() > 0.0;
     player.step(&collision, intent.direction, time.delta_secs());
 }
 
@@ -472,6 +575,266 @@ mod tests {
             source: source.into(),
             material: "test".into(),
             mesh: Mesh::from(Cuboid::from_size(size)).translated_by(center),
+        }
+    }
+
+    fn input_app() -> (App, Entity) {
+        let mut app = App::new();
+        let collision = CollisionWorld::from_parts(&[block(
+            "/terrain",
+            Vec3::new(100., 1., 100.),
+            Vec3::new(0., -0.5, 0.),
+        )])
+        .unwrap();
+        let mut fixed = Time::<Fixed>::default();
+        fixed.advance_by(std::time::Duration::from_secs_f32(1. / 60.));
+        app.insert_resource(collision)
+            .insert_resource(PlayerState::at(Vec3::Y * (SKIN + SEPARATION)))
+            .insert_resource(State::new(GamePhase::World))
+            .init_resource::<NextState<GamePhase>>()
+            .init_resource::<ButtonInput<KeyCode>>()
+            .init_resource::<ButtonInput<MouseButton>>()
+            .init_resource::<AccumulatedMouseMotion>()
+            .init_resource::<Time<Virtual>>()
+            .insert_resource(fixed)
+            .init_resource::<EntrySettings>()
+            .init_resource::<Intent>()
+            .init_resource::<Orbit>()
+            .init_resource::<PointerLock>()
+            .init_resource::<Observation>()
+            .add_message::<KeyboardInput>()
+            .add_systems(
+                Update,
+                (
+                    read_input,
+                    sync_pointer,
+                    move_player.run_if(gameplay_active),
+                )
+                    .chain(),
+            );
+        let window = app
+            .world_mut()
+            .spawn((
+                Window {
+                    focused: true,
+                    ..default()
+                },
+                PrimaryWindow,
+            ))
+            .id();
+        (app, window)
+    }
+
+    fn frame(app: &mut App) {
+        app.update();
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .clear();
+        app.world_mut()
+            .resource_mut::<ButtonInput<MouseButton>>()
+            .clear();
+        app.world_mut()
+            .resource_mut::<AccumulatedMouseMotion>()
+            .delta = Vec2::ZERO;
+    }
+
+    #[test]
+    fn jump_is_one_press_lands_and_stops_at_ceiling() {
+        let (mut app, _) = input_app();
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(KeyCode::Space);
+        let mut peak = 0_f32;
+        for tick in 0..90 {
+            // A second press in the air must not renew vertical speed
+            if tick == 5 {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .release(KeyCode::Space);
+            }
+            if tick == 6 {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .press(KeyCode::Space);
+            }
+            frame(&mut app);
+            peak = peak.max(app.world().resource::<PlayerState>().foot.y);
+        }
+        let player = app.world().resource::<PlayerState>();
+        assert!((0.9..1.05).contains(&peak), "peak={peak}");
+        assert_eq!(
+            player.jumps, 1,
+            "holding jump must not auto-jump on landing"
+        );
+        assert!(player.grounded && player.foot.y < 0.03);
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .release(KeyCode::Space);
+        frame(&mut app);
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(KeyCode::Space);
+        frame(&mut app);
+        assert_eq!(app.world().resource::<PlayerState>().jumps, 2);
+        assert!(!app.world().resource::<PlayerState>().grounded);
+
+        let collision = CollisionWorld::from_parts(&[
+            block("/terrain", Vec3::new(10., 1., 10.), Vec3::new(0., -0.5, 0.)),
+            block(
+                "/buildings/ceiling",
+                Vec3::new(10., 0.2, 10.),
+                Vec3::new(0., 2.1, 0.),
+            ),
+        ])
+        .unwrap();
+        let mut player = PlayerState::at(Vec3::Y * (SKIN + SEPARATION));
+        player.jump();
+        let mut ceiling_contact = false;
+        for _ in 0..90 {
+            player.step(&collision, Vec3::ZERO, 1. / 60.);
+            assert!(player.foot.y + HEIGHT + SKIN <= 2.001);
+            ceiling_contact |= player.blocked.as_deref() == Some("/buildings/ceiling");
+        }
+        assert!(ceiling_contact && player.grounded && player.resets == 0);
+    }
+
+    #[test]
+    fn sprint_bindings_are_equivalent_and_diagonal_speed_is_normalized() {
+        let mut distances = Vec::new();
+        for (shift, mouse, diagonal) in [
+            (None, false, false),
+            (Some(KeyCode::ShiftLeft), false, false),
+            (Some(KeyCode::ShiftRight), false, false),
+            (None, true, false),
+            (None, true, true),
+        ] {
+            let (mut app, _) = input_app();
+            let mut keys = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            keys.press(KeyCode::KeyW);
+            if diagonal {
+                keys.press(KeyCode::KeyD);
+            }
+            if let Some(shift) = shift {
+                keys.press(shift);
+            }
+            if mouse {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<MouseButton>>()
+                    .press(MouseButton::Right);
+            }
+            for _ in 0..60 {
+                frame(&mut app);
+            }
+            let player = app.world().resource::<PlayerState>();
+            distances.push(player.foot.xz().length());
+            assert_eq!(player.sprinting, shift.is_some() || mouse);
+        }
+        // Sweeps can lose one separation skin at a shared triangle edge
+        assert!(
+            (distances[0] - SPEED).abs() < SEPARATION * 2.0,
+            "{distances:?}"
+        );
+        assert!(
+            distances[1..]
+                .iter()
+                .all(|distance| (*distance - SPRINT_SPEED).abs() < SEPARATION * 2.0),
+            "{distances:?}"
+        );
+    }
+
+    #[test]
+    fn lock_controls_camera_and_releases_for_observation_pause_and_focus() {
+        let (mut app, window) = input_app();
+        frame(&mut app);
+        assert!(app.world().resource::<PointerLock>().active);
+        assert_eq!(
+            app.world().get::<CursorOptions>(window).unwrap().grab_mode,
+            CursorGrabMode::Locked
+        );
+        assert!(!app.world().get::<CursorOptions>(window).unwrap().visible);
+        app.world_mut()
+            .resource_mut::<AccumulatedMouseMotion>()
+            .delta = Vec2::new(20., 0.);
+        frame(&mut app);
+        let yaw = app.world().resource::<Orbit>().yaw;
+        assert!(yaw < -0.05);
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(KeyCode::KeyM);
+        frame(&mut app);
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .release(KeyCode::KeyM);
+        app.world_mut()
+            .resource_mut::<AccumulatedMouseMotion>()
+            .delta = Vec2::new(20., 0.);
+        frame(&mut app);
+        assert_eq!(app.world().resource::<Orbit>().yaw, yaw);
+        assert!(app.world().get::<CursorOptions>(window).unwrap().visible);
+        app.world_mut()
+            .resource_mut::<ButtonInput<MouseButton>>()
+            .press(MouseButton::Left);
+        app.world_mut()
+            .resource_mut::<AccumulatedMouseMotion>()
+            .delta = Vec2::new(20., 0.);
+        frame(&mut app);
+        assert!(app.world().resource::<Orbit>().yaw < yaw);
+        app.world_mut()
+            .resource_mut::<ButtonInput<MouseButton>>()
+            .release(MouseButton::Left);
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .press(KeyCode::KeyM);
+        frame(&mut app);
+        app.world_mut()
+            .resource_mut::<ButtonInput<KeyCode>>()
+            .release(KeyCode::KeyM);
+        for gate in 0..3 {
+            let before = app.world().resource::<PlayerState>().foot;
+            let yaw = app.world().resource::<Orbit>().yaw;
+            match gate {
+                0 => app.world_mut().resource_mut::<Observation>().open = true,
+                1 => {
+                    app.insert_resource(State::new(GamePhase::Paused));
+                }
+                _ => app.world_mut().get_mut::<Window>(window).unwrap().focused = false,
+            }
+            for key in [KeyCode::Space, KeyCode::ShiftLeft, KeyCode::KeyW] {
+                app.world_mut()
+                    .resource_mut::<ButtonInput<KeyCode>>()
+                    .press(key);
+            }
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .press(MouseButton::Right);
+            app.world_mut()
+                .resource_mut::<AccumulatedMouseMotion>()
+                .delta = Vec2::new(200., 100.);
+            frame(&mut app);
+            assert!(!app.world().resource::<PointerLock>().active);
+            assert_eq!(
+                app.world().get::<CursorOptions>(window).unwrap().grab_mode,
+                CursorGrabMode::None
+            );
+            assert!(app.world().get::<CursorOptions>(window).unwrap().visible);
+            app.world_mut().resource_mut::<Observation>().open = false;
+            app.insert_resource(State::new(GamePhase::World));
+            app.world_mut().get_mut::<Window>(window).unwrap().focused = true;
+            for _ in 0..3 {
+                frame(&mut app);
+            }
+            assert_eq!(app.world().resource::<PlayerState>().foot, before);
+            assert_eq!(app.world().resource::<PlayerState>().jumps, 0);
+            assert_eq!(app.world().resource::<Orbit>().yaw, yaw);
+            app.world_mut()
+                .resource_mut::<ButtonInput<KeyCode>>()
+                .release_all();
+            app.world_mut()
+                .resource_mut::<ButtonInput<MouseButton>>()
+                .release_all();
+            frame(&mut app);
+            frame(&mut app);
+            assert!(app.world().resource::<PointerLock>().active);
         }
     }
 
@@ -741,6 +1104,10 @@ mod tests {
                 && player.grounded
         );
         player.reset();
+        // The public door is open; the adjacent facade must still block the player
+        for _ in 0..94 {
+            player.step(&world, Vec3::Z, 1.0 / 60.0);
+        }
         for _ in 0..360 {
             player.step(&world, -Vec3::X, 1.0 / 60.0);
         }
@@ -748,8 +1115,7 @@ mod tests {
             "[player/wall] foot={:?} grounded={} blocked={:?}",
             player.foot, player.grounded, player.blocked
         );
-        // The visible door panel projects beyond the original x=88 wall
-        assert!((88.37..88.8).contains(&player.foot.x) && player.grounded);
+        assert!((88.3..88.8).contains(&player.foot.x) && player.grounded);
         assert!(
             player
                 .blocked
@@ -768,6 +1134,69 @@ mod tests {
             assert!(
                 player.foot.x > 180.0 && player.foot.y > 41.0,
                 "{:?}",
+                player.foot
+            );
+            assert!(player.grounded && player.resets == 0);
+        }
+    }
+
+    #[test]
+    fn walks_shop_public_rooms_and_returns_without_opening_private_rooms() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let scene = crate::world::scene::PreparedScene::load(root).unwrap();
+        let collision = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let catalog = crate::places::PlaceCatalog::load(
+            &root.join("source-assets/district-map/district.json"),
+        )
+        .unwrap();
+        let walk_to = |player: &mut PlayerState, target: Vec3, dt: f32| {
+            for _ in 0..(12.0 / dt) as usize {
+                let delta = (target - player.foot) * Vec3::new(1., 0., 1.);
+                if delta.length() < 0.025 {
+                    break;
+                }
+                player.step(&collision, (delta / (SPEED * dt)).clamp_length_max(1.), dt);
+            }
+            assert!(
+                player.foot.xz().distance(target.xz()) < 0.03,
+                "target={target:?} foot={:?} blocked={:?}",
+                player.foot,
+                player.blocked
+            );
+            assert!(
+                player.grounded && player.resets == 0,
+                "foot={:?}",
+                player.foot
+            );
+            assert!((player.foot.y - 28.0).abs() < 0.15);
+        };
+        for dt in [1. / 64., 1. / 30.] {
+            let mut player = PlayerState::from_map(&scene.map, &collision).unwrap();
+            for (x, y, room) in [
+                (86., 255., Some("接待与陈列")),
+                (86., 259.1, Some("接待与陈列")),
+                (81., 259.1, Some("预约洽谈")),
+                (86., 259.1, Some("接待与陈列")),
+                (86., 263.6, Some("接待与陈列")),
+                (81., 263.6, Some("主题陈列")),
+                (86., 263.6, Some("接待与陈列")),
+                (86., 255., Some("接待与陈列")),
+                (100., 255., None),
+            ] {
+                walk_to(&mut player, Vec3::new(x, 28., -y), dt);
+                assert_eq!(catalog.room_at(player.foot), room);
+            }
+            walk_to(&mut player, Vec3::new(86., 28., -255.), dt);
+            for _ in 0..(2.0 / dt) as usize {
+                player.step(&collision, -Vec3::X, dt);
+            }
+            player.jump();
+            for _ in 0..(2.0 / dt) as usize {
+                player.step(&collision, -Vec3::X, dt);
+            }
+            assert!(
+                player.foot.x > 84.3 && player.foot.x < 84.6,
+                "closed rear: {:?}",
                 player.foot
             );
             assert!(player.grounded && player.resets == 0);

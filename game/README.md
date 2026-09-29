@@ -36,7 +36,7 @@ python3 tools/capture.py --binary '/tmp/N-SIDE Linux Preview/game/n-side' --proj
 
 Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完成后从运行摘要链接或 Artifacts 下载 `n-side-windows-x86_64-msvc`，保存期为 14 天。手动入口需要 workflow 已存在于默认分支
 
-完整解压后双击 `run-game.cmd` 启动标题与街区预览，`run-walk-preview.cmd` 启动室外步行实验，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
+完整解压后双击 `run-game.cmd` 启动标题与街区预览，`run-walk-preview.cmd` 启动人物步行实验，或 `run-viewer.cmd` 启动街区 Viewer；保留 `game/`、`source-assets/` 与 `licenses/` 的目录结构，运行需要 Windows 与支持 Vulkan 的显卡驱动。启动脚本支持含空格的解压路径，无需安装 Rust 或克隆仓库
 
 构建使用 `x86_64-pc-windows-msvc`、现有 release 配置和 Cargo.lock，以 `--features viewer --bins` 构建所有当前启用的可执行目标，并从本次 Cargo 产物消息收集程序，避免带入缓存里的旧 exe。完整清单在包内 `executables.txt` 和运行摘要中；当前为 `game/n-side.exe`、`game/map_viewer.exe`，`run-walk-preview.cmd` 只是正式入口的 `--walk-preview` 模式
 
@@ -44,11 +44,11 @@ Actions 页面选择 `Build Windows` → `Run workflow` → 分支，构建完�
 
 两个 workflow 使用最新稳定系列的 Actions、`ubuntu-latest` / `windows-latest` runner 和最新稳定 Rust；CI 显式选择 Bun `latest`、Python `3.x` 并查询最新稳定版本。Action 跨主版本需要更新 workflow 引用，项目库依赖仍按锁文件安装，日志记录实际工具链版本
 
-右键按住观察，M 切换鼠标捕获，WASD 移动，Q/E 下降或上升，Shift 加速，滚轮调整速度，Esc 释放鼠标；失焦时停止运动，重新按右键或 M 恢复控制。自由相机可以穿过实体
+Viewer 自由相机使用右键按住观察，M 切换鼠标捕获，WASD 移动，Q/E 下降或上升，Shift 加速，滚轮调整速度，Esc 释放鼠标；失焦时停止运动，重新按右键或 M 恢复控制。自由相机可以穿过实体，步行入口的操作见下文
 
 ## 正式入口与场景恢复
 
-标题提供「进入街区」「退出」和「设置」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的室外人物尺度实验；任务和存档仍由后续原型接入
+标题提供「进入街区」「退出」和「设置」，进入后固定在月台杂货附近的观察位置；Esc／Tab或手柄Start／东键打开暂停菜单；继续保留当前会话，返回标题清理当前场景。方向键选择、Enter 确认，手柄方向键／南键／东键走相同入口；窗口失焦不接收确认操作。追加 `--walk-preview` 可进入同地图的人物尺度实验；任务和存档仍由后续原型接入
 
 场景准备在 Bevy 任务池中进行，标题输入和加载反馈保持响应；取消后丢弃旧准备结果。每次进入建立新的 `SceneLoading`，依次核对资产依赖和模型实例化，真实就绪才切换到街区。返回标题移除带 `MapSource` 的场景层级与加载资源，保留宿主镜头、灯光和 UI
 
@@ -77,7 +77,18 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 `walk-gamepad.json` 录制18秒的断连、重连持键、键鼠接管和重入。`events.gamepad_connected` 仅用于正式游戏场景，省略时保持上一连接状态；脚本在PreUpdate发送 `GamepadConnectionEvent`，由Bevy InputPlugin实际移除／恢复Gamepad组件，再由正式入口决定是否暂停。`gamepad_connected`状态断言核对结束帧实际组件存在情况，运动及镜头冻结仍检查整个区间；模拟连接不证明USB、蓝牙或驱动行为
 
-标题或暂停中的「设置」直接调整正式入口文字与人物镜头，退出设置返回来源菜单的原焦点；可在公共观察暂停期间修改，再继续原观察。正式入口自动保存文字100%／125%与镜头100%／65%两项偏好，下次启动恢复；未接入任务或世界进度存档。用户目录、版本、备份、失败处理、三种镜头输入与布局见[会话设置契约](../docs/dev/engineering/player-preview.md#会话设置)，不与下方Viewer的SignalUi样板状态混用
+标题或暂停中的「设置」提供通用与画质两页签，退出设置返回来源菜单的原焦点；可在公共观察暂停期间修改，再继续原观察。正式入口自动保存文字100%／125%、镜头100%／65%及已确认的画质设置，下次启动恢复；未接入任务或世界进度存档。用户目录、版本、备份、失败处理、三种镜头输入与布局见[会话设置契约](../docs/dev/engineering/player-preview.md#会话设置)，19项画质及显示确认见[画质契约](../docs/dev/engineering/graphics-settings.md)，不与下方Viewer的SignalUi样板状态混用
+
+改变窗口模式或分辨率会试用15秒，默认选中恢复，只有主动选择保留才接受新值；Esc、失焦、手柄断开或倒计时结束恢复原显示设置，未确认值不写入设置文件。其他画质即时应用，显示恢复不会回退字号、镜头或其他画质项
+
+画质页末尾「恢复默认画质」重置19项，保留字号与镜头；若改变了窗口模式或分辨率，同样走显示确认，取消仅恢复原显示两项
+
+已保存的画质导致启动画面不可用时，可追加 `--reset-graphics`，只恢复默认画质并保留字号与镜头设置；正常文件继续备份保存，无法读取的原文件仍受保护，不被默认值覆盖。Linux和Windows的正式入口启动脚本均透传该参数，以下命令分别用于仓库根与已解压Linux包
+
+```fish
+cargo run --manifest-path game/Cargo.toml --locked -- --project-root . --walk-preview --reset-graphics
+./run-walk-preview.sh --reset-graphics
+```
 
 ```fish
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
@@ -97,7 +108,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 ## 人物尺度实验
 
-`--walk-preview` 复用正式入口和地图，在 `/nodes/home` 放置1.7m高、半径0.3m的中性胶囊代理。WASD／左摇杆移动，右键拖动／Q E／右摇杆转动镜头，F／南键A查看近处公共地点信息，R／Select返回起点；未打开观察面板时Esc／Tab／Start／东键B暂停。当前为室外技术实验，不确定正式主控、角色造型或最终手感
+`--walk-preview` 复用正式入口和地图，在 `/nodes/home` 放置1.7m高、半径0.3m的中性胶囊代理。WASD／左摇杆移动，左右Shift／鼠标右键／左摇杆按钮按住疾跑，空格／西键跳跃，锁定鼠标观察（M释放，解锁后左键拖动）／Q E／右摇杆转动镜头，F／南键A查看近处公共地点信息，R／Select返回起点；未打开观察面板时Esc／Tab／Start／东键B暂停。当前为城市与小店首层公共区的步行技术实验，不确定正式主控、角色造型或最终手感
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked -- --project-root . --walk-preview
@@ -107,6 +118,14 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 ```
 
 碰撞从同一份渲染网格建立静态三角 BVH，覆盖地形、道路、建筑、平台及结构设施；道路台阶的踏面与立面均参与扫掠。Parry只负责空间查询，人物和镜头系统由 `player.rs` 维护；相机沿目标到期望位置作球体扫掠。参数、当前覆盖与失败处理见[人物尺度实验契约](../docs/dev/engineering/player-preview.md)
+
+小店V-04首层的接待与陈列、主题陈列和预约洽谈开放直接行走。房间和门洞来自地图 `design.floors` 的1F `rooms`／`openings`，地板、墙、天花和门头进入相同渲染及碰撞路径；后场、私人内梯和楼上继续封闭。通过WASD／左摇杆从街道进入、穿过内门并原路返回，不使用F传送或场景切换，F仍负责公共信息观察
+
+```fish
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-shop-interior.json --output output/capture/walk-shop-interior
+```
+
+该路线检查从真实出生点经过三间公共房再回到街道，室名来自脚点所在的源房间。门净宽、头顶、封闭墙与跟随镜头分别检查，运行记录和画面判断归任务证据，不据此放行人物造型或主观体验
 
 短登高检查分为整段CPU移动探针和真实入口录制：前者从小店沿源路线逐点行走到摘星台，遇到停滞、异常恢复或超时返回失败；后者包含小店出发片段和完整上山脚本。二者均不写入目标高度或传送角色，人工体验另行记录
 
@@ -118,7 +137,7 @@ python3 tools/capture.py --script game/capture/walk-ascent-full.json --output ou
 
 完整路线脚本的 `route: {"id":"hill-short","start":60}` 从当前项目根读取地图路线，按真实脚点与相机朝向发摇杆及鼠标输入。节点必须有相连道路和真实可行走网格；到达检查水平距离、支撑高度、着地和零恢复。两秒无有效进展明确失败，终点释放输入；路线不得与同一时段的手写输入争用。`state.json` 的 `route_all_nodes_reached` 检查内保存 `route`每个实际到达节点与帧号，路线全部到达才通过。`round_trip: true` 在峰顶后按源节点逆序原路返回，峰顶只计一次；`walk-round-trip.json` 用同一会话验证259次节点到达和回店后的稳定状态
 
-人物入口左上显示地图公共入口附近的真实地名，左下显示当前键鼠／手柄操作提示。位置或高度超过判定范围时回退Null Site；进入暂停隐藏，继续后恢复
+人物入口左上在街道显示地图公共入口附近的真实地名，小店首层公共房间内显示所在室名，左下显示当前键鼠／手柄操作提示。位置或高度超过判定范围时回退Null Site；进入暂停隐藏，继续后恢复
 
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-places.json --output output/capture/walk-places
@@ -224,7 +243,7 @@ test $status -ne 0
 python3 tools/capture.py --script game/capture/ascent-lookout.json --output output/capture/ascent-lookout --binary game/target/debug/map_viewer
 ```
 
-每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 Viewer 的 `district` / `ui-signal` 以及正式入口的 `game-entry` / `walk-preview`；正式入口 `view` 为 `shop`，Viewer 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/F/R/Shift/M/Escape/Tab/Enter/Up/Down/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角、整个区间最大转角或结束时控制器启用状态
+每份 `game/capture/*.json` 是该路线输入与预期的唯一源：`scene` 支持 Viewer 的 `district` / `ui-signal` 以及正式入口的 `game-entry` / `walk-preview`；正式入口 `view` 为 `shop`，Viewer 使用已有镜头名；`width` / `height`、`fps`、`frames`、`timeout_seconds`、`keyframes` 均可修改。`events` 的帧区间为左闭右开，`keys` 使用 W/A/S/D/Q/E/F/R/Space/Shift/ShiftRight/M/Escape/Tab/Enter/Up/Down/Left/Right/PageUp/PageDown，`look` 是每个模拟帧的鼠标增量。`assertions` 指定帧区间、最小位移、整个区间最大偏移、最小转角、整个区间最大转角或结束时控制器启用状态
 
 资源依赖和场景实例就绪后预热 30 个渲染帧，再按 `1 / fps` 推进模拟；每张截图收到异步回调并成功落盘后才推进下一帧，等待期间模拟时间为零。固定输入与时间步改善同环境复现，不能保证跨平台、跨 GPU 的像素一致性；当前场景没有随机行为，`seed` 只作为证据记录，尚无随机系统消费它
 
@@ -256,3 +275,18 @@ cargo test --manifest-path game/Cargo.toml --features viewer --locked
 ```
 
 这些测试不依赖 GPU，检查输入脚本、证据序列和进程超时；实际渲染仍需 Vulkan 设备。无设备时保留失败诊断并在具备 GPU 的环境运行录制命令，不将跳过计为通过
+
+## 跳跃、疾跑与画质回归
+
+基础操作见[游玩指南](../docs/player/guide/index.md)，19项画质范围与兼容关系见[画质契约](../docs/dev/engineering/graphics-settings.md)。以下均经过正式入口和同一城市系统；画质录制通过真实菜单切换相机效果，后一次启动读取独立设置目录
+
+```fish
+cargo build --manifest-path game/Cargo.toml --locked --bin n-side
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-controls.json --output output/capture/walk-controls
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-graphics.json --output output/capture/walk-graphics --settings-dir output/capture/graphics-user
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-graphics-restore.json --output output/capture/walk-graphics-restore --settings-dir output/capture/graphics-user
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-graphics-options.json --output output/capture/walk-graphics-options
+python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-graphics-large.json --output output/capture/walk-graphics-large
+```
+
+脚本中的鼠标锁定采样表示游戏意图，原生窗口锁定／释放、窗口分辨率与VSync需要桌面证据；离屏固定画布不随窗口选项改尺寸。不同GPU不支持某个MSAA采样数时，菜单沿切换方向跳过；首次读取不支持的保存值时回退FXAA，脚本预期需按该设备真实能力记录，不将不支持记为成功启用

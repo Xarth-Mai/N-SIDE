@@ -1,0 +1,29 @@
+[
+  {
+    "seconds": 0.468,
+    "check": "launch",
+    "display": ":1",
+    "pid": 66234,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-043/r1/native/settings"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9"
+  },
+  {
+    "seconds": 3.469,
+    "check": "failure",
+    "status": "FAIL",
+    "error": "RuntimeError('game exited 1 while waiting for title_releases_pointer')"
+  },
+  {
+    "seconds": 3.477,
+    "check": "owned_process_cleanup",
+    "game_exit": 1,
+    "xvfb_exit": 0
+  }
+]

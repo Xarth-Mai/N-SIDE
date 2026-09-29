@@ -1,0 +1,23 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 30.66s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 5 tests
+test graphics::tests::display_trial_uses_real_time_and_only_reverts_display_choices ... ok
+test settings::tests::pending_display_choices_are_not_saved_on_exit_but_confirmation_is ... ok
+
+thread 'app::tests::display_preview_requires_confirmation_and_returns_to_its_row' (549) panicked at src/app.rs:1710:14:
+called `Result::unwrap()` on an `Err` value: NoEntities("<Enable the debug feature to see the name>")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test app::tests::display_preview_requires_confirmation_and_returns_to_its_row ... FAILED
+test world::scene::tests::displays_stay_on_ground_floor_front_windows ... ok
+test world::scene::tests::sample_frames_leave_recessed_displays_and_doorways_clear ... ok
+
+failures:
+
+failures:
+    app::tests::display_preview_requires_confirmation_and_returns_to_its_row
+
+test result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.11s
+
+error: test failed, to rerun pass `--lib`

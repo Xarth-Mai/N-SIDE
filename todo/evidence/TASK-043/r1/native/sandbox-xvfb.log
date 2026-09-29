@@ -1,0 +1,26 @@
+Repeated sandbox bind failures; original 18932670 bytes, 297685 lines; first and last 12 lines retained
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local
+_XSERVTransmkdir: Owner of /tmp/.X11-unix should be set to root
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: failed to create listener for unix
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransmkdir: Owner of /tmp/.X11-unix should be set to root
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+[repeated failures omitted]
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransmkdir: Owner of /tmp/.X11-unix should be set to root
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransmkdir: Owner of /tmp/.X11-unix should be set to root
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+(EE)
+Fatal server error:
+(EE) Failed to find a socket to listen on(EE)

@@ -9,7 +9,7 @@ use geo::{Area, LineString, Polygon, Validation};
 use serde::{Deserialize, Deserializer, de};
 use serde_json::Value;
 
-/// Authoritative spatial data; editorial metadata and interiors stay in the source document
+/// Authoritative spatial data; generated geometry retains the source object's identity
 #[derive(Clone, Debug, Deserialize)]
 pub struct Map {
     pub version: u32,
@@ -103,6 +103,64 @@ pub struct Design {
 pub struct Floor {
     pub name: String,
     pub z: f64,
+    #[serde(default)]
+    pub rooms: Vec<Room>,
+    #[serde(default)]
+    pub openings: Vec<Opening>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct Room {
+    pub name: String,
+    pub kind: String,
+    pub polygon: Vec<[f64; 2]>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct Opening {
+    pub line: [[f64; 2]; 2],
+    pub kind: String,
+}
+
+impl Building {
+    /// Only the shop's authored public ground floor is playable in this prototype
+    pub fn shop_floor(&self) -> Option<&Floor> {
+        if self.id != "V-04" {
+            return None;
+        }
+        self.design
+            .as_ref()?
+            .floors
+            .iter()
+            .find(|floor| floor.name == "1F")
+    }
+
+    pub fn shop_door(&self, nodes: &BTreeMap<String, [f64; 3]>) -> Option<&Opening> {
+        let floor = self.shop_floor()?;
+        let entry = self
+            .design
+            .as_ref()?
+            .entries
+            .iter()
+            .find(|entry| entry.role == "public" && entry.level == floor.name)?;
+        let point = nodes.get(&entry.node)?;
+        floor.openings.iter().find(|opening| {
+            opening.kind == "door"
+                && (0..2).all(|axis| {
+                    ((opening.line[0][axis] + opening.line[1][axis]) * 0.5 - point[axis]).abs()
+                        < 0.01
+                })
+        })
+    }
+}
+
+impl Floor {
+    pub fn public_rooms(&self) -> impl Iterator<Item = (usize, &Room)> {
+        self.rooms
+            .iter()
+            .enumerate()
+            .filter(|(_, room)| room.kind == "shop")
+    }
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -347,6 +405,33 @@ impl Map {
                         ));
                     }
                     previous_z = floor.z;
+                    if building.id == "V-04" && floor.name == "1F" {
+                        if floor.public_rooms().next().is_none() {
+                            return Err(c.error(
+                                &format!("{q}/rooms"),
+                                "playable shop requires its authored public rooms",
+                            ));
+                        }
+                        let mut names = BTreeSet::new();
+                        for (k, room) in floor.public_rooms() {
+                            let r = format!("{q}/rooms/{k}");
+                            c.unique_id(&format!("{r}/name"), &room.name, &mut names)?;
+                            c.polygon(&format!("{r}/polygon"), &room.polygon)?;
+                        }
+                        for (k, opening) in floor.openings.iter().enumerate() {
+                            let r = format!("{q}/openings/{k}/line");
+                            c.line(&r, &opening.line)?;
+                            if (opening.line[0][0] - opening.line[1][0])
+                                .hypot(opening.line[0][1] - opening.line[1][1])
+                                < 0.6
+                            {
+                                return Err(c.error(
+                                    &r,
+                                    "shop doorway must have room for the player capsule",
+                                ));
+                            }
+                        }
+                    }
                 }
                 for (j, entry) in design.entries.iter().enumerate() {
                     let q = format!("{p}/entries/{j}");

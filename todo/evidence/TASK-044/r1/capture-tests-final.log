@@ -1,0 +1,19 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 22.77s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 12 tests
+test capture::tests::focus_input_is_game_only_and_does_not_change_legacy_scripts ... ok
+test capture::tests::place_assertions_require_real_hud_and_validate_fields ... ok
+test capture::tests::player_checks_require_real_snapshots_and_bound_the_whole_interval ... ok
+test capture::tests::controls_and_graphics_assertions_require_measured_values ... ok
+test capture::tests::script_contract_validates_game_waits_and_world_assertions ... ok
+test capture::tests::script_contract_rejects_unreproducible_inputs ... ok
+test capture::tests::settings_assertions_validate_ranges_and_reject_wrong_or_missing_evidence ... ok
+test capture::tests::script_contract_validates_walk_axes_and_player_limits ... ok
+test capture::tests::rotation_limit_detects_a_turn_even_when_the_camera_returns ... ok
+test capture::tests::connection_script_uses_input_plugin_and_preserves_disconnected_state ... ok
+test capture::tests::waits_hold_the_clock_and_script_inputs_reach_real_gamepad_axes ... ok
+test capture::tests::focus_changes_are_persistent_and_emit_native_messages_only_when_ticking ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 84 filtered out; finished in 0.01s

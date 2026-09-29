@@ -1,0 +1,186 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 390,
+  "seed": 0,
+  "timeout_seconds": 450,
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 40,
+      "end": 41,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 51,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 100,
+      "end": 101,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 130,
+      "end": 131,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 160,
+      "end": 161,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 190,
+      "end": 191,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 220,
+      "end": 221,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 250,
+      "end": 251,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 310,
+      "end": 311,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 320,
+      "end": 321,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "keyframes": [
+    89,
+    119,
+    149,
+    179,
+    209,
+    239,
+    279,
+    389
+  ],
+  "assertions": [
+    {
+      "name": "large_text_graphics_page_0",
+      "from": 89,
+      "to": 89,
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 0,
+      "text_scale": 1.25
+    },
+    {
+      "name": "large_text_graphics_page_1",
+      "from": 119,
+      "to": 119,
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 1,
+      "text_scale": 1.25
+    },
+    {
+      "name": "large_text_graphics_page_2",
+      "from": 149,
+      "to": 149,
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 2,
+      "text_scale": 1.25
+    },
+    {
+      "name": "large_text_graphics_page_3",
+      "from": 179,
+      "to": 179,
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 3,
+      "text_scale": 1.25
+    },
+    {
+      "name": "large_text_graphics_page_4",
+      "from": 209,
+      "to": 209,
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 4,
+      "text_scale": 1.25
+    },
+    {
+      "name": "large_text_graphics_page_5",
+      "from": 239,
+      "to": 239,
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 5,
+      "text_scale": 1.25
+    },
+    {
+      "name": "return_to_source_focus",
+      "from": 279,
+      "to": 299,
+      "game_page": "title",
+      "settings_open": false,
+      "entry_focus": 2,
+      "text_scale": 1.25
+    },
+    {
+      "name": "enter_world_after_title_settings",
+      "from": 369,
+      "to": 389,
+      "game_page": "world",
+      "world_ready": true,
+      "text_scale": 1.25,
+      "pointer_locked": true
+    }
+  ],
+  "waits": [
+    {
+      "frame": 324,
+      "game_page": "world"
+    }
+  ]
+}

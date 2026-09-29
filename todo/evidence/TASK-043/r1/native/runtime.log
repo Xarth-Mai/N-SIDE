@@ -1,0 +1,26 @@
+2026-09-29T13:49:06.046923Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.8-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-29T13:49:06.054294Z  WARN winit::platform_impl::linux::x11::xdisplay: error setting XSETTINGS; Xft options won't reload automatically
+2026-09-29T13:49:06.118882Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-29T13:49:06.267410Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-29T13:49:06.267473Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-29T13:49:06.268450Z  INFO bevy_winit::system: Creating new window N:SIDE (65v0)
+2026-09-29T13:49:06.268643Z  WARN winit::platform_impl::linux::x11::util::randr: XRandR reported that the display's 0mm in size, which is certifiably insane
+2026-09-29T13:49:06.268688Z  INFO winit::platform_impl::linux::x11::window: Guessed window scale factor: 1
+2026-09-29T13:49:06.269663Z  INFO n_side::app: [game/state] title
+2026-09-29T13:49:06.322681Z DEBUG n_side::app: [game/focus] focused=false phase=Title
+2026-09-29T13:49:06.322710Z DEBUG n_side::app: [game/focus] focused=true phase=Title
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+MESA: info: vulkan: No DRI3 support detected - required for presentation
+Note: you can probably enable DRI3 in your Xorg config
+
+thread 'Compute Task Pool (5)' (66248) panicked at /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_render-0.19.1/src/view/window/mod.rs:502:13:
+internal error: entered unreachable code: Fallback system failed to choose present mode. This is a bug. Mode: AutoVsync, Options: []
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Encountered a panic in system `<Enable the debug feature to see the name>`!
+Encountered a panic in system `<Enable the debug feature to see the name>`!

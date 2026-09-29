@@ -1,0 +1,520 @@
+[
+  {
+    "output": "output/capture/task043-verified-controls",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-controls/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-controls",
+      "--walk-preview"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+    "script_sha256": "ad53588fdd8031453ebeaa74d84eacfb5d2e4f5ffe2fd77bbfc839f7d465206c",
+    "frames": 540,
+    "fps": 30,
+    "elapsed_wall_seconds": 47.29132976299843,
+    "video": "PASS",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "title_releases_pointer",
+        "passed": true
+      },
+      {
+        "name": "world_starts_grounded_and_locks_pointer",
+        "passed": true
+      },
+      {
+        "name": "space_rises_above_real_ground",
+        "passed": true
+      },
+      {
+        "name": "air_press_and_held_space_cannot_double_jump",
+        "passed": true
+      },
+      {
+        "name": "gamepad_jump_uses_same_grounded_rule",
+        "passed": true
+      },
+      {
+        "name": "gamepad_hold_lands_without_rejump",
+        "passed": true
+      },
+      {
+        "name": "walking_reference_distance",
+        "passed": true
+      },
+      {
+        "name": "shift_sprint_moves_faster",
+        "passed": true
+      },
+      {
+        "name": "both_shift_keys_keep_sprinting",
+        "passed": true
+      },
+      {
+        "name": "right_button_sprint_moves_faster",
+        "passed": true
+      },
+      {
+        "name": "right_sprint_held",
+        "passed": true
+      },
+      {
+        "name": "m_unlocks_and_raw_mouse_does_not_turn",
+        "passed": true
+      },
+      {
+        "name": "locked_mouse_turns_without_drag",
+        "passed": true
+      },
+      {
+        "name": "pause_releases_pointer_and_blocks_jump_sprint_look",
+        "passed": true
+      },
+      {
+        "name": "resume_relocks_and_jump_still_works",
+        "passed": true
+      },
+      {
+        "name": "focus_loss_releases_and_does_not_jump",
+        "passed": true
+      },
+      {
+        "name": "focus_restore_requires_explicit_resume",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task043-verified-graphics",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-graphics/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-graphics",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-user"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+    "script_sha256": "c89d5610894f2be37101974ecdce2d238ccebab24acd79da77d96a11ff3d49ad",
+    "frames": 810,
+    "fps": 30,
+    "elapsed_wall_seconds": 67.25394826000047,
+    "video": "PASS",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "default_graphics_on_real_world",
+        "passed": true
+      },
+      {
+        "name": "quality_tab_has_real_settings",
+        "passed": true
+      },
+      {
+        "name": "real_camera_uses_msaa8",
+        "passed": true
+      },
+      {
+        "name": "real_camera_uses_fxaa",
+        "passed": true
+      },
+      {
+        "name": "real_camera_uses_smaa",
+        "passed": true
+      },
+      {
+        "name": "real_camera_uses_taa",
+        "passed": true
+      },
+      {
+        "name": "real_camera_uses_off",
+        "passed": true
+      },
+      {
+        "name": "real_camera_uses_msaa2",
+        "passed": true
+      },
+      {
+        "name": "real_camera_uses_msaa4",
+        "passed": true
+      },
+      {
+        "name": "ssao_selects_compatible_taa",
+        "passed": true
+      },
+      {
+        "name": "ssao_can_run_without_aa",
+        "passed": true
+      },
+      {
+        "name": "msaa_disables_incompatible_ssao",
+        "passed": true
+      },
+      {
+        "name": "shadow_quality_page_disables_light_shadows",
+        "passed": true
+      },
+      {
+        "name": "bloom_page_enables_real_camera_component",
+        "passed": true
+      },
+      {
+        "name": "tone_mapping_page_is_reachable",
+        "passed": true
+      },
+      {
+        "name": "display_page_is_reachable",
+        "passed": true
+      },
+      {
+        "name": "last_page_back_control_is_reachable",
+        "passed": true
+      },
+      {
+        "name": "back_returns_to_pause_without_resuming",
+        "passed": true
+      },
+      {
+        "name": "quality_changes_survive_return_to_real_world",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task043-verified-restore",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-restore/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-restore",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-user"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+    "script_sha256": "823ad264e88b3f2037fdda8be9d049bd386e9e72fd6becaa8c7fc77018c93b4b",
+    "frames": 180,
+    "fps": 30,
+    "elapsed_wall_seconds": 27.03922848699949,
+    "video": "PASS",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "saved_graphics_apply_to_new_world_camera",
+        "passed": true
+      },
+      {
+        "name": "restored_values_visible_in_quality_tab",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task043-options",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-options/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-options",
+      "--walk-preview"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+    "script_sha256": "711f8167e7db92e75c8e5f99094ca6ec28d9c86fc7a4ae84cb12ce8ae58766e4",
+    "frames": 660,
+    "fps": 30,
+    "elapsed_wall_seconds": 37.24575270700734,
+    "video": "PASS",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "all_rows_drive_real_camera_and_return",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task043-verified-large",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-large/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-large",
+      "--walk-preview"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+    "script_sha256": "8ef619a3cc0dcb98e30479e2dab3ee5bfa8d7ee70a1131ef17d8f167359e758e",
+    "frames": 390,
+    "fps": 30,
+    "elapsed_wall_seconds": 31.523174116999144,
+    "video": "PASS",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_0",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_1",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_2",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_3",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_4",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_5",
+        "passed": true
+      },
+      {
+        "name": "return_to_source_focus",
+        "passed": true
+      },
+      {
+        "name": "enter_world_after_title_settings",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task043-verified-portrait",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-portrait/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-portrait",
+      "--walk-preview"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+    "script_sha256": "ddf8012813909082874978e86105e5fa9450e3763fe824393f66b4e7c96ff978",
+    "frames": 390,
+    "fps": 30,
+    "elapsed_wall_seconds": 30.887566466999488,
+    "video": "PASS",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_0",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_1",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_2",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_3",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_4",
+        "passed": true
+      },
+      {
+        "name": "large_text_graphics_page_5",
+        "passed": true
+      },
+      {
+        "name": "return_to_source_focus",
+        "passed": true
+      },
+      {
+        "name": "enter_world_after_title_settings",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task043-expected-failure",
+    "status": "FAIL",
+    "exit_code": 1,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-expected-failure/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-expected-failure",
+      "--walk-preview"
+    ],
+    "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+    "script_sha256": "976e2733a3ee857cd513d7ef9275c56b39f464bd7c15d34622d419efeffc83a5",
+    "frames": 120,
+    "fps": 30,
+    "elapsed_wall_seconds": 21.434205263998592,
+    "video": "NOT RUN",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "deliberately_impossible_jump_count",
+        "passed": false
+      }
+    ]
+  },
+  {
+    "output": "output/capture/task043-current-build-smoke",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-current-build-smoke/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-current-build-smoke",
+      "--walk-preview",
+      "--settings-dir",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task043-verified-user"
+    ],
+    "binary_sha256": "e286fab0d1d452291691183785aafbe7a93c0255bee13e636b4752a72684ca79",
+    "script_sha256": "823ad264e88b3f2037fdda8be9d049bd386e9e72fd6becaa8c7fc77018c93b4b",
+    "frames": 180,
+    "fps": 30,
+    "elapsed_wall_seconds": 16.504067760000908,
+    "video": "PASS",
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "saved_graphics_apply_to_new_world_camera",
+        "passed": true
+      },
+      {
+        "name": "restored_values_visible_in_quality_tab",
+        "passed": true
+      }
+    ]
+  }
+]

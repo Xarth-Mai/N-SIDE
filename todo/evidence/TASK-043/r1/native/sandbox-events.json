@@ -1,0 +1,14 @@
+[
+  {
+    "seconds": 3.446,
+    "check": "failure",
+    "status": "FAIL",
+    "error": "AssertionError('Xvfb did not allocate an independent display')"
+  },
+  {
+    "seconds": 3.446,
+    "check": "owned_process_cleanup",
+    "game_exit": null,
+    "xvfb_exit": 1
+  }
+]

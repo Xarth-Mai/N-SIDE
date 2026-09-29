@@ -1,0 +1,52 @@
+{
+  "reason": "Viewed keyframes and consecutive frames; all three capture processes returned with final statuses before cleanup",
+  "temporary_probe_executables": 0,
+  "outputs": [
+    {
+      "path": "output/capture/task044-shop-r1",
+      "deleted_files": 856,
+      "deleted_bytes": 418424612,
+      "remaining_bytes": 1564810,
+      "retained": [
+        "ffmpeg.log",
+        "run.json",
+        "runtime.log",
+        "script.json",
+        "state.json"
+      ],
+      "visual_files_remaining": 0
+    },
+    {
+      "path": "output/capture/task044-wrong-room-r1",
+      "deleted_files": 61,
+      "deleted_bytes": 25243506,
+      "remaining_bytes": 107726,
+      "retained": [
+        "run.json",
+        "runtime.log",
+        "script.json",
+        "state.json"
+      ],
+      "visual_files_remaining": 0
+    },
+    {
+      "path": "output/capture/task044-shop-r2",
+      "deleted_files": 857,
+      "deleted_bytes": 416667725,
+      "remaining_bytes": 1565575,
+      "retained": [
+        "ffmpeg.log",
+        "run.json",
+        "runtime.log",
+        "script.json",
+        "state.json"
+      ],
+      "visual_files_remaining": 0
+    }
+  ],
+  "retained_package": {
+    "path": "output/packages/N-SIDE Shop Preview 2026-09-29",
+    "bytes": 434344340,
+    "reason": "Local playable package verified by complete shop capture; source assets and runtime files retained"
+  }
+}

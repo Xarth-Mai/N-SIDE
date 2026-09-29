@@ -1,0 +1,122 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized] target(s) in 28.62s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-e4c325f225be7f92)
+
+running 86 tests
+test app::tests::returning_to_title_cancels_pending_preparation_without_removing_the_camera ... ok
+test app::tests::keyboard_gamepad_and_mouse_use_the_real_entry_actions ... ok
+test capture::route::tests::route_rejects_bad_sources_and_stalls_then_records_real_arrival ... ok
+test app::tests::real_preparation_failure_can_return_and_retry ... ok
+test capture::tests::controls_and_graphics_assertions_require_measured_values ... ok
+test capture::tests::focus_changes_are_persistent_and_emit_native_messages_only_when_ticking ... ok
+test capture::tests::focus_input_is_game_only_and_does_not_change_legacy_scripts ... ok
+test capture::tests::place_assertions_require_real_hud_and_validate_fields ... ok
+test capture::tests::player_checks_require_real_snapshots_and_bound_the_whole_interval ... ok
+test app::tests::graphics_tab_pages_and_real_settings_follow_keyboard_and_gamepad ... ok
+test capture::tests::connection_script_uses_input_plugin_and_preserves_disconnected_state ... ok
+test capture::tests::rotation_limit_detects_a_turn_even_when_the_camera_returns ... ok
+test capture::tests::script_contract_validates_game_waits_and_world_assertions ... ok
+test capture::tests::settings_assertions_validate_ranges_and_reject_wrong_or_missing_evidence ... ok
+test capture::tests::script_contract_validates_walk_axes_and_player_limits ... ok
+test capture::tests::script_contract_rejects_unreproducible_inputs ... ok
+test graphics::tests::choices_wrap_and_ssao_msaa_never_coexist ... ok
+test places::observation::tests::observation_requires_reach_facing_and_clear_sight_then_owns_open_close_input ... ok
+test places::observation::tests::pointer_request_uses_close_gate_and_expires_when_router_is_blocked ... ok
+test capture::tests::waits_hold_the_clock_and_script_inputs_reach_real_gamepad_axes ... ok
+test graphics::tests::actual_camera_switch_removes_temporal_state_and_restores_shared_prepass ... ok
+test app::tests::settings_return_button_supports_gamepad_and_pointer ... ok
+test app::tests::focus_round_trip_without_input_still_pauses ... ok
+test player::tests::body_stops_at_wall_can_leave_and_does_not_climb_tall_obstacle ... ok
+test places::tests::nearby_places_use_public_entrances_and_reject_other_levels ... ok
+test player::tests::close_camera_hides_proxy_and_clear_view_restores_it ... ok
+test player::tests::lock_controls_camera_and_releases_for_observation_pause_and_focus ... ok
+test player::tests::jump_is_one_press_lands_and_stops_at_ceiling ... FAILED
+test app::tests::focus_events_preserve_menu_loading_and_windowless_world ... ok
+test app::tests::pause_actions_resume_one_body_and_title_cleans_reentry ... ok
+test player::tests::steep_face_cannot_be_climbed_by_repeated_edge_contacts ... ok
+test app::tests::gamepad_disconnect_during_loading_waits_for_explicit_resume_without_menu_navigation ... ok
+test app::tests::settings_apply_persist_and_return_to_the_same_menu_focus ... ok
+test settings::tests::capture_is_isolated_unless_a_directory_is_explicit ... ok
+test player::tests::steps_need_headroom_and_a_supported_landing ... ok
+test player::tests::ramp_contacts_keep_moving_without_passing_a_wall_or_tall_step ... ok
+test settings::tests::exit_finishes_the_latest_change_and_keeps_a_valid_backup ... ok
+test settings::tests::restart_worker ... ignored, invoked in two isolated processes by preferences_restore_in_a_second_process
+test settings::tests::version_one_migrates_and_graphics_boundaries_preserve_files ... ok
+test settings::tests::write_failure_preserves_the_last_valid_file_and_reports_failure ... ok
+test ui::tests::menu_flow_keeps_focus_and_sample_information_separate ... ok
+test ui::tests::token_colors_and_text_contrast_are_valid ... ok
+test settings::tests::invalid_or_future_files_are_preserved_even_after_changes ... ok
+test world::assets::tests::appearance_rejects_invalid_paths_values_and_bindings ... ok
+test world::assets::tests::model_preflight_and_context_preserve_material_slots ... ok
+test world::collision::tests::capsule_and_camera_sweep_stop_at_thin_wall_at_high_speed ... ok
+test app::tests::gamepad_disconnect_reconnect_same_frame_rejects_held_confirm_and_start ... ok
+test world::collision::tests::support_uses_step_and_slope_triangles_and_preserves_sources ... ok
+test app::tests::focus_round_trip_rejects_same_frame_actions_and_late_keyboard_repeats ... ok
+test world::geometry::tests::bridge_rails_open_at_grade_and_keep_protection_above_lower_roads ... ok
+test world::geometry::tests::clipped_terrain_keeps_continuous_normals_without_moving_the_surface ... ok
+test world::geometry::tests::concave_roofs_keep_holes_and_face_up ... ok
+test world::assets::tests::loaded_parent_waits_for_real_png_dependency_and_reports_failures ... ok
+test app::tests::observation_owns_open_close_frames_and_allows_protective_pause ... ok
+test settings::tests::preferences_restore_in_a_second_process ... ok
+test world::geometry::tests::road_retaining_faces_show_the_exposed_side_for_cuts_and_fills ... ok
+test player::tests::sprint_bindings_are_equivalent_and_diagonal_speed_is_normalized ... FAILED
+test world::geometry::tests::walls_split_where_ground_crosses_road_height ... ok
+test world::geometry::tests::platform_columns_leave_the_campus_public_approach_clear ... ok
+test world::geometry::tests::road_walls_follow_exposed_ground_and_real_neighbor_levels ... ok
+test world::geometry::tests::authored_fixtures_render_supported_objects_and_graded_drains ... ok
+test world::map::tests::real_map_and_axis_contract ... ok
+test world::geometry::tests::platform_bearings_are_real_and_road_clearance_uses_local_height ... ok
+test app::tests::gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover ... FAILED
+test app::tests::pause_blocks_same_frame_and_held_gameplay_input_until_release ... ok
+test world::scene::tests::lifecycle_clear_removes_map_roots_and_descendants_only ... ok
+test world::scene::tests::lifecycle_failure_is_reported_without_exiting_the_host ... ok
+test world::scene::tests::lifecycle_waits_for_a_scene_and_starts_each_scene_once ... ok
+test app::tests::camera_setting_scales_real_keyboard_mouse_and_gamepad_look ... ok
+test world::visual::tests::camera_aa_modes_use_compatible_prepasses_and_matching_sky ... ok
+test world::visual::tests::daylight_input_rejects_invalid_render_parameters ... ok
+test world::scene::tests::all_authored_facades_cover_entries_courts_and_keep_roofs_clear ... ok
+test world::scene::tests::displays_stay_on_ground_floor_front_windows ... ok
+test world::scene::tests::sample_frames_leave_recessed_displays_and_doorways_clear ... ok
+test app::tests::focus_loss_freezes_falling_session_and_requires_explicit_release_to_resume ... ok
+test world::map::tests::bearing_edges_require_existing_unique_structural_anchors ... ok
+test world::map::tests::errors_locate_source_and_refuse_invalid_core_data ... ok
+test world::scene::tests::slope_and_neighbour_occlusion_remove_windows_without_hiding_entries ... ok
+test world::scene::tests::vegetation_uses_real_assets_and_keeps_public_space_clear ... ok
+test world::geometry::tests::real_map_generates_finite_geometry_without_raising_ground_to_roof ... ok
+test world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall ... ok
+test places::observation::tests::real_shop_recorded_approach_can_observe_its_public_entrance ... ok
+test player::tests::settles_after_descending_near_the_summit ... ok
+test places::observation::tests::real_summit_public_entry_is_observable_from_its_walkable_platform ... ok
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... ok
+test player::tests::walks_complete_short_ascent_and_return ... ok
+
+failures:
+
+---- player::tests::jump_is_one_press_lands_and_stops_at_ceiling stdout ----
+
+thread 'player::tests::jump_is_one_press_lands_and_stops_at_ceiling' (1222) panicked at src/player.rs:691:13:
+assertion failed: player.foot.y + HEIGHT + SKIN <= 2.001
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- player::tests::sprint_bindings_are_equivalent_and_diagonal_speed_is_normalized stdout ----
+
+thread 'player::tests::sprint_bindings_are_equivalent_and_diagonal_speed_is_normalized' (1227) panicked at src/player.rs:728:9:
+[3.1989765, 5.599997, 5.599997, 5.599997, 5.600001]
+
+---- app::tests::gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover stdout ----
+[pad/disconnect] ticks=0 before=Vec3(101.400085, 27.512169, -255.0) after=Vec3(101.400085, 27.512169, -255.0) next=PendingIfNeq(Paused)
+
+thread 'app::tests::gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover' (1173) panicked at src/app.rs:2192:13:
+assertion `left == right` failed
+  left: Paused
+ right: World
+
+
+failures:
+    app::tests::gamepad_disconnect_freezes_falling_world_and_allows_keyboard_takeover
+    player::tests::jump_is_one_press_lands_and_stops_at_ceiling
+    player::tests::sprint_bindings_are_equivalent_and_diagonal_speed_is_normalized
+
+test result: FAILED. 82 passed; 3 failed; 1 ignored; 0 measured; 0 filtered out; finished in 13.65s
+
+error: test failed, to rerun pass `--lib`

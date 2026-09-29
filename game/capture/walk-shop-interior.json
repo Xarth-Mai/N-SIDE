@@ -1,0 +1,237 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 840,
+  "seed": 0,
+  "timeout_seconds": 600,
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 51,
+      "look": [
+        -523.5988,
+        0
+      ]
+    },
+    {
+      "start": 60,
+      "end": 191,
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "start": 205,
+      "end": 243,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 255,
+      "end": 302,
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "start": 310,
+      "end": 311,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 320,
+      "end": 321,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 335,
+      "end": 382,
+      "keys": [
+        "S"
+      ]
+    },
+    {
+      "start": 395,
+      "end": 438,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 450,
+      "end": 497,
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "start": 500,
+      "end": 501,
+      "look": [
+        170,
+        -50
+      ]
+    },
+    {
+      "start": 512,
+      "end": 513,
+      "look": [
+        -170,
+        50
+      ]
+    },
+    {
+      "start": 520,
+      "end": 567,
+      "keys": [
+        "S"
+      ]
+    },
+    {
+      "start": 580,
+      "end": 661,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 675,
+      "end": 807,
+      "keys": [
+        "S"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "keyframes": [
+    59,
+    165,
+    189,
+    200,
+    248,
+    304,
+    319,
+    330,
+    390,
+    444,
+    505,
+    575,
+    668,
+    820,
+    839
+  ],
+  "assertions": [
+    {
+      "name": "enter_public_shop",
+      "from": 195,
+      "to": 203,
+      "game_page": "world",
+      "place_id": "04",
+      "place_room": "接待与陈列",
+      "inside_room": true,
+      "place_visible": true,
+      "player_grounded": true
+    },
+    {
+      "name": "reach_consultation",
+      "from": 303,
+      "to": 309,
+      "game_page": "world",
+      "place_id": "04",
+      "place_room": "预约洽谈",
+      "inside_room": true,
+      "place_visible": true,
+      "player_grounded": true
+    },
+    {
+      "name": "resume_same_room",
+      "from": 325,
+      "to": 334,
+      "game_page": "world",
+      "place_id": "04",
+      "place_room": "预约洽谈",
+      "inside_room": true,
+      "place_visible": true,
+      "player_grounded": true
+    },
+    {
+      "name": "reach_display",
+      "from": 498,
+      "to": 511,
+      "game_page": "world",
+      "place_id": "04",
+      "place_room": "主题陈列",
+      "inside_room": true,
+      "place_visible": true,
+      "player_grounded": true
+    },
+    {
+      "name": "back_at_front_room",
+      "from": 663,
+      "to": 674,
+      "game_page": "world",
+      "place_id": "04",
+      "place_room": "接待与陈列",
+      "inside_room": true,
+      "place_visible": true,
+      "player_grounded": true
+    },
+    {
+      "name": "pause_keeps_indoor_position",
+      "from": 314,
+      "to": 319,
+      "game_page": "paused",
+      "place_room": "预约洽谈",
+      "inside_room": true,
+      "place_visible": false,
+      "max_player_distance": 0.001
+    },
+    {
+      "name": "walk_back_to_street",
+      "from": 815,
+      "to": 839,
+      "game_page": "world",
+      "inside_room": false,
+      "place_id": "04",
+      "min_player_height": 28,
+      "max_player_height": 28.15
+    },
+    {
+      "name": "continuous_supported_walk_without_recovery",
+      "from": 59,
+      "to": 839,
+      "player_grounded": true,
+      "max_player_resets": 0,
+      "min_player_height": 27.9,
+      "max_player_height": 28.2,
+      "min_player_camera_distance": 0.01,
+      "max_player_camera_distance": 3.81,
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off",
+        "bloom": false,
+        "shadows": true
+      }
+    }
+  ]
+}

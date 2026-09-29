@@ -1,0 +1,444 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 810,
+  "seed": 0,
+  "timeout_seconds": 600,
+  "keyframes": [
+    29,
+    59,
+    99,
+    119,
+    149,
+    189,
+    229,
+    269,
+    309,
+    349,
+    389,
+    439,
+    479,
+    499,
+    509,
+    549,
+    599,
+    649,
+    689,
+    719,
+    749,
+    779,
+    809
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 70,
+      "end": 71,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 80,
+      "end": 81,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 91,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 120,
+      "end": 121,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 160,
+      "end": 161,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 200,
+      "end": 201,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 240,
+      "end": 241,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 280,
+      "end": 281,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 320,
+      "end": 321,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 360,
+      "end": 361,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 400,
+      "end": 401,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 410,
+      "end": 411,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 420,
+      "end": 421,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 440,
+      "end": 441,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 450,
+      "end": 451,
+      "keys": [
+        "Up"
+      ]
+    },
+    {
+      "start": 460,
+      "end": 461,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 480,
+      "end": 481,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 500,
+      "end": 501,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 520,
+      "end": 521,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 530,
+      "end": 531,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 560,
+      "end": 561,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 570,
+      "end": 571,
+      "keys": [
+        "Down"
+      ]
+    },
+    {
+      "start": 580,
+      "end": 581,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 620,
+      "end": 621,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 660,
+      "end": 661,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 700,
+      "end": 701,
+      "keys": [
+        "PageDown"
+      ]
+    },
+    {
+      "start": 730,
+      "end": 731,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 750,
+      "end": 751,
+      "keys": [
+        "Escape"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 62,
+      "game_page": "paused"
+    },
+    {
+      "frame": 752,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "default_graphics_on_real_world",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off",
+        "shadows": true,
+        "bloom": false
+      }
+    },
+    {
+      "name": "quality_tab_has_real_settings",
+      "from": 99,
+      "to": 119,
+      "game_page": "paused",
+      "settings_open": true,
+      "graphics_tab": true,
+      "graphics_page": 0,
+      "entry_focus": 0,
+      "pointer_locked": false
+    },
+    {
+      "name": "real_camera_uses_msaa8",
+      "from": 139,
+      "to": 149,
+      "graphics": {
+        "aa": "msaa8",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "real_camera_uses_fxaa",
+      "from": 179,
+      "to": 189,
+      "graphics": {
+        "aa": "fxaa",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "real_camera_uses_smaa",
+      "from": 219,
+      "to": 229,
+      "graphics": {
+        "aa": "smaa",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "real_camera_uses_taa",
+      "from": 259,
+      "to": 269,
+      "graphics": {
+        "aa": "taa",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "real_camera_uses_off",
+      "from": 299,
+      "to": 309,
+      "graphics": {
+        "aa": "off",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "real_camera_uses_msaa2",
+      "from": 339,
+      "to": 349,
+      "graphics": {
+        "aa": "msaa2",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "real_camera_uses_msaa4",
+      "from": 379,
+      "to": 389,
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "ssao_selects_compatible_taa",
+      "from": 429,
+      "to": 439,
+      "entry_focus": 2,
+      "graphics": {
+        "aa": "taa",
+        "ssao": "low"
+      }
+    },
+    {
+      "name": "ssao_can_run_without_aa",
+      "from": 469,
+      "to": 479,
+      "graphics": {
+        "aa": "off",
+        "ssao": "low"
+      }
+    },
+    {
+      "name": "msaa_disables_incompatible_ssao",
+      "from": 489,
+      "to": 499,
+      "graphics": {
+        "aa": "msaa2",
+        "ssao": "off"
+      }
+    },
+    {
+      "name": "shadow_quality_page_disables_light_shadows",
+      "from": 539,
+      "to": 549,
+      "graphics_page": 1,
+      "entry_focus": 4,
+      "graphics": {
+        "aa": "msaa4",
+        "shadows": false
+      }
+    },
+    {
+      "name": "bloom_page_enables_real_camera_component",
+      "from": 589,
+      "to": 599,
+      "graphics_page": 2,
+      "entry_focus": 9,
+      "graphics": {
+        "bloom": true
+      }
+    },
+    {
+      "name": "tone_mapping_page_is_reachable",
+      "from": 639,
+      "to": 649,
+      "graphics_page": 3,
+      "entry_focus": 12
+    },
+    {
+      "name": "display_page_is_reachable",
+      "from": 679,
+      "to": 689,
+      "graphics_page": 4,
+      "entry_focus": 16
+    },
+    {
+      "name": "last_page_back_control_is_reachable",
+      "from": 709,
+      "to": 719,
+      "graphics_page": 5,
+      "entry_focus": 20
+    },
+    {
+      "name": "back_returns_to_pause_without_resuming",
+      "from": 739,
+      "to": 749,
+      "game_page": "paused",
+      "settings_open": false,
+      "pointer_locked": false,
+      "entry_focus": 2
+    },
+    {
+      "name": "quality_changes_survive_return_to_real_world",
+      "from": 779,
+      "to": 809,
+      "game_page": "world",
+      "settings_open": false,
+      "pointer_locked": true,
+      "player_grounded": true,
+      "max_player_distance": 0.001,
+      "graphics": {
+        "aa": "msaa4",
+        "ssao": "off",
+        "shadows": false,
+        "bloom": true
+      }
+    }
+  ]
+}

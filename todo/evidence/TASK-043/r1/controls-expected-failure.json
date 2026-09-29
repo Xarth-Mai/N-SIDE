@@ -1,0 +1,58 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 120,
+  "seed": 0,
+  "timeout_seconds": 450,
+  "keyframes": [
+    59,
+    119
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "start": 68,
+      "end": 95,
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "start": 100,
+      "end": 120,
+      "gamepad": [
+        "Jump"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "deliberately_impossible_jump_count",
+      "from": 119,
+      "to": 119,
+      "min_player_jumps": 9
+    }
+  ]
+}

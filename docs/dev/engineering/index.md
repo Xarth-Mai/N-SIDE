@@ -39,3 +39,5 @@ document_id: DOC-TECHNICAL
 场景启动就绪沿用 `[world/ready]`；`WorldScenePlugin` 可先于 `SceneLoading` 安装，插入一次资源启动一轮加载，失败交由宿主处理。`clear_scene` 清理带 `MapSource` 的场景根及其后代和加载状态，保留宿主镜头、灯光与 UI；正式入口返回标题还取消未完成的准备任务，避免旧结果在退出后进入场景。现有 dev profile 已对依赖启用优化，capture 的固定步长与逐帧落盘不能当成正常游玩性能成绩
 
 人物尺度实验复用正式入口，通过[静态网格查询与胶囊移动](player-preview.md)验证室外路线、坡阶、墙角和跟随镜头
+
+显示与渲染的玩家偏好见[画质与显示设置](graphics-settings.md)，人物控制与鼠标锁定见[室外人物尺度实验](player-preview.md)

@@ -31,3 +31,5 @@ specs: ["docs/dev/design/systems/input.md", "docs/dev/engineering/player-preview
 历史输入：todo/archive/legacy/demo-progress.json；迁移来源见R1完整索引。本轮[技术检查与画面自查](../evidence/TASK-014/r1/review.md)进入 `todo/evidence/TASK-014/r1/`，实际GPU记录与临时探针放在 `output/player/2026-09-28/r1/`
 
 后续技术证据：[往返回店与几何修复](../evidence/TASK-033/r1/review.md)、[查看与设置综合恢复](../evidence/TASK-036/r1/review.md)；这些结果补充实际路径，不替代本卡的作者操作判断
+
+补充技术证据：[小店公共室内往返](../evidence/TASK-044/r1/review.md)已走通三房与返回，主观室内镜头及本卡体验验收仍待作者实际反馈

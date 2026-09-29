@@ -1,0 +1,32 @@
+{
+  "status": "NOT RUN",
+  "attempt_status": "FAIL: graphics initialization",
+  "command": [
+    "python3",
+    "todo/evidence/TASK-043/r1/native/window_probe.py"
+  ],
+  "binary_sha256": "d625c8aad92f2a6df79be95d12605ab85dc9bbd6dec01c14fda45f19ce5ea4a9",
+  "display": ":1",
+  "checks_not_run": [
+    "native cursor grab/release",
+    "native window resolution changes",
+    "borderless window manager presentation",
+    "physical VSync timing"
+  ],
+  "reason": "Xvfb exposes no DRI3 support to the installed Radeon Vulkan driver; AutoVsync has no presentation modes and Bevy 0.19.1 exits before controls can be tested",
+  "evidence": [
+    "runtime.log",
+    "xvfb.log",
+    "events.json",
+    "sandbox-events.json",
+    "sandbox-xvfb.log"
+  ],
+  "cleanup": {
+    "seconds": 3.477,
+    "check": "owned_process_cleanup",
+    "game_exit": 1,
+    "xvfb_exit": 0
+  },
+  "visual_outputs": "none created",
+  "scope": "Private Xvfb only; no connection to the user display, no extra dependencies installed"
+}

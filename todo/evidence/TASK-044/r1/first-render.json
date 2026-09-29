@@ -1,0 +1,9 @@
+{
+  "git_commit": "8d24201a98f11f07c3b74bfeef7b528ab9560664",
+  "binary_sha256": "fb9924c58ce3370bfa65f5808ecd35af503b7b02bd5b7570b69f153a4d01449d",
+  "script_sha256": "c0223b6f71d654249e5328a87473c395587988a26b6e5fb2b20fd7f8f9677e47",
+  "output": "output/capture/task044-shop-r1",
+  "machine": "PASS",
+  "visual": "FAIL: triangle overlap visible at frame304 and505; HUD room label wraps one character at frame200",
+  "scope": "This records the initial run, not the final source"
+}
