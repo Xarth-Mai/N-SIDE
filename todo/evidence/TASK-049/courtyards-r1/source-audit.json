@@ -1,0 +1,144 @@
+{
+  "baseline": "9503dfa",
+  "map_file": "source-assets/district-map/district.json",
+  "map_sha256": "a4ab861f756037206520258725a32232de40a96dc1a8da380d26a1de33c9e45a",
+  "surfaces": [
+    {
+      "id": "fw-f-plateau-east-court",
+      "name": "东组住宅共享花园",
+      "polygon": [
+        [
+          175,
+          488
+        ],
+        [
+          219,
+          488
+        ],
+        [
+          219,
+          509
+        ],
+        [
+          175,
+          509
+        ]
+      ],
+      "elevation": 100.678571,
+      "kind": "park",
+      "access": "resident",
+      "source_index": 50
+    },
+    {
+      "id": "fw-e-foothill-east-garden",
+      "name": "山脚住宅中庭",
+      "polygon": [
+        [
+          453,
+          634
+        ],
+        [
+          477,
+          634
+        ],
+        [
+          477,
+          655
+        ],
+        [
+          453,
+          655
+        ]
+      ],
+      "elevation": 169.925926,
+      "kind": "park",
+      "access": "resident",
+      "use": "住宅树荫与安静活动",
+      "source_index": 61
+    },
+    {
+      "id": "fw-e-foothill-north-edge",
+      "name": "上坡住宅林缘留白",
+      "polygon": [
+        [
+          445,
+          731
+        ],
+        [
+          555,
+          731
+        ],
+        [
+          555,
+          753
+        ],
+        [
+          445,
+          753
+        ]
+      ],
+      "elevation": 189.37037,
+      "kind": "park",
+      "access": "public",
+      "use": "最后一排住宅与林地之间的过渡",
+      "source_index": 62
+    }
+  ],
+  "actual_arrival_nodes": {
+    "fw_f_plateau_e_stay0": [
+      219,
+      493,
+      100.678571
+    ],
+    "fw_e_v_ef41_resident0_via0": [
+      469,
+      625,
+      170
+    ]
+  },
+  "assets": {
+    "tree_pine": {
+      "file": "game/assets/environment/nature/tree_pineRoundA.glb",
+      "sha256": "5191f20721a9e7d91b4e04a0f5e3478a3656ab372f717875c71955cf8d7b9162",
+      "triangles_per_model": 204,
+      "candidate_instances": 4,
+      "candidate_triangles": 816
+    },
+    "shrub": {
+      "file": "game/assets/environment/nature/plant_bushDetailed.glb",
+      "sha256": "5f95e15962a3e9d1b8ec73946bae5526f3e8fa91e1e0293d3b745c48cbdd11b7",
+      "triangles_per_model": 104,
+      "candidate_instances": 8,
+      "candidate_triangles": 832
+    },
+    "grass": {
+      "file": "game/assets/environment/nature/grass.glb",
+      "sha256": "dc974645ca521f28f9881f5190ef5ec739440ade12bd05aa449d16d4e089d1c1",
+      "triangles_per_model": 132,
+      "candidate_instances": 8,
+      "candidate_triangles": 1056
+    },
+    "rock": {
+      "file": "game/assets/environment/nature/rock_smallA.glb",
+      "sha256": "30498a034e71e79f4899f5ea5eed2564c7a8c90aec114467b80d38e53d9bd632",
+      "triangles_per_model": 16,
+      "candidate_instances": 4,
+      "candidate_triangles": 64
+    }
+  },
+  "candidate_instances": 24,
+  "candidate_triangles": 2768,
+  "new_asset_files": 0,
+  "runtime_placement_verification": {
+    "status": "PASS",
+    "runner": "root serialized cargo",
+    "garden_test": "gardens.log",
+    "public_clearance_test": "vegetation.log",
+    "accepted_instances": 24,
+    "accepted_triangles": 2768,
+    "all_derived_instances_before": 152,
+    "all_derived_instances_after": 176,
+    "all_derived_instance_limit": 200,
+    "visual_status": "self-audit completed; visible placement intact, source asset style and terrain need revision; foothill middle group roots obscured"
+  }
+}

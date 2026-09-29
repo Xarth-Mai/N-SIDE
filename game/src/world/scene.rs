@@ -55,6 +55,7 @@ impl PreparedScene {
         let mut parts = geometry::generate(&map)
             .map_err(|e| format!("[geometry] {}: {e}", map_path.display()))?;
         parts.extend(facades(&map, &appearance)?);
+        parts.extend(terrace_retainers(&map)?);
         parts.extend(star_screens(&map)?);
         parts.extend(business_signs(&map)?);
         for part in &mut parts {
@@ -1531,6 +1532,115 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
     Ok(parts)
 }
 
+// Thicken exposed fill at two existing urban terraces; entry edges remain unchanged
+fn terrace_retainers(map: &Map) -> Result<Vec<GeometryPart>, String> {
+    let ground = Ground::new(map)?;
+    let mut parts = Vec::new();
+    for id in ["shop-site", "east-lower-yard"] {
+        let (index, surface) = map
+            .surfaces
+            .iter()
+            .enumerate()
+            .find(|(_, surface)| surface.id.as_deref() == Some(id))
+            .ok_or_else(|| format!("[geometry/retaining] missing surface {id}"))?;
+        let [a, mut b] = [surface.polygon[0], surface.polygon[1]];
+        if (a[1] - b[1]).abs() > 0.001 || b[0] <= a[0] || surface.elevated {
+            return Err(format!(
+                "[geometry/retaining] {id}: authored south edge changed"
+            ));
+        }
+        // The shop's southeast corner meets roads[1]'s miter; retain its capsule clearance
+        if id == "shop-site" {
+            b[0] -= 0.5;
+        }
+        let width = b[0] - a[0];
+        let top = surface.elevation;
+        let mut batches = BTreeMap::new();
+        let mut piece = |material, x: f64, elevation: f64, outward: f64, size| {
+            add_box(
+                &mut batches,
+                material,
+                map_to_world([x, a[1] - outward, elevation]),
+                size,
+                Quat::IDENTITY,
+            )
+        };
+        // Staggered shallow block facing thickens the existing retained fill, not the road
+        let bays = (width / 1.2).ceil() as usize;
+        let bay_width = width / bays as f64;
+        let lowest = (0..=bays)
+            .map(|i| ground.height([a[0] + i as f64 * bay_width, a[1] - 0.19]))
+            .fold(f64::INFINITY, f64::min);
+        let rows = ((top - 0.18 - lowest) / 0.40).ceil().max(0.) as usize;
+        for row in 0..rows {
+            let upper = top - 0.18 - row as f64 * 0.40;
+            let lower = upper - 0.40;
+            let offset = if row.is_multiple_of(2) { 0. } else { 0.5 };
+            for bay in 0..=bays {
+                let left = (a[0] + (bay as f64 - offset) * bay_width).max(a[0]);
+                let right = (a[0] + (bay as f64 + 1. - offset) * bay_width).min(b[0]);
+                if right - left < 0.1 {
+                    continue;
+                }
+                let foot = [left, (left + right) / 2., right]
+                    .map(|x| ground.height([x, a[1] - 0.19]))
+                    .into_iter()
+                    .fold(f64::INFINITY, f64::min);
+                if top - foot < 0.35 {
+                    return Err(format!(
+                        "[geometry/retaining] {id}: insufficient exposed fill at bay {bay}"
+                    ));
+                }
+                if upper <= foot {
+                    continue;
+                }
+                piece(
+                    "concrete",
+                    (left + right) / 2.,
+                    (lower + upper) / 2.,
+                    0.04,
+                    Vec3::new((right - left - 0.015) as f32, 0.385, 0.30),
+                )?;
+            }
+        }
+        for bay in 0..bays {
+            let left = a[0] + bay as f64 * bay_width;
+            let right = left + bay_width;
+            piece(
+                "concrete",
+                (left + right) / 2.,
+                top - 0.09,
+                0.03,
+                Vec3::new((bay_width - 0.008) as f32, 0.18, 0.42),
+            )?;
+            if bay % 3 == 1 {
+                // Wall-mounted weep grille follows the local lower grade
+                let x = (left + right) / 2.;
+                let drain = ground.height([x, a[1] - 0.22]) + 0.28;
+                if drain + 0.12 < top - 0.18 {
+                    for dx in [-0.095, 0.095] {
+                        piece("metal", x + dx, drain, 0.215, Vec3::new(0.025, 0.18, 0.06))?;
+                    }
+                    for dz in [-0.0775, 0.0775] {
+                        piece("metal", x, drain + dz, 0.215, Vec3::new(0.215, 0.025, 0.06))?;
+                    }
+                    for dx in [-0.045, 0., 0.045] {
+                        piece("metal", x + dx, drain, 0.235, Vec3::new(0.018, 0.13, 0.025))?;
+                    }
+                }
+            }
+        }
+        for (material, mesh) in batches {
+            parts.push(GeometryPart {
+                source: format!("/surfaces/{index} ({id})/retaining-detail"),
+                material,
+                mesh,
+            });
+        }
+    }
+    Ok(parts)
+}
+
 fn contains(p: [f64; 2], polygon: &[[f64; 2]]) -> bool {
     let mut inside = false;
     for (a, b) in polygon
@@ -1879,6 +1989,60 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
             }
         }
     }
+    // Authored edge groups stay inside existing gardens and leave their centers open
+    for (group, (id, uv)) in [
+        ("fw-f-plateau-east-court", [0.32, 0.67]),
+        ("fw-e-foothill-east-garden", [0.25, 0.57]),
+        ("fw-e-foothill-north-edge", [0.32, 0.68]),
+        ("fw-e-foothill-north-edge", [0.71, 0.63]),
+    ]
+    .into_iter()
+    .enumerate()
+    {
+        let Some((i, surface)) = map.surfaces.iter().enumerate().find(|(_, s)| {
+            s.id.as_deref() == Some(id) && s.kind == "park" && !s.elevated && s.building.is_none()
+        }) else {
+            continue;
+        };
+        let area = Polygon::new(
+            LineString::from(
+                surface
+                    .polygon
+                    .iter()
+                    .map(|p| (p[0], p[1]))
+                    .collect::<Vec<_>>(),
+            ),
+            vec![],
+        );
+        let bounds = area.bounding_rect().unwrap();
+        let anchor = [
+            bounds.min().x + bounds.width() * uv[0],
+            bounds.min().y + bounds.height() * uv[1],
+        ];
+        for (j, (model, offset)) in [
+            ("tree_pine", [0.0, 0.0]),
+            ("shrub", [3.6, 0.6]),
+            ("grass", [4.5, -1.3]),
+            ("rock", [-3.8, 0.4]),
+            ("shrub", [0.4, -4.5]),
+            ("grass", [2.4, -3.8]),
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            let p = [anchor[0] + offset[0], anchor[1] + offset[1]];
+            let point = Point::new(p[0], p[1]);
+            if area.contains(&point)
+                && Euclidean.distance(&point, area.exterior()) > vegetation_radius(model) + 0.4
+            {
+                candidates.push((
+                    format!("surfaces[{i}]/derived-vegetation[edge-group:{group}:{j}]"),
+                    model,
+                    p,
+                ));
+            }
+        }
+    }
     let initial = props.len();
     let height = |p: [f64; 2]| {
         map.surfaces
@@ -2029,6 +2193,156 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn terrace_retainers_follow_fill_edges_and_leave_stair_access_clear() {
+        use geo::{Contains, Intersects};
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let parts = terrace_retainers(&map).unwrap();
+        assert_eq!(parts.len(), 4, "two materials per authored terrace");
+        let roads: Vec<_> = map
+            .roads
+            .iter()
+            .filter(|r| r.building.is_none() && !matches!(r.kind.as_str(), "lift" | "interior"))
+            .flat_map(|r| {
+                let points: Vec<_> = r.nodes.iter().map(|n| map.nodes[n]).collect();
+                let offsets = geometry::road_offsets(&points, r.width + 0.64);
+                points
+                    .windows(2)
+                    .enumerate()
+                    .map(|(i, pair)| geometry::ribbon(pair[0], pair[1], offsets[i], offsets[i + 1]))
+                    .collect::<Vec<_>>()
+            })
+            .collect();
+        let mut boxes = 0;
+        for id in ["shop-site", "east-lower-yard"] {
+            let (index, surface) = map
+                .surfaces
+                .iter()
+                .enumerate()
+                .find(|(_, s)| s.id.as_deref() == Some(id))
+                .unwrap();
+            let [a, b] = [surface.polygon[0], surface.polygon[1]];
+            let source = format!("/surfaces/{index} ({id})/retaining-detail");
+            let details: Vec<_> = parts.iter().filter(|p| p.source == source).collect();
+            assert_eq!(details.len(), 2);
+            let mut height = 0.0_f64;
+            for part in details {
+                assert!(matches!(part.material.as_str(), "concrete" | "metal"));
+                let positions = part
+                    .mesh
+                    .attribute(Mesh::ATTRIBUTE_POSITION)
+                    .unwrap()
+                    .as_float3()
+                    .unwrap();
+                assert!(positions.iter().flatten().all(|v| v.is_finite()));
+                assert_eq!(positions.len() % 24, 0, "box batch vertex contract changed");
+                let indices: Vec<_> = part.mesh.indices().unwrap().iter().collect();
+                assert_eq!(indices.len(), positions.len() / 24 * 36);
+                assert!(
+                    indices
+                        .as_chunks::<36>()
+                        .0
+                        .iter()
+                        .enumerate()
+                        .all(|(i, face)| face.iter().all(|v| (i * 24..(i + 1) * 24).contains(v))),
+                    "merged box indices do not reference their own vertices"
+                );
+                let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
+                    part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+                else {
+                    panic!("missing UVs")
+                };
+                assert!(uvs.iter().flatten().all(|v| v.is_finite() && *v >= 0.));
+                for vertices in positions.as_chunks::<24>().0 {
+                    boxes += 1;
+                    let (lo, hi) = vertices.iter().fold(
+                        (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                        |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
+                    );
+                    assert!(
+                        hi.y <= surface.elevation as f32 + 0.0001,
+                        "{id}: raised original platform"
+                    );
+                    assert!(lo.x >= a[0] as f32 && hi.x <= b[0] as f32);
+                    assert!(lo.z >= -a[1] as f32 - 0.181 && hi.z <= -a[1] as f32 + 0.251);
+                    let footprint = geo::Rect::new(
+                        geo::Coord {
+                            x: lo.x as f64,
+                            y: -hi.z as f64,
+                        },
+                        geo::Coord {
+                            x: hi.x as f64,
+                            y: -lo.z as f64,
+                        },
+                    )
+                    .to_polygon();
+                    assert!(
+                        roads.iter().all(|r| !r.intersects(&footprint)),
+                        "{id}: obstructs road plus capsule clearance"
+                    );
+                    for building in &map.buildings {
+                        assert!(
+                            vertices
+                                .iter()
+                                .all(|p| !contains([p[0] as f64, -p[2] as f64], &building.polygon)),
+                            "{id}: building intersection"
+                        );
+                    }
+                    let center = [(lo.x + hi.x) as f64 / 2., a[1] - 0.19];
+                    height = height.max(surface.elevation - ground.height(center));
+                    if part.material == "metal" {
+                        assert!(
+                            lo.y as f64 > ground.height(center) + 0.1,
+                            "{id}: buried weep outlet"
+                        );
+                    }
+                    let cap_center = geo::Point::new((lo.x + hi.x) as f64 / 2., a[1] + 0.1);
+                    if hi.y > surface.elevation as f32 - 0.001 {
+                        let surface_poly = geo::Polygon::new(
+                            geo::LineString::from(
+                                surface
+                                    .polygon
+                                    .iter()
+                                    .map(|p| (p[0], p[1]))
+                                    .collect::<Vec<_>>(),
+                            ),
+                            vec![],
+                        );
+                        assert!(
+                            surface_poly.contains(&cap_center),
+                            "{id}: cap lacks platform bearing"
+                        );
+                    }
+                }
+            }
+            eprintln!(
+                "retaining {id}: south_edge={a:?}->{b:?}, exposed_height_max={height:.3}m, road_clearance=0.32m"
+            );
+        }
+        let collision = super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
+        assert_eq!(collision.triangle_count(), boxes * 12);
+        eprintln!(
+            "retaining details: {} batches, {boxes} boxes, {} collision triangles",
+            parts.len(),
+            collision.triangle_count()
+        );
+        let mut invalid = map.clone();
+        invalid
+            .surfaces
+            .iter_mut()
+            .find(|s| s.id.as_deref() == Some("shop-site"))
+            .unwrap()
+            .elevated = true;
+        assert!(
+            terrace_retainers(&invalid)
+                .err()
+                .unwrap()
+                .contains("authored south edge changed")
+        );
+    }
 
     #[test]
     fn shop_street_displays_are_supported_and_keep_public_clearance() {
@@ -2730,6 +3044,68 @@ mod tests {
             additions
                 .iter()
                 .filter(|p| p.source.starts_with("roads["))
+                .count()
+        );
+    }
+
+    #[test]
+    fn garden_edge_groups_keep_tree_shrub_ground_layers_and_clear_arrivals() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let placements = props(&map, &appearance).unwrap();
+        for (group, id) in [
+            "fw-f-plateau-east-court",
+            "fw-e-foothill-east-garden",
+            "fw-e-foothill-north-edge",
+            "fw-e-foothill-north-edge",
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            let index = map
+                .surfaces
+                .iter()
+                .position(|s| s.id.as_deref() == Some(id))
+                .unwrap();
+            let prefix = format!("surfaces[{index}]/derived-vegetation[edge-group:{group}:");
+            let models: BTreeSet<_> = placements
+                .iter()
+                .filter(|p| p.source.starts_with(&prefix))
+                .map(|p| p.model.as_str())
+                .collect();
+            assert_eq!(
+                models,
+                BTreeSet::from(["tree_pine", "shrub", "grass", "rock"]),
+                "{id}: edge group lost a canopy, understory or ground layer"
+            );
+        }
+        // The two approached gardens keep a full 2 m diameter stopping space at their arrivals
+        for (id, point) in [
+            ("plateau arrival", map.nodes["fw_f_plateau_e_stay0"]),
+            ("foothill street", map.nodes["fw_e_v_ef41_resident0_via0"]),
+            ("plateau stopping space", [197.0, 498.5, 100.678571]),
+            ("foothill stopping space", [465.0, 644.5, 169.925926]),
+        ] {
+            for p in placements
+                .iter()
+                .filter(|p| p.source.contains("edge-group:"))
+            {
+                let at = p.transform.translation;
+                assert!(
+                    (f64::from(at.x) - point[0]).hypot(-f64::from(at.z) - point[1])
+                        >= vegetation_radius(&p.model) + 1.0,
+                    "{id}: {} obstructs arrival",
+                    p.source
+                );
+            }
+        }
+        eprintln!(
+            "garden edge group instances={}",
+            placements
+                .iter()
+                .filter(|p| p.source.contains("edge-group:"))
                 .count()
         );
     }

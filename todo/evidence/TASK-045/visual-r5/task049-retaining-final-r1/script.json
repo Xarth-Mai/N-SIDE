@@ -1,0 +1,24 @@
+{
+  "scene": "district",
+  "view": "inspect-shop-retaining",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 150,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [0, 29, 59, 89, 104, 119, 149],
+  "events": [
+    {"start": 0, "end": 1, "keys": ["M"]},
+    {"start": 30, "end": 34, "keys": ["A"]},
+    {"start": 60, "end": 64, "keys": ["D"]},
+    {"start": 90, "end": 105, "look": [3.0, 0.0]},
+    {"start": 120, "end": 121, "keys": ["Escape"]}
+  ],
+  "assertions": [
+    {"name": "strafe along the exposed shop retaining wall", "from": 29, "to": 59, "min_distance": 1.0, "max_distance": 3.0},
+    {"name": "return strafe exposes the cap and weep grille depth", "from": 59, "to": 89, "min_distance": 1.0, "max_distance": 3.0},
+    {"name": "mouse scans the retained south face", "from": 89, "to": 104, "min_rotation": 0.04, "max_rotation": 0.05},
+    {"name": "released retaining-wall view stays still", "from": 130, "to": 149, "max_distance": 0.0001, "max_rotation": 0.0001, "enabled": false}
+  ]
+}

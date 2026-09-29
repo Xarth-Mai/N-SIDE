@@ -1,0 +1,9 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.27s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 2 tests
+test character::tests::resolved_motion_selects_clips_and_airborne_does_not_fake_a_jump_clip ... ok
+test character::tests::ink_keeps_gltf_texture_and_geometry_contract ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 122 filtered out; finished in 0.00s
+

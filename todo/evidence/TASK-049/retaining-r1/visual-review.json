@@ -1,0 +1,108 @@
+{
+  "kind": "self-audit",
+  "source": "output/capture/task049-retaining-final-r1",
+  "view": "inspect-shop-retaining",
+  "frames_saved": 150,
+  "seconds": 5,
+  "resolution": [
+    1280,
+    720
+  ],
+  "binary_sha256": "f337bc1fb48f5218a7fb7767e53a2bfd5c26d615b47a479260cf74c80c86c401",
+  "script_sha256": "dc8dbe1e681fba9a7758f3699a224becac2cd70447725d17d95e61551f715ba7",
+  "machine_status": "PASS",
+  "machine_checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 150
+    },
+    {
+      "checked_frames": 150,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 2.0865113735198975,
+      "enabled": true,
+      "name": "strafe along the exposed shop retaining wall",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 2.0865113735198975,
+      "enabled": true,
+      "name": "return strafe exposes the cap and weep grille depth",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "name": "mouse scans the retained south face",
+      "passed": true,
+      "peak_rotation_radians": 0.044999949634075165,
+      "rotation_radians": 0.044999949634075165
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "name": "released retaining-wall view stays still",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    }
+  ],
+  "reviewed_frames": [
+    {
+      "frame": 59,
+      "sha256": "19e869ba9f2f996fa6ec94b697a2cdd672acfbe3375c403e83200b528ba2a546"
+    },
+    {
+      "frame": 60,
+      "sha256": "f5a547f37816452dbebd0f0043647fd8ef5dfa723fe366ac4dcc4006f2382c8d"
+    },
+    {
+      "frame": 61,
+      "sha256": "7a55e190ae6873974aef06b469a3e1eb5b62785752429dcf1debfcf8fea7674b"
+    },
+    {
+      "frame": 62,
+      "sha256": "b1e163bfc5df8c578f5a71a3e0ade1ec4f703538e2e827483562347176bf6bf8"
+    },
+    {
+      "frame": 89,
+      "sha256": "022a266819182331520ae75a9f606f41ed0d8a0b793c6cd831a153cb1f7c72b3"
+    },
+    {
+      "frame": 104,
+      "sha256": "6a82f505ef407aabf4bb4e53edf1bd24fb4f8c8b1eb7595d5a6673821cb3a90d"
+    }
+  ],
+  "observed": [
+    "59、89、104：小店南侧低挡土面、墙冠窄上表面、水平分层及三条竖格的泄水格栅可辨，体量与实际不足一米的高差相符",
+    "60–62：实际横移使近侧雨棚与后方墙面产生不同位移；这三帧未见墙块或格栅跳位、消失，接地线保持连续",
+    "墙面仍较均一，竖向错缝在普通距离不醒目，泄水格栅偏浅，尚未达到参考图的材质与维护细节层次"
+  ],
+  "limits": [
+    "只查看六张原始帧，未完整播放视频",
+    "本机位仅覆盖shop-site，east-lower-yard本轮未做GPU视觉验收",
+    "草地、光照、Shader和Capture工具修复由其他工作线完成，不算作挡土构件独立改善",
+    "作者验收NOT RUN；技术与自查结果不改写为画质已达标"
+  ],
+  "prior_capture_failure": {
+    "source": "output/capture/task049-retaining-r1",
+    "check": "released retaining-wall view stays still",
+    "old_measured_radians": 0.0006905339541845024,
+    "frames_130_149_identical_quaternions": true,
+    "root_fix": "capture.rs rotation_distance uses relative quaternion atan2; threshold retained; regression fixture uses the real captured quaternion"
+  },
+  "author_acceptance": "NOT RUN",
+  "visual_cleanup": "pending root cleanup after review"
+}

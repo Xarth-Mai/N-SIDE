@@ -1,0 +1,146 @@
+[
+  {
+    "run": "task045-cut-before-r2",
+    "status": "PASS",
+    "frames": 90,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "5663500c4203fb17b085e7d91622288b8efe0466025bf441d9a611d9ea8d8bfd",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task045-cut-scale2-r2",
+    "status": "PASS",
+    "frames": 90,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "5663500c4203fb17b085e7d91622288b8efe0466025bf441d9a611d9ea8d8bfd",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task045-ground-phase-r2",
+    "status": "PASS",
+    "frames": 90,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "ccd6977d57b5774d826799f1b6ca8cec7956715afe0bffcb48d485e245fff4a0",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task045-ground-ssao-r2",
+    "status": "PASS",
+    "frames": 90,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task045-ground-solid-r2",
+    "status": "PASS",
+    "frames": 90,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task045-ground-isotropic-r2",
+    "status": "PASS",
+    "frames": 90,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task045-ground-checker-r2",
+    "status": "PASS",
+    "frames": 90,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task047-ink-initial-r1",
+    "status": "PASS",
+    "frames": 240,
+    "checks": 9,
+    "passed_checks": 9,
+    "binary_sha256": "9142e3079b222d59db13db2883a14f1e19991e901ecd334e2f03b4605e71f483",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task047-ink-failure-r1",
+    "status": "FAIL",
+    "frames": 90,
+    "checks": 5,
+    "passed_checks": 5,
+    "binary_sha256": "9142e3079b222d59db13db2883a14f1e19991e901ecd334e2f03b4605e71f483",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task047-ink-final-r1",
+    "status": "PASS",
+    "frames": 240,
+    "checks": 9,
+    "passed_checks": 9,
+    "binary_sha256": "780fb8cf630feb742078a7322748de92dc041c9c35396e561656ccb1cc59aeeb",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task047-smooth-final-r1",
+    "status": "PASS",
+    "frames": 240,
+    "checks": 9,
+    "passed_checks": 9,
+    "binary_sha256": "780fb8cf630feb742078a7322748de92dc041c9c35396e561656ccb1cc59aeeb",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task049-retaining-r1",
+    "status": "FAIL",
+    "frames": 150,
+    "checks": 7,
+    "passed_checks": 6,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "runtime_exit_code": 1
+  },
+  {
+    "run": "task049-retaining-final-r1",
+    "status": "PASS",
+    "frames": 150,
+    "checks": 7,
+    "passed_checks": 7,
+    "binary_sha256": "f337bc1fb48f5218a7fb7767e53a2bfd5c26d615b47a479260cf74c80c86c401",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task049-plateau-r1",
+    "status": "PASS",
+    "frames": 150,
+    "checks": 6,
+    "passed_checks": 6,
+    "binary_sha256": "f337bc1fb48f5218a7fb7767e53a2bfd5c26d615b47a479260cf74c80c86c401",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task049-foothill-r1",
+    "status": "PASS",
+    "frames": 540,
+    "checks": 9,
+    "passed_checks": 9,
+    "binary_sha256": "f337bc1fb48f5218a7fb7767e53a2bfd5c26d615b47a479260cf74c80c86c401",
+    "runtime_exit_code": 0
+  },
+  {
+    "run": "task047-walk-r4",
+    "status": "PASS",
+    "frames": 540,
+    "checks": 26,
+    "passed_checks": 26,
+    "binary_sha256": "39f97eda5c44e6989d14940ef2907c845d6f35957683fbba28c90dbceb66cde6",
+    "runtime_exit_code": 0
+  }
+]

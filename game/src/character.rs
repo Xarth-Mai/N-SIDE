@@ -5,15 +5,50 @@ use bevy::{
     app::AnimationSystems,
     asset::{LoadState, RecursiveDependencyLoadState},
     gltf::Gltf,
+    material::OpaqueRendererMethod,
     mesh::skinning::SkinnedMesh,
+    pbr::{ExtendedMaterial, MaterialExtension},
     prelude::*,
+    render::render_resource::AsBindGroup,
+    shader::ShaderRef,
     world_serialization::WorldInstanceReady,
 };
 use serde::Serialize;
 use std::time::{Duration, Instant};
 
 pub const MODEL: &str = "characters/CHR-001/yao-grey-study.glb";
+const SHADER: &str = "shaders/character-ink.wgsl";
 const CLIPS: [&str; 3] = ["Idle", "Walk", "Run"];
+
+#[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
+struct CharacterInk {
+    /// Main-light threshold, shadow cosine, lit cosine, minimum edge width
+    #[uniform(100)]
+    bands: Vec4,
+}
+
+impl MaterialExtension for CharacterInk {
+    fn fragment_shader() -> ShaderRef {
+        SHADER.into()
+    }
+}
+
+type InkMaterial = ExtendedMaterial<StandardMaterial, CharacterInk>;
+
+fn ink_material(base: &StandardMaterial) -> InkMaterial {
+    InkMaterial {
+        base: StandardMaterial {
+            // This fragment extension requires forward lighting; the standard shadow/prepass stays intact
+            opaque_render_method: OpaqueRendererMethod::Forward,
+            perceptual_roughness: 0.9,
+            reflectance: 0.15,
+            ..base.clone()
+        },
+        extension: CharacterInk {
+            bands: Vec4::new(0.2, 0.2, 0.82, 0.008),
+        },
+    }
+}
 
 /// Capture reads actual asset/animation state, without influencing playback
 #[derive(Resource, Default, Clone, Serialize)]
@@ -26,12 +61,15 @@ pub struct CharacterStatus {
     pub transitions: u32,
     pub paused: bool,
     pub skinned_meshes: usize,
+    /// Scene meshes assigned the ink material; GPU pipeline success requires runtime evidence
+    pub shaded_meshes: usize,
     pub animated_targets: usize,
 }
 
 #[derive(Resource)]
 struct CharacterLoad {
     gltf: Handle<Gltf>,
+    shader: Handle<Shader>,
     started: Instant,
     spawned: bool,
 }
@@ -53,7 +91,8 @@ pub fn install(app: &mut App, enabled: bool) {
     if !enabled {
         return;
     }
-    app.init_resource::<CharacterStatus>()
+    app.add_plugins(MaterialPlugin::<InkMaterial>::default())
+        .init_resource::<CharacterStatus>()
         .add_systems(
             Update,
             (
@@ -88,6 +127,7 @@ fn begin_loading(
         *status = CharacterStatus::default();
         commands.insert_resource(CharacterLoad {
             gltf: assets.load(MODEL),
+            shader: assets.load(SHADER),
             started: Instant::now(),
             spawned: false,
         });
@@ -121,6 +161,10 @@ fn poll_loading(
         fail(&mut status, error.to_string());
         return;
     }
+    if let LoadState::Failed(error) = assets.load_state(&loading.shader) {
+        fail(&mut status, format!("character shader failed: {error}"));
+        return;
+    }
     if let RecursiveDependencyLoadState::Failed(error) =
         assets.recursive_dependency_load_state(&loading.gltf)
     {
@@ -134,7 +178,10 @@ fn poll_loading(
         );
         return;
     }
-    if loading.spawned || !assets.is_loaded_with_dependencies(&loading.gltf) {
+    if loading.spawned
+        || !assets.is_loaded_with_dependencies(&loading.gltf)
+        || !assets.is_loaded_with_dependencies(&loading.shader)
+    {
         return;
     }
     let Some(gltf) = gltfs.get(&loading.gltf) else {
@@ -189,6 +236,9 @@ fn scene_ready(
     children: Query<&Children>,
     mut players: Query<&mut AnimationPlayer>,
     skins: Query<&SkinnedMesh>,
+    mesh_materials: Query<&MeshMaterial3d<StandardMaterial>>,
+    materials: Res<Assets<StandardMaterial>>,
+    mut ink_materials: ResMut<Assets<InkMaterial>>,
     targets: Query<(&AnimationTargetId, &AnimatedBy)>,
     clips: Res<Assets<AnimationClip>>,
     proxies: Query<Entity, With<PlayerProxy>>,
@@ -246,6 +296,24 @@ fn scene_ready(
             return;
         }
     }
+    let mut shaded = Vec::new();
+    for entity in descendants.iter().copied().filter(|e| skins.contains(*e)) {
+        let Some(base) = mesh_materials
+            .get(entity)
+            .ok()
+            .and_then(|handle| materials.get(&handle.0))
+        else {
+            fail(&mut status, "skinned mesh has no loaded standard material");
+            return;
+        };
+        shaded.push((entity, ink_material(base)));
+    }
+    for (entity, material) in shaded {
+        commands
+            .entity(entity)
+            .remove::<MeshMaterial3d<StandardMaterial>>()
+            .insert(MeshMaterial3d(ink_materials.add(material)));
+    }
     players
         .get_mut(actor)
         .unwrap()
@@ -265,9 +333,10 @@ fn scene_ready(
     status.ready = true;
     status.clip = Some(CLIPS[0]);
     status.skinned_meshes = skin_count;
+    status.shaded_meshes = skin_count;
     status.animated_targets = target_ids.len();
     info!(
-        "[character/ready] {MODEL}: {skin_count} skins, {} targets, clips {:?}",
+        "[character/ready] {MODEL}: {skin_count} skins with ink material, {} targets, clips {:?}",
         target_ids.len(),
         CLIPS
     );
@@ -332,6 +401,32 @@ fn record_animation(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn ink_keeps_gltf_texture_and_geometry_contract() {
+        let mut images = Assets::<Image>::default();
+        let texture = images.add(Image::default());
+        let base = StandardMaterial {
+            base_color_texture: Some(texture.clone()),
+            base_color: Color::srgb(0.6, 0.6, 0.6),
+            double_sided: true,
+            ..default()
+        };
+        let ink = ink_material(&base);
+        assert_eq!(ink.base.base_color_texture, Some(texture));
+        assert_eq!(ink.base.base_color, base.base_color);
+        assert_eq!(ink.base.alpha_mode, base.alpha_mode);
+        assert_eq!(ink.base.double_sided, base.double_sided);
+        assert!(!ink.base.unlit);
+        assert_eq!(ink.base.opaque_render_method, OpaqueRendererMethod::Forward);
+        assert!(matches!(CharacterInk::vertex_shader(), ShaderRef::Default));
+        assert!(CharacterInk::enable_shadows());
+        assert!(CharacterInk::enable_prepass());
+        assert!(matches!(
+            CharacterInk::prepass_vertex_shader(),
+            ShaderRef::Default
+        ));
+    }
 
     #[test]
     fn resolved_motion_selects_clips_and_airborne_does_not_fake_a_jump_clip() {

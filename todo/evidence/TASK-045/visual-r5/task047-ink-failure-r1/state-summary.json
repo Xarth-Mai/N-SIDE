@@ -1,0 +1,558 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 90,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 90
+    },
+    {
+      "checked_frames": 90,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "character": {
+          "clip": "Idle",
+          "min_advance": 0.2800000011920929,
+          "paused": false,
+          "ready": true
+        },
+        "from": 50,
+        "game_page": "world",
+        "name": "real world and idle character ready before orbit",
+        "player_grounded": true,
+        "pointer_locked": true,
+        "to": 59,
+        "world_ready": true
+      },
+      "name": "real world and idle character ready before orbit",
+      "passed": true,
+      "peak_rotation_radians": 0.0006905339541845024,
+      "rotation_radians": 0.0006905339541845024
+    },
+    {
+      "distance": 5.244481563568115,
+      "enabled": false,
+      "expected": {
+        "from": 59,
+        "max_player_distance": 0.0010000000474974513,
+        "max_rotation": 1.649999976158142,
+        "min_rotation": 1.5,
+        "name": "locked mouse rotates from front to profile",
+        "pointer_locked": true,
+        "to": 89
+      },
+      "name": "locked mouse rotates from front to profile",
+      "passed": true,
+      "peak_rotation_radians": 1.5707964897155762,
+      "rotation_radians": 1.5707964897155762
+    }
+  ],
+  "determinism": "Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 15.778551533,
+  "error": null,
+  "performance": {
+    "observed_scene_load_seconds": [
+      0.065198586
+    ],
+    "resource_counts": {
+      "first_ready": {
+        "entities": 5148,
+        "images": 48,
+        "materials": 53,
+        "meshes": 3365
+      },
+      "last_ready": {
+        "entities": 5148,
+        "images": 48,
+        "materials": 53,
+        "meshes": 3365
+      },
+      "peak_ready": {
+        "entities": 5148,
+        "images": 48,
+        "materials": 53,
+        "meshes": 3365
+      }
+    },
+    "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+    "world_capture_frame_interval_ms": {
+      "count": 55,
+      "max": 63.153814999999724,
+      "mean": 34.42418361818183,
+      "p50": 33.71200899999849,
+      "p95": 38.39857099999833,
+      "percentile_method": "nearest_rank"
+    },
+    "world_update_interval_ms": {
+      "count": 328,
+      "max": 222.44035200000002,
+      "mean": 6.645806908536584,
+      "p50": 3.033572,
+      "p95": 19.596381,
+      "percentile_method": "nearest_rank"
+    }
+  },
+  "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance",
+  "script": {
+    "assertions": [
+      {
+        "character": {
+          "clip": "Idle",
+          "min_advance": 0.2800000011920929,
+          "paused": false,
+          "ready": true
+        },
+        "from": 50,
+        "game_page": "world",
+        "name": "real world and idle character ready before orbit",
+        "player_grounded": true,
+        "pointer_locked": true,
+        "to": 59,
+        "world_ready": true
+      },
+      {
+        "from": 59,
+        "max_player_distance": 0.0010000000474974513,
+        "max_rotation": 1.649999976158142,
+        "min_rotation": 1.5,
+        "name": "locked mouse rotates from front to profile",
+        "pointer_locked": true,
+        "to": 89
+      }
+    ],
+    "events": [
+      {
+        "end": 31,
+        "gamepad": [],
+        "keys": [
+          "Enter"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 90,
+        "gamepad": [],
+        "keys": [],
+        "left_mouse": false,
+        "look": [
+          17.453292846679688,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 60
+      }
+    ],
+    "fps": 30,
+    "frames": 90,
+    "height": 720,
+    "keyframes": [
+      29,
+      59,
+      89
+    ],
+    "scene": "walk-preview",
+    "seed": 0,
+    "timeout_seconds": 300,
+    "view": "shop",
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "width": 1280
+  },
+  "status": "PASS",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
+  "raw_state": {
+    "path": "output/capture/task047-ink-failure-r1/state.json",
+    "sha256": "bf20e5bb4c04c274bb8c31bccd181fc36a8508e0e912e4fe6b701554c6248710",
+    "samples": 90
+  },
+  "selected_actual_samples": [
+    {
+      "character": {
+        "animated_targets": 0,
+        "clip_elapsed": 0.0,
+        "clip_time": 0.0,
+        "paused": false,
+        "ready": false,
+        "shaded_meshes": 0,
+        "skinned_meshes": 0,
+        "transitions": 0
+      },
+      "enabled": false,
+      "entry": {
+        "camera_sensitivity": 1.0,
+        "configured_borderless": false,
+        "configured_resolution": 0,
+        "device": "keyboard_mouse",
+        "display_pending": false,
+        "focus": 0,
+        "graphics_page": 0,
+        "graphics_tab": false,
+        "progress_status": "session_only",
+        "restart_pending": false,
+        "settings_open": false,
+        "text_scale": 1.0
+      },
+      "frame": 29,
+      "game_page": "title",
+      "gamepad_connected": true,
+      "graphics": {
+        "aa": "msaa4",
+        "bloom": false,
+        "contact_shadows": false,
+        "exposure_ev100": 9.699999809265137,
+        "far": 7000.0,
+        "fog": true,
+        "fov_degrees": 55.0,
+        "shadow_map_size": 4096,
+        "shadows": true,
+        "ssao": "off"
+      },
+      "handoff": {
+        "confirmation_count": 0,
+        "observed_places": [],
+        "rejected_choices": 0
+      },
+      "observation": {
+        "open": false,
+        "visible": false
+      },
+      "place": {
+        "gamepad": false,
+        "name": "Null Site",
+        "visible": false
+      },
+      "pointer_locked": false,
+      "position": [
+        0.0,
+        1.7000000476837158,
+        5.0
+      ],
+      "rotation": [
+        -0.16313683986663818,
+        -0.0,
+        -0.0,
+        0.9866034388542175
+      ],
+      "simulation_seconds": 1.0,
+      "wall_elapsed_seconds": 0.7656831,
+      "world_entities": 0,
+      "world_ready": false
+    },
+    {
+      "character": {
+        "animated_targets": 34,
+        "clip": "Idle",
+        "clip_elapsed": 0.5666666030883789,
+        "clip_time": 0.5666666030883789,
+        "paused": false,
+        "ready": true,
+        "shaded_meshes": 1,
+        "skinned_meshes": 1,
+        "transitions": 0
+      },
+      "enabled": false,
+      "entry": {
+        "camera_sensitivity": 1.0,
+        "configured_borderless": false,
+        "configured_resolution": 0,
+        "device": "keyboard_mouse",
+        "display_pending": false,
+        "focus": 0,
+        "graphics_page": 0,
+        "graphics_tab": false,
+        "progress_status": "session_only",
+        "restart_pending": false,
+        "settings_open": false,
+        "text_scale": 1.0
+      },
+      "frame": 50,
+      "game_page": "world",
+      "gamepad_connected": true,
+      "graphics": {
+        "aa": "msaa4",
+        "bloom": false,
+        "contact_shadows": false,
+        "exposure_ev100": 9.699999809265137,
+        "far": 7000.0,
+        "fog": true,
+        "fov_degrees": 55.0,
+        "shadow_map_size": 4096,
+        "shadows": true,
+        "ssao": "off"
+      },
+      "handoff": {
+        "confirmation_count": 0,
+        "observed_places": [],
+        "rejected_choices": 0
+      },
+      "observation": {
+        "open": false,
+        "visible": false
+      },
+      "place": {
+        "gamepad": false,
+        "id": "04",
+        "name": "月台杂货与住家",
+        "visible": true
+      },
+      "player": {
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "jumps": 0,
+        "resets": 0,
+        "sprinting": false
+      },
+      "pointer_locked": true,
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "resources": {
+        "entities": 5148,
+        "images": 48,
+        "materials": 53,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 1.7,
+      "wall_elapsed_seconds": 14.403149649,
+      "world_entities": 4702,
+      "world_ready": true
+    },
+    {
+      "character": {
+        "animated_targets": 34,
+        "clip": "Idle",
+        "clip_elapsed": 0.866666316986084,
+        "clip_time": 0.866666316986084,
+        "paused": false,
+        "ready": true,
+        "shaded_meshes": 1,
+        "skinned_meshes": 1,
+        "transitions": 0
+      },
+      "enabled": false,
+      "entry": {
+        "camera_sensitivity": 1.0,
+        "configured_borderless": false,
+        "configured_resolution": 0,
+        "device": "keyboard_mouse",
+        "display_pending": false,
+        "focus": 0,
+        "graphics_page": 0,
+        "graphics_tab": false,
+        "progress_status": "session_only",
+        "restart_pending": false,
+        "settings_open": false,
+        "text_scale": 1.0
+      },
+      "frame": 59,
+      "game_page": "world",
+      "gamepad_connected": true,
+      "graphics": {
+        "aa": "msaa4",
+        "bloom": false,
+        "contact_shadows": false,
+        "exposure_ev100": 9.699999809265137,
+        "far": 7000.0,
+        "fog": true,
+        "fov_degrees": 55.0,
+        "shadow_map_size": 4096,
+        "shadows": true,
+        "ssao": "off"
+      },
+      "handoff": {
+        "confirmation_count": 0,
+        "observed_places": [],
+        "rejected_choices": 0
+      },
+      "observation": {
+        "open": false,
+        "visible": false
+      },
+      "place": {
+        "gamepad": false,
+        "id": "04",
+        "name": "月台杂货与住家",
+        "visible": true
+      },
+      "player": {
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "jumps": 0,
+        "resets": 0,
+        "sprinting": false
+      },
+      "pointer_locked": true,
+      "position": [
+        100.0,
+        30.225271224975586,
+        -251.29159545898438
+      ],
+      "resources": {
+        "entities": 5148,
+        "images": 48,
+        "materials": 53,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.10977854579687119,
+        -0.0,
+        -0.0,
+        0.9939560294151306
+      ],
+      "simulation_seconds": 2.0,
+      "wall_elapsed_seconds": 14.698541341,
+      "world_entities": 4702,
+      "world_ready": true
+    },
+    {
+      "character": {
+        "animated_targets": 34,
+        "clip": "Idle",
+        "clip_elapsed": 1.8666653633117676,
+        "clip_time": 1.8666653633117676,
+        "paused": false,
+        "ready": true,
+        "shaded_meshes": 1,
+        "skinned_meshes": 1,
+        "transitions": 0
+      },
+      "enabled": false,
+      "entry": {
+        "camera_sensitivity": 1.0,
+        "configured_borderless": false,
+        "configured_resolution": 0,
+        "device": "keyboard_mouse",
+        "display_pending": false,
+        "focus": 0,
+        "graphics_page": 0,
+        "graphics_tab": false,
+        "progress_status": "session_only",
+        "restart_pending": false,
+        "settings_open": false,
+        "text_scale": 1.0
+      },
+      "frame": 89,
+      "game_page": "world",
+      "gamepad_connected": true,
+      "graphics": {
+        "aa": "msaa4",
+        "bloom": false,
+        "contact_shadows": false,
+        "exposure_ev100": 9.699999809265137,
+        "far": 7000.0,
+        "fog": true,
+        "fov_degrees": 55.0,
+        "shadow_map_size": 4096,
+        "shadows": true,
+        "ssao": "off"
+      },
+      "handoff": {
+        "confirmation_count": 0,
+        "observed_places": [],
+        "rejected_choices": 0
+      },
+      "observation": {
+        "open": false,
+        "visible": false
+      },
+      "place": {
+        "gamepad": false,
+        "id": "04",
+        "name": "月台杂货与住家",
+        "visible": true
+      },
+      "player": {
+        "camera_distance": 3.799999952316284,
+        "foot": [
+          100.0,
+          28.045997619628906,
+          -255.0
+        ],
+        "grounded": true,
+        "jumps": 0,
+        "resets": 0,
+        "sprinting": false
+      },
+      "pointer_locked": true,
+      "position": [
+        96.29158782958984,
+        30.225271224975586,
+        -255.0
+      ],
+      "resources": {
+        "entities": 5148,
+        "images": 48,
+        "materials": 53,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.07762500643730164,
+        0.7028330564498901,
+        0.07762500643730164,
+        -0.7028330564498901
+      ],
+      "simulation_seconds": 3.0,
+      "wall_elapsed_seconds": 15.745576805,
+      "world_entities": 4702,
+      "world_ready": true
+    }
+  ],
+  "frame_hashes": {
+    "keyframes/frame00029.png": "c981d39cafc879f20b9c636fe192f56b1ca4d461f5f70abcacb5aaa746541cbb",
+    "keyframes/frame00059.png": "649c3d09ca47f474b3352cede073bdad18bdc84f397f59b413c4e48606c6f36c",
+    "keyframes/frame00089.png": "d0f1949f3b766af18d62f7919768182d62ff2fa5f6235576d1b67f0560d16f7f"
+  }
+}

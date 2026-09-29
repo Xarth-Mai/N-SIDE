@@ -80,9 +80,12 @@ bun test tools/tests/road-width.test.ts
 ```fish
 python3 tools/capture.py --script game/capture/viewer-tour.json --output output/capture/my-run
 python3 tools/capture.py --script game/capture/assertion-failure.json --output output/capture/my-failure
+python3 tools/capture.py --script game/capture/descent-cut.json --aa taa-ssao --output output/capture/ground-ssao
 ```
 
 输出目录必须尚不存在。第一条应退出 0，第二条故意要求一秒移动 1000 m，应退出 1，并在 `state.json` 留下失败条件。依次检查 `run.json`、`state.json`、`runtime.log`、`keyframes/` 和 `video.mp4` 或 `frames/`；另记实际看的帧与发现，机器报告不会替你填写视觉结论
+
+`--aa` 只用于 district Viewer，转发原生 `msaa4`／`taa`／`taa-ssao` 参数；真实命令写入 `run.json`。原生退出 0 后，工具还会拒绝日志中的 tracing ERROR，包括 Shader 资产已加载但 GPU pipeline 编译失败的情况；状态与 PNG 完整不能覆盖这些错误
 
 Capture 使用 Python 3.10+ 与 Pillow，Rust 按 `game/` 现有环境构建，运行需要 Vulkan。FFmpeg 可用时生成 H.264 视频，否则明确记录视频 NOT RUN，保留 PNG 序列。命令均可直接用于 fish；不要把模拟 18 秒的录制耗时当作游戏性能测量
 

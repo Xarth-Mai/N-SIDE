@@ -1,0 +1,20 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.37s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+
+thread 'world::scene::tests::terrace_retainers_follow_fill_edges_and_leave_stair_access_clear' (7) panicked at src/world/scene.rs:2200:9:
+assertion `left == right` failed: two materials per authored terrace
+  left: 2
+ right: 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::scene::tests::terrace_retainers_follow_fill_edges_and_leave_stair_access_clear ... FAILED
+
+failures:
+
+failures:
+    world::scene::tests::terrace_retainers_follow_fill_edges_and_leave_stair_access_clear
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 123 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `--lib`

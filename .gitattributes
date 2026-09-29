@@ -1,2 +1,5 @@
 # Unified-diff context lines intentionally contain their one-character prefix
 third_party/skills/patches/** whitespace=-blank-at-eol
+todo/evidence/**/*.patch whitespace=-blank-at-eol
+# Preserve captured log bytes for recorded hashes, including logger whitespace
+todo/evidence/**/*.log whitespace=-blank-at-eol,-blank-at-eof

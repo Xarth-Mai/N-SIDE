@@ -1,0 +1,383 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 90,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 90
+    },
+    {
+      "checked_frames": 90,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "from": 0,
+        "max_distance": 9.999999747378752e-05,
+        "name": "same measured descent eye throughout",
+        "to": 89
+      },
+      "name": "same measured descent eye throughout",
+      "passed": true,
+      "peak_rotation_radians": 0.07499969005584717,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "from": 29,
+        "min_rotation": 0.07000000029802322,
+        "name": "look right across the cut",
+        "to": 44
+      },
+      "name": "look right across the cut",
+      "passed": true,
+      "peak_rotation_radians": 0.07499969005584717,
+      "rotation_radians": 0.07499969005584717
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "from": 59,
+        "min_rotation": 0.07000000029802322,
+        "name": "look back across the cut",
+        "to": 74
+      },
+      "name": "look back across the cut",
+      "passed": true,
+      "peak_rotation_radians": 0.07499969005584717,
+      "rotation_radians": 0.07499969005584717
+    }
+  ],
+  "determinism": "Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 15.912781156,
+  "error": null,
+  "performance": {
+    "observed_scene_load_seconds": [
+      0.102818237
+    ],
+    "resource_counts": {
+      "first_ready": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "last_ready": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "peak_ready": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      }
+    },
+    "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+    "world_capture_frame_interval_ms": {
+      "count": 89,
+      "max": 42.67911400000024,
+      "mean": 35.473765303370776,
+      "p50": 35.33799900000112,
+      "p95": 40.38541199999912,
+      "percentile_method": "nearest_rank"
+    },
+    "world_update_interval_ms": {
+      "count": 609,
+      "max": 28.913095,
+      "mean": 5.2427748128078795,
+      "p50": 2.3413209999999998,
+      "p95": 22.123922,
+      "percentile_method": "nearest_rank"
+    }
+  },
+  "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance",
+  "script": {
+    "assertions": [
+      {
+        "from": 0,
+        "max_distance": 9.999999747378752e-05,
+        "name": "same measured descent eye throughout",
+        "to": 89
+      },
+      {
+        "from": 29,
+        "min_rotation": 0.07000000029802322,
+        "name": "look right across the cut",
+        "to": 44
+      },
+      {
+        "from": 59,
+        "min_rotation": 0.07000000029802322,
+        "name": "look back across the cut",
+        "to": 74
+      }
+    ],
+    "events": [
+      {
+        "end": 1,
+        "gamepad": [],
+        "keys": [
+          "M"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 0
+      },
+      {
+        "end": 45,
+        "gamepad": [],
+        "keys": [],
+        "left_mouse": false,
+        "look": [
+          5.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 75,
+        "gamepad": [],
+        "keys": [],
+        "left_mouse": false,
+        "look": [
+          -5.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 60
+      }
+    ],
+    "fps": 30,
+    "frames": 90,
+    "height": 720,
+    "keyframes": [
+      0,
+      29,
+      44,
+      59,
+      74,
+      89
+    ],
+    "scene": "district",
+    "seed": 0,
+    "timeout_seconds": 300,
+    "view": "eye-descent-cut",
+    "waits": [],
+    "width": 1280
+  },
+  "status": "PASS",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
+  "raw_state": {
+    "path": "output/capture/task045-ground-checker-r2/state.json",
+    "sha256": "6073efca6823b5fc87d607fee25f2893f4f9fe82a2ec3d1b938bbc42f541e1d0",
+    "samples": 90
+  },
+  "selected_actual_samples": [
+    {
+      "enabled": true,
+      "frame": 0,
+      "gamepad_connected": true,
+      "position": [
+        119.853759765625,
+        292.6300964355469,
+        -750.145263671875
+      ],
+      "resources": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.04201316460967064,
+        0.9182836413383484,
+        0.10141955316066742,
+        -0.38040003180503845
+      ],
+      "simulation_seconds": 0.03333333333333333,
+      "wall_elapsed_seconds": 12.719895205,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 29,
+      "gamepad_connected": true,
+      "position": [
+        119.853759765625,
+        292.6300964355469,
+        -750.145263671875
+      ],
+      "resources": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.04201316460967064,
+        0.9182836413383484,
+        0.10141955316066742,
+        -0.38040003180503845
+      ],
+      "simulation_seconds": 1.0,
+      "wall_elapsed_seconds": 13.778784156,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 44,
+      "gamepad_connected": true,
+      "position": [
+        119.853759765625,
+        292.6300964355469,
+        -750.145263671875
+      ],
+      "resources": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.03818119689822197,
+        -0.9318999648094177,
+        -0.10292340815067291,
+        0.34570419788360596
+      ],
+      "simulation_seconds": 1.5,
+      "wall_elapsed_seconds": 14.306029125,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 59,
+      "gamepad_connected": true,
+      "position": [
+        119.853759765625,
+        292.6300964355469,
+        -750.145263671875
+      ],
+      "resources": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.03818119689822197,
+        -0.9318999648094177,
+        -0.10292340815067291,
+        0.34570419788360596
+      ],
+      "simulation_seconds": 2.0,
+      "wall_elapsed_seconds": 14.826586671,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 74,
+      "gamepad_connected": true,
+      "position": [
+        119.853759765625,
+        292.6300964355469,
+        -750.145263671875
+      ],
+      "resources": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.04201316460967064,
+        -0.9182836413383484,
+        -0.10141956061124802,
+        0.38040000200271606
+      ],
+      "simulation_seconds": 2.5,
+      "wall_elapsed_seconds": 15.356187611,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 89,
+      "gamepad_connected": true,
+      "position": [
+        119.853759765625,
+        292.6300964355469,
+        -750.145263671875
+      ],
+      "resources": {
+        "entities": 5072,
+        "images": 43,
+        "materials": 50,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.04201316460967064,
+        -0.9182836413383484,
+        -0.10141956061124802,
+        0.38040000200271606
+      ],
+      "simulation_seconds": 3.0,
+      "wall_elapsed_seconds": 15.877060317,
+      "world_entities": 4704,
+      "world_ready": true
+    }
+  ],
+  "frame_hashes": {
+    "keyframes/frame00000.png": "966f145283963e2b4bacdc950eec63465ea17b724128bef8630adf4d374cc5ce",
+    "keyframes/frame00029.png": "966f145283963e2b4bacdc950eec63465ea17b724128bef8630adf4d374cc5ce",
+    "keyframes/frame00044.png": "04ade5f609722532e5058de325ffeee4d7c905ff26e5041c2f0334d3f90c4290",
+    "keyframes/frame00059.png": "04ade5f609722532e5058de325ffeee4d7c905ff26e5041c2f0334d3f90c4290",
+    "keyframes/frame00074.png": "662837815ca22e9e885c1508f34f53c3d8ef1a8db527e928ae708b1c1ee16bfb",
+    "keyframes/frame00089.png": "662837815ca22e9e885c1508f34f53c3d8ef1a8db527e928ae708b1c1ee16bfb"
+  }
+}

@@ -1,0 +1,21 @@
+--- a/game/assets/shaders/terrain-ground.wgsl
++++ b/game/assets/shaders/terrain-ground.wgsl
+@@ -34,6 +34,7 @@
+     // Gradients come from the continuous metre projection, never the hashed phase
+     let dx = dpdx(uv);
+     let dy = dpdy(uv);
++    let lod = max(0.0, log2(max(length(dx), length(dy)) * f32(textureDimensions(ground_color).x)));
+     let grid = vec2(uv.x - uv.y * 0.577350269, uv.y * 1.154700538);
+     let cell = floor(grid);
+     let f = fract(grid);
+@@ -50,8 +51,8 @@
+     result.normal = vec3(0.0);
+     for (var i = 0u; i < 3u; i++) {
+         let shifted = uv + phase(vertices[i]);
+-        result.color += textureSampleGrad(ground_color, ground_color_sampler, shifted, dx, dy) * weights[i];
+-        result.normal += textureSampleGrad(ground_normal, ground_normal_sampler, shifted, dx, dy).rgb * weights[i];
++        result.color += textureSampleLevel(ground_color, ground_color_sampler, shifted, lod) * weights[i];
++        result.normal += textureSampleLevel(ground_normal, ground_normal_sampler, shifted, lod).rgb * weights[i];
+     }
+     return result;
+ }

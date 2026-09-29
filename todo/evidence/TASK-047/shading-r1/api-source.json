@@ -1,0 +1,26 @@
+{
+  "bevy": "0.19.1",
+  "sources": [
+    {
+      "file": "bevy-0.19.1/examples/shader/extended_material.rs",
+      "sha256": "2a078722aa9344383e34467ad3e05592bbdf93683ef2fcf05c59473d81ba1190"
+    },
+    {
+      "file": "bevy_pbr-0.19.1/src/extended_material.rs",
+      "sha256": "6affea4375615f7017206b10ffdd7adc76ea5cd7d81b467e0bf55d838f8ec971"
+    },
+    {
+      "file": "bevy_pbr-0.19.1/src/render/pbr.wgsl",
+      "sha256": "c1224225e5a49e9f37de7387d9c8840806e273326a2db8c2ff111c7897111515"
+    },
+    {
+      "file": "bevy_pbr-0.19.1/src/render/pbr_functions.wgsl",
+      "sha256": "13a5344ef4e0fa967e05978489d0909dd0c1862cf7a989ce0882dbc8de9a55dd"
+    },
+    {
+      "file": "bevy_pbr-0.19.1/src/render/mesh_view_types.wgsl",
+      "sha256": "fb42641fa57dd678d965788e312d2ce2fd8d3be176149d0cea96a6f60a586b0f"
+    }
+  ],
+  "scope": "Locally installed official examples and implementation inspected for MaterialExtension, default skinning/shadow/prepass, real light bindings and post lighting processing; project shader is original adaptation using these APIs"
+}

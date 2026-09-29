@@ -1,0 +1,304 @@
+--- a/game/src/world/scene.rs
++++ b/game/src/world/scene.rs
+@@ -2,6 +2,7 @@
+     assets::{self, Appearance, Readiness, TrackedAsset},
+     geometry::{self, GeometryPart, Ground},
+     map::{Building, Map, map_to_world},
++    terrain::{self, TerrainMaterial, TerrainSurface},
+ };
+ use bevy::{
+     asset::UntypedHandle,
+@@ -142,6 +143,7 @@
+     prepared: Option<PreparedScene>,
+     tracked: Vec<TrackedAsset>,
+     materials: BTreeMap<String, Handle<StandardMaterial>>,
++    terrain_material: Option<Handle<TerrainMaterial>>,
+     models: BTreeMap<String, Handle<WorldAsset>>,
+     started: Option<Instant>,
+     degraded: BTreeSet<String>,
+@@ -155,6 +157,7 @@
+             prepared: Some(prepared),
+             tracked: vec![],
+             materials: BTreeMap::new(),
++            terrain_material: None,
+             models: BTreeMap::new(),
+             started: None,
+             degraded: BTreeSet::new(),
+@@ -167,6 +170,9 @@
+ pub struct WorldScenePlugin;
+ impl Plugin for WorldScenePlugin {
+     fn build(&self, app: &mut App) {
++        if app.is_plugin_added::<AssetPlugin>() {
++            app.add_plugins(MaterialPlugin::<TerrainMaterial>::default());
++        }
+         app.add_systems(
+             Update,
+             (
+@@ -213,6 +219,7 @@
+     mut loading: ResMut<SceneLoading>,
+     server: Res<AssetServer>,
+     mut materials: ResMut<Assets<StandardMaterial>>,
++    mut terrain_materials: ResMut<Assets<TerrainMaterial>>,
+ ) {
+     // Polling reinserts this resource, so an added tick is not a load guard
+     if loading.started.is_some() {
+@@ -267,7 +274,7 @@
+             });
+             textures.push(handle);
+         }
+-        let material = materials.add(StandardMaterial {
++        let mut material = StandardMaterial {
+             base_color: Color::srgba(spec.color[0], spec.color[1], spec.color[2], spec.color[3]),
+             base_color_texture: textures[0].clone(),
+             normal_map_texture: textures[1].clone(),
+@@ -279,8 +286,35 @@
+                 1.0 / spec.tile_meters[1],
+             )),
+             ..default()
+-        });
+-        loading.materials.insert(id.clone(), material);
++        };
++        if id == "terrain" {
++            let color = material.base_color_texture.take();
++            let normal = material.normal_map_texture.take();
++            loading.terrain_material = Some(terrain_materials.add(TerrainMaterial {
++                base: material,
++                extension: TerrainSurface {
++                    enabled: Vec4::new(
++                        u8::from(color.is_some()) as f32,
++                        u8::from(normal.is_some()) as f32,
++                        0.0,
++                        0.0,
++                    ),
++                    color,
++                    normal,
++                },
++            }));
++            let shader: Handle<bevy::shader::Shader> = server.load(terrain::SHADER);
++            track(
++                &mut loading.tracked,
++                shader.untyped(),
++                vec![format!("terrain sampling shader {}", terrain::SHADER)],
++                false,
++            );
++        } else {
++            loading
++                .materials
++                .insert(id.clone(), materials.add(material));
++        }
+     }
+     for (id, spec) in &prepared.appearance.models {
+         let sources = prepared
+@@ -381,6 +415,7 @@
+             world,
+             prepared,
+             &loading.materials,
++            loading.terrain_material.as_ref(),
+             &loading.models,
+             &mut loading.degraded,
+         ) {
+@@ -406,18 +441,27 @@
+     world: &mut World,
+     prepared: PreparedScene,
+     materials: &BTreeMap<String, Handle<StandardMaterial>>,
++    terrain_material: Option<&Handle<TerrainMaterial>>,
+     models: &BTreeMap<String, Handle<WorldAsset>>,
+     degraded: &mut BTreeSet<String>,
+ ) -> Result<(usize, usize), String> {
+     let count = prepared.parts.len();
+     for part in prepared.parts {
+         let mesh = world.resource_mut::<Assets<Mesh>>().add(part.mesh);
+-        world.spawn((
++        let mut entity = world.spawn((
+             Name::new(part.source.clone()),
+             MapSource(part.source),
+             Mesh3d(mesh),
+-            MeshMaterial3d(materials[&part.material].clone()),
+         ));
++        if part.material == "terrain" {
++            entity.insert(MeshMaterial3d(
++                terrain_material
++                    .ok_or("terrain material was not loaded")?
++                    .clone(),
++            ));
++        } else {
++            entity.insert(MeshMaterial3d(materials[&part.material].clone()));
++        }
+     }
+     let mut instances = 0;
+     for prop in prepared.props {
+--- a/game/src/world/mod.rs
++++ b/game/src/world/mod.rs
+@@ -3,4 +3,5 @@
+ pub mod geometry;
+ pub mod map;
+ pub mod scene;
++mod terrain;
+ pub mod visual;
+--- /dev/null
++++ b/game/src/world/terrain.rs
+@@ -0,0 +1,37 @@
++//! Only natural ground needs nonperiodic sampling; the rest of the city uses StandardMaterial
++use bevy::{
++    pbr::{ExtendedMaterial, MaterialExtension},
++    prelude::*,
++    render::render_resource::AsBindGroup,
++    shader::ShaderRef,
++};
++
++pub(super) const SHADER: &str = "shaders/terrain-ground.wgsl";
++pub(super) type TerrainMaterial = ExtendedMaterial<StandardMaterial, TerrainSurface>;
++
++#[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
++pub(super) struct TerrainSurface {
++    // Keep the same source pair and sampler in both color and normal prepasses
++    #[uniform(100)]
++    pub enabled: Vec4,
++    #[texture(101)]
++    #[sampler(102)]
++    pub color: Option<Handle<Image>>,
++    #[texture(103)]
++    #[sampler(104)]
++    pub normal: Option<Handle<Image>>,
++}
++
++impl MaterialExtension for TerrainSurface {
++    fn fragment_shader() -> ShaderRef {
++        SHADER.into()
++    }
++
++    fn prepass_fragment_shader() -> ShaderRef {
++        SHADER.into()
++    }
++
++    fn deferred_fragment_shader() -> ShaderRef {
++        SHADER.into()
++    }
++}
+--- /dev/null
++++ b/game/assets/shaders/terrain-ground.wgsl
+@@ -0,0 +1,124 @@
++// Ground-only phase blending; Bevy 0.19 PBR still owns lighting, fog and prepass outputs
++#import bevy_pbr::{pbr_bindings::material, pbr_functions, pbr_types}
++#ifdef PREPASS_PIPELINE
++#import bevy_pbr::prepass_io::VertexOutput
++#ifdef PREPASS_FRAGMENT
++#import bevy_pbr::{prepass_io::FragmentOutput, pbr_prepass_functions}
++#endif
++#ifdef DEFERRED_PREPASS
++#import bevy_pbr::{pbr_fragment::pbr_input_from_standard_material, pbr_deferred_functions::deferred_output}
++#endif
++#else
++#import bevy_pbr::{forward_io::{VertexOutput, FragmentOutput}, pbr_fragment::pbr_input_from_standard_material, decal::clustered::apply_decals}
++#endif
++
++@group(#{MATERIAL_BIND_GROUP}) @binding(100) var<uniform> enabled: vec4<f32>;
++@group(#{MATERIAL_BIND_GROUP}) @binding(101) var ground_color: texture_2d<f32>;
++@group(#{MATERIAL_BIND_GROUP}) @binding(102) var ground_color_sampler: sampler;
++@group(#{MATERIAL_BIND_GROUP}) @binding(103) var ground_normal: texture_2d<f32>;
++@group(#{MATERIAL_BIND_GROUP}) @binding(104) var ground_normal_sampler: sampler;
++
++struct GroundSample {
++    color: vec4<f32>,
++    normal: vec3<f32>,
++}
++
++fn phase(cell: vec2<f32>) -> vec2<f32> {
++    let c = bitcast<vec2<u32>>(vec2<i32>(cell));
++    var h = c * vec2(374761393u, 668265263u) + c.yx * vec2(2246822519u, 3266489917u);
++    h = (h ^ (h >> vec2(13u))) * vec2(1274126177u);
++    return vec2<f32>(h ^ (h >> vec2(16u))) / 4294967296.0;
++}
++
++fn sample_ground(uv: vec2<f32>) -> GroundSample {
++    // Gradients come from the continuous metre projection, never the hashed phase
++    let dx = dpdx(uv);
++    let dy = dpdy(uv);
++    let grid = vec2(uv.x - uv.y * 0.577350269, uv.y * 1.154700538);
++    let cell = floor(grid);
++    let f = fract(grid);
++    var vertices = array<vec2<f32>, 3>(cell, cell + vec2(1.0, 0.0), cell + vec2(0.0, 1.0));
++    var weights = vec3(1.0 - f.x - f.y, f.x, f.y);
++    if f.x + f.y > 1.0 {
++        vertices = array<vec2<f32>, 3>(cell + vec2(1.0), cell + vec2(0.0, 1.0), cell + vec2(1.0, 0.0));
++        weights = vec3(f.x + f.y - 1.0, 1.0 - f.x, 1.0 - f.y);
++    }
++    weights *= weights;
++    weights /= dot(weights, vec3(1.0));
++    var result: GroundSample;
++    result.color = vec4(0.0);
++    result.normal = vec3(0.0);
++    for (var i = 0u; i < 3u; i++) {
++        let shifted = uv + phase(vertices[i]);
++        result.color += textureSampleGrad(ground_color, ground_color_sampler, shifted, dx, dy) * weights[i];
++        result.normal += textureSampleGrad(ground_normal, ground_normal_sampler, shifted, dx, dy).rgb * weights[i];
++    }
++    return result;
++}
++
++#ifdef PREPASS_PIPELINE
++#ifdef PREPASS_FRAGMENT
++@fragment
++fn fragment(in: VertexOutput, @builtin(front_facing) is_front: bool) -> FragmentOutput {
++#ifdef DEFERRED_PREPASS
++    var pbr = pbr_input_from_standard_material(in, is_front);
++    let uv = (material.uv_transform * vec3(in.uv, 1.0)).xy;
++    let surface = sample_ground(uv);
++    if enabled.x > 0.5 { pbr.material.base_color *= surface.color; }
++#ifdef VERTEX_TANGENTS
++    if enabled.y > 0.5 {
++        let tbn = pbr_functions::calculate_tbn_mikktspace(in.world_normal, in.world_tangent);
++        pbr.N = pbr_functions::apply_normal_mapping(pbr.material.flags, tbn, false, is_front, surface.normal);
++    }
++#endif
++    return deferred_output(in, pbr);
++#else
++    var out: FragmentOutput;
++#ifdef UNCLIPPED_DEPTH_ORTHO_EMULATION
++    out.frag_depth = in.unclipped_depth;
++#endif
++#ifdef NORMAL_PREPASS
++    var normal = normalize(in.world_normal);
++#ifdef VERTEX_TANGENTS
++    if enabled.y > 0.5 {
++        let uv = (material.uv_transform * vec3(in.uv, 1.0)).xy;
++        let surface = sample_ground(uv);
++        let tbn = pbr_functions::calculate_tbn_mikktspace(in.world_normal, in.world_tangent);
++        normal = pbr_functions::apply_normal_mapping(material.flags, tbn, false, is_front, surface.normal);
++    }
++#endif
++    out.normal = vec4(normal * 0.5 + vec3(0.5), 1.0);
++#endif
++#ifdef MOTION_VECTOR_PREPASS
++    out.motion_vector = pbr_prepass_functions::calculate_motion_vector(in.world_position, in.previous_world_position);
++#endif
++    return out;
++#endif
++}
++#else
++@fragment
++fn fragment(in: VertexOutput) {}
++#endif
++#else
++@fragment
++fn fragment(in: VertexOutput, @builtin(front_facing) is_front: bool) -> FragmentOutput {
++    var pbr = pbr_input_from_standard_material(in, is_front);
++    let uv = (material.uv_transform * vec3(in.uv, 1.0)).xy;
++    let surface = sample_ground(uv);
++    if enabled.x > 0.5 { pbr.material.base_color *= surface.color; }
++#ifdef VERTEX_TANGENTS
++    if enabled.y > 0.5 {
++        let tbn = pbr_functions::calculate_tbn_mikktspace(in.world_normal, in.world_tangent);
++        pbr.N = pbr_functions::apply_normal_mapping(pbr.material.flags, tbn, false, is_front, surface.normal);
++    }
++#endif
++    apply_decals(&pbr);
++    var out: FragmentOutput;
++    out.color = pbr.material.base_color;
++    if (pbr.material.flags & pbr_types::STANDARD_MATERIAL_FLAGS_UNLIT_BIT) == 0u {
++        out.color = pbr_functions::apply_pbr_lighting(pbr);
++    }
++    out.color = pbr_functions::main_pass_post_lighting_processing(pbr, out.color);
++    return out;
++}
++#endif

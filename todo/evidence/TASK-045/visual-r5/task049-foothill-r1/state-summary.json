@@ -1,0 +1,815 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 540,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 540
+    },
+    {
+      "checked_frames": 540,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "from": 29,
+        "max_rotation": 1.2000000476837158,
+        "min_rotation": 1.100000023841858,
+        "name": "turn left toward the real foothill court",
+        "to": 74
+      },
+      "name": "turn left toward the real foothill court",
+      "passed": true,
+      "peak_rotation_radians": 1.1352581977844238,
+      "rotation_radians": 1.1352581977844238
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "from": 119,
+        "max_rotation": 0.5600000023841858,
+        "min_rotation": 0.47999998927116394,
+        "name": "turn north above the existing residential roof line",
+        "to": 164
+      },
+      "name": "turn north above the existing residential roof line",
+      "passed": true,
+      "peak_rotation_radians": 0.5200097560882568,
+      "rotation_radians": 0.5200097560882568
+    },
+    {
+      "distance": 79.23016357421875,
+      "enabled": true,
+      "expected": {
+        "from": 179,
+        "max_distance": 81.0,
+        "min_distance": 75.0,
+        "name": "fly toward the northern garden with actual input",
+        "to": 239
+      },
+      "name": "fly toward the northern garden with actual input",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 68.23014068603516,
+      "enabled": true,
+      "expected": {
+        "from": 269,
+        "max_distance": 70.0,
+        "min_distance": 64.0,
+        "name": "approach the northern tree edge with actual input",
+        "to": 329
+      },
+      "name": "approach the northern tree edge with actual input",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": true,
+      "expected": {
+        "from": 329,
+        "max_distance": 9.999999747378752e-05,
+        "max_rotation": 0.18000000715255737,
+        "min_rotation": 0.17000000178813934,
+        "name": "scan the planted edge while stationary",
+        "to": 359
+      },
+      "name": "scan the planted edge while stationary",
+      "passed": true,
+      "peak_rotation_radians": 0.17453300952911377,
+      "rotation_radians": 0.17453300952911377
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 390,
+        "max_distance": 9.999999747378752e-05,
+        "max_rotation": 9.999999747378752e-05,
+        "name": "release blocks motion at the final garden view",
+        "to": 539
+      },
+      "name": "release blocks motion at the final garden view",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    }
+  ],
+  "determinism": "Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 29.50761136,
+  "error": null,
+  "performance": {
+    "observed_scene_load_seconds": [
+      0.093421892
+    ],
+    "resource_counts": {
+      "first_ready": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "last_ready": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "peak_ready": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      }
+    },
+    "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+    "world_capture_frame_interval_ms": {
+      "count": 539,
+      "max": 54.04119000000129,
+      "mean": 31.501566643784756,
+      "p50": 31.408587999999682,
+      "p95": 34.16236900000058,
+      "percentile_method": "nearest_rank"
+    },
+    "world_update_interval_ms": {
+      "count": 3143,
+      "max": 45.450354999999995,
+      "mean": 5.4124934514794765,
+      "p50": 2.2180709999999997,
+      "p95": 21.839652,
+      "percentile_method": "nearest_rank"
+    }
+  },
+  "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance",
+  "script": {
+    "assertions": [
+      {
+        "from": 29,
+        "max_rotation": 1.2000000476837158,
+        "min_rotation": 1.100000023841858,
+        "name": "turn left toward the real foothill court",
+        "to": 74
+      },
+      {
+        "from": 119,
+        "max_rotation": 0.5600000023841858,
+        "min_rotation": 0.47999998927116394,
+        "name": "turn north above the existing residential roof line",
+        "to": 164
+      },
+      {
+        "from": 179,
+        "max_distance": 81.0,
+        "min_distance": 75.0,
+        "name": "fly toward the northern garden with actual input",
+        "to": 239
+      },
+      {
+        "from": 269,
+        "max_distance": 70.0,
+        "min_distance": 64.0,
+        "name": "approach the northern tree edge with actual input",
+        "to": 329
+      },
+      {
+        "from": 329,
+        "max_distance": 9.999999747378752e-05,
+        "max_rotation": 0.18000000715255737,
+        "min_rotation": 0.17000000178813934,
+        "name": "scan the planted edge while stationary",
+        "to": 359
+      },
+      {
+        "enabled": false,
+        "from": 390,
+        "max_distance": 9.999999747378752e-05,
+        "max_rotation": 9.999999747378752e-05,
+        "name": "release blocks motion at the final garden view",
+        "to": 539
+      }
+    ],
+    "events": [
+      {
+        "end": 1,
+        "gamepad": [],
+        "keys": [
+          "M"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 0
+      },
+      {
+        "end": 75,
+        "gamepad": [],
+        "keys": [],
+        "left_mouse": false,
+        "look": [
+          -25.139999389648438,
+          -2.2300000190734863
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 165,
+        "gamepad": [],
+        "keys": [],
+        "left_mouse": false,
+        "look": [
+          9.989999771118164,
+          -5.857999801635742
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 120
+      },
+      {
+        "end": 222,
+        "gamepad": [],
+        "keys": [
+          "W",
+          "Shift"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 180
+      },
+      {
+        "end": 306,
+        "gamepad": [],
+        "keys": [
+          "W",
+          "Shift"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 270
+      },
+      {
+        "end": 360,
+        "gamepad": [],
+        "keys": [],
+        "left_mouse": false,
+        "look": [
+          -5.817763805389404,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 330
+      },
+      {
+        "end": 391,
+        "gamepad": [],
+        "keys": [
+          "Escape"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 390
+      },
+      {
+        "end": 450,
+        "gamepad": [],
+        "keys": [
+          "W"
+        ],
+        "left_mouse": false,
+        "look": [
+          5.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 391
+      }
+    ],
+    "fps": 30,
+    "frames": 540,
+    "height": 720,
+    "keyframes": [
+      0,
+      29,
+      74,
+      89,
+      119,
+      164,
+      239,
+      269,
+      329,
+      389,
+      449,
+      539
+    ],
+    "scene": "district",
+    "seed": 0,
+    "timeout_seconds": 300,
+    "view": "inspect-road-foothill-gate",
+    "waits": [],
+    "width": 1280
+  },
+  "status": "PASS",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
+  "raw_state": {
+    "path": "output/capture/task049-foothill-r1/state.json",
+    "sha256": "6e9d2e0d521567339f49ab6ea64d080130cd05efe2fb1298ab9dec7eda9cd3bb",
+    "samples": 540
+  },
+  "selected_actual_samples": [
+    {
+      "enabled": true,
+      "frame": 0,
+      "gamepad_connected": true,
+      "position": [
+        505.0,
+        198.0,
+        -568.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.1950048804283142,
+        -0.3109792172908783,
+        -0.06535469740629196,
+        0.9278975129127502
+      ],
+      "simulation_seconds": 0.03333333333333333,
+      "wall_elapsed_seconds": 12.496006812,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 29,
+      "gamepad_connected": true,
+      "position": [
+        505.0,
+        198.0,
+        -568.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.1950048804283142,
+        -0.3109792172908783,
+        -0.06535469740629196,
+        0.9278975129127502
+      ],
+      "simulation_seconds": 1.0,
+      "wall_elapsed_seconds": 13.428590963,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 74,
+      "gamepad_connected": true,
+      "position": [
+        505.0,
+        198.0,
+        -568.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.15175941586494446,
+        0.2369580864906311,
+        0.03750349581241608,
+        0.9588605165481567
+      ],
+      "simulation_seconds": 2.5,
+      "wall_elapsed_seconds": 14.834694874,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 89,
+      "gamepad_connected": true,
+      "position": [
+        505.0,
+        198.0,
+        -568.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.15175941586494446,
+        0.2369580864906311,
+        0.03750349581241608,
+        0.9588605165481567
+      ],
+      "simulation_seconds": 3.0,
+      "wall_elapsed_seconds": 15.309246105,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 119,
+      "gamepad_connected": true,
+      "position": [
+        505.0,
+        198.0,
+        -568.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.15175941586494446,
+        0.2369580864906311,
+        0.03750349581241608,
+        0.9588605165481567
+      ],
+      "simulation_seconds": 4.0,
+      "wall_elapsed_seconds": 16.251672401,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 164,
+      "gamepad_connected": true,
+      "position": [
+        505.0,
+        198.0,
+        -568.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.02515696920454502,
+        0.017489105463027954,
+        0.00044017957407049835,
+        0.9995304346084595
+      ],
+      "simulation_seconds": 5.5,
+      "wall_elapsed_seconds": 17.650939479,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 179,
+      "gamepad_connected": true,
+      "position": [
+        505.0,
+        198.0,
+        -568.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.02515696920454502,
+        0.017489105463027954,
+        0.00044017957407049835,
+        0.9995304346084595
+      ],
+      "simulation_seconds": 6.0,
+      "wall_elapsed_seconds": 18.123067568,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 239,
+      "gamepad_connected": true,
+      "position": [
+        502.2317810058594,
+        194.01443481445312,
+        -647.0814208984375
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.02515696920454502,
+        0.017489105463027954,
+        0.00044017957407049835,
+        0.9995304346084595
+      ],
+      "simulation_seconds": 8.0,
+      "wall_elapsed_seconds": 20.002367558,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 269,
+      "gamepad_connected": true,
+      "position": [
+        502.2317810058594,
+        194.01443481445312,
+        -647.0814208984375
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.02515696920454502,
+        0.017489105463027954,
+        0.00044017957407049835,
+        0.9995304346084595
+      ],
+      "simulation_seconds": 9.0,
+      "wall_elapsed_seconds": 20.943554494,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 329,
+      "gamepad_connected": true,
+      "position": [
+        499.847900390625,
+        190.58221435546875,
+        -715.1834716796875
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.02515696920454502,
+        0.017489105463027954,
+        0.00044017957407049835,
+        0.9995304346084595
+      ],
+      "simulation_seconds": 11.0,
+      "wall_elapsed_seconds": 22.807431576,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 359,
+      "gamepad_connected": true,
+      "position": [
+        499.847900390625,
+        190.58221435546875,
+        -715.1834716796875
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.025022875517606735,
+        0.10453741252422333,
+        0.0026310801040381193,
+        0.9942026138305664
+      ],
+      "simulation_seconds": 12.0,
+      "wall_elapsed_seconds": 23.776802668,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 389,
+      "gamepad_connected": true,
+      "position": [
+        499.847900390625,
+        190.58221435546875,
+        -715.1834716796875
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.025022875517606735,
+        0.10453741252422333,
+        0.0026310801040381193,
+        0.9942026138305664
+      ],
+      "simulation_seconds": 13.0,
+      "wall_elapsed_seconds": 24.721042896,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 390,
+      "gamepad_connected": true,
+      "position": [
+        499.847900390625,
+        190.58221435546875,
+        -715.1834716796875
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.025022875517606735,
+        0.10453741252422333,
+        0.0026310801040381193,
+        0.9942026138305664
+      ],
+      "simulation_seconds": 13.033333333333333,
+      "wall_elapsed_seconds": 24.755644845,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 449,
+      "gamepad_connected": true,
+      "position": [
+        499.847900390625,
+        190.58221435546875,
+        -715.1834716796875
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.025022875517606735,
+        0.10453741252422333,
+        0.0026310801040381193,
+        0.9942026138305664
+      ],
+      "simulation_seconds": 15.0,
+      "wall_elapsed_seconds": 26.62462974,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 539,
+      "gamepad_connected": true,
+      "position": [
+        499.847900390625,
+        190.58221435546875,
+        -715.1834716796875
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        -0.025022875517606735,
+        0.10453741252422333,
+        0.0026310801040381193,
+        0.9942026138305664
+      ],
+      "simulation_seconds": 18.0,
+      "wall_elapsed_seconds": 29.475351233,
+      "world_entities": 4704,
+      "world_ready": true
+    }
+  ],
+  "frame_hashes": {
+    "keyframes/frame00000.png": "34847f6620ae95a0e4c75ebee53aaa4c43c37f4005490860de632c0e26300721",
+    "keyframes/frame00029.png": "34847f6620ae95a0e4c75ebee53aaa4c43c37f4005490860de632c0e26300721",
+    "keyframes/frame00074.png": "8f48f4f86ab21d7c934b37fc6568f43d9ed15947e2515ce8059fd3d1e4054118",
+    "keyframes/frame00089.png": "8f48f4f86ab21d7c934b37fc6568f43d9ed15947e2515ce8059fd3d1e4054118",
+    "keyframes/frame00119.png": "8f48f4f86ab21d7c934b37fc6568f43d9ed15947e2515ce8059fd3d1e4054118",
+    "keyframes/frame00164.png": "77e92ff5d66080d49597d5806df17847f09997422025cde88e3b04c2bf1819d8",
+    "keyframes/frame00239.png": "fb22e2d375af5b22b2797d391e911ba5d82d018d6b5f7f03c83a563bc8da10d6",
+    "keyframes/frame00269.png": "fb22e2d375af5b22b2797d391e911ba5d82d018d6b5f7f03c83a563bc8da10d6",
+    "keyframes/frame00329.png": "72b061aaeee8c642481f9df547445ea8b7a913d2f1c1b4c399478e14ebb9151d",
+    "keyframes/frame00389.png": "f146c02a81cb800524c1e1515f4f31a1215704c8ebbdd0195df4a2e1a81533e8",
+    "keyframes/frame00449.png": "f146c02a81cb800524c1e1515f4f31a1215704c8ebbdd0195df4a2e1a81533e8",
+    "keyframes/frame00539.png": "f146c02a81cb800524c1e1515f4f31a1215704c8ebbdd0195df4a2e1a81533e8"
+  }
+}

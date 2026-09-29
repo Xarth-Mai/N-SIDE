@@ -1,0 +1,110 @@
+{
+  "timestamp": "2026-09-29T19:25:24.620409+00:00",
+  "review": "All 12 CPU views reviewed by authoring agent; final four reviewed by root and independent art_review before cleanup",
+  "visual_acceptance": "needs_revision; no author acceptance",
+  "process_check": "ps -C blender -o pid=,comm= returned no processes before cleanup",
+  "removed": [
+    {
+      "path": "output/characters/CHR-001/model-r4/before/face-front.png",
+      "bytes": 676693,
+      "sha256": "8ff52847febc7fad7226272b1644c4f4f782222fcbc7382192d5fe02fea418ed"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/before/face-quarter.png",
+      "bytes": 677056,
+      "sha256": "5e2eda1aa05a45b4f1b8b0f1e2b809753ff884e10b115ce927b3a7127828bc13"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/before/face-side.png",
+      "bytes": 642465,
+      "sha256": "97b199eebd7d7d8c9225f33dad6007047906029e2fc2500f47528e4c70985aee"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/before/head-back.png",
+      "bytes": 624877,
+      "sha256": "8e24418300f80cddd29a6ca271c207a80b4cf71cb43541aaa991147bcea6645b"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/final/face-front.png",
+      "bytes": 683735,
+      "sha256": "936fe7bb1f386131373de57c81a54d2411900a6368bb5152950e2c53ec61ec07"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/final/face-quarter.png",
+      "bytes": 685680,
+      "sha256": "cd3b47b35c37b06f916550f5eb7bbc5b70f27d773979937c04ad65b0096781f6"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/final/face-side.png",
+      "bytes": 660050,
+      "sha256": "34bf0ba5066179c7d776af88e8a7fd53b2cdb2f086f1d0876648dc3b8bab00b4"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/final/head-back.png",
+      "bytes": 644626,
+      "sha256": "0b9d33c444362a1729dbb3a1bfb1ca719efa79e415b6202f0758a7f01170ca08"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/first/face-front.png",
+      "bytes": 683868,
+      "sha256": "3d393b109f52693c21f1c388a16a490cfb88ea84c1057ba43f8defbce355fed6"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/first/face-quarter.png",
+      "bytes": 685478,
+      "sha256": "aebb25acfb2155edfda08ec6025dccc26702b366570c63fca7db4caf43917850"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/first/face-side.png",
+      "bytes": 661061,
+      "sha256": "7b142ae1eab61b22d2c8732330097166ab4f10faef3b92bd403af9d89ec29945"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/first/head-back.png",
+      "bytes": 639079,
+      "sha256": "71fcab1896a3f9b9a98eed284bd2a80e342d05f628694d097070ffac29550087"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/baseline.blend",
+      "bytes": 3189340,
+      "sha256": "4587a1168f5c0cc419dff6d1cfad165ad20dd3661a25707ee9bf87e77047106f"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 3246307,
+      "sha256": "1ef2051578f6f96e82df6ac563336c440d7d2d9f7ee64669d7d96427317d5eff"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/__pycache__/build.cpython-314.pyc",
+      "bytes": 70760,
+      "sha256": "5a12ad21c8a144fb96b672884fce4e077b1e61cb51042f59f8c835d44b4b7415"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/__pycache__/check.cpython-314.pyc",
+      "bytes": 11376,
+      "sha256": "b3c4ae78a09aa92011777686c0d7bcea0da142993e283dfdd0a713c9cbca1071"
+    },
+    {
+      "path": "todo/evidence/TASK-047/model-r4/__pycache__/check_preserved.cpython-314.pyc",
+      "bytes": 4805,
+      "sha256": "6998b80bd8469c56e265869b4481a4e7bd40081dfc03896e8194cbb712fa53ae"
+    },
+    {
+      "path": "todo/evidence/TASK-047/model-r4/__pycache__/render.cpython-314.pyc",
+      "bytes": 4176,
+      "sha256": "05f19c02768bfb1a935c7747ca2563a13b199e765feacc3ed33462e7ace0a422"
+    }
+  ],
+  "removed_bytes": 14491432,
+  "remaining_output": [
+    {
+      "path": "output/characters/CHR-001/model-r4/before-reexport.sha256",
+      "bytes": 116
+    },
+    {
+      "path": "output/characters/CHR-001/model-r4/model-report.json",
+      "bytes": 734
+    }
+  ],
+  "remaining_output_bytes": 850
+}

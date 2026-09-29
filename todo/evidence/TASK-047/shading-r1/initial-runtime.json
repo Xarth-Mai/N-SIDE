@@ -1,0 +1,152 @@
+[
+  {
+    "capture": "task047-ink-initial-r1",
+    "wrapper_status": "PASS",
+    "native_exit_code": 0,
+    "native_state_status": "PASS",
+    "frames": 240,
+    "seconds": 8.0,
+    "resolution": [
+      1280,
+      720
+    ],
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "real world and idle character ready before orbit",
+        "passed": true
+      },
+      {
+        "name": "locked mouse rotates from front to profile",
+        "passed": true
+      },
+      {
+        "name": "locked mouse reaches the back after half a turn",
+        "passed": true
+      },
+      {
+        "name": "return orbit exposes the front three-quarter view",
+        "passed": true
+      },
+      {
+        "name": "idle animation advances while the grounded actor stays put",
+        "passed": true
+      },
+      {
+        "name": "final idle view is stable after releasing mouse input",
+        "passed": true
+      }
+    ],
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-initial-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-initial-r1",
+      "--walk-preview",
+      "--character-preview"
+    ],
+    "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE",
+    "binary_sha256": "9142e3079b222d59db13db2883a14f1e19991e901ecd334e2f03b4605e71f483",
+    "script_sha256": "0a3081854ffd0266c684aafedbf83f92ddcd922c646da67b0f7005d4ee6334d3",
+    "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "ready_samples": 206,
+    "material_components_assigned": [
+      1
+    ],
+    "skins": [
+      1
+    ],
+    "clips": [
+      "Idle"
+    ],
+    "last_elapsed": 6.8666605949401855,
+    "error": null,
+    "files": {
+      "script.json": "0a3081854ffd0266c684aafedbf83f92ddcd922c646da67b0f7005d4ee6334d3",
+      "run.json": "1c155fd5d634f3a8bf7031dc9d352d511718e2f3d7d21a46c2afefdd06d478f7",
+      "runtime.log": "efd470b44f0267e80bdf0b8aafb11f879f6c3c42876812c0021e91933b3fed3a",
+      "state.json": "8ff76dad04a5b86356db7fd5ea5229ca94fd6504c7a37657bda7de52ec1b01fa"
+    }
+  },
+  {
+    "capture": "task047-ink-failure-r1",
+    "wrapper_status": "FAIL",
+    "native_exit_code": 0,
+    "native_state_status": "PASS",
+    "frames": 90,
+    "seconds": 3.0,
+    "resolution": [
+      1280,
+      720
+    ],
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "real world and idle character ready before orbit",
+        "passed": true
+      },
+      {
+        "name": "locked mouse rotates from front to profile",
+        "passed": true
+      }
+    ],
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/assets/shader-failure-r1/project",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-failure-r1/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-failure-r1",
+      "--walk-preview",
+      "--character-preview"
+    ],
+    "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE/output/assets/shader-failure-r1/project",
+    "binary_sha256": "9142e3079b222d59db13db2883a14f1e19991e901ecd334e2f03b4605e71f483",
+    "script_sha256": "473a2c5ac7661f44200551dcc610b5dd7a5198ad75530a557941529ee7672432",
+    "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+    "ready_samples": 56,
+    "material_components_assigned": [
+      1
+    ],
+    "skins": [
+      1
+    ],
+    "clips": [
+      "Idle"
+    ],
+    "last_elapsed": 1.8666653633117676,
+    "error": "native runtime logged 1 error(s); see runtime.log: 2026-09-29T19:13:05.059020Z ERROR bevy_render::render_resource::pipeline_cache: failed to process shader error:",
+    "files": {
+      "script.json": "473a2c5ac7661f44200551dcc610b5dd7a5198ad75530a557941529ee7672432",
+      "run.json": "be352a1de97ddb21ac00e39a9466e1bfed030b4bfa4563c0a9dd474edacd4d72",
+      "runtime.log": "c60e0fffa20e6971507f1796716a3817b257ced5d057145a6d3492727df082e5",
+      "state.json": "bf20e5bb4c04c274bb8c31bccd181fc36a8508e0e912e4fe6b701554c6248710"
+    }
+  }
+]

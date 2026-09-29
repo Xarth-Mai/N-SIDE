@@ -1,0 +1,515 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 150,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 150
+    },
+    {
+      "checked_frames": 150,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 2.086453437805176,
+      "enabled": true,
+      "expected": {
+        "from": 29,
+        "max_distance": 3.0,
+        "min_distance": 1.0,
+        "name": "approach the actual east plateau garden from its eastern stopping area",
+        "to": 49
+      },
+      "name": "approach the actual east plateau garden from its eastern stopping area",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 2.086482048034668,
+      "enabled": true,
+      "expected": {
+        "from": 59,
+        "max_distance": 3.0,
+        "min_distance": 1.0,
+        "name": "strafe shows separation of tree shrub rock and grass",
+        "to": 79
+      },
+      "name": "strafe shows separation of tree shrub rock and grass",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "enabled": false,
+        "from": 130,
+        "max_distance": 9.999999747378752e-05,
+        "name": "released garden view is stable",
+        "to": 149
+      },
+      "name": "released garden view is stable",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    }
+  ],
+  "determinism": "Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 17.130625674,
+  "error": null,
+  "performance": {
+    "observed_scene_load_seconds": [
+      0.101216065
+    ],
+    "resource_counts": {
+      "first_ready": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "last_ready": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "peak_ready": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      }
+    },
+    "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+    "world_capture_frame_interval_ms": {
+      "count": 149,
+      "max": 36.66296000000102,
+      "mean": 30.637949080536924,
+      "p50": 30.45553599999984,
+      "p95": 33.2503889999991,
+      "percentile_method": "nearest_rank"
+    },
+    "world_update_interval_ms": {
+      "count": 895,
+      "max": 22.799001999999998,
+      "mean": 5.137089979888269,
+      "p50": 2.262971,
+      "p95": 19.995361,
+      "percentile_method": "nearest_rank"
+    }
+  },
+  "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance",
+  "script": {
+    "assertions": [
+      {
+        "from": 29,
+        "max_distance": 3.0,
+        "min_distance": 1.0,
+        "name": "approach the actual east plateau garden from its eastern stopping area",
+        "to": 49
+      },
+      {
+        "from": 59,
+        "max_distance": 3.0,
+        "min_distance": 1.0,
+        "name": "strafe shows separation of tree shrub rock and grass",
+        "to": 79
+      },
+      {
+        "enabled": false,
+        "from": 130,
+        "max_distance": 9.999999747378752e-05,
+        "name": "released garden view is stable",
+        "to": 149
+      }
+    ],
+    "events": [
+      {
+        "end": 1,
+        "gamepad": [],
+        "keys": [
+          "M"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 0
+      },
+      {
+        "end": 34,
+        "gamepad": [],
+        "keys": [
+          "W"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 64,
+        "gamepad": [],
+        "keys": [
+          "A"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 60
+      },
+      {
+        "end": 94,
+        "gamepad": [],
+        "keys": [
+          "D"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 90
+      },
+      {
+        "end": 121,
+        "gamepad": [],
+        "keys": [
+          "Escape"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "right_mouse": false,
+        "start": 120
+      }
+    ],
+    "fps": 30,
+    "frames": 150,
+    "height": 720,
+    "keyframes": [
+      0,
+      29,
+      59,
+      89,
+      119,
+      149
+    ],
+    "scene": "district",
+    "seed": 0,
+    "timeout_seconds": 300,
+    "view": "inspect-plateau-garden",
+    "waits": [],
+    "width": 1280
+  },
+  "status": "PASS",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality",
+  "raw_state": {
+    "path": "output/capture/task049-plateau-r1/state.json",
+    "sha256": "a849b3bf74bccc0987c910a9b90e4805be2caa45f9dcbe6aaad8299b467895d9",
+    "samples": 150
+  },
+  "selected_actual_samples": [
+    {
+      "enabled": true,
+      "frame": 0,
+      "gamepad_connected": true,
+      "position": [
+        218.0,
+        102.4000015258789,
+        -494.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 0.03333333333333333,
+      "wall_elapsed_seconds": 12.532879813,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 29,
+      "gamepad_connected": true,
+      "position": [
+        218.0,
+        102.4000015258789,
+        -494.0
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 1.0,
+      "wall_elapsed_seconds": 13.417014697,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 49,
+      "gamepad_connected": true,
+      "position": [
+        215.99424743652344,
+        102.44298553466797,
+        -494.57305908203125
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 1.6666666666666667,
+      "wall_elapsed_seconds": 14.026057051,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 59,
+      "gamepad_connected": true,
+      "position": [
+        215.99424743652344,
+        102.44298553466797,
+        -494.57305908203125
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 2.0,
+      "wall_elapsed_seconds": 14.329117177,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 79,
+      "gamepad_connected": true,
+      "position": [
+        215.4210205078125,
+        102.44298553466797,
+        -492.5668640136719
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 2.6666666666666665,
+      "wall_elapsed_seconds": 14.936724001,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 89,
+      "gamepad_connected": true,
+      "position": [
+        215.4210205078125,
+        102.44298553466797,
+        -492.5668640136719
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 3.0,
+      "wall_elapsed_seconds": 15.246481991,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": true,
+      "frame": 119,
+      "gamepad_connected": true,
+      "position": [
+        215.99424743652344,
+        102.44298553466797,
+        -494.57305908203125
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 4.0,
+      "wall_elapsed_seconds": 16.169573597,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 130,
+      "gamepad_connected": true,
+      "position": [
+        215.99424743652344,
+        102.44298553466797,
+        -494.57305908203125
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 4.366666666666666,
+      "wall_elapsed_seconds": 16.509275193,
+      "world_entities": 4704,
+      "world_ready": true
+    },
+    {
+      "enabled": false,
+      "frame": 149,
+      "gamepad_connected": true,
+      "position": [
+        215.99424743652344,
+        102.44298553466797,
+        -494.57305908203125
+      ],
+      "resources": {
+        "entities": 5066,
+        "images": 43,
+        "materials": 51,
+        "meshes": 3365
+      },
+      "rotation": [
+        0.008223291486501694,
+        0.6021634936332703,
+        -0.006202840246260166,
+        0.7983062863349915
+      ],
+      "simulation_seconds": 5.0,
+      "wall_elapsed_seconds": 17.097934226,
+      "world_entities": 4704,
+      "world_ready": true
+    }
+  ],
+  "frame_hashes": {
+    "keyframes/frame00000.png": "4febfa9448e172176844957f76e0ddb664279ee4c381e99784731d59e3efb64d",
+    "keyframes/frame00029.png": "4febfa9448e172176844957f76e0ddb664279ee4c381e99784731d59e3efb64d",
+    "keyframes/frame00059.png": "8c731afbad31d05143fcd6856c43d626ec45887be0de5b04736d20dfccd7ce63",
+    "keyframes/frame00089.png": "6187aa8e56e5207d116d6171f2b03fede5111e3e622f2b7572a92485080fd198",
+    "keyframes/frame00119.png": "8c731afbad31d05143fcd6856c43d626ec45887be0de5b04736d20dfccd7ce63",
+    "keyframes/frame00149.png": "8c731afbad31d05143fcd6856c43d626ec45887be0de5b04736d20dfccd7ce63"
+  }
+}

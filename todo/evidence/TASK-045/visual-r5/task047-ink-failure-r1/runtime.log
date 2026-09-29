@@ -1,0 +1,54 @@
+2026-09-29T19:12:51.181827Z  INFO bevy_diagnostic::system_information_diagnostics_plugin::internal: SystemInfo { os: "Linux (CachyOS Linux rolling)", kernel: "7.2.8-1-cachyos", cpu: "AMD Ryzen 7 5700X 8-Core Processor", core_count: "8", memory: "15.5 GiB" }
+2026-09-29T19:12:51.200202Z  INFO bevy_render::renderer: AdapterInfo { name: "AMD Radeon RX 6650 XT (RADV NAVI23)", vendor: 4098, device: 29679, device_type: DiscreteGpu, device_pci_bus_id: "0000:2d:00.0", driver: "radv", driver_info: "Mesa 26.2.3-arch3.1", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 64, transient_saves_memory: false }
+2026-09-29T19:12:51.300251Z  INFO bevy_pbr::cluster: GPU clustering is supported on this device.
+2026-09-29T19:12:51.300278Z  INFO bevy_render::batching::gpu_preprocessing: GPU preprocessing is fully supported on this device.
+2026-09-29T19:12:51.300950Z  INFO n_side::app: [game/state] title
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-29T19:12:51.956561Z  INFO n_side::app: [game/state] loading
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-29T19:13:04.647098Z  INFO n_side::app: [player/collision] triangles=579617 sources=3337
+2026-09-29T19:13:04.715961Z  INFO n_side::world::scene: [world/ready] meshes=3344 model_instances=287 dependencies=37 failed=0 degraded=0 startup_seconds=0.063
+2026-09-29T19:13:04.774474Z  INFO n_side::character: [character/load] characters/CHR-001/yao-grey-study.glb
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+ICU4X data error: No segmentation model for complex script: Chinese/Japanese
+2026-09-29T19:13:04.997193Z  INFO n_side::character: [character/ready] characters/CHR-001/yao-grey-study.glb: 1 skins with ink material, 34 targets, clips ["Idle", "Walk", "Run"]
+2026-09-29T19:13:05.059020Z ERROR bevy_render::render_resource::pipeline_cache: failed to process shader error:
+error: expected global item (`struct`, `const`, `var`, `alias`, `fn`, `diagnostic`, `enable`, `requires`, `;`) or the end of the file, found "intentional_invalid_wgsl_for_failure_probe"
+   ┌─ shaders/character-ink.wgsl:53:1
+   │
+53 │ intentional_invalid_wgsl_for_failure_probe
+   │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected global item (`struct`, `const`, `var`, `alias`, `fn`, `diagnostic`, `enable`, `requires`, `;`) or the end of the file
+   │
+   = expected global item (`struct`, `const`, `var`, `alias`, `fn`, `diagnostic`, `enable`, `requires`, `;`) or the end of the file, found "intentional_invalid_wgsl_for_failure_probe"
+
+
+2026-09-29T19:13:06.956373Z  INFO n_side::capture: [capture/check] {"name":"required_assets_ready","passed":true}
+2026-09-29T19:13:06.956385Z  INFO n_side::capture: [capture/check] {"expected":90,"name":"all_frames_saved","passed":true,"saved":90}
+2026-09-29T19:13:06.956390Z  INFO n_side::capture: [capture/check] {"checked_frames":90,"name":"finite_transforms","passed":true}
+2026-09-29T19:13:06.956394Z  INFO n_side::capture: [capture/check] {"distance":0.0,"enabled":false,"expected":{"camera_sensitivity":null,"character":{"clip":"Idle","max_drift":null,"min_advance":0.2800000011920929,"min_clip_elapsed":null,"min_transitions":null,"paused":false,"ready":true},"configured_borderless":null,"configured_resolution":null,"display_pending":null,"enabled":null,"entry_device":null,"entry_focus":null,"from":50,"game_page":"world","gamepad_connected":null,"graphics":null,"graphics_page":null,"graphics_tab":null,"handoff":null,"inside_room":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":null,"max_player_height":null,"max_player_jumps":null,"max_player_resets":null,"max_rotation":null,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_player_jumps":null,"min_rotation":null,"min_ui_scroll":null,"min_world_entities":null,"name":"real world and idle character ready before orbit","observation_open":null,"observation_selected":null,"observation_target":null,"observation_visible":null,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_room":null,"place_visible":null,"player_blocked":null,"player_grounded":true,"player_sprinting":null,"pointer_locked":true,"progress_status":null,"restart_pending":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":59,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":true},"name":"real world and idle character ready before orbit","passed":true,"peak_rotation_radians":0.0006905339541845024,"rotation_radians":0.0006905339541845024}
+2026-09-29T19:13:06.956412Z  INFO n_side::capture: [capture/check] {"distance":5.244481563568115,"enabled":false,"expected":{"camera_sensitivity":null,"character":null,"configured_borderless":null,"configured_resolution":null,"display_pending":null,"enabled":null,"entry_device":null,"entry_focus":null,"from":59,"game_page":null,"gamepad_connected":null,"graphics":null,"graphics_page":null,"graphics_tab":null,"handoff":null,"inside_room":null,"max_distance":null,"max_player_camera_distance":null,"max_player_distance":0.0010000000474974513,"max_player_height":null,"max_player_jumps":null,"max_player_resets":null,"max_rotation":1.649999976158142,"max_ui_scroll":null,"max_world_entities":null,"min_distance":null,"min_player_camera_distance":null,"min_player_distance":null,"min_player_height":null,"min_player_jumps":null,"min_rotation":1.5,"min_ui_scroll":null,"min_world_entities":null,"name":"locked mouse rotates from front to profile","observation_open":null,"observation_selected":null,"observation_target":null,"observation_visible":null,"place_gamepad":null,"place_id":null,"place_known":null,"place_name":null,"place_room":null,"place_visible":null,"player_blocked":null,"player_grounded":null,"player_sprinting":null,"pointer_locked":true,"progress_status":null,"restart_pending":null,"same_world_entities":null,"settings_open":null,"text_scale":null,"to":89,"ui_device":null,"ui_focus":null,"ui_page":null,"ui_record":null,"ui_reduced_motion":null,"ui_scale":null,"world_ready":null},"name":"locked mouse rotates from front to profile","passed":true,"peak_rotation_radians":1.5707964897155762,"rotation_radians":1.5707964897155762}
+2026-09-29T19:13:06.956430Z  INFO n_side::capture: [capture/finished] status=PASS saved=90 report=/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-failure-r1/state.json

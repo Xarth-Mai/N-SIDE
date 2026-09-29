@@ -1,0 +1,12 @@
+    Checking n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+error: using `chunks_exact` with a constant chunk size
+    --> src/world/scene.rs:2246:26
+     |
+2246 |                         .chunks_exact(36)
+     |                          ^^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<36>().0.iter()`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+     = note: `-D clippy::chunks-exact-to-as-chunks` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::chunks_exact_to_as_chunks)]`
+
+error: could not compile `n-side` (lib test) due to 1 previous error

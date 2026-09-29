@@ -1,0 +1,208 @@
+{
+  "scope": "Same final model and material parameters, only normal-remap shader branch disabled in isolated resource root",
+  "model_sha256": "0f16676224ab425aac27bcc6db05b068b0016dd3f862387674d26d9961fa42aa",
+  "model_equal": true,
+  "only_shader_branch_differs": true,
+  "shaders": {
+    "ink": "2c50ce340514d714f145be19730c4657f62a083191e3ee46f4ac2b97f77d952d",
+    "smooth": "5593d81bb1d92b6bab5b5152688eb7b5f35f56f5b241d3d07edb5c3e70d999fd"
+  },
+  "runs": [
+    {
+      "capture": "task047-ink-final-r1",
+      "wrapper_status": "PASS",
+      "native_exit_code": 0,
+      "native_state_status": "PASS",
+      "runtime_errors": [],
+      "frames": 240,
+      "fps": 30,
+      "resolution": [
+        1280,
+        720
+      ],
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "name": "all_frames_saved",
+          "passed": true
+        },
+        {
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "name": "real world and idle character ready before orbit",
+          "passed": true
+        },
+        {
+          "name": "locked mouse rotates from front to profile",
+          "passed": true
+        },
+        {
+          "name": "locked mouse reaches the back after half a turn",
+          "passed": true
+        },
+        {
+          "name": "return orbit exposes the front three-quarter view",
+          "passed": true
+        },
+        {
+          "name": "idle animation advances while the grounded actor stays put",
+          "passed": true
+        },
+        {
+          "name": "final idle view is stable after releasing mouse input",
+          "passed": true
+        }
+      ],
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-final-r1/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-final-r1",
+        "--walk-preview",
+        "--character-preview"
+      ],
+      "binary_sha256": "780fb8cf630feb742078a7322748de92dc041c9c35396e561656ccb1cc59aeeb",
+      "script_sha256": "0a3081854ffd0266c684aafedbf83f92ddcd922c646da67b0f7005d4ee6334d3",
+      "ready_samples": 206,
+      "assigned_material_components": [
+        1
+      ],
+      "skins": [
+        1
+      ],
+      "last_elapsed": 6.8666605949401855,
+      "visually_inspected_frames": [
+        59,
+        88,
+        89,
+        90,
+        138,
+        139,
+        140,
+        204
+      ],
+      "files": {
+        "script.json": "0a3081854ffd0266c684aafedbf83f92ddcd922c646da67b0f7005d4ee6334d3",
+        "run.json": "aed876eb4fbfdd5d012db349952149b786293f9822d78dd591750dff77307184",
+        "runtime.log": "19dca07ac7bd0656bfaa43b11e334ca00c50cc21a3d497bc4294bdd85c261a58",
+        "state.json": "60028b9ba676e6f4bf35515ca031ff524afa8f0f3070a205eb4c5b9bdc1e0697"
+      },
+      "frame_sha256": {
+        "59": "20e22b1f0792900184cd5a437e5a869380f87aa0094a41732b06da15ecd4214b",
+        "88": "956818662386369800f3242ed8da0c3bac167c419c33a5329f393d1eb2d3011e",
+        "89": "6699b73a92a726a2b7950ec2291505ad023ed389c4303572ed8fbc0bb138e144",
+        "90": "1dfba4852f18763a16502298dc839e24d69fd92f7b0d840a15e14daa449d385f",
+        "138": "4829d07512b51d2f8da7539fc999e88f206be94c530311aae0221bf19f9436f5",
+        "139": "6fa9035f8a18b211686df3879c8197eda9cb4117d06ef7238eb4342e467fe400",
+        "140": "a15efc88e4d9571dfb01333c1727316087067bfd7016e461c586536685894097",
+        "204": "1a388e68eb453f39aac625fcd6f73d2a9fd85424614b2b63da3bcdebdd4d02be"
+      }
+    },
+    {
+      "capture": "task047-smooth-final-r1",
+      "wrapper_status": "PASS",
+      "native_exit_code": 0,
+      "native_state_status": "PASS",
+      "runtime_errors": [],
+      "frames": 240,
+      "fps": 30,
+      "resolution": [
+        1280,
+        720
+      ],
+      "checks": [
+        {
+          "name": "required_assets_ready",
+          "passed": true
+        },
+        {
+          "name": "all_frames_saved",
+          "passed": true
+        },
+        {
+          "name": "finite_transforms",
+          "passed": true
+        },
+        {
+          "name": "real world and idle character ready before orbit",
+          "passed": true
+        },
+        {
+          "name": "locked mouse rotates from front to profile",
+          "passed": true
+        },
+        {
+          "name": "locked mouse reaches the back after half a turn",
+          "passed": true
+        },
+        {
+          "name": "return orbit exposes the front three-quarter view",
+          "passed": true
+        },
+        {
+          "name": "idle animation advances while the grounded actor stays put",
+          "passed": true
+        },
+        {
+          "name": "final idle view is stable after releasing mouse input",
+          "passed": true
+        }
+      ],
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE/output/assets/character-light-r1/project",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-smooth-final-r1/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-smooth-final-r1",
+        "--walk-preview",
+        "--character-preview"
+      ],
+      "binary_sha256": "780fb8cf630feb742078a7322748de92dc041c9c35396e561656ccb1cc59aeeb",
+      "script_sha256": "0a3081854ffd0266c684aafedbf83f92ddcd922c646da67b0f7005d4ee6334d3",
+      "ready_samples": 206,
+      "assigned_material_components": [
+        1
+      ],
+      "skins": [
+        1
+      ],
+      "last_elapsed": 6.8666605949401855,
+      "visually_inspected_frames": [
+        59,
+        88,
+        89,
+        90,
+        138,
+        139,
+        140,
+        204
+      ],
+      "files": {
+        "script.json": "0a3081854ffd0266c684aafedbf83f92ddcd922c646da67b0f7005d4ee6334d3",
+        "run.json": "534157c8bedb69e27102269fe48d1130ac13e16048ceb9306d23f8621845c89b",
+        "runtime.log": "f4f1e2d0dbbacdd5aa8a7b586ab87bef63c7e2ebaa55004a656376506824457d",
+        "state.json": "4d252b205cdca9d08bbf0df0c7772ac810fe57a0dce6c3afc69ed68a8afd6e4b"
+      },
+      "frame_sha256": {
+        "59": "527f9607f37b0c02443a93d4f474756a9648068dba0ec5b01ae6a37f12f47c89",
+        "88": "00f620ac06c0c73bbe07b9a4614b4cc7377e85e39b4c3849af4d54dad6ef17fd",
+        "89": "fca2fa005846db2455b808ee58c936b8111b9e30c29f556328ffd355ebb091ff",
+        "90": "750aab439213521955bda953e70da33eb2e92f940a7192d2f247b77d9b2a77dd",
+        "138": "e6428baf73eb4ce463b01847ff005b90ecaa1f83e0008cd1e042cc17a0c55e56",
+        "139": "75180d644afbf37e4b645c09fd394cec8e84a676a1cb8c96e8a926b614b6704d",
+        "140": "738ab53118e5a8c8e7c68d285652ec8003d2c05b6f0dc78df924ac5df18c3c5b",
+        "204": "1690a316931babdd75949eec05a92a583144bf29e2b2aab2cd9ebaebb43e0d7a"
+      }
+    }
+  ]
+}

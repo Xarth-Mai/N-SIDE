@@ -38,6 +38,14 @@ use bevy::{
 };
 use route::{RouteDriver, RouteScript};
 use serde::{Deserialize, Serialize};
+
+fn rotation_distance(a: [f32; 4], b: [f32; 4]) -> f32 {
+    // atan2 keeps small angles accurate; acos(dot) reported motion for identical captured quaternions
+    let delta = Quat::from_array(a).conjugate() * Quat::from_array(b);
+    2.0 * Vec3::new(delta.x, delta.y, delta.z)
+        .length()
+        .atan2(delta.w.abs())
+}
 use std::{
     fs,
     path::{Path, PathBuf},
@@ -1031,8 +1039,7 @@ impl Recording {
                 measured.map_or((None, None, None, None, false), |(a, b)| {
                     let distance =
                         Vec3::from_array(a.position).distance(Vec3::from_array(b.position));
-                    let rotation =
-                        Quat::from_array(a.rotation).angle_between(Quat::from_array(b.rotation));
+                    let rotation = rotation_distance(a.rotation, b.rotation);
                     let peak_distance = self.samples
                         [assertion.from as usize..=assertion.to as usize]
                         .iter()
@@ -1043,10 +1050,7 @@ impl Recording {
                     let peak_rotation = self.samples
                         [assertion.from as usize..=assertion.to as usize]
                         .iter()
-                        .map(|sample| {
-                            Quat::from_array(a.rotation)
-                                .angle_between(Quat::from_array(sample.rotation))
-                        })
+                        .map(|sample| rotation_distance(a.rotation, sample.rotation))
                         .fold(0.0_f32, f32::max);
                     let passed = assertion.min_distance.is_none_or(|v| distance >= v)
                         && assertion.check_player(
@@ -1738,6 +1742,17 @@ fn record(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn rotation_measurement_resolves_still_and_submilliradian_motion() {
+        let q = Quat::from_xyzw(-0.05457651, 0.11620965, 0.0063953763, 0.99170345);
+        assert!(rotation_distance(q.to_array(), q.to_array()) < 0.000001);
+        assert!(rotation_distance(q.to_array(), (-q).to_array()) < 0.000001);
+        for angle in [0.00002, 0.3, std::f32::consts::PI] {
+            let turned = Quat::from_rotation_y(angle) * q;
+            assert!((rotation_distance(q.to_array(), turned.to_array()) - angle).abs() < 0.000001);
+        }
+    }
 
     #[test]
     fn character_evidence_rejects_absent_failed_or_unplayed_assets() {

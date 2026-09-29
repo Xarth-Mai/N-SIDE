@@ -1,0 +1,113 @@
+{
+  "review_mode": "self-audit; read code and design, not blind review or player acceptance",
+  "runtime_scope": "existing Viewer camera and real district assets; not player collision traversal",
+  "runs": [
+    {
+      "output": "output/capture/task049-plateau-r1",
+      "status": "PASS",
+      "binary_sha256": "f337bc1fb48f5218a7fb7767e53a2bfd5c26d615b47a479260cf74c80c86c401",
+      "script_sha256": "4d7ac69f9e20268c05ea1e23db7bcbe45ca6d4a98795fc7db589ee81f0442825",
+      "runtime_exit_code": 0,
+      "saved_frames": 150,
+      "check_names": [
+        "required_assets_ready",
+        "all_frames_saved",
+        "finite_transforms",
+        "approach the actual east plateau garden from its eastern stopping area",
+        "strafe shows separation of tree shrub rock and grass",
+        "released garden view is stable"
+      ],
+      "video_encoding": "PASS",
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task049-plateau-r1/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task049-plateau-r1"
+      ],
+      "viewed_frames": [
+        {
+          "path": "output/capture/task049-plateau-r1/keyframes/frame00029.png",
+          "sha256": "4febfa9448e172176844957f76e0ddb664279ee4c381e99784731d59e3efb64d"
+        },
+        {
+          "path": "output/capture/task049-plateau-r1/keyframes/frame00059.png",
+          "sha256": "8c731afbad31d05143fcd6856c43d626ec45887be0de5b04736d20dfccd7ce63"
+        },
+        {
+          "path": "output/capture/task049-plateau-r1/frames/frame00060.png",
+          "sha256": "1adece3701c8f11fc24e7764331c28606f8856680c8545e615ff3c8f79d89b9f"
+        },
+        {
+          "path": "output/capture/task049-plateau-r1/frames/frame00061.png",
+          "sha256": "02d4666002bc69d5b1c8b0198919b60e281278df82b0e6c9d81b43ac673da7aa"
+        },
+        {
+          "path": "output/capture/task049-plateau-r1/frames/frame00062.png",
+          "sha256": "b546a06073c2fec0d44712b7f85267f9b9c776a0e468d2d741211fbbed28f0c8"
+        }
+      ],
+      "visual_status": "self-audit complete; target art quality needs revision",
+      "visual_outputs": "root-owned; left intact for root cleanup after review"
+    },
+    {
+      "output": "output/capture/task049-foothill-r1",
+      "status": "PASS",
+      "binary_sha256": "f337bc1fb48f5218a7fb7767e53a2bfd5c26d615b47a479260cf74c80c86c401",
+      "script_sha256": "91bccf0a44af5d82384231356c93e46ddfa684d509ea3faaeebf0183127e88bc",
+      "runtime_exit_code": 0,
+      "saved_frames": 540,
+      "check_names": [
+        "required_assets_ready",
+        "all_frames_saved",
+        "finite_transforms",
+        "turn left toward the real foothill court",
+        "turn north above the existing residential roof line",
+        "fly toward the northern garden with actual input",
+        "approach the northern tree edge with actual input",
+        "scan the planted edge while stationary",
+        "release blocks motion at the final garden view"
+      ],
+      "video_encoding": "PASS",
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task049-foothill-r1/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/capture/task049-foothill-r1"
+      ],
+      "viewed_frames": [
+        {
+          "path": "output/capture/task049-foothill-r1/keyframes/frame00074.png",
+          "sha256": "8f48f4f86ab21d7c934b37fc6568f43d9ed15947e2515ce8059fd3d1e4054118"
+        },
+        {
+          "path": "output/capture/task049-foothill-r1/keyframes/frame00329.png",
+          "sha256": "72b061aaeee8c642481f9df547445ea8b7a913d2f1c1b4c399478e14ebb9151d"
+        },
+        {
+          "path": "output/capture/task049-foothill-r1/keyframes/frame00389.png",
+          "sha256": "f146c02a81cb800524c1e1515f4f31a1215704c8ebbdd0195df4a2e1a81533e8"
+        },
+        {
+          "path": "output/capture/task049-foothill-r1/frames/frame00330.png",
+          "sha256": "ba24f1bba10311b58739924c84081134afc46c207f21739f0103d8af313ad7cc"
+        },
+        {
+          "path": "output/capture/task049-foothill-r1/frames/frame00331.png",
+          "sha256": "3277d982ec5e8013e351176319bdf032688fb869d76a146db8e85f609c4d6205"
+        },
+        {
+          "path": "output/capture/task049-foothill-r1/frames/frame00332.png",
+          "sha256": "76319bdd985b88ebfe223990a49e7ca289197ba736e0212cda610b525a73df9d"
+        }
+      ],
+      "visual_status": "self-audit complete; target art quality needs revision",
+      "visual_outputs": "root-owned; left intact for root cleanup after review"
+    }
+  ]
+}

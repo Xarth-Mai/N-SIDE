@@ -1,0 +1,29 @@
+{
+  "scene": "district",
+  "view": "inspect-road-foothill-gate",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 540,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [0, 29, 74, 89, 119, 164, 239, 269, 329, 389, 449, 539],
+  "events": [
+    {"start": 0, "end": 1, "keys": ["M"]},
+    {"start": 30, "end": 75, "look": [-25.14, -2.23]},
+    {"start": 120, "end": 165, "look": [9.99, -5.858]},
+    {"start": 180, "end": 222, "keys": ["W", "Shift"]},
+    {"start": 270, "end": 306, "keys": ["W", "Shift"]},
+    {"start": 330, "end": 360, "look": [-5.817764, 0.0]},
+    {"start": 390, "end": 391, "keys": ["Escape"]},
+    {"start": 391, "end": 450, "keys": ["W"], "look": [5.0, 0.0]}
+  ],
+  "assertions": [
+    {"name": "turn left toward the real foothill court", "from": 29, "to": 74, "min_rotation": 1.1, "max_rotation": 1.2},
+    {"name": "turn north above the existing residential roof line", "from": 119, "to": 164, "min_rotation": 0.48, "max_rotation": 0.56},
+    {"name": "fly toward the northern garden with actual input", "from": 179, "to": 239, "min_distance": 75.0, "max_distance": 81.0},
+    {"name": "approach the northern tree edge with actual input", "from": 269, "to": 329, "min_distance": 64.0, "max_distance": 70.0},
+    {"name": "scan the planted edge while stationary", "from": 329, "to": 359, "min_rotation": 0.17, "max_rotation": 0.18, "max_distance": 0.0001},
+    {"name": "release blocks motion at the final garden view", "from": 390, "to": 539, "max_distance": 0.0001, "max_rotation": 0.0001, "enabled": false}
+  ]
+}

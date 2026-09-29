@@ -1,0 +1,92 @@
+{
+  "status": "FAIL",
+  "script": {
+    "scene": "walk-preview",
+    "view": "shop",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 90,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      29,
+      59,
+      89
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 31,
+        "keys": [
+          "Enter"
+        ]
+      },
+      {
+        "start": 60,
+        "end": 90,
+        "look": [
+          17.45329252,
+          0.0
+        ]
+      }
+    ],
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "assertions": [
+      {
+        "name": "real world and idle character ready before orbit",
+        "from": 50,
+        "to": 59,
+        "game_page": "world",
+        "world_ready": true,
+        "pointer_locked": true,
+        "player_grounded": true,
+        "character": {
+          "ready": true,
+          "clip": "Idle",
+          "paused": false,
+          "min_advance": 0.28
+        }
+      },
+      {
+        "name": "locked mouse rotates from front to profile",
+        "from": 59,
+        "to": 89,
+        "pointer_locked": true,
+        "min_rotation": 1.5,
+        "max_rotation": 1.65,
+        "max_player_distance": 0.001
+      }
+    ]
+  },
+  "script_sha256": "473a2c5ac7661f44200551dcc610b5dd7a5198ad75530a557941529ee7672432",
+  "git_commit": "9503dfa427dbb3420b5b3ea03cce8030406aa1da",
+  "git_worktree": "M AGENTS.md\n M docs/dev/validation/runtime.md\n M game/assets/characters/CHR-001/yao-grey-study.glb\n M game/src/bin/map_viewer.rs\n M game/src/character.rs\n M game/src/world/mod.rs\n M game/src/world/scene.rs\n M source-assets/characters/CHR-001/model/build.py\n M source-assets/characters/CHR-001/model/check.py\n M source-assets/characters/CHR-001/model/yao-grey-study.blend\n M source-assets/district-scene/README.md\n M tools/capture.py\n M tools/tests/test_capture.py\n?? game/assets/shaders/\n?? game/capture/character-orbit.json\n?? game/capture/foothill-courtyards.json\n?? game/capture/plateau-courtyard.json\n?? game/src/world/terrain.rs\n?? source-assets/characters/CHR-001/model/yao-grey-study.blend1\n?? todo/evidence/TASK-045/terrain-surface-r2/\n?? todo/evidence/TASK-047/model-r4/\n?? todo/evidence/TASK-047/shading-r1/\n?? todo/evidence/TASK-049/courtyards-r1/\n?? todo/evidence/TASK-049/retaining-r1/",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.8-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "NOT RUN",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE/output/assets/shader-failure-r1/project",
+  "binary_sha256": "9142e3079b222d59db13db2883a14f1e19991e901ecd334e2f03b4605e71f483",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE/output/assets/shader-failure-r1/project",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-failure-r1/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/capture/task047-ink-failure-r1",
+    "--walk-preview",
+    "--character-preview"
+  ],
+  "runtime_exit_code": 0,
+  "error": "native runtime logged 1 error(s); see runtime.log: 2026-09-29T19:13:05.059020Z ERROR bevy_render::render_resource::pipeline_cache: failed to process shader error:",
+  "elapsed_wall_seconds": 17.473298920998786
+}

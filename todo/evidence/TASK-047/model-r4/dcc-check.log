@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "asset": "CHR-001 modelling candidate r4",
+  "scope": "DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage and continuous nasal profile; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 61,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.983777360389468e-09,
+      "max_stance_height_error_m": 0.001999971689656377
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 31,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.214263485546326e-08,
+      "max_stance_height_error_m": 9.214263485546326e-08
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 21,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.0573883457709599e-07,
+      "max_stance_height_error_m": 1.068477573085147e-07
+    }
+  ],
+  "facial_surface_gaps": {
+    "Mouth": {
+      "minimum_m": 0.0002582259476184845,
+      "maximum_m": 0.0012509599328041077
+    },
+    "Eye_White.L": {
+      "minimum_m": 0.000649765133857727,
+      "maximum_m": 0.00283745676279068
+    },
+    "Eye_White.R": {
+      "minimum_m": 0.0006499402225017548,
+      "maximum_m": 0.002837635576725006
+    },
+    "Iris_hair.L": {
+      "minimum_m": 0.0011714920401573181,
+      "maximum_m": 0.0031915828585624695
+    },
+    "Iris_hair.R": {
+      "minimum_m": 0.0011715516448020935,
+      "maximum_m": 0.0031914636492729187
+    },
+    "Iris_ink.L": {
+      "minimum_m": 0.0014873221516609192,
+      "maximum_m": 0.003490529954433441
+    },
+    "Iris_ink.R": {
+      "minimum_m": 0.0014873221516609192,
+      "maximum_m": 0.0034904703497886658
+    },
+    "Eye_Glint.L": {
+      "minimum_m": 0.002599097788333893,
+      "maximum_m": 0.0034934133291244507
+    },
+    "Eye_Glint.R": {
+      "minimum_m": 0.0029623284935951233,
+      "maximum_m": 0.0036486759781837463
+    }
+  },
+  "nasal_profile": [
+    {
+      "height_m": 1.538,
+      "projection_from_cheeks_m": 0.009842634201049805
+    },
+    {
+      "height_m": 1.543,
+      "projection_from_cheeks_m": 0.010450631380081177
+    },
+    {
+      "height_m": 1.552,
+      "projection_from_cheeks_m": 0.008634626865386963
+    },
+    {
+      "height_m": 1.563,
+      "projection_from_cheeks_m": 0.005717426538467407
+    }
+  ]
+}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+
+Blender quit

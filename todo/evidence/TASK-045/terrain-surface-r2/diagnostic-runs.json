@@ -1,0 +1,130 @@
+[
+  {
+    "run": "task045-cut-before-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "binary_sha256": "5663500c4203fb17b085e7d91622288b8efe0466025bf441d9a611d9ea8d8bfd",
+    "frames": 90,
+    "samples": 90,
+    "last_graphics": null,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-cut-before-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-cut-before-r2"
+    ]
+  },
+  {
+    "run": "task045-cut-scale2-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "binary_sha256": "5663500c4203fb17b085e7d91622288b8efe0466025bf441d9a611d9ea8d8bfd",
+    "frames": 90,
+    "samples": 90,
+    "last_graphics": null,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/assets/terrain-r2/scale2-project",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-cut-scale2-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-cut-scale2-r2"
+    ]
+  },
+  {
+    "run": "task045-ground-phase-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "binary_sha256": "ccd6977d57b5774d826799f1b6ca8cec7956715afe0bffcb48d485e245fff4a0",
+    "frames": 90,
+    "samples": 90,
+    "last_graphics": null,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-phase-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-phase-r2"
+    ]
+  },
+  {
+    "run": "task045-ground-solid-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "frames": 90,
+    "samples": 90,
+    "last_graphics": null,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/assets/terrain-r2/solid-project",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-solid-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-solid-r2"
+    ]
+  },
+  {
+    "run": "task045-ground-isotropic-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "frames": 90,
+    "samples": 90,
+    "last_graphics": null,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/assets/terrain-r2/isotropic-project",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-isotropic-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-isotropic-r2"
+    ]
+  },
+  {
+    "run": "task045-ground-checker-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "frames": 90,
+    "samples": 90,
+    "last_graphics": null,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE/output/assets/terrain-r2/checker-project",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-checker-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-checker-r2"
+    ]
+  },
+  {
+    "run": "task045-ground-ssao-r2",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "binary_sha256": "9beb6b83f835fbb5ca23ea21facc8026645b2ac69b3d58a597d7ece809bb3c75",
+    "frames": 90,
+    "samples": 90,
+    "last_graphics": null,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-ssao-r2/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-ground-ssao-r2",
+      "--aa",
+      "taa-ssao"
+    ]
+  }
+]

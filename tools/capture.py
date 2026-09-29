@@ -14,6 +14,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import re
 import shutil
 import signal
 import subprocess
@@ -76,12 +77,21 @@ def verify_outputs(output: Path, script: dict) -> dict:
     return state
 
 
+def verify_runtime_log(path: Path) -> None:
+    # Loaded Shader assets can still fail GPU compilation while the app exits 0
+    log = re.sub(r"\x1b\[[0-9;]*m", "", path.read_text(encoding="utf-8", errors="replace"))
+    errors = [line for line in log.splitlines() if re.search(r"\bERROR\s+[\w:]+:", line)]
+    if errors:
+        raise ValueError(f"native runtime logged {len(errors)} error(s); see runtime.log: " + " | ".join(errors[:3]))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--script", type=Path, default=ROOT / "game/capture/viewer-tour.json")
     parser.add_argument("--output", type=Path, required=True, help="fresh evidence directory")
     parser.add_argument("--binary", type=Path, help="use this prebuilt game or Viewer binary; otherwise build map_viewer with cargo --locked")
     parser.add_argument("--character-preview", action="store_true", help="enable the real grey character in a walk-preview script")
+    parser.add_argument("--aa", choices=("msaa4", "taa", "taa-ssao"), help="district Viewer antialiasing/prepass mode")
     parser.add_argument("--no-video", action="store_true", help="retain PNG evidence only")
     parser.add_argument("--settings-dir", type=Path, help="explicit isolated user-settings directory for cross-process checks")
     parser.add_argument("--progress-dir", type=Path, help="explicit isolated handoff-progress directory for cross-process checks")
@@ -130,6 +140,10 @@ def main() -> int:
         command = [str(binary), "--project-root", str(project_root), "--capture", str(output / "script.json"), "--output", str(output)]
         if script["scene"] == "walk-preview":
             command.append("--walk-preview")
+        if args.aa is not None:
+            if script["scene"] != "district":
+                raise ValueError("--aa requires a district Viewer script")
+            command.extend(["--aa", args.aa])
         if args.character_preview:
             if script["scene"] != "walk-preview":
                 raise ValueError("--character-preview requires a walk-preview script")
@@ -147,6 +161,7 @@ def main() -> int:
         report["runtime_exit_code"] = code
         if code:
             raise RuntimeError(f"Native capture exited {code}; see runtime.log and state.json when available")
+        verify_runtime_log(output / "runtime.log")
         state = verify_outputs(output, script)
         report["checks"] = state["checks"]
         ffmpeg = shutil.which("ffmpeg")

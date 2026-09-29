@@ -123,9 +123,12 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview
 cargo build --manifest-path game/Cargo.toml --locked --bin n-side
 python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/walk-character.json --output output/capture/walk-character
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview --script game/capture/character-orbit.json --output output/capture/character-orbit
 ```
 
 角色脚本核对实际Idle、Walk、Shift／右键Run、暂停及恢复的时间推进，须同时检查连续画面；`CharacterStatus` 提供ready、错误、动作与时间、切换数和暂停读数。完整接口与已知边界见[灰阶角色动作预览](../docs/dev/engineering/player-preview.md#灰阶角色动作预览)，结果记录于TASK-047
+
+角色候选使用继承 StandardMaterial 的主光分段实验，保留真实骨骼、阴影、点光与雾；`character-orbit.json` 在人物静止并播放 Idle 时通过真实鼠标输入检查正、侧、背与三分之四视角。`shaded_meshes` 只计材质接入，GPU 编译还须核对运行日志和实际图像；此实验尚未建立正式脸部阴影图、轮廓线或已批准配色
 
 碰撞从同一份渲染网格建立静态三角 BVH，覆盖地形、道路、建筑、平台及结构设施；道路台阶的踏面与立面均参与扫掠。Parry只负责空间查询，人物和镜头系统由 `player.rs` 维护；相机沿目标到期望位置作球体扫掠。参数、当前覆盖与失败处理见[人物尺度实验契约](../docs/dev/engineering/player-preview.md)
 

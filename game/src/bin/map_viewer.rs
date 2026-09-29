@@ -573,6 +573,16 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         "[visual/view] name=inspect-residential-detail source=buildings[V-A13] eye={eye:?} target={target:?} fov=55"
     );
     views.push(("inspect-residential-detail", view(eye, target)));
+    // Existing garden surface at 100.68 m: inspect its planted edge at human eye height
+    views.push((
+        "inspect-plateau-garden",
+        view([218., 494., 102.4], [190., 502., 103.]),
+    ));
+    // South of shop-site, clear of V-A07 to the west and the main road to the east
+    let eye = [82., 238., ground.height([82., 238.]) + 1.7];
+    let target = [80., 245., 27.65];
+    println!("[visual/view] name=inspect-shop-retaining eye={eye:?} target={target:?} fov=55");
+    views.push(("inspect-shop-retaining", view(eye, target)));
     views.extend([
         (
             "poster-station",

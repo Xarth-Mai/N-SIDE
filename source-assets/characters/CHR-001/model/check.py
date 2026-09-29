@@ -48,22 +48,46 @@ rig.animation_data.action = bpy.data.actions['Idle']
 scene.frame_set(1)
 surface = BVHTree.FromObject(bpy.data.objects['Face_Head'], bpy.context.evaluated_depsgraph_get())
 feature_gaps = {}
-for name in ('Mouth', 'Nose', 'Eye_White.L', 'Eye_White.R', 'Eye_Glint.L', 'Eye_Glint.R'):
+for name in ('Mouth', 'Eye_White.L', 'Eye_White.R', 'Iris_hair.L', 'Iris_hair.R', 'Iris_ink.L', 'Iris_ink.R', 'Eye_Glint.L', 'Eye_Glint.R'):
     gaps = []
     data = bpy.data.objects[name].data
     samples = [v.co for v in data.vertices]
-    if name.startswith('Eye_'):
+    if name != 'Mouth':
         samples += [sum((data.vertices[i].co for i in polygon.vertices), Vector()) / len(polygon.vertices) for polygon in data.polygons]
     for point in samples:
         hit, _, _, _ = surface.ray_cast(Vector((point.x, -1, point.z)), Vector((0, 1, 0)))
         assert hit is not None, f'{name}: feature misses face surface'
         gaps.append(hit.y - point.y)
-    limit = .0061 if name == 'Nose' else .0021
+    limit = .0041 if name != 'Mouth' else .0021
     assert max(gaps) < limit, f'{name}: floating facial feature {max(gaps)} m'
     assert min(gaps) > -.0006, f'{name}: facial feature sinks into face {min(gaps)} m'
-    if name.startswith('Eye_'):
+    if name != 'Mouth':
         assert min(gaps) > 0, f'{name}: eye patch crosses face surface'
+    if name.startswith('Eye_White'):
+        # The white is a shallow convex surface, but its open boundary must sit
+        # against the face rather than floating the entire eye like a sticker
+        edge_counts = {}
+        for polygon in data.polygons:
+            for edge in polygon.edge_keys:
+                edge_counts[edge] = edge_counts.get(edge, 0) + 1
+        boundary = {i for edge, count in edge_counts.items() if count == 1 for i in edge}
+        assert boundary, f'{name}: eye has no open lid boundary'
+        assert max(gaps[i] for i in boundary) < .0011, f'{name}: floating eye boundary'
+        assert max(gaps) > .002, f'{name}: eye surface lost its convex volume'
+    if name.startswith('Iris_'):
+        white = BVHTree.FromObject(bpy.data.objects['Eye_White.' + name[-1]], bpy.context.evaluated_depsgraph_get())
+        for point in samples:
+            hit, _, _, _ = white.ray_cast(Vector((point.x, -1, point.z)), Vector((0, 1, 0)))
+            assert hit is not None, f'{name}: iris extends beyond the lid opening'
+            assert 0 < hit.y - point.y < .0018, f'{name}: iris crosses or floats above the eye surface'
     feature_gaps[name] = {'minimum_m': min(gaps), 'maximum_m': max(gaps)}
-report = {'status':'PASS','asset':'CHR-001 modelling candidate r3','scope':'DCC joint transforms, loop endpoints, sole ground distance and seated facial feature vertices; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps}
+assert 'Nose' not in bpy.data.objects, 'Nose must be part of the continuous head mesh'
+nasal_profile = []
+for z in (1.538, 1.543, 1.552, 1.563):
+    points = [surface.ray_cast(Vector((x, -1, z)), Vector((0, 1, 0)))[0] for x in (-.02, 0, .02)]
+    assert all(point is not None for point in points), 'Nasal profile missed head mesh'
+    nasal_profile.append({'height_m': z, 'projection_from_cheeks_m': (points[0].y + points[2].y) / 2 - points[1].y})
+assert .004 < nasal_profile[1]['projection_from_cheeks_m'] < .018, 'Integrated nose projection outside this candidate range'
+report = {'status':'PASS','asset':'CHR-001 modelling candidate r4','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage and continuous nasal profile; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile}
 print(json.dumps(report,indent=2))
-(root/'todo/evidence/TASK-047/model-r3/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
+(root/'todo/evidence/TASK-047/model-r4/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')

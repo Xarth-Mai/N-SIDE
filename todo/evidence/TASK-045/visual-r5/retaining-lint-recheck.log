@@ -1,0 +1,24 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 28.14s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+retaining shop-site: south_edge=[66.0, 245.0]->[88.9, 245.0], exposed_height_max=0.779m, road_clearance=0.32m
+retaining east-lower-yard: south_edge=[155.0, 254.0]->[160.0, 254.0], exposed_height_max=0.958m, road_clearance=0.32m
+retaining details: 4 batches, 121 boxes, 1452 collision triangles
+test world::scene::tests::terrace_retainers_follow_fill_edges_and_leave_stair_access_clear ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 124 filtered out; finished in 0.06s
+
+     Running unittests src/bin/map_viewer.rs (game/target/debug/deps/map_viewer-0299bde2077d18c3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (game/target/debug/deps/n_side-0fb9c7994b36045c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

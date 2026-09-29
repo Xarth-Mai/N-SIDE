@@ -1,0 +1,151 @@
+{
+  "at": "2026-09-29T19:50:49.336042+00:00",
+  "scope": "Only this round owned captures and isolated shader projects; viewed and recorded before cleanup",
+  "runs": [
+    {
+      "directory": "output/capture/task045-cut-before-r2",
+      "removed_files": 97,
+      "removed_bytes": 113032368,
+      "removed_inventory_sha256": "5559440cfd44b994fd0554cbd573f4e23d628b2cd9946b26ef3e0dafe7f421f4",
+      "remaining_bytes": 116231,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task045-cut-scale2-r2",
+      "removed_files": 97,
+      "removed_bytes": 116916416,
+      "removed_inventory_sha256": "db0e52e59685362fe4f8993bf75333e92df2ea8c2a7c71a0953bf6f152c07a56",
+      "remaining_bytes": 116442,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task045-ground-phase-r2",
+      "removed_files": 97,
+      "removed_bytes": 110627218,
+      "removed_inventory_sha256": "5da3b19852de50543ad11d48c4f3ecd282641e347d5930583cbe72c830de3a59",
+      "remaining_bytes": 116916,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task045-ground-ssao-r2",
+      "removed_files": 97,
+      "removed_bytes": 104133622,
+      "removed_inventory_sha256": "35685310acb4af07efed54ad7eb01e98c5aaba6b9a376eb874d9741b5b7ece6e",
+      "remaining_bytes": 117219,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task045-ground-solid-r2",
+      "removed_files": 97,
+      "removed_bytes": 99501445,
+      "removed_inventory_sha256": "5f3bcd52be1aa2a0b908f5eb5a8a6eb351d56e722a8f7cd5fe16a19d83743817",
+      "remaining_bytes": 117281,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task045-ground-isotropic-r2",
+      "removed_files": 97,
+      "removed_bytes": 103375674,
+      "removed_inventory_sha256": "1bc995f63b2b3918c33bb8111933fd9d953d7557018dd174559cc7d3aaad1e72",
+      "remaining_bytes": 117335,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task045-ground-checker-r2",
+      "removed_files": 97,
+      "removed_bytes": 105116009,
+      "removed_inventory_sha256": "3fbd4f41c69110a62131fc96df895b8f0dadf0138d534cb705578610e5c68751",
+      "remaining_bytes": 117278,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task047-ink-initial-r1",
+      "removed_files": 252,
+      "removed_bytes": 232034266,
+      "removed_inventory_sha256": "45e20f6d27f56439f83c06976c772a4254c71435139a4e4add6c734f36eb36cc",
+      "remaining_bytes": 643780,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task047-ink-failure-r1",
+      "removed_files": 93,
+      "removed_bytes": 67765079,
+      "removed_inventory_sha256": "b0d31ad0a2712abff1fbedd7e3e56c24ff439d59c7b63bf4d292978855495611",
+      "remaining_bytes": 231603,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task047-ink-final-r1",
+      "removed_files": 252,
+      "removed_bytes": 229140432,
+      "removed_inventory_sha256": "980163f1862f4f1acca94ffaece8d1da65945017eefb942143385073ce9345ae",
+      "remaining_bytes": 643895,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task047-smooth-final-r1",
+      "removed_files": 252,
+      "removed_bytes": 229036781,
+      "removed_inventory_sha256": "0226db8f93f93efaa192af65f45c0b953f9e0a82ecfc03ec2b17b07f825626bf",
+      "remaining_bytes": 644046,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task049-retaining-r1",
+      "removed_files": 157,
+      "removed_bytes": 192644504,
+      "removed_inventory_sha256": "389476f5887254eb5e2de8c5fc8de5d1f5f1d56f08b6cbff6fa15b998cbea7fb",
+      "remaining_bytes": 166272,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task049-retaining-final-r1",
+      "removed_files": 158,
+      "removed_bytes": 202028286,
+      "removed_inventory_sha256": "9346b7b2d1e9ba08ab561dbe99af0cc9f04a83e9d4853f414db53bccf5f6efe8",
+      "remaining_bytes": 175863,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task049-plateau-r1",
+      "removed_files": 157,
+      "removed_bytes": 186647855,
+      "removed_inventory_sha256": "270079fa1f51b361c1a0f435e0ab3d7a42e0552be7172a24fc9a9893505a47a1",
+      "remaining_bytes": 169408,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task049-foothill-r1",
+      "removed_files": 553,
+      "removed_bytes": 600143720,
+      "removed_inventory_sha256": "d652db23ebf357010b690ccbaa3f0e1d4e242eb93e8229aaa5146240510918d3",
+      "remaining_bytes": 523318,
+      "preserved": "Original states, scripts, logs and run metadata"
+    },
+    {
+      "directory": "output/capture/task047-walk-r4",
+      "removed_files": 558,
+      "removed_bytes": 595268840,
+      "removed_inventory_sha256": "7604faec33b2bdc494ae6fc942bb572053d26c5987a055cd7d949b7a8c132838",
+      "remaining_bytes": 1544467,
+      "preserved": "Original states, scripts, logs and run metadata"
+    }
+  ],
+  "isolated_projects": [
+    {
+      "directory": "output/assets/shader-failure-r1/project",
+      "removed_owned_files": 1,
+      "removed_owned_bytes": 2292,
+      "symlinks_removed_without_following": 6
+    },
+    {
+      "directory": "output/assets/character-light-r1/project",
+      "removed_owned_files": 1,
+      "removed_owned_bytes": 2238,
+      "symlinks_removed_without_following": 6
+    }
+  ],
+  "total_capture_files": 3111,
+  "total_capture_bytes": 3287412515,
+  "remaining_capture_bytes": 5561354
+}

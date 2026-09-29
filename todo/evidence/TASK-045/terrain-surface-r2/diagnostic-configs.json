@@ -1,0 +1,78 @@
+{
+  "scale2": {
+    "appearance_sha256": "48942ef51289653e987ac5f911686277e7d83ea38c6dd5f6ee6173121015e66c",
+    "terrain": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.98,
+      "metallic": 0,
+      "tile_meters": [
+        4.2,
+        4.2
+      ],
+      "color_texture": "environment/materials/ground-color.dds",
+      "normal_texture": "environment/materials/ground-normal.dds"
+    }
+  },
+  "solid": {
+    "appearance_sha256": "21adb166a1aa3dfa97d934a52e48be0d842c82e39d2050f2fd7477d494e9f808",
+    "terrain": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.98,
+      "metallic": 0,
+      "tile_meters": [
+        2.1,
+        2.1
+      ]
+    }
+  },
+  "isotropic": {
+    "appearance_sha256": "c66bd5528442a6a9fa0296af180f84ea50eeb343089773a9cc9950a0fb4a7c4a",
+    "terrain": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.98,
+      "metallic": 0,
+      "tile_meters": [
+        2.1,
+        2.1
+      ],
+      "color_texture": "environment/materials/ground-color.dds",
+      "normal_texture": "environment/materials/ground-normal.dds"
+    },
+    "shader_sha256": "d0364ea4c21157246c7014c43ef16d5c0cac11ef173388807055281337e643bd"
+  },
+  "checker": {
+    "appearance_sha256": "c66bd5528442a6a9fa0296af180f84ea50eeb343089773a9cc9950a0fb4a7c4a",
+    "terrain": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.98,
+      "metallic": 0,
+      "tile_meters": [
+        2.1,
+        2.1
+      ],
+      "color_texture": "environment/materials/ground-color.dds",
+      "normal_texture": "environment/materials/ground-normal.dds"
+    },
+    "shader_sha256": "95f681c508d46ad088953fa0fa18d911123a7b00cc45fa7cb8915b7bf9df0fe2"
+  }
+}
