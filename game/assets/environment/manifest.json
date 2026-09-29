@@ -148,9 +148,21 @@
     },
     {
       "file": "vegetation/street-tree.glb",
-      "bytes": 709372,
-      "sha256": "e928de4fe4e8f64af7d4bf4b08173484608e4255c367a9f2ed864323b85309b2",
+      "bytes": 789236,
+      "sha256": "cad77ce1246fd7f7eba08fd773c0b62fd5029332f597ceb67a5a36d472598243",
       "license": "MPL-2.0"
+    },
+    {
+      "file": "materials/ground-color.dds",
+      "bytes": 5592532,
+      "sha256": "4c3658ddd0866737f0e3931d05039b359632f9c78436394b5c8c0577bb9ba979",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/ground-normal.dds",
+      "bytes": 5592532,
+      "sha256": "5991a884e2318dcd6a6384cd9ab964c7e0ec618488ccd8ec3fd5497d37a7d039",
+      "license": "CC0-1.0"
     }
   ]
 }

@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "ownership": "only task045-vegetation-r3 own CPU outputs and baseline copies; root capture untouched",
+  "process_check": "ps -C blender -o pid=,comm= returned no processes before deletion",
+  "review": "author and art_review viewed all 3 final tree angles; root viewed before/after tree-0 before authorization",
+  "removed_count": 23,
+  "removed_bytes": 14365345,
+  "removed_files": [
+    {
+      "path": "output/assets/task045-vegetation-r3/after/bark-detail.png",
+      "bytes": 583093,
+      "sha256": "595be71197c1fa7067a4a78170490529c729b76ba94e3ca08c8789ac061b48fb"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/after/tree-0.png",
+      "bytes": 782802,
+      "sha256": "40c7f8c5966c2168f115d83ef016c9515ad871512f2daf3efef58660f7ef9226"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/after/tree-1.png",
+      "bytes": 768074,
+      "sha256": "eb7dd7a2a04b70cc691053f06393345dbeb5a291512e09482836bb036376371a"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/after/tree-2.png",
+      "bytes": 746164,
+      "sha256": "4f88e019884eef6d1125e38fc5e725b4e3df56e1436b6fbffa26f9e9566d49c4"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline/README.md",
+      "bytes": 3812,
+      "sha256": "5563db9b19b152a45d59a9aca8676b51873392cc2598522949c2ea5fbb99142a"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline/bark-color.png",
+      "bytes": 60358,
+      "sha256": "ffc18a18a15fba174fb44b055054c2b2f96a6b19e33263386ced0b58e946a2e2"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline/build_street_tree.py",
+      "bytes": 8775,
+      "sha256": "c2b610a53ff4cf2a7b3ac1d0e7392ce1b39153fa4f9517c0098c5027de9fe864"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline/check_street_tree.py",
+      "bytes": 5504,
+      "sha256": "6b87e647644ffc4c28c54edf4a46c9058981aa362700d9ec77092cb2105e88e9"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline/export_street_tree.py",
+      "bytes": 2844,
+      "sha256": "edcc21f6c58b10d93abc31b38102fdf4be0aa4a0cc17228c003351e908604fec"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline/street-tree.blend",
+      "bytes": 2000475,
+      "sha256": "78897f661ddefb6633ee7e4daf224b0a02ba386a4178f74ed2d3f6cff5cc3868"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline/street-tree.glb",
+      "bytes": 709372,
+      "sha256": "e928de4fe4e8f64af7d4bf4b08173484608e4255c367a9f2ed864323b85309b2"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/before/bark-detail.png",
+      "bytes": 582877,
+      "sha256": "fb8beae5c7febf49517f90a4263d8fe1a027f5ba2f1412476f8c4f88d146e3fb"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/before/tree-0.png",
+      "bytes": 790708,
+      "sha256": "cc5a484fa32b2c281f1ee5ee5ce17c8e83f00cae54bb6cf929af5a2072d7b82d"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/before/tree-1.png",
+      "bytes": 780586,
+      "sha256": "1bbefe9e29599b249322a950e51f1f228d0eb12551e4fa5ea52dc7a04fca3f36"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/before/tree-2.png",
+      "bytes": 772776,
+      "sha256": "f895a0e620801ed16fac5f2a567f5438ecbe90a23df8d40c7018beb396214dba"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration1/bark-detail.png",
+      "bytes": 581660,
+      "sha256": "bc9af95cfb15d04a9e98f53feaafc9dd56f4b4af9770c07a53b307a52663f46b"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration1/tree-0.png",
+      "bytes": 783555,
+      "sha256": "d052f0b4084c690a682670076b5ded1d34dab20f0d21a8abcd57b42de1a6a1f7"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration1/tree-1.png",
+      "bytes": 772374,
+      "sha256": "6c400d4aaf54938cddf97a69d41ca08c219a87c85423bab85cae460db77d1593"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration1/tree-2.png",
+      "bytes": 746200,
+      "sha256": "4c517462bb842daba82186c5e265f306749984a263549db92d14f2959174c397"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration2/bark-detail.png",
+      "bytes": 582906,
+      "sha256": "d8d4a1f65e752a9b23485df0bec50de4542fc75f829f9b4dcc118e112ea92614"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration2/tree-0.png",
+      "bytes": 782765,
+      "sha256": "5da519eef54a662e51aedd3db8df9a139ab8993212629e62085befcf3247fcb4"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration2/tree-1.png",
+      "bytes": 772516,
+      "sha256": "809341454467f792b59a21ef46369fbf3e3e25b11dfc90574c16d2d9bcda5395"
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration2/tree-2.png",
+      "bytes": 745149,
+      "sha256": "991912ac3d188f934f376e18266ec9adb2446d3ac036ed62df7db7def4b05096"
+    }
+  ],
+  "remaining_bytes": 109787,
+  "remaining_files": [
+    {
+      "path": "output/assets/task045-vegetation-r3/after-render.log",
+      "bytes": 21967
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/baseline-rebuild.log",
+      "bytes": 681
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/before.log",
+      "bytes": 22091
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/build1.log",
+      "bytes": 682
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/build2.log",
+      "bytes": 682
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/build3.log",
+      "bytes": 682
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/export-check.log",
+      "bytes": 690
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration1/build.py",
+      "bytes": 9031
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/iteration2/build.py",
+      "bytes": 8946
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/render1.log",
+      "bytes": 22228
+    },
+    {
+      "path": "output/assets/task045-vegetation-r3/render2.log",
+      "bytes": 22107
+    }
+  ],
+  "retained": "formal source blend/glb/bark, render/export/build/check scripts, candidate build scripts, logs and JSON records"
+}

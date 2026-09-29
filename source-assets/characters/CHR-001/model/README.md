@@ -1,4 +1,4 @@
-# 曜 · 可蒙皮灰阶建模候选 r2
+# 曜 · 可蒙皮灰阶建模候选 r3
 
 本目录属于 `CHR-001`，继续使用人物包中的 r3 轮廓候选与镜厅预览左侧人物海报的日漫画法要求。实际年龄 20、外观年龄约 18，当前模型的灰阶材质只用于检查形体和部件关系，不确定发色、眼色或服装颜色
 
@@ -16,7 +16,7 @@
 
 ## 形体与接口
 
-建模使用米制、Z 向上、正面 -Y，GLB 转为 Y 向上、正面 +Z；脚底位于原点平面，根节点 `Root` 在原点。当前实测高度约 1.744 m，r2 保持头顶高度与身体轮廓，只修订颌下及五官局部；高度与头身都是可调整候选，未写回人物设定
+建模使用米制、Z 向上、正面 -Y，GLB 转为 Y 向上、正面 +Z；脚底位于原点平面，根节点 `Root` 在原点。当前实测高度约 1.744 m，r3 保持约 1.744 m 高度与骨架，修订眉眼、发组、耳部和肩袖、肘膝与下摆轮廓；高度与头身都是可调整候选，未写回人物设定
 
 夹克通过真实袖窿边界连接衣身与袖子，头颈由同一连续网格形成；内衫、裤装、鞋、面部及薄片发束可分别编辑，手部含独立五指网格和关节权重。衣服与头部保留细分修改器，导出副本应用表面修改器后合并，主文件仍保留分件。模型只有标准不透明材质及一张 base color 图集；实际游戏的光照与描边另在真实 Bevy 路径验收
 
@@ -40,18 +40,18 @@ python3 tools/validate_character.py game/assets/characters/CHR-001/yao-grey-stud
 output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python source-assets/characters/CHR-001/model/check.py
 ```
 
-重建本轮模型并生成 CPU 检查图使用下述命令；它会覆盖主文件，手工修改前先保存另一个版本。检查图进入 `output/characters/CHR-001/model-r2/`，查看后按项目规则清理，保留文字与 JSON
+重建本轮模型并生成 CPU 检查图使用下述命令；它会覆盖主文件，手工修改前先保存另一个版本。检查图进入 `output/characters/CHR-001/model-r3/`，查看后按项目规则清理，保留文字与 JSON
 
 ```fish
 output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --render
 ```
 
-从现有主文件生成本轮固定正面脸、三分之四脸、侧脸与全身对照，使用 `output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python todo/evidence/TASK-047/model-r2/render.py -- final`；它保持主文件的灯光、灰阶、720×960 分辨率与 24 个 CPU Cycles 采样，不保存相机改动
+从现有主文件生成本轮固定正面脸、三分之四脸、侧脸与全身对照，使用 `output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python todo/evidence/TASK-047/model-r3/render.py -- final`；它保持主文件的灯光、灰阶、720×960 分辨率与 24 个 CPU Cycles 采样，不保存相机改动；追加 `--motion` 生成侧身及 Walk / Run 三分之四检查图
 
 ## 当前验收边界
 
-本轮交付仅允许通过显式 `--character-preview` 接入作技术候选，不替换正式人物，也未通过美术或作者形象验收。r2 只处理 [下一轮建议](../../../../todo/evidence/TASK-047/model-r1/next-pass.md) 的前两项：将现有颈上缘、颌下与外下颌环线分别塑形；眼角收尖、下眼线缩短，眼白增加一圈贴面顶点，鼻与口线跟随真实脸面。保留头部原有 18 mm 下移、身高、灰阶图集、灯光、发束、衣服与动作
+本轮交付仅允许通过显式 `--character-preview` 接入作技术候选，不替换正式人物，也未通过美术或作者形象验收。r3 沿用 r2 头颈修订，收眼睑、改短中性口线、收耳并组织主副刘海；发帽沿实际高度收深度，避开发际折回和穿出刘海。外套收肩袖，在肘、膝、裤脚保留局部折形，T 恤下摆在裤腰之外，袖口覆盖布边。灰阶图集、材质、骨架、inverse bind 与所有动画采样保持 r2 不变
 
-本轮 DCC 和 GLB 数值检查、同机位观察及剩余问题见 [r2 记录](../../../../todo/evidence/TASK-047/model-r2/review.md)。发束节奏、袖体膨胀、衣料边缘和硬边赛璐璐表现继续为待修订项；灰阶不是已批准配色，模型不等于 README 预览质量
+本轮 DCC 和 GLB 数值检查、同机位观察及剩余问题见 [r3 记录](../../../../todo/evidence/TASK-047/model-r3/review.md)。脸部个性、侧后发帽切边、衣料细节和硬边赛璐璐表现继续为待修订项；灰阶不是已批准配色，模型不等于 README 预览质量
 
 DCC 检查覆盖本轮 30 FPS 关键帧与循环端点；1.5 cm 鞋底距离只作为本候选的检测阈值，不是项目长期足滑预算。实际移动速度、转向、斜坡、动画切换、碰撞与 Bevy 材质表现由真实路径单独检查，不能由贴面距离或 DCC 渲染推定

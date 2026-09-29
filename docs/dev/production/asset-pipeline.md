@@ -77,7 +77,9 @@ Logo 的 `205×205` 预览来自 `512×512` 图按 `0.4` 缩放的历史工具�
 
 Blender 源工程进入 `source-assets/`，运行交付仍使用项目已支持的 GLB。面数、贴图密度、碰撞代理和 LOD 依据[美术](art-direction.md)及实际镜头预算确定。绑定后的角色调整变换时，应同时核对 bind pose、inverse bind matrices、动画和附着点，不能沿用静态道具的批量清理方法
 
-接入首个骨骼角色时，再按真实播放路径检查 clip 名称、时长推进、关键动作和过渡帧。位移由控制器或 root motion 的一个明确责任方提交；脚接地、持物接触、攻击时机和相对速度使用适合该动作的数值条件，并配合连续录制检查。当前没有骨骼动画资产，不预建动作生成服务或声明已通过此类检查
+当前 [CHR-001 灰阶技术候选](../../../source-assets/characters/CHR-001/model/README.md)已包含32关节与 `Idle`／`Walk`／`Run`，通过显式 `--character-preview` 接入真实人物入口；源文件与运行 GLB 由 `tools/validate_character.py` 及模型自身检查程序核对，实际播放使用 `game/capture/walk-character.json` 检查时长推进、暂停与动作切换。候选仍在造型迭代，技术接入不等于人物美术验收
+
+位移由控制器或 root motion 的一个明确责任方提交；现有候选采用 in-place，世界位移由人物控制器负责。脚接地、持物接触、攻击时机和相对速度按实际动作检查，并配合连续录制；尚未制作的动作保持未验证，不由基础走跑结果推定
 
 工具选择、适用条件与保留来源见[资产工具取舍](../decisions/asset-tools.md)
 

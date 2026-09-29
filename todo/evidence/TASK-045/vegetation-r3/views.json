@@ -1,0 +1,90 @@
+{
+  "before": [
+    {
+      "file": "output/assets/task045-vegetation-r3/before/bark-detail.png",
+      "sha256": "fb8beae5c7febf49517f90a4263d8fe1a027f5ba2f1412476f8c4f88d146e3fb",
+      "bytes": 582877
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/before/tree-0.png",
+      "sha256": "cc5a484fa32b2c281f1ee5ee5ce17c8e83f00cae54bb6cf929af5a2072d7b82d",
+      "bytes": 790708
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/before/tree-1.png",
+      "sha256": "1bbefe9e29599b249322a950e51f1f228d0eb12551e4fa5ea52dc7a04fca3f36",
+      "bytes": 780586
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/before/tree-2.png",
+      "sha256": "f895a0e620801ed16fac5f2a567f5438ecbe90a23df8d40c7018beb396214dba",
+      "bytes": 772776
+    }
+  ],
+  "iteration1": [
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration1/bark-detail.png",
+      "sha256": "bc9af95cfb15d04a9e98f53feaafc9dd56f4b4af9770c07a53b307a52663f46b",
+      "bytes": 581660
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration1/tree-0.png",
+      "sha256": "d052f0b4084c690a682670076b5ded1d34dab20f0d21a8abcd57b42de1a6a1f7",
+      "bytes": 783555
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration1/tree-1.png",
+      "sha256": "6c400d4aaf54938cddf97a69d41ca08c219a87c85423bab85cae460db77d1593",
+      "bytes": 772374
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration1/tree-2.png",
+      "sha256": "4c517462bb842daba82186c5e265f306749984a263549db92d14f2959174c397",
+      "bytes": 746200
+    }
+  ],
+  "iteration2": [
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration2/bark-detail.png",
+      "sha256": "d8d4a1f65e752a9b23485df0bec50de4542fc75f829f9b4dcc118e112ea92614",
+      "bytes": 582906
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration2/tree-0.png",
+      "sha256": "5da519eef54a662e51aedd3db8df9a139ab8993212629e62085befcf3247fcb4",
+      "bytes": 782765
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration2/tree-1.png",
+      "sha256": "809341454467f792b59a21ef46369fbf3e3e25b11dfc90574c16d2d9bcda5395",
+      "bytes": 772516
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/iteration2/tree-2.png",
+      "sha256": "991912ac3d188f934f376e18266ec9adb2446d3ac036ed62df7db7def4b05096",
+      "bytes": 745149
+    }
+  ],
+  "after": [
+    {
+      "file": "output/assets/task045-vegetation-r3/after/bark-detail.png",
+      "sha256": "595be71197c1fa7067a4a78170490529c729b76ba94e3ca08c8789ac061b48fb",
+      "bytes": 583093
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/after/tree-0.png",
+      "sha256": "40c7f8c5966c2168f115d83ef016c9515ad871512f2daf3efef58660f7ef9226",
+      "bytes": 782802
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/after/tree-1.png",
+      "sha256": "eb7dd7a2a04b70cc691053f06393345dbeb5a291512e09482836bb036376371a",
+      "bytes": 768074
+    },
+    {
+      "file": "output/assets/task045-vegetation-r3/after/tree-2.png",
+      "sha256": "4f88e019884eef6d1125e38fc5e725b4e3df56e1436b6fbffa26f9e9566d49c4",
+      "bytes": 746164
+    }
+  ]
+}

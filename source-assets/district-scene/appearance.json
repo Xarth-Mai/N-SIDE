@@ -121,14 +121,14 @@
         1,
         1
       ],
-      "roughness": 0.85,
+      "roughness": 0.98,
       "metallic": 0,
       "tile_meters": [
-        1,
-        1
+        2.1,
+        2.1
       ],
-      "color_texture": null,
-      "normal_texture": null
+      "color_texture": "environment/materials/ground-color.dds",
+      "normal_texture": "environment/materials/ground-normal.dds"
     },
     "water": {
       "color": [

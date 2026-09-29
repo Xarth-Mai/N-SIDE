@@ -57,18 +57,21 @@ def leaf(base, direction, length):
         sideways = Vector((1, 0, 0))
     sideways.normalize()
     normal = sideways.cross(direction).normalized()
+    # Leaves rotate around each petiole instead of forming horizontal shelves
+    roll = RNG.uniform(-1.15, 1.15)
+    sideways = sideways * math.cos(roll) + normal * math.sin(roll)
+    normal = sideways.cross(direction).normalized()
     width = length * RNG.uniform(0.27, 0.39)
     start = len(VERTS)
     outline = [(0, 0), (0.23, 0.66), (0.51, 1), (0.79, 0.70),
                (1, 0), (0.79, -0.70), (0.51, -1), (0.23, -0.66)]
     for along, across in outline:
         VERTS.append(tuple(base + direction * length * along + sideways * width * across
-                           - normal * length * 0.07 * along * along))
-    VERTS.append(tuple(base + direction * length * 0.48 + normal * length * 0.045))
+                           - normal * length * (0.07 * along * along + 0.045 * abs(across))))
     slot = RNG.choices([1, 2, 3, 4], [41, 31, 22, 6])[0]
-    leaf_uv = [(0.5 + across * 0.5, along) for along, across in outline] + [(0.5, 0.48)]
-    for index in range(8):
-        indices = [index, (index + 1) % 8, 8]
+    leaf_uv = [(0.5 + across * 0.5, along) for along, across in outline]
+    for index in range(1, 7):
+        indices = [0, index, index + 1]
         face(tuple(start + i for i in indices), slot, True, [leaf_uv[i] for i in indices])
 
 
@@ -90,19 +93,20 @@ for index, endpoint in enumerate(BOUGHS):
     for twig in range(11):
         angle = twig * 2.39996 + index * 0.7
         radial = RNG.uniform(0.32, 0.78)
-        tip = end + Vector((math.cos(angle) * radial, math.sin(angle) * radial,
-                            RNG.uniform(-0.65, 0.50)))
-        base = middle.lerp(end, RNG.uniform(0.46, 0.94))
+        reach = 0.20 + 0.90 * (twig / 10) ** 0.65
+        tip = middle.lerp(end, reach) + Vector((
+            math.cos(angle) * radial, math.sin(angle) * radial, RNG.uniform(-0.43, 0.65)))
+        base = middle.lerp(end, RNG.uniform(0.03, max(0.04, reach - 0.22)))
         bend = base.lerp(tip, 0.55) + Vector((0, 0, 0.08))
         branch([base, bend, tip], [0.014, 0.009, 0.0035], 4)
         along = (tip - base).normalized()
         side = Vector((-along.y, along.x, 0)).normalized()
-        for pair in range(4):
-            for sign in [-1, 1]:
-                position = bend.lerp(tip, 0.03 + pair * 0.22 + (sign + 1) * 0.025)
-                direction = along * RNG.uniform(0.20, 0.65) + side * sign + Vector((0, 0, RNG.uniform(-0.16, 0.65)))
-                leaf(position, direction, RNG.uniform(0.28, 0.40))
-        leaf(tip, along + Vector((0, 0, 0.23)), 0.31)
+        for leaf_index in range(11):
+            sign = 1 if leaf_index % 2 else -1
+            position = base.lerp(tip, 0.27 + leaf_index * 0.06)
+            direction = along * RNG.uniform(0.20, 0.65) + side * sign + Vector((0, 0, RNG.uniform(-0.60, 0.85)))
+            leaf(position, direction, RNG.uniform(0.26, 0.36))
+        leaf(tip, along + Vector((0, 0, 0.23)), 0.29)
 
 bottom = min(p[2] for p in VERTS)
 height = max(p[2] for p in VERTS) - bottom

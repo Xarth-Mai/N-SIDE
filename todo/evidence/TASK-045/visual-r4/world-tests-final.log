@@ -1,0 +1,61 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 31.13s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 42 tests
+[collision/exact-skin-tangent] CollisionHit { fraction: 0.026022606, normal: Vec3(-0.9999909, -0.0, -0.0042806496), point: Vec3(6.765127e-6, 0.6199957, 0.026663562), surface_normal: Vec3(1.0, 0.0, 0.0), source: "/buildings/0 (wall)", triangle: 1 }
+test world::collision::tests::support_uses_step_and_slope_triangles_and_preserves_sources ... ok
+test world::collision::tests::capsule_and_camera_sweep_stop_at_thin_wall_at_high_speed ... ok
+test world::assets::tests::model_preflight_and_context_preserve_material_slots ... ok
+test world::geometry::tests::bridge_rails_open_at_grade_and_keep_protection_above_lower_roads ... ok
+test world::geometry::tests::concave_roofs_keep_holes_and_face_up ... ok
+test world::assets::tests::appearance_rejects_invalid_paths_values_and_bindings ... ok
+test world::geometry::tests::clipped_terrain_keeps_continuous_normals_without_moving_the_surface ... ok
+test world::geometry::tests::road_retaining_faces_show_the_exposed_side_for_cuts_and_fills ... ok
+test world::geometry::tests::terrain_projection_keeps_shared_charts_on_both_face_directions ... ok
+test world::geometry::tests::terrain_tint_is_continuous_and_preserves_surface_data ... ok
+test world::geometry::tests::walls_split_where_ground_crosses_road_height ... ok
+test world::map::tests::real_map_and_axis_contract ... ok
+test world::geometry::tests::road_walls_follow_exposed_ground_and_real_neighbor_levels ... ok
+test world::assets::tests::loaded_parent_waits_for_real_png_dependency_and_reports_failures ... ok
+26m drain actual terrain range=[14.35830648330059, 14.47969857069545]
+authored fixtures rendered=17
+test world::geometry::tests::authored_fixtures_render_supported_objects_and_graded_drains ... ok
+test world::scene::tests::lifecycle_clear_removes_map_roots_and_descendants_only ... ok
+test world::geometry::tests::platform_bearings_are_real_and_road_clearance_uses_local_height ... ok
+test world::geometry::tests::platform_columns_leave_the_campus_public_approach_clear ... ok
+test world::scene::tests::shop_canopies_keep_slope_depth_headroom_and_metre_uvs ... ok
+test world::scene::tests::lifecycle_failure_is_reported_without_exiting_the_host ... ok
+test world::scene::tests::lifecycle_waits_for_a_scene_and_starts_each_scene_once ... ok
+test world::scene::tests::displays_stay_on_ground_floor_front_windows ... ok
+building facade coverage: buildings=224 types=15 unique doorways=342 lightwells=5
+test world::scene::tests::all_authored_facades_cover_entries_courts_and_keep_roofs_clear ... ok
+test world::scene::tests::business_signs_keep_source_aspect_arrival_direction_and_openings ... ok
+test world::scene::tests::star_screens_have_correct_public_facing_and_roof_supports ... ok
+test world::visual::tests::daylight_input_rejects_invalid_render_parameters ... ok
+test world::visual::tests::directional_sky_is_continuous_and_uses_the_scene_sun ... ok
+public facade skins: 4 buildings, 378 attached boxes, 4536 collision triangles
+test world::scene::tests::public_building_skins_stay_attached_and_clear_of_windows_and_entries ... ok
+test world::map::tests::bearing_edges_require_existing_unique_structural_anchors ... ok
+test world::scene::tests::sample_frames_leave_recessed_displays_and_doorways_clear ... ok
+test world::visual::tests::camera_aa_modes_use_compatible_prepasses_and_matching_sky ... ok
+shop street displays: 2 supported racks, 52 boxes, 624 collision triangles
+test world::scene::tests::shop_street_displays_are_supported_and_keep_public_clearance ... ok
+residential facades: 10 buildings, 1415 boxes, 16980 collision triangles
+test world::scene::tests::residential_details_keep_headroom_entries_shells_and_collision ... ok
+test world::map::tests::errors_locate_source_and_refuse_invalid_core_data ... ok
+test world::scene::tests::slope_and_neighbour_occlusion_remove_windows_without_hiding_entries ... ok
+vegetation additions=152 added={"flowers": 36, "grass": 22, "rock": 22, "tree_autumn": 6, "tree_pine": 66} parks=57 trails_or_uphill=95 model counts={"flowers": 36, "grass": 22, "rock": 22, "shrub": 7, "streetlight": 32, "tree_a": 16, "tree_autumn": 11, "tree_b": 21, "tree_pine": 96}
+test world::scene::tests::vegetation_uses_real_assets_and_keeps_public_space_clear ... ok
+test world::geometry::tests::shop_paving_walls_do_not_retain_earth_removed_by_neighboring_paving ... ok
+test world::geometry::tests::park_ground_keeps_its_authored_paved_garden_paths ... ok
+[collision/probe] triangles=104555 source_ranges=2465 mesh_bytes=16471704 bounds=(Vec3(-820.0, -2.0, -2040.0), Vec3(1320.0, 450.025, 580.0)) geometry=11.63458647s bvh=40.897282ms support_1000=623.81µs support=CollisionHit { fraction: 0.5, normal: Vec3(-0.0, 1.0, 0.0), point: Vec3(90.0, 28.0, -255.0), surface_normal: Vec3(-0.0, 1.0, 0.0), source: "/surfaces/0 (shop-site)", triangle: 19903 } doorstep=CollisionHit { fraction: 0.27089873, normal: Vec3(0.45795035, 0.8889779, -4.3414107e-6), point: Vec3(88.49994, 28.035032, -255.0), surface_normal: Vec3(0.99999994, -0.0, 0.0), source: "/architectures/0 (P3-A1)/fixtures/5 (门前截水沟)", triangle: 103394 } wall=CollisionHit { fraction: 0.33600006, normal: Vec3(1.0, -3.8708018e-5, 3.0293231e-5), point: Vec3(88.0, 29.600082, -251.99985), surface_normal: Vec3(-1.0, 0.0, 0.0), source: "/buildings/1 (V-04)/design/floors/0/rooms/3/walls", triangle: 16329 }
+test world::collision::tests::real_shop_structure_has_mesh_support_and_closed_wall ... ok
+terrain controls preserved=8584 rendered_height_range=[1.8369863, 449.91873]
+terrain triangles=16130 minimum_uv_area_ratio=0.5868630942989362
+test world::geometry::tests::real_map_generates_finite_geometry_without_raising_ground_to_roof ... ok
+shop shell: /buildings/1 (V-04)/foundation maximum=28 floor=28; facade intrusions=0 examples=[]
+test world::scene::tests::shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms ... ok
+test world::geometry::tests::shop_public_rooms_share_rendered_doors_support_and_private_boundaries ... ok
+
+test result: ok. 42 passed; 0 failed; 0 ignored; 0 measured; 79 filtered out; finished in 12.75s

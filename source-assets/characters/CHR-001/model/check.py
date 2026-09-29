@@ -64,6 +64,6 @@ for name in ('Mouth', 'Nose', 'Eye_White.L', 'Eye_White.R', 'Eye_Glint.L', 'Eye_
     if name.startswith('Eye_'):
         assert min(gaps) > 0, f'{name}: eye patch crosses face surface'
     feature_gaps[name] = {'minimum_m': min(gaps), 'maximum_m': max(gaps)}
-report = {'status':'PASS','asset':'CHR-001 modelling candidate r2','scope':'DCC joint transforms, loop endpoints, sole ground distance and seated facial feature vertices; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps}
+report = {'status':'PASS','asset':'CHR-001 modelling candidate r3','scope':'DCC joint transforms, loop endpoints, sole ground distance and seated facial feature vertices; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps}
 print(json.dumps(report,indent=2))
-(root/'todo/evidence/TASK-047/model-r2/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
+(root/'todo/evidence/TASK-047/model-r3/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')

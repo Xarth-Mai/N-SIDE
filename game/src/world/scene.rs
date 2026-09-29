@@ -784,7 +784,16 @@ fn window_exposed(
 fn residential_sample(id: &str) -> bool {
     matches!(
         id,
-        "V-A08" | "V-A09" | "V-A13" | "V-A14" | "V-W08" | "V-13" | "V-A15" | "V-A16"
+        "V-04"
+            | "V-A07"
+            | "V-A08"
+            | "V-A09"
+            | "V-A13"
+            | "V-A14"
+            | "V-W08"
+            | "V-13"
+            | "V-A15"
+            | "V-A16"
     )
 }
 
@@ -807,6 +816,9 @@ fn add_residential_window(
             rotation,
         )
     };
+    // The sliding-frame mullions sit in front of the existing glass pane
+    piece("trim", 0., 1.65, 0.25, Vec3::new(0.055, 1.62, 0.055))?;
+    piece("trim", 0., 1.94, 0.25, Vec3::new(width, 0.045, 0.055))?;
     // A projecting sill and drip hood surround the existing upper-storey window
     piece(
         "concrete",
@@ -830,7 +842,8 @@ fn add_residential_window(
             0.06,
             Vec3::new(width + 0.16, 0.48, 0.08),
         )?;
-    } else if bay.is_multiple_of(2) {
+    }
+    if bay.is_multiple_of(2) {
         // Window guards, not accessible balconies: the source has no balcony doors
         let rail_width = width + 0.28;
         for height in [0.80, 1.32] {
@@ -879,6 +892,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
         let mut batches = BTreeMap::new();
         let mut skin = BTreeMap::new();
         let mut residential = BTreeMap::new();
+        let mut rainwater = BTreeMap::new();
         let mut street_display = BTreeMap::new();
         let top = building.elevation + building.height;
         // Keep deep sills and bands outside the shell of the publicly enterable shop
@@ -1180,6 +1194,55 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         )?;
                     }
                 }
+                if residential_face {
+                    // Roof-edge collection and corner downpipes leave the window bays clear
+                    let outward = map_to_world([normal[0], normal[1], 0.]);
+                    add_box(
+                        &mut rainwater,
+                        "metal",
+                        map_to_world([(a[0] + b[0]) / 2., (a[1] + b[1]) / 2., top - 0.35])
+                            + outward * 0.13,
+                        Vec3::new((length - 0.64) as f32, 0.14, 0.16),
+                        rotation,
+                    )?;
+                    for distance in [0.42, length - 0.42] {
+                        let t = distance / length;
+                        let foot = [a[0] + dx * t, a[1] + dy * t];
+                        let outer = [foot[0] + normal[0] * 0.20, foot[1] + normal[1] * 0.20];
+                        let bottom = ground.height(outer).max(building.elevation) + 0.06;
+                        if top - 0.40 <= bottom
+                            || design.entries.iter().any(|entry| {
+                                let p = map.nodes[&entry.node];
+                                on_edge([p[0], p[1]])
+                                    && (p[0] - foot[0]).hypot(p[1] - foot[1])
+                                        < f64::from(entry_opening(&design.kind, &entry.role).x) / 2.
+                                            + 0.25
+                            })
+                        {
+                            continue;
+                        }
+                        add_box(
+                            &mut rainwater,
+                            "metal",
+                            map_to_world([foot[0], foot[1], (bottom + top - 0.40) / 2.])
+                                + outward * 0.115,
+                            Vec3::new(0.075, (top - 0.40 - bottom) as f32, 0.10),
+                            rotation,
+                        )?;
+                        for floor in &design.floors {
+                            if floor.z + 0.30 > bottom {
+                                add_box(
+                                    &mut rainwater,
+                                    "metal",
+                                    map_to_world([foot[0], foot[1], floor.z + 0.30])
+                                        + outward * 0.09,
+                                    Vec3::new(0.13, 0.035, 0.16),
+                                    rotation,
+                                )?;
+                            }
+                        }
+                    }
+                }
                 // Roof-access nodes describe a route onto a roof, not a door floating above it
                 for (_, entry) in design.entries.iter().enumerate().filter(|(i, e)| {
                     !court
@@ -1453,6 +1516,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
             ("derived-facade", batches),
             ("derived-facade/skin", skin),
             ("derived-facade/residential", residential),
+            ("derived-facade/rainwater", rainwater),
             ("derived-facade/street-display", street_display),
         ] {
             for (material, mesh) in batches {
@@ -2897,11 +2961,20 @@ mod tests {
         let mut boxes = 0;
         for building in &map.buildings {
             let source = format!("buildings[{}]/derived-facade/residential", building.id);
-            let details: Vec<_> = parts.iter().filter(|p| p.source == source).collect();
+            let rainwater = format!("buildings[{}]/derived-facade/rainwater", building.id);
+            let details: Vec<_> = parts
+                .iter()
+                .filter(|p| p.source == source || p.source == rainwater)
+                .collect();
             if details.is_empty() {
                 continue;
             }
             assert!(residential_sample(&building.id));
+            assert_eq!(details.iter().filter(|p| p.source == rainwater).count(), 1);
+            assert!(
+                details.len() <= 6,
+                "residential details exceed six material batches"
+            );
             covered.insert(building.id.as_str());
             let design = building.design.as_ref().unwrap();
             let glass: Vec<_> = parts
@@ -2951,10 +3024,17 @@ mod tests {
                             !contains(p, &building.polygon),
                             "{source}: inside authored shell"
                         );
-                        assert!(
-                            f64::from(lo.y) - ground.height(p) >= 2.5,
-                            "{source}: headroom under 2.5m"
-                        );
+                        if part.source == rainwater {
+                            assert!(
+                                f64::from(lo.y) >= ground.height(p),
+                                "{rainwater}: buried pipe"
+                            );
+                        } else {
+                            assert!(
+                                f64::from(lo.y) - ground.height(p) >= 2.5,
+                                "{source}: headroom under 2.5m"
+                            );
+                        }
                         assert!(
                             !map.buildings.iter().any(|other| other.id != building.id
                                 && contains(p, &other.polygon)
@@ -2975,7 +3055,8 @@ mod tests {
                             let normal = Vec2::new(-tangent.y, tangent.x);
                             cube.iter().all(|p| {
                                 let offset = Vec2::new(p[0], p[2]) - a;
-                                offset.dot(normal).abs() < 0.61
+                                let depth = if part.source == rainwater { 0.22 } else { 0.61 };
+                                offset.dot(normal).abs() < depth
                                     && offset.dot(tangent) >= 0.
                                     && offset.dot(tangent) <= (b - a).length()
                             })
@@ -3007,12 +3088,16 @@ mod tests {
         assert_eq!(
             covered,
             BTreeSet::from([
-                "V-A08", "V-A09", "V-A13", "V-A14", "V-W08", "V-13", "V-A15", "V-A16"
+                "V-04", "V-A07", "V-A08", "V-A09", "V-A13", "V-A14", "V-W08", "V-13", "V-A15",
+                "V-A16"
             ])
         );
         let residential: Vec<_> = parts
             .into_iter()
-            .filter(|p| p.source.ends_with("/derived-facade/residential"))
+            .filter(|p| {
+                p.source.ends_with("/derived-facade/residential")
+                    || p.source.ends_with("/derived-facade/rainwater")
+            })
             .collect();
         let collision = super::super::collision::CollisionWorld::from_parts(&residential).unwrap();
         assert_eq!(collision.triangle_count(), boxes * 12);

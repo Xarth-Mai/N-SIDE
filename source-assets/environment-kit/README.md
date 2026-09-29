@@ -83,6 +83,8 @@ bun tools/export-environment.ts --check
 
 新增 ambientCG [Plaster001](https://ambientcg.com/view?id=Plaster001) 和 [WoodSiding009](https://ambientcg.com/view?id=WoodSiding009) 的 Color / NormalGL，按[官方 CC0 许可](https://docs.ambientcg.com/license/)使用。此次完整取得 1K-JPG ZIP，核对 ZIP CRC 与每个原件 SHA-256；整包 SHA、文件 SHA、尺寸、来源与获取日期记录于现有 asset-manifest.json，不沿用早期分段下载的完整包哈希缺失说明
 
+林缘坡地使用 ambientCG [Ground037](https://ambientcg.com/view?id=Ground037) 的原始 1K-JPG Color／NormalGL，稀疏苔草与裸土共同形成地表，按官方约 2.1×2.1m 周期导出 DDS。完整 ZIP 的 CRC 与原件 SHA 已核对，来源、许可、尺寸与获取日期保存在同一清单；颜色和法线分别按 sRGB 与线性数据加载。地形位置与法线保留，UV 按三角面的主轴投影到世界米制平面，避免顶视投影在陡坡压缩成条纹；同主轴共享坐标，主轴切换处有纹理方向边界，不是无缝三向混合。固定世界坐标色斑及坡度调色补充远景层次；这是共用苔土地表，不代表独立裸岩材质或植被模型已覆盖所有山坡，平铺重复与投影交界通过真实近景检查
+
 Plaster001 供米白与青灰外墙使用；WoodSiding009 供样板店外侧木饰板使用。源图分别为 1024×1024 与 1024×512，运行 DDS 保留原尺寸和完整 mip 链。当前以 2×2m 和 2×1m 作为视觉试排周期，官网没有提供米制覆盖范围；比例需在真实街景与近处镜头校准
 
 ## 原创街树样板

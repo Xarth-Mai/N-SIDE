@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "asset": "CHR-001 modelling candidate r3",
+  "scope": "DCC joint transforms, loop endpoints, sole ground distance and seated facial feature vertices; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 61,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.983777360389468e-09,
+      "max_stance_height_error_m": 0.001999971689656377
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 31,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.214263485546326e-08,
+      "max_stance_height_error_m": 9.214263485546326e-08
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 21,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.0573883457709599e-07,
+      "max_stance_height_error_m": 1.068477573085147e-07
+    }
+  ],
+  "facial_surface_gaps": {
+    "Mouth": {
+      "minimum_m": 0.0002738088369369507,
+      "maximum_m": 0.0010731592774391174
+    },
+    "Nose": {
+      "minimum_m": 0.0002771914005279541,
+      "maximum_m": 0.00471082329750061
+    },
+    "Eye_White.L": {
+      "minimum_m": 0.0006172657012939453,
+      "maximum_m": 0.0009006187319755554
+    },
+    "Eye_White.R": {
+      "minimum_m": 0.0006172060966491699,
+      "maximum_m": 0.0009001791477203369
+    },
+    "Eye_Glint.L": {
+      "minimum_m": 0.0018998831510543823,
+      "maximum_m": 0.0019001811742782593
+    },
+    "Eye_Glint.R": {
+      "minimum_m": 0.0018963664770126343,
+      "maximum_m": 0.00190030038356781
+    }
+  }
+}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+
+Blender quit

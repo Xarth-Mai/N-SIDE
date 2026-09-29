@@ -22,6 +22,38 @@ pub struct GeometryPart {
     pub mesh: Mesh,
 }
 
+// Dominant-axis charts cap projected area compression at sqrt(3), including near-vertical cuts
+fn ground_uvs(points: [[f32; 3]; 3]) -> [[f32; 2]; 3] {
+    let [a, b, c] = points.map(Vec3::from);
+    let n = (b - a).cross(c - a).abs();
+    points.map(|p| {
+        if n.y >= n.x && n.y >= n.z {
+            [p[0], -p[2]]
+        } else if n.x >= n.z {
+            [p[2], p[1]]
+        } else {
+            [p[0], p[1]]
+        }
+    })
+}
+
+// Fixed world-space patches keep clipped road/plot boundaries continuous
+fn ground_patch(x: f32, z: f32) -> f32 {
+    let [ix, iz] = [x.floor() as i32, z.floor() as i32];
+    let blend = |v: f32| v * v * (3.0 - 2.0 * v);
+    let [u, v] = [blend(x - x.floor()), blend(z - z.floor())];
+    let value = |x: i32, z: i32| {
+        let mut h = (x as u32).wrapping_mul(374_761_393)
+            ^ (z as u32).wrapping_mul(668_265_263)
+            ^ 0x9e37_79b9;
+        h = (h ^ (h >> 13)).wrapping_mul(1_274_126_177);
+        (h ^ (h >> 16)) as f32 / u32::MAX as f32
+    };
+    let a = value(ix, iz) * (1.0 - u) + value(ix + 1, iz) * u;
+    let b = value(ix, iz + 1) * (1.0 - u) + value(ix + 1, iz + 1) * u;
+    a * (1.0 - v) + b * v
+}
+
 fn color_ground(part: &mut GeometryPart, height_range: [f32; 2]) -> Result<(), String> {
     let positions = part
         .mesh
@@ -57,15 +89,17 @@ fn color_ground(part: &mut GeometryPart, height_range: [f32; 2]) -> Result<(), S
                 .clamp(0.0, 1.0);
             let height = height * height * (3.0 - 2.0 * height);
             let slope = (1.0 - normal[1] * normal[1]).max(0.0).sqrt();
-            let soil = ((slope - 0.12) / 0.5).clamp(0.0, 1.0);
-            let soil = soil * soil * (3.0 - 2.0 * soil) * 0.72;
-            // Continuous vegetation and exposed-earth tones, with physical heights unchanged
-            let low_grass = [0.56, 0.63, 0.44];
-            let high_grass = [0.39, 0.50, 0.36];
-            let earth = [0.53, 0.47, 0.37];
+            let soil = ((slope - 0.34) / 0.43).clamp(0.0, 1.0);
+            let soil = soil * soil * (3.0 - 2.0 * soil);
+            let patch = ground_patch(p[0] / 180.0, p[2] / 180.0) * 0.75
+                + ground_patch(p[0] / 75.0 + 19.0, p[2] / 75.0 - 7.0) * 0.25;
+            // Patches modulate the shared albedo; slopes expose soil without moving the surface
+            let low_grass = [0.84, 0.91, 0.74];
+            let high_grass = [0.74, 0.85, 0.67];
+            let earth = [1.0, 0.93, 0.83];
             let rgb: [f32; 3] = std::array::from_fn(|i| {
                 let grass = low_grass[i] + (high_grass[i] - low_grass[i]) * height;
-                grass + (earth[i] - grass) * soil
+                (grass + (earth[i] - grass) * soil) * (0.90 + 0.10 * patch)
             });
             let color = Color::srgb(rgb[0], rgb[1], rgb[2]).to_linear();
             [color.red, color.green, color.blue, 1.0]
@@ -528,9 +562,18 @@ impl MeshData {
         }
     }
 
-    fn finish(self, source: String, material: &str, result: &mut Vec<GeometryPart>) {
+    fn finish(mut self, source: String, material: &str, result: &mut Vec<GeometryPart>) {
         if self.positions.is_empty() {
             return;
+        }
+        if material == "terrain" {
+            self.uvs = self
+                .positions
+                .as_chunks::<3>()
+                .0
+                .iter()
+                .flat_map(|p| ground_uvs(*p))
+                .collect();
         }
         let mesh = Mesh::new(
             PrimitiveTopology::TriangleList,
@@ -2304,6 +2347,130 @@ mod tests {
     }
 
     #[test]
+    fn terrain_projection_keeps_shared_charts_on_both_face_directions() {
+        for points in [
+            [[-10.0, 3.0, -20.0], [-4.0, 3.0, -20.0], [-10.0, 3.0, -28.0]],
+            [
+                [-10.0, 3.0, -20.0],
+                [-10.0, 9.0, -20.0],
+                [-10.0, 3.0, -28.0],
+            ],
+            [
+                [-10.0, 3.0, -20.0],
+                [-4.0, 3.0, -20.0],
+                [-10.0, 11.0, -20.0],
+            ],
+        ] {
+            let uv = ground_uvs(points);
+            let reversed = ground_uvs([points[0], points[2], points[1]]);
+            assert_eq!(uv, [reversed[0], reversed[2], reversed[1]]);
+            let fourth =
+                (Vec3::from(points[1]) + Vec3::from(points[2]) - Vec3::from(points[0])).to_array();
+            let adjacent = ground_uvs([points[1], fourth, points[2]]);
+            assert_eq!(uv[1], adjacent[0], "shared chart vertex remains continuous");
+            assert_eq!(uv[2], adjacent[2], "shared chart edge remains continuous");
+            for i in 1..3 {
+                assert!(
+                    (Vec2::from(uv[i]).distance(Vec2::from(uv[0]))
+                        - Vec3::from(points[i]).distance(Vec3::from(points[0])))
+                    .abs()
+                        < 0.00001,
+                    "axis-aligned cut keeps metre scale"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn terrain_tint_is_continuous_and_preserves_surface_data() {
+        let positions = vec![
+            [-180.001, 28.0, -180.0],
+            [-179.999, 28.0, -180.0],
+            [-180.001, 28.0, -180.0],
+            [0.0, 28.0, 0.0],
+            [180.0, 28.0, 180.0],
+            [0.0, 28.0, 0.0],
+        ];
+        let mut normals = vec![Vec3::Y.to_array(); positions.len()];
+        normals[5] = Vec3::new(3.0_f32.sqrt() / 2.0, 0.5, 0.0).to_array();
+        let uvs: Vec<_> = positions.iter().map(|p| [p[0], -p[2]]).collect();
+        let indices = vec![0, 1, 2, 3, 4, 5];
+        let mut part = GeometryPart {
+            source: "/terrain".into(),
+            material: "terrain".into(),
+            mesh: Mesh::new(
+                PrimitiveTopology::TriangleList,
+                RenderAssetUsages::default(),
+            )
+            .with_inserted_attribute(Mesh::ATTRIBUTE_POSITION, positions.clone())
+            .with_inserted_attribute(Mesh::ATTRIBUTE_NORMAL, normals.clone())
+            .with_inserted_attribute(Mesh::ATTRIBUTE_UV_0, uvs.clone())
+            .with_inserted_indices(Indices::U32(indices.clone())),
+        };
+        color_ground(&mut part, [0.0, 450.0]).unwrap();
+        assert_eq!(
+            part.mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap(),
+            positions
+        );
+        assert_eq!(
+            part.mesh
+                .attribute(Mesh::ATTRIBUTE_NORMAL)
+                .unwrap()
+                .as_float3()
+                .unwrap(),
+            normals
+        );
+        let bevy::mesh::VertexAttributeValues::Float32x2(actual_uvs) =
+            part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+        else {
+            panic!("terrain UV format")
+        };
+        assert_eq!(actual_uvs, &uvs);
+        assert_eq!(
+            part.mesh.indices().unwrap().iter().collect::<Vec<_>>(),
+            indices.iter().map(|i| *i as usize).collect::<Vec<_>>()
+        );
+        let bevy::mesh::VertexAttributeValues::Float32x4(colors) =
+            part.mesh.attribute(Mesh::ATTRIBUTE_COLOR).unwrap()
+        else {
+            panic!("terrain color format")
+        };
+        assert_eq!(
+            colors[0], colors[2],
+            "same world point has no clipping seam"
+        );
+        assert!(
+            colors[0]
+                .iter()
+                .zip(colors[1])
+                .all(|(a, b)| (*a - b).abs() < 0.00001),
+            "negative coordinate cell boundary stays continuous"
+        );
+        assert_ne!(
+            colors[3], colors[4],
+            "flat ground retains large-scale patches"
+        );
+        assert!(
+            colors[3][1] > colors[3][0],
+            "flat ground keeps vegetation tint"
+        );
+        assert!(
+            colors[5][0] > colors[5][1],
+            "steep slope exposes warmer soil tint"
+        );
+        assert!(
+            colors
+                .iter()
+                .flatten()
+                .all(|v| v.is_finite() && (0.0..=1.0).contains(v))
+        );
+    }
+
+    #[test]
     fn concave_roofs_keep_holes_and_face_up() {
         let exterior = polygon(&[
             [0.0, 0.0],
@@ -2609,6 +2776,36 @@ mod tests {
                 "{}",
                 part.source
             );
+            if part.material == "terrain" {
+                let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
+                    part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+                else {
+                    panic!("terrain UV format")
+                };
+                let indices = part
+                    .mesh
+                    .indices()
+                    .map(|indices| indices.iter().collect::<Vec<_>>())
+                    .unwrap_or_else(|| (0..positions.len()).collect());
+                let mut minimum = f64::INFINITY;
+                for triangle in indices.as_chunks::<3>().0 {
+                    let [a, b, c] = triangle.map(|i| Vec3::from(positions[i]).as_dvec3());
+                    let [u, v, w] = triangle.map(|i| Vec2::from(uvs[i]).as_dvec2());
+                    let ratio = (v - u).perp_dot(w - u).abs() / (b - a).cross(c - a).length();
+                    assert!(
+                        ratio.is_finite() && ratio >= 1.0 / 3.0_f64.sqrt() - 0.000001,
+                        "{}: UV area compression {ratio} is below dominant-axis bound",
+                        part.source
+                    );
+                    minimum = minimum.min(ratio);
+                }
+                if part.source == "/terrain" {
+                    eprintln!(
+                        "terrain triangles={} minimum_uv_area_ratio={minimum}",
+                        indices.len() / 3
+                    );
+                }
+            }
         }
     }
 }
