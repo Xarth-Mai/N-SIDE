@@ -1,0 +1,55 @@
+{
+  "status": "technical-candidate",
+  "master_export_byte_identical": true,
+  "files": {
+    "source-assets/characters/CHR-001/model/build.py": {
+      "sha256": "bd024fc8b087c3c1924b5afacd897a69925f5a9b2562aedfbe043ec2314f459f",
+      "bytes": 37672
+    },
+    "source-assets/characters/CHR-001/model/check.py": {
+      "sha256": "0d26d5b68f32857667babdfeebab9ba2d76b81f9b03b4b48311d771b58d471a7",
+      "bytes": 8190
+    },
+    "source-assets/characters/CHR-001/model/yao-grey-study.blend": {
+      "sha256": "298da4644c90adf0551afb7178fdee0087a5b1d7fce2339693c520a43cbdac54",
+      "bytes": 4024245
+    },
+    "game/assets/characters/CHR-001/yao-grey-study.glb": {
+      "sha256": "5063920196cb1476e080f7d8acd6f8d16f0e55ab3cbfc94c30da9c1ad368a108",
+      "bytes": 1418536
+    },
+    "source-assets/characters/CHR-001/model/grey-study.png": {
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+      "bytes": 25965
+    }
+  },
+  "animation_revision": "animation-r2",
+  "shape_revision": "model-r6",
+  "author_art_acceptance": "NOT RUN",
+  "revision": "model-r6",
+  "source_revision": "f93af27bfda9650ceb2687b822bda5367540ef1a",
+  "height_m": 1.7441905736923218,
+  "skinned_vertices": 20483,
+  "triangles": 38898,
+  "joints": 32,
+  "material_count": 1,
+  "embedded_images": 1,
+  "dcc_check": "PASS",
+  "glb_check": "PASS",
+  "preserved_static_contract": "PASS: preserved.json",
+  "runtime_evidence": "todo/evidence/TASK-045/visual-r7/review.md",
+  "motion_evidence": "todo/evidence/TASK-047/animation-r2",
+  "visual_acceptance": "needs_revision",
+  "author_acceptance": "NOT RUN",
+  "source_fps": 60,
+  "final_dcc_sampled_frames": 211,
+  "visuals": {
+    "status": "cleaned after actual inspection",
+    "model_author": "six final images",
+    "art_review": "six final images",
+    "root": "back, rear quarter, crown top",
+    "sha256_record": "cleanup.json"
+  },
+  "cleanup_removed_bytes": 55402993,
+  "cleanup_remaining_bytes": 734
+}

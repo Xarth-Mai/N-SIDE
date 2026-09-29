@@ -1,0 +1,5 @@
+{
+  "removed_path": "output/assets/visual-r7-baseline/project/game/assets/shaders/terrain-slope.wgsl",
+  "sha256": "792a1a7a4c139f589f15c22a85963b294f9ffe33873749ed1ad7b4db2b6c5577",
+  "reason": "First negative attempt fixture retained this untracked shader from full asset copy and correctly passed; removed only this isolated copy for the actual missing-file test; formal assets untouched"
+}

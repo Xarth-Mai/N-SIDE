@@ -1,0 +1,90 @@
+[
+  {
+    "name": "task045-cut-before-r4",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "checks": 6,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-cut-r4",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "checks": 6,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-cut-r4-taa-ssao",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "checks": 6,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-missing-slope-shader",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "checks": 6,
+    "visual_files": 97
+  },
+  {
+    "name": "task045-missing-slope-shader-2",
+    "status": "FAIL",
+    "runtime_exit_code": 1,
+    "frames": 0,
+    "checks": 6,
+    "visual_files": 0
+  },
+  {
+    "name": "task049-forest-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "checks": 6,
+    "visual_files": 97
+  },
+  {
+    "name": "task049-forest-root-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 150,
+    "checks": 6,
+    "visual_files": 157
+  },
+  {
+    "name": "task049-forest-mature-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 90,
+    "checks": 6,
+    "visual_files": 97
+  },
+  {
+    "name": "task049-forest-root-mature-r1",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 150,
+    "checks": 6,
+    "visual_files": 157
+  },
+  {
+    "name": "task047-character-r6",
+    "status": "FAIL",
+    "runtime_exit_code": 1,
+    "frames": 540,
+    "checks": 26,
+    "visual_files": 557
+  },
+  {
+    "name": "task047-character-r6-final",
+    "status": "PASS",
+    "runtime_exit_code": 0,
+    "frames": 540,
+    "checks": 26,
+    "visual_files": 558
+  }
+]

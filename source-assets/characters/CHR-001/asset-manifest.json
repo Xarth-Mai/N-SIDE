@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "76b93aefb0b3ec9360ccde21cbb7771edad4c3944ed1e2e1efd8451548201861",
-      "runtime_sha256": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f",
+      "source_sha256": "298da4644c90adf0551afb7178fdee0087a5b1d7fce2339693c520a43cbdac54",
+      "runtime_sha256": "5063920196cb1476e080f7d8acd6f8d16f0e55ab3cbfc94c30da9c1ad368a108",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -116,15 +116,15 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "r5 final DCC/GLB checks PASS after animation-r1: 211 source frames, loops, 5 mm sole limit, facial fit and subdivided hair-cap clearance; editable-master re-export byte-identical; animation-r1 owns actual trajectory and preserved-static-geometry checks; final Bevy walk-character runtime PASS: 540 frames and 26 checks, see todo/evidence/TASK-045/visual-r6/review.md",
-        "visual": "needs_revision; r5 nose/forehead, lip and jaw profiles improved, mouth projection seam corrected and rear-cap penetration removed; rear groups still read as pieces on a broad cap and facial identity needs refinement; author not accepted"
+        "technical": "r6 final DCC/GLB checks PASS: continuous rear groups, covered crown and explicit hair UV; editable-master re-export byte-identical. Animation-r2 actual 120 FPS support tracks PASS; only Run upper-body, hand and swing-foot pose changes, Idle/Walk preserved. Runtime result recorded separately in todo/evidence/TASK-045/visual-r7/review.md; final Bevy character-preview PASS: 540 frames and 26 checks",
+        "visual": "needs_revision; connected rear hair groups replace isolated pieces, Run hands face inward with torso lean and swing-foot pitch; facial identity, hair tip variation, fingers, final palette and complete motion set remain unaccepted"
       },
       "generation": {
         "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/model-r5/delivery.json"
+      "evidence": "todo/evidence/TASK-047/model-r6/delivery.json"
     }
   ],
   "uses": [

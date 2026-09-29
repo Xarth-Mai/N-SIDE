@@ -1,0 +1,64 @@
+{
+  "revision": "before",
+  "engine": "CYCLES",
+  "device": "CPU",
+  "samples": 24,
+  "resolution": [
+    720,
+    960
+  ],
+  "views": [
+    {
+      "label": "face-front",
+      "camera_position": [
+        0,
+        -4,
+        1.61
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-001/model-r6/before/face-front.png"
+    },
+    {
+      "label": "face-quarter",
+      "camera_position": [
+        3,
+        -4,
+        1.61
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-001/model-r6/before/face-quarter.png"
+    },
+    {
+      "label": "face-side",
+      "camera_position": [
+        4,
+        0,
+        1.61
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-001/model-r6/before/face-side.png"
+    },
+    {
+      "label": "head-back",
+      "camera_position": [
+        0,
+        4,
+        1.61
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/characters/CHR-001/model-r6/before/head-back.png"
+    }
+  ]
+}

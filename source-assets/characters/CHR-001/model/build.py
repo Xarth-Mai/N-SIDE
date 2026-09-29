@@ -16,7 +16,7 @@ from mathutils.bvhtree import BVHTree
 ROOT = Path(__file__).resolve().parents[4]
 SOURCE = Path(__file__).resolve().parent
 RUNTIME = ROOT / 'game/assets/characters/CHR-001'
-OUTPUT = ROOT / 'output/characters/CHR-001/model-r5'
+OUTPUT = ROOT / 'output/characters/CHR-001/model-r6'
 parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
@@ -66,7 +66,7 @@ scene.render.engine = 'CYCLES'
 scene.cycles.device = 'CPU'
 scene.cycles.samples = 24
 scene.render.threads_mode = 'FIXED'
-scene.render.threads = 4
+scene.render.threads = 2
 scene.view_settings.view_transform = 'Standard'
 scene.world.color = (0.35, 0.35, 0.35)
 
@@ -390,31 +390,50 @@ mouth=[(-.017,1.5357),(-.006,1.5362),(.006,1.5358),(.016,1.5365)]
 mouth=[(x+(nx-x)*t/4,z+(nz-z)*t/4) for (x,z),(nx,nz) in zip(mouth,mouth[1:]) for t in range(4)]+[mouth[-1]]
 # Resample the mouth onto the actual lip surface; four long chords cut behind it
 tube('Mouth',[(x,face_y(x,z,-.00065),z) for x,z in mouth],[.0003+.00035*math.sin(math.pi*i/(len(mouth)-1)) for i in range(len(mouth))],[.00035]*len(mouth),'pants','Head',sides=6)
-# An uneven hair cap and individually swept, closed-volume clumps
-cap=loft('Hair_Cap',[(0,.021,1.565,.091,.079),(0,.018,1.613,.104,.096),(0,.018,1.651,.105,.099),(0,.019,1.696,.095,.087),(0,.017,1.73,.064,.060),(0,.016,1.748,.008,.009)],'hair','Head',sides=40,subdiv=1)
-# The opaque scalp needs an open hairline, not a giant closing face cutting the head
-cap_mesh=bmesh.new();cap_mesh.from_mesh(cap.data);cap_mesh.faces.ensure_lookup_table()
-bmesh.ops.delete(cap_mesh,geom=[cap_mesh.faces[-2]],context='FACES')
-cap_mesh.to_mesh(cap.data);cap_mesh.free()
-# Follow the scalp ellipsoid above a swept hairline; raising Z alone left the
-# low rings' full depth at the crown, protruding as a band across the fringe
-for k,t in enumerate((0,.26,.50,.72,.90,.995)):
-    for i in range(41):
-        angle=i/40*math.tau
-        front=max(0,math.cos(angle))**.6
-        base=1.570+.111*front-.020*max(0,-math.cos(angle))**2-.009*front*math.sin(angle)+.010*(1-front)*math.cos(5*angle+.4)
-        z=base+(1.748-base)*t
-        radius=math.sqrt(max(0,1-((z-1.630)/.119)**2))
-        radius*=1-.10*(1-front)*(1-t)**3
-        radius*=1+.014*(1-front)*math.cos(7*angle+2*t)
-        point=Vector((.107*math.sin(angle)*radius,.018-.101*math.cos(angle)*radius,z))
-        origin=Vector((0,.018,z));direction=(point-origin).normalized()
-        hit,_,_,_=face_surface.ray_cast(origin,direction)
-        if hit is not None and (point-origin).length < (hit-origin).length+.006:
-            point=hit+direction*.006
-        cap.data.vertices[k*41+i].co=point
-assert all(cap.data.vertices[k*41+i].co.z < cap.data.vertices[(k+1)*41+i].co.z for k in range(5) for i in range(41)), 'Hair cap rings fold across the hairline'
-cap.data.update()
+# Swept group surfaces all start at the crown and overlap their neighbors.
+# The back has no smooth carrier shell with independent short islands on top.
+sectors=(0,.60,1.15,1.62,2.08,2.52,2.93,3.35,3.82,4.29,4.74,5.25,5.78,math.tau)
+levels=(0,.07,.20,.36,.53,.69,.82,.93,1)
+cap_vertices,cap_faces,cap_uv=[],[],[]
+for group,(left,right) in enumerate(zip(sectors,sectors[1:])):
+    centre=(left+right)/2
+    front=max(0,math.cos(centre))**.6
+    back=max(0,-math.cos(centre))**.5
+    end=1.585+.085*front-.037*back+.010*(1-front)*math.sin(group*1.71)
+    start=len(cap_vertices)
+    for k,t in enumerate(levels):
+        spread=min(1,.06+t/.15)*(1-max(0,(t-.70)/.30)**1.3)
+        z=1.744+(end-1.744)*t
+        centre_sweep=centre+.30*(1-t)**.8+.12*math.sin(group*1.3)*t
+        for j in range(5):
+            cross=j/2-1
+            angle=centre_sweep+(right-left)*.61*spread*cross
+            radius=math.sqrt(max(0,1-((z-1.630)/.119)**2))
+            ridge=(1-cross*cross)*.010*math.sin(math.pi*t)**.7
+            # Root rows meet the common crown; broad midsections continue into
+            # tapered ends, with one edge above the adjoining group rather than
+            # a detached leaf perimeter surrounded by visible scalp
+            overlap=.004*(cross+1)/2*math.sin(math.pi*t)
+            radial=ridge+overlap
+            point=Vector(((.108*radius+radial)*math.sin(angle),.018-(.102*radius+radial)*math.cos(angle),z))
+            point.x-=.012*(1-t)**2
+            origin=Vector((0,.018,z));direction=(point-origin).normalized()
+            hit,_,_,_=face_surface.ray_cast(origin,direction)
+            if hit is not None and (point-origin).length < (hit-origin).length+.006:
+                point=hit+direction*.006
+            cap_vertices.append(point);cap_uv.append((j/4,t))
+    for k in range(len(levels)-1):
+        for j in range(4):
+            a=start+k*5+j
+            cap_faces.append((a,a+1,a+6,a+5))
+cap=mesh('Hair_Cap',cap_vertices,cap_faces,'hair','Head',cap_uv,subdiv=1)
+solid=cap.modifiers.new('Hair group thickness','SOLIDIFY');solid.thickness=.0015;solid.offset=-1
+# A small crown closure sits under converging roots, not under the full back
+crown=loft('Hair_CrownBase',[(0,.018,1.701,.080,.074),(0,.018,1.720,.066,.061),(0,.017,1.737,.045,.042),(0,.016,1.748,.004,.004)],'hair','Head',sides=32,caps=False,subdiv=1)
+crown_mesh=bmesh.new();crown_mesh.from_mesh(crown.data);crown_mesh.verts.ensure_lookup_table()
+top=crown_mesh.faces.new([crown_mesh.verts[i] for i in range(99,131)])
+for loop in top.loops:loop[crown_mesh.loops.layers.uv.active].uv=atlas_uv('hair',.5,.5)
+crown_mesh.to_mesh(crown.data);crown_mesh.free()
 def hair_lock(name, points, width):
     # Lens-shaped strand groups with a narrow tip; one closed mesh, not hair particles
     verts,faces,uv=[],[],[]
@@ -427,10 +446,7 @@ def hair_lock(name, points, width):
         out=Vector((p.x,p.y-.012,(p.z-1.60)*.3)).normalized()
         side=tangent.cross(out).normalized()
         out=side.cross(tangent).normalized()
-        if name.startswith(('Back_Lock_', 'Nape_')):
-            w=width*min(1,.16+4*t)*(1-t**1.4)+.0004
-        else:
-            w=width*(.40+.65*math.sin(math.pi*t))*(1-t**2.1)+.0004
+        w=width*(.40+.65*math.sin(math.pi*t))*(1-t**2.1)+.0004
         for j in range(8):
             angle=j/8*math.tau
             v=p+side*(w*math.cos(angle))+out*((w*.10+.0004)*math.sin(angle))
@@ -452,16 +468,8 @@ for i,(path,width) in enumerate(bangs):hair_lock(f'Bangs_{i:02}',path,width)
 for s,side in ((1,'L'),(-1,'R')):
     for i,(y,width,z) in enumerate(((-.014,.022,1.586),(.026,.026,1.608),(.065,.018,1.596))):
         hair_lock(f'Temple_{i}.{side}',[(s*.049,y*.5,1.716),(s*.100,y,1.710),(s*.124,y-.010,1.645),(s*(.104+.006*i),y+.004,z)],width)
-    for k in range(2):
-        hair_lock(f'Nape_{k}.{side}',[(s*.035,.075,1.678),(s*.075,.107,1.650),(s*.093,.084,1.598),(s*(.094+k*.010),.049+k*.014,1.566-k*.010)],.016+k*.003)
 hair_lock('Crown_0.L',[(-.018,.022,1.732),(-.035,.016,1.768),(-.054,-.003,1.760),(-.068,-.028,1.730)],.015)
 hair_lock('Crown_0.R',[(.015,.032,1.732),(.053,.036,1.750),(.078,.040,1.740),(.090,.043,1.714)],.016)
-# Shorter upper groups overlap sparse, narrower nape groups instead of five
-# full-height leaves; the piece count stays fixed with two nape groups per side
-for i,(angle,width,end_z,sweep,lower) in enumerate(((2.12,.021,1.633,.12,False),(2.94,.025,1.644,-.10,False),(3.83,.022,1.625,.14,False),(2.10,.017,1.562,.10,True),(2.73,.023,1.534,-.10,True),(3.44,.021,1.550,.14,True),(4.11,.016,1.542,.05,True))):
-    profile=((.086,1.687,-.03),(.123,1.655,.04),(.119,1.614,sweep),(.086,end_z,sweep+.08)) if lower else ((.055,1.725,-.08),(.108,1.699,.05),(.127,1.655,sweep),(.115,end_z,sweep+.07))
-    points=[(radius*math.sin(angle+offset),.018-radius*math.cos(angle+offset),z) for radius,z,offset in profile]
-    hair_lock(f'Back_Lock_{i}',points,width)
 # Minimal original double-dot / short bar chest graphic, all editable mesh
 for z in (1.275,1.246):
     patch('Tee_Dot_'+str(z),[(-.018+.008*math.cos(i/20*math.tau),z+.008*math.sin(i/20*math.tau)) for i in range(20)],'hair',-.014)
@@ -526,6 +534,16 @@ def foot_target(name, phase):
         y = (reach+extra) * (1-2*u*u*(3-2*u))
     return y, .105 + lift * math.sin(math.pi * swing_time/swing)**2
 
+def foot_pitch(name, phase):
+    if name!='Run':return 0.
+    period=CLIPS[name][0]
+    stance=GAITS[name][1]/period
+    p=phase%1
+    if p<=stance:return 0.
+    swing=(p-stance)/(1-stance)
+    # Roll only the airborne foot; the verified flat-ground stance stays planted
+    return .28*math.sin(2*math.pi*swing)*math.sin(math.pi*swing)
+
 def rotate(name, axis, angle):
     pb=rig.pose.bones[name]
     pb.rotation_mode='QUATERNION'
@@ -548,9 +566,13 @@ for name,(period,stride) in CLIPS.items():
         else:
             bob=.001*(1-math.cos(t))
         rig.pose.bones['Hips'].location.y=bob
-        rotate('Chest',(0,0,1),(.025 if stride else .008)*math.sin(t))
-        rotate('Head',(0,0,1),-.015*math.sin(t))
-        if name=='Run': rotate('Spine',(1,0,0),.12)
+        rotate('Chest',(0,0,1),(-.075 if name=='Run' else .025 if stride else .008)*math.sin(t))
+        rotate('Head',(0,0,1),(.03 if name=='Run' else -.015)*math.sin(t))
+        if name=='Run':
+            rotate('Spine',(1,0,0),.19+.035*math.cos(2*t))
+            for bone,pitch in (('Chest',.025*math.cos(2*t+.5)),('Head',-.10-.025*math.cos(2*t))):
+                axis=rig.data.bones[bone].matrix_local.to_quaternion().inverted()@Vector((1,0,0))
+                rig.pose.bones[bone].rotation_quaternion @= Quaternion(axis,pitch)
         for side,s in (('L',1),('R',-1)):
             arm_phase=math.sin(t+(0 if s==1 else math.pi))
             if stride:
@@ -565,15 +587,21 @@ for name,(period,stride) in CLIPS.items():
                 shin=bend-(math.atan2(.032,.4)-math.atan2(-.017,.42))
                 rotate('Thigh.'+side,(1,0,0),thigh)
                 rotate('Shin.'+side,(1,0,0),shin)
-                rotate('Foot.'+side,(1,0,0),-thigh-shin)
+                rotate('Foot.'+side,(1,0,0),-thigh-shin+foot_pitch(name,phase+(0 if s==1 else .5)))
                 speed,stance_frames,_=GAITS[name]
                 arm_phase=dy/(speed*stance_frames/(2*FPS))
             pb=rig.pose.bones['UpperArm.'+side]
             axes=rig.data.bones[pb.name].matrix_local.to_quaternion().inverted()
             pb.rotation_quaternion=Quaternion(axes@Vector((0,1,0)),s*.34) @ Quaternion(axes@Vector((1,0,0)),-stride*.65*arm_phase)
-            rotate('Forearm.'+side,(1,0,0),-.10 if name=='Idle' else -.28 if name=='Walk' else -1.10)
+            flex=.10 if name=='Idle' else .28 if name=='Walk' else 1.30+.20*arm_phase
+            rotate('Forearm.'+side,(1,0,0),-flex)
+            if name=='Run':
+                # Pronation is shared by forearm and wrist, leaving the palms facing inward
+                rig.pose.bones['Forearm.'+side].rotation_quaternion @= Quaternion((0,1,0),s*1.40)
+                rig.pose.bones['Hand.'+side].rotation_quaternion=Quaternion((0,1,0),s*.40)
             for finger in ('Index','Middle','Ring','Pinky','Thumb'):
-                rotate(finger+'.'+side,(1,0,0),.10 if name=='Idle' else .2)
+                curl=.10 if name=='Idle' else .2 if name=='Walk' else -.40 if finger=='Thumb' else -.75
+                rotate(finger+'.'+side,(1,0,0),curl)
         for pb in rig.pose.bones:
             pb.keyframe_insert('rotation_quaternion',frame=frame,group=pb.name)
             if pb.name=='Hips':pb.keyframe_insert('location',frame=frame,group=pb.name)
@@ -602,7 +630,7 @@ cam.data.type='ORTHO';cam.data.ortho_scale=2.06
 scene.render.resolution_x=720;scene.render.resolution_y=960;scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
 export(rig,objects)
-report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r5','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
+report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r6','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
 if args.render:
     for label,pos,clip,frame in [('front',(0,-4,1.0),'Idle',1),('three-quarter',(3,-4,1.3),'Idle',1),('back',(0,4,1.0),'Idle',1),('walk-contact',(3,-4,1.2),'Walk',8),('run-contact',(3,-4,1.2),'Run',6),('face',(0,-4,1.61),'Idle',1),('walk-lift',(3,-4,1.2),'Walk',1),('run-lift',(3,-4,1.2),'Run',1)]:
         rig.animation_data.action=bpy.data.actions[clip];scene.frame_set(frame)

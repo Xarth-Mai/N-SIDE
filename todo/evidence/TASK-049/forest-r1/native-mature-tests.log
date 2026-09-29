@@ -1,0 +1,78 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 44.26s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 20 tests
+test world::scene::tests::shop_canopies_keep_slope_depth_headroom_and_metre_uvs ... ok
+test world::scene::tests::lifecycle_clear_removes_map_roots_and_descendants_only ... ok
+test world::scene::tests::lifecycle_missing_terrain_rock_fails_immediately_and_stays_failed ... ok
+test world::scene::tests::lifecycle_failure_is_reported_without_exiting_the_host ... ok
+test world::scene::tests::star_screens_have_correct_public_facing_and_roof_supports ... ok
+test world::scene::tests::lifecycle_waits_for_a_scene_and_starts_each_scene_once ... ok
+retaining shop-site: south_edge=[66.0, 245.0]->[88.9, 245.0], exposed_height_max=0.779m, road_clearance=0.32m
+retaining east-lower-yard: south_edge=[155.0, 254.0]->[160.0, 254.0], exposed_height_max=0.958m, road_clearance=0.32m
+retaining details: 4 batches, 121 boxes, 1452 collision triangles
+test world::scene::tests::terrace_retainers_follow_fill_edges_and_leave_stair_access_clear ... ok
+test world::scene::tests::displays_stay_on_ground_floor_front_windows ... ok
+building facade coverage: buildings=224 types=15 unique doorways=342 lightwells=5
+shop street displays: 2 supported racks, 52 boxes, test world::scene::tests::all_authored_facades_cover_entries_courts_and_keep_roofs_clear ... 624ok collision triangles
+
+test world::scene::tests::shop_street_displays_are_supported_and_keep_public_clearance ... ok
+residential glazing: 10 shared glass batches, 381 windows, 32004 shell triangles (before existing facade accessory removal)
+test world::scene::tests::business_signs_keep_source_aspect_arrival_direction_and_openings ... ok
+test world::scene::tests::residential_glazing_is_recessed_batched_and_keeps_walk_envelope ... ok
+public facade skins: 4 buildings, 378 attached boxes, 4536 collision triangles
+test world::scene::tests::sample_frames_leave_recessed_displays_and_doorways_clear ... ok
+test world::scene::tests::public_building_skins_stay_attached_and_clear_of_windows_and_entries ... ok
+garden edge group instances=24
+test world::scene::tests::garden_edge_groups_keep_tree_shrub_ground_layers_and_clear_arrivals ... ok
+residential facades: 10 buildings, 1121 boxes, 13452 collision triangles
+test world::scene::tests::residential_details_keep_headroom_entries_shells_and_collision ... ok
+test world::scene::tests::slope_and_neighbour_occlusion_remove_windows_without_hiding_entries ... ok
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:0] x=137.732 north=848.000 root=359.903 scale=1.400
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:6] x=134.379 north=854.031 root=360.076 scale=1.425
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:7] x=132.908 north=842.047 root=355.922 scale=1.500
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:13] x=144.790 north=846.068 root=360.562 scale=1.525
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:16] x=143.608 north=854.412 root=362.776 scale=1.750
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:17] x=125.762 north=848.423 root=356.420 scale=1.400
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:23] x=138.606 north=836.415 root=353.811 scale=1.425
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:32] x=138.365 north=861.762 root=361.338 scale=1.675
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:33] x=124.791 north=839.319 root=352.178 scale=1.750
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:35] x=126.089 north=858.713 root=358.053 scale=1.475
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:39] x=148.263 north=838.693 root=356.849 scale=1.775
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:42] x=151.401 north=852.221 root=364.200 scale=1.575
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:49] x=132.382 north=831.150 root=349.344 scale=1.675
+forest placement nodes[hill_short_rest2]/derived-vegetation[forest:0:51] x=118.557 north=850.174 root=354.086 scale=1.400
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:0] x=273.423 north=791.223 root=336.606 scale=1.450
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:6] x=266.409 north=793.810 root=337.723 scale=1.475
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:7] x=273.664 north=782.926 root=330.027 scale=1.550
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:13] x=280.586 north=794.620 root=340.240 scale=1.575
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:17] x=263.290 north=783.118 root=328.813 scale=1.450
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:23] x=282.322 north=782.323 root=330.714 scale=1.475
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:24] x=269.524 north=802.899 root=345.350 scale=1.550
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:29] x=277.305 north=803.401 root=346.794 scale=1.500
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:35] x=256.292 north=791.803 root=336.590 scale=1.525
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:39] x=288.647 north=791.013 root=338.477 scale=1.400
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:40] x=258.878 north=800.630 root=342.758 scale=1.475
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:41] x=274.526 north=773.093 root=322.327 scale=1.550
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:46] x=264.651 north=773.464 root=321.314 scale=1.500
+forest placement nodes[hill_short_rest3]/derived-vegetation[forest:1:51] x=256.134 north=779.468 root=327.074 scale=1.450
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:0] x=319.867 north=916.792 root=423.828 scale=1.500
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:7] x=325.028 north=911.129 root=420.773 scale=1.600
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:9] x=315.711 north=908.613 root=422.002 scale=1.750
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:11] x=312.145 north=918.729 root=427.243 scale=1.475
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:18] x=328.076 north=921.347 root=420.949 scale=1.575
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:21] x=319.801 north=926.436 root=426.963 scale=1.800
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:25] x=321.553 north=902.865 root=418.882 scale=1.675
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:27] x=307.147 north=911.957 root=426.911 scale=1.400
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:36] x=334.248 north=912.928 root=415.198 scale=1.650
+forest placement nodes[hill_east_curve_08]/derived-vegetation[forest:2:37] x=310.137 north=926.713 root=431.126 scale=1.725
+forest accepted=[14, 14, 10] total=38 maximum_actual_root_burial=0.447152m
+test world::scene::tests::forest_stands_keep_actual_roots_supported_and_summit_views_clear ... ok
+vegetation additions=214 added={"flowers": 36, "grass": 30, "rock": 26, "shrub": 8, "tree_autumn": 6, "tree_pine": 108} parks=81 trails_or_uphill=95 model counts={"flowers": 36, "grass": 30, "rock": 26, "shrub": 15, "streetlight": 32, "tree_a": 16, "tree_autumn": 11, "tree_b": 21, "tree_pine": 138}
+test world::scene::tests::vegetation_uses_real_assets_and_keeps_public_space_clear ... ok
+shop shell: /buildings/1 (V-04)/foundation maximum=28 floor=28; facade intrusions=0 examples=[]
+test world::scene::tests::shop_shell_keeps_foundations_and_facade_trim_out_of_public_rooms ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 110 filtered out; finished in 12.57s
+

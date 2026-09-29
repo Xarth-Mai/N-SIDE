@@ -2,6 +2,7 @@ use super::{
     assets::{self, Appearance, Readiness, TrackedAsset},
     geometry::{self, GeometryPart, Ground},
     map::{Building, Map, map_to_world},
+    terrain_material::{self, TerrainMaterial},
 };
 use bevy::{
     asset::UntypedHandle,
@@ -142,6 +143,7 @@ pub struct SceneLoading {
     prepared: Option<PreparedScene>,
     tracked: Vec<TrackedAsset>,
     materials: BTreeMap<String, Handle<StandardMaterial>>,
+    terrain_material: Option<Handle<TerrainMaterial>>,
     models: BTreeMap<String, Handle<WorldAsset>>,
     started: Option<Instant>,
     degraded: BTreeSet<String>,
@@ -155,6 +157,7 @@ impl SceneLoading {
             prepared: Some(prepared),
             tracked: vec![],
             materials: BTreeMap::new(),
+            terrain_material: None,
             models: BTreeMap::new(),
             started: None,
             degraded: BTreeSet::new(),
@@ -167,6 +170,9 @@ impl SceneLoading {
 pub struct WorldScenePlugin;
 impl Plugin for WorldScenePlugin {
     fn build(&self, app: &mut App) {
+        if app.is_plugin_added::<AssetPlugin>() {
+            app.add_plugins(MaterialPlugin::<TerrainMaterial>::default());
+        }
         app.add_systems(
             Update,
             (
@@ -213,6 +219,7 @@ fn load_assets(
     mut loading: ResMut<SceneLoading>,
     server: Res<AssetServer>,
     mut materials: ResMut<Assets<StandardMaterial>>,
+    mut terrain_materials: ResMut<Assets<TerrainMaterial>>,
 ) {
     // Polling reinserts this resource, so an added tick is not a load guard
     if loading.started.is_some() {
@@ -222,6 +229,13 @@ fn load_assets(
     let prepared = loading.prepared.take().expect("prepared scene");
     for warning in &prepared.warnings {
         warn!("{warning}");
+    }
+    let natural_terrain = prepared.parts.iter().any(|part| part.source == "/terrain");
+    if natural_terrain && !prepared.appearance.materials.contains_key("terrain_rock") {
+        loading.failure =
+            Some("[appearance/binding] terrain requires terrain_rock material".into());
+        loading.prepared = Some(prepared);
+        return;
     }
     for (id, spec) in &prepared.appearance.materials {
         let sources = prepared
@@ -233,9 +247,14 @@ fn load_assets(
             .into_iter()
             .collect::<Vec<_>>()
             .join(",");
-        if sources.is_empty() {
+        if sources.is_empty() && !(natural_terrain && id == "terrain_rock") {
             continue;
         }
+        let sources = if sources.is_empty() {
+            "/terrain".into()
+        } else {
+            sources
+        };
         let mut textures = Vec::new();
         for (slot, path, srgb) in [
             ("base_color", &spec.color_texture, true),
@@ -281,6 +300,29 @@ fn load_assets(
             ..default()
         });
         loading.materials.insert(id.clone(), material);
+    }
+    if natural_terrain {
+        let ground = materials
+            .get(&loading.materials["terrain"])
+            .expect("ground material added");
+        let rock = materials
+            .get(&loading.materials["terrain_rock"])
+            .expect("rock material added");
+        match terrain_material::material(ground, rock) {
+            Ok(material) => loading.terrain_material = Some(terrain_materials.add(material)),
+            Err(error) => {
+                loading.failure = Some(format!("[appearance/terrain] {error}"));
+                loading.prepared = Some(prepared);
+                return;
+            }
+        }
+        let shader: Handle<bevy::shader::Shader> = server.load(terrain_material::SHADER);
+        track(
+            &mut loading.tracked,
+            shader.untyped(),
+            vec![format!("terrain slope shader {}", terrain_material::SHADER)],
+            false,
+        );
     }
     for (id, spec) in &prepared.appearance.models {
         let sources = prepared
@@ -381,6 +423,7 @@ fn finish_loading(world: &mut World) {
             world,
             prepared,
             &loading.materials,
+            loading.terrain_material.as_ref(),
             &loading.models,
             &mut loading.degraded,
         ) {
@@ -406,18 +449,28 @@ fn spawn(
     world: &mut World,
     prepared: PreparedScene,
     materials: &BTreeMap<String, Handle<StandardMaterial>>,
+    terrain_material: Option<&Handle<TerrainMaterial>>,
     models: &BTreeMap<String, Handle<WorldAsset>>,
     degraded: &mut BTreeSet<String>,
 ) -> Result<(usize, usize), String> {
     let count = prepared.parts.len();
     for part in prepared.parts {
         let mesh = world.resource_mut::<Assets<Mesh>>().add(part.mesh);
-        world.spawn((
+        let natural_terrain = part.source == "/terrain";
+        let mut entity = world.spawn((
             Name::new(part.source.clone()),
             MapSource(part.source),
             Mesh3d(mesh),
-            MeshMaterial3d(materials[&part.material].clone()),
         ));
+        if natural_terrain {
+            entity.insert(MeshMaterial3d(
+                terrain_material
+                    .ok_or("terrain material unavailable")?
+                    .clone(),
+            ));
+        } else {
+            entity.insert(MeshMaterial3d(materials[&part.material].clone()));
+        }
     }
     let mut instances = 0;
     for prop in prepared.props {
@@ -446,7 +499,7 @@ fn spawn(
             .spawn((
                 Name::new(prop.source.clone()),
                 MapSource(prop.source.clone()),
-                prop.transform.with_scale(Vec3::splat(spec.scale)),
+                prop.transform.with_scale(prop.transform.scale * spec.scale),
                 Visibility::default(),
             ))
             .id();
@@ -1952,6 +2005,13 @@ fn vegetation_obstacles(map: &Map) -> Vec<geo::Polygon> {
     areas
 }
 
+// Three authored B12 middle-distance stands; no global forest scatter
+const FOREST_GROUPS: [(&str, [f64; 2], f64, usize); 3] = [
+    ("hill_short_rest2", [66.0, 48.0], 24.0, 14),
+    ("hill_short_rest3", [-58.0, -90.0], 26.0, 14),
+    ("hill_east_curve_08", [20.0, -6.0], 24.0, 10),
+];
+
 fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
     use geo::{BoundingRect, Contains, Distance, Euclidean, LineString, Point, Polygon};
     let obstacles = vegetation_obstacles(map);
@@ -2000,7 +2060,12 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
             if area.contains(&point)
                 && Euclidean.distance(&point, area.exterior()) > vegetation_radius(model) + 0.4
             {
-                candidates.push((format!("surfaces[{i}]/derived-vegetation[{j}]"), model, p));
+                candidates.push((
+                    format!("surfaces[{i}]/derived-vegetation[{j}]"),
+                    model,
+                    p,
+                    None,
+                ));
             }
         }
     }
@@ -2031,6 +2096,7 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
                         format!("roads[{i}]/segment[{j}]/derived-vegetation[{slot}:{side_index}]"),
                         model,
                         p,
+                        None,
                     ));
                 }
             }
@@ -2086,10 +2152,36 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
                     format!("surfaces[{i}]/derived-vegetation[edge-group:{group}:{j}]"),
                     model,
                     p,
+                    None,
                 ));
             }
         }
     }
+    if let Some(block) = map.blocks.iter().find(|b| b.id == "B12") {
+        for (group, (id, offset, extent, _)) in FOREST_GROUPS.iter().enumerate() {
+            let Some(anchor) = map.nodes.get(*id) else {
+                continue;
+            };
+            // A bounded spiral provides irregular alternatives; actual spacing is accepted below
+            for slot in 0..96 {
+                let angle = slot as f64 * 2.399963 + group as f64 * 0.71;
+                let radius = extent * ((slot as f64 + 0.5) / 96.0).sqrt();
+                let p = [
+                    anchor[0] + offset[0] + radius * angle.cos(),
+                    anchor[1] + offset[1] + radius * angle.sin(),
+                ];
+                if contains(p, &block.polygon) {
+                    candidates.push((
+                        format!("nodes[{id}]/derived-vegetation[forest:{group}:{slot}]"),
+                        "tree_pine",
+                        p,
+                        Some((group, 1.4 + ((slot * 37 + group * 19) % 17) as f64 * 0.025)),
+                    ));
+                }
+            }
+        }
+    }
+    let mut forest_counts = [0; 3];
     let initial = props.len();
     let height = |p: [f64; 2]| {
         map.surfaces
@@ -2099,11 +2191,17 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
             })
             .map_or_else(|| ground.height(p), |s| s.elevation)
     };
-    for (source, model, p) in candidates {
-        if props.len() - initial >= 200 {
+    for (source, model, p, forest) in candidates {
+        if props.len() - initial >= 240 {
             break;
         }
-        let radius = vegetation_radius(model);
+        if let Some((group, _)) = forest
+            && forest_counts[group] >= FOREST_GROUPS[group].3
+        {
+            continue;
+        }
+        let scale = forest.map_or(1.0, |(_, scale)| scale);
+        let radius = vegetation_radius(model) * scale;
         let point = Point::new(p[0], p[1]);
         if obstacles
             .iter()
@@ -2120,22 +2218,38 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
             || props.iter().any(|prop| {
                 let q = prop.transform.translation;
                 (f64::from(q.x) - p[0]).hypot(-f64::from(q.z) - p[1])
-                    < radius + vegetation_radius(&prop.model) + 0.25
+                    < radius
+                        + vegetation_radius(&prop.model)
+                            * f64::from(prop.transform.scale.max_element())
+                        + 0.25
             })
         {
             continue;
         }
-        let (foot, tolerance) = if model.starts_with("tree_") {
+        let (foot, tolerance) = if forest.is_some() {
+            (0.2 * scale, 0.55)
+        } else if model.starts_with("tree_") {
             (0.2, 0.25)
         } else if model == "rock" {
             (radius, 0.2)
         } else {
             (radius, 0.08)
         };
-        let heights = [[-foot, -foot], [foot, -foot], [foot, foot], [-foot, foot]]
-            .map(|d| height([p[0] + d[0], p[1] + d[1]]));
+        let heights: Vec<_> = if forest.is_some() {
+            (0..16)
+                .map(|i| {
+                    let a = i as f64 * std::f64::consts::TAU / 16.0;
+                    height([p[0] + foot * a.cos(), p[1] + foot * a.sin()])
+                })
+                .collect()
+        } else {
+            [[-foot, -foot], [foot, -foot], [foot, foot], [-foot, foot]]
+                .map(|d| height([p[0] + d[0], p[1] + d[1]]))
+                .to_vec()
+        };
         let low = heights
-            .into_iter()
+            .iter()
+            .copied()
             .fold(f64::INFINITY, f64::min)
             .min(height(p));
         let high = heights
@@ -2145,13 +2259,32 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
         if high - low > tolerance {
             continue;
         }
+        let root = low - if forest.is_some() { 0.03 } else { 0.015 };
+        if let Some((group, _)) = forest {
+            let summit = map.nodes["summit"];
+            if ["home", "station", "cinema_entry"].into_iter().any(|id| {
+                let target = map.nodes[id];
+                let d = [target[0] - summit[0], target[1] - summit[1]];
+                let t = (((p[0] - summit[0]) * d[0] + (p[1] - summit[1]) * d[1])
+                    / (d[0] * d[0] + d[1] * d[1]))
+                    .clamp(0.0, 1.0);
+                let line = [summit[0] + d[0] * t, summit[1] + d[1] * t];
+                let view_height = summit[2] + 1.7 + (target[2] - summit[2]) * t;
+                (p[0] - line[0]).hypot(p[1] - line[1]) < radius + 3.0
+                    && root + 6.5 * scale + 1.0 >= view_height
+            }) {
+                continue;
+            }
+            forest_counts[group] += 1;
+        }
         props.push(PropPlacement {
             source,
             model: model.into(),
-            transform: Transform::from_translation(map_to_world([p[0], p[1], low - 0.015]))
+            transform: Transform::from_translation(map_to_world([p[0], p[1], root]))
                 .with_rotation(Quat::from_rotation_y(
                     (props.len() - initial) as f32 * 2.399,
-                )),
+                ))
+                .with_scale(Vec3::splat(scale as f32)),
         });
     }
 }
@@ -2963,6 +3096,45 @@ mod tests {
     }
 
     #[test]
+    fn lifecycle_missing_terrain_rock_fails_immediately_and_stays_failed() {
+        let mut prepared = lifecycle_scene();
+        prepared.parts[0].source = "/terrain".into();
+        prepared.parts[0].material = "terrain".into();
+        assert!(
+            prepared
+                .appearance
+                .materials
+                .remove("terrain_rock")
+                .is_some()
+        );
+        let mut app = lifecycle_app();
+        app.insert_resource(SceneLoading::new(prepared));
+        app.update();
+        let failure = app
+            .world()
+            .resource::<SceneLoading>()
+            .failure
+            .clone()
+            .expect("missing rock binding fails on the first update");
+        assert!(failure.contains("[appearance/binding]") && failure.contains("terrain_rock"));
+        assert!(!failure.contains("timeout"));
+        for _ in 0..3 {
+            app.update();
+            let loading = app.world().resource::<SceneLoading>();
+            assert_eq!(loading.failure.as_deref(), Some(failure.as_str()));
+            assert!(!loading.ready && loading.tracked.is_empty());
+            assert!(app.should_exit().is_none());
+        }
+        assert_eq!(
+            app.world_mut()
+                .query::<&MapSource>()
+                .iter(app.world())
+                .count(),
+            0
+        );
+    }
+
+    #[test]
     fn vegetation_uses_real_assets_and_keeps_public_space_clear() {
         use geo::{Distance, Euclidean, Point};
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
@@ -2979,7 +3151,7 @@ mod tests {
             .iter()
             .filter(|p| p.source.contains("/derived-vegetation["))
             .collect();
-        assert!(!additions.is_empty() && additions.len() <= 200);
+        assert!(!additions.is_empty() && additions.len() <= 240);
         assert!(additions.iter().any(|p| p.source.starts_with("surfaces[")));
         assert!(additions.iter().any(|p| p.source.starts_with("roads[")));
         let obstacles = vegetation_obstacles(&map);
@@ -2988,9 +3160,9 @@ mod tests {
             let at = p.transform.translation;
             assert!(at.is_finite());
             let point = Point::new(f64::from(at.x), -f64::from(at.z));
-            assert!(obstacles.iter().all(
-                |area| Euclidean.distance(&point, area) >= vegetation_radius(&p.model) + 0.399
-            ));
+            assert!(obstacles.iter().all(|area| Euclidean.distance(&point, area)
+                >= vegetation_radius(&p.model) * f64::from(p.transform.scale.max_element())
+                    + 0.399));
             let height = map
                 .surfaces
                 .iter()
@@ -3002,7 +3174,13 @@ mod tests {
                 })
                 .map_or_else(|| ground.height([point.x(), point.y()]), |s| s.elevation);
             assert!(
-                f64::from(at.y) <= height + 0.001 && height - f64::from(at.y) < 0.27,
+                f64::from(at.y) <= height + 0.001
+                    && height - f64::from(at.y)
+                        < if p.source.contains("[forest:") {
+                            0.6
+                        } else {
+                            0.27
+                        },
                 "{} floats or sinks too far",
                 p.source
             );
@@ -3013,7 +3191,10 @@ mod tests {
                 let q = other.transform.translation;
                 assert!(
                     (at.x - q.x).hypot(at.z - q.z) as f64
-                        >= vegetation_radius(&p.model) + vegetation_radius(&other.model) + 0.249,
+                        >= vegetation_radius(&p.model) * f64::from(p.transform.scale.max_element())
+                            + vegetation_radius(&other.model)
+                                * f64::from(other.transform.scale.max_element())
+                            + 0.249,
                     "{} overlaps {}",
                     p.source,
                     other.source
@@ -3092,6 +3273,119 @@ mod tests {
                 .iter()
                 .filter(|p| p.source.starts_with("roads["))
                 .count()
+        );
+    }
+
+    #[test]
+    fn forest_stands_keep_actual_roots_supported_and_summit_views_clear() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let placements = props(&map, &appearance).unwrap();
+        let forest: Vec<_> = placements
+            .iter()
+            .filter(|p| p.source.contains("[forest:"))
+            .collect();
+        let mut original_map = map.clone();
+        original_map.blocks.retain(|b| b.id != "B12");
+        let original = props(&original_map, &appearance).unwrap();
+        assert_eq!(placements.len(), original.len() + forest.len());
+        for (before, after) in original.iter().zip(&placements) {
+            assert!(
+                before.source == after.source
+                    && before.model == after.model
+                    && before.transform == after.transform,
+                "forest changed an existing placement"
+            );
+        }
+        let ground = Ground::new(&map).unwrap();
+        let spec = &appearance.models["tree_pine"];
+        let asset = gltf::Gltf::open(root.join("game/assets").join(&spec.file)).unwrap();
+        let mut roots = Vec::new();
+        let mut tree_height = 0.0_f32;
+        for node in asset.scenes().nth(spec.scene).unwrap().nodes() {
+            assert!(node.children().next().is_none());
+            let matrix = Mat4::from_cols_array_2d(&node.transform().matrix());
+            for primitive in node.mesh().unwrap().primitives() {
+                let reader = primitive.reader(|_| asset.blob.as_deref());
+                for point in reader.read_positions().unwrap() {
+                    let p = matrix.transform_point3(Vec3::from(point)) * spec.scale;
+                    tree_height = tree_height.max(p.y);
+                    if p.y < 0.04 {
+                        roots.push(p);
+                    }
+                }
+            }
+        }
+        assert!(
+            roots.len() >= 9 && roots.iter().all(|p| p.x.hypot(p.z) <= 0.2),
+            "actual root geometry exceeds the sampled support circle"
+        );
+        assert!(tree_height <= 6.501);
+        let mut counts = [0; 3];
+        let mut maximum_root_burial = 0.0_f64;
+        for p in forest {
+            let group = FOREST_GROUPS
+                .iter()
+                .position(|(id, _, _, _)| p.source.starts_with(&format!("nodes[{id}]/")))
+                .unwrap();
+            counts[group] += 1;
+            let (id, offset, extent, _) = FOREST_GROUPS[group];
+            let at = p.transform.translation;
+            let scale = p.transform.scale;
+            assert!((1.399..=1.801).contains(&scale.x) && scale.x == scale.y && scale.y == scale.z);
+            let anchor = map.nodes[id];
+            assert!(
+                (f64::from(at.x) - anchor[0] - offset[0])
+                    .hypot(-f64::from(at.z) - anchor[1] - offset[1])
+                    <= extent + 0.001
+            );
+            for point in &roots {
+                let actual = p.transform.transform_point(*point);
+                let support = ground.height([f64::from(actual.x), -f64::from(actual.z)]);
+                let buried = support - f64::from(actual.y);
+                assert!(
+                    (-0.003..0.6).contains(&buried),
+                    "{}: actual root vertex floats or is overburied ({buried:.4}m)",
+                    p.source
+                );
+                maximum_root_burial = maximum_root_burial.max(buried);
+            }
+            let summit = map_to_world(map.nodes["summit"]) + Vec3::Y * 1.7;
+            for id in ["home", "station", "cinema_entry"] {
+                let target = map_to_world(map.nodes[id]) + Vec3::Y * 1.7;
+                let direction = target - summit;
+                let t = (((at.x - summit.x) * direction.x + (at.z - summit.z) * direction.z)
+                    / (direction.x * direction.x + direction.z * direction.z))
+                    .clamp(0.0, 1.0);
+                let line = summit.lerp(target, t);
+                if (at.x - line.x).hypot(at.z - line.z)
+                    < vegetation_radius(&p.model) as f32 * scale.x + 3.0
+                {
+                    assert!(
+                        at.y + tree_height * scale.y + 1.0 < line.y,
+                        "{}: obstructs summit to {id} sight corridor",
+                        p.source
+                    );
+                }
+            }
+            eprintln!(
+                "forest placement {} x={:.3} north={:.3} root={:.3} scale={:.3}",
+                p.source, at.x, -at.z, at.y, scale.x
+            );
+        }
+        for (group, count) in counts.iter().enumerate() {
+            assert!(
+                (1..=FOREST_GROUPS[group].3).contains(count),
+                "{}: no safe mature trees or exceeded authored budget, got {}",
+                FOREST_GROUPS[group].0,
+                counts[group]
+            );
+        }
+        eprintln!(
+            "forest accepted={counts:?} total={} maximum_actual_root_burial={maximum_root_burial:.6}m",
+            counts.iter().sum::<usize>()
         );
     }
 

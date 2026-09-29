@@ -1,0 +1,11 @@
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/model-r6/final.blend"
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/model-r6/check-final.py", line 95, in <module>
+    assert all(.5 < uv.uv.x < 1 and 0 < uv.uv.y < .25 for uv in bpy.data.objects[name].data.uv_layers.active.data), f'{name}: UV escapes the gray atlas hair region'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Hair_CrownBase: UV escapes the gray atlas hair region
+
+Error: script failed, file: 'output/characters/CHR-001/model-r6/check-final.py', exiting.
+
+Blender quit

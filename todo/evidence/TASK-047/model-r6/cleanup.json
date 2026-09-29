@@ -1,0 +1,277 @@
+{
+  "scope": "All model-r6 owned temporary images, private models, GLBs and duplicate probe scripts; final images reviewed before removal",
+  "deleted": [
+    {
+      "path": "output/characters/CHR-001/model-r6/baseline.blend",
+      "bytes": 4185739,
+      "sha256": "76b93aefb0b3ec9360ccde21cbb7771edad4c3944ed1e2e1efd8451548201861"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/before/face-front.png",
+      "bytes": 681142,
+      "sha256": "11a9d102c8f04fdb3975c55ad5479552c0c170ff76e2105ffc155e50f1a995fd"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/before/face-quarter.png",
+      "bytes": 685937,
+      "sha256": "67351d9a5411a98479e17c756fc65e1a587b8e00b25eab01a58d5c1b1d2d86c9"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/before/face-side.png",
+      "bytes": 664606,
+      "sha256": "e3aaea57a57bf954ff0659d3c6cfc2624478506ffa0a15c7fe0c5369aa86c09a"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/before/head-back.png",
+      "bytes": 639412,
+      "sha256": "621a85aac8a9ad560786d875bd7269459e394c7f07b7aaef27b6318c542a1285"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/check-final.py",
+      "bytes": 8143,
+      "sha256": "c8b0d1953122982e23c71566b803e20c115fd971b474b463cbcb4a2b56a9c511"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/check-first.py",
+      "bytes": 6724,
+      "sha256": "639ae94de443f388fff81eb9f783b5db9672d812bfdd8dcc83763ba20dc5d97e"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/check-second.py",
+      "bytes": 6726,
+      "sha256": "6f972e87b19594587616b9a143b6db600ebd1074f3f85bd59feec74d796979f9"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/check-uv-check.py",
+      "bytes": 8149,
+      "sha256": "78836f2df0ccdd7360d556e4ddbdd1d88746b329d19a0ce90cd5057df5cff2f1"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/crown-open/face-front.png",
+      "bytes": 681745,
+      "sha256": "9ba4f53a6b1d4397482ab367c52a40f2cd96c114ecc98607b6d8cf3e56f6c4d7"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/crown-open/face-quarter.png",
+      "bytes": 680889,
+      "sha256": "7da78f95aa03d8aa9d3aac51f3bdd4037179d95d850351d8eec1242325bbd57c"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/crown-open/face-side.png",
+      "bytes": 659662,
+      "sha256": "6faa22317a9d9734d02b29f2e6147a21001cae634557aa256e4fd3064b4b465c"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/crown-open/hair-quarter.png",
+      "bytes": 638472,
+      "sha256": "82164dab30391610bad7c55c71e0da45ffddd74da6e357f70f1c96e10e0a23e3"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/crown-open/head-back.png",
+      "bytes": 634581,
+      "sha256": "26acaff75114ead51fe12e50e66f74e760036da4dbec65308c90aed2e22b485f"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/crown-open/yao-grey-study.glb",
+      "bytes": 1409612,
+      "sha256": "e71ec9786a2b68ee687e9313ebf406d0e0338d34de779ed8e568f633e7b83b51"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/crown-open.blend",
+      "bytes": 3994931,
+      "sha256": "f84e492a9e62da6d23cb1873a55d2709322faee2effe340d736b05962c1fc80a"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/final.blend",
+      "bytes": 3995689,
+      "sha256": "9d8dec30e74fb5ea227d1bd7a3233def90081d225b203efff971f305064451f1"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/first/face-front.png",
+      "bytes": 679409,
+      "sha256": "8f0f8769ad85fe498412219d4407fa958956785ca3b084916006985d69d2f699"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/first/face-quarter.png",
+      "bytes": 682134,
+      "sha256": "cb80f1d02f9e47b8a3714b1f371eb6c7df18d1e86570947ba54f2e018c03c575"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/first/face-side.png",
+      "bytes": 646749,
+      "sha256": "3cf26b1388554269f06240401a03de2420a9f73ddfa704dfe79b5c88ab47cd1f"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/first/hair-quarter.png",
+      "bytes": 613151,
+      "sha256": "a7ccc89ebfb46dcc56fcea615ec4b935eac09f1f14b22019d800f24dfd3714df"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/first/head-back.png",
+      "bytes": 594368,
+      "sha256": "5fa4ff989fd3c7b84e0c0e97055b08c619e439ee7e617297668012da212a0d6c"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/first/yao-grey-study.glb",
+      "bytes": 1232364,
+      "sha256": "4c5be894b0f2ae21c180c68b371560ca242dfa9ee0ead098481bbb8ca2dcd701"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/first.blend",
+      "bytes": 3962498,
+      "sha256": "7dd16970a6a8d587243d5c40823bf15d19378d8d1ac2ceaff628afeede8d92eb"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/pre-uv/face-front.png",
+      "bytes": 681381,
+      "sha256": "b7a82a6379ebab74f821dabe06e6a495d9e17afea4d6560953deabb6a3a0b147"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/pre-uv/face-quarter.png",
+      "bytes": 681187,
+      "sha256": "714a3e98234af56a670b724f8771377d909928a3b0a551a1e01541a9b2f90a94"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/pre-uv/face-side.png",
+      "bytes": 659906,
+      "sha256": "8602bc5e194dbfe47fbd0e1f829f150b055610ef8097536d5aecc07776eceb4f"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/pre-uv/hair-quarter.png",
+      "bytes": 639241,
+      "sha256": "ec37b118c54aa2b1153511df4bb4e05e835f5ea43ef92e244c8436f614239a94"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/pre-uv/hair-top.png",
+      "bytes": 677540,
+      "sha256": "a2ada50ff186d71579d396e2482821dbb167df82cf866110c8e0a20eff92321a"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/pre-uv/head-back.png",
+      "bytes": 634687,
+      "sha256": "bdb6b6bdab22729c90340abb9de13e1c8dd504a6ddd61c98ec7a9526cd9c0b59"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/pre-uv/yao-grey-study.glb",
+      "bytes": 1416652,
+      "sha256": "f6b45ea39700ded672759c51867bcb4ad4db5cf96474dcb6cefb02a9063f478d"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second/face-front.png",
+      "bytes": 680825,
+      "sha256": "df4c8cdf3d1552e8429bd360d63d555b46df06dfd1b0e7b2988154d8b06ed705"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second/face-quarter.png",
+      "bytes": 681357,
+      "sha256": "8e5ab563255f99b1ef44abc288b4832d747bd443417e7b854e24cc1472e2f338"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second/face-side.png",
+      "bytes": 663041,
+      "sha256": "44c708d68156e0118ec5265dce9feb175a4bca1aafaa09a46a5dbed65b8588e5"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second/hair-quarter.png",
+      "bytes": 642914,
+      "sha256": "cb8b2a2fa59c0988f74af74f3d770203e91b2d7333cab218f1dd65f86dab48b6"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second/head-back.png",
+      "bytes": 640124,
+      "sha256": "d83e9a7a037492845a77fa18e88186ebc43a1963b6f3b021d592c16ff6126985"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second/yao-grey-study.glb",
+      "bytes": 1381344,
+      "sha256": "8a23b5bdcefe0885e8ae84b96ed0d02d0c9ea228f3893c54c67fd4e78b8d41c9"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second.blend",
+      "bytes": 3973342,
+      "sha256": "c4269dd4c73a0f3af283d80cae98a1ada7f1a40f3994070564737e847c68a4c2"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/second.blend1",
+      "bytes": 3973342,
+      "sha256": "b7aaedccdafb5605a62489c53d53952c3094117025dcecba48220a2640f64275"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/uv-check/yao-grey-study.glb",
+      "bytes": 1416652,
+      "sha256": "3f94343b07ec966eaf3f023cabde9c5df7a0db04174908e76009f29a622d7164"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/uv-check.blend",
+      "bytes": 3995689,
+      "sha256": "883755302c3e64b1cbd106c2890bc1f47cdc121e68896c4d4809f1b8a14bd166"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/final/face-front.png",
+      "bytes": 681414,
+      "sha256": "5f1e3a5a67076dafed22e0205b72e934b679aac5f75094068bbd4fa9b03649af",
+      "reviewed_by": [
+        "model author",
+        "art_review"
+      ]
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/final/face-quarter.png",
+      "bytes": 680778,
+      "sha256": "03f8ab4a9427673478f091f313f27c176e2f8e658e51194fd3f08a42794aaf6e",
+      "reviewed_by": [
+        "model author",
+        "art_review"
+      ]
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/final/face-side.png",
+      "bytes": 659884,
+      "sha256": "9fc1a9b5815bc2f83e56847a5ebe630686f8ad6194c64b72b61938f5545cb89e",
+      "reviewed_by": [
+        "model author",
+        "art_review"
+      ]
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/final/hair-quarter.png",
+      "bytes": 639198,
+      "sha256": "90552492f12d479ff30700f90fa1e4e2f5f0c3ff26ea7844f2ab4b2510ef8681",
+      "reviewed_by": [
+        "model author",
+        "art_review",
+        "root"
+      ]
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/final/hair-top.png",
+      "bytes": 675014,
+      "sha256": "c542937f521ac935686b471266ac14a25f24e14a39821b8c1914cbb37aa83da1",
+      "reviewed_by": [
+        "model author",
+        "art_review",
+        "root"
+      ]
+    },
+    {
+      "path": "output/characters/CHR-001/model-r6/final/head-back.png",
+      "bytes": 634649,
+      "sha256": "fa5342ca53219df6247dbf8e498f5df5b5642b4b50e7e786e9dd8face3fb2ea5",
+      "reviewed_by": [
+        "model author",
+        "art_review",
+        "root"
+      ]
+    }
+  ],
+  "deleted_bytes": 55402993,
+  "formal_assets_preserved": true,
+  "remaining": [
+    {
+      "path": "output/characters/CHR-001/model-r6/model-report.json",
+      "bytes": 734
+    }
+  ],
+  "remaining_bytes": 734,
+  "final_visuals_cleaned": true
+}

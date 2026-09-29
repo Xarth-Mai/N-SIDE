@@ -74,7 +74,7 @@ jobs:
             'Environment assets: Kenney and ambientCG, CC0; license texts and source manifest are in licenses/.',
             "Commit: $env:GITHUB_SHA"
           ) | Set-Content "$package/README.txt" -Encoding utf8
-          foreach ($file in @('run-game.cmd', 'run-walk-preview.cmd', 'run-viewer.cmd', 'executables.txt', 'licenses/Parry-Apache-2.0.txt', 'game/n-side.exe', 'game/map_viewer.exe', 'game/assets/ui/fonts/NotoSansSC-VF.ttf', 'game/assets/ui/licenses/OFL.txt', 'game/assets/ui/licenses/COPYRIGHT.txt', 'source-assets/district-map/district.json', 'source-assets/district-scene/appearance.json', 'source-assets/district-scene/daylight.json')) {
+          foreach ($file in @('run-game.cmd', 'run-walk-preview.cmd', 'run-viewer.cmd', 'executables.txt', 'licenses/Parry-Apache-2.0.txt', 'game/n-side.exe', 'game/map_viewer.exe', 'game/assets/shaders/terrain-slope.wgsl', 'game/assets/ui/fonts/NotoSansSC-VF.ttf', 'game/assets/ui/licenses/OFL.txt', 'game/assets/ui/licenses/COPYRIGHT.txt', 'source-assets/district-map/district.json', 'source-assets/district-scene/appearance.json', 'source-assets/district-scene/daylight.json')) {
             if (!(Test-Path "$package/$file" -PathType Leaf)) { throw "Missing package file: $file" }
           }
       - name: Check Windows launchers

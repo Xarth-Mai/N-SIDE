@@ -81,7 +81,6 @@ fn color_ground(part: &mut GeometryPart, height_range: [f32; 2]) -> Result<(), S
             part.source
         ));
     }
-    let rock = part.material == "terrain_rock";
     let colors: Vec<[f32; 4]> = positions
         .iter()
         .zip(normals)
@@ -99,13 +98,8 @@ fn color_ground(part: &mut GeometryPart, height_range: [f32; 2]) -> Result<(), S
             let high_grass = [0.74, 0.85, 0.67];
             let earth = [1.0, 0.93, 0.83];
             let rgb: [f32; 3] = std::array::from_fn(|i| {
-                if rock {
-                    // The exposed-rock source supplies its own hue; no altitude stripe or grass tint
-                    0.92 + 0.08 * patch
-                } else {
-                    let grass = low_grass[i] + (high_grass[i] - low_grass[i]) * height;
-                    (grass + (earth[i] - grass) * soil) * (0.90 + 0.10 * patch)
-                }
+                let grass = low_grass[i] + (high_grass[i] - low_grass[i]) * height;
+                (grass + (earth[i] - grass) * soil) * (0.90 + 0.10 * patch)
             });
             let color = Color::srgb(rgb[0], rgb[1], rgb[2]).to_linear();
             [color.red, color.green, color.blue, 1.0]
@@ -568,30 +562,11 @@ impl MeshData {
         }
     }
 
-    fn split_ground(self) -> [Self; 2] {
-        let mut parts: [Self; 2] = std::array::from_fn(|_| Self::default());
-        // First visual trial: slopes above 1:1 expose rock, irrespective of height or smooth normals
-        for index in (0..self.positions.len()).step_by(3) {
-            // Clipping can leave thin triangles; classify the stored vertices without f32 cross cancellation
-            let [a, b, c] =
-                [0, 1, 2].map(|offset| Vec3::from(self.positions[index + offset]).as_dvec3());
-            let normal = (b - a).cross(c - a);
-            let rock = normal.x * normal.x + normal.z * normal.z > normal.y * normal.y;
-            let part = &mut parts[usize::from(rock)];
-            part.positions
-                .extend_from_slice(&self.positions[index..index + 3]);
-            part.normals
-                .extend_from_slice(&self.normals[index..index + 3]);
-            part.uvs.extend_from_slice(&self.uvs[index..index + 3]);
-        }
-        parts
-    }
-
     fn finish(mut self, source: String, material: &str, result: &mut Vec<GeometryPart>) {
         if self.positions.is_empty() {
             return;
         }
-        if matches!(material, "terrain" | "terrain_rock") {
+        if material == "terrain" {
             self.uvs = self
                 .positions
                 .as_chunks::<3>()
@@ -1364,9 +1339,7 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         }
     }
     ground.smooth_normals(&mut terrain);
-    let [grass, rock] = terrain.split_ground();
-    grass.finish("/terrain".into(), "terrain", &mut result);
-    rock.finish("/terrain/rock".into(), "terrain_rock", &mut result);
+    terrain.finish("/terrain".into(), "terrain", &mut result);
     let mut water = MeshData::default();
     water.polygon(&polygon(&map.terrain.water), |_| 0.0, "/terrain/water")?;
     water.finish("/terrain/water".into(), "water", &mut result);
@@ -1744,12 +1717,9 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         .fold([f32::INFINITY, f32::NEG_INFINITY], |range, p| {
             [range[0].min(p[2] as f32), range[1].max(p[2] as f32)]
         });
-    for part in result
-        .iter_mut()
-        .filter(|part| matches!(part.material.as_str(), "terrain" | "terrain_rock"))
-    {
+    for part in result.iter_mut().filter(|part| part.material == "terrain") {
         color_ground(part, height_range)?;
-        if matches!(part.source.as_str(), "/terrain" | "/terrain/rock") {
+        if part.source == "/terrain" {
             part.mesh
                 .merge_duplicate_vertices()
                 .map_err(|error| format!("/terrain: shared vertices failed: {error}"))?;
@@ -2377,7 +2347,7 @@ mod tests {
     }
 
     #[test]
-    fn terrain_material_split_preserves_triangles_and_ignores_height() {
+    fn terrain_surface_keeps_original_geometry_and_collision() {
         let mut terrain = MeshData::default();
         for (degrees, height) in [(0.0_f32, 500.0), (40.0, 0.0), (55.0, 0.0), (55.0, 500.0)] {
             terrain.positions.extend([
@@ -2385,65 +2355,44 @@ mod tests {
                 [4.0, height, 0.0],
                 [0.0, height + degrees.to_radians().tan() * 4.0, -4.0],
             ]);
-            // Smoothed shading normals must not change the underlying geometric classification
             terrain.normals.extend([Vec3::Y.to_array(); 3]);
             terrain.uvs.extend([[0.0, 0.0], [4.0, 0.0], [0.0, 4.0]]);
         }
         let original_positions = terrain.positions.clone();
         let original_normals = terrain.normals.clone();
-        let original_uvs = terrain.uvs.clone();
-        let parts = terrain.split_ground();
+        let mut rendered = Vec::new();
+        terrain.finish("/terrain".into(), "terrain", &mut rendered);
+        color_ground(&mut rendered[0], [0.0, 510.0]).unwrap();
         assert_eq!(
-            parts[0].positions.len(),
-            6,
-            "flat summit and 40-degree slope keep ground cover"
+            rendered.len(),
+            1,
+            "slope blending does not split geometric faces"
         );
         assert_eq!(
-            parts[1].positions.len(),
-            6,
-            "both low and high 55-degree faces expose rock"
-        );
-        assert_eq!(
-            parts
-                .iter()
-                .flat_map(|p| &p.positions)
-                .copied()
-                .collect::<Vec<_>>(),
+            rendered[0]
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap(),
             original_positions
         );
         assert_eq!(
-            parts
-                .iter()
-                .flat_map(|p| &p.normals)
-                .copied()
-                .collect::<Vec<_>>(),
+            rendered[0]
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_NORMAL)
+                .unwrap()
+                .as_float3()
+                .unwrap(),
             original_normals
         );
-        assert_eq!(
-            parts
-                .iter()
-                .flat_map(|p| &p.uvs)
-                .copied()
-                .collect::<Vec<_>>(),
-            original_uvs
-        );
-        let mut rendered = Vec::new();
-        let [grass, rock] = parts;
-        grass.finish("/terrain".into(), "terrain", &mut rendered);
-        rock.finish("/terrain/rock".into(), "terrain_rock", &mut rendered);
         let collision = super::super::collision::CollisionWorld::from_parts(&rendered).unwrap();
         for height in [0.0, 500.0] {
             let hit = collision
                 .support(Vec3::new(0.5, height + 6.0, -1.0), 10.0)
                 .unwrap();
-            assert_eq!(
-                hit.source, "/terrain/rock",
-                "new material source remains structural"
-            );
-            assert!(
-                (hit.point.y - height - 55.0_f32.to_radians().tan()).abs() < 0.0001,
-                "same triangle remains under the ray after material partition"
-            );
+            assert_eq!(hit.source, "/terrain");
+            assert!((hit.point.y - height - 55.0_f32.to_radians().tan()).abs() < 0.0001);
         }
     }
 
@@ -2802,7 +2751,7 @@ mod tests {
             .unwrap();
         let rendered_range = parts
             .iter()
-            .filter(|part| matches!(part.source.as_str(), "/terrain" | "/terrain/rock"))
+            .filter(|part| part.source == "/terrain")
             .flat_map(|part| {
                 part.mesh
                     .attribute(Mesh::ATTRIBUTE_POSITION)
@@ -2885,7 +2834,7 @@ mod tests {
                 "{}",
                 part.source
             );
-            if matches!(part.material.as_str(), "terrain" | "terrain_rock") {
+            if part.material == "terrain" {
                 let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
                     part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
                 else {
@@ -2907,22 +2856,8 @@ mod tests {
                         part.source
                     );
                     minimum = minimum.min(ratio);
-                    if matches!(part.source.as_str(), "/terrain" | "/terrain/rock") {
-                        let normal = (b - a).cross(c - a);
-                        let up = normal.y.abs() / normal.length();
-                        let slope_matches = if part.material == "terrain_rock" {
-                            up <= std::f64::consts::FRAC_1_SQRT_2 + 0.00001
-                        } else {
-                            up >= std::f64::consts::FRAC_1_SQRT_2 - 0.00001
-                        };
-                        assert!(
-                            slope_matches,
-                            "{}: incorrect slope material, up={up}, points={a:?},{b:?},{c:?}",
-                            part.source
-                        );
-                    }
                 }
-                if matches!(part.source.as_str(), "/terrain" | "/terrain/rock") {
+                if part.source == "/terrain" {
                     eprintln!(
                         "{} triangles={} minimum_uv_area_ratio={minimum}",
                         part.material,

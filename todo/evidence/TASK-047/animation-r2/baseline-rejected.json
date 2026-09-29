@@ -1,0 +1,18 @@
+{
+  "baseline_commit": "f93af27",
+  "baseline_sha256": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f",
+  "asset_sha256": "86bc6a8ce380e40204f1baaddd19008d245ffb09248fceef7355121428450b9f",
+  "scope": "Rig/atlas and animation contracts; head-hair mesh changes belong to separate model-r6 review",
+  "status": "FAIL",
+  "checks": {
+    "node_identity_and_bind_transforms": true,
+    "inverse_binds": true,
+    "materials": true,
+    "embedded_atlas": true,
+    "Idle_unchanged": true,
+    "Walk_unchanged": true,
+    "Run_support_hierarchy_unchanged": true,
+    "Run_changed": false
+  },
+  "changed_Run_channels": []
+}

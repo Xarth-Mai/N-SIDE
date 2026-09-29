@@ -1,0 +1,33 @@
+Info: Removed 52 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Saved as "second.blend"
+INFO Draco mesh compression is available, use library at /home/lzzz/MyProjects/N-SIDE/output/tools/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+05:01:56 | INFO: Starting glTF 2.0 export
+05:01:56 | INFO: Extracting primitive: CHR001_RuntimeMesh
+05:01:56 | INFO: Primitives created: 1
+05:01:58 | INFO: Finished glTF 2.0 export in 1.724959373474121 s
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/model-r6/baseline.blend"
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-047/model-r6/preview.py", line 54, in <module>
+    report={'revision':revision,'hair_source_sha256':hashlib.sha256(code[start:end].encode()).hexdigest(),'non_hair_geometry_unchanged':True,'non_hair_vertices_sha256':unchanged,'editable_hair_objects':len(objects),'source_hair_vertices':sum(len(o.data.vertices) for o in objects),'formal_master_untouched':True,'formal_glb_untouched':True}
+                                                                    ~~~~^^^^^^^^^^^
+TypeError: slice indices must be integers or None or have an __index__ method
+
+
+Error: script failed, file: 'todo/evidence/TASK-047/model-r6/preview.py', exiting.
+
+Blender quit

@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "baseline_commit": "f93af27bfda9650ceb2687b822bda5367540ef1a",
+  "non_hair_mesh_count": 63,
+  "joint_count": 32,
+  "compared": [
+    "source mesh coordinates",
+    "polygon indices",
+    "UV",
+    "vertex weights and groups",
+    "bone hierarchy and rest matrices",
+    "gray atlas bytes"
+  ],
+  "snapshot_sha256": "71ac1fa12faca638f54320d4d36747cb711f89dd66413d403e37e7cc613b6232",
+  "atlas_sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+  "scope": "Static DCC master data only; Run animation changed separately in animation-r2"
+}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/model-r6/baseline.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+
+Blender quit

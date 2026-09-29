@@ -88,21 +88,43 @@ for z in (1.538, 1.543, 1.552, 1.563):
     assert all(point is not None for point in points), 'Nasal profile missed head mesh'
     nasal_profile.append({'height_m': z, 'projection_from_cheeks_m': (points[0].y + points[2].y) / 2 - points[1].y})
 assert .004 < nasal_profile[1]['projection_from_cheeks_m'] < .018, 'Integrated nose projection outside this candidate range'
-# Subdivision can pull the low hairline through the head even when its control
-# points are outside; compare actual evaluated vertices and face centres
-cap = bpy.data.objects['Hair_Cap'].evaluated_get(bpy.context.evaluated_depsgraph_get())
-cap_mesh = cap.to_mesh()
-cap_points = [v.co.copy() for v in cap_mesh.vertices]
-cap_points += [sum((cap_mesh.vertices[i].co for i in p.vertices), Vector()) / len(p.vertices) for p in cap_mesh.polygons]
-cap_gaps = []
-for point in cap_points:
-    origin = Vector((0, .018, point.z))
-    direction = (point - origin).normalized()
-    hit, _, _, _ = surface.ray_cast(origin, direction)
-    if hit is not None:
-        cap_gaps.append((point-origin).length - (hit-origin).length)
-cap.to_mesh_clear()
-assert cap_gaps and min(cap_gaps) > -.0003, f'Hair cap intersects the head after subdivision: {min(cap_gaps)} m'
-report = {'status':'PASS','asset':'CHR-001 modelling candidate r5','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage and continuous nasal profile; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps)}
+# Check actual subdivided group surfaces, including the small crown closure
+hair_vertices,hair_faces=[],[]
+cap_gaps=[]
+for name in ('Hair_Cap','Hair_CrownBase'):
+    assert all(.5 < uv.uv.x < 1 and 0 < uv.uv.y < .25 for uv in bpy.data.objects[name].data.uv_layers.active.data), f'{name}: UV escapes the gray atlas hair region'
+    cap=bpy.data.objects[name].evaluated_get(bpy.context.evaluated_depsgraph_get())
+    cap_mesh=cap.to_mesh()
+    points=[v.co.copy() for v in cap_mesh.vertices]
+    offset=len(hair_vertices)
+    hair_vertices.extend(points)
+    hair_faces.extend([tuple(i+offset for i in p.vertices) for p in cap_mesh.polygons])
+    points += [sum((cap_mesh.vertices[i].co for i in p.vertices), Vector()) / len(p.vertices) for p in cap_mesh.polygons]
+    for point in points:
+        origin=Vector((0,.018,point.z));direction=(point-origin).normalized()
+        hit,_,_,_=surface.ray_cast(origin,direction)
+        if hit is not None:cap_gaps.append((point-origin).length-(hit-origin).length)
+    cap.to_mesh_clear()
+assert cap_gaps and min(cap_gaps)>-.0003, f'Hair intersects the head after subdivision: {min(cap_gaps)} m'
+# Cover the back and crown with hair, not an exposed skin hole between roots
+hair_surface=BVHTree.FromPolygons(hair_vertices,hair_faces)
+coverage=[]
+for z in (1.61,1.65,1.69,1.71):
+    for index in range(9):
+        angle=1.8+index*.325
+        radial=Vector((math.sin(angle),-math.cos(angle),0))
+        origin=Vector((0,.018,z))+radial*.4
+        head_hit=surface.ray_cast(origin,-radial)[0]
+        hair_hit=hair_surface.ray_cast(origin,-radial)[0]
+        if head_hit is not None:
+            assert hair_hit is not None, f'Uncovered back/crown at {z} m, angle {angle}'
+            gap=(head_hit-origin).length-(hair_hit-origin).length
+            assert gap>.0005, f'Hair does not cover head at {z} m, angle {angle}: {gap} m'
+            coverage.append(gap)
+top_origin=Vector((0,.018,1.85))
+top_hair=hair_surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
+top_head=surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
+assert top_hair is not None and top_head is not None and top_hair.z>top_head.z+.001, 'Open crown exposes the head from above'
+report = {'status':'PASS','asset':'CHR-001 modelling candidate r6','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS'}
 print(json.dumps(report,indent=2))
-(root/'todo/evidence/TASK-047/model-r5/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
+(root/'todo/evidence/TASK-047/model-r6/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')

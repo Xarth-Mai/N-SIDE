@@ -1,0 +1,134 @@
+--- a/game/src/world/scene.rs
++++ b/game/src/world/scene.rs
+@@ -2,6 +2,7 @@
+     assets::{self, Appearance, Readiness, TrackedAsset},
+     geometry::{self, GeometryPart, Ground},
+     map::{Building, Map, map_to_world},
++    terrain_material::{self, TerrainMaterial},
+ };
+ use bevy::{
+     asset::UntypedHandle,
+@@ -142,6 +143,7 @@
+     prepared: Option<PreparedScene>,
+     tracked: Vec<TrackedAsset>,
+     materials: BTreeMap<String, Handle<StandardMaterial>>,
++    terrain_material: Option<Handle<TerrainMaterial>>,
+     models: BTreeMap<String, Handle<WorldAsset>>,
+     started: Option<Instant>,
+     degraded: BTreeSet<String>,
+@@ -155,6 +157,7 @@
+             prepared: Some(prepared),
+             tracked: vec![],
+             materials: BTreeMap::new(),
++            terrain_material: None,
+             models: BTreeMap::new(),
+             started: None,
+             degraded: BTreeSet::new(),
+@@ -167,6 +170,9 @@
+ pub struct WorldScenePlugin;
+ impl Plugin for WorldScenePlugin {
+     fn build(&self, app: &mut App) {
++        if app.is_plugin_added::<AssetPlugin>() {
++            app.add_plugins(MaterialPlugin::<TerrainMaterial>::default());
++        }
+         app.add_systems(
+             Update,
+             (
+@@ -213,6 +219,7 @@
+     mut loading: ResMut<SceneLoading>,
+     server: Res<AssetServer>,
+     mut materials: ResMut<Assets<StandardMaterial>>,
++    mut terrain_materials: ResMut<Assets<TerrainMaterial>>,
+ ) {
+     // Polling reinserts this resource, so an added tick is not a load guard
+     if loading.started.is_some() {
+@@ -222,6 +229,12 @@
+     let prepared = loading.prepared.take().expect("prepared scene");
+     for warning in &prepared.warnings {
+         warn!("{warning}");
++    }
++    let natural_terrain = prepared.parts.iter().any(|part| part.source == "/terrain");
++    if natural_terrain && !prepared.appearance.materials.contains_key("terrain_rock") {
++        loading.failure = Some("[appearance/binding] terrain requires terrain_rock material".into());
++        loading.prepared = Some(prepared);
++        return;
+     }
+     for (id, spec) in &prepared.appearance.materials {
+         let sources = prepared
+@@ -233,9 +246,10 @@
+             .into_iter()
+             .collect::<Vec<_>>()
+             .join(",");
+-        if sources.is_empty() {
++        if sources.is_empty() && !(natural_terrain && id == "terrain_rock") {
+             continue;
+         }
++        let sources = if sources.is_empty() { "/terrain".into() } else { sources };
+         let mut textures = Vec::new();
+         for (slot, path, srgb) in [
+             ("base_color", &spec.color_texture, true),
+@@ -281,6 +295,21 @@
+             ..default()
+         });
+         loading.materials.insert(id.clone(), material);
++    }
++    if natural_terrain {
++        let ground = materials.get(&loading.materials["terrain"]).expect("ground material added");
++        let rock = materials.get(&loading.materials["terrain_rock"]).expect("rock material added");
++        match terrain_material::material(ground, rock) {
++            Ok(material) => loading.terrain_material = Some(terrain_materials.add(material)),
++            Err(error) => {
++                loading.failure = Some(format!("[appearance/terrain] {error}"));
++                loading.prepared = Some(prepared);
++                return;
++            }
++        }
++        let shader: Handle<bevy::shader::Shader> = server.load(terrain_material::SHADER);
++        track(&mut loading.tracked, shader.untyped(),
++            vec![format!("terrain slope shader {}", terrain_material::SHADER)], false);
+     }
+     for (id, spec) in &prepared.appearance.models {
+         let sources = prepared
+@@ -381,6 +410,7 @@
+             world,
+             prepared,
+             &loading.materials,
++            loading.terrain_material.as_ref(),
+             &loading.models,
+             &mut loading.degraded,
+         ) {
+@@ -406,18 +436,24 @@
+     world: &mut World,
+     prepared: PreparedScene,
+     materials: &BTreeMap<String, Handle<StandardMaterial>>,
++    terrain_material: Option<&Handle<TerrainMaterial>>,
+     models: &BTreeMap<String, Handle<WorldAsset>>,
+     degraded: &mut BTreeSet<String>,
+ ) -> Result<(usize, usize), String> {
+     let count = prepared.parts.len();
+     for part in prepared.parts {
+         let mesh = world.resource_mut::<Assets<Mesh>>().add(part.mesh);
+-        world.spawn((
++        let natural_terrain = part.source == "/terrain";
++        let mut entity = world.spawn((
+             Name::new(part.source.clone()),
+             MapSource(part.source),
+             Mesh3d(mesh),
+-            MeshMaterial3d(materials[&part.material].clone()),
+         ));
++        if natural_terrain {
++            entity.insert(MeshMaterial3d(terrain_material.ok_or("terrain material unavailable")?.clone()));
++        } else {
++            entity.insert(MeshMaterial3d(materials[&part.material].clone()));
++        }
+     }
+     let mut instances = 0;
+     for prop in prepared.props {
+--- a/game/src/world/mod.rs
++++ b/game/src/world/mod.rs
+@@ -3,4 +3,5 @@
+ pub mod geometry;
+ pub mod map;
+ pub mod scene;
++mod terrain_material;
+ pub mod visual;

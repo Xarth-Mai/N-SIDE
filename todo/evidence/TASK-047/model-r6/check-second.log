@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "asset": "CHR-001 modelling candidate r5",
+  "scope": "DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage and continuous nasal profile; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 121,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.983777360389468e-09,
+      "max_stance_height_error_m": 0.001999971689656377
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 49,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.1101403885049876e-07,
+      "max_stance_height_error_m": 2.1035654640400026e-07
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 41,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -5.6237105638956564e-08,
+      "max_stance_height_error_m": 1.6908802535908762e-07
+    }
+  ],
+  "facial_surface_gaps": {
+    "Mouth": {
+      "minimum_m": 3.585219383239746e-05,
+      "maximum_m": 0.0011054128408432007
+    },
+    "Eye_White.L": {
+      "minimum_m": 0.0006498247385025024,
+      "maximum_m": 0.00283900648355484
+    },
+    "Eye_White.R": {
+      "minimum_m": 0.0006498247385025024,
+      "maximum_m": 0.002839125692844391
+    },
+    "Iris_hair.L": {
+      "minimum_m": 0.0011482760310173035,
+      "maximum_m": 0.003178246319293976
+    },
+    "Iris_hair.R": {
+      "minimum_m": 0.0011482760310173035,
+      "maximum_m": 0.0031781867146492004
+    },
+    "Iris_ink.L": {
+      "minimum_m": 0.0014586076140403748,
+      "maximum_m": 0.0034960880875587463
+    },
+    "Iris_ink.R": {
+      "minimum_m": 0.0014585480093955994,
+      "maximum_m": 0.0034988075494766235
+    },
+    "Eye_Glint.L": {
+      "minimum_m": 0.0030028820037841797,
+      "maximum_m": 0.0036049261689186096
+    },
+    "Eye_Glint.R": {
+      "minimum_m": 0.0031986311078071594,
+      "maximum_m": 0.0036866888403892517
+    }
+  },
+  "nasal_profile": [
+    {
+      "height_m": 1.538,
+      "projection_from_cheeks_m": 0.016106903553009033
+    },
+    {
+      "height_m": 1.543,
+      "projection_from_cheeks_m": 0.01729869842529297
+    },
+    {
+      "height_m": 1.552,
+      "projection_from_cheeks_m": 0.013540983200073242
+    },
+    {
+      "height_m": 1.563,
+      "projection_from_cheeks_m": 0.008586913347244263
+    }
+  ],
+  "hair_cap_min_clearance_m": 0.002828279293112454
+}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/model-r6/second.blend"
+
+Blender quit

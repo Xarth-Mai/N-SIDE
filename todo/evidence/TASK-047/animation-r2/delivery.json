@@ -1,0 +1,91 @@
+{
+  "scope": "Final unified r6 shape and animation-r2 source; source pose and exported glTF checks, no artistic signoff",
+  "status": "PASS",
+  "master_sha256": "298da4644c90adf0551afb7178fdee0087a5b1d7fce2339693c520a43cbdac54",
+  "glb_sha256": "5063920196cb1476e080f7d8acd6f8d16f0e55ab3cbfc94c30da9c1ad368a108",
+  "run_palm_normal_z_range": {
+    "L": [
+      -0.14341452717781067,
+      0.30214545130729675
+    ],
+    "R": [
+      -0.14341451227664948,
+      0.302145391702652
+    ]
+  },
+  "source_checks": [
+    {
+      "name": "Idle",
+      "duration": 2.0,
+      "sample_fps": 120,
+      "minimum_sole": -9.983777360389468e-09,
+      "max_contact_height": 0.001999971689656377,
+      "max_ankle_target_error": 0.0,
+      "loop_matrix_delta": 0.0
+    },
+    {
+      "name": "Walk",
+      "duration": 0.8,
+      "sample_fps": 120,
+      "minimum_sole": -0.0015089840162545443,
+      "max_contact_height": 0.0015089840162545443,
+      "max_ankle_target_error": 0.0015089917182922324,
+      "loop_matrix_delta": 0.0
+    },
+    {
+      "name": "Run",
+      "duration": 0.6666666666666666,
+      "sample_fps": 120,
+      "minimum_sole": -0.002537186723202467,
+      "max_contact_height": 0.002537186723202467,
+      "max_ankle_target_error": 0.0025372016429901084,
+      "loop_matrix_delta": 0.0
+    }
+  ],
+  "exported_checks": {
+    "Idle": {
+      "L": {
+        "mean_forward_velocity": 0.0,
+        "max_stance_position_drift_m": 0.0,
+        "max_world_sliding_velocity": 0.0
+      },
+      "R": {
+        "mean_forward_velocity": 0.0,
+        "max_stance_position_drift_m": 0.0,
+        "max_world_sliding_velocity": 0.0
+      }
+    },
+    "Run": {
+      "L": {
+        "mean_forward_velocity": -5.600002144774369,
+        "max_stance_position_drift_m": 0.0006413471548465904,
+        "max_world_sliding_velocity": 0.0769337434698727
+      },
+      "R": {
+        "mean_forward_velocity": -5.6000027233995855,
+        "max_stance_position_drift_m": 0.0006414669024652547,
+        "max_world_sliding_velocity": 0.07693437923977964
+      }
+    },
+    "Walk": {
+      "L": {
+        "mean_forward_velocity": -3.200000091688657,
+        "max_stance_position_drift_m": 0.00028287688463651524,
+        "max_world_sliding_velocity": 0.03394284801020264
+      },
+      "R": {
+        "mean_forward_velocity": -3.2000009408488785,
+        "max_stance_position_drift_m": 0.00028312538725604023,
+        "max_world_sliding_velocity": 0.033944939306620014
+      }
+    }
+  },
+  "runtime": "root serial validation; see final integration evidence",
+  "limits": [
+    "single-bone finger pose",
+    "shoulders/elbows remain broad",
+    "subtle torso dynamics",
+    "swing foot pitch only; planted-foot roll not authored",
+    "hard clip switching and airborne Idle unchanged"
+  ]
+}

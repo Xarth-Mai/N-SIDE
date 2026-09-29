@@ -1,0 +1,533 @@
+{
+  "after": "source-assets/district-map/district.json",
+  "before": "output/assets/visual-r7-baseline/project/source-assets/district-map/district.json",
+  "changed_road_samples_over_1cm": 297,
+  "cut_window_slope_before_after": [
+    {
+      "maximum": 65.7390535928672,
+      "over55": 28,
+      "p50": 46.4855128770084,
+      "p95": 56.02547010364502,
+      "samples": 418
+    },
+    {
+      "maximum": 65.7467539376828,
+      "over55": 3,
+      "p50": 39.44685864805792,
+      "p95": 44.939380423484536,
+      "samples": 418
+    }
+  ],
+  "fixed_probes": [
+    {
+      "after": 173.29606605108918,
+      "before": 173.29606605108918,
+      "change": 0.0,
+      "point": [
+        -151.43885889,
+        801.78806574
+      ]
+    },
+    {
+      "after": 172.42331471666665,
+      "before": 172.42331471666665,
+      "change": 0.0,
+      "point": [
+        -150.0,
+        802.803
+      ]
+    },
+    {
+      "after": 171.55056338224415,
+      "before": 171.55056338224415,
+      "change": 0.0,
+      "point": [
+        -148.56114111,
+        803.81793426
+      ]
+    },
+    {
+      "after": 178.10702994058298,
+      "before": 178.10702994058298,
+      "change": 0.0,
+      "point": [
+        -41.01511846,
+        754.4162811
+      ]
+    }
+  ],
+  "non_terrain_unchanged": true,
+  "road_partitions": [
+    {
+      "inside_changed_control_bounds": true,
+      "maximum_absolute_grade_error_increase_sample": {
+        "absolute_error_increase": 0.015140400710834001,
+        "after": 226.23485959928917,
+        "after_grade_error": -0.015140400710834001,
+        "before": 226.25,
+        "before_grade_error": 0.0,
+        "change": -0.015140400710834001,
+        "from": "stair_hill_short_gate_hill_short_rest1_arrival_07_out",
+        "grade": 226.25,
+        "inside_changed_control_bounds": true,
+        "point": [
+          222.535264,
+          654.9858945000001
+        ],
+        "road": 796,
+        "side": 0.0,
+        "t": 0.5,
+        "to": "hill_short_rest1_arrival"
+      },
+      "maximum_change_sample": {
+        "absolute_error_increase": -2.1217333802368614,
+        "after": 186.87499997833518,
+        "after_grade_error": -2.166481749554805e-8,
+        "before": 184.75326659809832,
+        "before_grade_error": -2.121733401901679,
+        "change": 2.1217333802368614,
+        "from": "stair_hill_short_gate_hill_short_rest1_arrival_02_out",
+        "grade": 186.875,
+        "inside_changed_control_bounds": true,
+        "point": [
+          304.2034933513202,
+          620.1645366366181
+        ],
+        "road": 786,
+        "side": 1.0,
+        "t": 0.25,
+        "to": "stair_hill_short_gate_hill_short_rest1_arrival_03_in"
+      },
+      "samples": 1186
+    },
+    {
+      "inside_changed_control_bounds": false,
+      "maximum_absolute_grade_error_increase_sample": {
+        "absolute_error_increase": 0.018980135282959054,
+        "after": 412.03747035973174,
+        "after_grade_error": -1.6366128902682249,
+        "before": 412.0564504950147,
+        "before_grade_error": -1.6176327549852658,
+        "change": -0.018980135282959054,
+        "from": "hill_west_arc_08_10",
+        "grade": 413.67408324999997,
+        "inside_changed_control_bounds": false,
+        "point": [
+          104.28682446343159,
+          943.1691518610559
+        ],
+        "road": 735,
+        "side": -1.0,
+        "t": 0.25,
+        "to": "hill_west_curve_08"
+      },
+      "maximum_change_sample": {
+        "absolute_error_increase": -1.090144656536097,
+        "after": 177.4999999347708,
+        "after_grade_error": -6.522918738482986e-8,
+        "before": 176.40985527823472,
+        "before_grade_error": -1.0901447217652844,
+        "change": 1.090144656536097,
+        "from": "stair_hill_short_gate_hill_short_rest1_arrival_01_in",
+        "grade": 177.5,
+        "inside_changed_control_bounds": false,
+        "point": [
+          324.3999333024643,
+          612.0859607561605
+        ],
+        "road": 783,
+        "side": 1.0,
+        "t": 0.5,
+        "to": "stair_hill_short_gate_hill_short_rest1_arrival_01_out"
+      },
+      "samples": 24584
+    }
+  ],
+  "scope": "Native Spade Ground; road grade envelope samples, not final stair tread or collision clearance",
+  "terrain_samples": [
+    8584,
+    9300
+  ],
+  "worst_changed_road_samples": [
+    {
+      "absolute_error_increase": 0.018980135282959054,
+      "after": 412.03747035973174,
+      "after_grade_error": -1.6366128902682249,
+      "before": 412.0564504950147,
+      "before_grade_error": -1.6176327549852658,
+      "change": -0.018980135282959054,
+      "from": "hill_west_arc_08_10",
+      "grade": 413.67408324999997,
+      "inside_changed_control_bounds": false,
+      "point": [
+        104.28682446343159,
+        943.1691518610559
+      ],
+      "road": 735,
+      "side": -1.0,
+      "t": 0.25,
+      "to": "hill_west_curve_08"
+    },
+    {
+      "absolute_error_increase": 0.015488511426724472,
+      "after": 414.72361262587197,
+      "after_grade_error": -0.27638737412803493,
+      "before": 414.7391011372987,
+      "before_grade_error": -0.26089886270131046,
+      "change": -0.015488511426724472,
+      "from": "hill_west_arc_08_10",
+      "grade": 415.0,
+      "inside_changed_control_bounds": false,
+      "point": [
+        119.69491980067903,
+        934.4333199116385
+      ],
+      "road": 735,
+      "side": -1.0,
+      "t": 1.0,
+      "to": "hill_west_curve_08"
+    },
+    {
+      "absolute_error_increase": 0.015488511426724472,
+      "after": 414.72361262587197,
+      "after_grade_error": -0.27638737412803493,
+      "before": 414.7391011372987,
+      "before_grade_error": -0.26089886270131046,
+      "change": -0.015488511426724472,
+      "from": "hill_west_curve_08",
+      "grade": 415.0,
+      "inside_changed_control_bounds": false,
+      "point": [
+        119.69491980067903,
+        934.4333199116385
+      ],
+      "road": 735,
+      "side": -1.0,
+      "t": 0.0,
+      "to": "hill_west_arc_09_01"
+    },
+    {
+      "absolute_error_increase": 0.015140400710834001,
+      "after": 226.23485959928917,
+      "after_grade_error": -0.015140400710834001,
+      "before": 226.25,
+      "before_grade_error": 0.0,
+      "change": -0.015140400710834001,
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_07_out",
+      "grade": 226.25,
+      "inside_changed_control_bounds": true,
+      "point": [
+        222.535264,
+        654.9858945000001
+      ],
+      "road": 796,
+      "side": 0.0,
+      "t": 0.5,
+      "to": "hill_short_rest1_arrival"
+    },
+    {
+      "absolute_error_increase": 0.01303283472361727,
+      "after": 413.4138653025974,
+      "after_grade_error": -0.2602179474025661,
+      "before": 413.426898137321,
+      "before_grade_error": -0.24718511267894883,
+      "change": -0.01303283472361727,
+      "from": "hill_west_arc_08_10",
+      "grade": 413.67408324999997,
+      "inside_changed_control_bounds": false,
+      "point": [
+        104.7925,
+        944.20075
+      ],
+      "road": 735,
+      "side": 0.0,
+      "t": 0.25,
+      "to": "hill_west_curve_08"
+    },
+    {
+      "absolute_error_increase": 0.012542732073939078,
+      "after": 413.0266425138099,
+      "after_grade_error": -1.0894129861900979,
+      "before": 413.03918524588386,
+      "before_grade_error": -1.0768702541161588,
+      "change": -0.012542732073939078,
+      "from": "hill_west_arc_08_10",
+      "grade": 414.1160555,
+      "inside_changed_control_bounds": false,
+      "point": [
+        109.42285624251407,
+        940.2572078779168
+      ],
+      "road": 735,
+      "side": -1.0,
+      "t": 0.5,
+      "to": "hill_west_curve_08"
+    },
+    {
+      "absolute_error_increase": 0.01038579094540637,
+      "after": 411.34842711662424,
+      "after_grade_error": -1.8836838833757383,
+      "before": 411.35881290756964,
+      "before_grade_error": -1.873298092430332,
+      "change": -0.01038579094540637,
+      "from": "hill_west_arc_08_09",
+      "grade": 413.232111,
+      "inside_changed_control_bounds": false,
+      "point": [
+        99.1507926843491,
+        946.081095844195
+      ],
+      "road": 735,
+      "side": -1.0,
+      "t": 1.0,
+      "to": "hill_west_arc_08_10"
+    },
+    {
+      "absolute_error_increase": 0.01038579094540637,
+      "after": 411.34842711662424,
+      "after_grade_error": -1.8836838833757383,
+      "before": 411.35881290756964,
+      "before_grade_error": -1.873298092430332,
+      "change": -0.01038579094540637,
+      "from": "hill_west_arc_08_10",
+      "grade": 413.232111,
+      "inside_changed_control_bounds": false,
+      "point": [
+        99.1507926843491,
+        946.081095844195
+      ],
+      "road": 735,
+      "side": -1.0,
+      "t": 0.0,
+      "to": "hill_west_curve_08"
+    },
+    {
+      "absolute_error_increase": -0.011985429649172374,
+      "after": 226.22598049341659,
+      "after_grade_error": -0.02401950658341434,
+      "before": 226.2139950637674,
+      "before_grade_error": -0.036004936232586715,
+      "change": 0.011985429649172374,
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_07_out",
+      "grade": 226.25,
+      "inside_changed_control_bounds": true,
+      "point": [
+        223.27804532972243,
+        656.8428478909649
+      ],
+      "road": 796,
+      "side": -1.0,
+      "t": 0.5,
+      "to": "hill_short_rest1_arrival"
+    },
+    {
+      "absolute_error_increase": -0.012184818575804002,
+      "after": 377.81312737328585,
+      "after_grade_error": -1.2777816267141588,
+      "before": 377.80094255471005,
+      "before_grade_error": -1.2899664452899628,
+      "change": 0.012184818575804002,
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_in",
+      "grade": 379.090909,
+      "inside_changed_control_bounds": true,
+      "point": [
+        234.2614924787561,
+        848.4494640690426
+      ],
+      "road": 835,
+      "side": -1.0,
+      "t": 0.25,
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_07_out"
+    },
+    {
+      "absolute_error_increase": -0.012789608284720089,
+      "after": 328.8636364478461,
+      "after_grade_error": -5.2153893648210214e-8,
+      "before": 328.85084683956137,
+      "before_grade_error": -0.012789660438613737,
+      "change": 0.012789608284720089,
+      "from": "hill_short_rest2_departure",
+      "grade": 328.8636365,
+      "inside_changed_control_bounds": true,
+      "point": [
+        86.162632,
+        804.9731175
+      ],
+      "road": 822,
+      "side": 0.0,
+      "t": 0.5,
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_in"
+    },
+    {
+      "absolute_error_increase": -0.014198759731584687,
+      "after": 326.9318182760043,
+      "after_grade_error": 2.6004329356510425e-8,
+      "before": 326.9176194642641,
+      "before_grade_error": -0.014198785735914043,
+      "change": 0.0141988117402434,
+      "from": "hill_short_rest2_departure",
+      "grade": 326.93181825,
+      "inside_changed_control_bounds": true,
+      "point": [
+        80.94865300000001,
+        803.36881625
+      ],
+      "road": 822,
+      "side": 0.0,
+      "t": 0.25,
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_in"
+    },
+    {
+      "absolute_error_increase": -0.027476297762774493,
+      "after": 192.49999985366222,
+      "after_grade_error": -1.4633778278039244e-7,
+      "before": 192.52747644410056,
+      "before_grade_error": 0.027476444100557273,
+      "change": -0.027476590438340054,
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_02_out",
+      "grade": 192.5,
+      "inside_changed_control_bounds": true,
+      "point": [
+        295.24244939867975,
+        628.0570863633819
+      ],
+      "road": 786,
+      "side": -1.0,
+      "t": 1.0,
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_03_in"
+    },
+    {
+      "absolute_error_increase": -0.027476591752190416,
+      "after": 192.49999997125238,
+      "after_grade_error": -2.874762117244245e-8,
+      "before": 192.5274766204998,
+      "before_grade_error": 0.027476620499811588,
+      "change": -0.02747664924743276,
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_03_in",
+      "grade": 192.5,
+      "inside_changed_control_bounds": true,
+      "point": [
+        295.2424491802943,
+        628.0570864507362
+      ],
+      "road": 787,
+      "side": -1.0,
+      "t": 0.0,
+      "to": "stair_hill_short_gate_hill_short_rest1_arrival_03_out"
+    },
+    {
+      "absolute_error_increase": -0.03516356576619728,
+      "after": 330.79545460238637,
+      "after_grade_error": -1.476136617384327e-7,
+      "before": 330.7602910366202,
+      "before_grade_error": -0.03516371337985902,
+      "change": 0.03516356576619728,
+      "from": "hill_short_rest2_departure",
+      "grade": 330.79545475000003,
+      "inside_changed_control_bounds": true,
+      "point": [
+        91.9647827041157,
+        804.6658607345379
+      ],
+      "road": 822,
+      "side": -1.0,
+      "t": 0.75,
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_01_in"
+    },
+    {
+      "absolute_error_increase": -0.03600474694042077,
+      "after": 228.12499981070783,
+      "after_grade_error": -1.8929216594187892e-7,
+      "before": 228.0889950637674,
+      "before_grade_error": -0.036004936232586715,
+      "change": 0.03600474694042077,
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_07_out",
+      "grade": 228.125,
+      "inside_changed_control_bounds": true,
+      "point": [
+        219.79584332972243,
+        658.2357286409648
+      ],
+      "road": 796,
+      "side": -1.0,
+      "t": 0.75,
+      "to": "hill_short_rest1_arrival"
+    },
+    {
+      "absolute_error_increase": -0.03600476239557793,
+      "after": 224.374999826163,
+      "after_grade_error": -1.7383700878781383e-7,
+      "before": 224.3389950637674,
+      "before_grade_error": -0.036004936232586715,
+      "change": 0.03600476239557793,
+      "from": "stair_hill_short_gate_hill_short_rest1_arrival_07_out",
+      "grade": 224.375,
+      "inside_changed_control_bounds": true,
+      "point": [
+        226.76024732972243,
+        655.4499671409649
+      ],
+      "road": 796,
+      "side": -1.0,
+      "t": 0.25,
+      "to": "hill_short_rest1_arrival"
+    },
+    {
+      "absolute_error_increase": -0.037254859458187184,
+      "after": 340.454545,
+      "after_grade_error": 0.0,
+      "before": 340.4917998594582,
+      "before_grade_error": 0.037254859458187184,
+      "change": -0.037254859458187184,
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_out",
+      "grade": 340.454545,
+      "inside_changed_control_bounds": true,
+      "point": [
+        121.8577927041157,
+        813.8637099845379
+      ],
+      "road": 826,
+      "side": -1.0,
+      "t": 0.0,
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_in"
+    },
+    {
+      "absolute_error_increase": -0.03725500884530675,
+      "after": 340.454545,
+      "after_grade_error": 0.0,
+      "before": 340.4918000088453,
+      "before_grade_error": 0.03725500884530675,
+      "change": -0.03725500884530675,
+      "from": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_in",
+      "grade": 340.454545,
+      "inside_changed_control_bounds": true,
+      "point": [
+        121.8577929787561,
+        813.8637100690426
+      ],
+      "road": 825,
+      "side": -1.0,
+      "t": 1.0,
+      "to": "stair_hill_short_rest2_departure_hill_short_rest3_arrival_02_out"
+    },
+    {
+      "absolute_error_increase": -0.05146059835402639,
+      "after": 372.636374339164,
+      "after_grade_error": 0.41415233916399075,
+      "before": 372.687834937518,
+      "before_grade_error": 0.46561293751801713,
+      "change": -0.05146059835402639,
+      "from": "hill_west_arc_06_10",
+      "grade": 372.222222,
+      "inside_changed_control_bounds": false,
+      "point": [
+        60.92193441689639,
+        943.3968386898747
+      ],
+      "road": 735,
+      "side": -1.0,
+      "t": 1.0,
+      "to": "hill_west_curve_06"
+    }
+  ]
+}

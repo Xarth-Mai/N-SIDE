@@ -1,0 +1,6 @@
+FAIL {'node_identity_and_bind_transforms': True, 'inverse_binds': True, 'materials': True, 'embedded_atlas': True, 'Idle_unchanged': True, 'Walk_unchanged': True, 'Run_support_hierarchy_unchanged': True, 'Run_changed': False}
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-047/animation-r2/check-contract.py", line 44, in <module>
+    assert all(checks.values()),'Run must change while Idle/Walk, the support chain, rig and atlas remain unchanged'
+           ~~~^^^^^^^^^^^^^^^^^
+AssertionError: Run must change while Idle/Walk, the support chain, rig and atlas remain unchanged

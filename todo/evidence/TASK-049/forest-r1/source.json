@@ -1,0 +1,91 @@
+{
+  "sourceMap": "source-assets/district-map/district.json",
+  "sourceMapSha256": "58423556559f791d046544d4a5b6c2e756e8cba64abebcf5798ab8ec055ff2f1",
+  "model": "game/assets/environment/vegetation/pine-street.glb",
+  "modelSha256": "510e7b0699a13605c19182985cffdd2163db25751bfef628bab4b0826aeddef5",
+  "inspection": "GLB binary POSITION arrays in identity scene node; root vertices y < 0.04 m",
+  "nodeTransforms": [
+    {
+      "mesh": 0,
+      "name": "PineStreet"
+    }
+  ],
+  "rootVertexCount": 19,
+  "rootMaximumHorizontalRadiusM": 0.14065688683358743,
+  "rootMinimumYM": 0.0,
+  "rootMaximumYM": 0.012999097816646099,
+  "treeHeightM": 6.5,
+  "nativePlacementValidation": {
+    "result": "PASS",
+    "log": "native-tests.log",
+    "groupCounts": [
+      14,
+      14,
+      10
+    ],
+    "addedForestTrees": 38,
+    "derivedVegetationTotal": 214,
+    "pineTotal": 138,
+    "maximumActualRootBurialM": 0.299884,
+    "existingPlacementsComparison": "same final source map without B12 forest groups; does not compare prior terrain revision",
+    "iteration": "initial-unscaled-r1"
+  },
+  "matureRevision": {
+    "scaleRange": [
+      1.4,
+      1.8
+    ],
+    "rootSupportCircleM": "0.2 * instance scale",
+    "maximumSampledGroundRangeM": 0.55,
+    "maximumActualRootBurialM": 0.6,
+    "validation": {
+      "nativeResult": "PASS",
+      "log": "native-mature-tests.log",
+      "sceneTestsPassed": 20,
+      "groupCounts": [
+        14,
+        14,
+        10
+      ],
+      "actualScaleRange": [
+        1.4,
+        1.8
+      ],
+      "maximumActualRootBurialM": 0.447152,
+      "derivedVegetationTotal": 214,
+      "pineTotal": 138,
+      "gpu": {
+        "overview": {
+          "path": "output/capture/task049-forest-mature-r1",
+          "status": "PASS",
+          "saved": 90,
+          "checksPassed": 6
+        },
+        "roots": {
+          "path": "output/capture/task049-forest-root-mature-r1",
+          "status": "PASS",
+          "saved": 150,
+          "checksPassed": 6
+        },
+        "observedFrames": {
+          "overview": [
+            29,
+            44,
+            60,
+            61,
+            62
+          ],
+          "roots": [
+            29,
+            59,
+            60,
+            61,
+            62
+          ]
+        },
+        "visualConclusion": "needs_revision - larger mature silhouettes and supported roots, still isolated sparse stands without middle/understory layers; no full-forest acceptance",
+        "summitAndRest3PanoramicGpu": "NOT RUN in this subtask; native central sight corridors only"
+      }
+    }
+  }
+}

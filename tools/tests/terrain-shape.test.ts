@@ -36,6 +36,25 @@ test('descent eye-level slope uses local terrain detail instead of a 60m face',{
   assert.ok(longest<20,`the slope in eye-descent-cut still has a ${longest}m triangle edge`)
 })
 
+test('descent bank changes grade gradually and adjoining upper stairs retain support',()=>{
+  const ground=buildGround(data)
+  // Source positions hit by the actual r6 cut-view rays; the former first three faces exceeded 52 degrees
+  const slopes=[[171.4934,739.7493],[156.4618,741.9763],[155.4546,738.915],[133.13,746.5454],[129.2551,746.5177]].map(([x,y])=>{
+    const dx=(ground.height(x+.1,y)-ground.height(x-.1,y))/.2,dy=(ground.height(x,y+.1)-ground.height(x,y-.1))/.2
+    return Math.atan(Math.hypot(dx,dy))*180/Math.PI
+  })
+  assert.ok(slopes.every(a=>a>25&&a<48),`the near bank must remain sloped without the former straight steep wedge: ${slopes}`)
+  assert.ok(Math.max(...slopes)-Math.min(...slopes)>5,'the inspected bank must not become one uniform inclined plane')
+  for(const from of ['stair_hill_short_rest2_departure_hill_short_rest3_arrival_05_out','stair_hill_short_rest2_departure_hill_short_rest3_arrival_06_in']) {
+    const road=data.roads.find(r=>r.nodes[0]===from)!,points=road.nodes.map(id=>data.nodes[id]),offsets=roadOffsets(points,road.width)
+    for(const t of [0,.25,.5,.75,1])for(const side of [-1,0,1]) {
+      const [a,b]=points,[start,end]=offsets
+      const x=a[0]+(b[0]-a[0])*t+(start[0]+(end[0]-start[0])*t)*side,y=a[1]+(b[1]-a[1])*t+(start[1]+(end[1]-start[1])*t)*side
+      assert.ok(Math.abs(ground.height(x,y)-(a[2]+(b[2]-a[2])*t))<.01,`${from}: local reshaping must not leave the next stair leg unsupported`)
+    }
+  }
+})
+
 test('terrain bake preserves authored geometry and repeats without drift',{timeout:20_000},()=>{
   const result=bakeTerrain(data),count=data.terrain.bake!.authored
   assert.deepEqual(bakeTerrain(result),result)
@@ -54,7 +73,8 @@ test('terrain bake preserves authored geometry and repeats without drift',{timeo
 
 test('terrain noise protects complete road segments and footprints',{timeout:20_000},()=>{
   const sample=structuredClone(data)
-  sample.nodes.terrain_test_a=[-700,570,125];sample.nodes.terrain_test_b=[-400,570,125]
+  // Avoid the authored [-700,570,44] control: the fixture must itself be a valid Ground
+  sample.nodes.terrain_test_a=[-680,570,125];sample.nodes.terrain_test_b=[-400,570,125]
   sample.roads.push({nodes:['terrain_test_a','terrain_test_b'],kind:'lane',width:4})
   sample.surfaces.push({polygon:[[-700,630],[-500,630],[-500,700],[-700,700]],elevation:132,kind:'platform'})
   const samples=bakeTerrain(sample).terrain.samples

@@ -1,0 +1,270 @@
+{
+  "timestamp_utc": "2026-09-29T21:22:19.612107+00:00",
+  "scope": "Owned animation-r2 images, cycle sheets, probe GLBs and generated blend1; model-r6 and root GPU outputs excluded",
+  "review": "root viewed all 20 candidate-b side poses; art_review viewed A/B cycles and candidate-b front01/07/13; no author signoff inferred",
+  "removed_files": [
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/yao-grey-study.glb",
+      "bytes": 1264168,
+      "sha256": "63abd9f5ac70a1caba25747621a93cdabbf34b4aaa803887a7d0c4fb01ccf092"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run-front-01.png",
+      "bytes": 182348,
+      "sha256": "3f9ab3222204d8d0efc643dc3c29c8010e427831f9e4518780d7c3251558a52b"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run-front-07.png",
+      "bytes": 183340,
+      "sha256": "2b9e19bad8fab16d8c4bc89685328b96551256a81607d158902b32892668d507"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run-front-13.png",
+      "bytes": 182715,
+      "sha256": "612ecb3dba135cfeec6c5180437e70daba9fdd2bd3b68390bfe1e1e41fa88d76"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run-cycle.png",
+      "bytes": 2084904,
+      "sha256": "a27bc335afbdba5e0abb691afb78c88d141ac1879dd63a2dcc15f8513c19e9f0"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/yao-grey-study.glb",
+      "bytes": 1263612,
+      "sha256": "7296a2f091ebbf59ccba0b379de8acb2ea2af9fe075ef35bc7456a3d7caeb8df"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run-front-01.png",
+      "bytes": 182349,
+      "sha256": "fcfdd2e4bebcefbd161b86246fc290a7cec6d0c8f15ddb62de86c54a8f7a875a"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run-front-07.png",
+      "bytes": 183135,
+      "sha256": "cd6f1dbb0a2a3988b29cf98259c70a5d2a05ef235e292caafec1edaf0bdc6568"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run-front-13.png",
+      "bytes": 182363,
+      "sha256": "6387b16c309ededa65b1268ad498f313795f56431432708fa5ef03478705f37e"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run-cycle.png",
+      "bytes": 2094134,
+      "sha256": "44228ee1b5d03e49568edf61fcb9175979415a3f8c2499ec0f5d02a3443720c0"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/final-source/yao-grey-study.glb",
+      "bytes": 1418536,
+      "sha256": "5063920196cb1476e080f7d8acd6f8d16f0e55ab3cbfc94c30da9c1ad368a108"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/000.png",
+      "bytes": 180911,
+      "sha256": "4f65f155f83c45c74e3048414917937d511c1fc0ea8983a9cd5ebfd68c4c28ea"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/001.png",
+      "bytes": 179362,
+      "sha256": "b398c35a5e626376f8cc3e4d8b1d1cbc857770c505069b4b5e54e499be9b5c68"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/002.png",
+      "bytes": 178306,
+      "sha256": "4ffae3a0ebbb1e0520ba50b176b7fd4cb31ac65a86d1dedf5ff5fddfd62f3ca3"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/003.png",
+      "bytes": 182863,
+      "sha256": "dd6f171097474426414f4fb1f11a2d71ee43fe91bd331a6c25837d29cd9afcd3"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/004.png",
+      "bytes": 183795,
+      "sha256": "c9180984f78f2e8959f4f29a7a4d56ba0868d3d08c3b4ba7a15eb819714f087e"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/005.png",
+      "bytes": 184556,
+      "sha256": "de3bbc9da1f7dac30d1ba8e69e50adbe2c5b175cc304ae6bc63a1b74fa5eba45"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/006.png",
+      "bytes": 185605,
+      "sha256": "7ec819050e59e62beaf6d63bc7852f9107eeb5beeb72fda910a0a84cf3a542b4"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/007.png",
+      "bytes": 186608,
+      "sha256": "45c90656efb2e6ce8f0e62ca0c5df843f620323f345152dffa80b179bee6b815"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/008.png",
+      "bytes": 184685,
+      "sha256": "5006b35357eaefd4de81aeda360b30bcf0fb5f8fa10279e14e5584566900ebff"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/009.png",
+      "bytes": 182578,
+      "sha256": "53f390548a7954961348fa5d1eefaf03071110b72dd2dafc5b5f9cc2d140a04b"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/010.png",
+      "bytes": 181745,
+      "sha256": "dce89f8d9eb2466bb32c705cdd60d207df7c260396c36c3bda6ba90b76cfcf26"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/011.png",
+      "bytes": 180010,
+      "sha256": "0d56a3b717529dbc5a1b01f448e4566c1a51db139e30fdda8eac1fb110e5d639"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/012.png",
+      "bytes": 178098,
+      "sha256": "428b7336026247e394fd65587e94d56035d2184b0d861e138d8948a9d495fb6d"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/013.png",
+      "bytes": 182423,
+      "sha256": "3b29eb2b08c5590b7d6faaea168b9740c62f9afd551d5a6d4806e54bb607abdd"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/014.png",
+      "bytes": 182294,
+      "sha256": "a7997b045499d5a45f54d15d14336a402e55e0cd7bd3dec1e6994aa7b4574c85"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/015.png",
+      "bytes": 182804,
+      "sha256": "35f78c8c69096233d0330b4721c6c17c6b9c3fe42592a5d4eb8345e68c1e9315"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/016.png",
+      "bytes": 183423,
+      "sha256": "f4f246a1ee942e79aa3be7114bb80baea6ca9b343f340f16c0ac0a016f9cb406"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/017.png",
+      "bytes": 184905,
+      "sha256": "e1da9b3bd4d9b0b5c14fac5f59ee871d6226734ba16ef31f13162bb96f70286f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/018.png",
+      "bytes": 183764,
+      "sha256": "82710dac345c140f82b133ca5e2c37872c8fe8669084e766f896da68c70b8291"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate-b/run/019.png",
+      "bytes": 182649,
+      "sha256": "bd5687fe28aa28e96ae5dd0a7b6502f2c03dc6d0e6ce25fc47f20c9bfa8cf872"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/000.png",
+      "bytes": 180792,
+      "sha256": "4ff08b8fba9a5580da0be85a3d42d8feba845b018fe4183e6160cd67e79ecfe9"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/001.png",
+      "bytes": 178925,
+      "sha256": "b511e5b8df69bb36edc76fc918842096f90cbdd75ad169a43d7c112ddea80c0f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/002.png",
+      "bytes": 177948,
+      "sha256": "1bd24ce7969ea1d9f881bb594820f388553ac225f442cd314bed2db4ca8861e1"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/003.png",
+      "bytes": 182578,
+      "sha256": "9d08fce2fd0b87d2d812d0e0addf06ddc0889f304794ad7bd246fb5e94b2bcf9"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/004.png",
+      "bytes": 183695,
+      "sha256": "3928883c155b5572d5ef64cf3e38fa2289d24aa970637e59f38c8aadddc70e93"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/005.png",
+      "bytes": 184143,
+      "sha256": "86babd89f0c45040da309053e80fdb1f2784ac5dc889d98739024ef4b1a15478"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/006.png",
+      "bytes": 185386,
+      "sha256": "446f8c5396216b1dd986cc674050bbbb8f8fa4d3f1b7127bffaa77231118e627"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/007.png",
+      "bytes": 186483,
+      "sha256": "58e31051065b022f488418625a25bf282dce557fcc8baceebdca350944a874e9"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/008.png",
+      "bytes": 184338,
+      "sha256": "7fe9cbedaf857f1b32cf37f6606a5d4d26fec56d233c0951d8f908676bf81f3c"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/009.png",
+      "bytes": 181971,
+      "sha256": "0a7c7114d7e0eb2e3e3f18ab74debb9b37a8f824c534cee7dbaf830dd7aff695"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/010.png",
+      "bytes": 181106,
+      "sha256": "7ddfb17a8643f1893a28227e0b717f1caa46fc554c2501e71a9b6bdc873eed35"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/011.png",
+      "bytes": 179867,
+      "sha256": "2c995a578b7c3d1828cff6f37d5eece1ec78d38d4b1120c2b10d9b4c6f92b621"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/012.png",
+      "bytes": 177405,
+      "sha256": "7103312fb090a693a585b82afbef65b01fc4c7cb67d800dd11e998531c2a9832"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/013.png",
+      "bytes": 181962,
+      "sha256": "254b1b13621bbcd38784f926279058bbb76a6030afdf03fb663cfcb3f38d89e4"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/014.png",
+      "bytes": 182073,
+      "sha256": "0917d12646ee49e267a071e451d9b65f502bccadb56bc85a9acd127a3cc990c9"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/015.png",
+      "bytes": 182952,
+      "sha256": "b44e16662199794ab1c25a1b96c852c3a36dd55316412767f6383af7eb1c3010"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/016.png",
+      "bytes": 183232,
+      "sha256": "49478f51b4e25aaeddf052eeb522ec8d0a0aee264f03742b0d1d051b53b6a94c"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/017.png",
+      "bytes": 184584,
+      "sha256": "0dac1f4ad239dd9709552ea8cb4dcad1a1cba3080fcb5e2c09dbd26012de5c5f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/018.png",
+      "bytes": 183470,
+      "sha256": "17468b42838bde92674964cdf3eb0098e7b50c2d994ac47520132f346b807e8f"
+    },
+    {
+      "path": "output/characters/CHR-001/animation-r2/candidate/run/019.png",
+      "bytes": 182210,
+      "sha256": "787fc9ebcea05169d74cf950a49019e050ca6ff1471941719f00261047db0437"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 4024245,
+      "sha256": "65b7a1c65dbbb650def63e607bb733ae48d89440ce2fe41ac6c9e3ac1ab9ec13"
+    }
+  ],
+  "bytes_removed": 20542353,
+  "remaining_visual_files": [],
+  "retained": "source, formal assets, parameters, scripts, logs and numerical JSON"
+}
