@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "base_revision": "62f909f02fabb433727c4be5fc8c5a6a716e8a1e",
+  "beats_preserved": 16,
+  "choices_preserved": 2,
+  "old_scenes_preserved": 5,
+  "total_scenes": 22,
+  "intentional_information_change": "B003 delivers I003=suspected; B009 retains I003=confirmed after all four objects are verified",
+  "other_beat_or_choice_changes": []
+}

@@ -1,0 +1,6 @@
+$ python3 -B tools/validate_docs.py --root . && bun run check:skills
+FAIL: 525 Markdown files, 129 IDs
+docs/dev/design/quests/QST-004/script.md:10: 链接锚点缺失：../campaign-sequences.md#第三章-没有放学的那一天
+docs/dev/design/quests/QST-005/script.md:10: 链接锚点缺失：../campaign-sequences.md#第四章-初秋以外
+docs/dev/design/quests/QST-006/script.md:10: 链接锚点缺失：../campaign-sequences.md#第五章-仍在一起
+error: script "check:docs" exited with code 1

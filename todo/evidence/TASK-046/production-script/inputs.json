@@ -1,0 +1,487 @@
+{
+  "acceptance_revision": "9f1f0e657a4f80114a49282fea6edf5f448f7f87a8bf9f0afe0a845073541841",
+  "method": "SHA-256 of UTF-8 sorted records: <file sha256><two spaces><repository path><LF>",
+  "base_head": "62f909f02fabb433727c4be5fc8c5a6a716e8a1e",
+  "files": [
+    {
+      "path": "docs/dev/design/catalogs/characters.json",
+      "sha256": "8c54164417316d1af075c05e31780339bb20f0b1fe6841de62bd22f79ba4290d",
+      "bytes": 54755
+    },
+    {
+      "path": "docs/dev/design/catalogs/quests.json",
+      "sha256": "35813c33c33bc68a29d617d1eb114ecbb54d221924fde9cb5d970593485c41cf",
+      "bytes": 81148
+    },
+    {
+      "path": "docs/dev/design/quests/QST-001/dialogue.csv",
+      "sha256": "30a6294e3fe9511b8db4176641f74c8a40c00463cf044e0521d86846971cb222",
+      "bytes": 14205
+    },
+    {
+      "path": "docs/dev/design/quests/QST-001/script.md",
+      "sha256": "e2948164643022b095dcc2eface8e1b13d892ee29a8b2f6b1826b945bd265021",
+      "bytes": 36384
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/README.md",
+      "sha256": "e520193a1db2c35b5b38a80446d04af9142f02361ebaa9544b946ac9f8bfb1b1",
+      "bytes": 809
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/development.md",
+      "sha256": "cd81f6367d64b3adb490ec8e02c91f923533bd27ac8de33eca403e8c98d16c0b",
+      "bytes": 9711
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/dialogue.csv",
+      "sha256": "78b779a611ef989e4384e0776b8992eb58dbdedd25b65ef3a13fa0774eb40484",
+      "bytes": 40789
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/narrative.json",
+      "sha256": "8cd75f2d90590c8d3fe3e32528d888a239be29a92c370aef6f6e9067088a9a32",
+      "bytes": 24422
+    },
+    {
+      "path": "docs/dev/design/quests/QST-002/script.md",
+      "sha256": "5bb82378790acde4ecfff4598c544e3e1417a3509e73783e17580517263e5eae",
+      "bytes": 78421
+    },
+    {
+      "path": "docs/dev/design/quests/QST-003/dialogue.csv",
+      "sha256": "7bc13cda519d21f6be71ac7b26b30a317f51285508c2ea7a45814941a5e5595c",
+      "bytes": 24356
+    },
+    {
+      "path": "docs/dev/design/quests/QST-003/script.md",
+      "sha256": "69b0887215bac7be2eb12337ab9ebc833e692256e208d31e476655527f1c20d4",
+      "bytes": 50515
+    },
+    {
+      "path": "docs/dev/design/quests/QST-004/dialogue.csv",
+      "sha256": "ecb148853f192b827ca7623be19a989baefd38b3bfa2cb4e0b7c8d44f31de56c",
+      "bytes": 22101
+    },
+    {
+      "path": "docs/dev/design/quests/QST-004/script.md",
+      "sha256": "20022cf2db9677e5133f704274364223857b0037fcdaf10fc47b08f87f134035",
+      "bytes": 38636
+    },
+    {
+      "path": "docs/dev/design/quests/QST-005/dialogue.csv",
+      "sha256": "bfaa5fd0160885bad409a67990af4248f4f0067415e228c872d683dc3f19f6e3",
+      "bytes": 19559
+    },
+    {
+      "path": "docs/dev/design/quests/QST-005/script.md",
+      "sha256": "228009db90379763eec27925d0e9950fcd1dddb079b095184d9eeb2737594d2d",
+      "bytes": 33049
+    },
+    {
+      "path": "docs/dev/design/quests/QST-006/dialogue.csv",
+      "sha256": "aae28be058c931c6b6afc798e6091ff8a4cd0d60d799b3408a714b99ddf04b4c",
+      "bytes": 22909
+    },
+    {
+      "path": "docs/dev/design/quests/QST-006/script.md",
+      "sha256": "eab45e128525935ebad83a744caf8f8fd0a35416fe0efc67fbe41bd1ec4cab93",
+      "bytes": 34998
+    },
+    {
+      "path": "docs/dev/design/quests/QST-007/dialogue.csv",
+      "sha256": "1287302e759ccd9e71103c9438ee5544704e5ddfc3c7053b8ebf526a969a4b54",
+      "bytes": 16964
+    },
+    {
+      "path": "docs/dev/design/quests/QST-007/script.md",
+      "sha256": "332bf0b37ce62b2324673e3a51a19c1f53a572d79122009f415b5475177235f0",
+      "bytes": 29682
+    },
+    {
+      "path": "docs/dev/design/quests/QST-008/dialogue.csv",
+      "sha256": "4c085d6f19e6af140b6947c1d61c2fa580885c4b56d9f0090e8889c771459528",
+      "bytes": 17046
+    },
+    {
+      "path": "docs/dev/design/quests/QST-008/script.md",
+      "sha256": "79df4405d0cb8bd8cc7f0d7c6a3ee44fc3aaa4760c73e1c272f9a39a96a0c73d",
+      "bytes": 29042
+    },
+    {
+      "path": "docs/dev/design/quests/QST-009/README.md",
+      "sha256": "85594117b813676181914cd073e3362bcc4361d7a903c6a55fc98d73fc321ec2",
+      "bytes": 792
+    },
+    {
+      "path": "docs/dev/design/quests/QST-009/dialogue.csv",
+      "sha256": "44d7e8df8b6af28dfbc76383bda3524464d48f13ec8c5c19a05be4004e04bf59",
+      "bytes": 15651
+    },
+    {
+      "path": "docs/dev/design/quests/QST-009/script.md",
+      "sha256": "62b6eef141bd0d58358d599ddd8e99c5241338f86e372b6a06728f940b0db56a",
+      "bytes": 35039
+    },
+    {
+      "path": "docs/dev/design/quests/QST-010/dialogue.csv",
+      "sha256": "7d640dd8200239597b8403de1d7e342f955f0737419e9948988a6193084b6b06",
+      "bytes": 33886
+    },
+    {
+      "path": "docs/dev/design/quests/QST-010/script.md",
+      "sha256": "02943f89ff9fc97d00dddb179c78c9a30b0ac7cf24c292e89d12aee909d9eb76",
+      "bytes": 54198
+    },
+    {
+      "path": "docs/dev/design/quests/QST-019/dialogue.csv",
+      "sha256": "b7875b072e566386fabbdfab3591f2c51fdcb763b8a24ece1c136794e62ade99",
+      "bytes": 15448
+    },
+    {
+      "path": "docs/dev/design/quests/QST-019/script.md",
+      "sha256": "12b7df68e1193a3ec9849a3398cdcfdbd917ef4c9afa0e07acc5bb250da162fd",
+      "bytes": 18159
+    },
+    {
+      "path": "docs/dev/design/quests/QST-020/dialogue.csv",
+      "sha256": "26f4425452d40bd84765b776a80fc18f05bd661bc5c48530d0443786f1db0f8f",
+      "bytes": 23514
+    },
+    {
+      "path": "docs/dev/design/quests/QST-020/script.md",
+      "sha256": "5492edfdd1af0ab65b9945f25cdf7469490115ddc7374edd16b6e33749cd8044",
+      "bytes": 24280
+    },
+    {
+      "path": "docs/dev/design/quests/QST-021/dialogue.csv",
+      "sha256": "33f6cc660d2c410333b6b52b76cde7541b11d757812a2dfce7656940ce11ffdc",
+      "bytes": 11637
+    },
+    {
+      "path": "docs/dev/design/quests/QST-021/script.md",
+      "sha256": "fbd62127d00102fcb4cd78861689e211e5c5ed76d0f0bb8e35e475b5f941fe98",
+      "bytes": 15680
+    },
+    {
+      "path": "docs/dev/design/quests/QST-022/dialogue.csv",
+      "sha256": "f087ddd90af283c8efbb6c3fa8760de3ce374216d87a4219f21d6b06a1914325",
+      "bytes": 17794
+    },
+    {
+      "path": "docs/dev/design/quests/QST-022/script.md",
+      "sha256": "22bfa97c75757cd8f25571e465e9dc62c56d1b3d568e3aea02be19bac1449e95",
+      "bytes": 23672
+    },
+    {
+      "path": "docs/dev/design/quests/QST-023/dialogue.csv",
+      "sha256": "bc7f4ee7d11f7e5125ea3a32ee6eccf3181b4227dd4d8f45c5773eecfcd7250d",
+      "bytes": 9033
+    },
+    {
+      "path": "docs/dev/design/quests/QST-023/script.md",
+      "sha256": "7c5506b14764ec4537d63d5122f43f0a75e018deb8acc7f2513d3f6b0be67178",
+      "bytes": 20017
+    },
+    {
+      "path": "docs/dev/design/quests/QST-024/dialogue.csv",
+      "sha256": "eb960299e048cbfc16d0fb30842b018ab90b35f7bb0a7525b9765832b63439c8",
+      "bytes": 8476
+    },
+    {
+      "path": "docs/dev/design/quests/QST-024/script.md",
+      "sha256": "e63986acde2f58033175882db58819b879137e81757638f56cd208881220bef8",
+      "bytes": 16067
+    },
+    {
+      "path": "docs/dev/design/quests/QST-025/dialogue.csv",
+      "sha256": "73d25f9266678a9339ed7a1bebe37726c92eb8cd508d3f8cdf44716ce370ee6a",
+      "bytes": 8171
+    },
+    {
+      "path": "docs/dev/design/quests/QST-025/script.md",
+      "sha256": "5f1739da6bc4e9c5dd9ec556ad8ddf5c898220804e879780f31467293756f48e",
+      "bytes": 16125
+    },
+    {
+      "path": "docs/dev/design/quests/QST-026/dialogue.csv",
+      "sha256": "9a114cfd662cf1d19d187673924f5b06909d61199b2c361477cd710625caffba",
+      "bytes": 10501
+    },
+    {
+      "path": "docs/dev/design/quests/QST-026/script.md",
+      "sha256": "295d2c86d938584ad76e127506d07b02b643c9ef1c54988b8d14e47e74acdc28",
+      "bytes": 19174
+    },
+    {
+      "path": "docs/dev/design/quests/QST-027/dialogue.csv",
+      "sha256": "0439dc5185f4a82ae51477606eea48b559caa81277c5d6f2fdf19b322b48a1b4",
+      "bytes": 14927
+    },
+    {
+      "path": "docs/dev/design/quests/QST-027/script.md",
+      "sha256": "2c3ed8ea40d198dd8d37e2640c9e4637df6b8f09cc526b37d8bbeaa7f2ce94db",
+      "bytes": 23318
+    },
+    {
+      "path": "docs/dev/design/quests/QST-101/dialogue.csv",
+      "sha256": "f958be7d32e560e04cd9b1c2e641b1d353cb1e69c980c5f0532045207577aba1",
+      "bytes": 9242
+    },
+    {
+      "path": "docs/dev/design/quests/QST-101/script.md",
+      "sha256": "25974ea3e29f0bf20fd3ef0753a6aa7d0c58383164162ffba05d22cd6a928c6d",
+      "bytes": 21627
+    },
+    {
+      "path": "docs/dev/design/quests/QST-102/dialogue.csv",
+      "sha256": "fade769a51f43dcfe6288d7e707d83722549825f3626ce6fe86a3f06690843a5",
+      "bytes": 12410
+    },
+    {
+      "path": "docs/dev/design/quests/QST-102/script.md",
+      "sha256": "19bd548ab4bcc4b60c7e496b3d949e3a6f36a4b833ba28ce974cf840b815a301",
+      "bytes": 20077
+    },
+    {
+      "path": "docs/dev/design/quests/QST-103/dialogue.csv",
+      "sha256": "715bb954d198e681f8fb6008e0969aa4f0bb14a7497a07190b32b32b4ffdf8e8",
+      "bytes": 14071
+    },
+    {
+      "path": "docs/dev/design/quests/QST-103/script.md",
+      "sha256": "23eb7437dd5ec60c2447abec29ded47d898958914ae0a420319e2be522c84366",
+      "bytes": 29968
+    },
+    {
+      "path": "docs/dev/design/quests/QST-104/dialogue.csv",
+      "sha256": "78bcc01ad1ac3f4e8f8cfed2639c835fd55b19a3fbda6dc063b0bbdc3929a9ca",
+      "bytes": 8430
+    },
+    {
+      "path": "docs/dev/design/quests/QST-104/script.md",
+      "sha256": "289d057997e99e97294fd02943bbd1c329667b3497dbf06f3a5019c41d73e3fa",
+      "bytes": 16788
+    },
+    {
+      "path": "docs/dev/design/quests/QST-105/dialogue.csv",
+      "sha256": "332d9f60a43c183b1e991bc0df68342590ac2f9a905edbb9a524953c3e17c5af",
+      "bytes": 11732
+    },
+    {
+      "path": "docs/dev/design/quests/QST-105/script.md",
+      "sha256": "1f9c97ed581392477ede6681fdc71e88024d4b8f124af5917450fa99263b408c",
+      "bytes": 20323
+    },
+    {
+      "path": "docs/dev/design/quests/QST-106/dialogue.csv",
+      "sha256": "324d86cd67667fb53c6ee6386bacd92f70add3bf0eaf6761a58c87244c41c144",
+      "bytes": 14458
+    },
+    {
+      "path": "docs/dev/design/quests/QST-106/script.md",
+      "sha256": "60e57cb26668895870e821a327c3285746f3f4556e7271a8e0eecc038af2a781",
+      "bytes": 20524
+    },
+    {
+      "path": "docs/dev/design/quests/QST-107/dialogue.csv",
+      "sha256": "cd858da6a2883526300e54f3df7e715691a8c311229da135dbfdabc2510734c7",
+      "bytes": 18563
+    },
+    {
+      "path": "docs/dev/design/quests/QST-107/script.md",
+      "sha256": "674e83b0d55bff6709a30c3e916442b1ecfcf20c2e72da0e924a4b9400700d86",
+      "bytes": 26372
+    },
+    {
+      "path": "docs/dev/design/quests/QST-108/dialogue.csv",
+      "sha256": "61edacd7557f9cef6d7546d9b1671e57e17b8d6561a2e9e34a34a6bb0a669e52",
+      "bytes": 16476
+    },
+    {
+      "path": "docs/dev/design/quests/QST-108/script.md",
+      "sha256": "22ecf950cc554e076440ab3ea31523ffd442e323d9ab88c1e2d8c06ee34b027e",
+      "bytes": 27802
+    },
+    {
+      "path": "docs/dev/design/quests/campaign-sequences.md",
+      "sha256": "96ee6895ba1e36184c0d0b8e4ada17865cb5ce898cf7708384e6627f80d39a81",
+      "bytes": 47848
+    },
+    {
+      "path": "docs/dev/design/quests/index.md",
+      "sha256": "9497e0267c569cf95514c51f8fa6ab9314ef2856fdb1a9e1a44dec0d8cae27dd",
+      "bytes": 5351
+    },
+    {
+      "path": "docs/dev/design/quests/scenes.md",
+      "sha256": "62339843fd1b114727721d57cd602a820ed036e56ec204191d66c3a625d2bd97",
+      "bytes": 6342
+    },
+    {
+      "path": "docs/dev/design/quests/script-format.md",
+      "sha256": "2c1013a34788a881746226093878f89fa1492690bb06c3d29ee3845f3d3ddab9",
+      "bytes": 4740
+    },
+    {
+      "path": "docs/dev/design/quests/world-stories.md",
+      "sha256": "fd5692b59143bddd8e21e34904c59ea4aeb058c6b55967030b548021fbb1aad9",
+      "bytes": 12328
+    },
+    {
+      "path": "docs/dev/design/story-continuity.md",
+      "sha256": "a87d8e48cac89c7652bd64772279d8c28cf3d14e95e1c796e204fd72b6418382",
+      "bytes": 47820
+    },
+    {
+      "path": "docs/dev/production/narrative.md",
+      "sha256": "33f2d1a4ffa788cb54da4603dfd0f765f61d112a2866767257ede58df264f43d",
+      "bytes": 12956
+    },
+    {
+      "path": "docs/player/characters/index.md",
+      "sha256": "03679381574575b390c7b8edef65cb60eaaf6b88f158065656d692b0c4816990",
+      "bytes": 5535
+    },
+    {
+      "path": "docs/player/characters/supporting/archived-roll-call-voice.md",
+      "sha256": "53bbfc010c4577bf1b2c344328620f4752d7236c66bfd9b6c6b786d60a49fe9d",
+      "bytes": 688
+    },
+    {
+      "path": "docs/player/characters/supporting/audio-equipment-clerk.md",
+      "sha256": "9709767177a17b2b5d5f247aeb194443cb605ec2383f56dea979f064cbd3519a",
+      "bytes": 607
+    },
+    {
+      "path": "docs/player/characters/supporting/band-credit-passerby.md",
+      "sha256": "f5f2caf68b9a8a68144173301d536a03191d678d665f0199aec1e70091851fdc",
+      "bytes": 592
+    },
+    {
+      "path": "docs/player/characters/supporting/book-recommending-friend.md",
+      "sha256": "e0304b371492df07712ea0184168acff01d9ba255f5e7ce8617ff01c01ac1120",
+      "bytes": 579
+    },
+    {
+      "path": "docs/player/characters/supporting/booked-showcase-visitor.md",
+      "sha256": "e57256d54541a6c7fe3f13305ed5168ecf50e9a5b2387ad4260dd16636163e69",
+      "bytes": 563
+    },
+    {
+      "path": "docs/player/characters/supporting/collection-sign-reader.md",
+      "sha256": "429702579bae42ac8bde1b9a00eb57d6ab9a8a91ea976e66b3455984d04dc77d",
+      "bytes": 543
+    },
+    {
+      "path": "docs/player/characters/supporting/court-beginner.md",
+      "sha256": "ee930abcb9283f417f64bbc4a9809ad0d8b67bb68f4ec9351251618cdc363def",
+      "bytes": 594
+    },
+    {
+      "path": "docs/player/characters/supporting/court-regular.md",
+      "sha256": "b6fd6eab554c55bf910d6562029814f005fd67b4e32c86ff26e6ddf62b12c373",
+      "bytes": 579
+    },
+    {
+      "path": "docs/player/characters/supporting/courtside-waiter.md",
+      "sha256": "415ee01e5ee4e95b7d532cce4774a9d25a8da20c9989dc5b254c57383f52d732",
+      "bytes": 615
+    },
+    {
+      "path": "docs/player/characters/supporting/exhibit-visitor.md",
+      "sha256": "2984d6a7a074b866268a17c6d149da2a0967e3ce8193312977682667cf6b8a49",
+      "bytes": 491
+    },
+    {
+      "path": "docs/player/characters/supporting/first-session-tester.md",
+      "sha256": "6f561e410638454a39c049e5c7ae869604bce30c8ac4efed6c93b85adfe7653a",
+      "bytes": 626
+    },
+    {
+      "path": "docs/player/characters/supporting/fixing-inspector.md",
+      "sha256": "d3ec87aabd0feb08ff340ed811461356b92210d4d4a49fffe61dabf7fa3ac882",
+      "bytes": 623
+    },
+    {
+      "path": "docs/player/characters/supporting/hurrying-passerby.md",
+      "sha256": "f7f21bccbc538ab4d7bf7b262b5bbf04ea5f432de643de8fd6eb30ebd3325bb6",
+      "bytes": 559
+    },
+    {
+      "path": "docs/player/characters/supporting/index.md",
+      "sha256": "023cd0db6ba00b178e318734c81ed24cc2eb01d9556074e8c1bae7ecbb318a9b",
+      "bytes": 3340
+    },
+    {
+      "path": "docs/player/characters/supporting/late-show-friend.md",
+      "sha256": "d1a37b0f7a9a625e199e5909b3411b967376e10ef6f99b44150226d8f84d46bc",
+      "bytes": 622
+    },
+    {
+      "path": "docs/player/characters/supporting/laundry-customer.md",
+      "sha256": "bc9d9ccc1128ce9906c34eba0c51ed360e9a75a9a828532de3ad786b97d10949",
+      "bytes": 636
+    },
+    {
+      "path": "docs/player/characters/supporting/new-tabletop-player.md",
+      "sha256": "f547b2938b3e4d41b73f8f307f72c3b9541041d59c5c92b4922f869070e16074",
+      "bytes": 590
+    },
+    {
+      "path": "docs/player/characters/supporting/old-song-passerby.md",
+      "sha256": "d40dfcef11327ba08f2205bd27ffe5e4df36aeb4f3af4d93580e774528943fef",
+      "bytes": 565
+    },
+    {
+      "path": "docs/player/characters/supporting/on-duty-colleague.md",
+      "sha256": "381e5bebad96c4093b2a7fd58c86ca1459f91d68dfe01741ecab446875a78705",
+      "bytes": 560
+    },
+    {
+      "path": "docs/player/characters/supporting/original-edition-reader.md",
+      "sha256": "cff018bfa05dd361b252508c67c7b4e81033c727de2723df70e0a5041e4d3d04",
+      "bytes": 612
+    },
+    {
+      "path": "docs/player/characters/supporting/portrait-client.md",
+      "sha256": "0baac299bf8c52ec275521ecc8fcf985bde5501e28d7fcea662eabd757f8711a",
+      "bytes": 643
+    },
+    {
+      "path": "docs/player/characters/supporting/repair-customer.md",
+      "sha256": "43b6e2676214ffa4022bb9351d183f2eccc5f507fc1a548e9fced54f592908f4",
+      "bytes": 735
+    },
+    {
+      "path": "docs/player/characters/supporting/revised-edition-reader.md",
+      "sha256": "afadd3c963c9dcc7494b99d1c4e3b6a349f34dd0780bef8fc984e72bc3353800",
+      "bytes": 603
+    },
+    {
+      "path": "docs/player/characters/supporting/revised-game-tester.md",
+      "sha256": "e0ad308bac5ba7dccf9010053133b83d8eb8bd87effced40789a566392b6ad14",
+      "bytes": 632
+    },
+    {
+      "path": "docs/player/characters/supporting/school-contact.md",
+      "sha256": "b9c573563bf8f0b20879bd62faf906ac10f22c296acb3df22d0b5f0aef3e8d2c",
+      "bytes": 604
+    },
+    {
+      "path": "docs/player/characters/supporting/seedling-claimant.md",
+      "sha256": "d5b510cc890759c23bd98d1959817dbf0129536d1457179a1843d685033c23c6",
+      "bytes": 537
+    },
+    {
+      "path": "docs/player/characters/supporting/storage-clerk.md",
+      "sha256": "cec76cc10b4fd7f940de84bd5a2821b682fa2963384c6664289d7ad95b07abf9",
+      "bytes": 550
+    },
+    {
+      "path": "docs/player/story/main/last-toy.md",
+      "sha256": "71dd47c83fbad83a43f613ed6364db8ef4d71a6ca31ff1f87245e887661ff999",
+      "bytes": 6212
+    }
+  ]
+}

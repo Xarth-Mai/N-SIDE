@@ -124,7 +124,8 @@
         "CHR-030",
         "CHR-032",
         "CHR-034",
-        "CHR-035"
+        "CHR-035",
+        "CHR-057"
       ],
       "diver": "CHR-002",
       "max_simultaneous_sibling_divers": 1,
@@ -334,7 +335,10 @@
         "CHR-032",
         "CHR-033",
         "CHR-034",
-        "CHR-037"
+        "CHR-037",
+        "CHR-038",
+        "CHR-059",
+        "CHR-063"
       ],
       "diver": "CHR-002",
       "max_simultaneous_sibling_divers": 1,
@@ -447,7 +451,8 @@
         "CHR-032",
         "CHR-033",
         "CHR-035",
-        "CHR-037"
+        "CHR-037",
+        "CHR-056"
       ],
       "diver": "CHR-001",
       "max_simultaneous_sibling_divers": 1,
@@ -652,6 +657,7 @@
         "CHR-009",
         "CHR-015",
         "CHR-018",
+        "CHR-019",
         "CHR-020",
         "CHR-021",
         "CHR-022",
@@ -666,7 +672,9 @@
         "CHR-034",
         "CHR-035",
         "CHR-036",
-        "CHR-037"
+        "CHR-037",
+        "CHR-038",
+        "CHR-058"
       ],
       "diver": "CHR-001",
       "max_simultaneous_sibling_divers": 1,
@@ -823,7 +831,8 @@
         "CHR-034",
         "CHR-035",
         "CHR-036",
-        "CHR-037"
+        "CHR-037",
+        "CHR-058"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -941,16 +950,20 @@
         "CHR-003",
         "CHR-004",
         "CHR-005",
+        "CHR-008",
         "CHR-009",
+        "CHR-019",
         "CHR-021",
         "CHR-022",
         "CHR-023",
         "CHR-024",
         "CHR-028",
         "CHR-029",
+        "CHR-033",
         "CHR-034",
         "CHR-035",
-        "CHR-037"
+        "CHR-037",
+        "CHR-058"
       ],
       "diver": "CHR-002",
       "max_simultaneous_sibling_divers": 1,
@@ -1089,6 +1102,7 @@
         "CHR-003",
         "CHR-004",
         "CHR-005",
+        "CHR-006",
         "CHR-007",
         "CHR-009",
         "CHR-010",
@@ -1107,8 +1121,10 @@
         "CHR-030",
         "CHR-031",
         "CHR-032",
+        "CHR-034",
         "CHR-035",
-        "CHR-036"
+        "CHR-036",
+        "CHR-038"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1293,6 +1309,7 @@
         "87"
       ],
       "associated_character_ids": [
+        "CHR-001",
         "CHR-002",
         "CHR-004",
         "CHR-014",
@@ -1402,7 +1419,10 @@
         "CHR-031",
         "CHR-032",
         "CHR-035",
-        "CHR-036"
+        "CHR-036",
+        "CHR-047",
+        "CHR-048",
+        "CHR-049"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1468,6 +1488,8 @@
         "69"
       ],
       "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
         "CHR-005",
         "CHR-016",
         "CHR-017",
@@ -1480,7 +1502,9 @@
         "CHR-029",
         "CHR-030",
         "CHR-033",
-        "CHR-034"
+        "CHR-034",
+        "CHR-039",
+        "CHR-040"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1544,6 +1568,7 @@
         "70"
       ],
       "associated_character_ids": [
+        "CHR-001",
         "CHR-002",
         "CHR-016",
         "CHR-020",
@@ -1556,7 +1581,10 @@
         "CHR-030",
         "CHR-031",
         "CHR-033",
-        "CHR-034"
+        "CHR-034",
+        "CHR-041",
+        "CHR-042",
+        "CHR-043"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1611,13 +1639,18 @@
         "89"
       ],
       "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
         "CHR-006",
         "CHR-007",
         "CHR-019",
         "CHR-025",
         "CHR-030",
         "CHR-031",
-        "CHR-032"
+        "CHR-032",
+        "CHR-044",
+        "CHR-045",
+        "CHR-046"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1680,6 +1713,8 @@
         "83"
       ],
       "associated_character_ids": [
+        "CHR-001",
+        "CHR-002",
         "CHR-008",
         "CHR-009",
         "CHR-010",
@@ -1698,7 +1733,9 @@
         "CHR-032",
         "CHR-034",
         "CHR-035",
-        "CHR-036"
+        "CHR-036",
+        "CHR-061",
+        "CHR-062"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1820,7 +1857,8 @@
         "CHR-032",
         "CHR-033",
         "CHR-034",
-        "CHR-035"
+        "CHR-035",
+        "CHR-053"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1885,8 +1923,13 @@
       "associated_character_ids": [
         "CHR-001",
         "CHR-002",
+        "CHR-003",
         "CHR-026",
-        "CHR-036"
+        "CHR-027",
+        "CHR-036",
+        "CHR-050",
+        "CHR-051",
+        "CHR-052"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -1952,10 +1995,12 @@
         "79"
       ],
       "associated_character_ids": [
+        "CHR-001",
         "CHR-002",
         "CHR-010",
         "CHR-026",
-        "CHR-036"
+        "CHR-036",
+        "CHR-061"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -2023,7 +2068,8 @@
         "CHR-001",
         "CHR-002",
         "CHR-003",
-        "CHR-037"
+        "CHR-037",
+        "CHR-060"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -2085,6 +2131,7 @@
         "CHR-001",
         "CHR-002",
         "CHR-003",
+        "CHR-012",
         "CHR-036"
       ],
       "diver": null,
@@ -2160,7 +2207,8 @@
         "CHR-008",
         "CHR-015",
         "CHR-034",
-        "CHR-035"
+        "CHR-035",
+        "CHR-038"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -2247,7 +2295,8 @@
         "CHR-018",
         "CHR-020",
         "CHR-023",
-        "CHR-029"
+        "CHR-029",
+        "CHR-054"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -2331,7 +2380,8 @@
         "CHR-019",
         "CHR-024",
         "CHR-030",
-        "CHR-033"
+        "CHR-033",
+        "CHR-056"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,
@@ -2499,7 +2549,9 @@
         "CHR-003",
         "CHR-009",
         "CHR-010",
-        "CHR-013"
+        "CHR-013",
+        "CHR-035",
+        "CHR-055"
       ],
       "diver": null,
       "max_simultaneous_sibling_divers": 0,

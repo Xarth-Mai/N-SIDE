@@ -1,0 +1,28 @@
+{
+  "result": "PASS",
+  "source_hashes": "PASS",
+  "staged_source_hashes": "PASS",
+  "source_files": 96,
+  "staged_scope": "PASS",
+  "staged_file_count": 111,
+  "diff_cached_check": "PASS",
+  "base_head": "62f909f02fabb433727c4be5fc8c5a6a716e8a1e",
+  "line_endings_normalized": 10,
+  "csv_parsed_content_unchanged": "PASS",
+  "unexpected_staged_files": [],
+  "preserved_unrelated_paths": [
+    "AGENTS.md",
+    "docs/dev/production/art-direction.md",
+    "docs/dev/production/blender-animation.md",
+    "docs/dev/validation/runtime.md",
+    "todo/evidence/TASK-047/",
+    "todo/evidence/TASK-049/"
+  ],
+  "temporary_helpers_removed": [
+    "/tmp/task046-production-check.py",
+    "/tmp/task046-production-check-progress.json",
+    "/tmp/task046-link-coverage.py"
+  ],
+  "generated_visual_audio_files": 0,
+  "push": "NOT RUN - user requested local commit only"
+}

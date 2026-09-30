@@ -1,0 +1,4 @@
+$ python3 -B tools/validate_story_design.py --root . && bun run check:story-graph
+PASS: 91 places, 12 blocks, 63 characters, 27 quests, 64 referenced_buildings
+$ bun tools/story-data.ts
+PASS: 27 stories; mandatory conditions, references, reachability and optional-side boundary

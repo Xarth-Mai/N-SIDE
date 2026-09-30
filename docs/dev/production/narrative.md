@@ -26,7 +26,7 @@ document_id: DOC-NARRATIVE
 | Playtest / Revision | 观察玩家理解与行动，修改对应设计 |
 | Content Lock | 内容交付与检查记录，进入翻译和录制批次 |
 
-Pitch、Synopsis、Treatment 与场景规格放在任务的 `development.md`；结构状态放在 `narrative.json`；正式台词放在 `dialogue.csv`
+Pitch、Synopsis、Treatment 与机制放在任务的 `development.md`；完整场景表演、镜头与玩家交互拆入 `script.md`，按[共用格式](../design/quests/script-format.md)维护；结构状态放在 `narrative.json`；正式台词唯一编辑源为 `dialogue.csv`，剧本按稳定 ID 展开其相同文本供连续阅读
 
 日常片段采用“生活情境 → 玩家互动 → 灰盒 → 表演与声音 → 试玩”的流程。短委托按规模合并阶段
 
@@ -128,4 +128,4 @@ bun run check:docs
 
 ## 全剧与终章设计入口
 
-[跨章因果与状态契约](../design/story-continuity.md)维护四层变化、跨章铺垫与世界任务回收，以及各案停止／保留／新增部分；[终章行动与恢复](../design/quests/QST-009/development.md)细化十四个 Beat、当前确认、分阶段提交与紧急中止；[场景对白](../design/quests/scenes.md)按所属委托记录十一段场景剧本，覆盖十章主线的关键人物行动；[世界任务规格](../design/quests/world-stories.md)承接五条可选后续的交付与恢复。以上均是待实现的设计，不是当前运行能力
+[跨章因果与状态契约](../design/story-continuity.md)维护四层变化、跨章铺垫与世界任务回收，以及各案停止／保留／新增部分；[终章行动与恢复](../design/quests/QST-009/development.md)细化十四个 Beat、当前确认、分阶段提交与紧急中止；[关键场景定位](../design/quests/scenes.md)保留十一段旧样稿入口，指向[二十七篇完整制作脚本与中文台词](../design/quests/index.md)中的对应表演；[世界任务规格](../design/quests/world-stories.md)承接五条可选后续的交付与恢复。以上均是待实现的设计，不是当前运行能力

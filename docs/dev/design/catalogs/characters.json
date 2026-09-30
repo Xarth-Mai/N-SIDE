@@ -33,7 +33,7 @@
         "75"
       ],
       "personal_goal": "完成第一份有报酬与署名的音乐视觉委托，同时承担《今天的街坊》的主要插图",
-      "arc": "从过早替经历写好圆满结尾，到撤回遗漏交班者的作品、承担重画成本，终章以当下证据拒绝虚假的完成信号",
+      "arc": "从过早替经历写好圆满结尾，到撤回遗漏交班者的作品、承担重画成本；与曜承认彼此未经询问占用对方时间造成的损失，终章依据新返回路径提出卸下原想保留的檐段，在小册中留下实际缺口",
       "relationships": "月城曜与她轮换潜梦；乔伊邀请她制作街坊册；米娜和苏弥是日常朋友。安可是创作伙伴；遥的批注让她重新询问当事人今天要说什么",
       "voice": "表达温柔但判断明确，会问一件物品是怎样被使用的，而不只问它象征什么",
       "status": "accepted",
@@ -656,6 +656,463 @@
       "voice": "说话短、行动稳，先看出口与接应位置；下班后认真算买伞是否划算，喜欢最简单的甜点",
       "status": "accepted",
       "source_file": "docs/player/characters/neighbors/sera.md"
+    },
+    {
+      "id": "CHR-038",
+      "name": "失约维修顾客",
+      "age": null,
+      "tier": "次要",
+      "role": "向月台杂货送修普通小设备的顾客",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "04",
+        "11"
+      ],
+      "personal_goal": "按约取回仍要使用的设备，明确费用与后续维修去向",
+      "arc": "当面检查预约改过一次，第六章正式交付又失约；选择退款取回或同意转交陆成，后续交接沿实际选择继续",
+      "relationships": "与曜、玲核对失约及交付；同意转修时由陆成接手",
+      "voice": "围绕日期、物件与用途提问，不用客套话抵消自己的损失",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/repair-customer.md"
+    },
+    {
+      "id": "CHR-039",
+      "name": "取衣顾客",
+      "age": null,
+      "tier": "次要",
+      "role": "在何芸的洗衣店留有一袋待领衣物的顾客",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "09"
+      ],
+      "personal_goal": "在换班与乘车安排之间取回衣服",
+      "arc": "误读取件牌并与何芸错过数次，明确时段后本人核对并取走衣物",
+      "relationships": "与何芸重新约定取衣时间；兄妹参与标牌与交接核对",
+      "voice": "会说出自己白跑和以为不受欢迎的感受，取件后仍要赶车",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/laundry-customer.md"
+    },
+    {
+      "id": "CHR-040",
+      "name": "取衣牌试读熟客",
+      "age": null,
+      "tier": "次要",
+      "role": "不知取衣误会前情的洗衣店熟客",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "09"
+      ],
+      "personal_goal": "看清何时可以来领衣服",
+      "arc": "比较两张标牌，漂亮版只记住周五，普通版能读出周六提前留话也可来",
+      "relationships": "向何芸与玲反馈标牌的第一眼读法",
+      "voice": "直接说看见的日期和实际打算，不替设计者解释标牌",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/collection-sign-reader.md"
+    },
+    {
+      "id": "CHR-041",
+      "name": "球场等候者",
+      "age": null,
+      "tier": "次要",
+      "role": "在社区公共球场边等朋友的人",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "64"
+      ],
+      "personal_goal": "坐在能看见朋友从哪边出来的位置，不与对方错过",
+      "arc": "试坐后说明真正需要的视野，等到朋友递来包后并肩离开",
+      "relationships": "向魏航、玲和叶真说明等候需要；由本人决定是否出现在陈知夏的照片中",
+      "voice": "说具体等谁、从哪边出来，不把等候包装成参加比赛",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/courtside-waiter.md"
+    },
+    {
+      "id": "CHR-042",
+      "name": "球场常客",
+      "age": null,
+      "tier": "次要",
+      "role": "下班后使用社区公共球场的常客",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "64"
+      ],
+      "personal_goal": "在实际能到场的时段打球",
+      "arc": "指出平均轮用中的时间不合适，参与协商可用时段并按本轮约定交接",
+      "relationships": "与魏航和初学者共同使用场地",
+      "voice": "先指出自己尚未下班的时段；接受安排也会失去部分便利",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/court-regular.md"
+    },
+    {
+      "id": "CHR-043",
+      "name": "球场初学者",
+      "age": null,
+      "tier": "次要",
+      "role": "希望使用社区公共球场的初学者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "64"
+      ],
+      "personal_goal": "获得一段能练习且不被提前催走的时间",
+      "arc": "指出跟不上熟练回合与中途腾场的问题，参与试用新的轮换安排",
+      "relationships": "与魏航和常客商量这一次可用的场地",
+      "voice": "从实际练习会在哪里被打断说起，不只要求形式上获准进入",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/court-beginner.md"
+    },
+    {
+      "id": "CHR-044",
+      "name": "旧版读者",
+      "age": null,
+      "tier": "次要",
+      "role": "偏爱《沿河慢车》旧版的读者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "34",
+        "46",
+        "59",
+        "73"
+      ],
+      "personal_goal": "保留自己确实读过的情节与愿意公开的评价",
+      "arc": "核对后确认票留在抽屉的旧版文字，仍不接受修订就代表旧结尾不好",
+      "relationships": "与修订版读者争论；小满、诺拉和顾文珍参与核对；遥协助编辑版次说明",
+      "voice": "话里保留锋芒，不接受别人替自己删成温和一致的推荐",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/original-edition-reader.md"
+    },
+    {
+      "id": "CHR-045",
+      "name": "修订版读者",
+      "age": null,
+      "tier": "次要",
+      "role": "读过《沿河慢车》修订版的读者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "34",
+        "46",
+        "59",
+        "73"
+      ],
+      "personal_goal": "说明自己读到的买票结尾，保留对故事终点的判断",
+      "arc": "核对两个版次后撤回对另一人没读完的指责，仍喜欢人物走去买票的结尾",
+      "relationships": "与旧版读者争论；小满、诺拉、顾文珍及遥参与核对与编辑",
+      "voice": "把记得的情节说得肯定，事实改正后仍可以持不同偏好",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/revised-edition-reader.md"
+    },
+    {
+      "id": "CHR-046",
+      "name": "小满的荐书朋友",
+      "age": null,
+      "tier": "次要",
+      "role": "向小满推荐另一部书的朋友",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "34"
+      ],
+      "personal_goal": "让推荐的书得到原先留出的展示位置",
+      "arc": "收到推荐位置顺延的说明，答应下次而不立刻赞扬这次处理",
+      "relationships": "与小满就推荐页的排期联系",
+      "voice": "答复简短，自己的推荐被推迟也是实际损失",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/book-recommending-friend.md"
+    },
+    {
+      "id": "CHR-047",
+      "name": "首轮受邀试玩者",
+      "age": null,
+      "tier": "次要",
+      "role": "苏弥首轮邀请的另一位试玩者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "39"
+      ],
+      "personal_goal": "独自弄明白短游戏何时能够放飞",
+      "arc": "在阿杰之后未经示范尝试，仍停在起飞处，留下首次体验的停顿",
+      "relationships": "接受苏弥的邀请；兄妹请作者先观察其操作",
+      "voice": "以操作停顿和看到的反馈说明困惑",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/first-session-tester.md"
+    },
+    {
+      "id": "CHR-048",
+      "name": "首展预约观众",
+      "age": null,
+      "tier": "次要",
+      "role": "原本预约来玩苏弥游戏的观众",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "36",
+        "39",
+        "76"
+      ],
+      "personal_goal": "在约定的首展体验可玩的内容",
+      "arc": "制作展示路线撤下试玩邀请后改去别处，没有接受改看视频的挽留",
+      "relationships": "与苏弥有首展试玩约定",
+      "voice": "明确自己这次是来玩，离开不是供作者挽留成功的过场",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/booked-showcase-visitor.md"
+    },
+    {
+      "id": "CHR-049",
+      "name": "修订版陌生试玩者",
+      "age": null,
+      "tier": "次要",
+      "role": "没有看过演示视频的后续试玩者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "39"
+      ],
+      "personal_goal": "独自完成当前版本，再试一次感兴趣的转弯",
+      "arc": "读懂放飞与落下反馈，完成后询问能否重玩和能否到达更远屋顶",
+      "relationships": "向苏弥说明何时看懂可以放手；阿杰在旁观察",
+      "voice": "问眼前实际能玩的范围，不替作者接受下一版承诺",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/revised-game-tester.md"
+    },
+    {
+      "id": "CHR-050",
+      "name": "认出旧歌的路人",
+      "age": null,
+      "tier": "次要",
+      "role": "参与海报试读、认得安可旧歌的路人",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "04",
+        "79"
+      ],
+      "personal_goal": "说出经过海报时认出的内容",
+      "arc": "试读时认出旧歌，未因名字更大就认识尚未完成的新作",
+      "relationships": "向玲与安可提供一次自愿的第一眼反馈",
+      "voice": "只陈述自己认出的东西，不补歌迷身份或持续追随承诺",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/old-song-passerby.md"
+    },
+    {
+      "id": "CHR-051",
+      "name": "留意乐队的路人",
+      "age": null,
+      "tier": "次要",
+      "role": "参与海报试读、注意到乐队信息的路人",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "04",
+        "79"
+      ],
+      "personal_goal": "看清海报中的现场与乐队信息",
+      "arc": "给出与只认出旧歌者不同的第一眼回答",
+      "relationships": "向玲与安可反馈合作信息的可见程度",
+      "voice": "回答落在看见的乐队信息上，不替全部观众作结论",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/band-credit-passerby.md"
+    },
+    {
+      "id": "CHR-052",
+      "name": "赶路的路人",
+      "age": null,
+      "tier": "次要",
+      "role": "经过海报试读位置、正在赶路的人",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "04",
+        "79"
+      ],
+      "personal_goal": "继续自己的行程",
+      "arc": "表示没有留下听歌的打算，按自己的路线离开",
+      "relationships": "与玲、安可有短暂的试读接触",
+      "voice": "答复短，不为安慰创作者假装产生兴趣",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/hurrying-passerby.md"
+    },
+    {
+      "id": "CHR-053",
+      "name": "肖像委托人",
+      "age": null,
+      "tier": "次要",
+      "role": "参加郑拓肖像拍摄、只愿私人保留成片的人",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "25",
+        "57",
+        "74"
+      ],
+      "personal_goal": "穿自己特意准备的衣服，得到愿意摆在家里的肖像",
+      "arc": "要求换上熨过的衣服，选定照片后拒绝收入公开小册",
+      "relationships": "与郑拓确认穿着、试片和展示用途；郑文良参与选片",
+      "voice": "直说自己要穿哪件、照片要留给谁，不必为拒绝公开另给理由",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/portrait-client.md"
+    },
+    {
+      "id": "CHR-054",
+      "name": "展屋来访者",
+      "age": null,
+      "tier": "次要",
+      "role": "阅读旧帆展屋新说明的来访者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "85"
+      ],
+      "personal_goal": "弄清说明里的临时通路在哪里",
+      "arc": "在经确认的展签前停下，向陈知夏问具体位置",
+      "relationships": "与陈知夏、老钟在展屋公开时段相遇",
+      "voice": "从看到的箱子与通路说明提出具体问题",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/exhibit-visitor.md"
+    },
+    {
+      "id": "CHR-055",
+      "name": "桌游新来者",
+      "age": null,
+      "tier": "次要",
+      "role": "米娜离城后参加周然牌局的新来者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "37"
+      ],
+      "personal_goal": "参加今天这一局并弄清手里的牌如何分配",
+      "arc": "坐到米娜以前常坐的位置，问空出的牌归谁，也会漏看规则的一行",
+      "relationships": "与周然、玲在桌游卡牌店同桌",
+      "voice": "直接询问当局规则，不承担替代米娜的情感角色",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/new-tabletop-player.md"
+    },
+    {
+      "id": "CHR-056",
+      "name": "受损苗盘认领者",
+      "age": null,
+      "tier": "次要",
+      "role": "约好领取温室苗盘的居民",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "60"
+      ],
+      "personal_goal": "将约好的苗带回家中已腾出的位置",
+      "arc": "到场才面对原株已损失的空格，听取艾玛能承担的恢复安排",
+      "relationships": "与艾玛核对认领牌、损失和后续安排",
+      "voice": "说明家中已经清出位置，让缺苗的后果有具体去处",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/seedling-claimant.md"
+    },
+    {
+      "id": "CHR-057",
+      "name": "寄存店工作人员",
+      "age": null,
+      "tier": "次要",
+      "role": "旅行用品与寄存店办理物件留存的工作人员",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "31"
+      ],
+      "personal_goal": "按米娜确认的物件去向完成寄存交接",
+      "arc": "核对临出发仍未决定去向的物件留存，保留其之后再决定的余地",
+      "relationships": "与米娜及陪同的兄妹确认寄存和出发安排",
+      "voice": "围绕当次实物与寄存凭据核对，不替米娜猜新地址",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/storage-clerk.md"
+    },
+    {
+      "id": "CHR-058",
+      "name": "固定核验员",
+      "age": null,
+      "tier": "次要",
+      "role": "候船设施作业中的固定核验人员",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "26"
+      ],
+      "personal_goal": "检查当轮支撑与固定是否达到本次作业要求",
+      "arc": "第六章确认尚未完成的固定；联合行动中分别报告当轮检查结果，不以位置到位替代固定完成",
+      "relationships": "与邱立及现场维护人员协作，向曜和塞拉提供固定核验结果",
+      "voice": "用短报文说明已完成项和仍缺项；自己的确认与邱立的位置确认分开",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/fixing-inspector.md"
+    },
+    {
+      "id": "CHR-059",
+      "name": "校方工作人员",
+      "age": null,
+      "tier": "次要",
+      "role": "安排学校受控访问和现时接送核对的工作人员",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "19",
+        "66"
+      ],
+      "personal_goal": "确认当前学生去向，说明可以使用的出口与访问范围",
+      "arc": "先核对现实学生记录，再安排对现有出入路线的受控访问",
+      "relationships": "与顾文珍、陈知夏和兄妹在学校授权范围内联系",
+      "voice": "说明今天的记录与开放出口，不把旧称呼当成现时点名",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/school-contact.md"
+    },
+    {
+      "id": "CHR-060",
+      "name": "塞拉的值班同事",
+      "age": null,
+      "tier": "次要",
+      "role": "在塞拉下班后接手普通记录的值班同事",
+      "home_place_id": null,
+      "associated_place_ids": [],
+      "personal_goal": "找到当班需要的一份普通记录",
+      "arc": "电话问明记录位置并确认接手，让塞拉结束这次通话",
+      "relationships": "与塞拉按值班安排交接",
+      "voice": "只问具体记录位置并答复收到，不将普通交接改成新险情",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/on-duty-colleague.md"
+    },
+    {
+      "id": "CHR-061",
+      "name": "音频店接收员",
+      "age": null,
+      "tier": "次要",
+      "role": "乐器音频店办理借还的接收人员",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "77"
+      ],
+      "personal_goal": "按当次借用约定核验耳机与配件，明确是否能够改约",
+      "arc": "接收并检查归还的耳机，或就续借给出实际答复",
+      "relationships": "与悠真、贺佳及承担归还的兄妹核对借还",
+      "voice": "说清当次接收或改约结果，不将放在门口视为送达",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/audio-equipment-clerk.md"
+    },
+    {
+      "id": "CHR-062",
+      "name": "悠真的晚场朋友",
+      "age": null,
+      "tier": "次要",
+      "role": "与悠真相约散场后吃饭的朋友",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "79",
+        "53"
+      ],
+      "personal_goal": "与悠真一起走并真正坐下来吃一顿饭",
+      "arc": "门外问是否同走，饭桌上与悠真争起两种节奏，夹走最后一块菜",
+      "relationships": "与悠真、唐惠及当晚在场的朋友共餐",
+      "voice": "有自己的赶车与吃饭时间，也会认真争论喜欢哪一拍",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/late-show-friend.md"
+    },
+    {
+      "id": "CHR-063",
+      "name": "旧点名录音中的声音",
+      "age": null,
+      "tier": "次要",
+      "role": "学校旧点名录音中尚未确认身份的历史发声者",
+      "home_place_id": null,
+      "associated_place_ids": [
+        "19",
+        "66"
+      ],
+      "personal_goal": "按当时的点名与等候安排发出指令，当前回放不表达新的意图",
+      "arc": "固定点名声与当年的交接记录并置，帮助辨别旧等候流程和今天的出入状态",
+      "relationships": "身份未确认，不等同于顾文珍、现时校方工作人员或仍在现场的接班教师",
+      "voice": "历史录音中的固定指令，旧称呼音节保留不清楚的部分，不补出现实学生姓名",
+      "status": "accepted",
+      "source_file": "docs/player/characters/supporting/archived-roll-call-voice.md"
     }
   ]
 }

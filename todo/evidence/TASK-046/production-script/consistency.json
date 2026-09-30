@@ -1,0 +1,252 @@
+{
+  "quests": 27,
+  "scenes": 195,
+  "shots": 673,
+  "lines": 2184,
+  "errors": [],
+  "per_quest": [
+    {
+      "quest": "QST-001",
+      "scenes": 8,
+      "shots": 41,
+      "lines": 91,
+      "spoken": 73,
+      "screen": 18,
+      "chars": 15414
+    },
+    {
+      "quest": "QST-002",
+      "scenes": 22,
+      "shots": 67,
+      "lines": 181,
+      "spoken": 141,
+      "screen": 40,
+      "chars": 32936
+    },
+    {
+      "quest": "QST-003",
+      "scenes": 9,
+      "shots": 44,
+      "lines": 139,
+      "spoken": 114,
+      "screen": 25,
+      "chars": 21055
+    },
+    {
+      "quest": "QST-004",
+      "scenes": 9,
+      "shots": 35,
+      "lines": 99,
+      "spoken": 74,
+      "screen": 25,
+      "chars": 16126
+    },
+    {
+      "quest": "QST-005",
+      "scenes": 9,
+      "shots": 31,
+      "lines": 86,
+      "spoken": 74,
+      "screen": 12,
+      "chars": 13886
+    },
+    {
+      "quest": "QST-006",
+      "scenes": 9,
+      "shots": 32,
+      "lines": 97,
+      "spoken": 78,
+      "screen": 19,
+      "chars": 14748
+    },
+    {
+      "quest": "QST-007",
+      "scenes": 8,
+      "shots": 31,
+      "lines": 78,
+      "spoken": 64,
+      "screen": 14,
+      "chars": 12593
+    },
+    {
+      "quest": "QST-008",
+      "scenes": 8,
+      "shots": 27,
+      "lines": 79,
+      "spoken": 68,
+      "screen": 11,
+      "chars": 12321
+    },
+    {
+      "quest": "QST-009",
+      "scenes": 9,
+      "shots": 33,
+      "lines": 75,
+      "spoken": 65,
+      "screen": 10,
+      "chars": 14529
+    },
+    {
+      "quest": "QST-010",
+      "scenes": 7,
+      "shots": 31,
+      "lines": 144,
+      "spoken": 106,
+      "screen": 38,
+      "chars": 21960
+    },
+    {
+      "quest": "QST-101",
+      "scenes": 6,
+      "shots": 20,
+      "lines": 59,
+      "spoken": 52,
+      "screen": 7,
+      "chars": 9195
+    },
+    {
+      "quest": "QST-102",
+      "scenes": 5,
+      "shots": 15,
+      "lines": 78,
+      "spoken": 58,
+      "screen": 20,
+      "chars": 8735
+    },
+    {
+      "quest": "QST-103",
+      "scenes": 7,
+      "shots": 21,
+      "lines": 82,
+      "spoken": 67,
+      "screen": 15,
+      "chars": 12566
+    },
+    {
+      "quest": "QST-104",
+      "scenes": 4,
+      "shots": 13,
+      "lines": 50,
+      "spoken": 39,
+      "screen": 11,
+      "chars": 7159
+    },
+    {
+      "quest": "QST-105",
+      "scenes": 6,
+      "shots": 20,
+      "lines": 61,
+      "spoken": 49,
+      "screen": 12,
+      "chars": 8771
+    },
+    {
+      "quest": "QST-106",
+      "scenes": 6,
+      "shots": 16,
+      "lines": 68,
+      "spoken": 51,
+      "screen": 17,
+      "chars": 8740
+    },
+    {
+      "quest": "QST-107",
+      "scenes": 6,
+      "shots": 21,
+      "lines": 91,
+      "spoken": 76,
+      "screen": 15,
+      "chars": 11253
+    },
+    {
+      "quest": "QST-108",
+      "scenes": 7,
+      "shots": 21,
+      "lines": 81,
+      "spoken": 70,
+      "screen": 11,
+      "chars": 11642
+    },
+    {
+      "quest": "QST-019",
+      "scenes": 5,
+      "shots": 18,
+      "lines": 72,
+      "spoken": 57,
+      "screen": 15,
+      "chars": 8010
+    },
+    {
+      "quest": "QST-020",
+      "scenes": 6,
+      "shots": 22,
+      "lines": 98,
+      "spoken": 75,
+      "screen": 23,
+      "chars": 10636
+    },
+    {
+      "quest": "QST-021",
+      "scenes": 5,
+      "shots": 16,
+      "lines": 57,
+      "spoken": 49,
+      "screen": 8,
+      "chars": 6883
+    },
+    {
+      "quest": "QST-022",
+      "scenes": 6,
+      "shots": 24,
+      "lines": 85,
+      "spoken": 53,
+      "screen": 32,
+      "chars": 10224
+    },
+    {
+      "quest": "QST-023",
+      "scenes": 5,
+      "shots": 14,
+      "lines": 42,
+      "spoken": 36,
+      "screen": 6,
+      "chars": 8322
+    },
+    {
+      "quest": "QST-024",
+      "scenes": 6,
+      "shots": 14,
+      "lines": 38,
+      "spoken": 30,
+      "screen": 8,
+      "chars": 6929
+    },
+    {
+      "quest": "QST-025",
+      "scenes": 5,
+      "shots": 15,
+      "lines": 38,
+      "spoken": 32,
+      "screen": 6,
+      "chars": 6899
+    },
+    {
+      "quest": "QST-026",
+      "scenes": 6,
+      "shots": 14,
+      "lines": 52,
+      "spoken": 38,
+      "screen": 14,
+      "chars": 8168
+    },
+    {
+      "quest": "QST-027",
+      "scenes": 6,
+      "shots": 17,
+      "lines": 63,
+      "spoken": 28,
+      "screen": 35,
+      "chars": 9775
+    }
+  ]
+}

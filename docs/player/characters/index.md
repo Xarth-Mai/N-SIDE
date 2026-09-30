@@ -60,3 +60,7 @@
 | [曜](brother.md)、[塞拉](neighbors/sera.md)、[邱立](neighbors/qiu-li.md) | 街坊观察、现场职责和设施维护各有范围，依据当轮确认协作 |
 
 这些联系延伸到[城市场所](../locations/place-network.md)，每个人的工作、住处和来访各有理由
+
+## 其他相遇的人
+
+[取件、等候与共同工作的人](supporting/index.md)在各自的故事里说明自己的需要，也决定是否接受改约、参与活动或公开自己的作品
