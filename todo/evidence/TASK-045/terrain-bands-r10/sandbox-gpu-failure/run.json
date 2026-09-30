@@ -1,0 +1,71 @@
+{
+  "status": "FAIL",
+  "script": {
+    "scene": "walk-preview",
+    "view": "shop",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 60,
+    "seed": 0,
+    "timeout_seconds": 180,
+    "keyframes": [
+      50,
+      59
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 31,
+        "keys": [
+          "Enter"
+        ]
+      }
+    ],
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "assertions": [
+      {
+        "name": "same grounded spawn view",
+        "from": 50,
+        "to": 59,
+        "game_page": "world",
+        "world_ready": true,
+        "player_grounded": true,
+        "max_player_distance": 0.001,
+        "max_player_resets": 0
+      }
+    ]
+  },
+  "script_sha256": "9b4c68c958e703639685273bc723402a09dd3462b17bd9ac5436b0f9c6c98db8",
+  "git_commit": "19f386785c8c5792a0600c18340e1880fc8e020e",
+  "git_worktree": "M AGENTS.md\n M docs/dev/validation/runtime.md\n?? todo/evidence/TASK-045/terrain-bands-r10/",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.8-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "NOT RUN",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE",
+  "binary_sha256": "b715d25fa7adb824b3b8366e83325085527ebdf6d93ac29b851c0fcff08f4cd5",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-terrain-band-on-r10/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/capture/task045-terrain-band-on-r10",
+    "--walk-preview",
+    "--character-preview",
+    "--settings-dir",
+    "/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-045/terrain-bands-r10/settings-on"
+  ],
+  "runtime_exit_code": 101,
+  "error": "Native capture exited 101; see runtime.log and state.json when available",
+  "elapsed_wall_seconds": 2.0451945969998633
+}

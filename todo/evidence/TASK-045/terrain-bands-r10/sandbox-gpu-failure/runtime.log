@@ -1,0 +1,8 @@
+2026-09-30T13:17:18.817923Z ERROR wgpu_hal::vulkan::instance: GENERAL [Loader Message (0x0)]
+	setup_loader_term_phys_devs:  Failed to detect any valid GPUs in the current config
+2026-09-30T13:17:18.817942Z ERROR wgpu_hal::vulkan::instance: 	objects: (type: INSTANCE, hndl: 0x55d39d97a9c0, name: ?)
+2026-09-30T13:17:18.817951Z ERROR wgpu_hal::vulkan::instance: enumerate_adapters: Initialization of an object has failed
+
+thread 'main' (15) panicked at /home/lzzz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bevy_render-0.19.1/src/renderer/mod.rs:286:36:
+Unable to find a GPU! Make sure you have installed required drivers! For extra information, see: https://github.com/bevyengine/bevy/blob/latest/docs/linux_dependencies.md
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
