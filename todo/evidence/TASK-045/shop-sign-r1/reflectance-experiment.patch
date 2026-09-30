@@ -1,0 +1,98 @@
+diff --git a/game/src/world/assets.rs b/game/src/world/assets.rs
+index 8560d33..a57300e 100644
+--- a/game/src/world/assets.rs
++++ b/game/src/world/assets.rs
+@@ -30,6 +30,9 @@ pub struct MaterialSpec {
+     pub roughness: f32,
+     #[serde(default)]
+     pub metallic: f32,
++    /// Non-metal specular intensity; Bevy maps the default 0.5 to 4% reflectance
++    #[serde(default = "default_reflectance")]
++    pub reflectance: f32,
+     pub tile_meters: [f32; 2],
+     pub color_texture: Option<String>,
+     pub normal_texture: Option<String>,
+@@ -37,6 +40,10 @@ pub struct MaterialSpec {
+     pub unlit: bool,
+ }
+ 
++fn default_reflectance() -> f32 {
++    0.5
++}
++
+ #[derive(Clone, Debug, Deserialize)]
+ #[serde(deny_unknown_fields)]
+ pub struct ModelSpec {
+@@ -76,6 +83,7 @@ impl Appearance {
+                 .chain([
+                     ("roughness".into(), m.roughness),
+                     ("metallic".into(), m.metallic),
++                    ("reflectance".into(), m.reflectance),
+                 ])
+             {
+                 if !value.is_finite() || !(0.0..=1.0).contains(&value) {
+@@ -458,6 +466,53 @@ mod tests {
+         );
+     }
+ 
++    #[test]
++    fn appearance_reflectance_defaults_and_validates_boundaries() {
++        let dir = TestDir::new();
++        let path = dir.0.join("appearance.json");
++        let mut document = serde_json::json!({
++            "version":1,
++            "materials":{"wall":{"color":[1,1,1,1],"roughness":0.8,"tile_meters":[1,1]}},
++            "models":{}, "shopfronts":{}
++        });
++        let parsed: MaterialSpec =
++            serde_json::from_value(document["materials"]["wall"].clone()).unwrap();
++        assert_eq!(parsed.reflectance, StandardMaterial::default().reflectance);
++        std::fs::write(&path, document.to_string()).unwrap();
++        assert_eq!(
++            Appearance::load(&path).unwrap().materials["wall"].reflectance,
++            0.5
++        );
++        for value in [0.0, 0.2, 0.5, 1.0] {
++            document["materials"]["wall"]["reflectance"] = serde_json::json!(value);
++            std::fs::write(&path, document.to_string()).unwrap();
++            assert_eq!(
++                Appearance::load(&path).unwrap().materials["wall"].reflectance,
++                value as f32
++            );
++        }
++        for value in [-0.001, 1.001, -1e99, 1e99] {
++            document["materials"]["wall"]["reflectance"] = serde_json::json!(value);
++            std::fs::write(&path, document.to_string()).unwrap();
++            let error = Appearance::load(&path).unwrap_err();
++            assert!(
++                error.contains("appearance.json")
++                    && error.contains("/materials/wall/reflectance")
++                    && error.contains("finite 0..=1"),
++                "{error}"
++            );
++        }
++        for value in [serde_json::Value::Null, serde_json::json!("NaN")] {
++            document["materials"]["wall"]["reflectance"] = value;
++            std::fs::write(&path, document.to_string()).unwrap();
++            let error = Appearance::load(&path).unwrap_err();
++            assert!(
++                error.contains("[appearance/parse]") && error.contains("reflectance"),
++                "{error}"
++            );
++        }
++    }
++
+     #[test]
+     fn model_preflight_and_context_preserve_material_slots() {
+         let dir = TestDir::new();
+diff --git a/game/src/world/scene.rs b/game/src/world/scene.rs
+--- a/game/src/world/scene.rs
++++ b/game/src/world/scene.rs
+@@ -294,6 +294,7 @@
+             normal_map_texture: textures[1].clone(),
+             perceptual_roughness: spec.roughness,
+             metallic: spec.metallic,
++            reflectance: spec.reflectance,
+             unlit: spec.unlit,
+             uv_transform: Affine2::from_scale(Vec2::new(
+                 1.0 / spec.tile_meters[0],

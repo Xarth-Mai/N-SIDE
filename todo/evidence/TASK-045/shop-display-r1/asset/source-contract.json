@@ -1,0 +1,77 @@
+{
+  "baseline": "f75387c19f98ad58aadb31f017ba80f35907aa22",
+  "original_scene_lines_preserved_verbatim": true,
+  "new_scene_lines": 244,
+  "unchanged_collision_geometry_map_and_lighting_inputs": {
+    "game/src/world/collision.rs": {
+      "unchanged": true,
+      "sha256": "b360526f7e897d73e86d0a0c868d090d050d7a01ffe302f1ab2ca80d1bdfb593"
+    },
+    "game/src/world/geometry.rs": {
+      "unchanged": true,
+      "sha256": "3759272f6c4b607432892492e8e9597ceed49dc96b90e127beb8663cc3f22d75"
+    },
+    "source-assets/district-map/district.json": {
+      "unchanged": true,
+      "sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779"
+    },
+    "source-assets/district-scene/appearance.json": {
+      "unchanged": true,
+      "sha256": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e"
+    },
+    "source-assets/district-scene/daylight.json": {
+      "unchanged": true,
+      "sha256": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3"
+    }
+  },
+  "unchanged_sign_pngs": [
+    "game/assets/environment/signs/after9.png",
+    "game/assets/environment/signs/bakery-display.png",
+    "game/assets/environment/signs/bakery.png",
+    "game/assets/environment/signs/byte-beat.png",
+    "game/assets/environment/signs/cafe-display.png",
+    "game/assets/environment/signs/cafe.png",
+    "game/assets/environment/signs/drygoods-display.png",
+    "game/assets/environment/signs/drygoods.png",
+    "game/assets/environment/signs/frame.png",
+    "game/assets/environment/signs/grocer-display.png",
+    "game/assets/environment/signs/grocer.png",
+    "game/assets/environment/signs/playroom.png",
+    "game/assets/environment/signs/shop.png",
+    "game/assets/environment/signs/station.png"
+  ],
+  "changed_files": {
+    "game/src/world/scene.rs": {
+      "before_sha256": "39844e81113ddb9c2f75a799f9073585b908262395981078dec79982eb38dce2",
+      "after_sha256": "4fc23d1f18ed84e41dacf3c6af19a4c043e3f78c0bfb44e5ba5b78c1dac32db0",
+      "bytes": 213040
+    },
+    "source-assets/district-scene/shop-display.svg": {
+      "before_sha256": "a550be431aa62a27ccfb674665486957087f9bd9be309928497dde832f35f666",
+      "after_sha256": "0cba07f200b73ca0c712c740fed1e9f7faad2164719658774259619ea1bc11b1",
+      "bytes": 335
+    },
+    "game/assets/environment/signs/shop-display.png": {
+      "before_sha256": "e7142c4645691f46bacd4df798d8e30022768fb1a3e06ea9e22955384b075b8d",
+      "after_sha256": "bbac90fe411c9ec26adfa17be1af3a774adab3a2b9bbfc0ec800c0f59eccf339",
+      "bytes": 1015
+    },
+    "source-assets/district-scene/README.md": {
+      "before_sha256": "3c01ecac1ce90cc4ea057799a22e39ad31d6e5503b0df94b40fa45f466fc3409",
+      "after_sha256": "62f5dc50093b0caf5996d8a4bc76e88e65e06a7ab44dbb15c6bf3272f0bf9030",
+      "bytes": 12189
+    }
+  },
+  "visual_only_source": "buildings[V-04]/window-display",
+  "native_test": {
+    "status": "PASS",
+    "panes": 1,
+    "boxes": 14,
+    "triangles": 168,
+    "visual_batches": 5,
+    "new_images": 0,
+    "new_materials": 0,
+    "facade_collision_triangles": 499076,
+    "facade_collision_sources": 877
+  }
+}

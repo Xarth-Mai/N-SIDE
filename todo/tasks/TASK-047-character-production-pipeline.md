@@ -28,7 +28,7 @@ specs:
 
 ## 当前工作与下一步
 
-第 13 轮，步骤 6/6：两位原创灰模加入单次 Jump，保持原几何、绑定及三条既有动作数据；真实走跑／三次跳跃、空中暂停恢复与本地参考模型四动作兼容录制通过
+第 14 轮，步骤 6/6：曜的后发沿既有 Blender 主文件重新分组长短与流向，保持其余网格、三图、32 骨与四动作；源文件及 GLB 检查、实际游戏 240 帧绕摄与 Idle 推进通过
 
 现有造型仍 needs_revision；实际看图确认前段腿部动作偏直，正式配色、精细模型、动作混合及作者审美继续待完成。按哲／铃的既定参照推进，技术接入不替代人物形象验收
 
@@ -53,3 +53,5 @@ specs:
 [第 12 轮社区模型接入](../evidence/TASK-047/community-reference-r1/review.md)与[哲官方包检查](../evidence/TASK-047/model-r8/official-wise.md)记录来源、失败修复、真实工具与运行证据
 
 [Jump 资产与运行复验](../evidence/TASK-047/jump-r1/review.md)记录本批源工程、数据保持、实际命令、状态、看图、失败修复和清理
+
+[曜后发 r9](../evidence/TASK-047/model-r9/review.md)与[实际游戏绕摄](../evidence/TASK-047/model-r9/runtime-review.md)分别记录 DCC 制作、保持项与真实加载范围；冠顶放射汇聚和大片感仍需修订，未获作者外观放行

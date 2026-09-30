@@ -1,0 +1,55 @@
+{
+  "source_hashes": {
+    "game/src/world/scene.rs": "6bae234f719e8895114f143b01dd7598511778b0c7c8eae643a7f023f9a9de88",
+    "source-assets/district-scene/appearance.json": "b259c8b1552ffa7bdafb5ab75998e3ba19ad2eca11c51a767a8ab6a00acae81e",
+    "game/assets/environment/buildings/v-a08-roof-eaves.glb": "f52eb7559f4eb7e65f274f6b03dfaed9efbe0472e9b67a4348da9e4734c9b952",
+    "game/assets/environment/buildings/v15-mirror-hall-facade.glb": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2"
+  },
+  "outside_facades_props_new_test_and_removed_reflectance_unchanged": true,
+  "all_old_appearance_fields_unchanged": true,
+  "unchanged_inputs": {
+    "game/src/world/geometry.rs": "3759272f6c4b607432892492e8e9597ceed49dc96b90e127beb8663cc3f22d75",
+    "game/src/world/collision.rs": "b360526f7e897d73e86d0a0c868d090d050d7a01ffe302f1ab2ca80d1bdfb593",
+    "source-assets/district-map/district.json": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3"
+  },
+  "native_meshes": {
+    "V-A08": {
+      "triangles": 56,
+      "primitives": 3
+    },
+    "V-15": {
+      "triangles": 7154,
+      "primitives": 8
+    }
+  },
+  "removed_collision_triangles": {
+    "V-A08": 48,
+    "V-15": 324,
+    "total": 372
+  },
+  "runtime_visual": "NOT RUN; root owns GPU integration",
+  "native_test": {
+    "status": "PASS",
+    "passed": 1,
+    "failed": 0,
+    "log": "native-test.log"
+  },
+  "independent_ponytail_review": "Lean already. Ship.",
+  "scratch_cleanup": [
+    {
+      "path": "/tmp/blender-integration-before.rs",
+      "bytes": 233563,
+      "sha256": "f1982db6303154dbf1be62561eef207f7735dc26a58c99cac7cb64ea99a40103",
+      "deleted": true,
+      "ownership_and_use": "Created only by this integration; synchronous source comparison and independent read-only review completed; not passed to Cargo or GPU"
+    },
+    {
+      "path": "/tmp/blender-integration-before-appearance.json",
+      "bytes": 11575,
+      "sha256": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e",
+      "deleted": true,
+      "ownership_and_use": "Created only by this integration; synchronous source comparison and independent read-only review completed; not passed to Cargo or GPU"
+    }
+  ]
+}

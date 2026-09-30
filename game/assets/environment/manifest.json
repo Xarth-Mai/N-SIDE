@@ -199,6 +199,18 @@
       "bytes": 3714300,
       "sha256": "0fbe9b1b9b0513ce6fb6ce794d9ff55744caa6459e94e353c2fb0cb818223788",
       "license": "MPL-2.0"
+    },
+    {
+      "file": "materials/public-urban/brick-color.dds",
+      "bytes": 5592532,
+      "sha256": "485987be10b5be90d234e2b4e3f695428ddd5432aeef06c2721004b4750a4b83",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "materials/public-urban/brick-normal.dds",
+      "bytes": 5592532,
+      "sha256": "f4cc1769325dbd04e5d4b1eb9babb2ea066a9629264f3e27f46f816ef66cdc29",
+      "license": "CC0-1.0"
     }
   ]
 }

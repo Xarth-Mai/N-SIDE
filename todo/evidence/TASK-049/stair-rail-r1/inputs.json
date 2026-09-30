@@ -1,0 +1,11 @@
+{
+  "head": "f75387c19f98ad58aadb31f017ba80f35907aa22",
+  "files": {
+    "game/src/world/scene.rs": "4fc23d1f18ed84e41dacf3c6af19a4c043e3f78c0bfb44e5ba5b78c1dac32db0",
+    "game/src/world/geometry.rs": "3759272f6c4b607432892492e8e9597ceed49dc96b90e127beb8663cc3f22d75",
+    "game/src/world/collision.rs": "b360526f7e897d73e86d0a0c868d090d050d7a01ffe302f1ab2ca80d1bdfb593",
+    "source-assets/district-map/district.json": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "source-assets/district-scene/appearance.json": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e"
+  },
+  "scope": "Only scene.rs decorative rails; preserve frozen shop display, map, geometry, collision and appearance"
+}

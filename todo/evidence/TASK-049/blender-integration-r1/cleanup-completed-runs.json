@@ -1,0 +1,118 @@
+{
+  "scope": "Only this batch completed and reviewed visual outputs; no source, reference, binary, log or state removal",
+  "groups": [
+    {
+      "group": "shop-display-r1",
+      "count": 1560,
+      "bytes": 1470124582,
+      "runs": [
+        {
+          "path": "output/shop-display-r1/baseline",
+          "removed_files": 62,
+          "removed_bytes": 72807260
+        },
+        {
+          "path": "output/shop-display-r1/walk-before",
+          "removed_files": 458,
+          "removed_bytes": 417338587
+        },
+        {
+          "path": "output/shop-display-r1/after",
+          "removed_files": 62,
+          "removed_bytes": 72936716
+        },
+        {
+          "path": "output/shop-display-r1/walk-after",
+          "removed_files": 458,
+          "removed_bytes": 416772014
+        },
+        {
+          "path": "output/shop-display-r1/revised-fixed",
+          "removed_files": 62,
+          "removed_bytes": 73471623
+        },
+        {
+          "path": "output/shop-display-r1/revised-walk",
+          "removed_files": 458,
+          "removed_bytes": 416798382
+        }
+      ]
+    },
+    {
+      "group": "shop-sign-r1",
+      "count": 644,
+      "bytes": 636400177,
+      "runs": [
+        {
+          "path": "output/shop-sign-r1/candidate-fixed",
+          "removed_files": 62,
+          "removed_bytes": 72857970
+        },
+        {
+          "path": "output/shop-sign-r1/candidate-walk",
+          "removed_files": 458,
+          "removed_bytes": 417156344
+        },
+        {
+          "path": "output/shop-sign-r1/black-diagnostic",
+          "removed_files": 62,
+          "removed_bytes": 72853162
+        },
+        {
+          "path": "output/shop-sign-r1/reflectance-fixed",
+          "removed_files": 62,
+          "removed_bytes": 73532701
+        }
+      ]
+    },
+    {
+      "group": "character-hair-r9",
+      "count": 267,
+      "bytes": 237698885,
+      "runs": [
+        {
+          "path": "output/character-hair-r9/before",
+          "removed_files": 4,
+          "removed_bytes": 2620131
+        },
+        {
+          "path": "output/character-hair-r9/after-first",
+          "removed_files": 4,
+          "removed_bytes": 2622264
+        },
+        {
+          "path": "output/character-hair-r9/after-offset",
+          "removed_files": 4,
+          "removed_bytes": 2628153
+        },
+        {
+          "path": "output/character-hair-r9/final",
+          "removed_files": 4,
+          "removed_bytes": 2622591
+        },
+        {
+          "path": "output/character-hair-r9/runtime-orbit",
+          "removed_files": 251,
+          "removed_bytes": 227205746
+        }
+      ]
+    },
+    {
+      "group": "stair-rail-r1",
+      "count": 62,
+      "bytes": 67750111,
+      "runs": [
+        {
+          "path": "output/stair-rail-r1/uphill",
+          "removed_files": 62,
+          "removed_bytes": 67750111
+        }
+      ]
+    }
+  ],
+  "generated_blender_backup": {
+    "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+    "bytes": 4478216,
+    "sha256": "1dee25a7cde0970e10cae939072036db31598fb30eaef6febc65f52c5c568166"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "source": "materials/public-urban/Bricks057_1K-JPG_Color.jpg",
+      "runtime": "materials/public-urban/brick-color.dds",
+      "runtime_sha256": "485987be10b5be90d234e2b4e3f695428ddd5432aeef06c2721004b4750a4b83",
+      "bytes": 5592532,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "dds_base_pixels_match_decoded_jpg": true,
+      "opaque_alpha": true,
+      "channel_mean": [
+        137.03882598876953,
+        118.58228969573975,
+        98.93910884857178
+      ],
+      "preview": "output/assets/public-urban-r1/brick-color-tiles.png",
+      "preview_sha256": "488487fcbc97e61933795f5ea2f88394344ff08151776505e1b80a67dba60951"
+    },
+    {
+      "source": "materials/public-urban/Bricks057_1K-JPG_NormalGL.jpg",
+      "runtime": "materials/public-urban/brick-normal.dds",
+      "runtime_sha256": "f4cc1769325dbd04e5d4b1eb9babb2ea066a9629264f3e27f46f816ef66cdc29",
+      "bytes": 5592532,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "dds_base_pixels_match_decoded_jpg": true,
+      "opaque_alpha": true,
+      "channel_mean": [
+        127.4988374710083,
+        127.61378288269043,
+        245.5072841644287
+      ],
+      "preview": "output/assets/public-urban-r1/brick-normal-tiles.png",
+      "preview_sha256": "67f26944d93f03328f3a0e2fd3b2496aa861cceed5d1afe8fb07daaaf40b4543"
+    }
+  ],
+  "runtime_scene_check": "NOT RUN",
+  "status": "PASS: source hash, dimensions, alpha and DDS level-zero pixels"
+}

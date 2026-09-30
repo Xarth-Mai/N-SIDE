@@ -1,0 +1,10 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 26.40s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+shop window display: 1 panes, 14 boxes, 168 triangles, 5 visual batches, wall x=88.000; collision unchanged: 499076 triangles, 877 sources
+test world::scene::tests::shop_window_display_has_depth_support_and_no_collision_change ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 135 filtered out; finished in 9.31s
+

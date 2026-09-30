@@ -91,7 +91,7 @@ Plaster001 供米白与青灰外墙使用；WoodSiding009 供样板店外侧木�
 
 新增[初秋街树](vegetation/README.md)，以真实分枝与 1,452 片阔叶替换 `tree_a` 的块状冠，6m 高、11,686 三角、2 个材质与一张内嵌树皮纹理，保持既有树点、根部枢轴与放置半径。可编辑 Blender 主文件与源码在同目录，GLB 通过既有导出器复制；项目原创来源与 MPL-2.0 单独登记，原 CC0 素材的许可保持不变。全城植被、风动与 LOD 尚未完成，运行成本与实机观感按任务证据验证
 
-当前清单列出 33 个运行文件，包含 3 份许可文件，并非新增 33 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
+当前清单列出 35 个运行文件，包含 3 份许可文件，并非新增 35 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
 
 ## 陡坡岩面与原创植物
 
@@ -103,3 +103,11 @@ ambientCG [Rock043L](https://ambientcg.com/view?id=Rock043L) 的 1K-JPG Color／
 `appearance.models.grass` 与 `rock` 使用本目录的原创 [草石主文件](vegetation/ground-props.md)，保留原 Kenney 文件及来源。草使用真实曲面叶片和原创不透明颜色图，石块使用原创几何与既有 ambientCG Rock043L 颜色／法线；它们复用既有植物布点与地面适配，尺寸和许可逐项登记，不代表已形成连续森林
 
 地形材质使用固定世界坐标的连续旋转／相位采样和 2m 三角格三顶点混合，法线同步逆旋转，普通渲染与预通道共用采样。它改善明显的同向平铺，仍保留主轴投影交界和三角地形轮廓的制作边界
+
+## 公共砖面素材
+
+ambientCG [Bricks057](https://ambientcg.com/view?id=Bricks057) 补充暖棕砖面与可辨认的砖缝，供镜厅相邻音乐街、店屋侧墙或围墙的局部面试排，避免把全部外墙变成统一旧砖。来源发布日为 2021-04-11，官网标一周期约 `1.05 × 1.05 m`，原件及许可在同一 AST-003 清单登记；[CC0 许可](licenses/CC0-1.0.txt)允许随游戏分发，来源为 Lennart Demes / ambientCG
+
+原始 1K JPG Color／NormalGL 保存在 `materials/public-urban/`，不修改原件。沿既有导出器生成 `game/assets/environment/materials/public-urban/brick-color.dds` 与 `brick-normal.dds`，各 `1024 × 1024`、11 级 mip，颜色以 sRGB 采样、OpenGL 法线以线性数据采样。`brick_music` 只绑定 V-W10 西面首层的局部饰面，按 1.05m 周期连续展开 UV，保留门框与 2.2×2.55m 门洞；其他建筑的 `wall_brick` 保持现状
+
+饰面在原墙外 12mm、原门框后方，不另加碰撞，旧墙继续承担阻挡；三块平面共六个三角形，位置与 UV 由真实建筑、楼层和门节点派生。源图、ZIP CRC、派生 DDS、平铺预览及实际引擎检查范围记录在[本轮证据](../../todo/evidence/TASK-049/public-urban-r1/review.md)，导出继续使用上方两条既有命令；当前仍是局部美术候选

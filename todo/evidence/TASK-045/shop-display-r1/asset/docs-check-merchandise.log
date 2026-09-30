@@ -1,0 +1,4 @@
+$ python3 -B tools/validate_docs.py --root . && bun run check:skills
+FAIL: 545 Markdown files, 129 IDs
+source-assets/buildings/V-A08/README.md:49: 链接目标缺失：../../../todo/evidence/TASK-049/roof-r1/README.md
+error: script "check:docs" exited with code 1

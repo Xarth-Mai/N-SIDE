@@ -1,0 +1,51 @@
+{
+  "status": "PREPARED_NOT_APPLIED",
+  "scene_sha256": "d9ee0c7f46246836d692707f288bf7f458c3c850f4784cde3aef493baf81bd74",
+  "map_sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+  "asset": {
+    "path": "game/assets/environment/vegetation/street-tree.glb",
+    "sha256": "cad77ce1246fd7f7eba08fd773c0b62fd5029332f597ceb67a5a36d472598243",
+    "root_vertex_count": 21,
+    "root_radius_m": 0.1817600704125007,
+    "triangles_per_instance": 11686,
+    "triangles_added": 23372
+  },
+  "candidates": [
+    {
+      "anchor": "home",
+      "anchor_position": [
+        100,
+        255,
+        28.0
+      ],
+      "offset": [
+        19,
+        -17
+      ],
+      "map_xy": [
+        119,
+        238
+      ],
+      "scale": 0.85
+    },
+    {
+      "anchor": "v_a08_door_landing",
+      "anchor_position": [
+        91,
+        277.5,
+        30.021515
+      ],
+      "offset": [
+        8,
+        9
+      ],
+      "map_xy": [
+        99,
+        286.5
+      ],
+      "scale": 0.95
+    }
+  ],
+  "ground_height": "NOT RUN: only existing Rust Ground is authoritative",
+  "visual_acceptance": "NOT RUN: parent must render shop orbit and walk after applying"
+}

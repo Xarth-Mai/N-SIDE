@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "repeat_export_identical": true,
+  "files": [
+    {
+      "path": "source-assets/characters/CHR-001/model/build.py",
+      "sha256": "ff94fef5a16b0d80505763e631ddc7bfc9e185481a7510e0e07503ae52b1d36c",
+      "bytes": 47623
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+      "sha256": "b80306f16aba2471992554d53db871e9e368c51c7a7da299d93ef7c13b3b820d",
+      "bytes": 4547480
+    },
+    {
+      "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "sha256": "369714f84b8ccab773a4eef842b75bd4988834f867ca66d288284ef846fa5c37",
+      "bytes": 1737044
+    }
+  ],
+  "images_pending_root_review_and_cleanup": [
+    {
+      "path": "output/character-hair-r9/before/hair-quarter.png",
+      "sha256": "60b6c1d40430920cbc15323e7695b46f8d442bc7c34985e8efac099bf6af8af2",
+      "bytes": 643836
+    },
+    {
+      "path": "output/character-hair-r9/before/hair-top.png",
+      "sha256": "402634d25465179c8824f2ef4ef18a095d7eb254f4da79c997f0ac0f16f721f1",
+      "bytes": 654455
+    },
+    {
+      "path": "output/character-hair-r9/before/head-back.png",
+      "sha256": "0cf8c178b04e62c50b98082b9df2d0e5d616c0760b585e6ace9184b46524ee08",
+      "bytes": 633425
+    },
+    {
+      "path": "output/character-hair-r9/before/head-front.png",
+      "sha256": "896a82e30c9d94a94384d408e0bf1a9eb911cd352628df6f234906407bb8a998",
+      "bytes": 688415
+    },
+    {
+      "path": "output/character-hair-r9/after-first/hair-quarter.png",
+      "sha256": "3dee6b849b9f99f2c7a38a2b6a4fda8d048e6ecf1b1a865b0191302f9582a9c4",
+      "bytes": 645297
+    },
+    {
+      "path": "output/character-hair-r9/after-first/hair-top.png",
+      "sha256": "3ef748d2489d771e5fa3b3920772959b3517855026d1ee9beb58d0111f96e861",
+      "bytes": 653361
+    },
+    {
+      "path": "output/character-hair-r9/after-first/head-back.png",
+      "sha256": "7b7f62199e1a31adb90be67b83946f9fa2e40233c9aaeec0e3324f3990212223",
+      "bytes": 640406
+    },
+    {
+      "path": "output/character-hair-r9/after-first/head-front.png",
+      "sha256": "4a801762d4f470c0377827e88d230f73772e729a9683bb5ce25379ab889eed2a",
+      "bytes": 683200
+    },
+    {
+      "path": "output/character-hair-r9/after-offset/hair-quarter.png",
+      "sha256": "1d4fa09f4c09db525b4341fc208428c3734ce7a19b5177bf2f76c1a000e762ab",
+      "bytes": 641497
+    },
+    {
+      "path": "output/character-hair-r9/after-offset/hair-top.png",
+      "sha256": "2328a8b2300e6d5d6a93ddc48403d02f5eef9b0f7a9fc0163bac129050e9a5d7",
+      "bytes": 661403
+    },
+    {
+      "path": "output/character-hair-r9/after-offset/head-back.png",
+      "sha256": "30774d34804c0eff3e0095ca98dd91e175a0c25b628a99c6d1ea5d9f6fc4377b",
+      "bytes": 631868
+    },
+    {
+      "path": "output/character-hair-r9/after-offset/head-front.png",
+      "sha256": "50513a930461868cb87a30f2e548706a6096588375b3a9939bf16e73dfbe5842",
+      "bytes": 693385
+    },
+    {
+      "path": "output/character-hair-r9/final/hair-quarter.png",
+      "sha256": "d31ace2564029845640d036e1b0cc7ec7213923506c86948dfbae604404dc4f7",
+      "bytes": 639861
+    },
+    {
+      "path": "output/character-hair-r9/final/hair-top.png",
+      "sha256": "f127a6a2ecaa528a8520c0393901706586668759e98051c14709e68bfdfc57fa",
+      "bytes": 661970
+    },
+    {
+      "path": "output/character-hair-r9/final/head-back.png",
+      "sha256": "12cfac55fc28b7053cbf3a202b4f6e590bde62f6f3855193378a890763ace510",
+      "bytes": 627829
+    },
+    {
+      "path": "output/character-hair-r9/final/head-front.png",
+      "sha256": "c3f8f8f17a757e9442c1ca53310a0a6e2726afd9f922fdc2c508c985640c0099",
+      "bytes": 692931
+    }
+  ]
+}

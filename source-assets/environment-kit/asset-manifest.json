@@ -864,7 +864,75 @@
         "materials/Rock043L_1K-JPG_Color.jpg",
         "materials/Rock043L_1K-JPG_NormalGL.jpg"
       ]
+    },
+    {
+      "source": "materials/public-urban/Bricks057_1K-JPG_Color.jpg",
+      "output": "materials/public-urban/brick-color.dds",
+      "sha256": "3a26f13ce09e3712782101f1aad132964fee854efe20a5425b0f5b18bf743132",
+      "bytes": 1472220,
+      "archive": "https://ambientcg.com/get?file=Bricks057_1K-JPG.zip",
+      "archive_member": "Bricks057_1K-JPG_Color.jpg",
+      "archive_sha256": "6ce45c281fd7ede238ab76d2be5db064497559f65e88bc6817366d825a39e021",
+      "retrieved": "2026-10-01",
+      "source_page": "https://ambientcg.com/view?id=Bricks057",
+      "source_release_date": "2021-04-11",
+      "purpose": "V-W10 西面首层局部暖棕砖饰面，brick_music 候选；真实运行范围见 TASK-049/public-urban-r1，作者美术验收待完成",
+      "status": "exported",
+      "tile_meters": [
+        1.05,
+        1.05
+      ],
+      "tile_basis": "official asset page: ca. 1.05 m × 1.05 m",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0",
+      "license_source": "https://docs.ambientcg.com/license/",
+      "author": "Lennart Demes / ambientCG"
+    },
+    {
+      "source": "materials/public-urban/Bricks057_1K-JPG_NormalGL.jpg",
+      "output": "materials/public-urban/brick-normal.dds",
+      "sha256": "89563471e745d2744a663d6f184dedf5aa831455001f4d7dd70804999bb67976",
+      "bytes": 1817039,
+      "archive": "https://ambientcg.com/get?file=Bricks057_1K-JPG.zip",
+      "archive_member": "Bricks057_1K-JPG_NormalGL.jpg",
+      "archive_sha256": "6ce45c281fd7ede238ab76d2be5db064497559f65e88bc6817366d825a39e021",
+      "retrieved": "2026-10-01",
+      "source_page": "https://ambientcg.com/view?id=Bricks057",
+      "source_release_date": "2021-04-11",
+      "purpose": "V-W10 西面首层局部暖棕砖饰面，brick_music 候选；真实运行范围见 TASK-049/public-urban-r1，作者美术验收待完成",
+      "status": "exported",
+      "tile_meters": [
+        1.05,
+        1.05
+      ],
+      "tile_basis": "official asset page: ca. 1.05 m × 1.05 m",
+      "image": {
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "color_space": "linear",
+        "runtime_format": "DDS BGRA8 uncompressed, opaque alpha",
+        "mip_levels": 11,
+        "mip_filter": "ImageMagick DDS default; no colorspace conversion"
+      },
+      "generation": null,
+      "cost": 0,
+      "license": "CC0-1.0",
+      "license_source": "https://docs.ambientcg.com/license/",
+      "author": "Lennart Demes / ambientCG"
     }
   ],
-  "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"
+  "export_tool": "ImageMagick 7.1.2-32 Q16-HDRI"
 }

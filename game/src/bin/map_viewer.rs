@@ -497,6 +497,17 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
     let eye = [roof[0] + 12.0, roof[1] - 7.0, roof[2] - 2.5];
     println!("[visual/view] name=inspect-cinema-bearing eye={eye:?} target={target:?} fov=55");
     views.push(("inspect-cinema-bearing", view(eye, target)));
+    let entry = map.nodes["cinema_entry"];
+    // Free exterior inspection keeps the new facade in frame; it is not a playable spawn
+    let eye = [entry[0] - 18., entry[1] - 30., entry[2] + 5.];
+    let target = [entry[0] + 3., entry[1], entry[2] + 5.];
+    println!("[visual/view] name=inspect-cinema-facade eye={eye:?} target={target:?} fov=55");
+    views.push(("inspect-cinema-facade", view(eye, target)));
+    let front = map.nodes["fw_w_cinema_front"];
+    let eye = [front[0], front[1], front[2] + 1.7];
+    let target = [entry[0], entry[1], entry[2] + 2.];
+    println!("[visual/view] name=eye-cinema-entry eye={eye:?} target={target:?} fov=55");
+    views.push(("eye-cinema-entry", view(eye, target)));
     // The closer summit naturally leaves a level 55-degree view; keep that view and label the tilt
     let mut eye = map.nodes["home"];
     eye[2] += 1.7;

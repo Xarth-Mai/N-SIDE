@@ -21,9 +21,71 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
 parser.add_argument('--update-jump', action='store_true', help='Append Jump to the current master and export without rebuilding geometry')
+parser.add_argument('--update-hair', action='store_true', help='Replace only the back hair and crown in the current master')
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
 for path in (SOURCE, RUNTIME, OUTPUT):
     path.mkdir(parents=True, exist_ok=True)
+
+
+def hair_geometry(face_surface, head_top):
+    # Authored flow groups overlap along three offset sweeps, not a repeated radial fan
+    height_offset=head_top-1.734  # Preserve the editable master's hand-adjusted head height
+    sectors=(0,.52,1.13,1.58,2.00,2.55,2.93,3.48,3.83,4.36,4.73,5.27,5.78,math.tau)
+    # root height, root x/y offset, sweep, tip turn, tip height, ridge, taper start
+    flows=(
+        (1.741,-.012,-.008,.26,-.10,1.663,.004,.73),
+        (1.738,-.010,-.003,.32,.05,1.645,.004,.78),
+        (1.733,-.010,.006,.40,-.08,1.612,.006,.68),
+        (1.740,-.017,.015,.38,-.16,1.579,.004,.80),
+        (1.744,-.020,.018,.46,-.12,1.562,.004,.84),
+        (1.736,-.026,.021,.54,-.04,1.542,.006,.68),
+        (1.739,-.022,.017,.43,.12,1.559,.003,.82),
+        (1.734,-.012,.028,-.32,.17,1.537,.007,.66),
+        (1.742,-.006,.021,-.40,.04,1.566,.004,.84),
+        (1.739,-.001,.014,-.34,.10,1.579,.005,.73),
+        (1.733,.006,.009,-.28,-.04,1.604,.004,.80),
+        (1.738,.002,-.001,-.20,.08,1.633,.006,.68),
+        (1.742,-.008,-.006,-.14,-.06,1.660,.003,.79),
+    )
+    vertices,faces,uv=[],[],[]
+    levels=(0,.035,.07,.135,.20,.28,.36,.445,.53,.61,.69,.755,.82,.875,.93,.965,1)
+    for (left,right),(root_z,dx,dy,sweep,turn,end,ridge,taper) in zip(zip(sectors,sectors[1:]),flows):
+        centre=(left+right)/2; start=len(vertices)
+        for t in levels:
+            flow=max(0,min(1,(t-.07)/.29));flow=flow*flow*(3-2*flow)
+            spread=min(1,.09+t/.15)*(1-max(0,(t-taper)/(1-taper))**1.3)
+            z=1.744+(end-1.744)*t+(root_z-1.744)*(1-t)*flow+height_offset
+            direction_angle=centre+.30*(1-t)**.8*(1-flow)+(sweep*(1-t)**1.5+turn*math.sin(math.pi*t))*flow
+            for j in range(5):
+                cross=j/2-1
+                angle=direction_angle+(right-left)*(.80+.08*flow)*spread*cross
+                radius=math.sqrt(max(0,1-((z-height_offset-1.630)/.119)**2))
+                thickness=((1-cross*cross)*ridge+.003*(cross+1)/2)*math.sin(math.pi*t)**.7
+                # Keep roots seated in the existing closure before the wider sweeps separate
+                point=Vector(((.108*radius+thickness)*math.sin(angle)+(-.012+(dx+.012)*flow)*(1-t)**2,
+                              .018-(.102*radius+thickness)*math.cos(angle)+dy*flow*(1-t)**2,z))
+                origin=Vector((0,.018,z));direction=(point-origin).normalized()
+                hit,_,_,_=face_surface.ray_cast(origin,direction)
+                if hit is not None and (point-origin).length < (hit-origin).length+.006:
+                    point=hit+direction*.006
+                vertices.append(point);uv.append((j/4,t))
+        for k in range(len(levels)-1):
+            for j in range(4):
+                a=start+k*5+j;faces.append((a,a+1,a+6,a+5))
+    cap=(vertices,faces,uv)
+    # Keep the closure below the original two silhouette-defining crown locks
+    rings=[(0,.018,1.701,.080,.074),(0,.018,1.720,.066,.061),
+           (0,.017,1.737,.045,.042),(0,.016,1.748,.004,.004)]
+    vertices,faces,uv=[],[],[]
+    for k,(x,y,z,rx,ry) in enumerate(rings):
+        for j in range(33):
+            angle=j/32*math.tau
+            vertices.append((x+rx*math.sin(angle),y-ry*math.cos(angle),z+height_offset));uv.append((j/32,k/3))
+        if k:
+            for j in range(32):
+                a=(k-1)*33+j;faces.append((a,a+1,a+34,a+33))
+    faces.append(tuple(range(99,131)))
+    return {'Hair_Cap':cap,'Hair_CrownBase':(vertices,faces,uv)}
 
 
 def author_jump(rig):
@@ -107,11 +169,31 @@ def export(rig, objects):
     bpy.data.objects.remove(runtime,do_unlink=True)
     bpy.data.meshes.remove(data)
 
-if args.export_existing or args.update_jump:
+if args.export_existing or args.update_jump or args.update_hair:
     bpy.ops.wm.open_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     rig=bpy.data.objects['CHR001_Rig']
+    if args.update_hair:
+        rig.animation_data.action=bpy.data.actions['Idle'];bpy.context.scene.frame_set(1)
+        bpy.context.view_layer.update()
+        head=bpy.data.objects['Face_Head']
+        surface=BVHTree.FromObject(head,bpy.context.evaluated_depsgraph_get())
+        for name,(vertices,faces,uv) in hair_geometry(surface,max(v.co.z for v in head.data.vertices)).items():
+            obj=bpy.data.objects[name];old=obj.data
+            data=bpy.data.meshes.new(name);data.from_pydata(vertices,[],faces);data.update()
+            for material in old.materials:data.materials.append(material)
+            layer=data.uv_layers.new(name='UVMap')
+            for poly in data.polygons:
+                poly.use_smooth=True
+                for loop in poly.loop_indices:
+                    u,v=uv[data.loops[loop].vertex_index];layer.data[loop].uv=((528+u*480)/1024,(16+v*224)/1024)
+            assert [group.name for group in obj.vertex_groups]==['Head'], f'{name}: expected rigid head weights'
+            obj.data=data
+            group=obj.vertex_groups.get('Head') or obj.vertex_groups.new(name='Head')
+            group.add(list(range(len(vertices))),1,'REPLACE')
+            bpy.data.meshes.remove(old)
     if args.update_jump:
         author_jump(rig)
+    if args.update_jump or args.update_hair:
         bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     export(rig,[o for o in rig.children if o.type=='MESH'])
     raise SystemExit(0)
@@ -504,52 +586,11 @@ mouth=[(-.017,1.5357),(-.006,1.5362),(.006,1.5358),(.016,1.5365)]
 mouth=[(x+(nx-x)*t/4,z+(nz-z)*t/4) for (x,z),(nx,nz) in zip(mouth,mouth[1:]) for t in range(4)]+[mouth[-1]]
 # Resample the mouth onto the actual lip surface; four long chords cut behind it
 tube('Mouth',[(x,face_y(x,z,-.00065),z) for x,z in mouth],[.0003+.00035*math.sin(math.pi*i/(len(mouth)-1)) for i in range(len(mouth))],[.00035]*len(mouth),'pants','Head',sides=6)
-# Swept group surfaces all start at the crown and overlap their neighbors.
-# The back has no smooth carrier shell with independent short islands on top.
-sectors=(0,.52,1.13,1.58,2.00,2.55,2.93,3.48,3.83,4.36,4.73,5.27,5.78,math.tau)
-tip_offsets=(.0,.009,-.008,.015,-.004,.012,-.009,.016,-.011,.008,-.004,.011,.0)
-levels=(0,.07,.20,.36,.53,.69,.82,.93,1)
-cap_vertices,cap_faces,cap_uv=[],[],[]
-for group,(left,right) in enumerate(zip(sectors,sectors[1:])):
-    centre=(left+right)/2
-    front=max(0,math.cos(centre))**.6
-    back=max(0,-math.cos(centre))**.5
-    end=1.585+.085*front-.037*back+tip_offsets[group]
-    start=len(cap_vertices)
-    for k,t in enumerate(levels):
-        taper=.72+.025*(group%3)
-        spread=min(1,.09+t/.15)*(1-max(0,(t-taper)/(1-taper))**1.3)
-        z=1.744+(end-1.744)*t
-        centre_sweep=centre+.30*(1-t)**.8+(.05,.17,-.08)[group%3]*t
-        for j in range(5):
-            cross=j/2-1
-            angle=centre_sweep+(right-left)*.80*spread*cross
-            radius=math.sqrt(max(0,1-((z-1.630)/.119)**2))
-            ridge=(1-cross*cross)*(.004+.0015*(group%3))*math.sin(math.pi*t)**.7
-            # Root rows meet the common crown; broad midsections continue into
-            # tapered ends, with one edge above the adjoining group rather than
-            # a detached leaf perimeter surrounded by visible scalp
-            overlap=.004*(cross+1)/2*math.sin(math.pi*t)
-            radial=ridge+overlap
-            point=Vector(((.108*radius+radial)*math.sin(angle),.018-(.102*radius+radial)*math.cos(angle),z))
-            point.x-=.012*(1-t)**2
-            origin=Vector((0,.018,z));direction=(point-origin).normalized()
-            hit,_,_,_=face_surface.ray_cast(origin,direction)
-            if hit is not None and (point-origin).length < (hit-origin).length+.006:
-                point=hit+direction*.006
-            cap_vertices.append(point);cap_uv.append((j/4,t))
-    for k in range(len(levels)-1):
-        for j in range(4):
-            a=start+k*5+j
-            cap_faces.append((a,a+1,a+6,a+5))
-cap=mesh('Hair_Cap',cap_vertices,cap_faces,'hair','Head',cap_uv,subdiv=1)
-solid=cap.modifiers.new('Hair group thickness','SOLIDIFY');solid.thickness=.0015;solid.offset=-1
-# A small crown closure sits under converging roots, not under the full back
-crown=loft('Hair_CrownBase',[(0,.018,1.701,.080,.074),(0,.018,1.720,.066,.061),(0,.017,1.737,.045,.042),(0,.016,1.748,.004,.004)],'hair','Head',sides=32,caps=False,subdiv=1)
-crown_mesh=bmesh.new();crown_mesh.from_mesh(crown.data);crown_mesh.verts.ensure_lookup_table()
-top=crown_mesh.faces.new([crown_mesh.verts[i] for i in range(99,131)])
-for loop in top.loops:loop[crown_mesh.loops.layers.uv.active].uv=atlas_uv('hair',.5,.5)
-crown_mesh.to_mesh(crown.data);crown_mesh.free()
+# Share the exact hair definition with the selective master update
+for name,(vertices,faces,uv) in hair_geometry(face_surface,max(v.co.z for v in head.data.vertices)).items():
+    obj=mesh(name,vertices,faces,'hair','Head',uv,subdiv=1)
+    if name=='Hair_Cap':
+        solid=obj.modifiers.new('Hair group thickness','SOLIDIFY');solid.thickness=.0015;solid.offset=-1
 def hair_lock(name, points, width):
     # Lens-shaped strand groups with a narrow tip; one closed mesh, not hair particles
     verts,faces,uv=[],[],[]

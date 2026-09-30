@@ -1,0 +1,253 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 650,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    0,
+    29,
+    31,
+    33,
+    34,
+    59,
+    119,
+    179,
+    239,
+    269,
+    359,
+    389,
+    419,
+    449,
+    479,
+    509,
+    539,
+    569,
+    599,
+    610,
+    612,
+    616,
+    649
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 240,
+      "move_axis": [
+        0.341574,
+        0.939855
+      ]
+    },
+    {
+      "start": 240,
+      "end": 241,
+      "keys": [
+        "R"
+      ]
+    },
+    {
+      "start": 270,
+      "end": 390,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 390,
+      "end": 420,
+      "move_axis": [
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "start": 420,
+      "end": 450,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 450,
+      "end": 451,
+      "gamepad": [
+        "Reset"
+      ]
+    },
+    {
+      "start": 480,
+      "end": 510,
+      "look_axis": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "start": 510,
+      "end": 540,
+      "keys": [
+        "Q"
+      ]
+    },
+    {
+      "start": 540,
+      "end": 570,
+      "keys": [
+        "E"
+      ]
+    },
+    {
+      "start": 610,
+      "end": 611,
+      "gamepad": [
+        "Back"
+      ]
+    },
+    {
+      "start": 612,
+      "end": 613,
+      "gamepad": [
+        "Down"
+      ]
+    },
+    {
+      "start": 614,
+      "end": 615,
+      "gamepad": [
+        "Confirm"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 616,
+      "game_page": "title"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "title_has_no_world",
+      "from": 0,
+      "to": 29,
+      "game_page": "title",
+      "max_world_entities": 0
+    },
+    {
+      "name": "walker_starts_grounded",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "world_ready": true,
+      "min_world_entities": 1,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "stick_walk_reaches_real_stairs",
+      "from": 59,
+      "to": 239,
+      "min_player_distance": 16.0,
+      "min_player_height": 28.0,
+      "max_player_height": 30.2,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "stairs_raise_capsule_feet",
+      "from": 239,
+      "to": 239,
+      "min_player_height": 29.2,
+      "max_player_height": 30.2,
+      "player_grounded": true
+    },
+    {
+      "name": "keyboard_reset_recovers_grounding",
+      "from": 269,
+      "to": 269,
+      "min_player_height": 28.0,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "keyboard_walk_reaches_shop_wall",
+      "from": 269,
+      "to": 389,
+      "min_player_distance": 11.0,
+      "max_player_distance": 11.8,
+      "player_blocked": "V-04",
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "held_stick_cannot_cross_wall",
+      "from": 390,
+      "to": 419,
+      "max_player_distance": 0.01,
+      "player_blocked": "V-04",
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "keyboard_can_move_away_from_wall",
+      "from": 419,
+      "to": 449,
+      "min_player_distance": 3.0,
+      "player_grounded": true,
+      "max_player_resets": 1
+    },
+    {
+      "name": "gamepad_reset_recovers_grounding",
+      "from": 479,
+      "to": 479,
+      "min_player_height": 28.0,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 2
+    },
+    {
+      "name": "gamepad_look_turns_camera",
+      "from": 479,
+      "to": 509,
+      "min_rotation": 0.3,
+      "max_player_distance": 0.01
+    },
+    {
+      "name": "keyboard_yaw_turns_camera",
+      "from": 509,
+      "to": 539,
+      "min_rotation": 0.3,
+      "max_player_distance": 0.01
+    },
+    {
+      "name": "released_walk_stays_still",
+      "from": 580,
+      "to": 599,
+      "max_player_distance": 0.001,
+      "player_grounded": true,
+      "max_player_resets": 2
+    },
+    {
+      "name": "return_clears_world",
+      "from": 616,
+      "to": 649,
+      "game_page": "title",
+      "world_ready": false,
+      "max_world_entities": 0
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "retrieved": "2026-10-01",
+  "asset_package": "AST-003",
+  "official_pages": [
+    "https://ambientcg.com/view?id=Bricks057",
+    "https://ambientcg.com/view?id=Metal012",
+    "https://docs.ambientcg.com/license/",
+    "https://docs.ambientcg.com/legal/"
+  ],
+  "license": "CC0-1.0",
+  "license_file": "source-assets/environment-kit/licenses/CC0-1.0.txt",
+  "license_sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+  "archives": {
+    "Bricks057": {
+      "url": "https://ambientcg.com/get?file=Bricks057_1K-JPG.zip",
+      "sha256": "6ce45c281fd7ede238ab76d2be5db064497559f65e88bc6817366d825a39e021",
+      "bytes": 8190714,
+      "zip_crc_check": "PASS",
+      "members": [
+        "Bricks057_1K-JPG.usdc",
+        "Bricks057_1K-JPG_AmbientOcclusion.jpg",
+        "Bricks057_1K-JPG_Color.jpg",
+        "Bricks057_1K-JPG_Displacement.jpg",
+        "Bricks057_1K-JPG_NormalDX.jpg",
+        "Bricks057_1K-JPG_NormalGL.jpg",
+        "Bricks057_1K-JPG_Roughness.jpg",
+        "Bricks057_1K-JPG.blend",
+        "Bricks057_1K-JPG.mtlx",
+        "Bricks057_1K-JPG.tres",
+        "Bricks057.png"
+      ],
+      "adopted": true
+    },
+    "Metal012": {
+      "url": "https://ambientcg.com/get?file=Metal012_1K-JPG.zip",
+      "sha256": "c4792207f133357c6a6bfb008f6192b8691268fb0a2ca95b45825ac797e5028f",
+      "bytes": 3961854,
+      "zip_crc_check": "PASS",
+      "members": [
+        "Metal012_1K-JPG.usdc",
+        "Metal012_1K-JPG_Color.jpg",
+        "Metal012_1K-JPG_Displacement.jpg",
+        "Metal012_1K-JPG_Metalness.jpg",
+        "Metal012_1K-JPG_NormalDX.jpg",
+        "Metal012_1K-JPG_NormalGL.jpg",
+        "Metal012_1K-JPG_Roughness.jpg",
+        "Metal012_1K-JPG.blend",
+        "Metal012_1K-JPG.mtlx",
+        "Metal012_1K-JPG.tres",
+        "Metal012.png"
+      ],
+      "adopted": false
+    }
+  },
+  "Bricks057": {
+    "dimensions_m": [
+      1.05,
+      1.05
+    ],
+    "release_date": "2021-04-11",
+    "source_metadata": "Official page identifies procedural material; JPG originals retained without edits",
+    "preview": "Source color actually viewed before import; patterned warm-brown weathered brick, unsuitable as a clean metal or plaster substitute"
+  },
+  "Metal012": {
+    "release_date": "2018-08-25",
+    "dimensions_m": null,
+    "decision": "NOT ADOPTED: Color and NormalGL have low visual variation; main visual response needs roughness/reflectance handling not present in current appearance contract; no runtime bytes added"
+  },
+  "prior_manifest_entries_semantically_unchanged": true,
+  "runtime_scene_integration": "NOT RUN; no scene.rs or appearance.json changes"
+}

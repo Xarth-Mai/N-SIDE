@@ -1,0 +1,12 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 30.49s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+V-A08 actual GLB: 56 triangles, bounds=Vec3(69.55, 40.071518, -284.45)..Vec3(88.45, 40.421516, -270.55)
+V-15 actual GLB: 7154 triangles, bounds=Vec3(300.58, 25.0, -250.08)..Vec3(343.15, 36.829998, -216.965)
+generic collision removed: V-A08 coping 48 triangles; V-15 324 triangles (2664->2340); 5 actual source road segments clear of imported meshes
+test world::scene::tests::blender_building_attachments_fit_existing_shells_and_routes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 137 filtered out; finished in 9.30s
+

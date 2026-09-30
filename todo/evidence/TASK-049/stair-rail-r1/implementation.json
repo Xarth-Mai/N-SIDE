@@ -1,0 +1,20 @@
+{
+  "scene_sha256": "21342a06e2df47ee01475ae431a8431b3f502762f4a266a0a9d9181249ae6756",
+  "source": "game/src/world/scene.rs",
+  "result": "static and native narrow checks passed; GPU visual review pending root integration",
+  "batches": 3,
+  "posts": 48,
+  "bars": 12,
+  "triangles": 720,
+  "native_ground_visible_post_height_m": [
+    0.692,
+    1.177
+  ],
+  "geometry_collision_triangles_before_after": [
+    106757,
+    106757
+  ],
+  "unchanged_collision_scope": "geometry::generate baseline plus decorative handrails, not the full facade scene",
+  "pony_review": "Lean already. Ship.",
+  "visual_artifacts_created": 0
+}

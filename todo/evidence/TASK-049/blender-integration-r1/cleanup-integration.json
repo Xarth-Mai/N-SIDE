@@ -1,0 +1,72 @@
+[
+  {
+    "run": "cinema-facade",
+    "runtime_exit_code": 0,
+    "removed_files": 156,
+    "removed_bytes": 164395014,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "cinema-entry",
+    "runtime_exit_code": 0,
+    "removed_files": 62,
+    "removed_bytes": 56497091,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "cinema-bearing",
+    "runtime_exit_code": 0,
+    "removed_files": 62,
+    "removed_bytes": 58318064,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "shop-roof",
+    "runtime_exit_code": 0,
+    "removed_files": 62,
+    "removed_bytes": 73851913,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "music-wall",
+    "runtime_exit_code": 0,
+    "removed_files": 156,
+    "removed_bytes": 183804928,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "walk",
+    "runtime_exit_code": 1,
+    "removed_files": 673,
+    "removed_bytes": 628602931,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "walk-fixed",
+    "runtime_exit_code": 0,
+    "removed_files": 720,
+    "removed_bytes": 725079824,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "shop-orbit",
+    "runtime_exit_code": 0,
+    "removed_files": 251,
+    "removed_bytes": 230122242,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "shop-court",
+    "runtime_exit_code": 0,
+    "removed_files": 123,
+    "removed_bytes": 97492829,
+    "remaining_visual_files": 0
+  },
+  {
+    "run": "shop-court-facing-tree",
+    "runtime_exit_code": 0,
+    "removed_files": 123,
+    "removed_bytes": 98289692,
+    "remaining_visual_files": 0
+  }
+]

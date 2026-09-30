@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "blender_version": "4.5.14 LTS",
+  "source_sha256": "7aab4bcf47a77169e9f38e02140e8906840fd41d10b593e8734487eeb089ad04",
+  "runtime_sha256": "f52eb7559f4eb7e65f274f6b03dfaed9efbe0472e9b67a4348da9e4734c9b952",
+  "source_vertices": 28,
+  "source_quads": 28,
+  "triangles": 56,
+  "material_primitives": 3,
+  "source_manifold": true,
+  "source_volume_m3": 8.620911910719244,
+  "runtime_bounds_xyz": [
+    [
+      -9.449999809265137,
+      9.449999809265137
+    ],
+    [
+      -0.3499999940395355,
+      0.0
+    ],
+    [
+      -6.949999809265137,
+      6.949999809265137
+    ]
+  ],
+  "uv_area_ratio_range": [
+    0.9999896807424932,
+    1.000017055236778
+  ],
+  "uv_edge_ratio_range": [
+    0.999990716227656,
+    1.0000151642373734
+  ],
+  "material_names": [
+    "roof",
+    "metal",
+    "trim"
+  ],
+  "appearance_sha256_at_build": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e",
+  "collision": "No GLB collider; replacement of generated coping is an integration change",
+  "runtime_validation": "NOT RUN by asset producer"
+}

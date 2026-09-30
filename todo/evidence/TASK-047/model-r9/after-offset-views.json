@@ -1,0 +1,65 @@
+{
+  "revision": "after-offset",
+  "master_sha256": "1dee25a7cde0970e10cae939072036db31598fb30eaef6febc65f52c5c568166",
+  "engine": "CYCLES",
+  "device": "CPU",
+  "samples": 24,
+  "resolution": [
+    720,
+    960
+  ],
+  "views": [
+    {
+      "label": "head-front",
+      "camera_position": [
+        0,
+        -4,
+        1.61
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/character-hair-r9/after-offset/head-front.png"
+    },
+    {
+      "label": "head-back",
+      "camera_position": [
+        0,
+        4,
+        1.61
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/character-hair-r9/after-offset/head-back.png"
+    },
+    {
+      "label": "hair-quarter",
+      "camera_position": [
+        3,
+        4,
+        1.61
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/character-hair-r9/after-offset/hair-quarter.png"
+    },
+    {
+      "label": "hair-top",
+      "camera_position": [
+        0,
+        0.018,
+        3
+      ],
+      "target_height": 1.615,
+      "ortho_scale": 0.39,
+      "clip": "Idle",
+      "frame": 1,
+      "file": "output/character-hair-r9/after-offset/hair-top.png"
+    }
+  ]
+}

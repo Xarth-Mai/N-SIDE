@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "owner_id": "V-A08",
+  "assets": [
+    {
+      "id": "AST-V-A08-ROOF",
+      "kind": "static-building-eaves",
+      "state": "technical-preview",
+      "source_path": "source-assets/buildings/V-A08/roof-eaves.blend",
+      "runtime_path": "game/assets/environment/buildings/v-a08-roof-eaves.glb",
+      "source_sha256": "7aab4bcf47a77169e9f38e02140e8906840fd41d10b593e8734487eeb089ad04",
+      "runtime_sha256": "f52eb7559f4eb7e65f274f6b03dfaed9efbe0472e9b67a4348da9e4734c9b952",
+      "provenance": "Original folded-eave and gutter mesh, UV and scripts authored locally in Blender 4.5.14 LTS for N:SIDE",
+      "license": "MPL-2.0 project-authored geometry and scripts",
+      "license_status": "project-owned",
+      "references": [
+        "source-assets/district-map/district.json:buildings[V-A08]",
+        "source-assets/district-scene/appearance.json:materials.roof,materials.metal,materials.trim"
+      ],
+      "dimensions": {
+        "units": "meters",
+        "up_axis": "+Y",
+        "pivot_map_xyz": [
+          79,
+          277.5,
+          40.421515
+        ],
+        "runtime_bounds_xyz": [
+          [
+            -9.449999809265137,
+            9.449999809265137
+          ],
+          [
+            -0.3499999940395355,
+            0.0
+          ],
+          [
+            -6.949999809265137,
+            6.949999809265137
+          ]
+        ],
+        "outer_footprint_m": [
+          18.9,
+          13.9
+        ],
+        "downward_depth_m": 0.35
+      },
+      "export": {
+        "tool": "4.5.14 LTS",
+        "scene": 0,
+        "triangles": 56,
+        "material_primitives": 3,
+        "textures": 0,
+        "extensions": [],
+        "uv_units_per_meter": 1,
+        "color_space": "appearance sRGB converted to linear Blender/glTF base color",
+        "appearance_sha256_at_build": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e"
+      },
+      "generation": {
+        "service": null,
+        "seed": null,
+        "service_cost": null,
+        "external_paid_services_used": false
+      },
+      "acceptance": {
+        "geometry_report": "todo/evidence/TASK-049/roof-r1/geometry.json",
+        "technical": "PASS: source and GLB geometric/material checks",
+        "visual": "Blender self-audit: overall, gutter corner and under-eave views observed; author review pending",
+        "runtime": "Parent integration and real-game capture recorded separately",
+        "collision": "Visual GLB has no collider; removing original coping removes 48 generated structural triangles"
+      }
+    }
+  ]
+}

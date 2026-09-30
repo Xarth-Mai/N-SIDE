@@ -1,0 +1,54 @@
+00:00.253  blend            | Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/buildings/V-15/mirror-hall-facade.blend"
+INFO Draco is available, use library at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.so
+ERROR MeshOptimizer is not available because library could not be found at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.so
+01:17:39 | INFO: Starting glTF 2.0 export
+01:17:39 | INFO: Extracting primitive: V15_MirrorHall_Facade
+01:17:39 | INFO: Primitives created: 8
+01:17:39 | INFO: Finished glTF 2.0 export in 0.08319854736328125 s
+00:15.799  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/buildings/V-15/r1/south-entry.png'
+00:36.645  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/buildings/V-15/r1/entry-human-height.png'
+00:48.309  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/buildings/V-15/r1/upper-connection.png'
+
+{
+  "blender": "5.2.2 LTS",
+  "glb_sha256": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2",
+  "glb_bytes": 5909108,
+  "scene_count": 1,
+  "mesh_count": 1,
+  "primitives": 8,
+  "vertices": 9552,
+  "triangles": 7154,
+  "bounds_gltf": {
+    "min": [
+      0.5799999237060547,
+      0,
+      -30.079998016357422
+    ],
+    "max": [
+      43.15000534057617,
+      11.829998970031738,
+      3.0349998474121094
+    ]
+  },
+  "materials": [
+    "V15_Warm_trim",
+    "V15_Charcoal_metal",
+    "V15_ambientCG_Plaster001",
+    "V15_ambientCG_Concrete034",
+    "V15_Warm_letter_and_diffuser",
+    "V15_ambientCG_WoodSiding009",
+    "V15_Programme_red",
+    "V15_Programme_blue"
+  ],
+  "embedded_images": 6,
+  "extensions_used": [],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "V15_MirrorHall_Facade"
+    }
+  ]
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+
+Blender quit

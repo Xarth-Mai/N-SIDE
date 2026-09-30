@@ -1,0 +1,23 @@
+{
+  "overall.png": {
+    "sha256": "b1c58a2342e2d1d283d15c495cb88d844ede8a020ff88e0efe78d8a7de768601",
+    "bytes": 619106,
+    "observed": true,
+    "kind": "Blender CPU Cycles temporary block context; not real game",
+    "cleaned_after_observation": true
+  },
+  "gutter-corner.png": {
+    "sha256": "e6336ee994614fd724b37bdb5eb8c0e1e171f522d130690cb53df2667107f614",
+    "bytes": 680378,
+    "observed": true,
+    "kind": "Blender CPU Cycles temporary block context; not real game",
+    "cleaned_after_observation": true
+  },
+  "street-under-eave.png": {
+    "sha256": "86d2ac7545298654e5785555636a0d98bde42b4ba72f5c8cfb10579a6ccd714e",
+    "bytes": 614011,
+    "observed": true,
+    "kind": "Blender CPU Cycles temporary block context; not real game",
+    "cleaned_after_observation": true
+  }
+}

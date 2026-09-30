@@ -1,0 +1,30 @@
+{
+  "commit": "f75387c19f98ad58aadb31f017ba80f35907aa22",
+  "files": [
+    {
+      "path": "source-assets/characters/CHR-001/model/build.py",
+      "sha256": "797d355963c1add0864fb784c1d73572d7348fbbe2127d64c295f58d24888be7",
+      "bytes": 45157
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+      "sha256": "614ec6324fb228c338a1462684f77020b1c2da1f3085951f8e5fd55d8a696e2e",
+      "bytes": 4472904
+    },
+    {
+      "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+      "sha256": "81244b5708acab14784c66f6505decd5a353c02526315f4af6e859d7a28a138f",
+      "bytes": 1498780
+    },
+    {
+      "path": "source-assets/characters/CHR-001/asset-manifest.json",
+      "sha256": "416a3ee3f16687ac9c57eb1e5cb503a8783d3f5f0aea696f1b762a2516ced94b",
+      "bytes": 6885
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/README.md",
+      "sha256": "211974e24eda10089d6cb7c5c2ddcf3ff6203905f4905f55f8d99d3cd317eca3",
+      "bytes": 10485
+    }
+  ]
+}

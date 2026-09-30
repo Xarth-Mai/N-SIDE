@@ -1,0 +1,10 @@
+Info: Saved as "yao-grey-study.blend"
+INFO Draco mesh compression is available, use library at /home/lzzz/MyProjects/N-SIDE/output/tools/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+00:50:54 | INFO: Starting glTF 2.0 export
+00:50:54 | INFO: Extracting primitive: CHR001_RuntimeMesh
+00:50:54 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+00:50:55 | INFO: Primitives created: 1
+00:50:56 | INFO: Finished glTF 2.0 export in 1.6079647541046143 s
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+

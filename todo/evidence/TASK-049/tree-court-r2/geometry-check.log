@@ -1,0 +1,11 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 37.04s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+shop-street-tree nodes[home]/derived-vegetation[shop-street-tree] x=119.000 north=238.000 root=26.552860 top=31.652861 actual_root_burial=[0.00996877585158984, 0.04320539832365]
+shop-street-tree nodes[v_a08_door_landing]/derived-vegetation[shop-street-tree] x=99.000 north=286.500 root=32.723667 top=38.423668 actual_root_burial=[0.01370933760363613, 0.14887376521605944]
+test world::scene::tests::shop_street_trees_keep_actual_roots_supported_and_routes_clear ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 138 filtered out; finished in 0.19s
+

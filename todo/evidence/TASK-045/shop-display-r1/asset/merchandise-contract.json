@@ -1,0 +1,61 @@
+{
+  "baseline": "f75387c19f98ad58aadb31f017ba80f35907aa22",
+  "scene_at_revision_start_sha256": "21342a06e2df47ee01475ae431a8431b3f502762f4a266a0a9d9181249ae6756",
+  "scene_outside_window_helper_test_and_reflectance_preserved": true,
+  "preserved_outside_scope_sha256": "8b28a3159a92f26dec13989ca592212a0a14b8788bb3b66bea021d1a810d6431",
+  "unchanged_inputs_since_baseline": {
+    "game/src/world/collision.rs": "b360526f7e897d73e86d0a0c868d090d050d7a01ffe302f1ab2ca80d1bdfb593",
+    "game/src/world/geometry.rs": "3759272f6c4b607432892492e8e9597ceed49dc96b90e127beb8663cc3f22d75",
+    "source-assets/district-map/district.json": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "source-assets/district-scene/appearance.json": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3"
+  },
+  "files": {
+    "game/src/world/scene.rs": {
+      "sha256": "f1982db6303154dbf1be62561eef207f7735dc26a58c99cac7cb64ea99a40103",
+      "bytes": 233563
+    },
+    "source-assets/district-scene/README.md": {
+      "sha256": "eb24a150e61dfe6942443e267c336ff9d4eee40bf2afff8b2a5f75762ca12fe5",
+      "bytes": 12243
+    },
+    "source-assets/district-scene/shop-display.svg": {
+      "sha256": "0cba07f200b73ca0c712c740fed1e9f7faad2164719658774259619ea1bc11b1",
+      "bytes": 335
+    },
+    "game/assets/environment/signs/shop-display.png": {
+      "sha256": "bbac90fe411c9ec26adfa17be1af3a774adab3a2b9bbfc0ec800c0f59eccf339",
+      "bytes": 1015
+    }
+  },
+  "native_mesh_budget": {
+    "panes": 1,
+    "books": 6,
+    "cups": 1,
+    "cuboids": 26,
+    "triangles": 492,
+    "visual_batches": 5,
+    "new_textures": 0,
+    "new_materials": 0
+  },
+  "real_camera_revision_visual_status": "NOT RUN; root performs final GPU comparison",
+  "prior_revision_visual_status": "FAIL; repeated white labels and missing product silhouettes",
+  "scratch_cleanup": {
+    "path": "/tmp/shop-window-before-merchandise.rs",
+    "sha256": "21342a06e2df47ee01475ae431a8431b3f502762f4a266a0a9d9181249ae6756",
+    "bytes": 227339,
+    "deleted": true,
+    "ownership_and_users": "Created by this asset revision only; the one-shot comparison/hash readers completed; this path was never passed to Cargo or GPU",
+    "fuser_note": "exit 1, no listed users; sandbox socket warnings prevent treating fuser alone as cross-process proof"
+  },
+  "final_native_test": {
+    "status": "PASS",
+    "passed": 1,
+    "failed": 0,
+    "log": "native-test-merchandise.log",
+    "facade_collision_triangles": 499076,
+    "facade_collision_sources": 877,
+    "memory_and_bounds_equal": true
+  },
+  "independent_ponytail_review": "Lean already. Ship."
+}

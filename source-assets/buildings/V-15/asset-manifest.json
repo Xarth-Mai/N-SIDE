@@ -1,0 +1,198 @@
+{
+  "id": "BLD-V15-FACADE-001",
+  "building_id": "V-15",
+  "status": "exported-candidate",
+  "created": "2026-10-01",
+  "author": "N:SIDE project contributors",
+  "license": "MPL-2.0 AND CC0-1.0 AND OFL-1.1",
+  "source": {
+    "path": "source-assets/buildings/V-15/mirror-hall-facade.blend",
+    "sha256": "237154280343e58fdd39a52f5cb69e058bddad05273114c4ac00444a4ad66e8e",
+    "bytes": 16707986
+  },
+  "build_script": {
+    "path": "source-assets/buildings/V-15/build.py",
+    "sha256": "e1dee8547353dc9665af9720fe4fc096c202c61a618452063d97091b916b8c7c",
+    "bytes": 17576
+  },
+  "verification_script": {
+    "path": "source-assets/buildings/V-15/verify.py",
+    "sha256": "b44ba17d82dd0a627a4faf4b673621203f00daa9641236b917d424c1892a4826",
+    "bytes": 3651
+  },
+  "output": {
+    "path": "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
+    "sha256": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2",
+    "bytes": 5909108
+  },
+  "inputs": [
+    {
+      "path": "source-assets/environment-kit/materials/Concrete034_1K-JPG_Color.jpg",
+      "sha256": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+      "bytes": 269501,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "url": "https://ambientcg.com/view?id=Concrete034",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "bytes": 821681,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "url": "https://ambientcg.com/view?id=Concrete034",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/environment-kit/materials/Plaster001_1K-JPG_Color.jpg",
+      "sha256": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+      "bytes": 828790,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "url": "https://ambientcg.com/view?id=Plaster001",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "bytes": 2091491,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "url": "https://ambientcg.com/view?id=Plaster001",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_Color.jpg",
+      "sha256": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41",
+      "bytes": 744688,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "url": "https://ambientcg.com/view?id=WoodSiding009",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+      "sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+      "bytes": 795284,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "url": "https://ambientcg.com/view?id=WoodSiding009",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/ui-kit/fonts/NotoSansSC-VF.ttf",
+      "sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964",
+      "bytes": 17773132,
+      "license": "OFL-1.1",
+      "registry": "source-assets/ui-kit/asset-manifest.json"
+    }
+  ],
+  "source_map": {
+    "path": "source-assets/district-map/district.json",
+    "sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "bytes": 727176
+  },
+  "reference": {
+    "path": "docs/public/images/cinema-music-street.webp",
+    "sha256": "5629f0e7ac17f2c3596b449e0f02e58a8c5472527d1a71b81954d390c3249a81",
+    "bytes": 315886
+  },
+  "tool": {
+    "name": "Blender",
+    "version": "5.2.2 LTS",
+    "binary": "/usr/bin/blender",
+    "geometry": "original procedural authored Blender mesh and curves",
+    "renderer": "Cycles CPU, 32 samples, 1440x960, AgX",
+    "image_generation": null,
+    "downloaded_assets": false
+  },
+  "export_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --export-existing --render",
+  "rebuild_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --render",
+  "transform": {
+    "units": "metre",
+    "source_frame": "x,north,height",
+    "blender_local": "x-300,north-220,height-25",
+    "source_anchor": [
+      300,
+      220,
+      25
+    ],
+    "runtime_anchor": [
+      300,
+      25,
+      -220
+    ],
+    "gltf_up_axis": "+Y",
+    "scale": 1,
+    "rotation_quaternion_xyzw": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "pivot": "source southwest building baseline",
+    "scene": 0,
+    "model_id": "v15_mirror_hall_facade"
+  },
+  "collision": "none; retain generated original V-15 collider",
+  "budget": {
+    "vertices_max": 20000,
+    "triangles_max": 16000,
+    "material_primitives_max": 8
+  },
+  "measured": {
+    "blender": "5.2.2 LTS",
+    "glb_sha256": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2",
+    "glb_bytes": 5909108,
+    "scene_count": 1,
+    "mesh_count": 1,
+    "primitives": 8,
+    "vertices": 9552,
+    "triangles": 7154,
+    "bounds_gltf": {
+      "min": [
+        0.5799999237060547,
+        0,
+        -30.079998016357422
+      ],
+      "max": [
+        43.15000534057617,
+        11.829998970031738,
+        3.0349998474121094
+      ]
+    },
+    "materials": [
+      "V15_Warm_trim",
+      "V15_Charcoal_metal",
+      "V15_ambientCG_Plaster001",
+      "V15_ambientCG_Concrete034",
+      "V15_Warm_letter_and_diffuser",
+      "V15_ambientCG_WoodSiding009",
+      "V15_Programme_red",
+      "V15_Programme_blue"
+    ],
+    "embedded_images": 6,
+    "extensions_used": [],
+    "nodes": [
+      {
+        "mesh": 0,
+        "name": "V15_MirrorHall_Facade"
+      }
+    ]
+  },
+  "checks": {
+    "blender_rebuild_render": "PASS",
+    "saved_master_export": "PASS; GLB SHA identical to fresh rebuild",
+    "binary_accessors": "PASS",
+    "zero_area_triangles": 0,
+    "five_clearance_volumes": "PASS",
+    "cpu_visual_self_audit": "3 final frames viewed",
+    "independent_minimal_review": "PASS; Lean already. Ship.",
+    "bevy_load": "NOT RUN in asset task; integration owned by root",
+    "gpu_runtime": "NOT RUN in asset task; integration owned by root",
+    "author_acceptance": "NOT RUN",
+    "visual_completion": "needs_revision: abstract programme posters remain content placeholders; broad plaster wall needs real scene review"
+  },
+  "evidence": "todo/evidence/TASK-049/v15-building-r1/self-audit.md"
+}

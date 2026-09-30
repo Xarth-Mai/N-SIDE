@@ -1,0 +1,19 @@
+{
+  "removed": [
+    {
+      "path": "output/assets/public-urban-r1/brick-color-tiles.png",
+      "sha256": "488487fcbc97e61933795f5ea2f88394344ff08151776505e1b80a67dba60951",
+      "bytes": 385927
+    },
+    {
+      "path": "output/assets/public-urban-r1/brick-normal-tiles.png",
+      "sha256": "67f26944d93f03328f3a0e2fd3b2496aa861cceed5d1afe8fb07daaaf40b4543",
+      "bytes": 377416
+    }
+  ],
+  "removed_bytes": 763343,
+  "review": "Both preview PNGs actually viewed by material_reference and independent public_asset_review before removal",
+  "processes": "Own pixel-check process completed; independent image review completed before removal",
+  "preserved": "Official ZIP downloads, original source/reference JPGs, runtime DDS, manifests, reproduction script and JSON/log evidence",
+  "remaining_bytes": 16434867
+}

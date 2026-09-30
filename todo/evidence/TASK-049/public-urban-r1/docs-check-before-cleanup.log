@@ -1,0 +1,4 @@
+$ python3 -B tools/validate_docs.py --root . && bun run check:skills
+FAIL: 543 Markdown files, 129 IDs
+todo/evidence/TASK-049/public-urban-r1/review.md:39: 链接目标缺失：cleanup.json
+error: script "check:docs" exited with code 1

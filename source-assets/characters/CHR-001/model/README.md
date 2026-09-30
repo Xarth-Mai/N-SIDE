@@ -1,4 +1,4 @@
-# 曜 · 可蒙皮灰阶建模候选 r7
+# 曜 · 可蒙皮灰阶建模候选 r9
 
 本目录属于 `CHR-001`，继续使用人物包中的 r3 轮廓候选与镜厅预览左侧人物海报的日漫画法要求。实际年龄 20、外观年龄约 18，当前模型的灰阶材质只用于检查形体和部件关系，不确定发色、眼色或服装颜色
 
@@ -10,7 +10,7 @@
 | `grey-study.png` | 原创程序绘制的 1024×1024 sRGB 灰阶候选图集，含服装面值、接缝与轻微织纹；同时打包在主文件 |
 | `grey-study-surface.png` | 原创 1024×1024 线性数据图，G 为粗糙度、B 为零金属度，R 保持 1；不绑定为环境遮蔽 |
 | `grey-study-normal.png` | 原创 1024×1024 线性切线法线，+Y；仅现有服装与鞋面缝线有轻微起伏，幅度烘入 RGB，强度固定为 1 |
-| `build.py` | 从明确轮廓、关节环线与发束曲线重现本轮初始建模；默认会重建主文件，`--export-existing` 只导出已有主文件，`--update-jump` 保留已有几何与其他动作并更新 Jump 后导出 |
+| `build.py` | 从明确轮廓、关节环线与发束曲线重现本轮初始建模；默认会重建主文件，`--export-existing` 只导出已有主文件，`--update-jump` 保留已有几何与其他动作并更新 Jump 后导出，`--update-hair` 只更新后发与冠顶网格后导出 |
 | `check.py` | 打开真实主文件，逐帧检查骨矩阵、循环端点和鞋底接地距离，并检查 Idle、Walk 与 Run 的 10 个胸前图形贴合姿态、眼白边缘、浅鼓体积、虹膜开口覆盖、嘴线面中心、连续鼻部、细分后发束与头部的间隙、后脑和冠顶覆盖，以及头发 UV 区域；验证材质输入、色彩空间、粗糙度区间和法线幅度，断言失败由 `--python-exit-code 1` 返回非零 |
 | `game/assets/characters/CHR-001/yao-grey-study.glb` | 主文件导出的运行候选，合并为一个共享图集网格；保留 32 骨与四个 clip |
 
@@ -62,6 +62,8 @@ python3 tools/validate_character.py game/assets/characters/CHR-001/yao-grey-stud
 output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python source-assets/characters/CHR-001/model/check.py -- --output todo/evidence/TASK-047/jump-r1/asset/dcc-CHR-001.json
 ```
 
+r9 的选择性后发更新使用 `output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --update-hair`，只替换 `Hair_Cap` 与 `Hair_CrownBase` 的网格数据，保留对象、修改器、现有脸部手工调整及其余资产。发组定义与完整构建共用；高度以实际 `Face_Head` 顶部为参照，不能把生成稿的名义头部坐标直接覆盖回当前主文件
+
 在当前主文件上更新 Jump 使用 `output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --update-jump`；它重写 Jump、保存主文件并重新导出，保留已有网格、材质、绑定和 Idle／Walk／Run
 
 重建本轮模型并生成 CPU 检查图使用下述命令；它会覆盖主文件，手工修改前先保存另一个版本。检查图进入 `output/characters/CHR-001/model-r7/model-source/`，查看后按项目规则清理，保留文字与 JSON
@@ -83,3 +85,9 @@ output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python s
 本轮 DCC 和 GLB 数值检查、同机位观察及剩余问题见 [r7 记录](../../../../todo/evidence/TASK-047/model-r7/review.md)。胸前图形在 10 个实际姿态中的衣面净距为约 0.09—1.87 mm，2 mm 仅为本候选的局部检查上限。脸部个性、冠顶疏密、帽兜体积与衣料细节继续为待修订项；引擎内分段光照和连续动作按实际 Bevy 路径单独判断；灰阶不是已批准配色，模型不等于 README 预览质量
 
 DCC 检查覆盖本轮 60 FPS 关键帧与循环端点；5 mm 鞋底距离只作为本候选的检测阈值，不是项目长期足滑预算。实际移动速度、转向、斜坡、动画切换、碰撞与 Bevy 材质表现由真实路径单独检查，不能由贴面距离或 DCC 渲染推定
+
+## r9 后发流向候选
+
+在原 13 组后发上分别指定偏转、尾端高低、宽窄变化与收尖位置，形成两条较长主束和相邻短组，增加同一曲线的纵向采样以减轻交叠线折段。发根先贴合原冠顶区域，再展开中下段走向；前刘海、鬓发、两根最高翘发、脸部、衣装、三张图、32 骨及四个动作保持
+
+固定四视角、精确数据比较与失败修正见 [r9 记录](../../../../todo/evidence/TASK-047/model-r9/review.md)。后脑主次较基线明确，俯视的规则汇聚及宽大片感仍待修订；本批不确定新配色，也不通过最终日漫形象。实际 Bevy 背后跟随视角与动作检查由主工作线补充

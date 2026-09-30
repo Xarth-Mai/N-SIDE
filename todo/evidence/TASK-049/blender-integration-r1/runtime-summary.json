@@ -1,0 +1,160 @@
+[
+  {
+    "run": "cinema-facade",
+    "status": "PASS",
+    "frames": 150,
+    "checks": 6,
+    "elapsed_wall_seconds": 61.70519990199682,
+    "binary_sha256": "dee717435a63a460a6fbd39bf16cbd5ce05122773ddce0d3896dc77e6501c9c6",
+    "viewed": [
+      {
+        "file": "keyframes/frame00059.png",
+        "sha256": "24a2c1b11ba0aff6f83366be14c589b6d44293c697d160fd5c5c8c5185e831a8"
+      },
+      {
+        "file": "keyframes/frame00149.png",
+        "sha256": "743243367e7c12940274d922ebab00840a801194d037b6c79cdc45d06e1794c3"
+      }
+    ]
+  },
+  {
+    "run": "cinema-entry",
+    "status": "PASS",
+    "frames": 60,
+    "checks": 4,
+    "elapsed_wall_seconds": 37.426992208998854,
+    "binary_sha256": "dee717435a63a460a6fbd39bf16cbd5ce05122773ddce0d3896dc77e6501c9c6",
+    "viewed": [
+      {
+        "file": "keyframes/frame00059.png",
+        "sha256": "a8cbeaebb7c32945eba8379bcf1ce64b0287d3c5c07e6bdcdad039f293f4f174"
+      }
+    ]
+  },
+  {
+    "run": "cinema-bearing",
+    "status": "PASS",
+    "frames": 60,
+    "checks": 4,
+    "elapsed_wall_seconds": 37.90075881299708,
+    "binary_sha256": "dee717435a63a460a6fbd39bf16cbd5ce05122773ddce0d3896dc77e6501c9c6",
+    "viewed": [
+      {
+        "file": "keyframes/frame00059.png",
+        "sha256": "6fb247a27f1ab82945157886dabe9e8ca8a4c0e46e9da0a27cbf714d1830f5d0"
+      }
+    ]
+  },
+  {
+    "run": "shop-roof",
+    "status": "PASS",
+    "frames": 60,
+    "checks": 4,
+    "elapsed_wall_seconds": 36.71234716099934,
+    "binary_sha256": "dee717435a63a460a6fbd39bf16cbd5ce05122773ddce0d3896dc77e6501c9c6",
+    "viewed": [
+      {
+        "file": "keyframes/frame00059.png",
+        "sha256": "23a0782d697236673139b19f805666333790aa2cc0d861ecbd989e35eedbb40e"
+      }
+    ]
+  },
+  {
+    "run": "music-wall",
+    "status": "PASS",
+    "frames": 150,
+    "checks": 6,
+    "elapsed_wall_seconds": 62.357663067999965,
+    "binary_sha256": "dee717435a63a460a6fbd39bf16cbd5ce05122773ddce0d3896dc77e6501c9c6",
+    "viewed": [
+      {
+        "file": "keyframes/frame00059.png",
+        "sha256": "887497b0a9d6019364e69f05cee012b85011eb55d85d8c237bee17e2b2bd64bd"
+      },
+      {
+        "file": "keyframes/frame00119.png",
+        "sha256": "eda1c57f6c86fbbca9576ac7863fa87f5c8769d7106bf45a912e87dd508824cb"
+      },
+      {
+        "file": "keyframes/frame00149.png",
+        "sha256": "cb9ab43da75064a0326524054e4fdfb63a90b2c82ddabbdb9578a985a18e6b13"
+      }
+    ]
+  },
+  {
+    "run": "walk-fixed",
+    "status": "PASS",
+    "frames": 697,
+    "checks": 17,
+    "binary_sha256": "e03d2164e5f401c7b368a835296adc830c1dc4ea6ae33b7932b376e50fa5c07f",
+    "viewed": [
+      {
+        "file": "keyframes/frame00316.png",
+        "sha256": "95fd65e9981004b7b26b3774df4e62f9d7165eaf644695e82470a77f2a461830"
+      },
+      {
+        "file": "keyframes/frame00436.png",
+        "sha256": "73de98948c6545c2ffdbfcfc05318674dafbb6fd024417c60f6382c7af4933d6"
+      },
+      {
+        "file": "keyframes/frame00466.png",
+        "sha256": "b62e50a6305870de02bc2e6a123dc57ef55774fa8fa91e1ae70894bd5f9d20b9"
+      },
+      {
+        "file": "keyframes/frame00496.png",
+        "sha256": "4400622506dc6fd9543fda62f99463a00adcbc8e15c62a9a574740556f91916a"
+      },
+      {
+        "file": "keyframes/frame00646.png",
+        "sha256": "da2a74377ae69002816b6a11bfedde421915de20493bc4e504eee7b595336b66"
+      }
+    ]
+  },
+  {
+    "run": "shop-orbit",
+    "status": "PASS",
+    "frames": 240,
+    "checks": 10,
+    "binary_sha256": "e03d2164e5f401c7b368a835296adc830c1dc4ea6ae33b7932b376e50fa5c07f",
+    "viewed": [
+      {
+        "file": "keyframes/frame00139.png",
+        "sha256": "651c552b7364e8c857e3c5b969662bb0d8b2258fba0edf1fd5a9204e17689945"
+      },
+      {
+        "file": "keyframes/frame00159.png",
+        "sha256": "57479d987912110e83e2c19a70498e7deeb32201b07da621628ec6cbb73fb605"
+      },
+      {
+        "file": "keyframes/frame00204.png",
+        "sha256": "bad5b01c289ecf1872ab286d76ed01519458550243f8c8e1433aaa27f0cceb74"
+      }
+    ]
+  },
+  {
+    "run": "shop-court",
+    "status": "PASS",
+    "frames": 120,
+    "checks": 6,
+    "binary_sha256": "e03d2164e5f401c7b368a835296adc830c1dc4ea6ae33b7932b376e50fa5c07f",
+    "viewed": [
+      {
+        "file": "keyframes/frame00119.png",
+        "sha256": "55326558b7b3ca5ef1029cac1be5b4a5e17b61ad309dd033821d06dba3b28e95"
+      }
+    ]
+  },
+  {
+    "run": "shop-court-facing-tree",
+    "status": "PASS",
+    "frames": 120,
+    "checks": 6,
+    "binary_sha256": "e03d2164e5f401c7b368a835296adc830c1dc4ea6ae33b7932b376e50fa5c07f",
+    "viewed": [
+      {
+        "file": "keyframes/frame00119.png",
+        "sha256": "c9c4ab7ec4ccc1c457c40d54da53f9d43c443369baf08a673d9a9faa5f0b82c2"
+      }
+    ]
+  }
+]

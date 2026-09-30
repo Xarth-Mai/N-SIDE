@@ -1,0 +1,473 @@
+{
+  "status": "PASS",
+  "asset": "CHR-001 modelling candidate r7 / material r1",
+  "scope": "DCC material channels and color space, joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage, hair UV and chest print fit in 10 poses; excludes game-controller speed and artistic acceptance",
+  "material": {
+    "status": "PASS",
+    "slots": 1,
+    "embedded_source_images": 3,
+    "surface_channels": "G roughness, B metallic zero",
+    "roughness_ranges": {
+      "skin": {
+        "minimum": 0.6392157077789307,
+        "maximum": 0.6392157077789307
+      },
+      "hair": {
+        "minimum": 0.5215686559677124,
+        "maximum": 0.5215686559677124
+      },
+      "jacket": {
+        "minimum": 0.7882353663444519,
+        "maximum": 0.8117647767066956
+      },
+      "shirt": {
+        "minimum": 0.8666667342185974,
+        "maximum": 0.8901961445808411
+      },
+      "pants": {
+        "minimum": 0.7490196228027344,
+        "maximum": 0.7725490927696228
+      },
+      "shoe": {
+        "minimum": 0.6196078658103943,
+        "maximum": 0.6196078658103943
+      },
+      "ink": {
+        "minimum": 0.7215686440467834,
+        "maximum": 0.7215686440467834
+      },
+      "white": {
+        "minimum": 0.8588235974311829,
+        "maximum": 0.8588235974311829
+      }
+    },
+    "normal": "linear tangent +Y; small seam-only slopes; scale 1"
+  },
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 121,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.983777360389468e-09,
+      "max_stance_height_error_m": 0.001999971689656377
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 49,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.1101403885049876e-07,
+      "max_stance_height_error_m": 2.1035654640400026e-07
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 41,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -5.6237105638956564e-08,
+      "max_stance_height_error_m": 1.6908802535908762e-07
+    },
+    {
+      "clip": "Jump",
+      "duration_seconds": 0.6666666666666666,
+      "source_fps": 60,
+      "loop": false,
+      "root_static": true,
+      "world_ascent_baked": false,
+      "samples": [
+        {
+          "frame": 1,
+          "hips_offset_m": 0.0,
+          "sole_height_m": [
+            -2.328165571441332e-08,
+            -1.7693718490363608e-08
+          ]
+        },
+        {
+          "frame": 2,
+          "hips_offset_m": -0.008409261703491211,
+          "sole_height_m": [
+            0.00012880261056125164,
+            0.00012881006114184856
+          ]
+        },
+        {
+          "frame": 3,
+          "hips_offset_m": -0.02821183204650879,
+          "sole_height_m": [
+            0.0033181682229042053,
+            0.0033181756734848022
+          ]
+        },
+        {
+          "frame": 4,
+          "hips_offset_m": -0.05126953125,
+          "sole_height_m": [
+            0.007410895545035601,
+            0.007410902995616198
+          ]
+        },
+        {
+          "frame": 5,
+          "hips_offset_m": -0.06944447755813599,
+          "sole_height_m": [
+            0.010249126702547073,
+            0.01024913601577282
+          ]
+        },
+        {
+          "frame": 6,
+          "hips_offset_m": -0.07482963800430298,
+          "sole_height_m": [
+            0.010009040124714375,
+            0.01000905130058527
+          ]
+        },
+        {
+          "frame": 7,
+          "hips_offset_m": -0.06944447755813599,
+          "sole_height_m": [
+            0.01531144604086876,
+            0.015311446972191334
+          ]
+        },
+        {
+          "frame": 8,
+          "hips_offset_m": -0.05827224254608154,
+          "sole_height_m": [
+            0.02841182053089142,
+            0.028411827981472015
+          ]
+        },
+        {
+          "frame": 9,
+          "hips_offset_m": -0.04372429847717285,
+          "sole_height_m": [
+            0.04610509052872658,
+            0.046105094254016876
+          ]
+        },
+        {
+          "frame": 10,
+          "hips_offset_m": -0.02821183204650879,
+          "sole_height_m": [
+            0.06518566608428955,
+            0.06518567353487015
+          ]
+        },
+        {
+          "frame": 11,
+          "hips_offset_m": -0.014146089553833008,
+          "sole_height_m": [
+            0.082447350025177,
+            0.0824473574757576
+          ]
+        },
+        {
+          "frame": 12,
+          "hips_offset_m": -0.0039383769035339355,
+          "sole_height_m": [
+            0.09468328207731247,
+            0.09468328952789307
+          ]
+        },
+        {
+          "frame": 13,
+          "hips_offset_m": 0.0,
+          "sole_height_m": [
+            0.09868523478507996,
+            0.09868523478507996
+          ]
+        },
+        {
+          "frame": 14,
+          "hips_offset_m": -0.0008951425552368164,
+          "sole_height_m": [
+            0.10150647908449173,
+            0.10150648653507233
+          ]
+        },
+        {
+          "frame": 15,
+          "hips_offset_m": -0.003287017345428467,
+          "sole_height_m": [
+            0.1110510379076004,
+            0.1110510528087616
+          ]
+        },
+        {
+          "frame": 16,
+          "hips_offset_m": -0.006735444068908691,
+          "sole_height_m": [
+            0.12538686394691467,
+            0.12538686394691467
+          ]
+        },
+        {
+          "frame": 17,
+          "hips_offset_m": -0.01080012321472168,
+          "sole_height_m": [
+            0.14258092641830444,
+            0.14258094131946564
+          ]
+        },
+        {
+          "frame": 18,
+          "hips_offset_m": -0.015040993690490723,
+          "sole_height_m": [
+            0.1606997847557068,
+            0.1606997698545456
+          ]
+        },
+        {
+          "frame": 19,
+          "hips_offset_m": -0.01901763677597046,
+          "sole_height_m": [
+            0.17780917882919312,
+            0.1778091937303543
+          ]
+        },
+        {
+          "frame": 20,
+          "hips_offset_m": -0.02228999137878418,
+          "sole_height_m": [
+            0.1919737458229065,
+            0.1919737607240677
+          ]
+        },
+        {
+          "frame": 21,
+          "hips_offset_m": -0.024417757987976074,
+          "sole_height_m": [
+            0.2012578845024109,
+            0.20125789940357208
+          ]
+        },
+        {
+          "frame": 22,
+          "hips_offset_m": -0.024972617626190186,
+          "sole_height_m": [
+            0.20373359322547913,
+            0.20373359322547913
+          ]
+        },
+        {
+          "frame": 23,
+          "hips_offset_m": -0.024078309535980225,
+          "sole_height_m": [
+            0.1986011415719986,
+            0.1986011415719986
+          ]
+        },
+        {
+          "frame": 24,
+          "hips_offset_m": -0.022117137908935547,
+          "sole_height_m": [
+            0.18722251057624817,
+            0.18722252547740936
+          ]
+        },
+        {
+          "frame": 25,
+          "hips_offset_m": -0.019355952739715576,
+          "sole_height_m": [
+            0.17119577527046204,
+            0.17119579017162323
+          ]
+        },
+        {
+          "frame": 26,
+          "hips_offset_m": -0.01606130599975586,
+          "sole_height_m": [
+            0.15211889147758484,
+            0.15211889147758484
+          ]
+        },
+        {
+          "frame": 27,
+          "hips_offset_m": -0.012499988079071045,
+          "sole_height_m": [
+            0.13158828020095825,
+            0.13158829510211945
+          ]
+        },
+        {
+          "frame": 28,
+          "hips_offset_m": -0.00893867015838623,
+          "sole_height_m": [
+            0.11120008677244186,
+            0.11120010167360306
+          ]
+        },
+        {
+          "frame": 29,
+          "hips_offset_m": -0.005644083023071289,
+          "sole_height_m": [
+            0.0925496518611908,
+            0.0925496518611908
+          ]
+        },
+        {
+          "frame": 30,
+          "hips_offset_m": -0.002882838249206543,
+          "sole_height_m": [
+            0.07723134011030197,
+            0.07723135501146317
+          ]
+        },
+        {
+          "frame": 31,
+          "hips_offset_m": -0.0009217262268066406,
+          "sole_height_m": [
+            0.06683908402919769,
+            0.06683909893035889
+          ]
+        },
+        {
+          "frame": 32,
+          "hips_offset_m": -2.7358531951904297e-05,
+          "sole_height_m": [
+            0.06296567618846893,
+            0.06296568363904953
+          ]
+        },
+        {
+          "frame": 33,
+          "hips_offset_m": -0.0040740966796875,
+          "sole_height_m": [
+            0.05958917737007141,
+            0.05958918482065201
+          ]
+        },
+        {
+          "frame": 34,
+          "hips_offset_m": -0.017402350902557373,
+          "sole_height_m": [
+            0.045541632920503616,
+            0.045541636645793915
+          ]
+        },
+        {
+          "frame": 35,
+          "hips_offset_m": -0.03431135416030884,
+          "sole_height_m": [
+            0.027354296296834946,
+            0.027354303747415543
+          ]
+        },
+        {
+          "frame": 36,
+          "hips_offset_m": -0.04883319139480591,
+          "sole_height_m": [
+            0.01206993032246828,
+            0.012069941498339176
+          ]
+        },
+        {
+          "frame": 37,
+          "hips_offset_m": -0.05500000715255737,
+          "sole_height_m": [
+            0.006730618886649609,
+            0.006730622611939907
+          ]
+        },
+        {
+          "frame": 38,
+          "hips_offset_m": -0.04640626907348633,
+          "sole_height_m": [
+            0.0063951886259019375,
+            0.006395197939127684
+          ]
+        },
+        {
+          "frame": 39,
+          "hips_offset_m": -0.0274999737739563,
+          "sole_height_m": [
+            0.003294998314231634,
+            0.0032950076274573803
+          ]
+        },
+        {
+          "frame": 40,
+          "hips_offset_m": -0.008593738079071045,
+          "sole_height_m": [
+            0.00023005250841379166,
+            0.0002300618216395378
+          ]
+        },
+        {
+          "frame": 41,
+          "hips_offset_m": 0.0,
+          "sole_height_m": [
+            -2.328165571441332e-08,
+            -1.7693718490363608e-08
+          ]
+        }
+      ]
+    }
+  ],
+  "facial_surface_gaps": {
+    "Mouth": {
+      "minimum_m": 3.585219383239746e-05,
+      "maximum_m": 0.0011054128408432007
+    },
+    "Eye_White.L": {
+      "minimum_m": 0.0006498247385025024,
+      "maximum_m": 0.00283900648355484
+    },
+    "Eye_White.R": {
+      "minimum_m": 0.0006498247385025024,
+      "maximum_m": 0.002839125692844391
+    },
+    "Iris_hair.L": {
+      "minimum_m": 0.0011482760310173035,
+      "maximum_m": 0.003178246319293976
+    },
+    "Iris_hair.R": {
+      "minimum_m": 0.0011482760310173035,
+      "maximum_m": 0.0031781867146492004
+    },
+    "Iris_ink.L": {
+      "minimum_m": 0.0014586076140403748,
+      "maximum_m": 0.0034960880875587463
+    },
+    "Iris_ink.R": {
+      "minimum_m": 0.0014585480093955994,
+      "maximum_m": 0.0034988075494766235
+    },
+    "Eye_Glint.L": {
+      "minimum_m": 0.0030028820037841797,
+      "maximum_m": 0.0036049261689186096
+    },
+    "Eye_Glint.R": {
+      "minimum_m": 0.0031986311078071594,
+      "maximum_m": 0.0036866888403892517
+    }
+  },
+  "nasal_profile": [
+    {
+      "height_m": 1.538,
+      "projection_from_cheeks_m": 0.016106903553009033
+    },
+    {
+      "height_m": 1.543,
+      "projection_from_cheeks_m": 0.01729869842529297
+    },
+    {
+      "height_m": 1.552,
+      "projection_from_cheeks_m": 0.013540983200073242
+    },
+    {
+      "height_m": 1.563,
+      "projection_from_cheeks_m": 0.008586913347244263
+    }
+  ],
+  "hair_cap_min_clearance_m": 0.004828605242536671,
+  "back_crown_coverage_samples": 36,
+  "back_crown_min_coverage_m": 0.015789410720286168,
+  "top_crown_clearance_m": 0.013787388801574707,
+  "hair_uv_region": "PASS",
+  "chest_print_gap_m": {
+    "minimum": 8.849030859892082e-05,
+    "maximum": 0.0018652249054866843,
+    "poses": 10
+  }
+}

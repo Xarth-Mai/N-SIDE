@@ -1,0 +1,24 @@
+{
+  "scene": "district",
+  "view": "inspect-cinema-bearing",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 60,
+  "seed": 0,
+  "timeout_seconds": 180,
+  "keyframes": [
+    29,
+    59
+  ],
+  "events": [],
+  "assertions": [
+    {
+      "name": "fixed shop camera remains identical",
+      "from": 0,
+      "to": 59,
+      "max_distance": 0.0001,
+      "max_rotation": 0.0001
+    }
+  ]
+}

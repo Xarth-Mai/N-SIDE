@@ -1,0 +1,10 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 35.55s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+shop stair rails: 3 metal batches, 48 posts, 12 bars, 720 triangles; native Ground post height=0.692..1.177m; unchanged collision=106757 triangles
+test world::scene::tests::shop_stair_handrails_follow_ground_and_keep_routes_and_collision ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 136 filtered out; finished in 9.01s
+

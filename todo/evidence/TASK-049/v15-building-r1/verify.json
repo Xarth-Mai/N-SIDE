@@ -1,0 +1,22 @@
+{
+  "result": "PASS",
+  "file": "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
+  "sha256": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2",
+  "vertices": 9552,
+  "triangles": 7154,
+  "degenerate_triangles": 0,
+  "materials": 8,
+  "embedded_images": 6,
+  "bounds_gltf": {
+    "min": [
+      0.5799999237060547,
+      0.0,
+      -30.079998016357422
+    ],
+    "max": [
+      43.15000534057617,
+      11.829998970031738,
+      3.0349998474121094
+    ]
+  }
+}

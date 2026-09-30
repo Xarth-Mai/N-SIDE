@@ -1,0 +1,113 @@
+{
+  "baseline-fixed": {
+    "status": "PASS",
+    "checks": 4,
+    "binary_sha256": "9b3651d96b7fe413edbf710f50cf186b6a2fd51776ae914cfb4c9e289e8279dd",
+    "script_sha256": "2dceda48aa9a310d0586adc12ec17f0d6eb4e41c326675e01c6bc765e12b07a8",
+    "observed_frames": [
+      {
+        "frame": 59,
+        "sha256": "64dbe1ada851ea25f389d8022754f621a4595edde2751ceea33d8c8fc1bc041a"
+      }
+    ],
+    "diagnostic_pixels": {
+      "700,321": [
+        153,
+        203,
+        198
+      ],
+      "680,315": [
+        153,
+        203,
+        198
+      ],
+      "707,333": [
+        140,
+        200,
+        179
+      ]
+    }
+  },
+  "tint-fixed": {
+    "status": "PASS",
+    "checks": 4,
+    "binary_sha256": "9b3651d96b7fe413edbf710f50cf186b6a2fd51776ae914cfb4c9e289e8279dd",
+    "script_sha256": "2dceda48aa9a310d0586adc12ec17f0d6eb4e41c326675e01c6bc765e12b07a8",
+    "observed_frames": [
+      {
+        "frame": 59,
+        "sha256": "951e2fa27e7da61a04db5a32c3e39a4bd7d4ef8f6a5be425c67a994bba6a10c7"
+      }
+    ],
+    "diagnostic_pixels": {
+      "700,321": [
+        116,
+        157,
+        152
+      ],
+      "680,315": [
+        116,
+        157,
+        152
+      ],
+      "707,333": [
+        140,
+        200,
+        179
+      ]
+    }
+  },
+  "zero-albedo-fixed": {
+    "status": "PASS",
+    "checks": 4,
+    "binary_sha256": "9b3651d96b7fe413edbf710f50cf186b6a2fd51776ae914cfb4c9e289e8279dd",
+    "script_sha256": "2dceda48aa9a310d0586adc12ec17f0d6eb4e41c326675e01c6bc765e12b07a8",
+    "observed_frames": [
+      {
+        "frame": 59,
+        "sha256": "7ccb11bbe6260dea3fb5fa86584b453de70931dca5f846f9e0490d4590f348af"
+      }
+    ],
+    "diagnostic_pixels": {
+      "700,321": [
+        82,
+        82,
+        80
+      ],
+      "680,315": [
+        82,
+        82,
+        80
+      ],
+      "707,333": [
+        140,
+        200,
+        179
+      ]
+    }
+  },
+  "baseline-walk": {
+    "status": "PASS",
+    "checks": 9,
+    "binary_sha256": "0e2cbffa374758d163fcf7686f859c21df7e82f0a879e6a988e102385e824c9b",
+    "script_sha256": "057d3f4870916d2651be013a62a6097d1167dabd4e1fc3f64e6adbf5d4925ab6",
+    "observed_frames": [
+      {
+        "frame": 330,
+        "sha256": "409129e1a58a005c8d68cad6f9b42f3660873d1a57002c552e79ed756a4f8d11"
+      }
+    ]
+  },
+  "tint-walk": {
+    "status": "PASS",
+    "checks": 9,
+    "binary_sha256": "0e2cbffa374758d163fcf7686f859c21df7e82f0a879e6a988e102385e824c9b",
+    "script_sha256": "057d3f4870916d2651be013a62a6097d1167dabd4e1fc3f64e6adbf5d4925ab6",
+    "observed_frames": [
+      {
+        "frame": 330,
+        "sha256": "0eaeca76de4304146db3ac8e557822778d5447a93e00f88dd1321b336348465c"
+      }
+    ]
+  }
+}

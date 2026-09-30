@@ -1,0 +1,13 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.45s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+[player/steps] foot=Vec3(106.39795, 29.47776, -272.60678) grounded=true blocked=None
+[player/ramp] foot=Vec3(117.16086, 27.191568, -246.41336) grounded=true blocked=None
+[player/wall] foot=Vec3(88.745995, 28.020416, -249.96921) grounded=true blocked=Some("buildings[V-04]/derived-facade")
+[player/ascent-entry] dt=0.015625 foot=Vec3(186.50272, 43.392944, -320.0075) grounded=true blocked=None resets=0
+[player/ascent-entry] dt=0.033333335 foot=Vec3(186.9143, 43.689213, -320.3123) grounded=true blocked=None resets=0
+test player::tests::real_shop_walk_reaches_steps_and_wall_through_swept_geometry ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 136 filtered out; finished in 9.75s
+

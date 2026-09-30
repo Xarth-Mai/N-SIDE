@@ -1,0 +1,40 @@
+{
+  "blender": "5.2.2 LTS",
+  "glb_sha256": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2",
+  "glb_bytes": 5909108,
+  "scene_count": 1,
+  "mesh_count": 1,
+  "primitives": 8,
+  "vertices": 9552,
+  "triangles": 7154,
+  "bounds_gltf": {
+    "min": [
+      0.5799999237060547,
+      0,
+      -30.079998016357422
+    ],
+    "max": [
+      43.15000534057617,
+      11.829998970031738,
+      3.0349998474121094
+    ]
+  },
+  "materials": [
+    "V15_Warm_trim",
+    "V15_Charcoal_metal",
+    "V15_ambientCG_Plaster001",
+    "V15_ambientCG_Concrete034",
+    "V15_Warm_letter_and_diffuser",
+    "V15_ambientCG_WoodSiding009",
+    "V15_Programme_red",
+    "V15_Programme_blue"
+  ],
+  "embedded_images": 6,
+  "extensions_used": [],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "V15_MirrorHall_Facade"
+    }
+  ]
+}
