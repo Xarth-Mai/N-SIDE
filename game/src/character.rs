@@ -57,7 +57,7 @@ impl CharacterPreview {
 }
 
 const SHADER: &str = "shaders/character-ink.wgsl";
-const CLIPS: [&str; 3] = ["Idle", "Walk", "Run"];
+pub(crate) const CLIPS: [&str; 4] = ["Idle", "Walk", "Run", "Jump"];
 
 #[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
 struct CharacterInk {
@@ -115,13 +115,13 @@ struct CharacterLoad {
 #[derive(Component)]
 struct CharacterScene {
     graph: Handle<AnimationGraph>,
-    nodes: [AnimationNodeIndex; 3],
-    clips: [Handle<AnimationClip>; 3],
+    nodes: [AnimationNodeIndex; CLIPS.len()],
+    clips: [Handle<AnimationClip>; CLIPS.len()],
 }
 
 #[derive(Component)]
 struct CharacterAnimation {
-    nodes: [AnimationNodeIndex; 3],
+    nodes: [AnimationNodeIndex; CLIPS.len()],
     current: usize,
 }
 
@@ -242,8 +242,8 @@ fn poll_loading(
                 .ok_or_else(|| format!("required named clip '{name}' is missing"))
         })
         .collect();
-    let clips: [Handle<AnimationClip>; 3] = match clips {
-        Ok(clips) => clips.try_into().expect("three required clip names"),
+    let clips: [Handle<AnimationClip>; CLIPS.len()] = match clips {
+        Ok(clips) => clips.try_into().expect("one handle per required clip"),
         Err(error) => {
             fail(&mut status, error);
             return;
@@ -386,7 +386,9 @@ fn scene_ready(
 }
 
 fn desired_clip(speed: f32, grounded: bool) -> usize {
-    if !grounded || speed < 0.04 {
+    if !grounded {
+        3
+    } else if speed < 0.04 {
         0
     } else if speed > 4.2 {
         2
@@ -414,7 +416,11 @@ fn animate(
         let desired = desired_clip(speed, state.grounded);
         if desired != animation.current {
             // ponytail: hard clip switches for the grey study; blend once authored transitions exist
-            player.stop_all().play(animation.nodes[desired]).repeat();
+            let playing = player.stop_all().play(animation.nodes[desired]);
+            // Jump plays once, holding its final pose until real ground contact
+            if desired != 3 {
+                playing.repeat();
+            }
             animation.current = desired;
             status.transitions += 1;
         }
@@ -497,12 +503,14 @@ mod tests {
     }
 
     #[test]
-    fn resolved_motion_selects_clips_and_airborne_does_not_fake_a_jump_clip() {
+    fn resolved_motion_selects_grounded_gait_or_jump() {
         assert_eq!(desired_clip(0.0, true), 0);
         assert_eq!(desired_clip(0.039, true), 0);
         assert_eq!(desired_clip(1.0, true), 1);
         assert_eq!(desired_clip(3.2, true), 1);
         assert_eq!(desired_clip(5.6, true), 2);
-        assert_eq!(desired_clip(5.6, false), 0);
+        assert_eq!(desired_clip(0.0, false), 3);
+        assert_eq!(desired_clip(3.2, false), 3);
+        assert_eq!(desired_clip(5.6, false), 3);
     }
 }

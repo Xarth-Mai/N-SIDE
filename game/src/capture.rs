@@ -197,7 +197,7 @@ impl CharacterCheck {
     fn valid(&self) -> bool {
         self.clip
             .as_deref()
-            .is_none_or(|v| ["Idle", "Walk", "Run"].contains(&v))
+            .is_none_or(|v| crate::character::CLIPS.contains(&v))
             && [self.min_clip_elapsed, self.min_advance, self.max_drift]
                 .into_iter()
                 .flatten()
@@ -1771,7 +1771,7 @@ mod tests {
         actual.error = Some("missing texture".into());
         assert!(!check.matches(Some(&actual)));
         for bad in [
-            serde_json::json!({"ready":true,"clip":"Jump"}),
+            serde_json::json!({"ready":true,"clip":"MissingClip"}),
             serde_json::json!({"ready":true,"min_clip_elapsed":-1.0}),
         ] {
             assert!(
@@ -2244,6 +2244,11 @@ mod tests {
         let pause_script: Script =
             serde_json::from_str(include_str!("../capture/walk-pause.json")).unwrap();
         assert!(pause_script.validate().is_ok());
+        let jump_pause: Script =
+            serde_json::from_str(include_str!("../capture/character-jump-pause.json")).unwrap();
+        jump_pause
+            .validate()
+            .expect("checked-in airborne pause script");
         let focus_script: Script =
             serde_json::from_str(include_str!("../capture/walk-focus.json")).unwrap();
         assert!(focus_script.validate().is_ok());

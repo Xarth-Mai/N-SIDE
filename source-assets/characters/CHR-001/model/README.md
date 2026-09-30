@@ -6,13 +6,13 @@
 
 | 文件 | 职责 |
 | --- | --- |
-| `yao-grey-study.blend` | 可编辑 DCC 主文件，含分件网格、UV、蒙皮、32 骨及三个动作；灯光、地板和相机是检查辅助 |
+| `yao-grey-study.blend` | 可编辑 DCC 主文件，含分件网格、UV、蒙皮、32 骨及四个动作；灯光、地板和相机是检查辅助 |
 | `grey-study.png` | 原创程序绘制的 1024×1024 sRGB 灰阶候选图集，含服装面值、接缝与轻微织纹；同时打包在主文件 |
 | `grey-study-surface.png` | 原创 1024×1024 线性数据图，G 为粗糙度、B 为零金属度，R 保持 1；不绑定为环境遮蔽 |
 | `grey-study-normal.png` | 原创 1024×1024 线性切线法线，+Y；仅现有服装与鞋面缝线有轻微起伏，幅度烘入 RGB，强度固定为 1 |
-| `build.py` | 从明确轮廓、关节环线与发束曲线重现本轮初始建模；默认会重建主文件，手工编辑后仅用 `--export-existing` 导出 |
+| `build.py` | 从明确轮廓、关节环线与发束曲线重现本轮初始建模；默认会重建主文件，`--export-existing` 只导出已有主文件，`--update-jump` 保留已有几何与其他动作并更新 Jump 后导出 |
 | `check.py` | 打开真实主文件，逐帧检查骨矩阵、循环端点和鞋底接地距离，并检查 Idle、Walk 与 Run 的 10 个胸前图形贴合姿态、眼白边缘、浅鼓体积、虹膜开口覆盖、嘴线面中心、连续鼻部、细分后发束与头部的间隙、后脑和冠顶覆盖，以及头发 UV 区域；验证材质输入、色彩空间、粗糙度区间和法线幅度，断言失败由 `--python-exit-code 1` 返回非零 |
-| `game/assets/characters/CHR-001/yao-grey-study.glb` | 主文件导出的运行候选，合并为一个共享图集网格；保留 32 骨与三个 clip |
+| `game/assets/characters/CHR-001/yao-grey-study.glb` | 主文件导出的运行候选，合并为一个共享图集网格；保留 32 骨与四个 clip |
 
 构建脚本没有导入公开人体、衣服、发型或动作模型；几何、权重、灰阶图集与关键帧是本项目本轮原创制作。它解释 r3 设计轮廓，没有把参考图像烘到模型上。概念图和镜厅图的来源及待核许可沿用上层人物包与区域预览记录，不由建模代码重新声明权利
 
@@ -46,6 +46,9 @@ UV 复用仍限制局部衣缝和眼部材质的独立绘制；需要独特图�
 | `Idle` | 2 s，60 FPS | 呼吸与微量上身运动，循环；角色世界位置仍由控制器负责 |
 | `Walk` | 0.8 s，60 FPS | 每脚前 1/3 周期支撑，其余摆动，in-place；按当前平地 3.2 m/s 建模，实际速度变化由控制器播放倍率对应 |
 | `Run` | 2/3 s，60 FPS | 每脚前 1/5 周期支撑，其余摆动，in-place；按当前平地 5.6 m/s 建模，实际速度变化由控制器播放倍率对应 |
+| `Jump` | 40/60 s，60 FPS，帧 1—41 | 非循环、in-place；起跳压缩、空中收腿与落地压缩，首尾回到 Idle 首帧姿态；Root 静止，世界跳跃轨迹由控制器提交 |
+
+Jump 只改变局部姿态，Hips 下压用于身体压缩，不烘入世界高度。`check.py` 逐帧核对有限骨矩阵、Root 静止、首尾 Idle 姿态与鞋底接地，并检查起落压缩及空中双腿收起；四个 DCC 姿态的实际看图与原数据保持证据见 [Jump r1](../../../../todo/evidence/TASK-047/jump-r1/asset/review.md)
 
 骨骼 `Root → Hips → Spine → Chest → Neck → Head` 连接双侧锁骨、上臂、前臂、手、五指与大腿、小腿、足、趾。蒙皮最多四权重；真实 GLB 的名称、权重、inverse bind、纹理和动作必须通过项目预检
 
@@ -55,9 +58,11 @@ UV 复用仍限制局部衣缝和眼部材质的独立绘制；需要独特图�
 
 ```fish
 output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --export-existing
-python3 tools/validate_character.py game/assets/characters/CHR-001/yao-grey-study.glb --root-node Root --height 1.7441 --clip Idle --clip Walk --clip Run --require-texture
-output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python source-assets/characters/CHR-001/model/check.py
+python3 tools/validate_character.py game/assets/characters/CHR-001/yao-grey-study.glb --root-node Root --height 1.7441 --clip Idle --clip Walk --clip Run --clip Jump --require-texture
+output/tools/blender-4.5.14-linux-x64/blender -b --python-exit-code 1 --python source-assets/characters/CHR-001/model/check.py -- --output todo/evidence/TASK-047/jump-r1/asset/dcc-CHR-001.json
 ```
+
+在当前主文件上更新 Jump 使用 `output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --update-jump`；它重写 Jump、保存主文件并重新导出，保留已有网格、材质、绑定和 Idle／Walk／Run
 
 重建本轮模型并生成 CPU 检查图使用下述命令；它会覆盖主文件，手工修改前先保存另一个版本。检查图进入 `output/characters/CHR-001/model-r7/model-source/`，查看后按项目规则清理，保留文字与 JSON
 

@@ -1,0 +1,14 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 56.73s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+urban-bank nodes[v_a08_door_landing]/derived-vegetation[urban-bank:0] x=93.200 north=280.300 root=29.997 scale=1.050
+urban-bank nodes[v_a08_door_landing]/derived-vegetation[urban-bank:1] x=95.400 north=281.500 root=31.274 scale=1.200
+urban-bank nodes[v_a08_door_landing]/derived-vegetation[urban-bank:2] x=97.700 north=281.000 root=30.787 scale=1.050
+urban-bank nodes[v_a08_door_landing]/derived-vegetation[urban-bank:3] x=102.000 north=281.400 root=30.884 scale=1.150
+urban-bank nodes[v_a08_door_landing]/derived-vegetation[urban-bank:4] x=104.000 north=283.000 root=31.246 scale=1.000
+test world::scene::tests::urban_bank_keeps_real_shrub_roots_supported_and_lane_clear ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 134 filtered out; finished in 0.20s
+

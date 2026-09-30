@@ -1,0 +1,110 @@
+{
+  "phase": "complete",
+  "verified_at": "2026-09-30T16:15:37.635156+00:00",
+  "process_check": "host fuser returned 1 with no output for all 10 exact paths; no open file users found",
+  "files": [
+    {
+      "path": "output/jump-r1/CHR-001-jump-1.png",
+      "bytes": 224473,
+      "sha256": "d0731b4795e2b595243ddd3fddda3b14a938652a7a6e35d4c88d9d80e9617d88",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "output/jump-r1/CHR-001-jump-6.png",
+      "bytes": 228578,
+      "sha256": "1ff3e04a3751b8ac4adda7ad628d2be0773331ca46656d214c44e6a39055f9ac",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "output/jump-r1/CHR-001-jump-21.png",
+      "bytes": 230300,
+      "sha256": "3fb63c6fc35e03cbf469d1a882f087d0fbe31463493acf365687eb97de46c2dd",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "output/jump-r1/CHR-001-jump-37.png",
+      "bytes": 227889,
+      "sha256": "56c45964a2ee7afc0bd753cfa82ebccf398c2389e475d2b119e33d12ca824b98",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "output/jump-r1/CHR-002-jump-1.png",
+      "bytes": 224275,
+      "sha256": "7cc464ba01c9cbab4d1835b1906b7b30d460f49da5053f1e54be53845338e36a",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "output/jump-r1/CHR-002-jump-6.png",
+      "bytes": 230053,
+      "sha256": "9ba1cc1aac8a04da12e484c8abdcd02a2e114939500232a233b8b9b26e5ca574",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "output/jump-r1/CHR-002-jump-21.png",
+      "bytes": 230452,
+      "sha256": "b97d0203a3e3e0f9e7f4c57a9a2f1f448dcc4c81e5052fddefd08d029f568536",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "output/jump-r1/CHR-002-jump-37.png",
+      "bytes": 228840,
+      "sha256": "cfe75e3bd5980ebf14cb8ff406f3e4742626c9d91592297963efd2d780501dcc",
+      "kind": "viewed-pose-preview",
+      "removed": true
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 4076784,
+      "sha256": "a8cdaa87548b3df5c7bb244c70e832536c98c3a325558b09e0162eb2675dc098",
+      "kind": "automatic-blender-backup",
+      "matches_pre_jump_master": true,
+      "removed": true
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/ling-grey-study.blend1",
+      "bytes": 4019908,
+      "sha256": "07d8d00577b5fe5868a6157a981b6ade04b949662f211f2594f418b9d9df7850",
+      "kind": "automatic-blender-backup",
+      "matches_pre_jump_master": true,
+      "removed": true
+    }
+  ],
+  "bytes_to_remove": 9921552,
+  "preserved": "Formal source assets, before snapshots, scripts, logs, JSON and written review",
+  "completed_at": "2026-09-30T16:17:48.651903+00:00",
+  "removed_count": 10,
+  "remaining_output_files": [
+    {
+      "path": "output/jump-r1/add-check.py",
+      "bytes": 2903
+    },
+    {
+      "path": "output/jump-r1/add-jump.py",
+      "bytes": 4775
+    },
+    {
+      "path": "output/jump-r1/before/CHR-001/yao-grey-study.blend",
+      "bytes": 4076784
+    },
+    {
+      "path": "output/jump-r1/before/CHR-001/yao-grey-study.glb",
+      "bytes": 1469776
+    },
+    {
+      "path": "output/jump-r1/before/CHR-002/ling-grey-study.blend",
+      "bytes": 4019908
+    },
+    {
+      "path": "output/jump-r1/before/CHR-002/ling-grey-study.glb",
+      "bytes": 1518536
+    }
+  ],
+  "remaining_output_bytes": 11092682
+}

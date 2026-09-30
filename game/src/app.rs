@@ -18,6 +18,7 @@ use bevy::{
     app::{RunFixedMainLoopSystems, ScheduleRunnerPlugin},
     audio::AudioPlugin,
     camera::RenderTarget,
+    gilrs::GilrsPlugin,
     input::{
         gamepad::GamepadConnectionEvent, keyboard::KeyboardInput, mouse::AccumulatedMouseMotion,
     },
@@ -302,7 +303,7 @@ pub fn run() -> Result<AppExit, String> {
             }
             "--help" | "-h" => {
                 println!(
-                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--progress-dir DIRECTORY  Override handoff progress directory, also enables persistence in capture\n--walk-preview  Movement and saved prologue handoff fragment\n--character-preview[=CHR-001|CHR-002]  Unaccepted grey character with real Idle/Walk/Run; defaults to CHR-001 (implies --walk-preview)\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
+                    "N:SIDE\n--project-root PATH  Project root (default .)\n--capture SCRIPT --output DIRECTORY  Offscreen evidence (settings isolated by default)\n--settings-dir DIRECTORY  Override user settings directory, also enables persistence in capture\n--progress-dir DIRECTORY  Override handoff progress directory, also enables persistence in capture\n--walk-preview  Movement and saved prologue handoff fragment\n--character-preview[=CHR-001|CHR-002]  Unaccepted grey character with real Idle/Walk/Run/Jump; defaults to CHR-001 (implies --walk-preview)\n--reset-graphics  Start with default graphics; retain other preferences and invalid files\n\nArrow keys / gamepad D-pad select, Enter / South confirm, Escape / East return"
                 );
                 return Ok(AppExit::Success);
             }
@@ -362,7 +363,7 @@ pub fn run() -> Result<AppExit, String> {
             ..default()
         });
     if headless {
-        plugins = plugins.disable::<WinitPlugin>();
+        plugins = plugins.disable::<WinitPlugin>().disable::<GilrsPlugin>();
     }
     app.add_plugins(plugins)
         .insert_resource(ProjectRoot(root))

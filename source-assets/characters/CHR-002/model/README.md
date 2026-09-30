@@ -16,9 +16,9 @@
 
 | 文件 | 职责 |
 | --- | --- |
-| `ling-grey-study.blend` | 可编辑主文件，分件网格、真实 UV、权重、32 骨和三个循环；相机、灯光与地板只用于检查 |
-| `build.py` | 重建本轮候选，`--export-existing` 只导出已有主文件，保持手工编辑 |
-| `check.py` | DCC 骨矩阵、循环、接地、眼口鼻贴合、头发覆盖与 UV 检查，失败返回非零 |
+| `ling-grey-study.blend` | 可编辑主文件，分件网格、真实 UV、权重、32 骨、三个循环及非循环 Jump；相机、灯光与地板只用于检查 |
+| `build.py` | 重建本轮候选，`--export-existing` 只导出已有主文件，`--update-jump` 保留已有几何与其他动作并更新 Jump 后导出 |
+| `check.py` | DCC 骨矩阵、循环、接地、Jump 姿态、眼口鼻贴合、头发覆盖与 UV 检查，失败返回非零 |
 | `grey-study.png` | 1024×1024 sRGB 不透明灰阶图集，角色区域的面值不代表已定配色 |
 | `game/assets/characters/CHR-002/ling-grey-study.glb` | 合并为一个共享标准材质的运行网格，保留骨架、权重和具名动作，内嵌同一图集 |
 
@@ -31,8 +31,11 @@
 | `Idle` | 2 s，60 FPS | 呼吸与微动，根保持原地 |
 | `Walk` | 0.8 s，60 FPS | 每脚前 1/3 周期支撑，自然速度 `3.027192142669727 m/s` |
 | `Run` | 2/3 s，60 FPS | 每脚前 1/5 周期支撑，自然速度 `5.297586249672022 m/s` |
+| `Jump` | 40/60 s，60 FPS，帧 1—41 | 非循环、in-place；起跳压缩、空中收腿与落地压缩，首尾回到 Idle 首帧姿态；Root 静止，世界跳跃轨迹由控制器提交 |
 
 世界位移由真实人物控制器负责；使用其他移动速度时，动画播放倍率取实际速度除以上表自然速度。不能把曜的同名动作倍率原样套用给缩小后的玲，实际导出足轨另以 120 FPS 核验
+
+Jump 的局部位移按玲的骨架尺度制作，Hips 下压用于身体压缩，不烘入世界高度。`check.py` 逐帧核对有限骨矩阵、Root 静止、首尾 Idle 姿态与鞋底接地，并检查起落压缩及空中双腿收起；四个 DCC 姿态的实际看图与原数据保持证据见 [Jump r1](../../../../todo/evidence/TASK-047/jump-r1/asset/review.md)
 
 长发目前由 `Head` 与 `Chest` 混合权重带动，发夹附着 `Head`；未增加独立发骨、布料求解或二级动态。手指保留原 10 根指骨，只有基础动作姿态，不声称已具备拿画笔或对话表演
 
@@ -42,14 +45,16 @@
 
 ```fish
 output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-002/model/build.py
-output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-002/model/check.py
-python3 -B tools/validate_character.py game/assets/characters/CHR-002/ling-grey-study.glb --root-node Root --height 1.65 --clip Idle --clip Walk --clip Run --require-texture
+output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-002/model/check.py -- --output todo/evidence/TASK-047/jump-r1/asset/dcc-CHR-002.json
+python3 -B tools/validate_character.py game/assets/characters/CHR-002/ling-grey-study.glb --root-node Root --height 1.65 --clip Idle --clip Walk --clip Run --clip Jump --require-texture
 python3 -B todo/evidence/TASK-047/ling-model-r1/measure.py --fps 120 --gait --check --output todo/evidence/TASK-047/ling-model-r2/exported-foot-tracks.json
 output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python todo/evidence/TASK-047/ling-model-r2/render.py -- final --master source-assets/characters/CHR-002/model/ling-grey-study.blend
 output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-002/model/build.py -- --export-existing
 ```
 
 完整重建会覆盖主文件；手工编辑后改用 `--export-existing`。渲染命令追加 `--motion` 输出完整 Walk / Run 八个等距相位和三个跑动正视角，实际看图后按项目规则清理；保留源工程、脚本、参数、状态、哈希与结论
+
+在当前主文件上更新 Jump 使用 `output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python source-assets/characters/CHR-002/model/build.py -- --update-jump`；它重写 Jump、保存主文件并重新导出，保留已有网格、材质、绑定和 Idle／Walk／Run
 
 ## 验收边界
 

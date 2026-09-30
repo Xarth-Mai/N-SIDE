@@ -6,6 +6,7 @@ use bevy::{
     camera_controller::free_camera::{
         FreeCamera, FreeCameraPlugin, FreeCameraState, run_freecamera_controller,
     },
+    gilrs::GilrsPlugin,
     prelude::*,
     render::render_resource::TextureFormat,
     render::{
@@ -243,7 +244,7 @@ fn run() -> Result<AppExit, String> {
             ..default()
         });
     if headless {
-        plugins = plugins.disable::<WinitPlugin>();
+        plugins = plugins.disable::<WinitPlugin>().disable::<GilrsPlugin>();
     }
     app.add_plugins(plugins);
     visual.install(&mut app);

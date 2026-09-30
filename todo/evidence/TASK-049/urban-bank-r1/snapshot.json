@@ -1,0 +1,61 @@
+{
+  "status": "READY_FOR_GPU_REVIEW",
+  "scope": "Five visual shrub instances north of the existing road 274 access lane",
+  "before_scene_sha256": "6be988f7679787ef8ccd3759b79b6f574ceb33af4b235e03e8411293e3e89283",
+  "sha256": {
+    "game/src/world/scene.rs": "39844e81113ddb9c2f75a799f9073585b908262395981078dec79982eb38dce2",
+    "source-assets/district-map/district.json": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "source-assets/district-scene/appearance.json": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e",
+    "game/assets/environment/vegetation/shrub-courtyard.glb": "24c0b97da3d4b64297cb75d4b5920d15c61fea0d1bb033c9be197c20bb8384ee"
+  },
+  "map_unchanged": true,
+  "models": "Existing original N:SIDE shrub-courtyard.glb, five instances, 29120 triangles, no new material or texture",
+  "placements": [
+    {
+      "x": 93.2,
+      "north": 280.3,
+      "root_height_rounded": 29.997,
+      "scale": 1.05
+    },
+    {
+      "x": 95.4,
+      "north": 281.5,
+      "root_height_rounded": 31.274,
+      "scale": 1.2
+    },
+    {
+      "x": 97.7,
+      "north": 281,
+      "root_height_rounded": 30.787,
+      "scale": 1.05
+    },
+    {
+      "x": 102,
+      "north": 281.4,
+      "root_height_rounded": 30.884,
+      "scale": 1.15
+    },
+    {
+      "x": 104,
+      "north": 283,
+      "root_height_rounded": 31.246,
+      "scale": 1.0
+    }
+  ],
+  "checks": {
+    "real_glb_roots_lane_clearance_group_gap": "PASS native-test-appended-final.log",
+    "all_existing_vegetation_clearance_assets": "PASS all-vegetation-appended-final.log",
+    "forest_existing_placement_regression": "PASS forest-regression-appended-final.log",
+    "rustfmt": "PASS",
+    "git_diff_check": "PASS",
+    "GPU": "NOT RUN by subagent; root integration required",
+    "same_five_placements_after_priority_fix": "PASS",
+    "ponytail_review": "Lean already. Ship. - removed redundant full-instance copies from the narrow test"
+  },
+  "collision": "No GeometryPart added or changed; new instances use the existing visual props path outside road and entrance envelopes",
+  "visual_goal": "Two short, tended shrub groups make the lane shoulder readable from the existing shop spawn camera; no continuous hedge or global hillside scatter",
+  "review_boundary": "Not a completed bare-slope treatment or author acceptance",
+  "cleanup": "No screenshots, videos or temporary probe executable generated in this production subtask",
+  "placement_priority": "Appended after all existing vegetation and forest understory; existing instances own their space first",
+  "failure_and_repair": "forest-regression-appended-first.log: old zip-based prefix assumption failed after the new group moved to the tail; compare stable source/model/Transform instead; no clearance threshold changed"
+}

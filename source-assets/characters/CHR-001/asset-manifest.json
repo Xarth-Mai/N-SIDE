@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "a8cdaa87548b3df5c7bb244c70e832536c98c3a325558b09e0162eb2675dc098",
-      "runtime_sha256": "7020ed499f8feb76e987fe7997fcb126bea9680fa5cda9a56943a857b4fdee4d",
+      "source_sha256": "614ec6324fb228c338a1462684f77020b1c2da1f3085951f8e5fd55d8a696e2e",
+      "runtime_sha256": "81244b5708acab14784c66f6505decd5a353c02526315f4af6e859d7a28a138f",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -109,6 +109,13 @@
           "name": "Run",
           "duration_seconds": 0.6666666666666666,
           "source_fps": 60
+        },
+        {
+          "name": "Jump",
+          "duration_seconds": 0.6666666666666666,
+          "source_fps": 60,
+          "loop": false,
+          "in_place": true
         }
       ],
       "world_motion_owner": "real player controller, in-place animation",
@@ -116,7 +123,7 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "Model-r7 DCC/GLB and byte-identical editable-master re-export PASS; 13397c5 bone rest/bind, all animation samples, three image bytes and material preserved. In-engine r9 check recorded separately by root",
+        "technical": "Jump-r1 DCC and exported GLB checks PASS; 40/60s non-looping in-place Jump added; original geometry, skin/bind, materials/images and Idle/Walk/Run accessor values unchanged; runtime integration and visual acceptance tracked separately",
         "visual": "needs_revision; raised neckline, closer shoulder/sleeve transition, integrated front zipper tape, fitted chest print and varied hair groups; facial identity, crown spacing, hood volume, final palette and full motion set remain unaccepted"
       },
       "generation": {
@@ -124,7 +131,7 @@
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/model-r7/delivery.json",
+      "evidence": "todo/evidence/TASK-047/jump-r1/asset/review.md",
       "data_textures": [
         {
           "path": "source-assets/characters/CHR-001/model/grey-study-surface.png",

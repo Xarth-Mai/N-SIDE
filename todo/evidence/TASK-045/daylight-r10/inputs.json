@@ -1,0 +1,32 @@
+{
+  "files": {
+    "source-assets/district-map/district.json": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "source-assets/district-scene/appearance.json": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "game/src/world/visual.rs": "5f5cdec3f2093289f8349e90219bac266aa342f91961fad03c03cd19617e188b",
+    "game/src/world/scene.rs": "85819235176096a6192ae12aefbe4b3bddfed64cd5953fd22b7aea691ae400ab"
+  },
+  "variables": {
+    "exposure_ev100": [
+      9.7,
+      10.2
+    ],
+    "environment_intensity": [
+      1100,
+      650
+    ]
+  },
+  "purpose": "Fixed shop A/B of lower exposure and weaker environment fill; material color and sunlight unchanged",
+  "postcheck": {
+    "source-assets/district-map/district.json": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "source-assets/district-scene/appearance.json": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "game/src/world/visual.rs": "5f5cdec3f2093289f8349e90219bac266aa342f91961fad03c03cd19617e188b",
+    "game/src/world/scene.rs": "0c5fc7536b1e72078ff9396242829ed6df755ee63584c34e7f597ceb6430338b"
+  },
+  "source_changes_during_capture": [
+    "game/src/world/scene.rs"
+  ],
+  "binary_sha256": "e5189ff0458c4ef338049030d3dc7b241c965d26f62d148ef3d2b71983683c58",
+  "binary_scope": "Both runs used the same already-built Viewer; inspected source is not proof that the binary includes concurrent source edits"
+}

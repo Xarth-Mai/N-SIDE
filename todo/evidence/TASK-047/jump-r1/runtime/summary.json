@@ -1,0 +1,118 @@
+[
+  {
+    "name": "yao-walk",
+    "status": "PASS",
+    "checks": 28,
+    "video_encoded": "PASS",
+    "wall_seconds": 37.12021819199799,
+    "root_viewed_frames": [
+      {
+        "path": "output/jump-runtime-r1/yao-walk/frames/frame00062.png",
+        "sha256": "250d76857b6dc1a4a8274e5b53b19bb9a42e0b2ca38627a9eaad3a4c2136febb"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-walk/frames/frame00069.png",
+        "sha256": "9260033d409ad53eb33df4e7caa5d30890bdeb58131b8557940f18d65e2e079f"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-walk/frames/frame00070.png",
+        "sha256": "c20c5c303a49ad118c4c06b2225942e298dee5bf5c9e663d9fab79d2b607bcaf"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-walk/frames/frame00071.png",
+        "sha256": "c5877020cb59ab296ed156cf7b36ee04fdace957d5e46b4550b7adc215bf9c04"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-walk/frames/frame00078.png",
+        "sha256": "ada9b18ebe6dca53f66915422aaf0f7cb6e925f246e57e034b8d5d75d4f39250"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-walk/frames/frame00392.png",
+        "sha256": "ba7a688b86f880baed5a2f16df84ea210dda3f674fc1e1b38e620dbbf7c70eb6"
+      }
+    ]
+  },
+  {
+    "name": "ling-walk",
+    "status": "PASS",
+    "checks": 28,
+    "video_encoded": "PASS",
+    "wall_seconds": 37.24993630700192,
+    "root_viewed_frames": []
+  },
+  {
+    "name": "yao-pause",
+    "status": "PASS",
+    "checks": 9,
+    "video_encoded": "PASS",
+    "wall_seconds": 19.936058192000928,
+    "root_viewed_frames": [
+      {
+        "path": "output/jump-runtime-r1/yao-pause/frames/frame00072.png",
+        "sha256": "23f817172681e1cf816f6d030e6f0bef3133611a46f8adc29c4249985fc9ad1c"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-pause/frames/frame00095.png",
+        "sha256": "23f817172681e1cf816f6d030e6f0bef3133611a46f8adc29c4249985fc9ad1c"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-pause/frames/frame00108.png",
+        "sha256": "fa8997a86ec4ab60c57174bc1ae26228b70eb19206479255ee871f2c033f7623"
+      },
+      {
+        "path": "output/jump-runtime-r1/yao-pause/frames/frame00129.png",
+        "sha256": "0fe389669667733ae2540bba4261593561032a16e0c7b8e148e8eca886057692"
+      }
+    ]
+  },
+  {
+    "name": "ling-pause",
+    "status": "PASS",
+    "checks": 9,
+    "video_encoded": "PASS",
+    "wall_seconds": 19.97836308699698,
+    "root_viewed_frames": [
+      {
+        "path": "output/jump-runtime-r1/ling-pause/frames/frame00064.png",
+        "sha256": "3697f8073e6ca0c5d2ccb10daa2d915da7a2de9f7414b880c7d10795726c17a7"
+      },
+      {
+        "path": "output/jump-runtime-r1/ling-pause/frames/frame00108.png",
+        "sha256": "7f3fe5be757d0f097da81414be235e9311d7dae562a20e4520a669539647eddd"
+      },
+      {
+        "path": "output/jump-runtime-r1/ling-pause/frames/frame00129.png",
+        "sha256": "0551e26ca645487e66b26609518dd716e92d04f5296a4f0a6ac06eef6825369d"
+      },
+      {
+        "path": "output/jump-runtime-r1/ling-pause/frames/frame00155.png",
+        "sha256": "8e073afd7dff4224275f5c574dd960a93260227cc05994b951d012dffad2216b"
+      }
+    ]
+  },
+  {
+    "name": "belle-pause",
+    "status": "PASS",
+    "checks": 9,
+    "video_encoded": "PASS",
+    "wall_seconds": 20.15364093700191,
+    "root_viewed_frames": [
+      {
+        "path": "output/jump-runtime-r1/belle-pause/frames/frame00059.png",
+        "sha256": "95e4478dac03e1d04fbe475b7441a31db166686c16285819e4550eb473428946"
+      },
+      {
+        "path": "output/jump-runtime-r1/belle-pause/frames/frame00064.png",
+        "sha256": "d6c0fe37747a25f35c6e2cad6634691571f48777af89b48775072c90d19d4330"
+      },
+      {
+        "path": "output/jump-runtime-r1/belle-pause/frames/frame00108.png",
+        "sha256": "2505765024b2893c938cded5355355764e67a8058dcebf22da35196420aa7e25"
+      },
+      {
+        "path": "output/jump-runtime-r1/belle-pause/frames/frame00155.png",
+        "sha256": "e85b7c9e0d4697c56d39b748ab5e456c31e6111fdf9f77304e90796b9cc5f3c2"
+      }
+    ]
+  }
+]

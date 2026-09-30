@@ -1,0 +1,7 @@
+
+running 1 test
+vegetation additions=265 added={"flowers": 36, "grass": 57, "rock": 33, "shrub": 25, "tree_autumn": 6, "tree_pine": 108} parks=81 trails_or_uphill=95 model counts={"flowers": 36, "grass": 57, "rock": 33, "shrub": 32, "streetlight": 32, "tree_a": 16, "tree_autumn": 11, "tree_b": 21, "tree_pine": 138}
+test world::scene::tests::vegetation_uses_real_assets_and_keeps_public_space_clear ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 134 filtered out; finished in 0.40s
+

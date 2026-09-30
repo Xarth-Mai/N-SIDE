@@ -82,7 +82,7 @@ bpy.ops.object.mode_set(mode="OBJECT")
 motion_file = ROOT / "source-assets/characters/CHR-002/model/ling-grey-study.blend"
 with bpy.data.libraries.load(str(motion_file), link=False) as (_, imported):
     imported.objects = ["CHR002_Rig"]
-    imported.actions = ["Idle", "Walk", "Run"]
+    imported.actions = ["Idle", "Walk", "Run", "Jump"]
 motion = imported.objects[0]
 scene.collection.objects.link(motion)
 actions = {action.name: action for action in imported.actions}
@@ -112,7 +112,7 @@ for side in ["L", "R"]:
 scene.render.fps = 60
 made = []
 pose_samples = 0
-for name, frames in [("Idle", 120), ("Walk", 48), ("Run", 40)]:
+for name, frames in [("Idle", 120), ("Walk", 48), ("Run", 40), ("Jump", 40)]:
     motion.animation_data.action = actions[name]
     actions[name].name = "Source_" + name
     rig.animation_data_clear()

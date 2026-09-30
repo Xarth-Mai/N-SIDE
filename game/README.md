@@ -61,7 +61,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 
 脚本的 `waits` 在指定帧等待真实 `game_page`，期间继续异步加载和渲染，暂停录制时间线；它不设置应用状态，墙钟超时仍有效。`game_page`、`world_ready`、`min_world_entities`、`max_world_entities` 和 `same_world_entities` 从实际 ECS 状态检查标题、加载、清理与重入；录制时长不代表真实加载耗时
 
-暂停复用街区信号的颜色、字体与焦点组件，显示继续、返回标题和设置；步行模式已有交接观察时另有「重新开始交接」，需单独确认。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物、镜头和显式角色预览的Idle／Walk／Run；NPC、战斗及声音尚未接入，不据此宣称其暂停行为已验证
+暂停复用街区信号的颜色、字体与焦点组件，显示继续、返回标题和设置；步行模式已有交接观察时另有「重新开始交接」，需单独确认。菜单在固定更新前处理，打开当帧与暂停期间隔离人物移动、镜头观察和复位；恢复沿用原人物、镜头与世界，持续按住的玩法输入需要先释放。主窗口失焦自动进入暂停，回焦后需重新确认继续；同一帧先失焦后回焦也会暂停，系统重复按键不会作为新的菜单动作。加载可继续完成，但失焦时不启动人物操作；无窗口capture保持原流程。当前暂停覆盖已实现的人物、镜头和显式角色预览的Idle／Walk／Run／Jump；NPC、战斗及声音尚未接入，不据此宣称其暂停行为已验证
 
 ```fish
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-pause.json --output output/capture/walk-pause
@@ -117,7 +117,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --script game/capture
 python3 tools/capture.py --binary game/target/debug/n-side --script game/capture/walk-ramp-camera.json --output output/capture/walk-ramp-camera
 ```
 
-显式 `--character-preview` 默认选择曜，`--character-preview=CHR-002` 选择玲；两者均隐含步行模式，将选定灰阶骨骼候选挂到原人物视觉root，复用真实移动、碰撞和相机。模型、具名Idle／Walk／Run与所有动画目标就绪后才隐藏胶囊；动作依据实际碰撞后速度切换，暂停停止实际AnimationPlayer，返回标题递归清理，加载失败保留代理、输出错误，capture返回非零。两模型均为 `needs_revision` 灰阶候选，外观与配色未获批准，默认入口继续使用代理；选择模型不增加角色切换玩法，混合过渡、足滑校准和Jump动画仍未完成
+显式 `--character-preview` 默认选择曜，`--character-preview=CHR-002` 选择玲；两者均隐含步行模式，将选定灰阶骨骼候选挂到原人物视觉root，复用真实移动、碰撞和相机。模型、具名Idle／Walk／Run／Jump与所有动画目标就绪后才隐藏胶囊；动作依据实际碰撞后速度切换，暂停停止实际AnimationPlayer，返回标题递归清理，加载失败保留代理、输出错误，capture返回非零。两模型均为 `needs_revision` 灰阶候选，外观与配色未获批准，默认入口继续使用代理；选择模型不增加角色切换玩法，空中播放一次Jump，落地按真实速度返回地面动作；混合过渡与足滑校准仍未完成
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview

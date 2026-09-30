@@ -20,9 +20,68 @@ OUTPUT = ROOT / 'output/characters/CHR-001/model-r7/model-source'
 parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
+parser.add_argument('--update-jump', action='store_true', help='Append Jump to the current master and export without rebuilding geometry')
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
 for path in (SOURCE, RUNTIME, OUTPUT):
     path.mkdir(parents=True, exist_ok=True)
+
+
+def author_jump(rig):
+    # Pose only: the player controller supplies the 6 m/s, 18 m/s² world arc
+    scene = bpy.context.scene
+    scene.render.fps = 60
+    rig.animation_data_clear()
+    if 'Jump' in bpy.data.actions:
+        bpy.data.actions.remove(bpy.data.actions['Jump'])
+    scale = rig.data.bones['Hips'].head_local.z / .925
+    # phase, pelvis compression, ankle lift, forward ankle offset (unscaled meters)
+    poses = [(0.,0.,0.,0.),(.12,.075,.02,-.015),(.30,0.,.12,-.10),
+             (.52,.025,.23,-.15),(.78,0.,.08,-.06),(.90,.055,.015,-.01),(1.,0.,0.,0.)]
+    def rotate(name, axis, angle):
+        bone = rig.pose.bones[name]
+        bone.rotation_quaternion = Quaternion(bone.bone.matrix_local.to_quaternion().inverted() @ Vector(axis), angle)
+    for frame in range(1,42):
+        phase = (frame-1)/40
+        scene.frame_set(frame)
+        for bone in rig.pose.bones:
+            bone.location=(0,0,0);bone.rotation_mode='QUATERNION';bone.rotation_quaternion=(1,0,0,0)
+        left,right = next((a,b) for a,b in zip(poses,poses[1:]) if a[0] <= phase <= b[0])
+        u=(phase-left[0])/(right[0]-left[0]);u=u*u*(3-2*u)
+        drop,lift,forward = [(a+(b-a)*u)*scale for a,b in zip(left[1:],right[1:])]
+        balance=math.sin(math.pi*phase)
+        rig.pose.bones['Hips'].location.y=-drop
+        rotate('Spine',(1,0,0),.08*balance)
+        rotate('Head',(1,0,0),-.05*balance)
+        for side,s in [('L',1),('R',-1)]:
+            thigh=rig.data.bones['Thigh.'+side];shin=rig.data.bones['Shin.'+side];foot=rig.data.bones['Foot.'+side]
+            upper=shin.head_local-thigh.head_local;lower=foot.head_local-shin.head_local
+            a_len=math.hypot(upper.y,upper.z);b_len=math.hypot(lower.y,lower.z)
+            dy=foot.head_local.y-thigh.head_local.y+forward
+            dz=foot.head_local.z+lift-thigh.head_local.z+drop
+            distance=math.hypot(dy,dz)
+            assert abs(a_len-b_len)<distance<a_len+b_len
+            angle=math.atan2(dy,-dz)-math.acos(max(-1,min(1,(a_len*a_len+distance*distance-b_len*b_len)/(2*a_len*distance))))
+            bend=math.pi-math.acos(max(-1,min(1,(a_len*a_len+b_len*b_len-distance*distance)/(2*a_len*b_len))))
+            thigh_angle=angle-math.atan2(upper.y,-upper.z)
+            shin_angle=bend-(math.atan2(lower.y,-lower.z)-math.atan2(upper.y,-upper.z))
+            rotate('Thigh.'+side,(1,0,0),thigh_angle)
+            rotate('Shin.'+side,(1,0,0),shin_angle)
+            rotate('Foot.'+side,(1,0,0),-thigh_angle-shin_angle+.12*balance)
+            rotate('UpperArm.'+side,(0,1,0),s*(.34-.15*balance))
+            axes=rig.data.bones['UpperArm.'+side].matrix_local.to_quaternion().inverted()
+            rig.pose.bones['UpperArm.'+side].rotation_quaternion @= Quaternion(axes@Vector((1,0,0)),-.30*balance)
+            rotate('Forearm.'+side,(1,0,0),-.10-.55*balance)
+            for finger in ['Index','Middle','Ring','Pinky','Thumb']:
+                rotate(finger+'.'+side,(1,0,0),.10+.12*balance)
+        for bone in rig.pose.bones:
+            bone.keyframe_insert('rotation_quaternion',frame=frame,group=bone.name)
+            if bone.name=='Hips':bone.keyframe_insert('location',frame=frame,group=bone.name)
+    action=rig.animation_data.action;action.name='Jump';action.use_fake_user=True
+    for layer in action.layers:
+        for strip in layer.strips:
+            for curve in strip.channelbag(rig.animation_data.action_slot).fcurves:
+                for key in curve.keyframe_points:key.interpolation='LINEAR'
+    rig.animation_data.action=bpy.data.actions['Idle'];scene.frame_set(1)
 
 def export(rig, objects):
     # Keep editable clothing parts in the master; batch the one-material runtime mesh
@@ -48,9 +107,12 @@ def export(rig, objects):
     bpy.data.objects.remove(runtime,do_unlink=True)
     bpy.data.meshes.remove(data)
 
-if args.export_existing:
+if args.export_existing or args.update_jump:
     bpy.ops.wm.open_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     rig=bpy.data.objects['CHR001_Rig']
+    if args.update_jump:
+        author_jump(rig)
+        bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     export(rig,[o for o in rig.children if o.type=='MESH'])
     raise SystemExit(0)
 
@@ -678,6 +740,7 @@ for name,(period,stride) in CLIPS.items():
             for curve in strip.channelbag(rig.animation_data.action_slot).fcurves:
                 for point in curve.keyframe_points:
                     point.interpolation='LINEAR'
+author_jump(rig)
 rig.animation_data.action=bpy.data.actions['Idle']
 scene.frame_start=1;scene.frame_end=CLIPS['Idle'][0]+1;scene.frame_set(1)
 
@@ -695,7 +758,7 @@ cam.data.type='ORTHO';cam.data.ortho_scale=2.06
 scene.render.resolution_x=720;scene.render.resolution_y=960;scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
 export(rig,objects)
-report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r7','material_revision':'r1','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
+report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r7','material_revision':'r1','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True,'loop':n!='Jump'} for n,(p,_) in (CLIPS|{'Jump':(40,0)}).items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
 if args.render:
     for label,pos,clip,frame in [('front',(0,-4,1.0),'Idle',1),('three-quarter',(3,-4,1.3),'Idle',1),('back',(0,4,1.0),'Idle',1),('walk-contact',(3,-4,1.2),'Walk',8),('run-contact',(3,-4,1.2),'Run',6),('face',(0,-4,1.61),'Idle',1),('walk-lift',(3,-4,1.2),'Walk',1),('run-lift',(3,-4,1.2),'Run',1)]:
         rig.animation_data.action=bpy.data.actions[clip];scene.frame_set(frame)

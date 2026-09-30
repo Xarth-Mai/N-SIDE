@@ -1,0 +1,50 @@
+{
+  "engine": "Cycles CPU",
+  "samples": 12,
+  "resolution": [
+    416,
+    560
+  ],
+  "views": [
+    {
+      "character": "CHR-001",
+      "frame": 1,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-001-jump-1.png"
+    },
+    {
+      "character": "CHR-001",
+      "frame": 6,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-001-jump-6.png"
+    },
+    {
+      "character": "CHR-001",
+      "frame": 21,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-001-jump-21.png"
+    },
+    {
+      "character": "CHR-001",
+      "frame": 37,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-001-jump-37.png"
+    },
+    {
+      "character": "CHR-002",
+      "frame": 1,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-002-jump-1.png"
+    },
+    {
+      "character": "CHR-002",
+      "frame": 6,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-002-jump-6.png"
+    },
+    {
+      "character": "CHR-002",
+      "frame": 21,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-002-jump-21.png"
+    },
+    {
+      "character": "CHR-002",
+      "frame": 37,
+      "image": "/home/lzzz/MyProjects/N-SIDE/output/jump-r1/CHR-002-jump-37.png"
+    }
+  ]
+}

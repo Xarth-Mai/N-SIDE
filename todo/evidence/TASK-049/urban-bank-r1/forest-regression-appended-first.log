@@ -1,0 +1,15 @@
+
+running 1 test
+
+thread 'world::scene::tests::forest_stands_keep_actual_roots_supported_and_summit_views_clear' (4) panicked at src/world/scene.rs:3881:13:
+forest changed an existing placement
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::scene::tests::forest_stands_keep_actual_roots_supported_and_summit_views_clear ... FAILED
+
+failures:
+
+failures:
+    world::scene::tests::forest_stands_keep_actual_roots_supported_and_summit_views_clear
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 134 filtered out; finished in 0.31s
+

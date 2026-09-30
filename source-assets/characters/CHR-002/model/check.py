@@ -4,6 +4,8 @@ blender -b --python source-assets/characters/CHR-002/model/check.py
 """
 import json
 import math
+import argparse
+import sys
 from pathlib import Path
 
 import bpy
@@ -12,6 +14,9 @@ from mathutils.bvhtree import BVHTree
 
 source = Path(__file__).resolve().parent
 root = source.parents[3]
+parser=argparse.ArgumentParser()
+parser.add_argument('--output',type=Path,default=root/'todo/evidence/TASK-047/ling-model-r2/dcc-check.json')
+args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
 bpy.ops.wm.open_mainfile(filepath=str(source / 'ling-grey-study.blend'))
 rig = bpy.data.objects['CHR002_Rig']
 SCALE=1.65/1.7441905736923218
@@ -46,6 +51,34 @@ for name, period in (('Idle', 120), ('Walk', 48), ('Run', 40)):
     assert floor_min > -.005, f'{name}: floor penetration {floor_min} m'
     assert max(contact_errors) < .005, f'{name}: stance-foot ground distance {max(contact_errors)} m'
     results.append({'clip': name, 'sampled_frames': period+1, 'loop_matrix_max_delta': loop_error, 'minimum_sole_height_m': floor_min, 'max_stance_height_error_m': max(contact_errors)})
+rig.animation_data.action = bpy.data.actions['Idle']
+scene.frame_set(1)
+idle_matrices = [x for bone in rig.pose.bones for row in bone.matrix for x in row]
+rig.animation_data.action = bpy.data.actions['Jump']
+assert tuple(bpy.data.actions['Jump'].frame_range) == (1.,41.), 'Jump must span 40/60 seconds'
+jump_samples=[]
+for frame in range(1,42):
+    scene.frame_set(frame)
+    for bone in rig.pose.bones:
+        assert all(math.isfinite(x) for row in bone.matrix for x in row), f'Jump {frame}: nonfinite {bone.name}'
+    root_matrix=rig.pose.bones['Root'].matrix
+    assert max(abs(root_matrix[r][c]-rig.data.bones['Root'].matrix_local[r][c]) for r in range(4) for c in range(4)) < 1e-5, 'Jump must not move or rotate Root'
+    hips=rig.pose.bones['Hips'].head.z-rig.data.bones['Hips'].head_local.z
+    assert -.1 < hips < 1e-5, 'Jump must compress the pose without adding world ascent'
+    soles=[]
+    graph=bpy.context.evaluated_depsgraph_get()
+    for side in ['L','R']:
+        shoe=bpy.data.objects['Sneaker_Sole.'+side].evaluated_get(graph);data=shoe.to_mesh()
+        soles.append(min((shoe.matrix_world @ vertex.co).z for vertex in data.vertices));shoe.to_mesh_clear()
+    if frame in [1,41]:
+        values=[x for bone in rig.pose.bones for row in bone.matrix for x in row]
+        assert max(abs(a-b) for a,b in zip(values,idle_matrices)) < .0001, 'Jump endpoints must return to Idle pose'
+        assert max(abs(z) for z in soles) < .005, 'Jump endpoint sole is not grounded'
+    jump_samples.append({'frame':frame,'hips_offset_m':hips,'sole_height_m':soles})
+assert min(jump_samples[20]['sole_height_m']) > .15, 'Jump apex must visibly tuck both legs'
+assert min(s['hips_offset_m'] for s in jump_samples[:8]) < -.04, 'Jump needs takeoff compression'
+assert min(s['hips_offset_m'] for s in jump_samples[32:]) < -.03, 'Jump needs landing compression'
+results.append({'clip':'Jump','duration_seconds':40/60,'source_fps':60,'loop':False,'root_static':True,'world_ascent_baked':False,'samples':jump_samples})
 rig.animation_data.action = bpy.data.actions['Idle']
 scene.frame_set(1)
 surface = BVHTree.FromObject(bpy.data.objects['Face_Head'], bpy.context.evaluated_depsgraph_get())
@@ -128,4 +161,4 @@ top_head=surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
 assert top_hair is not None and top_head is not None and top_hair.z>top_head.z+.001, 'Open crown exposes the head from above'
 report = {'status':'PASS','asset':'CHR-002 modelling candidate r2','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS'}
 print(json.dumps(report,indent=2))
-(root/'todo/evidence/TASK-047/ling-model-r2/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
+args.output.write_text(json.dumps(report,indent=2)+'\n')

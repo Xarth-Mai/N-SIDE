@@ -109,6 +109,34 @@ for clip, frames in (('Idle',(1,)),('Walk',(8,)),('Run',(1,6,11,16,21,26,31,36))
             evaluated.to_mesh_clear()
 rig.animation_data.action = bpy.data.actions['Idle']
 scene.frame_set(1)
+idle_matrices = [x for bone in rig.pose.bones for row in bone.matrix for x in row]
+rig.animation_data.action = bpy.data.actions['Jump']
+assert tuple(bpy.data.actions['Jump'].frame_range) == (1.,41.), 'Jump must span 40/60 seconds'
+jump_samples=[]
+for frame in range(1,42):
+    scene.frame_set(frame)
+    for bone in rig.pose.bones:
+        assert all(math.isfinite(x) for row in bone.matrix for x in row), f'Jump {frame}: nonfinite {bone.name}'
+    root_matrix=rig.pose.bones['Root'].matrix
+    assert max(abs(root_matrix[r][c]-rig.data.bones['Root'].matrix_local[r][c]) for r in range(4) for c in range(4)) < 1e-5, 'Jump must not move or rotate Root'
+    hips=rig.pose.bones['Hips'].head.z-rig.data.bones['Hips'].head_local.z
+    assert -.1 < hips < 1e-5, 'Jump must compress the pose without adding world ascent'
+    soles=[]
+    graph=bpy.context.evaluated_depsgraph_get()
+    for side in ['L','R']:
+        shoe=bpy.data.objects['Sneaker_Sole.'+side].evaluated_get(graph);data=shoe.to_mesh()
+        soles.append(min((shoe.matrix_world @ vertex.co).z for vertex in data.vertices));shoe.to_mesh_clear()
+    if frame in [1,41]:
+        values=[x for bone in rig.pose.bones for row in bone.matrix for x in row]
+        assert max(abs(a-b) for a,b in zip(values,idle_matrices)) < .0001, 'Jump endpoints must return to Idle pose'
+        assert max(abs(z) for z in soles) < .005, 'Jump endpoint sole is not grounded'
+    jump_samples.append({'frame':frame,'hips_offset_m':hips,'sole_height_m':soles})
+assert min(jump_samples[20]['sole_height_m']) > .15, 'Jump apex must visibly tuck both legs'
+assert min(s['hips_offset_m'] for s in jump_samples[:8]) < -.04, 'Jump needs takeoff compression'
+assert min(s['hips_offset_m'] for s in jump_samples[32:]) < -.03, 'Jump needs landing compression'
+results.append({'clip':'Jump','duration_seconds':40/60,'source_fps':60,'loop':False,'root_static':True,'world_ascent_baked':False,'samples':jump_samples})
+rig.animation_data.action = bpy.data.actions['Idle']
+scene.frame_set(1)
 surface = BVHTree.FromObject(bpy.data.objects['Face_Head'], bpy.context.evaluated_depsgraph_get())
 feature_gaps = {}
 for name in ('Mouth', 'Eye_White.L', 'Eye_White.R', 'Iris_hair.L', 'Iris_hair.R', 'Iris_ink.L', 'Iris_ink.R', 'Eye_Glint.L', 'Eye_Glint.R'):

@@ -49,7 +49,7 @@ cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_v
 
 角色导出后先运行[角色 GLB 预检](../../../tools/README.md#角色-glb-导出预检)，按该人物规格传入根骨名称、实际高度和必需 clip。它读取真实 accessor 检查四权重、inverse bind 还原、米制边界、嵌入纹理与 in-place 根通道，失败返回非零；两骨方体夹具证明 Blender 多动作导出与检查路径，不证明正式人物建模或动作已经完成
 
-两份角色研究GLB共用具名 `Scene` 与 `Idle` / `Walk` / `Run`、米制 Y-up、+Z 前向和脚底原点，32骨与in-place动作按各自源工程导出。玲的骨架与平移曲线同比缩放，运行播放速率相应补偿步幅；修改模型尺度后同时复验DCC接地与真实控制器下的足滑。具体加载、失败处理、尺度与播放速率由[角色预览契约](../engineering/player-preview.md#灰阶角色动作预览)统一维护
+两份角色研究GLB共用具名 `Scene` 与 `Idle` / `Walk` / `Run` / `Jump`、米制 Y-up、+Z 前向和脚底原点，32骨与in-place动作按各自源工程导出。玲的骨架与平移曲线同比缩放，运行播放速率相应补偿步幅；修改模型尺度后同时复验DCC接地与真实控制器下的足滑。具体加载、失败处理、尺度与播放速率由[角色预览契约](../engineering/player-preview.md#灰阶角色动作预览)统一维护
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview
@@ -59,13 +59,13 @@ python3 tools/capture.py --binary game/target/debug/n-side --character-preview -
 python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-002 --script game/capture/walk-character.json --output output/capture/walk-character-ling
 ```
 
-原参数不带值仍选曜，玲使用原生参数的等号形式；capture包装脚本接受空格或等号传值。两模型复用同一录制脚本，分别读取真实动画时间与切换、暂停状态，结合连续画面检查骨骼运动和接地；当前只实现Idle／Walk／Run直接切换，空中Idle占位，足滑校准、Jump与动作混合尚未完成。默认入口保留中性代理，具体运行结果归TASK-047，不把候选技术接入作为造型批准
+原参数不带值仍选曜，玲使用原生参数的等号形式；capture包装脚本接受空格或等号传值。两模型复用同一录制脚本，分别读取真实动画时间与切换、暂停状态，结合连续画面检查骨骼运动和接地；当前实现Idle／Walk／Run／Jump直接切换，Jump为40个间隔／60FPS的一次姿态、root静止，不叠加控制器弹道；足滑校准、长距离下落和动作混合尚未完成。默认入口保留中性代理，具体运行结果归TASK-047，不把候选技术接入作为造型批准
 
 缺失纹理、无效数值、错误场景或未解析动画目标直接退回接入检查；循环跳变和穿插记录具体帧与动作后修资产或控制器。无法播放时保留加载诊断，不用 DCC 预览冒充引擎验收。静态 GLB 检查失败时保留原件，从登记的源与导出参数重现
 
 ### 社区骨架的本地比较
 
-`tools/prepare_belle_reference.py` 为已检查的 Ghost73 铃 glTF 提供单一转换入口：读取另行取得的 148 骨、无动画源包，归一到 1.65 m，同步网格和形态键，按实际关节位置修正上肢 rest 差异，重定向项目现有三段动作并创建本地资源覆盖目录。逐帧检查头／骨盆／脚关系和静止根，保留源文件与依赖 hash。工具不下载模型，输出目录必须是仓库 `output/` 中尚不存在的目录
+`tools/prepare_belle_reference.py` 为已检查的 Ghost73 铃 glTF 提供单一转换入口：读取另行取得的 148 骨、无动画源包，归一到 1.65 m，同步网格和形态键，按实际关节位置修正上肢 rest 差异，重定向项目现有四段动作并创建本地资源覆盖目录。逐帧检查头／骨盆／脚关系和静止根，保留源文件与依赖 hash。工具不下载模型，输出目录必须是仓库 `output/` 中尚不存在的目录
 
 此入口在 Linux、Blender 4.5.14 验证，资源覆盖目录使用符号链接，依赖当前仓库，不是可分发游戏包。`CHR-002` 只作为既有预览槽位，模型仍保留第三方铃的身份，不覆盖正式月城玲。该特定骨架映射不用于其他社区包；来源与条款先按资产管线登记，原模型和转换品均留在忽略目录。形态键只保留在源工程，本轮运行导出不包含表情动画，手指、裙摆与转场动作继续实际检查
 
@@ -73,7 +73,7 @@ python3 tools/capture.py --binary game/target/debug/n-side --character-preview C
 
 ```fish
 output/tools/blender-4.5.14-linux-x64/blender -b -t 2 --python-exit-code 1 --python tools/prepare_belle_reference.py -- --source output/assets/zzz-reference/belle-player-share/model/belle.gltf --output output/assets/belle-local-test
-python3 tools/validate_character.py output/assets/belle-local-test/reference.glb --root-node Root --height 1.65 --clip Idle --clip Walk --clip Run --require-texture
+python3 tools/validate_character.py output/assets/belle-local-test/reference.glb --root-node Root --height 1.65 --clip Idle --clip Walk --clip Run --clip Jump --require-texture
 python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-002 --project-root output/assets/belle-local-test/project --script game/capture/walk-character.json --output output/capture/belle-local-test
 ```
 

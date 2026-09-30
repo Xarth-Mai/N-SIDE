@@ -1,0 +1,79 @@
+$ bun run check:map && bun run docs:build:player && bun run docs:build:dev
+$ bun test tools/tests/district-map.test.ts tools/tests/road-width.test.ts tools/tests/station-square.test.ts tools/tests/terrain-shape.test.ts
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [3.15ms]
+(pass) terrain colors follow ground elevation [0.18ms]
+(pass) map overview fits extended terrain on wide and narrow screens [289.84ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [85.36ms]
+(pass) mountain city keeps metre scale and usable graded route alternatives [9.48ms]
+(pass) overview terrain retains source controls and excludes elevated connections [9988.96ms]
+(pass) authored exterior sightlines clear intervening building volumes [8.26ms]
+(pass) shopping stays local and public hillside routes remain connected [8.54ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [0.93ms]
+(pass) scene keeps platforms below volumes and geometry is finite [418.30ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [29.57ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [42.97ms]
+(pass) section labels name shared nodes without duplicating their displayed elevation [0.35ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [1.79ms]
+(pass) tree positions stay outside building footprints [14.42ms]
+(pass) all streets clear building volumes at their actual widths and elevations [1194.65ms]
+(pass) district ground-road crossings share a junction and its elevation [751.91ms]
+(pass) city framework records every building and reaches its same-level facade entrances [32.62ms]
+(pass) city stairs retain short flights, level rests and full-size treads [3.35ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [4.40ms]
+(pass) public streets stay outside same-level resident and service courts [9.30ms]
+(pass) building volumes share boundaries without occupying the same space [57.33ms]
+(pass) detailed places connect street access to separate public and service entrances [50.99ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [6.60ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [10.89ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.68ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [2.31ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [150.43ms]
+(pass) public, residents, students and service users have separate access rights [27.83ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [1.09ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [5.73ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [2.23ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [1.01ms]
+(pass) shared stairs and separate apartments connect through shared circulation [8.23ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) second short-ascent leg meets terrain across stair and landing edges [5824.78ms]
+(pass) descent eye-level slope uses local terrain detail instead of a 60m face [5650.06ms]
+(pass) descent bank changes grade gradually and adjoining upper stairs retain support [13.24ms]
+(pass) terrain bake preserves authored geometry and repeats without drift [4374.10ms]
+(pass) terrain noise protects complete road segments and footprints [4364.96ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [57.28ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [501.04ms]
+(pass) forest-edge hollow has broad concavity while the adjacent short route keeps its grade [24.18ms]
+(pass) local forest road support leaves the existing terrain envelope outside the hollow unchanged [2218.85ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [1.71ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [0.74ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1204.53ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [462.41ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [447.04ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [429.98ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1115.13ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [1836.04ms]
+(pass) east terraces clear neighboring road ribbons and retain usable exterior approaches [454.04ms]
+(pass) west old housing clear neighboring road ribbons and retain usable exterior approaches [445.89ms]
+(pass) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [448.27ms]
+(pass) all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches [524.90ms]
+(pass) platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces [0.63ms]
+(pass) ground platforms meet adjacent road ribbons and stair treads at their own level [45.02ms]
+
+tools/tests/station-square.test.ts:
+(pass) station meeting court retains usable space with a level public arrival clear of sloping roads [461.81ms]
+
+ 58 pass
+ 0 fail
+Ran 58 tests across 4 files. [44.34s]
+$ bun tools/wiki.ts build player
+node: error while loading shared libraries: libsimdjson.so.33: cannot open shared object file: No such file or directory
+error: "vitepress" exited with code 127
+VitePress build failed (127)
+error: script "docs:build:player" exited with code 1
+error: script "docs:build" exited with code 1

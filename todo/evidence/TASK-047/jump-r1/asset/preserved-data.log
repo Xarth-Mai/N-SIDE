@@ -1,0 +1,32 @@
+{
+  "CHR-001": {
+    "checks": {
+      "nodes": true,
+      "meshes": true,
+      "skins": true,
+      "materials": true,
+      "textures": true,
+      "images": true,
+      "Idle": true,
+      "Walk": true,
+      "Run": true,
+      "only_Jump_added": true
+    },
+    "after_sha256": "81244b5708acab14784c66f6505decd5a353c02526315f4af6e859d7a28a138f"
+  },
+  "CHR-002": {
+    "checks": {
+      "nodes": true,
+      "meshes": true,
+      "skins": true,
+      "materials": true,
+      "textures": true,
+      "images": true,
+      "Idle": true,
+      "Walk": true,
+      "Run": true,
+      "only_Jump_added": true
+    },
+    "after_sha256": "292c63ba4da6619f13ed7a3f8ffaa5299633d27c45442eefb838103c3ab76b35"
+  }
+}

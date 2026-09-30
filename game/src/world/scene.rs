@@ -2491,6 +2491,55 @@ fn add_vegetation(map: &Map, ground: &Ground, props: &mut Vec<PropPlacement>) {
         });
     }
     add_forest_understory(map, ground, &obstacles, initial, props);
+    add_urban_bank(map, ground, &obstacles, props);
+}
+
+fn add_urban_bank(
+    map: &Map,
+    ground: &Ground,
+    obstacles: &[geo::Polygon],
+    props: &mut Vec<PropPlacement>,
+) {
+    let Some(anchor) = map.nodes.get("v_a08_door_landing") else {
+        return;
+    };
+    // Two low, tended groups above the existing entry lane leave its center and ends open
+    for (i, (offset, scale)) in [
+        ([2.2, 2.8], 1.05),
+        ([4.4, 4.0], 1.20),
+        ([6.7, 3.5], 1.05),
+        ([11.0, 3.9], 1.15),
+        ([13.0, 5.5], 1.00),
+    ]
+    .into_iter()
+    .enumerate()
+    {
+        let p = [anchor[0] + offset[0], anchor[1] + offset[1]];
+        if !vegetation_space_clear(map, obstacles, props, p, vegetation_radius("shrub") * scale) {
+            continue;
+        }
+        let mut low = ground.height(p);
+        let mut high = low;
+        for j in 0..16 {
+            let angle = j as f64 * std::f64::consts::TAU / 16.;
+            let h = ground.height([
+                p[0] + angle.cos() * 0.1 * scale,
+                p[1] + angle.sin() * 0.1 * scale,
+            ]);
+            low = low.min(h);
+            high = high.max(h);
+        }
+        if high - low > 0.28 {
+            continue;
+        }
+        props.push(PropPlacement {
+            source: format!("nodes[v_a08_door_landing]/derived-vegetation[urban-bank:{i}]"),
+            model: "shrub".into(),
+            transform: Transform::from_translation(map_to_world([p[0], p[1], low - 0.025]))
+                .with_rotation(Quat::from_rotation_y(i as f32 * 0.67))
+                .with_scale(Vec3::splat(scale as f32)),
+        });
+    }
 }
 
 fn add_forest_understory(
@@ -3602,7 +3651,7 @@ mod tests {
             .iter()
             .filter(|p| p.source.contains("/derived-vegetation["))
             .collect();
-        assert!(!additions.is_empty() && additions.len() <= 280);
+        assert!(!additions.is_empty() && additions.len() <= 285);
         assert!(additions.iter().any(|p| p.source.starts_with("surfaces[")));
         assert!(additions.iter().any(|p| p.source.starts_with("roads[")));
         let obstacles = vegetation_obstacles(&map);
@@ -3724,6 +3773,79 @@ mod tests {
     }
 
     #[test]
+    fn urban_bank_keeps_real_shrub_roots_supported_and_lane_clear() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let placements = props(&map, &appearance).unwrap();
+        let bank: Vec<_> = placements
+            .iter()
+            .filter(|p| p.source.contains("[urban-bank:"))
+            .collect();
+        assert_eq!(
+            bank.len(),
+            5,
+            "both authored groups must survive real terrain and clearance checks"
+        );
+        let ground = Ground::new(&map).unwrap();
+        let obstacles = vegetation_obstacles(&map);
+        let spec = &appearance.models["shrub"];
+        let asset = gltf::Gltf::open(root.join("game/assets").join(&spec.file)).unwrap();
+        let mut vertices = Vec::new();
+        for node in asset.scenes().nth(spec.scene).unwrap().nodes() {
+            assert!(node.children().next().is_none());
+            let matrix = Mat4::from_cols_array_2d(&node.transform().matrix());
+            for primitive in node.mesh().unwrap().primitives() {
+                let reader = primitive.reader(|_| asset.blob.as_deref());
+                vertices.extend(
+                    reader
+                        .read_positions()
+                        .unwrap()
+                        .map(|v| matrix.transform_point3(Vec3::from(v)) * spec.scale),
+                );
+            }
+        }
+        assert!(vertices.iter().any(|p| p.y < 0.03));
+        for p in &bank {
+            let at = p.transform.translation;
+            assert!(vegetation_space_clear(
+                &map,
+                &obstacles,
+                &[],
+                [f64::from(at.x), -f64::from(at.z)],
+                vegetation_clearance(p)
+            ));
+            for v in &vertices {
+                let actual = p.transform.transform_point(*v);
+                assert!(
+                    (actual.x - at.x).hypot(actual.z - at.z) as f64
+                        <= vegetation_clearance(p) + 0.001
+                );
+                if v.y < 0.03 {
+                    let burial = ground.height([f64::from(actual.x), -f64::from(actual.z)])
+                        - f64::from(actual.y);
+                    assert!(
+                        (-0.004..0.32).contains(&burial),
+                        "{} root unsupported/overburied by {burial:.6}m",
+                        p.source
+                    );
+                }
+            }
+            eprintln!(
+                "urban-bank {} x={:.3} north={:.3} root={:.3} scale={:.3}",
+                p.source, at.x, -at.z, at.y, p.transform.scale.x
+            );
+        }
+        let gap = (bank[3].transform.translation - bank[2].transform.translation)
+            .xz()
+            .length() as f64
+            - vegetation_clearance(bank[3])
+            - vegetation_clearance(bank[2]);
+        assert!(gap > 2., "the two groups must keep a visible two-metre gap");
+    }
+
+    #[test]
     fn forest_stands_keep_actual_roots_supported_and_summit_views_clear() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
@@ -3746,7 +3868,11 @@ mod tests {
                     .filter(|p| p.source.contains("[understory:"))
                     .count()
         );
-        for (before, after) in original.iter().zip(&placements) {
+        for before in &original {
+            let after = placements
+                .iter()
+                .find(|p| p.source == before.source)
+                .unwrap();
             assert!(
                 before.source == after.source
                     && before.model == after.model

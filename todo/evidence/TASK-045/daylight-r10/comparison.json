@@ -1,0 +1,91 @@
+{
+  "status": "PASS technical comparison; visual improvement modest, not approved",
+  "camera_and_resources_identical_all_frames": true,
+  "camera": [
+    110.0,
+    33.0,
+    -238.0
+  ],
+  "rotation": [
+    -0.04673471301794052,
+    0.4156110882759094,
+    0.02138938009738922,
+    0.9080891609191895
+  ],
+  "resources": {
+    "entities": 5440,
+    "images": 49,
+    "materials": 52,
+    "meshes": 3383
+  },
+  "sample_frame": 59,
+  "rois_xyxy": {
+    "sunlit_front_wall": [
+      482,
+      318,
+      536,
+      337
+    ],
+    "wall_under_awning": [
+      563,
+      370,
+      586,
+      395
+    ],
+    "awning": [
+      557,
+      344,
+      587,
+      349
+    ],
+    "paving": [
+      872,
+      527,
+      912,
+      553
+    ]
+  },
+  "pixel_statistics": {
+    "A": {
+      "sunlit_front_wall": {
+        "mean_display_linear_luminance": 0.6924333080451479,
+        "mean_hsv_saturation": 0.1803292467807811
+      },
+      "wall_under_awning": {
+        "mean_display_linear_luminance": 0.24959942130232743,
+        "mean_hsv_saturation": 0.12155469560734937
+      },
+      "awning": {
+        "mean_display_linear_luminance": 0.49598606190930067,
+        "mean_hsv_saturation": 0.3059399877780925
+      },
+      "paving": {
+        "mean_display_linear_luminance": 0.4460604678254766,
+        "mean_hsv_saturation": 0.22227585866505525
+      },
+      "wall_luminance_ratio": 2.774178339165449
+    },
+    "B": {
+      "sunlit_front_wall": {
+        "mean_display_linear_luminance": 0.5934331951958896,
+        "mean_hsv_saturation": 0.22439289487268452
+      },
+      "wall_under_awning": {
+        "mean_display_linear_luminance": 0.12716024137763007,
+        "mean_hsv_saturation": 0.13028689022619588
+      },
+      "awning": {
+        "mean_display_linear_luminance": 0.4052120155373867,
+        "mean_hsv_saturation": 0.33199861074390746
+      },
+      "paving": {
+        "mean_display_linear_luminance": 0.3567891603253496,
+        "mean_hsv_saturation": 0.25388468863682584
+      },
+      "wall_luminance_ratio": 4.666814003864308
+    }
+  },
+  "note": "Display-referred screenshot samples after tone mapping, not physical illumination measurements",
+  "self_review": "B increases separation under awning and on side walls; pale cyan sign and yellow-green terrain remain; no material edits; does not reach README concept quality",
+  "root_decision": "B rejected after actual image review: mostly dims the full image; local material and visible component differentiation still missing; retain A baseline"
+}

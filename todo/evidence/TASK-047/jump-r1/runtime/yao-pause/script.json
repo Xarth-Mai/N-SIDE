@@ -1,0 +1,154 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 180,
+  "seed": 0,
+  "timeout_seconds": 240,
+  "keyframes": [
+    59,
+    64,
+    72,
+    95,
+    108,
+    129,
+    155,
+    175
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 61,
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "start": 67,
+      "end": 68,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 85,
+      "end": 96,
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "start": 100,
+      "end": 101,
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "start": 145,
+      "end": 146,
+      "keys": [
+        "Space"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    },
+    {
+      "frame": 69,
+      "game_page": "paused"
+    },
+    {
+      "frame": 102,
+      "game_page": "world"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "airborne pause freezes animation and controller",
+      "from": 72,
+      "to": 95,
+      "game_page": "paused",
+      "player_grounded": false,
+      "max_player_distance": 0.001,
+      "min_player_jumps": 1,
+      "max_player_jumps": 1,
+      "character": {
+        "ready": true,
+        "clip": "Jump",
+        "paused": true,
+        "max_drift": 1e-05
+      }
+    },
+    {
+      "name": "resume continues airborne clip",
+      "from": 105,
+      "to": 108,
+      "game_page": "world",
+      "player_grounded": false,
+      "min_player_jumps": 1,
+      "max_player_jumps": 1,
+      "character": {
+        "ready": true,
+        "clip": "Jump",
+        "paused": false,
+        "min_clip_elapsed": 0.3,
+        "min_advance": 0.085
+      }
+    },
+    {
+      "name": "real landing restores idle",
+      "from": 129,
+      "to": 135,
+      "player_grounded": true,
+      "max_player_jumps": 1,
+      "character": {
+        "ready": true,
+        "clip": "Idle",
+        "paused": false,
+        "min_advance": 0.185
+      }
+    },
+    {
+      "name": "next grounded jump restarts clip",
+      "from": 153,
+      "to": 156,
+      "player_grounded": false,
+      "min_player_jumps": 2,
+      "max_player_jumps": 2,
+      "character": {
+        "ready": true,
+        "clip": "Jump",
+        "paused": false,
+        "min_advance": 0.085
+      }
+    },
+    {
+      "name": "second landing keeps static root and world support",
+      "from": 175,
+      "to": 179,
+      "player_grounded": true,
+      "min_player_height": 28.0,
+      "max_player_height": 28.15,
+      "max_player_resets": 0,
+      "max_player_jumps": 2,
+      "character": {
+        "ready": true,
+        "clip": "Idle",
+        "paused": false
+      }
+    }
+  ]
+}
