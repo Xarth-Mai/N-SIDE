@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "baseline_commit": "13397c5626c8952511ceda52d3c4a8877b901acc",
+  "revision": "model-r7 / material-r1",
+  "files": {
+    "source-assets/characters/CHR-001/model/yao-grey-study.blend": {
+      "sha256": "a8cdaa87548b3df5c7bb244c70e832536c98c3a325558b09e0162eb2675dc098",
+      "bytes": 4076784
+    },
+    "game/assets/characters/CHR-001/yao-grey-study.glb": {
+      "sha256": "7020ed499f8feb76e987fe7997fcb126bea9680fa5cda9a56943a857b4fdee4d",
+      "bytes": 1469776
+    },
+    "source-assets/characters/CHR-001/model/build.py": {
+      "sha256": "e3e3928a311d21cb964a4ac9d532476299aa7159fe79fcb194c11003a713b9e0",
+      "bytes": 41244
+    },
+    "source-assets/characters/CHR-001/model/check.py": {
+      "sha256": "bae4559477c641a5c98be3540543c01548ed28a0b556585be3801c2988c7c745",
+      "bytes": 12769
+    },
+    "source-assets/characters/CHR-001/model/grey-study.png": {
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+      "bytes": 25965
+    },
+    "source-assets/characters/CHR-001/model/grey-study-surface.png": {
+      "sha256": "639ae122a84b134f83afc8b0f43425ce1bc4c2b83e5c2b7c6dbbb38c636c317d",
+      "bytes": 34126
+    },
+    "source-assets/characters/CHR-001/model/grey-study-normal.png": {
+      "sha256": "e6a6686ddac6cb2a38cfdd8b725bf7fc02b7c932a5819fe3b212590f8de43cbb",
+      "bytes": 17628
+    }
+  },
+  "editable_master_reexport_byte_identical": true,
+  "height_m": 1.7441905736923218,
+  "bones": 32,
+  "preserved": "All rest/bind matrices and animation samples; material and three packed image bytes",
+  "visual": "self-audit; needs_revision; author acceptance pending",
+  "runtime": "Root records actual Bevy integration separately"
+}

@@ -1,0 +1,21 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 34.31s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+understory nodes[hill_short_rest2]/derived-vegetation[understory:0:0:15] model=shrub x=145.950 north=833.140 root=352.709 scale=1.700
+understory nodes[hill_short_rest2]/derived-vegetation[understory:0:0:25] model=shrub x=143.062 north=834.730 root=352.781 scale=1.600
+
+thread 'world::scene::tests::understory_keeps_actual_roots_patch_openings_and_scene_clearance' (301) panicked at src/world/scene.rs:3928:25:
+nodes[hill_short_rest2]/derived-vegetation[understory:0:0:73] actual root unsupported/overburied -0.007183m
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::scene::tests::understory_keeps_actual_roots_patch_openings_and_scene_clearance ... FAILED
+
+failures:
+
+failures:
+    world::scene::tests::understory_keeps_actual_roots_patch_openings_and_scene_clearance
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 133 filtered out; finished in 0.26s
+
+error: test failed, to rerun pass `--lib`

@@ -1,0 +1,42 @@
+[
+  {
+    "path": "source-assets/district-map/district.json",
+    "sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+    "bytes": 727176
+  },
+  {
+    "path": "source-assets/district-scene/appearance.json",
+    "sha256": "c7a6dd8f350dee879ca689a365b34f51d6a8802ce6aab806e9e35d931524e82e",
+    "bytes": 11575
+  },
+  {
+    "path": "source-assets/district-scene/daylight.json",
+    "sha256": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "bytes": 587
+  },
+  {
+    "path": "game/assets/environment/manifest.json",
+    "sha256": "a93ef8dd5e8ca9509ed81f810db161adf54814aa2e65d5914cc0937572e37a62",
+    "bytes": 6408
+  },
+  {
+    "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+    "sha256": "7020ed499f8feb76e987fe7997fcb126bea9680fa5cda9a56943a857b4fdee4d",
+    "bytes": 1469776
+  },
+  {
+    "path": "game/assets/characters/CHR-002/ling-grey-study.glb",
+    "sha256": "f4d7cca6cc607a40817a788692c7348efdbb7c6335761a8f880e81487633cbdf",
+    "bytes": 1518536
+  },
+  {
+    "path": "game/src/world/scene.rs",
+    "sha256": "6be988f7679787ef8ccd3759b79b6f574ceb33af4b235e03e8411293e3e89283",
+    "bytes": 198526
+  },
+  {
+    "path": "tools/terrain-shape.ts",
+    "sha256": "07fe85df8542dd3f5f5e880a04de701b58c0c2739228e52c5fd07a4ee8561dac",
+    "bytes": 11196
+  }
+]

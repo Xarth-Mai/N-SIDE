@@ -138,3 +138,29 @@ test('third short-ascent terrace clears terrain toward city landmarks',()=>{
     }
   }
 })
+
+test('forest-edge hollow has broad concavity while the adjacent short route keeps its grade',()=>{
+  const ground=buildGround(data)
+  // Cross-section through the foreground seen by inspect-understory-r1, not a color/noise assertion
+  const shoulders=(ground.height(132,848)+ground.height(156,848))/2
+  assert.ok(shoulders-ground.height(144,848)>1.5,'the forest hollow must have visible volume rather than one inclined plane')
+  for(let y=836;y<=860;y+=2)for(let x=136;x<=152;x+=2){
+    const dx=(ground.height(x+.1,y)-ground.height(x-.1,y))/.2,dy=(ground.height(x,y+.1)-ground.height(x,y-.1))/.2
+    assert.ok(Math.hypot(dx,dy)<1.5,`forest hollow forms an abrupt spike at ${x},${y}`)
+  }
+  for(const from of ['stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_in','stair_hill_short_rest2_departure_hill_short_rest3_arrival_03_out']) {
+    const road=data.roads.find(r=>r.nodes[0]===from)!
+    const [a,b]=road.nodes.map(id=>data.nodes[id]),[u,v]=roadOffsets([a,b],road.width)
+    for(const t of [0,.25,.5,.75,1])for(const side of [-1,0,1]){
+      const x=a[0]+(b[0]-a[0])*t+(u[0]+(v[0]-u[0])*t)*side,y=a[1]+(b[1]-a[1])*t+(u[1]+(v[1]-u[1])*t)*side
+      assert.ok(Math.abs(ground.height(x,y)-(a[2]+(b[2]-a[2])*t))<.01,'the hollow must not cut into the adjacent stair landing')
+    }
+  }
+})
+
+test('local forest road support leaves the existing terrain envelope outside the hollow unchanged',()=>{
+  const samples=new Map(bakeTerrain(data).terrain.samples.map(([x,y,z])=>[`${x},${y}`,z]))
+  // These existing controls drifted by up to 0.266m when the 1m road support entered the shaping envelope
+  for(const [x,y,z] of [[160,752,293.766],[136,776,311.348],[168,784,322.258],[152,800,331.859]])
+    assert.equal(samples.get(`${x},${y}`),z,`forest refinement changed the existing slope at ${x},${y}`)
+})

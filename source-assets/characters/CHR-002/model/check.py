@@ -126,6 +126,6 @@ top_origin=Vector((0,.018*SCALE,1.85*SCALE))
 top_hair=hair_surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
 top_head=surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
 assert top_hair is not None and top_head is not None and top_hair.z>top_head.z+.001, 'Open crown exposes the head from above'
-report = {'status':'PASS','asset':'CHR-002 modelling candidate r1','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS'}
+report = {'status':'PASS','asset':'CHR-002 modelling candidate r2','scope':'DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance','clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS'}
 print(json.dumps(report,indent=2))
-(root/'todo/evidence/TASK-047/ling-model-r1/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')
+(root/'todo/evidence/TASK-047/ling-model-r2/dcc-check.json').write_text(json.dumps(report,indent=2)+'\n')

@@ -1,0 +1,91 @@
+{
+  "asset_id": "AST-009",
+  "character_id": "CHR-002",
+  "status": "needs_revision",
+  "baseline_commit": "13397c5",
+  "source": {
+    "path": "source-assets/characters/CHR-002/model/ling-grey-study.blend",
+    "sha256": "07d8d00577b5fe5868a6157a981b6ade04b949662f211f2594f418b9d9df7850",
+    "bytes": 4019908
+  },
+  "runtime": {
+    "path": "game/assets/characters/CHR-002/ling-grey-study.glb",
+    "sha256": "f4d7cca6cc607a40817a788692c7348efdbb7c6335761a8f880e81487633cbdf",
+    "bytes": 1518536
+  },
+  "atlas": {
+    "path": "source-assets/characters/CHR-002/model/grey-study.png",
+    "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+    "bytes": 25965
+  },
+  "metrics": {
+    "editable_meshes": 77,
+    "source_vertices": 7035,
+    "export_triangles": 41936,
+    "primitives": 1,
+    "materials": 1,
+    "export_vertices": 22058,
+    "joints": 32,
+    "height_m": 1.6414127349853516,
+    "height_ratio_from_base": 0.9459975445842896
+  },
+  "clips": {
+    "Idle": {
+      "seconds": 2.0,
+      "fps": 60,
+      "in_place": true
+    },
+    "Walk": {
+      "seconds": 0.8,
+      "fps": 60,
+      "in_place": true
+    },
+    "Run": {
+      "seconds": 0.6666666666666666,
+      "fps": 60,
+      "in_place": true
+    }
+  },
+  "natural_speeds_m_s": {
+    "Walk": 3.027192142669727,
+    "Run": 5.297586249672022
+  },
+  "checks": {
+    "dcc": "PASS",
+    "gltf": "PASS",
+    "actual_gltf_120fps_foot_tracks": "PASS",
+    "max_stance_drift_m": {
+      "Idle": 0.0,
+      "Run": 0.0006068216435008026,
+      "Walk": 0.00026785239469493685
+    },
+    "export_existing": "PASS byte-identical; reexport.json",
+    "animation_contract": "PASS all sampled animation accessor values identical to 13397c5",
+    "cpu_visual_self_audit": "6 static and 19 motion images actually inspected; review.md records the remaining appearance limits",
+    "runtime": "NOT RUN by model worker; root integration owns real Bevy evidence",
+    "author_acceptance": "NOT RUN",
+    "source_and_metadata": "PASS source-check.json",
+    "docs": "PASS tools/validate_docs.py --root ."
+  },
+  "visual_evidence": [
+    "final-views.json",
+    "final-motion-views.json",
+    "review.md"
+  ],
+  "limits": [
+    "outfit, stature and palette unapproved",
+    "generic facial identity and simplified mouth",
+    "visible crown/root joins and geometric fringe groups",
+    "rigid geometric clip and hands",
+    "Head/Chest skinning only; no secondary hair physics",
+    "no full action set or artistic age acceptance"
+  ],
+  "runtime_evidence": "todo/evidence/TASK-045/visual-r9/review.md (pending root)",
+  "cleanup": {
+    "record": "todo/evidence/TASK-047/ling-model-r2/cleanup.json",
+    "removed_bytes": 11643096,
+    "retained_final_images": 6,
+    "retained_final_bytes": 4518193,
+    "reason": "root still needs the final visual handoff"
+  }
+}

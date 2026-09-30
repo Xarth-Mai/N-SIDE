@@ -1,0 +1,22 @@
+[
+  {
+    "file": "source-assets/environment-kit/vegetation/grass-forest.glb",
+    "sha256": "c0fa4b3c919b1f3c755b1faa62c8dc5c1e3427400ef5494584b5a18419d0eb69",
+    "triangles": 1320,
+    "height": 0.35,
+    "maximum_radius": 0.28967211495226874,
+    "minimum_triangle_area": 1.880743191183603e-05,
+    "embedded_images": 1,
+    "checks": "finite UV/normals/positions, nondegenerate triangles, ground pivot, height/radius, opaque static single material and embedded textures PASS"
+  },
+  {
+    "file": "source-assets/environment-kit/vegetation/rock-forest.glb",
+    "sha256": "8b6a951913303474e4ee9b2956ea06fea9271cb3d23047d214cb8c4efc3f242e",
+    "triangles": 320,
+    "height": 0.65,
+    "maximum_radius": 0.74498450756073,
+    "minimum_triangle_area": 0.0055346405487730265,
+    "embedded_images": 2,
+    "checks": "finite UV/normals/positions, nondegenerate triangles, ground pivot, height/radius, opaque static single material and embedded textures PASS"
+  }
+]

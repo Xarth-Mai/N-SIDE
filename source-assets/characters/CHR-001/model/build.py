@@ -16,7 +16,7 @@ from mathutils.bvhtree import BVHTree
 ROOT = Path(__file__).resolve().parents[4]
 SOURCE = Path(__file__).resolve().parent
 RUNTIME = ROOT / 'game/assets/characters/CHR-001'
-OUTPUT = ROOT / 'output/characters/CHR-001/material-r1/model-source'
+OUTPUT = ROOT / 'output/characters/CHR-001/model-r7/model-source'
 parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
@@ -282,7 +282,7 @@ def tube(name, points, widths, depths, region, weights, sides=12):
 
 # Underlying neck and torso; hidden body faces stay under the separate clothing
 
-shirt=loft('TShirt', [(0,0,.955,.198,.130),(0,0,.974,.198,.130),(0,-.002,1.00,.185,.118),(0,0,1.08,.143,.086),(0,0,1.22,.165,.089),(0,0,1.31,.176,.085),(0,0,1.351,.164,.064),(0,-.001,1.413,.052,.044)], 'shirt', body_weights, fold=.012, caps=False)
+shirt=loft('TShirt', [(0,0,.955,.198,.130),(0,0,.974,.198,.130),(0,-.002,1.00,.185,.118),(0,0,1.08,.143,.086),(0,0,1.22,.165,.089),(0,0,1.31,.163,.081),(0,.004,1.370,.143,.061),(0,.008,1.437,.043,.038)], 'shirt', body_weights, fold=.012, caps=False)
 # The hem wraps both trouser hips; a round single-body ellipse cut through the
 # two-lobed hip volume at the sides, although the centre-front render was clear
 for k in range(2):
@@ -290,26 +290,30 @@ for k in range(2):
         cosine=math.cos(j/24*math.tau)
         shirt.data.vertices[k*25+j].co.y=-.130*math.copysign(abs(cosine)**.65,cosine)
 shirt.data.update()
-loft('TShirt_Collar', [(0,-.001,1.409,.054,.046),(0,-.001,1.416,.052,.044)], 'shirt', 'Neck', caps=False)
-# Open jacket body: front split, broad shoulders, short hem and recessed shirt
-jacket = loft('Jacket_Body', [(0,.008,1.01,.179,.111),(0,.008,1.033,.179,.111),(0,.009,1.065,.182,.116),(0,.008,1.19,.183,.111),(0,.006,1.29,.189,.098),(0,.005,1.36,.183,.080),(0,.018,1.413,.081,.060)], 'jacket', body_weights, sides=32, start=.48, end=math.tau-.48, caps=False, fold=.015)
+loft('TShirt_Collar', [(0,.008,1.433,.045,.040),(0,.008,1.443,.043,.038)], 'shirt', 'Neck', caps=False)
+# Raised crew neck and a closer shoulder slope keep the exposed neck compact
+jacket = loft('Jacket_Body', [(0,.008,1.01,.179,.111),(0,.008,1.033,.179,.111),(0,.009,1.065,.182,.116),(0,.008,1.19,.179,.109),(0,.006,1.29,.173,.094),(0,.008,1.376,.166,.078),(0,.012,1.438,.072,.054)], 'jacket', body_weights, sides=32, start=.48, end=math.tau-.48, caps=False, fold=.015)
 
 # Sleeve branches share the torso boundary rather than intersecting capped tubes
 jverts=[tuple(v.co) for v in jacket.data.vertices]
+# The zipper tape is part of the cloth boundary, sharing its skinning and thickness
+for k in range(7):
+    for edge, inside in ((0,1),(32,31)):
+        jverts[k*33+inside]=tuple(Vector(jverts[k*33+edge]).lerp(Vector(jverts[k*33+inside]),.14))
 juv=[(j/32,k/6) for k in range(7) for j in range(33)]
 jweights=[body_weights(Vector(v)) for v in jverts]
 jfaces=[tuple(p.vertices) for p in jacket.data.polygons if not (4 <= p.index//32 < 6 and (4 <= p.index%32 < 10 or 22 <= p.index%32 < 28))]
 objects.remove(jacket);bpy.data.objects.remove(jacket,do_unlink=True)
 
 # Hood is an open, flattened pouch behind the nape rather than a torus
-hood = loft('Hood', [(0,.075,1.265,.053,.023),(0,.078,1.30,.104,.044),(0,.052,1.365,.129,.077),(0,.030,1.430,.089,.062),(0,.021,1.442,.070,.058)], 'jacket', lambda p: blend('Chest','Neck',(p.z-1.37)/.12), sides=28, start=.55, end=math.tau-.55, caps=False)
+hood = loft('Hood', [(0,.075,1.265,.053,.023),(0,.078,1.30,.104,.044),(0,.052,1.365,.117,.072),(0,.027,1.444,.077,.058),(0,.021,1.453,.061,.051)], 'jacket', lambda p: blend('Chest','Neck',(p.z-1.37)/.12), sides=28, start=.55, end=math.tau-.55, caps=False)
 solid = hood.modifiers.new('Hood lining thickness', 'SOLIDIFY'); solid.thickness = .005
 for s, side in ((1,'L'),(-1,'R')):
     # The torso opening has 16 ordered vertices around each shoulder/armhole
     columns=list(range(4,11)) if s==1 else list(range(28,21,-1))
     boundary=[4*33+j for j in columns]+[k*33+columns[-1] for k in (5,6)]+[6*33+j for j in reversed(columns[:-1])]+[5*33+columns[0]]
     previous=boundary
-    arm_points=[(s*.216,0,1.325,.048,.048),(s*.26,-.002,1.262,.051,.047),(s*.312,-.006,1.191,.047,.048),(s*.329,-.006,1.168,.052,.046),(s*.342,-.003,1.142,.047,.041),(s*.354,-.007,1.116,.055,.048),(s*.389,-.012,1.039,.046,.041),(s*.407,-.017,1.005,.048,.039),(s*.414,-.016,.980,.036,.032)]
+    arm_points=[(s*.203,0,1.327,.043,.044),(s*.25,-.002,1.264,.048,.045),(s*.309,-.006,1.191,.047,.048),(s*.329,-.006,1.168,.052,.046),(s*.342,-.003,1.142,.047,.041),(s*.354,-.007,1.116,.055,.048),(s*.389,-.012,1.039,.046,.041),(s*.407,-.017,1.005,.048,.039),(s*.414,-.016,.980,.036,.032)]
     for k,(x,y,z,rw,rd) in enumerate(arm_points):
         current=[]
         for j in range(16):
@@ -320,9 +324,7 @@ for s, side in ((1,'L'),(-1,'R')):
         for j in range(16):jfaces.append((previous[j],previous[(j+1)%16],current[(j+1)%16],current[j]))
         previous=current
     tube('Sleeve_Cuff.'+side, [(s*.408,-.016,.991),(s*.419,-.017,.969),(s*.42,-.017,.965)], [.045,.038,.036], [.041,.033,.032], 'pants', 'Forearm.'+side)
-    # Flat seam piping follows the actual front edge
-    tube('Zip_Tape.'+side, [(s*.085,-.093,1.019),(s*.087,-.104,1.065),(s*.087,-.105,1.19),(s*.096,-.091,1.29),(s*.092,-.073,1.36),(s*.043,-.040,1.413)], [.003]*6, [.002]*6, 'ink', body_weights, sides=6)
-    tube('Hood_Cord.'+side, [(s*.065,-.062,1.405),(s*.078,-.086,1.335),(s*.084,-.098,1.253)], [.0025,.0025,.0035], [.0025,.0025,.0035], 'ink', body_weights, sides=6)
+    tube('Hood_Cord.'+side, [(s*.047,-.045,1.436),(s*.058,-.068,1.386),(s*.069,-.078,1.326),(s*.075,-.084,1.296)], [.0017,.0017,.0017,.0023], [.0017,.0017,.0017,.0023], 'ink', body_weights, sides=6)
     # Palm and individually posed fingers, with finger bone groups
     tube('Palm.'+side, [(s*.419,-.017,.969),(s*.429,-.018,.94),(s*.436,-.019,.903),(s*.436,-.021,.890)], [.03,.034,.034,.028], [.022,.025,.022,.016], 'skin', 'Hand.'+side, sides=16)
     for n in ('Index','Middle','Ring','Pinky','Thumb'):
@@ -350,6 +352,10 @@ for s, side in ((1,'L'),(-1,'R')):
 
 
 jacket=mesh('Jacket_ContinuousShoulders',jverts,jfaces,'jacket',jweights,juv)
+for polygon in jacket.data.polygons:
+    if all(index < 231 and index % 33 in (0,1,31,32) for index in polygon.vertices):
+        for loop in polygon.loop_indices:
+            jacket.data.uv_layers.active.data[loop].uv=atlas_uv('ink',.5,.5)
 solid=jacket.modifiers.new('Cloth thickness','SOLIDIFY');solid.thickness=.003
 mod=jacket.modifiers.new('Cloth surface','SUBSURF');mod.levels=1;mod.render_levels=1
 
@@ -438,24 +444,26 @@ mouth=[(x+(nx-x)*t/4,z+(nz-z)*t/4) for (x,z),(nx,nz) in zip(mouth,mouth[1:]) for
 tube('Mouth',[(x,face_y(x,z,-.00065),z) for x,z in mouth],[.0003+.00035*math.sin(math.pi*i/(len(mouth)-1)) for i in range(len(mouth))],[.00035]*len(mouth),'pants','Head',sides=6)
 # Swept group surfaces all start at the crown and overlap their neighbors.
 # The back has no smooth carrier shell with independent short islands on top.
-sectors=(0,.60,1.15,1.62,2.08,2.52,2.93,3.35,3.82,4.29,4.74,5.25,5.78,math.tau)
+sectors=(0,.52,1.13,1.58,2.00,2.55,2.93,3.48,3.83,4.36,4.73,5.27,5.78,math.tau)
+tip_offsets=(.0,.009,-.008,.015,-.004,.012,-.009,.016,-.011,.008,-.004,.011,.0)
 levels=(0,.07,.20,.36,.53,.69,.82,.93,1)
 cap_vertices,cap_faces,cap_uv=[],[],[]
 for group,(left,right) in enumerate(zip(sectors,sectors[1:])):
     centre=(left+right)/2
     front=max(0,math.cos(centre))**.6
     back=max(0,-math.cos(centre))**.5
-    end=1.585+.085*front-.037*back+.010*(1-front)*math.sin(group*1.71)
+    end=1.585+.085*front-.037*back+tip_offsets[group]
     start=len(cap_vertices)
     for k,t in enumerate(levels):
-        spread=min(1,.06+t/.15)*(1-max(0,(t-.70)/.30)**1.3)
+        taper=.72+.025*(group%3)
+        spread=min(1,.09+t/.15)*(1-max(0,(t-taper)/(1-taper))**1.3)
         z=1.744+(end-1.744)*t
-        centre_sweep=centre+.30*(1-t)**.8+.12*math.sin(group*1.3)*t
+        centre_sweep=centre+.30*(1-t)**.8+(.05,.17,-.08)[group%3]*t
         for j in range(5):
             cross=j/2-1
-            angle=centre_sweep+(right-left)*.61*spread*cross
+            angle=centre_sweep+(right-left)*.80*spread*cross
             radius=math.sqrt(max(0,1-((z-1.630)/.119)**2))
-            ridge=(1-cross*cross)*.010*math.sin(math.pi*t)**.7
+            ridge=(1-cross*cross)*(.004+.0015*(group%3))*math.sin(math.pi*t)**.7
             # Root rows meet the common crown; broad midsections continue into
             # tapered ends, with one edge above the adjoining group rather than
             # a detached leaf perimeter surrounded by visible scalp
@@ -492,7 +500,9 @@ def hair_lock(name, points, width):
         out=Vector((p.x,p.y-.012,(p.z-1.60)*.3)).normalized()
         side=tangent.cross(out).normalized()
         out=side.cross(tangent).normalized()
-        w=width*(.40+.65*math.sin(math.pi*t))*(1-t**2.1)+.0004
+        w=width*(.70+.38*math.sin(math.pi*t))*(1-t**1.35)+.0004
+        if name.startswith('Crown_'):
+            w=width*(.40+.65*math.sin(math.pi*t))*(1-t**2.1)+.0004
         for j in range(8):
             angle=j/8*math.tau
             v=p+side*(w*math.cos(angle))+out*((w*.10+.0004)*math.sin(angle))
@@ -506,7 +516,7 @@ def hair_lock(name, points, width):
 bangs=[
     ([(-.032,.019,1.733),(-.076,-.058,1.734),(-.114,-.079,1.665),(-.099,-.058,1.596)],.021),
     ([(-.024,.007,1.736),(-.045,-.085,1.733),(-.092,-.101,1.663),(-.066,-.084,1.620)],.032),
-    ([(-.016,.010,1.738),(-.022,-.100,1.723),(-.035,-.111,1.661),(-.019,-.085,1.614)],.035),
+    ([(-.016,.010,1.738),(-.015,-.100,1.723),(-.025,-.111,1.661),(-.007,-.087,1.619)],.032),
     ([(-.005,.014,1.739),(.046,-.075,1.748),(.025,-.111,1.697),(.004,-.096,1.650)],.030),
     ([(.016,.018,1.733),(.061,-.054,1.734),(.076,-.109,1.669),(.059,-.087,1.629)],.022),
     ([(.023,.025,1.728),(.080,-.033,1.710),(.106,-.067,1.649),(.092,-.053,1.586)],.019)]
@@ -519,20 +529,29 @@ hair_lock('Crown_0.R',[(.015,.032,1.732),(.053,.036,1.750),(.078,.040,1.740),(.0
 # Minimal original double-dot / short bar chest graphic, all editable mesh
 for z in (1.275,1.246):
     patch('Tee_Dot_'+str(z),[(-.018+.008*math.cos(i/20*math.tau),z+.008*math.sin(i/20*math.tau)) for i in range(20)],'hair',-.014)
-# The shirt is at -0.09 m here, so bring these simple graphics to its surface
+mesh('Tee_Bar',[(.005+.055*j/6,-.091,z) for z in (1.253,1.267) for j in range(7)],[(j,j+1,j+8,j+7) for j in range(6)],'hair',body_weights)
+# Printed marks use the same spine/chest blend as the underlying cloth
 for obj in objects:
-    if obj.name.startswith('Tee_Dot'):
-        for v in obj.data.vertices: v.co.y=-.091
-mesh('Tee_Bar',[(.005,-.091,1.253),(.060,-.086,1.253),(.060,-.086,1.267),(.005,-.091,1.267)],[(0,1,2,3)],'hair',body_weights)
-# Reassign chest graphics from head attachment to the cloth deformation
-for obj in objects:
-    if obj.name.startswith('Tee_Dot'):
+    if obj.name.startswith('Tee_'):
         obj.vertex_groups.clear()
-        obj.vertex_groups.new(name='Chest').add(list(range(len(obj.data.vertices))),1,'REPLACE')
+        for joint in ('Spine','Chest'):
+            group=obj.vertex_groups.new(name=joint)
+            for vertex in obj.data.vertices:
+                group.add([vertex.index],body_weights(vertex.co).get(joint,0),'REPLACE')
 
 for obj in objects:
     if obj.name.startswith(('Sleeve.', 'Jacket_Body', 'TShirt', 'Trousers.', 'Palm.', 'Ear.')):
         mod=obj.modifiers.new('Cloth surface', 'SUBSURF');mod.levels=1;mod.render_levels=1
+
+# Printed marks follow the finished shirt surface instead of floating as plaques
+bpy.context.view_layer.update()
+shirt_surface=BVHTree.FromObject(shirt,bpy.context.evaluated_depsgraph_get())
+for obj in objects:
+    if obj.name.startswith('Tee_'):
+        for vertex in obj.data.vertices:
+            hit,_,_,_=shirt_surface.ray_cast(Vector((vertex.co.x,-1,vertex.co.z)),Vector((0,1,0)))
+            assert hit is not None, 'Chest graphic must lie on the shirt'
+            vertex.co.y=hit.y-.0006
 
 
 # Lower the cranial mass and merge its transition into the neck, without flattening a chin cap
@@ -676,7 +695,7 @@ cam.data.type='ORTHO';cam.data.ortho_scale=2.06
 scene.render.resolution_x=720;scene.render.resolution_y=960;scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
 export(rig,objects)
-report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r6','material_revision':'r1','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
+report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'r7','material_revision':'r1','age_actual':20,'age_appearance':18,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
 if args.render:
     for label,pos,clip,frame in [('front',(0,-4,1.0),'Idle',1),('three-quarter',(3,-4,1.3),'Idle',1),('back',(0,4,1.0),'Idle',1),('walk-contact',(3,-4,1.2),'Walk',8),('run-contact',(3,-4,1.2),'Run',6),('face',(0,-4,1.61),'Idle',1),('walk-lift',(3,-4,1.2),'Walk',1),('run-lift',(3,-4,1.2),'Run',1)]:
         rig.animation_data.action=bpy.data.actions[clip];scene.frame_set(frame)

@@ -1,0 +1,23 @@
+{
+  "scene": "district",
+  "view": "inspect-plateau-planting",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 150,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [0, 29, 59, 89, 119, 149],
+  "events": [
+    {"start": 0, "end": 1, "keys": ["M"]},
+    {"start": 30, "end": 34, "keys": ["W"]},
+    {"start": 60, "end": 64, "keys": ["A"]},
+    {"start": 90, "end": 94, "keys": ["D"]},
+    {"start": 120, "end": 121, "keys": ["Escape"]}
+  ],
+  "assertions": [
+    {"name": "approach the existing planting without changing the world", "from": 29, "to": 49, "min_distance": 1.0, "max_distance": 3.0},
+    {"name": "strafe across the pine shrub and flat ground view", "from": 59, "to": 79, "min_distance": 1.0, "max_distance": 3.0},
+    {"name": "released planting view is stable", "from": 130, "to": 149, "max_distance": 0.0001, "enabled": false}
+  ]
+}

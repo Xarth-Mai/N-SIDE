@@ -1,0 +1,15 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/terrain-shape.test.ts:
+(pass) second short-ascent leg meets terrain across stair and landing edges [2877.86ms]
+(pass) descent eye-level slope uses local terrain detail instead of a 60m face [3054.14ms]
+(pass) descent bank changes grade gradually and adjoining upper stairs retain support [19.17ms]
+(pass) terrain bake preserves authored geometry and repeats without drift [5766.95ms]
+(pass) terrain noise protects complete road segments and footprints [6124.22ms]
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [76.50ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [622.87ms]
+(pass) forest-edge hollow has broad concavity while the adjacent short route keeps its grade [36.05ms]
+
+ 8 pass
+ 0 fail
+Ran 8 tests across 1 file. [18.73s]

@@ -52,8 +52,16 @@ export function bakeTerrain(data:District) {
   const bankSide=(x:number,y:number)=>bankStart&&bankEnd?((x-bankStart[0])*(bankEnd[1]-bankStart[1])-(y-bankStart[1])*(bankEnd[0]-bankStart[0]))/Math.hypot(bankEnd[0]-bankStart[0],bankEnd[1]-bankStart[1]):-Infinity
   const controls=[...authored,...[...ids].map(id=>data.nodes[id])]
   const occupied=new Set(controls.map(p=>p.slice(0,2).join(',')))
-  const generated:Point[]=[],bankSupport=new Set<Point>()
+  const generated:Point[]=[],bankSupport=new Set<Point>(),forestSupport=new Set<Point>()
   const peak=data.nodes.summit
+  // One shallow downslope hollow beside the second rest's forest edge, bounded in world metres
+  const forest=data.nodes.hill_short_rest2
+  const hollow=(x:number,y:number)=>{
+    if(!forest)return 0
+    const dx=x-forest[0]-74,dy=y-forest[1]-50
+    const across=(-.9682458366*dx+.25*dy)/12,along=(.25*dx+.9682458366*dy)/30
+    return Math.max(0,1-across*across-along*along)**2
+  }
   const areas=[...data.buildings,...data.surfaces.filter(s=>!s.elevated)]
   // Sample full edges: corner-only controls let long Delaunay triangles cut through a terrace or street
   const addControl=(x:number,y:number,z:number)=>{
@@ -72,20 +80,27 @@ export function bakeTerrain(data:District) {
   for(const [a,b,start,end,refine] of segments) {
     const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)
     if(!length)continue
-    const count=Math.max(1,Math.ceil(length/6))
-    for(let j=0;j<=count;j++)for(const side of [-1,0,1]) {
-      const t=j/count,x=a[0]+dx*t+(start[0]+(end[0]-start[0])*t)*side,y=a[1]+dy*t+(start[1]+(end[1]-start[1])*t)*side
-      // The second short-ascent leg is also walked at eye level; center-only mountain controls left metre-high edge cuts
-      if(y>data.nodes.hillgate[1]&&!refine&&!(bankSide(x,y)>0&&ascentDistance(x,y)<=144))continue
-      // Footprints own their ground; road overlaps are clipped to these same surfaces at rendering time
-      const area=areas.find(area=>pointInside([x,y],area.polygon))
-      const point=addControl(x,y,area?.elevation??a[2]+(b[2]-a[2])*t)
-      if(point&&y>data.nodes.hillgate[1]&&!refine)bankSupport.add(point)
+    const forestEdge=forest?segmentPoint(forest[0]+74,forest[1]+50,a,b):undefined
+    const dense=forestEdge&&Math.hypot(forestEdge[0]-forest![0]-74,forestEdge[1]-forest![1]-50)<40
+    // Keep the old controls; the local 2m slope grid also needs short landing edges sampled below that spacing
+    for(const spacing of dense?[6,1]:[6]) {
+      const count=Math.max(1,Math.ceil(length/spacing))
+      for(let j=0;j<=count;j++)for(const side of [-1,0,1]) {
+        const t=j/count,x=a[0]+dx*t+(start[0]+(end[0]-start[0])*t)*side,y=a[1]+dy*t+(start[1]+(end[1]-start[1])*t)*side
+        // The second short-ascent leg is also walked at eye level; center-only mountain controls left metre-high edge cuts
+        if(y>data.nodes.hillgate[1]&&!refine&&!(bankSide(x,y)>0&&ascentDistance(x,y)<=144))continue
+        // Footprints own their ground; road overlaps are clipped to these same surfaces at rendering time
+        const area=areas.find(area=>pointInside([x,y],area.polygon))
+        const point=addControl(x,y,area?.elevation??a[2]+(b[2]-a[2])*t)
+        if(point&&y>data.nodes.hillgate[1]&&!refine)bankSupport.add(point)
+        if(point&&spacing===1)forestSupport.add(point)
+      }
     }
   }
-  const envelope=buildGround({...data,terrain:{...data.terrain,samples:controls}})
+  // Local landing support belongs to the final mesh, not the existing bank's shaping envelope
+  const envelope=buildGround({...data,terrain:{...data.terrain,samples:controls.filter(p=>!forestSupport.has(p))}})
   // Extra road-edge support constrains this bank, without reweighting natural terrain outside it
-  const residuals=controls.filter(p=>!bankSupport.has(p)).map(p=>({p,delta:p[2]-mountainBase(data,p[0],p[1])}))
+  const residuals=controls.filter(p=>!bankSupport.has(p)&&!forestSupport.has(p)).map(p=>({p,delta:p[2]-mountainBase(data,p[0],p[1])}))
   const sampleNatural=(x:number,y:number)=>{
     if(occupied.has(`${x},${y}`))return
     let nearest=Infinity,total=0,weight=0
@@ -114,6 +129,8 @@ export function bakeTerrain(data:District) {
     // Between the two ascent legs, follow their shared grade envelope instead of carving a 45m trough into the peak formula
     const bank=smooth((144-ascentDistance(x,y))/54)*smooth((protectedDistance-6)/12)*smooth(bankSide(x,y)/8)
     if(bank>0)height+=Math.min(0,envelope.height(x,y)+5*noise(x/55,y/55,recipe.seed+3)-height)*bank
+    // Keep the grade envelope and its road/terrace ties, then make the forest slope locally concave
+    height-=2.4*hollow(x,y)*smooth((protectedDistance-8)/8)
     height=Math.max(1,Math.min(peak[2]-.1,height))
     generated.push([x,y,Math.round(height*1000)/1000])
     occupied.add(`${x},${y}`)
@@ -130,6 +147,9 @@ export function bakeTerrain(data:District) {
       for(let x=Math.floor((Math.min(...xs)-104)/8)*8;x<=Math.max(...xs)+104;x+=8)
         if(bankSide(x,y)>6&&ascentDistance(x,y)<=104)sampleNatural(x,y)
   }
+  if(forest)for(let y=forest[1]+18;y<=forest[1]+82;y+=2)
+    for(let x=forest[0]+54;x<=forest[0]+94;x+=2)
+      if(hollow(x,y)>0)sampleNatural(x,y)
   result.terrain.samples=[...authored,...generated]
   return result
 }

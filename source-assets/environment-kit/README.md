@@ -5,7 +5,7 @@
 | 资产 ID | `AST-003` |
 | 状态 | `exported`，已生成运行派生物；加载与渲染结果见本轮任务证据，样板美术验收待作者确认 |
 | 主文件 | 本目录中的 GLB、JPG、道路色板和原始许可文件，逐文件见 [asset-manifest.json](asset-manifest.json) |
-| 作者 | Kenney、ambientCG；模型米制归一、植物材质调整与原创街树、松树及灌木由 N:SIDE 制作 |
+| 作者 | Kenney、ambientCG；模型米制归一、植物材质调整与原创街树、松树、灌木、草及石块由 N:SIDE 制作 |
 | 许可 | 第三方素材为 CC0 1.0，原创植物沿用项目 MPL-2.0，逐文件见清单；保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
 | 获取日期 | 第三方素材取得与原创资产制作日期逐项见清单 |
 | 使用位置 | 正式入口与 3D Map Viewer 共用的街树、灌木、公园与登高路旁植物土石、街灯、铺装与墙面；导视空杆已导出、尚未放置 |
@@ -91,8 +91,15 @@ Plaster001 供米白与青灰外墙使用；WoodSiding009 供样板店外侧木�
 
 新增[初秋街树](vegetation/README.md)，以真实分枝与 1,452 片阔叶替换 `tree_a` 的块状冠，6m 高、11,686 三角、2 个材质与一张内嵌树皮纹理，保持既有树点、根部枢轴与放置半径。可编辑 Blender 主文件与源码在同目录，GLB 通过既有导出器复制；项目原创来源与 MPL-2.0 单独登记，原 CC0 素材的许可保持不变。全城植被、风动与 LOD 尚未完成，运行成本与实机观感按任务证据验证
 
-当前清单列出 31 个运行文件，包含 3 份许可文件，并非新增 31 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
+当前清单列出 33 个运行文件，包含 3 份许可文件，并非新增 33 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
 
 ## 陡坡岩面与原创植物
 
 ambientCG [Rock043L](https://ambientcg.com/view?id=Rock043L) 的 1K-JPG Color／NormalGL 用于自然地形陡面的裸岩土，按官方约 `1.8 × 1.8 m` 尺度导出，CC0 许可、完整 ZIP 校验和及原件 hash 沿用同一清单。地形使用单个扩展标准 PBR 材质：依据未扰动的插值世界法线，在暂定 35–55° 范围内连续混合 Ground037 与 Rock043L 的颜色、法线及粗糙度，普通渲染和法线预通道保持一致。原几何、碰撞与主轴米制 UV 保留，主轴切换处仍需检查纹理方向边界；连续草岩覆盖不代表已完成全山植被或无缝三向贴图
+
+
+## 草与石块细化
+
+`appearance.models.grass` 与 `rock` 使用本目录的原创 [草石主文件](vegetation/ground-props.md)，保留原 Kenney 文件及来源。草使用真实曲面叶片和原创不透明颜色图，石块使用原创几何与既有 ambientCG Rock043L 颜色／法线；它们复用既有植物布点与地面适配，尺寸和许可逐项登记，不代表已形成连续森林
+
+地形材质使用固定世界坐标的连续旋转／相位采样和 2m 三角格三顶点混合，法线同步逆旋转，普通渲染与预通道共用采样。它改善明显的同向平铺，仍保留主轴投影交界和三角地形轮廓的制作边界

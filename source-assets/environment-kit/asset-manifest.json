@@ -820,6 +820,50 @@
       "up_axis": "+Y",
       "ground_pivot": true,
       "height_m": 0.8
+    },
+    {
+      "source": "vegetation/grass-forest.glb",
+      "output": "vegetation/grass-forest.glb",
+      "source_master": "vegetation/grass-forest.blend",
+      "sha256": "17335ff05ada888c28266c978b655c9e1a6575eea631d7be5e77930c123d91b6",
+      "bytes": 53292,
+      "triangles": 1320,
+      "author": "N:SIDE; original geometry authored with Blender",
+      "license": "MPL-2.0",
+      "units": "meters",
+      "up_axis": "+Y",
+      "ground_pivot": true,
+      "height_m": 0.35,
+      "radius_m": 0.28967211495226874,
+      "provenance": "Original curved grass blades and color texture, seed 49091",
+      "source_texture": "vegetation/grass-blade-color.png",
+      "texture_dimensions": [
+        64,
+        256
+      ],
+      "texture_color_space": "sRGB",
+      "texture_sha256": "e812cd4fc10fe5b7dcbb9182ed86fb37127597c7226bd3adf7c42808a51d27a8",
+      "blades": 60
+    },
+    {
+      "source": "vegetation/rock-forest.glb",
+      "output": "vegetation/rock-forest.glb",
+      "source_master": "vegetation/rock-forest.blend",
+      "sha256": "0fbe9b1b9b0513ce6fb6ce794d9ff55744caa6459e94e353c2fb0cb818223788",
+      "bytes": 3714300,
+      "triangles": 320,
+      "author": "N:SIDE; original geometry authored with Blender",
+      "license": "MPL-2.0",
+      "units": "meters",
+      "up_axis": "+Y",
+      "ground_pivot": true,
+      "height_m": 0.65,
+      "radius_m": 0.74498450756073,
+      "provenance": "Original rock geometry; embedded ambientCG Rock043L Color and NormalGL textures remain CC0-1.0 (registered originals in materials/)",
+      "source_textures": [
+        "materials/Rock043L_1K-JPG_Color.jpg",
+        "materials/Rock043L_1K-JPG_NormalGL.jpg"
+      ]
     }
   ],
   "export_tool": "ImageMagick 7.1.2-31 Q16-HDRI"

@@ -1,0 +1,10 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 40.27s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+court retaining: crest=25.908..26.229m, court=23m, 3 cap pieces, 13 total boxes, 156 collision triangles, 2 material batches; road clearance=0.32m
+test world::scene::tests::court_retaining_details_follow_real_cut_crest_and_preserve_routes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 133 filtered out; finished in 12.11s
+

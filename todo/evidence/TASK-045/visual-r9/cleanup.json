@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "active_game_or_dcc_processes": [],
+  "removed_visuals_and_probe_files": 3445,
+  "removed_file_logical_bytes": 7520707675,
+  "unique_inode_allocated_bytes_before": 5598736384,
+  "removed_temporary_baseline_copies": [
+    {
+      "path": "output/visual-r9/baseline",
+      "files": 85,
+      "logical_bytes": 93945805
+    },
+    {
+      "path": "output/visual-r9/terrain-only",
+      "files": 1,
+      "logical_bytes": 719144
+    }
+  ],
+  "remaining_bytes": {
+    "output/visual-r9": 7392805,
+    "output/characters/CHR-002/ling-model-r2": 857,
+    "output/assets/ground-props-r1": 254
+  },
+  "preserved": "formal source assets, source references, release packages, reproduction scripts, logs, state JSON and text findings"
+}

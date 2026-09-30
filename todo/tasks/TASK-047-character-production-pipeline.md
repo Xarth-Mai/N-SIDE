@@ -28,13 +28,13 @@ specs:
 
 ## 当前工作与下一步
 
-第 10 轮，步骤 6/6：曜新增线性粗糙度与法线图，保留原底色、几何、UV、骨架及全部动作；玲已有独立长发／发夹／衣服候选与可编辑源、32骨及三个动作，通过同一真实角色入口按 ID 选择并补偿缩放步幅。两者实际播放结果见本轮证据
+第 11 轮，步骤 6/6：曜 r7 与玲 r2 已导出接入，DCC 契约、骨架动作保持、环绕及两段 18s 真实走跑验证通过
 
-继续脸部辨识、颈肩与手姿、长发组束和服装细节，随后制作正式彩色与完整动作；两个灰阶候选均 needs_revision，服装、体型、配色及作者审美尚未获批，不将技术管线视为人物完成
+两个技术候选均 needs_revision；发根／冠顶、脸部个性、最终配色和完整动作继续保留缺口。本批提交推送后停止，未代签作者审美
 
 ## 结果与证据
 
-工具证据见 [管线检查](../evidence/TASK-047/r1/character-pipeline-review.md)，36 位有人类年龄的角色外观目标及巧克力的空年龄见 [派生核对](../evidence/TASK-047/r1/appearance-age-targets.json)。源资产归 `source-assets/characters/CHR-001/`，当前造型状态以资产清单为准。[实际模型检查](../evidence/TASK-047/model-r1/review.md)与[运行接入](../evidence/TASK-047/runtime-r1/review.md)分别记录；已具备骨骼与动作候选，作者审美、正式彩色角色、转场混合及完整动作集尚未验收
+工具证据见 [管线检查](../evidence/TASK-047/r1/character-pipeline-review.md)，36 位有人类年龄的角色外观目标及巧克力的空年龄见 [派生核对](../evidence/TASK-047/r1/appearance-age-targets.json)。源资产归 `source-assets/characters/` 下各 CHR 对象目录，当前造型状态以资产清单为准。[实际模型检查](../evidence/TASK-047/model-r1/review.md)与[运行接入](../evidence/TASK-047/runtime-r1/review.md)分别记录；已具备骨骼与动作候选，作者审美、正式彩色角色、转场混合及完整动作集尚未验收
 
 本轮 [模型 r2 与实机复验](../evidence/TASK-047/model-r2/review.md)关联真实源工程、最终 GLB、保留的骨骼／动画契约、命令及运行摘要；完整游戏目标沿用[路线图](../roadmap.md)，剧情基线已提交，后续正文调整继续按 TASK-046 协调
 
@@ -47,3 +47,5 @@ specs:
 [第 7 轮集成与实际复验](../evidence/TASK-045/visual-r7/review.md)记录坡形、连续材质、林群与人物的交付、失败诊断、最终检查和未完成的品质项
 
 [第 8 轮集成与实际复验](../evidence/TASK-045/visual-r8/review.md)记录本批模型、材质、场景、实际运行及未完成的品质项
+
+[第 9 轮集成与实际复验](../evidence/TASK-045/visual-r9/review.md)记录本批资产、真实运行、失败修复和停止位置

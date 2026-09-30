@@ -1,0 +1,186 @@
+{
+  "status": "PASS",
+  "scope": "Only model-r7 owned temporary images and baseline copies plus generated CHR001 blend1 backup; root baseline capture untouched",
+  "all_final_nine_images_viewed_by_modeler": true,
+  "root_viewed": [
+    "final-master/upper-front.png",
+    "final-master/upper-quarter.png",
+    "final-master/run-chest-right.png"
+  ],
+  "processes": "Final static render, motion render, check and export all exited 0 before cleanup",
+  "removed": [
+    {
+      "path": "output/characters/CHR-001/model-r7/before/upper-front.png",
+      "bytes": 637340,
+      "sha256": "f53c99d4216f579b33300c84c887329db03fa426f2c0e159e07196c1efdc20e1"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/before/upper-quarter.png",
+      "bytes": 636653,
+      "sha256": "985f95b2da20af9fbed45d239d50a335e73548a5008df6a5cbd4c6c43166a27a"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/before/upper-side.png",
+      "bytes": 611771,
+      "sha256": "8df7e5ecc1a75cd1622716df039b92798662c18726f52d995b7260a55dfe36f3"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/before/head-back.png",
+      "bytes": 642773,
+      "sha256": "fcf36ab3eaf8586e7a3b9a1f1f408c08339efa94b2ee506824200c75e379920a"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/before/hair-quarter.png",
+      "bytes": 644318,
+      "sha256": "147be3a322c29c7766725232e5be4aad934fc4f5ab1456bc3936c19fe821b035"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/before/hair-top.png",
+      "bytes": 673636,
+      "sha256": "90c516762b1c6532af596aa6b1b7ece1e613b96f48a609b985bd07011bd4ceca"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/first/upper-front.png",
+      "bytes": 623201,
+      "sha256": "7baab9d059d5d14eb3b5e0b96aca1ceb888a8fb43d7b319c614b4065712a57b8"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/first/upper-quarter.png",
+      "bytes": 622647,
+      "sha256": "85784e38cdd343dbf54bf0622fb46242a7e862a293d195595420971c56a8a1e1"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/first/upper-side.png",
+      "bytes": 605239,
+      "sha256": "dd8c036db5b3ba9335b7759935465dd2b11332d4934b0081ae5b3b91d3a65127"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/first/head-back.png",
+      "bytes": 640508,
+      "sha256": "069dfee549f358b0147fb3cb402d6b80cbb35928c925a1be9141dfd3f8acdfb7"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/first/hair-quarter.png",
+      "bytes": 645328,
+      "sha256": "8e82fd0cb62a94b6d7583c7991b59480fd8abfd3c1a2a7261edbf8f86a1f0d5d"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/first/hair-top.png",
+      "bytes": 656454,
+      "sha256": "9ad377ca82ebf32cc1ea46999c39f513757efaa176b8de2653c140df871724e4"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/upper-front.png",
+      "bytes": 622608,
+      "sha256": "6802fbd6e7dd6f43b1677c1c2828841a0038f4b4629463cfa0a1e07bf386a8a8"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/run-chest-left.png",
+      "bytes": 658787,
+      "sha256": "bafe5e119e9ce849ac0d86add55dad451d0ed6987b71fc378d01b1039fc7de82"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/upper-quarter.png",
+      "bytes": 622394,
+      "sha256": "3378467c05e51b64c675486cb1828cd2b2e1af03225283a7c9f38daa83bed81f"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/upper-side.png",
+      "bytes": 604697,
+      "sha256": "b60ab1398baa80e7a4ef963fe01ad46c4de0450c4c261d622c91694ab3ad6372"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/run-chest-right.png",
+      "bytes": 653379,
+      "sha256": "a6613e40e615e375acec7a21765b258f53b948d5d1c2962423f3689b1d3b05b2"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/head-back.png",
+      "bytes": 633260,
+      "sha256": "fcfd552f38b265032ff4ada8d9fef093d319bd1912dabdaca290f9b293ccde74"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/walk-quarter.png",
+      "bytes": 598118,
+      "sha256": "d308a5c7fc87f4e1d9248e52920943ba0ab7202a617f44d84710714795801add"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/hair-quarter.png",
+      "bytes": 643126,
+      "sha256": "358c28146a199196317403ba6b4db1d96ea7878510098c7a0b7996e703f489ff"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final/hair-top.png",
+      "bytes": 654853,
+      "sha256": "9ff6717ee095464cadf08f78eb1ee01a0ab2951b8723979c8029eeac950ba4a9"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/upper-front.png",
+      "bytes": 622702,
+      "sha256": "cf4177ff1dafd2bfd302e5fd081e43604bb8ff412e16e8134a413bb9f7f20d41"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/run-chest-left.png",
+      "bytes": 659084,
+      "sha256": "e1b9755d08b493b58db0505f51d6472cd1d0c9cc4d78ce740a2baaeb562ec9c8"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/upper-quarter.png",
+      "bytes": 622399,
+      "sha256": "b8434e7d7ff595ea5d5cd231413c124338299c155ff0a96c63a259366f974781"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/upper-side.png",
+      "bytes": 604986,
+      "sha256": "59507b6327b497a55a4f77156a7cdaff53dc0072b3c0105c69dfdaa938901b99"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/run-chest-right.png",
+      "bytes": 653324,
+      "sha256": "92df3c5758faf11025d0dadeb3eab7de96b012c7b736a297a330e47440db2c68"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/head-back.png",
+      "bytes": 633391,
+      "sha256": "060d07e3e8fcb4b5986c2bd914a9101ff24d68f099935ff30de9c7723997dd01"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/walk-quarter.png",
+      "bytes": 597851,
+      "sha256": "65286d7ff9af7b726124b6bd97c629fccddb5c1ed6ffe6bd73c4c2cbf337e7ae"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/hair-quarter.png",
+      "bytes": 643802,
+      "sha256": "b980c1a98736fead5a9dea18bb2a7f8667e309f89efb2ada9fc0f93021e6f628"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/final-master/hair-top.png",
+      "bytes": 654421,
+      "sha256": "27338a93bd7a7489d47e9ded8cf915bd2d8582cecf02a48fceceb36940b579d0"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/baseline.blend",
+      "bytes": 4093844,
+      "sha256": "30d4c3747abb27ebc70a8f27f83945bc934a3e6b4327b9738b9a9a1e50b3d3d2"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r7/baseline.glb",
+      "bytes": 1470596,
+      "sha256": "220370b6ee7a073a0c04edb1c865d9e70129d3f58b6163c07d81590ccecd68a0"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 4076784,
+      "sha256": "b70d0d02cf5dd352523085a95217bb86d173685db51ba828fb91bb52458adbfd"
+    }
+  ],
+  "freed_bytes": 28664274,
+  "remaining": [
+    {
+      "path": "output/characters/CHR-001/model-r7/model-source/model-report.json",
+      "bytes": 763
+    }
+  ],
+  "remaining_bytes": 763
+}

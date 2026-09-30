@@ -1,0 +1,41 @@
+{
+  "status": "exported-candidate",
+  "blender": "4.5.14 LTS",
+  "units": "meters",
+  "dcc_forward": "-Y",
+  "gltf_forward": "+Z",
+  "face_hair_revision": "ling-r2",
+  "age_actual": 19,
+  "age_appearance": 17,
+  "palette": "unapproved grayscale study; grayscale hair is not a character color decision",
+  "bones": 32,
+  "editable_meshes": 77,
+  "source_vertices": 7035,
+  "clips": {
+    "Idle": {
+      "seconds": 2.0,
+      "fps": 60,
+      "in_place": true
+    },
+    "Walk": {
+      "seconds": 0.8,
+      "fps": 60,
+      "in_place": true
+    },
+    "Run": {
+      "seconds": 0.6666666666666666,
+      "fps": 60,
+      "in_place": true
+    }
+  },
+  "natural_speeds_m_s": {
+    "Walk": 3.027192142669727,
+    "Run": 5.297586249672022
+  },
+  "target_height_m": 1.65,
+  "runtime": "NOT RUN; root integrates and captures the real Bevy path",
+  "views": [],
+  "export_triangles": 41936,
+  "materials": 1,
+  "primitives": 1
+}

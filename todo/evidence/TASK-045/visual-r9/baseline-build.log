@@ -1,0 +1,14 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/output/visual-r9/baseline/game)
+error: couldn't read `src/../../source-assets/ui-kit/tokens.json`: No such file or directory (os error 2)
+   --> src/app.rs:370:44
+    |
+370 |             serde_json::from_str::<Tokens>(include_str!("../../source-assets/ui-kit/tokens.json"))
+    |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `src/../../source-assets/ui-kit/tokens.json`: No such file or directory (os error 2)
+   --> src/ui.rs:185:34
+    |
+185 |             serde_json::from_str(include_str!("../../source-assets/ui-kit/tokens.json"))
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `n-side` (lib) due to 2 previous errors

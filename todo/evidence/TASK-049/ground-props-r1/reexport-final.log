@@ -1,0 +1,17 @@
+INFO Draco mesh compression is available, use library at /home/lzzz/MyProjects/N-SIDE/output/tools/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+19:41:22 | INFO: Starting glTF 2.0 export
+19:41:22 | INFO: Extracting primitive: ForestGrass
+19:41:22 | INFO: Primitives created: 1
+19:41:22 | INFO: Finished glTF 2.0 export in 0.019443988800048828 s
+
+19:41:22 | INFO: Starting glTF 2.0 export
+19:41:22 | INFO: Extracting primitive: Icosphere
+19:41:22 | INFO: Primitives created: 1
+19:41:22 | INFO: Finished glTF 2.0 export in 0.05357050895690918 s
+
+[{"name": "grass-forest", "triangles": 1320, "height": 0.3499999940395355, "radius": 0.28967211495226874}, {"name": "rock-forest", "triangles": 320, "height": 0.6499999761581421, "radius": 0.74498450756073}]
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/environment-kit/vegetation/grass-forest.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/environment-kit/vegetation/rock-forest.blend"
+
+Blender quit

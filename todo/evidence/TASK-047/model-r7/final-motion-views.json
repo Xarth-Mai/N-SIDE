@@ -1,0 +1,52 @@
+{
+  "revision": "final",
+  "master_sha256": "a8cdaa87548b3df5c7bb244c70e832536c98c3a325558b09e0162eb2675dc098",
+  "engine": "CYCLES",
+  "device": "CPU",
+  "samples": 24,
+  "resolution": [
+    720,
+    960
+  ],
+  "views": [
+    {
+      "label": "run-chest-left",
+      "camera_position": [
+        3,
+        -4,
+        1.25
+      ],
+      "target_height": 1.19,
+      "ortho_scale": 0.94,
+      "clip": "Run",
+      "frame": 6,
+      "file": "output/characters/CHR-001/model-r7/final/run-chest-left.png"
+    },
+    {
+      "label": "run-chest-right",
+      "camera_position": [
+        3,
+        -4,
+        1.25
+      ],
+      "target_height": 1.19,
+      "ortho_scale": 0.94,
+      "clip": "Run",
+      "frame": 26,
+      "file": "output/characters/CHR-001/model-r7/final/run-chest-right.png"
+    },
+    {
+      "label": "walk-quarter",
+      "camera_position": [
+        3,
+        -4,
+        1.2
+      ],
+      "target_height": 0.89,
+      "ortho_scale": 2.06,
+      "clip": "Walk",
+      "frame": 8,
+      "file": "output/characters/CHR-001/model-r7/final/walk-quarter.png"
+    }
+  ]
+}

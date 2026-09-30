@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Owned Python AST",
+    "Source/runtime/atlas hashes agree with manifest and delivery",
+    "Both render metadata files reference current master",
+    "Owned Markdown links and trailing whitespace"
+  ],
+  "files": [
+    {
+      "path": "source-assets/characters/CHR-002/model/build.py",
+      "sha256": "445787cff3a8bddbfbf10c57d9c472719131cdd468ff5d6d40fda0304f778919"
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/check.py",
+      "sha256": "2146c2628c8383e39c3e79f104761a798ebbb04a30a62565c0bb2c68b13519dc"
+    },
+    {
+      "path": "todo/evidence/TASK-047/ling-model-r2/render.py",
+      "sha256": "ae4e0ca536019b8550574e9ec2dd266fa6ba5c3edd206edcb2ef508529e18b09"
+    }
+  ]
+}

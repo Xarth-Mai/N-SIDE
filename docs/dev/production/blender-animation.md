@@ -47,7 +47,7 @@ cargo run --manifest-path game/Cargo.toml --features viewer --locked --bin map_v
 
 角色导出后先运行[角色 GLB 预检](../../../tools/README.md#角色-glb-导出预检)，按该人物规格传入根骨名称、实际高度和必需 clip。它读取真实 accessor 检查四权重、inverse bind 还原、米制边界、嵌入纹理与 in-place 根通道，失败返回非零；两骨方体夹具证明 Blender 多动作导出与检查路径，不证明正式人物建模或动作已经完成
 
-两份角色研究GLB共用具名 `Scene` 与 `Idle` / `Walk` / `Run`、米制 Y-up、+Z 前向和脚底原点，32骨与in-place动作按各自源工程导出。玲的当前模型约1.65m，骨架与平移曲线同比缩放，运行播放速率相应补偿步幅；修改模型尺度后同时复验DCC接地与真实控制器下的足滑。具体加载、失败处理、尺度与播放速率由[角色预览契约](../engineering/player-preview.md#灰阶角色动作预览)统一维护
+两份角色研究GLB共用具名 `Scene` 与 `Idle` / `Walk` / `Run`、米制 Y-up、+Z 前向和脚底原点，32骨与in-place动作按各自源工程导出。玲的骨架与平移曲线同比缩放，运行播放速率相应补偿步幅；修改模型尺度后同时复验DCC接地与真实控制器下的足滑。具体加载、失败处理、尺度与播放速率由[角色预览契约](../engineering/player-preview.md#灰阶角色动作预览)统一维护
 
 ```fish
 cargo run --manifest-path game/Cargo.toml --locked --bin n-side -- --project-root . --character-preview

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "baseline": "13397c5",
+  "identical_animation_accessor_clips": [
+    "Idle",
+    "Run",
+    "Walk"
+  ],
+  "runtime_sha256": "f4d7cca6cc607a40817a788692c7348efdbb7c6335761a8f880e81487633cbdf"
+}

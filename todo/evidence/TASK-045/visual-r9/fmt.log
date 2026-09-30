@@ -1,0 +1,10 @@
+Diff in /home/lzzz/MyProjects/N-SIDE/game/src/world/scene.rs:3928:
+                         assert!(
+                             (-0.004..if kind == 0 { 0.32 } else { 0.16 }).contains(&buried),
+                             "{} {} basal vertex {vertex:?} unsupported/overburied {buried:.6}m",
+[31m-                            p.source, p.model
+[m[32m+                            p.source,
+[m[32m+                            p.model
+[m                         );
+                         root_burial[kind] = root_burial[kind].max(buried);
+                     }

@@ -19,7 +19,7 @@ from mathutils.bvhtree import BVHTree
 ROOT = Path(__file__).resolve().parents[4]
 SOURCE = Path(__file__).resolve().parent
 RUNTIME = ROOT / 'game/assets/characters/CHR-002'
-OUTPUT = ROOT / 'output/characters/CHR-002/ling-model-r1'
+OUTPUT = ROOT / 'output/characters/CHR-002/ling-model-r2'
 parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
@@ -313,10 +313,10 @@ solid=jacket.modifiers.new('Cloth thickness','SOLIDIFY');solid.thickness=.003
 mod=jacket.modifiers.new('Cloth surface','SUBSURF');mod.levels=1;mod.render_levels=1
 
 # Soft adolescent face with jaw/cheek/temple loops and a small, modelled nose
-head = loft('Face_Head', [(0,.005,1.35,.061,.045),(0,.012,1.395,.044,.037),(0,.024,1.435,.032,.030),(0,.022,1.515,.030,.029),(0,-.003,1.520,.037,.052),(0,-.006,1.523,.043,.058),(0,-.003,1.535,.060,.063),(0,.004,1.552,.080,.074),(0,.007,1.560,.088,.076),(0,.008,1.570,.093,.080),(0,.008,1.581,.096,.084),(0,.010,1.596,.097,.086),(0,.012,1.617,.098,.087),(0,.012,1.651,.097,.087),(0,.016,1.692,.083,.075),(0,.017,1.721,.048,.047),(0,.017,1.734,.006,.008)], 'skin',lambda p: blend('Neck','Head',(p.z-1.435)/.055),sides=48,subdiv=1)
+head = loft('Face_Head', [(0,.005,1.35,.061,.045),(0,.012,1.395,.044,.037),(0,.024,1.435,.032,.030),(0,.022,1.515,.030,.029),(0,-.003,1.520,.032,.050),(0,-.006,1.523,.037,.057),(0,-.003,1.535,.063,.064),(0,.004,1.552,.081,.075),(0,.007,1.560,.087,.079),(0,.008,1.570,.090,.082),(0,.008,1.581,.093,.084),(0,.010,1.596,.094,.086),(0,.012,1.617,.096,.087),(0,.012,1.651,.097,.087),(0,.016,1.692,.083,.075),(0,.017,1.721,.048,.047),(0,.017,1.734,.006,.008)], 'skin',lambda p: blend('Neck','Head',(p.z-1.435)/.055),sides=48,subdiv=1)
 # The throat rises behind the chin; separate underside and outer-jaw loops turn
 # upward toward the ear instead of extending the cheek as a cone into the neck
-for ring, front_drop, back_rise in ((3,.020,.020),(4,.019,.017),(5,.020,.016),(6,.019,.009)):
+for ring, front_drop, back_rise in ((3,.020,.020),(4,.019,.017),(5,.014,.016),(6,.010,.009)):
     for j in range(49):
         facing=math.cos(j/48*math.tau)
         head.data.vertices[ring*49+j].co.z += -front_drop*max(0,facing)+back_rise*max(0,-facing)
@@ -325,10 +325,10 @@ for ring, front_drop, back_rise in ((3,.020,.020),(4,.019,.017),(5,.020,.016),(6
 for vertex in head.data.vertices:
     p=vertex.co
     if p.y < 0:
-        p.y -= .0175*math.exp(-(p.x/.012)**2-((p.z-1.561)/.011)**2)
+        p.y -= .0160*math.exp(-(p.x/.012)**2-((p.z-1.561)/.011)**2)
         p.y -= .006*math.exp(-(p.x/.011)**2-((p.z-1.582)/.021)**2)
         p.y += .0045*math.exp(-((abs(p.x)-.044)/.028)**2-((p.z-1.598)/.011)**2)
-        p.y -= .0025*math.exp(-((abs(p.x)-.062)/.023)**2-((p.z-1.570)/.013)**2)
+        p.y -= .0034*math.exp(-((abs(p.x)-.062)/.023)**2-((p.z-1.570)/.013)**2)
         p.y -= .003*math.exp(-(p.x/.026)**2-((p.z-1.537)/.008)**2)
 head.data.update()
 for side,s in (('L',1),('R',-1)):
@@ -358,58 +358,69 @@ def patch(name, outline, region, offset=-.005, surface=face_y):
 for s,side in ((1,'L'),(-1,'R')):
     cx=s*.041
     def eye_bounds(x):
-        u=max(-1,min(1,(s*x-.041)/.025))
-        arch=max(0,1-u*u)**.60
-        mid=1.597+.0032*u
-        return mid-.0093*arch,mid+.0126*arch
+        u=max(-1,min(1,(s*x-.041)/.026))
+        arch=max(0,1-u*u)**.72
+        mid=1.597+.0035*u+(.0006 if s==1 else 0)
+        return mid-.0067*arch,mid+.0120*arch*(1-.16*u)
     def eye_y(x,z,offset=0):
         low,high=eye_bounds(x)
-        u=(s*x-.041)/.025
+        u=(s*x-.041)/.026
         v=(z-(low+high)/2)/max(.0001,(high-low)/2)
         bulge=.0022*max(0,1-u*u)*max(0,1-v*v)
         return face_y(x,z,offset-bulge)
     outline=[]
     for j in range(25):
         a=j/24*math.tau
-        x=cx+s*.025*math.cos(a)
+        x=cx+s*.026*math.cos(a)
         z=eye_bounds(x)[1 if math.sin(a)>=0 else 0]
         outline.append((x,z))
     patch('Eye_White.'+side,outline,'white',-.00065,surface=eye_y)
     # The upper lid overlaps the iris; the gaze is not an untouched round disk
-    for region,rx,rz,offset in [('hair',.0115,.0130,-.0010),('ink',.0040,.0082,-.0013)]:
+    for region,rx,rz,offset in [('hair',.0102,.0128,-.0010),('ink',.0038,.0080,-.0013)]:
         iris=[]
         for j in range(32):
             x=cx-s*.0008+rx*math.cos(j/32*math.tau)
             low,high=eye_bounds(x)
-            z=max(low+.00035,min(high-.00035,1.600+rz*math.sin(j/32*math.tau)))
+            z=max(low+.00035,min(high-.00035,1.601+rz*math.sin(j/32*math.tau)))
             iris.append((x,z))
         patch('Iris_'+region+'.'+side,iris,region,offset,surface=eye_y)
     patch('Eye_Glint.'+side,[(cx-.003+.0015*math.cos(a/12*math.tau),1.602+.0015*math.sin(a/12*math.tau)) for a in range(12)],'white',-.0016,surface=eye_y)
-    for label,indices,radius,region in [('Upper_Lid',range(13),.0012,'ink'),('Lower_Lid',range(20,25),.00035,'hair')]:
+    for label,indices,radius,region in [('Upper_Lid',range(13),.00145,'ink'),('Lower_Lid',range(20,25),.0003,'hair')]:
         lid=[(outline[i][0],face_y(*outline[i],-.0011),outline[i][1]) for i in indices]
-        widths=[radius*(.5+.6*math.sin(math.pi*i/(len(lid)-1))) for i in range(len(lid))]
+        widths=[radius*(.22+.70*math.sin(math.pi*i/(len(lid)-1))+.34*(1-i/(len(lid)-1))) for i in range(len(lid))]
         tube(label+'.'+side,lid,widths,[w*.7 for w in widths],region,'Head',sides=6)
-    brow=[(cx+s*x,face_y(cx+s*x,1.622+z,-.001),1.622+z) for x,z in [(-.021,-.001),(-.006,.002),(.012,.003 if s==1 else .002),(.025,.001)]]
-    tube('Eyebrow.'+side,brow,[.0007,.0017,.0013,.0003],[.0006]*4,'hair','Head',sides=6)
+    # Curved tapered brows and one outer lash read at close range without a rim around the eye
+    brow=[]
+    for i in range(11):
+        t=i/10;x=cx+s*(-.021+.046*t)
+        z=1.620+(.0070 if s==1 else .0057)*math.sin(math.pi*t*.90)+.001*t
+        brow.append((x,face_y(x,z,-.0008),z))
+    tube('Eyebrow.'+side,brow,[.0003+.0010*math.sin(math.pi*i/10)**.65 for i in range(11)],[.0005]*11,'hair','Head',sides=6)
+    x=cx+s*.026;z=eye_bounds(x)[1]
+    lash=[(x,face_y(x,z,-.0013),z),(x+s*.0035,face_y(x+s*.0035,z+.002,-.0013),z+.002)]
+    tube('Upper_Lid_Tip.'+side,lash,[.00115,.00012],[.0005,.00015],'ink','Head',sides=6)
 mouth=[(-.014,1.537),(-.005,1.5373),(.005,1.5371),(.014,1.5376)]
 mouth=[(x+(nx-x)*t/4,z+(nz-z)*t/4) for (x,z),(nx,nz) in zip(mouth,mouth[1:]) for t in range(4)]+[mouth[-1]]
 # Resample the mouth onto the actual lip surface; four long chords cut behind it
 tube('Mouth',[(x,face_y(x,z,-.00065),z) for x,z in mouth],[.0003+.00035*math.sin(math.pi*i/(len(mouth)-1)) for i in range(len(mouth))],[.00035]*len(mouth),'pants','Head',sides=6)
 # Swept group surfaces all start at the crown and overlap their neighbors.
 # The back has no smooth carrier shell with independent short islands on top.
-sectors=(0,.60,1.15,1.62,2.08,2.52,2.93,3.35,3.82,4.29,4.74,5.25,5.78,math.tau)
+sectors=(0,.42,.95,1.42,1.72,2.39,2.64,3.34,3.61,4.21,4.48,4.95,5.38,5.77,math.tau)
+# Unequal main/secondary groups share roots and change direction along their length
+ends=(1.683,1.674,1.649,1.245,1.098,1.286,1.102,1.242,1.147,1.294,1.177,1.651,1.682,1.690)
+turns=(.02,.04,.08,.11,.20,.33,-.16,.08,.24,.36,.12,-.05,-.03,-.02)
 levels=(0,.04,.08,.13,.19,.26,.34,.44,.56,.70,.85,.94,1)
 cap_vertices,cap_faces,cap_uv=[],[],[]
 for group,(left,right) in enumerate(zip(sectors,sectors[1:])):
     centre=(left+right)/2
     front=max(0,math.cos(centre))**.6
     back=max(0,-math.cos(centre))**.5
-    end=1.663+.008*math.sin(group) if math.cos(centre)>.25 else 1.075+.030*math.sin(group*1.71)
+    end=ends[group]
     start=len(cap_vertices)
     for k,t in enumerate(levels):
         z=1.744+(end-1.744)*t
-        spread=min(1,.08+(1.746-z)/.045)*(1-max(0,(t-.75)/.25)**1.3)
-        centre_sweep=centre+.30*(1-t)**.8+.12*math.sin(group*1.3)*t
+        spread=min(1,.08+(1.746-z)/.045)*(1-max(0,(t-.68)/.32)**1.5)
+        centre_sweep=centre+.30*(1-t)**.8+turns[group]*math.sin(math.pi*t*.85)
         for j in range(5):
             cross=j/2-1
             angle=centre_sweep+(right-left)*.61*spread*cross
@@ -422,8 +433,8 @@ for group,(left,right) in enumerate(zip(sectors,sectors[1:])):
             overlap=.004*(cross+1)/2*math.sin(math.pi*t)
             radial=ridge+overlap
             low=max(0,min(1,(1.57-z)/.24))
-            rx=(1-low)*.108*radius+low*.145
-            ry=(1-low)*.102*radius+low*.058
+            rx=(1-low)*.108*radius+low*(.136+.015*math.sin(group*1.83))
+            ry=(1-low)*.102*radius+low*(.055+.008*math.cos(group*1.6))
             point=Vector(((rx+radial)*math.sin(angle),.018+.09*low-(ry+radial)*math.cos(angle),z))
             point.x-=.012*(1-t)**2
             origin=Vector((0,.018,z));direction=(point-origin).normalized()
@@ -447,7 +458,7 @@ def hair_lock(name, points, width):
     # Lens-shaped strand groups with a narrow tip; one closed mesh, not hair particles
     verts,faces,uv=[],[],[]
     a,b,c,d=map(Vector,points)
-    count=13
+    count=17
     for i in range(count):
         t=i/(count-1)
         p=(1-t)**3*a+3*(1-t)**2*t*b+3*(1-t)*t*t*c+t**3*d
@@ -455,10 +466,10 @@ def hair_lock(name, points, width):
         out=Vector((p.x,p.y-.012,(p.z-1.60)*.3)).normalized()
         side=tangent.cross(out).normalized()
         out=side.cross(tangent).normalized()
-        w=width*(.40+.65*math.sin(math.pi*t))*(1-t**2.1)+.0004
+        w=width*(.72+.22*math.sin(math.pi*t))*(1-t**1.35)+.0003
         for j in range(8):
             angle=j/8*math.tau
-            v=p+side*(w*math.cos(angle))+out*((w*.10+.0004)*math.sin(angle))
+            v=p+side*(w*math.cos(angle))+out*((w*.065+.0003)*math.sin(angle))
             verts.append(v);uv.append((j/7,t))
     for i in range(count-1):
         for j in range(8):
@@ -467,10 +478,13 @@ def hair_lock(name, points, width):
     return mesh(name,verts,faces,'hair','Head',uv)
 # Side-parted long fringe and one geometric clip distinguish Ling from Yao
 bangs=[
-    ([(-.035,.015,1.74),(-.063,-.079,1.73),(-.10,-.103,1.67),(-.088,-.060,1.61)],.022),
-    ([(-.028,.009,1.738),(-.043,-.111,1.715),(-.044,-.122,1.652),(-.031,-.088,1.618)],.029),
-    ([(-.019,.013,1.738),(.038,-.082,1.742),(.059,-.110,1.681),(.039,-.092,1.642)],.038),
-    ([(-.010,.028,1.735),(.071,-.045,1.734),(.104,-.075,1.655),(.098,-.028,1.554)],.024)]
+    ([(-.034,.020,1.741),(-.065,-.079,1.724),(-.111,-.094,1.674),(-.101,-.047,1.596)],.023),
+    ([(-.033,.016,1.740),(-.057,-.103,1.710),(-.070,-.119,1.655),(-.074,-.089,1.613)],.012),
+    ([(-.032,.017,1.738),(-.036,-.111,1.708),(-.044,-.120,1.665),(-.029,-.083,1.637)],.023),
+    ([(-.029,.019,1.740),(.020,-.101,1.714),(.061,-.115,1.690),(.032,-.091,1.645)],.034),
+    ([(-.020,.012,1.738),(.034,-.110,1.704),(.065,-.113,1.672),(.062,-.073,1.627)],.010),
+    ([(-.018,.028,1.739),(.076,-.063,1.713),(.109,-.068,1.665),(.106,-.023,1.571)],.021),
+    ([(-.010,.027,1.736),(.090,-.042,1.697),(.120,-.041,1.635),(.115,.009,1.593)],.008)]
 for i,(path,width) in enumerate(bangs):hair_lock(f'Bangs_{i:02}',path,width)
 for s,side in ((1,'L'),(-1,'R')):
     hair_lock('Temple_0.'+side,[(s*.057,.025,1.710),(s*.13,.015,1.660),(s*.123,.070,1.40),(s*.123,.113,1.20)],.022)
@@ -480,7 +494,7 @@ for s,side in ((1,'L'),(-1,'R')):
             vg=obj.vertex_groups.get(joint) or obj.vertex_groups.new(name=joint);vg.add([v.index],w,'REPLACE')
 # Actual shallow geometric clip, independent of the still-undecided palette
 for n,points in enumerate(([(.088,-.067,1.662),(.117,-.023,1.641)],[(.093,-.064,1.648),(.121,-.020,1.628)])):
-    tube('Hair_Clip_'+str(n),points,[.007,.007],[.003,.003],'white','Head',sides=6)
+    tube('Hair_Clip_'+str(n),points,[.0045,.0045],[.0018,.0018],'white','Head',sides=6)
 
 # Small original pen pouch at the hip, attached to the torso rather than a new gameplay tool
 loft('Pen_Pouch',[(.149,-.082,.938,.030,.016),(.149,-.090,.978,.032,.017),(.149,-.091,1.038,.031,.016)],'jacket','Hips',sides=12)
@@ -492,12 +506,23 @@ for obj in objects:
         mod=obj.modifiers.new('Cloth surface', 'SUBSURF');mod.levels=1;mod.render_levels=1
 
 
+# Reshape the upper chest and sleeves without moving bind bones, elbows or hands
+# Matching jacket/undershirt deformation preserves their running-pose clearance
+for obj in objects:
+    if obj.name.startswith(('Jacket_', 'TShirt', 'Zip_Tape.')):
+        for vertex in obj.data.vertices:
+            p=vertex.co
+            upper=max(0,min(1,(p.z-1.16)/.15))
+            p.x *= 1-.105*upper
+            p.z += .023*max(0,min(1,(p.z-1.30)/.11))
+        obj.data.update()
+
 # Lower the cranial mass and merge its transition into the neck, without flattening a chin cap
 for obj in objects:
     for v in obj.data.vertices:
         if obj.name=='Face_Head':
             v.co.z -= .018*max(0,min(1,(v.co.z-1.43)/.06))
-        elif obj.name.startswith(('Ear.','Ear_Fold.','Eye_','Iris_','Upper_Lid.','Lower_Lid.','Eyebrow.','Nose','Mouth','Hair_','Bangs_','Temple_','Crown_','Nape_','Back_Lock_')):
+        elif obj.name.startswith(('Ear.','Ear_Fold.','Eye_','Iris_','Upper_Lid.','Upper_Lid_Tip.','Lower_Lid.','Eyebrow.','Nose','Mouth','Hair_','Bangs_','Temple_','Crown_','Nape_','Back_Lock_')):
             v.co.z -= .018
 
 # Consistent outward normals after negative-side profile construction
@@ -650,7 +675,7 @@ cam.data.type='ORTHO';cam.data.ortho_scale=2.06
 scene.render.resolution_x=720;scene.render.resolution_y=960;scene.render.resolution_percentage=100
 bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'ling-grey-study.blend'))
 export(rig,objects)
-report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'ling-r1','age_actual':19,'age_appearance':17,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'natural_speeds_m_s':{n:g[0]*MODEL_SCALE for n,g in GAITS.items()},'target_height_m':1.65,'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
+report={'status':'exported-candidate','blender':bpy.app.version_string,'units':'meters','dcc_forward':'-Y','gltf_forward':'+Z','face_hair_revision':'ling-r2','age_actual':19,'age_appearance':17,'palette':'unapproved grayscale study; grayscale hair is not a character color decision','bones':len(rig.data.bones),'editable_meshes':len(objects),'source_vertices':sum(len(o.data.vertices) for o in objects),'clips':{n:{'seconds':p/FPS,'fps':FPS,'in_place':True} for n,(p,_) in CLIPS.items()},'natural_speeds_m_s':{n:g[0]*MODEL_SCALE for n,g in GAITS.items()},'target_height_m':1.65,'runtime':'NOT RUN; root integrates and captures the real Bevy path','views':[]}
 if args.render:
     for label,pos,clip,frame in [('front',(0,-4,1.0),'Idle',1),('three-quarter',(3,-4,1.3),'Idle',1),('back',(0,4,1.0),'Idle',1),('walk-contact',(3,-4,1.2),'Walk',8),('run-contact',(3,-4,1.2),'Run',6),('face',(0,-4,1.61),'Idle',1),('walk-lift',(3,-4,1.2),'Walk',1),('run-lift',(3,-4,1.2),'Run',1)]:
         rig.animation_data.action=bpy.data.actions[clip];scene.frame_set(frame)

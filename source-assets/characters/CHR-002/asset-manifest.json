@@ -11,8 +11,8 @@
       "provenance": "Original CHR-002 face, long hair, clip and clothing authored for N:SIDE; adapted project-owned CHR-001 32-joint rig, gray atlas authoring and basic gait calculations at b948cabe717c1c6081055267a4b0c063b7de855d; no third-party mesh or motion imported",
       "license_status": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "license_note": "Project-authored model and fixed project-source reuse; reference imagery retains its own provenance and does not become a runtime texture",
-      "source_sha256": "83912572664e8fbc291b519ad2b80cd9a0ff2777cee05ffc9f6825a8ab4bdd65",
-      "runtime_sha256": "5e17542d3fb12d44070f2eec2942f7f9117d9dd3a080de1a74e102a7d4bb37ea",
+      "source_sha256": "07d8d00577b5fe5868a6157a981b6ade04b949662f211f2594f418b9d9df7850",
+      "runtime_sha256": "f4d7cca6cc607a40817a788692c7348efdbb7c6335761a8f880e81487633cbdf",
       "references": [
         "docs/player/characters/sister.md",
         "source-assets/area-previews/cinema-music-street.png"
@@ -34,7 +34,7 @@
         "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf"
       },
       "dimensions": {
-        "height_m": 1.6363718509674072,
+        "height_m": 1.6414127349853516,
         "units": "meters",
         "up_axis": "+Y",
         "forward_axis": "+Z",
@@ -67,7 +67,7 @@
       "appearance_age": 17,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "DCC/GLB, actual 120 FPS exported foot tracks and edited-master re-export pass; CPU six views and both full gait cycles actually inspected; Bevy evidence belongs to root integration",
+        "technical": "r2 DCC/GLB, actual 120 FPS foot tracks and byte-identical master re-export pass; animation accessor values unchanged from 13397c5; runtime evidence is owned by root integration; 6 CPU views and 19 gait-phase images actually inspected",
         "visual": "needs_revision; no author costume, color, stature or character-design acceptance"
       },
       "generation": {
@@ -75,7 +75,7 @@
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/ling-model-r1/delivery.json"
+      "evidence": "todo/evidence/TASK-047/ling-model-r2/delivery.json"
     }
   ],
   "uses": [

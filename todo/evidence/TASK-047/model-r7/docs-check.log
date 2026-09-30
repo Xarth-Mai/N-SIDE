@@ -1,0 +1,4 @@
+$ python3 -B tools/validate_docs.py --root . && bun run check:skills
+FAIL: 464 Markdown files, 102 IDs
+source-assets/environment-kit/vegetation/ground-props.md:19: 链接目标缺失：../../../todo/evidence/TASK-049/ground-props-r1/review.md
+error: script "check:docs" exited with code 1

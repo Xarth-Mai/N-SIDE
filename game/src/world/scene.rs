@@ -57,6 +57,8 @@ impl PreparedScene {
             .map_err(|e| format!("[geometry] {}: {e}", map_path.display()))?;
         parts.extend(facades(&map, &appearance)?);
         parts.extend(terrace_retainers(&map)?);
+        let court_retaining = court_retaining_details(&map, &parts)?;
+        parts.extend(court_retaining);
         parts.extend(star_screens(&map)?);
         parts.extend(business_signs(&map)?);
         for part in &mut parts {
@@ -1811,6 +1813,116 @@ fn terrace_retainers(map: &Map) -> Result<Vec<GeometryPart>, String> {
     Ok(parts)
 }
 
+fn court_retaining_details(
+    map: &Map,
+    generated: &[GeometryPart],
+) -> Result<Vec<GeometryPart>, String> {
+    let (index, surface) = map
+        .surfaces
+        .iter()
+        .enumerate()
+        .find(|(_, surface)| surface.id.as_deref() == Some("shop-tree-court"))
+        .ok_or("[geometry/court-retaining] missing shop-tree-court")?;
+    if surface.polygon.len() != 5 || surface.elevated {
+        return Err("[geometry/court-retaining] authored court boundary changed".into());
+    }
+    let [left, right] = [surface.polygon[4], surface.polygon[3]];
+    if (left[1] - right[1]).abs() > 0.001 || right[0] <= left[0] {
+        return Err("[geometry/court-retaining] authored north edge changed".into());
+    }
+    let source = format!("/surfaces/{index} (shop-tree-court)");
+    let wall = generated
+        .iter()
+        .find(|part| part.source == format!("{source}/structure"))
+        .ok_or("[geometry/court-retaining] missing generated cut wall")?;
+    // Follow the actual rendered cut crest, including native triangulation breakpoints
+    let mut crest: Vec<_> = wall
+        .mesh
+        .attribute(Mesh::ATTRIBUTE_POSITION)
+        .and_then(|values| values.as_float3())
+        .ok_or("[geometry/court-retaining] cut wall has no positions")?
+        .iter()
+        .filter(|p| {
+            (f64::from(p[2]) + left[1]).abs() < 0.001
+                && f64::from(p[1]) > surface.elevation + 0.25
+                && f64::from(p[0]) >= left[0] - 0.001
+                && f64::from(p[0]) <= right[0] + 0.001
+        })
+        .map(|p| [p[0], p[1]])
+        .collect();
+    crest.sort_by(|a, b| a[0].total_cmp(&b[0]));
+    crest.dedup_by(|a, b| (a[0] - b[0]).abs() < 0.001);
+    if crest.len() < 2
+        || (f64::from(crest[0][0]) - left[0]).abs() > 0.001
+        || (f64::from(crest.last().unwrap()[0]) - right[0]).abs() > 0.001
+    {
+        return Err("[geometry/court-retaining] north crest is incomplete".into());
+    }
+    let mut batches = BTreeMap::new();
+    for edge in crest.windows(2) {
+        let dx = edge[1][0] - edge[0][0];
+        let dz = edge[1][1] - edge[0][1];
+        let length = dx.hypot(dz);
+        add_box(
+            &mut batches,
+            "concrete",
+            Vec3::new(
+                (edge[0][0] + edge[1][0]) / 2.,
+                (edge[0][1] + edge[1][1]) / 2. - 0.02,
+                -(left[1] + 0.06) as f32,
+            ),
+            Vec3::new(length - 0.005_f32.min(length * 0.1), 0.16, 0.46),
+            Quat::from_rotation_z(dz.atan2(dx)),
+        )?;
+    }
+    let height = |x: f32| {
+        let edge = crest
+            .windows(2)
+            .find(|p| x >= p[0][0] && x <= p[1][0])
+            .unwrap();
+        edge[0][1] + (edge[1][1] - edge[0][1]) * (x - edge[0][0]) / (edge[1][0] - edge[0][0])
+    };
+    // Narrow construction joints divide the existing concrete face, without another wall skin
+    let bays = ((right[0] - left[0]) / 3.).ceil() as usize;
+    for bay in 0..bays {
+        let x = (left[0] + (bay as f64 + 0.5) * (right[0] - left[0]) / bays as f64) as f32;
+        let top = height(x) - 0.10;
+        add_box(
+            &mut batches,
+            "trim",
+            Vec3::new(
+                x,
+                (surface.elevation as f32 + top) / 2.,
+                -(left[1] - 0.02) as f32,
+            ),
+            Vec3::new(0.035, top - surface.elevation as f32, 0.04),
+            Quat::IDENTITY,
+        )?;
+    }
+    for x in [left[0] as f32 + 0.14, right[0] as f32 - 0.14] {
+        let top = height(x) - 0.08;
+        add_box(
+            &mut batches,
+            "concrete",
+            Vec3::new(
+                x,
+                (surface.elevation as f32 + top) / 2.,
+                -(left[1] - 0.01) as f32,
+            ),
+            Vec3::new(0.28, top - surface.elevation as f32, 0.26),
+            Quat::IDENTITY,
+        )?;
+    }
+    Ok(batches
+        .into_iter()
+        .map(|(material, mesh)| GeometryPart {
+            source: format!("{source}/retaining-north-detail"),
+            material,
+            mesh,
+        })
+        .collect())
+}
+
 fn contains(p: [f64; 2], polygon: &[[f64; 2]]) -> bool {
     let mut inside = false;
     for (a, b) in polygon
@@ -2593,6 +2705,125 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn court_retaining_details_follow_real_cut_crest_and_preserve_routes() {
+        use geo::Intersects;
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let ground = Ground::new(&map).unwrap();
+        let generated = geometry::generate(&map).unwrap();
+        let parts = court_retaining_details(&map, &generated).unwrap();
+        assert_eq!(parts.len(), 2);
+        let roads: Vec<_> = map
+            .roads
+            .iter()
+            .filter(|r| r.building.is_none() && !matches!(r.kind.as_str(), "lift" | "interior"))
+            .flat_map(|r| {
+                let points: Vec<_> = r.nodes.iter().map(|n| map.nodes[n]).collect();
+                let offsets = geometry::road_offsets(&points, r.width + 0.64);
+                points
+                    .windows(2)
+                    .enumerate()
+                    .map(|(i, pair)| geometry::ribbon(pair[0], pair[1], offsets[i], offsets[i + 1]))
+                    .collect::<Vec<_>>()
+            })
+            .collect();
+        let mut boxes = 0;
+        let mut caps = 0;
+        let mut crest_min = f32::INFINITY;
+        let mut crest_max = f32::NEG_INFINITY;
+        for part in &parts {
+            assert_eq!(
+                part.source,
+                "/surfaces/2 (shop-tree-court)/retaining-north-detail"
+            );
+            assert!(matches!(part.material.as_str(), "concrete" | "trim"));
+            let positions = part
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            assert!(positions.iter().flatten().all(|p| p.is_finite()));
+            assert_eq!(positions.len() % 24, 0);
+            assert_eq!(
+                part.mesh.indices().unwrap().len(),
+                positions.len() / 24 * 36
+            );
+            let bevy::mesh::VertexAttributeValues::Float32x2(uvs) =
+                part.mesh.attribute(Mesh::ATTRIBUTE_UV_0).unwrap()
+            else {
+                panic!("missing metre UVs")
+            };
+            assert!(uvs.iter().flatten().all(|v| v.is_finite() && *v >= 0.));
+            for cube in positions.as_chunks::<24>().0 {
+                boxes += 1;
+                let (lo, hi) = cube.iter().fold(
+                    (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                    |(lo, hi), p| (lo.min(Vec3::from(*p)), hi.max(Vec3::from(*p))),
+                );
+                assert!((hi - lo).cmpgt(Vec3::ZERO).all());
+                assert!(lo.y >= 23. - 0.001, "new footing extends below the court");
+                assert!(lo.x >= 44.9 && hi.x <= 69.1);
+                assert!(
+                    lo.z >= -223.30 && hi.z <= -222.82,
+                    "detail leaves north wall strip"
+                );
+                let footprint = geo::Rect::new(
+                    geo::Coord {
+                        x: f64::from(lo.x),
+                        y: -f64::from(hi.z),
+                    },
+                    geo::Coord {
+                        x: f64::from(hi.x),
+                        y: -f64::from(lo.z),
+                    },
+                )
+                .to_polygon();
+                assert!(
+                    roads.iter().all(|r| !r.intersects(&footprint)),
+                    "wall detail obstructs road plus capsule clearance"
+                );
+                assert!(
+                    map.buildings
+                        .iter()
+                        .all(|building| cube.iter().all(|p| !contains(
+                            [f64::from(p[0]), -f64::from(p[2])],
+                            &building.polygon
+                        ))),
+                    "wall detail intersects building"
+                );
+                if ((hi.z - lo.z) - 0.46).abs() < 0.001 {
+                    caps += 1;
+                    let center = (lo + hi) / 2.;
+                    let crest = ground.height([f64::from(center.x), 223.]) as f32;
+                    assert!(
+                        (center.y + 0.02 - crest).abs() < 0.002,
+                        "cap floats above or cuts across the real wall crest"
+                    );
+                    crest_min = crest_min.min(crest);
+                    crest_max = crest_max.max(crest);
+                }
+            }
+        }
+        assert!(
+            caps > 1 && crest_max - crest_min > 0.2,
+            "crest should follow actual sloping ground"
+        );
+        let collision = super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
+        assert_eq!(collision.triangle_count(), boxes * 12);
+        eprintln!(
+            "court retaining: crest={crest_min:.3}..{crest_max:.3}m, court=23m, {caps} cap pieces, {boxes} total boxes, {} collision triangles, 2 material batches; road clearance=0.32m",
+            collision.triangle_count()
+        );
+        assert!(
+            court_retaining_details(&map, &[])
+                .err()
+                .unwrap()
+                .contains("missing generated cut wall")
+        );
+    }
 
     #[test]
     fn terrace_retainers_follow_fill_edges_and_leave_stair_access_clear() {
@@ -3690,13 +3921,15 @@ mod tests {
                     let actual = p.transform.transform_point(*vertex);
                     radius = radius.max((actual.x - at.x).hypot(actual.z - at.z));
                     top = top.max(actual.y);
-                    if vertex.y < 0.03 {
+                    // Ground cover has curved leaves and rock sides above its planar basal row
+                    if vertex.y < if kind == 0 { 0.03 } else { 0.001 } {
                         let buried = ground.height([f64::from(actual.x), -f64::from(actual.z)])
                             - f64::from(actual.y);
                         assert!(
                             (-0.004..if kind == 0 { 0.32 } else { 0.16 }).contains(&buried),
-                            "{} actual root unsupported/overburied {buried:.6}m",
-                            p.source
+                            "{} {} basal vertex {vertex:?} unsupported/overburied {buried:.6}m",
+                            p.source,
+                            p.model
                         );
                         root_burial[kind] = root_burial[kind].max(buried);
                     }
@@ -3738,7 +3971,8 @@ mod tests {
                 );
             }
         }
-        assert!(triangle_total <= 74_784);
+        // Current family ceiling: 12 shrubs, 36 curved grass clumps, 9 textured rocks
+        assert!(triangle_total <= 12 * 5_824 + 36 * 1_320 + 9 * 320);
         eprintln!(
             "understory accepted={counts:?} total={} triangles={triangle_total} max_actual_root_burial_by_shrub_grass_rock={root_burial:?}",
             counts.iter().flatten().sum::<usize>()

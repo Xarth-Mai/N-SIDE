@@ -588,6 +588,14 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
     let target = [80., 245., 27.65];
     println!("[visual/view] name=inspect-shop-retaining eye={eye:?} target={target:?} fov=55");
     views.push(("inspect-shop-retaining", view(eye, target)));
+    // The public tree_entry keeps the north retaining face clear of trees[45] on the left
+    let mut eye = map.nodes["tree_entry"];
+    eye[2] += 1.7;
+    let target = [60., 223., eye[2]];
+    println!(
+        "[visual/view] name=inspect-tree-court-retaining source=surfaces[2] eye={eye:?} target={target:?} fov=55"
+    );
+    views.push(("inspect-tree-court-retaining", view(eye, target)));
     views.extend([
         (
             "poster-station",

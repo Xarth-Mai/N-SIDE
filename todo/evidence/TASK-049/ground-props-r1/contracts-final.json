@@ -1,0 +1,22 @@
+[
+  {
+    "file": "source-assets/environment-kit/vegetation/grass-forest.glb",
+    "sha256": "17335ff05ada888c28266c978b655c9e1a6575eea631d7be5e77930c123d91b6",
+    "triangles": 1320,
+    "height": 0.3499999940395355,
+    "maximum_radius": 0.28967211495226874,
+    "minimum_triangle_area": 1.880743191183603e-05,
+    "embedded_images": 1,
+    "status": "PASS"
+  },
+  {
+    "file": "source-assets/environment-kit/vegetation/rock-forest.glb",
+    "sha256": "0fbe9b1b9b0513ce6fb6ce794d9ff55744caa6459e94e353c2fb0cb818223788",
+    "triangles": 320,
+    "height": 0.6499999761581421,
+    "maximum_radius": 0.74498450756073,
+    "minimum_triangle_area": 0.0055346405487730265,
+    "embedded_images": 2,
+    "status": "PASS"
+  }
+]

@@ -16,7 +16,7 @@ source = Path(__file__).resolve().parent
 root = source.parents[3]
 parser = argparse.ArgumentParser()
 parser.add_argument('--master', type=Path, default=source / 'yao-grey-study.blend')
-parser.add_argument('--output', type=Path, default=root / 'todo/evidence/TASK-047/material-r1/dcc-check.json')
+parser.add_argument('--output', type=Path, default=root / 'todo/evidence/TASK-047/model-r7/dcc-check.json')
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
 bpy.ops.wm.open_mainfile(filepath=str(args.master))
 rig = bpy.data.objects['CHR001_Rig']
@@ -88,6 +88,25 @@ for name, period in (('Idle', 120), ('Walk', 48), ('Run', 40)):
     assert floor_min > -.005, f'{name}: floor penetration {floor_min} m'
     assert max(contact_errors) < .005, f'{name}: stance-foot ground distance {max(contact_errors)} m'
     results.append({'clip': name, 'sampled_frames': period+1, 'loop_matrix_max_delta': loop_error, 'minimum_sole_height_m': floor_min, 'max_stance_height_error_m': max(contact_errors)})
+assert not any(obj.name.startswith('Zip_Tape.') for obj in meshes), 'Zipper tape must share the jacket mesh'
+print_gaps=[]
+for clip, frames in (('Idle',(1,)),('Walk',(8,)),('Run',(1,6,11,16,21,26,31,36))):
+    rig.animation_data.action=bpy.data.actions[clip]
+    for frame in frames:
+        scene.frame_set(frame)
+        graph=bpy.context.evaluated_depsgraph_get()
+        cloth=BVHTree.FromObject(bpy.data.objects['TShirt'],graph)
+        for obj in (o for o in meshes if o.name.startswith('Tee_')):
+            evaluated=obj.evaluated_get(graph)
+            data=evaluated.to_mesh()
+            samples=[v.co for v in data.vertices]
+            samples += [sum((data.vertices[i].co for i in polygon.vertices),Vector())/len(polygon.vertices) for polygon in data.polygons]
+            for point in samples:
+                hit,normal,_,distance=cloth.find_nearest(point)
+                signed_gap=(point-hit).dot(normal)
+                assert 0 < signed_gap < .002, f'{clip} {frame} {obj.name}: printed mark crosses or floats above shirt: {signed_gap}'
+                print_gaps.append(signed_gap)
+            evaluated.to_mesh_clear()
 rig.animation_data.action = bpy.data.actions['Idle']
 scene.frame_set(1)
 surface = BVHTree.FromObject(bpy.data.objects['Face_Head'], bpy.context.evaluated_depsgraph_get())
@@ -168,6 +187,6 @@ top_origin=Vector((0,.018,1.85))
 top_hair=hair_surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
 top_head=surface.ray_cast(top_origin,Vector((0,0,-1)))[0]
 assert top_hair is not None and top_head is not None and top_hair.z>top_head.z+.001, 'Open crown exposes the head from above'
-report = {'status':'PASS','asset':'CHR-001 modelling candidate r6 / material r1','scope':'DCC material channels and color space, joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance','material':material_check,'clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS'}
+report = {'status':'PASS','asset':'CHR-001 modelling candidate r7 / material r1','scope':'DCC material channels and color space, joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage, hair UV and chest print fit in 10 poses; excludes game-controller speed and artistic acceptance','material':material_check,'clips':results,'facial_surface_gaps':feature_gaps,'nasal_profile':nasal_profile,'hair_cap_min_clearance_m':min(cap_gaps),'back_crown_coverage_samples':len(coverage),'back_crown_min_coverage_m':min(coverage),'top_crown_clearance_m':top_hair.z-top_head.z,'hair_uv_region':'PASS','chest_print_gap_m':{'minimum':min(print_gaps),'maximum':max(print_gaps),'poses':10}}
 print(json.dumps(report,indent=2))
 args.output.write_text(json.dumps(report,indent=2)+'\n')
