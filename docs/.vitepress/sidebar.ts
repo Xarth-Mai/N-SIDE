@@ -1,3 +1,4 @@
+import packageInfo from '../../package.json' with { type: 'json' }
 import type { StoryNode } from '../../tools/story-graph.ts'
 import type { DefaultTheme } from 'vitepress'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
@@ -77,5 +78,5 @@ export function buildSidebar(root: string, profile = 'dev') {
     ...['direction', 'design', 'engineering', 'production', 'validation', 'handbook', 'decisions'].map((name, index) =>
       section(root, join(root, 'dev', name), ['方向', '设计', '工程', '制作', '验收', '开发手册', '决策'][index])),
   ].filter(item => item !== null) })
-  return [{ text: 'N:SIDE', link: '/' }, ...groups]
+  return [{ text: `N:SIDE <span title="Wiki 版本" style="float: right; font-size: 12px; font-weight: 400; color: var(--vp-c-text-2)">v${packageInfo.version}</span>`, link: '/' }, ...groups]
 }

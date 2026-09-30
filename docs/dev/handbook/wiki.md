@@ -27,6 +27,8 @@ bun run docs:preview:player
 
 ## 类型检查与版本
 
+Wiki 侧栏顶部 `N:SIDE` 同一行右侧显示 `package.json` 的 `version`，玩家站与开发站共用同一版本；发布 Wiki 版本时更新该字段
+
 自有工具、测试、Wiki 配置使用 TypeScript，Vue 与页面脚本使用 `lang="ts"`。`tsconfig.json` 严格检查工具与测试，`tsconfig.vue.json` 检查组件；两者不输出编译文件，历史证据、第三方 Skills 和构建快照不参与迁移
 
 `bun run check:types` 使用当前 TypeScript 7 检查工具，通过 `tools/check-vue.ts` 调用 vue-tsc 与微软的 TypeScript 6 兼容 API 检查组件。vue-tsc 的 require 钩子需要 Node；Bun 负责启动，不能给该子进程强制添加 `--bun`。反向测试以真实 SFC 中的类型错误验证检查器没有静默跳过文件
