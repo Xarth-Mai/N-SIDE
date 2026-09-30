@@ -1,0 +1,160 @@
+{
+  "status": "FAIL",
+  "script": {
+    "scene": "walk-preview",
+    "view": "shop",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 240,
+    "seed": 0,
+    "timeout_seconds": 300,
+    "keyframes": [
+      29,
+      59,
+      74,
+      89,
+      109,
+      139,
+      159,
+      184,
+      204,
+      219,
+      239
+    ],
+    "events": [
+      {
+        "start": 30,
+        "end": 31,
+        "keys": [
+          "Enter"
+        ]
+      },
+      {
+        "start": 60,
+        "end": 90,
+        "look": [
+          17.45329252,
+          0.0
+        ]
+      },
+      {
+        "start": 110,
+        "end": 140,
+        "look": [
+          17.45329252,
+          0.0
+        ]
+      },
+      {
+        "start": 160,
+        "end": 205,
+        "look": [
+          -17.45329252,
+          0.0
+        ]
+      }
+    ],
+    "waits": [
+      {
+        "frame": 34,
+        "game_page": "world"
+      }
+    ],
+    "assertions": [
+      {
+        "name": "real world and idle character ready before orbit",
+        "from": 50,
+        "to": 59,
+        "game_page": "world",
+        "world_ready": true,
+        "pointer_locked": true,
+        "player_grounded": true,
+        "character": {
+          "ready": true,
+          "clip": "Idle",
+          "paused": false,
+          "min_advance": 0.28
+        }
+      },
+      {
+        "name": "locked mouse rotates from front to profile",
+        "from": 59,
+        "to": 89,
+        "pointer_locked": true,
+        "min_rotation": 1.5,
+        "max_rotation": 1.65,
+        "max_player_distance": 0.001
+      },
+      {
+        "name": "locked mouse reaches the back after half a turn",
+        "from": 59,
+        "to": 139,
+        "pointer_locked": true,
+        "min_rotation": 3.05,
+        "max_rotation": 3.15,
+        "max_player_distance": 0.001
+      },
+      {
+        "name": "return orbit exposes the front three-quarter view",
+        "from": 159,
+        "to": 204,
+        "pointer_locked": true,
+        "min_rotation": 2.3,
+        "max_rotation": 2.4,
+        "max_player_distance": 0.001
+      },
+      {
+        "name": "idle animation advances while the grounded actor stays put",
+        "from": 50,
+        "to": 239,
+        "game_page": "world",
+        "player_grounded": true,
+        "max_player_distance": 0.001,
+        "max_player_resets": 0,
+        "max_player_jumps": 0,
+        "min_player_camera_distance": 0.8,
+        "character": {
+          "ready": true,
+          "clip": "Idle",
+          "paused": false,
+          "min_advance": 6.25
+        }
+      },
+      {
+        "name": "final idle view is stable after releasing mouse input",
+        "from": 219,
+        "to": 239,
+        "pointer_locked": true,
+        "max_rotation": 0.0001,
+        "max_distance": 0.0001,
+        "max_player_distance": 0.001
+      }
+    ]
+  },
+  "script_sha256": "0a3081854ffd0266c684aafedbf83f92ddcd922c646da67b0f7005d4ee6334d3",
+  "git_commit": "62f909f02fabb433727c4be5fc8c5a6a716e8a1e",
+  "git_worktree": "M AGENTS.md\n M docs/dev/design/catalogs/characters.json\n M docs/dev/design/quests/QST-002/README.md\n M docs/dev/design/quests/QST-002/development.md\n M docs/dev/design/quests/QST-002/narrative.json\n M docs/dev/design/quests/QST-009/README.md\n M docs/dev/design/quests/campaign-sequences.md\n M docs/dev/design/quests/index.md\n M docs/dev/design/quests/scenes.md\n M docs/dev/design/quests/world-stories.md\n M docs/dev/design/story-continuity.md\n M docs/dev/production/narrative.md\n M docs/dev/validation/runtime.md\n M docs/player/characters/index.md\n M docs/player/story/main/last-toy.md\n M todo/tasks/TASK-046-story-world-closure.md\n?? docs/dev/design/quests/QST-001/\n?? docs/dev/design/quests/QST-002/dialogue.csv\n?? docs/dev/design/quests/QST-002/script.md\n?? docs/dev/design/quests/QST-003/\n?? docs/dev/design/quests/QST-004/\n?? docs/dev/design/quests/QST-005/\n?? docs/dev/design/quests/QST-006/\n?? docs/dev/design/quests/QST-007/\n?? docs/dev/design/quests/QST-008/\n?? docs/dev/design/quests/QST-009/dialogue.csv\n?? docs/dev/design/quests/QST-009/script.md\n?? docs/dev/design/quests/QST-010/\n?? docs/dev/design/quests/QST-019/\n?? docs/dev/design/quests/QST-020/\n?? docs/dev/design/quests/QST-021/\n?? docs/dev/design/quests/QST-022/\n?? docs/dev/design/quests/QST-023/\n?? docs/dev/design/quests/QST-024/\n?? docs/dev/design/quests/QST-025/\n?? docs/dev/design/quests/QST-026/\n?? docs/dev/design/quests/QST-027/\n?? docs/dev/design/quests/QST-101/\n?? docs/dev/design/quests/QST-102/\n?? docs/dev/design/quests/QST-103/\n?? docs/dev/design/quests/QST-104/\n?? docs/dev/design/quests/QST-105/\n?? docs/dev/design/quests/QST-106/\n?? docs/dev/design/quests/QST-107/\n?? docs/dev/design/quests/QST-108/\n?? docs/dev/design/quests/script-format.md\n?? docs/player/characters/supporting/\n?? todo/evidence/TASK-046/production-script/\n?? todo/evidence/TASK-047/ling-model-r3/\n?? todo/evidence/TASK-047/model-r8/",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.8-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "NOT RUN",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/belle-player-share/local-project",
+  "binary_sha256": "b715d25fa7adb824b3b8366e83325085527ebdf6d93ac29b851c0fcff08f4cd5",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/belle-player-share/local-project",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/visual-r10/belle-orbit/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/visual-r10/belle-orbit",
+    "--walk-preview",
+    "--character-preview=CHR-002"
+  ],
+  "runtime_exit_code": 101,
+  "error": "Native capture exited 101; see runtime.log and state.json when available",
+  "elapsed_wall_seconds": 2.345347151000169
+}

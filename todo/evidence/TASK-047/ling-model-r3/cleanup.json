@@ -1,0 +1,52 @@
+{
+  "reason": "Task redirected; baseline six views actually inspected; unpublished r3 candidate canceled and official inputs restored",
+  "removed": [
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/baseline.blend",
+      "bytes": 4019908,
+      "sha256": "07d8d00577b5fe5868a6157a981b6ade04b949662f211f2594f418b9d9df7850"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/baseline.glb",
+      "bytes": 1518536,
+      "sha256": "f4d7cca6cc607a40817a788692c7348efdbb7c6335761a8f880e81487633cbdf"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/before/body-front.png",
+      "bytes": 577280,
+      "sha256": "b631ccebc5d2b46ac9f460dab2fbbe88ac23ec603fb1e49dc116f39ec252065b"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/before/body-quarter.png",
+      "bytes": 590902,
+      "sha256": "586b30cee15a16186dfaa92b1bb36583a5bbe01ded9a2c80b3e4219d139f4fc4"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/before/body-side.png",
+      "bytes": 558952,
+      "sha256": "a5542bb3aeea64d16f23086974092032136e2bf9a21b29d188c07172887d213a"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/before/body-back.png",
+      "bytes": 583089,
+      "sha256": "b782dc45e348b7477883131ec3219419ebd1fffff4305d4cce150502b0f4b593"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/before/face-front.png",
+      "bytes": 717812,
+      "sha256": "d8bb84bdbdd4655fbb8780941d9e69b37479d6321c8bd2980224748013e3eb54"
+    },
+    {
+      "path": "output/characters/CHR-002/ling-model-r3/before/hair-quarter.png",
+      "bytes": 627134,
+      "sha256": "c965e12718063b3a36e671e797b6e4e7cf9cbd696d39d2983f2036566715c69f"
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/ling-grey-study.blend1",
+      "bytes": 4019908,
+      "sha256": "07d8d00577b5fe5868a6157a981b6ade04b949662f211f2594f418b9d9df7850"
+    }
+  ],
+  "removed_bytes": 13213521,
+  "remaining_visual_files": []
+}

@@ -1,0 +1,55 @@
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/lzzz/.config/blender/4.5').
+21:00:53 | INFO: Data are loaded, start creating Blender stuff
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_body_Body.dmx_MESH
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Bracelet_Body_bracelet.dmx_
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Bracelet 2_Body_bracelet2.d
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Earring R_Body_earring_R.dm
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Earring L_Body_earring_R.dm
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Game Machine_Body_gamemachi
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Hairclip_Body_hairclip.dmx_
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Necklace_Body_necklace.dmx_
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Socks Cloth_Body_socks_clot
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Vest_Body_Vest.dmx_MESH
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_hair_Bodyhair.dmx_MESH
+21:00:53 | INFO: Blender create Mesh node Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_head_Bodyhead.dmx_MESH
+21:00:53 | INFO: glTF import finished in 0.20s
+Info: Saved as "reference.blend"
+INFO Draco mesh compression is available, use library at /home/lzzz/MyProjects/N-SIDE/output/tools/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+21:00:58 | INFO: Starting glTF 2.0 export
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_body_Body.dmx_MESH
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | INFO: Primitives created: 5
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Bracelet_Body_bracelet.dmx_
+21:00:58 | INFO: Primitives created: 1
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Bracelet 2_Body_bracelet2.d
+21:00:58 | INFO: Primitives created: 1
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Earring R_Body_earring_R.dm
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | INFO: Primitives created: 2
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Earring L_Body_earring_R.dm
+21:00:58 | INFO: Primitives created: 2
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Game Machine_Body_gamemachi
+21:00:58 | INFO: Primitives created: 3
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Hairclip_Body_hairclip.dmx_
+21:00:58 | INFO: Primitives created: 1
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Necklace_Body_necklace.dmx_
+21:00:58 | INFO: Primitives created: 1
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Socks Cloth_Body_socks_clot
+21:00:58 | INFO: Primitives created: 1
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_Vest_Body_Vest.dmx_MESH
+21:00:58 | INFO: Primitives created: 2
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_hair_Bodyhair.dmx_MESH
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | INFO: Primitives created: 1
+21:00:58 | INFO: Extracting primitive: Belle\ZZZ\rstar\Belle\Belle_SFM.mdl_head_Bodyhead.dmx_MESH
+21:00:58 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+21:00:58 | INFO: Primitives created: 2
+21:01:00 | INFO: Finished glTF 2.0 export in 2.2197155952453613 s
+
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

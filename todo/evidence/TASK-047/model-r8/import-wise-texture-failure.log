@@ -1,0 +1,13 @@
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Error: Cannot read '/home/lzzz/MyProjects/N-SIDE/toon01.bmp': No such file or directory
+WARNING:root:Cannot load texture '/home/lzzz/MyProjects/N-SIDE/toon01.bmp': No such file
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/import-reference.py", line 25, in <module>
+    assert im.has_data and im.size[0]>0 and im.size[1]>0,im.filepath
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: /home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/official-package/hair.bmp
+Info: Imported MMD model from "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/official-package/哲.pmx"
+
+Error: script failed, file: 'output/assets/zzz-reference/wise/import-reference.py', exiting.
+
+Blender quit

@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "file": "wise-official-local.blend",
+      "sha256": "b782abd481f2ad8e99ee4eedd94442b791c9a3b47b94e95a6470245f274a076f",
+      "geometry_rig_weights_uv_sha256": "4b1678de9ce0eb0174b5bc0d84061ec369eec780bd0ad623d4c2a4ee3a7d9188",
+      "vertices": 22118,
+      "triangles": 28901,
+      "imported_bones_including_helpers": 332,
+      "materials": 15,
+      "non_deform_groups": [
+        "mmd_edge_scale",
+        "mmd_vertex_order"
+      ],
+      "morphs": 52,
+      "packed_images": 9,
+      "actions": 0,
+      "max_weight_sum_error": 1.564621925354004e-07
+    },
+    {
+      "file": "wise-official-preview.blend",
+      "sha256": "d01ec42883a63d9ab2baa067c53a2ee62dae1d598e02cc0c8d4aff98c0b0e986",
+      "geometry_rig_weights_uv_sha256": "4b1678de9ce0eb0174b5bc0d84061ec369eec780bd0ad623d4c2a4ee3a7d9188",
+      "vertices": 22118,
+      "triangles": 28901,
+      "imported_bones_including_helpers": 332,
+      "materials": 15,
+      "non_deform_groups": [
+        "mmd_edge_scale",
+        "mmd_vertex_order"
+      ],
+      "morphs": 52,
+      "packed_images": 3,
+      "actions": 0,
+      "max_weight_sum_error": 1.564621925354004e-07
+    }
+  ],
+  "scope": "Static geometry, normals-independent source topology, source UV, skeleton rest, weights, morph finite values, packed images; no game actions or physical simulation; raw and preview topology/rig/weights/UV exact-match"
+}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/wise-official-local.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/wise-official-preview.blend"
+
+Blender quit

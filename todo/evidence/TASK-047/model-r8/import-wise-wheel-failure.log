@@ -1,0 +1,28 @@
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/import-reference.py", line 11, in <module>
+    import mmd_tools
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/__init__.py", line 30, in <module>
+    auto_load.init(PACKAGE_NAME)
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/auto_load.py", line 27, in init
+    modules = get_all_submodules(Path(__file__).parent, package_name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/auto_load.py", line 58, in get_all_submodules
+    return list(iter_submodules(directory, package_name))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/auto_load.py", line 63, in iter_submodules
+    yield importlib.import_module("." + name, package_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender-4.5.14-linux-x64/4.5/python/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/operators/model_validation.py", line 17, in <module>
+    cc_s2t = OpenCC("s2t")
+             ^^^^^^^^^^^^^
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/wheels/opencc_python_reimplemented-0.1.7-py2.py3-none-any.whl/opencc/opencc.py", line 55, in __init__
+  File "/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/wheels/opencc_python_reimplemented-0.1.7-py2.py3-none-any.whl/opencc/opencc.py", line 106, in _init_dict
+NotADirectoryError: [Errno 20] Not a directory: '/home/lzzz/MyProjects/N-SIDE/output/tools/blender_mmd_tools-4.5.14/mmd_tools/wheels/opencc_python_reimplemented-0.1.7-py2.py3-none-any.whl/opencc/config/s2t.json'
+
+Error: script failed, file: 'output/assets/zzz-reference/wise/import-reference.py', exiting.
+
+Blender quit

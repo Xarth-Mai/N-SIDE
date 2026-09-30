@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "asset": "CHR-002 modelling candidate r3",
+  "scope": "DCC joint transforms, loop endpoints, sole ground distance, facial fit, eye convexity/lid coverage, continuous nasal profile, subdivided hair clearance/coverage and hair UV; excludes game-controller speed and artistic acceptance",
+  "clips": [
+    {
+      "clip": "Idle",
+      "sampled_frames": 121,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -1.862645149230957e-09,
+      "max_stance_height_error_m": 0.001891976222395897
+    },
+    {
+      "clip": "Walk",
+      "sampled_frames": 49,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -9.67269926377412e-08,
+      "max_stance_height_error_m": 1.5576799228256277e-07
+    },
+    {
+      "clip": "Run",
+      "sampled_frames": 41,
+      "loop_matrix_max_delta": 0.0,
+      "minimum_sole_height_m": -8.792613215291567e-08,
+      "max_stance_height_error_m": 8.792613215291567e-08
+    }
+  ],
+  "facial_surface_gaps": {
+    "Mouth": {
+      "minimum_m": 8.425116539001465e-05,
+      "maximum_m": 0.0010873451828956604
+    },
+    "Eye_White.L": {
+      "minimum_m": 0.0006147176027297974,
+      "maximum_m": 0.0026543661952018738
+    },
+    "Eye_White.R": {
+      "minimum_m": 0.0006147325038909912,
+      "maximum_m": 0.002654455602169037
+    },
+    "Iris_hair.L": {
+      "minimum_m": 0.0010629668831825256,
+      "maximum_m": 0.0030256882309913635
+    },
+    "Iris_hair.R": {
+      "minimum_m": 0.0010629147291183472,
+      "maximum_m": 0.003024861216545105
+    },
+    "Iris_ink.L": {
+      "minimum_m": 0.0020310580730438232,
+      "maximum_m": 0.003309473395347595
+    },
+    "Iris_ink.R": {
+      "minimum_m": 0.0018778666853904724,
+      "maximum_m": 0.0033044442534446716
+    },
+    "Eye_Glint.L": {
+      "minimum_m": 0.0034636855125427246,
+      "maximum_m": 0.0035867467522621155
+    },
+    "Eye_Glint.R": {
+      "minimum_m": 0.0034479498863220215,
+      "maximum_m": 0.0035830512642860413
+    }
+  },
+  "nasal_profile": [
+    {
+      "height_m": 1.4549442235706376,
+      "projection_from_cheeks_m": 0.011064738035202026
+    },
+    {
+      "height_m": 1.4596742112935588,
+      "projection_from_cheeks_m": 0.012131750583648682
+    },
+    {
+      "height_m": 1.4681881891948176,
+      "projection_from_cheeks_m": 0.00995609164237976
+    },
+    {
+      "height_m": 1.4785941621852448,
+      "projection_from_cheeks_m": 0.006964534521102905
+    }
+  ],
+  "hair_cap_min_clearance_m": 0.010924091802759217,
+  "back_crown_coverage_samples": 36,
+  "back_crown_min_coverage_m": 0.015279667652692674,
+  "top_crown_clearance_m": 0.013496637344360352,
+  "hair_uv_region": "PASS"
+}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-002/model/ling-grey-study.blend"
+
+Blender quit

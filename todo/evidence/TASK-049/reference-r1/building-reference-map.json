@@ -1,0 +1,664 @@
+{
+  "review_date": "2026-09-30",
+  "status": "REFERENCE_RESEARCH_ONLY",
+  "source_path": "source-assets/district-map/district.json",
+  "source_sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+  "building_count": 231,
+  "family_count": 16,
+  "sources": [
+    {
+      "id": "S01",
+      "label": "Random Play",
+      "provenance": "official",
+      "page_url": "https://zenless.hoyoverse.com/zh-cn/news/112950",
+      "image_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/09/08/b8a2ea18c7869e86dad2e6ce3a6d0e7d_4881018303094535194.jpg",
+      "viewed": true,
+      "observations": "黄色首层板面、绕角主招牌、大橱窗、独立店门与上层砖墙",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S02",
+      "label": "Quality Tea",
+      "provenance": "community screenshot",
+      "page_url": "https://www.hoyolab.com/article/31106713",
+      "image_url": "https://upload-os-bbs.hoyolab.com/upload/2024/07/16/31864461/698006b8ea53e3f61725c76a8736b20a_2449235897917906706.jpg",
+      "viewed": true,
+      "observations": "退入售卖窗、上翻小棚、窗前高凳、邻接外梯；截图署名 Vidservent",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S03",
+      "label": "Gravity Cinema",
+      "provenance": "community screenshot",
+      "page_url": "https://www.miyoushe.com/zzz/article/54836136",
+      "image_url": "https://upload-bbs.miyoushe.com/upload/2024/07/08/158756436/13330e7a1d1c8c6d0813b23bc9c65bcd_3098545530441864915.jpg",
+      "viewed": true,
+      "observations": "竖肋大面、大竖海报、红色门框、低台阶与座椅；截图署名九尾狐",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S04",
+      "label": "141 Convenience Store",
+      "provenance": "community screenshot",
+      "page_url": "https://www.hoyolab.com/article/31185512",
+      "image_url": "https://upload-os-bbs.hoyolab.com/upload/2024/07/18/87315851/07c542439b3d5a23ef595618086cdf54_7625111118623777778.jpg",
+      "viewed": true,
+      "observations": "布雨棚、货架分组、空出的入门线、玻璃门贴纸；截图署名 Clown",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S05",
+      "label": "Lumina Square Coff Cafe exterior",
+      "provenance": "community screenshot",
+      "page_url": "https://www.hoyolab.com/article/35870103",
+      "image_url": "https://upload-os-bbs.hoyolab.com/upload/2024/12/26/398459160/40646740f7a9f8da0aadf37b1ded4183_7991507005065272184.png",
+      "viewed": true,
+      "observations": "首层大窗、外侧折返梯、屋顶栏杆和外梯下的背面空间；截图署名 Matius",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S06",
+      "label": "Lumina cafe terrace",
+      "provenance": "community screenshot",
+      "page_url": "https://www.hoyolab.com/article/34000921",
+      "image_url": "https://upload-os-bbs.hoyolab.com/upload/2024/10/07/266333308/a5048aff7d6a73b7abffa23529ac828b_7921632593120961139.jpg",
+      "viewed": true,
+      "observations": "木地板、重复栏杆、两组伞桌、背景窗带及高低檐口；截图署名 RinRin",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S07",
+      "label": "Lumina Square metro entrance",
+      "provenance": "media original screenshot",
+      "page_url": "https://dengekionline.com/article/202406/9315",
+      "image_url": "https://cimg.kgl-systems.io/camion/files/dengeki/9315/a197e83ce3fde119443846dae1f2f8849.jpg?x=1280",
+      "viewed": true,
+      "observations": "站牌位于过梁、扶梯与楼梯分带、盲道和防护栏；2024年先行试玩截图",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S08",
+      "label": "Lumina Square N.E.P.S. station",
+      "provenance": "community screenshot",
+      "page_url": "https://www.miyoushe.com/zzz/article/54836136",
+      "image_url": "https://upload-bbs.miyoushe.com/upload/2024/07/08/158756436/a91e7f0ab07a47342f9feb8d88dce927_4272201999497008625.jpg",
+      "viewed": true,
+      "observations": "实际文字为光映广场分署：低墙铭牌、门岗、内部车场、后方普通楼；不是地铁站",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S09",
+      "label": "Bardic Needle",
+      "provenance": "official",
+      "page_url": "https://zenless.hoyoverse.com/en-us/news/123158",
+      "image_url": "https://fastcdn.hoyoverse.com/content-v2/nap/123158/e046443793a1fad6fc63098a08f1e39b_5417063584122938974.jpg",
+      "viewed": true,
+      "observations": "唱片橱窗、圆盘图形、横向主招牌；上层栏板、窗户、外置设备",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S10",
+      "label": "Box Galaxy",
+      "provenance": "official",
+      "page_url": "https://zenless.hoyoverse.com/th-th/news/113924",
+      "image_url": "https://fastcdn.hoyoverse.com/content-v2/nap/113924/c38282f457211ea51a5b29462067d750_8446721342144516865.jpg",
+      "viewed": true,
+      "observations": "退入式大入口、折面檐口、粗框大字、门内可见设备；泰文官方海报",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S11",
+      "label": "Failume Heights market",
+      "provenance": "official producer article",
+      "page_url": "https://blog.playstation.com/2025/05/23/zenless-zone-zero-version-2-0-launches-on-june-6/",
+      "image_url": "https://blog.playstation.com/tachyon/2025/05/0ec981151b3669eb0ddcc813e5139bf5f27e8f99.png",
+      "viewed": true,
+      "observations": "台阶前场、当街茶楼、现代住宅与岩坡层叠；不是随便观院内截图",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S12",
+      "label": "Academy main teaching building entrance",
+      "provenance": "official producer article",
+      "page_url": "https://blog.ja.playstation.com/2026/06/06/20260606-zzz-post-launch-update-o/",
+      "image_url": "https://blog.ja.playstation.com/uploads/sites/7/2026/06/89a40abaef8dfea0eb6406ae75d6561e446c6bb2.png",
+      "viewed": true,
+      "observations": "深门框、课程/日程信息板、功能门牌、成对壁灯、石材收口；只看见入口近景",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S13",
+      "label": "Sixth Street noodle shop",
+      "provenance": "community screenshot",
+      "page_url": "https://www.hoyolab.com/article/31289813",
+      "image_url": "https://upload-os-bbs.hoyolab.com/upload/2024/07/21/9597874/b9ecd7d9322ff502fceebe787f994b08_6032053032628487481.jpg",
+      "viewed": true,
+      "observations": "开放吧台、凳子、低檐、大鱼形招牌；后方楼房的窗、设备、墙面较安静",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S14",
+      "label": "Godfinger",
+      "provenance": "media original screenshot",
+      "page_url": "https://kincir.com/game/pc-game/kegunaan-toko-zenless-zone-zero/",
+      "image_url": "https://d1tgyzt3mf06m9.cloudfront.net/v3-staging/2024/07/toko-di-zenless-zone-zero-arcade.png",
+      "viewed": true,
+      "observations": "转角折角招牌、连续雨棚、棋盘铺地、海报和少量机台",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    },
+    {
+      "id": "S15",
+      "label": "Suibian Temple",
+      "provenance": "publisher media reproduced by press",
+      "page_url": "https://www.rpgsite.net/news/17507-zenless-zone-zero-2-0-release-date-xbox-series-x-cloud-gaming-anniversary-rewards",
+      "image_url": "https://images.rpgsite.net/image/da49c9a1/152151/original/zenless-zone-zero_20250523_scene-4.png",
+      "viewed": true,
+      "observations": "瓦檐、木柱、柱脚、石基、庭院高差、灯与盆栽；文章列为HoYoverse新截图",
+      "observation_method": "Browser opened original remote image; complete screenshot actually inspected; no local download"
+    }
+  ],
+  "families": [
+    {
+      "design_type": "station",
+      "count": 2,
+      "building_ids": [
+        "V-01",
+        "V-32"
+      ],
+      "reference_ids": [
+        "S07",
+        "S08"
+      ],
+      "scope": "入口、引导标识与公共前场",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "row",
+      "count": 10,
+      "building_ids": [
+        "V-04",
+        "V-08",
+        "V-51",
+        "V-52",
+        "V-A01",
+        "V-A02",
+        "V-A04",
+        "V-A07",
+        "V-A08",
+        "V-A12"
+      ],
+      "reference_ids": [
+        "S01",
+        "S04"
+      ],
+      "scope": "经营门面与住家上层",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "mixed",
+      "count": 85,
+      "building_ids": [
+        "V-06",
+        "V-09",
+        "V-11",
+        "V-30",
+        "V-31",
+        "V-33",
+        "V-34",
+        "V-40",
+        "V-43",
+        "V-44",
+        "V-45",
+        "V-46",
+        "V-48",
+        "V-49",
+        "V-50",
+        "V-53",
+        "V-54",
+        "V-55",
+        "V-61",
+        "V-62",
+        "V-63",
+        "V-65",
+        "V-67",
+        "V-68",
+        "V-69",
+        "V-73",
+        "V-74",
+        "V-77",
+        "V-80",
+        "V-82",
+        "V-84",
+        "V-86",
+        "V-89",
+        "V-91",
+        "V-M01",
+        "V-M02",
+        "V-M03",
+        "V-M04",
+        "V-M06",
+        "V-M08",
+        "V-F07",
+        "V-F08",
+        "V-F09",
+        "V-F10",
+        "V-F11",
+        "V-F12",
+        "V-F13",
+        "V-F14",
+        "V-F15",
+        "V-F19",
+        "V-F22",
+        "V-F27",
+        "V-F29",
+        "V-F30",
+        "V-F31",
+        "V-F32",
+        "V-F33",
+        "V-F34",
+        "V-F36",
+        "V-F37",
+        "V-F38",
+        "V-F39",
+        "V-F40",
+        "V-F41",
+        "V-F47",
+        "V-EF06",
+        "V-EF07",
+        "V-EF08",
+        "V-W01",
+        "V-W02",
+        "V-W03",
+        "V-W04",
+        "V-W05",
+        "V-W06",
+        "V-W10",
+        "V-W11",
+        "V-W13",
+        "V-W15",
+        "V-W16",
+        "V-W17",
+        "V-W18",
+        "V-W19",
+        "V-W20",
+        "V-W21",
+        "V-W22"
+      ],
+      "reference_ids": [
+        "S01",
+        "S02",
+        "S13"
+      ],
+      "scope": "首层店面、窗口与上部生活构件",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "corner",
+      "count": 2,
+      "building_ids": [
+        "V-07",
+        "V-A03"
+      ],
+      "reference_ids": [
+        "S01",
+        "S14"
+      ],
+      "scope": "转角招牌、连续雨棚和门前空间",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "apartment",
+      "count": 74,
+      "building_ids": [
+        "V-12",
+        "V-18",
+        "V-57",
+        "V-A05",
+        "V-A06",
+        "V-A09",
+        "V-A10",
+        "V-A11",
+        "V-A13",
+        "V-A14",
+        "V-M05",
+        "V-M07",
+        "V-M09",
+        "V-M10",
+        "V-F01",
+        "V-F02",
+        "V-F03",
+        "V-F04",
+        "V-F05",
+        "V-F06",
+        "V-F16",
+        "V-F17",
+        "V-F18",
+        "V-F21",
+        "V-F24",
+        "V-F25",
+        "V-F26",
+        "V-F28",
+        "V-F42",
+        "V-F43",
+        "V-F44",
+        "V-F45",
+        "V-F46",
+        "V-F48",
+        "V-F50",
+        "V-F52",
+        "V-F53",
+        "V-F54",
+        "V-F57",
+        "V-F58",
+        "V-F59",
+        "V-F60",
+        "V-F61",
+        "V-F62",
+        "V-F63",
+        "V-F64",
+        "V-F65",
+        "V-EF09",
+        "V-EF10",
+        "V-EF11",
+        "V-EF12",
+        "V-EF13",
+        "V-EF14",
+        "V-EF15",
+        "V-EF16",
+        "V-EF17",
+        "V-EF18",
+        "V-EF19",
+        "V-EF20",
+        "V-EF21",
+        "V-EF22",
+        "V-EF23",
+        "V-EF24",
+        "V-EF25",
+        "V-EF26",
+        "V-EF27",
+        "V-EF28",
+        "V-EF29",
+        "V-EF30",
+        "V-EF31",
+        "V-EF32",
+        "V-W07",
+        "V-W08",
+        "V-W09"
+      ],
+      "reference_ids": [
+        "S06",
+        "S08",
+        "S11"
+      ],
+      "scope": "上层窗带、实墙及设备区",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "slope",
+      "count": 21,
+      "building_ids": [
+        "V-13",
+        "V-A15",
+        "V-A16",
+        "V-A17",
+        "V-EF33",
+        "V-EF34",
+        "V-EF35",
+        "V-EF36",
+        "V-EF37",
+        "V-EF38",
+        "V-EF39",
+        "V-EF40",
+        "V-EF41",
+        "V-EF42",
+        "V-EF43",
+        "V-EF44",
+        "V-EF45",
+        "V-EF46",
+        "V-EF47",
+        "V-EF48",
+        "V-EF49"
+      ],
+      "reference_ids": [
+        "S11",
+        "S05"
+      ],
+      "scope": "逐栋水平楼层与平台外梯",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "cinema",
+      "count": 1,
+      "building_ids": [
+        "V-15"
+      ],
+      "reference_ids": [
+        "S03",
+        "S05",
+        "S06"
+      ],
+      "scope": "公共入口主轴、海报与屋顶平台",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "public",
+      "count": 2,
+      "building_ids": [
+        "V-16",
+        "V-70"
+      ],
+      "reference_ids": [
+        "S08",
+        "S12"
+      ],
+      "scope": "功能入口与前场",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "school",
+      "count": 6,
+      "building_ids": [
+        "V-19",
+        "V-EF01",
+        "V-EF02",
+        "V-EF03",
+        "V-EF04",
+        "V-EF05"
+      ],
+      "reference_ids": [
+        "S12"
+      ],
+      "scope": "学院入口门牌、信息板及门框",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "shrine",
+      "count": 1,
+      "building_ids": [
+        "V-22"
+      ],
+      "reference_ids": [
+        "S15"
+      ],
+      "scope": "檐口、柱脚、石基构件",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "shop",
+      "count": 3,
+      "building_ids": [
+        "V-27",
+        "V-87",
+        "V-W26"
+      ],
+      "reference_ids": [
+        "S02",
+        "S13"
+      ],
+      "scope": "小门面、窗口及开放柜台",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "interest",
+      "count": 3,
+      "building_ids": [
+        "V-35",
+        "V-37",
+        "V-39"
+      ],
+      "reference_ids": [
+        "S14",
+        "S10"
+      ],
+      "scope": "兴趣商品大图形与设备入口",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "maker",
+      "count": 6,
+      "building_ids": [
+        "V-36",
+        "V-38",
+        "V-41",
+        "V-81",
+        "V-W12",
+        "V-W14"
+      ],
+      "reference_ids": [
+        "S10",
+        "S09"
+      ],
+      "scope": "作品橱窗、设备和搬运入口的外观",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "civic",
+      "count": 6,
+      "building_ids": [
+        "V-60",
+        "V-76",
+        "V-85",
+        "V-W23",
+        "V-W24",
+        "V-W25"
+      ],
+      "reference_ids": [
+        "S08",
+        "S12",
+        "S03"
+      ],
+      "scope": "公共入口及展示构件",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "music",
+      "count": 2,
+      "building_ids": [
+        "V-78",
+        "V-79"
+      ],
+      "reference_ids": [
+        "S09",
+        "S03"
+      ],
+      "scope": "音乐展示与演出信息层次",
+      "status": "proposed visual correspondence"
+    },
+    {
+      "design_type": "none",
+      "count": 7,
+      "building_ids": [
+        "BG-18",
+        "BG-19",
+        "BG-20",
+        "BG-21",
+        "BG-22",
+        "BG-23",
+        "BG-24"
+      ],
+      "reference_ids": [
+        "S11",
+        "S06"
+      ],
+      "scope": "远景体量、窗带及檐口层次",
+      "status": "proposed visual correspondence"
+    }
+  ],
+  "focus_objects": {
+    "V-04": [
+      "S01"
+    ],
+    "V-08": [
+      "S04"
+    ],
+    "V-35": [
+      "S14"
+    ],
+    "V-39": [
+      "S14"
+    ],
+    "V-36": [
+      "S10"
+    ],
+    "V-15": [
+      "S03",
+      "S05",
+      "S06"
+    ],
+    "V-30": [
+      "S05",
+      "S06"
+    ],
+    "V-84": [
+      "S05",
+      "S06"
+    ],
+    "V-77": [
+      "S09"
+    ],
+    "V-78": [
+      "S09"
+    ],
+    "V-79": [
+      "S09"
+    ],
+    "V-80": [
+      "S09"
+    ]
+  },
+  "gaps": [
+    {
+      "buildings": [
+        "V-19",
+        "V-EF01",
+        "V-EF02",
+        "V-EF03",
+        "V-EF04",
+        "V-EF05"
+      ],
+      "scope": "Full ordinary-secondary-school facade not established; S12 covers entrance only"
+    },
+    {
+      "buildings": [
+        "V-60"
+      ],
+      "scope": "No direct greenhouse shell reference; civic references cover entry and environment components only"
+    },
+    {
+      "scope": "No reference image establishes metric dimensions, hidden plan, collision, current game performance or permission to redistribute meshes/textures"
+    }
+  ],
+  "checks": {
+    "all_current_buildings_mapped_once": "PASS",
+    "all_reference_ids_resolve": "PASS",
+    "actual_visual_observation": "PASS 15 source images",
+    "asset_modification": "NOT RUN",
+    "runtime_validation": "NOT RUN",
+    "author_acceptance": "NOT RUN"
+  },
+  "cleanup": {
+    "downloaded_media": 0,
+    "local_screenshots": 0,
+    "source_image_files_added_to_repository": 0
+  }
+}

@@ -1,0 +1,12 @@
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/wise-official-local.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/wise-official-preview.blend"
+Traceback (most recent call last):
+  File "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/check-reference.py", line 24, in <module>
+    images=[i for i in bpy.data.images if i.source=='FILE'];assert len(images)==9
+                                                                   ^^^^^^^^^^^^^^
+AssertionError
+
+Error: script failed, file: 'output/assets/zzz-reference/wise/check-reference.py', exiting.
+
+Blender quit

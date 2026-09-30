@@ -1,0 +1,1455 @@
+[
+  {
+    "name": "Material",
+    "diffuse": [
+      0.800000011920929,
+      0.800000011920929,
+      0.800000011920929,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "Principled BSDF",
+        "type": "BSDF_PRINCIPLED"
+      }
+    ],
+    "links": [
+      [
+        "Principled BSDF",
+        "BSDF",
+        "Material Output",
+        "Surface"
+      ]
+    ]
+  },
+  {
+    "name": "二重",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "skin.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "体",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "体.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "toon_defo.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "包",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "髮.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "toon_defo.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "口舌",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "skin.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "外套",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "体.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "toon_defo.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "白目",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "目",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "目影",
+    "diffuse": [
+      0.0,
+      0.0,
+      0.0,
+      0.30000001192092896
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "0.0",
+          "Alpha": "0.30000001192092896",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "眉",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "hair.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "睫",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "hair.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "肌",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "体.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "skin.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "颜",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "skin.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "髮",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "髮.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "hair.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "髮+",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "1.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "1.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "s.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "hair.bmp",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_sphere_tex",
+        "type": "TEX_IMAGE",
+        "image": "hair_s.bmp",
+        "color_space": "Linear Rec.709"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ],
+      [
+        "mmd_sphere_tex",
+        "Color",
+        "mmd_shader",
+        "Sphere Tex"
+      ],
+      [
+        "mmd_sphere_tex",
+        "Alpha",
+        "mmd_shader",
+        "Sphere Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Sphere UV",
+        "mmd_sphere_tex",
+        "Vector"
+      ]
+    ]
+  },
+  {
+    "name": "齿",
+    "diffuse": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "nodes": [
+      {
+        "name": "mmd_shader",
+        "type": "GROUP",
+        "inputs": {
+          "Ambient Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Diffuse Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Specular Color": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Reflect": "32.0",
+          "Base Tex Fac": "1.0",
+          "Base Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Toon Tex Fac": "1.0",
+          "Toon Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Tex Fac": "0.0",
+          "Sphere Tex": "<bpy_float[4], NodeSocketColor.default_value>",
+          "Sphere Mul/Add": "0.0",
+          "Double Sided": "1.0",
+          "Alpha": "1.0",
+          "Base Alpha": "1.0",
+          "Toon Alpha": "1.0",
+          "Sphere Alpha": "1.0"
+        }
+      },
+      {
+        "name": "mmd_tex_uv",
+        "type": "GROUP",
+        "inputs": {}
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL"
+      },
+      {
+        "name": "mmd_base_tex",
+        "type": "TEX_IMAGE",
+        "image": "颜.png",
+        "color_space": "sRGB"
+      },
+      {
+        "name": "mmd_toon_tex",
+        "type": "TEX_IMAGE",
+        "image": "toon01.bmp",
+        "color_space": "sRGB"
+      }
+    ],
+    "links": [
+      [
+        "mmd_shader",
+        "Shader",
+        "Material Output",
+        "Surface"
+      ],
+      [
+        "mmd_base_tex",
+        "Color",
+        "mmd_shader",
+        "Base Tex"
+      ],
+      [
+        "mmd_base_tex",
+        "Alpha",
+        "mmd_shader",
+        "Base Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Base UV",
+        "mmd_base_tex",
+        "Vector"
+      ],
+      [
+        "mmd_toon_tex",
+        "Color",
+        "mmd_shader",
+        "Toon Tex"
+      ],
+      [
+        "mmd_toon_tex",
+        "Alpha",
+        "mmd_shader",
+        "Toon Alpha"
+      ],
+      [
+        "mmd_tex_uv",
+        "Toon UV",
+        "mmd_toon_tex",
+        "Vector"
+      ]
+    ]
+  }
+]
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/wise-official-local.blend"
+
+Blender quit

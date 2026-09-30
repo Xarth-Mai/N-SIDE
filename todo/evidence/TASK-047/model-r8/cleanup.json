@@ -1,0 +1,133 @@
+{
+  "status": "PASS",
+  "viewed_before_cleanup": [
+    "head-front",
+    "head-quarter",
+    "head-side",
+    "head-back",
+    "hair-quarter",
+    "hair-top",
+    "wise original MMD: full-front, face-front, face-quarter, face-side",
+    "wise PBR coplanar failure: four matching angles",
+    "wise corrected PBR: four matching angles"
+  ],
+  "render_process": "completed exit 0 before cleanup",
+  "deleted": [
+    {
+      "path": "output/characters/CHR-001/model-r8/baseline.blend",
+      "bytes": 4076784,
+      "sha256": "a8cdaa87548b3df5c7bb244c70e832536c98c3a325558b09e0162eb2675dc098"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r8/baseline.glb",
+      "bytes": 1469776,
+      "sha256": "7020ed499f8feb76e987fe7997fcb126bea9680fa5cda9a56943a857b4fdee4d"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r8/before/hair-quarter.png",
+      "bytes": 305523,
+      "sha256": "fa365ef2f225eac25e729ecc7d78abea3bbdd3a33c4ac22562da725d4473f540"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r8/before/hair-top.png",
+      "bytes": 318323,
+      "sha256": "c4a3a5e71dab91f0898aa5e6e80bb414da9b33c21d7277f5e82f00422f495c06"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r8/before/head-back.png",
+      "bytes": 301741,
+      "sha256": "a09b98f76cfe76f3d0a115f07a983a844db4b77981c5117a963f8f1bb6ba18e3"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r8/before/head-front.png",
+      "bytes": 329967,
+      "sha256": "7bd4aa8facf391490ff82218d7cebd5684e8474f87534dfd529a8a515c882018"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r8/before/head-quarter.png",
+      "bytes": 332549,
+      "sha256": "5ab4c5475f1d04531c1ff7076bdb6931cbbd14b4aa32e9c0b43a13b4648d809b"
+    },
+    {
+      "path": "output/characters/CHR-001/model-r8/before/head-side.png",
+      "bytes": 314918,
+      "sha256": "529bdb33edeb9242deafb6d6bdca2271a9488729e33fa932833c2d437b6c4224"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/face-front.png",
+      "bytes": 345917,
+      "sha256": "c9dc88d286e74f1fba3ef047ead59e8ed9b6b46938522815349e4026ce29cded"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/face-quarter.png",
+      "bytes": 347417,
+      "sha256": "16eedcdf88e0cd98e4c752a6b85af73a09e088d5392ab92474a406047b1e24ef"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/face-side.png",
+      "bytes": 326457,
+      "sha256": "0cf359316377e69082380f0060ae5f7d484e0ab53bd7ca57567840938bc65197"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/full-front.png",
+      "bytes": 298165,
+      "sha256": "b2e87793a1114ba18943ccee28aa01c76280c6dbf40cc082a0b051cf7385e4be"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/overlap-failed-preview-face-front.png",
+      "bytes": 343796,
+      "sha256": "2769da25ee7f1d2b94f4adc4bff2adfc4f5db045d6b53d019c3f7326f11e6d0e"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/overlap-failed-preview-face-quarter.png",
+      "bytes": 343366,
+      "sha256": "e8312ead741dbe5279d9d3d51273833ec99307d156638d0124004ff54fef8636"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/overlap-failed-preview-face-side.png",
+      "bytes": 321583,
+      "sha256": "7f54e41677ab691c1861c5f9a9bea01c0275b92cac300da43f54b83921be02f2"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/overlap-failed-preview-full-front.png",
+      "bytes": 296854,
+      "sha256": "a40292d70c2874faa0f8a3708e706fdb169f7e70b565858e4de285ec726ad2ec"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/preview-face-front.png",
+      "bytes": 382682,
+      "sha256": "a8ed8c9e163e244d658bd3a0ce8935ebb9eb83a7fec93bc03a29a4ffeed73756"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/preview-face-quarter.png",
+      "bytes": 383176,
+      "sha256": "e391c25429bfe780fb4528c1d20630f49b3e301ebdf0f0bf3a1f993dc14be61b"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/preview-face-side.png",
+      "bytes": 363416,
+      "sha256": "45c003a765df3543deb6679dc930a372da9f659bdb95a6811001fdfe66181faf"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/preview-full-front.png",
+      "bytes": 300744,
+      "sha256": "c35d1206b3b2547b64fa1f9c5c0ea60afb082fa30e485fcc4621b0120726cea0"
+    },
+    {
+      "path": "output/assets/zzz-reference/wise/wise-official-preview.blend1",
+      "bytes": 28412326,
+      "sha256": "bb0147fea0a2c66649a7b8c18e9c3d21551e7842c6575c29071c0a52910cee57"
+    }
+  ],
+  "released_bytes": 39915480,
+  "output_remaining_files": [],
+  "retained_reference_package": "output/assets/zzz-reference/wise/; official reference package and source metadata retained under reference-material exception",
+  "formal_assets_unchanged": true,
+  "root_observed": "preview-full-front.png observed by root before cleanup",
+  "reference_remaining_bytes": 71181955,
+  "temporary_visuals_remaining": [],
+  "retained_local_blends": [
+    "wise-official-local.blend",
+    "wise-official-preview.blend"
+  ]
+}

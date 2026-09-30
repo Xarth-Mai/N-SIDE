@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "render": "CPU Cycles; 16 samples; 480x640; Standard",
+  "materials": [
+    {
+      "material": "二重",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "体",
+      "base_image": "体.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "包",
+      "base_image": "髮.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "口舌",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "外套",
+      "base_image": "体.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "白目",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "目",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "目影",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "眉",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "睫",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "肌",
+      "base_image": "体.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "颜",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "髮",
+      "base_image": "髮.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "髮+",
+      "base_image": "髮.png",
+      "alpha": "source texture alpha"
+    },
+    {
+      "material": "齿",
+      "base_image": "颜.png",
+      "alpha": "source texture alpha"
+    }
+  ],
+  "scope": "Local Principled preview using original base textures and alpha; coplanar additive hair shell uses hair base texture; does not reproduce MMD toon/sphere or game-specific shaders",
+  "views": [
+    {
+      "file": "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/preview-full-front.png",
+      "camera": [
+        0,
+        -4,
+        1
+      ],
+      "target_height": 0.896,
+      "scale": 2.114
+    },
+    {
+      "file": "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/preview-face-front.png",
+      "camera": [
+        0,
+        -4,
+        1.63
+      ],
+      "target_height": 1.642,
+      "scale": 0.42
+    },
+    {
+      "file": "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/preview-face-quarter.png",
+      "camera": [
+        3,
+        -4,
+        1.63
+      ],
+      "target_height": 1.642,
+      "scale": 0.42
+    },
+    {
+      "file": "/home/lzzz/MyProjects/N-SIDE/output/assets/zzz-reference/wise/preview-face-side.png",
+      "camera": [
+        4,
+        0,
+        1.63
+      ],
+      "target_height": 1.642,
+      "scale": 0.42
+    }
+  ],
+  "blend_sha256": "d01ec42883a63d9ab2baa067c53a2ee62dae1d598e02cc0c8d4aff98c0b0e986"
+}

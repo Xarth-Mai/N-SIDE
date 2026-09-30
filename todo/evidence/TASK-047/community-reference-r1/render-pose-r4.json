@@ -1,0 +1,115 @@
+{
+  "engine": "Cycles CPU",
+  "samples": 16,
+  "resolution": [
+    480,
+    640
+  ],
+  "views": [
+    [
+      "idle-front",
+      "Idle",
+      1,
+      [
+        0,
+        -4,
+        1.0
+      ]
+    ],
+    [
+      "idle-quarter",
+      "Idle",
+      1,
+      [
+        2.5,
+        -4,
+        1.6
+      ]
+    ],
+    [
+      "walk-quarter",
+      "Walk",
+      13,
+      [
+        2.5,
+        -4,
+        1.6
+      ]
+    ],
+    [
+      "run-quarter-11",
+      "Run",
+      11,
+      [
+        2.5,
+        -4,
+        1.6
+      ]
+    ],
+    [
+      "run-quarter-31",
+      "Run",
+      31,
+      [
+        2.5,
+        -4,
+        1.6
+      ]
+    ],
+    [
+      "run-side-11",
+      "Run",
+      11,
+      [
+        4,
+        0,
+        1.1
+      ]
+    ]
+  ],
+  "status": "VIEWED: upright body and visible face in all six CPU views; local pose correction only, overall asset still needs_revision",
+  "findings": [
+    "Idle arms lower naturally; Walk and Run maintain upright torso",
+    "Head face geometry was displaced by unscaled morph Basis; Mesh.transform(shape_keys=True) fixes its actual location",
+    "Run keeps imported open fingers and partly upward palms; finger motion is not mapped",
+    "CPU neutral light is not engine rendering; runtime verification delegated to root"
+  ],
+  "hashes": {
+    "adapt.py": "88e0df4433c2a1784f4c6b5f2e01aa6ea37554e120772c1ab02bdd87a492fbcf",
+    "belle-adapted.blend": "dff37f1bc696932e3a8cbcc90ea6e975302254367a46c4ce2fadbe432e352ec8",
+    "belle-local.glb": "4d77e7dc09629322b95cb2a6807b8841d0845000be467f7763b4ac79de009e19"
+  },
+  "cleaned_images": [
+    {
+      "name": "pose-r4-idle-front.png",
+      "bytes": 319200,
+      "sha256": "70af8ee5ead984b2f2cbe6f68985b7cfd42ce8e5d40de915176f01a9d5d5e78b"
+    },
+    {
+      "name": "pose-r4-idle-quarter.png",
+      "bytes": 320028,
+      "sha256": "9aa7ecfae26a0f9aa0919ddde86a36c97284a58df2a617830d527e88595b0b26"
+    },
+    {
+      "name": "pose-r4-run-quarter-11.png",
+      "bytes": 318730,
+      "sha256": "b9ea4f0c4e1fd5d02036c1f9497c465e10cdd3309566e87155ae46753fdbf891"
+    },
+    {
+      "name": "pose-r4-run-quarter-31.png",
+      "bytes": 320601,
+      "sha256": "8696d9f3d4afff9171fc5c533c4227e76d87cf9ee71599bbb79f5743e6df169b"
+    },
+    {
+      "name": "pose-r4-run-side-11.png",
+      "bytes": 314785,
+      "sha256": "3f6aaf0ba1992a9c31499c77351c031c57f3a4f679a6cd0fc09ec47127d73132"
+    },
+    {
+      "name": "pose-r4-walk-quarter.png",
+      "bytes": 318557,
+      "sha256": "021e8fb7f107b8ad6c3bffc099a6de101d0aeef095dfd2b3a0a74a5792314326"
+    }
+  ],
+  "remaining_owned_render_images": []
+}

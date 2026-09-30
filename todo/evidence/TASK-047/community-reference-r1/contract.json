@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "path": "output/assets/zzz-reference/belle-player-share/belle-local.glb",
+  "sha256": "c4e6c4d2bb6410968963a54c8f454fce4eb816d7b7f388cadcf08ef5432c7c34",
+  "skins": 1,
+  "joints": 149,
+  "skinned_vertices": 19298,
+  "bind_bounds_m": [
+    [
+      -0.6012009382247925,
+      0.6012014746665955
+    ],
+    [
+      0.0,
+      1.649999976158142
+    ],
+    [
+      -0.1500440388917923,
+      0.17729336023330688
+    ]
+  ],
+  "height_m": 1.649999976158142,
+  "embedded_images": 7,
+  "animations": [
+    {
+      "name": "Idle",
+      "duration_seconds": 2.0,
+      "joint_channels": 447,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Run",
+      "duration_seconds": 0.6666666865348816,
+      "joint_channels": 447,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Walk",
+      "duration_seconds": 0.800000011920929,
+      "joint_channels": 447,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    }
+  ],
+  "scope": "exported data only; deformation, contact, loop quality and Bevy playback require runtime review"
+}

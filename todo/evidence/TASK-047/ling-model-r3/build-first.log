@@ -1,0 +1,87 @@
+Info: Removed 8 vertices
+Info: Removed 2 vertices
+Info: Removed 3 vertices
+Info: Removed 6 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 7 vertices
+Info: Removed 5 vertices
+Info: Removed 2 vertices
+Info: Removed 4 vertices
+Info: Removed 5 vertices
+Info: Removed 5 vertices
+Info: Removed 3 vertices
+Info: Removed 3 vertices
+Info: Removed 3 vertices
+Info: Removed 3 vertices
+Info: Removed 3 vertices
+Info: Removed 6 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 4 vertices
+Info: Removed 7 vertices
+Info: Removed 5 vertices
+Info: Removed 2 vertices
+Info: Removed 4 vertices
+Info: Removed 5 vertices
+Info: Removed 5 vertices
+Info: Removed 3 vertices
+Info: Removed 3 vertices
+Info: Removed 3 vertices
+Info: Removed 3 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 5 vertices
+Info: Removed 4 vertices
+Info: Removed 5 vertices
+Info: Removed 4 vertices
+Info: Removed 2 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 13 vertices
+Info: Removed 5 vertices
+Info: Removed 11 vertices
+Info: Removed 2 vertices
+Info: Removed 2 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 13 vertices
+Info: Removed 5 vertices
+Info: Removed 11 vertices
+Info: Removed 2 vertices
+Info: Removed 13 vertices
+Info: Removed 32 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 0 vertices
+Info: Removed 2 vertices
+Info: Removed 2 vertices
+Info: Removed 3 vertices
+Info: Removed 2 vertices
+Info: Removed 2 vertices
+Info: Saved as "ling-grey-study.blend"
+INFO Draco mesh compression is available, use library at /home/lzzz/MyProjects/N-SIDE/output/tools/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+20:27:43 | INFO: Starting glTF 2.0 export
+20:27:43 | INFO: Extracting primitive: CHR002_RuntimeMesh
+20:27:43 | INFO: Primitives created: 1
+20:27:45 | INFO: Finished glTF 2.0 export in 2.895454168319702 s
+
+{"status": "exported-candidate", "blender": "4.5.14 LTS", "units": "meters", "dcc_forward": "-Y", "gltf_forward": "+Z", "face_hair_revision": "ling-r3", "age_actual": 19, "age_appearance": 17, "palette": "unapproved grayscale study; grayscale hair is not a character color decision", "bones": 32, "editable_meshes": 76, "source_vertices": 6773, "clips": {"Idle": {"seconds": 2.0, "fps": 60, "in_place": true}, "Walk": {"seconds": 0.8, "fps": 60, "in_place": true}, "Run": {"seconds": 0.6666666666666666, "fps": 60, "in_place": true}}, "natural_speeds_m_s": {"Walk": 3.027192142669727, "Run": 5.297586249672022}, "target_height_m": 1.65, "runtime": "NOT RUN; root integrates and captures the real Bevy path", "views": []}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

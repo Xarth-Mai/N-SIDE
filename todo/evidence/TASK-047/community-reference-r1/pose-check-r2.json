@@ -1,0 +1,390 @@
+{
+  "input": "belle-adapted.blend",
+  "label": "r2",
+  "checks": {
+    "pass": false
+  },
+  "clips": {
+    "Idle": {
+      "checks": {
+        "finite": true,
+        "head_above_pelvis": false,
+        "feet_below_pelvis": false,
+        "stationary_root": true,
+        "arm_matches_source": false,
+        "closed_loop": true
+      },
+      "min_head_above_pelvis": 0.10379350185394287,
+      "min_pelvis_above_foot": 0.017708659172058105,
+      "max_root_translation": 0.0,
+      "max_arm_direction_error_degrees": 92.11964926055407,
+      "max_loop_matrix_difference": 0.0,
+      "samples": [
+        {
+          "frame": 1,
+          "head_z": 1.0353007316589355,
+          "pelvis_z": 0.9315071105957031,
+          "feet_z": [
+            0.913798451423645,
+            0.9137981534004211
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 93.6321946522534,
+            "Forearm.L": 100.85360339754614,
+            "UpperArm.R": 93.63220148244257,
+            "Forearm.R": 100.8539107560588
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.11932824166308,
+            "UpperArm.R": 87.8297372164633,
+            "Forearm.R": 92.11963560017574
+          }
+        },
+        {
+          "frame": 31,
+          "head_z": 1.0362519025802612,
+          "pelvis_z": 0.9324582815170288,
+          "feet_z": [
+            0.9147496223449707,
+            0.9147493243217468
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 93.6321946522534,
+            "Forearm.L": 100.85360339754614,
+            "UpperArm.R": 93.63221514282091,
+            "Forearm.R": 100.8539107560588
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.11932824166308,
+            "UpperArm.R": 87.82975087684163,
+            "Forearm.R": 92.11963560017574
+          }
+        },
+        {
+          "frame": 61,
+          "head_z": 1.037203073501587,
+          "pelvis_z": 0.9334094524383545,
+          "feet_z": [
+            0.9157007932662964,
+            0.9157004952430725
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 93.6321946522534,
+            "Forearm.L": 100.85360339754614,
+            "UpperArm.R": 93.63220148244257,
+            "Forearm.R": 100.8539107560588
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.11932824166308,
+            "UpperArm.R": 87.8297372164633,
+            "Forearm.R": 92.11963560017574
+          }
+        },
+        {
+          "frame": 91,
+          "head_z": 1.0362519025802612,
+          "pelvis_z": 0.9324582815170288,
+          "feet_z": [
+            0.9147496223449707,
+            0.9147493243217468
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 93.63218099187506,
+            "Forearm.L": 100.8535897371678,
+            "UpperArm.R": 93.63218099187506,
+            "Forearm.R": 100.8539107560588
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82965525419326,
+            "Forearm.L": 92.11931458128474,
+            "UpperArm.R": 87.82972355608496,
+            "Forearm.R": 92.11963560017574
+          }
+        },
+        {
+          "frame": 121,
+          "head_z": 1.0353007316589355,
+          "pelvis_z": 0.9315071105957031,
+          "feet_z": [
+            0.913798451423645,
+            0.9137981534004211
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 93.6321946522534,
+            "Forearm.L": 100.85360339754614,
+            "UpperArm.R": 93.63220148244257,
+            "Forearm.R": 100.8539107560588
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.11932824166308,
+            "UpperArm.R": 87.8297372164633,
+            "Forearm.R": 92.11963560017574
+          }
+        }
+      ]
+    },
+    "Walk": {
+      "checks": {
+        "finite": true,
+        "head_above_pelvis": false,
+        "feet_below_pelvis": false,
+        "stationary_root": true,
+        "arm_matches_source": false,
+        "closed_loop": true
+      },
+      "min_head_above_pelvis": 0.10379350185394287,
+      "min_pelvis_above_foot": -0.47010570764541626,
+      "max_root_translation": 0.0,
+      "max_arm_direction_error_degrees": 92.11966292093241,
+      "max_loop_matrix_difference": 0.0,
+      "samples": [
+        {
+          "frame": 1,
+          "head_z": 0.9154021739959717,
+          "pelvis_z": 0.811608612537384,
+          "feet_z": [
+            1.2286468744277954,
+            0.43710941076278687
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 77.75534479447789,
+            "Forearm.L": 95.20391680292171,
+            "UpperArm.R": 106.82243058113941,
+            "Forearm.R": 118.66780226244991
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.1193009209064,
+            "UpperArm.R": 87.82975087684163,
+            "Forearm.R": 92.1196424303649
+          }
+        },
+        {
+          "frame": 13,
+          "head_z": 0.9877414703369141,
+          "pelvis_z": 0.8839478492736816,
+          "feet_z": [
+            0.663103461265564,
+            1.0557258129119873
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 101.37372230284261,
+            "Forearm.L": 114.64629616217313,
+            "UpperArm.R": 86.23966917768432,
+            "Forearm.R": 102.46825328714799
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82965525419326,
+            "Forearm.L": 92.11932824166308,
+            "UpperArm.R": 87.82974404665246,
+            "Forearm.R": 92.11965609074325
+          }
+        },
+        {
+          "frame": 25,
+          "head_z": 0.9154021739959717,
+          "pelvis_z": 0.811608612537384,
+          "feet_z": [
+            0.43710950016975403,
+            1.2286465167999268
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 106.82238960000439,
+            "Forearm.L": 118.66750173412643,
+            "UpperArm.R": 77.75533796428871,
+            "Forearm.R": 95.20424465200188
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.11932824166308,
+            "UpperArm.R": 87.82975087684163,
+            "Forearm.R": 92.11962876998656
+          }
+        },
+        {
+          "frame": 37,
+          "head_z": 0.9877414107322693,
+          "pelvis_z": 0.8839478492736816,
+          "feet_z": [
+            1.0557262897491455,
+            0.6631033420562744
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 86.2396760078735,
+            "Forearm.L": 102.46793226825699,
+            "UpperArm.R": 101.3737701141668,
+            "Forearm.R": 114.64659669049661
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.8296689145716,
+            "Forearm.L": 92.11932824166308,
+            "UpperArm.R": 87.82975087684163,
+            "Forearm.R": 92.1196424303649
+          }
+        },
+        {
+          "frame": 49,
+          "head_z": 0.9154021739959717,
+          "pelvis_z": 0.811608612537384,
+          "feet_z": [
+            1.2286468744277954,
+            0.43710941076278687
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 77.75534479447789,
+            "Forearm.L": 95.20391680292171,
+            "UpperArm.R": 106.82243058113941,
+            "Forearm.R": 118.66780226244991
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.1193009209064,
+            "UpperArm.R": 87.82975087684163,
+            "Forearm.R": 92.1196424303649
+          }
+        }
+      ]
+    },
+    "Run": {
+      "checks": {
+        "finite": true,
+        "head_above_pelvis": false,
+        "feet_below_pelvis": false,
+        "stationary_root": true,
+        "arm_matches_source": false,
+        "closed_loop": true
+      },
+      "min_head_above_pelvis": 0.1455112099647522,
+      "min_pelvis_above_foot": -0.45683419704437256,
+      "max_root_translation": 0.0,
+      "max_arm_direction_error_degrees": 92.11966975112158,
+      "max_loop_matrix_difference": 0.0,
+      "samples": [
+        {
+          "frame": 1,
+          "head_z": 1.0116329193115234,
+          "pelvis_z": 0.8402293920516968,
+          "feet_z": [
+            1.2042443752288818,
+            0.6249947547912598
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 51.42926514816126,
+            "Forearm.L": 102.8402868610494,
+            "UpperArm.R": 94.84809126792072,
+            "Forearm.R": 146.0497437770859
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.11933507185225,
+            "UpperArm.R": 87.82974404665246,
+            "Forearm.R": 92.1196219397974
+          }
+        },
+        {
+          "frame": 11,
+          "head_z": 0.9379505515098572,
+          "pelvis_z": 0.792439341545105,
+          "feet_z": [
+            0.32538941502571106,
+            1.0335614681243896
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 119.39952042823339,
+            "Forearm.L": 153.1639048920311,
+            "UpperArm.R": 65.09756992271856,
+            "Forearm.R": 114.81700991028843
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82965525419326,
+            "Forearm.L": 92.11930775109558,
+            "UpperArm.R": 87.82971672589578,
+            "Forearm.R": 92.11963560017574
+          }
+        },
+        {
+          "frame": 21,
+          "head_z": 1.0116329193115234,
+          "pelvis_z": 0.8402293920516968,
+          "feet_z": [
+            0.6249948740005493,
+            1.204243779182434
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 94.84806394716405,
+            "Forearm.L": 146.04966181481586,
+            "UpperArm.R": 51.42924807268833,
+            "Forearm.R": 102.84056689880538
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82964842400409,
+            "Forearm.L": 92.1193009209064,
+            "UpperArm.R": 87.82976453721997,
+            "Forearm.R": 92.11961510960822
+          }
+        },
+        {
+          "frame": 31,
+          "head_z": 0.9379505515098572,
+          "pelvis_z": 0.792439341545105,
+          "feet_z": [
+            1.033562183380127,
+            0.325389564037323
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 65.09760407366441,
+            "Forearm.L": 114.81672304234328,
+            "UpperArm.R": 119.39961605088176,
+            "Forearm.R": 153.16361802408596
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82963476362575,
+            "Forearm.L": 92.11930775109558,
+            "UpperArm.R": 87.82975770703081,
+            "Forearm.R": 92.11962876998656
+          }
+        },
+        {
+          "frame": 41,
+          "head_z": 1.0116329193115234,
+          "pelvis_z": 0.8402293920516968,
+          "feet_z": [
+            1.2042443752288818,
+            0.6249947547912598
+          ],
+          "root_translation": 0.0,
+          "arm_from_down_degrees": {
+            "UpperArm.L": 51.42926514816126,
+            "Forearm.L": 102.8402868610494,
+            "UpperArm.R": 94.84809126792072,
+            "Forearm.R": 146.0497437770859
+          },
+          "source_arm_error_degrees": {
+            "UpperArm.L": 87.82966208438242,
+            "Forearm.L": 92.11933507185225,
+            "UpperArm.R": 87.82974404665246,
+            "Forearm.R": 92.1196219397974
+          }
+        }
+      ]
+    }
+  }
+}

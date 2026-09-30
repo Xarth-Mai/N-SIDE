@@ -1,0 +1,240 @@
+{
+  "status": "LOCAL_REFERENCE_IMPORTED",
+  "date": "2026-09-30",
+  "scope": "User changed from r7 manual refinement to sourcing player/shared official ZZZ models before any formal asset mutation",
+  "official_package": {
+    "source_url": "https://activity.hdslb.com/blackboard/static/20240704/40370b1512d054e187721bf3fb452961/3QEUENLp4E.zip",
+    "sha256": "6616ada891c18c110cfdfb7f36cafbaaebe5b24683a22f3d6f5fd9b58c2cdc68",
+    "bytes": 6193943,
+    "entries": [
+      {
+        "path": "hair.bmp",
+        "bytes": 3126
+      },
+      {
+        "path": "readme【一定要看】.txt",
+        "bytes": 611
+      },
+      {
+        "path": "skin.bmp",
+        "bytes": 3126
+      },
+      {
+        "path": "spa/",
+        "bytes": 0
+      },
+      {
+        "path": "spa/hair_s.bmp",
+        "bytes": 196662
+      },
+      {
+        "path": "tex/",
+        "bytes": 0
+      },
+      {
+        "path": "tex/s.png",
+        "bytes": 74010
+      },
+      {
+        "path": "tex/体.png",
+        "bytes": 1804818
+      },
+      {
+        "path": "tex/屏幕.png",
+        "bytes": 12362
+      },
+      {
+        "path": "tex/手机.png",
+        "bytes": 393760
+      },
+      {
+        "path": "tex/目.png",
+        "bytes": 90576
+      },
+      {
+        "path": "tex/颜.png",
+        "bytes": 797085
+      },
+      {
+        "path": "tex/髮.png",
+        "bytes": 1620397
+      },
+      {
+        "path": "toon_defo.bmp",
+        "bytes": 822
+      },
+      {
+        "path": "哲.pmx",
+        "bytes": 2759300
+      },
+      {
+        "path": "手机.pmx",
+        "bytes": 92096
+      }
+    ]
+  },
+  "official_package_terms": {
+    "author": "观海子",
+    "rights_owner": "miHoYo",
+    "allows": [
+      "physics and weight/expression bug fixes",
+      "recolor",
+      "moderate clothing changes",
+      "spa/toon additions"
+    ],
+    "prohibits": [
+      "redistribution",
+      "parts extracted to modify another model",
+      "commercial use"
+    ],
+    "read_from": [
+      "official-package/readme【一定要看】.txt",
+      "哲.pmx embedded comment"
+    ],
+    "usage": "local reference only; not copied into source-assets or game/assets"
+  },
+  "pmx_headers": [
+    {
+      "file": "output/assets/zzz-reference/wise/official-package/哲.pmx",
+      "sha256": "82fa8f5b56870c08e2623ee0e07d7d6fdff29d6dc6ad44e12d135e1d405400d5",
+      "bytes": 2759300,
+      "pmx_version": 2.0,
+      "vertices": 22118,
+      "triangles": 28901,
+      "materials": 15,
+      "bones": 288,
+      "deform_counts": {
+        "0": 7280,
+        "1": 8953,
+        "2": 5885
+      },
+      "texture_paths": [
+        "tex\\颜.png",
+        "skin.bmp",
+        "hair.bmp",
+        "tex\\髮.png",
+        "toon_defo.bmp",
+        "tex\\体.png",
+        "tex\\s.png",
+        "spa\\hair_s.bmp"
+      ],
+      "scope": "PMX header and declared geometry/material/bone counts only; no rig, render or runtime validation"
+    },
+    {
+      "file": "output/assets/zzz-reference/wise/official-package/手机.pmx",
+      "sha256": "3bad6b8b78c0951412b1bf8a82eab6d21d578efe53a83f03b4d40d8b6c9a3efe",
+      "bytes": 92096,
+      "pmx_version": 2.0,
+      "vertices": 976,
+      "triangles": 934,
+      "materials": 4,
+      "bones": 6,
+      "deform_counts": {
+        "0": 970,
+        "1": 6
+      },
+      "texture_paths": [
+        "tex\\手机.png",
+        "toon_defo.bmp",
+        "tex\\屏幕.png"
+      ],
+      "scope": "PMX header and declared geometry/material/bone counts only; no rig, render or runtime validation"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sketchfab.com/3d-models/wise-9e8b5c84f2da41af96a799d860765d40",
+      "publisher": "LunaEagle",
+      "page_claims": "Zenless Zone Zero; CC BY 4.0; 22.4k triangles and 11.9k vertices",
+      "download": "normal Download 3D Model button opened login dialog; no download",
+      "provenance": "No evidence on page establishing original geometry or authorization from IP owner"
+    },
+    {
+      "url": "https://www.deviantart.com/deliquecent-skull/art/ZZZ-Wise-1163776416",
+      "publisher": "Deliquecent-Skull",
+      "page_claims": "models from Zenless Zone Zero; GLB with embedded textures; educational use only; noncommercial; miHoYo rights retained",
+      "download": "MEGA folder linked from page was blocked by browser site-safety policy; no workaround attempted",
+      "package_inspection": "NOT RUN"
+    },
+    {
+      "url": "https://www.deviantart.com/nekopixil/art/%5BFBX%5D-Wise-%28Zenless-Zone-Zero%29-3D-Model-%7C-DL-1084867247",
+      "publisher": "NekoPixil",
+      "page_claims": "FBX/PNG fully rigged; fixed bone orientation; miHoYo property; conversion/format resubmission allowed by uploader",
+      "download": "Log in to download; no package acquired"
+    },
+    {
+      "url": "https://www.deviantart.com/purinmods/art/Wise---DL-1254858651",
+      "publisher": "purinmods",
+      "page_claims": "Wise from Zenless Zone Zero old Beta; FBX",
+      "download": "Log in to download; no package acquired"
+    }
+  ],
+  "formal_asset_hashes_unchanged": {
+    "source-assets/characters/CHR-001/model/build.py": true,
+    "source-assets/characters/CHR-001/model/check.py": true,
+    "source-assets/characters/CHR-001/model/yao-grey-study.blend": true,
+    "game/assets/characters/CHR-001/yao-grey-study.glb": true,
+    "source-assets/characters/CHR-001/model/grey-study.png": true,
+    "source-assets/characters/CHR-001/model/grey-study-surface.png": true,
+    "source-assets/characters/CHR-001/model/grey-study-normal.png": true
+  },
+  "validation": {
+    "r7_baseline_six_cpu_views": "PASS; self-audit; see before-views.json",
+    "download_and_zip_structure": "PASS",
+    "PMX_declared_counts": "PASS; header/structure only",
+    "DCC_import": "PASS; actual Blender4.5.14 and mmd_tools4.5.14 import, original MMD shader static render had coplanar hair issue",
+    "GLB_conversion": "NOT RUN",
+    "rig_and_animation_contract": "Static geometry and binding PASS; current project three-animation contract NOT RUN; reference has no actions",
+    "in_game": "NOT RUN",
+    "local_PBR_preview": "PASS; actual four views inspected; original geometry/UV/binding/weights preserved"
+  },
+  "visual_acceptance": "needs_revision; no author approval",
+  "local_reference_blends": [
+    {
+      "file": "wise-official-local.blend",
+      "sha256": "b782abd481f2ad8e99ee4eedd94442b791c9a3b47b94e95a6470245f274a076f",
+      "geometry_rig_weights_uv_sha256": "4b1678de9ce0eb0174b5bc0d84061ec369eec780bd0ad623d4c2a4ee3a7d9188",
+      "vertices": 22118,
+      "triangles": 28901,
+      "imported_bones_including_helpers": 332,
+      "materials": 15,
+      "non_deform_groups": [
+        "mmd_edge_scale",
+        "mmd_vertex_order"
+      ],
+      "morphs": 52,
+      "packed_images": 9,
+      "actions": 0,
+      "max_weight_sum_error": 1.564621925354004e-07
+    },
+    {
+      "file": "wise-official-preview.blend",
+      "sha256": "d01ec42883a63d9ab2baa067c53a2ee62dae1d598e02cc0c8d4aff98c0b0e986",
+      "geometry_rig_weights_uv_sha256": "4b1678de9ce0eb0174b5bc0d84061ec369eec780bd0ad623d4c2a4ee3a7d9188",
+      "vertices": 22118,
+      "triangles": 28901,
+      "imported_bones_including_helpers": 332,
+      "materials": 15,
+      "non_deform_groups": [
+        "mmd_edge_scale",
+        "mmd_vertex_order"
+      ],
+      "morphs": 52,
+      "packed_images": 3,
+      "actions": 0,
+      "max_weight_sum_error": 1.564621925354004e-07
+    }
+  ],
+  "local_repro_scripts": {
+    "import-reference.py": "dddf6de2bc538cdb74b8bbc68f21bebd7fab2c1cca62470e36647a0ef0af0f88",
+    "preview-reference.py": "b8692bc2af883b475fda98078b637469990adf772a03701c1a3bf3b87310cdaa",
+    "check-reference.py": "bcf3f9b30c08212f458f095d766643e7747c3aba7959e65b8661294956df01a0"
+  },
+  "addon": {
+    "version": "4.5.14",
+    "source": "https://github.com/MMD-Blender/blender_mmd_tools/archive/refs/tags/v4.5.14.zip",
+    "license": "GPL-3.0-or-later",
+    "sha256": "5b982ad123834f56805ac14a3b1f369c246d8ccba752658146b047de820f24bb",
+    "global_preferences_saved": false
+  }
+}

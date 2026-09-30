@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "building_count": 231,
+  "family_count": 16,
+  "observed_images": 15,
+  "all_current_building_ids_mapped_once": true,
+  "r2_formal_assets_restored_exactly": true,
+  "temporary_images_remaining": 0,
+  "docs_check_log": "docs-check.log",
+  "changed_paths": [
+    "?? todo/evidence/TASK-047/ling-model-r3/before-views.json",
+    "?? todo/evidence/TASK-047/ling-model-r3/build-first.log",
+    "?? todo/evidence/TASK-047/ling-model-r3/canceled-candidate-report.json",
+    "?? todo/evidence/TASK-047/ling-model-r3/check-first.log",
+    "?? todo/evidence/TASK-047/ling-model-r3/cleanup.json",
+    "?? todo/evidence/TASK-047/ling-model-r3/dcc-check.json",
+    "?? todo/evidence/TASK-047/ling-model-r3/inputs.json",
+    "?? todo/evidence/TASK-047/ling-model-r3/render-before.log",
+    "?? todo/evidence/TASK-047/ling-model-r3/render.py",
+    "?? todo/evidence/TASK-047/ling-model-r3/restored-r2.json",
+    "?? todo/evidence/TASK-047/ling-model-r3/status.json",
+    "?? todo/evidence/TASK-049/reference-r1/building-reference-map.json",
+    "?? todo/evidence/TASK-049/reference-r1/building-references.md",
+    "?? todo/evidence/TASK-049/reference-r1/catalogue-check.log",
+    "?? todo/evidence/TASK-049/reference-r1/catalogue.py",
+    "?? todo/evidence/TASK-049/reference-r1/docs-check.log"
+  ]
+}

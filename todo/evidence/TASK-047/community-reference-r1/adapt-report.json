@@ -1,0 +1,36 @@
+{
+  "source_height": 1.3577780933119357,
+  "scale": 1.2152206668582104,
+  "original_meshes": 12,
+  "bones": 149,
+  "mapping": {
+    "Hips": "ValveBiped.Bip01_Pelvis",
+    "Spine": "ValveBiped.Bip01_Spine",
+    "Chest": "ValveBiped.Bip01_Spine2",
+    "Neck": "ValveBiped.Bip01_Neck1",
+    "Head": "ValveBiped.Bip01_Head1",
+    "Clavicle.L": "ValveBiped.Bip01_L_Clavicle",
+    "UpperArm.L": "ValveBiped.Bip01_L_UpperArm",
+    "Forearm.L": "ValveBiped.Bip01_L_Forearm",
+    "Hand.L": "ValveBiped.Bip01_L_Hand",
+    "Thigh.L": "ValveBiped.Bip01_L_Thigh",
+    "Shin.L": "ValveBiped.Bip01_L_Calf",
+    "Foot.L": "ValveBiped.Bip01_L_Foot",
+    "Toe.L": "ValveBiped.Bip01_L_Toe0",
+    "Clavicle.R": "ValveBiped.Bip01_R_Clavicle",
+    "UpperArm.R": "ValveBiped.Bip01_R_UpperArm",
+    "Forearm.R": "ValveBiped.Bip01_R_Forearm",
+    "Hand.R": "ValveBiped.Bip01_R_Hand",
+    "Thigh.R": "ValveBiped.Bip01_R_Thigh",
+    "Shin.R": "ValveBiped.Bip01_R_Calf",
+    "Foot.R": "ValveBiped.Bip01_R_Foot",
+    "Toe.R": "ValveBiped.Bip01_R_Toe0"
+  },
+  "clips": [
+    "Idle",
+    "Walk",
+    "Run"
+  ],
+  "source_motion": "CHR-002 project original Idle/Walk/Run",
+  "license": "local-only evaluation; upstream underlying asset rights unverified"
+}

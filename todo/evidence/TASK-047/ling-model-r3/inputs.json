@@ -1,0 +1,30 @@
+{
+  "git_head": "465070c302aba2be7d2506fc1afcdb401bd5e8ad",
+  "files": [
+    {
+      "path": "source-assets/characters/CHR-002/model/build.py",
+      "sha256": "445787cff3a8bddbfbf10c57d9c472719131cdd468ff5d6d40fda0304f778919",
+      "bytes": 39864
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/check.py",
+      "sha256": "2146c2628c8383e39c3e79f104761a798ebbb04a30a62565c0bb2c68b13519dc",
+      "bytes": 8288
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/ling-grey-study.blend",
+      "sha256": "07d8d00577b5fe5868a6157a981b6ade04b949662f211f2594f418b9d9df7850",
+      "bytes": 4019908
+    },
+    {
+      "path": "game/assets/characters/CHR-002/ling-grey-study.glb",
+      "sha256": "f4d7cca6cc607a40817a788692c7348efdbb7c6335761a8f880e81487633cbdf",
+      "bytes": 1518536
+    },
+    {
+      "path": "source-assets/characters/CHR-002/model/grey-study.png",
+      "sha256": "86dbd96011616c7b48e4ef2ac6d63502d9aeba7e22014869ce68b7b40f565aaf",
+      "bytes": 25965
+    }
+  ]
+}
