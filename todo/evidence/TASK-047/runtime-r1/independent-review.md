@@ -14,9 +14,9 @@
 本评审读取主 Agent 产生的日志与原始状态，未自行运行 Cargo 或 GPU
 
 - [动画断言窄测](animation-assertions.log)：1 passed；[完整库测试](all-tests.log)：109 passed、1 ignored，后者是最终断言补充之前的版本，不能替代最终版本全量测试
-- [r3 正向运行](../../../../output/capture/task047-character-r3/run.json) 与 [原始状态](../../../../output/capture/task047-character-r3/state.json)：540 帧、26 项检查全部 PASS，原生退出码 0；复制脚本与当前 `game/capture/walk-character.json` 语义一致
+- [r3 正向运行](../character-r3/run.json) 与 [原始状态](../character-r3/state.json)：540 帧、26 项检查全部 PASS，原生退出码 0；复制脚本与当前 `game/capture/walk-character.json` 语义一致
 - 独立从 r3 样本重算：Idle 推进约 0.300s、Walk 约 0.500s、两段 Run 各约 0.500s、恢复后 Idle 约 1.633s，全部具有实际 seek_time 变化且各区间 clip／transition 保持一致；暂停段 elapsed 与 seek_time 最大漂移均为 0
-- [负向运行](../../../../output/capture/task047-character-negative/run.json) 与 [原始状态](../../../../output/capture/task047-character-negative/state.json)：90 帧，3 项基础检查 PASS，要求 10s 推进的断言按预期 FAIL，实际仅约 0.633s，原生退出码 1；复制脚本与当前 `game/capture/character-failure.json` 语义一致
+- [负向运行](../character-negative/run.json) 与 [原始状态](../character-negative/state.json)：90 帧，3 项基础检查 PASS，要求 10s 推进的断言按预期 FAIL，实际仅约 0.633s，原生退出码 1；复制脚本与当前 `game/capture/character-failure.json` 语义一致
 - 正反运行二进制 SHA-256 相同：`283501dfe5d7a4c40b0769e97e89f0b4091631227b3dda48b0b2e7b652e626fb`
 - 本评审执行受审代码与脚本的 `git diff --check`：PASS
 
