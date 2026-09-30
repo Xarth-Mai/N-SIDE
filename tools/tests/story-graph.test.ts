@@ -21,15 +21,18 @@ test('nested ALL/ANY keeps alternatives after partial satisfaction, never unlock
  expect(remaining(tree,new Set(['A','C']))).toBeNull()
 })
 
-test('all 22 stories validate; projection excludes narrative internals and design metadata',()=>{
+test('all catalog stories validate; projection preserves identities and excludes narrative internals',()=>{
  expect(validateStories(root)).toEqual([])
  const nodes=projectStories(root)
- expect(nodes.filter(n=>n.role==='main')).toHaveLength(10)
- expect(nodes.filter(n=>n.role==='side')).toHaveLength(12)
+ const quests=loadQuests(root)
+ for(const role of ['main','side'] as const)
+  expect(nodes.filter(n=>n.role===role).map(n=>n.id).sort()).toEqual(quests.filter(q=>q.story.role===role).map(q=>q.id).sort())
  expect(JSON.stringify(nodes)).not.toMatch(/QST-002-B016|state_changes|resolution_committed|accepted|narrative.json|review|dev\/design/)
  const aftermath=effects(nodes,'QST-002')
- expect(aftermath).toHaveLength(1)
- expect(aftermath[0].gate.scope).toBe('米娜来信重访')
+ expect(aftermath.map(({node,gate})=>[node.id,gate.scope,gate.required_for_completion])).toEqual([
+  ['QST-027','start',true],
+  ['QST-010','米娜来信重访',false],
+ ])
  expect(effects(nodes,'QST-108')).toEqual([])
 })
 
