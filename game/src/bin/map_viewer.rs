@@ -520,10 +520,34 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
             [313.5, 234., 38.725],
             [312., 237., 37.45],
         ),
+        (
+            "eye-cinema-court",
+            [298., 223., 26.725],
+            [295.8, 233.5, 25.8],
+        ),
+        ("inspect-v55-facade", [136., 188., 29.], [150., 204., 28.]),
+        (
+            "eye-aircon-wall",
+            [565., 95.6, 14.391667],
+            [567.79, 95.6, 15.4],
+        ),
     ] {
         println!("[visual/view] name={name} eye={eye:?} target={target:?} fov=55");
         views.push((name, view(eye, target)));
     }
+    // The workshop approach uses the real road grade, rather than the wall's elevation
+    let from = map.nodes["fw_f_junction20"];
+    let to = map.nodes["fw_f_v_55_public"];
+    let eye = [
+        from[0] + (to[0] - from[0]) * 0.35,
+        from[1] + (to[1] - from[1]) * 0.35,
+        from[2] + (to[2] - from[2]) * 0.35 + 0.025 + 1.7,
+    ];
+    let target = [to[0], 206., to[2] + 2.];
+    println!(
+        "[visual/view] name=eye-v55-west source=roads[452] eye={eye:?} target={target:?} fov=55"
+    );
+    views.push(("eye-v55-west", view(eye, target)));
     let neighbor = map
         .buildings
         .iter()

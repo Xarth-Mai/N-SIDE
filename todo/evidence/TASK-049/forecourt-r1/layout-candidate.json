@@ -1,0 +1,103 @@
+{
+  "source_sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+  "surface_order": [
+    "cinema-west-garden-south",
+    "cinema-west-garden-north",
+    "cinema-arrival-court"
+  ],
+  "new_fixtures": [],
+  "reason": "现有 architectures 未覆盖镜厅；复用已接入 GLB 和 surface source association，不建立空的 architecture 或未实现的 planter kind",
+  "bench": {
+    "surface": "cinema-arrival-court",
+    "model": "street_bench",
+    "map_position": [
+      295.8,
+      233.5,
+      25
+    ],
+    "world_y_rotation_radians": 1.5707963267948966,
+    "scale": 1,
+    "map_bounds": [
+      [
+        295.464803,
+        232.54,
+        25
+      ],
+      [
+        296.135197,
+        234.46,
+        25.866914
+      ]
+    ],
+    "existing_roof_bench": "preserve"
+  },
+  "plants": [
+    {
+      "surface": "cinema-west-garden-south",
+      "model": "shrub",
+      "map_position": [
+        295.25,
+        227.3,
+        25
+      ],
+      "rotation": 0,
+      "scale": 0.9
+    },
+    {
+      "surface": "cinema-west-garden-south",
+      "model": "shrub",
+      "map_position": [
+        295.25,
+        230.35,
+        25
+      ],
+      "rotation": 0.7,
+      "scale": 1
+    },
+    {
+      "surface": "cinema-west-garden-north",
+      "model": "shrub",
+      "map_position": [
+        295.25,
+        236.55,
+        25
+      ],
+      "rotation": 1.4,
+      "scale": 0.85
+    },
+    {
+      "surface": "cinema-west-garden-north",
+      "model": "shrub",
+      "map_position": [
+        295.25,
+        240.15,
+        25
+      ],
+      "rotation": 2.1,
+      "scale": 0.95
+    },
+    {
+      "surface": "cinema-west-garden-south",
+      "model": "flowers",
+      "map_position": [
+        295.25,
+        228.75,
+        25
+      ],
+      "rotation": 0.2,
+      "scale": 1
+    },
+    {
+      "surface": "cinema-west-garden-north",
+      "model": "flowers",
+      "map_position": [
+        295.25,
+        238.2,
+        25
+      ],
+      "rotation": 1.1,
+      "scale": 1
+    }
+  ],
+  "status": "Candidate for root integration; map surfaces applied, prop instances and GPU not yet checked"
+}

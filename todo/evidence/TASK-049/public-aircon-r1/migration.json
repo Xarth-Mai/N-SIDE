@@ -1,0 +1,120 @@
+{
+  "scope": "aircon evidence only; no DCC or runtime process started",
+  "files": [
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/build.log",
+      "bytes": 1724,
+      "sha256": "7ddce838c25b2647caebeb2bea2490dd68dcecfda1bb17b61f3b45c74bd5c087",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/build.log",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/check.json",
+      "bytes": 964,
+      "sha256": "324135a662ee7ce2405165dff0c356f4321b357938f33e041014ac79118bd194",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/check.json",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/check.py.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_path": null,
+      "action": "removed empty placeholder; not a check result"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/cleanup.json",
+      "bytes": 1449,
+      "sha256": "e1055e57e3feff5819d77269845089d0756f515d4fcf622516147914b0c2555d",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/cleanup.json",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/components.json",
+      "bytes": 36285,
+      "sha256": "a4edebba3dac9a736d085a38da2d46c349fd0809b96b710211ee408a5daa186a",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/components.json",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/export-check.log",
+      "bytes": 53,
+      "sha256": "a59b468133c85596f8a888a1e6f377bd48e61d110570dcac3f2aa3d74d57676e",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/export-check.log",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/export.log",
+      "bytes": 53,
+      "sha256": "ac6ac088b278aa329dacd16c02ad68f928f13444af02dbd1d76c71a63eb873da",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/export.log",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/handoff.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_path": null,
+      "action": "removed empty placeholder; not a check result"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/inspect-source.log",
+      "bytes": 795,
+      "sha256": "f58fd23aab0636b9a2bd3cc000f4b2b812a933c241c28b361680edab5ecd4c53",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/inspect-source.log",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/inspect-source.py",
+      "bytes": 1332,
+      "sha256": "ba9d19cc71957b2379204a4f1ac737afaf617c8bfadc8c95c4192cbf02bc748e",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/inspect-source.py",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/mount-check.py.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_path": null,
+      "action": "removed empty placeholder; not a check result"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/open-rings.json",
+      "bytes": 18921,
+      "sha256": "74e7f41a47d84da6c05fa01587046e4819f0e1f780b4eeffa5a94c5b38ae2873",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/open-rings.json",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-aircon-mount-r1/preview.log",
+      "bytes": 755,
+      "sha256": "b10d2571c06f96530045735e85a2741ac6171d591ac95d4371362a4dd3daa4ef",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/preview.log",
+      "action": "moved byte-for-byte"
+    },
+    {
+      "old_path": "output/assets/public-city-candidates-r3/aircon/prepare.log",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/candidate-build.log",
+      "bytes": 2033,
+      "sha256": "92677db1fc63e8e4277ebf8bca88874e627b012e21cf890d63325e9d815c3750",
+      "action": "copied byte-for-byte; legacy source retained"
+    },
+    {
+      "old_path": "output/assets/public-city-candidates-r3/aircon/preview.log",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/candidate-preview.log",
+      "bytes": 987,
+      "sha256": "37b58e23d1709662826020969d1f698e9461ecb6f71935b533cd3ae40f40382f",
+      "action": "copied byte-for-byte; legacy source retained"
+    },
+    {
+      "old_path": "output/assets/public-city-candidates-r3/aircon/prepare.json",
+      "new_path": "todo/evidence/TASK-049/public-aircon-r1/candidate-prepare.json",
+      "bytes": 378,
+      "sha256": "a1ec0d6c6ef584986d34ae319e78f3dee3946f749a7e75ab83ed6fd6af73dbdb",
+      "action": "copied byte-for-byte; legacy source retained"
+    }
+  ],
+  "blender_processes_at_migration": [],
+  "remaining_temporary_media": [],
+  "preserved": "formal sources, runtime models, original downloads and reference images; source scripts keep their scratch output path for future reproduction"
+}

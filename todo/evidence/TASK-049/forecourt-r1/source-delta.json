@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "before_sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779",
+  "after_sha256": "e1ab14e5f38a89611572e2153ab5136e0a3c18f4202220ba99858feb1b862d43",
+  "appended_surface_ids": [
+    "cinema-west-garden-south",
+    "cinema-west-garden-north",
+    "cinema-arrival-court"
+  ],
+  "other_fields_equal": true,
+  "prior_surfaces_equal": true,
+  "terrain_equal": true,
+  "nodes_equal": true,
+  "roads_equal": true,
+  "buildings_equal": true,
+  "paving_adjustment": "Open west-edge notches keep Wiki and Viewer garden footprints separate",
+  "actual_compared_revision": "8effe5d"
+}

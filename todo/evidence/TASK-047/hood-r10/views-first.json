@@ -1,0 +1,120 @@
+{
+  "engine": "Cycles CPU",
+  "threads": 2,
+  "samples": 12,
+  "resolution": [
+    360,
+    480
+  ],
+  "lights": "Unchanged source master",
+  "views": [
+    {
+      "file": "output/characters/CHR-001/hood-r10/before-side.png",
+      "sha256": "664ee0bce8befd1d343bb28ff27b9bd6fcfa54b5e8e660b3b2dbaf7591c218c4",
+      "master_sha256": "b80306f16aba2471992554d53db871e9e368c51c7a7da299d93ef7c13b3b820d",
+      "camera_position": [
+        4,
+        0,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/characters/CHR-001/hood-r10/before-quarter.png",
+      "sha256": "295327e1e4df9ba2a439960fba8dab297093085c2bf3a5437d14b141ca6e998f",
+      "master_sha256": "b80306f16aba2471992554d53db871e9e368c51c7a7da299d93ef7c13b3b820d",
+      "camera_position": [
+        3,
+        4,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/characters/CHR-001/hood-r10/before-back.png",
+      "sha256": "174b9e654f581a510fba57b5b966cbffb6dbef032eb6dbfd6aa1e0f8fb5556ed",
+      "master_sha256": "b80306f16aba2471992554d53db871e9e368c51c7a7da299d93ef7c13b3b820d",
+      "camera_position": [
+        0,
+        4,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/characters/CHR-001/hood-r10/candidate-first-side.png",
+      "sha256": "a34b68b4a0bdbbffaca559755cd332df4836be8ef2eba2a1f4dfa032b0b69bd6",
+      "master_sha256": "34f21c24aa4113e861f8a86fd94818a17a5d2b021a2d36158c527be20dc3fa27",
+      "camera_position": [
+        4,
+        0,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/characters/CHR-001/hood-r10/candidate-first-quarter.png",
+      "sha256": "4e53b36b4af8a03722bd151a27e3e3c4c86ffb6ba799cc196b37b0c7c77d2027",
+      "master_sha256": "34f21c24aa4113e861f8a86fd94818a17a5d2b021a2d36158c527be20dc3fa27",
+      "camera_position": [
+        3,
+        4,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/characters/CHR-001/hood-r10/candidate-first-back.png",
+      "sha256": "4c65c856e24f7e123b2eec3dd59a3b39b0ad7b35151e5b81117fca6434a48bdc",
+      "master_sha256": "34f21c24aa4113e861f8a86fd94818a17a5d2b021a2d36158c527be20dc3fa27",
+      "camera_position": [
+        0,
+        4,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    }
+  ]
+}

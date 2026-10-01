@@ -1,0 +1,87 @@
+[
+  {
+    "model": "shrub",
+    "file": "game/assets/environment/vegetation/shrub-courtyard.glb",
+    "bounds": [
+      [
+        -0.49175697565078735,
+        0.0,
+        -0.5050787329673767
+      ],
+      [
+        0.5081077814102173,
+        0.800000011920929,
+        0.5207170248031616
+      ]
+    ],
+    "horizontal_radius": 0.5685245748216307,
+    "mesh_nodes": [
+      {
+        "mesh": 0,
+        "name": "CourtyardShrub"
+      }
+    ]
+  },
+  {
+    "model": "flowers",
+    "file": "game/assets/environment/nature/flower_yellowA.glb",
+    "bounds": [
+      [
+        -0.19006272608583624,
+        0.0,
+        -0.1645991477099332
+      ],
+      [
+        0.09920548986304889,
+        0.34999999133023346,
+        0.1645991477099332
+      ]
+    ],
+    "horizontal_radius": 0.19006272608583624,
+    "mesh_nodes": [
+      {
+        "name": "flower_yellowA",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1.8181818181818181,
+          1.8181818181818181,
+          1.8181818181818181
+        ],
+        "mesh": 0
+      }
+    ]
+  },
+  {
+    "model": "street_bench",
+    "file": "game/assets/environment/street-furniture/street-bench.glb",
+    "bounds": [
+      [
+        -0.9600000381469727,
+        0.0,
+        -0.33519697189331055
+      ],
+      [
+        0.9600000381469727,
+        0.8669141530990601,
+        0.33519697189331055
+      ]
+    ],
+    "horizontal_radius": 1.0162496719330547,
+    "mesh_nodes": [
+      {
+        "mesh": 0,
+        "name": "StreetBench"
+      }
+    ]
+  }
+]

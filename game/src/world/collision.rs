@@ -42,7 +42,11 @@ impl CollisionWorld {
         for prop in scene.props.iter().filter(|prop| {
             matches!(
                 prop.model.as_str(),
-                "v_a08_facade" | "v15_mirror_hall_facade" | "street_bench"
+                "v_a08_facade"
+                    | "v15_mirror_hall_facade"
+                    | "v55_workshop_facade"
+                    | "street_bench"
+                    | "aircon_wall"
             )
         }) {
             let spec = scene.appearance.models.get(&prop.model).ok_or_else(|| {
@@ -68,7 +72,7 @@ impl CollisionWorld {
                 .ok_or_else(|| fail("scene missing"))?;
             let mut roots = selected.nodes();
             let node = roots.next().ok_or_else(|| fail("mesh root missing"))?;
-            // These three authored static assets have one mesh root; reject changes to that contract
+            // These authored static assets have one mesh root; reject changes to that contract
             if roots.next().is_some()
                 || node.children().next().is_some()
                 || node.skin().is_some()
@@ -530,6 +534,64 @@ mod tests {
         );
         assert!(hit.fraction > 0. && hit.fraction < 0.5, "{hit:?}");
 
+        // Ground-level furniture must be supported by the authored court and real wall-side ground
+        for (model, source, grade) in [
+            ("street_bench", "/surfaces/cinema-arrival-court/", 25.),
+            ("aircon_wall", "buildings[V-W10]/aircon-wall", 12.666667),
+        ] {
+            let mut first = 0;
+            let mut grounded_vertices = 0;
+            for range in &world.sources {
+                if range.source.starts_with(source)
+                    && range.source.contains(&format!("/collision/{model}/"))
+                {
+                    for triangle in &world.mesh.indices()[first..range.end_triangle as usize] {
+                        for &index in triangle {
+                            let p = bevy_vector(world.mesh.vertices()[index as usize]);
+                            if (p.y - grade).abs() < 0.001 {
+                                let support = native
+                                    .support(p + Vec3::Y * 0.1, 0.25)
+                                    .unwrap_or_else(|| panic!("unsupported {model} foot {p:?}"));
+                                assert!(
+                                    (support.point.y - p.y).abs() < 0.03,
+                                    "{model} at {p:?}: {support:?}"
+                                );
+                                grounded_vertices += 1;
+                            }
+                        }
+                    }
+                }
+                first = range.end_triangle as usize;
+            }
+            assert!(
+                grounded_vertices > 0,
+                "{model} must have checked contact vertices"
+            );
+        }
+        let seat = world
+            .capsule_cast(
+                Vec3::new(297.5, 25.02, -233.5),
+                1.7,
+                0.3,
+                Vec3::NEG_X * 3.,
+                0.02,
+            )
+            .unwrap();
+        assert!(
+            seat.source.contains("cinema-arrival-court/street_bench"),
+            "{seat:?}"
+        );
+        assert!(seat.fraction > 0. && seat.fraction < 0.5, "{seat:?}");
+        // The original service lane beside the new garden and seat retains its pedestrian clearance
+        let lane = world.capsule_cast(
+            Vec3::new(292., 25.075, -220.5),
+            1.7,
+            0.3,
+            Vec3::NEG_Z * 22.,
+            0.02,
+        );
+        assert!(lane.is_none(), "service lane obstruction: {lane:?}");
+
         let from = Vec3::new(90., 30.3, -276.);
         let original = native
             .capsule_cast(from, 1.7, 0.3, Vec3::NEG_X * 4., 0.02)
@@ -550,6 +612,30 @@ mod tests {
             clad.fraction < original.fraction,
             "original={original:?}; clad={clad:?}"
         );
+
+        // Both workshop doors stay closed and their actual authored panels stop the capsule
+        for north in [202., 210.] {
+            let from = Vec3::new(146.8, 24.25, -north);
+            let original = native
+                .capsule_cast(from, 1.7, 0.3, Vec3::X * 2., 0.02)
+                .unwrap();
+            let clad = world
+                .capsule_cast(from, 1.7, 0.3, Vec3::X * 2., 0.02)
+                .unwrap();
+            assert!(
+                clad.source
+                    .contains("buildings[V-55]/blender-attachment/collision/v55_workshop_facade/"),
+                "{clad:?}"
+            );
+            assert!(
+                clad.fraction < original.fraction,
+                "original={original:?}; clad={clad:?}"
+            );
+            assert!(
+                clad.point.x < 148. && clad.normal.x < -0.8,
+                "closed west door should face approach: {clad:?}"
+            );
+        }
 
         // The shop's existing ground-level approach remains clear of imported prop collision
         let from = Vec3::new(100., 28.046, -255.);

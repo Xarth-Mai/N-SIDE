@@ -1,0 +1,10 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) cinema forecourt joins existing level entrances and keeps green islands inside its parcel [12.00ms]
+(pass) cinema forecourt excludes actual sloped road widths rather than relying on the coarse step threshold [38.59ms]
+
+ 2 pass
+ 14 filtered out
+ 0 fail
+Ran 2 tests across 1 file. [102.00ms]

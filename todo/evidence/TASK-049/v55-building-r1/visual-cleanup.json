@@ -1,0 +1,23 @@
+[
+  {
+    "file": "display.png",
+    "sha256": "59155bcf5d12e18b5102141decf0adccfd962e3c5bdb7c80bced9d078f622945",
+    "bytes": 560613,
+    "observed_by": "asset producer and root",
+    "cleanup": "deleted after visual review"
+  },
+  {
+    "file": "southwest.png",
+    "sha256": "4373fd1260e9b3456279e6b31a6e9602740c4ca2f78d7e8639515a15831c62d3",
+    "bytes": 512340,
+    "observed_by": "asset producer and root",
+    "cleanup": "deleted after visual review"
+  },
+  {
+    "file": "west-street.png",
+    "sha256": "9da86e2cd8eb8ab77179235d1071cfcdf24502fe2ac488deb4ea3c419d693c35",
+    "bytes": 564135,
+    "observed_by": "asset producer and root",
+    "cleanup": "deleted after visual review"
+  }
+]

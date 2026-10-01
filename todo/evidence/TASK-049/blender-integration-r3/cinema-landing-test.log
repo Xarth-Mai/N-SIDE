@@ -1,0 +1,12 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) mountain city keeps metre scale and usable graded route alternatives [10.20ms]
+(pass) detailed places connect street access to separate public and service entrances [26.47ms]
+(pass) lifestyle routes visit arrival doors or their connected standing landings in order [7.20ms]
+(pass) cinema arrival stands clear of the closed door while retaining its original road footprint [1.06ms]
+
+ 4 pass
+ 31 filtered out
+ 0 fail
+Ran 4 tests across 1 file. [121.00ms]

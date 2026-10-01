@@ -1,0 +1,30 @@
+{
+  "scope": "Conservative AABB of closed-door approach, not exact Rust capsule",
+  "checks": [
+    {
+      "stop_before_closed_door_m": 0.45,
+      "map_position": [
+        147.62097786970233,
+        201.75742583660949,
+        23.992924191162405
+      ],
+      "overlapping_triangles": 10,
+      "roles": [
+        "Graphite",
+        "Indigo"
+      ],
+      "result": "OCCUPIED"
+    },
+    {
+      "stop_before_closed_door_m": 0.55,
+      "map_position": [
+        147.53675072963617,
+        201.70352046696715,
+        23.991351789198493
+      ],
+      "overlapping_triangles": 0,
+      "roles": [],
+      "result": "CLEAR"
+    }
+  ]
+}

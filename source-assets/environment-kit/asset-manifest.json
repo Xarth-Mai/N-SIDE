@@ -7,7 +7,8 @@
     "Kenney",
     "ambientCG",
     "N:SIDE project contributors",
-    "Stuart Attenborrow / Poly Haven"
+    "Stuart Attenborrow / Poly Haven",
+    "Monsta3D / Poly Haven"
   ],
   "license_sources": [
     "https://kenney.nl/assets/nature-kit",
@@ -513,7 +514,16 @@
       },
       "generation": null,
       "cost": 0,
-      "license": "CC0-1.0"
+      "license": "CC0-1.0",
+      "forecourt_usage": {
+        "instances": 2,
+        "surfaces": [
+          "cinema-west-garden-south",
+          "cinema-west-garden-north"
+        ],
+        "status": "R3 cinema-court frame 49 shows the planted edges; local visual self-audit, not author acceptance",
+        "evidence": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md"
+      }
     },
     {
       "source": "materials/Plaster001_1K-JPG_Color.jpg",
@@ -821,7 +831,16 @@
       "units": "meters",
       "up_axis": "+Y",
       "ground_pivot": true,
-      "height_m": 0.8
+      "height_m": 0.8,
+      "forecourt_usage": {
+        "instances": 4,
+        "surfaces": [
+          "cinema-west-garden-south",
+          "cinema-west-garden-north"
+        ],
+        "status": "R3 cinema-court frame 49 shows the planted edges; local visual self-audit, not author acceptance",
+        "evidence": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md"
+      }
     },
     {
       "source": "vegetation/grass-forest.glb",
@@ -1029,7 +1048,7 @@
         }
       ],
       "status": "exported",
-      "purpose": "镜厅前街局部长椅候选；场景布置与 Bevy 实机待验证",
+      "purpose": "镜厅屋顶原长椅与公共入口前场新增长椅；R3 前场 GPU 局部画面自查及支承/阻挡窄测通过，作者验收待完成",
       "dimensions_m": {
         "width": 1.9200000762939453,
         "height": 0.8669141530990601,
@@ -1070,6 +1089,101 @@
         "scale": 1,
         "collision": "CollisionWorld::from_scene imports actual GLB triangles with visual-equivalent node/model/prop transforms; original roof support retained",
         "evidence": "todo/evidence/TASK-049/blender-integration-r2"
+      },
+      "forecourt_placement": {
+        "source": "/surfaces/cinema-arrival-court/street_bench/0",
+        "map_anchor": [
+          295.8,
+          233.5,
+          25
+        ],
+        "world_y_rotation_degrees": 90,
+        "scale": 1,
+        "collision": "Actual GLB triangles; CPU narrow test covers foot support, seat blocking and a service-lane capsule cast at 25.075 m, 0.05 m above the actual 25.025 m road; not a real player walk",
+        "evidence": {
+          "visual_review": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md",
+          "integration_review": "todo/evidence/TASK-049/blender-integration-r3/review.md",
+          "collision_test": "todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log"
+        }
+      }
+    },
+    {
+      "source": "aircon/wall-installation.glb",
+      "output": "street-furniture/aircon-wall.glb",
+      "sha256": "186759c4eef4728bc09cca57e3c2fd2685f3d98c3767064c6417cd615d143be0",
+      "bytes": 5027140,
+      "author": "Monsta3D / Poly Haven; N:SIDE authored installation",
+      "license": "MPL-2.0",
+      "component_licenses": {
+        "original_unit_geometry_and_textures": "CC0-1.0; Monsta3D / Poly Haven",
+        "624_installation_triangles_and_script": "MPL-2.0; N:SIDE project contributors"
+      },
+      "license_source": "https://polyhaven.com/license",
+      "source_page": "https://polyhaven.com/a/exterior_aircon_unit",
+      "source_release_date": "2023-08-16",
+      "retrieved": "2026-10-01",
+      "upstream_files_hash": "afd5b9eb4b3cfc2544044a00f4acb2a92d2f310e",
+      "source_provenance": "aircon/provenance.json",
+      "original_files_record": "aircon/provenance.json#originals",
+      "editable_source": "aircon/wall-installation.blend",
+      "assembly_script": "aircon/mount.py",
+      "check_script": "aircon/mount-check.py",
+      "status": "exported",
+      "purpose": "V-W10 西墙单件空调与完整墙管/排水装配；R3 GPU 局部画面可见背架、管路和收水口，实际 GLB 地面支承窄测通过，作者验收待完成",
+      "dimensions_m": {
+        "width": 0.7999713122844696,
+        "height": 3.431230068206787,
+        "depth": 0.4220796078443527
+      },
+      "scale_basis": "Original metre geometry kept; authored installation uses actual hose/bundle/bracket coordinates; no global rescale",
+      "pivot": "grade under the receiver, local +Y=0; wall face at local Z=-0.198m; horizontal center retains selected unit origin",
+      "up_axis": "+Y",
+      "front_axis": "+Z",
+      "triangles": 10117,
+      "original_triangles": 9493,
+      "authored_triangles": 624,
+      "materials": 5,
+      "textures": {
+        "count": 6,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "embedded": true,
+        "color": "sRGB color; linear normals and packed ARM; grille RGBA MASK cutoff 0.5; no occlusionTexture"
+      },
+      "modifications": [
+        "Select clean unit only, retain original downloads and prior candidate",
+        "Restore color and alpha MASK grille; retain all six selected exported image bytes",
+        "Translate unit +2.503333m only; triangle geometry and UVs preserved, Blender regenerated normals differ by at most 0.039 degrees",
+        "Add rear plate packers, sleeve at actual inherited bundle mouth, hose coupler, clipped wall drain and covered receiver"
+      ],
+      "cost": 0,
+      "generation": null,
+      "evidence_directory": "todo/evidence/TASK-049/public-aircon-r1",
+      "dcc_build_evidence": "todo/evidence/TASK-049/public-aircon-r1/build.log",
+      "geometry_check_evidence": "todo/evidence/TASK-049/public-aircon-r1/mount-check-current.json",
+      "visual_review_evidence": "todo/evidence/TASK-049/public-aircon-r1/review.md",
+      "runtime_placement": {
+        "building_id": "V-W10",
+        "map_anchor": [
+          567.79,
+          95.6,
+          12.666667
+        ],
+        "world_y_rotation_degrees": -90,
+        "scale": 1,
+        "wall_source_x": 568,
+        "brick_face_source_x": 567.988,
+        "status": "R3 local GPU capture PASS; frames 29/49 reviewed with rear bracket, pipes and ground receiver visible; author approval pending",
+        "collision_requirement": "Actual GLB triangles imported by CollisionWorld::from_scene; CPU narrow test verifies receiver bottom vertices against real ground support; receiver blocking and player passage remain unverified",
+        "model": "aircon_wall",
+        "source": "buildings[V-W10]/aircon-wall"
+      },
+      "runtime_evidence": {
+        "visual_review": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md",
+        "integration_review": "todo/evidence/TASK-049/blender-integration-r3/review.md",
+        "collision_test": "todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log"
       }
     }
   ],

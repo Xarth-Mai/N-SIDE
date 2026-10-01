@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "owner_id": "V-55",
+  "assets": [
+    {
+      "id": "AST-V55-FACADE",
+      "kind": "static-workshop-facade",
+      "state": "exported-candidate",
+      "source_path": "source-assets/buildings/V-55/facade.blend",
+      "source_sha256": "b235d3837e29aad33153c81fa6d825b40894ba983b3e0cdabcd4c86ce991a8a5",
+      "provenance": "Original two-face workshop geometry, editable purpose lettering and UV authored locally in Blender 5.2.2 LTS for N:SIDE; embeds unchanged ambientCG images already recorded in AST-003 and existing Noto Sans SC font in the editable master",
+      "license": "MPL-2.0 project-authored geometry and scripts; CC0-1.0 ambientCG images; OFL-1.1 Noto Sans SC",
+      "license_status": "project-owned-and-open",
+      "references": [
+        "docs/dev/production/art-direction.md",
+        "docs/public/images/cinema-music-street.webp",
+        "source-assets/district-map/district.json:buildings[V-55]",
+        "source-assets/environment-kit/asset-manifest.json:AST-003",
+        "source-assets/ui-kit/asset-manifest.json"
+      ],
+      "dimensions": {
+        "units": "meters",
+        "source_up_axis": "+Z",
+        "runtime_up_axis": "+Y",
+        "pivot_map_xyz": [
+          154,
+          206,
+          24
+        ],
+        "runtime_bounds_xyz": [
+          [
+            -6.75,
+            6.0
+          ],
+          [
+            -0.550000011920929,
+            9.0
+          ],
+          [
+            -8.0,
+            8.25
+          ]
+        ],
+        "source_building_footprint_m": [
+          12,
+          16
+        ],
+        "source_building_height_m": 9
+      },
+      "export": {
+        "tool": "Blender 5.2.2 LTS",
+        "scene": 0,
+        "triangles": 7362,
+        "vertices": 13008,
+        "material_primitives": 6,
+        "images": 4,
+        "bytes": 4478432,
+        "extensions": [],
+        "source_mesh_groups": 25,
+        "editable_text_objects": 3,
+        "windows": 16
+      },
+      "textures": {
+        "source-assets/environment-kit/materials/Plaster001_1K-JPG_Color.jpg": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+        "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "source-assets/environment-kit/materials/Concrete034_1K-JPG_Color.jpg": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+        "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+      },
+      "font": {
+        "source": "source-assets/ui-kit/fonts/NotoSansSC-VF.ttf",
+        "license": "source-assets/ui-kit/licenses/OFL.txt",
+        "copyright": "source-assets/ui-kit/licenses/COPYRIGHT.txt",
+        "treatment": "Original font packed in .blend; text curves offset 0.006 m authoring units for main labels, 0.002 for service label; original font file unchanged; GLB contains outlined text geometry"
+      },
+      "acceptance": {
+        "technical": "PASS: actual GLB bounds, finite mesh attributes, nondegenerate triangles, normal/winding agreement, PBR UV scale, embedded source hashes, 82 conservative approach samples and Blender source/map contracts",
+        "evidence_directory": "todo/evidence/TASK-049/v55-building-r1",
+        "visual": "Self-audit: three CPU Cycles views and the R3 v55-west GPU capture reviewed; frame 49 shows readable purpose lettering and display with no obvious floating; author approval pending",
+        "runtime": "PASS within R3 v55-west capture scope: scene/appearance binding and local GPU rendering observed; player approaches and whole-building or city-wide visual acceptance not established",
+        "collision": "PASS: final CPU scene-model collision narrow test imports actual V-55 GLB triangles and confirms both closed doors stop the capsule before the original shell; source approach checks remain separate from a real player walk",
+        "geometry_report": "todo/evidence/TASK-049/v55-building-r1/installed-geometry.json",
+        "source_report": "todo/evidence/TASK-049/v55-building-r1/source-check.log",
+        "visual_review": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md",
+        "integration_review": "todo/evidence/TASK-049/blender-integration-r3/review.md",
+        "collision_test": "todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log"
+      },
+      "cost": 0,
+      "runtime_path": "game/assets/environment/buildings/v55-workshop-facade.glb",
+      "runtime_sha256": "8683357c862f708904de63bbe8a88a196f6e327b48ea5c638a1c318de8c6349b"
+    }
+  ]
+}

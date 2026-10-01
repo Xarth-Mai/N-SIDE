@@ -1,0 +1,107 @@
+{
+  "source_page": "https://polyhaven.com/a/exterior_aircon_unit",
+  "author": [
+    "Monsta3D"
+  ],
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "license_checked": "2026-10-01",
+  "published": "2023-08-16",
+  "upstream_files_hash": "afd5b9eb4b3cfc2544044a00f4acb2a92d2f310e",
+  "originals": [
+    {
+      "path": "original/exterior_aircon_unit_1k.gltf",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/exterior_aircon_unit/exterior_aircon_unit_1k.gltf",
+      "official_size": 9634,
+      "official_md5": "10beccfb1bf0c973a0729be8970532a9",
+      "sha256": "f19d85c76948903047c2846068aeaa376d5e956a410675268cb6cb6aac5d97c2"
+    },
+    {
+      "path": "original/exterior_aircon_unit.bin",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/exterior_aircon_unit/exterior_aircon_unit.bin",
+      "official_size": 494784,
+      "official_md5": "971c2cfcbc29256d7872eafe74352279",
+      "sha256": "b4b9ad082bdaa8f8b437bc14d9981caeaf318334499d4bf65d616fb2ec0c5ca8"
+    },
+    {
+      "path": "original/textures/exterior_aircon_unit_01_nor_gl_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/exterior_aircon_unit/exterior_aircon_unit_01_nor_gl_1k.jpg",
+      "official_size": 472088,
+      "official_md5": "244025f2008cbdc8c8680f0c962ed26f",
+      "sha256": "e5a6f3c135b942d6efe62a24496c575d03f6a4316188efe65079035d7faf1c38"
+    },
+    {
+      "path": "original/textures/exterior_aircon_unit_01_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/exterior_aircon_unit/exterior_aircon_unit_01_diff_1k.jpg",
+      "official_size": 506664,
+      "official_md5": "81003ea4afe59ed4dac090791e41f562",
+      "sha256": "2ae5005b4836d2c91d1e712d9acf425c7dcc4973b7c0fc6f23da9afaa6381da6"
+    },
+    {
+      "path": "original/textures/exterior_aircon_unit_01_arm_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/exterior_aircon_unit/exterior_aircon_unit_01_arm_1k.jpg",
+      "official_size": 651293,
+      "official_md5": "9af3805e7371643962ffe6079d547b00",
+      "sha256": "14671920f716691dc3b8940432f7aba5c469e3b466441ff8ad500de92d3178fb"
+    },
+    {
+      "path": "original/textures/exterior_aircon_unit_02_nor_gl_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/exterior_aircon_unit/exterior_aircon_unit_02_nor_gl_1k.jpg",
+      "official_size": 942230,
+      "official_md5": "e00f9c963e9f3dc798d84f7ebcc4185a",
+      "sha256": "864c0fb1e55aff910d826a8c1f6a2ad459f7db0124b5846445d466cabf0cadf5"
+    },
+    {
+      "path": "original/textures/exterior_aircon_unit_01_opacity_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/exterior_aircon_unit/exterior_aircon_unit_01_opacity_1k.jpg",
+      "official_size": 333675,
+      "official_md5": "f253dbcb057612371dd1b6d37095c6ba",
+      "sha256": "c19feb434c2b01923fbb3e16ace3aa6d9cb16b05c2a5c479ad237759b2d331d6"
+    },
+    {
+      "path": "original/textures/exterior_aircon_unit_02_arm_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/exterior_aircon_unit/exterior_aircon_unit_02_arm_1k.jpg",
+      "official_size": 484026,
+      "official_md5": "98b44ba240f832fe4fa94e90d1887c6a",
+      "sha256": "1cdfa2d1c938c3af61a5f06510b0d94aeddddd4bdc1832008b3826240dd1535d"
+    },
+    {
+      "path": "original/textures/exterior_aircon_unit_02_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/exterior_aircon_unit/exterior_aircon_unit_02_diff_1k.jpg",
+      "official_size": 594957,
+      "official_md5": "39788bc10ecccd6f9e4deef7d5e22c72",
+      "sha256": "e6e66c98f76c4dbc0273c2840dcd3b067b1075c8c35fe93de272ca7f1f2522df"
+    }
+  ],
+  "download_cost": 0,
+  "candidate_only": true,
+  "owner_asset_id": "AST-003",
+  "status": "registered AST-003 wall installation; R3 local GPU capture reviewed with rear bracket, pipes and receiver visible; actual GLB ground-support narrow test PASS; author acceptance pending",
+  "license_file": "../licenses/CC0-1.0.txt",
+  "candidate_files": [
+    {
+      "path": "aircon-candidate.blend",
+      "sha256": "dfba78df51e4d13bb82978065d2208d7aeb838ce7701dad2530c8d98834c50dd",
+      "bytes": 4348319
+    },
+    {
+      "path": "aircon-candidate.glb",
+      "sha256": "fae1a9f45ccebea4eef64f675f67e0913473614f5a805abea5d1a09e9537ebb5",
+      "bytes": 4983300
+    }
+  ],
+  "evidence_directory": "todo/evidence/TASK-049/public-aircon-r1",
+  "dcc_evidence": {
+    "build": "todo/evidence/TASK-049/public-aircon-r1/build.log",
+    "source_inspection": "todo/evidence/TASK-049/public-aircon-r1/inspect-source.log",
+    "preview": "todo/evidence/TASK-049/public-aircon-r1/preview.log",
+    "geometry_check": "todo/evidence/TASK-049/public-aircon-r1/mount-check-current.json",
+    "prior_visual_cleanup": "todo/evidence/TASK-049/public-aircon-r1/cleanup.json",
+    "scope": "historical Blender 5.2.2 LTS source inspection/build/CPU render all exited normally; no Blender rerun during evidence migration"
+  },
+  "runtime_evidence": {
+    "visual_review": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md",
+    "integration_review": "todo/evidence/TASK-049/blender-integration-r3/review.md",
+    "collision_test": "todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log"
+  }
+}

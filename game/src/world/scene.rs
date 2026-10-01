@@ -1286,6 +1286,9 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                 let cinema_blender_face = building.id == "V-15"
                     && !court
                     && ((a[1] == 220. && b[1] == 220.) || (a[0] == 300. && b[0] == 300.));
+                let workshop_blender_face = building.id == "V-55"
+                    && !court
+                    && ((a[0] == 148. && b[0] == 148.) || (a[1] == 198. && b[1] == 198.));
                 let public_face = !court
                     && design.entries.iter().any(|e| {
                         let p = map.nodes[&e.node];
@@ -1376,7 +1379,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             continue;
                         }
                         // The authored facade owns all windows on these two faces
-                        if cinema_blender_face {
+                        if cinema_blender_face || workshop_blender_face {
                             continue;
                         }
                         if floor_index == 0
@@ -1572,7 +1575,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             }
                         }
                     }
-                    if floor_index > 0 && !cinema_blender_face {
+                    if floor_index > 0 && !cinema_blender_face && !workshop_blender_face {
                         let p = [
                             (a[0] + b[0]) / 2.0 + normal[0] * (0.04 + interior_clearance),
                             (a[1] + b[1]) / 2.0 + normal[1] * (0.04 + interior_clearance),
@@ -1746,6 +1749,10 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             building.id, entry.node
                         ));
                     }
+                    // Preserve entry/terrain validation above; the authored closed doors own their frames
+                    if workshop_blender_face {
+                        continue;
+                    }
                     let center = map_to_world([
                         p[0] + normal[0] * 0.16,
                         p[1] + normal[1] * 0.16,
@@ -1792,7 +1799,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                     }
                 }
                 // Roof coping keeps the authored top height and leaves roof paths open
-                if !design.floors.iter().any(|f| f.name == "RF") {
+                if !workshop_blender_face && !design.floors.iter().any(|f| f.name == "RF") {
                     add_box(
                         &mut batches,
                         "trim",
@@ -3050,6 +3057,7 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
         ("V-A08", "v_a08_roof_eaves", [79., 277.5, 40.421515]),
         ("V-A08", "v_a08_facade", [79., 277.5, 30.021515]),
         ("V-15", "v15_mirror_hall_facade", [300., 220., 25.]),
+        ("V-55", "v55_workshop_facade", [154., 206., 24.]),
     ] {
         props.push(PropPlacement {
             source: format!("buildings[{owner}]/blender-attachment"),
@@ -3063,6 +3071,80 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
         model: "street_bench".into(),
         transform: Transform::from_translation(map_to_world([312., 237., 37.])),
     });
+    props.push(PropPlacement {
+        source: "buildings[V-W10]/aircon-wall".into(),
+        model: "aircon_wall".into(),
+        transform: Transform::from_translation(map_to_world([567.79, 95.6, 12.666667]))
+            .with_rotation(Quat::from_rotation_y(-std::f32::consts::FRAC_PI_2)),
+    });
+    // These small planted edges belong to the authored forecourt, not the general park scatter
+    for (index, (surface_id, model, xy, yaw, scale)) in [
+        (
+            "cinema-arrival-court",
+            "street_bench",
+            [295.8, 233.5],
+            std::f32::consts::FRAC_PI_2,
+            1.,
+        ),
+        (
+            "cinema-west-garden-south",
+            "shrub",
+            [295.25, 227.3],
+            0.,
+            0.9,
+        ),
+        (
+            "cinema-west-garden-south",
+            "shrub",
+            [295.25, 230.35],
+            0.7,
+            1.,
+        ),
+        (
+            "cinema-west-garden-north",
+            "shrub",
+            [295.25, 236.55],
+            1.4,
+            0.85,
+        ),
+        (
+            "cinema-west-garden-north",
+            "shrub",
+            [295.25, 240.15],
+            2.1,
+            0.95,
+        ),
+        (
+            "cinema-west-garden-south",
+            "flowers",
+            [295.25, 228.75],
+            0.2,
+            1.,
+        ),
+        (
+            "cinema-west-garden-north",
+            "flowers",
+            [295.25, 238.2],
+            1.1,
+            1.,
+        ),
+    ]
+    .into_iter()
+    .enumerate()
+    {
+        let surface = map
+            .surfaces
+            .iter()
+            .find(|s| s.id.as_deref() == Some(surface_id))
+            .ok_or_else(|| format!("[scene/forecourt] missing {surface_id}"))?;
+        props.push(PropPlacement {
+            source: format!("/surfaces/{surface_id}/{model}/{index}"),
+            model: model.into(),
+            transform: Transform::from_translation(map_to_world([xy[0], xy[1], surface.elevation]))
+                .with_rotation(Quat::from_rotation_y(yaw))
+                .with_scale(Vec3::splat(scale)),
+        });
+    }
 
     for (i, p) in map.trees.iter().enumerate() {
         let supported = map
@@ -3206,6 +3288,7 @@ mod tests {
             ("V-A08", "v_a08_roof_eaves", 128),
             ("V-A08", "v_a08_facade", 7000),
             ("V-15", "v15_mirror_hall_facade", 16000),
+            ("V-55", "v55_workshop_facade", 8000),
         ] {
             let placed: Vec<_> = placements.iter().filter(|p| p.model == model).collect();
             assert_eq!(placed.len(), 1, "one attachment per authored building");
@@ -3281,6 +3364,15 @@ mod tests {
                         .max_element()
                         < 0.001
                 );
+            } else if model == "v55_workshop_facade" {
+                assert!((lo - Vec3::new(147.25, 23.45, -214.)).abs().max_element() < 0.001);
+                assert!((hi - Vec3::new(160., 33., -197.75)).abs().max_element() < 0.001);
+                assert_eq!(
+                    building.polygon,
+                    vec![[148., 198.], [160., 198.], [160., 214.], [148., 214.]]
+                );
+                assert_eq!(map.nodes["fw_f_v_55_public"], [148., 202., 24.]);
+                assert_eq!(map.nodes["fw_f_v_55_service"], [148., 210., 24.]);
             } else {
                 assert!(
                     (lo - Vec3::new(299.65, building.elevation as f32, -250.08))
@@ -3303,9 +3395,11 @@ mod tests {
         for (start, end) in [
             ("shop_north_junction", "v_a08_door_landing"),
             ("v_a08_door_landing", "v_a08_door"),
-            ("fw_w_cinema_front", "cinema_entry"),
+            ("fw_w_cinema_front", "cinema_entry_landing"),
             ("cinema_roof", "cinema_deck_turn"),
             ("cinema_deck_turn", "cinema_upper"),
+            ("fw_f_junction20", "fw_f_v_55_public"),
+            ("fw_f_junction21", "fw_f_v_55_service"),
         ] {
             assert!(
                 map.roads.iter().any(|r| r
@@ -3317,8 +3411,10 @@ mod tests {
             let a = map_to_world(map.nodes[start]);
             let mut b = map_to_world(map.nodes[end]);
             // Closed exterior doors remain closed; approach to standing distance
-            if end == "v_a08_door" || end == "cinema_entry" {
+            if end == "v_a08_door" {
                 b -= (b - a).normalize() * 0.65;
+            } else if end.starts_with("fw_f_v_55_") {
+                b -= (b - a).normalize() * 0.55;
             }
             for i in 0..20 {
                 let at = a.lerp(b, i as f32 / 20.);
@@ -3422,9 +3518,57 @@ mod tests {
                 .iter()
                 .all(|p| !p.source.starts_with("buildings[V-A08]/"))
         );
+        // V-55 has no other ID-specific detail selectors; its untouched two faces must remain byte-for-byte
+        assert!(
+            !residential_sample("V-55")
+                && !appearance.displays.contains_key("V-55")
+                && !appearance.shopfronts.contains_key("V-55")
+        );
+        original_map
+            .buildings
+            .iter_mut()
+            .find(|b| b.id == "V-55")
+            .unwrap()
+            .id = "V-55-before".into();
+        let original_workshop = facades(&original_map, &appearance).unwrap();
+        let old_workshop = cubes(&original_workshop, "V-55-before");
+        let new_workshop = cubes(&current, "V-55");
+        assert!(!new_workshop.is_empty() && new_workshop.len() < old_workshop.len());
+        assert!(new_workshop.iter().all(|b| old_workshop.contains(b)));
+        let mut preserved_east = 0;
+        let mut preserved_north = 0;
+        for old in &old_workshop {
+            let (lo, hi) = bounds(&old.1);
+            let middle = (lo + hi) / 2.;
+            if (middle.x - 160.).abs() < 0.3 && hi.z - lo.z > hi.x - lo.x {
+                assert!(
+                    new_workshop.contains(old),
+                    "east generic detail removed: {old:?}"
+                );
+                preserved_east += 1;
+            } else if (middle.z + 214.).abs() < 0.3 && hi.x - lo.x > hi.z - lo.z {
+                assert!(
+                    new_workshop.contains(old),
+                    "north generic detail removed: {old:?}"
+                );
+                preserved_north += 1;
+            } else {
+                assert!(
+                    !new_workshop.contains(old),
+                    "covered west/south generic detail remains: {old:?}"
+                );
+                assert!(
+                    (hi.x < 148.3 && lo.z >= -214.001 && hi.z <= -197.99)
+                        || (lo.z > -198.3 && hi.z < -197.7 && lo.x >= 147.99 && hi.x <= 160.01),
+                    "unexpected removed workshop detail: {lo:?}..{hi:?}"
+                );
+            }
+        }
+        assert!(preserved_east > 0 && preserved_north > 0);
         eprintln!(
-            "generic V-A08 faces replaced; V-15 removed {} triangles; five source approaches retain clearance",
-            old_cinema - new_cinema
+            "V-A08 fully replaced; V-15 removed {} triangles; V-55 removed {} boxes and preserves east/north {preserved_east}/{preserved_north}; seven approaches clear",
+            old_cinema - new_cinema,
+            old_workshop.len() - new_workshop.len()
         );
     }
 
@@ -6020,6 +6164,10 @@ mod tests {
                 .collect();
             let mut seen = BTreeSet::new();
             for entry in &design.entries {
+                // V-55's two closed panels are now checked against actual imported collision geometry
+                if building.id == "V-55" {
+                    continue;
+                }
                 if !seen.insert(&entry.node) {
                     continue;
                 }

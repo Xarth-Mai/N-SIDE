@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "file": "source-assets/environment-kit/aircon/wall-installation.glb",
+  "bytes": 5027140,
+  "sha256": "186759c4eef4728bc09cca57e3c2fd2685f3d98c3767064c6417cd615d143be0",
+  "triangles_by_material": {
+    "exterior_aircon_unit_01": 9435,
+    "exterior_aircon_unit_02": 58,
+    "NSIDE_AC_Metal": 204,
+    "NSIDE_AC_PVC": 360,
+    "NSIDE_AC_Insulation": 60
+  },
+  "triangles": 10117,
+  "materials": 5,
+  "embedded_images": 6,
+  "bounds_gltf": [
+    [
+      -0.399985671043396,
+      0.0,
+      -0.23499999940395355
+    ],
+    [
+      0.3999856412410736,
+      3.431230068206787,
+      0.18707960844039917
+    ]
+  ],
+  "selected_unit_geometry_uv_materials_images": "preserved except +2.503333m height",
+  "reexport_normal_max_angle_degrees": {
+    "exterior_aircon_unit_01": 0.03883859708339103,
+    "exterior_aircon_unit_02": 0.0
+  },
+  "finite_attributes_valid_indices_unit_normals_zero_degenerate_triangles": "PASS",
+  "runtime": "NOT RUN"
+}

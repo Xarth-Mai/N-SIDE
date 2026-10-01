@@ -2,6 +2,8 @@
 
 2026-10-01，TASK-049；本轮是已查看画面的地图设计提案与 CPU 几何核对，尚未修改地图、生成场景或执行 GPU 验收
 
+后续实施见[地图实施记录](forecourt-r1/review.md)：本页保留审查时的总轮廓。实际落图把西侧两块绿岛从铺装 polygon 边缘凹进去，避免 Wiki 的完整面绘制覆盖绿岛，不再依赖本页最初提出的同高 surface 掩膜顺序；整体场地范围、实例位置、标高和斜来路裁角保持，净铺地 polygon 为 `372.303760 m²`
+
 ## 问题与本轮选择
 
 已实际查看 `output/blender-integration-r2/cinema-facade-retry/keyframes/frame00149.png`、`output/blender-integration-r2/va08-southeast/keyframes/frame00059.png` 及 README 所指[镜厅概念预览](../../../docs/public/images/cinema-music-street.webp)，自查类别为 `self-audit`

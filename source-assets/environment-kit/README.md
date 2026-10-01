@@ -5,8 +5,8 @@
 | 资产 ID | `AST-003` |
 | 状态 | `exported`，已生成运行派生物；加载与渲染结果见本轮任务证据，样板美术验收待作者确认 |
 | 主文件 | 本目录中的 GLB、JPG、道路色板和原始许可文件，逐文件见 [asset-manifest.json](asset-manifest.json) |
-| 作者 | Kenney、ambientCG、Stuart Attenborrow / Poly Haven；模型装配与米制归一、植物材质调整及原创植物土石由 N:SIDE 制作 |
-| 许可 | 第三方素材为 CC0 1.0，原创植物沿用项目 MPL-2.0，逐文件见清单；保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
+| 作者 | Kenney、ambientCG、Stuart Attenborrow 与 Monsta3D / Poly Haven；模型装配与米制归一、植物材质调整及原创植物土石由 N:SIDE 制作 |
+| 许可 | 第三方原件保留 CC0 1.0，原创素材与安装件沿用项目 MPL-2.0，混合作品的组件许可逐项见清单；保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
 | 获取日期 | 第三方素材取得与原创资产制作日期逐项见清单 |
 | 使用位置 | 正式入口与 3D Map Viewer 共用的街树、灌木、公园与登高路旁植物土石、街灯、铺装与墙面；导视空杆已导出、尚未放置 |
 | 运行派生物 | `game/assets/environment/`，由导出命令生成，运行期间无需联网 |
@@ -91,7 +91,7 @@ Plaster001 供米白与青灰外墙使用；WoodSiding009 供样板店外侧木�
 
 新增[初秋街树](vegetation/README.md)，以真实分枝与 1,452 片阔叶替换 `tree_a` 的块状冠，6m 高、11,686 三角、2 个材质与一张内嵌树皮纹理，保持既有树点、根部枢轴与放置半径。可编辑 Blender 主文件与源码在同目录，GLB 通过既有导出器复制；项目原创来源与 MPL-2.0 单独登记，原 CC0 素材的许可保持不变。全城植被、风动与 LOD 尚未完成，运行成本与实机观感按任务证据验证
 
-当前清单列出 36 个运行文件，包含 3 份许可文件，并非新增 36 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
+当前清单列出 37 个运行文件，包含 3 份许可文件，不等于 37 种素材；原创素材与安装件按条目标记 MPL-2.0，第三方原件保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
 
 ## 陡坡岩面与原创植物
 
@@ -114,4 +114,10 @@ ambientCG [Bricks057](https://ambientcg.com/view?id=Bricks057) 补充暖棕砖�
 
 ## 公共长椅
 
-[公共长椅主文件](street-furniture/README.md)使用 Stuart Attenborrow / Poly Haven 的 CC0 Modular Street Seating，只组装一件有背靠与扶手的直座。保留原作者的几何、UV 和 1K PBR 纹理，修正零件展示布局后导出 `street-furniture/street-bench.glb`；米制尺寸、足底、朝向、来源和恢复方法沿用同一 AST-003 清单。当前完成资产制作与 CPU 自查，场景接入与 Bevy 实机观感由[本轮证据](../../todo/evidence/TASK-049/public-street-r2/review.md)承接
+[公共长椅主文件](street-furniture/README.md)使用 Stuart Attenborrow / Poly Haven 的 CC0 Modular Street Seating，只组装一件有背靠与扶手的直座。保留原作者的几何、UV 和 1K PBR 纹理，修正零件展示布局后导出 `street-furniture/street-bench.glb`；米制尺寸、足底、朝向、来源和恢复方法沿用同一 AST-003 清单。资产制作与 CPU 自查见[制作证据](../../todo/evidence/TASK-049/public-street-r2/review.md)；屋顶原实例保留，R3 新增镜厅前场实例并实际观察长椅、灌木、花与铺地，局部画面覆盖见[视觉记录](../../todo/evidence/TASK-049/blender-integration-r3/visual-review.md)，碰撞窄测与人物路径边界见[集成记录](../../todo/evidence/TASK-049/blender-integration-r3/review.md)，作者美术验收待完成
+
+## 公共墙挂空调
+
+[公共空调装配](aircon/README.md)采用 Monsta3D / Poly Haven 的 CC0 Exterior Aircon Unit clean 单机，在本机 Blender 中补齐背架垫块、真实背面包覆管口的回墙套管、原软管末端接头、贴墙排水和有盖收水口。9,493 个原三角、原 UV 与 6 张已检查贴图保留，新增 624 个安装三角沿用项目 MPL-2.0，成品与原件的许可分工在既有 AST-003 清单明确记录
+
+`aircon/wall-installation.blend` 为装配主文件，导出的源 GLB 沿用上方环境导出器生成 `game/assets/environment/street-furniture/aircon-wall.glb`。当前实例位于 V-W10 西墙地图 `[567.79,95.6,12.666667]`、世界 Y 轴 `-90°`，保留 V-A08 原创三台空调；本机 CPU 近图已观察接点和尺度，R3 实机第29／49帧可见背架、管路和收水口，地面支承窄测通过，见[视觉记录](../../todo/evidence/TASK-049/blender-integration-r3/visual-review.md)及[集成记录](../../todo/evidence/TASK-049/blender-integration-r3/review.md)。人物低位碰撞与通行、格栅远近闪烁、运行成本及作者验收仍待对应验证

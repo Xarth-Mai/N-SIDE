@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { roadWidthConflicts, roadSurfaceConflicts } from '../check-road-width.ts'
-import { pointInside, roadAllowed, roadOffsets, intersectionArea } from '../district-geometry.ts'
+import { pointInside, onBoundary, polygonInside, polygonArea, roadAllowed, roadOffsets, intersectionArea } from '../district-geometry.ts'
 import type { District } from '../district-types.ts'
 import source from '../../source-assets/district-map/district.json' with { type: 'json' }
 
@@ -181,4 +181,48 @@ test('platform checks keep concave cutouts and actual stair treads while excludi
 
 test('ground platforms meet adjacent road ribbons and stair treads at their own level',()=>{
   assert.deepEqual(roadSurfaceConflicts(source),[],'platform edges must clear slopes and stair flights before their level arrival')
+})
+
+test('cinema forecourt joins existing level entrances and keeps green islands inside its parcel',()=>{
+  const data:District=source
+  const court=data.surfaces.find(s=>s.id==='cinema-arrival-court')!
+  const parcel=data.parcels.find(p=>p.id==='P09-A')!
+  const gardens=['cinema-west-garden-south','cinema-west-garden-north'].map(id=>data.surfaces.find(s=>s.id===id)!)
+  assert.ok(court&&gardens.every(Boolean),'the paved arrival and both planting beds must exist in the shared map')
+  assert.equal(court.kind,'court');assert.equal(court.access,'public')
+  assert.ok(!court.elevated&&!court.building,'the forecourt is ground-level public space')
+  assert.ok(polygonArea(court.polygon)>350&&polygonArea(court.polygon)<450&&polygonInside(court.polygon,parcel.polygon),'retain a bounded usable arrival within P09-A')
+  for(const id of ['fw_w_cinema_front','cinema_entry','fw_w_cinema_lift_front','cinema_lift_low']) {
+    assert.equal(data.nodes[id][2],court.elevation,`${id}: the court must meet the actual entrance level`)
+    assert.ok(pointInside(data.nodes[id],court.polygon),`${id}: preserve the public arrival through the court`)
+  }
+  for(const garden of gardens) {
+    assert.equal(garden.kind,'park');assert.equal(garden.elevation,court.elevation)
+    assert.ok(polygonInside(garden.polygon,parcel.polygon),'planting stays inside the existing cinema parcel')
+    assert.ok(intersectionArea(garden.polygon,court.polygon)<1e-6,'planting and paving must meet without overlapping in either Viewer or Wiki')
+    assert.ok(garden.polygon.filter(p=>onBoundary(p,court.polygon)).length>=2,'the planting edge must join the paved forecourt')
+    assert.ok(polygonArea(garden.polygon)>8,'retain real soil area rather than decorative points')
+    assert.ok(!pointInside([295.8,233.5],garden.polygon),'leave the seating gap unplanted')
+  }
+  assert.ok(intersectionArea(gardens[0].polygon,gardens[1].polygon)<1e-6,'planting beds remain separate')
+  for(const building of data.buildings)assert.ok(intersectionArea(court.polygon,building.polygon)<1e-6,`${building.id}: do not enlarge public paving into a building`)
+})
+
+test('cinema forecourt excludes actual sloped road widths rather than relying on the coarse step threshold',()=>{
+  const data:District=source
+  const court=data.surfaces.find(s=>s.id==='cinema-arrival-court')!
+  const gardens=['cinema-west-garden-south','cinema-west-garden-north'].map(id=>data.surfaces.find(s=>s.id===id)!)
+  const check=(polygon:number[][])=>{
+    for(const road of data.roads.filter(r=>!r.building&&!['interior','lift','bridge','deck'].includes(r.kind))) {
+      const points=road.nodes.map(id=>data.nodes[id]),offsets=roadOffsets(points,road.width)
+      for(let i=1;i<points.length;i++) {
+        const [a,b]=[points[i-1],points[i]],[u,v]=[offsets[i-1],offsets[i]]
+        const ribbon=[[a[0]-u[0],a[1]-u[1]],[b[0]-v[0],b[1]-v[1]],[b[0]+v[0],b[1]+v[1]],[a[0]+u[0],a[1]+u[1]]]
+        if(intersectionArea(ribbon,polygon)>1e-6)assert.ok(Math.abs(a[2]-court.elevation)<1e-6&&Math.abs(b[2]-court.elevation)<1e-6,`${road.nodes.slice(i-1,i+1).join(' -> ')}: the court must not cap a sloping approach`)
+        for(const garden of gardens)assert.ok(intersectionArea(ribbon,garden.polygon)<1e-6,`${garden.id}: planting must leave the full existing road width clear`)
+      }
+    }
+  }
+  check(court.polygon)
+  assert.throws(()=>check([[295,213.5],[342.5,213.5],[342.5,220],[300,220],[300,242],[294.5,242],[294.5,220]]),/must not cap a sloping approach/,'the rejected rectangle produces a real step despite passing the general .35m screening threshold')
 })

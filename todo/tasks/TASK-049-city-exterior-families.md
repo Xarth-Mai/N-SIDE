@@ -28,11 +28,11 @@ specs:
 
 ## 当前工作与下一步
 
-第 12 轮，步骤 6/6：本机 Blender 完成并接入 V-A08 四面住宅外饰、镜厅南／西完整立面、安可竖版海报及一件 CC0 公共长椅，实际 GLB 三角进入正式游戏碰撞，完成技术检查与真实画面自查。任务继续 active；下一批优先完善镜厅前场和屋顶公共休息区，处理远处阶梯呈深灰带的可读性，再扩展其他建筑家族
+第 13 轮，步骤 6/6：本机 Blender 制作并接入 V-55 包装／修补工坊，装配公共 CC0 空调与原创背架、管线及收水口；镜厅前场补铺地、两条绿岛与一组公共座椅，小店三段70级台阶补鼻口。九组真实捕获通过，含镜厅959.83m往返41个实际节点与零重置，已核对画面。任务继续 active，下一批制作 V-35 BYTE BEAT 北侧经营立面，扩大建筑用途辨识
 
-按作者要求使用本机 Blender 制作重点建筑，主文件保留可编辑构件、材质与重复导出入口；公共素材沿 AST-003 登记，新增 Poly Haven 长椅保留作者、CC0、源文件和实际装配过程。建筑主体、稳定 ID、入口和公共路线保持，本轮三模型共 27328 个实际静态三角纳入既有碰撞；第 11 轮旧外饰移除记录继续作为历史增量，不混成本轮净数
+新增镜厅门前站位保留原门锚、关闭门与控制器到达精度，使源路线表达人物实际可站位置；不是临时改结果通过录制。原生 GLB 碰撞、七条建筑接近段和前场长椅净空已有窄测；本轮未增加进入室内、坐椅子或空调玩法
 
-V-04 橱窗首版视觉自查未采用，修订书杯轮廓后已实际复验。大片空坡、整体林群和城市密度仍待制作；镜厅北／东其他面仍是泛型外观，新增立面、海报与座椅不代表整栋建筑、公共空间或全城外观完成
+整体仍距 README 预览品质有明显差距：玻璃大面平实、局部花簇过简、门前独立路条和大片空坡仍需整理；远处未处理山梯仍呈深色带，镜厅屋顶和北／东立面及全城外观未完成。机器检查与视觉自查不替代作者美术放行
 
 ## 结果与证据
 
@@ -61,3 +61,6 @@ V-04 橱窗首版视觉自查未采用，修订书杯轮廓后已实际复验。
 [Blender 建筑接入](../evidence/TASK-049/blender-integration-r1/review.md)、[实际运行自查](../evidence/TASK-049/blender-integration-r1/runtime-review.md)和[两棵街树](../evidence/TASK-049/tree-court-r2/review.md)记录源工程、替换范围、139 项库测试、Viewer 检查、实际画面与下一批缺口
 
 [第 12 轮接入与复验](../evidence/TASK-049/blender-integration-r2/review.md)、[独立画面自查](../evidence/TASK-049/blender-integration-r2/independent-visual-review.md)与[V-A08 地形复核](../evidence/TASK-049/va08-facade-r1/ground-review.md)记录本批 Blender 与公共素材、真实三角碰撞、首跑失败修正、Wiki 环境边界及真实 Viewer 画面；台阶灰带和空旷前场继续作为未完成项，不将机器检查代签作者验收
+
+
+[第 13 轮接入与复验](../evidence/TASK-049/blender-integration-r3/review.md)、[实际画面自查](../evidence/TASK-049/blender-integration-r3/visual-review.md)与[门前站位修正](../evidence/TASK-049/blender-integration-r3/cinema-landing.md)记录本批源资产、公共素材、真实输入、往返结果、失败修复和未完成范围

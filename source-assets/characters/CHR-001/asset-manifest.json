@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "b80306f16aba2471992554d53db871e9e368c51c7a7da299d93ef7c13b3b820d",
-      "runtime_sha256": "369714f84b8ccab773a4eef842b75bd4988834f867ca66d288284ef846fa5c37",
+      "source_sha256": "7f77c2380050a1d479e98f193c47ed2d4ea22fe62ee0989f54779b35c690a76d",
+      "runtime_sha256": "ddb1cb5c0064e6e23994de4987458634ae24575e59d0e54b64f8739aa080719d",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -123,15 +123,15 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "r9 selective hair update: DCC and GLB checks PASS; unchanged source meshes, packed textures, 32-bone rest/bind and all four action curves/exported clips compared; actual Bevy review tracked separately",
-        "visual": "needs_revision; back hair has staggered long/short sweeps; top-view radial convergence, broad groups, face identity, hood volume and final palette remain unaccepted"
+        "technical": "r10 selective Hood update: source/GLB preservation, existing DCC and GLB checks PASS; unchanged r9 hair and all other meshes, 32-bone rest/bind, all four clips, materials and three images; actual Bevy motion review tracked separately",
+        "visual": "needs_revision; thinner Hood side profile and curved lower edge reviewed in identical CPU views; residual jacket side-seam contacts and broad flat back remain unresolved; face, cloth detail, hair and final palette remain unaccepted"
       },
       "generation": {
         "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/model-r9/review.md",
+      "evidence": "todo/evidence/TASK-047/hood-r10/review.md",
       "data_textures": [
         {
           "path": "source-assets/characters/CHR-001/model/grey-study-surface.png",

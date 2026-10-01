@@ -1,0 +1,9 @@
+00:00.249  blend            | Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/environment-kit/aircon/aircon-candidate.blend"
+/home/lzzz/MyProjects/N-SIDE/output/assets/public-aircon-mount-r1/inspect-source.py:10: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  scene.world=bpy.data.worlds.new('Neutral');scene.world.use_nodes=True
+00:06.133  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/assets/public-aircon-mount-r1/valves.png'
+00:13.003  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/assets/public-aircon-mount-r1/back.png'
+00:16.644  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/assets/public-aircon-mount-r1/drain.png'
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+
+Blender quit

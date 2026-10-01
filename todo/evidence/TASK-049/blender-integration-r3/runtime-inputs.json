@@ -1,0 +1,59 @@
+{
+  "base_commit": "8effe5ddd7f7a3afc18a24482a05670d0fe5f1a6",
+  "captured_at": "2026-10-01T07:17:02.756242+00:00",
+  "files": {
+    "game/target/debug/map_viewer": {
+      "bytes": 2047005704,
+      "sha256": "c2603315bd21b193b7c6aee70e9589276c7df7b164c96ac889c724677da39ba0"
+    },
+    "game/target/debug/n-side": {
+      "bytes": 2042368480,
+      "sha256": "ecaf3d523c6f46d6365117995a597671bcd822455fbbad0f57f2101ad46f5ba2"
+    },
+    "game/src/world/scene.rs": {
+      "bytes": 261611,
+      "sha256": "1404c122fdf3ab6846a4031aa58ff02c2e24ef76b60cb50a8050c86b3d34dd5e"
+    },
+    "game/src/world/geometry.rs": {
+      "bytes": 118629,
+      "sha256": "ff0fff6be92bec1d7015a4307e1d516715588c86c0b06465829332b3a55ba842"
+    },
+    "game/src/world/collision.rs": {
+      "bytes": 25593,
+      "sha256": "89cafec2794c2a99ac76d3fb7cae6b505b097674e58654686be3f5be4c4c5fbe"
+    },
+    "game/src/bin/map_viewer.rs": {
+      "bytes": 53246,
+      "sha256": "e6b783dcf6e1b6e05de0c76e699664067985381f06ce60edec26c553ddf88d29"
+    },
+    "source-assets/district-map/district.json": {
+      "bytes": 727922,
+      "sha256": "e1ab14e5f38a89611572e2153ab5136e0a3c18f4202220ba99858feb1b862d43"
+    },
+    "source-assets/district-scene/appearance.json": {
+      "bytes": 12641,
+      "sha256": "d2180fbf784b5be804420cb1cfdb82111dc315024c884d83bce148e428e21cf6"
+    },
+    "game/assets/environment/buildings/v55-workshop-facade.glb": {
+      "bytes": 4478432,
+      "sha256": "8683357c862f708904de63bbe8a88a196f6e327b48ea5c638a1c318de8c6349b"
+    },
+    "game/assets/environment/street-furniture/aircon-wall.glb": {
+      "bytes": 5027140,
+      "sha256": "186759c4eef4728bc09cca57e3c2fd2685f3d98c3767064c6417cd615d143be0"
+    },
+    "game/assets/characters/CHR-001/yao-grey-study.glb": {
+      "bytes": 1751892,
+      "sha256": "ddb1cb5c0064e6e23994de4987458634ae24575e59d0e54b64f8739aa080719d"
+    }
+  },
+  "scope": "R3 runtime source and binary inputs; uncommitted art batch",
+  "later_route_revision": {
+    "note": "After eight short captures, inserted an exterior cinema landing in source map; scene.rs only updated cfg(test) approach end; runtime binaries unchanged",
+    "files": {
+      "source-assets/district-map/district.json": "a2f15c59246a57c1250ee76db54e0a12fa5ce766f17f15dc1535e5895128038f",
+      "game/src/world/scene.rs": "37629d8b065341012fb8b5f46c31935890e5f836af2dee3736d04de2a2f82428",
+      "todo/evidence/TASK-049/blender-integration-r3/scripts/cinema-gentle.json": "db70a25bbb2a50990bb2a55848b1715baea31be443e03d867bd7763135747e5d"
+    }
+  }
+}

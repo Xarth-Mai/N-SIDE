@@ -1,0 +1,66 @@
+{
+  "engine": "Cycles CPU",
+  "threads": 2,
+  "samples": 12,
+  "resolution": [
+    360,
+    480
+  ],
+  "lights": "Unchanged source master",
+  "views": [
+    {
+      "file": "output/characters/CHR-001/hood-r10/rejected-sag-side.png",
+      "sha256": "281964d458d08856d1cae6c4b00b188535eb6c5188a64f2b5fff7daa1bab7fac",
+      "master_sha256": "b42f111e735157497069a3f9ad150b13d4f42ced0e549400409b36397a800249",
+      "camera_position": [
+        4,
+        0,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/characters/CHR-001/hood-r10/rejected-sag-quarter.png",
+      "sha256": "a2d8705508f82af1a8c2f1c5882b485033acc7e09ada004f6221471a1c76daa2",
+      "master_sha256": "b42f111e735157497069a3f9ad150b13d4f42ced0e549400409b36397a800249",
+      "camera_position": [
+        3,
+        4,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/characters/CHR-001/hood-r10/rejected-sag-back.png",
+      "sha256": "da0ec23eb6894ccb52432d13b81038c773cd8d5ec148699b2274c0c58cc789b1",
+      "master_sha256": "b42f111e735157497069a3f9ad150b13d4f42ced0e549400409b36397a800249",
+      "camera_position": [
+        0,
+        4,
+        1.39
+      ],
+      "target": [
+        0,
+        0,
+        1.39
+      ],
+      "orthographic_scale": 0.55,
+      "clip": "Idle",
+      "frame": 1
+    }
+  ]
+}

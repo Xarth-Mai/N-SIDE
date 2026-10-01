@@ -1,0 +1,76 @@
+{
+  "scene": "walk-preview",
+  "view": "shop",
+  "width": 640,
+  "height": 360,
+  "fps": 30,
+  "frames": 9900,
+  "seed": 0,
+  "timeout_seconds": 3600,
+  "keyframes": [
+    59,
+    1722,
+    2886,
+    4528,
+    4560,
+    4591,
+    6234,
+    7398,
+    9059,
+    9899
+  ],
+  "events": [
+    {
+      "start": 30,
+      "end": 31,
+      "keys": [
+        "Enter"
+      ]
+    }
+  ],
+  "waits": [
+    {
+      "frame": 34,
+      "game_page": "world"
+    }
+  ],
+  "route": {
+    "id": "cinema-gentle",
+    "start": 60,
+    "round_trip": false
+  },
+  "assertions": [
+    {
+      "name": "Start at the actual home spawn",
+      "from": 59,
+      "to": 59,
+      "game_page": "world",
+      "world_ready": true,
+      "min_player_height": 28,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 0
+    },
+    {
+      "name": "Complete the existing route within one world without recovery",
+      "from": 59,
+      "to": 9899,
+      "game_page": "world",
+      "world_ready": true,
+      "same_world_entities": true,
+      "max_player_resets": 0,
+      "min_player_height": 19.8,
+      "max_player_height": 28.2
+    },
+    {
+      "name": "Stand grounded back at home after the outward and returning path",
+      "from": 9870,
+      "to": 9899,
+      "min_player_height": 28,
+      "max_player_height": 28.15,
+      "player_grounded": true,
+      "max_player_resets": 0,
+      "max_player_distance": 0.001
+    }
+  ]
+}

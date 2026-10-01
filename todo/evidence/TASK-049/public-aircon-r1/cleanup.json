@@ -1,0 +1,41 @@
+{
+  "normal_exited_sessions": [
+    12148,
+    57294
+  ],
+  "synchronous_build_exit": 0,
+  "files": [
+    {
+      "path": "output/assets/public-aircon-mount-r1/back.png",
+      "bytes": 784732,
+      "sha256": "18fa5b935634f1e000485574f87a36d4d5ff734ded566f0e64b2c105fcce0fb3",
+      "observed": true
+    },
+    {
+      "path": "output/assets/public-aircon-mount-r1/connections.png",
+      "bytes": 916984,
+      "sha256": "ac432693525db7de16ca746e9ec1177c50b54814e2045341f46f263aefce49d9",
+      "observed": true
+    },
+    {
+      "path": "output/assets/public-aircon-mount-r1/drain.png",
+      "bytes": 710527,
+      "sha256": "5b7cd392df684a22df12e703ddb176562a6307377a30521c498bdc36624c3015",
+      "observed": true
+    },
+    {
+      "path": "output/assets/public-aircon-mount-r1/mounted.png",
+      "bytes": 746731,
+      "sha256": "d6019e449d49b690c671e6626240cf29b69b2e1a8dee51312dc22159408534b7",
+      "observed": true
+    },
+    {
+      "path": "output/assets/public-aircon-mount-r1/valves.png",
+      "bytes": 649367,
+      "sha256": "74de8a74ff25fdad15f48c2a66864ad7090df3c6129ccd21b402d9467afaf451",
+      "observed": true
+    }
+  ],
+  "bytes_removed": 3808341,
+  "note": "Initial source-drain view was inspected then overwritten by assembled-drain view; current retained hash refers to assembled view. All current PNGs removed after parent reviewed mounted/connections/drain. Source, formal runtime assets, scripts and logs kept."
+}

@@ -1,0 +1,76 @@
+{
+  "visual_files": [
+    {
+      "path": "output/characters/CHR-001/hood-r10/before-back.png",
+      "bytes": 184397,
+      "sha256": "174b9e654f581a510fba57b5b966cbffb6dbef032eb6dbfd6aa1e0f8fb5556ed"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/before-quarter.png",
+      "bytes": 183203,
+      "sha256": "295327e1e4df9ba2a439960fba8dab297093085c2bf3a5437d14b141ca6e998f"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/before-side.png",
+      "bytes": 177615,
+      "sha256": "664ee0bce8befd1d343bb28ff27b9bd6fcfa54b5e8e660b3b2dbaf7591c218c4"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/candidate-back.png",
+      "bytes": 185799,
+      "sha256": "6d93f5492e196cfddeb65bf680ba4b15828ab859ae47bfd2a84425d46f4dbd2a"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/candidate-first-back.png",
+      "bytes": 185522,
+      "sha256": "4c65c856e24f7e123b2eec3dd59a3b39b0ad7b35151e5b81117fca6434a48bdc"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/candidate-first-quarter.png",
+      "bytes": 184004,
+      "sha256": "4e53b36b4af8a03722bd151a27e3e3c4c86ffb6ba799cc196b37b0c7c77d2027"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/candidate-first-side.png",
+      "bytes": 176456,
+      "sha256": "a34b68b4a0bdbbffaca559755cd332df4836be8ef2eba2a1f4dfa032b0b69bd6"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/candidate-quarter.png",
+      "bytes": 184367,
+      "sha256": "b63806710d4411cb1da2e9a2f7fbb4fc56a2a7d0c8fe4b3a15fafc2e2609c27e"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/candidate-side.png",
+      "bytes": 176390,
+      "sha256": "8259b9eb5cf2c1d1ebaaf08fa9cce570c04d0832fb78bf23359d0ba4fd92114b"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/rejected-sag-back.png",
+      "bytes": 186462,
+      "sha256": "da0ec23eb6894ccb52432d13b81038c773cd8d5ec148699b2274c0c58cc789b1"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/rejected-sag-quarter.png",
+      "bytes": 184511,
+      "sha256": "a2d8705508f82af1a8c2f1c5882b485033acc7e09ada004f6221471a1c76daa2"
+    },
+    {
+      "path": "output/characters/CHR-001/hood-r10/rejected-sag-side.png",
+      "bytes": 176591,
+      "sha256": "281964d458d08856d1cae6c4b00b188535eb6c5188a64f2b5fff7daa1bab7fac"
+    }
+  ],
+  "visual_bytes_removed": 2185317,
+  "backup_files": [
+    {
+      "path": "output/characters/CHR-001/hood-r10/candidate.blend1",
+      "bytes": 4565168
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 4547480
+    }
+  ],
+  "reason": "All generated CPU views actually inspected; root inspected final before/after. All owned Blender sessions completed exit 0; source assets, scripts, logs and JSON retained."
+}

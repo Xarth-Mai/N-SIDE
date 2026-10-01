@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "scope": "Source metadata, geometric source comparison and Bun terrain samples only; native collision and render NOT RUN",
+  "source_sha256": "a2f15c59246a57c1250ee76db54e0a12fa5ce766f17f15dc1535e5895128038f",
+  "changed": {
+    "added_nodes": [
+      "cinema_entry_landing"
+    ],
+    "roads": [
+      649
+    ],
+    "places": [
+      "15/public arrival chain"
+    ],
+    "routes": [
+      "cinema",
+      "cinema-gentle"
+    ],
+    "buildings": "unchanged",
+    "existing_node_coordinates": "unchanged",
+    "baked_samples": [
+      {
+        "point": [
+          320,
+          270
+        ],
+        "previous": 24.936,
+        "current": 24.937
+      }
+    ]
+  },
+  "ground_probe": {
+    "scope": "1m grid within P09-A bounding box",
+    "samples": 4988,
+    "max_height_change_m": 0.0010000000000012221,
+    "at": [
+      320,
+      270
+    ],
+    "limit_m": 0.00100001
+  },
+  "route": {
+    "id": "cinema-gentle",
+    "nodes": 41,
+    "horizontal_m": 959.8261241524146,
+    "ideal_seconds": 299.94566379762955,
+    "ideal_completion_frame": 9059,
+    "visits": [
+      {
+        "index": 0,
+        "node": "home",
+        "horizontal_m": 0,
+        "ideal_frame": 60
+      },
+      {
+        "index": 6,
+        "node": "community",
+        "horizontal_m": 177.20756805694552,
+        "ideal_frame": 1722
+      },
+      {
+        "index": 15,
+        "node": "fw_f_food_north3",
+        "horizontal_m": 301.3497036806765,
+        "ideal_frame": 2886
+      },
+      {
+        "index": 19,
+        "node": "fw_w_cinema_front",
+        "horizontal_m": 476.5630620762073,
+        "ideal_frame": 4528
+      },
+      {
+        "index": 20,
+        "node": "cinema_entry_landing",
+        "horizontal_m": 479.9130620762073,
+        "ideal_frame": 4560
+      },
+      {
+        "index": 21,
+        "node": "fw_w_cinema_front",
+        "horizontal_m": 483.26306207620735,
+        "ideal_frame": 4591
+      },
+      {
+        "index": 25,
+        "node": "fw_f_food_north3",
+        "horizontal_m": 658.4764204717382,
+        "ideal_frame": 6234
+      },
+      {
+        "index": 34,
+        "node": "community",
+        "horizontal_m": 782.6185560954691,
+        "ideal_frame": 7398
+      },
+      {
+        "index": 40,
+        "node": "home",
+        "horizontal_m": 959.8261241524146,
+        "ideal_frame": 9059
+      }
+    ]
+  }
+}

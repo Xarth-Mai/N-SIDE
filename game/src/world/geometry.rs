@@ -382,6 +382,35 @@ impl MeshData {
         self.triangle([p[0], p[2], p[3]], [uv[0], uv[2], uv[3]]);
     }
 
+    // A small exterior cap remains readable uphill, where horizontal treads face away
+    fn stair_nosing(&mut self, a: [f64; 2], b: [f64; 2], uphill: [f64; 2], height: f64) {
+        let lip = 0.025;
+        let width = distance2(a, b).sqrt();
+        let [top_a, top_b] = [a, b].map(|p| [p[0], p[1], height]);
+        let [inner_a, inner_b] = [a, b].map(|p| [p[0], p[1], height - lip]);
+        let [outer_a, outer_b] =
+            [a, b].map(|p| [p[0] - uphill[0] * lip, p[1] - uphill[1] * lip, height - lip]);
+        let bevel = lip * 2.0_f64.sqrt();
+        self.triangle(
+            [outer_a, outer_b, top_b],
+            [[0., 0.], [width, 0.], [width, bevel]],
+        );
+        self.triangle(
+            [outer_a, top_b, top_a],
+            [[0., 0.], [width, bevel], [0., bevel]],
+        );
+        self.triangle(
+            [inner_a, inner_b, outer_b],
+            [[0., 0.], [width, 0.], [width, lip]],
+        );
+        self.triangle(
+            [inner_a, outer_b, outer_a],
+            [[0., 0.], [width, lip], [0., lip]],
+        );
+        self.triangle([top_a, inner_a, outer_a], [[0., lip], [0., 0.], [lip, 0.]]);
+        self.triangle([top_b, outer_b, inner_b], [[0., lip], [lip, 0.], [0., 0.]]);
+    }
+
     fn wall_with_doors(
         &mut self,
         a: [f64; 2],
@@ -1514,6 +1543,16 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
         }
         let mut deck = MeshData::default();
         let mut structure = MeshData::default();
+        let mut nosing = MeshData::default();
+        let shop_stair = road.kind == "steps"
+            && matches!(
+                road.nodes.first().map(String::as_str),
+                Some(
+                    "level_home_to_shop_north_junction"
+                        | "level_shop_north_junction_to_shop_upper_junction"
+                        | "level_shop_upper_junction_to_steps_mid"
+                )
+            );
         let points: Vec<_> = road.nodes.iter().map(|id| map.nodes[id]).collect();
         let offsets = if road.kind == "lift" {
             Vec::new()
@@ -1646,6 +1685,14 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                             from[2] - (to[2] - from[2]) / 2.0
                         } + 0.025;
                         structure.wall([p[3].x, p[3].y], [p[0].x, p[0].y], [low; 2], [high; 2]);
+                        if shop_stair && to[2] > from[2] {
+                            nosing.stair_nosing(
+                                [p[3].x, p[3].y],
+                                [p[0].x, p[0].y],
+                                [(b[0] - a[0]) / length, (b[1] - a[1]) / length],
+                                high,
+                            );
+                        }
                         if step + 1 == steps {
                             structure.wall(
                                 [p[1].x, p[1].y],
@@ -1708,6 +1755,15 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
             &mut result,
         );
         structure.finish(format!("{source}/structure"), "concrete", &mut result);
+        // Node-derived visual trim follows the same non-colliding path as street handrails
+        nosing.finish(
+            format!(
+                "nodes[{}]/derived-stair-nosing[{}]",
+                road.nodes[0], road.nodes[1]
+            ),
+            "paving",
+            &mut result,
+        );
     }
     result.extend(fixture_geometry(map, &ground)?);
     let height_range = map
@@ -1731,6 +1787,127 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn shop_stair_nosing_preserves_treads_and_collision() {
+        let map = Map::parse(
+            include_str!("../../../source-assets/district-map/district.json"),
+            "district.json",
+        )
+        .unwrap();
+        let parts = generate(&map).unwrap();
+        let trim: Vec<_> = parts
+            .iter()
+            .filter(|part| part.source.contains("/derived-stair-nosing["))
+            .collect();
+        assert_eq!(
+            trim.len(),
+            3,
+            "only the three shop flights receive the sample"
+        );
+        fn positions(part: &GeometryPart) -> &[[f32; 3]] {
+            part.mesh
+                .attribute(Mesh::ATTRIBUTE_POSITION)
+                .unwrap()
+                .as_float3()
+                .unwrap()
+        }
+        let mut structure = Vec::new();
+        let mut support_points = Vec::new();
+        for (start, count) in [
+            ("level_home_to_shop_north_junction", 12),
+            ("level_shop_north_junction_to_shop_upper_junction", 26),
+            ("level_shop_upper_junction_to_steps_mid", 32),
+        ] {
+            let (index, road) = map
+                .roads
+                .iter()
+                .enumerate()
+                .find(|(_, road)| road.nodes[0] == start)
+                .unwrap();
+            let [a, b] = [map.nodes[&road.nodes[0]], map.nodes[&road.nodes[1]]];
+            let source = format!("/roads/{index} ({})", road.nodes.join(" -> "));
+            let deck = parts.iter().find(|part| part.source == source).unwrap();
+            structure.push(deck);
+            structure.push(
+                parts
+                    .iter()
+                    .find(|part| part.source == format!("{source}/structure"))
+                    .unwrap(),
+            );
+            let cap = trim
+                .iter()
+                .find(|part| part.source.starts_with(&format!("nodes[{start}]")))
+                .unwrap();
+            assert_eq!(cap.material, "paving");
+            assert_eq!(positions(deck).len(), count * 6, "original tread count");
+            assert_eq!(
+                positions(cap).len(),
+                count * 18,
+                "six trim triangles per tread"
+            );
+            let normals = cap
+                .mesh
+                .attribute(Mesh::ATTRIBUTE_NORMAL)
+                .unwrap()
+                .as_float3()
+                .unwrap();
+            let downhill = (map_to_world(a) - map_to_world(b)).with_y(0.).normalize();
+            for (step, (tread, cap)) in positions(deck)
+                .chunks_exact(6)
+                .zip(positions(cap).chunks_exact(18))
+                .enumerate()
+            {
+                let height = a[2] + (b[2] - a[2]) * (step as f64 + 0.5) / count as f64 + 0.025;
+                assert!(
+                    tread.iter().all(|p| (p[1] as f64 - height).abs() < 0.0001),
+                    "original walking height"
+                );
+                assert!(cap.iter().flatten().all(|v| v.is_finite()));
+                assert!(
+                    cap.iter()
+                        .all(|p| p[1] as f64 <= height + 0.0001 && p[1] as f64 >= height - 0.0251),
+                    "trim must not raise the tread"
+                );
+                for (triangle, normal) in cap
+                    .chunks_exact(3)
+                    .zip(normals[step * 18..][..18].chunks_exact(3))
+                {
+                    let [a, b, c] = [triangle[0], triangle[1], triangle[2]].map(Vec3::from);
+                    let area = (b - a).cross(c - a);
+                    assert!(area.length_squared() > 1e-10);
+                    assert!(
+                        area.normalize().dot(Vec3::from(normal[0])) > 0.9999,
+                        "outward winding"
+                    );
+                }
+                let bevel = Vec3::from(normals[step * 18]);
+                assert!(
+                    bevel.y > 0.70 && bevel.dot(downhill) > 0.70,
+                    "bevel faces up and downhill"
+                );
+                support_points.push(tread.iter().map(|p| Vec3::from(*p)).sum::<Vec3>() / 6.);
+            }
+        }
+        let before =
+            super::super::collision::CollisionWorld::from_parts(structure.iter().copied()).unwrap();
+        let after = super::super::collision::CollisionWorld::from_parts(
+            structure.iter().chain(&trim).copied(),
+        )
+        .unwrap();
+        assert_eq!(
+            before.triangle_count(),
+            after.triangle_count(),
+            "visual trim must not join collision"
+        );
+        assert_eq!(before.source_count(), after.source_count());
+        for point in support_points {
+            let a = before.support(point + Vec3::Y * 0.4, 0.6).unwrap();
+            let b = after.support(point + Vec3::Y * 0.4, 0.6).unwrap();
+            assert_eq!(a.point, b.point);
+            assert_eq!(a.source, b.source);
+        }
+    }
 
     #[test]
     fn shop_public_rooms_share_rendered_doors_support_and_private_boundaries() {

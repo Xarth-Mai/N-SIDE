@@ -1,0 +1,55 @@
+{
+  "scope": "read-only source/runtime hash audit; no model or source recipe changed",
+  "assets": {
+    "V-55": {
+      "source": {
+        "path": "source-assets/buildings/V-55/facade.blend",
+        "sha256": "b235d3837e29aad33153c81fa6d825b40894ba983b3e0cdabcd4c86ce991a8a5",
+        "bytes": 15175844,
+        "manifest_match": true
+      },
+      "runtime": {
+        "path": "game/assets/environment/buildings/v55-workshop-facade.glb",
+        "sha256": "8683357c862f708904de63bbe8a88a196f6e327b48ea5c638a1c318de8c6349b",
+        "bytes": 4478432,
+        "manifest_match": true
+      }
+    },
+    "CHR-001 hood-r10": {
+      "source": {
+        "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
+        "sha256": "7f77c2380050a1d479e98f193c47ed2d4ea22fe62ee0989f54779b35c690a76d",
+        "bytes": 4565168,
+        "manifest_match": true
+      },
+      "runtime": {
+        "path": "game/assets/characters/CHR-001/yao-grey-study.glb",
+        "sha256": "ddb1cb5c0064e6e23994de4987458634ae24575e59d0e54b64f8739aa080719d",
+        "bytes": 1751892,
+        "manifest_match": true
+      }
+    },
+    "aircon_wall": {
+      "source": {
+        "path": "source-assets/environment-kit/aircon/wall-installation.blend",
+        "sha256": "8c8de280cc48f752e2cfe8479e5e6c8ecd8106a7d5684d020b31dcd7182526e4",
+        "bytes": 4362444
+      },
+      "export": {
+        "path": "source-assets/environment-kit/aircon/wall-installation.glb",
+        "sha256": "186759c4eef4728bc09cca57e3c2fd2685f3d98c3767064c6417cd615d143be0",
+        "bytes": 5027140
+      },
+      "runtime": {
+        "path": "game/assets/environment/street-furniture/aircon-wall.glb",
+        "sha256": "186759c4eef4728bc09cca57e3c2fd2685f3d98c3767064c6417cd615d143be0",
+        "bytes": 5027140
+      }
+    }
+  },
+  "license_check": {
+    "aircon": "all 9 original SHA256/MD5/sizes match provenance and stored official metadata; CC0 source, MPL installation kept distinct",
+    "V55": "existing CC0 textures and OFL font source files/records preserved; project-authored geometry MPL",
+    "hood-r10": "original project model/script MPL; generated concept rights remain their separate records"
+  }
+}

@@ -1,0 +1,8 @@
+{"status": "PASS", "checks": {"meshes_identical": true, "bones_identical": true, "images_identical": true, "actions_identical": true, "GLB_nodes_identical": true, "joint_names_identical": true, "inverse_binds_identical": true, "all_exported_clip_samples_identical": true, "embedded_textures_identical": true, "materials_identical": true, "upper_two_loops_position_UV_weights_identical": true, "head_hair_collar_surfaces_clear_in_28_poses": true, "promoted_GLB_matches_reviewed_candidate": true}, "source_vertices": [145, 261]}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/hood-r10/before.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/characters/CHR-001/hood-r10/before.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+
+Blender quit

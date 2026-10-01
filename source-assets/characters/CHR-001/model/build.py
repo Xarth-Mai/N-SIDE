@@ -21,6 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
 parser.add_argument('--update-jump', action='store_true', help='Append Jump to the current master and export without rebuilding geometry')
+parser.add_argument('--update-hood', action='store_true', help='Replace only the lower Hood cloth surface in the current master')
 parser.add_argument('--update-hair', action='store_true', help='Replace only the back hair and crown in the current master')
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
 for path in (SOURCE, RUNTIME, OUTPUT):
@@ -86,6 +87,73 @@ def hair_geometry(face_surface, head_top):
                 a=(k-1)*33+j;faces.append((a,a+1,a+34,a+33))
     faces.append(tuple(range(99,131)))
     return {'Hair_Cap':cap,'Hair_CrownBase':(vertices,faces,uv)}
+
+
+def update_hood(hood):
+    old = hood.data
+    assert [group.name for group in hood.vertex_groups] == ['Chest', 'Neck']
+    assert len(old.vertices) >= 58, "Hood must retain two mouth loops"
+    # Keep the two mouth loops verbatim; lower cloth drops through unequal support loops
+    profiles = (
+        (.071, 1.273, .017, .016),
+        (.076, 1.286, .055, .023),
+        (.072, 1.305, .088, .034),
+        (.062, 1.330, .105, .049),
+        (.050, 1.355, .112, .058),
+        (.039, 1.380, .106, .063),
+        (.030, 1.412, .091, .061),
+    )
+    vertices, uv, faces = [], [], []
+    old_uv = {}
+    for loop in old.loops:
+        old_uv[loop.vertex_index] = tuple(old.uv_layers.active.data[loop.index].uv)
+    rig = bpy.data.objects['CHR001_Rig']
+    pose_position = rig.data.pose_position
+    rig.data.pose_position = 'REST'
+    bpy.context.view_layer.update()
+    jacket = BVHTree.FromObject(bpy.data.objects['Jacket_ContinuousShoulders'], bpy.context.evaluated_depsgraph_get())
+    for y, z, rx, ry in profiles:
+        for j in range(29):
+            angle = .55 + (math.tau - 1.1) * j / 28
+            point = Vector((rx * math.sin(angle), y - ry * math.cos(angle), z))
+            hit, _, _, _ = jacket.ray_cast(Vector((point.x, 1, point.z)), Vector((0, -1, 0)))
+            if hit is not None:
+                blend = max(0, min(1, -math.cos(angle) * 3))
+                point.y += max(0, hit.y + .008 - point.y) * blend
+            vertices.append(tuple(point))
+            # Retain the jacket atlas region and the mouth's original UV spacing
+            v = (point.z - 1.265) / (1.444 - 1.265) * .75
+            uv.append(((16 + j / 28 * 480) / 1024, (256 + 16 + v * 224) / 1024))
+    rig.data.pose_position = pose_position
+    bpy.context.view_layer.update()
+    for index in range(len(old.vertices) - 58, len(old.vertices)):
+        vertices.append(tuple(old.vertices[index].co))
+        uv.append(old_uv[index])
+    for k in range(len(profiles) + 1):
+        for j in range(28):
+            a = k * 29 + j
+            faces.append((a, a + 1, a + 30, a + 29))
+    mesh = bpy.data.meshes.new('Hood_r10')
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    for material in old.materials:
+        mesh.materials.append(material)
+    layer = mesh.uv_layers.new(name=old.uv_layers.active.name)
+    for poly in mesh.polygons:
+        poly.use_smooth = True
+        for loop in poly.loop_indices:
+            layer.data[loop].uv = uv[mesh.loops[loop].vertex_index]
+    hood.data = mesh
+    for name in ('Chest', 'Neck'):
+        if hood.vertex_groups.get(name) is None:
+            hood.vertex_groups.new(name=name)
+    for i, (_, _, z) in enumerate(vertices):
+        t = max(0, min(1, (z - 1.37) / .12))
+        if t < 1:
+            hood.vertex_groups['Chest'].add([i], 1 - t, 'REPLACE')
+        if t > 0:
+            hood.vertex_groups['Neck'].add([i], t, 'REPLACE')
+    bpy.data.meshes.remove(old)
 
 
 def author_jump(rig):
@@ -169,7 +237,7 @@ def export(rig, objects):
     bpy.data.objects.remove(runtime,do_unlink=True)
     bpy.data.meshes.remove(data)
 
-if args.export_existing or args.update_jump or args.update_hair:
+if args.export_existing or args.update_jump or args.update_hair or args.update_hood:
     bpy.ops.wm.open_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     rig=bpy.data.objects['CHR001_Rig']
     if args.update_hair:
@@ -191,9 +259,11 @@ if args.export_existing or args.update_jump or args.update_hair:
             group=obj.vertex_groups.get('Head') or obj.vertex_groups.new(name='Head')
             group.add(list(range(len(vertices))),1,'REPLACE')
             bpy.data.meshes.remove(old)
+    if args.update_hood:
+        update_hood(bpy.data.objects['Hood'])
     if args.update_jump:
         author_jump(rig)
-    if args.update_jump or args.update_hair:
+    if args.update_jump or args.update_hair or args.update_hood:
         bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     export(rig,[o for o in rig.children if o.type=='MESH'])
     raise SystemExit(0)
@@ -502,6 +572,7 @@ for polygon in jacket.data.polygons:
             jacket.data.uv_layers.active.data[loop].uv=atlas_uv('ink',.5,.5)
 solid=jacket.modifiers.new('Cloth thickness','SOLIDIFY');solid.thickness=.003
 mod=jacket.modifiers.new('Cloth surface','SUBSURF');mod.levels=1;mod.render_levels=1
+update_hood(hood)
 
 # Soft adolescent face with jaw/cheek/temple loops and a small, modelled nose
 head = loft('Face_Head', [(0,.005,1.35,.061,.045),(0,.012,1.395,.044,.037),(0,.024,1.435,.032,.030),(0,.022,1.515,.030,.029),(0,-.003,1.520,.037,.052),(0,-.006,1.523,.043,.058),(0,-.004,1.535,.055,.064),(0,.004,1.552,.077,.073),(0,.007,1.560,.088,.076),(0,.008,1.570,.093,.080),(0,.008,1.581,.096,.084),(0,.010,1.596,.097,.086),(0,.012,1.617,.098,.087),(0,.012,1.651,.097,.087),(0,.016,1.692,.083,.075),(0,.017,1.721,.048,.047),(0,.017,1.734,.006,.008)], 'skin',lambda p: blend('Neck','Head',(p.z-1.435)/.055),sides=48,subdiv=1)

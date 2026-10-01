@@ -1,0 +1,9 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 59.07s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-1b94600c7b88042f)
+
+running 1 test
+test world::collision::tests::scene_models_have_real_support_and_block_the_player_outside_the_original_shell ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 141 filtered out; finished in 13.48s
+

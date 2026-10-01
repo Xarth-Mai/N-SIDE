@@ -5,7 +5,7 @@ import source from '../../source-assets/district-map/district.json' with { type:
 import { buildGround, buildScene, mapFrame, project, heightColor } from '../district-map.ts'
 import { architectureStats, sectionRoads } from '../district-architecture.ts'
 import { frameworkCoverage, mountainProfile, reachableNodes, routeProfile } from '../district-plan.ts'
-import {polygonArea,pointInside,onBoundary,segmentInside,polygonInside,intersectionArea,roadWidth,roadAllowed,roadHitsBuilding} from '../district-geometry.ts'
+import {polygonArea,pointInside,onBoundary,segmentInside,polygonInside,intersectionArea,roadWidth,roadAllowed,roadHitsBuilding,roadOffsets} from '../district-geometry.ts'
 
 const data: District = source
 
@@ -433,17 +433,51 @@ test('cinema roof and exterior platform have distinct footprints and supported p
   assert.ok(reached.has('slope_platform_entry'),'upper street must connect to the platform without its lift')
 })
 
-test('lifestyle routes visit actual arrival endpoints in the stated order', () => {
+test('lifestyle routes visit arrival doors or their connected standing landings in order', () => {
   for(const route of data.routes.filter(r=>r.places)) {
     let cursor=0
     for(const id of route.places!) {
-      const place=data.places.find(p=>p.id===id),destination=place!.arrivals?.public.nodes.at(-1)??place!.access
-      const index=route.nodes.indexOf(destination,cursor)
+      const place=data.places.find(p=>p.id===id)!,arrival=place.arrivals?.public.nodes,destination=arrival?.at(-1)??place.access
+      const endpoints=[destination],landing=arrival?.at(-2)
+      if(landing===`${destination}_landing`) {
+        const a=data.nodes[landing],b=data.nodes[destination],distance=Math.hypot(a[0]-b[0],a[1]-b[1])
+        assert.ok(linked(landing,destination,route.user??'public'),`${id}: standing landing must connect directly to its door`)
+        assert.ok(distance>=.32&&distance<=1&&Math.abs(a[2]-b[2])<.001,`${id}: standing landing must be close and level with its door`)
+        const building=data.buildings.find(b=>b.id===place.building)
+        if(building)assert.ok(!pointInside(a,building.polygon)&&!onBoundary(a,building.polygon),`${id}: standing landing must be outside the closed building`)
+        endpoints.push(landing)
+      }
+      const index=route.nodes.findIndex((node,i)=>i>=cursor&&endpoints.includes(node))
       assert.ok(index>=cursor,`${route.id}: missing or out-of-order destination ${id} ${destination}`)
       cursor=index+1
     }
     for(let i=1;i<route.nodes.length;i++)assert.ok(linked(route.nodes[i-1],route.nodes[i],route.user??'public'),`${route.id}: ${route.user??'public'} cannot use ${route.nodes[i-1]} → ${route.nodes[i]}`)
   }
+})
+
+test('cinema arrival stands clear of the closed door while retaining its original road footprint', () => {
+  const front=data.nodes.fw_w_cinema_front,door=data.nodes.cinema_entry,landing=data.nodes.cinema_entry_landing
+  const building=data.buildings.find(b=>b.id==='V-15')!,court=data.surfaces.find(s=>s.id==='cinema-arrival-court')!
+  assert.deepEqual(door,[306,220,25],'the stable building entry remains on the facade')
+  assert.equal(building.design!.entries.find(e=>e.role==='public'&&e.level==='1F')!.node,'cinema_entry')
+  assert.deepEqual(landing,[306,219.35,25])
+  assert.ok(onBoundary(door,building.polygon)&&!pointInside(landing,building.polygon)&&!onBoundary(landing,building.polygon))
+  assert.ok(Math.abs(door[1]-landing[1]-.65)<1e-9)
+  // The retained centre mullion projects 0.21m; the real capsule uses radius 0.3m and 0.02m skin
+  assert.ok(door[1]-.21-landing[1]>.3+.02+.001,'the standing target must clear the closed centre mullion')
+  const road=data.roads[649]
+  assert.deepEqual(road,{nodes:['fw_w_cinema_front','cinema_entry_landing','cinema_entry'],kind:'lane',width:3})
+  const originalOffsets=roadOffsets([front,door],road.width),splitOffsets=roadOffsets(road.nodes.map(id=>data.nodes[id]),road.width)
+  for(const offset of splitOffsets)assert.deepEqual(offset,originalOffsets[0],'collinear subdivision keeps the original ribbon edges')
+  assert.deepEqual(splitOffsets.at(-1),originalOffsets.at(-1))
+  assert.ok(segmentInside(front,landing,court.polygon)&&segmentInside(landing,door,court.polygon))
+  assert.equal(court.elevation,landing[2])
+  const arrival=data.places.find(p=>p.id==='15')!.arrivals!.public.nodes
+  assert.deepEqual(arrival,['library_gate','fw_w_cinema_front','cinema_entry_landing','cinema_entry'])
+  const route=data.routes.find(r=>r.id==='cinema-gentle')!,turn=route.nodes.indexOf('cinema_entry_landing')
+  assert.deepEqual(route.places,['15'])
+  assert.deepEqual(route.nodes.slice(turn-1,turn+2),['fw_w_cinema_front','cinema_entry_landing','fw_w_cinema_front'])
+  assert.ok(!route.nodes.includes('cinema_entry'),'outdoor arrival does not try to stand inside the closed door')
 })
 
 test('housing estimates use residential floor area rather than the volume count', async () => {

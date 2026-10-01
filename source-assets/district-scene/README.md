@@ -38,6 +38,8 @@ bun tools/export-district-scene.ts --check
 
 小店样板的花盆搭配高 0.8 m 的项目原创灌木模型，来源与米制包络由环境素材清单维护
 
+镜厅前场使用已登记的 `cinema-arrival-court` 与南北两块 `cinema-west-garden-*` surface，在25m地面复用1件公共长椅、4株原创灌木和2簇公共黄花；窄绿岛使用明确实例，屋顶原长椅保留。长椅导入实际 GLB 三角碰撞，植株沿用视觉模型；实例、CPU 支承与胶囊净空、局部实机画面分别见[前场集成续记](../../todo/evidence/TASK-049/forecourt-r1/review.md)与[R3 视觉记录](../../todo/evidence/TASK-049/blender-integration-r3/visual-review.md)，作者外观验收仍待完成
+
 站厅与音乐楼的外皮从已有 `design.type` 生成，共覆盖 V-01、V-32、V-78、V-79；8 栋住宅 V-A08、V-A09、V-A13、V-A14、V-W08、V-13、V-A15、V-A16 复用原楼层与窗格派生窗台、窗檐、护窗栏、窗下裙板或带支架设备，按住宅类型分别组合。构件复用现有材质，来源标在 `buildings[ID]/derived-facade/`，护窗栏不产生可进入阳台，原门窗、屋顶和通路由源对象继续控制；各批检查和未覆盖镜头见[城市外观证据](../../todo/evidence/TASK-049/runtime-r2/review.md)
 
 ### 小店公共室内材质
