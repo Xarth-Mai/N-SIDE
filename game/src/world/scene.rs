@@ -1048,16 +1048,7 @@ fn window_exposed(
 fn residential_sample(id: &str) -> bool {
     matches!(
         id,
-        "V-04"
-            | "V-A07"
-            | "V-A08"
-            | "V-A09"
-            | "V-A13"
-            | "V-A14"
-            | "V-W08"
-            | "V-13"
-            | "V-A15"
-            | "V-A16"
+        "V-04" | "V-A07" | "V-A09" | "V-A13" | "V-A14" | "V-W08" | "V-13" | "V-A15" | "V-A16"
     )
 }
 
@@ -1245,6 +1236,10 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
         let Some(design) = &building.design else {
             continue;
         };
+        // This building's four exterior faces are authored in Blender
+        if building.id == "V-A08" {
+            continue;
+        }
         let mut batches = BTreeMap::new();
         let mut skin = BTreeMap::new();
         let mut residential = BTreeMap::new();
@@ -1288,7 +1283,9 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                     (-0.001..=1.001).contains(&t)
                         && ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx).abs() / length < 0.02
                 };
-                let cinema_front = building.id == "V-15" && !court && a[1] == 220. && b[1] == 220.;
+                let cinema_blender_face = building.id == "V-15"
+                    && !court
+                    && ((a[1] == 220. && b[1] == 220.) || (a[0] == 300. && b[0] == 300.));
                 let public_face = !court
                     && design.entries.iter().any(|e| {
                         let p = map.nodes[&e.node];
@@ -1378,11 +1375,8 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         }) {
                             continue;
                         }
-                        // The Blender sign wall owns these bays; keep complete frames outside its edge
-                        if cinema_front
-                            && p[0] + f64::from(width + 0.28) / 2. > 300.58
-                            && p[0] - f64::from(width + 0.28) / 2. < 318.02
-                        {
+                        // The authored facade owns all windows on these two faces
+                        if cinema_blender_face {
                             continue;
                         }
                         if floor_index == 0
@@ -1578,18 +1572,13 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             }
                         }
                     }
-                    if floor_index > 0 {
-                        let mut p = [
+                    if floor_index > 0 && !cinema_blender_face {
+                        let p = [
                             (a[0] + b[0]) / 2.0 + normal[0] * (0.04 + interior_clearance),
                             (a[1] + b[1]) / 2.0 + normal[1] * (0.04 + interior_clearance),
                             floor.z,
                         ];
-                        let band_width = if cinema_front {
-                            p[0] = 329.;
-                            22.
-                        } else {
-                            length - interior_clearance * 2.
-                        };
+                        let band_width = length - interior_clearance * 2.;
                         add_box(
                             &mut batches,
                             "trim",
@@ -1803,9 +1792,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                     }
                 }
                 // Roof coping keeps the authored top height and leaves roof paths open
-                if !design.floors.iter().any(|f| f.name == "RF")
-                    && (building.id != "V-A08" || court)
-                {
+                if !design.floors.iter().any(|f| f.name == "RF") {
                     add_box(
                         &mut batches,
                         "trim",
@@ -3061,6 +3048,7 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
     let mut props = Vec::new();
     for (owner, model, anchor) in [
         ("V-A08", "v_a08_roof_eaves", [79., 277.5, 40.421515]),
+        ("V-A08", "v_a08_facade", [79., 277.5, 30.021515]),
         ("V-15", "v15_mirror_hall_facade", [300., 220., 25.]),
     ] {
         props.push(PropPlacement {
@@ -3069,6 +3057,12 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
             transform: Transform::from_translation(map_to_world(anchor)),
         });
     }
+
+    props.push(PropPlacement {
+        source: "/surfaces/cinema_roof_surface/street-bench".into(),
+        model: "street_bench".into(),
+        transform: Transform::from_translation(map_to_world([312., 237., 37.])),
+    });
 
     for (i, p) in map.trees.iter().enumerate() {
         let supported = map
@@ -3210,6 +3204,7 @@ mod tests {
         };
         for (owner, model, budget) in [
             ("V-A08", "v_a08_roof_eaves", 128),
+            ("V-A08", "v_a08_facade", 7000),
             ("V-15", "v15_mirror_hall_facade", 16000),
         ] {
             let placed: Vec<_> = placements.iter().filter(|p| p.model == model).collect();
@@ -3248,7 +3243,7 @@ mod tests {
                     points.extend_from_slice(&vertices);
                     let indices: Vec<_> = reader.read_indices().unwrap().into_u32().collect();
                     triangles += indices.len() / 3;
-                    // Query the visual model only in this test; production props remain outside CollisionWorld
+                    // Query attachments in isolation to keep approach clearance independent of the base shell
                     probe_parts.push(GeometryPart {
                         source: format!("/buildings/{owner}/probe"),
                         material: model.into(),
@@ -3265,7 +3260,7 @@ mod tests {
             let (lo, hi) = bounds(&points);
             let building = map.buildings.iter().find(|b| b.id == owner).unwrap();
             let top = (building.elevation + building.height) as f32;
-            if owner == "V-A08" {
+            if model == "v_a08_roof_eaves" {
                 assert!(
                     (lo - Vec3::new(69.55, top - 0.35, -284.45))
                         .abs()
@@ -3273,9 +3268,22 @@ mod tests {
                         < 0.001
                 );
                 assert!((hi - Vec3::new(88.45, top, -270.55)).abs().max_element() < 0.001);
+            } else if model == "v_a08_facade" {
+                assert!(
+                    (lo - Vec3::new(69.343, 30.021515, -284.255))
+                        .abs()
+                        .max_element()
+                        < 0.001
+                );
+                assert!(
+                    (hi - Vec3::new(89.35, 40.081515, -270.343))
+                        .abs()
+                        .max_element()
+                        < 0.001
+                );
             } else {
                 assert!(
-                    (lo - Vec3::new(300.58, building.elevation as f32, -250.08))
+                    (lo - Vec3::new(299.65, building.elevation as f32, -250.08))
                         .abs()
                         .max_element()
                         < 0.001
@@ -3307,7 +3315,11 @@ mod tests {
                 "probe follows an actual source road"
             );
             let a = map_to_world(map.nodes[start]);
-            let b = map_to_world(map.nodes[end]);
+            let mut b = map_to_world(map.nodes[end]);
+            // Closed exterior doors remain closed; approach to standing distance
+            if end == "v_a08_door" || end == "cinema_entry" {
+                b -= (b - a).normalize() * 0.65;
+            }
             for i in 0..20 {
                 let at = a.lerp(b, i as f32 / 20.);
                 let next = a.lerp(b, (i + 1) as f32 / 20.);
@@ -3382,7 +3394,9 @@ mod tests {
         for (role, points) in old_boxes.iter().filter(|b| !new_boxes.contains(b)) {
             let (lo, hi) = bounds(points);
             let middle = (lo + hi) / 2.;
-            if (hi.x - lo.x - 40.).abs() < 0.001 && (middle.z + 219.96).abs() < 0.001 {
+            let south = (middle.z + 219.96).abs() < 0.001 && (hi.x - lo.x - 40.).abs() < 0.001;
+            let west = (middle.x - 299.96).abs() < 0.001 && (hi.z - lo.z - 30.).abs() < 0.001;
+            if south || west {
                 assert!(role == "trim" && [29., 33.].iter().any(|y| (middle.y - y).abs() < 0.001));
                 old_bands += 1;
             } else if role == "awning" {
@@ -3395,67 +3409,21 @@ mod tests {
                 old_canopy += 1;
             } else {
                 assert!(
-                    lo.z > -220.3 && hi.z < -219.6 && lo.x >= 300.3 && hi.x <= 318.9,
+                    (lo.z > -220.3 && hi.z < -219.6 && lo.x >= 300.3 && hi.x <= 340.)
+                        || (lo.x > 299.6 && hi.x < 300.3 && lo.z >= -250. && hi.z <= -220.),
                     "uncovered generic detail removed: {role} {lo:?}..{hi:?}"
                 );
             }
         }
-        assert_eq!((old_bands, old_canopy), (2, 1));
-        let new_bands: Vec<_> = new_boxes
-            .iter()
-            .filter(|b| !old_boxes.contains(b))
-            .collect();
-        assert_eq!(new_bands.len(), 2);
-        for (role, points) in new_bands {
-            let (lo, hi) = bounds(points);
-            assert_eq!(role, "trim");
-            assert!((lo.x - 318.).abs() < 0.001 && (hi.x - 340.).abs() < 0.001);
-        }
-        let roof = map.buildings.iter().find(|b| b.id == "V-A08").unwrap();
-        let mut coping = BTreeMap::new();
-        for (a, b) in roof
-            .polygon
-            .iter()
-            .zip(roof.polygon.iter().cycle().skip(1))
-            .take(roof.polygon.len())
-        {
-            let (dx, dy) = (b[0] - a[0], b[1] - a[1]);
-            let length = dx.hypot(dy);
-            add_box(
-                &mut coping,
-                "trim",
-                map_to_world([
-                    (a[0] + b[0]) / 2. + dy / length * 0.04,
-                    (a[1] + b[1]) / 2. - dx / length * 0.04,
-                    roof.elevation + roof.height - 0.15,
-                ]),
-                Vec3::new(length as f32, 0.3, 0.16),
-                Quat::from_rotation_y(dy.atan2(dx) as f32),
-            )
-            .unwrap();
-        }
-        let coping_parts: Vec<_> = coping
-            .into_iter()
-            .map(|(material, mesh)| GeometryPart {
-                source: "buildings[V-A08]/derived-facade".into(),
-                material,
-                mesh,
-            })
-            .collect();
-        let roof_boxes = cubes(&current, "V-A08");
+        assert_eq!((old_bands, old_canopy), (4, 1));
+        assert!(new_boxes.iter().all(|b| old_boxes.contains(b)));
         assert!(
-            cubes(&coping_parts, "V-A08")
+            current
                 .iter()
-                .all(|b| !roof_boxes.contains(b))
-        );
-        assert_eq!(
-            CollisionWorld::from_parts(&coping_parts)
-                .unwrap()
-                .triangle_count(),
-            48
+                .all(|p| !p.source.starts_with("buildings[V-A08]/"))
         );
         eprintln!(
-            "generic collision removed: V-A08 coping 48 triangles; V-15 {} triangles ({old_cinema}->{new_cinema}); 5 actual source road segments clear of imported meshes",
+            "generic V-A08 faces replaced; V-15 removed {} triangles; five source approaches retain clearance",
             old_cinema - new_cinema
         );
     }
@@ -5132,7 +5100,7 @@ mod tests {
         for before in &original {
             let after = placements
                 .iter()
-                .find(|p| p.source == before.source)
+                .find(|p| p.source == before.source && p.model == before.model)
                 .unwrap();
             assert!(
                 before.source == after.source
@@ -5816,7 +5784,7 @@ mod tests {
             "authored street faces need both treatments"
         );
         assert_eq!(slats % 4, 0);
-        assert_eq!(materials.len(), 10);
+        assert_eq!(materials.len(), 9);
         assert!(materials.values().all(|roles| roles.len() <= 5));
         let louvers = slats / 4;
         let boxes = rollers * 3 + louvers * 6;
@@ -5976,8 +5944,7 @@ mod tests {
         assert_eq!(
             covered,
             BTreeSet::from([
-                "V-04", "V-A07", "V-A08", "V-A09", "V-A13", "V-A14", "V-W08", "V-13", "V-A15",
-                "V-A16"
+                "V-04", "V-A07", "V-A09", "V-A13", "V-A14", "V-W08", "V-13", "V-A15", "V-A16"
             ])
         );
         let residential: Vec<_> = parts
@@ -6006,7 +5973,11 @@ mod tests {
         let mut entries = 0;
         let mut courts = 0;
         let mut kinds = BTreeSet::new();
-        for building in map.buildings.iter().filter(|b| b.design.is_some()) {
+        for building in map
+            .buildings
+            .iter()
+            .filter(|b| b.design.is_some() && b.id != "V-A08")
+        {
             let design = building.design.as_ref().unwrap();
             kinds.insert(&design.kind);
             let source = format!("buildings[{}]/derived-facade", building.id);
@@ -6090,7 +6061,10 @@ mod tests {
         assert!(entries > 0 && courts > 0 && kinds.len() > 1);
         eprintln!(
             "building facade coverage: buildings={} types={} unique doorways={entries} lightwells={courts}",
-            map.buildings.iter().filter(|b| b.design.is_some()).count(),
+            map.buildings
+                .iter()
+                .filter(|b| b.design.is_some() && b.id != "V-A08")
+                .count(),
             kinds.len()
         );
     }

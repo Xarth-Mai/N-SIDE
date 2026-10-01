@@ -1,0 +1,93 @@
+{
+  "reason": "Earlier sandbox process inventory did not see host Blender jobs; previous zero-process claim was incorrect",
+  "completed_output": "R2 outputs and R3 exports already persisted and checked",
+  "processes": [
+    {
+      "pid": 178102,
+      "command": "blender -b -t 4 --python output/assets/public-street-r2/inspect.py ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 178312,
+      "command": "blender -b -t 4 --python output/assets/public-street-r2/inspect.py ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 179232,
+      "command": "blender -b -t 4 --python source-assets/environment-kit/street-furniture/assemble.py ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 179889,
+      "command": "blender -b -t 4 -noaudio --python source-assets/environment-kit/street-furniture/assemble.py ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 180409,
+      "command": "blender -b -t 4 -noaudio --python todo/evidence/TASK-049/public-street-r2/preview.py ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 182053,
+      "command": "blender -b -t 4 -noaudio --python source-assets/environment-kit/street-furniture/assemble.py ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 182469,
+      "command": "blender -b -t 4 -noaudio --python todo/evidence/TASK-049/public-street-r2/preview.py ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 184500,
+      "command": "blender -b source-assets/environment-kit/street-furniture/street-bench.blend -noaudio --python-expr import bpy; bpy.ops.export_scene.gltf(filepath=\"/home/lzzz/MyProjects/N-SIDE/output/assets/public-street-r2/bench-reexport.glb\", export_format=\"GLB\", export_animations=False, export_yup=True, export_tangents=True, export_image_format=\"AUTO\") ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 189250,
+      "command": "blender -b -t 4 --python output/assets/public-city-candidates-r3/prepare.py -- aircon ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 189293,
+      "command": "blender -b -t 4 --python output/assets/public-city-candidates-r3/prepare.py -- bin ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 189390,
+      "command": "blender -b -t 4 --python output/assets/public-city-candidates-r3/preview.py -- bin ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 189561,
+      "command": "blender -b -t 4 --python output/assets/public-city-candidates-r3/prepare.py -- aircon ",
+      "signal": "SIGTERM",
+      "alive_after_2s": false
+    },
+    {
+      "pid": 189809,
+      "command": "blender -b -t 4 --python output/assets/public-city-candidates-r3/preview.py -- aircon ",
+      "signal": "SIGTERM",
+      "alive_after_1s": false,
+      "reason": "Both aircon CPU previews saved; OpenAL exit failure in log"
+    }
+  ],
+  "final_host_inventory": "elevated ps -C blender returned header only, exit 1",
+  "known_r3_sessions_reaped": {
+    "45090": 143,
+    "59285": 143,
+    "81925": 143,
+    "12748": 143,
+    "43701": 143
+  }
+}

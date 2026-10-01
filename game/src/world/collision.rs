@@ -1,6 +1,7 @@
 //! Static exterior collision queries derived from the meshes rendered by the world
-use super::geometry::GeometryPart;
+use super::{geometry::GeometryPart, scene::PreparedScene};
 use bevy::{
+    asset::RenderAssetUsages,
     mesh::{Indices, PrimitiveTopology},
     prelude::*,
 };
@@ -36,11 +37,106 @@ pub struct CollisionHit<'a> {
 }
 
 impl CollisionWorld {
-    pub fn from_parts(parts: &[GeometryPart]) -> Result<Self, String> {
+    pub fn from_scene(scene: &PreparedScene) -> Result<Self, String> {
+        let mut imported = Vec::new();
+        for prop in scene.props.iter().filter(|prop| {
+            matches!(
+                prop.model.as_str(),
+                "v_a08_facade" | "v15_mirror_hall_facade" | "street_bench"
+            )
+        }) {
+            let spec = scene.appearance.models.get(&prop.model).ok_or_else(|| {
+                format!(
+                    "[collision/model] source={} model={} has no binding",
+                    prop.source, prop.model
+                )
+            })?;
+            let path = scene.asset_root.join(&spec.file);
+            let fail = |reason: &str| {
+                format!(
+                    "[collision/model] source={} model={} file={} scene={}: {reason}",
+                    prop.source,
+                    prop.model,
+                    path.display(),
+                    spec.scene
+                )
+            };
+            let asset = gltf::Gltf::open(&path).map_err(|e| fail(&e.to_string()))?;
+            let selected = asset
+                .scenes()
+                .nth(spec.scene)
+                .ok_or_else(|| fail("scene missing"))?;
+            let mut roots = selected.nodes();
+            let node = roots.next().ok_or_else(|| fail("mesh root missing"))?;
+            // These three authored static assets have one mesh root; reject changes to that contract
+            if roots.next().is_some()
+                || node.children().next().is_some()
+                || node.skin().is_some()
+                || asset.animations().next().is_some()
+            {
+                return Err(fail(
+                    "expected one static mesh root without children, skin or animation",
+                ));
+            }
+            let mesh = node.mesh().ok_or_else(|| fail("root mesh missing"))?;
+            let matrix = Mat4::from_cols_array_2d(&node.transform().matrix());
+            for primitive in mesh.primitives() {
+                if primitive.mode() != gltf::mesh::Mode::Triangles
+                    || primitive.morph_targets().next().is_some()
+                {
+                    return Err(fail("expected static triangle primitives"));
+                }
+                let reader = primitive.reader(|buffer| match buffer.source() {
+                    gltf::buffer::Source::Bin => asset.blob.as_deref(),
+                    gltf::buffer::Source::Uri(_) => None,
+                });
+                let positions: Vec<_> = reader
+                    .read_positions()
+                    .ok_or_else(|| fail("embedded positions missing"))?
+                    .map(|p| {
+                        prop.transform
+                            .transform_point(matrix.transform_point3(Vec3::from(p)) * spec.scale)
+                            .to_array()
+                    })
+                    .collect();
+                let indices: Vec<_> = reader
+                    .read_indices()
+                    .ok_or_else(|| fail("embedded triangle indices missing"))?
+                    .into_u32()
+                    .collect();
+                if positions.is_empty() || indices.is_empty() {
+                    return Err(fail("empty triangle primitive"));
+                }
+                imported.push(GeometryPart {
+                    source: format!(
+                        "{}/collision/{}/{}",
+                        prop.source,
+                        prop.model,
+                        primitive.index()
+                    ),
+                    material: prop.model.clone(),
+                    mesh: Mesh::new(
+                        PrimitiveTopology::TriangleList,
+                        RenderAssetUsages::default(),
+                    )
+                    .with_inserted_attribute(Mesh::ATTRIBUTE_POSITION, positions)
+                    .with_inserted_indices(Indices::U32(indices)),
+                });
+            }
+        }
+        Self::from_parts(scene.parts.iter().chain(&imported))
+    }
+
+    pub fn from_parts<'a>(
+        parts: impl IntoIterator<Item = &'a GeometryPart>,
+    ) -> Result<Self, String> {
         let mut vertices = Vec::new();
         let mut triangles = Vec::new();
         let mut sources = Vec::new();
-        for part in parts.iter().filter(|part| structural_source(&part.source)) {
+        for part in parts
+            .into_iter()
+            .filter(|part| structural_source(&part.source))
+        {
             let fail = |reason| format!("[collision/mesh] {}: {reason}", part.source);
             if part.mesh.primitive_topology() != PrimitiveTopology::TriangleList {
                 return Err(fail("expected TriangleList"));
@@ -82,14 +178,20 @@ impl CollisionWorld {
                     .map(|&position| Vector::from_array(position)),
             );
             for first in (0..index_count).step_by(3) {
-                triangles.push([first, first + 1, first + 2].map(|index| {
+                let triangle = [first, first + 1, first + 2].map(|index| {
                     offset
                         + match indices {
                             Some(Indices::U16(indices)) => indices[index] as u32,
                             Some(Indices::U32(indices)) => indices[index],
                             None => index as u32,
                         }
-                }));
+                });
+                let [a, b, c] =
+                    triangle.map(|index| Vec3::from_array(vertices[index as usize].to_array()));
+                if (b - a).cross(c - a).length_squared() == 0. {
+                    return Err(fail("degenerate triangle"));
+                }
+                triangles.push(triangle);
             }
             sources.push(SourceRange {
                 end_triangle: triangles.len() as u32,
@@ -217,7 +319,7 @@ fn bevy_vector(vector: Vector) -> Vec3 {
 }
 
 fn structural_source(source: &str) -> bool {
-    // First exterior prototype: imported props and vegetation have no collider
+    // Only explicitly admitted static models join the generated structure
     source != "/terrain/water"
         && (source == "/terrain"
             || source.starts_with("/terrain/")
@@ -225,7 +327,8 @@ fn structural_source(source: &str) -> bool {
             || source.starts_with("/buildings/")
             || source.starts_with("/surfaces/")
             || source.starts_with("/fixtures/")
-            || (source.starts_with("buildings[") && source.contains("/derived-facade"))
+            || (source.starts_with("buildings[")
+                && (source.contains("/derived-facade") || source.contains("/collision/")))
             || (source.starts_with("/architectures/") && source.contains("/fixtures/")))
 }
 
@@ -374,6 +477,91 @@ mod tests {
             world.mesh_memory_bytes(),
             world.bounds(),
             probes.elapsed()
+        );
+    }
+
+    #[test]
+    fn scene_models_have_real_support_and_block_the_player_outside_the_original_shell() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let scene = PreparedScene::load(root).unwrap();
+        let native = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let world = CollisionWorld::from_scene(&scene).unwrap();
+
+        // Read the imported bench's actual transformed foot vertices, then query the original deck
+        let mut first = 0;
+        let mut feet = [false; 2];
+        for range in &world.sources {
+            if range.source.contains("/collision/street_bench/") {
+                for triangle in &world.mesh.indices()[first..range.end_triangle as usize] {
+                    for &index in triangle {
+                        let point = bevy_vector(world.mesh.vertices()[index as usize]);
+                        if (point.y - 37.).abs() < 0.001 {
+                            let support = native.support(point + Vec3::Y * 0.2, 0.4).unwrap();
+                            assert!(
+                                support.source.contains("cinema_roof_surface"),
+                                "{support:?}"
+                            );
+                            assert!((support.point.y - point.y).abs() < 0.001, "{support:?}");
+                            feet[usize::from(point.x > 312.)] = true;
+                        }
+                    }
+                }
+            }
+            first = range.end_triangle as usize;
+        }
+        assert_eq!(
+            feet,
+            [true, true],
+            "both physical bench feet rest on the original deck"
+        );
+        let hit = world
+            .capsule_cast(
+                Vec3::new(312., 37.02, -235.5),
+                1.7,
+                0.3,
+                Vec3::NEG_Z * 3.,
+                0.02,
+            )
+            .unwrap();
+        assert!(
+            hit.source
+                .contains("cinema_roof_surface/street-bench/collision/street_bench/"),
+            "{hit:?}"
+        );
+        assert!(hit.fraction > 0. && hit.fraction < 0.5, "{hit:?}");
+
+        let from = Vec3::new(90., 30.3, -276.);
+        let original = native
+            .capsule_cast(from, 1.7, 0.3, Vec3::NEG_X * 4., 0.02)
+            .unwrap();
+        let clad = world
+            .capsule_cast(from, 1.7, 0.3, Vec3::NEG_X * 4., 0.02)
+            .unwrap();
+        assert!(
+            clad.source
+                .contains("buildings[V-A08]/blender-attachment/collision/v_a08_facade/"),
+            "{clad:?}"
+        );
+        assert!(
+            clad.point.x > original.point.x + 0.15,
+            "original={original:?}; clad={clad:?}"
+        );
+        assert!(
+            clad.fraction < original.fraction,
+            "original={original:?}; clad={clad:?}"
+        );
+
+        // The shop's existing ground-level approach remains clear of imported prop collision
+        let from = Vec3::new(100., 28.046, -255.);
+        assert!(
+            native
+                .capsule_cast(from, 1.7, 0.3, Vec3::NEG_X * 3., 0.02)
+                .is_none()
+        );
+        assert!(
+            world
+                .capsule_cast(from, 1.7, 0.3, Vec3::NEG_X * 3., 0.02)
+                .is_none()
         );
     }
 }

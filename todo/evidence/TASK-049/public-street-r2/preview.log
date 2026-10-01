@@ -1,0 +1,11 @@
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+[ALSOFT] (EE) Failed to connect PipeWire event context (errno: 1)
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/lzzz/.config/blender/5.2/extensions').
+02:18:22 | INFO: Data are loaded, start creating Blender stuff
+02:18:22 | INFO: Blender create Mesh node StreetBench
+02:18:22 | INFO: glTF import finished in 0.03s
+/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-049/public-street-r2/preview.py:20: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  scene.world.use_nodes = True
+00:18.662  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/assets/public-street-r2/bench-front.png'
+00:36.034  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/assets/public-street-r2/bench-back.png'
+pa_write() failed while trying to wake up the mainloop: Operation not permitted

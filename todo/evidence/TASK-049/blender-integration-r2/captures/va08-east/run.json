@@ -1,0 +1,51 @@
+{
+  "status": "FAIL",
+  "script": {
+    "scene": "district",
+    "view": "eye-va08-east",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 60,
+    "seed": 0,
+    "timeout_seconds": 180,
+    "keyframes": [
+      59
+    ],
+    "events": [],
+    "assertions": [
+      {
+        "name": "fixed V-A08 inspection camera",
+        "from": 0,
+        "to": 59,
+        "max_distance": 0.0001,
+        "max_rotation": 0.0001
+      }
+    ]
+  },
+  "script_sha256": "f35e61592353b2c6ee81fc331d2bd8851231d06fe30805ddeb06f105a5db20cd",
+  "git_commit": "0efb89c61b432129cdbd292c05a3e1f90bb0b3bd",
+  "git_worktree": "M AGENTS.md\n M docs/dev/engineering/player-preview.md\n M docs/dev/production/asset-pipeline.md\n M docs/dev/validation/runtime.md\n M game/assets/environment/buildings/v15-mirror-hall-facade.glb\n M game/assets/environment/manifest.json\n M game/src/app.rs\n M game/src/bin/map_viewer.rs\n M game/src/places/observation.rs\n M game/src/player.rs\n M game/src/world/collision.rs\n M game/src/world/scene.rs\n M source-assets/buildings/V-15/README.md\n M source-assets/buildings/V-15/asset-manifest.json\n M source-assets/buildings/V-15/build.py\n M source-assets/buildings/V-15/mirror-hall-facade.blend\n M source-assets/buildings/V-15/verify.py\n M source-assets/district-scene/appearance.json\n M source-assets/environment-kit/README.md\n M source-assets/environment-kit/asset-manifest.json\n M source-assets/star-posters/README.md\n M source-assets/star-posters/export.mjs\n?? game/assets/environment/buildings/v-a08-facade.glb\n?? game/assets/environment/posters/anke-cinema.png\n?? game/assets/environment/street-furniture/\n?? source-assets/buildings/V-A08/facade-build.py\n?? source-assets/buildings/V-A08/facade-check.py\n?? source-assets/buildings/V-A08/facade-manifest.json\n?? source-assets/buildings/V-A08/facade.blend\n?? source-assets/buildings/V-A08/facade.md\n?? source-assets/environment-kit/street-furniture/\n?? source-assets/star-posters/anke-cinema.svg\n?? todo/evidence/TASK-047/next-art-brief-r1.md\n?? todo/evidence/TASK-048/cinema-poster-r1/\n?? todo/evidence/TASK-049/blender-integration-r2/\n?? todo/evidence/TASK-049/building-next-brief-r1.md\n?? todo/evidence/TASK-049/public-street-r2/\n?? todo/evidence/TASK-049/stair-surface-r1/\n?? todo/evidence/TASK-049/v15-building-r2/\n?? todo/evidence/TASK-049/va08-facade-r1/",
+  "cargo_lock_sha256": "756e69de79cf2d087d9ff920e35d7abd5571f9ed07f77be8bf9ab2273b3fee87",
+  "platform": "Linux-7.2.8-1-cachyos-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "pillow": "12.3.0",
+  "video": "NOT RUN",
+  "visual_review": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+  "runtime_project_root": "/home/lzzz/MyProjects/N-SIDE",
+  "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+  "command": [
+    "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+    "--project-root",
+    "/home/lzzz/MyProjects/N-SIDE",
+    "--capture",
+    "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r2/va08-east/script.json",
+    "--output",
+    "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r2/va08-east",
+    "--aa",
+    "taa-ssao"
+  ],
+  "runtime_exit_code": 101,
+  "error": "Native capture exited 101; see runtime.log and state.json when available",
+  "elapsed_wall_seconds": 12.374701488999563
+}

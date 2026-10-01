@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "assets": [
+    {
+      "path": "game/assets/environment/posters/anke-cinema.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1024,
+      "height": 1620,
+      "bytes": 1488369,
+      "color_count": ">65535",
+      "has_alpha": true,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_pixels": 0,
+      "content_bounds": [
+        0,
+        0,
+        1024,
+        1620
+      ],
+      "problems": []
+    }
+  ]
+}

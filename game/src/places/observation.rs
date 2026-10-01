@@ -703,7 +703,7 @@ mod tests {
         let path = root.join("source-assets/district-map/district.json");
         let scene = PreparedScene::load(root).unwrap();
         let catalog = PlaceCatalog::load(&path).unwrap();
-        let collision = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let collision = CollisionWorld::from_scene(&scene).unwrap();
         let place = catalog.0.iter().find(|place| place.id == "04").unwrap();
         // TASK-035 approach2 frame 189: real walk and camera input before opening
         let foot = Vec3::new(90.826675, 28.04576, -255.);
@@ -736,7 +736,7 @@ mod tests {
         let path = root.join("source-assets/district-map/district.json");
         let scene = PreparedScene::load(root).unwrap();
         let catalog = PlaceCatalog::load(&path).unwrap();
-        let collision = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let collision = CollisionWorld::from_scene(&scene).unwrap();
         let place = catalog.0.iter().find(|place| place.id == "23").unwrap();
         let inside = (map_to_world(scene.map.nodes["summit"]) - place.position).normalize();
         let support = collision

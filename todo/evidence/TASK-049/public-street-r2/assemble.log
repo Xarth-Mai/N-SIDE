@@ -1,0 +1,28 @@
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+[ALSOFT] (EE) Failed to connect PipeWire event context (errno: 1)
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/lzzz/.config/blender/5.2/extensions').
+02:17:36 | INFO: Data are loaded, start creating Blender stuff
+02:17:36 | INFO: Blender create Mesh node crossbar
+02:17:36 | INFO: Blender create Mesh node legs_single
+02:17:36 | INFO: Blender create Mesh node back_support_r
+02:17:36 | INFO: Blender create Mesh node back_support_l
+02:17:36 | INFO: Blender create Mesh node arm_rest_01
+02:17:36 | INFO: Blender create Mesh node seat
+02:17:36 | INFO: Blender create Mesh node seat_back
+02:17:36 | INFO: glTF import finished in 0.03s
+00:00.643  image.write      | ERROR OpenImageIO write failed: Could not open file "/home/lzzz/.cache/thumbnails/large/blender_3_ecce245960c375cbebddd830472b809b.png.png"
+Info: No new files have been packed
+Info: Saved as "street-bench.blend"
+INFO Draco is available, use library at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.so
+ERROR MeshOptimizer is not available because library could not be found at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.so
+02:17:37 | INFO: Starting glTF 2.0 export
+02:17:37 | INFO: Extracting primitive: StreetBench
+02:17:37 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+02:17:37 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+02:17:37 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+02:17:37 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+02:17:37 | INFO: Primitives created: 4
+02:17:37 | INFO: Finished glTF 2.0 export in 0.10614204406738281 s
+
+N:SIDE_BENCH {"upstream_parts": ["arm_rest_01", "back_support_l", "back_support_r", "crossbar", "legs_single", "seat", "seat_back"], "dimensions_xyz_blender": [1.9200000762939453, 0.6703939437866211, 0.8669141530990601], "pivot_shift": [0.0, 0.0351969450712204, -3.05979308556914e-09], "seat_height_m": 0.45, "front_gltf": "+Z", "up_gltf": "+Y"}
+pa_write() failed while trying to wake up the mainloop: Operation not permitted

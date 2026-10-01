@@ -1,0 +1,157 @@
+{
+  "retrieved": "2026-10-01",
+  "selected": {
+    "page": "https://polyhaven.com/a/modular_street_seating",
+    "author": "Stuart Attenborrow / Poly Haven; N:SIDE assembly",
+    "license": "CC0-1.0",
+    "api_info": {
+      "donated": true,
+      "name": "Modular Street Seating",
+      "type": 2,
+      "authors": {
+        "Stuart Attenborrow": "All"
+      },
+      "info": null,
+      "date_published": 1694131200,
+      "staging": null,
+      "categories": [
+        "furniture",
+        "seating",
+        "collection: hidden_alley"
+      ],
+      "tags": [
+        "chair",
+        "outdoor",
+        "urban",
+        "cityscape",
+        "contemporary",
+        "bench",
+        "city",
+        "infrastructure"
+      ],
+      "sponsors": [
+        "103111458"
+      ],
+      "max_resolution": [
+        4096,
+        4096
+      ],
+      "polycount": 25156,
+      "texel_density": 2238.205081743733,
+      "dimensions": [
+        4339.9999141693115,
+        770.3700959682465,
+        950.000050743509
+      ],
+      "files_hash": "95d5a9ba8bf29d4db6c9089297b8bdb920994f6d",
+      "description": "Free 4K modular street seating: contemporary urban bench kit with weathered metal supports and wooden slats, straight and curved interchangeable modules.",
+      "category_id": "c7642d58-13d1-5289-844b-dd12b1455a27",
+      "category": "Furniture/Seating/Benches",
+      "collections": [
+        "hidden_alley"
+      ],
+      "attributes": {
+        "condition": [
+          "weathered"
+        ],
+        "material": [
+          "metal",
+          "wood"
+        ]
+      },
+      "img_version": "3ce6edf8",
+      "download_count": 7257,
+      "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/modular_street_seating.png?width=256&height=256&v=3ce6edf8"
+    },
+    "original_files": [
+      {
+        "path": "street-furniture/original/modular_street_seating_1k.gltf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modular_street_seating/modular_street_seating_1k.gltf",
+        "bytes": 29629,
+        "sha256": "ae0c5b89927446dd3c3dc8fc021c5a6042448b785f340affaa132307d8a7b18d",
+        "official_md5": "350ccab60ac6ed46009c6bd578cf212f"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_supports_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_supports_diff_1k.jpg",
+        "bytes": 721380,
+        "sha256": "3d2dc8a4ac499b540445be6277a1fa7c84fb7cdbf0fbe04d9738d806393393e4",
+        "official_md5": "f8f3ce0a8510267bb320523b147e8bc5"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_armrests_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_armrests_nor_gl_1k.jpg",
+        "bytes": 324073,
+        "sha256": "1625c7492bfdc6fb97a49a09e5f958bfc62d46b7fc97bdcda97ba83fc13f18c4",
+        "official_md5": "3161b56f328b98f1cc3a3748bdcdd57a"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_timber_arm_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_timber_arm_1k.jpg",
+        "bytes": 762344,
+        "sha256": "07b108f3c6ee8afe56c9c23592d48f80344992bd0512080a1cc2bf37e7c7cb84",
+        "official_md5": "ed6858f805affc2d5387043c7de0b9f3"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_supports_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_supports_nor_gl_1k.jpg",
+        "bytes": 477177,
+        "sha256": "5396d42fc24e0bf0e038767dc0548c4562b359930a9f8ade61897d18192ec929",
+        "official_md5": "eb422efce89e6d40608ce8e9a8c7d42a"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_timber_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_timber_diff_1k.jpg",
+        "bytes": 596026,
+        "sha256": "2dce35474445e91743ec1e5a1ffbc405cdd3b7ec94be945d93d684e23e127be3",
+        "official_md5": "ef96054b965201bcf45a5fe1a137d853"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_armrests_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_armrests_diff_1k.jpg",
+        "bytes": 612860,
+        "sha256": "1df79fcf237bcca5dcbd6af8e283e775125e723d2782dee3184550564905990f",
+        "official_md5": "a1fa7086f8fadb9fc2861962505ee05d"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_supports_arm_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_supports_arm_1k.jpg",
+        "bytes": 734095,
+        "sha256": "8dbdaf063699c6d81319a9f0ac2fa5997236981fa703103fdadb008570df8de2",
+        "official_md5": "2464500fdfcde0319bffc0a8d46647cf"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_armrests_arm_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_armrests_arm_1k.jpg",
+        "bytes": 622643,
+        "sha256": "0016585de0b1d3accd9b204f912e76e03385901410e02e5c8dd3186333ff882f",
+        "official_md5": "df3dbc4ed5ef4fb98970e331a18805b5"
+      },
+      {
+        "path": "street-furniture/original/textures/modular_street_seating_timber_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_timber_nor_gl_1k.jpg",
+        "bytes": 557669,
+        "sha256": "b7d0fff50ca56f12a3ebc3056c0c8104be84efce118a38094608d8e15af27d9a",
+        "official_md5": "0d0b133fb0a1b66dad5501f2a861e19d"
+      },
+      {
+        "path": "street-furniture/original/modular_street_seating.bin",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/modular_street_seating/modular_street_seating.bin",
+        "bytes": 977224,
+        "sha256": "968558aa808b6cf74783b375d32a346a4de2ce9c118c0f17fba24c6999f03547",
+        "official_md5": "5c0426b5068d5d41f0a301035ecac9ab"
+      }
+    ]
+  },
+  "not_adopted": {
+    "page": "https://polyhaven.com/a/painted_wooden_bench",
+    "author": "Kirill Sannikov",
+    "license": "CC0-1.0",
+    "official_width_m": 1.2,
+    "official_triangles": 630,
+    "reason": "Old red painted farmhouse interior stool; weaker fit for contemporary cinema frontage",
+    "downloaded": false
+  },
+  "download_scope": "Original glTF and shared binary plus 9 textures used by straight seat; no unused connector textures",
+  "cost": 0
+}

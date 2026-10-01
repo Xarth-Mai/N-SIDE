@@ -1,0 +1,18 @@
+/home/lzzz/MyProjects/N-SIDE/source-assets/buildings/V-A08/facade-build.py:29: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+00:00.601  image.write      | ERROR OpenImageIO write failed: Could not open file "/home/lzzz/.cache/thumbnails/large/blender_4_99ce6d65f41c6456c33856aa9a2e0380.png.png"
+Info: Saved as "facade.blend"
+INFO Draco is available, use library at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.so
+ERROR MeshOptimizer is not available because library could not be found at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.so
+02:09:44 | INFO: Starting glTF 2.0 export
+02:09:44 | INFO: Extracting primitive: VA08_Public_Door.001
+02:09:45 | INFO: Primitives created: 6
+02:09:45 | INFO: Finished glTF 2.0 export in 0.06957888603210449 s
+00:10.912  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/buildings/V-A08/facade-r1/southeast.png'
+00:27.833  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/buildings/V-A08/facade-r1/east-entry.png'
+00:44.523  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/buildings/V-A08/facade-r1/window-detail.png'
+00:50.776  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/output/buildings/V-A08/facade-r1/southwest.png'
+
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+
+Blender quit

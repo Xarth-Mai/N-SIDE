@@ -6,12 +6,14 @@
   "author": [
     "Kenney",
     "ambientCG",
-    "N:SIDE project contributors"
+    "N:SIDE project contributors",
+    "Stuart Attenborrow / Poly Haven"
   ],
   "license_sources": [
     "https://kenney.nl/assets/nature-kit",
     "https://kenney.nl/assets/city-kit-roads",
-    "https://docs.ambientcg.com/license/"
+    "https://docs.ambientcg.com/license/",
+    "https://polyhaven.com/license"
   ],
   "source_archives": "2026-09-25/27 selected members fetched by HTTP Range and verified by ZIP CRC; complete hashes unavailable for those archives. 2026-09-29 material additions fetched as complete archives, all ZIP CRCs verified, archive SHA-256 recorded per file",
   "units": "meter",
@@ -932,6 +934,143 @@
       "license": "CC0-1.0",
       "license_source": "https://docs.ambientcg.com/license/",
       "author": "Lennart Demes / ambientCG"
+    },
+    {
+      "source": "street-furniture/street-bench.glb",
+      "output": "street-furniture/street-bench.glb",
+      "sha256": "f5a48231b979242e5cdf8f354a39887248731b2b438f654620a0eb01a1753388",
+      "bytes": 5925368,
+      "author": "Stuart Attenborrow / Poly Haven; N:SIDE assembly",
+      "license": "CC0-1.0",
+      "license_source": "https://polyhaven.com/license",
+      "source_page": "https://polyhaven.com/a/modular_street_seating",
+      "source_release_date": "2023-09-08",
+      "retrieved": "2026-10-01",
+      "upstream_files_hash": "95d5a9ba8bf29d4db6c9089297b8bdb920994f6d",
+      "editable_source": "street-furniture/street-bench.blend",
+      "assembly_script": "street-furniture/assemble.py",
+      "original_files": [
+        {
+          "path": "street-furniture/original/modular_street_seating_1k.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modular_street_seating/modular_street_seating_1k.gltf",
+          "bytes": 29629,
+          "sha256": "ae0c5b89927446dd3c3dc8fc021c5a6042448b785f340affaa132307d8a7b18d",
+          "official_md5": "350ccab60ac6ed46009c6bd578cf212f"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_supports_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_supports_diff_1k.jpg",
+          "bytes": 721380,
+          "sha256": "3d2dc8a4ac499b540445be6277a1fa7c84fb7cdbf0fbe04d9738d806393393e4",
+          "official_md5": "f8f3ce0a8510267bb320523b147e8bc5"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_armrests_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_armrests_nor_gl_1k.jpg",
+          "bytes": 324073,
+          "sha256": "1625c7492bfdc6fb97a49a09e5f958bfc62d46b7fc97bdcda97ba83fc13f18c4",
+          "official_md5": "3161b56f328b98f1cc3a3748bdcdd57a"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_timber_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_timber_arm_1k.jpg",
+          "bytes": 762344,
+          "sha256": "07b108f3c6ee8afe56c9c23592d48f80344992bd0512080a1cc2bf37e7c7cb84",
+          "official_md5": "ed6858f805affc2d5387043c7de0b9f3"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_supports_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_supports_nor_gl_1k.jpg",
+          "bytes": 477177,
+          "sha256": "5396d42fc24e0bf0e038767dc0548c4562b359930a9f8ade61897d18192ec929",
+          "official_md5": "eb422efce89e6d40608ce8e9a8c7d42a"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_timber_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_timber_diff_1k.jpg",
+          "bytes": 596026,
+          "sha256": "2dce35474445e91743ec1e5a1ffbc405cdd3b7ec94be945d93d684e23e127be3",
+          "official_md5": "ef96054b965201bcf45a5fe1a137d853"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_armrests_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_armrests_diff_1k.jpg",
+          "bytes": 612860,
+          "sha256": "1df79fcf237bcca5dcbd6af8e283e775125e723d2782dee3184550564905990f",
+          "official_md5": "a1fa7086f8fadb9fc2861962505ee05d"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_supports_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_supports_arm_1k.jpg",
+          "bytes": 734095,
+          "sha256": "8dbdaf063699c6d81319a9f0ac2fa5997236981fa703103fdadb008570df8de2",
+          "official_md5": "2464500fdfcde0319bffc0a8d46647cf"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_armrests_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_armrests_arm_1k.jpg",
+          "bytes": 622643,
+          "sha256": "0016585de0b1d3accd9b204f912e76e03385901410e02e5c8dd3186333ff882f",
+          "official_md5": "df3dbc4ed5ef4fb98970e331a18805b5"
+        },
+        {
+          "path": "street-furniture/original/textures/modular_street_seating_timber_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_street_seating/modular_street_seating_timber_nor_gl_1k.jpg",
+          "bytes": 557669,
+          "sha256": "b7d0fff50ca56f12a3ebc3056c0c8104be84efce118a38094608d8e15af27d9a",
+          "official_md5": "0d0b133fb0a1b66dad5501f2a861e19d"
+        },
+        {
+          "path": "street-furniture/original/modular_street_seating.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/modular_street_seating/modular_street_seating.bin",
+          "bytes": 977224,
+          "sha256": "968558aa808b6cf74783b375d32a346a4de2ce9c118c0f17fba24c6999f03547",
+          "official_md5": "5c0426b5068d5d41f0a301035ecac9ab"
+        }
+      ],
+      "status": "exported",
+      "purpose": "镜厅前街局部长椅候选；场景布置与 Bevy 实机待验证",
+      "dimensions_m": {
+        "width": 1.9200000762939453,
+        "height": 0.8669141530990601,
+        "depth": 0.6703939437866211,
+        "seat_height": 0.45
+      },
+      "scale_basis": "Original metre geometry retained without global scale; selected loose modules assembled in Blender",
+      "pivot": "ground, center of XZ bounding box",
+      "up_axis": "+Y",
+      "front_axis": "+Z",
+      "triangles": 8906,
+      "materials": 4,
+      "textures": {
+        "count": 9,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "embedded": true,
+        "color": "sRGB diffuse; linear OpenGL normal and packed AO/roughness/metallic"
+      },
+      "modifications": [
+        "Selected straight seat parts; curve connectors, alternative legs and suspended supports excluded",
+        "Assembled paired end legs and armrests, back brackets, seat and back; opposite-side parts rotated 180 degrees",
+        "Ground and horizontal center pivot; no global rescale; joined geometry retaining original UVs and PBR textures",
+        "Removed two collinear zero-area triangles inherited from the paired source armrest; original unchanged"
+      ],
+      "cost": 0,
+      "generation": null,
+      "runtime_placement": {
+        "source": "/surfaces/cinema_roof_surface/street-bench",
+        "map_anchor": [
+          312,
+          237,
+          37
+        ],
+        "rotation": "identity",
+        "scale": 1,
+        "collision": "CollisionWorld::from_scene imports actual GLB triangles with visual-equivalent node/model/prop transforms; original roof support retained",
+        "evidence": "todo/evidence/TASK-049/blender-integration-r2"
+      }
     }
   ],
   "export_tool": "ImageMagick 7.1.2-32 Q16-HDRI"

@@ -1,0 +1,55 @@
+[visual/config] file=/home/lzzz/MyProjects/N-SIDE/source-assets/district-scene/daylight.json aa=Msaa4 frame_metric=cpu_frame_interval pacing=uncapped
+[map/validated] schema=7 nodes=1638 roads=904 buildings=231 surfaces=82 trees=72 meshes=3364 elapsed_seconds=9.222
+[geometry/coverage] interior roads omitted=2 (exterior scope); derived features retain source paths
+[visual/view] name=eye-shop anchor=home eye=[100.0, 255.0, 29.7] target=[88.0, 255.0, 29.7] fov=55
+[visual/view] name=eye-corner anchor=market_turn eye=[15.0, 155.0, 21.7] target=[-7.0, 145.0, 21.7] fov=55
+[visual/view] name=eye-shade anchor=service_shared eye=[55.0, 257.0, 29.7] target=[70.0, 257.0, 29.7] fov=55
+[visual/view] name=eye-slope-support anchor=upper eye=[280.0, 365.0, 74.015789] target=[270.0, 385.0, 80.015789] fov=55
+[visual/view] name=eye-upper-bridge anchor=level_upper_to_slope_platform_bypass eye=[284.540541, 378.243243, 74.015789] target=[280.0, 365.0, 74.015789] fov=55
+[visual/view] name=eye-transfer-support eye=[350.0, 323.75, 38.7] target=[350.0, 345.0, 72.315789] fov=55
+[visual/view] name=inspect-cinema-bearing eye=[352.0, 238.0, 34.5] target=[340.0, 245.0, 36.2] fov=55
+[visual/view] name=inspect-cinema-facade eye=[288.0, 190.0, 30.0] target=[309.0, 220.0, 30.0] fov=55
+[visual/view] name=eye-cinema-entry eye=[306.0, 216.0, 26.7] target=[306.0, 220.0, 27.0] fov=55
+[visual/view] name=eye-cinema-seam eye=[320.0, 216.0, 26.725] target=[318.0, 220.0, 30.0] fov=55
+[visual/view] name=eye-cinema-poster eye=[312.2, 216.0, 26.725] target=[312.2, 219.6, 26.7] fov=55
+[visual/view] name=eye-cinema-bench eye=[313.5, 234.0, 38.725] target=[312.0, 237.0, 37.45] fov=55
+[visual/view] name=eye-va08-east source=roads[274] eye=[104.02, 277.875, 31.746515] target=[88.0, 277.5, 35.221515000000004] fov=55
+[visual/view] name=inspect-va08-southeast eye=[98.0, 263.0, 41.704198895499815] target=[83.0, 275.0, 35.221515000000004] fov=55
+[visual/view] name=eye-shop-uphill eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 287.0465176392323] pitch_deg=20 fov=55
+[visual/view] name=eye-station anchor=station eye=[0.0, 0.0, 9.7] target=[230.0, 950.0, 9.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=977.4 peak_angle_deg=24.25 fov=55
+[visual/view] name=eye-cinema anchor=fw_w_cinema_s eye=[315.0, 167.5, 24.7] target=[230.0, 950.0, 24.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=787.1 peak_angle_deg=28.38 fov=55
+[visual/view] name=eye-shop-mountain anchor=home eye=[100.0, 255.0, 29.7] target=[230.0, 950.0, 29.7] peak=[230.0, 950.0, 450.0] horizontal_distance_m=707.1 peak_angle_deg=30.73 fov=55
+[visual/view] name=mountain-profile eye=[2868.0, 730.0, 926.0] target=[250.0, 730.0, 225.0] terrain_peak=[230.0, 950.0, 450.0] fov=55
+[visual/view] name=inspect-street-tree-detail source=trees[68] support=shop-steps-low eye=[127.75, 325.0, 46.827273000000005] target=[136.0, 321.0, 48.127273] fov=55
+[visual/view] name=inspect-residential-detail source=buildings[V-A13] eye=[144.0, 288.0, 33.6] target=[161.0, 282.5, 38.536364] fov=55
+[visual/view] name=inspect-shop-retaining eye=[82.0, 238.0, 28.453727902275368] target=[80.0, 245.0, 27.65] fov=55
+[visual/view] name=inspect-tree-court-retaining source=surfaces[2] eye=[62.0, 202.0, 24.7] target=[60.0, 223.0, 24.7] fov=55
+[visual/view] name=block-B01 buildings=21 eye=Vec3(109.37891, 205.38152, 218.50868) fov=55
+[visual/view] name=block-B02 buildings=16 eye=Vec3(-238.51382, 144.79863, -15.808502) fov=55
+[visual/view] name=block-B03 buildings=19 eye=Vec3(-20.154419, 164.4718, -27.787598) fov=55
+[visual/view] name=block-B04 buildings=17 eye=Vec3(195.21655, 156.99428, 40.092346) fov=55
+[visual/view] name=block-B05 buildings=22 eye=Vec3(211.44635, 163.23117, -93.785904) fov=55
+[visual/view] name=block-B06 buildings=26 eye=Vec3(160.44174, 270.73196, -216.40724) fov=55
+[visual/view] name=block-B07 buildings=12 eye=Vec3(547.25946, 195.39911, -64.53453) fov=55
+[visual/view] name=block-B08 buildings=30 eye=Vec3(797.5102, 209.68365, -59.4218) fov=55
+[visual/view] name=block-B09 buildings=13 eye=Vec3(505.67453, 234.47366, 33.94342) fov=55
+[visual/view] name=block-B10 buildings=15 eye=Vec3(763.9505, 149.11752, 108.94559) fov=55
+[visual/view] name=block-B11 buildings=13 eye=Vec3(417.24933, 362.81552, 479.2207) fov=55
+[visual/view] name=block-B12 buildings=20 eye=Vec3(483.612, 471.5756, -329.5349) fov=55
+[visual/view] name=fixture-P3-A1-01 eye=Vec3(54.58169, 27.569489, -215.12401) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-02 eye=Vec3(127.52593, 43.946255, -305.72015) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-03 eye=Vec3(93.206375, 31.610628, -258.1525) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-04 eye=Vec3(277.20215, 81.00269, -391.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-05 eye=Vec3(279.0118, 82.76882, -383.0293) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-06 eye=Vec3(95.39278, 40.921288, -241.23828) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-07 eye=Vec3(62.31803, 41.06995, -241.04007) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-08 eye=Vec3(37.202145, 27.318487, -217.38412) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A1-09 eye=Vec3(198.35109, 27.171593, -192.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-01 eye=Vec3(-135.63318, 15.211366, -48.51818) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-02 eye=Vec3(-64.53777, 10.636145, 23.638283) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-03 eye=Vec3(-385.63782, 17.036976, -166.2507) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-04 eye=Vec3(-288.94995, 15.683403, -138.05547) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-05 eye=Vec3(-301.06583, 17.954678, -237.02036) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-06 eye=Vec3(28.462227, 10.703713, -41.361717) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-07 eye=Vec3(-379.6489, 15.351832, -106.49756) occlusion_check=sampled-building-centerline step_m=0.25
+[visual/view] name=fixture-P3-A2-08 eye=Vec3(-328.17563, 26.862333, -260.66525) occlusion_check=sampled-building-centerline step_m=0.25

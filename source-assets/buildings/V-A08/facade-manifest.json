@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "owner_id": "V-A08",
+  "assets": [
+    {
+      "id": "AST-V-A08-FACADE",
+      "kind": "static-residential-facade",
+      "state": "exported-candidate",
+      "source_path": "source-assets/buildings/V-A08/facade.blend",
+      "runtime_path": "game/assets/environment/buildings/v-a08-facade.glb",
+      "source_sha256": "a31ee285b7bd832019db0421f6ecd0d8c9b26dae4a702dcf910e5a17d5361ee1",
+      "runtime_sha256": "aa2b9186b64d07a23ada84fa83f66fe0042d1dc5c8969d0b715638835e254808",
+      "provenance": "Original four-face facade geometry and UV authored locally in Blender 5.2.2 LTS for N:SIDE; embeds unchanged ambientCG images already recorded in AST-003",
+      "license": "MPL-2.0 project-authored geometry and scripts; CC0-1.0 ambientCG textures",
+      "license_status": "project-owned-and-CC0",
+      "references": [
+        "docs/dev/design/locations/district-architecture.md",
+        "docs/dev/production/art-direction.md",
+        "docs/public/images/cinema-music-street.webp",
+        "source-assets/district-map/district.json:buildings[V-A08]",
+        "source-assets/environment-kit/asset-manifest.json:AST-003"
+      ],
+      "dimensions": {
+        "units": "meters",
+        "source_up_axis": "+Z",
+        "runtime_up_axis": "+Y",
+        "pivot_map_xyz": [
+          79,
+          277.5,
+          30.021515
+        ],
+        "runtime_bounds_xyz": [
+          [
+            -9.656999588012695,
+            10.350000381469727
+          ],
+          [
+            0.0,
+            10.0600004196167
+          ],
+          [
+            -6.755000114440918,
+            7.1570000648498535
+          ]
+        ],
+        "source_building_footprint_m": [
+          18,
+          13
+        ],
+        "source_building_height_m": 10.4
+      },
+      "export": {
+        "tool": "Blender 5.2.2 LTS",
+        "scene": 0,
+        "triangles": 6060,
+        "material_primitives": 6,
+        "images": 4,
+        "runtime_bytes": 4442332,
+        "extensions": [],
+        "source_groups": 43,
+        "windows": 27
+      },
+      "textures": {
+        "source-assets/environment-kit/materials/Plaster001_1K-JPG_Color.jpg": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+        "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "source-assets/environment-kit/materials/Concrete034_1K-JPG_Color.jpg": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+        "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+      },
+      "acceptance": {
+        "technical": "PASS: source mesh, GLB, licensed image hashes, UV lengths, normals and three exterior approach AABBs",
+        "geometry_report": "todo/evidence/TASK-049/va08-facade-r1/geometry.json",
+        "source_report": "todo/evidence/TASK-049/va08-facade-r1/source-check.log",
+        "visual": "Four CPU Cycles views observed; self-audit only; author approval pending",
+        "runtime": "Parent integration and actual gameplay capture tracked separately",
+        "collision": "Runtime imports actual v_a08_facade GLB triangles through CollisionWorld::from_scene using node, model-scale and prop transforms; retain original shell, remove replaced generic detail collision; separate roof-eaves GLB remains visual only; runtime evidence in blender-integration-r2"
+      }
+    }
+  ]
+}

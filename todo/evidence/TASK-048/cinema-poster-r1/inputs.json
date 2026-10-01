@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "checks": {
+    "r2_original_bytes": "UNCHANGED",
+    "existing_billboard_bytes": "UNCHANGED",
+    "dimensions": [
+      1024,
+      1620
+    ],
+    "alpha_range": [
+      255,
+      255
+    ],
+    "color_space": "sRGB",
+    "layout": "original SVG; image crop source x648..1672, y0..941; displayed at x0,y82,w1024,h941; no raster repaint",
+    "visual": "self-audit; native1024x1620,256x405,128x203 opened",
+    "gpu": "NOT RUN; assigned to building integration",
+    "author_acceptance": "NOT ACCEPTED; r2 remains candidate"
+  },
+  "files": {
+    "source-assets/star-posters/anke-portrait.png": {
+      "sha256": "82f06776ef641489aea19913c82d5d5c6eec258fe05c499c078fdedc16484689",
+      "bytes": 1869862
+    },
+    "source-assets/star-posters/anke-cinema.svg": {
+      "sha256": "3d1c7bf351983b13545348c062d5d03420307f50f68af16fc8949cb2e47517f0",
+      "bytes": 1167
+    },
+    "source-assets/star-posters/export.mjs": {
+      "sha256": "cd687c0f1f11eca0f74d7df1c0bbddb2a74a949e14a5756b2c874cf4aa7faa08",
+      "bytes": 2284
+    },
+    "game/assets/environment/posters/anke-cinema.png": {
+      "sha256": "0aa6fcef6414b0a229c80cd2c935b54f606fc628b5a8ddc2805d328be43eb1fe",
+      "bytes": 1488369
+    },
+    "game/assets/environment/posters/anke-sunny.png": {
+      "sha256": "06dc5c6f77d91573298bd0a6a6ccf98ba5c6dd67a8db86c447fbd62f6fe294fe",
+      "bytes": 1583999
+    },
+    "source-assets/ui-kit/fonts/NotoSansSC-VF.ttf": {
+      "sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964",
+      "bytes": 17773132
+    },
+    "source-assets/ui-kit/licenses/OFL.txt": {
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "bytes": 4301
+    }
+  }
+}

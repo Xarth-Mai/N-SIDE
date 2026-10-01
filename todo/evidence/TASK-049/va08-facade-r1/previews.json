@@ -1,0 +1,62 @@
+{
+  "status": "SELF_AUDIT",
+  "render": "Blender 5.2.2 LTS CPU Cycles 28 samples, fixed 6 threads, AgX, 43mm",
+  "source_sha256": "a31ee285b7bd832019db0421f6ecd0d8c9b26dae4a702dcf910e5a17d5361ee1",
+  "runtime_sha256": "aa2b9186b64d07a23ada84fa83f66fe0042d1dc5c8969d0b715638835e254808",
+  "images": [
+    {
+      "path": "output/buildings/V-A08/facade-r1/southeast.png",
+      "sha256": "453f2b546419df7132413666c8e3a940ea194460e1425e7e669ef9444d2889c0",
+      "bytes": 1650568,
+      "dimensions": [
+        1200,
+        900
+      ],
+      "actually_viewed": true,
+      "self_audit": "整栋三层、南东两面成组窗、墙层、腰线、窗栏、独立门檐与原屋檐关系可见",
+      "cleanup": "viewed and hash-recorded; PNG removed at producer handoff"
+    },
+    {
+      "path": "output/buildings/V-A08/facade-r1/east-entry.png",
+      "sha256": "a23f956158317eee333beab81ef24d3e0484bab05bbdadd265d56497fd145cde",
+      "bytes": 1866147,
+      "dimensions": [
+        1200,
+        900
+      ],
+      "actually_viewed": true,
+      "self_audit": "经营门与住户门各自独立，小檐底高与细排水管可辨，未新增阳台地板",
+      "cleanup": "viewed and hash-recorded; PNG removed at producer handoff"
+    },
+    {
+      "path": "output/buildings/V-A08/facade-r1/window-detail.png",
+      "sha256": "c69fbe69c9c567089d0919649f41b0e65bae304d3ee78d61f01204e4ca8a9759",
+      "bytes": 2147767,
+      "dimensions": [
+        1200,
+        900
+      ],
+      "actually_viewed": true,
+      "self_audit": "真实窗框进深、窗台、百叶、空调托架与连接管可辨；修正后连接管从窗下转到窗侧，没有穿过玻璃",
+      "cleanup": "viewed and hash-recorded; PNG removed at producer handoff"
+    },
+    {
+      "path": "output/buildings/V-A08/facade-r1/southwest.png",
+      "sha256": "69b87cb2169f5af0152e4481f05ca42ddf1611ade37591b3a8fe2671b9f8d7c9",
+      "bytes": 1621654,
+      "dimensions": [
+        1200,
+        900
+      ],
+      "actually_viewed": true,
+      "self_audit": "南面各层四窗组、西侧服务门与另外两处机位共享一致材料和屋檐关系",
+      "cleanup": "viewed and hash-recorded; PNG removed at producer handoff"
+    }
+  ],
+  "total_removed_bytes": 7286136,
+  "limits": [
+    "DCC review context; not an engine screenshot",
+    "Author approval and street lighting acceptance remain pending",
+    "Preview-only plain building body and original roof were added in memory after model export"
+  ]
+}

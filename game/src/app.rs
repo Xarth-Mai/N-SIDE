@@ -506,7 +506,7 @@ fn begin_loading(world: &mut World) {
     world.insert_resource(Preparation(AsyncComputeTaskPool::get().spawn(async move {
         let scene = PreparedScene::load(&root)?;
         let player = if walk {
-            let collision = CollisionWorld::from_parts(&scene.parts)?;
+            let collision = CollisionWorld::from_scene(&scene)?;
             info!(
                 "[player/collision] triangles={} sources={}",
                 collision.triangle_count(),

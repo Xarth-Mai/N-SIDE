@@ -1,0 +1,58 @@
+00:00.339  blend            | Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/buildings/V-15/mirror-hall-facade.blend"
+INFO Draco is available, use library at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.so
+ERROR MeshOptimizer is not available because library could not be found at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.so
+02:17:58 | INFO: Starting glTF 2.0 export
+02:17:58 | INFO: Extracting primitive: V15_MirrorHall_Facade
+02:17:58 | INFO: Primitives created: 10
+02:17:58 | INFO: Finished glTF 2.0 export in 0.16021513938903809 s
+00:08.344  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-049/v15-building-r2/building-southwest.png'
+00:20.120  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-049/v15-building-r2/annex-human-height.png'
+00:32.646  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-049/v15-building-r2/west-human-height.png'
+00:43.366  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-049/v15-building-r2/upper-connection.png'
+01:04.292  render           | Saved: '/home/lzzz/MyProjects/N-SIDE/todo/evidence/TASK-049/v15-building-r2/anke-programme.png'
+
+{
+  "blender": "5.2.2 LTS",
+  "glb_sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
+  "glb_bytes": 7812440,
+  "scene_count": 1,
+  "mesh_count": 1,
+  "primitives": 10,
+  "vertices": 21482,
+  "triangles": 12362,
+  "bounds_gltf": {
+    "min": [
+      -0.35000038146972656,
+      0,
+      -30.079998016357422
+    ],
+    "max": [
+      43.15000534057617,
+      11.829998970031738,
+      3.0349998474121094
+    ]
+  },
+  "materials": [
+    "V15_Warm_trim",
+    "V15_Charcoal_metal",
+    "V15_ambientCG_Plaster001",
+    "V15_ambientCG_Concrete034",
+    "V15_Warm_letter_and_diffuser",
+    "V15_Opaque_window_glass",
+    "V15_ambientCG_WoodSiding009",
+    "V15_Anke_programme",
+    "V15_Programme_blue",
+    "V15_Programme_red"
+  ],
+  "embedded_images": 7,
+  "extensions_used": [],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "V15_MirrorHall_Facade"
+    }
+  ]
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+
+Blender quit

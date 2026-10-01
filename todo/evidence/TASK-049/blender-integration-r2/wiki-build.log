@@ -1,0 +1,80 @@
+$ bun run check:map && bun run docs:build:player && bun run docs:build:dev
+$ bun test tools/tests/district-map.test.ts tools/tests/road-width.test.ts tools/tests/station-square.test.ts tools/tests/terrain-shape.test.ts
+bun test v1.4.2 (744846f84)
+
+tools/tests/district-map.test.ts:
+(pass) map places and roads have valid shared references [2.94ms]
+(pass) terrain colors follow ground elevation [0.21ms]
+(pass) map overview fits extended terrain on wide and narrow screens [284.51ms]
+(pass) mountain cross section uses sampled ground up to the stargazing summit [62.52ms]
+(pass) mountain city keeps metre scale and usable graded route alternatives [8.46ms]
+(pass) overview terrain retains source controls and excludes elevated connections [5594.00ms]
+(pass) authored exterior sightlines clear intervening building volumes [2.19ms]
+(pass) shopping stays local and public hillside routes remain connected [3.04ms]
+(pass) orthographic projection preserves parallel edges and separates elevation from depth [8.15ms]
+(pass) scene keeps platforms below volumes and geometry is finite [168.65ms]
+(pass) expanded plan counts destinations separately and keeps parcel attachments valid [9.20ms]
+(pass) sections follow connected routes and distinguish a lift from a slope [14.54ms]
+(pass) section labels name shared nodes without duplicating their displayed elevation [1.85ms]
+(pass) geometry handles concave boundaries, shared walls, road width and local elevation [1.32ms]
+(pass) tree positions stay outside building footprints [8.64ms]
+(pass) all streets clear building volumes at their actual widths and elevations [458.40ms]
+(pass) district ground-road crossings share a junction and its elevation [363.52ms]
+(pass) city framework records every building and reaches its same-level facade entrances [16.65ms]
+(pass) city stairs retain short flights, level rests and full-size treads [1.44ms]
+(pass) ordinary streets keep their design grade and deliveries avoid stair-only approaches [2.03ms]
+(pass) public streets stay outside same-level resident and service courts [5.39ms]
+(pass) building volumes share boundaries without occupying the same space [36.56ms]
+(pass) detailed places connect street access to separate public and service entrances [19.81ms]
+(pass) cinema roof and exterior platform have distinct footprints and supported paths [1.72ms]
+(pass) lifestyle routes visit actual arrival endpoints in the stated order [5.58ms]
+(pass) housing estimates use residential floor area rather than the volume count [0.40ms]
+(pass) architectural segments reference complete buildings and derive type counts from the same data [1.67ms]
+(pass) representative buildings have consistent floors, room areas and facade entrances [75.37ms]
+(pass) public, residents, students and service users have separate access rights [15.25ms]
+(pass) shop supply starts on the city road and changes to a level trolley route at unloading [0.79ms]
+(pass) interest equipment deliveries reach a level backstage route from a gentle city-road approach [1.61ms]
+(pass) drawn room openings join actual walls and each occupied room has an access [0.82ms]
+(pass) station mixed-use and interest samples connect customer and backstage rooms through their own entrances [0.47ms]
+(pass) shared stairs and separate apartments connect through shared circulation [1.16ms]
+
+tools/tests/terrain-shape.test.ts:
+(pass) second short-ascent leg meets terrain across stair and landing edges [2627.47ms]
+(pass) descent eye-level slope uses local terrain detail instead of a 60m face [2671.42ms]
+(pass) descent bank changes grade gradually and adjoining upper stairs retain support [32.14ms]
+(pass) terrain bake preserves authored geometry and repeats without drift [6493.23ms]
+(fail) terrain noise protects complete road segments and footprints [33757.54ms]
+  ^ this test timed out after 20000ms, before its done callback was called. If a done callback was not intended, remove the last parameter from the test callback function
+(pass) terrain bake rejects invalid metadata and unsupported source formatting [292.89ms]
+(pass) third short-ascent terrace clears terrain toward city landmarks [560.44ms]
+(pass) forest-edge hollow has broad concavity while the adjacent short route keeps its grade [43.59ms]
+(pass) local forest road support leaves the existing terrain envelope outside the hollow unchanged [2786.09ms]
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [12.44ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [1.78ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [2871.35ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [860.86ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [602.76ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [554.43ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1458.47ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [2606.94ms]
+(pass) east terraces clear neighboring road ribbons and retain usable exterior approaches [672.91ms]
+(pass) west old housing clear neighboring road ribbons and retain usable exterior approaches [542.40ms]
+(pass) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [928.34ms]
+(pass) all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches [711.77ms]
+(pass) platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces [34.14ms]
+(pass) ground platforms meet adjacent road ribbons and stair treads at their own level [88.16ms]
+
+tools/tests/station-square.test.ts:
+(pass) station meeting court retains usable space with a level public arrival clear of sloping roads [579.88ms]
+
+1 tests failed:
+(fail) terrain noise protects complete road segments and footprints [33757.54ms]
+  ^ this test timed out after 20000ms, before its done callback was called. If a done callback was not intended, remove the last parameter from the test callback function
+
+ 57 pass
+ 1 fail
+Ran 58 tests across 4 files. [70.14s]
+error: script "check:map" exited with code 1
+error: script "docs:build" exited with code 1

@@ -1,0 +1,65 @@
+{
+  "head": "0efb89c61b432129cdbd292c05a3e1f90bb0b3bd",
+  "files": [
+    {
+      "path": "game/target/debug/n-side",
+      "bytes": 2042298032,
+      "sha256": "d5ce4cc107220bbda15ba8dad9f58f741ea39e5d7791ebed5ffb171461838ac2"
+    },
+    {
+      "path": "game/target/debug/map_viewer",
+      "bytes": 2046933688,
+      "sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857"
+    },
+    {
+      "path": "game/src/world/scene.rs",
+      "bytes": 255717,
+      "sha256": "86257f3dac82a09159eb217dde9db418ac5b6b038d06959230bed29a265fd5c8"
+    },
+    {
+      "path": "game/src/world/collision.rs",
+      "bytes": 22101,
+      "sha256": "7c3dfcf71905234c1ff7eb3f0e22656ccb9a2dca5a88f4a445955c6c2046a008"
+    },
+    {
+      "path": "game/src/bin/map_viewer.rs",
+      "bytes": 52371,
+      "sha256": "722bee0e1491064c4bc1b122dfb1caab98c49216b6ec9f1f036ce0f2a241a11c"
+    },
+    {
+      "path": "source-assets/district-map/district.json",
+      "bytes": 727176,
+      "sha256": "aecbdb41adc3c4fac4cf8fb36884d80708b9b776086c01a8f00e4ef6210f8779"
+    },
+    {
+      "path": "source-assets/district-scene/appearance.json",
+      "bytes": 12382,
+      "sha256": "8ffd844fe44e4c258d34f29b21ed616c717014b4b1b0b3489942fac363860341"
+    },
+    {
+      "path": "source-assets/district-scene/daylight.json",
+      "bytes": 587,
+      "sha256": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3"
+    },
+    {
+      "path": "game/assets/environment/buildings/v-a08-facade.glb",
+      "bytes": 4442332,
+      "sha256": "aa2b9186b64d07a23ada84fa83f66fe0042d1dc5c8969d0b715638835e254808"
+    },
+    {
+      "path": "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
+      "bytes": 7812440,
+      "sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98"
+    },
+    {
+      "path": "game/assets/environment/street-furniture/street-bench.glb",
+      "bytes": 5925368,
+      "sha256": "f5a48231b979242e5cdf8f354a39887248731b2b438f654620a0eb01a1753388"
+    },
+    {
+      "path": "game/assets/environment/posters/anke-cinema.png",
+      "bytes": 1488369,
+      "sha256": "0aa6fcef6414b0a229c80cd2c935b54f606fc628b5a8ddc2805d328be43eb1fe"
+    }
+  ]
+}

@@ -508,6 +508,50 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
     let target = [entry[0], entry[1], entry[2] + 2.];
     println!("[visual/view] name=eye-cinema-entry eye={eye:?} target={target:?} fov=55");
     views.push(("eye-cinema-entry", view(eye, target)));
+    for (name, eye, target) in [
+        ("eye-cinema-seam", [320., 216., 26.725], [318., 220., 30.]),
+        (
+            "eye-cinema-poster",
+            [312.2, 216., 26.725],
+            [312.2, 219.6, 26.7],
+        ),
+        (
+            "eye-cinema-bench",
+            [313.5, 234., 38.725],
+            [312., 237., 37.45],
+        ),
+    ] {
+        println!("[visual/view] name={name} eye={eye:?} target={target:?} fov=55");
+        views.push((name, view(eye, target)));
+    }
+    let neighbor = map
+        .buildings
+        .iter()
+        .find(|building| building.id == "V-A08")
+        .ok_or("[viewer/view] missing V-A08 facade inspection anchor")?;
+    let door = map.nodes["v_a08_door"];
+    let landing = map.nodes["v_a08_door_landing"];
+    let junction = map.nodes["shop_north_junction"];
+    // A quarter of the way along the public lane, at its actual paving level plus eye height
+    let eye = [
+        junction[0] + (landing[0] - junction[0]) * 0.25,
+        junction[1] + (landing[1] - junction[1]) * 0.25,
+        junction[2] + (landing[2] - junction[2]) * 0.25 + 0.025 + 1.7,
+    ];
+    let target = [door[0], door[1], neighbor.elevation + neighbor.height / 2.];
+    println!(
+        "[visual/view] name=eye-va08-east source=roads[274] eye={eye:?} target={target:?} fov=55"
+    );
+    views.push(("eye-va08-east", view(eye, target)));
+    // Elevated free inspection exposes the south return above the foreground shop roof
+    let xy = [
+        landing[0] + 7.,
+        map.nodes["fw_grade_v_a08_service_0"][1] - 6.,
+    ];
+    let eye = [xy[0], xy[1], ground.height(xy) + 13.];
+    let target = [door[0] - 5., door[1] - 2.5, target[2]];
+    println!("[visual/view] name=inspect-va08-southeast eye={eye:?} target={target:?} fov=55");
+    views.push(("inspect-va08-southeast", view(eye, target)));
     // The closer summit naturally leaves a level 55-degree view; keep that view and label the tilt
     let mut eye = map.nodes["home"];
     eye[2] += 1.7;
@@ -686,6 +730,14 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         (
             "inspect-road-upper-stairs-low",
             view([212., 413., 87.], [195., 428., 79.]),
+        ),
+        (
+            "inspect-shop-stair-surfaces",
+            view([103., 279., 40.], [114., 295., 34.8]),
+        ),
+        (
+            "inspect-hill-stair-surfaces",
+            view([282., 414., 89.], [301., 427., 87.]),
         ),
         (
             "inspect-trail-east-entry",

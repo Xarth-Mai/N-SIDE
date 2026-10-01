@@ -1,0 +1,23 @@
+{
+  "scene": "district",
+  "view": "inspect-va08-southeast",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 60,
+  "seed": 0,
+  "timeout_seconds": 180,
+  "keyframes": [
+    59
+  ],
+  "events": [],
+  "assertions": [
+    {
+      "name": "fixed V-A08 inspection camera",
+      "from": 0,
+      "to": 59,
+      "max_distance": 0.0001,
+      "max_rotation": 0.0001
+    }
+  ]
+}

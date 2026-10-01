@@ -1,0 +1,206 @@
+[
+  {
+    "view": "shop-stair-baseline",
+    "eye": [
+      100.0,
+      29.700000762939453,
+      -255.0
+    ],
+    "rotation": [
+      0.17290650308132172,
+      -0.09092247486114502,
+      0.016032082960009575,
+      0.9806016087532043
+    ],
+    "horizon_y_at_screen_center": 611.7049117715267,
+    "roads": [
+      {
+        "road": 58,
+        "treads": 12,
+        "front_facing": 10,
+        "back_facing": 2,
+        "nearest_eye_level": {
+          "view": "shop-stair-baseline",
+          "road": 58,
+          "step_zero_based": 9,
+          "height_m": 29.625366041666666,
+          "eye_minus_tread_m": 0.07463472127278692,
+          "camera_distance_m": 19.2293104672019,
+          "screen_x": 761.7482811702937,
+          "screen_y": 614.7902532727267,
+          "projected_tread_vertical_px": -0.14024113831328577
+        }
+      },
+      {
+        "road": 60,
+        "treads": 26,
+        "front_facing": 0,
+        "back_facing": 26,
+        "nearest_eye_level": {
+          "view": "shop-stair-baseline",
+          "road": 60,
+          "step_zero_based": 0,
+          "height_m": 30.129125730769232,
+          "eye_minus_tread_m": -0.4291249678297788,
+          "camera_distance_m": 26.97563487760452,
+          "screen_x": 760.8703214542205,
+          "screen_y": 599.1496191784456,
+          "projected_tread_vertical_px": 0.1737097845674498
+        }
+      },
+      {
+        "road": 62,
+        "treads": 32,
+        "front_facing": 0,
+        "back_facing": 32,
+        "nearest_eye_level": {
+          "view": "shop-stair-baseline",
+          "road": 62,
+          "step_zero_based": 0,
+          "height_m": 34.425383796874996,
+          "eye_minus_tread_m": -4.725383033935543,
+          "camera_distance_m": 42.13461467073335,
+          "screen_x": 756.751491557656,
+          "screen_y": 525.6976497524809,
+          "projected_tread_vertical_px": 0.9841408984359532
+        }
+      }
+    ]
+  },
+  {
+    "view": "shop-stair-surfaces",
+    "eye": [
+      103.0,
+      40.0,
+      -279.0
+    ],
+    "rotation": [
+      -0.1245923787355423,
+      -0.29407748579978943,
+      -0.038697123527526855,
+      0.9468356370925903
+    ],
+    "horizon_y_at_screen_center": 174.7924932908613,
+    "roads": [
+      {
+        "road": 60,
+        "treads": 26,
+        "front_facing": 26,
+        "back_facing": 0,
+        "nearest_eye_level": {
+          "view": "shop-stair-surfaces",
+          "road": 60,
+          "step_zero_based": 25,
+          "height_m": 34.259662269230766,
+          "eye_minus_tread_m": 5.740337730769234,
+          "camera_distance_m": 15.115943613542637,
+          "screen_x": 731.6463245690002,
+          "screen_y": 451.3879472466021,
+          "projected_tread_vertical_px": -6.470829369982482
+        }
+      },
+      {
+        "road": 62,
+        "treads": 32,
+        "front_facing": 32,
+        "back_facing": 0,
+        "nearest_eye_level": {
+          "view": "shop-stair-surfaces",
+          "road": 62,
+          "step_zero_based": 31,
+          "height_m": 39.578253203125,
+          "eye_minus_tread_m": 0.4217467968749986,
+          "camera_distance_m": 34.365110607623755,
+          "screen_x": 571.1148805371,
+          "screen_y": 183.90122923768126,
+          "projected_tread_vertical_px": -0.12790270056180475
+        }
+      },
+      {
+        "road": 64,
+        "treads": 33,
+        "front_facing": 2,
+        "back_facing": 31,
+        "nearest_eye_level": {
+          "view": "shop-stair-surfaces",
+          "road": 64,
+          "step_zero_based": 2,
+          "height_m": 40.07734195454545,
+          "eye_minus_tread_m": -0.077341954545453,
+          "camera_distance_m": 36.64288868967462,
+          "screen_x": 558.7472499726191,
+          "screen_y": 173.21721168857954,
+          "projected_tread_vertical_px": 0.016705542243215632
+        }
+      }
+    ]
+  },
+  {
+    "view": "hill-stair-surfaces",
+    "eye": [
+      282.0,
+      89.0,
+      -414.0
+    ],
+    "rotation": [
+      -0.03831205517053604,
+      -0.4661004841327667,
+      -0.020208053290843964,
+      0.8836708664894104
+    ],
+    "horizon_y_at_screen_center": 299.9216679020103,
+    "roads": [
+      {
+        "road": 744,
+        "treads": 45,
+        "front_facing": 45,
+        "back_facing": 0,
+        "nearest_eye_level": {
+          "view": "hill-stair-surfaces",
+          "road": 744,
+          "step_zero_based": 44,
+          "height_m": 86.86213486666668,
+          "eye_minus_tread_m": 2.137865133333321,
+          "camera_distance_m": 20.633311630303872,
+          "screen_x": 713.2150213950833,
+          "screen_y": 372.2582039222763,
+          "projected_tread_vertical_px": -0.8252237358910293
+        }
+      },
+      {
+        "road": 746,
+        "treads": 45,
+        "front_facing": 12,
+        "back_facing": 33,
+        "nearest_eye_level": {
+          "view": "hill-stair-surfaces",
+          "road": 746,
+          "step_zero_based": 12,
+          "height_m": 89.04400605555557,
+          "eye_minus_tread_m": -0.044006055555570356,
+          "camera_distance_m": 25.132729749854203,
+          "screen_x": 602.8814334521505,
+          "screen_y": 298.6997267764404,
+          "projected_tread_vertical_px": 0.011463429845093742
+        }
+      },
+      {
+        "road": 748,
+        "treads": 45,
+        "front_facing": 0,
+        "back_facing": 45,
+        "nearest_eye_level": {
+          "view": "hill-stair-surfaces",
+          "road": 748,
+          "step_zero_based": 0,
+          "height_m": 94.58260213333334,
+          "eye_minus_tread_m": -5.582602133333339,
+          "camera_distance_m": 35.985718341438584,
+          "screen_x": 468.4412050290617,
+          "screen_y": 185.69843364987238,
+          "projected_tread_vertical_px": 0.7915380070264177
+        }
+      }
+    ]
+  }
+]

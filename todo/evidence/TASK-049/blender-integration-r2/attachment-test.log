@@ -1,0 +1,24 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 2m 00s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+V-A08 actual GLB: 56 triangles, bounds=Vec3(69.55, 40.071518, -284.45)..Vec3(88.45, 40.421516, -270.55)
+V-A08 actual GLB: 6060 triangles, bounds=Vec3(69.343, 30.021515, -284.255)..Vec3(89.35, 40.081516, -270.343)
+V-15 actual GLB: 12362 triangles, bounds=Vec3(299.65, 25.0, -250.08)..Vec3(343.15, 36.829998, -216.965)
+
+thread 'world::scene::tests::blender_building_attachments_fit_existing_shells_and_routes' (330) panicked at src/world/scene.rs:3432:9:
+assertion `left == right` failed
+  left: (4, 1)
+ right: (6, 1)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::scene::tests::blender_building_attachments_fit_existing_shells_and_routes ... FAILED
+
+failures:
+
+failures:
+    world::scene::tests::blender_building_attachments_fit_existing_shells_and_routes
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 139 filtered out; finished in 9.34s
+
+error: test failed, to rerun pass `--lib`

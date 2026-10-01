@@ -1,7 +1,8 @@
 """V-15 additive cinema facade, authored in metres in the source map frame
 
 blender --background --python source-assets/buildings/V-15/build.py -- --render
-Use --export-existing to export the edited .blend without rebuilding geometry
+The default exports the edited master; --extend-r2 updates its facade bays
+Use --rebuild only to reconstruct both revisions from the authored recipe
 """
 import argparse
 import hashlib
@@ -19,12 +20,14 @@ SOURCE = Path(__file__).resolve().parent
 ROOT = SOURCE.parents[2]
 BLEND = SOURCE / 'mirror-hall-facade.blend'
 GLB = ROOT / 'game/assets/environment/buildings/v15-mirror-hall-facade.glb'
-OUTPUT = ROOT / 'output/buildings/V-15/r1'
+OUTPUT = ROOT / 'todo/evidence/TASK-049/v15-building-r2'
 MATERIALS = ROOT / 'source-assets/environment-kit/materials'
 FONT = ROOT / 'source-assets/ui-kit/fonts/NotoSansSC-VF.ttf'
 parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true')
+parser.add_argument('--extend-r2', action='store_true')
+parser.add_argument('--rebuild', action='store_true')
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
 GLB.parent.mkdir(parents=True, exist_ok=True)
 OUTPUT.mkdir(parents=True, exist_ok=True)
@@ -229,6 +232,97 @@ def author():
     bpy.ops.wm.save_as_mainfile(filepath=str(BLEND))
 
 
+def extend_facades():
+    """Add the authored south/west wall bays to the saved master, preserving r1 objects"""
+    facade = bpy.data.collections['V15_EXPORT_Facade']
+    for obj in list(facade.objects):
+        if obj.name.startswith('R2 '):
+            bpy.data.objects.remove(obj, do_unlink=True)
+    mats = {key: bpy.data.materials[name] for key, name in {
+        'concrete': 'V15_ambientCG_Concrete034', 'plaster': 'V15_ambientCG_Plaster001',
+        'wood': 'V15_ambientCG_WoodSiding009', 'metal': 'V15_Charcoal_metal',
+        'bronze': 'V15_Warm_trim'}.items()}
+    spec = json.loads((ROOT/'source-assets/district-scene/appearance.json').read_text())['materials']['glass']
+    glass = bpy.data.materials.get('V15_Opaque_window_glass')
+    if glass is None:
+        linear = tuple(c/12.92 if c <= .04045 else ((c+.055)/1.055)**2.4 for c in spec['color'][:3])
+        glass = material('V15_Opaque_window_glass', linear, spec['roughness'], spec['metallic'])
+    mats['glass'] = glass
+
+    def piece(side, name, u0, u1, z0, z1, d0, d1, mat, bevel=0):
+        # Depth is out from the original wall; the opaque back stays in front of the shell
+        low, high = ((u0,-d1,z0),(u1,-d0,z1)) if side == 'south' else ((-d1,u0,z0),(-d0,u1,z1))
+        return box('R2 '+side+' '+name, low, high, mats[mat], facade, bevel)
+
+    def window(side, name, u0, u1, z0, z1, panes):
+        piece(side, name+' glass', u0,u1,z0,z1,.045,.065,'glass')
+        for u in [u0-.12,u1]:
+            piece(side,name+' reveal',u,u+.12,z0-.10,z1+.10,.04,.32,'metal')
+        piece(side,name+' head',u0,u1,z1,z1+.10,.04,.32,'metal')
+        piece(side,name+' sill',u0-.12,u1+.12,z0-.10,z0,.04,.35,'concrete',.008)
+        for i in range(1,panes):
+            u=u0+(u1-u0)*i/panes
+            piece(side,name+' mullion',u-.022,u+.022,z0,z1,.065,.18,'bronze')
+
+    # The east lift corner keeps its existing 0.5 m facade strip clear of new projected work
+    for side, start, end, bays in [('south',18.02,39.5,5),('west',0.,30.,5)]:
+        pitch=(end-start)/bays
+        for name,z0,z1,mat in [
+            ('base',0,.45,'concrete'),('first lintel',3.30,4.55,'plaster'),
+            ('dining spandrel',4.55,5.15,'wood'),('upper slab',7.45,8.35,'concrete'),
+            ('office apron',8.35,9.15,'plaster'),('roof fascia',10.85,11.65,'plaster'),
+        ]:
+            piece(side,name,start,end,z0,z1,.02,.28,mat,.008)
+        for i in range(bays+1):
+            u=start+pitch*i
+            low=max(start,u-.20);high=min(end,u+.20)
+            piece(side,'full-height pier '+str(i),low,high,.0,11.65,.02,.33,'concrete',.012)
+        for i in range(bays):
+            u0=start+pitch*i+.32;u1=start+pitch*(i+1)-.32
+            window(side,'public bay '+str(i),u0,u1,.55,3.20,2)
+            piece(side,'public transom '+str(i),u0,u1,2.57,2.62,.065,.18,'metal')
+            window(side,'dining bay '+str(i),u0,u1,5.25,7.35,3)
+            # A shorter paired office window and a solid timber screen differ from the public floors
+            split=u0+(u1-u0)*.66
+            window(side,'office bay '+str(i),u0,split,9.25,10.75,2)
+            piece(side,'office screen backing '+str(i),split+.12,u1,9.15,10.85,.04,.08,'metal')
+            count=max(3,round((u1-split-.12)/.18))
+            for j in range(count):
+                u=split+.12+(u1-split-.12)*(j+.5)/count
+                piece(side,'office timber screen '+str(i)+'-'+str(j),u-.045,u+.045,9.18,10.82,.08,.22,'wood')
+            # Close the jamb strip between the office window and the next structural pier
+            piece(side,'office end reveal '+str(i),u1,u1+.12,9.15,10.85,.04,.30,'concrete')
+        for name,z0,z1 in [('first drip',3.28,3.38),('upper drip',7.43,7.53),('roof coping',11.65,11.82)]:
+            piece(side,name,start,end,z0,z1,.015,.35,'metal',.008)
+    box('R2 southwest masonry return',(-.35,-.33,0),(.65,.04,11.65),mats['concrete'],facade,.015)
+    box('R2 southwest coping return',(-.35,-.35,11.65),(.65,.04,11.82),mats['metal'],facade,.008)
+
+    image_path = ROOT/'game/assets/environment/posters/anke-cinema.png'
+    assert image_path.is_file(), image_path
+    poster_image = bpy.data.images.load(str(image_path), check_existing=True)
+    poster_image.colorspace_settings.name = 'sRGB'
+    poster_mat = bpy.data.materials.get('V15_Anke_programme')
+    if poster_mat is None:
+        poster_mat = material('V15_Anke_programme', (1,1,1), .85)
+        node = poster_mat.node_tree.nodes.new('ShaderNodeTexImage')
+        node.image = poster_image
+        poster_mat.node_tree.links.new(node.outputs['Color'], poster_mat.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
+    else:
+        next(n for n in poster_mat.node_tree.nodes if n.type == 'TEX_IMAGE').image = poster_image
+    obj = bpy.data.objects['Street programme 1 print']
+    obj.data.materials.clear();obj.data.materials.append(poster_mat)
+    for poly in obj.data.polygons:
+        for loop in poly.loop_indices:
+            point=obj.matrix_world @ obj.data.vertices[obj.data.loops[loop].vertex_index].co
+            obj.data.uv_layers.active.data[loop].uv=((point.x-10.54)/1.42,(point.z-.45)/2.25)
+    for suffix in ['horizon','composition','light stripe','footer']:
+        obj=bpy.data.objects.get('Street programme 1 '+suffix)
+        if obj: bpy.data.objects.remove(obj,do_unlink=True)
+    bpy.context.scene['facade_revision']='r2 south-west building bays'
+    bpy.ops.file.pack_all()
+    bpy.ops.wm.save_as_mainfile(filepath=str(BLEND))
+
+
 def export():
     facade=bpy.data.collections['V15_EXPORT_Facade']
     copies=[]
@@ -260,7 +354,14 @@ def inspect_components():
         mesh=evaluated.to_mesh()
         points=[obj.matrix_world @ vertex.co for vertex in mesh.vertices]
         bounds[obj.name]={'min':[min(p[i] for p in points) for i in range(3)],
-                          'max':[max(p[i] for p in points) for i in range(3)]}
+                          'max':[max(p[i] for p in points) for i in range(3)],
+                          'triangles':sum(len(face.vertices)-2 for face in mesh.polygons),
+                          'mesh_sha256':hashlib.sha256(json.dumps({
+                              'vertices':[list(p) for p in points],
+                              'polygons':[list(face.vertices) for face in mesh.polygons],
+                              'materials':[mat.name for mat in obj.data.materials],
+                              'uv':[list(loop.uv) for loop in mesh.uv_layers.active.data] if mesh.uv_layers.active else [],
+                          },sort_keys=True).encode()).hexdigest()}
         evaluated.to_mesh_clear()
     clearances={
         'south_3m_approach':([4.5,-4,0],[7.5,0,2.75]),
@@ -272,6 +373,25 @@ def inspect_components():
     for name,(low,high) in clearances.items():
         hits=[obj for obj,b in bounds.items() if all(b['min'][i]<high[i]-1e-5 and b['max'][i]>low[i]+1e-5 for i in range(3))]
         assert not hits,(name,hits)
+    facade_checks = {}
+    for side,depth_axis in [('south',1),('west',0)]:
+        glasses = {name:b for name,b in bounds.items() if name.startswith('R2 '+side) and name.endswith(' glass')}
+        assert len(glasses) == 15, (side,len(glasses))
+        # Evaluated mesh must sit outside the original solid shell and behind its projecting frame
+        for name,glass in glasses.items():
+            assert -.066 < glass['min'][depth_axis] < -.064
+            assert -.046 < glass['max'][depth_axis] < -.044
+            frame = bounds[name.removesuffix(' glass')+' head']
+            assert frame['min'][depth_axis] < glass['min'][depth_axis]-.25
+        facade_checks[side] = {'windows':len(glasses),'opaque_surface_outside_shell_m':.045,
+                               'frame_recess_m':.255,'result':'PASS'}
+    # New wall bays stop before the east corner approach; existing r1 canopy remains independently checked
+    east_corner = ([39.5,-2,0],[42,0,3])
+    new_hits = [name for name,b in bounds.items() if name.startswith('R2 ') and
+                all(b['min'][i]<east_corner[1][i]-1e-5 and b['max'][i]>east_corner[0][i]+1e-5 for i in range(3))]
+    assert not new_hits, new_hits
+    facade_checks['east_corner_new_geometry_clear'] = {'volume':east_corner,'result':'PASS'}
+    (OUTPUT/'facade-checks.json').write_text(json.dumps(facade_checks,indent=2)+'\n')
     (OUTPUT/'component-bounds.json').write_text(json.dumps({'frame':'Blender local x,y,z metres','bounds':bounds,'clear_volumes':clearances},indent=2)+'\n')
 
 
@@ -289,7 +409,7 @@ def report():
           'materials':[m['name'] for m in gltf['materials']],'embedded_images':len(gltf.get('images',[])),
           'extensions_used':gltf.get('extensionsUsed',[]),'nodes':gltf['nodes']}
     assert set(info['extensions_used']) <= {'KHR_materials_unlit','KHR_texture_transform'}
-    assert info['vertices']<20000 and info['triangles']<16000 and len(primitives)<=8
+    assert info['vertices']<30000 and info['triangles']<16000 and len(primitives)<=10
     assert all('material' in p and 'NORMAL' in p['attributes'] and 'TEXCOORD_0' in p['attributes'] for p in primitives)
     assert all('bufferView' in image for image in gltf.get('images',[]))
     assert not gltf.get('animations') and not gltf.get('skins') and not gltf.get('cameras')
@@ -299,10 +419,14 @@ def report():
 
 def render():
     scene=bpy.context.scene
+    scene.render.resolution_x=1280;scene.render.resolution_y=720
+    scene.render.threads_mode='FIXED';scene.render.threads=6
     for name,position,target,lens in [
-        ('south-entry', (23,-31,13),(8.8,0,5.2),44),
-        ('entry-human-height', (11,-17,1.75),(7.5,0,4.2),30),
+        ('building-southwest',(-38,-54,20),(18,10,5.3),47),
+        ('annex-human-height',(27,-19,1.75),(28,0,5.9),34),
+        ('west-human-height',(-19,10,1.75),(0,15,6.0),32),
         ('upper-connection',(56,6,18),(41.2,24,10),42),
+        ('anke-programme',(11.25,-5.2,1.6),(11.25,-.614,1.575),35),
     ]:
         scene.camera.location=position
         scene.camera.rotation_euler=(Vector(target)-scene.camera.location).to_track_quat('-Z','Y').to_euler()
@@ -311,10 +435,13 @@ def render():
         bpy.ops.render.render(write_still=True)
 
 
-if args.export_existing:
-    bpy.ops.wm.open_mainfile(filepath=str(BLEND))
-else:
+if args.rebuild:
     author()
+    extend_facades()
+else:
+    bpy.ops.wm.open_mainfile(filepath=str(BLEND))
+    if args.extend_r2:
+        extend_facades()
 inspect_components()
 export()
 report()

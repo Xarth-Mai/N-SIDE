@@ -1,0 +1,99 @@
+{
+  "renderer": "Cycles CPU",
+  "threads": 6,
+  "samples": 32,
+  "resolution": [
+    1280,
+    720
+  ],
+  "color_management": "AgX",
+  "frame": "Blender local x,y,z metres",
+  "final_glb_sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
+  "views": [
+    {
+      "path": "todo/evidence/TASK-049/v15-building-r2/building-southwest.png",
+      "sha256": "1bfdcad3effc9123301ca628294a7c0bd4b4dbd9864c6531470e7143dd3b08f7",
+      "bytes": 1480349,
+      "position": [
+        -38,
+        -54,
+        20
+      ],
+      "target": [
+        18,
+        10,
+        5.3
+      ],
+      "lens_mm": 47,
+      "actually_viewed": true
+    },
+    {
+      "path": "todo/evidence/TASK-049/v15-building-r2/annex-human-height.png",
+      "sha256": "a4403454e6fef43153a4c7278ed5814a6c9016b42bdfc2fe44a091f5af167166",
+      "bytes": 1693947,
+      "position": [
+        27,
+        -19,
+        1.75
+      ],
+      "target": [
+        28,
+        0,
+        5.9
+      ],
+      "lens_mm": 34,
+      "actually_viewed": true
+    },
+    {
+      "path": "todo/evidence/TASK-049/v15-building-r2/west-human-height.png",
+      "sha256": "0fbd318e6927d520daa6ee43aca3cb12e0ce96419bd4148e5dfb5552fd0aefdd",
+      "bytes": 1698153,
+      "position": [
+        -19,
+        10,
+        1.75
+      ],
+      "target": [
+        0,
+        15,
+        6.0
+      ],
+      "lens_mm": 32,
+      "actually_viewed": true
+    },
+    {
+      "path": "todo/evidence/TASK-049/v15-building-r2/upper-connection.png",
+      "sha256": "d0d6a0c1fae9708bf859233beb7e49d2feaab38e1fe14a8719b8d6a8e8b6a010",
+      "bytes": 1333439,
+      "position": [
+        56,
+        6,
+        18
+      ],
+      "target": [
+        41.2,
+        24,
+        10
+      ],
+      "lens_mm": 42,
+      "actually_viewed": true
+    },
+    {
+      "path": "todo/evidence/TASK-049/v15-building-r2/anke-programme.png",
+      "sha256": "dfbf7b27a7c809f01d9b818abda5f54441a860dcd2d80e50343e07f208e35a23",
+      "bytes": 1595062,
+      "position": [
+        11.25,
+        -5.2,
+        1.6
+      ],
+      "target": [
+        11.25,
+        -0.614,
+        1.575
+      ],
+      "lens_mm": 35,
+      "actually_viewed": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "south": {
+    "windows": 15,
+    "opaque_surface_outside_shell_m": 0.045,
+    "frame_recess_m": 0.255,
+    "result": "PASS"
+  },
+  "west": {
+    "windows": 15,
+    "opaque_surface_outside_shell_m": 0.045,
+    "frame_recess_m": 0.255,
+    "result": "PASS"
+  },
+  "east_corner_new_geometry_clear": {
+    "volume": [
+      [
+        39.5,
+        -2,
+        0
+      ],
+      [
+        42,
+        0,
+        3
+      ]
+    ],
+    "result": "PASS"
+  }
+}

@@ -4,26 +4,26 @@
   "status": "exported-candidate",
   "created": "2026-10-01",
   "author": "N:SIDE project contributors",
-  "license": "MPL-2.0 AND CC0-1.0 AND OFL-1.1",
+  "license": "MPL-2.0 AND CC0-1.0 AND OFL-1.1; embedded AST-007 generated poster governed by applicable OpenAI service terms",
   "source": {
     "path": "source-assets/buildings/V-15/mirror-hall-facade.blend",
-    "sha256": "237154280343e58fdd39a52f5cb69e058bddad05273114c4ac00444a4ad66e8e",
-    "bytes": 16707986
+    "sha256": "344ef7b570a96c11a7a610bcd8c327a555842f609d76d40da30b232835ccfd4d",
+    "bytes": 18346304
   },
   "build_script": {
     "path": "source-assets/buildings/V-15/build.py",
-    "sha256": "e1dee8547353dc9665af9720fe4fc096c202c61a618452063d97091b916b8c7c",
-    "bytes": 17576
+    "sha256": "e33003e900147dbddd2158d921343c29c3d8dfc7e48deb4a9837e3f2dbe9e6da",
+    "bytes": 25519
   },
   "verification_script": {
     "path": "source-assets/buildings/V-15/verify.py",
-    "sha256": "b44ba17d82dd0a627a4faf4b673621203f00daa9641236b917d424c1892a4826",
-    "bytes": 3651
+    "sha256": "abc0cbdfcefb1c72deb90769b3a466d91fde356c572afc41d1ff31b72dce71c3",
+    "bytes": 4972
   },
   "output": {
     "path": "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
-    "sha256": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2",
-    "bytes": 5909108
+    "sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
+    "bytes": 7812440
   },
   "inputs": [
     {
@@ -86,6 +86,22 @@
       "bytes": 17773132,
       "license": "OFL-1.1",
       "registry": "source-assets/ui-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/star-posters/anke-cinema.svg",
+      "sha256": "3d1c7bf351983b13545348c062d5d03420307f50f68af16fc8949cb2e47517f0",
+      "bytes": 1167,
+      "license": "AST-007 project generated asset under applicable OpenAI service terms; AST-005 OFL-1.1 font",
+      "registry": "source-assets/star-posters/README.md",
+      "evidence": "todo/evidence/TASK-048/cinema-poster-r1/inputs.json"
+    },
+    {
+      "path": "game/assets/environment/posters/anke-cinema.png",
+      "sha256": "0aa6fcef6414b0a229c80cd2c935b54f606fc628b5a8ddc2805d328be43eb1fe",
+      "bytes": 1488369,
+      "license": "AST-007 project generated asset under applicable OpenAI service terms; AST-005 OFL-1.1 font",
+      "registry": "source-assets/star-posters/README.md",
+      "evidence": "todo/evidence/TASK-048/cinema-poster-r1/inputs.json"
     }
   ],
   "source_map": {
@@ -102,13 +118,13 @@
     "name": "Blender",
     "version": "5.2.2 LTS",
     "binary": "/usr/bin/blender",
-    "geometry": "original procedural authored Blender mesh and curves",
-    "renderer": "Cycles CPU, 32 samples, 1440x960, AgX",
-    "image_generation": null,
+    "geometry": "incremental editing of saved r1 Blender master; r2 authored south-west wall bays",
+    "renderer": "Cycles CPU, 32 samples, 1280x720, AgX, fixed 6 threads",
+    "image_generation": "No image generation in this asset task; embeds AST-007 poster from its reviewed source",
     "downloaded_assets": false
   },
   "export_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --export-existing --render",
-  "rebuild_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --render",
+  "rebuild_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --rebuild --render",
   "transform": {
     "units": "metre",
     "source_frame": "x,north,height",
@@ -135,24 +151,26 @@
     "scene": 0,
     "model_id": "v15_mirror_hall_facade"
   },
-  "collision": "none; retain generated original V-15 collider",
+  "collision": "Runtime CollisionWorld::from_scene imports actual selected-scene triangles for v15_mirror_hall_facade after node, model-scale and prop transforms; retain original building shell and public-route collision; runtime evidence tracked in blender-integration-r2",
   "budget": {
-    "vertices_max": 20000,
+    "vertices_max": 30000,
     "triangles_max": 16000,
-    "material_primitives_max": 8
+    "material_primitives_max": 10,
+    "embedded_images_max": 7,
+    "reason": "Hard-edged window frames add vertex and UV corners; retain r1 structure and 16k triangle cap"
   },
   "measured": {
     "blender": "5.2.2 LTS",
-    "glb_sha256": "07e23026c08d5967f85adc825ff518a3a4e34fac453565c71545a2d22dddd2b2",
-    "glb_bytes": 5909108,
+    "glb_sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
+    "glb_bytes": 7812440,
     "scene_count": 1,
     "mesh_count": 1,
-    "primitives": 8,
-    "vertices": 9552,
-    "triangles": 7154,
+    "primitives": 10,
+    "vertices": 21482,
+    "triangles": 12362,
     "bounds_gltf": {
       "min": [
-        0.5799999237060547,
+        -0.35000038146972656,
         0,
         -30.079998016357422
       ],
@@ -168,11 +186,13 @@
       "V15_ambientCG_Plaster001",
       "V15_ambientCG_Concrete034",
       "V15_Warm_letter_and_diffuser",
+      "V15_Opaque_window_glass",
       "V15_ambientCG_WoodSiding009",
-      "V15_Programme_red",
-      "V15_Programme_blue"
+      "V15_Anke_programme",
+      "V15_Programme_blue",
+      "V15_Programme_red"
     ],
-    "embedded_images": 6,
+    "embedded_images": 7,
     "extensions_used": [],
     "nodes": [
       {
@@ -182,17 +202,47 @@
     ]
   },
   "checks": {
-    "blender_rebuild_render": "PASS",
-    "saved_master_export": "PASS; GLB SHA identical to fresh rebuild",
+    "blender_incremental_master_edit": "PASS",
+    "saved_master_export": "PASS; repeated export SHA identical to incremental edit export",
+    "full_rebuild_r2": "NOT RUN; saved-master incremental editing is the exercised workflow",
     "binary_accessors": "PASS",
     "zero_area_triangles": 0,
     "five_clearance_volumes": "PASS",
-    "cpu_visual_self_audit": "3 final frames viewed",
-    "independent_minimal_review": "PASS; Lean already. Ship.",
-    "bevy_load": "NOT RUN in asset task; integration owned by root",
-    "gpu_runtime": "NOT RUN in asset task; integration owned by root",
+    "new_window_depth_and_east_corner": "PASS; 30 opaque window surfaces lie outside original shell and behind frame fronts",
+    "r1_preservation": "PASS; 53 identical components, 1 intended print change, 4 intended overlay removals; original 8 materials and 6 embedded images unchanged",
+    "poster_bytes_and_front_uv": "PASS; 1024x1620 exact original PNG and unmirrored 0..1 UV",
+    "cpu_visual_self_audit": "5 final frames viewed",
+    "independent_minimal_review": "PASS; required-poster input fixed, false generic-coping premise corrected; Lean already. Ship.",
+    "bevy_load": "NOT RUN in asset task; root integration follows",
+    "gpu_runtime": "NOT RUN in asset task; root integration follows",
     "author_acceptance": "NOT RUN",
-    "visual_completion": "needs_revision: abstract programme posters remain content placeholders; broad plaster wall needs real scene review"
+    "visual_completion": "needs_revision: opaque dark panes, regular bay rhythm, three abstract poster placeholders; north/east retain generic building appearance",
+    "docs": "PASS; initial parallel-task missing links retained in docs-check.log, final rerun passes"
   },
-  "evidence": "todo/evidence/TASK-049/v15-building-r1/self-audit.md"
+  "evidence": "todo/evidence/TASK-049/v15-building-r2/self-audit.md",
+  "revision": "r2 south-west facade and Anke programme",
+  "material_reference": {
+    "path": "source-assets/district-scene/appearance.json",
+    "sha256": "3a3e72b6cbcc2d8330f9ab8f9e7554eb4e80d3ff8d248b781fa7c966b2eea436",
+    "bytes": 12135,
+    "used_field": "materials.glass",
+    "values": {
+      "color": [
+        0.12,
+        0.25,
+        0.28,
+        1
+      ],
+      "roughness": 0.23,
+      "metallic": 0.35,
+      "tile_meters": [
+        1,
+        1
+      ],
+      "color_texture": null,
+      "normal_texture": null
+    },
+    "binding": "construction snapshot; not a runtime same-name binding"
+  },
+  "incremental_edit_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --extend-r2 --render"
 }

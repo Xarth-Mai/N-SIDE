@@ -60,11 +60,31 @@ for primitive in gltf['meshes'][0]['primitives']:
     counts['vertices'] += len(p)
     counts['triangles'] += len(indices)//3
     all_positions.extend(p)
+poster_index = next(i for i,m in enumerate(gltf['materials']) if m['name'] == 'V15_Anke_programme')
+poster = gltf['materials'][poster_index]
+texture = gltf['textures'][poster['pbrMetallicRoughness']['baseColorTexture']['index']]
+poster_image = gltf['images'][texture['source']]
+v = gltf['bufferViews'][poster_image['bufferView']]
+packed_poster = binary[v.get('byteOffset',0):v.get('byteOffset',0)+v['byteLength']]
+source_poster = (ROOT/'game/assets/environment/posters/anke-cinema.png').read_bytes()
+assert packed_poster == source_poster, 'The exported poster must preserve the reviewed PNG bytes'
+assert struct.unpack_from('>II',packed_poster,16) == (1024,1620)
+primitive = next(p for p in gltf['meshes'][0]['primitives'] if p['material'] == poster_index)
+positions = accessor(primitive['attributes']['POSITION'])
+uvs = accessor(primitive['attributes']['TEXCOORD_0'])
+front = [(p,uv) for p,uv in zip(positions,uvs) if p[2] > .613]
+assert len(front) >= 4
+for p,uv in front:
+    assert abs(uv[0]-(p[0]-10.54)/1.42) < 1e-5
+    assert abs(uv[1]-(1-(p[1]-.45)/2.25)) < 1e-5
+assert all(m.get('alphaMode','OPAQUE') == 'OPAQUE' for m in gltf['materials'])
+assert len(gltf['materials']) <= 10 and len(gltf['images']) <= 7
 assert counts['degenerate_triangles'] == 0, counts
-assert counts['vertices'] < 20000 and counts['triangles'] < 16000
+assert counts['vertices'] < 30000 and counts['triangles'] < 16000
 assert min(row[1] for row in all_positions) >= -1e-5
 assert max(row[1] for row in all_positions) < 12
 print(json.dumps({'result': 'PASS', 'file': str(PATH.relative_to(ROOT)), 'sha256': hashlib.sha256(raw).hexdigest(),
+                  'poster_bytes_preserved': True, 'poster_front_uv': 'PASS', 'all_materials_opaque': True,
                   **counts, 'materials': len(gltf['materials']), 'embedded_images': len(gltf['images']),
                   'bounds_gltf': {'min': [min(p[i] for p in all_positions) for i in range(3)],
                                   'max': [max(p[i] for p in all_positions) for i in range(3)]}}, indent=2))

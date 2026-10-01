@@ -1131,7 +1131,7 @@ mod tests {
     fn real_shop_walk_reaches_steps_and_wall_through_swept_geometry() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let prepared = crate::world::scene::PreparedScene::load(root).unwrap();
-        let world = CollisionWorld::from_parts(&prepared.parts).unwrap();
+        let world = CollisionWorld::from_scene(&prepared).unwrap();
         let mut player = PlayerState::from_map(&prepared.map, &world).unwrap();
         for _ in 0..360 {
             player.step(&world, Vec3::new(0.341574, 0.0, -0.939855), 1.0 / 60.0);
@@ -1196,7 +1196,7 @@ mod tests {
     fn walks_prologue_handoff_places_continuously() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let scene = crate::world::scene::PreparedScene::load(root).unwrap();
-        let collision = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let collision = CollisionWorld::from_scene(&scene).unwrap();
         let ascent = [
             "home",
             "level_home_to_shop_north_junction",
@@ -1292,7 +1292,7 @@ mod tests {
     fn walks_shop_public_rooms_and_returns_without_opening_private_rooms() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let scene = crate::world::scene::PreparedScene::load(root).unwrap();
-        let collision = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let collision = CollisionWorld::from_scene(&scene).unwrap();
         let catalog = crate::places::PlaceCatalog::load(
             &root.join("source-assets/district-map/district.json"),
         )
@@ -1355,7 +1355,7 @@ mod tests {
     fn settles_after_descending_near_the_summit() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let prepared = crate::world::scene::PreparedScene::load(root).unwrap();
-        let collision = CollisionWorld::from_parts(&prepared.parts).unwrap();
+        let collision = CollisionWorld::from_scene(&prepared).unwrap();
         // Real 448m/386m landings expose near-vertical contacts on opposite riser faces
         for (node, start) in [
             (
@@ -1422,7 +1422,7 @@ mod tests {
         nodes.extend(nodes.clone().into_iter().rev().skip(1));
 
         let prepared = crate::world::scene::PreparedScene::load(root).unwrap();
-        let collision = CollisionWorld::from_parts(&prepared.parts).unwrap();
+        let collision = CollisionWorld::from_scene(&prepared).unwrap();
         assert_eq!(
             Time::<Fixed>::default().timestep().as_secs_f32(),
             1.0 / 64.0

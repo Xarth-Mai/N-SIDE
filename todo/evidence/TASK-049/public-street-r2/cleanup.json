@@ -1,0 +1,35 @@
+{
+  "removed": [
+    {
+      "path": "output/assets/public-street-r2/source-straight.png",
+      "bytes": 1307075,
+      "sha256": "137961593c453c3a90a2a5a18f4f85ed5922f9ca747127ed5a65ef31733a4048"
+    },
+    {
+      "path": "output/assets/public-street-r2/bench-front.png",
+      "bytes": 1305578,
+      "sha256": "c164ccf284ba6cddadd38f345bb651962177e6db85046e4c91b13d46afbf2e9f"
+    },
+    {
+      "path": "output/assets/public-street-r2/bench-back.png",
+      "bytes": 1221642,
+      "sha256": "7b0375c2b4fd6b8d0e65ca93364015bbb06d4332d4198292a40ca0ffeecd0ca6"
+    },
+    {
+      "path": "source-assets/environment-kit/street-furniture/street-bench.blend1",
+      "bytes": 5776020,
+      "sha256": "6f8e8dd04a09d2ce6738562b79d5de5bdcc06f9137436af76509791712056317"
+    },
+    {
+      "path": "output/assets/public-street-r2/bench-reexport.glb",
+      "bytes": 5925368,
+      "sha256": "f5a48231b979242e5cdf8f354a39887248731b2b438f654620a0eb01a1753388"
+    }
+  ],
+  "removed_bytes": 15535683,
+  "reason": "CPU visuals inspected by production and independent reviewer; own superseded Blender backup removed after final source saved",
+  "active_owned_blender_processes": "CORRECTED: sandbox ps could not see host processes; 8 completed R2 jobs were still alive and subsequently terminated with SIGTERM",
+  "remaining_output_bytes": 126932,
+  "retained": "formal source/runtime assets, original references, scripts, logs and metadata; no PNG preview remains",
+  "process_cleanup_evidence": "process-cleanup-correction.json"
+}

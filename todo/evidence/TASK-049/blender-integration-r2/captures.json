@@ -1,0 +1,376 @@
+[
+  {
+    "name": "cinema-bench",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed diagnostic camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "37bf2c293b2b8c540c5afe0d64fc7f5991a3e3472b12e9bf4562078fba93f1be",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "cinema-facade",
+    "status": "INTERRUPTED",
+    "saved_png": 114,
+    "checks": [],
+    "script_sha256": null,
+    "binary_sha256": null,
+    "root_viewed": [
+      {
+        "file": "output/blender-integration-r2/cinema-facade/frames/frame00112.png",
+        "sha256": "cc4683658c4cbc0f8498606974c37d8c37cb479dac82fcb9f59d8b7c08206b5e"
+      }
+    ],
+    "note": "Interrupted capture: frame00113 was truncated; frame00112 actually viewed; no final run/state, not PASS. Successful retry is separate."
+  },
+  {
+    "name": "cinema-facade-retry",
+    "status": "PASS",
+    "saved_png": 150,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "real_camera_approach",
+        "passed": true
+      },
+      {
+        "name": "real_camera_strafe",
+        "passed": true
+      },
+      {
+        "name": "released_camera_stable",
+        "passed": true
+      }
+    ],
+    "script_sha256": "4905954004efb16dcf57373471db9d21320bc183708c103963dc2003c19c1f3e",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "cinema-poster",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed diagnostic camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "54e4a8770b1c1a8431e62f0875ade341d72a93f9ae0993df740803cc257470c7",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "cinema-seam",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed diagnostic camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "9bcaed820b7117e34711b38fa488e37716829c44097d78c867bfaeec5de143cd",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "hill-stair-surfaces",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed diagnostic camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "71335ba8b8cc68cbaf35b94f27ad9a29f0d16fcb3c3c9f1636cea117df06e273",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "shop-stair-baseline",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed diagnostic camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "26ae819a4842a81a353aebac849938204c8faea6ff63eea2e0829f08330192b7",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "shop-stair-surfaces",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed diagnostic camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "4d98068a01e7873314476b0534866ba8341cfc04a1d329f562e49c8a616c9db7",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "va08-east",
+    "status": "FAIL",
+    "saved_png": 0,
+    "checks": [],
+    "script_sha256": "f35e61592353b2c6ee81fc331d2bd8851231d06fe30805ddeb06f105a5db20cd",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": [],
+    "note": "Sandbox cannot acquire GPU; host retry separate. Failure retained."
+  },
+  {
+    "name": "va08-east-host",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed V-A08 inspection camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "f35e61592353b2c6ee81fc331d2bd8851231d06fe30805ddeb06f105a5db20cd",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "va08-southeast",
+    "status": "PASS",
+    "saved_png": 60,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "fixed V-A08 inspection camera",
+        "passed": true
+      }
+    ],
+    "script_sha256": "a23483ddd46fd9e9186d15c2f6a8b09fe07707e2b17658abf9fe49e7d3acd47c",
+    "binary_sha256": "c91fc36accb52cc17c735cac0718a947c6c69436cf5b67f22f4670b97d47b857",
+    "root_viewed": []
+  },
+  {
+    "name": "walk",
+    "status": "PASS",
+    "saved_png": 697,
+    "checks": [
+      {
+        "name": "required_assets_ready",
+        "passed": true
+      },
+      {
+        "name": "all_frames_saved",
+        "passed": true
+      },
+      {
+        "name": "finite_transforms",
+        "passed": true
+      },
+      {
+        "name": "title_has_no_world",
+        "passed": true
+      },
+      {
+        "name": "walker_starts_grounded",
+        "passed": true
+      },
+      {
+        "name": "stick_walk_reaches_real_stairs",
+        "passed": true
+      },
+      {
+        "name": "stairs_raise_capsule_feet",
+        "passed": true
+      },
+      {
+        "name": "keyboard_reset_recovers_grounding",
+        "passed": true
+      },
+      {
+        "name": "keyboard_walk_reaches_shop_wall",
+        "passed": true
+      },
+      {
+        "name": "held_stick_cannot_cross_wall",
+        "passed": true
+      },
+      {
+        "name": "keyboard_can_move_away_from_wall",
+        "passed": true
+      },
+      {
+        "name": "gamepad_reset_recovers_grounding",
+        "passed": true
+      },
+      {
+        "name": "gamepad_look_turns_camera",
+        "passed": true
+      },
+      {
+        "name": "keyboard_yaw_turns_camera",
+        "passed": true
+      },
+      {
+        "name": "released_walk_stays_still",
+        "passed": true
+      },
+      {
+        "name": "return_clears_world",
+        "passed": true
+      },
+      {
+        "name": "requested_character_loaded",
+        "passed": true
+      }
+    ],
+    "script_sha256": "708e6ad524aedaed2ed021fb796ed1ef429e60fd00543deae1ff1dc7708c7538",
+    "binary_sha256": "d5ce4cc107220bbda15ba8dad9f58f741ea39e5d7791ebed5ffb171461838ac2",
+    "root_viewed": [
+      {
+        "file": "output/blender-integration-r2/walk/frames/frame00238.png",
+        "sha256": "538337d7b3ae6c41a80e5387d950fb9f4b5d49b36f7a235a8f1e325f347b2873"
+      },
+      {
+        "file": "output/blender-integration-r2/walk/frames/frame00239.png",
+        "sha256": "e5c5374d9f1b104fb710de890e6b668d3d4a0a23afb14cf3c67273c9437ed0a6"
+      },
+      {
+        "file": "output/blender-integration-r2/walk/frames/frame00240.png",
+        "sha256": "b244c0fb94840ed618c014f2e2131d6409823d1180b6503a3089200c2abb2c87"
+      },
+      {
+        "file": "output/blender-integration-r2/walk/frames/frame00436.png",
+        "sha256": "1df550b92d700b74a915caa38c1c3cec39e1b810c80d9954b7bfdc7ae00dacf0"
+      },
+      {
+        "file": "output/blender-integration-r2/walk/frames/frame00466.png",
+        "sha256": "7b29a0800f8016f58a030bdde84d2f342a485835c1ba158094cd2106fc4ae234"
+      },
+      {
+        "file": "output/blender-integration-r2/walk/frames/frame00496.png",
+        "sha256": "684c0c7fa8332f3dfca5177b95cc99980dcf29819b784a84ffeb9a852713365f"
+      },
+      {
+        "file": "output/blender-integration-r2/walk/frames/frame00696.png",
+        "sha256": "6c66d0ad9ce69ef09eee59804b01b3c31449d35233a55b8338841bb3cf1dc12d"
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+failed to load config from /home/lzzz/MyProjects/N-SIDE/docs/.vitepress/cache/wiki/player/source/.vitepress/config.ts
+build error:
+The service was stopped
+Error: The service was stopped
+    at <anonymous> (/home/lzzz/MyProjects/N-SIDE/node_modules/esbuild/lib/main.js:968:38)
+    at <anonymous> (/home/lzzz/MyProjects/N-SIDE/node_modules/esbuild/lib/main.js:622:9)
+    at afterClose (/home/lzzz/MyProjects/N-SIDE/node_modules/esbuild/lib/main.js:613:25)
+    at emit (node:events:97:22)
+    at endReadableNT (internal:streams/readable:901:50)
+    at processTicksAndRejections (native:7:39)
+error: "vitepress" exited with code 1

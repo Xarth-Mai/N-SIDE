@@ -30,6 +30,10 @@ specs:
 
 第 2 轮，作者否定首版安可的柔光插画风，已按镜厅预览左侧角色海报重绘为日漫线条与硬边色块。N 站和 AFTER 9 大屏均接入真实建筑，两个 10 秒镜头通过技术检查与实际看图；当前等待作者对新版画风的实际反馈，继续保留已完成的技术结果
 
+追加镜厅竖版技术交付：复用 r2 原画像生成可编辑 1024×1620 SVG 与正式 PNG，已装入镜厅第一块海报框，近景与整体实机自查确认人像、名字和曲名可辨，原横版及图像源字节保持。该追加不代表作者已接受 r2 画风，任务保持 review
+
 ## 结果与证据
 
 源文件归 `source-assets/star-posters/`；[r2 运行检查](../evidence/TASK-048/r2/runtime-review.md)包含两站共 600 帧、12 项状态检查以及连续抽帧自查，旧版保留为被否定的历史来源。作者最终造型、夜景屏幕光照与城市整体品质尚未验收
+
+[镜厅竖版制作](../evidence/TASK-048/cinema-poster-r1/review.md)记录派生排版、原图保持、许可和重复导出；[建筑集成](../evidence/TASK-049/blender-integration-r2/review.md)与[实际看图](../evidence/TASK-049/blender-integration-r2/independent-visual-review.md)补充雨棚阴影下的实机近景、远景和可读性边界。机器记录与作者验收继续分开，未新增演出日期、票价、法定姓名或剧情

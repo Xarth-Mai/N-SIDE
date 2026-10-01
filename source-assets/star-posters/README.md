@@ -4,11 +4,11 @@
 | --- | --- |
 | 资产 ID | `AST-007` |
 | 所属角色 | [安可 `CHR-036`](../../docs/player/characters/neighbors/anke.md) |
-| 主文件 | [anke-portrait.png](anke-portrait.png) 原创画像、[anke-sunny.svg](anke-sunny.svg) 可编辑文字与图形排版 |
+| 主文件 | [anke-portrait.png](anke-portrait.png) 原创画像、[anke-sunny.svg](anke-sunny.svg) 大屏排版、[anke-cinema.svg](anke-cinema.svg) 镜厅竖框排版 |
 | 作者与来源 | Codex 当前内置 `image_gen` 生成原创画像；N:SIDE 原创 SVG 排版与屏幕几何 |
 | 来源记录 | [prompt.md](prompt.md)，r2 于 2026-09-30 按镜厅预览图的角色海报画法重绘；生成工具未返回模型版本、种子与实际成本，均记为未知 |
 | 许可状态 | 项目生成资产，按所用 OpenAI 服务适用条款管理；未另行引用第三方人物画或商标，不登记为 CC0；字形沿用 [AST-005](../ui-kit/README.md) 的 Noto Sans SC 与原 OFL 许可 |
-| 运行文件 | `game/assets/environment/posters/anke-sunny.png` |
+| 运行文件 | `game/assets/environment/posters/anke-sunny.png`、`game/assets/environment/posters/anke-cinema.png` |
 | 状态 | `exported`，r2 源图和最终排版已自查，尚无作者接受；r1 画风已被作者否定，历史记录保留；真实 GPU 场景检查与结论归 [TASK-048](../../todo/tasks/TASK-048-star-city-screens.md) |
 
 ## 视觉与内容
@@ -31,9 +31,20 @@ r1 的柔光绘画、细碎发丝和半写实渐变已被作者明确否定，�
 bun source-assets/star-posters/export.mjs
 bun source-assets/star-posters/export.mjs --check
 python3 -B .agents/skills/create-game-assets/scripts/asset_report.py game/assets/environment/posters/anke-sunny.png --expect-size 1600x900 --json
+python3 -B .agents/skills/create-game-assets/scripts/asset_report.py game/assets/environment/posters/anke-cinema.png --expect-size 1024x1620 --json
 ```
 
 导出依赖已有 Bun、ImageMagick 和项目 Noto Sans SC 源字体，不安装新系统字体。`--check` 在临时目录重算并比较运行文件字节，文件漂移会非零退出；图像尺寸检查不能代替图像内容和实际显示检查
+
+## 镜厅竖框派生版
+
+2026-10-01 为 `V-15` 的 `Street programme 1` 制作 `anke-cinema.svg`，画布 `1024 × 1620`，对应画芯 `1.42 × 2.25 m`，宽高比差约 0.16%。上部通过 SVG 视窗引用 r2 原图的 `x=648..1672、y=0..941`，放于画布 `x=0、y=82`，保持像素比例；下部独立排「安可 / ENCORE / 下一站晴天」，不增加演出日期、票价、场地承诺或新剧情
+
+原图文件与既有大屏成稿字节保持不变，角色没有重绘、调色、变形或移植外部图像。竖版沿用 AST-007 的生成资产来源与服务条款，文字使用 AST-005 登记的 Noto Sans SC，[版权声明](../ui-kit/licenses/COPYRIGHT.txt)与[OFL 许可](../ui-kit/licenses/OFL.txt)继续保留，不将此图误记为 CC0
+
+运行图为不透明 sRGB PNG，SHA-256 `0aa6fcef6414b0a229c80cd2c935b54f606fc628b5a8ddc2805d328be43eb1fe`，1,488,369 字节。建筑接入使用正面完整 `0–1 UV`、非金属纸面材质，不使用大屏的 unlit 显示规则；由建筑源文件嵌入 GLB，保留画框，移除本框前方旧抽象图形覆层。其余建筑构件与运行锚点不变
+
+`export.mjs` 同时导出和检查两种版式。竖版已实际查看原尺寸、`256 × 405` 和 `128 × 203`，脸、持麦动作与主标题可辨，小字不承担游戏信息。来源、导出一致性与自查见 [cinema-poster-r1](../../todo/evidence/TASK-048/cinema-poster-r1/review.md)；实机导入与受光观察由建筑集成补充，r2 角色造型和竖版排版仍是候选，未替作者验收
 
 ## 场景安装
 

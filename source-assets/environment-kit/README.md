@@ -5,7 +5,7 @@
 | 资产 ID | `AST-003` |
 | 状态 | `exported`，已生成运行派生物；加载与渲染结果见本轮任务证据，样板美术验收待作者确认 |
 | 主文件 | 本目录中的 GLB、JPG、道路色板和原始许可文件，逐文件见 [asset-manifest.json](asset-manifest.json) |
-| 作者 | Kenney、ambientCG；模型米制归一、植物材质调整与原创街树、松树、灌木、草及石块由 N:SIDE 制作 |
+| 作者 | Kenney、ambientCG、Stuart Attenborrow / Poly Haven；模型装配与米制归一、植物材质调整及原创植物土石由 N:SIDE 制作 |
 | 许可 | 第三方素材为 CC0 1.0，原创植物沿用项目 MPL-2.0，逐文件见清单；保留 [CC0 正文](licenses/CC0-1.0.txt)、[Nature Kit 包内声明](licenses/kenney-nature.txt)及[City Kit Roads 包内声明](licenses/kenney-roads.txt) |
 | 获取日期 | 第三方素材取得与原创资产制作日期逐项见清单 |
 | 使用位置 | 正式入口与 3D Map Viewer 共用的街树、灌木、公园与登高路旁植物土石、街灯、铺装与墙面；导视空杆已导出、尚未放置 |
@@ -23,7 +23,7 @@
 
 所选文件通过官方 ZIP 的 HTTP Range 提取，ZIP CRC 校验通过，下载链接、包内成员路径及原件 SHA-256 记录在清单；仓库只保留实际选用文件，未保存完整包，因此没有完整 ZIP 的哈希
 
-`road-sign-empty.glb` 是导视空杆，文字和牌面由项目原创；Quaternius 与 Poly Haven 候选尚未下载
+`road-sign-empty.glb` 是导视空杆，文字和牌面由项目原创；后续采用的 Poly Haven 长椅见下方公共长椅说明，Quaternius 候选未下载
 
 ## 米制、枢轴与材质
 
@@ -91,7 +91,7 @@ Plaster001 供米白与青灰外墙使用；WoodSiding009 供样板店外侧木�
 
 新增[初秋街树](vegetation/README.md)，以真实分枝与 1,452 片阔叶替换 `tree_a` 的块状冠，6m 高、11,686 三角、2 个材质与一张内嵌树皮纹理，保持既有树点、根部枢轴与放置半径。可编辑 Blender 主文件与源码在同目录，GLB 通过既有导出器复制；项目原创来源与 MPL-2.0 单独登记，原 CC0 素材的许可保持不变。全城植被、风动与 LOD 尚未完成，运行成本与实机观感按任务证据验证
 
-当前清单列出 35 个运行文件，包含 3 份许可文件，并非新增 35 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
+当前清单列出 36 个运行文件，包含 3 份许可文件，并非新增 36 种素材；原创植物单独标为 MPL-2.0，其余条目保留 CC0-1.0。`appearance.models.tree_a.file` 已绑定 `environment/vegetation/street-tree.glb`，原 Kenney 树保留来源与导出条目；Blender 主文件、造型／导出程序、GLB 和几何检查入口都在 vegetation 目录，实际制作与运行覆盖分别见 [CPU 制作记录](../../todo/evidence/TASK-045/vegetation-r1/review.md)和[第 2 轮实机记录](../../todo/evidence/TASK-045/runtime-r2/review.md)
 
 ## 陡坡岩面与原创植物
 
@@ -111,3 +111,7 @@ ambientCG [Bricks057](https://ambientcg.com/view?id=Bricks057) 补充暖棕砖�
 原始 1K JPG Color／NormalGL 保存在 `materials/public-urban/`，不修改原件。沿既有导出器生成 `game/assets/environment/materials/public-urban/brick-color.dds` 与 `brick-normal.dds`，各 `1024 × 1024`、11 级 mip，颜色以 sRGB 采样、OpenGL 法线以线性数据采样。`brick_music` 只绑定 V-W10 西面首层的局部饰面，按 1.05m 周期连续展开 UV，保留门框与 2.2×2.55m 门洞；其他建筑的 `wall_brick` 保持现状
 
 饰面在原墙外 12mm、原门框后方，不另加碰撞，旧墙继续承担阻挡；三块平面共六个三角形，位置与 UV 由真实建筑、楼层和门节点派生。源图、ZIP CRC、派生 DDS、平铺预览及实际引擎检查范围记录在[本轮证据](../../todo/evidence/TASK-049/public-urban-r1/review.md)，导出继续使用上方两条既有命令；当前仍是局部美术候选
+
+## 公共长椅
+
+[公共长椅主文件](street-furniture/README.md)使用 Stuart Attenborrow / Poly Haven 的 CC0 Modular Street Seating，只组装一件有背靠与扶手的直座。保留原作者的几何、UV 和 1K PBR 纹理，修正零件展示布局后导出 `street-furniture/street-bench.glb`；米制尺寸、足底、朝向、来源和恢复方法沿用同一 AST-003 清单。当前完成资产制作与 CPU 自查，场景接入与 Bevy 实机观感由[本轮证据](../../todo/evidence/TASK-049/public-street-r2/review.md)承接

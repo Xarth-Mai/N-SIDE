@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1620" viewBox="0 0 1024 1620">
+  <rect width="1024" height="1620" fill="#191b28"/>
+  <path d="M64 37H242M64 51H166" stroke="#f9768b" stroke-width="7"/>
+  <svg x="0" y="82" width="1024" height="941" viewBox="648 0 1024 941" overflow="hidden">
+    <image xlink:href="anke-portrait.png" width="1672" height="941"/>
+  </svg>
+  <path d="M0 1024H1024" stroke="#ffe07b" stroke-width="10"/>
+  <path d="M1024 1080L896 1145L1024 1120M1024 1460L883 1620H946L1024 1530" fill="#f9768b"/>
+  <g fill="#fff7ed" font-family="Noto Sans SC">
+    <text x="64" y="1092" font-size="27" font-weight="700" letter-spacing="4">NULL SITE / MUSIC</text>
+    <text x="55" y="1268" font-size="198" font-weight="900" letter-spacing="7">安可</text>
+    <text x="65" y="1348" font-size="60" font-weight="800" letter-spacing="13">ENCORE</text>
+    <path d="M64 1394H660" stroke="#ffe07b" stroke-width="6"/>
+    <text x="61" y="1471" font-size="63" font-weight="800">下一站晴天</text>
+    <text x="65" y="1534" font-size="29" font-weight="700" letter-spacing="4">N:SIDE</text>
+  </g>
+</svg>
