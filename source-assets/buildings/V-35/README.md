@@ -30,7 +30,7 @@
 
 本机 Bevy 0.19.1 的 glTF loader 尚未应用 `normalTexture.scale`，原导出的0.25强度在实机按完整法线图读取；Root 的同机位 `normal-off` 诊断仅移除灰泥法线后黑点消失、原阴影保留，依据见[归因记录](../../../todo/evidence/TASK-049/blender-integration-r4/normal-scale-r1/README.md)。此版本差异通过资产修正，不更改灯光、曝光或引擎全局材质
 
-[bake_normals.py](bake_normals.py) 复用该轮诊断公式，将原 RGB 解码为 `[-1,1]`，仅使 `x/y *= 0.25`、保持 `z` 后归一化，再量化保存无损 RGB PNG；没有 sRGB 转换。`textures/Plaster001-NormalGL-scale025.png` 为1024×1024，`textures/Concrete034-NormalGL-scale025.png` 为1024×512，原图与衍生图的路径、哈希、许可和 Pillow 版本在同一 manifest 登记
+[共享 bake_normals.py](../../environment-kit/materials/bake_normals.py) 复用该轮诊断公式，将原 RGB 解码为 `[-1,1]`，仅使 `x/y *= 0.25`、保持 `z` 后归一化，再量化保存无损 RGB PNG；没有 sRGB 转换。`source-assets/environment-kit/materials/Plaster001-NormalGL-scale025.png` 为1024×1024，`source-assets/environment-kit/materials/Concrete034-NormalGL-scale025.png` 为1024×512，原图与衍生图的路径、哈希、许可和 Pillow 版本在同一 manifest 登记
 
 主文件只替换这两张 packed 法线图并将 Normal Map Strength 设为1，glTF `normalTexture.scale` 缺省值为1，避免能正确读取强度的引擎再次衰减。两张 PNG 仍只有一级 mip，本次不代表远距采样和闪烁已经解决
 
@@ -40,7 +40,7 @@
 
 ```fish
 # 修改法线输入或烘焙配方时先生成衍生图，普通复验只用 --check
-python3 -B source-assets/buildings/V-35/bake_normals.py --check
+python3 -B source-assets/environment-kit/materials/bake_normals.py --check
 env ALSOFT_DRIVERS=null blender --background -noaudio --threads 2 --python-exit-code 1 --python source-assets/buildings/V-35/build.py
 python3 -B source-assets/buildings/V-35/check.py
 env ALSOFT_DRIVERS=null blender --background -noaudio --threads 2 --python-exit-code 1 --python source-assets/buildings/V-35/check.py -- --source
@@ -59,3 +59,5 @@ env ALSOFT_DRIVERS=null blender --background -noaudio --threads 2 --python-exit-
 R4 的 `v35-entry-final` 150帧／6检查与 `v35-facade-final` 120帧／6检查均 PASS；实际查看入口第59帧和连续40–42帧、总览第49帧和连续31–33帧，首轮突出的黑椒点消退，窗框及檐下投影保留，所看横移段未见大块颗粒跳动或立面覆盖切换，见[实机画面自查](../../../todo/evidence/TASK-049/blender-integration-r4/visual-review.md)。两处固定距离支持保留强度修复，不代表任意距离过滤稳定，也不替代人物真实行走或作者外观验收；设备、暗窗与外场仍有未完成的表现
 
 预览输出到 `todo/evidence/TASK-049/v35-building-r1/`，查看、记录哈希及结论后清理 PNG；文字、状态 JSON、源文件与复现配方保留
+
+共享整理将两张 PNG 原字节迁入 AST-003 材料目录，本目录 [bake_normals.py](bake_normals.py) 只转发兼容旧命令；主文件只更新 packed 图来源路径，运行 GLB 保持 `1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a` 原字节，R4 画面证据仍对应当前运行资产，见[共享迁移检查](../../../todo/evidence/TASK-049/normal-scale-shared-r1/README.md)

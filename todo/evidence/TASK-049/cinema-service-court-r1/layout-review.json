@@ -1,0 +1,16 @@
+{
+  "path": "output/cinema-service-court-r1/layout.png",
+  "sha256": "8418dc51f5282ba88f57fa605b1c9a7fb461db1fd812251bb63cc45d2fbe498c",
+  "bytes": 44684,
+  "pixels": [
+    1000,
+    800
+  ],
+  "classification": "source plan diagram, not runtime render",
+  "observed_by": [
+    "asset_pipeline source-plan self-audit"
+  ],
+  "observations": "Candidate joins original north service ribbon to the backstage door; two object envelopes sit outside central and unloading rectangles; no new public route shown",
+  "retained": false,
+  "cleanup": "Temporary source-plan PNG removed after self-audit; source drawing script, metadata, logs and candidate retained"
+}

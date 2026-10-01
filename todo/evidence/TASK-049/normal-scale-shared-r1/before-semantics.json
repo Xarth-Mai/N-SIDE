@@ -1,0 +1,120 @@
+{
+  "scope": "four frozen building exports; editable geometry not opened in Blender",
+  "assets": {
+    "V-15": {
+      "source": "source-assets/buildings/V-15/mirror-hall-facade.blend",
+      "source_sha256": "344ef7b570a96c11a7a610bcd8c327a555842f609d76d40da30b232835ccfd4d",
+      "runtime": "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
+      "runtime_sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
+      "normals": {
+        "V15_ambientCG_Plaster001": {
+          "scale": 0.3499999940395355,
+          "image": 0,
+          "image_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72"
+        },
+        "V15_ambientCG_Concrete034": {
+          "scale": 0.3499999940395355,
+          "image": 2,
+          "image_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+        },
+        "V15_ambientCG_WoodSiding009": {
+          "scale": 0.3499999940395355,
+          "image": 4,
+          "image_sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0"
+        }
+      },
+      "protected": {
+        "geometry_accessors_uv_normals_indices": "cd4181dd9ca97f42c114ae183c2de712dc12ba91bbaf6b99c54f7cab759c0ce6",
+        "materials_except_target_normal_scale": "aa438f6abd2ad42b2950b052abfc5b787559d0cc2839de5e0a5de1aef1421975",
+        "non_target_image_bytes": {
+          "1": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+          "3": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+          "5": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41",
+          "6": "0aa6fcef6414b0a229c80cd2c935b54f606fc628b5a8ddc2805d328be43eb1fe"
+        },
+        "nodes_scenes_samplers_texture_bindings": "121cd05a142696bdbab0607406e5f856fae49b663b50d8759e4fc5e1c7c27e64"
+      }
+    },
+    "V-A08": {
+      "source": "source-assets/buildings/V-A08/facade.blend",
+      "source_sha256": "a31ee285b7bd832019db0421f6ecd0d8c9b26dae4a702dcf910e5a17d5361ee1",
+      "runtime": "game/assets/environment/buildings/v-a08-facade.glb",
+      "runtime_sha256": "aa2b9186b64d07a23ada84fa83f66fe0042d1dc5c8969d0b715638835e254808",
+      "normals": {
+        "Plaster": {
+          "scale": 0.2800000011920929,
+          "image": 0,
+          "image_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72"
+        },
+        "Concrete": {
+          "scale": 0.2800000011920929,
+          "image": 2,
+          "image_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+        }
+      },
+      "protected": {
+        "geometry_accessors_uv_normals_indices": "05bd3b3e674b6702b75322ff26ee47210c6efb68d86335c46222b186ced8215d",
+        "materials_except_target_normal_scale": "9398864792eba5dc5158d6bd11889b5f5583af5663f1d250c425fe8c16aa6f64",
+        "non_target_image_bytes": {
+          "1": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+          "3": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa"
+        },
+        "nodes_scenes_samplers_texture_bindings": "ad0b8be68a01ffdeccd3a09b8c6bca9fe297e4ee81d3593e610824cb959c0b4c"
+      }
+    },
+    "V-55": {
+      "source": "source-assets/buildings/V-55/facade.blend",
+      "source_sha256": "b235d3837e29aad33153c81fa6d825b40894ba983b3e0cdabcd4c86ce991a8a5",
+      "runtime": "game/assets/environment/buildings/v55-workshop-facade.glb",
+      "runtime_sha256": "8683357c862f708904de63bbe8a88a196f6e327b48ea5c638a1c318de8c6349b",
+      "normals": {
+        "Plaster": {
+          "scale": 0.25,
+          "image": 0,
+          "image_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72"
+        },
+        "Concrete": {
+          "scale": 0.25,
+          "image": 2,
+          "image_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+        }
+      },
+      "protected": {
+        "geometry_accessors_uv_normals_indices": "4d4f9da0f6a662237a39837cd07ddf83b045329329d48bcbe6271984fc8be170",
+        "materials_except_target_normal_scale": "dc81a7e1c14350bff0d4c47ca09c79755975bcd83d483fb765a8e5973e731f1c",
+        "non_target_image_bytes": {
+          "1": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+          "3": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa"
+        },
+        "nodes_scenes_samplers_texture_bindings": "8598744db49b87eef8b5e6590d62bb1d906b44dc8516a55793b0e36a93670252"
+      }
+    },
+    "V-35": {
+      "source": "source-assets/buildings/V-35/facade.blend",
+      "source_sha256": "d8ba601a7f11594558d39fd16a275242b558f3af7078a5134d0474b75e0f3173",
+      "runtime": "game/assets/environment/buildings/v35-byte-beat-facade.glb",
+      "runtime_sha256": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a",
+      "normals": {
+        "Plaster": {
+          "scale": 1,
+          "image": 0,
+          "image_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7"
+        },
+        "Concrete": {
+          "scale": 1,
+          "image": 2,
+          "image_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07"
+        }
+      },
+      "protected": {
+        "geometry_accessors_uv_normals_indices": "301744aa660b16c56c0286f2f6be8d8d384cf54aeaa6087f5411052cd50520c5",
+        "materials_except_target_normal_scale": "b4ca4e08e7953206add60748516ac67abc95289d9b19dfd9a41e55b2a78ded91",
+        "non_target_image_bytes": {
+          "1": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+          "3": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa"
+        },
+        "nodes_scenes_samplers_texture_bindings": "c38a25aab94a4a2de81e526b946073cd801a219dc56859aafdcff01b8aabe3fc"
+      }
+    }
+  }
+}

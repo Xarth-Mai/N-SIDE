@@ -1,0 +1,4 @@
+$ python3 -B tools/validate_docs.py --root . && bun run check:skills
+FAIL: 597 Markdown files, 129 IDs
+source-assets/environment-kit/README.md:129: 链接目标缺失：../../todo/evidence/TASK-049/cinema-service-court-r1/implementation.md
+error: script "check:docs" exited with code 1

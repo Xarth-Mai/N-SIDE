@@ -1,0 +1,64 @@
+diff --git a/game/src/world/visual.rs b/game/src/world/visual.rs
+index bb9c836..07de2cd 100644
+--- a/game/src/world/visual.rs
++++ b/game/src/world/visual.rs
+@@ -176,16 +176,15 @@ impl DaylightSettings {
+         images: &mut Assets<Image>,
+         mode: Antialiasing,
+     ) {
+-        // ponytail: coarse diffuse/specular fill omits local reflections; use filtered probes when reflection content needs them
+-        let mut environment = EnvironmentMapLight::hemispherical_gradient(
+-            images,
+-            Color::srgb_from_array(self.sky_top),
+-            Color::srgb_from_array(self.sky_horizon),
+-            Color::srgb_from_array(self.sky_ground),
+-        );
+-        environment.intensity = self.environment_intensity;
++        // ponytail: native filtering runs every frame; prefilter this static sky if measured cost warrants it
++        let sky = images.add(self.sky_image());
++        let environment = GeneratedEnvironmentMapLight {
++            environment_map: sky.clone(),
++            intensity: self.environment_intensity,
++            ..default()
++        };
+         let skybox = Skybox {
+-            image: Some(images.add(self.sky_image())),
++            image: Some(sky),
+             brightness: self.sky_brightness,
+             ..default()
+         };
+@@ -237,7 +236,6 @@ impl DaylightSettings {
+     }
+ 
+     fn sky_image(&self) -> Image {
+-        // The built-in hemispherical environment is six 1px faces, useful for fill but flat when viewed horizontally
+         const SIZE: u32 = 128;
+         let mut data = Vec::with_capacity((SIZE * SIZE * 6 * 4) as usize);
+         for face in 0..6 {
+@@ -376,20 +374,13 @@ mod tests {
+                 entity.contains::<NormalPrepass>(),
+                 mode == Antialiasing::TaaSsao
+             );
+-            let environment = entity.get::<EnvironmentMapLight>().unwrap();
+-            let sky = images
+-                .get(entity.get::<Skybox>().unwrap().image.as_ref().unwrap())
+-                .unwrap();
++            let environment = entity.get::<GeneratedEnvironmentMapLight>().unwrap();
++            let sky_handle = entity.get::<Skybox>().unwrap().image.as_ref().unwrap();
++            assert_eq!(&environment.environment_map, sky_handle);
++            assert_eq!(environment.intensity, settings.environment_intensity);
++            assert!(!entity.contains::<EnvironmentMapLight>());
++            let sky = images.get(sky_handle).unwrap();
+             assert_eq!(sky.texture_descriptor.size.width, 128);
+             assert_eq!(sky.texture_descriptor.size.depth_or_array_layers, 6);
+-            assert_eq!(
+-                images
+-                    .get(&environment.diffuse_map)
+-                    .unwrap()
+-                    .texture_descriptor
+-                    .size
+-                    .depth_or_array_layers,
+-                6
+-            );
+         }
+     }

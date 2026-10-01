@@ -28,11 +28,11 @@ specs:
 
 ## 当前工作与下一步
 
-第 14 轮，步骤 6/6：本机 Blender 的 V-35 BYTE BEAT 北侧经营立面已接入，保留原楼体、三面外观与后勤门；实际导出3,612三角面、8组深窗和6台简化音游设备。七组真实捕获共1,470帧、66项原生／68项包装检查通过，近远景与曜四动画已实际查看。下一批补镜厅北侧后勤铺地和公共设施，再验证环境反射与其余建筑材质
+第 15 轮，步骤 6/6：镜厅北侧接入198m²后勤铺地，复用公共空调与路灯，保留原道路、入口和净空；四个 Blender 建筑包共用法线烘焙入口，修正 Bevy 0.19.1 忽略 glTF normal scale 的源资产差异，原几何、颜色、海报及对象关系保持。六组成功捕获共1,230帧，59项原生／60项包装断言通过，另保留一次参数失败；本轮包括曜动作，建筑和角色状态仍分别维护
 
-首次 V-35 捕获的机器检查通过，但浅墙出现黑椒点；对照本机 Bevy 0.19.1 源码发现 glTF normal scale 被忽略。同机位关闭法线完成隔离，再从 Blender 源工程烘入0.25强度并复验，几何、UV、颜色图和门前碰撞保持不变。完整 Rust 库141项通过、1项忽略，Viewer3项通过；修复后的源与导出另做逐项保留检查
+完整 Rust 库142项通过、1项忽略，Viewer3项通过；实际 GLB 支承与通道、灯杆阻挡和地图62项检查通过，已实际查看后场、三处立面与连续动作。下一轮补镜厅公共屋顶可辨的边界、步行铺装与树荫座位关系，先核实完整路带的实际支承，不凭道路图判定整条路线成立
 
-整体仍距 README 预览品质有明显差距：暗窗玻璃层次、建筑背侧、设备细节、街景密度和全城外观继续制作。当前法线 PNG 只有一级 mip，未宣称所有距离下的过滤表现成立；曜仍是待完善灰阶候选，机器检查与视觉自查不替代作者美术放行
+全城密度、玻璃层次、山地景观、完整屋顶与人物美术仍未达到 README 预览品质。共享法线只修正已有制作强度，未声称一级 mip 可覆盖所有距离，也未代签作者美术或 G2 放行
 
 ## 结果与证据
 
@@ -66,3 +66,5 @@ specs:
 [第 13 轮接入与复验](../evidence/TASK-049/blender-integration-r3/review.md)、[实际画面自查](../evidence/TASK-049/blender-integration-r3/visual-review.md)与[门前站位修正](../evidence/TASK-049/blender-integration-r3/cinema-landing.md)记录本批源资产、公共素材、真实输入、往返结果、失败修复和未完成范围
 
 [第 14 轮接入与复验](../evidence/TASK-049/blender-integration-r4/review.md)、[近远景及连续帧自查](../evidence/TASK-049/blender-integration-r4/visual-review.md)与[法线源修](../evidence/TASK-049/blender-integration-r4/normal-scale-r1/source-repair.md)记录本批源资产、真实失败与修复、机器证据及未完成范围
+
+[第15轮接入与复验](../evidence/TASK-049/blender-integration-r5/review.md)、[共享法线源修](../evidence/TASK-049/normal-scale-shared-r1/README.md)与[后勤场地整合](../evidence/TASK-049/cinema-service-court-r1/implementation.md)记录本批完整范围与实际结果

@@ -9,6 +9,8 @@ HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[2]
 sys.path.insert(0,str(ROOT/"tools"))
 from glb import read_glb, require, values
+MATERIALS=ROOT/"source-assets/environment-kit/materials"
+sys.path.insert(0,str(MATERIALS))
 
 
 def sub(a,b):return tuple(x-y for x,y in zip(a,b))
@@ -30,8 +32,8 @@ def main():
     require(len(document["materials"])<8,"facade exceeds 7-material budget")
     roles={m["name"]:m for m in document["materials"]}
     require(set(roles)=={"Plaster","Concrete","Metal","Glazing","WarmPanel","Ochre"},"material roles changed")
-    require(len(document.get("images",[]))==4 and all("bufferView" in i and "uri" not in i for i in document["images"]),"four source textures must be embedded")
-    source_files={}
+    require(len(document.get("images",[]))==4 and all("bufferView" in i and "uri" not in i for i in document["images"]),"two original colors and two shared baked normals must be embedded")
+    source_files={};derived_normals={}
     registered=json.loads((ROOT/"source-assets/environment-kit/asset-manifest.json").read_text())["files"]
     for role,stem in (("Plaster","Plaster001"),("Concrete","Concrete034")):
         material=roles[role]
@@ -40,9 +42,21 @@ def main():
             view=document["bufferViews"][image["bufferView"]]
             image_bytes=binary[view.get("byteOffset",0):view.get("byteOffset",0)+view["byteLength"]]
             source=ROOT/f"source-assets/environment-kit/materials/{stem}_1K-JPG_{suffix}.jpg"
-            require(hashlib.sha256(image_bytes).hexdigest()==sha(source),f"{role} {suffix} changed from registered source image")
             recorded=next((record for record in registered if record["source"]==str(source.relative_to(ROOT/"source-assets/environment-kit"))),None)
             require(recorded is not None and recorded["sha256"]==sha(source) and recorded.get("license")=="CC0-1.0","texture differs from AST-003 license/hash record")
+            if suffix=="Color":
+                require(hashlib.sha256(image_bytes).hexdigest()==sha(source),f"{role} changed original color bytes")
+            else:
+                derived=MATERIALS/f"{stem}-NormalGL-scale028.png"
+                require(image["mimeType"]=="image/png" and hashlib.sha256(image_bytes).hexdigest()==sha(derived),"GLB normal differs from shared PNG")
+                require(texture_info.get("scale",1)==1,"baked normal must use glTF scale 1")
+                if "--source" not in sys.argv:
+                    from PIL import Image
+                    from bake_normals import baked_normal
+                    expected=baked_normal(source,.28)
+                    with Image.open(derived) as actual:
+                        require(actual.mode==expected.mode and actual.size==expected.size and actual.tobytes()==expected.tobytes(),"normal bake differs from xy*.28, z unchanged, normalize")
+                derived_normals[str(derived.relative_to(ROOT))]={"sha256":sha(derived),"source":str(source.relative_to(ROOT)),"source_sha256":sha(source),"baked_scale":.28,"gltf_scale":1}
             source_files[str(source.relative_to(ROOT))]=sha(source)
     all_positions=[];triangles=0;uv_ratio=[];triangle_list=[]
     repeats={"Plaster":(2,2),"Concrete":(1.1,.55)}
@@ -85,6 +99,8 @@ def main():
     require(building["polygon"]==[[70,271],[88,271],[88,284],[70,284]] and building["elevation"]==30.021515 and building["height"]==10.4,"building source contract changed")
     require([m["nodes"][e["node"]] for e in building["design"]["entries"]]==[[88,277.5,30.021515],[88,273,30.021515],[70,277,30.021515]],"door nodes changed")
     report={"status":"PASS","triangles":triangles,"materials":len(roles),"primitives":len(document["meshes"][0]["primitives"]),"images":len(document["images"]),"runtime_bounds_xyz":bounds,"uv_metric_edge_ratio_range":[min(uv_ratio),max(uv_ratio)],"source_sha256":sha(HERE/"facade.blend"),"runtime_sha256":sha(runtime),"runtime_bytes":runtime.stat().st_size,"texture_sources":source_files,"clear_approach_volumes":volumes,"anchor_map_xyz":[79,277.5,30.021515],"runtime_validation":"NOT RUN by asset producer; closed door planes require approach tests to end outside the wall"}
+    report["derived_normals"]=derived_normals
+    report["normal_pixel_check"]="NOT RUN in --source mode; run system Python for pixels" if "--source" in sys.argv else "PASS"
     if "--source" in sys.argv:
         import bpy
         import bmesh
@@ -110,6 +126,17 @@ def main():
         require(source_triangles==triangles,"editable source and exported triangle counts differ")
         images=[image for image in bpy.data.images if image.type=="IMAGE" and image.size[0]>0]
         require(len(images)==4 and all(image.packed_file for image in images),"source must contain four packed textures")
+        for role,stem in (("Plaster","Plaster001"),("Concrete","Concrete034")):
+            shader=bpy.data.materials[role].node_tree.nodes["Principled BSDF"]
+            require(len(shader.inputs["Normal"].links)==1,"source normal must be bound to shader")
+            normal=shader.inputs["Normal"].links[0].from_node
+            require(normal.type=="NORMAL_MAP" and not normal.inputs["Strength"].is_linked and normal.inputs["Strength"].default_value==1,"source normal must use Strength 1")
+            require(len(normal.inputs["Color"].links)==1,"source normal must have one image input")
+            texture=normal.inputs["Color"].links[0].from_node
+            require(texture.type=="TEX_IMAGE" and texture.image and texture.image.packed_file,"source normal must use a packed image")
+            image=texture.image;derived=MATERIALS/f"{stem}-NormalGL-scale028.png"
+            require(image.colorspace_settings.name=="Non-Color" and Path(bpy.path.abspath(image.filepath)).resolve()==derived.resolve(),"source normal must reference shared Non-Color PNG")
+            require(hashlib.sha256(image.packed_file.data).hexdigest()==sha(derived),"source packed normal differs from shared PNG")
         report["blender_source"]={"status":"PASS","version":bpy.app.version_string,"editable_mesh_groups":len(objects),"triangles":source_triangles,"packed_images":len(images),"windows":bpy.context.scene["window_count"]}
     print(json.dumps(report,indent=2))
 

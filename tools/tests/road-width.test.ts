@@ -226,3 +226,44 @@ test('cinema forecourt excludes actual sloped road widths rather than relying on
   check(court.polygon)
   assert.throws(()=>check([[295,213.5],[342.5,213.5],[342.5,220],[300,220],[300,242],[294.5,242],[294.5,220]]),/must not cap a sloping approach/,'the rejected rectangle produces a real step despite passing the general .35m screening threshold')
 })
+
+test('cinema service court supports the original loading route without changing its access or filling the doorway',()=>{
+  const data:District=source
+  const court=data.surfaces.find(s=>s.id==='cinema-service-court')!
+  const parcel=data.parcels.find(p=>p.id==='P09-A')!
+  const service=data.roads.find(r=>r.nodes.includes('cinema_loading')&&r.nodes.includes('cinema_service_entry'))!
+  assert.ok(court&&service,'retain the authored court and its existing service approach')
+  assert.equal(court.kind,'service');assert.equal(court.access,'service')
+  assert.ok(!court.elevated&&!court.building,'the equipment court remains a ground surface')
+  assert.equal(polygonArea(court.polygon),198,'keep the approved 12 x 16.5 m service footprint')
+  assert.ok(polygonInside(court.polygon,parcel.polygon),'service paving stays in the existing cinema parcel')
+  assert.equal(service.kind,'service');assert.equal(service.access,'service');assert.equal(service.width,3)
+  for(const id of ['cinema_loading','cinema_service_entry']) {
+    assert.equal(data.nodes[id][2],court.elevation,`${id}: court must meet the existing working level`)
+    assert.ok(pointInside(data.nodes[id],court.polygon),`${id}: court must join the original route and door`)
+  }
+  for(const reserved of [
+    [[318.2,250],[321.8,250],[321.8,266.5],[318.2,266.5]],
+    [[317,258],[325,258],[325,266.5],[317,266.5]],
+  ])assert.ok(polygonInside(reserved,court.polygon),'retain the 3.6 m clear approach and 8 x 8.5 m unloading area')
+  const check=(polygon:number[][],elevation:number)=>{
+    for(const building of data.buildings)assert.ok(intersectionArea(polygon,building.polygon)<1e-6,`${building.id}: service paving must stay outside the building`)
+    for(const other of data.surfaces.filter(s=>s.id!==court.id&&!s.elevated&&!s.building))assert.ok(intersectionArea(polygon,other.polygon)<1e-6,`${other.id}: service paving must not overlap other ground surfaces`)
+    let crossings=0
+    for(const road of data.roads.filter(r=>!r.building&&!['interior','lift','bridge','deck'].includes(r.kind))) {
+      const points=road.nodes.map(id=>data.nodes[id]),offsets=roadOffsets(points,road.width)
+      for(let i=1;i<points.length;i++) {
+        const [a,b]=[points[i-1],points[i]],[u,v]=[offsets[i-1],offsets[i]]
+        const ribbon=[[a[0]-u[0],a[1]-u[1]],[b[0]-v[0],b[1]-v[1]],[b[0]+v[0],b[1]+v[1]],[a[0]+u[0],a[1]+u[1]]]
+        if(intersectionArea(ribbon,polygon)<1e-6)continue
+        crossings++
+        assert.equal(road.access,'service','the service court must not absorb a public road')
+        assert.ok(Math.abs(a[2]-elevation)<1e-6&&Math.abs(b[2]-elevation)<1e-6,`${road.nodes.slice(i-1,i+1).join(' -> ')}: service court must meet the full road ribbon at its actual level`)
+      }
+    }
+    assert.ok(crossings>0,'the court must join an actual service road ribbon')
+  }
+  check(court.polygon,court.elevation)
+  assert.throws(()=>check(court.polygon,court.elevation-.1),/must meet the full road ribbon/,'reject a 10 cm road lip below the coarse .35 m screening threshold')
+  assert.throws(()=>check([[314,249],[326,249],[326,266.5],[314,266.5]],court.elevation),/must stay outside the building/,'reject paving extended through the existing north wall')
+})

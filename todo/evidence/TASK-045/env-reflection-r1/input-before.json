@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-10-01T08:44:13.531617+00:00",
+  "base": "5cd3037436e2fdd569569daa1a853f660d11d312",
+  "paths": {
+    "source-assets/district-map/district.json": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/district-scene/appearance.json": "55c7eea60867ef2b1660344dc8cd21049ec5ea012687b9652773ddaef4b94f12",
+    "game/src/world/visual.rs": "5f5cdec3f2093289f8349e90219bac266aa342f91961fad03c03cd19617e188b",
+    "game/assets/environment/buildings/v15-mirror-hall-facade.glb": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
+    "game/assets/environment/buildings/v-a08-roof-eaves.glb": "f52eb7559f4eb7e65f274f6b03dfaed9efbe0472e9b67a4348da9e4734c9b952",
+    "game/assets/environment/buildings/v-a08-facade.glb": "aa2b9186b64d07a23ada84fa83f66fe0042d1dc5c8969d0b715638835e254808",
+    "game/assets/environment/buildings/v55-workshop-facade.glb": "8683357c862f708904de63bbe8a88a196f6e327b48ea5c638a1c318de8c6349b",
+    "game/assets/environment/buildings/v35-byte-beat-facade.glb": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a"
+  }
+}

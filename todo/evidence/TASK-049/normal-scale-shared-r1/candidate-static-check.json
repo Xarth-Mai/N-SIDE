@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "scope": "candidate syntax and fixed path; eight frozen file hashes unchanged",
+  "scripts": [
+    "todo/evidence/TASK-049/normal-scale-shared-r1/candidates/bake_normals.py",
+    "todo/evidence/TASK-049/normal-scale-shared-r1/candidates/patch_source.py",
+    "todo/evidence/TASK-049/normal-scale-shared-r1/candidates/v35_bake_normals.py",
+    "todo/evidence/TASK-049/normal-scale-shared-r1/semantic_snapshot.py"
+  ],
+  "asset_file_hashes_verified": 8,
+  "blender": "NOT RUN",
+  "gpu": "NOT RUN"
+}

@@ -7,8 +7,8 @@
       "kind": "static-workshop-facade",
       "state": "exported-candidate",
       "source_path": "source-assets/buildings/V-55/facade.blend",
-      "source_sha256": "b235d3837e29aad33153c81fa6d825b40894ba983b3e0cdabcd4c86ce991a8a5",
-      "provenance": "Original two-face workshop geometry, editable purpose lettering and UV authored locally in Blender 5.2.2 LTS for N:SIDE; embeds unchanged ambientCG images already recorded in AST-003 and existing Noto Sans SC font in the editable master",
+      "source_sha256": "42bbef6a0a28bfff2f96eef4e6ce5ad982f7c73c3bc593bfd2368c7ff10bbf78",
+      "provenance": "Original two-face workshop geometry, editable purpose lettering and UV authored locally in Blender 5.2.2 LTS for N:SIDE; embeds original ambientCG colors and shared CC0 normal PNGs derived from unchanged AST-003 inputs and existing Noto Sans SC font in the editable master",
       "license": "MPL-2.0 project-authored geometry and scripts; CC0-1.0 ambientCG images; OFL-1.1 Noto Sans SC",
       "license_status": "project-owned-and-open",
       "references": [
@@ -54,7 +54,7 @@
         "vertices": 13008,
         "material_primitives": 6,
         "images": 4,
-        "bytes": 4478432,
+        "bytes": 3745980,
         "extensions": [],
         "source_mesh_groups": 25,
         "editable_text_objects": 3,
@@ -73,20 +73,66 @@
         "treatment": "Original font packed in .blend; text curves offset 0.006 m authoring units for main labels, 0.002 for service label; original font file unchanged; GLB contains outlined text geometry"
       },
       "acceptance": {
-        "technical": "PASS: actual GLB bounds, finite mesh attributes, nondegenerate triangles, normal/winding agreement, PBR UV scale, embedded source hashes, 82 conservative approach samples and Blender source/map contracts",
+        "technical": "PASS: existing geometry/UV/approach checks, original licensed image hashes, exact color bytes, shared normal PNG bytes and pixelwise bake with glTF scale 1; saved source readback and complete protected runtime semantic comparison passed",
         "evidence_directory": "todo/evidence/TASK-049/v55-building-r1",
-        "visual": "Self-audit: three CPU Cycles views and the R3 v55-west GPU capture reviewed; frame 49 shows readable purpose lettering and display with no obvious floating; author approval pending",
-        "runtime": "PASS within R3 v55-west capture scope: scene/appearance binding and local GPU rendering observed; player approaches and whole-building or city-wide visual acceptance not established",
+        "visual": "Root self-audit: R5 v55-normal frame 49 actually viewed; sampled near/far material appearance stable with no newly obvious coarse speckles; independent consecutive-frame review recorded separately; author approval pending",
+        "runtime": "PASS within R5 v55-normal: 120 frames, 6 native and 6 wrapper checks; current repaired GLB loaded and rendered, with scripted camera motion; not a real player walk or arbitrary-distance filtering validation",
         "collision": "PASS: final CPU scene-model collision narrow test imports actual V-55 GLB triangles and confirms both closed doors stop the capsule before the original shell; source approach checks remain separate from a real player walk",
-        "geometry_report": "todo/evidence/TASK-049/v55-building-r1/installed-geometry.json",
+        "geometry_report": "todo/evidence/TASK-049/normal-scale-shared-r1/V-55-check.json",
         "source_report": "todo/evidence/TASK-049/v55-building-r1/source-check.log",
-        "visual_review": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md",
-        "integration_review": "todo/evidence/TASK-049/blender-integration-r3/review.md",
-        "collision_test": "todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log"
+        "visual_review": "todo/evidence/TASK-049/blender-integration-r5/visual-review.md",
+        "integration_review": "todo/evidence/TASK-049/blender-integration-r5/review.md",
+        "collision_test": "todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log",
+        "normal_repair_evidence": "todo/evidence/TASK-049/normal-scale-shared-r1/README.md",
+        "source_preservation": "todo/evidence/TASK-049/normal-scale-shared-r1/source-reopen.json",
+        "runtime_preservation": "todo/evidence/TASK-049/normal-scale-shared-r1/runtime-preservation.json"
       },
       "cost": 0,
       "runtime_path": "game/assets/environment/buildings/v55-workshop-facade.glb",
-      "runtime_sha256": "8683357c862f708904de63bbe8a88a196f6e327b48ea5c638a1c318de8c6349b"
+      "runtime_sha256": "597bc0b96477295efd6a743e2ebf3884ad8b94305e9ba2e93d232e03b258cff4",
+      "derived_normals": {
+        "script": "source-assets/environment-kit/materials/bake_normals.py",
+        "script_sha256": "3444ec42eecaa7f2b55f1faf651c33aa46908cb79ce8f9688974ad40ccd8e5fc",
+        "formula": "n = rgb / 127.5 - 1; n.xy *= scale; n = normalize(n); rgb = round((n + 1) * 127.5)",
+        "color_space": "Raw normal data; no sRGB transform",
+        "pillow": "12.3.0",
+        "gltf_normalTexture_scale": 1,
+        "license": "CC0-1.0 derived images; MPL-2.0 script",
+        "compatibility": "Observed local Bevy 0.19.1 glTF loader ignores normalTexture.scale; attenuation is baked into RGB normal data, Blender Strength and glTF scale remain 1",
+        "mips": "One mip level PNG; distant sampling stability not established",
+        "evidence": "todo/evidence/TASK-049/normal-scale-shared-r1/README.md",
+        "scale": 0.25,
+        "files": [
+          {
+            "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+            "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+            "output": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale025.png",
+            "output_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+            "scale": 0.25,
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "license": "CC0-1.0",
+            "bytes": 1648502
+          },
+          {
+            "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+            "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+            "output": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale025.png",
+            "output_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+            "scale": 0.25,
+            "size": [
+              1024,
+              512
+            ],
+            "mode": "RGB",
+            "license": "CC0-1.0",
+            "bytes": 532244
+          }
+        ]
+      }
     }
   ]
 }

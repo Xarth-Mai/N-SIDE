@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "asset": "V-A08",
+  "source": "source-assets/buildings/V-A08/facade.blend",
+  "before_sha256": "a31ee285b7bd832019db0421f6ecd0d8c9b26dae4a702dcf910e5a17d5361ee1",
+  "after_sha256": "33f9c72ce0e7e773b1e4cb419d302772d81fe04e665e836adea2a2cd0d261787",
+  "before": {
+    "objects_mesh_uv_normals_transforms_fonts": "beb747231f004dc60c18c6fb767134668b624389563fca0af6c2a5f55d0dc8df",
+    "other_material_values_images_links": "5d81c22f890df11a96b0ff8aaa088e32dd0e43aad91b482362941e84395d34ca"
+  },
+  "after": {
+    "objects_mesh_uv_normals_transforms_fonts": "beb747231f004dc60c18c6fb767134668b624389563fca0af6c2a5f55d0dc8df",
+    "other_material_values_images_links": "5d81c22f890df11a96b0ff8aaa088e32dd0e43aad91b482362941e84395d34ca"
+  },
+  "changes": [
+    {
+      "material": "Plaster",
+      "before_image_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "before_path": "//../../environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "after_image_sha256": "71c05e2fc5eab9ffc26555404f7fecf0fce979afa1d8236c2ad660826cc6c8ac",
+      "after_path": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale028.png",
+      "strength": 1
+    },
+    {
+      "material": "Concrete",
+      "before_image_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "before_path": "//../../environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "after_image_sha256": "23f88b2f5a7dc51d71462e410e42bad7b8eedd34825962f83f449fd4f82e9493",
+      "after_path": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale028.png",
+      "strength": 1
+    }
+  ],
+  "blender": "5.2.2 LTS",
+  "runtime_export": "NOT RUN; invoke the existing build entry separately"
+}

@@ -54,7 +54,7 @@
 
 复用 [AST-003 素材清单](../../environment-kit/asset-manifest.json) 中 ambientCG 的 `Concrete034`、`Plaster001`、`WoodSiding009` 原始 Color/NormalGL JPG，均为 CC0-1.0；原文件与许可仍留在环境素材包，本资产不重复下载或登记为新来源
 
-Color 为 sRGB，NormalGL 为 Non-Color；UV 按米展开，混凝土周期 1.1×0.55m、灰泥 2×2m、木饰面 2×1m，法线强度 0.35；其他材质为原创纯色标准 PBR，灯具和字牌仅使用标准 emissiveFactor，不加入额外灯光或材质扩展
+Color 为 sRGB，NormalGL 为 Non-Color；UV 按米展开，混凝土周期 1.1×0.55m、灰泥 2×2m、木饰面 2×1m，法线强度 0.35 烘入共享无损 PNG，节点 Strength 与 glTF scale 均为1；其他材质为原创纯色标准 PBR，灯具和字牌仅使用标准 emissiveFactor，不加入额外灯光或材质扩展
 
 脚本 `material()` 中的颜色三元组按 Blender 线性 RGB 写入 shader，r1 的纯色材质为本资产独立定义，未直接复用 `appearance.srgba` 数值；带贴图材质由 Color 纹理直接连接并覆盖 Base Color，不把未参与节点乘法的备用颜色称为贴图 tint
 
@@ -76,9 +76,9 @@ python3 source-assets/buildings/V-15/verify.py
 
 主文件保留分件、可编辑文字、材质和打包源贴图；导出副本转网格、合并为一个 mesh 并按材质保留 10 个 primitives，移除字体三角化留下的两个零面积三角后删除副本，不覆盖主文件中的分件
 
-GLB 预算上限为 30,000 顶点、16,000 三角面和 10 材质槽；当前为 21,482 顶点、12,362 三角面、10 材质、7 张内嵌贴图、7,812,440 bytes；硬边及 UV 面角使顶点数增长，三角预算仍保持 16,000，未为数字删原结构；没有新增建筑纹理，额外一图仅为安可海报，无骨骼、动画、相机、灯光、外部图片路径及 glTF 扩展
+GLB 预算上限为 30,000 顶点、16,000 三角面和 10 材质槽；当前为 21,482 顶点、12,362 三角面、10 材质、7 张内嵌贴图、7,168,448 bytes；硬边及 UV 面角使顶点数增长，三角预算仍保持 16,000，未为数字删原结构；没有新增建筑纹理，额外一图仅为安可海报，无骨骼、动画、相机、灯光、外部图片路径及 glTF 扩展
 
-r1 共 58 件，其中 53 件评估后顶点、面、材质槽及 UV 的 hash 完全相同；变更仅为一块海报 print 的材质与 UV，以及删除其四个原几何图形覆盖层；原 8 材质导出描述和 6 张嵌入贴图逐项相同
+r1 共 58 件，其中 53 件评估后顶点、面、材质槽及 UV 的 hash 完全相同；变更仅为一块海报 print 的材质与 UV，以及删除其四个原几何图形覆盖层；当时原 8 材质导出描述和 6 张嵌入贴图逐项相同；后续共享法线修复仅变更三张法线与对应 scale
 
 视觉完成度为 `needs_revision`：南西街景已具备整栋墙窗层次，玻璃仍是平整暗面，开间节奏偏规则，另外三张抽象海报仍为占位；东、北其余墙面沿用泛型外观，本批不计作最终镜厅艺术验收
 
@@ -89,3 +89,7 @@ r1 共 58 件，其中 53 件评估后顶点、面、材质槽及 UV 的 hash �
 集成后先复查 `fw_w_cinema_front` 到 `cinema_entry` 的接近路线，再以约 1.7m 视点面向南立面，比较深檐厚度、入口净空、凸字和海报框；固定日光与曝光，不靠曝光改变材质读感
 
 另从 `cinema_roof [340,245,37]` 到 `cinema_deck_turn [350,260,37]` 沿既有路线复查 4m 公共平台，再从东侧低层看斜撑是否贴墙并接合板底；同镜头检查三层窗不被墙板擦碰、新饰面无旧窗或楼层带半穿，保存截图与状态并实际查看
+
+## 共享法线兼容修复
+
+本机 Bevy 0.19.1 glTF loader 忽略 `normalTexture.scale`；本包沿用[共享烘焙入口](../../environment-kit/materials/bake_normals.py)，将上列原强度按 `xy *= scale`、保留 z 后归一化写入 CC0 无损 PNG，原授权 JPG、颜色、UV、几何与其他在用材质保持。主文件原位换图后保存并在宿主 Blender 复读，普通导出与逐像素检查通过；证据及前后语义见[共享修复记录](../../../todo/evidence/TASK-049/normal-scale-shared-r1/README.md)。当前修复版已完成 [R5 真实场景复验](../../../todo/evidence/TASK-049/blender-integration-r5/review.md)，机器断言通过且关键帧已查看，覆盖范围见[画面自查](../../../todo/evidence/TASK-049/blender-integration-r5/visual-review.md)，作者验收仍待完成

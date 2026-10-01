@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "triangles": 6060,
+  "materials": 6,
+  "primitives": 6,
+  "images": 4,
+  "runtime_bounds_xyz": [
+    [
+      -9.656999588012695,
+      10.350000381469727
+    ],
+    [
+      0.0,
+      10.0600004196167
+    ],
+    [
+      -6.755000114440918,
+      7.1570000648498535
+    ]
+  ],
+  "uv_metric_edge_ratio_range": [
+    0.999992664050178,
+    1.000007335949822
+  ],
+  "source_sha256": "33f9c72ce0e7e773b1e4cb419d302772d81fe04e665e836adea2a2cd0d261787",
+  "runtime_sha256": "12e0fdef03f7a2ac2fcd22f2661302b0c29bc1932a0ac83d6ea7d8a02af1e09a",
+  "runtime_bytes": 3800008,
+  "texture_sources": {
+    "source-assets/environment-kit/materials/Plaster001_1K-JPG_Color.jpg": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+    "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+    "source-assets/environment-kit/materials/Concrete034_1K-JPG_Color.jpg": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+    "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+  },
+  "clear_approach_volumes": {
+    "public_door_approach": [
+      [
+        9.3,
+        0.02,
+        -0.9
+      ],
+      [
+        12,
+        2.6,
+        0.9
+      ]
+    ],
+    "resident_door_approach": [
+      [
+        9.3,
+        0.02,
+        3.8
+      ],
+      [
+        12,
+        2.6,
+        5.2
+      ]
+    ],
+    "service_door_approach": [
+      [
+        -11,
+        0.02,
+        -0.2
+      ],
+      [
+        -9.3,
+        2.6,
+        1.2
+      ]
+    ]
+  },
+  "anchor_map_xyz": [
+    79,
+    277.5,
+    30.021515
+  ],
+  "runtime_validation": "NOT RUN by asset producer; closed door planes require approach tests to end outside the wall",
+  "derived_normals": {
+    "source-assets/environment-kit/materials/Plaster001-NormalGL-scale028.png": {
+      "sha256": "71c05e2fc5eab9ffc26555404f7fecf0fce979afa1d8236c2ad660826cc6c8ac",
+      "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "baked_scale": 0.28,
+      "gltf_scale": 1
+    },
+    "source-assets/environment-kit/materials/Concrete034-NormalGL-scale028.png": {
+      "sha256": "23f88b2f5a7dc51d71462e410e42bad7b8eedd34825962f83f449fd4f82e9493",
+      "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "baked_scale": 0.28,
+      "gltf_scale": 1
+    }
+  },
+  "normal_pixel_check": "PASS"
+}

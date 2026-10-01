@@ -8,9 +8,9 @@
       "state": "exported-candidate",
       "source_path": "source-assets/buildings/V-A08/facade.blend",
       "runtime_path": "game/assets/environment/buildings/v-a08-facade.glb",
-      "source_sha256": "a31ee285b7bd832019db0421f6ecd0d8c9b26dae4a702dcf910e5a17d5361ee1",
-      "runtime_sha256": "aa2b9186b64d07a23ada84fa83f66fe0042d1dc5c8969d0b715638835e254808",
-      "provenance": "Original four-face facade geometry and UV authored locally in Blender 5.2.2 LTS for N:SIDE; embeds unchanged ambientCG images already recorded in AST-003",
+      "source_sha256": "33f9c72ce0e7e773b1e4cb419d302772d81fe04e665e836adea2a2cd0d261787",
+      "runtime_sha256": "12e0fdef03f7a2ac2fcd22f2661302b0c29bc1932a0ac83d6ea7d8a02af1e09a",
+      "provenance": "Original four-face facade geometry and UV authored locally in Blender 5.2.2 LTS for N:SIDE; embeds original ambientCG colors and shared CC0 normal PNGs derived from unchanged AST-003 inputs",
       "license": "MPL-2.0 project-authored geometry and scripts; CC0-1.0 ambientCG textures",
       "license_status": "project-owned-and-CC0",
       "references": [
@@ -55,7 +55,7 @@
         "triangles": 6060,
         "material_primitives": 6,
         "images": 4,
-        "runtime_bytes": 4442332,
+        "runtime_bytes": 3800008,
         "extensions": [],
         "source_groups": 43,
         "windows": 27
@@ -67,12 +67,60 @@
         "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
       },
       "acceptance": {
-        "technical": "PASS: source mesh, GLB, licensed image hashes, UV lengths, normals and three exterior approach AABBs",
-        "geometry_report": "todo/evidence/TASK-049/va08-facade-r1/geometry.json",
+        "technical": "PASS: existing geometry/UV/approach checks, original licensed image hashes, exact color bytes, shared normal PNG bytes and pixelwise bake with glTF scale 1; saved source readback and complete protected runtime semantic comparison passed",
+        "geometry_report": "todo/evidence/TASK-049/normal-scale-shared-r1/V-A08-check.json",
         "source_report": "todo/evidence/TASK-049/va08-facade-r1/source-check.log",
-        "visual": "Four CPU Cycles views observed; self-audit only; author approval pending",
-        "runtime": "Parent integration and actual gameplay capture tracked separately",
-        "collision": "Runtime imports actual v_a08_facade GLB triangles through CollisionWorld::from_scene using node, model-scale and prop transforms; retain original shell, remove replaced generic detail collision; separate roof-eaves GLB remains visual only; runtime evidence in blender-integration-r2"
+        "visual": "Root self-audit: R5 va08-normal frame 49 actually viewed; sampled near/far material appearance stable with no newly obvious coarse speckles; independent consecutive-frame review recorded separately; author approval pending",
+        "runtime": "PASS within R5 va08-normal: 120 frames, 6 native and 6 wrapper checks; current repaired GLB loaded and rendered, with scripted camera motion; not a real player walk or arbitrary-distance filtering validation",
+        "collision": "Runtime imports actual v_a08_facade GLB triangles through CollisionWorld::from_scene using node, model-scale and prop transforms; retain original shell, remove replaced generic detail collision; separate roof-eaves GLB remains visual only; runtime evidence in blender-integration-r2",
+        "normal_repair_evidence": "todo/evidence/TASK-049/normal-scale-shared-r1/README.md",
+        "source_preservation": "todo/evidence/TASK-049/normal-scale-shared-r1/source-reopen.json",
+        "runtime_preservation": "todo/evidence/TASK-049/normal-scale-shared-r1/runtime-preservation.json",
+        "visual_review": "todo/evidence/TASK-049/blender-integration-r5/visual-review.md",
+        "integration_review": "todo/evidence/TASK-049/blender-integration-r5/review.md"
+      },
+      "derived_normals": {
+        "script": "source-assets/environment-kit/materials/bake_normals.py",
+        "script_sha256": "3444ec42eecaa7f2b55f1faf651c33aa46908cb79ce8f9688974ad40ccd8e5fc",
+        "formula": "n = rgb / 127.5 - 1; n.xy *= scale; n = normalize(n); rgb = round((n + 1) * 127.5)",
+        "color_space": "Raw normal data; no sRGB transform",
+        "pillow": "12.3.0",
+        "gltf_normalTexture_scale": 1,
+        "license": "CC0-1.0 derived images; MPL-2.0 script",
+        "compatibility": "Observed local Bevy 0.19.1 glTF loader ignores normalTexture.scale; attenuation is baked into RGB normal data, Blender Strength and glTF scale remain 1",
+        "mips": "One mip level PNG; distant sampling stability not established",
+        "evidence": "todo/evidence/TASK-049/normal-scale-shared-r1/README.md",
+        "scale": 0.28,
+        "files": [
+          {
+            "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+            "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+            "output": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale028.png",
+            "output_sha256": "71c05e2fc5eab9ffc26555404f7fecf0fce979afa1d8236c2ad660826cc6c8ac",
+            "scale": 0.28,
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "license": "CC0-1.0",
+            "bytes": 1710826
+          },
+          {
+            "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+            "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+            "output": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale028.png",
+            "output_sha256": "23f88b2f5a7dc51d71462e410e42bad7b8eedd34825962f83f449fd4f82e9493",
+            "scale": 0.28,
+            "size": [
+              1024,
+              512
+            ],
+            "mode": "RGB",
+            "license": "CC0-1.0",
+            "bytes": 560075
+          }
+        ]
       }
     }
   ]

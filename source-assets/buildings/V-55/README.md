@@ -2,7 +2,7 @@
 
 所属地图对象 `V-55`／场所 `55`，主文件为 [facade.blend](facade.blend)，可编辑制作脚本为 [build.py](build.py)，候选检查为 [check.py](check.py)，来源与实际导出数值见 [asset-manifest.json](asset-manifest.json)
 
-该建筑对应[正式场所用途](../../../docs/player/locations/places/b05.md#place-55)与[本轮制作 brief](../../../todo/evidence/TASK-049/building-next-brief-r1.md)，制作状态保留为候选；已接入 Bevy 并完成本轮局部 GPU 画面自查，碰撞窄测与作者外观反馈分别记录
+该建筑对应[正式场所用途](../../../docs/player/locations/places/b05.md#place-55)与[本轮制作 brief](../../../todo/evidence/TASK-049/building-next-brief-r1.md)，制作状态保留为候选；已接入 Bevy 并完成 R3 局部 GPU 画面自查；共享法线修复已完成 R5 GPU 复验，碰撞窄测与作者外观反馈分别记录
 
 ## 制作内容
 
@@ -14,7 +14,7 @@
 
 16组工作间窗分布于楼上西／南两面与南面首层，玻璃表面位于旧墙外0.039m，外框到0.19m，形成0.151m框内层次；玻璃采用不透明PBR背板，未声称存在窗后房间。两组局部竖向遮阳片只出挑0.34m，保持工作间的采光节奏
 
-用途字招使用原有字体的可编辑文字对象：`包装 / 修补`、`收件`、`样品`，不把整栋建筑烘成一张贴图。25个独立网格组和3个文字对象保留在源文件；运行导出只合并临时副本为单一mesh，四张PBR原图与字体均打包在源工程内
+用途字招使用原有字体的可编辑文字对象：`包装 / 修补`、`收件`、`样品`，不把整栋建筑烘成一张贴图。25个独立网格组和3个文字对象保留在源文件；运行导出只合并临时副本为单一mesh，两张原颜色 JPG、两张共享法线 PNG 与字体均打包在源工程内
 
 ## 坐标与接入
 
@@ -28,7 +28,7 @@
 | GLB边界 | X `−6.75…6`、Y `−0.55…9`、Z `−8…8.25` |
 | 地图实际外包络 | X `147.25…160`、北向 `197.75…214`、高程 `23.45…33` |
 | 低位饰面 | 常规出墙0.12m，样品柜0.29m；地脚下延0.55m，以真实坡地遮蔽 |
-| 技术规模 | 7362三角、13008导出顶点、6材质、4张内嵌1024×1024图 |
+| 技术规模 | 7362三角、13008导出顶点、6材质、4张内嵌图（灰泥1024×1024、混凝土1024×512） |
 
 ### 旧构件替换
 
@@ -41,7 +41,7 @@
 - 自制建筑网格、UV、文字布局与脚本按项目现行 MPL-2.0；具体参考为[美术方向](../../../docs/dev/production/art-direction.md)、[镜厅预览](../../../docs/public/images/cinema-music-street.webp)及实际地图，不复制其他作品Logo或建筑身份
 - 灰泥 `Plaster001` 与勒脚 `Concrete034` 原图来自 ambientCG，CC0-1.0，作者与下载原件哈希沿用 [AST-003清单](../../environment-kit/asset-manifest.json)；本包只登记引用关系和校验，不复制维护第二份来源总表
 - Noto Sans SC 2.004 使用已有[字体源](../../ui-kit/README.md)，原 [COPYRIGHT](../../ui-kit/licenses/COPYRIGHT.txt) 与 [OFL 1.1](../../ui-kit/licenses/OFL.txt) 保持；字体原数据打包在 `.blend`，GLB仅包含当前三个用途标签的文字几何
-- 色彩贴图sRGB、NormalGL为Non-Color；灰泥每2×2m重复、混凝土每1.1×0.55m重复，均为项目视觉尺度，不冒充上游物理测量。节点正常使用导出法线强度0.25，固有色从sRGB转换为线性后写入材质
+- 色彩贴图sRGB、NormalGL为Non-Color；灰泥每2×2m重复、混凝土每1.1×0.55m重复，均为项目视觉尺度，不冒充上游物理测量。法线原强度0.25已烘入共享无损 PNG，节点 Strength 与 glTF scale 均为1，固有色从sRGB转换为线性后写入材质
 
 ## 操作
 
@@ -62,3 +62,7 @@ timeout --signal=TERM --kill-after=10s 600s env ALSOFT_DRIVERS=null blender --ba
 检查真实GLB顶点／法线／三角面积／绕序、PBR米制UV、原图与AST-003哈希、两条接近包络、地图契约和源对象；清晰诊断失败时停止接入。DCC看图是自查，场景截图与实际移动交给主任务验证。临时预览图在完成观察、记录哈希与结论后删除，源码、运行GLB、参数和日志保留
 
 本轮源制作与检查记录位于 [v55-building-r1](../../../todo/evidence/TASK-049/v55-building-r1/handoff.md)。R3 的 `v55-west` 实机短片采集通过，主任务实际查看第49帧：用途字招与展示可辨，未见明显悬空；结果属于局部画面自查，见[视觉记录](../../../todo/evidence/TASK-049/blender-integration-r3/visual-review.md)与[集成记录](../../../todo/evidence/TASK-049/blender-integration-r3/review.md)。[最终碰撞窄测](../../../todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log)为1项通过，包含两扇关闭门的真实三角阻挡；不替代人物行走或作者美术验收
+
+## 共享法线兼容修复
+
+本机 Bevy 0.19.1 glTF loader 忽略 `normalTexture.scale`；本包沿用[共享烘焙入口](../../environment-kit/materials/bake_normals.py)，将上列原强度按 `xy *= scale`、保留 z 后归一化写入 CC0 无损 PNG，原授权 JPG、颜色、UV、几何与其他在用材质保持。主文件原位换图后保存并在宿主 Blender 复读，普通导出与逐像素检查通过；证据及前后语义见[共享修复记录](../../../todo/evidence/TASK-049/normal-scale-shared-r1/README.md)。当前修复版已完成 [R5 真实场景复验](../../../todo/evidence/TASK-049/blender-integration-r5/review.md)，机器断言通过且关键帧已查看，覆盖范围见[画面自查](../../../todo/evidence/TASK-049/blender-integration-r5/visual-review.md)，作者验收仍待完成

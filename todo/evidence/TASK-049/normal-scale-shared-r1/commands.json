@@ -1,0 +1,108 @@
+{
+  "source_repair": {
+    "V-15": {
+      "command": "blender --background --threads 2 --python-exit-code 1 --python todo/evidence/TASK-049/normal-scale-shared-r1/candidates/patch_source.py -- --asset V-15",
+      "execution": "sandbox",
+      "exit_code": 143,
+      "status": "Saved after protection PASS; PulseAudio exit hung; host-identified PID 35404 terminated with SIGTERM, not counted as a process PASS"
+    },
+    "V-A08": {
+      "command": "env ALSOFT_DRIVERS=null blender --background -noaudio --threads 2 --python-exit-code 1 --python todo/evidence/TASK-049/normal-scale-shared-r1/candidates/patch_source.py -- --asset V-A08",
+      "execution": "sandbox",
+      "exit_code": 0
+    },
+    "V-55": {
+      "command": "env ALSOFT_DRIVERS=null blender --background -noaudio --threads 2 --python-exit-code 1 --python todo/evidence/TASK-049/normal-scale-shared-r1/candidates/patch_source.py -- --asset V-55",
+      "execution": "host",
+      "exit_code": 0
+    },
+    "V-35": {
+      "command": "env ALSOFT_DRIVERS=null blender --background -noaudio --threads 2 --python-exit-code 1 --python todo/evidence/TASK-049/normal-scale-shared-r1/candidates/patch_source.py -- --asset V-35",
+      "execution": "host",
+      "exit_code": 0
+    }
+  },
+  "source_reopen_initial": {
+    "script": "reopen_source.py",
+    "execution": "host",
+    "exit_code": 1,
+    "reason": "Two zero-user default Material datablocks automatically discarded on save; exact difference diagnosed and retained"
+  },
+  "source_reopen_final": {
+    "command": "env ALSOFT_DRIVERS=null blender --background -noaudio --threads 2 --python-exit-code 1 --python todo/evidence/TASK-049/normal-scale-shared-r1/reopen_source.py",
+    "execution": "host",
+    "exit_code": 0,
+    "result": "all four saved masters protected; only two verified zero-user defaults permitted to disappear"
+  },
+  "exports": {
+    "V-15": {
+      "command": [
+        "blender",
+        "--background",
+        "-noaudio",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "source-assets/buildings/V-15/build.py"
+      ],
+      "ALSOFT_DRIVERS": "null",
+      "exit_code": 0
+    },
+    "V-A08": {
+      "command": [
+        "blender",
+        "--background",
+        "-noaudio",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "source-assets/buildings/V-A08/facade-build.py"
+      ],
+      "ALSOFT_DRIVERS": "null",
+      "exit_code": 0
+    },
+    "V-55": {
+      "command": [
+        "blender",
+        "--background",
+        "-noaudio",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "source-assets/buildings/V-55/build.py"
+      ],
+      "ALSOFT_DRIVERS": "null",
+      "exit_code": 0
+    }
+  },
+  "checks": {
+    "V-15": {
+      "command": "python3 -B source-assets/buildings/V-15/verify.py",
+      "exit_code": 0,
+      "normal_pixel_check": "PASS"
+    },
+    "V-A08": {
+      "command": "python3 -B source-assets/buildings/V-A08/facade-check.py",
+      "exit_code": 0,
+      "normal_pixel_check": "PASS"
+    },
+    "V-55": {
+      "command": "python3 -B source-assets/buildings/V-55/check.py",
+      "exit_code": 0,
+      "normal_pixel_check": "PASS"
+    },
+    "V-35": {
+      "command": "python3 -B source-assets/buildings/V-35/check.py",
+      "exit_code": 0,
+      "normal_pixel_check": "PASS"
+    }
+  },
+  "media": "No temporary visual media generated; seven new formal shared PNG paths are source assets; two copied existing V35 derivatives are byte-identical",
+  "backups": "output/assets/normal-scale-shared-r1 retains four before masters and four before GLBs (59 MiB) for source semantic readback and rollback; not visual scratch"
+}

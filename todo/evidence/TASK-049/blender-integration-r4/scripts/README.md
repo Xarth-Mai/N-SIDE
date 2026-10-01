@@ -20,8 +20,8 @@
 ```fish
 python3 tools/capture.py --binary game/target/debug/map_viewer --aa msaa4 --no-video --script todo/evidence/TASK-049/blender-integration-r4/scripts/inspect-v35-facade.json --output output/blender-integration-r4/inspect-v35-facade
 python3 tools/capture.py --binary game/target/debug/map_viewer --aa msaa4 --no-video --script todo/evidence/TASK-049/blender-integration-r4/scripts/eye-v35-entry.json --output output/blender-integration-r4/eye-v35-entry
-python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-001 --aa msaa4 --no-video --script game/capture/character-orbit.json --output output/blender-integration-r4/yao-orbit
-python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-001 --aa msaa4 --no-video --script game/capture/walk-character.json --output output/blender-integration-r4/yao-motion
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-001 --no-video --script game/capture/character-orbit.json --output output/blender-integration-r4/yao-orbit
+python3 tools/capture.py --binary game/target/debug/n-side --character-preview CHR-001 --no-video --script game/capture/walk-character.json --output output/blender-integration-r4/yao-motion
 ```
 
 保留版本/hash、日志、状态JSON和实际观察帧号，机器检查与视觉 `self-audit` 分开记录。`--no-video` 明确不编码视频，实际检查关键帧和横移/动作连续帧；完成观察后由主任务按项目约定清理本轮 PNG，保留复现与文字结论

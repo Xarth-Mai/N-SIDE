@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
 parser.add_argument('--update-jump', action='store_true', help='Append Jump to the current master and export without rebuilding geometry')
-parser.add_argument('--update-jacket', action='store_true', help='Widen only the current jacket body and sleeves once, preserving sewn anchors')
+parser.add_argument('--update-jacket', action='store_true', help='Shape the current jacket body and sleeve panels once, preserving sewn anchors')
 parser.add_argument('--update-hood', action='store_true', help='Replace only the lower Hood cloth surface in the current master')
 parser.add_argument('--update-hair', action='store_true', help='Replace only the back hair and crown in the current master')
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
@@ -91,39 +91,63 @@ def hair_geometry(face_surface, head_top):
 
 
 def update_jacket(obj):
-    # A selective update may be repeated after a failed export; never inflate twice
-    if obj.get('jacket_shape_revision') == 11:
+    # Selective retries and full builds use the same two revisions; never accumulate offsets
+    revision = obj.get('jacket_shape_revision')
+    assert revision in (None, 11, 12), 'Unknown jacket revision'
+    if revision == 12:
         return
     assert obj.name == 'Jacket_ContinuousShoulders' and len(obj.data.vertices) == 519
-    # Torso keeps its upper shoulder/neck rows and the entire zipper border
-    for vertex in list(obj.data.vertices)[:231]:
-        row, column = divmod(vertex.index, 33)
-        if row >= 4 or column in (0, 1, 31, 32):
-            continue
-        p = vertex.co
-        # The hood lies against the central upper back; keep its support unchanged
-        if p.y > 0 and p.z > 1.15:
-            continue
-        angle = .48 + (math.tau - .96) * column / 32
-        side = abs(math.sin(angle)) ** 2
-        amount = (.25, .60, 1.0, .9)[row]
-        p.x += math.copysign(.029 * amount * side, p.x)
-        p.y += -math.cos(angle) * .008 * amount * side
-    # Expand sleeve cross-sections rather than scaling hands or moving the sewn armhole
-    centres = ((.203, 0, 1.327), (.25, -.002, 1.264), (.309, -.006, 1.191),
-               (.329, -.006, 1.168), (.342, -.003, 1.142), (.354, -.007, 1.116),
-               (.389, -.012, 1.039), (.407, -.017, 1.005), (.414, -.016, .980))
-    fullness = (0, .22, .42, .47, .45, .40, .26, 0, 0)
-    for side_index, sign in enumerate((1, -1)):
-        for row, ((x, y, z), amount) in enumerate(zip(centres, fullness)):
-            if amount == 0:
+    if revision != 11:
+        # Torso keeps its upper shoulder/neck rows and the entire zipper border
+        for vertex in list(obj.data.vertices)[:231]:
+            row, column = divmod(vertex.index, 33)
+            if row >= 4 or column in (0, 1, 31, 32):
                 continue
+            p = vertex.co
+            # The hood lies against the central upper back; keep its support unchanged
+            if p.y > 0 and p.z > 1.15:
+                continue
+            angle = .48 + (math.tau - .96) * column / 32
+            side = abs(math.sin(angle)) ** 2
+            amount = (.25, .60, 1.0, .9)[row]
+            p.x += math.copysign(.029 * amount * side, p.x)
+            p.y += -math.cos(angle) * .008 * amount * side
+        # Expand sleeve cross-sections rather than scaling hands or moving the sewn armhole
+        centres = ((.203, 0, 1.327), (.25, -.002, 1.264), (.309, -.006, 1.191),
+                   (.329, -.006, 1.168), (.342, -.003, 1.142), (.354, -.007, 1.116),
+                   (.389, -.012, 1.039), (.407, -.017, 1.005), (.414, -.016, .980))
+        fullness = (0, .22, .42, .47, .45, .40, .26, 0, 0)
+        for side_index, sign in enumerate((1, -1)):
+            for row, ((x, y, z), amount) in enumerate(zip(centres, fullness)):
+                if amount == 0:
+                    continue
+                centre = Vector((sign * x, y, z))
+                for column in range(16):
+                    vertex = obj.data.vertices[231 + side_index * 144 + row * 16 + column]
+                    vertex.co = centre + (vertex.co - centre) * (1 + amount)
+    # Only five middle rings: sewn armhole, shoulder transition and cuff anchors stay fixed
+    profiles = ((2, (.309, -.006, 1.191), .048 * 1.42, .94, .80),
+                (3, (.329, -.006, 1.168), .046 * 1.47, .90, .78),
+                (4, (.342, -.003, 1.142), .041 * 1.45, .86, .76),
+                (5, (.354, -.007, 1.116), .048 * 1.40, .90, .78),
+                (6, (.389, -.012, 1.039), .041 * 1.26, .96, .84))
+    for side_index, sign in enumerate((1, -1)):
+        across = Vector((sign * .8, 0, .6))
+        along = Vector((sign * .6, 0, -.8))
+        for row, (x, y, z), depth, width_scale, depth_scale in profiles:
             centre = Vector((sign * x, y, z))
             for column in range(16):
                 vertex = obj.data.vertices[231 + side_index * 144 + row * 16 + column]
-                vertex.co = centre + (vertex.co - centre) * (1 + amount)
+                delta = vertex.co - centre
+                u, v, t = delta.dot(across), delta.y, delta.dot(along)
+                # Broad front/back cloth planes replace a uniformly rounded cross-section
+                panel = math.copysign(min(abs(v) / depth / .65, 1), v) * depth * depth_scale
+                outer = max(0, min(1, u / .075)) ** 2
+                crease = .006 * outer if row == 4 else 0
+                diagonal = .012 * (v / depth) * outer if row == 4 else 0
+                vertex.co = centre + across * (u * width_scale - crease) + Vector((0, panel, 0)) + along * (t + diagonal)
     obj.data.update()
-    obj['jacket_shape_revision'] = 11
+    obj['jacket_shape_revision'] = 12
 
 
 def update_hood(hood):

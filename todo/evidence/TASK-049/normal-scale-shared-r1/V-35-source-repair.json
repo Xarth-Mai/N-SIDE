@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "asset": "V-35",
+  "source": "source-assets/buildings/V-35/facade.blend",
+  "before_sha256": "d8ba601a7f11594558d39fd16a275242b558f3af7078a5134d0474b75e0f3173",
+  "after_sha256": "d25fa5adb2e9896d17169fbb83accc9099255a02e8a4c00e35580c151cc4a725",
+  "before": {
+    "objects_mesh_uv_normals_transforms_fonts": "2230b98211fc9d2d29b446d009896783e3fb500274ced66238b859808f0e71e0",
+    "other_material_values_images_links": "67ceebb48ea31cbe78e48931e0869a469ed0d1cfac77cebef70e9ae71ec78aeb"
+  },
+  "after": {
+    "objects_mesh_uv_normals_transforms_fonts": "2230b98211fc9d2d29b446d009896783e3fb500274ced66238b859808f0e71e0",
+    "other_material_values_images_links": "67ceebb48ea31cbe78e48931e0869a469ed0d1cfac77cebef70e9ae71ec78aeb"
+  },
+  "changes": [
+    {
+      "material": "Plaster",
+      "before_image_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+      "before_path": "/home/lzzz/MyProjects/N-SIDE/source-assets/buildings/V-35/textures/Plaster001-NormalGL-scale025.png",
+      "after_image_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+      "after_path": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale025.png",
+      "strength": 1
+    },
+    {
+      "material": "Concrete",
+      "before_image_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+      "before_path": "/home/lzzz/MyProjects/N-SIDE/source-assets/buildings/V-35/textures/Concrete034-NormalGL-scale025.png",
+      "after_image_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+      "after_path": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale025.png",
+      "strength": 1
+    }
+  ],
+  "blender": "5.2.2 LTS",
+  "runtime_export": "NOT RUN; invoke the existing build entry separately"
+}

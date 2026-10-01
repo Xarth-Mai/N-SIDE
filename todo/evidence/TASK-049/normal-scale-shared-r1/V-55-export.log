@@ -1,0 +1,11 @@
+00:00.347  blend            | Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/buildings/V-55/facade.blend"
+INFO Draco is available, use library at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.so
+ERROR MeshOptimizer is not available because library could not be found at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.so
+16:58:28 | INFO: Starting glTF 2.0 export
+16:58:28 | INFO: Extracting primitive: V55_W_PublicDoor.001
+16:58:28 | INFO: Primitives created: 6
+16:58:28 | INFO: Finished glTF 2.0 export in 0.13016724586486816 s
+
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+
+Blender quit

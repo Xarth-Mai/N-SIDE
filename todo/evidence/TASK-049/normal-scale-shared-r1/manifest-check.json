@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "asset_source_runtime_script_records": [
+    "source-assets/buildings/V-15/mirror-hall-facade.blend",
+    "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
+    "source-assets/buildings/V-15/build.py",
+    "source-assets/buildings/V-15/verify.py",
+    "source-assets/buildings/V-A08/facade.blend",
+    "game/assets/environment/buildings/v-a08-facade.glb",
+    "source-assets/buildings/V-55/facade.blend",
+    "game/assets/environment/buildings/v55-workshop-facade.glb",
+    "source-assets/buildings/V-35/facade.blend",
+    "game/assets/environment/buildings/v35-byte-beat-facade.glb"
+  ],
+  "shared_variants": 7,
+  "all_original_and_derived_hashes_match": true,
+  "scope": "source manifests and shared derivative metadata; no asset writes"
+}

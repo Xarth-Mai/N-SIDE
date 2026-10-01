@@ -167,7 +167,21 @@
         "ground_pivot": true,
         "axis": "Y-up"
       },
-      "license": "CC0-1.0"
+      "license": "CC0-1.0",
+      "service_court_placement": {
+        "source": "/surfaces/cinema-service-court/streetlight/0",
+        "model": "streetlight",
+        "map_anchor": [
+          314.65,
+          261.6,
+          25
+        ],
+        "world_y_rotation_degrees": 0,
+        "scale": 1,
+        "purpose": "镜厅北侧服务前场西缘设施，保留模型既有 4.5m 米制节点变换；本轮未增加夜间光源逻辑",
+        "status": "Integrated; source/map, actual GLB support/clearance and capsule checks PASS; R5 Viewer capture PASS; visual self-audit, author acceptance pending",
+        "evidence": "todo/evidence/TASK-049/cinema-service-court-r1/implementation.md"
+      }
     },
     {
       "source": "roads/road-sign-empty.glb",
@@ -1184,8 +1198,136 @@
         "visual_review": "todo/evidence/TASK-049/blender-integration-r3/visual-review.md",
         "integration_review": "todo/evidence/TASK-049/blender-integration-r3/review.md",
         "collision_test": "todo/evidence/TASK-049/blender-integration-r3/scene-models-final.log"
+      },
+      "service_court_placement": {
+        "source": "buildings[V-15]/aircon-wall",
+        "model": "aircon_wall",
+        "building_id": "V-15",
+        "map_anchor": [
+          324,
+          250.203,
+          25
+        ],
+        "world_y_rotation_degrees": 180,
+        "scale": 1,
+        "purpose": "镜厅北墙窗间设备，保留完整回墙套管、排水及有盖收水口",
+        "wall_fit": "Actual packer and receiver rear is local Z=-0.203m; anchor north=250.203m keeps ground feet on the 25m service court and the sleeve reaching the north wall",
+        "status": "Integrated; source/map, actual GLB support/clearance and capsule checks PASS; R5 Viewer capture PASS; visual self-audit, author acceptance pending",
+        "evidence": "todo/evidence/TASK-049/cinema-service-court-r1/implementation.md"
       }
     }
   ],
-  "export_tool": "ImageMagick 7.1.2-32 Q16-HDRI"
+  "export_tool": "ImageMagick 7.1.2-32 Q16-HDRI",
+  "derived_normals": {
+    "script": "source-assets/environment-kit/materials/bake_normals.py",
+    "script_sha256": "3444ec42eecaa7f2b55f1faf651c33aa46908cb79ce8f9688974ad40ccd8e5fc",
+    "formula": "n = rgb / 127.5 - 1; n.xy *= scale; n = normalize(n); rgb = round((n + 1) * 127.5)",
+    "color_space": "Raw normal data; no sRGB transform",
+    "pillow": "12.3.0",
+    "gltf_normalTexture_scale": 1,
+    "license": "CC0-1.0 derived images; MPL-2.0 script",
+    "compatibility": "Observed local Bevy 0.19.1 glTF loader ignores normalTexture.scale; attenuation is baked into RGB normal data, Blender Strength and glTF scale remain 1",
+    "mips": "One mip level PNG; distant sampling stability not established",
+    "evidence": "todo/evidence/TASK-049/normal-scale-shared-r1/README.md",
+    "files": [
+      {
+        "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+        "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "output": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale025.png",
+        "output_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+        "scale": 0.25,
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 1648502
+      },
+      {
+        "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+        "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+        "output": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale025.png",
+        "output_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+        "scale": 0.25,
+        "size": [
+          1024,
+          512
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 532244
+      },
+      {
+        "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+        "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "output": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale028.png",
+        "output_sha256": "71c05e2fc5eab9ffc26555404f7fecf0fce979afa1d8236c2ad660826cc6c8ac",
+        "scale": 0.28,
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 1710826
+      },
+      {
+        "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+        "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+        "output": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale028.png",
+        "output_sha256": "23f88b2f5a7dc51d71462e410e42bad7b8eedd34825962f83f449fd4f82e9493",
+        "scale": 0.28,
+        "size": [
+          1024,
+          512
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 560075
+      },
+      {
+        "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+        "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "output": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale035.png",
+        "output_sha256": "18611d78e41f1d56c8a0cac508291796f4c604b63e728aa44316ccd0ccb00060",
+        "scale": 0.35,
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 1834605
+      },
+      {
+        "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+        "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+        "output": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale035.png",
+        "output_sha256": "19322cf9e4350a01306ba794d5f771320a2e9525901e94af00fe345858c3956c",
+        "scale": 0.35,
+        "size": [
+          1024,
+          512
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 616476
+      },
+      {
+        "source": "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+        "source_sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+        "output": "source-assets/environment-kit/materials/WoodSiding009-NormalGL-scale035.png",
+        "output_sha256": "0dfd5f813b707aec5c9ec2cbb87c41593b8370d457eb575f55f57c5c732630e7",
+        "scale": 0.35,
+        "size": [
+          1024,
+          512
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 613460
+      }
+    ]
+  }
 }

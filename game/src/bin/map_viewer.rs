@@ -528,6 +528,16 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         ("inspect-v55-facade", [136., 188., 29.], [150., 204., 28.]),
         ("inspect-v35-facade", [-410., 180., 17.], [-386., 153., 17.]),
         (
+            "inspect-cinema-service-court",
+            [309., 279., 31.],
+            [321., 258., 26.7],
+        ),
+        (
+            "eye-cinema-service-aircon",
+            [323., 254., 26.725],
+            [324., 250.203, 26.55],
+        ),
+        (
             "eye-aircon-wall",
             [565., 95.6, 14.391667],
             [567.79, 95.6, 15.4],

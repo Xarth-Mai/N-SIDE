@@ -7,23 +7,23 @@
   "license": "MPL-2.0 AND CC0-1.0 AND OFL-1.1; embedded AST-007 generated poster governed by applicable OpenAI service terms",
   "source": {
     "path": "source-assets/buildings/V-15/mirror-hall-facade.blend",
-    "sha256": "344ef7b570a96c11a7a610bcd8c327a555842f609d76d40da30b232835ccfd4d",
-    "bytes": 18346304
+    "sha256": "5c255c0dc110a82152c08982854ca9aed4226ee4864b5f3b53aeac8ff6b896d8",
+    "bytes": 17701453
   },
   "build_script": {
     "path": "source-assets/buildings/V-15/build.py",
-    "sha256": "e33003e900147dbddd2158d921343c29c3d8dfc7e48deb4a9837e3f2dbe9e6da",
-    "bytes": 25519
+    "sha256": "51da9de0e373bfee3c6375ae8249e424d20409b5ca32dccbe698a8fa9d0ca686",
+    "bytes": 25601
   },
   "verification_script": {
     "path": "source-assets/buildings/V-15/verify.py",
-    "sha256": "abc0cbdfcefb1c72deb90769b3a466d91fde356c572afc41d1ff31b72dce71c3",
-    "bytes": 4972
+    "sha256": "a325366ecaa83d02b801599cd317889b94f92d2a935b06f0901e63a272c6bf83",
+    "bytes": 8991
   },
   "output": {
     "path": "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
-    "sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
-    "bytes": 7812440
+    "sha256": "b3617d3c57d8e466ce4e6ca3e5fe4dd3f2b55d596f39c43a3cbdd5405d313bdd",
+    "bytes": 7168448
   },
   "inputs": [
     {
@@ -161,8 +161,8 @@
   },
   "measured": {
     "blender": "5.2.2 LTS",
-    "glb_sha256": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
-    "glb_bytes": 7812440,
+    "glb_sha256": "b3617d3c57d8e466ce4e6ca3e5fe4dd3f2b55d596f39c43a3cbdd5405d313bdd",
+    "glb_bytes": 7168448,
     "scene_count": 1,
     "mesh_count": 1,
     "primitives": 10,
@@ -209,15 +209,20 @@
     "zero_area_triangles": 0,
     "five_clearance_volumes": "PASS",
     "new_window_depth_and_east_corner": "PASS; 30 opaque window surfaces lie outside original shell and behind frame fronts",
-    "r1_preservation": "PASS; 53 identical components, 1 intended print change, 4 intended overlay removals; original 8 materials and 6 embedded images unchanged",
+    "r1_preservation": "Historical r2 geometry/poster edit: 53 identical components, 1 intended print change, 4 intended overlay removals; current shared-normal repair changes only three normal images and their scale",
     "poster_bytes_and_front_uv": "PASS; 1024x1620 exact original PNG and unmirrored 0..1 UV",
     "cpu_visual_self_audit": "5 final frames viewed",
     "independent_minimal_review": "PASS; required-poster input fixed, false generic-coping premise corrected; Lean already. Ship.",
-    "bevy_load": "NOT RUN in asset task; root integration follows",
-    "gpu_runtime": "NOT RUN in asset task; root integration follows",
+    "bevy_load": "PASS: current repaired GLB in R5 cinema-normal",
+    "gpu_runtime": "PASS within R5 cinema-normal: 150 frames, 6 native and 6 wrapper checks; current repaired GLB loaded and rendered, with scripted camera motion; not a real player walk or arbitrary-distance filtering validation",
     "author_acceptance": "NOT RUN",
     "visual_completion": "needs_revision: opaque dark panes, regular bay rhythm, three abstract poster placeholders; north/east retain generic building appearance",
-    "docs": "PASS; initial parallel-task missing links retained in docs-check.log, final rerun passes"
+    "docs": "PASS; initial parallel-task missing links retained in docs-check.log, final rerun passes",
+    "normal_compatibility": "PASS: three shared normal PNGs, original authorized inputs, pixelwise xy*.35 bake, saved master readback and complete protected GLB semantic preservation",
+    "normal_repair_gpu": "PASS within R5 cinema-normal: 150 frames, 6 native and 6 wrapper checks; current repaired GLB loaded and rendered, with scripted camera motion; not a real player walk or arbitrary-distance filtering validation",
+    "normal_repair_visual": "Root self-audit: R5 cinema-normal frame 59 actually viewed; sampled near/far material appearance stable with no newly obvious coarse speckles; independent consecutive-frame review recorded separately; author approval pending",
+    "normal_repair_visual_review": "todo/evidence/TASK-049/blender-integration-r5/visual-review.md",
+    "normal_repair_integration_review": "todo/evidence/TASK-049/blender-integration-r5/review.md"
   },
   "evidence": "todo/evidence/TASK-049/v15-building-r2/self-audit.md",
   "revision": "r2 south-west facade and Anke programme",
@@ -244,5 +249,62 @@
     },
     "binding": "construction snapshot; not a runtime same-name binding"
   },
-  "incremental_edit_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --extend-r2 --render"
+  "incremental_edit_command": "ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-code 1 --python source-assets/buildings/V-15/build.py -- --extend-r2 --render",
+  "derived_normals": {
+    "script": "source-assets/environment-kit/materials/bake_normals.py",
+    "script_sha256": "3444ec42eecaa7f2b55f1faf651c33aa46908cb79ce8f9688974ad40ccd8e5fc",
+    "formula": "n = rgb / 127.5 - 1; n.xy *= scale; n = normalize(n); rgb = round((n + 1) * 127.5)",
+    "color_space": "Raw normal data; no sRGB transform",
+    "pillow": "12.3.0",
+    "gltf_normalTexture_scale": 1,
+    "license": "CC0-1.0 derived images; MPL-2.0 script",
+    "compatibility": "Observed local Bevy 0.19.1 glTF loader ignores normalTexture.scale; attenuation is baked into RGB normal data, Blender Strength and glTF scale remain 1",
+    "mips": "One mip level PNG; distant sampling stability not established",
+    "evidence": "todo/evidence/TASK-049/normal-scale-shared-r1/README.md",
+    "scale": 0.35,
+    "files": [
+      {
+        "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+        "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "output": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale035.png",
+        "output_sha256": "18611d78e41f1d56c8a0cac508291796f4c604b63e728aa44316ccd0ccb00060",
+        "scale": 0.35,
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 1834605
+      },
+      {
+        "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+        "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+        "output": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale035.png",
+        "output_sha256": "19322cf9e4350a01306ba794d5f771320a2e9525901e94af00fe345858c3956c",
+        "scale": 0.35,
+        "size": [
+          1024,
+          512
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 616476
+      },
+      {
+        "source": "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+        "source_sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+        "output": "source-assets/environment-kit/materials/WoodSiding009-NormalGL-scale035.png",
+        "output_sha256": "0dfd5f813b707aec5c9ec2cbb87c41593b8370d457eb575f55f57c5c732630e7",
+        "scale": 0.35,
+        "size": [
+          1024,
+          512
+        ],
+        "mode": "RGB",
+        "license": "CC0-1.0",
+        "bytes": 613460
+      }
+    ]
+  }
 }

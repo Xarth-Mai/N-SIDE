@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+  "base_sha256": "a2f15c59246a57c1250ee76db54e0a12fa5ce766f17f15dc1535e5895128038f",
+  "applied_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+  "change": "append candidate.surface only",
+  "surface_count_before": 85,
+  "surface_count_after": 86,
+  "area_m2": 198,
+  "roads_nodes_buildings_parcels_terrain_and_existing_surfaces_unchanged": true,
+  "candidate_reports_retained": true
+}

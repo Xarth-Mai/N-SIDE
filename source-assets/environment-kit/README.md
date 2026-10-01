@@ -120,4 +120,16 @@ ambientCG [Bricks057](https://ambientcg.com/view?id=Bricks057) 补充暖棕砖�
 
 [公共空调装配](aircon/README.md)采用 Monsta3D / Poly Haven 的 CC0 Exterior Aircon Unit clean 单机，在本机 Blender 中补齐背架垫块、真实背面包覆管口的回墙套管、原软管末端接头、贴墙排水和有盖收水口。9,493 个原三角、原 UV 与 6 张已检查贴图保留，新增 624 个安装三角沿用项目 MPL-2.0，成品与原件的许可分工在既有 AST-003 清单明确记录
 
-`aircon/wall-installation.blend` 为装配主文件，导出的源 GLB 沿用上方环境导出器生成 `game/assets/environment/street-furniture/aircon-wall.glb`。当前实例位于 V-W10 西墙地图 `[567.79,95.6,12.666667]`、世界 Y 轴 `-90°`，保留 V-A08 原创三台空调；本机 CPU 近图已观察接点和尺度，R3 实机第29／49帧可见背架、管路和收水口，地面支承窄测通过，见[视觉记录](../../todo/evidence/TASK-049/blender-integration-r3/visual-review.md)及[集成记录](../../todo/evidence/TASK-049/blender-integration-r3/review.md)。人物低位碰撞与通行、格栅远近闪烁、运行成本及作者验收仍待对应验证
+`aircon/wall-installation.blend` 为装配主文件，导出的源 GLB 沿用上方环境导出器生成 `game/assets/environment/street-furniture/aircon-wall.glb`。首个实例位于 V-W10 西墙地图 `[567.79,95.6,12.666667]`、世界 Y 轴 `-90°`，保留 V-A08 原创三台空调；本机 CPU 近图已观察接点和尺度，R3 实机第29／49帧可见背架、管路和收水口，地面支承窄测通过，见[视觉记录](../../todo/evidence/TASK-049/blender-integration-r3/visual-review.md)及[集成记录](../../todo/evidence/TASK-049/blender-integration-r3/review.md)。人物低位碰撞与通行、格栅远近闪烁、运行成本及作者验收仍待对应验证
+
+## 镜厅北侧后勤复用
+
+`cinema-service-court` 将既有卸货节点与北侧设备门连接为 198m² 服务铺地，保留原 3m 后台路线及 service 权限。铺地西缘复用 Kenney `light-curved.glb`，北墙窗间复用上述完整空调装配；两件实例合计 10,209 三角，均沿用已有模型、纹理、米制尺度与许可，位置和朝向记录在 AST-003 清单对应条目的 `service_court_placement`
+
+空调的后垫块与收水口比名义墙面多伸出 5mm，安装按真实最外点对齐，让脚底落在铺地上、套管仍接墙。完整模型外廓须避开原路带及每侧 0.32m 人物余量，同时保留 3.6m 门前通道和 8×8.5m 卸货净空；场景检查读取运行 GLB 的实际节点与实例变换，避免只检查放置原点。未增加夜间光源或车辆模拟，本轮源数据、场景检查和运行验证状态见[接入记录](../../todo/evidence/TASK-049/cinema-service-court-r1/implementation.md)
+
+## 建筑共享法线派生
+
+[bake_normals.py](materials/bake_normals.py) 从现有 CC0 原始 NormalGL JPG 生成7种已用强度组合：V-15 的 Plaster001／Concrete034／WoodSiding009 为0.35，V-A08 的 Plaster001／Concrete034 为0.28，V-55 与 V-35 共用0.25的两张图。V-35 两图原字节迁入，本轮实际新增5张 PNG；它们嵌入建筑 GLB，不增加独立运行导出条目，也不改变上方 DDS 原图导出
+
+法线按原始 RGB 数值解码，仅使 x/y 乘强度、保留 z 后归一化，无 sRGB 转换；源工程 Normal Map Strength 与 glTF scale 均为1，用于规避本机 Bevy 0.19.1 已观察到的 glTF loader scale 差异。原授权 JPG 保留，原图与衍生哈希及关系在同一 manifest 的 `derived_normals` 登记，图片沿用 CC0-1.0、脚本 MPL-2.0。命令 `python3 -B source-assets/environment-kit/materials/bake_normals.py --check` 逐像素检查全部7种组合；保存与导出语义证据见[本轮记录](../../todo/evidence/TASK-049/normal-scale-shared-r1/README.md)，单级 PNG 不代表远距采样稳定

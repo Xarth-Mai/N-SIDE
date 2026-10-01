@@ -1,0 +1,120 @@
+{
+  "engine": "Cycles CPU",
+  "threads": 2,
+  "samples": 12,
+  "resolution": [
+    640,
+    480
+  ],
+  "lights": "unchanged master",
+  "views": [
+    {
+      "file": "output/yao-sleeve-r12/before-front.png",
+      "sha256": "7b1d367f6ae20c8940a85b3c9d90cef8944e09b4033062070bdbd657430c9d38",
+      "master_sha256": "08da019a48c32725fe0b33fe20f615659105ad16b3c6a0a2e824398f9e739849",
+      "camera": [
+        0,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-sleeve-r12/before-quarter.png",
+      "sha256": "d975e080b8a20f7f35314c7346910f54b4c1c2550e6bf41db1225011c25b35ec",
+      "master_sha256": "08da019a48c32725fe0b33fe20f615659105ad16b3c6a0a2e824398f9e739849",
+      "camera": [
+        3,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-sleeve-r12/before-back.png",
+      "sha256": "e2482e0740bf5f736c561372b2f8b74059b441caab49792e552b65f039acedde",
+      "master_sha256": "08da019a48c32725fe0b33fe20f615659105ad16b3c6a0a2e824398f9e739849",
+      "camera": [
+        0,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-sleeve-r12/candidate-front.png",
+      "sha256": "98e3fc62cf700a014c1365cd03c7db990875c6700d3882af0310bd7fda864858",
+      "master_sha256": "d552df7b32e338a50b71dcb59f29f2036743da0f7d4f83427db9ad485acb3132",
+      "camera": [
+        0,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-sleeve-r12/candidate-quarter.png",
+      "sha256": "c3907aec59e5233a61cd20b26275a4235bd808419dd19c92587856d933fe40d7",
+      "master_sha256": "d552df7b32e338a50b71dcb59f29f2036743da0f7d4f83427db9ad485acb3132",
+      "camera": [
+        3,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-sleeve-r12/candidate-back.png",
+      "sha256": "bb3934d5e1389277fb3b0dea12f168dab942859366d39a2a2a7e8a05e340b268",
+      "master_sha256": "d552df7b32e338a50b71dcb59f29f2036743da0f7d4f83427db9ad485acb3132",
+      "camera": [
+        0,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    }
+  ]
+}

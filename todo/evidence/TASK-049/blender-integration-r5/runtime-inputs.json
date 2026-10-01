@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-10-01T09:06:05.708696+00:00",
+  "base": "5cd3037436e2fdd569569daa1a853f660d11d312",
+  "paths": {
+    "source-assets/district-map/district.json": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+    "source-assets/district-scene/daylight.json": "07c4da1234449a9975a8a8525234683c3bf992162216eeccc82d0ed6ba4990c3",
+    "source-assets/district-scene/appearance.json": "55c7eea60867ef2b1660344dc8cd21049ec5ea012687b9652773ddaef4b94f12",
+    "game/src/world/visual.rs": "5f5cdec3f2093289f8349e90219bac266aa342f91961fad03c03cd19617e188b",
+    "game/assets/characters/CHR-001/yao-grey-study.glb": "3fb220c6f073f003399acf25e0083aafb2f1bb18027064f49183bfbfe61370db",
+    "game/target/debug/map_viewer": "e60fa2b82a4b20c690dbfb27d5df353e80ba01372341390c66cea8be5fb9c76a",
+    "game/target/debug/n-side": "043e9fc64505d1fde4a8fd8c346feccc51aec45a947973e7294f9fd5be9f1d5e",
+    "game/assets/environment/buildings/v15-mirror-hall-facade.glb": "b3617d3c57d8e466ce4e6ca3e5fe4dd3f2b55d596f39c43a3cbdd5405d313bdd",
+    "game/assets/environment/buildings/v-a08-roof-eaves.glb": "f52eb7559f4eb7e65f274f6b03dfaed9efbe0472e9b67a4348da9e4734c9b952",
+    "game/assets/environment/buildings/v-a08-facade.glb": "12e0fdef03f7a2ac2fcd22f2661302b0c29bc1932a0ac83d6ea7d8a02af1e09a",
+    "game/assets/environment/buildings/v55-workshop-facade.glb": "597bc0b96477295efd6a743e2ebf3884ad8b94305e9ba2e93d232e03b258cff4",
+    "game/assets/environment/buildings/v35-byte-beat-facade.glb": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a"
+  },
+  "note": "Final building normal variants and service court; env candidate B withdrawn; earlier character run used build-A hash in its actual run.json"
+}

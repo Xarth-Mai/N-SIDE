@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "asset": "V-15",
+  "source": "source-assets/buildings/V-15/mirror-hall-facade.blend",
+  "before_sha256": "344ef7b570a96c11a7a610bcd8c327a555842f609d76d40da30b232835ccfd4d",
+  "after_sha256": "5c255c0dc110a82152c08982854ca9aed4226ee4864b5f3b53aeac8ff6b896d8",
+  "before": {
+    "objects_mesh_uv_normals_transforms_fonts": "db2b6a8b1c1c7c9544a8a1e82bbc7cb49464420095e2e48765336ec527200bf0",
+    "other_material_values_images_links": "5d04ba4498ff734140fb8ca97e08ada2a1aabdb19b2886cad450f6a233830110"
+  },
+  "after": {
+    "objects_mesh_uv_normals_transforms_fonts": "db2b6a8b1c1c7c9544a8a1e82bbc7cb49464420095e2e48765336ec527200bf0",
+    "other_material_values_images_links": "5d04ba4498ff734140fb8ca97e08ada2a1aabdb19b2886cad450f6a233830110"
+  },
+  "changes": [
+    {
+      "material": "V15_ambientCG_Plaster001",
+      "before_image_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "before_path": "//../../environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "after_image_sha256": "18611d78e41f1d56c8a0cac508291796f4c604b63e728aa44316ccd0ccb00060",
+      "after_path": "source-assets/environment-kit/materials/Plaster001-NormalGL-scale035.png",
+      "strength": 1
+    },
+    {
+      "material": "V15_ambientCG_Concrete034",
+      "before_image_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "before_path": "//../../environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "after_image_sha256": "19322cf9e4350a01306ba794d5f771320a2e9525901e94af00fe345858c3956c",
+      "after_path": "source-assets/environment-kit/materials/Concrete034-NormalGL-scale035.png",
+      "strength": 1
+    },
+    {
+      "material": "V15_ambientCG_WoodSiding009",
+      "before_image_sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+      "before_path": "//../../environment-kit/materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+      "after_image_sha256": "0dfd5f813b707aec5c9ec2cbb87c41593b8370d457eb575f55f57c5c732630e7",
+      "after_path": "source-assets/environment-kit/materials/WoodSiding009-NormalGL-scale035.png",
+      "strength": 1
+    }
+  ],
+  "blender": "5.2.2 LTS",
+  "runtime_export": "NOT RUN; invoke the existing build entry separately"
+}

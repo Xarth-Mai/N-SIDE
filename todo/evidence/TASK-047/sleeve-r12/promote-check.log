@@ -1,0 +1,19 @@
+{"status": "PASS", "checks": {"meshes_identical": true, "bones_identical": true, "images_identical": true, "actions_identical": true, "GLB_nodes_identical": true, "joint_indices_identical": true, "inverse_binds_identical": true, "all_exported_clip_samples_identical": true, "three_embedded_textures_identical": true, "materials_identical": true, "jacket_anchors_identical": true, "jacket_faces_identical": true, "jacket_uv_identical": true, "jacket_weights_identical": true, "jacket_groups_identical": true, "only_five_middle_sleeve_rings_changed": true, "head_hair_collar_clear_in_28_poses": true, "promoted_GLB_matches_reviewed_candidate": true, "CHR002_files_unchanged": true, "repeat_update_keeps_promoted_vertices": true, "formal_function_reproduces_promoted_vertices": true}}
+Hood max overlap pairs 269 -> 269
+TShirt max overlap pairs 180 -> 180
+TShirt_Collar max overlap pairs 0 -> 0
+Face_Head max overlap pairs 0 -> 0
+Hair_Cap max overlap pairs 0 -> 0
+Hair_CrownBase max overlap pairs 0 -> 0
+Palm.L max overlap pairs 0 -> 0
+Palm.R max overlap pairs 0 -> 0
+Sleeve_Cuff.L max overlap pairs 68 -> 68
+Sleeve_Cuff.R max overlap pairs 68 -> 68
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/yao-sleeve-r12/before.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/yao-sleeve-r12/before.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/characters/CHR-001/model/yao-grey-study.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/yao-sleeve-r12/before.blend"
+
+Blender quit

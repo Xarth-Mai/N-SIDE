@@ -1,0 +1,4913 @@
+{
+  "checks": [
+    {
+      "name": "required_assets_ready",
+      "passed": true
+    },
+    {
+      "expected": 120,
+      "name": "all_frames_saved",
+      "passed": true,
+      "saved": 120
+    },
+    {
+      "checked_frames": 120,
+      "name": "finite_transforms",
+      "passed": true
+    },
+    {
+      "distance": 2.086496114730835,
+      "enabled": true,
+      "expected": {
+        "camera_sensitivity": null,
+        "character": null,
+        "configured_borderless": null,
+        "configured_resolution": null,
+        "display_pending": null,
+        "enabled": true,
+        "entry_device": null,
+        "entry_focus": null,
+        "from": 29,
+        "game_page": null,
+        "gamepad_connected": null,
+        "graphics": null,
+        "graphics_page": null,
+        "graphics_tab": null,
+        "handoff": null,
+        "inside_room": null,
+        "max_distance": 3.0,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_jumps": null,
+        "max_player_resets": null,
+        "max_rotation": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": 1.0,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_player_jumps": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Real Viewer left input reveals the service court and rear approach",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_room": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "player_sprinting": null,
+        "pointer_locked": null,
+        "progress_status": null,
+        "restart_pending": null,
+        "same_world_entities": null,
+        "settings_open": null,
+        "text_scale": null,
+        "to": 49,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": true
+      },
+      "name": "Real Viewer left input reveals the service court and rear approach",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 2.086496114730835,
+      "enabled": true,
+      "expected": {
+        "camera_sensitivity": null,
+        "character": null,
+        "configured_borderless": null,
+        "configured_resolution": null,
+        "display_pending": null,
+        "enabled": true,
+        "entry_device": null,
+        "entry_focus": null,
+        "from": 59,
+        "game_page": null,
+        "gamepad_connected": null,
+        "graphics": null,
+        "graphics_page": null,
+        "graphics_tab": null,
+        "handoff": null,
+        "inside_room": null,
+        "max_distance": 3.0,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_jumps": null,
+        "max_player_resets": null,
+        "max_rotation": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": 1.0,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_player_jumps": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Real Viewer right input recovers the loading court context",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_room": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "player_sprinting": null,
+        "pointer_locked": null,
+        "progress_status": null,
+        "restart_pending": null,
+        "same_world_entities": null,
+        "settings_open": null,
+        "text_scale": null,
+        "to": 79,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": true
+      },
+      "name": "Real Viewer right input recovers the loading court context",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    },
+    {
+      "distance": 0.0,
+      "enabled": false,
+      "expected": {
+        "camera_sensitivity": null,
+        "character": null,
+        "configured_borderless": null,
+        "configured_resolution": null,
+        "display_pending": null,
+        "enabled": false,
+        "entry_device": null,
+        "entry_focus": null,
+        "from": 100,
+        "game_page": null,
+        "gamepad_connected": null,
+        "graphics": null,
+        "graphics_page": null,
+        "graphics_tab": null,
+        "handoff": null,
+        "inside_room": null,
+        "max_distance": 0.00009999999747378752,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_jumps": null,
+        "max_player_resets": null,
+        "max_rotation": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_player_jumps": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Service court view is stable after release",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_room": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "player_sprinting": null,
+        "pointer_locked": null,
+        "progress_status": null,
+        "restart_pending": null,
+        "same_world_entities": true,
+        "settings_open": null,
+        "text_scale": null,
+        "to": 119,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": true
+      },
+      "name": "Service court view is stable after release",
+      "passed": true,
+      "peak_rotation_radians": 0.0,
+      "rotation_radians": 0.0
+    }
+  ],
+  "determinism": "Fixed simulated dt; manual input spans or route steering from the measured player/camera state. Scene has no randomized behavior. Seed is recorded, not consumed. GPU pixels and wall time are not cross-platform deterministic.",
+  "elapsed_wall_seconds": 18.424799725,
+  "error": null,
+  "performance": {
+    "observed_scene_load_seconds": [
+      0.227510487
+    ],
+    "resource_counts": {
+      "first_ready": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "last_ready": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "peak_ready": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      }
+    },
+    "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+    "world_capture_frame_interval_ms": {
+      "count": 119,
+      "max": 41.15799100000039,
+      "mean": 36.0614864789916,
+      "p50": 36.04081000000292,
+      "p95": 38.37536700000044,
+      "percentile_method": "nearest_rank"
+    },
+    "world_update_interval_ms": {
+      "count": 824,
+      "max": 24.068033,
+      "mean": 5.253017014563107,
+      "p50": 2.5800359999999998,
+      "p95": 21.525076000000002,
+      "percentile_method": "nearest_rank"
+    }
+  },
+  "samples": [
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 0,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.03333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 14.096291324,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 1,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.06666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 14.129641429,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 2,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.1,
+      "ui": null,
+      "wall_elapsed_seconds": 14.17079942,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 3,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.13333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 14.20778549,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 4,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.16666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 14.246160857,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 5,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.2,
+      "ui": null,
+      "wall_elapsed_seconds": 14.282474684,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 6,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.23333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 14.323370897,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 7,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.26666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 14.359789113,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 8,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.3,
+      "ui": null,
+      "wall_elapsed_seconds": 14.396229068,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 9,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.3333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 14.433193738,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 10,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.36666666666666664,
+      "ui": null,
+      "wall_elapsed_seconds": 14.470548205,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 11,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.4,
+      "ui": null,
+      "wall_elapsed_seconds": 14.506907911,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 12,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.43333333333333335,
+      "ui": null,
+      "wall_elapsed_seconds": 14.543327947,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 13,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.4666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 14.57891117,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 14,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.5,
+      "ui": null,
+      "wall_elapsed_seconds": 14.614797221,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 15,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.5333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 14.650448914,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 16,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.5666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 14.686730641,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 17,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.6,
+      "ui": null,
+      "wall_elapsed_seconds": 14.722334924,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 18,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.6333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 14.758262824,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 19,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.6666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 14.793818318,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 20,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.7,
+      "ui": null,
+      "wall_elapsed_seconds": 14.829685729,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 21,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.7333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 14.865180794,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 22,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.7666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 14.901407332,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 23,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.8,
+      "ui": null,
+      "wall_elapsed_seconds": 14.937000285,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 24,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.8333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 14.972896516,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 25,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.8666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 15.008407461,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 26,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.9,
+      "ui": null,
+      "wall_elapsed_seconds": 15.04448863,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 27,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.9333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 15.075753034,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 28,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 0.9666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 15.111599065,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 29,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.0,
+      "ui": null,
+      "wall_elapsed_seconds": 15.144883201,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 30,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.3472900390625,
+        31.0,
+        -279.1984558105469
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.0333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 15.183284458,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 31,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.694580078125,
+        31.0,
+        -279.39691162109375
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.0666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 15.21689943,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 32,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.0418701171875,
+        31.0,
+        -279.5953674316406
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.1,
+      "ui": null,
+      "wall_elapsed_seconds": 15.252860981,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 33,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.38916015625,
+        31.0,
+        -279.7938232421875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.1333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 15.289223817,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 34,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.57977294921875,
+        31.0,
+        -279.9027404785156
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.1666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 15.32490539,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 35,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.68438720703125,
+        31.0,
+        -279.9625244140625
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.2,
+      "ui": null,
+      "wall_elapsed_seconds": 15.361169557,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 36,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.7417907714844,
+        31.0,
+        -279.9953308105469
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.2333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 15.397416835,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 37,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.7732849121094,
+        31.0,
+        -280.0133361816406
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.2666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 15.433759891,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 38,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.79058837890625,
+        31.0,
+        -280.0232238769531
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.3,
+      "ui": null,
+      "wall_elapsed_seconds": 15.469752201,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 39,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8000793457031,
+        31.0,
+        -280.0286560058594
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.3333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 15.506640523,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 40,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8052978515625,
+        31.0,
+        -280.0316467285156
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.3666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 15.542819991,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 41,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.80816650390625,
+        31.0,
+        -280.0332946777344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.4,
+      "ui": null,
+      "wall_elapsed_seconds": 15.57885069,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 42,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8097229003906,
+        31.0,
+        -280.0341796875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.4333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 15.614651302,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 43,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8105773925781,
+        31.0,
+        -280.03466796875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.4666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 15.650513093,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 44,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.81103515625,
+        31.0,
+        -280.0349426269531
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.5,
+      "ui": null,
+      "wall_elapsed_seconds": 15.686667881,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 45,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.811279296875,
+        31.0,
+        -280.03509521484375
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.5333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 15.722993648,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 46,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8114318847656,
+        31.0,
+        -280.0351867675781
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.5666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 15.759280545,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 47,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115234375,
+        31.0,
+        -280.03521728515625
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.6,
+      "ui": null,
+      "wall_elapsed_seconds": 15.794876129,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 48,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.6333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 15.831009878,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 49,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.6666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 15.866938149,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 50,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.7,
+      "ui": null,
+      "wall_elapsed_seconds": 15.903727931,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 51,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.7333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 15.939579393,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 52,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.7666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 15.975569773,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 53,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.8,
+      "ui": null,
+      "wall_elapsed_seconds": 16.012067119,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 54,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.8333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 16.047322686,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 55,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.8666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 16.083703452,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 56,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.9,
+      "ui": null,
+      "wall_elapsed_seconds": 16.119804241,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 57,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.9333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 16.156044929,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 58,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 1.9666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 16.192320436,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 59,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.8115539550781,
+        31.0,
+        -280.0352478027344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.0,
+      "ui": null,
+      "wall_elapsed_seconds": 16.228660273,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 60,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.4642639160156,
+        31.0,
+        -279.8367919921875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.033333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 16.265501625,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 61,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        310.1169738769531,
+        31.0,
+        -279.6383361816406
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.066666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 16.302006151,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 62,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.7696838378906,
+        31.0,
+        -279.43988037109375
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.1,
+      "ui": null,
+      "wall_elapsed_seconds": 16.338390787,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 63,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.4223937988281,
+        31.0,
+        -279.2414245605469
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.1333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 16.374506926,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 64,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.2317810058594,
+        31.0,
+        -279.13250732421875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.1666666666666665,
+      "ui": null,
+      "wall_elapsed_seconds": 16.41016042,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 65,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.1271667480469,
+        31.0,
+        -279.0727233886719
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.2,
+      "ui": null,
+      "wall_elapsed_seconds": 16.446443187,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 66,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.06976318359375,
+        31.0,
+        -279.0399169921875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.2333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 16.482685345,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 67,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.03826904296875,
+        31.0,
+        -279.02191162109375
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.2666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 16.518757994,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 68,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0209655761719,
+        31.0,
+        -279.01202392578125
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.3,
+      "ui": null,
+      "wall_elapsed_seconds": 16.554479237,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 69,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.011474609375,
+        31.0,
+        -279.006591796875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.3333333333333335,
+      "ui": null,
+      "wall_elapsed_seconds": 16.590309649,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 70,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0062561035156,
+        31.0,
+        -279.00360107421875
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.3666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 16.626031581,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 71,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0033874511719,
+        31.0,
+        -279.001953125
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.4,
+      "ui": null,
+      "wall_elapsed_seconds": 16.662118121,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 72,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0018310546875,
+        31.0,
+        -279.0010681152344
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.433333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 16.698448918,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 73,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0009765625,
+        31.0,
+        -279.0005798339844
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.466666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 16.734642286,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 74,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0005187988281,
+        31.0,
+        -279.00030517578125
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.5,
+      "ui": null,
+      "wall_elapsed_seconds": 16.770957123,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 75,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0002746582031,
+        31.0,
+        -279.0001525878906
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.533333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 16.806859745,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 76,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0001220703125,
+        31.0,
+        -279.00006103515625
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.566666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 16.842743196,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 77,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0000305175781,
+        31.0,
+        -279.0000305175781
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.6,
+      "ui": null,
+      "wall_elapsed_seconds": 16.87838147,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 78,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.6333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 16.914111212999998,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 79,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.6666666666666665,
+      "ui": null,
+      "wall_elapsed_seconds": 16.949866115,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 80,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.7,
+      "ui": null,
+      "wall_elapsed_seconds": 16.988242133,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 81,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.7333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 17.023861837,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 82,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.7666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 17.059902647,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 83,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.8,
+      "ui": null,
+      "wall_elapsed_seconds": 17.09558704,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 84,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.8333333333333335,
+      "ui": null,
+      "wall_elapsed_seconds": 17.131736859,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 85,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.8666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 17.167862988,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 86,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.9,
+      "ui": null,
+      "wall_elapsed_seconds": 17.203552982,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 87,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.933333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 17.23450776,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 88,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 2.966666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 17.270317992,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": true,
+      "entry": null,
+      "frame": 89,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.0,
+      "ui": null,
+      "wall_elapsed_seconds": 17.304039764,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 90,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.033333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 17.339726747,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 91,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.066666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 17.375797317,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 92,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.1,
+      "ui": null,
+      "wall_elapsed_seconds": 17.412222293,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 93,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.1333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 17.447899116,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 94,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.1666666666666665,
+      "ui": null,
+      "wall_elapsed_seconds": 17.483457021,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 95,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.2,
+      "ui": null,
+      "wall_elapsed_seconds": 17.519838818,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 96,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.2333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 17.555865518,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 97,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.2666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 17.591923348,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 98,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.3,
+      "ui": null,
+      "wall_elapsed_seconds": 17.62769408,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 99,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.3333333333333335,
+      "ui": null,
+      "wall_elapsed_seconds": 17.66369676,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 100,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.3666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 17.699408114,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 101,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.4,
+      "ui": null,
+      "wall_elapsed_seconds": 17.735372084,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 102,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.433333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 17.771234036,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 103,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.466666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 17.80687352,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 104,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.5,
+      "ui": null,
+      "wall_elapsed_seconds": 17.842588393,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 105,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.533333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 17.878331906,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 106,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.566666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 17.914162059,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 107,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.6,
+      "ui": null,
+      "wall_elapsed_seconds": 17.950263728,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 108,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.6333333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 17.986521286,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 109,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.6666666666666665,
+      "ui": null,
+      "wall_elapsed_seconds": 18.022400338,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 110,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.7,
+      "ui": null,
+      "wall_elapsed_seconds": 18.058548837,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 111,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.7333333333333334,
+      "ui": null,
+      "wall_elapsed_seconds": 18.093938634,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 112,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.7666666666666666,
+      "ui": null,
+      "wall_elapsed_seconds": 18.129804446,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 113,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.8,
+      "ui": null,
+      "wall_elapsed_seconds": 18.168328433,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 114,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.8333333333333335,
+      "ui": null,
+      "wall_elapsed_seconds": 18.20572178,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 115,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.8666666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 18.242335935,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 116,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.9,
+      "ui": null,
+      "wall_elapsed_seconds": 18.278980039,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 117,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.933333333333333,
+      "ui": null,
+      "wall_elapsed_seconds": 18.315890311,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 118,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 3.966666666666667,
+      "ui": null,
+      "wall_elapsed_seconds": 18.352770054,
+      "world_entities": 5211,
+      "world_ready": true
+    },
+    {
+      "character": null,
+      "enabled": false,
+      "entry": null,
+      "frame": 119,
+      "game_page": null,
+      "gamepad_connected": true,
+      "graphics": null,
+      "handoff": null,
+      "observation": null,
+      "place": null,
+      "player": null,
+      "pointer_locked": null,
+      "position": [
+        309.0,
+        31.0,
+        -279.0
+      ],
+      "resources": {
+        "entities": 5576,
+        "images": 88,
+        "materials": 94,
+        "meshes": 3427
+      },
+      "rotation": [
+        0.02255057916045189,
+        0.9627621173858643,
+        0.0849156603217125,
+        -0.25567537546157837
+      ],
+      "simulation_seconds": 4.0,
+      "ui": null,
+      "wall_elapsed_seconds": 18.387608215,
+      "world_entities": 5211,
+      "world_ready": true
+    }
+  ],
+  "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance",
+  "script": {
+    "assertions": [
+      {
+        "camera_sensitivity": null,
+        "character": null,
+        "configured_borderless": null,
+        "configured_resolution": null,
+        "display_pending": null,
+        "enabled": true,
+        "entry_device": null,
+        "entry_focus": null,
+        "from": 29,
+        "game_page": null,
+        "gamepad_connected": null,
+        "graphics": null,
+        "graphics_page": null,
+        "graphics_tab": null,
+        "handoff": null,
+        "inside_room": null,
+        "max_distance": 3.0,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_jumps": null,
+        "max_player_resets": null,
+        "max_rotation": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": 1.0,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_player_jumps": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Real Viewer left input reveals the service court and rear approach",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_room": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "player_sprinting": null,
+        "pointer_locked": null,
+        "progress_status": null,
+        "restart_pending": null,
+        "same_world_entities": null,
+        "settings_open": null,
+        "text_scale": null,
+        "to": 49,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": true
+      },
+      {
+        "camera_sensitivity": null,
+        "character": null,
+        "configured_borderless": null,
+        "configured_resolution": null,
+        "display_pending": null,
+        "enabled": true,
+        "entry_device": null,
+        "entry_focus": null,
+        "from": 59,
+        "game_page": null,
+        "gamepad_connected": null,
+        "graphics": null,
+        "graphics_page": null,
+        "graphics_tab": null,
+        "handoff": null,
+        "inside_room": null,
+        "max_distance": 3.0,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_jumps": null,
+        "max_player_resets": null,
+        "max_rotation": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": 1.0,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_player_jumps": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Real Viewer right input recovers the loading court context",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_room": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "player_sprinting": null,
+        "pointer_locked": null,
+        "progress_status": null,
+        "restart_pending": null,
+        "same_world_entities": null,
+        "settings_open": null,
+        "text_scale": null,
+        "to": 79,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": true
+      },
+      {
+        "camera_sensitivity": null,
+        "character": null,
+        "configured_borderless": null,
+        "configured_resolution": null,
+        "display_pending": null,
+        "enabled": false,
+        "entry_device": null,
+        "entry_focus": null,
+        "from": 100,
+        "game_page": null,
+        "gamepad_connected": null,
+        "graphics": null,
+        "graphics_page": null,
+        "graphics_tab": null,
+        "handoff": null,
+        "inside_room": null,
+        "max_distance": 0.00009999999747378752,
+        "max_player_camera_distance": null,
+        "max_player_distance": null,
+        "max_player_height": null,
+        "max_player_jumps": null,
+        "max_player_resets": null,
+        "max_rotation": 0.00009999999747378752,
+        "max_ui_scroll": null,
+        "max_world_entities": null,
+        "min_distance": null,
+        "min_player_camera_distance": null,
+        "min_player_distance": null,
+        "min_player_height": null,
+        "min_player_jumps": null,
+        "min_rotation": null,
+        "min_ui_scroll": null,
+        "min_world_entities": null,
+        "name": "Service court view is stable after release",
+        "observation_open": null,
+        "observation_selected": null,
+        "observation_target": null,
+        "observation_visible": null,
+        "place_gamepad": null,
+        "place_id": null,
+        "place_known": null,
+        "place_name": null,
+        "place_room": null,
+        "place_visible": null,
+        "player_blocked": null,
+        "player_grounded": null,
+        "player_sprinting": null,
+        "pointer_locked": null,
+        "progress_status": null,
+        "restart_pending": null,
+        "same_world_entities": true,
+        "settings_open": null,
+        "text_scale": null,
+        "to": 119,
+        "ui_device": null,
+        "ui_focus": null,
+        "ui_page": null,
+        "ui_record": null,
+        "ui_reduced_motion": null,
+        "ui_scale": null,
+        "world_ready": true
+      }
+    ],
+    "events": [
+      {
+        "end": 1,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "M"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "pointer": null,
+        "right_mouse": false,
+        "start": 0
+      },
+      {
+        "end": 34,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "A"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "pointer": null,
+        "right_mouse": false,
+        "start": 30
+      },
+      {
+        "end": 64,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "D"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "pointer": null,
+        "right_mouse": false,
+        "start": 60
+      },
+      {
+        "end": 91,
+        "focused": null,
+        "gamepad": [],
+        "gamepad_connected": null,
+        "keys": [
+          "Escape"
+        ],
+        "left_mouse": false,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "look_axis": [
+          0.0,
+          0.0
+        ],
+        "move_axis": [
+          0.0,
+          0.0
+        ],
+        "pointer": null,
+        "right_mouse": false,
+        "start": 90
+      }
+    ],
+    "fps": 30,
+    "frames": 120,
+    "height": 720,
+    "keyframes": [
+      29,
+      49,
+      79,
+      119
+    ],
+    "route": null,
+    "scene": "district",
+    "seed": 0,
+    "timeout_seconds": 300,
+    "view": "inspect-cinema-service-court",
+    "waits": [],
+    "width": 1280
+  },
+  "status": "PASS",
+  "visual_review": "NOT RUN: inspect frames/video separately; assertions cannot establish visual quality"
+}

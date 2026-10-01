@@ -9,6 +9,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 from glb import read_glb, require, values
+MATERIALS = ROOT / "source-assets/environment-kit/materials"
+sys.path.insert(0, str(MATERIALS))
 
 
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -43,13 +45,13 @@ def main():
             if suffix == "Color":
                 require(hashlib.sha256(embedded).hexdigest() == digest, "GLB changed original color bytes")
             else:
-                derived = HERE / f"textures/{stem}-NormalGL-scale025.png"
+                derived = MATERIALS / f"{stem}-NormalGL-scale025.png"
                 require(image["mimeType"] == "image/png" and hashlib.sha256(embedded).hexdigest() == sha(derived), "GLB normal differs from lossless derived PNG")
                 require(material["normalTexture"].get("scale", 1) == 1, "baked normal must use glTF scale 1")
                 if "--source" not in sys.argv:
                     from PIL import Image
                     from bake_normals import baked_normal
-                    expected = baked_normal(source)
+                    expected = baked_normal(source, .25)
                     with Image.open(derived) as actual:
                         require(actual.mode == expected.mode and actual.size == expected.size and actual.tobytes() == expected.tobytes(), "derived normal does not match glTF xy*.25, z unchanged, normalize")
                 derived_normals[str(derived.relative_to(ROOT))] = {"sha256": sha(derived), "source": str(source.relative_to(ROOT)), "source_sha256": digest, "baked_scale": .25, "gltf_scale": 1}
@@ -109,6 +111,7 @@ def main():
     report = {"status": "PASS", "file": str(runtime.relative_to(ROOT)), "sha256": sha(runtime), "source_sha256": sha(HERE/"facade.blend"), "bytes": runtime.stat().st_size,
               "triangles": len(triangles), "vertices": count_vertices, "materials": len(roles), "images": 4, "runtime_bounds_xyz": bounds,
               "anchor_map_xyz": [-386,153,12], "textured_uv_metric_ratio": [min(ratios),max(ratios)], "texture_sources": textures, "derived_normals": derived_normals,
+              "normal_pixel_check": "NOT RUN in --source mode; run system Python for pixels" if "--source" in sys.argv else "PASS",
               "retained_sign_source_sha256": sha(ROOT/"source-assets/district-scene/byte-beat.svg"), "approaches": approaches, "approach_scope": "Conservative triangle-AABB broad check with source linear road elevations; actual Rust Ground/capsule and runtime NOT RUN"}
     if "--source" in sys.argv:
         import bpy
@@ -126,10 +129,16 @@ def main():
         require(len(images) == 4 and all(i.packed_file for i in images), "four texture masters must remain packed")
         require(all(i.colorspace_settings.name == ("Non-Color" if "NormalGL" in i.name else "sRGB") for i in images), "source texture color spaces changed")
         for role, stem in (("Plaster", "Plaster001"), ("Concrete", "Concrete034")):
-            nodes = bpy.data.materials[role].node_tree.nodes
-            normal = next(n for n in nodes if n.type == "NORMAL_MAP")
-            image = normal.inputs["Color"].links[0].from_node.image
-            require(normal.inputs["Strength"].default_value == 1 and sha(HERE / f"textures/{stem}-NormalGL-scale025.png") == hashlib.sha256(image.packed_file.data).hexdigest(), "source normal image/strength differs from baked contract")
+            shader = bpy.data.materials[role].node_tree.nodes["Principled BSDF"]
+            require(len(shader.inputs["Normal"].links) == 1, "source normal must be bound to shader")
+            normal = shader.inputs["Normal"].links[0].from_node
+            require(normal.type == "NORMAL_MAP" and not normal.inputs["Strength"].is_linked and normal.inputs["Strength"].default_value == 1, "source normal must use Strength 1")
+            require(len(normal.inputs["Color"].links) == 1, "source normal must have one image input")
+            texture = normal.inputs["Color"].links[0].from_node
+            require(texture.type == "TEX_IMAGE" and texture.image and texture.image.packed_file, "source normal must use a packed image")
+            image = texture.image; derived = MATERIALS / f"{stem}-NormalGL-scale025.png"
+            require(image.colorspace_settings.name == "Non-Color" and Path(bpy.path.abspath(image.filepath)).resolve() == derived.resolve(), "source normal must reference shared Non-Color PNG")
+            require(hashlib.sha256(image.packed_file.data).hexdigest() == sha(derived), "source packed normal differs from shared PNG")
         require(len([o for o in objects if o.name.startswith("V35_Showcase_Arcade_")]) == 6, "six original showcase machines must remain editable")
         report["blender_source"] = {"status":"PASS", "version":bpy.app.version_string, "objects":len(objects), "mesh_groups":len(objects)-len(labels), "display_machines":bpy.context.scene["display_machine_count"], "windows":bpy.context.scene["window_count"], "packed_images":4}
     print(json.dumps(report, indent=2, ensure_ascii=False))

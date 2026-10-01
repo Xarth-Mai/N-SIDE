@@ -1,0 +1,111 @@
+{
+  "scene": "district",
+  "view": "eye-cinema-service-aircon",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 180,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    29,
+    49,
+    79,
+    104,
+    124,
+    149,
+    179
+  ],
+  "events": [
+    {
+      "start": 0,
+      "end": 1,
+      "keys": [
+        "M"
+      ]
+    },
+    {
+      "start": 30,
+      "end": 34,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 64,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 85,
+      "end": 105,
+      "look": [0, 20]
+    },
+    {
+      "start": 125,
+      "end": 145,
+      "look": [0, -20]
+    },
+    {
+      "start": 160,
+      "end": 161,
+      "keys": [
+        "Escape"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "name": "Real Viewer left input reveals the wall installation depth",
+      "from": 29,
+      "to": 49,
+      "min_distance": 1,
+      "max_distance": 3,
+      "max_rotation": 0.0001,
+      "enabled": true,
+      "world_ready": true
+    },
+    {
+      "name": "Real Viewer right input recovers the installation context",
+      "from": 59,
+      "to": 79,
+      "min_distance": 1,
+      "max_distance": 3,
+      "max_rotation": 0.0001,
+      "enabled": true,
+      "world_ready": true
+    },
+    {
+      "name": "Real mouse looks down at the pipe end and ground drain",
+      "from": 84,
+      "to": 104,
+      "min_rotation": 0.38,
+      "max_rotation": 0.42,
+      "max_distance": 0.0001,
+      "enabled": true,
+      "world_ready": true
+    },
+    {
+      "name": "Real mouse returns to the upper unit without entering the wall",
+      "from": 124,
+      "to": 144,
+      "min_rotation": 0.38,
+      "max_rotation": 0.42,
+      "max_distance": 0.0001,
+      "enabled": true,
+      "world_ready": true
+    },
+    {
+      "name": "Installation view is stable after release",
+      "from": 170,
+      "to": 179,
+      "max_distance": 0.0001,
+      "max_rotation": 0.0001,
+      "enabled": false,
+      "world_ready": true,
+      "same_world_entities": true
+    }
+  ]
+}

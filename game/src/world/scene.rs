@@ -3088,6 +3088,37 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
         transform: Transform::from_translation(map_to_world([567.79, 95.6, 12.666667]))
             .with_rotation(Quat::from_rotation_y(-std::f32::consts::FRAC_PI_2)),
     });
+    let service_court = map
+        .surfaces
+        .iter()
+        .find(|s| s.id.as_deref() == Some("cinema-service-court"))
+        .ok_or("[scene/service-court] missing cinema-service-court")?;
+    for (source, model, xy, yaw) in [
+        (
+            "buildings[V-15]/aircon-wall",
+            "aircon_wall",
+            // The receiver and rear packers reach 5 mm behind the nominal -0.198 m wall plane
+            [324., 250.203],
+            std::f32::consts::PI,
+        ),
+        (
+            "/surfaces/cinema-service-court/streetlight/0",
+            "streetlight",
+            [314.65, 261.6],
+            0.,
+        ),
+    ] {
+        props.push(PropPlacement {
+            source: source.into(),
+            model: model.into(),
+            transform: Transform::from_translation(map_to_world([
+                xy[0],
+                xy[1],
+                service_court.elevation,
+            ]))
+            .with_rotation(Quat::from_rotation_y(yaw)),
+        });
+    }
     // These small planted edges belong to the authored forecourt, not the general park scatter
     for (index, (surface_id, model, xy, yaw, scale)) in [
         (
@@ -3238,6 +3269,151 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn cinema_service_props_keep_supported_feet_and_clear_working_space() {
+        use geo::Intersects;
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let mut map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let appearance =
+            Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
+        let placements = props(&map, &appearance).unwrap();
+        let court = map
+            .surfaces
+            .iter()
+            .find(|s| s.id.as_deref() == Some("cinema-service-court"))
+            .unwrap();
+        let court_min = court
+            .polygon
+            .iter()
+            .fold([f64::INFINITY; 2], |p, q| [p[0].min(q[0]), p[1].min(q[1])]);
+        let court_max = court.polygon.iter().fold([f64::NEG_INFINITY; 2], |p, q| {
+            [p[0].max(q[0]), p[1].max(q[1])]
+        });
+        let roads: Vec<_> = map
+            .roads
+            .iter()
+            .filter(|r| {
+                r.building.is_none()
+                    && !matches!(r.kind.as_str(), "lift" | "interior" | "bridge" | "deck")
+            })
+            .flat_map(|r| {
+                let points: Vec<_> = r.nodes.iter().map(|n| map.nodes[n]).collect();
+                let offsets = geometry::road_offsets(&points, r.width + 0.64);
+                points
+                    .windows(2)
+                    .enumerate()
+                    .map(|(i, p)| geometry::ribbon(p[0], p[1], offsets[i], offsets[i + 1]))
+                    .collect::<Vec<_>>()
+            })
+            .collect();
+        // Keep the 3.6 m door approach and 8 x 8.5 m unloading area free of the complete models
+        let reserved = [
+            geo::Rect::new(
+                geo::Coord { x: 318.2, y: 250. },
+                geo::Coord { x: 321.8, y: 266.5 },
+            ),
+            geo::Rect::new(
+                geo::Coord { x: 317., y: 258. },
+                geo::Coord { x: 325., y: 266.5 },
+            ),
+        ];
+        for source in [
+            "buildings[V-15]/aircon-wall",
+            "/surfaces/cinema-service-court/streetlight/0",
+        ] {
+            let selected: Vec<_> = placements.iter().filter(|p| p.source == source).collect();
+            assert_eq!(selected.len(), 1, "{source}: exactly one service instance");
+            let placed = selected[0];
+            let spec = &appearance.models[&placed.model];
+            let glb = gltf::Gltf::open(root.join("game/assets").join(&spec.file)).unwrap();
+            let mut points = Vec::new();
+            for node in glb.scenes().nth(spec.scene).unwrap().nodes() {
+                assert!(
+                    node.children().next().is_none(),
+                    "known props use mesh roots"
+                );
+                let matrix = Mat4::from_cols_array_2d(&node.transform().matrix());
+                for primitive in node.mesh().unwrap().primitives() {
+                    points.extend(
+                        primitive
+                            .reader(|_| glb.blob.as_deref())
+                            .read_positions()
+                            .unwrap()
+                            .map(|p| {
+                                placed.transform.transform_point(
+                                    matrix.transform_point3(Vec3::from(p)) * spec.scale,
+                                )
+                            }),
+                    );
+                }
+            }
+            assert!(
+                !points.is_empty() && points.iter().all(|p| p.is_finite()),
+                "{source}: valid actual GLB vertices"
+            );
+            let (lo, hi) = points.iter().fold(
+                (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
+                |(lo, hi), p| (lo.min(*p), hi.max(*p)),
+            );
+            assert!(
+                (lo.y as f64 - court.elevation).abs() < 0.001,
+                "{source}: feet must meet the court"
+            );
+            for p in points.iter().filter(|p| p.y < lo.y + 0.001) {
+                for (axis, value) in [p.x as f64, -p.z as f64].into_iter().enumerate() {
+                    assert!(
+                        value >= court_min[axis] - 0.001 && value <= court_max[axis] + 0.001,
+                        "{source}: foot {p:?} outside supporting court"
+                    );
+                }
+            }
+            let footprint = geo::Rect::new(
+                geo::Coord {
+                    x: lo.x as f64,
+                    y: -hi.z as f64,
+                },
+                geo::Coord {
+                    x: hi.x as f64,
+                    y: -lo.z as f64,
+                },
+            )
+            .to_polygon();
+            assert!(
+                roads.iter().all(|r| !r.intersects(&footprint)),
+                "{source}: obstructs an existing road or its 0.32 m capsule margin"
+            );
+            assert!(
+                reserved
+                    .iter()
+                    .all(|r| !r.to_polygon().intersects(&footprint)),
+                "{source}: obstructs door approach or unloading"
+            );
+            if placed.model == "aircon_wall" {
+                assert!(
+                    lo.x > 322.805 && hi.x < 325.195 && hi.y < 28.95,
+                    "actual assembly must fit between north window frames below the next floor band"
+                );
+                assert!(
+                    hi.z > -250.001 && hi.z < -249.96 && lo.z < -250.3,
+                    "sleeve must reach the north wall while the unit faces the court"
+                );
+            } else {
+                assert!(
+                    (hi.y - lo.y - 4.5).abs() < 0.001,
+                    "streetlight must preserve the imported metre conversion"
+                );
+            }
+        }
+        map.surfaces
+            .retain(|s| s.id.as_deref() != Some("cinema-service-court"));
+        assert!(
+            props(&map, &appearance)
+                .err()
+                .unwrap()
+                .contains("[scene/service-court] missing cinema-service-court")
+        );
+    }
 
     #[test]
     fn music_brick_veneer_keeps_doorway_uv_scale_and_collision() {

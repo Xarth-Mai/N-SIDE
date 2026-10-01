@@ -35,13 +35,14 @@ def material(name, rgb, roughness=.7, metallic=0, texture=None, repeat=(1, 1)):
     if texture:
         for suffix, space in (("Color", "sRGB"), ("NormalGL", "Non-Color")):
             node = mat.node_tree.nodes.new("ShaderNodeTexImage")
-            node.image = bpy.data.images.load(str(TEXTURES / f"{texture}_1K-JPG_{suffix}.jpg"), check_existing=True)
+            path = TEXTURES / (f"{texture}_1K-JPG_Color.jpg" if suffix == "Color" else f"{texture}-NormalGL-scale028.png")
+            node.image = bpy.data.images.load(str(path), check_existing=True)
             node.image.colorspace_settings.name = space
             if suffix == "Color":
                 mat.node_tree.links.new(node.outputs["Color"], shader.inputs["Base Color"])
             else:
                 normal = mat.node_tree.nodes.new("ShaderNodeNormalMap")
-                normal.inputs["Strength"].default_value = .28
+                normal.inputs["Strength"].default_value = 1
                 mat.node_tree.links.new(node.outputs["Color"], normal.inputs["Color"])
                 mat.node_tree.links.new(normal.outputs["Normal"], shader.inputs["Normal"])
     mat["meters_per_repeat"] = repeat

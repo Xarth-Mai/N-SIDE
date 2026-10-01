@@ -1,0 +1,213 @@
+{
+  "status": "PASS",
+  "scope": "Completed machine-evidence archive for the two A/B runs only; visual interpretation and adoption remain in separate review",
+  "comparison_reference": "comparison.json",
+  "source_patch_reference": "candidate.patch",
+  "source_input_reference": "input-before.json",
+  "total_runs": 2,
+  "total_actual_frames": 240,
+  "total_native_checks": 12,
+  "total_wrapper_checks": 12,
+  "same_actual_camera_and_scene_frames": 120,
+  "media_cleanup": "Pending root cleanup; no media copied",
+  "compression": {
+    "threshold_bytes": 500000,
+    "format": "gzip",
+    "mtime": 0,
+    "filename": ""
+  },
+  "archive_verification": {
+    "status": "PASS",
+    "files": 8,
+    "gzip_roundtrips": 0,
+    "gzip_mtime": 0,
+    "original_bytes": 289486,
+    "stored_bytes": 289486,
+    "source_bytes_preserved": true,
+    "original_visual_fields_preserved": true
+  },
+  "captures": [
+    {
+      "name": "A",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/env-reflection-r1/A/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/env-reflection-r1/A",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "ffe0b60bf961f824cacf50a57d69dbd17ecdb85da3af1f2ca56f12f7b76671ec",
+      "script_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8",
+      "scene": "district",
+      "view": "eye-v55-west",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/A/run.json",
+          "compression": "none",
+          "original_bytes": 9986,
+          "original_sha256": "4bfe0d4772e5b06899b053def21a52dcf5dedfd036102cf79c503ab777c52a66",
+          "stored_bytes": 9986,
+          "stored_sha256": "4bfe0d4772e5b06899b053def21a52dcf5dedfd036102cf79c503ab777c52a66"
+        },
+        "script.json": {
+          "path": "captures/A/script.json",
+          "compression": "none",
+          "original_bytes": 1063,
+          "original_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8",
+          "stored_bytes": 1063,
+          "stored_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8"
+        },
+        "state.json": {
+          "path": "captures/A/state.json",
+          "compression": "none",
+          "original_bytes": 119293,
+          "original_sha256": "e410f49ced7cc0bc0113b9e427241a5ed750914af86dc11b2ec8b8ed1948b76f",
+          "stored_bytes": 119293,
+          "stored_sha256": "e410f49ced7cc0bc0113b9e427241a5ed750914af86dc11b2ec8b8ed1948b76f"
+        },
+        "runtime.log": {
+          "path": "captures/A/runtime.log",
+          "compression": "none",
+          "original_bytes": 14369,
+          "original_sha256": "427b5e01e98f190ff6a6f89dca7065c03a9c13d3a0e28055ebeb09698de2f323",
+          "stored_bytes": 14369,
+          "stored_sha256": "427b5e01e98f190ff6a6f89dca7065c03a9c13d3a0e28055ebeb09698de2f323"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "sha256": "90a3ee560924af3270ccc1e6085e8f096348a65a2d8b88a4572842e024a23d40",
+          "original_path": "output/env-reflection-r1/A/keyframes/frame00029.png"
+        },
+        {
+          "frame": 49,
+          "sha256": "a3b719c281dbe8ce0e181f26bc55bf6b59436410a150793eee79ca37a56cb51e",
+          "original_path": "output/env-reflection-r1/A/keyframes/frame00049.png"
+        },
+        {
+          "frame": 79,
+          "sha256": "90a3ee560924af3270ccc1e6085e8f096348a65a2d8b88a4572842e024a23d40",
+          "original_path": "output/env-reflection-r1/A/keyframes/frame00079.png"
+        },
+        {
+          "frame": 119,
+          "sha256": "90a3ee560924af3270ccc1e6085e8f096348a65a2d8b88a4572842e024a23d40",
+          "original_path": "output/env-reflection-r1/A/keyframes/frame00119.png"
+        }
+      ]
+    },
+    {
+      "name": "B",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/env-reflection-r1/B/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/env-reflection-r1/B",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "6d06a6cd3b30e3b685e84f43495b5b03bf8c2fd3cab9324441153d39bf897d4d",
+      "script_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8",
+      "scene": "district",
+      "view": "eye-v55-west",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/B/run.json",
+          "compression": "none",
+          "original_bytes": 10060,
+          "original_sha256": "ef408c56da5a0266ae67eb5fd66963ffb6bc889bd3d7ed4ef53c5c6bb1fc166a",
+          "stored_bytes": 10060,
+          "stored_sha256": "ef408c56da5a0266ae67eb5fd66963ffb6bc889bd3d7ed4ef53c5c6bb1fc166a"
+        },
+        "script.json": {
+          "path": "captures/B/script.json",
+          "compression": "none",
+          "original_bytes": 1063,
+          "original_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8",
+          "stored_bytes": 1063,
+          "stored_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8"
+        },
+        "state.json": {
+          "path": "captures/B/state.json",
+          "compression": "none",
+          "original_bytes": 119283,
+          "original_sha256": "0529eb5f43134d431783072a4228a2b90b7b1b7db44ba5e806b6b46e6bd81b48",
+          "stored_bytes": 119283,
+          "stored_sha256": "0529eb5f43134d431783072a4228a2b90b7b1b7db44ba5e806b6b46e6bd81b48"
+        },
+        "runtime.log": {
+          "path": "captures/B/runtime.log",
+          "compression": "none",
+          "original_bytes": 14369,
+          "original_sha256": "1e7f473281378a42711b0b883978d06c7d7e2ddb13093a8aaf2be714f4f21b0e",
+          "stored_bytes": 14369,
+          "stored_sha256": "1e7f473281378a42711b0b883978d06c7d7e2ddb13093a8aaf2be714f4f21b0e"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "sha256": "6773f707076ea3f5576f0db0e179cc0239ba2abd13400c7e993cc8884394b2c2",
+          "original_path": "output/env-reflection-r1/B/keyframes/frame00029.png"
+        },
+        {
+          "frame": 49,
+          "sha256": "c6663d35a82fa63ba93be6a4293aeccf8e506a738d6be1ddc34753596ede867f",
+          "original_path": "output/env-reflection-r1/B/keyframes/frame00049.png"
+        },
+        {
+          "frame": 79,
+          "sha256": "6773f707076ea3f5576f0db0e179cc0239ba2abd13400c7e993cc8884394b2c2",
+          "original_path": "output/env-reflection-r1/B/keyframes/frame00079.png"
+        },
+        {
+          "frame": 119,
+          "sha256": "6773f707076ea3f5576f0db0e179cc0239ba2abd13400c7e993cc8884394b2c2",
+          "original_path": "output/env-reflection-r1/B/keyframes/frame00119.png"
+        }
+      ]
+    }
+  ]
+}

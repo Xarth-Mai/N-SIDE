@@ -1,0 +1,11 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 1m 59s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 3 tests
+test world::visual::tests::daylight_input_rejects_invalid_render_parameters ... ok
+test world::visual::tests::directional_sky_is_continuous_and_uses_the_scene_sun ... ok
+test world::visual::tests::camera_aa_modes_use_compatible_prepasses_and_matching_sky ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 140 filtered out; finished in 0.04s
+

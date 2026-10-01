@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "assets": {
+    "V-15": {
+      "command": [
+        "blender",
+        "--background",
+        "-noaudio",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "source-assets/buildings/V-15/build.py"
+      ],
+      "ALSOFT_DRIVERS": "null",
+      "exit_code": 0
+    },
+    "V-A08": {
+      "command": [
+        "blender",
+        "--background",
+        "-noaudio",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "source-assets/buildings/V-A08/facade-build.py"
+      ],
+      "ALSOFT_DRIVERS": "null",
+      "exit_code": 0
+    },
+    "V-55": {
+      "command": [
+        "blender",
+        "--background",
+        "-noaudio",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "source-assets/buildings/V-55/build.py"
+      ],
+      "ALSOFT_DRIVERS": "null",
+      "exit_code": 0
+    }
+  }
+}

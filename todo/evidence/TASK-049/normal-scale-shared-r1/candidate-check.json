@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "read-only candidate function checks; no generated PNG, formal source, runtime or Blender mutation",
+  "scaled_reference_samples": [
+    0.25,
+    0.28,
+    0.35,
+    0,
+    1
+  ],
+  "v35_pixels_equal": [
+    {
+      "stem": "Plaster001",
+      "reuses_v35_bytes": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+      "pixels": 1048576,
+      "encoded_png_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7"
+    },
+    {
+      "stem": "Concrete034",
+      "reuses_v35_bytes": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+      "pixels": 524288,
+      "encoded_png_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07"
+    }
+  ],
+  "shared_variant_count": 7,
+  "new_pngs_after_release": 5
+}

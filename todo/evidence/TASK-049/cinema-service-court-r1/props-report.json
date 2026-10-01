@@ -1,0 +1,211 @@
+{
+  "status": "PASS",
+  "props": [
+    {
+      "model": "aircon_wall",
+      "source": "buildings[V-15]/aircon-wall",
+      "map_position": [
+        324,
+        250.203,
+        25
+      ],
+      "world_y_rotation_radians": 3.141592653589793,
+      "scale": 1,
+      "purpose": "北墙窗间设备，完整回墙管和地面收水口",
+      "retained_source": "source-assets/environment-kit/aircon/wall-installation.blend",
+      "runtime_file": "game/assets/environment/street-furniture/aircon-wall.glb",
+      "runtime_sha256": "186759c4eef4728bc09cca57e3c2fd2685f3d98c3767064c6417cd615d143be0",
+      "source_license": "MPL-2.0",
+      "component_licenses": {
+        "original_unit_geometry_and_textures": "CC0-1.0; Monsta3D / Poly Haven",
+        "624_installation_triangles_and_script": "MPL-2.0; N:SIDE project contributors"
+      },
+      "triangles": 10117,
+      "map_bounds_xyz": [
+        [
+          323.6000143587589,
+          324.3999856710434
+        ],
+        [
+          249.96800000059605,
+          250.3900796084404
+        ],
+        [
+          25.0,
+          28.431230068206787
+        ]
+      ],
+      "foot_points": [
+        [
+          324.0422000028193,
+          250.1949999986887,
+          25.0
+        ],
+        [
+          324.0422000028193,
+          250.1949999986887,
+          25.0
+        ],
+        [
+          324.0422000028193,
+          250.1949999986887,
+          25.0
+        ],
+        [
+          324.0422000028193,
+          250.00000000584126,
+          25.0
+        ],
+        [
+          324.0422000028193,
+          250.00000000584126,
+          25.0
+        ],
+        [
+          324.0422000028193,
+          250.00000000584126,
+          25.0
+        ],
+        [
+          323.8421999961138,
+          250.1949999986887,
+          25.0
+        ],
+        [
+          323.8421999961138,
+          250.1949999986887,
+          25.0
+        ],
+        [
+          323.8421999961138,
+          250.1949999986887,
+          25.0
+        ],
+        [
+          323.8421999961138,
+          250.00000000584126,
+          25.0
+        ],
+        [
+          323.8421999961138,
+          250.00000000584126,
+          25.0
+        ],
+        [
+          323.8421999961138,
+          250.00000000584126,
+          25.0
+        ]
+      ],
+      "materials": 5,
+      "wall_contact": {
+        "source_north": 250,
+        "frame_half_width_m": 0.805,
+        "adjacent_window_x": [
+          322,
+          326
+        ],
+        "margin_each_side_m": 0.7950143289565972
+      }
+    },
+    {
+      "model": "streetlight",
+      "source": "/surfaces/cinema-service-court/streetlight/0",
+      "map_position": [
+        314.65,
+        261.6,
+        25
+      ],
+      "world_y_rotation_radians": 0,
+      "scale": 1,
+      "purpose": "服务前场西侧识别与照明设施外观；本轮不新增夜间光源逻辑",
+      "retained_source": "source-assets/environment-kit/roads/light-curved.glb",
+      "runtime_file": "game/assets/environment/roads/light-curved.glb",
+      "runtime_sha256": "dce22a3390585e4a2a0467a7394dad07c713f261f65b2ceacda6fe768e5527f8",
+      "source_license": "CC0-1.0",
+      "component_licenses": null,
+      "triangles": 92,
+      "map_bounds_xyz": [
+        [
+          314.48333331907605,
+          314.8166666809239
+        ],
+        [
+          261.4333333190761,
+          262.93333344739165
+        ],
+        [
+          25.0,
+          29.5
+        ]
+      ],
+      "foot_points": [
+        [
+          314.48333331907605,
+          261.76666668092395,
+          25.0
+        ],
+        [
+          314.48333331907605,
+          261.4333333190761,
+          25.0
+        ],
+        [
+          314.8166666809239,
+          261.76666668092395,
+          25.0
+        ],
+        [
+          314.8166666809239,
+          261.4333333190761,
+          25.0
+        ],
+        [
+          314.48333331907605,
+          261.76666668092395,
+          25.0
+        ],
+        [
+          314.8166666809239,
+          261.76666668092395,
+          25.0
+        ],
+        [
+          314.8166666809239,
+          261.4333333190761,
+          25.0
+        ],
+        [
+          314.8166666809239,
+          261.76666668092395,
+          25.0
+        ],
+        [
+          314.48333331907605,
+          261.4333333190761,
+          25.0
+        ],
+        [
+          314.48333331907605,
+          261.76666668092395,
+          25.0
+        ],
+        [
+          314.8166666809239,
+          261.4333333190761,
+          25.0
+        ],
+        [
+          314.48333331907605,
+          261.4333333190761,
+          25.0
+        ]
+      ],
+      "materials": 1
+    }
+  ],
+  "additional_instances": 2,
+  "new_model_files": 0,
+  "total_instance_triangles": 10209,
+  "scope": "Actual model/node/prop transformed vertices; appearance and source-license references. Bounds are conservative, not a Rust collision or runtime proof."
+}

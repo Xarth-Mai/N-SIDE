@@ -1,0 +1,57 @@
+{
+  "result": "PASS",
+  "file": "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
+  "sha256": "b3617d3c57d8e466ce4e6ca3e5fe4dd3f2b55d596f39c43a3cbdd5405d313bdd",
+  "poster_bytes_preserved": true,
+  "poster_front_uv": "PASS",
+  "all_materials_opaque": true,
+  "texture_sources": {
+    "source-assets/environment-kit/materials/Plaster001_1K-JPG_Color.jpg": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+    "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+    "source-assets/environment-kit/materials/Concrete034_1K-JPG_Color.jpg": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+    "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+    "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_Color.jpg": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41",
+    "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_NormalGL.jpg": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0"
+  },
+  "derived_normals": {
+    "source-assets/environment-kit/materials/Plaster001-NormalGL-scale035.png": {
+      "sha256": "18611d78e41f1d56c8a0cac508291796f4c604b63e728aa44316ccd0ccb00060",
+      "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "baked_scale": 0.35,
+      "gltf_scale": 1
+    },
+    "source-assets/environment-kit/materials/Concrete034-NormalGL-scale035.png": {
+      "sha256": "19322cf9e4350a01306ba794d5f771320a2e9525901e94af00fe345858c3956c",
+      "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "baked_scale": 0.35,
+      "gltf_scale": 1
+    },
+    "source-assets/environment-kit/materials/WoodSiding009-NormalGL-scale035.png": {
+      "sha256": "0dfd5f813b707aec5c9ec2cbb87c41593b8370d457eb575f55f57c5c732630e7",
+      "source": "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+      "source_sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+      "baked_scale": 0.35,
+      "gltf_scale": 1
+    }
+  },
+  "normal_pixel_check": "PASS",
+  "vertices": 21482,
+  "triangles": 12362,
+  "degenerate_triangles": 0,
+  "materials": 10,
+  "embedded_images": 7,
+  "bounds_gltf": {
+    "min": [
+      -0.35000038146972656,
+      0.0,
+      -30.079998016357422
+    ],
+    "max": [
+      43.15000534057617,
+      11.829998970031738,
+      3.0349998474121094
+    ]
+  }
+}

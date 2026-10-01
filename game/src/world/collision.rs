@@ -48,7 +48,8 @@ impl CollisionWorld {
                     | "v35_byte_beat_facade"
                     | "street_bench"
                     | "aircon_wall"
-            )
+            ) || (prop.model == "streetlight"
+                && prop.source == "/surfaces/cinema-service-court/streetlight/0")
         }) {
             let spec = scene.appearance.models.get(&prop.model).ok_or_else(|| {
                 format!(
@@ -539,6 +540,12 @@ mod tests {
         for (model, source, grade) in [
             ("street_bench", "/surfaces/cinema-arrival-court/", 25.),
             ("aircon_wall", "buildings[V-W10]/aircon-wall", 12.666667),
+            ("aircon_wall", "buildings[V-15]/aircon-wall", 25.),
+            (
+                "streetlight",
+                "/surfaces/cinema-service-court/streetlight/0",
+                25.,
+            ),
         ] {
             let mut first = 0;
             let mut grounded_vertices = 0;
@@ -592,6 +599,37 @@ mod tests {
             0.02,
         );
         assert!(lane.is_none(), "service lane obstruction: {lane:?}");
+
+        // Probe the new service-court lamp using its real triangles, not a box proxy
+        let lamp = world
+            .capsule_cast(
+                Vec3::new(312.8, 25.15, -261.6),
+                1.7,
+                0.3,
+                Vec3::X * 3.,
+                0.02,
+            )
+            .expect("service-court lamp must block the capsule");
+        assert!(
+            lamp.source
+                .contains("cinema-service-court/streetlight/0/collision/"),
+            "{lamp:?}"
+        );
+        assert!(lamp.fraction > 0. && lamp.fraction < 0.8, "{lamp:?}");
+        // Existing source lane remains clear through the actual load-to-door approach
+        for x in [318.8, 320., 321.2] {
+            let from = Vec3::new(x, 25.1, -265.);
+            assert!(
+                world
+                    .capsule_cast(from, 1.7, 0.3, Vec3::Z * 14.3, 0.02)
+                    .is_none(),
+                "blocked service approach at {x}"
+            );
+            for north in [265., 258., 250.7] {
+                let foot = world.support(Vec3::new(x, 25.7, -north), 1.).unwrap();
+                assert!((foot.point.y - 25.).abs() < 0.08, "{foot:?}");
+            }
+        }
 
         let from = Vec3::new(90., 30.3, -276.);
         let original = native

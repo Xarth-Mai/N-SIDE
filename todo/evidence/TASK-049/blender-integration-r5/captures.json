@@ -1,0 +1,796 @@
+{
+  "status": "COMPLETE",
+  "scope": "R5 archive complete: six successful native runs and one retained wrapper parameter failure before native launch. Machine checks do not replace visual review or author approval.",
+  "media_cleanup": "Pending root cleanup; no media copied",
+  "compression": {
+    "threshold_bytes": 500000,
+    "format": "gzip",
+    "mtime": 0,
+    "filename": ""
+  },
+  "archive_verification": {
+    "status": "PASS",
+    "files": 26,
+    "gzip_roundtrips": 1,
+    "gzip_mtime": 0,
+    "original_bytes": 2411109,
+    "stored_bytes": 1004118,
+    "source_bytes_preserved": true,
+    "original_visual_fields_preserved": true
+  },
+  "captures": [
+    {
+      "name": "yao-motion",
+      "status": "FAIL",
+      "runtime_started": false,
+      "command": null,
+      "runtime_exit_code": null,
+      "error": "--aa requires a district Viewer script",
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "284df06444f9c362ad9bb208dfd58963ed27316e98afa8a15aa3a8ed2fef0d0d",
+      "script_sha256": "6a15efbc24c5a10a1d67b873a6fd50b188951a7678834571bfd06bc5e954f6f2",
+      "scene": "walk-preview",
+      "view": "shop",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 540,
+      "actual_frames": 0,
+      "state_samples": null,
+      "native_checks": null,
+      "wrapper_checks": null,
+      "video": "NOT RUN",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/yao-motion/run.json",
+          "compression": "none",
+          "original_bytes": 11585,
+          "original_sha256": "e826beb0eda408ff56c8350c36db63ef1054c68edb836b091bc5b5e0646a7009",
+          "stored_bytes": 11585,
+          "stored_sha256": "e826beb0eda408ff56c8350c36db63ef1054c68edb836b091bc5b5e0646a7009"
+        },
+        "script.json": {
+          "path": "captures/yao-motion/script.json",
+          "compression": "none",
+          "original_bytes": 8934,
+          "original_sha256": "6a15efbc24c5a10a1d67b873a6fd50b188951a7678834571bfd06bc5e954f6f2",
+          "stored_bytes": 8934,
+          "stored_sha256": "6a15efbc24c5a10a1d67b873a6fd50b188951a7678834571bfd06bc5e954f6f2"
+        },
+        "state.json": {
+          "status": "NOT GENERATED",
+          "reason": "Capture wrapper rejected --aa for walk-preview before invoking the native executable; no runtime state/log was created"
+        },
+        "runtime.log": {
+          "status": "NOT GENERATED",
+          "reason": "Capture wrapper rejected --aa for walk-preview before invoking the native executable; no runtime state/log was created"
+        }
+      },
+      "keyframes": [],
+      "runtime_phase": "earlier_build_A_character_attempt",
+      "runtime_inputs_note": "Actual binary hash remains that recorded by this attempt, different from later final-build snapshot"
+    },
+    {
+      "name": "yao-motion-retry",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/n-side",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/yao-motion-retry/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/yao-motion-retry",
+        "--walk-preview",
+        "--character-preview"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "284df06444f9c362ad9bb208dfd58963ed27316e98afa8a15aa3a8ed2fef0d0d",
+      "script_sha256": "6a15efbc24c5a10a1d67b873a6fd50b188951a7678834571bfd06bc5e954f6f2",
+      "scene": "walk-preview",
+      "view": "shop",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 540,
+      "actual_frames": 540,
+      "state_samples": 540,
+      "native_checks": 27,
+      "wrapper_checks": 28,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/yao-motion-retry/run.json",
+          "compression": "none",
+          "original_bytes": 67775,
+          "original_sha256": "ac60831852462d5108caa85fc5efdf6432afac6259b33c41ac32da87f3abc49e",
+          "stored_bytes": 67775,
+          "stored_sha256": "ac60831852462d5108caa85fc5efdf6432afac6259b33c41ac32da87f3abc49e"
+        },
+        "script.json": {
+          "path": "captures/yao-motion-retry/script.json",
+          "compression": "none",
+          "original_bytes": 8934,
+          "original_sha256": "6a15efbc24c5a10a1d67b873a6fd50b188951a7678834571bfd06bc5e954f6f2",
+          "stored_bytes": 8934,
+          "stored_sha256": "6a15efbc24c5a10a1d67b873a6fd50b188951a7678834571bfd06bc5e954f6f2"
+        },
+        "state.json": {
+          "path": "captures/yao-motion-retry/state.json.gz",
+          "compression": "gzip",
+          "original_bytes": 1442102,
+          "original_sha256": "2fb22161f78162251dc673ed8f772d93317dfeed8417928af7a86f16c026d929",
+          "stored_bytes": 35111,
+          "stored_sha256": "bbe1a754d5db6233f4d7d26988f2677394f656048fb914b8e1eb44f1c907cbd5"
+        },
+        "runtime.log": {
+          "path": "captures/yao-motion-retry/runtime.log",
+          "compression": "none",
+          "original_bytes": 53305,
+          "original_sha256": "0f034ff2cbe4dcb3020603af13c93c234ab1d6389f48bc323101b2d910b17266",
+          "stored_bytes": 53305,
+          "stored_sha256": "0f034ff2cbe4dcb3020603af13c93c234ab1d6389f48bc323101b2d910b17266"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "sha256": "c981d39cafc879f20b9c636fe192f56b1ca4d461f5f70abcacb5aaa746541cbb",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00029.png"
+        },
+        {
+          "frame": 59,
+          "sha256": "4190c6c5bfe3aeaee3898c35990954f5aebb9d64888b72fcc19193587000b2b2",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00059.png"
+        },
+        {
+          "frame": 62,
+          "sha256": "2c8d70855afc0c912a6de1f886ede2f4cbc7979acc036867015152305fd08b38",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00062.png"
+        },
+        {
+          "frame": 65,
+          "sha256": "324eb983942dd87a628317a7f2c522a5a2759513c624e1b1e9b4527fc4404cba",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00065.png"
+        },
+        {
+          "frame": 66,
+          "sha256": "b2a22af3a7a01ebbc4ffc57d699c5487d0ef514aa6dd740e329a2b86c7fbc03f",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00066.png"
+        },
+        {
+          "frame": 69,
+          "sha256": "4a0be290932eb35cc3c6fee1309070be6c70e24a4c120b0f027f2e31839e452d",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00069.png"
+        },
+        {
+          "frame": 72,
+          "sha256": "8ae6c158623110191222353287e68d754bc530a2b96ebb43345d0a971340f8c5",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00072.png"
+        },
+        {
+          "frame": 75,
+          "sha256": "99120cf0e719801ae57afc75ec99d42ec383feffb12d928ce8a19d1d31fadaf4",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00075.png"
+        },
+        {
+          "frame": 78,
+          "sha256": "66e0918432c7f81c176035363aa7591f79caf9fea053e4c1be909911cdbf4204",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00078.png"
+        },
+        {
+          "frame": 81,
+          "sha256": "4012cbe7fa7abbeb879f1ba98d13467b2cc818ad986a30eaaaba831a239bf4c3",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00081.png"
+        },
+        {
+          "frame": 89,
+          "sha256": "56fb034a3c6d480bd4751f6e795c338500a2810385459f8e93f1197082f73595",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00089.png"
+        },
+        {
+          "frame": 105,
+          "sha256": "eba9c31a1ae31b1e75773c41a49b38a480eeb8e030f93b178328d1017fda64f8",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00105.png"
+        },
+        {
+          "frame": 109,
+          "sha256": "50a741ce498a2be2ac3238f56150f2fe015da04b49512feae04075a8fe8406cb",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00109.png"
+        },
+        {
+          "frame": 112,
+          "sha256": "92486d699388e1bac0519de8894f774535a00c9e20c9cce50e0d96155075e152",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00112.png"
+        },
+        {
+          "frame": 129,
+          "sha256": "6164b30112652e74a284cdda0b6e9987dc675de82ee51434508e2a53c3a969ce",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00129.png"
+        },
+        {
+          "frame": 159,
+          "sha256": "421b603d8b77d6585145724d233d3678cb610b913affa63b66f6ef91b7113ba3",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00159.png"
+        },
+        {
+          "frame": 209,
+          "sha256": "07d48310a911948647c7cc346d10afeac898e7214410e56398131fdc8cfc0405",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00209.png"
+        },
+        {
+          "frame": 259,
+          "sha256": "07d48310a911948647c7cc346d10afeac898e7214410e56398131fdc8cfc0405",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00259.png"
+        },
+        {
+          "frame": 289,
+          "sha256": "f7163eff0d1f8c519f41206f6ffa7599f1ac9d60f204cee5bd3ec74ac356878d",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00289.png"
+        },
+        {
+          "frame": 314,
+          "sha256": "03e15e4665df9720af04da9fcd3e293598d9a8aca241f115f6cc38a0df13e409",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00314.png"
+        },
+        {
+          "frame": 359,
+          "sha256": "7bc488a98166fa5b4773f463b0338635d614a46384322e57bdee9a313090d171",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00359.png"
+        },
+        {
+          "frame": 392,
+          "sha256": "f8e298a56d637dbd927f5bd2fa38660ffa31ade6ecce20f2bc974d8673c504d7",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00392.png"
+        },
+        {
+          "frame": 409,
+          "sha256": "c7730efdaeb23661a0a603e00d0a3a60528c6863bc708954c16b1c288b7d8fd2",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00409.png"
+        },
+        {
+          "frame": 449,
+          "sha256": "218c11261c93e107ea46288bb6825829dde9c4bf10593a4235a485c791199037",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00449.png"
+        },
+        {
+          "frame": 499,
+          "sha256": "a2f5d84f13a4f48385ceefcb8215e7efe728b3e0210c87eb0c2f23af116d894c",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00499.png"
+        },
+        {
+          "frame": 539,
+          "sha256": "1a583344b1d08d672caad046c4d97acf6bfe9fd5df41f47ecf38e3b582271242",
+          "original_path": "output/blender-integration-r5/yao-motion-retry/keyframes/frame00539.png"
+        }
+      ],
+      "character_ids": [
+        "CHR-001"
+      ],
+      "observed_clips": [
+        "Idle",
+        "Jump",
+        "Run",
+        "Walk"
+      ],
+      "runtime_phase": "earlier_build_A_character_attempt",
+      "runtime_inputs_note": "Actual binary hash remains that recorded by this attempt, different from later final-build snapshot"
+    },
+    {
+      "name": "inspect-cinema-service-court",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/inspect-cinema-service-court/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/inspect-cinema-service-court",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "e60fa2b82a4b20c690dbfb27d5df353e80ba01372341390c66cea8be5fb9c76a",
+      "script_sha256": "1a571c9d070159ee6f3850426fb6b958466e0696744fb0f225dcd93ae0df0f0d",
+      "scene": "district",
+      "view": "inspect-cinema-service-court",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_viewer_restored_environment_and_shared_normals",
+      "map_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+      "archive": {
+        "run.json": {
+          "path": "captures/inspect-cinema-service-court/run.json",
+          "compression": "none",
+          "original_bytes": 12551,
+          "original_sha256": "90ed6465f816cda6c1a988fa99073df234c12f9d35206689971d2571eeec007c",
+          "stored_bytes": 12551,
+          "stored_sha256": "90ed6465f816cda6c1a988fa99073df234c12f9d35206689971d2571eeec007c"
+        },
+        "script.json": {
+          "path": "captures/inspect-cinema-service-court/script.json",
+          "compression": "none",
+          "original_bytes": 1374,
+          "original_sha256": "1a571c9d070159ee6f3850426fb6b958466e0696744fb0f225dcd93ae0df0f0d",
+          "stored_bytes": 1374,
+          "stored_sha256": "1a571c9d070159ee6f3850426fb6b958466e0696744fb0f225dcd93ae0df0f0d"
+        },
+        "state.json": {
+          "path": "captures/inspect-cinema-service-court/state.json",
+          "compression": "none",
+          "original_bytes": 116097,
+          "original_sha256": "a2a4ccbc6bcb63af68703eb273a4f025a3f9b971a033cd86d0b6b59cea4b2271",
+          "stored_bytes": 116097,
+          "stored_sha256": "a2a4ccbc6bcb63af68703eb273a4f025a3f9b971a033cd86d0b6b59cea4b2271"
+        },
+        "runtime.log": {
+          "path": "captures/inspect-cinema-service-court/runtime.log",
+          "compression": "none",
+          "original_bytes": 14539,
+          "original_sha256": "b3354a6100d8ee98b62cbf414748322a8a245cfdde7a349b5ea0703eee6fb6ad",
+          "stored_bytes": 14539,
+          "stored_sha256": "b3354a6100d8ee98b62cbf414748322a8a245cfdde7a349b5ea0703eee6fb6ad"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "sha256": "7ba6861521c9f1f1bd1fe6f51ee81cdff5a59fdd24f8b3faa902c6367ed0464b",
+          "original_path": "output/blender-integration-r5/inspect-cinema-service-court/keyframes/frame00029.png"
+        },
+        {
+          "frame": 49,
+          "sha256": "a100a7bcbd4c122de2b5de7eef0801517d6d9ba5c86d3e7037a8b31928398621",
+          "original_path": "output/blender-integration-r5/inspect-cinema-service-court/keyframes/frame00049.png"
+        },
+        {
+          "frame": 79,
+          "sha256": "7ba6861521c9f1f1bd1fe6f51ee81cdff5a59fdd24f8b3faa902c6367ed0464b",
+          "original_path": "output/blender-integration-r5/inspect-cinema-service-court/keyframes/frame00079.png"
+        },
+        {
+          "frame": 119,
+          "sha256": "7ba6861521c9f1f1bd1fe6f51ee81cdff5a59fdd24f8b3faa902c6367ed0464b",
+          "original_path": "output/blender-integration-r5/inspect-cinema-service-court/keyframes/frame00119.png"
+        }
+      ]
+    },
+    {
+      "name": "eye-cinema-service-aircon",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/eye-cinema-service-aircon/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/eye-cinema-service-aircon",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "e60fa2b82a4b20c690dbfb27d5df353e80ba01372341390c66cea8be5fb9c76a",
+      "script_sha256": "c956513c0eb33bebdb246ad706112b5977bf1fd40357ef7b3d4106317bff8a45",
+      "scene": "district",
+      "view": "eye-cinema-service-aircon",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 180,
+      "actual_frames": 180,
+      "state_samples": 180,
+      "native_checks": 8,
+      "wrapper_checks": 8,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_viewer_restored_environment_and_shared_normals",
+      "map_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+      "archive": {
+        "run.json": {
+          "path": "captures/eye-cinema-service-aircon/run.json",
+          "compression": "none",
+          "original_bytes": 17937,
+          "original_sha256": "e72b09fa7aabf29bcbc517a5c12d4decc3917376aeab4fcb51e998e61d82e271",
+          "stored_bytes": 17937,
+          "stored_sha256": "e72b09fa7aabf29bcbc517a5c12d4decc3917376aeab4fcb51e998e61d82e271"
+        },
+        "script.json": {
+          "path": "captures/eye-cinema-service-aircon/script.json",
+          "compression": "none",
+          "original_bytes": 2055,
+          "original_sha256": "c956513c0eb33bebdb246ad706112b5977bf1fd40357ef7b3d4106317bff8a45",
+          "stored_bytes": 2055,
+          "stored_sha256": "c956513c0eb33bebdb246ad706112b5977bf1fd40357ef7b3d4106317bff8a45"
+        },
+        "state.json": {
+          "path": "captures/eye-cinema-service-aircon/state.json",
+          "compression": "none",
+          "original_bytes": 177487,
+          "original_sha256": "42cd7b2c5dabe0eed72c4df5db95f9a9178836e12546110c4d04f26d01e5b372",
+          "stored_bytes": 177487,
+          "stored_sha256": "42cd7b2c5dabe0eed72c4df5db95f9a9178836e12546110c4d04f26d01e5b372"
+        },
+        "runtime.log": {
+          "path": "captures/eye-cinema-service-aircon/runtime.log",
+          "compression": "none",
+          "original_bytes": 17891,
+          "original_sha256": "363826fa22625290f42e09454d82a66b81d8463df9d528985a732aa6f683f48a",
+          "stored_bytes": 17891,
+          "stored_sha256": "363826fa22625290f42e09454d82a66b81d8463df9d528985a732aa6f683f48a"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "sha256": "6b9a4ff95d2e5e877b23562545a32d66b59a8bb0c69cf7eade3be086203dab24",
+          "original_path": "output/blender-integration-r5/eye-cinema-service-aircon/keyframes/frame00029.png"
+        },
+        {
+          "frame": 49,
+          "sha256": "e4ae7dd0a5335cef23e8faa362b53e363dc524377b25cc102ebe29bd98e6947b",
+          "original_path": "output/blender-integration-r5/eye-cinema-service-aircon/keyframes/frame00049.png"
+        },
+        {
+          "frame": 79,
+          "sha256": "6b9a4ff95d2e5e877b23562545a32d66b59a8bb0c69cf7eade3be086203dab24",
+          "original_path": "output/blender-integration-r5/eye-cinema-service-aircon/keyframes/frame00079.png"
+        },
+        {
+          "frame": 104,
+          "sha256": "8a3856002b4de9307178d9b34086f5ce3cbf7002eb69cd5b090130421973d3f3",
+          "original_path": "output/blender-integration-r5/eye-cinema-service-aircon/keyframes/frame00104.png"
+        },
+        {
+          "frame": 124,
+          "sha256": "8a3856002b4de9307178d9b34086f5ce3cbf7002eb69cd5b090130421973d3f3",
+          "original_path": "output/blender-integration-r5/eye-cinema-service-aircon/keyframes/frame00124.png"
+        },
+        {
+          "frame": 149,
+          "sha256": "4e7348a14edac7cff7bbf3c241b6579fbcbf88d171fa07df7848779a961ed3fe",
+          "original_path": "output/blender-integration-r5/eye-cinema-service-aircon/keyframes/frame00149.png"
+        },
+        {
+          "frame": 179,
+          "sha256": "4e7348a14edac7cff7bbf3c241b6579fbcbf88d171fa07df7848779a961ed3fe",
+          "original_path": "output/blender-integration-r5/eye-cinema-service-aircon/keyframes/frame00179.png"
+        }
+      ]
+    },
+    {
+      "name": "cinema-normal",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/cinema-normal/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/cinema-normal",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "e60fa2b82a4b20c690dbfb27d5df353e80ba01372341390c66cea8be5fb9c76a",
+      "script_sha256": "4905954004efb16dcf57373471db9d21320bc183708c103963dc2003c19c1f3e",
+      "scene": "district",
+      "view": "inspect-cinema-facade",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 150,
+      "actual_frames": 150,
+      "state_samples": 150,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_viewer_restored_environment_and_shared_normals",
+      "map_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+      "archive": {
+        "run.json": {
+          "path": "captures/cinema-normal/run.json",
+          "compression": "none",
+          "original_bytes": 12004,
+          "original_sha256": "a5c46c1b4a871e96aac3841c757d1c3d6992a968529205f96da80e15e1479e1a",
+          "stored_bytes": 12004,
+          "stored_sha256": "a5c46c1b4a871e96aac3841c757d1c3d6992a968529205f96da80e15e1479e1a"
+        },
+        "script.json": {
+          "path": "captures/cinema-normal/script.json",
+          "compression": "none",
+          "original_bytes": 1120,
+          "original_sha256": "4905954004efb16dcf57373471db9d21320bc183708c103963dc2003c19c1f3e",
+          "stored_bytes": 1120,
+          "stored_sha256": "4905954004efb16dcf57373471db9d21320bc183708c103963dc2003c19c1f3e"
+        },
+        "state.json": {
+          "path": "captures/cinema-normal/state.json",
+          "compression": "none",
+          "original_bytes": 137619,
+          "original_sha256": "2247c7d1e0dedc331dd676bd228bcc5fb9f30ab6cb615261aa82765e7e54ca89",
+          "stored_bytes": 137619,
+          "stored_sha256": "2247c7d1e0dedc331dd676bd228bcc5fb9f30ab6cb615261aa82765e7e54ca89"
+        },
+        "runtime.log": {
+          "path": "captures/cinema-normal/runtime.log",
+          "compression": "none",
+          "original_bytes": 14259,
+          "original_sha256": "09fc65e6246073b3e2f3cc321900e498ca6433815ba2cc6f9dec739ff83d71b6",
+          "stored_bytes": 14259,
+          "stored_sha256": "09fc65e6246073b3e2f3cc321900e498ca6433815ba2cc6f9dec739ff83d71b6"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 0,
+          "sha256": "2fd06daac9543b54f5131371735f332da2d1ca3129e7bae3bb0f9ea371605d29",
+          "original_path": "output/blender-integration-r5/cinema-normal/keyframes/frame00000.png"
+        },
+        {
+          "frame": 29,
+          "sha256": "2fd06daac9543b54f5131371735f332da2d1ca3129e7bae3bb0f9ea371605d29",
+          "original_path": "output/blender-integration-r5/cinema-normal/keyframes/frame00029.png"
+        },
+        {
+          "frame": 59,
+          "sha256": "1e744908732c97b9cd5ad22d96d5c1a5ca254aab6fd98fdad027e79d670c69ae",
+          "original_path": "output/blender-integration-r5/cinema-normal/keyframes/frame00059.png"
+        },
+        {
+          "frame": 89,
+          "sha256": "663489c6ea4e351b0d0e97471793f868cdc345339fd69fff1c2b83de29b45741",
+          "original_path": "output/blender-integration-r5/cinema-normal/keyframes/frame00089.png"
+        },
+        {
+          "frame": 119,
+          "sha256": "1e744908732c97b9cd5ad22d96d5c1a5ca254aab6fd98fdad027e79d670c69ae",
+          "original_path": "output/blender-integration-r5/cinema-normal/keyframes/frame00119.png"
+        },
+        {
+          "frame": 149,
+          "sha256": "1e744908732c97b9cd5ad22d96d5c1a5ca254aab6fd98fdad027e79d670c69ae",
+          "original_path": "output/blender-integration-r5/cinema-normal/keyframes/frame00149.png"
+        }
+      ]
+    },
+    {
+      "name": "va08-normal",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/va08-normal/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/va08-normal",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "e60fa2b82a4b20c690dbfb27d5df353e80ba01372341390c66cea8be5fb9c76a",
+      "script_sha256": "b80fa1164d96e83bbf28f426afe2b24c04af200c92e8205fc385009b694cd0fa",
+      "scene": "district",
+      "view": "eye-va08-east",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_viewer_restored_environment_and_shared_normals",
+      "map_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+      "archive": {
+        "run.json": {
+          "path": "captures/va08-normal/run.json",
+          "compression": "none",
+          "original_bytes": 12470,
+          "original_sha256": "9befee3895745e6a7b3274cb54d73206639a1e5c44d66d0d932b5e3e566270c6",
+          "stored_bytes": 12470,
+          "stored_sha256": "9befee3895745e6a7b3274cb54d73206639a1e5c44d66d0d932b5e3e566270c6"
+        },
+        "script.json": {
+          "path": "captures/va08-normal/script.json",
+          "compression": "none",
+          "original_bytes": 1348,
+          "original_sha256": "b80fa1164d96e83bbf28f426afe2b24c04af200c92e8205fc385009b694cd0fa",
+          "stored_bytes": 1348,
+          "stored_sha256": "b80fa1164d96e83bbf28f426afe2b24c04af200c92e8205fc385009b694cd0fa"
+        },
+        "state.json": {
+          "path": "captures/va08-normal/state.json",
+          "compression": "none",
+          "original_bytes": 118445,
+          "original_sha256": "725d46bab08069d99e91871b10a590778374e266efbc7e0cfe2347a86508c860",
+          "stored_bytes": 118445,
+          "stored_sha256": "725d46bab08069d99e91871b10a590778374e266efbc7e0cfe2347a86508c860"
+        },
+        "runtime.log": {
+          "path": "captures/va08-normal/runtime.log",
+          "compression": "none",
+          "original_bytes": 14502,
+          "original_sha256": "2d79aa966755e63f940d723b3e869083cbfd71fa174f8233a7414c70cabbe52b",
+          "stored_bytes": 14502,
+          "stored_sha256": "2d79aa966755e63f940d723b3e869083cbfd71fa174f8233a7414c70cabbe52b"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "sha256": "b5b82465376485170bcd5ef4a3cabbcc6225a4495a2e1c4c216c029b2ef32e05",
+          "original_path": "output/blender-integration-r5/va08-normal/keyframes/frame00029.png"
+        },
+        {
+          "frame": 49,
+          "sha256": "06c38e97e4384d933bb9a01c2781f1c9889d58e8d44385efd959725785154ba9",
+          "original_path": "output/blender-integration-r5/va08-normal/keyframes/frame00049.png"
+        },
+        {
+          "frame": 79,
+          "sha256": "b5b82465376485170bcd5ef4a3cabbcc6225a4495a2e1c4c216c029b2ef32e05",
+          "original_path": "output/blender-integration-r5/va08-normal/keyframes/frame00079.png"
+        },
+        {
+          "frame": 119,
+          "sha256": "b5b82465376485170bcd5ef4a3cabbcc6225a4495a2e1c4c216c029b2ef32e05",
+          "original_path": "output/blender-integration-r5/va08-normal/keyframes/frame00119.png"
+        }
+      ]
+    },
+    {
+      "name": "v55-normal",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/v55-normal/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/blender-integration-r5/v55-normal",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "error": null,
+      "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+      "binary_sha256": "e60fa2b82a4b20c690dbfb27d5df353e80ba01372341390c66cea8be5fb9c76a",
+      "script_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8",
+      "scene": "district",
+      "view": "eye-v55-west",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_viewer_restored_environment_and_shared_normals",
+      "map_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+      "archive": {
+        "run.json": {
+          "path": "captures/v55-normal/run.json",
+          "compression": "none",
+          "original_bytes": 12051,
+          "original_sha256": "b98bfe5ffa34f8b30c17bc3f8eb566afe40ebdcff524e59247e2dbea295d113a",
+          "stored_bytes": 12051,
+          "stored_sha256": "b98bfe5ffa34f8b30c17bc3f8eb566afe40ebdcff524e59247e2dbea295d113a"
+        },
+        "script.json": {
+          "path": "captures/v55-normal/script.json",
+          "compression": "none",
+          "original_bytes": 1063,
+          "original_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8",
+          "stored_bytes": 1063,
+          "stored_sha256": "a6b4ff68066ed567f211c2584b7e1183fff999002a9014054adf0fb223cc57b8"
+        },
+        "state.json": {
+          "path": "captures/v55-normal/state.json",
+          "compression": "none",
+          "original_bytes": 119279,
+          "original_sha256": "59b928876b109e8a07616a439d0b4d3adb20c3b118c79db7c39c35c02d77e199",
+          "stored_bytes": 119279,
+          "stored_sha256": "59b928876b109e8a07616a439d0b4d3adb20c3b118c79db7c39c35c02d77e199"
+        },
+        "runtime.log": {
+          "path": "captures/v55-normal/runtime.log",
+          "compression": "none",
+          "original_bytes": 14383,
+          "original_sha256": "5822fa6fcf975a16cf288d70135914acd7e9a60b04ab6ae8ee657056ca1f0901",
+          "stored_bytes": 14383,
+          "stored_sha256": "5822fa6fcf975a16cf288d70135914acd7e9a60b04ab6ae8ee657056ca1f0901"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "sha256": "7696d7a1c6ee1e2cbf4b0daefef4f6eb402abb7e7202921ed0b954f5d322f1cd",
+          "original_path": "output/blender-integration-r5/v55-normal/keyframes/frame00029.png"
+        },
+        {
+          "frame": 49,
+          "sha256": "8026c217d4cffbcf8475e5c509722146a5580da92f2b038b1f46178565198f8b",
+          "original_path": "output/blender-integration-r5/v55-normal/keyframes/frame00049.png"
+        },
+        {
+          "frame": 79,
+          "sha256": "7696d7a1c6ee1e2cbf4b0daefef4f6eb402abb7e7202921ed0b954f5d322f1cd",
+          "original_path": "output/blender-integration-r5/v55-normal/keyframes/frame00079.png"
+        },
+        {
+          "frame": 119,
+          "sha256": "7696d7a1c6ee1e2cbf4b0daefef4f6eb402abb7e7202921ed0b954f5d322f1cd",
+          "original_path": "output/blender-integration-r5/v55-normal/keyframes/frame00119.png"
+        }
+      ]
+    }
+  ],
+  "total_attempts": 7,
+  "completed_native_runs": 6,
+  "prelaunch_failed_attempts": 1,
+  "total_actual_frames": 1230,
+  "total_native_checks": 59,
+  "total_wrapper_checks": 60,
+  "excluded_scope": [
+    "TASK-045/env-reflection-r1 A/B 240 frames (separate archive)",
+    "roof-rest-r1/baseline 60 frames (next round)"
+  ],
+  "visual_review_reference": "visual-review.md",
+  "runtime_inputs_reference": "runtime-inputs.json"
+}

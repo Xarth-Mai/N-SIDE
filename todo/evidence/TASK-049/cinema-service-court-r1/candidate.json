@@ -1,0 +1,120 @@
+{
+  "status": "CANDIDATE_NOT_APPLIED",
+  "source_sha256": "a2f15c59246a57c1250ee76db54e0a12fa5ce766f17f15dc1535e5895128038f",
+  "surface": {
+    "id": "cinema-service-court",
+    "name": "镜厅北侧卸货与设备门前场",
+    "kind": "service",
+    "place": "15",
+    "access": "service",
+    "elevation": 25,
+    "polygon": [
+      [
+        314,
+        250
+      ],
+      [
+        326,
+        250
+      ],
+      [
+        326,
+        266.5
+      ],
+      [
+        314,
+        266.5
+      ]
+    ],
+    "use": "沿原后台路线完成短暂停靠、卸货及设备移交，保留连续到门通道"
+  },
+  "props": [
+    {
+      "model": "aircon_wall",
+      "source": "buildings[V-15]/aircon-wall",
+      "map_position": [
+        324,
+        250.203,
+        25
+      ],
+      "world_y_rotation_radians": 3.141592653589793,
+      "scale": 1,
+      "purpose": "北墙窗间设备，完整回墙管和地面收水口",
+      "retained_source": "source-assets/environment-kit/aircon/wall-installation.blend"
+    },
+    {
+      "model": "streetlight",
+      "source": "/surfaces/cinema-service-court/streetlight/0",
+      "map_position": [
+        314.65,
+        261.6,
+        25
+      ],
+      "world_y_rotation_radians": 0,
+      "scale": 1,
+      "purpose": "服务前场西侧识别与照明设施外观；本轮不新增夜间光源逻辑",
+      "retained_source": "source-assets/environment-kit/roads/light-curved.glb"
+    }
+  ],
+  "reserved_areas": [
+    {
+      "name": "central-clear-approach",
+      "polygon": [
+        [
+          318.2,
+          250
+        ],
+        [
+          321.8,
+          250
+        ],
+        [
+          321.8,
+          266.5
+        ],
+        [
+          318.2,
+          266.5
+        ]
+      ],
+      "use": "保留原3m路线及每侧0.3m余量"
+    },
+    {
+      "name": "unloading-clear-area",
+      "polygon": [
+        [
+          317,
+          258
+        ],
+        [
+          325,
+          258
+        ],
+        [
+          325,
+          266.5
+        ],
+        [
+          317,
+          266.5
+        ]
+      ],
+      "use": "8x8.5m净空，覆盖现有cinema_loading节点；未引入车辆模拟或停车位"
+    }
+  ],
+  "preserve": {
+    "building": "V-15",
+    "parcel": "P09-A",
+    "service_road_nodes": [
+      "library_gate",
+      "cinema_service_w",
+      "cinema_service_n",
+      "cinema_loading",
+      "cinema_service_entry"
+    ],
+    "service_road_width": 3,
+    "public_frontcourt": "cinema-arrival-court",
+    "new_paths": 0,
+    "new_models": 0
+  }
+}

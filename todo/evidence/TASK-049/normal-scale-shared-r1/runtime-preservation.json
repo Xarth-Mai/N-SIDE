@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "assets": {
+    "V-15": {
+      "status": "PASS",
+      "source_before": "344ef7b570a96c11a7a610bcd8c327a555842f609d76d40da30b232835ccfd4d",
+      "source_after": "5c255c0dc110a82152c08982854ca9aed4226ee4864b5f3b53aeac8ff6b896d8",
+      "runtime_before": "a8d44ffe88ea53524ae1883715cb14680c750e02b965bd76033ffd236f32dc98",
+      "runtime_after": "b3617d3c57d8e466ce4e6ca3e5fe4dd3f2b55d596f39c43a3cbdd5405d313bdd",
+      "protected_geometry_materials_colors_scenes": "identical",
+      "normal_scale": 1,
+      "runtime_bytes_unchanged": false
+    },
+    "V-A08": {
+      "status": "PASS",
+      "source_before": "a31ee285b7bd832019db0421f6ecd0d8c9b26dae4a702dcf910e5a17d5361ee1",
+      "source_after": "33f9c72ce0e7e773b1e4cb419d302772d81fe04e665e836adea2a2cd0d261787",
+      "runtime_before": "aa2b9186b64d07a23ada84fa83f66fe0042d1dc5c8969d0b715638835e254808",
+      "runtime_after": "12e0fdef03f7a2ac2fcd22f2661302b0c29bc1932a0ac83d6ea7d8a02af1e09a",
+      "protected_geometry_materials_colors_scenes": "identical",
+      "normal_scale": 1,
+      "runtime_bytes_unchanged": false
+    },
+    "V-55": {
+      "status": "PASS",
+      "source_before": "b235d3837e29aad33153c81fa6d825b40894ba983b3e0cdabcd4c86ce991a8a5",
+      "source_after": "42bbef6a0a28bfff2f96eef4e6ce5ad982f7c73c3bc593bfd2368c7ff10bbf78",
+      "runtime_before": "8683357c862f708904de63bbe8a88a196f6e327b48ea5c638a1c318de8c6349b",
+      "runtime_after": "597bc0b96477295efd6a743e2ebf3884ad8b94305e9ba2e93d232e03b258cff4",
+      "protected_geometry_materials_colors_scenes": "identical",
+      "normal_scale": 1,
+      "runtime_bytes_unchanged": false
+    },
+    "V-35": {
+      "status": "PASS",
+      "source_before": "d8ba601a7f11594558d39fd16a275242b558f3af7078a5134d0474b75e0f3173",
+      "source_after": "d25fa5adb2e9896d17169fbb83accc9099255a02e8a4c00e35580c151cc4a725",
+      "runtime_before": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a",
+      "runtime_after": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a",
+      "protected_geometry_materials_colors_scenes": "identical",
+      "normal_scale": 1,
+      "runtime_bytes_unchanged": true
+    }
+  }
+}

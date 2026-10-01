@@ -27,7 +27,7 @@
 | 主门 | `v_a08_door [88,277.5,30.021515]`，1.8×2.35m |
 | 住户门 | `v_a08_door_resident [88,273,30.021515]`，1.3×2.35m |
 | 服务门 | `v_a08_service [70,277,30.021515]`，1.3×2.35m |
-| 静态预算 | 6060三角、6材质／primitive、4张内嵌1024×1024贴图、4.44MB |
+| 静态预算 | 6060三角、6材质／primitive、4张内嵌图（灰泥1024×1024、混凝土1024×512）、3,800,008 bytes |
 
 三扇门在原节点外表现关闭门叶。V-A08原本不支持进入，主墙仍为封闭体量；模型没有开通新房间、互动或任务入口。源文件保留43个可编辑网格组；运行导出只合并临时副本为一个mesh，源组、packed贴图和UV不被覆盖
 
@@ -57,7 +57,7 @@
 
 ## 材质和来源
 
-复用 [AST-003](../../environment-kit/asset-manifest.json) 已登记的 ambientCG `Plaster001` 与 `Concrete034` Color／NormalGL原图，许可CC0-1.0。保持登记的原图字节与SHA，GLB内嵌图与原图逐字节比较；没有二次下载、生成或新授权费用
+复用 [AST-003](../../environment-kit/asset-manifest.json) 已登记的 ambientCG `Plaster001` 与 `Concrete034` Color／NormalGL原图，许可CC0-1.0。保持登记的原图字节与SHA，GLB颜色图仍与原 JPG 逐字节比较，法线使用共享无损 PNG 并检查衍生关系；没有二次下载、生成或新授权费用
 
 | 材质 | 来源／色彩空间 | 周期与用途 |
 | --- | --- | --- |
@@ -68,7 +68,7 @@
 | WarmPanel | 项目原创纯色标准PBR，sRGB输入转线性 | 门叶、卷帘、空调壳及檐底 |
 | Ochre | 项目原创纯色标准PBR，sRGB输入转线性 | 两处小檐收边 |
 
-贴图直接连接base color，没有未生效的tint；法线强度0.28，UV按实际面坐标展开，检查换算周期后的每条边与真实米制长度。源贴图packed在主文件中，GLB使用四张内嵌图，不依赖DCC中的绝对路径。几何、UV、脚本按仓库MPL-2.0管理，贴图继续采用其CC0许可
+贴图直接连接base color，没有未生效的tint；法线强度0.28已烘入共享 PNG，节点 Strength 与 glTF scale 均为1，UV按实际面坐标展开，检查换算周期后的每条边与真实米制长度。源贴图packed在主文件中，GLB使用四张内嵌图，不依赖DCC中的绝对路径。几何、UV、脚本按仓库MPL-2.0管理，贴图继续采用其CC0许可
 
 ## 编辑、导出与检查
 
@@ -82,3 +82,7 @@ env ALSOFT_DRIVERS=null blender --background -noaudio --threads 6 --python-exit-
 ```
 
 本轮实际使用本机Blender5.2.2 LTS。机器检查与四机位自查记录在 [本轮证据](../../../todo/evidence/TASK-049/va08-facade-r1/README.md)；独立运行截图、街道连续操作与作者验收由集成记录，不把离线模型预览算作最终游戏画质完成
+
+## 共享法线兼容修复
+
+本机 Bevy 0.19.1 glTF loader 忽略 `normalTexture.scale`；本包沿用[共享烘焙入口](../../environment-kit/materials/bake_normals.py)，将上列原强度按 `xy *= scale`、保留 z 后归一化写入 CC0 无损 PNG，原授权 JPG、颜色、UV、几何与其他在用材质保持。主文件原位换图后保存并在宿主 Blender 复读，普通导出与逐像素检查通过；证据及前后语义见[共享修复记录](../../../todo/evidence/TASK-049/normal-scale-shared-r1/README.md)。当前修复版已完成 [R5 真实场景复验](../../../todo/evidence/TASK-049/blender-integration-r5/review.md)，机器断言通过且关键帧已查看，覆盖范围见[画面自查](../../../todo/evidence/TASK-049/blender-integration-r5/visual-review.md)，作者验收仍待完成

@@ -105,3 +105,11 @@ DCC 检查覆盖本轮 60 FPS 关键帧与循环端点；5 mm 鞋底距离只作
 局部更新使用 `env ALSOFT_DRIVERS=null timeout 180 output/tools/blender-4.5.14-linux-x64/blender --background -noaudio --threads 2 --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --update-jacket`，在原主文件上应用与完整构建相同的函数，已应用 r11 的夹克由对象修订标记防止重复膨胀；后续手工修改保留标记并使用 `--export-existing`。不要为再次导出清除标记或全量重建，否则可能累加位移或覆盖手工成果
 
 同光照全身对照、五个动作姿态、28 姿态接触诊断和精确保持关系见 [r11 证据](../../../../todo/evidence/TASK-047/jacket-r11/review.md)。root 复看接受的是此局部增量，未代替作者接受人物外观；正式 GLB 与实际看过的候选逐字节一致，Bevy 连续动作由主工作线续验
+
+## r12 袖筒平面与肘部转折候选
+
+沿用 r11 衣身与肩袖松量，只收浅左右袖筒中间五圈的前后截面，在肘外侧形成一条斜向转折，减轻连续圆鼓形。衣身、肩缝、袖口、门襟、帽兜接触区、UV、权重及其他物体均保持；32 骨、四动作与三张贴图不变。全身静态与 Walk／Jump 中能看见局部差异，Run 的改善较轻，衣料仍偏平滑，不将本修订计为角色美术完成
+
+继续使用 `--update-jacket`，同一函数用于现有主文件选择更新与完整重建；修订标记为 r11 时只更新袖筒，为 r12 时不再修改形体，避免重复膨胀或收缩。保留已更新对象标记；手工修形后的普通导出使用 `--export-existing`
+
+实际查看 16 张 CPU 同机位 before/after、28 姿态接触诊断与幂等/保持检查见 [r12 记录](../../../../todo/evidence/TASK-047/sleeve-r12/review.md)。正式 GLB 与已看候选字节一致，Root 接受的是去圆鼓技术增量，作者外观仍未放行；R5 的 `yao-motion-retry` 已真实运行 540 帧，27 项原生／28 项封装检查 PASS，实际跑步 190–192、跳跃 68–70 与落地 79 的[画面自查](../../../../todo/evidence/TASK-049/blender-integration-r5/visual-review.md)未见新增穿插，袖筒与灰阶衣身仍待美术修订，结论只覆盖本次查看范围

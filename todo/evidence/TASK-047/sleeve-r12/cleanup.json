@@ -1,0 +1,118 @@
+{
+  "status": "complete",
+  "reason": "16 CPU images actually viewed; Root reviewed selected comparisons and approved technical promotion; logs/JSON/scripts/formal assets retained; old source hashes verified restorable from committed baseline",
+  "removed": [
+    {
+      "path": "output/yao-sleeve-r12/before-back.png",
+      "bytes": 291584,
+      "sha256": "e2482e0740bf5f736c561372b2f8b74059b441caab49792e552b65f039acedde"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before-front.png",
+      "bytes": 291442,
+      "sha256": "7b1d367f6ae20c8940a85b3c9d90cef8944e09b4033062070bdbd657430c9d38"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before-jump13.png",
+      "bytes": 288409,
+      "sha256": "d0b1c0a722f62f29ab86da5190df42d111adddbc6f0db6b76908a422932157a1"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before-jump21.png",
+      "bytes": 286598,
+      "sha256": "6c890b8d9a1abe183ad387a8385b61e6fd1dae019d327cd844eb90554dc695f9"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before-quarter.png",
+      "bytes": 286672,
+      "sha256": "d975e080b8a20f7f35314c7346910f54b4c1c2550e6bf41db1225011c25b35ec"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before-run26.png",
+      "bytes": 288966,
+      "sha256": "3e17a27d7409cba15e619377202b259f6eee65dbf968ff30decaaf89e3cba306"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before-run6.png",
+      "bytes": 287160,
+      "sha256": "8f87d3c97b19935412450b4e4688e1fa731162e94ec6dbe928d185680beb1a1b"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before-walk8.png",
+      "bytes": 286853,
+      "sha256": "fb925885c7022e23afe30bdb0d8dea3263f269a4b7ca40836a307c23e64af76d"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before.blend",
+      "bytes": 4565488,
+      "sha256": "08da019a48c32725fe0b33fe20f615659105ad16b3c6a0a2e824398f9e739849"
+    },
+    {
+      "path": "output/yao-sleeve-r12/before.glb",
+      "bytes": 1751892,
+      "sha256": "0f02f5eb635b356ab25325829bbdb51fbe021f723fe162abe9e4090486cb87db"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-back.png",
+      "bytes": 291589,
+      "sha256": "bb3934d5e1389277fb3b0dea12f168dab942859366d39a2a2a7e8a05e340b268"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-front.png",
+      "bytes": 291104,
+      "sha256": "98e3fc62cf700a014c1365cd03c7db990875c6700d3882af0310bd7fda864858"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-jump13.png",
+      "bytes": 289156,
+      "sha256": "9eee2f299a5f6662e27a6fd6fef14cdc65a1461bafbc401fa90f93e0655730d7"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-jump21.png",
+      "bytes": 286553,
+      "sha256": "0b31fe46d7adf76009e52c810dca43a6f071b654ef5f7631295e6311fc236528"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-quarter.png",
+      "bytes": 286594,
+      "sha256": "c3907aec59e5233a61cd20b26275a4235bd808419dd19c92587856d933fe40d7"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-run26.png",
+      "bytes": 288888,
+      "sha256": "69dd4c653dc7e1155fde296407021786a30e0e508de90d16f6e3d137b631105d"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-run6.png",
+      "bytes": 287362,
+      "sha256": "cc48a13a3abd1ea06305b2e98f1c73b35fa66db8e76bddb2b792fadec08cafdf"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate-walk8.png",
+      "bytes": 286996,
+      "sha256": "3078053ce2e4f595b9438eef004e712641f811305e21d4f05a894b064db24684"
+    },
+    {
+      "path": "output/yao-sleeve-r12/candidate.blend",
+      "bytes": 4565488,
+      "sha256": "d552df7b32e338a50b71dcb59f29f2036743da0f7d4f83427db9ad485acb3132"
+    },
+    {
+      "path": "output/yao-sleeve-r12/generator-before.py",
+      "bytes": 52947,
+      "sha256": "8ff2ca10a9ecef76a914c238cf245d8720579976733c9a431a4956bef870fdcc"
+    },
+    {
+      "path": "output/yao-sleeve-r12/yao-grey-study.glb",
+      "bytes": 1751892,
+      "sha256": "3fb220c6f073f003399acf25e0083aafb2f1bb18027064f49183bfbfe61370db"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 4565488,
+      "sha256": "08da019a48c32725fe0b33fe20f615659105ad16b3c6a0a2e824398f9e739849"
+    }
+  ],
+  "total_bytes": 21869121,
+  "retained_media": []
+}

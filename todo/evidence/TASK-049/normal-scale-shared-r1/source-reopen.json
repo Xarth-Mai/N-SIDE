@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "blender": "5.2.2 LTS",
+  "masters": {
+    "V-15": {
+      "status": "PASS",
+      "sha256": "5c255c0dc110a82152c08982854ca9aed4226ee4864b5f3b53aeac8ff6b896d8",
+      "protected": {
+        "objects_mesh_uv_normals_transforms_fonts": "db2b6a8b1c1c7c9544a8a1e82bbc7cb49464420095e2e48765336ec527200bf0",
+        "other_material_values_images_links": "5d04ba4498ff734140fb8ca97e08ada2a1aabdb19b2886cad450f6a233830110"
+      },
+      "packed_normal_bytes_paths_strength": "PASS",
+      "unused_datablocks_removed_on_save": []
+    },
+    "V-A08": {
+      "status": "PASS",
+      "sha256": "33f9c72ce0e7e773b1e4cb419d302772d81fe04e665e836adea2a2cd0d261787",
+      "protected": {
+        "objects_mesh_uv_normals_transforms_fonts": "beb747231f004dc60c18c6fb767134668b624389563fca0af6c2a5f55d0dc8df",
+        "other_material_values_images_links": "45e17bba66969549ba7c9cb4c9a334197c907626c3d5051767a9e9c133948196"
+      },
+      "packed_normal_bytes_paths_strength": "PASS",
+      "unused_datablocks_removed_on_save": [
+        "Material: zero users, no fake user; automatically removed on save"
+      ]
+    },
+    "V-55": {
+      "status": "PASS",
+      "sha256": "42bbef6a0a28bfff2f96eef4e6ce5ad982f7c73c3bc593bfd2368c7ff10bbf78",
+      "protected": {
+        "objects_mesh_uv_normals_transforms_fonts": "75aaa014683be3db486c3998f2f4744f59befe92afd11c644b132acb7d2f6d41",
+        "other_material_values_images_links": "a8ec8152f4389b3c73f99593bfcfb06d06857b77842db69b5ee1cc9c1f46022d"
+      },
+      "packed_normal_bytes_paths_strength": "PASS",
+      "unused_datablocks_removed_on_save": [
+        "Material: zero users, no fake user; automatically removed on save"
+      ]
+    },
+    "V-35": {
+      "status": "PASS",
+      "sha256": "d25fa5adb2e9896d17169fbb83accc9099255a02e8a4c00e35580c151cc4a725",
+      "protected": {
+        "objects_mesh_uv_normals_transforms_fonts": "2230b98211fc9d2d29b446d009896783e3fb500274ced66238b859808f0e71e0",
+        "other_material_values_images_links": "67ceebb48ea31cbe78e48931e0869a469ed0d1cfac77cebef70e9ae71ec78aeb"
+      },
+      "packed_normal_bytes_paths_strength": "PASS",
+      "unused_datablocks_removed_on_save": []
+    }
+  }
+}

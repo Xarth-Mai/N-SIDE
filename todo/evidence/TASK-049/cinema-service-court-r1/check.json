@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "source_sha256": "a2f15c59246a57c1250ee76db54e0a12fa5ce766f17f15dc1535e5895128038f",
+  "source_unchanged": true,
+  "surface": {
+    "id": "cinema-service-court",
+    "name": "镜厅北侧卸货与设备门前场",
+    "kind": "service",
+    "place": "15",
+    "access": "service",
+    "elevation": 25,
+    "polygon": [
+      [
+        314,
+        250
+      ],
+      [
+        326,
+        250
+      ],
+      [
+        326,
+        266.5
+      ],
+      [
+        314,
+        266.5
+      ]
+    ],
+    "use": "沿原后台路线完成短暂停靠、卸货及设备移交，保留连续到门通道"
+  },
+  "area_m2": 198,
+  "overlapping_roads": [
+    {
+      "road": 236,
+      "nodes": [
+        "cinema_service_n",
+        "cinema_loading"
+      ],
+      "kind": "service",
+      "access": "service",
+      "polygon": [
+        [
+          293.5,
+          263.5
+        ],
+        [
+          318.5,
+          263.5
+        ],
+        [
+          321.5,
+          266.5
+        ],
+        [
+          290.5,
+          266.5
+        ]
+      ],
+      "heights": [
+        25,
+        25
+      ]
+    },
+    {
+      "road": 236,
+      "nodes": [
+        "cinema_loading",
+        "cinema_service_entry"
+      ],
+      "kind": "service",
+      "access": "service",
+      "polygon": [
+        [
+          318.5,
+          263.5
+        ],
+        [
+          318.5,
+          250
+        ],
+        [
+          321.5,
+          250
+        ],
+        [
+          321.5,
+          266.5
+        ]
+      ],
+      "heights": [
+        25,
+        25
+      ]
+    }
+  ],
+  "ground": {
+    "samples": 3283,
+    "spacing_m": 0.25,
+    "min": 24.981099999999998,
+    "max": 25.100000000000005,
+    "max_cut_m": 0.10000000000000497,
+    "max_fill_m": 0.018900000000002137
+  },
+  "props": [
+    {
+      "model": "aircon_wall",
+      "map_bounds_xyz": [
+        [
+          323.6000143587589,
+          324.3999856710434
+        ],
+        [
+          249.96800000059605,
+          250.3900796084404
+        ],
+        [
+          25,
+          28.431230068206787
+        ]
+      ],
+      "foot_count": 12
+    },
+    {
+      "model": "streetlight",
+      "map_bounds_xyz": [
+        [
+          314.48333331907605,
+          314.8166666809239
+        ],
+        [
+          261.4333333190761,
+          262.93333344739165
+        ],
+        [
+          25,
+          29.5
+        ]
+      ],
+      "foot_count": 12
+    }
+  ],
+  "capsule_margin_m": 0.32,
+  "reserved_areas": [
+    {
+      "name": "central-clear-approach",
+      "polygon": [
+        [
+          318.2,
+          250
+        ],
+        [
+          321.8,
+          250
+        ],
+        [
+          321.8,
+          266.5
+        ],
+        [
+          318.2,
+          266.5
+        ]
+      ],
+      "use": "保留原3m路线及每侧0.3m余量"
+    },
+    {
+      "name": "unloading-clear-area",
+      "polygon": [
+        [
+          317,
+          258
+        ],
+        [
+          325,
+          258
+        ],
+        [
+          325,
+          266.5
+        ],
+        [
+          317,
+          266.5
+        ]
+      ],
+      "use": "8x8.5m净空，覆盖现有cinema_loading节点；未引入车辆模拟或停车位"
+    }
+  ],
+  "failure_checks": [
+    "lowered surface rejected",
+    "object inside service corridor rejected"
+  ],
+  "limits": [
+    "source broad geometry, not Rust Ground/capsule proof",
+    "no actual vehicle turning simulation",
+    "GPU and human walking NOT RUN"
+  ]
+}

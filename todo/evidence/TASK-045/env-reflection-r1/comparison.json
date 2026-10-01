@@ -1,0 +1,111 @@
+{
+  "status": "PASS",
+  "unchanged_inputs": [
+    "source-assets/district-map/district.json",
+    "source-assets/district-scene/daylight.json",
+    "source-assets/district-scene/appearance.json",
+    "game/assets/environment/buildings/v15-mirror-hall-facade.glb",
+    "game/assets/environment/buildings/v-a08-roof-eaves.glb",
+    "game/assets/environment/buildings/v-a08-facade.glb",
+    "game/assets/environment/buildings/v55-workshop-facade.glb",
+    "game/assets/environment/buildings/v35-byte-beat-facade.glb"
+  ],
+  "changed_source": {
+    "game/src/world/visual.rs": "4f5cd7f4785e970756b82942ef59f945bcd44216e90bf6f388840a2d357d82a8"
+  },
+  "runs": {
+    "A": {
+      "status": "PASS",
+      "binary_sha256": "ffe0b60bf961f824cacf50a57d69dbd17ecdb85da3af1f2ca56f12f7b76671ec",
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.287953038
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5576,
+            "images": 88,
+            "materials": 94,
+            "meshes": 3427
+          },
+          "last_ready": {
+            "entities": 5576,
+            "images": 88,
+            "materials": 94,
+            "meshes": 3427
+          },
+          "peak_ready": {
+            "entities": 5576,
+            "images": 88,
+            "materials": 94,
+            "meshes": 3427
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 119,
+          "max": 45.457576000000444,
+          "mean": 34.29494304201681,
+          "p50": 35.948829000000515,
+          "p95": 38.593749000000344,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 784,
+          "max": 26.575820999999998,
+          "mean": 5.256401054846938,
+          "p50": 2.577742,
+          "p95": 20.64683,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    },
+    "B": {
+      "status": "PASS",
+      "binary_sha256": "6d06a6cd3b30e3b685e84f43495b5b03bf8c2fd3cab9324441153d39bf897d4d",
+      "performance": {
+        "observed_scene_load_seconds": [
+          0.210280713
+        ],
+        "resource_counts": {
+          "first_ready": {
+            "entities": 5576,
+            "images": 89,
+            "materials": 94,
+            "meshes": 3427
+          },
+          "last_ready": {
+            "entities": 5576,
+            "images": 89,
+            "materials": 94,
+            "meshes": 3427
+          },
+          "peak_ready": {
+            "entities": 5576,
+            "images": 89,
+            "materials": 94,
+            "meshes": 3427
+          }
+        },
+        "scope": "Monotonic wall time measured at capture PostUpdate; warmup is excluded. Update intervals include zero-simulation readback-wait updates and PNG work, while capture frame intervals also include intervening updates. Both endpoints must be world-active; these are capture throughput intervals, not one-render intervals. Video encoding runs later and is excluded. Observed load spans first loading observation to ready, excluding preparation before observation. Resource counts are live main-world entities and Assets lengths at ready captured frames, not GPU bytes or visible draw calls. Compare the same instrumentation, build profile, device, route and capture settings; these metrics do not establish native FPS or GPU render time.",
+        "world_capture_frame_interval_ms": {
+          "count": 119,
+          "max": 48.232838000000555,
+          "mean": 36.88361461344541,
+          "p50": 38.51204599999747,
+          "p95": 42.920839000000655,
+          "percentile_method": "nearest_rank"
+        },
+        "world_update_interval_ms": {
+          "count": 808,
+          "max": 28.059289,
+          "mean": 5.475326299504953,
+          "p50": 2.8676779999999997,
+          "p95": 20.855827,
+          "percentile_method": "nearest_rank"
+        }
+      }
+    }
+  },
+  "same_actual_camera_and_scene_frames": 120
+}

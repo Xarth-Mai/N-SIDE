@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "path": "output/yao-sleeve-r12/yao-grey-study.glb",
+  "sha256": "3fb220c6f073f003399acf25e0083aafb2f1bb18027064f49183bfbfe61370db",
+  "skins": 1,
+  "joints": 32,
+  "skinned_vertices": 24381,
+  "bind_bounds_m": [
+    [
+      -0.47444668412208557,
+      0.47444668412208557
+    ],
+    [
+      0.0,
+      1.7441905736923218
+    ],
+    [
+      -0.1317266821861267,
+      0.21799999475479126
+    ]
+  ],
+  "height_m": 1.7441905736923218,
+  "embedded_images": 3,
+  "animations": [
+    {
+      "name": "Idle",
+      "duration_seconds": 2.0,
+      "joint_channels": 96,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Jump",
+      "duration_seconds": 0.6666666865348816,
+      "joint_channels": 96,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Run",
+      "duration_seconds": 0.6666666865348816,
+      "joint_channels": 96,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    },
+    {
+      "name": "Walk",
+      "duration_seconds": 0.800000011920929,
+      "joint_channels": 96,
+      "root_translation_bound_m": 0.0,
+      "root_end_displacement_bound_m": 0.0,
+      "root_rotation_bound_degrees": 0.0
+    }
+  ],
+  "scope": "exported data only; deformation, contact, loop quality and Bevy playback require runtime review"
+}

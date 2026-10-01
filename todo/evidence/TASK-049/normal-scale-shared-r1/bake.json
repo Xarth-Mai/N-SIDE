@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "gltf_scale": 1,
+  "pillow": "12.3.0",
+  "formula": "n = rgb / 127.5 - 1; n.xy *= scale; n = normalize(n); rgb = round((n + 1) * 127.5)",
+  "color_space": "Raw normal data; no sRGB transform",
+  "files": [
+    {
+      "source": "Plaster001_1K-JPG_NormalGL.jpg",
+      "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "output": "Plaster001-NormalGL-scale025.png",
+      "output_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+      "scale": 0.25,
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "Concrete034_1K-JPG_NormalGL.jpg",
+      "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "output": "Concrete034-NormalGL-scale025.png",
+      "output_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+      "scale": 0.25,
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "Plaster001_1K-JPG_NormalGL.jpg",
+      "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "output": "Plaster001-NormalGL-scale028.png",
+      "output_sha256": "71c05e2fc5eab9ffc26555404f7fecf0fce979afa1d8236c2ad660826cc6c8ac",
+      "scale": 0.28,
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "Concrete034_1K-JPG_NormalGL.jpg",
+      "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "output": "Concrete034-NormalGL-scale028.png",
+      "output_sha256": "23f88b2f5a7dc51d71462e410e42bad7b8eedd34825962f83f449fd4f82e9493",
+      "scale": 0.28,
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "Plaster001_1K-JPG_NormalGL.jpg",
+      "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "output": "Plaster001-NormalGL-scale035.png",
+      "output_sha256": "18611d78e41f1d56c8a0cac508291796f4c604b63e728aa44316ccd0ccb00060",
+      "scale": 0.35,
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "Concrete034_1K-JPG_NormalGL.jpg",
+      "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "output": "Concrete034-NormalGL-scale035.png",
+      "output_sha256": "19322cf9e4350a01306ba794d5f771320a2e9525901e94af00fe345858c3956c",
+      "scale": 0.35,
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "WoodSiding009_1K-JPG_NormalGL.jpg",
+      "source_sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+      "output": "WoodSiding009-NormalGL-scale035.png",
+      "output_sha256": "0dfd5f813b707aec5c9ec2cbb87c41593b8370d457eb575f55f57c5c732630e7",
+      "scale": 0.35,
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    }
+  ]
+}

@@ -34,7 +34,7 @@ def material(name, color, roughness=.7, metallic=0, texture=None, repeat=(1, 1))
     if texture:
         for suffix, space in (("Color", "sRGB"), ("NormalGL", "Non-Color")):
             node = mat.node_tree.nodes.new("ShaderNodeTexImage")
-            path = TEXTURES / f"{texture}_1K-JPG_Color.jpg" if suffix == "Color" else HERE / f"textures/{texture}-NormalGL-scale025.png"
+            path = TEXTURES / f"{texture}_1K-JPG_Color.jpg" if suffix == "Color" else TEXTURES / f"{texture}-NormalGL-scale025.png"
             node.image = bpy.data.images.load(str(path), check_existing=True)
             node.image.colorspace_settings.name = space
             if suffix == "Color":

@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "08da019a48c32725fe0b33fe20f615659105ad16b3c6a0a2e824398f9e739849",
-      "runtime_sha256": "0f02f5eb635b356ab25325829bbdb51fbe021f723fe162abe9e4090486cb87db",
+      "source_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "runtime_sha256": "3fb220c6f073f003399acf25e0083aafb2f1bb18027064f49183bfbfe61370db",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -123,15 +123,16 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "r11 selective jacket update: 17 candidate preservation checks and 28 evaluated pose diagnostics PASS; unchanged sewn anchors, all other meshes, 32-bone rest/bind, four clips, materials and three images; formal GLB byte-identical to the reviewed candidate; actual Bevy motion review tracked separately",
-        "visual": "needs_revision; fuller body side silhouette and sleeve volume with cuff taper visible in fixed full-body CPU comparisons; root accepted this local increment, not author character approval; rounded cloth forms, stiff elbow folds, face, hair and final palette remain unaccepted"
+        "technical": "r12 selective sleeve shaping: 18 candidate and 21 promoted preservation checks, DCC and GLB checks PASS; 160 middle-sleeve vertices change, sewn anchors, other meshes, UV/weights, 32-bone rest/bind, four clips and three images preserved; update is idempotent; formal GLB byte-identical to reviewed candidate",
+        "visual": "needs_revision; shallower sleeve panels and directed outer-elbow fold visible at fixed full-body size, modest improvement in Run; 16 CPU before/after images reviewed without observed new penetration; root accepted a local technical increment, not author character approval; cloth panel relationships, face, hair and palette remain unaccepted",
+        "runtime": "r12 actual Bevy yao-motion-retry: 540 frames at 30 FPS, 27 native / 28 wrapper checks PASS, exit 0; actual Idle/Walk/Run/Jump and pause/resume paths exercised; Run 190–192, Jump 68–70 and landing 79 visually self-audited without observed new penetration; limited sampled views, not author acceptance; see todo/evidence/TASK-049/blender-integration-r5/visual-review.md"
       },
       "generation": {
         "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/jacket-r11/review.md",
+      "evidence": "todo/evidence/TASK-047/sleeve-r12/review.md",
       "data_textures": [
         {
           "path": "source-assets/characters/CHR-001/model/grey-study-surface.png",
