@@ -47,6 +47,7 @@ impl CollisionWorld {
                     | "v55_workshop_facade"
                     | "v35_byte_beat_facade"
                     | "street_bench"
+                    | "roof_shade"
                     | "aircon_wall"
             ) || (prop.model == "streetlight"
                 && prop.source == "/surfaces/cinema-service-court/streetlight/0")
@@ -487,6 +488,122 @@ mod tests {
     }
 
     #[test]
+    fn cinema_roof_route_has_full_width_support_and_keeps_lower_arrival_clear() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let scene = PreparedScene::load(root).unwrap();
+        let world = CollisionWorld::from_scene(&scene).unwrap();
+        // Replay all 80 original horizontal samples below the new rail's lower bar,
+        // including the 24 former outer-half gaps; this probes the floor itself
+        for north in [220., 221., 224., 230., 236., 239., 240., 241., 244., 245.] {
+            for x in [338., 339., 339.9, 340., 340.1, 341., 341.9, 342.] {
+                let foot = Vec3::new(x, 37.06, -north);
+                let hit = world
+                    .support(foot, 0.08)
+                    .unwrap_or_else(|| panic!("roof route has no support at map [{x}, {north}]"));
+                assert!((hit.point.y - 37.).abs() < 0.08, "{foot:?}: {hit:?}");
+                assert!(
+                    !hit.source.contains("boundary-guard"),
+                    "expected floor, not a guard footing: {hit:?}"
+                );
+            }
+        }
+        // The source-rendered guard blocks the drop while preserving the full-width walking lane
+        for north in [225., 230., 235.] {
+            let hit = world
+                .capsule_cast(Vec3::new(341., 37.12, -north), 1.7, 0.3, Vec3::X * 2., 0.02)
+                .expect("east roof guard must block a capsule");
+            assert!(
+                hit.source.contains("cinema_roof_surface)/boundary-guard"),
+                "{hit:?}"
+            );
+        }
+        // Real capsule sweeps over both halves of the route; supports cannot obstruct walking
+        for x in [338.4, 340., 341.6] {
+            let hit = world.capsule_cast(
+                Vec3::new(x, 37.15, -221.),
+                1.7,
+                0.3,
+                Vec3::NEG_Z * 23.,
+                0.02,
+            );
+            assert!(hit.is_none(), "roof lane x={x}: {hit:?}");
+        }
+        // At the scope seam, the new return and original bridge rails must not leave an escape gap
+        for north in [249.8, 250., 250.2] {
+            let center_x = 340. + (north - 245.) * (10. / 15.);
+            for direction in [Vec3::X, Vec3::NEG_X] {
+                assert!(
+                    world
+                        .capsule_cast(
+                            Vec3::new(center_x, 37.15, -north),
+                            1.7,
+                            0.3,
+                            direction * 7.,
+                            0.02
+                        )
+                        .is_some(),
+                    "unprotected roof/bridge seam {center_x},{north} toward {direction:?}"
+                );
+            }
+        }
+        // The shading frame is an imported real mesh, with feet on the new flush paving
+        let native = CollisionWorld::from_parts(&scene.parts).unwrap();
+        let mut first = 0;
+        let mut feet = [false; 2];
+        for range in &world.sources {
+            if range.source.contains("/collision/roof_shade/") {
+                for triangle in &world.mesh.indices()[first..range.end_triangle as usize] {
+                    for &index in triangle {
+                        let point = bevy_vector(world.mesh.vertices()[index as usize]);
+                        if (point.y - 37.).abs() < 0.001 {
+                            let support = native.support(point + Vec3::Y * 0.1, 0.2).unwrap();
+                            assert!(
+                                (support.point.y - 37.).abs() < 0.001,
+                                "shade foot {support:?}"
+                            );
+                            assert!(
+                                support.source.contains("cinema-roof-rest-court")
+                                    || support.source.contains("cinema-roof-seat-walk"),
+                                "{support:?}"
+                            );
+                            feet[usize::from(point.x > 312.)] = true;
+                        }
+                    }
+                }
+            }
+            first = range.end_triangle as usize;
+        }
+        assert_eq!(
+            feet,
+            [true, true],
+            "both shade bases must have real mesh contact"
+        );
+        assert!(
+            world
+                .capsule_cast(
+                    Vec3::new(312., 37.1, -233.8),
+                    1.7,
+                    0.3,
+                    Vec3::NEG_Z * 1.8,
+                    0.02
+                )
+                .is_none(),
+            "shade keeps the bench front approach open"
+        );
+        // No new columns below the 43 m² extension in the independent public lift approach
+        for x in [340.4, 341.6] {
+            let hit = world.capsule_cast(
+                Vec3::new(x, 25.15, -215.),
+                1.7,
+                0.3,
+                Vec3::NEG_Z * 4.6,
+                0.02,
+            );
+            assert!(hit.is_none(), "lower public arrival x={x}: {hit:?}");
+        }
+    }
+
+    #[test]
     fn scene_models_have_real_support_and_block_the_player_outside_the_original_shell() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
         let scene = PreparedScene::load(root).unwrap();
@@ -504,7 +621,8 @@ mod tests {
                         if (point.y - 37.).abs() < 0.001 {
                             let support = native.support(point + Vec3::Y * 0.2, 0.4).unwrap();
                             assert!(
-                                support.source.contains("cinema_roof_surface"),
+                                support.source.contains("cinema-roof-rest-court")
+                                    || support.source.contains("cinema-roof-seat-walk"),
                                 "{support:?}"
                             );
                             assert!((support.point.y - point.y).abs() < 0.001, "{support:?}");
@@ -518,7 +636,7 @@ mod tests {
         assert_eq!(
             feet,
             [true, true],
-            "both physical bench feet rest on the original deck"
+            "both physical bench feet rest on the flush roof paving"
         );
         let hit = world
             .capsule_cast(

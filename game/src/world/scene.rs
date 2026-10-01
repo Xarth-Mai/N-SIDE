@@ -62,6 +62,7 @@ impl PreparedScene {
         parts.extend(star_screens(&map)?);
         parts.extend(business_signs(&map)?);
         parts.extend(shop_stair_handrails(&map)?);
+        parts.extend(cinema_roof_guardrails(&map)?);
         parts.extend(music_brick_cladding(&map)?);
         for part in &mut parts {
             if appearance
@@ -2179,6 +2180,139 @@ const SHOP_STAIR_FLIGHTS: [[&str; 2]; 3] = [
     ],
 ];
 
+fn cinema_roof_guardrails(map: &Map) -> Result<Vec<GeometryPart>, String> {
+    use geo::{BooleanOps, BoundingRect, LineString, Polygon};
+    let surface = |id: &str| {
+        map.surfaces
+            .iter()
+            .enumerate()
+            .find(|(_, s)| s.id.as_deref() == Some(id))
+            .ok_or_else(|| format!("[geometry/roof-guard] missing surface {id}"))
+    };
+    let (index, roof) = surface("cinema_roof_surface")?;
+    let (_, platform) = surface("cinema_upper_platform")?;
+    if (roof.elevation - platform.elevation).abs() > 0.001 {
+        return Err(
+            "[geometry/roof-guard] roof and platform must share their walking level".into(),
+        );
+    }
+    let polygon = |points: &[[f64; 2]]| {
+        Polygon::new(
+            LineString::from(points.iter().map(|p| (p[0], p[1])).collect::<Vec<_>>()),
+            vec![],
+        )
+    };
+    let outline = polygon(&roof.polygon).union(&polygon(&platform.polygon));
+    if outline.0.len() != 1 {
+        return Err(
+            "[geometry/roof-guard] roof and platform no longer form one connected deck".into(),
+        );
+    }
+    let north_limit = roof
+        .polygon
+        .iter()
+        .map(|p| p[1])
+        .fold(f64::NEG_INFINITY, f64::max);
+    let bounds = outline.bounding_rect().unwrap();
+    let local = outline.intersection(
+        &geo::Rect::new(
+            bounds.min(),
+            geo::Coord {
+                x: bounds.max().x,
+                y: north_limit,
+            },
+        )
+        .to_polygon(),
+    );
+    if local.0.len() != 1 {
+        return Err("[geometry/roof-guard] roof boundary no longer forms one local deck".into());
+    }
+    let bridge = map
+        .roads
+        .iter()
+        .find(|r| {
+            r.kind == "bridge"
+                && r.building.is_none()
+                && r.surface.as_deref() == Some("cinema_upper_platform")
+                && r.nodes.first().map(String::as_str) == Some("cinema_roof")
+        })
+        .ok_or_else(|| "[geometry/roof-guard] missing public upper bridge".to_string())?;
+    let points: Vec<_> = bridge.nodes.iter().map(|n| map.nodes[n]).collect();
+    // 4 cm per side keeps the 7 cm end post outside the road ribbon and still
+    // overlaps the existing 16 cm bridge rail at the joint
+    let offsets = geometry::road_offsets(&points, bridge.width + 0.08);
+    let mouths: Vec<_> = points
+        .windows(2)
+        .enumerate()
+        .map(|(i, p)| {
+            (
+                geometry::ribbon(p[0], p[1], offsets[i], offsets[i + 1]),
+                [p[0][2], p[1][2]],
+            )
+        })
+        .collect();
+    let neighbors: Vec<_> = mouths.iter().map(|(p, h)| (p, *h)).collect();
+    // The two planned lifts have no supported arrival outside the deck yet, so the
+    // visible edge remains closed. The built upper approach lies inside the union
+    let mut batches = BTreeMap::new();
+    for edge in local.0[0].exterior().0.windows(2) {
+        let [a, b] = [edge[0], edge[1]].map(|p| [p.x, p.y, roof.elevation]);
+        // The local end returns to both existing bridge rails. Only the real bridge
+        // lane opens this return; the two unbuilt lift mouths remain closed
+        let spans = if (a[1] - north_limit).abs() < 0.001 && (b[1] - north_limit).abs() < 0.001 {
+            geometry::bridge_rail_spans(a, b, &neighbors)
+        } else {
+            vec![[a, b]]
+        };
+        for [from, to] in spans {
+            let [from, to] = [from, to].map(map_to_world);
+            let length = from.distance(to);
+            if length < 0.08 {
+                continue;
+            }
+            let rotation = Quat::from_rotation_arc(Vec3::X, (to - from) / length);
+            for (height, depth) in [(0.10, 0.055), (1.11, 0.08)] {
+                add_box(
+                    &mut batches,
+                    "metal",
+                    (from + to) / 2. + Vec3::Y * height,
+                    Vec3::new(length, depth, 0.06),
+                    rotation,
+                )?;
+            }
+            let bays = (length / 1.5).ceil() as usize;
+            for i in 0..=bays {
+                add_box(
+                    &mut batches,
+                    "metal",
+                    from.lerp(to, i as f32 / bays as f32) + Vec3::Y * 0.555,
+                    Vec3::new(0.07, 1.11, 0.07),
+                    rotation,
+                )?;
+            }
+            // Visible infill is also the collision geometry; clear gaps stay below 0.1 m
+            let pickets = (length / 0.13).ceil() as usize;
+            for i in 1..pickets {
+                add_box(
+                    &mut batches,
+                    "metal",
+                    from.lerp(to, i as f32 / pickets as f32) + Vec3::Y * 0.59,
+                    Vec3::new(0.035, 1.0, 0.035),
+                    rotation,
+                )?;
+            }
+        }
+    }
+    Ok(batches
+        .into_iter()
+        .map(|(material, mesh)| GeometryPart {
+            source: format!("/surfaces/{index} (cinema_roof_surface)/boundary-guard"),
+            material,
+            mesh,
+        })
+        .collect())
+}
+
 // Visual street furniture only; the existing walking collision remains unchanged
 fn shop_stair_handrails(map: &Map) -> Result<Vec<GeometryPart>, String> {
     let ground = Ground::new(map)?;
@@ -3083,6 +3217,11 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
         transform: Transform::from_translation(map_to_world([312., 237., 37.])),
     });
     props.push(PropPlacement {
+        source: "/surfaces/cinema_roof_surface/roof-shade".into(),
+        model: "roof_shade".into(),
+        transform: Transform::from_translation(map_to_world([312., 237., 37.])),
+    });
+    props.push(PropPlacement {
         source: "buildings[V-W10]/aircon-wall".into(),
         model: "aircon_wall".into(),
         transform: Transform::from_translation(map_to_world([567.79, 95.6, 12.666667]))
@@ -3269,6 +3408,81 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn cinema_roof_guards_close_unbuilt_lifts_and_keep_supported_routes_open() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
+        let map = Map::load(root.join("source-assets/district-map/district.json")).unwrap();
+        let parts = cinema_roof_guardrails(&map).unwrap();
+        let collision = super::super::collision::CollisionWorld::from_parts(&parts).unwrap();
+        let bounds = collision.bounds();
+        assert!(
+            (bounds.1.y - 38.15).abs() < 0.001,
+            "guard height: {bounds:?}"
+        );
+        assert!(
+            // A rotated 7 cm square post extends at most 0.07 / sqrt(2) beyond its axis
+            bounds.0.z >= -250.05,
+            "local work must not replace the long bridge rail"
+        );
+        let cast = |from, to| {
+            let [from, to] = [from, to].map(map_to_world);
+            collision.capsule_cast(from, 1.725, 0.28, to - from, 0.025)
+        };
+        for (label, from, to) in [
+            ("west edge", [301., 235., 37.03], [299., 235., 37.03]),
+            ("south edge", [312., 221., 37.03], [312., 219., 37.03]),
+            ("north edge", [310., 249., 37.03], [310., 251., 37.03]),
+            ("east extension", [341.55, 232., 37.03], [343., 232., 37.03]),
+            (
+                "west bridge return",
+                [340.3, 249., 37.03],
+                [340.3, 251., 37.03],
+            ),
+            (
+                "east bridge return",
+                [348., 249., 37.03],
+                [348., 251., 37.03],
+            ),
+            (
+                "unbuilt public lift mouth",
+                [340., 221., 37.03],
+                [340., 219., 37.03],
+            ),
+            (
+                "unbuilt service lift mouth",
+                [320., 249., 37.03],
+                [320., 251., 37.03],
+            ),
+        ] {
+            let hit = cast(from, to).unwrap_or_else(|| panic!("unprotected {label}"));
+            assert!(hit.source.contains("cinema_roof_surface)/boundary-guard"));
+        }
+        for (label, from, to) in [
+            (
+                "supported service lane",
+                [320., 249.2, 37.03],
+                [326., 247.7, 37.03],
+            ),
+            ("east deck", [340., 221., 37.03], [340., 239., 37.03]),
+            (
+                "east deck outer lane",
+                [341.6, 224., 37.03],
+                [341.6, 238., 37.03],
+            ),
+            (
+                "upper approach",
+                [340., 245., 37.03],
+                [343.5, 250.25, 37.03],
+            ),
+            ("garden entry", [340., 245., 37.03], [334., 245., 37.03]),
+        ] {
+            assert!(cast(from, to).is_none(), "guard blocks {label}");
+        }
+        eprintln!(
+            "RF 1.15 m visible guards: eight edge/unbuilt-lift/return casts blocked, five supported-route casts clear; long bridge unchanged"
+        );
+    }
 
     #[test]
     fn cinema_service_props_keep_supported_feet_and_clear_working_space() {

@@ -1,0 +1,190 @@
+{
+  "topology": "unchanged from r13 A",
+  "profile_m": [
+    [
+      -0.042,
+      0
+    ],
+    [
+      -0.007,
+      -0.017
+    ],
+    [
+      0.018,
+      0.007
+    ],
+    [
+      0.049,
+      0
+    ]
+  ],
+  "secondary_strength": 0.23,
+  "primary_side": "+X",
+  "changed": [
+    {
+      "index": 45,
+      "displacement_m": 0.0010031833624973576
+    },
+    {
+      "index": 46,
+      "displacement_m": -0.002291267826430172
+    },
+    {
+      "index": 47,
+      "displacement_m": -0.001065186726762084
+    },
+    {
+      "index": 51,
+      "displacement_m": -0.0002501269650054102
+    },
+    {
+      "index": 52,
+      "displacement_m": -0.0005179975589932518
+    },
+    {
+      "index": 53,
+      "displacement_m": 0.00023156749587374356
+    },
+    {
+      "index": 77,
+      "displacement_m": 0.0012761114651786147
+    },
+    {
+      "index": 78,
+      "displacement_m": 0.0013748687439538903
+    },
+    {
+      "index": 79,
+      "displacement_m": -0.008438673344804656
+    },
+    {
+      "index": 85,
+      "displacement_m": -0.0020633152795117866
+    },
+    {
+      "index": 86,
+      "displacement_m": 0.00022068919594843634
+    },
+    {
+      "index": 87,
+      "displacement_m": 0.0004176390057099875
+    },
+    {
+      "index": 529,
+      "displacement_m": 0.0017341488526253235
+    },
+    {
+      "index": 530,
+      "displacement_m": 0.006798588211829699
+    },
+    {
+      "index": 531,
+      "displacement_m": -0.01587239974150152
+    },
+    {
+      "index": 532,
+      "displacement_m": -0.0020998062670799992
+    },
+    {
+      "index": 538,
+      "displacement_m": -0.0005940609326306576
+    },
+    {
+      "index": 539,
+      "displacement_m": -0.003606785311264637
+    },
+    {
+      "index": 540,
+      "displacement_m": 0.0011497386478897971
+    },
+    {
+      "index": 541,
+      "displacement_m": 0.0005436724841158602
+    },
+    {
+      "index": 559,
+      "displacement_m": 2.160828762240476e-05
+    },
+    {
+      "index": 560,
+      "displacement_m": 0.0005380642413414351
+    },
+    {
+      "index": 561,
+      "displacement_m": 0.002837926667807111
+    },
+    {
+      "index": 562,
+      "displacement_m": 0.005812770835245388
+    },
+    {
+      "index": 563,
+      "displacement_m": -0.013837526336563013
+    },
+    {
+      "index": 564,
+      "displacement_m": -0.005495299254596709
+    },
+    {
+      "index": 572,
+      "displacement_m": -0.001242813465925845
+    },
+    {
+      "index": 573,
+      "displacement_m": -0.003413075166212821
+    },
+    {
+      "index": 574,
+      "displacement_m": 0.0010407185503149524
+    },
+    {
+      "index": 575,
+      "displacement_m": 0.0006811784501256391
+    },
+    {
+      "index": 576,
+      "displacement_m": 0.00010733775600150455
+    },
+    {
+      "index": 592,
+      "displacement_m": 0.0006656500342631174
+    },
+    {
+      "index": 593,
+      "displacement_m": 0.0021345985828113727
+    },
+    {
+      "index": 594,
+      "displacement_m": -0.0005990774654962092
+    },
+    {
+      "index": 595,
+      "displacement_m": -0.010244613110246381
+    },
+    {
+      "index": 596,
+      "displacement_m": -0.004265048113687874
+    },
+    {
+      "index": 606,
+      "displacement_m": -0.0009802486556351358
+    },
+    {
+      "index": 607,
+      "displacement_m": -0.0023580676564663545
+    },
+    {
+      "index": 608,
+      "displacement_m": -0.00013854677113479163
+    },
+    {
+      "index": 609,
+      "displacement_m": 0.0004909335046970927
+    },
+    {
+      "index": 610,
+      "displacement_m": 0.0001530563699506008
+    }
+  ],
+  "scope": "One narrow inward fold and shallow raised flank; no global width or hem movement"
+}

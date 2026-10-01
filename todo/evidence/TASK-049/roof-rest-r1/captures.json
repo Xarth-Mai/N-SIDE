@@ -1,0 +1,515 @@
+{
+  "status": "COMPLETE",
+  "scope": "Four final R6 Viewer captures. The earlier 60-frame baseline is archived separately under before and excluded from final totals. Viewer camera evidence does not prove player traversal or implemented lifts.",
+  "media_cleanup": "Pending root cleanup; no media copied",
+  "compression": {
+    "threshold_bytes": 500000,
+    "format": "gzip",
+    "mtime": 0,
+    "filename": ""
+  },
+  "archive_verification": {
+    "status": "PASS",
+    "files": 20,
+    "gzip_roundtrips": 0,
+    "original_bytes": 581544,
+    "stored_bytes": 581544,
+    "gzip_mtime": 0,
+    "source_bytes_preserved": true,
+    "original_visual_fields_preserved": true
+  },
+  "completed_native_runs": 4,
+  "total_actual_frames": 420,
+  "total_native_checks": 22,
+  "total_wrapper_checks": 22,
+  "runtime_inputs_reference": "runtime-inputs.json",
+  "visual_review_reference": "visual-review.md",
+  "captures": [
+    {
+      "name": "roof-bench",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-bench/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-bench",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "base_commit": "60cfed49aa5f9fc31034184c084d625596314261",
+      "binary_sha256": "74ef99b3d2406ae6d38c38b6d278dd0962b97620b7c14eba9eabc700794e1aee",
+      "script_sha256": "37bf2c293b2b8c540c5afe0d64fc7f5991a3e3472b12e9bf4562078fba93f1be",
+      "scene": "district",
+      "view": "eye-cinema-bench",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 60,
+      "actual_frames": 60,
+      "state_samples": 60,
+      "native_checks": 4,
+      "wrapper_checks": 4,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/roof-bench/run.json",
+          "compression": "none",
+          "original_bytes": 4884,
+          "original_sha256": "14478838bf42cad97f45165ba7e11e8a60651d52cffbf959f80ee3d768ff6b38",
+          "stored_bytes": 4884,
+          "stored_sha256": "14478838bf42cad97f45165ba7e11e8a60651d52cffbf959f80ee3d768ff6b38"
+        },
+        "script.json": {
+          "path": "captures/roof-bench/script.json",
+          "compression": "none",
+          "original_bytes": 371,
+          "original_sha256": "37bf2c293b2b8c540c5afe0d64fc7f5991a3e3472b12e9bf4562078fba93f1be",
+          "stored_bytes": 371,
+          "stored_sha256": "37bf2c293b2b8c540c5afe0d64fc7f5991a3e3472b12e9bf4562078fba93f1be"
+        },
+        "state.json": {
+          "path": "captures/roof-bench/state.json",
+          "compression": "none",
+          "original_bytes": 56925,
+          "original_sha256": "b287b8388c183b9e9332800f2f1e4296e77fd368cc53e290db68c44fe4170b1b",
+          "stored_bytes": 56925,
+          "stored_sha256": "b287b8388c183b9e9332800f2f1e4296e77fd368cc53e290db68c44fe4170b1b"
+        },
+        "runtime.log": {
+          "path": "captures/roof-bench/runtime.log",
+          "compression": "none",
+          "original_bytes": 11479,
+          "original_sha256": "fb24016b510fe2113e11c02c6f098d419acaeec215d4537da546d0ad3459ae94",
+          "stored_bytes": 11479,
+          "stored_sha256": "fb24016b510fe2113e11c02c6f098d419acaeec215d4537da546d0ad3459ae94"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 59,
+          "original_path": "output/roof-rest-r1/roof-bench/keyframes/frame00059.png",
+          "sha256": "d036c76e011647e5becfc11fbb40e12e247a275c00811d903aeb948da8ff2751"
+        }
+      ],
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_r6",
+      "first_camera_position": [
+        313.5,
+        38.724998474121094,
+        -234.0
+      ],
+      "last_camera_position": [
+        313.5,
+        38.724998474121094,
+        -234.0
+      ],
+      "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
+    },
+    {
+      "name": "roof-city",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-city/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-city",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "base_commit": "60cfed49aa5f9fc31034184c084d625596314261",
+      "binary_sha256": "74ef99b3d2406ae6d38c38b6d278dd0962b97620b7c14eba9eabc700794e1aee",
+      "script_sha256": "1fbc930838fcd8db51a3859e17bfd884d7dbde412272721e7acf0fd34639fa90",
+      "scene": "district",
+      "view": "eye-cinema-roof-city",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/roof-city/run.json",
+          "compression": "none",
+          "original_bytes": 10562,
+          "original_sha256": "b446f9de25258e2c4fa4adbee6de84641f4456c27e92246eeee5c6394e6a9935",
+          "stored_bytes": 10562,
+          "stored_sha256": "b446f9de25258e2c4fa4adbee6de84641f4456c27e92246eeee5c6394e6a9935"
+        },
+        "script.json": {
+          "path": "captures/roof-city/script.json",
+          "compression": "none",
+          "original_bytes": 1369,
+          "original_sha256": "1fbc930838fcd8db51a3859e17bfd884d7dbde412272721e7acf0fd34639fa90",
+          "stored_bytes": 1369,
+          "stored_sha256": "1fbc930838fcd8db51a3859e17bfd884d7dbde412272721e7acf0fd34639fa90"
+        },
+        "state.json": {
+          "path": "captures/roof-city/state.json",
+          "compression": "none",
+          "original_bytes": 117899,
+          "original_sha256": "1ab0fdc30d1aa4c12a690f7edac610dff2c8eb92faaa297d73763ab25983e84a",
+          "stored_bytes": 117899,
+          "stored_sha256": "1ab0fdc30d1aa4c12a690f7edac610dff2c8eb92faaa297d73763ab25983e84a"
+        },
+        "runtime.log": {
+          "path": "captures/roof-city/runtime.log",
+          "compression": "none",
+          "original_bytes": 14820,
+          "original_sha256": "be4ae203a5cf6f21c9fa123204a6e8c867640d372877ddea085a5018a5daff68",
+          "stored_bytes": 14820,
+          "stored_sha256": "be4ae203a5cf6f21c9fa123204a6e8c867640d372877ddea085a5018a5daff68"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "original_path": "output/roof-rest-r1/roof-city/keyframes/frame00029.png",
+          "sha256": "2c0984d1e05ec8354a915ad73e5ca2b88c6986cc92940eb004bc2674237c785a"
+        },
+        {
+          "frame": 49,
+          "original_path": "output/roof-rest-r1/roof-city/keyframes/frame00049.png",
+          "sha256": "0436a98d8d325047dd6c4050e57341362175566f366c49e16ddb722ca2918e58"
+        },
+        {
+          "frame": 79,
+          "original_path": "output/roof-rest-r1/roof-city/keyframes/frame00079.png",
+          "sha256": "2c0984d1e05ec8354a915ad73e5ca2b88c6986cc92940eb004bc2674237c785a"
+        },
+        {
+          "frame": 119,
+          "original_path": "output/roof-rest-r1/roof-city/keyframes/frame00119.png",
+          "sha256": "2c0984d1e05ec8354a915ad73e5ca2b88c6986cc92940eb004bc2674237c785a"
+        }
+      ],
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_r6",
+      "first_camera_position": [
+        316.0,
+        38.724998474121094,
+        -241.0
+      ],
+      "last_camera_position": [
+        316.0,
+        38.724998474121094,
+        -241.0
+      ],
+      "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
+    },
+    {
+      "name": "roof-wide",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-wide/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-wide",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "base_commit": "60cfed49aa5f9fc31034184c084d625596314261",
+      "binary_sha256": "74ef99b3d2406ae6d38c38b6d278dd0962b97620b7c14eba9eabc700794e1aee",
+      "script_sha256": "25dba4fea4360ff6c7b54a0621e575b62f394f9dae4321220202a9e2a6fdbeef",
+      "scene": "district",
+      "view": "inspect-cinema-roof",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/roof-wide/run.json",
+          "compression": "none",
+          "original_bytes": 10651,
+          "original_sha256": "7b1ab1b612b76552cfcc00a721f8f9dd94f7b1f34d6523fadd7c4ec41755c5a9",
+          "stored_bytes": 10651,
+          "stored_sha256": "7b1ab1b612b76552cfcc00a721f8f9dd94f7b1f34d6523fadd7c4ec41755c5a9"
+        },
+        "script.json": {
+          "path": "captures/roof-wide/script.json",
+          "compression": "none",
+          "original_bytes": 1368,
+          "original_sha256": "25dba4fea4360ff6c7b54a0621e575b62f394f9dae4321220202a9e2a6fdbeef",
+          "stored_bytes": 1368,
+          "stored_sha256": "25dba4fea4360ff6c7b54a0621e575b62f394f9dae4321220202a9e2a6fdbeef"
+        },
+        "state.json": {
+          "path": "captures/roof-wide/state.json",
+          "compression": "none",
+          "original_bytes": 116236,
+          "original_sha256": "15ee3c68bfee7945f85d50631ea0434fa8d231d0a21cef6ff9bc30a9147ad079",
+          "stored_bytes": 116236,
+          "stored_sha256": "15ee3c68bfee7945f85d50631ea0434fa8d231d0a21cef6ff9bc30a9147ad079"
+        },
+        "runtime.log": {
+          "path": "captures/roof-wide/runtime.log",
+          "compression": "none",
+          "original_bytes": 14822,
+          "original_sha256": "d70a1b396e50ac27430d74011c7a2f149112492b6b3d6449f3640a71a5c2d1b2",
+          "stored_bytes": 14822,
+          "stored_sha256": "d70a1b396e50ac27430d74011c7a2f149112492b6b3d6449f3640a71a5c2d1b2"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "original_path": "output/roof-rest-r1/roof-wide/keyframes/frame00029.png",
+          "sha256": "3cc8c9d9d355b3533ba5194cf611949f3177861e0e383cdd1dfaa12e11f7d40a"
+        },
+        {
+          "frame": 49,
+          "original_path": "output/roof-rest-r1/roof-wide/keyframes/frame00049.png",
+          "sha256": "3c9b52a54629ff8d17af35e02e4a1994013f58842d174d7af8e10a7801d03624"
+        },
+        {
+          "frame": 79,
+          "original_path": "output/roof-rest-r1/roof-wide/keyframes/frame00079.png",
+          "sha256": "3cc8c9d9d355b3533ba5194cf611949f3177861e0e383cdd1dfaa12e11f7d40a"
+        },
+        {
+          "frame": 119,
+          "original_path": "output/roof-rest-r1/roof-wide/keyframes/frame00119.png",
+          "sha256": "3cc8c9d9d355b3533ba5194cf611949f3177861e0e383cdd1dfaa12e11f7d40a"
+        }
+      ],
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_r6",
+      "first_camera_position": [
+        360.0,
+        49.0,
+        -203.0
+      ],
+      "last_camera_position": [
+        360.0,
+        49.0,
+        -203.0
+      ],
+      "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
+    },
+    {
+      "name": "roof-bearing",
+      "status": "PASS",
+      "runtime_started": true,
+      "command": [
+        "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+        "--project-root",
+        "/home/lzzz/MyProjects/N-SIDE",
+        "--capture",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-bearing/script.json",
+        "--output",
+        "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/roof-bearing",
+        "--aa",
+        "msaa4"
+      ],
+      "runtime_exit_code": 0,
+      "base_commit": "60cfed49aa5f9fc31034184c084d625596314261",
+      "binary_sha256": "74ef99b3d2406ae6d38c38b6d278dd0962b97620b7c14eba9eabc700794e1aee",
+      "script_sha256": "4f33851dad5eee935852774ba0365f28e3b9562adc65ab813ad122f0c86bc0f5",
+      "scene": "district",
+      "view": "eye-cinema-roof-bearing",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 30,
+      "expected_frames": 120,
+      "actual_frames": 120,
+      "state_samples": 120,
+      "native_checks": 6,
+      "wrapper_checks": 6,
+      "video": "NOT RUN: --no-video",
+      "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+      "archive": {
+        "run.json": {
+          "path": "captures/roof-bearing/run.json",
+          "compression": "none",
+          "original_bytes": 10689,
+          "original_sha256": "11d98cd9001751e2dbc0f27557cebc735a8765e663f479e06bb855885204b388",
+          "stored_bytes": 10689,
+          "stored_sha256": "11d98cd9001751e2dbc0f27557cebc735a8765e663f479e06bb855885204b388"
+        },
+        "script.json": {
+          "path": "captures/roof-bearing/script.json",
+          "compression": "none",
+          "original_bytes": 1381,
+          "original_sha256": "4f33851dad5eee935852774ba0365f28e3b9562adc65ab813ad122f0c86bc0f5",
+          "stored_bytes": 1381,
+          "stored_sha256": "4f33851dad5eee935852774ba0365f28e3b9562adc65ab813ad122f0c86bc0f5"
+        },
+        "state.json": {
+          "path": "captures/roof-bearing/state.json",
+          "compression": "none",
+          "original_bytes": 117967,
+          "original_sha256": "415130a7d0e2a85b9cb6bc294692aa97454e9fce6dc85cb3376d797690f60c6b",
+          "stored_bytes": 117967,
+          "stored_sha256": "415130a7d0e2a85b9cb6bc294692aa97454e9fce6dc85cb3376d797690f60c6b"
+        },
+        "runtime.log": {
+          "path": "captures/roof-bearing/runtime.log",
+          "compression": "none",
+          "original_bytes": 14843,
+          "original_sha256": "d0096003e17d0fec622fa0a1fc2a679fd0b9af6bb5d5877f5af03862d0114aea",
+          "stored_bytes": 14843,
+          "stored_sha256": "d0096003e17d0fec622fa0a1fc2a679fd0b9af6bb5d5877f5af03862d0114aea"
+        }
+      },
+      "keyframes": [
+        {
+          "frame": 29,
+          "original_path": "output/roof-rest-r1/roof-bearing/keyframes/frame00029.png",
+          "sha256": "8528777a248e7a72d4a66aab3622f655d87cb39976d7b62057619bf2254d8195"
+        },
+        {
+          "frame": 49,
+          "original_path": "output/roof-rest-r1/roof-bearing/keyframes/frame00049.png",
+          "sha256": "3276a2eb27328693a8f20ba3221faa3f188d5e696feb001d60e74232efa13411"
+        },
+        {
+          "frame": 79,
+          "original_path": "output/roof-rest-r1/roof-bearing/keyframes/frame00079.png",
+          "sha256": "8528777a248e7a72d4a66aab3622f655d87cb39976d7b62057619bf2254d8195"
+        },
+        {
+          "frame": 119,
+          "original_path": "output/roof-rest-r1/roof-bearing/keyframes/frame00119.png",
+          "sha256": "8528777a248e7a72d4a66aab3622f655d87cb39976d7b62057619bf2254d8195"
+        }
+      ],
+      "runtime_inputs_reference": "runtime-inputs.json",
+      "runtime_phase": "final_r6",
+      "first_camera_position": [
+        348.0,
+        35.20000076293945,
+        -220.0
+      ],
+      "last_camera_position": [
+        348.0,
+        35.20000076293945,
+        -220.0
+      ],
+      "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
+    }
+  ],
+  "before": {
+    "name": "baseline",
+    "status": "PASS",
+    "runtime_started": true,
+    "command": [
+      "/home/lzzz/MyProjects/N-SIDE/game/target/debug/map_viewer",
+      "--project-root",
+      "/home/lzzz/MyProjects/N-SIDE",
+      "--capture",
+      "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/baseline/script.json",
+      "--output",
+      "/home/lzzz/MyProjects/N-SIDE/output/roof-rest-r1/baseline",
+      "--aa",
+      "msaa4"
+    ],
+    "runtime_exit_code": 0,
+    "base_commit": "5cd3037436e2fdd569569daa1a853f660d11d312",
+    "binary_sha256": "e60fa2b82a4b20c690dbfb27d5df353e80ba01372341390c66cea8be5fb9c76a",
+    "script_sha256": "37bf2c293b2b8c540c5afe0d64fc7f5991a3e3472b12e9bf4562078fba93f1be",
+    "scene": "district",
+    "view": "eye-cinema-bench",
+    "resolution": [
+      1280,
+      720
+    ],
+    "fps": 30,
+    "expected_frames": 60,
+    "actual_frames": 60,
+    "state_samples": 60,
+    "native_checks": 4,
+    "wrapper_checks": 4,
+    "video": "NOT RUN: --no-video",
+    "visual_review_original": "NOT RUN: inspect real keyframes and consecutive frames/video separately",
+    "archive": {
+      "run.json": {
+        "path": "captures/baseline/run.json",
+        "compression": "none",
+        "original_bytes": 6813,
+        "original_sha256": "70335cdd428556b8d1c3a2f42013d2b55f6ae77d6e830ef8a45282b85e8f5bbd",
+        "stored_bytes": 6813,
+        "stored_sha256": "70335cdd428556b8d1c3a2f42013d2b55f6ae77d6e830ef8a45282b85e8f5bbd"
+      },
+      "script.json": {
+        "path": "captures/baseline/script.json",
+        "compression": "none",
+        "original_bytes": 371,
+        "original_sha256": "37bf2c293b2b8c540c5afe0d64fc7f5991a3e3472b12e9bf4562078fba93f1be",
+        "stored_bytes": 371,
+        "stored_sha256": "37bf2c293b2b8c540c5afe0d64fc7f5991a3e3472b12e9bf4562078fba93f1be"
+      },
+      "state.json": {
+        "path": "captures/baseline/state.json",
+        "compression": "none",
+        "original_bytes": 56921,
+        "original_sha256": "713c94b82bcc2b811df6ad2c6d8f12255399194bac34a498100b9da8de1bad8f",
+        "stored_bytes": 56921,
+        "stored_sha256": "713c94b82bcc2b811df6ad2c6d8f12255399194bac34a498100b9da8de1bad8f"
+      },
+      "runtime.log": {
+        "path": "captures/baseline/runtime.log",
+        "compression": "none",
+        "original_bytes": 11173,
+        "original_sha256": "4d25e7acba1e84acc82efa3b285bdd2be09735d5d0608a6d69161a75aee7820e",
+        "stored_bytes": 11173,
+        "stored_sha256": "4d25e7acba1e84acc82efa3b285bdd2be09735d5d0608a6d69161a75aee7820e"
+      }
+    },
+    "keyframes": [
+      {
+        "frame": 59,
+        "original_path": "output/roof-rest-r1/baseline/keyframes/frame00059.png",
+        "sha256": "50c7397ea402a37f069eb299261c5b2cfb5519ae16ef19a9b09d3c6fba7fddf5"
+      }
+    ],
+    "runtime_inputs_reference": null,
+    "runtime_phase": "before_r6_baseline",
+    "first_camera_position": [
+      313.5,
+      38.724998474121094,
+      -234.0
+    ],
+    "last_camera_position": [
+      313.5,
+      38.724998474121094,
+      -234.0
+    ],
+    "scope": "Real game entry, world assets, Viewer camera and opt-in UI/walking experiments. Handoff samples are actual session state for the implemented prologue fragment, not completion of a full quest. Script gamepad injection verifies software routing, not physical gamepad hardware. Pointer lock samples reflect application intent; native cursor confinement requires a desktop test. State checks and images do not establish author/player acceptance"
+  },
+  "excluded_scope": "before.baseline: 60 frames and 4 native/wrapper checks, different binary; not included in the four-run final totals"
+}

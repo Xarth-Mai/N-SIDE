@@ -533,6 +533,17 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
             [321., 258., 26.7],
         ),
         (
+            "eye-cinema-roof-city",
+            [316., 241., 38.725],
+            [311., 230., 37.8],
+        ),
+        ("inspect-cinema-roof", [360., 203., 49.], [322., 238., 37.]),
+        (
+            "eye-cinema-roof-bearing",
+            [348., 220., 35.2],
+            [340.6, 228., 36.2],
+        ),
+        (
             "eye-cinema-service-aircon",
             [323., 254., 26.725],
             [324., 250.203, 26.55],

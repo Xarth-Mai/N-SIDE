@@ -1,0 +1,184 @@
+{
+  "status": "PASS",
+  "source_sha256": "2c0cbcbe7078ff053936308231e10b3e4e5b7574594ab5b798e7ebd9c633c0ad",
+  "glb_sha256": "fc2eddc389d472ea7be3f05e7354d356d7b8cdc12418429725bbccfab740828b",
+  "runtime_sha256": "fc2eddc389d472ea7be3f05e7354d356d7b8cdc12418429725bbccfab740828b",
+  "runtime_copy_and_model_binding": "PASS",
+  "bytes": 1514200,
+  "triangles": 1104,
+  "vertices": 2612,
+  "materials": 2,
+  "images": 2,
+  "bounds_gltf": [
+    [
+      -2.0199999809265137,
+      0.0,
+      -1.4600000381469727
+    ],
+    [
+      2.0199999809265137,
+      2.5199999809265137,
+      1.0999999046325684
+    ]
+  ],
+  "bounds_map": [
+    [
+      309.9800000190735,
+      235.90000009536743,
+      37.0
+    ],
+    [
+      314.0199999809265,
+      238.46000003814697,
+      39.519999980926514
+    ]
+  ],
+  "anchor_map": [
+    312,
+    237,
+    37
+  ],
+  "source_texture_hashes": {
+    "WoodSiding009-NormalGL-scale035.png": "0dfd5f813b707aec5c9ec2cbb87c41593b8370d457eb575f55f57c5c732630e7",
+    "WoodSiding009_1K-JPG_Color.jpg": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41"
+  },
+  "normal_scale": 1,
+  "bench_sha256": "f5a48231b979242e5cdf8f354a39887248731b2b438f654620a0eb01a1753388",
+  "bench_local_bounds": [
+    [
+      -0.9600000381469727,
+      -0.33519697189331055,
+      0.0
+    ],
+    [
+      0.9600000381469727,
+      0.33519697189331055,
+      0.8669141530990601
+    ]
+  ],
+  "bench_triangle_aabb_separation": "PASS",
+  "clear_approach_volumes_local": {
+    "front_seat_approach": [
+      [
+        -1.55,
+        -2.1,
+        0
+      ],
+      [
+        1.55,
+        -0.39,
+        1.85
+      ]
+    ],
+    "west_seat_side": [
+      [
+        -1.65,
+        -0.75,
+        0
+      ],
+      [
+        -0.99,
+        0.7,
+        1.85
+      ]
+    ],
+    "east_seat_side": [
+      [
+        0.99,
+        -0.75,
+        0
+      ],
+      [
+        1.65,
+        0.7,
+        1.85
+      ]
+    ]
+  },
+  "rf_road_margins": [
+    {
+      "source": "/roads/168",
+      "nodes": [
+        "cinema_roof",
+        "cinema_deck_turn",
+        "cinema_upper"
+      ],
+      "width": 4,
+      "plan_edge_margin_m": 24.790520720808992
+    },
+    {
+      "source": "/roads/169",
+      "nodes": [
+        "cinema_lift_low",
+        "cinema_lift_mid",
+        "cinema_lift_high"
+      ],
+      "width": 2,
+      "plan_edge_margin_m": 29.459323761760416
+    },
+    {
+      "source": "/roads/170",
+      "nodes": [
+        "cinema_lift_high",
+        "cinema_roof"
+      ],
+      "width": 4,
+      "plan_edge_margin_m": 23.980000019073486
+    },
+    {
+      "source": "/roads/238",
+      "nodes": [
+        "cinema_service_entry",
+        "cinema_goods_mid",
+        "cinema_goods_roof"
+      ],
+      "width": 2,
+      "plan_edge_margin_m": 11.997384327151627
+    },
+    {
+      "source": "/roads/240",
+      "nodes": [
+        "cinema_roof",
+        "cinema_garden_entry"
+      ],
+      "width": 3,
+      "plan_edge_margin_m": 19.523130125250475
+    },
+    {
+      "source": "/roads/770",
+      "nodes": [
+        "cinema_goods_roof",
+        "cinema_roof"
+      ],
+      "width": 2,
+      "plan_edge_margin_m": 11.997384327151627
+    }
+  ],
+  "map_source_sha256": "9000a57f35a838629e09a9c01ac39ff7e4c2ebf821dea34e7b3371be6e65e514",
+  "planting_reserve": {
+    "source_id": "cinema-roof-planting-reserve",
+    "polygon": [
+      [
+        329,
+        228
+      ],
+      [
+        336,
+        228
+      ],
+      [
+        336,
+        236
+      ],
+      [
+        329,
+        236
+      ]
+    ],
+    "elevation": 37,
+    "plan_envelope_margin_m": 14.980000019073486,
+    "status": "PASS"
+  },
+  "quest_boundary": "R6 physical planting reserve is read from the map; no QST-025 planting geometry or story-state changes in this asset",
+  "visual_review": "NOT RUN; source and runtime screenshot acceptance pending"
+}

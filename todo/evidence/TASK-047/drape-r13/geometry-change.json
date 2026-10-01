@@ -1,0 +1,374 @@
+{
+  "old_vertices": 519,
+  "new_vertices": 618,
+  "replaced_faces": [
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95
+  ],
+  "added_support_heights_fraction": [
+    0.24,
+    0.48,
+    0.72
+  ],
+  "displaced_vertices": [
+    {
+      "index": 40,
+      "displacement_m": -4.709581062220348e-07
+    },
+    {
+      "index": 41,
+      "displacement_m": -5.313930214178835e-06
+    },
+    {
+      "index": 42,
+      "displacement_m": -5.470954453866983e-05
+    },
+    {
+      "index": 43,
+      "displacement_m": -0.00039943181207123096
+    },
+    {
+      "index": 44,
+      "displacement_m": -0.0011593672942888837
+    },
+    {
+      "index": 45,
+      "displacement_m": 0.0015246629802135405
+    },
+    {
+      "index": 46,
+      "displacement_m": 0.00479632278318448
+    },
+    {
+      "index": 47,
+      "displacement_m": 0.0006227661485267593
+    },
+    {
+      "index": 48,
+      "displacement_m": 4.075383397659846e-06
+    },
+    {
+      "index": 50,
+      "displacement_m": 4.1497415188119e-06
+    },
+    {
+      "index": 51,
+      "displacement_m": 0.0006391876053334952
+    },
+    {
+      "index": 52,
+      "displacement_m": 0.004813519517429907
+    },
+    {
+      "index": 53,
+      "displacement_m": 0.0015418056669893796
+    },
+    {
+      "index": 54,
+      "displacement_m": -0.001162426403903783
+    },
+    {
+      "index": 55,
+      "displacement_m": -0.00042127314446518456
+    },
+    {
+      "index": 56,
+      "displacement_m": -5.702547807721987e-05
+    },
+    {
+      "index": 57,
+      "displacement_m": -5.075185605064224e-06
+    },
+    {
+      "index": 58,
+      "displacement_m": -4.098005253555505e-07
+    },
+    {
+      "index": 73,
+      "displacement_m": -5.951858195112984e-06
+    },
+    {
+      "index": 74,
+      "displacement_m": -3.628578668159807e-05
+    },
+    {
+      "index": 75,
+      "displacement_m": -0.00032305931853737974
+    },
+    {
+      "index": 76,
+      "displacement_m": -0.0022860921954125433
+    },
+    {
+      "index": 77,
+      "displacement_m": -0.0026782100057321993
+    },
+    {
+      "index": 78,
+      "displacement_m": 0.015675630695786574
+    },
+    {
+      "index": 79,
+      "displacement_m": 0.007790774844778032
+    },
+    {
+      "index": 80,
+      "displacement_m": 0.00017122735987346044
+    },
+    {
+      "index": 81,
+      "displacement_m": 1.7606575982345074e-07
+    },
+    {
+      "index": 83,
+      "displacement_m": 2.0970931310648404e-07
+    },
+    {
+      "index": 84,
+      "displacement_m": 0.00022919702455283055
+    },
+    {
+      "index": 85,
+      "displacement_m": 0.00867563230504275
+    },
+    {
+      "index": 86,
+      "displacement_m": 0.015960205669991987
+    },
+    {
+      "index": 87,
+      "displacement_m": -0.001366957833562769
+    },
+    {
+      "index": 88,
+      "displacement_m": -0.0030085912576362393
+    },
+    {
+      "index": 89,
+      "displacement_m": -0.0004301737146355306
+    },
+    {
+      "index": 90,
+      "displacement_m": -2.5921469823924866e-05
+    },
+    {
+      "index": 91,
+      "displacement_m": -2.1850576699583264e-06
+    },
+    {
+      "index": 526,
+      "displacement_m": -0.0003232518322750669
+    },
+    {
+      "index": 527,
+      "displacement_m": -0.0013151977510035277
+    },
+    {
+      "index": 528,
+      "displacement_m": -0.0042564678994184
+    },
+    {
+      "index": 529,
+      "displacement_m": -0.0036410193782286677
+    },
+    {
+      "index": 530,
+      "displacement_m": 0.01671412470802021
+    },
+    {
+      "index": 531,
+      "displacement_m": 0.018159856332139176
+    },
+    {
+      "index": 532,
+      "displacement_m": 0.0013446749687363842
+    },
+    {
+      "index": 533,
+      "displacement_m": 5.4440069642772595e-06
+    },
+    {
+      "index": 537,
+      "displacement_m": 7.087597587065245e-06
+    },
+    {
+      "index": 538,
+      "displacement_m": 0.0015417873852275148
+    },
+    {
+      "index": 539,
+      "displacement_m": 0.017842408895041764
+    },
+    {
+      "index": 540,
+      "displacement_m": 0.018743877330113727
+    },
+    {
+      "index": 541,
+      "displacement_m": -0.0021477610127224353
+    },
+    {
+      "index": 542,
+      "displacement_m": -0.004474583049770656
+    },
+    {
+      "index": 543,
+      "displacement_m": -0.0011824348918359332
+    },
+    {
+      "index": 544,
+      "displacement_m": -0.00022745461667171256
+    },
+    {
+      "index": 559,
+      "displacement_m": -0.0010648571813124377
+    },
+    {
+      "index": 560,
+      "displacement_m": -0.002543366509597158
+    },
+    {
+      "index": 561,
+      "displacement_m": 0.0008442276420084265
+    },
+    {
+      "index": 562,
+      "displacement_m": 0.016978339081301
+    },
+    {
+      "index": 563,
+      "displacement_m": 0.020122096205102896
+    },
+    {
+      "index": 564,
+      "displacement_m": 0.0033264102672089144
+    },
+    {
+      "index": 565,
+      "displacement_m": 4.7176776989622155e-05
+    },
+    {
+      "index": 566,
+      "displacement_m": 4.0491460315030065e-08
+    },
+    {
+      "index": 570,
+      "displacement_m": 4.7863632173832727e-08
+    },
+    {
+      "index": 571,
+      "displacement_m": 5.220713940169052e-05
+    },
+    {
+      "index": 572,
+      "displacement_m": 0.0032521132870882373
+    },
+    {
+      "index": 573,
+      "displacement_m": 0.01941210672052542
+    },
+    {
+      "index": 574,
+      "displacement_m": 0.018191195167679725
+    },
+    {
+      "index": 575,
+      "displacement_m": 0.0013546151257414572
+    },
+    {
+      "index": 576,
+      "displacement_m": -0.0026367082343446303
+    },
+    {
+      "index": 577,
+      "displacement_m": -0.0010859940425597325
+    },
+    {
+      "index": 592,
+      "displacement_m": 0.0012984387476283879
+    },
+    {
+      "index": 593,
+      "displacement_m": 0.004989791149541845
+    },
+    {
+      "index": 594,
+      "displacement_m": 0.012333913457285359
+    },
+    {
+      "index": 595,
+      "displacement_m": 0.012143082398341226
+    },
+    {
+      "index": 596,
+      "displacement_m": 0.0027859745511586388
+    },
+    {
+      "index": 597,
+      "displacement_m": 9.638124905703175e-05
+    },
+    {
+      "index": 598,
+      "displacement_m": 3.2382091350575064e-07
+    },
+    {
+      "index": 604,
+      "displacement_m": 3.2422821809801657e-07
+    },
+    {
+      "index": 605,
+      "displacement_m": 9.63484244337194e-05
+    },
+    {
+      "index": 606,
+      "displacement_m": 0.00278293382898499
+    },
+    {
+      "index": 607,
+      "displacement_m": 0.012136962718655797
+    },
+    {
+      "index": 608,
+      "displacement_m": 0.012333077457304303
+    },
+    {
+      "index": 609,
+      "displacement_m": 0.004988569301723308
+    },
+    {
+      "index": 610,
+      "displacement_m": 0.0012968811716786441
+    }
+  ],
+  "scope": "No global width, hem, zipper, shoulder or sleeve movement; lower-back folds only"
+}

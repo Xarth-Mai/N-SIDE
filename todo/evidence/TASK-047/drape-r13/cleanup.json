@@ -1,0 +1,131 @@
+{
+  "status": "complete",
+  "decision": "Root rejected A and B after actual comparison; r12 source/runtime unchanged",
+  "viewed_images": 17,
+  "no_own_process_uses_outputs": "All candidate/check/render Blender sessions exited before cleanup; no new sessions started",
+  "retained": "Candidate/revision/render/check scripts, parameters, logs, JSON, review and source baseline; input copies recoverable from recorded R5 commit",
+  "removed": [
+    {
+      "path": "output/yao-drape-r13/before-back-quarter.png",
+      "bytes": 284912,
+      "sha256": "01aea490f9b4ddda1b795a8d4d10038c23aa914fa355ac2b08c088378d135f59"
+    },
+    {
+      "path": "output/yao-drape-r13/before-back.png",
+      "bytes": 291585,
+      "sha256": "924121a232a40b8407107b74e3e4ed299f8dc049bf7379bcdf6a3a3ed1bb181e"
+    },
+    {
+      "path": "output/yao-drape-r13/before-front.png",
+      "bytes": 291100,
+      "sha256": "5ce3f88392b155536d1dfadfedf941f58de3fc61236facdb55ad5588be74dd60"
+    },
+    {
+      "path": "output/yao-drape-r13/before-jump21.png",
+      "bytes": 286549,
+      "sha256": "68e69190a2d77e1e3225c34e2f09e1fe04c804b0c1e1b2b6c8a3672eb5d85651"
+    },
+    {
+      "path": "output/yao-drape-r13/before-quarter.png",
+      "bytes": 286590,
+      "sha256": "77f5e2cc19f4ef98735c28957a0615d30ea6f8e954318afcb711e33457e29f4b"
+    },
+    {
+      "path": "output/yao-drape-r13/before-run26.png",
+      "bytes": 283989,
+      "sha256": "b28eb427f133cb5c8d2d32ccfeda742a052f66dfd70e94b9ab66f446346fc02e"
+    },
+    {
+      "path": "output/yao-drape-r13/before-run6.png",
+      "bytes": 285639,
+      "sha256": "7c4d1c2be9ffe7738339cef14ead0caa0470b32ab2132fdd301d306dbc67c731"
+    },
+    {
+      "path": "output/yao-drape-r13/before.blend",
+      "bytes": 4565488,
+      "sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845"
+    },
+    {
+      "path": "output/yao-drape-r13/before.glb",
+      "bytes": 1751892,
+      "sha256": "3fb220c6f073f003399acf25e0083aafb2f1bb18027064f49183bfbfe61370db"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-b-back-quarter.png",
+      "bytes": 284907,
+      "sha256": "eacd0aa61a52da36f831994c41e35b7465fc291a73d0cbadb66c4b84193f1db4"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-b-back.png",
+      "bytes": 291335,
+      "sha256": "658b592d92337c75883fa5ce4ca6bdb1e774e0241625b406228c768552b9209b"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-b-run6.png",
+      "bytes": 285727,
+      "sha256": "3d82c93e56acca195aff0a76f5ddad69fbfd59996d366bdd10ad0379b1774a98"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-b.blend",
+      "bytes": 4584538,
+      "sha256": "6845140541c5974ac63e247bd2b58024bce2f578ca64227f35ec32c4a48c4ce2"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-back-quarter.png",
+      "bytes": 285063,
+      "sha256": "81b10755b31f2ac33aa8b1c06e68c24ec38e5c51e604a576b5c007ac4e607390"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-back.png",
+      "bytes": 291633,
+      "sha256": "e665d65a119aa38bfd112276328937fe0006cd808f04fd7228f3fb3ec679acaf"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-front.png",
+      "bytes": 291403,
+      "sha256": "89edad1af43d44fd40c789ea7d5a08751908555b516fcf263b2b88fd5bf5e71d"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-jump21.png",
+      "bytes": 286502,
+      "sha256": "30ffaeb9c9b411ebaad4f01911b60fc033b691de810d6f5894ac926b483f3074"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-quarter.png",
+      "bytes": 286735,
+      "sha256": "5e28acb2141c2217cacbacb871a3cbedcb8127646e523cb65bd71b86eb5ba13f"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-run26.png",
+      "bytes": 284582,
+      "sha256": "748b63503260512cce34933a8bde7609c8c4248e530d21eb24d6240c6370c636"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate-run6.png",
+      "bytes": 285657,
+      "sha256": "51062b4d3ed6d67f2513f5c0bc8758e3b2bfebef4b54a7d37181610f68401d08"
+    },
+    {
+      "path": "output/yao-drape-r13/candidate.blend",
+      "bytes": 4584538,
+      "sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f"
+    },
+    {
+      "path": "output/yao-drape-r13/generator-before.py",
+      "bytes": 54581,
+      "sha256": "7e1c03700e7352b663e8b90b8b88d1fab1fc64adb6bffbf80acdc12e2fe83c73"
+    },
+    {
+      "path": "output/yao-drape-r13/variant-b/yao-grey-study.glb",
+      "bytes": 1803828,
+      "sha256": "341beafc4d12b424bae1295d69bffb8f33a2bf4f6db1a3259e1c4109adc3a77f"
+    },
+    {
+      "path": "output/yao-drape-r13/yao-grey-study.glb",
+      "bytes": 1803828,
+      "sha256": "dea8262c62b0fe761c4a66cc415aee86119eaba2552c8727734756f0ee2bfded"
+    }
+  ],
+  "total_bytes": 24032601,
+  "remaining_media": []
+}

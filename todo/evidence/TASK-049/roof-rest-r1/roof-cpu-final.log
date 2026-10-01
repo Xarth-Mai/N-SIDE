@@ -1,0 +1,21 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 1m 57s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 2 tests
+RF 1.15 m visible guards: eight edge/unbuilt-lift/return casts blocked, five supported-route casts clear; long bridge unchanged
+test world::scene::tests::cinema_roof_guards_close_unbuilt_lifts_and_keep_supported_routes_open ... ok
+
+thread 'world::collision::tests::cinema_roof_route_has_full_width_support_and_keeps_lower_arrival_clear' (379) panicked at src/world/collision.rs:564:29:
+CollisionHit { fraction: 0.49999237, normal: Vec3(0.0, 1.0, 0.0), point: Vec3(313.623, 37.0, -238.173), surface_normal: Vec3(0.0, 1.0, 0.0), source: "/surfaces/27 (cinema-roof-seat-walk)", triangle: 22387 }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::collision::tests::cinema_roof_route_has_full_width_support_and_keeps_lower_arrival_clear ... FAILED
+
+failures:
+
+failures:
+    world::collision::tests::cinema_roof_route_has_full_width_support_and_keeps_lower_arrival_clear
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 143 filtered out; finished in 13.49s
+
+error: test failed, to rerun pass `--lib`

@@ -1,0 +1,156 @@
+{
+  "engine": "Cycles CPU",
+  "threads": 2,
+  "samples": 12,
+  "resolution": [
+    640,
+    480
+  ],
+  "lights": "unchanged master",
+  "views": [
+    {
+      "file": "output/yao-drape-r13/before-front.png",
+      "sha256": "5ce3f88392b155536d1dfadfedf941f58de3fc61236facdb55ad5588be74dd60",
+      "master_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "camera": [
+        0,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/before-quarter.png",
+      "sha256": "77f5e2cc19f4ef98735c28957a0615d30ea6f8e954318afcb711e33457e29f4b",
+      "master_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "camera": [
+        3,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/before-back-quarter.png",
+      "sha256": "01aea490f9b4ddda1b795a8d4d10038c23aa914fa355ac2b08c088378d135f59",
+      "master_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "camera": [
+        3,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/before-back.png",
+      "sha256": "924121a232a40b8407107b74e3e4ed299f8dc049bf7379bcdf6a3a3ed1bb181e",
+      "master_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "camera": [
+        0,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-front.png",
+      "sha256": "89edad1af43d44fd40c789ea7d5a08751908555b516fcf263b2b88fd5bf5e71d",
+      "master_sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f",
+      "camera": [
+        0,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-quarter.png",
+      "sha256": "5e28acb2141c2217cacbacb871a3cbedcb8127646e523cb65bd71b86eb5ba13f",
+      "master_sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f",
+      "camera": [
+        3,
+        -4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-back-quarter.png",
+      "sha256": "81b10755b31f2ac33aa8b1c06e68c24ec38e5c51e604a576b5c007ac4e607390",
+      "master_sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f",
+      "camera": [
+        3,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-back.png",
+      "sha256": "e665d65a119aa38bfd112276328937fe0006cd808f04fd7228f3fb3ec679acaf",
+      "master_sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f",
+      "camera": [
+        0,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    }
+  ]
+}

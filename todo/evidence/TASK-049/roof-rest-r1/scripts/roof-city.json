@@ -1,0 +1,78 @@
+{
+  "scene": "district",
+  "view": "eye-cinema-roof-city",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 120,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [
+    29,
+    49,
+    79,
+    119
+  ],
+  "events": [
+    {
+      "start": 0,
+      "end": 1,
+      "keys": [
+        "M"
+      ]
+    },
+    {
+      "start": 30,
+      "end": 34,
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 64,
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 91,
+      "keys": [
+        "Escape"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "name": "roof-city: Real Viewer left input reveals roof geometry depth",
+      "from": 29,
+      "to": 49,
+      "min_distance": 1,
+      "max_distance": 3,
+      "max_rotation": 0.0001,
+      "enabled": true,
+      "world_ready": true
+    },
+    {
+      "name": "roof-city: Real Viewer right input exposes the opposite parallax",
+      "from": 59,
+      "to": 79,
+      "min_distance": 1,
+      "max_distance": 3,
+      "max_rotation": 0.0001,
+      "enabled": true,
+      "world_ready": true
+    },
+    {
+      "name": "roof-city: Roof view is stable after release",
+      "from": 100,
+      "to": 119,
+      "max_distance": 0.0001,
+      "max_rotation": 0.0001,
+      "enabled": false,
+      "world_ready": true,
+      "same_world_entities": true
+    }
+  ]
+}

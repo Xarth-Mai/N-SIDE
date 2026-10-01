@@ -1,0 +1,19 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 1m 49s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 1 test
+
+thread 'world::geometry::tests::platform_bearings_are_real_and_road_clearance_uses_local_height' (304) panicked at src/world/geometry.rs:2844:70:
+called `Result::unwrap()` on an `Err` value: "surface=cinema_upper_platform bearing edge=0: beam crosses a gap outside platform and bearing"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::geometry::tests::platform_bearings_are_real_and_road_clearance_uses_local_height ... FAILED
+
+failures:
+
+failures:
+    world::geometry::tests::platform_bearings_are_real_and_road_clearance_uses_local_height
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 142 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `--lib`

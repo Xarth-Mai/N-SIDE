@@ -1,0 +1,25 @@
+bun test v1.4.2 (744846f84)
+
+tools/tests/road-width.test.ts:
+(pass) shared endpoints do not hide width conflicts and truly level junctions pass [7.75ms]
+(pass) a selected route is checked against other roads without absorbing unrelated conflicts [1.19ms]
+(pass) upper-street and foothill junctions join at road width with usable stair treads [1603.98ms]
+(pass) campus stairs and market entrances meet the full road width at their own levels [633.58ms]
+(pass) music street junctions clear their neighbors and equipment reaches the level unloading route [606.49ms]
+(pass) upper homes stairs and greenhouse approaches retain level junctions and usable flights [660.61ms]
+(pass) station and music approaches plus the long ascent join at width without sharpening slopes or steps [1586.13ms]
+(pass) foothill housing and west plateau approaches clear streets, stairs and resident side paths [2685.70ms]
+(pass) east terraces clear neighboring road ribbons and retain usable exterior approaches [677.72ms]
+(pass) west old housing clear neighboring road ribbons and retain usable exterior approaches [632.02ms]
+(pass) food street bypasses shop footprints and waterfront stairs descend beside the waiting court [678.73ms]
+(pass) all ground-road junctions clear neighboring ribbons while retaining usable exterior approaches [671.62ms]
+(pass) platform checks keep concave cutouts and actual stair treads while excluding explicitly elevated surfaces [0.79ms]
+(pass) ground platforms meet adjacent road ribbons and stair treads at their own level [69.15ms]
+(pass) cinema forecourt joins existing level entrances and keeps green islands inside its parcel [7.67ms]
+(pass) cinema forecourt excludes actual sloped road widths rather than relying on the coarse step threshold [63.96ms]
+(pass) cinema service court supports the original loading route without changing its access or filling the doorway [17.15ms]
+(pass) cinema roof deck retains four metres of supported width from its lift to the upper-street connection [5.31ms]
+
+ 18 pass
+ 0 fail
+Ran 18 tests across 1 file. [10.68s]

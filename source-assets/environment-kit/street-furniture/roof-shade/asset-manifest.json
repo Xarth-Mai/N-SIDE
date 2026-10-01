@@ -1,0 +1,159 @@
+{
+  "id": "AST-ROOF-SHADE",
+  "state": "needs_revision",
+  "author": "N:SIDE project contributors",
+  "license": "MPL-2.0 original geometry/UV/scripts; CC0-1.0 ambientCG textures",
+  "source": {
+    "path": "source-assets/environment-kit/street-furniture/roof-shade/roof-shade.blend",
+    "sha256": "2c0cbcbe7078ff053936308231e10b3e4e5b7574594ab5b798e7ebd9c633c0ad",
+    "bytes": 1463669
+  },
+  "source_export": {
+    "path": "source-assets/environment-kit/street-furniture/roof-shade/roof-shade.glb",
+    "sha256": "fc2eddc389d472ea7be3f05e7354d356d7b8cdc12418429725bbccfab740828b",
+    "bytes": 1514200
+  },
+  "build_script": {
+    "path": "source-assets/environment-kit/street-furniture/roof-shade/build.py",
+    "sha256": "17667a718f6709c0777941746aa0c0970f551824bba2c75be69d4c3b05b7645d",
+    "bytes": 7440
+  },
+  "check_script": {
+    "path": "source-assets/environment-kit/street-furniture/roof-shade/check.py",
+    "sha256": "f205bf3186370564ac7602e529738ffde6e6f3fa5a0106b4f2a3b5140e1cdcb7",
+    "bytes": 9254
+  },
+  "inputs": [
+    {
+      "path": "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_Color.jpg",
+      "sha256": "b5388a2a62561bbaff10a13ec874c92e18db94f024b15f8101e7f38a4d174b41",
+      "bytes": 744688,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/environment-kit/materials/WoodSiding009_1K-JPG_NormalGL.jpg",
+      "sha256": "8c575efe3322da3d3d513799c02a1f22925c8f163cfebb0d569fecaf0f293ea0",
+      "bytes": 795284,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    },
+    {
+      "path": "source-assets/environment-kit/materials/WoodSiding009-NormalGL-scale035.png",
+      "sha256": "0dfd5f813b707aec5c9ec2cbb87c41593b8370d457eb575f55f57c5c732630e7",
+      "bytes": 613460,
+      "license": "CC0-1.0",
+      "author": "ambientCG",
+      "registry": "source-assets/environment-kit/asset-manifest.json"
+    }
+  ],
+  "source_normal_strength_baked": 0.35,
+  "gltf_normal_scale": 1,
+  "source_material_snapshot": {
+    "record": {
+      "path": "source-assets/district-scene/appearance.json",
+      "sha256": "55c7eea60867ef2b1660344dc8cd21049ec5ea012687b9652773ddaef4b94f12",
+      "bytes": 12777
+    },
+    "field": "materials.metal",
+    "srgb_color": [
+      0.59,
+      0.61,
+      0.57,
+      1
+    ],
+    "roughness": 0.58,
+    "metallic": 0.3
+  },
+  "transform": {
+    "units": "meter",
+    "source_up": "+Z",
+    "source_front": "-Y",
+    "gltf_up": "+Y",
+    "gltf_front": "+Z",
+    "pivot": "ground at reused seat center",
+    "scene": 0,
+    "scale": 1,
+    "rotation": "identity",
+    "proposed_map_anchor": [
+      312,
+      237,
+      37
+    ],
+    "bounds_map": [
+      [
+        309.9800000190735,
+        235.90000009536743,
+        37.0
+      ],
+      [
+        314.0199999809265,
+        238.46000003814697,
+        39.519999980926514
+      ]
+    ]
+  },
+  "runtime": {
+    "path": "game/assets/environment/street-furniture/roof-shade.glb",
+    "sha256": "fc2eddc389d472ea7be3f05e7354d356d7b8cdc12418429725bbccfab740828b",
+    "bytes": 1514200,
+    "model": "roof_shade",
+    "status": "PASS: existing exporter registration and four real Viewer captures; author acceptance pending",
+    "registration_evidence": "todo/evidence/TASK-049/roof-rest-r1/asset/registration-check.json"
+  },
+  "measured": {
+    "triangles": 1104,
+    "vertices": 2612,
+    "materials": 2,
+    "images": 2,
+    "bytes": 1514200,
+    "bounds_gltf": [
+      [
+        -2.0199999809265137,
+        0.0,
+        -1.4600000381469727
+      ],
+      [
+        2.0199999809265137,
+        2.5199999809265137,
+        1.0999999046325684
+      ]
+    ]
+  },
+  "source_meshes": 28,
+  "components": [
+    "two rear posts and foot plates",
+    "three forward cantilever arms",
+    "rear cross member and two short rear braces",
+    "ten wood shade slats",
+    "eight base fixings"
+  ],
+  "reused_bench": {
+    "path": "game/assets/environment/street-furniture/street-bench.glb",
+    "sha256": "f5a48231b979242e5cdf8f354a39887248731b2b438f654620a0eb01a1753388",
+    "map_anchor": [
+      312,
+      237,
+      37
+    ],
+    "included_in_export": false,
+    "license_source": "source-assets/environment-kit/street-furniture/README.md"
+  },
+  "checks": {
+    "blender_source_readback": "PASS",
+    "saved_master_export": "PASS: identical GLB bytes",
+    "actual_glb_geometry_and_textures": "PASS",
+    "bench_and_approach_envelopes": "PASS: actual shade triangles separated from existing bench and three approach volumes",
+    "six_rf_route_margins": "PASS: actual projected shade envelope vs route segments and widths",
+    "quest_planter_numeric_clearance": "PASS: actual shade envelope is separated from source surface cinema-roof-planting-reserve by 14.98 m; no QST-025 state change",
+    "source_visual_screenshot": "NOT RUN; no new media requested in source phase",
+    "gpu_runtime": "PASS: four Viewer runs, 420 frames, 22 native and 22 wrapper assertions; actual visual self-audit recorded separately",
+    "author_acceptance": "PENDING",
+    "runtime_export": "PASS: exact source bytes; existing 37 environment files unchanged",
+    "runtime_visual_evidence": "todo/evidence/TASK-049/roof-rest-r1/visual-review.md"
+  },
+  "evidence": "todo/evidence/TASK-049/roof-rest-r1/asset/README.md",
+  "new_third_party_sources": 0
+}

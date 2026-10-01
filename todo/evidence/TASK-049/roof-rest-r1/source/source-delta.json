@@ -1,0 +1,340 @@
+{
+  "status": "source-and-paving-applied-runtime-validation-owned-by-root",
+  "base_commit": "60cfed49aa5f9fc31034184c084d625596314261",
+  "source": "source-assets/district-map/district.json",
+  "source_before_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+  "source_after_sha256": "9000a57f35a838629e09a9c01ac39ff7e4c2ebf821dea34e7b3371be6e65e514",
+  "added_surface_area_m2": 43,
+  "retained": {
+    "node_ids_positions": "all unchanged",
+    "roads_widths_access": "all unchanged",
+    "routes": "all unchanged",
+    "roof_level_m": 37,
+    "original_northern_platform": "all retained",
+    "building_footprint": "unchanged"
+  },
+  "changed_fields": [
+    {
+      "pointer": "/surfaces/25/bearingEdges",
+      "before": [
+        {
+          "edge": 6,
+          "building": "V-15"
+        }
+      ],
+      "after": [
+        {
+          "edge": 0,
+          "building": "V-15"
+        },
+        {
+          "edge": 1,
+          "building": "V-15"
+        },
+        {
+          "edge": 8,
+          "building": "V-15"
+        }
+      ],
+      "after_pointer": "/surfaces/31/bearingEdges"
+    },
+    {
+      "pointer": "/surfaces/25/polygon",
+      "before": [
+        [
+          340,
+          240
+        ],
+        [
+          344,
+          240
+        ],
+        [
+          355,
+          257
+        ],
+        [
+          355,
+          345
+        ],
+        [
+          345,
+          345
+        ],
+        [
+          345,
+          262
+        ],
+        [
+          340,
+          250
+        ]
+      ],
+      "after": [
+        [
+          340,
+          220
+        ],
+        [
+          342.15,
+          220
+        ],
+        [
+          342.15,
+          240
+        ],
+        [
+          344,
+          240
+        ],
+        [
+          355,
+          257
+        ],
+        [
+          355,
+          345
+        ],
+        [
+          345,
+          345
+        ],
+        [
+          345,
+          262
+        ],
+        [
+          340,
+          250
+        ]
+      ],
+      "after_pointer": "/surfaces/31/polygon"
+    }
+  ],
+  "source_probe": {
+    "width_samples": 1717,
+    "spacing_m": 0.25,
+    "negative_case": "former outline rejects missing outer half despite centreline on roof boundary"
+  },
+  "structural_scope": {
+    "new_edge_0": "V-15 building bearing; corner beam placement under root runtime verification",
+    "new_edge_1": "V-15 building bearing; no new ground columns",
+    "edge_8": "original east-wall contact, index adjusted from6"
+  },
+  "revisions": [
+    {
+      "source_sha256": "dca10b8c204f8198459aaae6e9f1d4f8f6692c12a9abeedfe5202ac877167192",
+      "edge_0": {
+        "lift": "cinema_lift_high"
+      },
+      "bun_map_checks": "63 pass, source width only",
+      "actual_rust_load": "FAIL: bearing lift node must belong to a lift at the top of a vertical exterior shaft",
+      "diagnostic": "../bearing-initial.log"
+    },
+    {
+      "source_sha256": "dd2ec4c227057651151aaf9d083cb1d814c5bfe0e3c68a140966977a5c3b722e",
+      "edge_0": {
+        "building": "V-15"
+      },
+      "reason": "existing building-owned lift is not a separate exterior shaft; retain map contract"
+    }
+  ],
+  "platform_only_final_source_sha256": "dd2ec4c227057651151aaf9d083cb1d814c5bfe0e3c68a140966977a5c3b722e",
+  "added_surfaces": [
+    {
+      "id": "cinema-roof-east-walk",
+      "name": "公共电梯至屋顶平台",
+      "kind": "court",
+      "building": "V-15",
+      "elevation": 37,
+      "elevated": true,
+      "polygon": [
+        [
+          338,
+          220
+        ],
+        [
+          338,
+          245
+        ],
+        [
+          340,
+          245
+        ],
+        [
+          340,
+          220
+        ]
+      ]
+    },
+    {
+      "id": "cinema-roof-garden-entry",
+      "name": "屋顶花园公共到达",
+      "kind": "court",
+      "building": "V-15",
+      "elevation": 37,
+      "elevated": true,
+      "polygon": [
+        [
+          340,
+          243.5
+        ],
+        [
+          334,
+          243.5
+        ],
+        [
+          334,
+          246.5
+        ],
+        [
+          340,
+          246.5
+        ]
+      ]
+    },
+    {
+      "id": "cinema-roof-service-walk",
+      "name": "既有屋顶维护路径",
+      "kind": "court",
+      "building": "V-15",
+      "elevation": 37,
+      "elevated": true,
+      "polygon": [
+        [
+          324.123105626,
+          250
+        ],
+        [
+          340,
+          246.030776406
+        ],
+        [
+          340,
+          245
+        ],
+        [
+          339.757464375,
+          244.0298575
+        ],
+        [
+          319.757464375,
+          249.0298575
+        ],
+        [
+          320,
+          250
+        ]
+      ]
+    },
+    {
+      "id": "cinema-roof-seat-walk",
+      "name": "屋顶座席支路",
+      "kind": "court",
+      "building": "V-15",
+      "elevation": 37,
+      "elevated": true,
+      "polygon": [
+        [
+          334.341743063,
+          244.060206577
+        ],
+        [
+          312.341743063,
+          236.060206577
+        ],
+        [
+          311.658256937,
+          237.939793423
+        ],
+        [
+          333.658256937,
+          245.939793423
+        ]
+      ]
+    },
+    {
+      "id": "cinema-roof-rest-court",
+      "name": "屋顶遮阳座席铺地",
+      "kind": "court",
+      "building": "V-15",
+      "elevation": 37,
+      "elevated": true,
+      "polygon": [
+        [
+          309,
+          235
+        ],
+        [
+          315,
+          235
+        ],
+        [
+          315,
+          240
+        ],
+        [
+          309,
+          240
+        ]
+      ]
+    },
+    {
+      "id": "cinema-roof-planting-reserve",
+      "name": "屋顶待恢复植床预留草地",
+      "kind": "park",
+      "building": "V-15",
+      "elevation": 37,
+      "elevated": true,
+      "polygon": [
+        [
+          329,
+          228
+        ],
+        [
+          336,
+          228
+        ],
+        [
+          336,
+          236
+        ],
+        [
+          329,
+          236
+        ]
+      ]
+    }
+  ],
+  "ordering": "five court surfaces and one park reserve immediately precede unchanged cinema_roof_surface; existing same-height masking prevents overlap",
+  "paving_area": {
+    "individual": [
+      {
+        "id": "cinema-roof-east-walk",
+        "area_m2": 50
+      },
+      {
+        "id": "cinema-roof-garden-entry",
+        "area_m2": 18
+      },
+      {
+        "id": "cinema-roof-service-walk",
+        "area_m2": 39.10605625063181
+      },
+      {
+        "id": "cinema-roof-seat-walk",
+        "area_m2": 46.81879961999948
+      },
+      {
+        "id": "cinema-roof-rest-court",
+        "area_m2": 30
+      }
+    ],
+    "union_area_m2": 164.08881334493344,
+    "roof_area_m2": 1200,
+    "remaining_grass_area_m2": 1035.9111866550666,
+    "planting_reserve_area_m2": 56
+  },
+  "access_boundary": "existing service lift and service road keep their access; service paving is clipped at the original roof edge and does not make an unbuilt goods lift a walkable exit",
+  "planting_reserve": "current layout choice for the unchanged QST025 unfilled planting requirement; source coordinates are not quoted story facts and no story state was added"
+}

@@ -1,0 +1,51 @@
+{
+  "status": "PASS_AUDIT_FOUND_SUPPORT_GAP",
+  "at_utc": "2026-10-01T09:18:49.012242+00:00",
+  "source_sha256": "eb00044d2b2217594524d6ecd869dde42ff31463ddf6369038f32f3ae959b633",
+  "probe_sha256": "453e7a0b6a25d3bfc25e4c206a73b9fe1fe2631864c0b22716f44d3bd6a69bae",
+  "current_library": "game/target/debug/deps/libn_side-bd339b1f3f0d39e4.rlib",
+  "actual_entrypoints": [
+    "PreparedScene::load",
+    "CollisionWorld::from_parts",
+    "CollisionWorld::from_scene",
+    "CollisionWorld::support"
+  ],
+  "query_count": 160,
+  "sampled_positions": 80,
+  "ray_origin_elevation": 37.5,
+  "ray_distance_m": 1.5,
+  "generated_and_full_results_identical": true,
+  "missing_support_positions": 24,
+  "missing_x": [
+    340.1,
+    341,
+    341.9,
+    342
+  ],
+  "missing_north": [
+    220,
+    221,
+    224,
+    230,
+    236,
+    239
+  ],
+  "supported_positions": 56,
+  "existing_north_platform_source": "/surfaces/25 (cinema_upper_platform)",
+  "existing_roof_source": "/surfaces/24 (cinema_roof_surface)",
+  "missing_scope": "Outer half of 4m deck between north220 and north<240; north240..245 supported by existing platform and bridge",
+  "baseline_image": "output/roof-rest-r1/baseline/keyframes/frame00059.png",
+  "baseline_image_sha256": "50c7397ea402a37f069eb299261c5b2cfb5519ae16ef19a9b09d3c6fba7fddf5",
+  "visual_observation": "Bench is readable and supported; surrounding grass visually merges into hillside without roof boundary or arrival paving",
+  "candidate_not_implemented": true,
+  "limits": [
+    "grid support samples; not continuous player walking",
+    "public lift traversal is not implemented by this probe",
+    "no candidate geometry or rendering produced"
+  ],
+  "cleanup": {
+    "owned_probe_executable": "output/roof-rest-r1/support-probe",
+    "removed_after_process_exit": true,
+    "image_owner": "root retains baseline until central cleanup"
+  }
+}

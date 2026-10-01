@@ -1,0 +1,24 @@
+   Compiling n-side v0.1.0 (/home/lzzz/MyProjects/N-SIDE/game)
+    Finished `test` profile [optimized + debuginfo] target(s) in 2m 18s
+     Running unittests src/lib.rs (game/target/debug/deps/n_side-5e961ca7daca702b)
+
+running 2 tests
+
+thread 'world::scene::tests::cinema_roof_guards_block_edges_and_keep_real_arrivals_open' (386) panicked at src/world/scene.rs:3437:9:
+local work must not replace the long bridge rail
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test world::scene::tests::cinema_roof_guards_block_edges_and_keep_real_arrivals_open ... FAILED
+
+thread 'world::collision::tests::cinema_roof_route_has_full_width_support_and_keeps_lower_arrival_clear' (385) panicked at src/world/collision.rs:502:17:
+Vec3(338.0, 37.5, -220.0): CollisionHit { fraction: 0.24833424, normal: Vec3(-0.0, 1.0, 0.0), point: Vec3(338.0, 37.1275, -220.0), surface_normal: Vec3(-0.0, 1.0, 0.0), source: "/surfaces/30 (cinema_roof_surface)/boundary-guard", triangle: 604808 }
+test world::collision::tests::cinema_roof_route_has_full_width_support_and_keeps_lower_arrival_clear ... FAILED
+
+failures:
+
+failures:
+    world::collision::tests::cinema_roof_route_has_full_width_support_and_keeps_lower_arrival_clear
+    world::scene::tests::cinema_roof_guards_block_edges_and_keep_real_arrivals_open
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 143 filtered out; finished in 13.26s
+
+error: test failed, to rerun pass `--lib`

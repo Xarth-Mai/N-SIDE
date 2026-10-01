@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "baseline_commit": "60cfed49aa5f9fc31034184c084d625596314261",
+  "existing_environment_file_count": 37,
+  "existing_runtime_file_bytes": "all 37 unchanged against HEAD runtime manifest hashes",
+  "existing_ast003_entry_semantics": "unchanged",
+  "existing_appearance_semantics": "unchanged after removing only models.roof_shade",
+  "new_ast003_entries": 1,
+  "new_third_party_sources": 0,
+  "new_runtime": {
+    "file": "street-furniture/roof-shade.glb",
+    "bytes": 1514200,
+    "sha256": "fc2eddc389d472ea7be3f05e7354d356d7b8cdc12418429725bbccfab740828b",
+    "license": "MPL-2.0"
+  },
+  "binding": {
+    "file": "environment/street-furniture/roof-shade.glb",
+    "scene": 0,
+    "scale": 1
+  },
+  "runtime_file_count": 38,
+  "runtime_total_bytes": 96984686,
+  "visual_runtime": "NOT RUN"
+}

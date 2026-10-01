@@ -28,7 +28,9 @@ specs:
 
 ## 当前工作与下一步
 
-第 17 轮，步骤 6/6：曜 r12 只修两袖中段的截面与肘部折转，减轻圆鼓，衣身、肩环、袖口及其他网格保持；32骨、三图与四动作一致，提升及幂等21项检查通过。正式入口540帧走跑跳与暂停恢复通过，已实际查看连续动作，仍是 needs_revision 灰阶候选。下一轮转向能明显影响正常视距的服装裁片与头发层次，先比较候选再接入，不把局部修型等同作者品质认可
+第 18 轮，步骤 6/6：曜 r13 下背衣片实验已收口，A 的对称软鼓包与 B 的过浅折面均未形成普通全身尺寸下足够清楚的净收益；Root 和独立实际看图拒绝接入，正式源与运行模型保留 r12。两候选各 20 项保持检查通过，不能代替美术收益；17 张图与临时候选已记录 hash 并清理，任务继续 active、外观仍 needs_revision，不增加人物能力完成数
+
+下一步按[只读造型建议](../evidence/TASK-047/drape-r13/next-art-brief.md)比较六组前刘海的主次轮廓与额头留白，保留后脑、五官、衣服、骨骼动作和配色状态；候选只在普通全身尺寸有可见净收益时接入，不重复微调下背布片。[本轮实验结论](../evidence/TASK-047/drape-r13/review.md)与[独立画面自查](../evidence/TASK-047/drape-r13/independent-visual-review.md)分别记录过程与拒绝依据
 
 [R12 制作与保持检查](../evidence/TASK-047/sleeve-r12/review.md)、[R5运行结果](../evidence/TASK-049/blender-integration-r5/review.md)与[连续帧自查](../evidence/TASK-049/blender-integration-r5/visual-review.md)分别记录机器正确性与实际视觉边界。首次误用 Viewer 专用 `--aa` 参数在游戏启动前明确失败，去掉该参数后成功复验，并修正旧复现说明
 

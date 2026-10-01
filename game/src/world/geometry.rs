@@ -1010,7 +1010,16 @@ fn platform_supports(
             let centroid = anchor.centroid().unwrap();
             for i in 0..count {
                 let t = (i as f64 + 0.5) / count as f64;
-                let mut start = Point::new(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t);
+                // Keep the 0.8 m beam section inside a corner before extending toward its bearing
+                let inward = if signed_area(&surface.polygon) > 0.0 {
+                    1.0
+                } else {
+                    -1.0
+                };
+                let start = Point::new(
+                    a[0] + (b[0] - a[0]) * t - (b[1] - a[1]) / length * 0.4 * inward,
+                    a[1] + (b[1] - a[1]) * t + (b[0] - a[0]) / length * 0.4 * inward,
+                );
                 let (Closest::SinglePoint(nearest) | Closest::Intersection(nearest)) =
                     anchor.closest_point(&start)
                 else {
@@ -1022,25 +1031,31 @@ fn platform_supports(
                 if span < 1e-6 {
                     return Err(format!("{source}: bearing has no beam span"));
                 }
-                let extension = start + (start - end) * (0.4 / span);
-                if polygon(&surface.polygon).contains(&extension) {
-                    start = extension;
-                }
                 // ponytail: short graybox bearing beams only; longer spans require authored structural geometry
                 if span > 6.0 {
                     return Err(format!("{source}: bearing exceeds 6 m short-beam span"));
                 }
                 let endpoints = [[start.x(), start.y(), top], [end.x(), end.y(), top]];
                 let offsets = road_offsets(&endpoints, 0.8);
-                let beam = ribbon(endpoints[0], endpoints[1], offsets[0], offsets[1]);
+                let mut beam = ribbon(endpoints[0], endpoints[1], offsets[0], offsets[1]);
+                let platform_and_anchor = polygon(&surface.polygon).union(&anchor);
+                let extension = start + (start - end) * (0.4 / span);
+                let extended_points = [[extension.x(), extension.y(), top], endpoints[1]];
+                let extended_offsets = road_offsets(&extended_points, 0.8);
+                let extended = ribbon(
+                    extended_points[0],
+                    extended_points[1],
+                    extended_offsets[0],
+                    extended_offsets[1],
+                );
+                // A center point alone can fit while the beam's full width protrudes past a corner
+                if extended.difference(&platform_and_anchor).unsigned_area() <= 0.01 {
+                    beam = extended;
+                }
                 if beam.intersection(&anchor).unsigned_area() < 0.1 {
                     return Err(format!("{source}: beam has insufficient bearing overlap"));
                 }
-                if beam
-                    .difference(&polygon(&surface.polygon).union(&anchor))
-                    .unsigned_area()
-                    > 0.01
-                {
+                if beam.difference(&platform_and_anchor).unsigned_area() > 0.01 {
                     return Err(format!(
                         "{source}: beam crosses a gap outside platform and bearing"
                     ));
@@ -1098,7 +1113,7 @@ fn platform_supports(
     Ok(supports)
 }
 
-fn bridge_rail_spans(
+pub(super) fn bridge_rail_spans(
     a: [f64; 3],
     b: [f64; 3],
     neighbors: &[(&Polygon, [f64; 2])],
@@ -1726,6 +1741,30 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                 }
             }
             if road.kind == "bridge" {
+                // These roof-owned decks have no standalone road geometry, but their
+                // verified full-width slabs are real arrivals onto the cinema bridge
+                let mut roof_arrivals = Vec::new();
+                if road.nodes.iter().any(|n| n == "cinema_roof") {
+                    for arrival in map.roads.iter().filter(|r| {
+                        r.kind == "deck"
+                            && r.building.as_deref() == Some("V-15")
+                            && r.surface.as_deref() == Some("cinema_roof_surface")
+                    }) {
+                        let points: Vec<_> = arrival.nodes.iter().map(|n| map.nodes[n]).collect();
+                        let offsets = road_offsets(&points, arrival.width);
+                        for (i, pair) in points.windows(2).enumerate() {
+                            roof_arrivals.push((
+                                ribbon(pair[0], pair[1], offsets[i], offsets[i + 1]),
+                                [pair[0][2], pair[1][2]],
+                            ));
+                        }
+                    }
+                }
+                let rail_neighbors: Vec<_> = neighbors
+                    .iter()
+                    .copied()
+                    .chain(roof_arrivals.iter().map(|(p, h)| (p, *h)))
+                    .collect();
                 for side in [-1.0, 1.0] {
                     for [from, to] in bridge_rail_spans(
                         [
@@ -1738,7 +1777,7 @@ pub fn generate(map: &Map) -> Result<Vec<GeometryPart>, String> {
                             b[1] + offsets[segment + 1][1] * side,
                             b[2],
                         ],
-                        &neighbors,
+                        &rail_neighbors,
                     ) {
                         bridge_rail(&mut structure, from, to, &source)?;
                     }
@@ -2840,8 +2879,16 @@ mod tests {
             );
             assert_eq!(
                 supports.beams.len(),
-                surface.bearing_edges.len(),
-                "each declared short edge emits its bearing beam"
+                surface
+                    .bearing_edges
+                    .iter()
+                    .map(|bearing| {
+                        let a = surface.polygon[bearing.edge];
+                        let b = surface.polygon[(bearing.edge + 1) % surface.polygon.len()];
+                        (distance2(a, b).sqrt() / 12.0).ceil().max(1.0) as usize
+                    })
+                    .sum::<usize>(),
+                "each declared edge bay emits a supported bearing beam"
             );
         }
         let mut surface = map

@@ -1,0 +1,66 @@
+{
+  "engine": "Cycles CPU",
+  "threads": 2,
+  "samples": 12,
+  "resolution": [
+    640,
+    480
+  ],
+  "lights": "unchanged master",
+  "views": [
+    {
+      "file": "output/yao-drape-r13/candidate-b-back.png",
+      "sha256": "658b592d92337c75883fa5ce4ca6bdb1e774e0241625b406228c768552b9209b",
+      "master_sha256": "6845140541c5974ac63e247bd2b58024bce2f578ca64227f35ec32c4a48c4ce2",
+      "camera": [
+        0,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-b-back-quarter.png",
+      "sha256": "eacd0aa61a52da36f831994c41e35b7465fc291a73d0cbadb66c4b84193f1db4",
+      "master_sha256": "6845140541c5974ac63e247bd2b58024bce2f578ca64227f35ec32c4a48c4ce2",
+      "camera": [
+        3,
+        4,
+        1.7
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Idle",
+      "frame": 1
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-b-run6.png",
+      "sha256": "3d82c93e56acca195aff0a76f5ddad69fbfd59996d366bdd10ad0379b1774a98",
+      "master_sha256": "6845140541c5974ac63e247bd2b58024bce2f578ca64227f35ec32c4a48c4ce2",
+      "camera": [
+        2,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Run",
+      "frame": 6
+    }
+  ]
+}

@@ -415,7 +415,7 @@ test('detailed places connect street access to separate public and service entra
 
 test('cinema roof and exterior platform have distinct footprints and supported paths', async () => {
   const {inside}=await import('../district-plan.ts')
-  const roof=data.surfaces.find(s=>s.building==='V-15'),building=data.buildings.find(b=>b.id==='V-15')
+  const roof=data.surfaces.find(s=>s.id==='cinema_roof_surface'),building=data.buildings.find(b=>b.id==='V-15')
   assert.ok(roof?.elevated)
   assert.equal(roof.elevation,building!.elevation+building!.height)
   assert.ok(polygonInside(roof.polygon,building!.polygon))

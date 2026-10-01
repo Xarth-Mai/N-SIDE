@@ -1,0 +1,2 @@
+error: target `map_viewer` in package `n-side` requires the features: `viewer`
+Consider enabling them by passing, e.g., `--features="viewer"`

@@ -267,3 +267,76 @@ test('cinema service court supports the original loading route without changing 
   assert.throws(()=>check(court.polygon,court.elevation-.1),/must meet the full road ribbon/,'reject a 10 cm road lip below the coarse .35 m screening threshold')
   assert.throws(()=>check([[314,249],[326,249],[326,266.5],[314,266.5]],court.elevation),/must stay outside the building/,'reject paving extended through the existing north wall')
 })
+
+test('cinema roof deck retains four metres of supported width from its lift to the upper-street connection',()=>{
+  const data:District=source
+  const roof=data.surfaces.find(s=>s.id==='cinema_roof_surface')!
+  const platform=data.surfaces.find(s=>s.id==='cinema_upper_platform')!
+  const parcel=data.parcels.find(p=>p.id==='P09-A')!
+  const building=data.buildings.find(b=>b.id==='V-15')!
+  const deck=data.roads.find(r=>r.nodes[0]==='cinema_lift_high'&&r.nodes.at(-1)==='cinema_roof')!
+  const formerOutline=[[340,240],[344,240],[355,257],[355,345],[345,345],[345,262],[340,250]]
+  const addition=[[340,220],[342.15,220],[342.15,240],[340,240]]
+  assert.equal(deck.width,4);assert.equal(deck.kind,'deck');assert.equal(deck.building,'V-15')
+  assert.ok(roadAllowed(deck,'public'),'public roof access remains outside the ticketed zone')
+  assert.equal(roof.elevation,37);assert.equal(platform.elevation,roof.elevation)
+  assert.ok(platform.elevated&&!platform.building,'exterior platform stays distinct from the original roof')
+  assert.ok(polygonInside(addition,parcel.polygon),'the new outer half and 0.15m structural edge stay in P09-A')
+  assert.ok(Math.abs(polygonArea(platform.polygon)-polygonArea(formerOutline)-43)<1e-6,'extend only the approved 43 square metres')
+  assert.ok(Math.abs(intersectionArea(platform.polygon,formerOutline)-polygonArea(formerOutline))<1e-6,'retain the entire original northern platform')
+  assert.ok(Math.abs(intersectionArea(platform.polygon,addition)-polygonArea(addition))<1e-6,'the floor must actually include the proposed strip')
+  assert.ok(intersectionArea(addition,building.polygon)<1e-6,'the added exterior slab does not replace the roof')
+  assert.deepEqual(platform.bearingEdges,[{edge:0,building:'V-15'},{edge:1,building:'V-15'},{edge:8,building:'V-15'}],'the new outer edge and southern corner bear on the existing building without adding ground columns')
+  const bearing=platform.bearingEdges!.find(e=>e.edge===8&&e.building==='V-15')!
+  const bearingEnds=[platform.polygon[bearing.edge],platform.polygon[(bearing.edge+1)%platform.polygon.length]]
+  assert.deepEqual(bearingEnds,[[340,250],[340,220]],'the shifted bearing index must still identify the full east wall contact')
+  assert.ok(bearingEnds.every(p=>onBoundary(p,building.polygon)))
+  const points=deck.nodes.map(id=>data.nodes[id]),offsets=roadOffsets(points,deck.width)
+  const check=(outline:number[][])=>{
+    let samples=0
+    for(let i=1;i<points.length;i++)for(let step=0;step<=100;step++)for(let side=0;side<=16;side++) {
+      const t=step/100,k=side/8-1,a=points[i-1],b=points[i],u=offsets[i-1],v=offsets[i]
+      const p=[a[0]+(b[0]-a[0])*t+(u[0]+(v[0]-u[0])*t)*k,a[1]+(b[1]-a[1])*t+(u[1]+(v[1]-u[1])*t)*k]
+      assert.ok(Math.abs(a[2]-roof.elevation)<1e-6&&Math.abs(b[2]-roof.elevation)<1e-6)
+      assert.ok(pointInside(p,roof.polygon)||pointInside(p,outline),`unsupported roof deck width at ${p}: a centreline on the roof edge is insufficient`)
+      samples++
+    }
+    assert.equal(samples,1717,'check the entire 25m by 4m deck at 0.25m spacing')
+  }
+  check(platform.polygon)
+  assert.throws(()=>check(formerOutline),/unsupported roof deck width/,'the former outer-half gap must fail despite the centreline remaining on the roof boundary')
+})
+
+test('cinema roof paving joins the public seat and preserves the unfilled planting area',()=>{
+  const data:District=source,roof=data.surfaces.find(s=>s.id==='cinema_roof_surface')!
+  const ids=['cinema-roof-east-walk','cinema-roof-garden-entry','cinema-roof-service-walk','cinema-roof-seat-walk','cinema-roof-rest-court']
+  const paving=ids.map(id=>data.surfaces.find(s=>s.id===id)!)
+  const reserve=data.surfaces.find(s=>s.id==='cinema-roof-planting-reserve')!
+  assert.equal(reserve.kind,'park');assert.equal(reserve.building,'V-15');assert.equal(reserve.elevation,37)
+  assert.ok(data.surfaces.indexOf(reserve)<data.surfaces.indexOf(roof)&&polygonInside(reserve.polygon,roof.polygon))
+  assert.ok(polygonArea(reserve.polygon)>=56,'retain the agreed unfilled planting area')
+  const check=(surfaces:District['surfaces'])=>{
+    for(const p of paving) {
+      assert.ok(p&&surfaces.indexOf(p)<surfaces.indexOf(roof),'roof paving must precede grass at the same level')
+      assert.equal(p.building,'V-15');assert.equal(p.elevation,37);assert.ok(p.elevated)
+      assert.ok(polygonInside(p.polygon,roof.polygon),'building-bound paving stays on the supported roof')
+      assert.ok(intersectionArea(p.polygon,reserve.polygon)<1e-6,'preserve the unfilled planting area as grass')
+    }
+  }
+  check(data.surfaces)
+  const rest=paving[4],branch=paving[3]
+  assert.deepEqual(rest.polygon,[[309,235],[315,235],[315,240],[309,240]])
+  assert.ok(pointInside([312,237],rest.polygon),'retain the existing bench at the original 37m floor')
+  assert.ok(intersectionArea(branch.polygon,rest.polygon)>1&&intersectionArea(branch.polygon,paving[1].polygon)>.1,'the short walk must join both the existing garden entrance and rest court')
+  const routes=data.roads.filter(r=>r.building==='V-15'&&['deck','bridge'].includes(r.kind)&&r.nodes.every(id=>data.nodes[id][2]===37)).map(r=>({points:r.nodes.map(id=>data.nodes[id]),width:r.width}))
+  routes.push({points:[data.nodes.cinema_garden_entry,[312,237,37]],width:2})
+  for(const {points,width} of routes) {
+    const offsets=roadOffsets(points,width)
+    for(let i=1;i<points.length;i++)for(let step=0;step<=100;step++)for(let side=0;side<=16;side++) {
+      const t=step/100,k=side/8-1,a=points[i-1],b=points[i],u=offsets[i-1],v=offsets[i]
+      const p=[a[0]+(b[0]-a[0])*t+(u[0]+(v[0]-u[0])*t)*k,a[1]+(b[1]-a[1])*t+(u[1]+(v[1]-u[1])*t)*k]
+      if(pointInside(p,roof.polygon))assert.ok(paving.some(s=>pointInside(p,s.polygon)),`unpaved roof route width at ${p}`)
+    }
+  }
+  assert.throws(()=>check([roof,...data.surfaces.filter(s=>s!==roof)]),/must precede grass/,'same-height paving after the park would be fully masked at runtime')
+})

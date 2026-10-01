@@ -1,0 +1,2 @@
+rustc --edition 2024 output/roof-rest-r1/support-probe.rs --extern n_side=game/target/debug/deps/libn_side-bd339b1f3f0d39e4.rlib -L dependency=game/target/debug/deps -C debuginfo=0 -o output/roof-rest-r1/support-probe
+output/roof-rest-r1/support-probe > output/roof-rest-r1/support.tsv 2> output/roof-rest-r1/probe-runtime.log

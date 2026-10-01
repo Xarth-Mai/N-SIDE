@@ -1,0 +1,120 @@
+{
+  "engine": "Cycles CPU",
+  "threads": 2,
+  "samples": 12,
+  "resolution": [
+    640,
+    480
+  ],
+  "lights": "unchanged master",
+  "views": [
+    {
+      "file": "output/yao-drape-r13/before-run6.png",
+      "sha256": "7c4d1c2be9ffe7738339cef14ead0caa0470b32ab2132fdd301d306dbc67c731",
+      "master_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "camera": [
+        2,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Run",
+      "frame": 6
+    },
+    {
+      "file": "output/yao-drape-r13/before-run26.png",
+      "sha256": "b28eb427f133cb5c8d2d32ccfeda742a052f66dfd70e94b9ab66f446346fc02e",
+      "master_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "camera": [
+        -2,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Run",
+      "frame": 26
+    },
+    {
+      "file": "output/yao-drape-r13/before-jump21.png",
+      "sha256": "68e69190a2d77e1e3225c34e2f09e1fe04c804b0c1e1b2b6c8a3672eb5d85651",
+      "master_sha256": "8874d32ec2e9204defb597a541c2c9a01b05f0e400e2d0b42ea971afe0999845",
+      "camera": [
+        0,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Jump",
+      "frame": 21
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-run6.png",
+      "sha256": "51062b4d3ed6d67f2513f5c0bc8758e3b2bfebef4b54a7d37181610f68401d08",
+      "master_sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f",
+      "camera": [
+        2,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Run",
+      "frame": 6
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-run26.png",
+      "sha256": "748b63503260512cce34933a8bde7609c8c4248e530d21eb24d6240c6370c636",
+      "master_sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f",
+      "camera": [
+        -2,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Run",
+      "frame": 26
+    },
+    {
+      "file": "output/yao-drape-r13/candidate-jump21.png",
+      "sha256": "30ffaeb9c9b411ebaad4f01911b60fc033b691de810d6f5894ac926b483f3074",
+      "master_sha256": "2843a7bcf1b427fe50d5562bce1f523579ab011fefab4ee085fcb03437bc0e3f",
+      "camera": [
+        0,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Jump",
+      "frame": 21
+    }
+  ]
+}

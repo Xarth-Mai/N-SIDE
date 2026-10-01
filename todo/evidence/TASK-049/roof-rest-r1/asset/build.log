@@ -1,0 +1,25 @@
+/home/lzzz/MyProjects/N-SIDE/source-assets/environment-kit/street-furniture/roof-shade/build.py:64: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  metal.use_nodes = True
+/home/lzzz/MyProjects/N-SIDE/source-assets/environment-kit/street-furniture/roof-shade/build.py:75: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  wood.use_nodes = True
+Info: Saved as "roof-shade.blend"
+INFO Draco is available, use library at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.so
+ERROR MeshOptimizer is not available because library could not be found at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.so
+17:27:15 | INFO: Starting glTF 2.0 export
+17:27:15 | INFO: Extracting primitive: RoofShade
+17:27:15 | INFO: Primitives created: 2
+17:27:15 | INFO: Finished glTF 2.0 export in 0.03851032257080078 s
+
+{
+  "status": "PASS",
+  "blender": "5.2.2 LTS",
+  "source": "source-assets/environment-kit/street-furniture/roof-shade/roof-shade.blend",
+  "source_sha256": "2c0cbcbe7078ff053936308231e10b3e4e5b7574594ab5b798e7ebd9c633c0ad",
+  "glb": "source-assets/environment-kit/street-furniture/roof-shade/roof-shade.glb",
+  "glb_sha256": "fc2eddc389d472ea7be3f05e7354d356d7b8cdc12418429725bbccfab740828b",
+  "bytes": 1514200,
+  "render": "NOT RUN"
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+
+Blender quit

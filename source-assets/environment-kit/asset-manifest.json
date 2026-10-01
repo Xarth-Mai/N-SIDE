@@ -1215,6 +1215,43 @@
         "status": "Integrated; source/map, actual GLB support/clearance and capsule checks PASS; R5 Viewer capture PASS; visual self-audit, author acceptance pending",
         "evidence": "todo/evidence/TASK-049/cinema-service-court-r1/implementation.md"
       }
+    },
+    {
+      "source": "street-furniture/roof-shade/roof-shade.glb",
+      "output": "street-furniture/roof-shade.glb",
+      "sha256": "fc2eddc389d472ea7be3f05e7354d356d7b8cdc12418429725bbccfab740828b",
+      "bytes": 1514200,
+      "author": "N:SIDE project contributors; ambientCG wood textures",
+      "license": "MPL-2.0",
+      "component_licenses": {
+        "geometry_uv_scripts": "MPL-2.0; N:SIDE project contributors",
+        "wood_color_and_normal": "CC0-1.0; ambientCG WoodSiding009, existing AST-003 inputs"
+      },
+      "source_provenance": "street-furniture/roof-shade/asset-manifest.json",
+      "editable_source": "street-furniture/roof-shade/roof-shade.blend",
+      "assembly_script": "street-furniture/roof-shade/build.py",
+      "check_script": "street-furniture/roof-shade/check.py",
+      "status": "needs_revision",
+      "purpose": "镜厅 RF 两后柱悬挑木条遮阴架，复用独立长椅；源导出、真实碰撞与四组GPU检查通过，作者外观验收待完成",
+      "dimensions_m": {
+        "width": 4.04,
+        "height": 2.52,
+        "depth": 2.56
+      },
+      "pivot": "ground under reused seat center",
+      "up_axis": "+Y",
+      "front_axis": "+Z",
+      "triangles": 1104,
+      "materials": 2,
+      "textures": {
+        "count": 2,
+        "embedded": true,
+        "color": "sRGB color; linear OpenGL normal with strength 0.35 baked and glTF scale 1"
+      },
+      "cost": 0,
+      "generation": null,
+      "new_third_party_sources": 0,
+      "evidence_directory": "todo/evidence/TASK-049/roof-rest-r1/asset"
     }
   ],
   "export_tool": "ImageMagick 7.1.2-32 Q16-HDRI",

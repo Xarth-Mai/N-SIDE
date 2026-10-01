@@ -1,0 +1,18 @@
+{"status": "PASS", "checks": {"meshes_identical": true, "bones_identical": true, "images_identical": true, "actions_identical": true, "GLB_nodes_identical": true, "joint_indices_identical": true, "inverse_binds_identical": true, "all_exported_clip_samples_identical": true, "three_embedded_textures_identical": true, "materials_identical": true, "original_vertices_weights_unchanged": true, "vertex_groups_unchanged": true, "sewn_anchors_unchanged": true, "original_hem_zipper_front_and_sleeves_unchanged": true, "only_lower_body_band_faces_replaced": true, "unaffected_face_uv_and_material_unchanged": true, "no_new_nonmanifold_edges": true, "three_support_rings_only": true, "head_hair_collar_clear_in_28_poses": true, "formal_files_unchanged": true}}
+Hood max overlap pairs 269 -> 269
+TShirt max overlap pairs 180 -> 180
+TShirt_Collar max overlap pairs 0 -> 0
+Face_Head max overlap pairs 0 -> 0
+Hair_Cap max overlap pairs 0 -> 0
+Hair_CrownBase max overlap pairs 0 -> 0
+Palm.L max overlap pairs 0 -> 0
+Palm.R max overlap pairs 0 -> 0
+Sleeve_Cuff.L max overlap pairs 68 -> 68
+Sleeve_Cuff.R max overlap pairs 68 -> 68
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/yao-drape-r13/before.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/yao-drape-r13/candidate-b.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/yao-drape-r13/before.blend"
+Read blend: "/home/lzzz/MyProjects/N-SIDE/output/yao-drape-r13/candidate-b.blend"
+
+Blender quit
