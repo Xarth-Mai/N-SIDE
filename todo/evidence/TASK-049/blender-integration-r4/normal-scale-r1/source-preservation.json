@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "before": {
+    "mesh_uv_normal_transform_hash": "aa09adcce88d1935b526e471d9cbabd9a099ed3659afa208a35e905ac04b8e97",
+    "other_material_values_hash": "af6cd6780a7fba5e51c144f6843cc71c3286dccd610fb5ddd7b30b1ec44a398b",
+    "mesh_groups": 21
+  },
+  "after": {
+    "mesh_uv_normal_transform_hash": "aa09adcce88d1935b526e471d9cbabd9a099ed3659afa208a35e905ac04b8e97",
+    "other_material_values_hash": "af6cd6780a7fba5e51c144f6843cc71c3286dccd610fb5ddd7b30b1ec44a398b",
+    "mesh_groups": 21
+  },
+  "changes": [
+    {
+      "material": "Plaster",
+      "old_packed_normal_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "derived": "source-assets/buildings/V-35/textures/Plaster001-NormalGL-scale025.png",
+      "new_packed_normal_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+      "strength": 1.0
+    },
+    {
+      "material": "Concrete",
+      "old_packed_normal_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "derived": "source-assets/buildings/V-35/textures/Concrete034-NormalGL-scale025.png",
+      "new_packed_normal_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+      "strength": 1.0
+    }
+  ],
+  "blender": "5.2.2 LTS"
+}

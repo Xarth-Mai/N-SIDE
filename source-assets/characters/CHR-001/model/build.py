@@ -21,6 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--export-existing', action='store_true', help='Export the editable .blend master without rebuilding geometry')
 parser.add_argument('--update-jump', action='store_true', help='Append Jump to the current master and export without rebuilding geometry')
+parser.add_argument('--update-jacket', action='store_true', help='Widen only the current jacket body and sleeves once, preserving sewn anchors')
 parser.add_argument('--update-hood', action='store_true', help='Replace only the lower Hood cloth surface in the current master')
 parser.add_argument('--update-hair', action='store_true', help='Replace only the back hair and crown in the current master')
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
@@ -87,6 +88,42 @@ def hair_geometry(face_surface, head_top):
                 a=(k-1)*33+j;faces.append((a,a+1,a+34,a+33))
     faces.append(tuple(range(99,131)))
     return {'Hair_Cap':cap,'Hair_CrownBase':(vertices,faces,uv)}
+
+
+def update_jacket(obj):
+    # A selective update may be repeated after a failed export; never inflate twice
+    if obj.get('jacket_shape_revision') == 11:
+        return
+    assert obj.name == 'Jacket_ContinuousShoulders' and len(obj.data.vertices) == 519
+    # Torso keeps its upper shoulder/neck rows and the entire zipper border
+    for vertex in list(obj.data.vertices)[:231]:
+        row, column = divmod(vertex.index, 33)
+        if row >= 4 or column in (0, 1, 31, 32):
+            continue
+        p = vertex.co
+        # The hood lies against the central upper back; keep its support unchanged
+        if p.y > 0 and p.z > 1.15:
+            continue
+        angle = .48 + (math.tau - .96) * column / 32
+        side = abs(math.sin(angle)) ** 2
+        amount = (.25, .60, 1.0, .9)[row]
+        p.x += math.copysign(.029 * amount * side, p.x)
+        p.y += -math.cos(angle) * .008 * amount * side
+    # Expand sleeve cross-sections rather than scaling hands or moving the sewn armhole
+    centres = ((.203, 0, 1.327), (.25, -.002, 1.264), (.309, -.006, 1.191),
+               (.329, -.006, 1.168), (.342, -.003, 1.142), (.354, -.007, 1.116),
+               (.389, -.012, 1.039), (.407, -.017, 1.005), (.414, -.016, .980))
+    fullness = (0, .22, .42, .47, .45, .40, .26, 0, 0)
+    for side_index, sign in enumerate((1, -1)):
+        for row, ((x, y, z), amount) in enumerate(zip(centres, fullness)):
+            if amount == 0:
+                continue
+            centre = Vector((sign * x, y, z))
+            for column in range(16):
+                vertex = obj.data.vertices[231 + side_index * 144 + row * 16 + column]
+                vertex.co = centre + (vertex.co - centre) * (1 + amount)
+    obj.data.update()
+    obj['jacket_shape_revision'] = 11
 
 
 def update_hood(hood):
@@ -237,7 +274,7 @@ def export(rig, objects):
     bpy.data.objects.remove(runtime,do_unlink=True)
     bpy.data.meshes.remove(data)
 
-if args.export_existing or args.update_jump or args.update_hair or args.update_hood:
+if args.export_existing or args.update_jump or args.update_hair or args.update_hood or args.update_jacket:
     bpy.ops.wm.open_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     rig=bpy.data.objects['CHR001_Rig']
     if args.update_hair:
@@ -261,9 +298,11 @@ if args.export_existing or args.update_jump or args.update_hair or args.update_h
             bpy.data.meshes.remove(old)
     if args.update_hood:
         update_hood(bpy.data.objects['Hood'])
+    if args.update_jacket:
+        update_jacket(bpy.data.objects['Jacket_ContinuousShoulders'])
     if args.update_jump:
         author_jump(rig)
-    if args.update_jump or args.update_hair or args.update_hood:
+    if args.update_jump or args.update_hair or args.update_hood or args.update_jacket:
         bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'yao-grey-study.blend'))
     export(rig,[o for o in rig.children if o.type=='MESH'])
     raise SystemExit(0)
@@ -742,6 +781,9 @@ for obj in objects:
     obj.select_set(True);bpy.context.view_layer.objects.active=obj
     bpy.ops.object.mode_set(mode='EDIT');bpy.ops.mesh.select_all(action='SELECT')
     bpy.ops.mesh.remove_doubles(threshold=.000001);bpy.ops.mesh.normals_make_consistent(inside=False);bpy.ops.object.mode_set(mode='OBJECT')
+
+# Apply the same jacket shaping to the welded full-build mesh
+update_jacket(jacket)
 
 # In-place motion: stance feet sweep against the real controller velocity
 # At 3.2 m/s the Walk input reads as a light jog, not a leisurely walking gait

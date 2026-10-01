@@ -1,4 +1,4 @@
-# 曜 · 可蒙皮灰阶建模候选 r10
+# 曜 · 可蒙皮灰阶建模候选 r11
 
 本目录属于 `CHR-001`，继续使用人物包中的 r3 轮廓候选与镜厅预览左侧人物海报的日漫画法要求。实际年龄 20、外观年龄约 18，当前模型的灰阶材质只用于检查形体和部件关系，不确定发色、眼色或服装颜色
 
@@ -10,7 +10,7 @@
 | `grey-study.png` | 原创程序绘制的 1024×1024 sRGB 灰阶候选图集，含服装面值、接缝与轻微织纹；同时打包在主文件 |
 | `grey-study-surface.png` | 原创 1024×1024 线性数据图，G 为粗糙度、B 为零金属度，R 保持 1；不绑定为环境遮蔽 |
 | `grey-study-normal.png` | 原创 1024×1024 线性切线法线，+Y；仅现有服装与鞋面缝线有轻微起伏，幅度烘入 RGB，强度固定为 1 |
-| `build.py` | 从明确轮廓、关节环线与发束曲线重现本轮初始建模；默认会重建主文件，`--export-existing` 只导出已有主文件，`--update-jump` 保留已有几何与其他动作并更新 Jump 后导出，`--update-hair` 只更新后发与冠顶网格后导出，`--update-hood` 只更新帽兜下部并保留原帽口后导出 |
+| `build.py` | 从明确轮廓、关节环线与发束曲线重现本轮初始建模；默认会重建主文件，`--export-existing` 只导出已有主文件，`--update-jump` 保留已有几何与其他动作并更新 Jump 后导出，`--update-hair` 只更新后发与冠顶网格后导出，`--update-hood` 只更新帽兜下部并保留原帽口后导出，`--update-jacket` 只对现有夹克应用一次 r11 衣身与袖筒形体调整后导出 |
 | `check.py` | 打开真实主文件，逐帧检查骨矩阵、循环端点和鞋底接地距离，并检查 Idle、Walk 与 Run 的 10 个胸前图形贴合姿态、眼白边缘、浅鼓体积、虹膜开口覆盖、嘴线面中心、连续鼻部、细分后发束与头部的间隙、后脑和冠顶覆盖，以及头发 UV 区域；验证材质输入、色彩空间、粗糙度区间和法线幅度，断言失败由 `--python-exit-code 1` 返回非零 |
 | `game/assets/characters/CHR-001/yao-grey-study.glb` | 主文件导出的运行候选，合并为一个共享图集网格；保留 32 骨与四个 clip |
 
@@ -97,3 +97,11 @@ DCC 检查覆盖本轮 60 FPS 关键帧与循环端点；5 mm 鞋底距离只作
 保留 r9 头发、脸部、肩袖、内衫、其余衣装、三张图、32 骨及四动作，只把帽兜下部的三圈改为七圈不等距衣料轮廓，沿实际夹克表面控制后袋距离，上方两圈帽口的坐标、UV 与权重保持。侧面厚块收薄，背面下缘收为弧形，仍有较平的大面与未解的侧缝接触；不新增纹理、衣骨或配色，整体继续 `needs_revision`
 
 局部更新使用 `env ALSOFT_DRIVERS=null timeout 180 output/tools/blender-4.5.14-linux-x64/blender --background -noaudio --threads 2 --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --update-hood`，从现有主文件原位更新并导出；完整构建与选择更新使用同一个帽兜函数。28 个实际蒙皮姿态、精确保持比较、固定 CPU 三视角与失败候选记录见 [r10 证据](../../../../todo/evidence/TASK-047/hood-r10/review.md)，实际 Bevy 走跑跳跃由主工作线单独验证
+
+## r11 上衣大轮廓候选
+
+仅调整 `Jacket_ContinuousShoulders` 的衣身侧线与袖筒松量，保持原衣长、肩领、连续袖窿、门襟、帽兜贴靠区域与袖口锚点。正常全身显示尺寸下，外套有较饱满的袖筒、收束袖口和较宽短的衣身轮廓；其他网格、拓扑、UV、权重、三张图、32 骨和四动作保持。衣料仍较圆滑，肘弯偏硬，整套服装、人物和配色仍 `needs_revision`
+
+局部更新使用 `env ALSOFT_DRIVERS=null timeout 180 output/tools/blender-4.5.14-linux-x64/blender --background -noaudio --threads 2 --python-exit-code 1 --python source-assets/characters/CHR-001/model/build.py -- --update-jacket`，在原主文件上应用与完整构建相同的函数，已应用 r11 的夹克由对象修订标记防止重复膨胀；后续手工修改保留标记并使用 `--export-existing`。不要为再次导出清除标记或全量重建，否则可能累加位移或覆盖手工成果
+
+同光照全身对照、五个动作姿态、28 姿态接触诊断和精确保持关系见 [r11 证据](../../../../todo/evidence/TASK-047/jacket-r11/review.md)。root 复看接受的是此局部增量，未代替作者接受人物外观；正式 GLB 与实际看过的候选逐字节一致，Bevy 连续动作由主工作线续验

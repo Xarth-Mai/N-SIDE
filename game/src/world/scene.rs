@@ -1289,6 +1289,8 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                 let workshop_blender_face = building.id == "V-55"
                     && !court
                     && ((a[0] == 148. && b[0] == 148.) || (a[1] == 198. && b[1] == 198.));
+                let arcade_blender_face =
+                    building.id == "V-35" && !court && a[1] == 153. && b[1] == 153.;
                 let public_face = !court
                     && design.entries.iter().any(|e| {
                         let p = map.nodes[&e.node];
@@ -1378,8 +1380,8 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         }) {
                             continue;
                         }
-                        // The authored facade owns all windows on these two faces
-                        if cinema_blender_face || workshop_blender_face {
+                        // Authored attachments own the windows on their covered faces
+                        if cinema_blender_face || workshop_blender_face || arcade_blender_face {
                             continue;
                         }
                         if floor_index == 0
@@ -1575,7 +1577,11 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                             }
                         }
                     }
-                    if floor_index > 0 && !cinema_blender_face && !workshop_blender_face {
+                    if floor_index > 0
+                        && !cinema_blender_face
+                        && !workshop_blender_face
+                        && !arcade_blender_face
+                    {
                         let p = [
                             (a[0] + b[0]) / 2.0 + normal[0] * (0.04 + interior_clearance),
                             (a[1] + b[1]) / 2.0 + normal[1] * (0.04 + interior_clearance),
@@ -1750,7 +1756,7 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                         ));
                     }
                     // Preserve entry/terrain validation above; the authored closed doors own their frames
-                    if workshop_blender_face {
+                    if workshop_blender_face || arcade_blender_face {
                         continue;
                     }
                     let center = map_to_world([
@@ -1799,7 +1805,10 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
                     }
                 }
                 // Roof coping keeps the authored top height and leaves roof paths open
-                if !workshop_blender_face && !design.floors.iter().any(|f| f.name == "RF") {
+                if !workshop_blender_face
+                    && !arcade_blender_face
+                    && !design.floors.iter().any(|f| f.name == "RF")
+                {
                     add_box(
                         &mut batches,
                         "trim",
@@ -1830,7 +1839,8 @@ fn facades(map: &Map, appearance: &Appearance) -> Result<Vec<GeometryPart>, Stri
             if (mid[0] - center[0]) * normal[0] + (mid[1] - center[1]) * normal[1] < 0.0 {
                 normal = [-normal[0], -normal[1]];
             }
-            if let Some(depth) = design.canopy {
+            // V-35's authored north facade includes the full source-depth canopy
+            if let Some(depth) = design.canopy.filter(|_| building.id != "V-35") {
                 if appearance.shopfronts.contains_key(&building.id) {
                     add_shop_canopy(
                         &mut batches,
@@ -3058,6 +3068,7 @@ fn props(map: &Map, appearance: &Appearance) -> Result<Vec<PropPlacement>, Strin
         ("V-A08", "v_a08_facade", [79., 277.5, 30.021515]),
         ("V-15", "v15_mirror_hall_facade", [300., 220., 25.]),
         ("V-55", "v55_workshop_facade", [154., 206., 24.]),
+        ("V-35", "v35_byte_beat_facade", [-386., 153., 12.]),
     ] {
         props.push(PropPlacement {
             source: format!("buildings[{owner}]/blender-attachment"),
@@ -3278,6 +3289,7 @@ mod tests {
             Appearance::load(&root.join("source-assets/district-scene/appearance.json")).unwrap();
         let placements = props(&map, &appearance).unwrap();
         let mut probe_parts = Vec::new();
+        let mut arcade_door_projection = 0.0_f32;
         let bounds = |points: &[[f32; 3]]| {
             points.iter().fold(
                 (Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)),
@@ -3289,6 +3301,7 @@ mod tests {
             ("V-A08", "v_a08_facade", 7000),
             ("V-15", "v15_mirror_hall_facade", 16000),
             ("V-55", "v55_workshop_facade", 8000),
+            ("V-35", "v35_byte_beat_facade", 8000),
         ] {
             let placed: Vec<_> = placements.iter().filter(|p| p.model == model).collect();
             assert_eq!(placed.len(), 1, "one attachment per authored building");
@@ -3326,6 +3339,19 @@ mod tests {
                     points.extend_from_slice(&vertices);
                     let indices: Vec<_> = reader.read_indices().unwrap().into_u32().collect();
                     triangles += indices.len() / 3;
+                    if model == "v35_byte_beat_facade" {
+                        for triangle in indices.chunks_exact(3) {
+                            let (lo, hi) = bounds(&[
+                                vertices[triangle[0] as usize],
+                                vertices[triangle[1] as usize],
+                                vertices[triangle[2] as usize],
+                            ]);
+                            // Actual exported geometry intersecting the approaching capsule's central strip
+                            if lo.x < -385.7 && hi.x > -386.3 && lo.y < 13.721 && hi.y > 12.021 {
+                                arcade_door_projection = arcade_door_projection.max(-153. - lo.z);
+                            }
+                        }
+                    }
                     // Query attachments in isolation to keep approach clearance independent of the base shell
                     probe_parts.push(GeometryPart {
                         source: format!("/buildings/{owner}/probe"),
@@ -3364,6 +3390,20 @@ mod tests {
                         .max_element()
                         < 0.001
                 );
+            } else if model == "v35_byte_beat_facade" {
+                assert_eq!(triangles, 3612);
+                assert!((lo - Vec3::new(-402., 11.82, -154.5)).abs().max_element() < 0.001);
+                assert!((hi - Vec3::new(-370., 23., -153.02)).abs().max_element() < 0.001);
+                assert_eq!(
+                    building.polygon,
+                    vec![[-402., 113.], [-370., 113.], [-370., 153.], [-402., 153.]]
+                );
+                assert_eq!(map.nodes["game_entry"], [-386., 153., 12.]);
+                assert_eq!(map.nodes["game_service_entry"], [-386., 113., 12.]);
+                assert!(
+                    (arcade_door_projection - 0.18).abs() < 0.001,
+                    "actual door projection={arcade_door_projection}"
+                );
             } else if model == "v55_workshop_facade" {
                 assert!((lo - Vec3::new(147.25, 23.45, -214.)).abs().max_element() < 0.001);
                 assert!((hi - Vec3::new(160., 33., -197.75)).abs().max_element() < 0.001);
@@ -3400,6 +3440,7 @@ mod tests {
             ("cinema_deck_turn", "cinema_upper"),
             ("fw_f_junction20", "fw_f_v_55_public"),
             ("fw_f_junction21", "fw_f_v_55_service"),
+            ("game_front_court", "game_entry"),
         ] {
             assert!(
                 map.roads.iter().any(|r| r
@@ -3415,6 +3456,28 @@ mod tests {
                 b -= (b - a).normalize() * 0.65;
             } else if end.starts_with("fw_f_v_55_") {
                 b -= (b - a).normalize() * 0.55;
+            } else if end == "game_entry" {
+                // 0.18 m actual handle projection + 0.30 m radius + 0.02 m skin leaves 0.05 m
+                assert!(0.55 - arcade_door_projection - 0.3 - 0.02 > 0.049);
+                b -= (b - a).normalize() * 0.55;
+                let support = ground_probe.support(b + Vec3::Y * 0.7, 1.4).unwrap();
+                let closed = visual_probe
+                    .capsule_cast(
+                        support.point + Vec3::Y * 0.021,
+                        1.7,
+                        0.3,
+                        Vec3::Z * 0.3,
+                        0.02,
+                    )
+                    .expect("authored public door remains closed");
+                assert!(
+                    closed.source.contains("/buildings/V-35/probe"),
+                    "{closed:?}"
+                );
+                assert!(
+                    (-153.181..=-153.023).contains(&closed.point.z),
+                    "door contact={closed:?}"
+                );
             }
             for i in 0..20 {
                 let at = a.lerp(b, i as f32 / 20.);
@@ -3565,8 +3628,62 @@ mod tests {
             }
         }
         assert!(preserved_east > 0 && preserved_north > 0);
+        // Only the arcade north face is authored; the other three faces and service door stay unchanged
+        assert!(
+            !residential_sample("V-35")
+                && !appearance.displays.contains_key("V-35")
+                && !appearance.shopfronts.contains_key("V-35")
+        );
+        original_map
+            .buildings
+            .iter_mut()
+            .find(|b| b.id == "V-35")
+            .unwrap()
+            .id = "V-35-before".into();
+        let original_arcade = facades(&original_map, &appearance).unwrap();
+        let old_arcade = cubes(&original_arcade, "V-35-before");
+        let new_arcade = cubes(&current, "V-35");
+        assert!(!new_arcade.is_empty() && new_arcade.len() < old_arcade.len());
+        assert!(new_arcade.iter().all(|b| old_arcade.contains(b)));
+        let mut removed_arcade_canopies = 0;
+        let mut preserved_arcade_faces = [0; 3];
+        for old in &old_arcade {
+            let (lo, hi) = bounds(&old.1);
+            let middle = (lo + hi) / 2.;
+            if middle.z < -152.7 {
+                assert!(
+                    !new_arcade.contains(old),
+                    "covered north detail remains: {old:?}"
+                );
+                assert!(
+                    lo.x >= -402.001 && hi.x <= -369.999 && lo.z >= -154.501 && hi.z <= -152.7,
+                    "unexpected removed arcade detail: {lo:?}..{hi:?}"
+                );
+                if old.0 == "awning" {
+                    removed_arcade_canopies += 1;
+                }
+            } else {
+                assert!(
+                    new_arcade.contains(old),
+                    "uncovered arcade detail removed: {old:?}"
+                );
+                if (middle.x + 402.).abs() < 0.3 {
+                    preserved_arcade_faces[0] += 1;
+                } else if (middle.x + 370.).abs() < 0.3 {
+                    preserved_arcade_faces[1] += 1;
+                } else if (middle.z + 113.).abs() < 0.3 {
+                    preserved_arcade_faces[2] += 1;
+                }
+            }
+        }
+        assert_eq!(removed_arcade_canopies, 1);
+        assert!(preserved_arcade_faces.iter().all(|n| *n > 0));
         eprintln!(
-            "V-A08 fully replaced; V-15 removed {} triangles; V-55 removed {} boxes and preserves east/north {preserved_east}/{preserved_north}; seven approaches clear",
+            "V-35 removed {} north boxes including its old canopy; preserves west/east/south {preserved_arcade_faces:?}; actual central door projection={arcade_door_projection:.3} m",
+            old_arcade.len() - new_arcade.len()
+        );
+        eprintln!(
+            "V-A08 fully replaced; V-15 removed {} triangles; V-55 removed {} boxes and preserves east/north {preserved_east}/{preserved_north}; eight approaches clear",
             old_cinema - new_cinema,
             old_workshop.len() - new_workshop.len()
         );
@@ -6164,8 +6281,8 @@ mod tests {
                 .collect();
             let mut seen = BTreeSet::new();
             for entry in &design.entries {
-                // V-55's two closed panels are now checked against actual imported collision geometry
-                if building.id == "V-55" {
+                // Replaced closed panels are checked against actual imported collision geometry
+                if building.id == "V-55" || (building.id == "V-35" && entry.node == "game_entry") {
                     continue;
                 }
                 if !seen.insert(&entry.node) {

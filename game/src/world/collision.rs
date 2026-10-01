@@ -45,6 +45,7 @@ impl CollisionWorld {
                 "v_a08_facade"
                     | "v15_mirror_hall_facade"
                     | "v55_workshop_facade"
+                    | "v35_byte_beat_facade"
                     | "street_bench"
                     | "aircon_wall"
             )
@@ -636,6 +637,17 @@ mod tests {
                 "closed west door should face approach: {clad:?}"
             );
         }
+
+        let closed_arcade = world
+            .capsule_cast(Vec3::new(-386., 12.25, -156.), 1.7, 0.3, Vec3::Z * 4., 0.02)
+            .unwrap();
+        assert!(
+            closed_arcade
+                .source
+                .contains("buildings[V-35]/blender-attachment/collision/v35_byte_beat_facade/"),
+            "{closed_arcade:?}"
+        );
+        assert!(closed_arcade.point.z < -153. && closed_arcade.normal.z < -0.8);
 
         // The shop's existing ground-level approach remains clear of imported prop collision
         let from = Vec3::new(100., 28.046, -255.);

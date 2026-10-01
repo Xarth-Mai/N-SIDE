@@ -1,0 +1,62 @@
+{
+  "status": "SOURCE_REVIEWED",
+  "classification": "self-audit; root source review, not author acceptance",
+  "preview_images": [
+    {
+      "path": "todo/evidence/TASK-049/v35-building-r1/north-street.png",
+      "sha256": "e920099102b914bbedfd6be7ad2465620233d3579ed282f265e6fb9a3dcd9755",
+      "bytes": 896708,
+      "pixels": [
+        960,
+        540
+      ],
+      "observed_by": [
+        "asset_pipeline self-audit",
+        "root source review"
+      ],
+      "retained": false
+    },
+    {
+      "path": "todo/evidence/TASK-049/v35-building-r1/northwest.png",
+      "sha256": "314663d44ebd59ffa29fb14a41d50f5ca3b582fa41b7884a079cdbe58195fd69",
+      "bytes": 933303,
+      "pixels": [
+        960,
+        540
+      ],
+      "observed_by": [
+        "asset_pipeline self-audit",
+        "root source review"
+      ],
+      "retained": false
+    },
+    {
+      "path": "todo/evidence/TASK-049/v35-building-r1/equipment.png",
+      "sha256": "f9b3dcb4159c5ad52ad45729dd2362395772b56d5e7ec3a22239f72af83768ff",
+      "bytes": 893347,
+      "pixels": [
+        960,
+        540
+      ],
+      "observed_by": [
+        "asset_pipeline self-audit",
+        "root source review"
+      ],
+      "retained": false
+    }
+  ],
+  "blender_source": {
+    "status": "PASS",
+    "version": "5.2.2 LTS",
+    "objects": 21,
+    "mesh_groups": 21,
+    "display_machines": 6,
+    "windows": 8,
+    "packed_images": 4
+  },
+  "artifact": {
+    "candidate_sha256": "cca2fe302db5fce06565f67a03d12d8b3205f963988e4278c156a26a8288bd1b",
+    "source_sha256": "88549a9829efc68bef5f9935de57d679f8c0fef10f76ded4fa98a6bd91326fa3"
+  },
+  "cleanup": "Three observed previews deleted after root review; source/master/candidate, scripts, manifests, JSON and logs retained"
+}

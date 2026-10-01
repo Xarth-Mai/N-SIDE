@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scale": 0.25,
+  "gltf_scale": 1,
+  "formula": "n = rgb / 127.5 - 1; n.xy *= .25; n = normalize(n); rgb = round((n + 1) * 127.5)",
+  "color_space": "Raw normal data; no sRGB transform",
+  "pillow": "12.3.0",
+  "files": [
+    {
+      "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "output": "source-assets/buildings/V-35/textures/Plaster001-NormalGL-scale025.png",
+      "output_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    },
+    {
+      "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "output": "source-assets/buildings/V-35/textures/Concrete034-NormalGL-scale025.png",
+      "output_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGB",
+      "license": "CC0-1.0"
+    }
+  ]
+}

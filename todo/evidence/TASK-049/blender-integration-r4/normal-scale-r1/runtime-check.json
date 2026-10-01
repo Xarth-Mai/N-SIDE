@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "file": "game/assets/environment/buildings/v35-byte-beat-facade.glb",
+  "sha256": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a",
+  "source_sha256": "d8ba601a7f11594558d39fd16a275242b558f3af7078a5134d0474b75e0f3173",
+  "bytes": 3537852,
+  "triangles": 3612,
+  "vertices": 7176,
+  "materials": 7,
+  "images": 4,
+  "runtime_bounds_xyz": [
+    [
+      -16.0,
+      16.0
+    ],
+    [
+      -0.18000000715255737,
+      11.0
+    ],
+    [
+      -1.5,
+      -0.019999999552965164
+    ]
+  ],
+  "anchor_map_xyz": [
+    -386,
+    153,
+    12
+  ],
+  "textured_uv_metric_ratio": [
+    0.9999978325610027,
+    1.0000002705459348
+  ],
+  "texture_sources": {
+    "source-assets/environment-kit/materials/Plaster001_1K-JPG_Color.jpg": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+    "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+    "source-assets/environment-kit/materials/Concrete034_1K-JPG_Color.jpg": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+    "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+  },
+  "derived_normals": {
+    "source-assets/buildings/V-35/textures/Plaster001-NormalGL-scale025.png": {
+      "sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+      "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+      "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+      "baked_scale": 0.25,
+      "gltf_scale": 1
+    },
+    "source-assets/buildings/V-35/textures/Concrete034-NormalGL-scale025.png": {
+      "sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+      "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+      "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+      "baked_scale": 0.25,
+      "gltf_scale": 1
+    }
+  },
+  "retained_sign_source_sha256": "913548802b2db5237519e1b652bcef23747dc02550d0ac9e251e8458a27009fc",
+  "approaches": [
+    {
+      "start": "game_front_court",
+      "door": "game_entry",
+      "samples": 41,
+      "stop_before_closed_door_m": 0.55,
+      "half_width_m": 0.32,
+      "height_m": 1.7
+    }
+  ],
+  "approach_scope": "Conservative triangle-AABB broad check with source linear road elevations; actual Rust Ground/capsule and runtime NOT RUN"
+}

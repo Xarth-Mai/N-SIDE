@@ -1,0 +1,929 @@
+{
+  "status": "PASS",
+  "checks": {
+    "meshes_identical": true,
+    "bones_identical": true,
+    "images_identical": true,
+    "actions_identical": true,
+    "GLB_nodes_identical": true,
+    "joint_indices_identical": true,
+    "inverse_binds_identical": true,
+    "all_exported_clip_samples_identical": true,
+    "three_embedded_textures_identical": true,
+    "materials_identical": true,
+    "jacket_anchors_identical": true,
+    "jacket_faces_identical": true,
+    "jacket_uv_identical": true,
+    "jacket_weights_identical": true,
+    "jacket_groups_identical": true,
+    "head_hair_collar_clear_in_28_poses": true,
+    "formal_files_unchanged": true
+  },
+  "before_poses": [
+    {
+      "clip": "Idle",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 31,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 61,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 91,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 121,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 168,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 9,
+      "BVH_overlap_pairs": {
+        "Hood": 268,
+        "TShirt": 190,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 17,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 166,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 25,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 160,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 33,
+      "BVH_overlap_pairs": {
+        "Hood": 268,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 41,
+      "BVH_overlap_pairs": {
+        "Hood": 269,
+        "TShirt": 164,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 49,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 168,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 265,
+        "TShirt": 152,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 6,
+      "BVH_overlap_pairs": {
+        "Hood": 268,
+        "TShirt": 182,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 11,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 142,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 16,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 137,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 21,
+      "BVH_overlap_pairs": {
+        "Hood": 261,
+        "TShirt": 153,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 26,
+      "BVH_overlap_pairs": {
+        "Hood": 269,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 31,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 138,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 36,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 124,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 41,
+      "BVH_overlap_pairs": {
+        "Hood": 265,
+        "TShirt": 152,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 6,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 138,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 13,
+      "BVH_overlap_pairs": {
+        "Hood": 260,
+        "TShirt": 110,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 21,
+      "BVH_overlap_pairs": {
+        "Hood": 260,
+        "TShirt": 108,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 31,
+      "BVH_overlap_pairs": {
+        "Hood": 260,
+        "TShirt": 108,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 37,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 146,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 41,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 188,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    }
+  ],
+  "candidate_poses": [
+    {
+      "clip": "Idle",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 178,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 31,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 176,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 61,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 178,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 91,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 178,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Idle",
+      "frame": 121,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 178,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 158,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 9,
+      "BVH_overlap_pairs": {
+        "Hood": 268,
+        "TShirt": 174,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 17,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 158,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 25,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 160,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 33,
+      "BVH_overlap_pairs": {
+        "Hood": 268,
+        "TShirt": 176,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 41,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 156,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Walk",
+      "frame": 49,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 158,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 265,
+        "TShirt": 146,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 6,
+      "BVH_overlap_pairs": {
+        "Hood": 268,
+        "TShirt": 176,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 11,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 113,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 16,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 112,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 21,
+      "BVH_overlap_pairs": {
+        "Hood": 261,
+        "TShirt": 150,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 26,
+      "BVH_overlap_pairs": {
+        "Hood": 269,
+        "TShirt": 180,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 31,
+      "BVH_overlap_pairs": {
+        "Hood": 267,
+        "TShirt": 110,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 36,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 96,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Run",
+      "frame": 41,
+      "BVH_overlap_pairs": {
+        "Hood": 265,
+        "TShirt": 146,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 1,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 178,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 6,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 132,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 13,
+      "BVH_overlap_pairs": {
+        "Hood": 260,
+        "TShirt": 76,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 21,
+      "BVH_overlap_pairs": {
+        "Hood": 260,
+        "TShirt": 78,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 31,
+      "BVH_overlap_pairs": {
+        "Hood": 260,
+        "TShirt": 76,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 37,
+      "BVH_overlap_pairs": {
+        "Hood": 264,
+        "TShirt": 144,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    },
+    {
+      "clip": "Jump",
+      "frame": 41,
+      "BVH_overlap_pairs": {
+        "Hood": 266,
+        "TShirt": 178,
+        "TShirt_Collar": 0,
+        "Face_Head": 0,
+        "Hair_Cap": 0,
+        "Hair_CrownBase": 0,
+        "Palm.L": 0,
+        "Palm.R": 0,
+        "Sleeve_Cuff.L": 68,
+        "Sleeve_Cuff.R": 68
+      }
+    }
+  ],
+  "scope": "Exact unchanged mesh/UV/weight/rig/animation/image data and fixed jacket anchors; BVH contacts are diagnostics, not visual acceptance",
+  "sha256": {
+    "before.blend": "7f77c2380050a1d479e98f193c47ed2d4ea22fe62ee0989f54779b35c690a76d",
+    "before.glb": "ddb1cb5c0064e6e23994de4987458634ae24575e59d0e54b64f8739aa080719d",
+    "candidate.blend": "9d3d7d938777f9d7db33c0edb4da9570b402cd91e3a512d4438823130346bddf",
+    "yao-grey-study.glb": "0f02f5eb635b356ab25325829bbdb51fbe021f723fe162abe9e4090486cb87db"
+  }
+}

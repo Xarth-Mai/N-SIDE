@@ -26,6 +26,8 @@ bun tools/export-district-scene.ts --check
 
 新增 `station`、`byte-beat`、`frame`、`playroom`、`after9` 五个原创 SVG，均使用项目 Noto Sans SC 并沿用同一导出器；N站画布为 1200 × 256，兴趣街三牌为 1024 × 256，AFTER 9 为 1024 × 320，具体源图、比例与设计关系见[经营标识制作](signage-production.md)。五牌由 `appearance.materials` 对应槽与场景 `business_signs` 绑定真实公共门上方，保留原图比例；它们与原五店 8:1 门楣、屋顶人物宣传屏分别生成，15 张运行 PNG 的导出检查记录见[本轮来源与导出](../../todo/evidence/TASK-049/signs-r1/review.md)
 
+V-35 的 [BYTE BEAT 北立面](../buildings/V-35/README.md) 使用 `v35_byte_beat_facade` 与正式运行 GLB，锚点沿用公共门 `[-386,153,12]`；替换北面泛型构件、旧公共门和雨棚，保留原楼体、另三面、后勤门与独立 `sign_byte_beat` 招牌。浅展柜和设备属于封闭经营展示，未增加室内或玩法；原版实机暴露灰泥法线强度问题，源包已将0.25强度烘进两张法线并以强度1导出，修复版 GPU 与人物路线待对应复验
+
 ## 招牌检查 brief
 
 小店 shop.svg 与 shop.png 属于同一原创招牌家族，采用深绿色底、暖白正式店名和金色边框；尺寸检查以导出画布 1024 × 128 为准，512 × 64 用作保留 8:1 比例的半尺寸阅读样本。缩放预览不能代替场景透视下的覆盖像素和牌面比例检查

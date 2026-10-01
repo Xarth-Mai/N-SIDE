@@ -1,0 +1,22 @@
+{
+  "scene": "district",
+  "view": "eye-v35-entry",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "frames": 150,
+  "seed": 0,
+  "timeout_seconds": 300,
+  "keyframes": [29, 59, 99, 149],
+  "events": [
+    {"start": 0, "end": 1, "keys": ["M"]},
+    {"start": 40, "end": 44, "keys": ["A"]},
+    {"start": 80, "end": 84, "keys": ["D"]},
+    {"start": 120, "end": 121, "keys": ["Escape"]}
+  ],
+  "assertions": [
+    {"name": "Real Viewer left input shows arcade entrance layers", "from": 39, "to": 59, "min_distance": 1, "max_distance": 3, "max_rotation": 0.0001, "enabled": true, "world_ready": true},
+    {"name": "Real Viewer right input compares entrance and glazing", "from": 79, "to": 99, "min_distance": 1, "max_distance": 3, "max_rotation": 0.0001, "enabled": true, "world_ready": true},
+    {"name": "Entrance view is stable after release", "from": 130, "to": 149, "max_distance": 0.0001, "max_rotation": 0.0001, "enabled": false, "world_ready": true, "same_world_entities": true}
+  ]
+}

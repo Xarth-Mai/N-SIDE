@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "geometry_accessors_indices_uv_normals": "exactly unchanged",
+  "nodes_scenes_texture_bindings_samplers": "unchanged",
+  "other_material_values": "unchanged",
+  "original_color_image_bytes": "unchanged",
+  "normal_scales": [
+    {
+      "material": "Plaster",
+      "before_scale": 0.25,
+      "after_scale": 1
+    },
+    {
+      "material": "Concrete",
+      "before_scale": 0.25,
+      "after_scale": 1
+    }
+  ],
+  "before_sha256": "cca2fe302db5fce06565f67a03d12d8b3205f963988e4278c156a26a8288bd1b",
+  "after_sha256": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a"
+}

@@ -66,8 +66,8 @@
       "state": "technical-preview",
       "source_path": "source-assets/characters/CHR-001/model/yao-grey-study.blend",
       "runtime_path": "game/assets/characters/CHR-001/yao-grey-study.glb",
-      "source_sha256": "7f77c2380050a1d479e98f193c47ed2d4ea22fe62ee0989f54779b35c690a76d",
-      "runtime_sha256": "ddb1cb5c0064e6e23994de4987458634ae24575e59d0e54b64f8739aa080719d",
+      "source_sha256": "08da019a48c32725fe0b33fe20f615659105ad16b3c6a0a2e824398f9e739849",
+      "runtime_sha256": "0f02f5eb635b356ab25325829bbdb51fbe021f723fe162abe9e4090486cb87db",
       "provenance": "Original geometry, UVs, grayscale atlas, weights and keyframes authored in Blender for N:SIDE; no imported third-party mesh or motion",
       "license": "MPL-2.0 project-authored model and scripts; concept/reference image rights retain their own records",
       "references": [
@@ -123,15 +123,15 @@
       "appearance_age": 18,
       "palette_status": "undecided grayscale values only",
       "acceptance": {
-        "technical": "r10 selective Hood update: source/GLB preservation, existing DCC and GLB checks PASS; unchanged r9 hair and all other meshes, 32-bone rest/bind, all four clips, materials and three images; actual Bevy motion review tracked separately",
-        "visual": "needs_revision; thinner Hood side profile and curved lower edge reviewed in identical CPU views; residual jacket side-seam contacts and broad flat back remain unresolved; face, cloth detail, hair and final palette remain unaccepted"
+        "technical": "r11 selective jacket update: 17 candidate preservation checks and 28 evaluated pose diagnostics PASS; unchanged sewn anchors, all other meshes, 32-bone rest/bind, four clips, materials and three images; formal GLB byte-identical to the reviewed candidate; actual Bevy motion review tracked separately",
+        "visual": "needs_revision; fuller body side silhouette and sleeve volume with cuff taper visible in fixed full-body CPU comparisons; root accepted this local increment, not author character approval; rounded cloth forms, stiff elbow folds, face, hair and final palette remain unaccepted"
       },
       "generation": {
         "tool": "Blender 4.5.14 LTS Python geometry and animation authoring",
         "external_generation_service": null,
         "service_cost": null
       },
-      "evidence": "todo/evidence/TASK-047/hood-r10/review.md",
+      "evidence": "todo/evidence/TASK-047/jacket-r11/review.md",
       "data_textures": [
         {
           "path": "source-assets/characters/CHR-001/model/grey-study-surface.png",

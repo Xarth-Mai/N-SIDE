@@ -1,0 +1,13 @@
+00:00.470  blend            | Read blend: "/home/lzzz/MyProjects/N-SIDE/source-assets/buildings/V-35/facade.blend"
+00:00.613  image.write      | ERROR OpenImageIO write failed: Could not open file "/home/lzzz/.cache/thumbnails/large/blender_5_582d69faf06052576c1196ec0652ed1f.png.png"
+Info: Saved as "facade.blend"
+INFO Draco is available, use library at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.so
+ERROR MeshOptimizer is not available because library could not be found at /usr/lib/blender/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.so
+16:17:37 | INFO: Starting glTF 2.0 export
+16:17:37 | INFO: Extracting primitive: V35_North_WallAndPlinth.001
+16:17:37 | INFO: Primitives created: 7
+16:17:37 | INFO: Finished glTF 2.0 export in 0.08452081680297852 s
+
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-22 17:10:25)
+
+Blender quit

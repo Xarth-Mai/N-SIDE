@@ -1,0 +1,102 @@
+{
+  "engine": "Cycles CPU",
+  "threads": 2,
+  "samples": 12,
+  "resolution": [
+    640,
+    480
+  ],
+  "lights": "unchanged master",
+  "views": [
+    {
+      "file": "output/yao-jacket-r11/candidate-walk8.png",
+      "sha256": "461b0e78a3392d4c3e15b3d110998e93de245a7991e6577289f1632801f145bc",
+      "master_sha256": "9d3d7d938777f9d7db33c0edb4da9570b402cd91e3a512d4438823130346bddf",
+      "camera": [
+        2,
+        -4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Walk",
+      "frame": 8
+    },
+    {
+      "file": "output/yao-jacket-r11/candidate-run6.png",
+      "sha256": "6ec9dd5f7023b9a914ae042ceddb7a5c899271e0eb9d6a2d0843d7ba7e321a5e",
+      "master_sha256": "9d3d7d938777f9d7db33c0edb4da9570b402cd91e3a512d4438823130346bddf",
+      "camera": [
+        2,
+        -4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Run",
+      "frame": 6
+    },
+    {
+      "file": "output/yao-jacket-r11/candidate-run26.png",
+      "sha256": "43e3ad4c3bffded02377c6c0cadbba2bd26a571409bec2c64c2a082f7eb16f93",
+      "master_sha256": "9d3d7d938777f9d7db33c0edb4da9570b402cd91e3a512d4438823130346bddf",
+      "camera": [
+        -2,
+        -4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Run",
+      "frame": 26
+    },
+    {
+      "file": "output/yao-jacket-r11/candidate-jump13.png",
+      "sha256": "d2f76dcf3a70b64ccc87d052a7bf811ed17d40c5a4c6b274b0afcb1c7039ff4c",
+      "master_sha256": "9d3d7d938777f9d7db33c0edb4da9570b402cd91e3a512d4438823130346bddf",
+      "camera": [
+        2,
+        -4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Jump",
+      "frame": 13
+    },
+    {
+      "file": "output/yao-jacket-r11/candidate-jump21.png",
+      "sha256": "3c2c0edfa3dd835b6837a3dad0fd95cb8e4ef57389eb65e3a3aa31e30b3e341b",
+      "master_sha256": "9d3d7d938777f9d7db33c0edb4da9570b402cd91e3a512d4438823130346bddf",
+      "camera": [
+        0,
+        4,
+        1.6
+      ],
+      "target": [
+        0,
+        0,
+        0.9
+      ],
+      "ortho_scale": 3.5,
+      "clip": "Jump",
+      "frame": 21
+    }
+  ]
+}

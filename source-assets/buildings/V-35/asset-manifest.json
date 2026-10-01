@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "owner_id": "V-35",
+  "assets": [
+    {
+      "id": "AST-V35-FACADE",
+      "kind": "static-arcade-north-facade",
+      "state": "exported",
+      "source_path": "source-assets/buildings/V-35/facade.blend",
+      "source_sha256": "d8ba601a7f11594558d39fd16a275242b558f3af7078a5134d0474b75e0f3173",
+      "candidate_path": "source-assets/buildings/V-35/candidate.glb",
+      "candidate_sha256": "cca2fe302db5fce06565f67a03d12d8b3205f963988e4278c156a26a8288bd1b",
+      "provenance": "Original editable facade, shallow arcade-machine geometry, abstract rhythm graphics and UV authored locally in Blender 5.2.2 LTS for N:SIDE; unchanged ambientCG Color images and CC0 NormalGL inputs from AST-003; normal strength baked into lossless PNG derivatives; existing BYTE BEAT sign retained independently",
+      "license": "MPL-2.0 project-authored geometry and scripts; CC0-1.0 ambientCG images",
+      "license_status": "project-owned-and-open",
+      "references": [
+        "docs/dev/production/art-direction.md",
+        "source-assets/district-map/district.json:buildings[V-35]",
+        "source-assets/district-scene/byte-beat.svg",
+        "source-assets/environment-kit/asset-manifest.json:AST-003",
+        "todo/evidence/TASK-049/reference-r1/building-reference-map.json:S14,S10"
+      ],
+      "dimensions": {
+        "units": "meters",
+        "source_up_axis": "+Z",
+        "runtime_up_axis": "+Y",
+        "pivot_map_xyz": [
+          -386,
+          153,
+          12
+        ],
+        "runtime_bounds_xyz": [
+          [
+            -16.0,
+            16.0
+          ],
+          [
+            -0.18000000715255737,
+            11.0
+          ],
+          [
+            -1.5,
+            -0.019999999552965164
+          ]
+        ],
+        "source_building_footprint_m": [
+          32,
+          40
+        ],
+        "source_building_height_m": 11,
+        "floor_heights_m": [
+          6,
+          5
+        ],
+        "canopy_depth_m": 1.5,
+        "public_door_width_m": 2
+      },
+      "export": {
+        "tool": "5.2.2 LTS",
+        "scene": 0,
+        "triangles": 3612,
+        "vertices": 7176,
+        "material_primitives": 7,
+        "images": 4,
+        "bytes": 3537852,
+        "extensions": [],
+        "source_mesh_groups": 21,
+        "windows": 8,
+        "display_machines": 6
+      },
+      "textures": {
+        "source-assets/environment-kit/materials/Plaster001_1K-JPG_Color.jpg": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+        "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+        "source-assets/environment-kit/materials/Concrete034_1K-JPG_Color.jpg": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+        "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+      },
+      "retained_sign": {
+        "source_path": "source-assets/district-scene/byte-beat.svg",
+        "sha256": "913548802b2db5237519e1b652bcef23747dc02550d0ac9e251e8458a27009fc",
+        "treatment": "Original independent business_signs geometry and texture; review-only copy excluded from master and runtime GLB"
+      },
+      "acceptance": {
+        "technical": "PASS: repaired runtime GLB bounds, finite attributes, normals/winding, metric UV, original licensed input hashes, exact two original color images, lossless normal derivatives and pixelwise xy*.25 bake; 41 source approach samples, sign clearance and saved Blender source contracts",
+        "visual": "Self-audit: repaired entry frame 59 plus consecutive frames 40-42 and facade frame 49 plus consecutive frames 31-33 reviewed; prominent black speckles receded while window/canopy shadows remained, with no large blotch jumping or facade overlap switching in those samples; author approval pending",
+        "runtime": "PASS within R4 capture scope: v35-entry-final 150 frames / 6 checks and v35-facade-final 120 frames / 6 checks; local rendering and camera-input capture verified, not arbitrary-distance stability or a real player walk",
+        "collision": "PASS in R4 CPU lib tests: actual transformed V-35 GLB approach and closed-door capsule checks; final normal repair preserves geometry exactly; real player continuous route remains unverified",
+        "evidence_directory": "todo/evidence/TASK-049/v35-building-r1",
+        "runtime_geometry_report": "todo/evidence/TASK-049/blender-integration-r4/normal-scale-r1/runtime-check.json",
+        "source_report": "todo/evidence/TASK-049/blender-integration-r4/normal-scale-r1/source-check.log",
+        "normal_repair_evidence": "todo/evidence/TASK-049/blender-integration-r4/normal-scale-r1/source-repair.md",
+        "source_preservation": "todo/evidence/TASK-049/blender-integration-r4/normal-scale-r1/source-preservation.json",
+        "runtime_preservation": "todo/evidence/TASK-049/blender-integration-r4/normal-scale-r1/runtime-preservation.json",
+        "visual_review": "todo/evidence/TASK-049/blender-integration-r4/visual-review.md",
+        "collision_test": "todo/evidence/TASK-049/blender-integration-r4/lib-tests.log"
+      },
+      "cost": 0,
+      "runtime_path": "game/assets/environment/buildings/v35-byte-beat-facade.glb",
+      "runtime_sha256": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a",
+      "candidate_scope": "Frozen source-production snapshot for v35-building-r1 only; ordinary build.py export writes runtime_path from the unique facade.blend master and does not refresh this candidate",
+      "derived_normals": {
+        "script": "source-assets/buildings/V-35/bake_normals.py",
+        "script_sha256": "da76ca811dabf55757d1b005f6989bf6b039b34de9e77fbf9da9e874bd096890",
+        "diagnostic_recipe": "todo/evidence/TASK-049/blender-integration-r4/normal-scale-r1/bake_normal.py",
+        "scale": 0.25,
+        "gltf_normalTexture_scale": 1,
+        "formula": "n = rgb / 127.5 - 1; n.xy *= .25; n = normalize(n); rgb = round((n + 1) * 127.5)",
+        "color_space": "Raw normal data; no sRGB transform",
+        "pillow": "12.3.0",
+        "compatibility": "Bevy 0.19.1 glTF loader does not apply normalTexture.scale; bake xy attenuation into RGB data and use Blender Strength/glTF scale 1",
+        "mips": "PNG contains one mip level; normal-strength repair does not establish distant filtering or mip quality",
+        "files": [
+          {
+            "source": "source-assets/environment-kit/materials/Plaster001_1K-JPG_NormalGL.jpg",
+            "source_sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72",
+            "output": "source-assets/buildings/V-35/textures/Plaster001-NormalGL-scale025.png",
+            "output_sha256": "99efaab8cd07fef345a74dcbffb46ad5a6f168cf06e3769fabbfe28917ae67c7",
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "license": "CC0-1.0"
+          },
+          {
+            "source": "source-assets/environment-kit/materials/Concrete034_1K-JPG_NormalGL.jpg",
+            "source_sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca",
+            "output": "source-assets/buildings/V-35/textures/Concrete034-NormalGL-scale025.png",
+            "output_sha256": "d1adf44e20afbadf2e62b12119b15a8e159afa9af623e43048fd223015c7fd07",
+            "size": [
+              1024,
+              512
+            ],
+            "mode": "RGB",
+            "license": "CC0-1.0"
+          }
+        ]
+      }
+    }
+  ]
+}

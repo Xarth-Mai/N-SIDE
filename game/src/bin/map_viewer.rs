@@ -526,6 +526,7 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
             [295.8, 233.5, 25.8],
         ),
         ("inspect-v55-facade", [136., 188., 29.], [150., 204., 28.]),
+        ("inspect-v35-facade", [-410., 180., 17.], [-386., 153., 17.]),
         (
             "eye-aircon-wall",
             [565., 95.6, 14.391667],
@@ -535,6 +536,12 @@ fn camera_views(map: &Map) -> Result<Vec<(String, Transform)>, String> {
         println!("[visual/view] name={name} eye={eye:?} target={target:?} fov=55");
         views.push((name, view(eye, target)));
     }
+    let front = map.nodes["game_front_court"];
+    let door = map.nodes["game_entry"];
+    let eye = [front[0], front[1], front[2] + 1.725];
+    let target = [door[0], door[1], door[2] + 2.8];
+    println!("[visual/view] name=eye-v35-entry eye={eye:?} target={target:?} fov=55");
+    views.push(("eye-v35-entry", view(eye, target)));
     // The workshop approach uses the real road grade, rather than the wall's elevation
     let from = map.nodes["fw_f_junction20"];
     let to = map.nodes["fw_f_v_55_public"];

@@ -1,0 +1,80 @@
+{
+  "removed": [
+    {
+      "path": "output/yao-jacket-r11/before-back.png",
+      "bytes": 290933,
+      "sha256": "ef05f6caef964192d324728fb34506ad406f7e96aed657f7126f8d37d1930141",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/before-front.png",
+      "bytes": 291047,
+      "sha256": "6ec465cdb28412f6cd18487447594b518866f46154cd9298076e601431801b49",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/before-quarter.png",
+      "bytes": 286373,
+      "sha256": "3d8b3428abe178ab6a55e6828d94c2bc3b1eaeb6566ca2ec25e02bff24f21643",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-back.png",
+      "bytes": 291587,
+      "sha256": "ebd19d5c7a64bc7cb0e06bf7c9839ed18b8ad43687ccaa7921548c2d8dded383",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-front.png",
+      "bytes": 291445,
+      "sha256": "fea439ef8fc1cbe3f675ef9a198777fb02f62fa65e04a1fd5ef4060b225fa4a0",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-jump13.png",
+      "bytes": 288412,
+      "sha256": "d2f76dcf3a70b64ccc87d052a7bf811ed17d40c5a4c6b274b0afcb1c7039ff4c",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-jump21.png",
+      "bytes": 286601,
+      "sha256": "3c2c0edfa3dd835b6837a3dad0fd95cb8e4ef57389eb65e3a3aa31e30b3e341b",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-quarter.png",
+      "bytes": 286675,
+      "sha256": "1b8fde387d94e948f87e5f961d5ecd91e36c19020e3dee8cf432e45fcb62f62b",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-run26.png",
+      "bytes": 288969,
+      "sha256": "43e3ad4c3bffded02377c6c0cadbba2bd26a571409bec2c64c2a082f7eb16f93",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-run6.png",
+      "bytes": 287163,
+      "sha256": "6ec9dd5f7023b9a914ae042ceddb7a5c899271e0eb9d6a2d0843d7ba7e321a5e",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "output/yao-jacket-r11/candidate-walk8.png",
+      "bytes": 286856,
+      "sha256": "461b0e78a3392d4c3e15b3d110998e93de245a7991e6577289f1632801f145bc",
+      "kind": "viewed CPU comparison or motion still"
+    },
+    {
+      "path": "source-assets/characters/CHR-001/model/yao-grey-study.blend1",
+      "bytes": 4565168,
+      "sha256": "7f77c2380050a1d479e98f193c47ed2d4ea22fe62ee0989f54779b35c690a76d",
+      "kind": "this promotion r10 backup; identical frozen before.blend retained"
+    }
+  ],
+  "removed_bytes": 7741229,
+  "remaining_visual_files": [],
+  "retained": "before.blend/before.glb, generator-before.py, candidate.blend/candidate GLB, scripts, hashes, logs and JSON; formal source/runtime assets preserved",
+  "reason": "Root reviewed quarter/back/run6/jump13 and explicitly authorized promotion and cleanup; all this task Blender sessions exited before removal"
+}

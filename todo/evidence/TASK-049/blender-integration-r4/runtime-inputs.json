@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-01T08:01:30.116238+00:00",
+  "base": "d7222a21786ad79c4c686748bb4fad13aaedd5c1",
+  "files": {
+    "game/src/world/scene.rs": {
+      "bytes": 267359,
+      "sha256": "5f53b00e1e8bf83c3c24697e645adee5419d29bc97837caacd6572908d1a8d19"
+    },
+    "game/src/world/collision.rs": {
+      "bytes": 26072,
+      "sha256": "78f3a8e4cc1f4edad1740bca423690ace3a3157747639c92cf730c267ee413ec"
+    },
+    "game/src/bin/map_viewer.rs": {
+      "bytes": 53652,
+      "sha256": "b671d4ac113a0336956011ee9f0d0856c9b6abb8211946756d7aa2a626dddeef"
+    },
+    "source-assets/district-map/district.json": {
+      "bytes": 728044,
+      "sha256": "a2f15c59246a57c1250ee76db54e0a12fa5ce766f17f15dc1535e5895128038f"
+    },
+    "source-assets/district-scene/appearance.json": {
+      "bytes": 12777,
+      "sha256": "55c7eea60867ef2b1660344dc8cd21049ec5ea012687b9652773ddaef4b94f12"
+    },
+    "game/assets/environment/buildings/v35-byte-beat-facade.glb": {
+      "bytes": 4270304,
+      "sha256": "cca2fe302db5fce06565f67a03d12d8b3205f963988e4278c156a26a8288bd1b"
+    },
+    "game/assets/characters/CHR-001/yao-grey-study.glb": {
+      "bytes": 1751892,
+      "sha256": "0f02f5eb635b356ab25325829bbdb51fbe021f723fe162abe9e4090486cb87db"
+    },
+    "game/target/debug/map_viewer": {
+      "bytes": 2047011264,
+      "sha256": "1690bfe27f125cbe590f1bb0adeec389e158cebc9fb155adb1fe834885776035"
+    },
+    "game/target/debug/n-side": {
+      "bytes": 2042372168,
+      "sha256": "20c24de20fa8859db7d2dd33e148ad07b12fd180c1a37ed7c057b2d5ac4092cb"
+    }
+  },
+  "normal_fix": {
+    "scope": "Only V35 normal data and scale support corrected in editable source and runtime, original snapshot above preserved for first captures",
+    "files": {
+      "source-assets/buildings/V-35/facade.blend": "d8ba601a7f11594558d39fd16a275242b558f3af7078a5134d0474b75e0f3173",
+      "game/assets/environment/buildings/v35-byte-beat-facade.glb": "1879fad3909afeaf32e2aa75c58e553252f0fec8168fa3663855a217259d441a",
+      "source-assets/buildings/V-35/build.py": "00e46b6cc4a7e9dbd5fde02758456ef537594d09499ef39fccf3c475c2920e27",
+      "source-assets/buildings/V-35/check.py": "cb839dc065c1f8e6991a259708704311050b8ffe2f7689d25771202473792036"
+    }
+  }
+}

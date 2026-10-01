@@ -1,0 +1,11 @@
+{
+  "scope": "Temporary diagnostic input only: removed Plaster.normalTexture; lighting, geometry, all other material values and binary buffer identical",
+  "original_sha256": "cca2fe302db5fce06565f67a03d12d8b3205f963988e4278c156a26a8288bd1b",
+  "diagnostic_sha256": "393e517579af347198d821c386afaebe71996c4a140de57a9efddb35eaf49072",
+  "removed": [
+    {
+      "index": 0,
+      "scale": 0.25
+    }
+  ]
+}

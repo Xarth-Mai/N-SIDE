@@ -75,6 +75,8 @@ Logo 的 `205×205` 预览来自 `512×512` 图按 `0.4` 缩放的历史工具�
 
 当前环境模型复用 `bun tools/export-environment.ts --check` 与 `world::assets` 的 Bevy 加载预检，保留 `Scene0`、材质槽及外部色板依赖。`test_asset_environment.py` 对现有静态环境模型核对实际二进制 accessor 的有限数值与声明边界，以及节点变换、米制高度和底部枢轴。源 GLB 的节点缩放与运行 GLB 的米制归一分开记录；当前导出器有意保留根节点缩放，放入场景时实体缩放为 `1`，无需为满足通用“应用全部变换”规则破坏现有数据
 
+当前锁定并在本机验证的 Bevy 0.19.1 glTF 读取器未应用 `normalTexture.scale`。需要弱化法线时，可复用 [V-35 烘焙入口](../../../source-assets/buildings/V-35/bake_normals.py)：解码法线 RGB，仅缩放切线空间 `x/y`、保持 `z` 后归一化，保存无损 PNG，并将 Blender Strength 与 glTF scale 设为1；原授权图、衍生关系及哈希保留在资产清单。该处理已通过[同机位复验](../../../todo/evidence/TASK-049/blender-integration-r4/visual-review.md)，不推定其他 Bevy 版本具有同样限制；升级后重新核对读取器和实际画面。PNG 烘焙不生成 mip 链，远距过滤仍须分别验证
+
 Blender 源工程进入 `source-assets/`，运行交付仍使用项目已支持的 GLB。面数、贴图密度、碰撞代理和 LOD 依据[美术](art-direction.md)及实际镜头预算确定。绑定后的角色调整变换时，应同时核对 bind pose、inverse bind matrices、动画和附着点，不能沿用静态道具的批量清理方法
 
 本机 Blender 后台制作采用 `env ALSOFT_DRIVERS=null blender --background -noaudio --threads 4 --python-exit-code 1`，按任务设置超时并等待进程退出。文件落盘不等于进程结束；清理预览前核对本轮进程已退出，沙箱进程列表不可见时在宿主核对明确的命令与 PID。并行编译或 GPU 验收时限制后台渲染数量，避免内存交换导致检查超时
